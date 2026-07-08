@@ -1,0 +1,112 @@
+NILov Catering Website - odaeda.ru (UPDATED VERSION AFTER CRITIC REVIEW)
+
+TECH: Next.js 16, React 19, Tailwind CSS 4, Framer Motion, shadcn/ui (base-ui), @react-pdf/renderer
+FONTS: Playfair Display (headings) + Inter (body)
+COLORS: Accent #C8782A (copper), Gold #DAAF5C, Sage #8A9A8A, dark mode support
+LANGUAGE: Russian
+
+CHANGES SINCE LAST REVIEW (was 5.3/10):
+
+1. HERO SECTION - COMPLETE REWRITE:
+- Kinetic typography: word-by-word reveal animation with staggered delays and spring easing
+- Grain texture overlay (SVG noise pattern, animated)
+- Multi-layer gradient overlay (vertical + horizontal) with scroll-driven opacity
+- Animated ping badge (Премиальный кейтеринг в Москве) with glassmorphism
+- Animated gradient line divider
+- Scroll-driven parallax (video scale + text Y + content fade)
+- Spring-based smooth parallax (useSpring)
+- Scroll progress mouse indicator with animated pill
+- Trust line below CTAs (phone, 850+ events, 2hr response)
+- Glow CTA button with arrow icon
+
+2. HEADER - MAJOR UPGRADE:
+- Scroll progress bar (gradient accent-gold, fixed top, spring-based)
+- Glassmorphism on scroll (backdrop-blur-xl, bg/70, subtle shadow)
+- Pill-style nav links with active indicator (layoutId animation)
+- Improved mobile nav with same glass effect
+
+3. SERVICES - 3D TILT CARDS:
+- Custom TiltCard component with useMotionValue + useSpring
+- 3D perspective (perspective: 1000px, preserve-3d)
+- Glassmorphism overlay on hover
+- Enhanced image zoom (110% scale, 700ms duration)
+- Service stats (120+ свадеб, Газпром/Сбербанк/Яндекс, 500+ вечеров)
+- Icon hover: rotate wiggle animation + scale + bg color change
+- Better badge pills with bg transitions
+
+4. NEW WHY US SECTION (6 features):
+- Авторская кухня, Свежие продукты, Индивидуальный подход, Полный сервис, Точность, Премиум сервис
+- 3D hover lift cards with spring physics
+- Hover glow background effect
+- Icon color inversion on hover (accent bg, white icon)
+- Radial gradient background decoration
+
+5. NEW GALLERY SECTION:
+- Masonry grid with layout animations (AnimatePresence popLayout)
+- Category filter (all, weddings, corporate, private) with animated pills
+- Image hover: scale 110%, overlay, camera icon, caption reveal
+- FULL LIGHTBOX with prev/next navigation, backdrop blur
+- Animated open/close
+
+6. NEW BLOG SECTION:
+- 3 recent post cards with gradient top bars
+- Hover lift with spring physics
+- Read more with arrow animation
+
+7. NEW FAQ SECTION:
+- 6 detailed FAQ items with rich answers
+- Animated accordion (AnimatePresence height animation)
+- Pill badge header
+- Hover border color transitions
+
+8. STATS SECTION:
+- Floating animated gradient orbs (accent + gold, blur-3xl)
+- Icon hover: rotate wiggle animation
+- Improved icon container (rounded-2xl, scale on hover)
+
+9. TESTIMONIALS:
+- Quote icon decoration (top-right, opacity change on hover)
+- Staggered star animation (delay per star per card)
+- Avatar ring (accent/20)
+- Trust indicator: avatar stack + 850+ clients
+- Card hover lift + shadow
+
+10. MENU PREVIEW:
+- Section badge (Utensils icon)
+- Decorative bg orbs
+- Dual CTAs (full menu + PDF download)
+- Menu card hover lift wrappers
+
+11. MENU CARDS:
+- Quick-add overlay button (appears on image hover, + icon)
+- Add confirmation (green flash with checkmark)
+- Animated БЖУ expand/collapse (AnimatePresence)
+- Better hover effects (shadow-accent/5, border-accent/30)
+- Image zoom 110% on hover
+
+12. CTA SECTION:
+- Glassmorphism countdown timer
+- Trust badges (Shield, Award, Zap icons)
+- Grain texture overlay
+- Glass phone button
+- Improved gradient overlay
+
+13. CSS UTILITIES ADDED:
+- .glass, .glass-dark, .glass-card (glassmorphism)
+- .gradient-text (animated gradient text)
+- .btn-glow (glowing button effect)
+- .grain-overlay (film grain texture)
+- .hover-lift (lift + shadow on hover)
+- .img-zoom (image zoom container)
+- .section-divider (gradient line)
+- .scroll-progress (fixed progress bar)
+- .perspective-1000, .preserve-3d
+- @keyframes: grain, glow-pulse, text-reveal-up, line-grow, marquee
+- New color vars: --color-accent-dark, --color-gold, --color-sage
+
+14. DATA FIXES:
+- Fixed galleryImages (was malformed, now proper objects with id/alt/category/width/height)
+- Fixed menu page: asChild→render prop on SheetTrigger, removed asChild on Button, added missing framer-motion import
+
+15. HOMEPAGE STRUCTURE (was 6 sections, now 11):
+Hero → TrustMarquee → Services → WhyUs → Stats → MenuPreview → Testimonials → Gallery → Blog → FAQ → CTA
