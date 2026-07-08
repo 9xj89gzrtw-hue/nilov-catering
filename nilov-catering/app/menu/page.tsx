@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -60,17 +61,19 @@ function MenuBuilderSheet() {
   return (
     <>
       <Sheet>
-        <SheetTrigger asChild>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="fixed bottom-20 right-4 z-30 md:bottom-6 md:right-6"
-          >
+        <SheetTrigger
+          render={
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="fixed bottom-20 right-4 z-30 md:bottom-6 md:right-6"
+            />
+          }
+        >
             <Button className="bg-accent hover:bg-accent/90 text-white shadow-lg shadow-accent/30 rounded-full h-14 px-5 gap-2">
               <ShoppingCart className="w-5 h-5" />
               <span className="font-semibold">{totalCount}</span>
             </Button>
-          </motion.div>
         </SheetTrigger>
         <SheetContent className="w-full sm:w-[420px] flex flex-col">
           <SheetHeader>
@@ -178,9 +181,9 @@ function MenuBuilderSheet() {
                 <span className="text-accent font-bold text-lg">{formatPrice(Math.round(perGuest))}</span>
               </div>
             </div>
-            <Button className="w-full" asChild>
-              <a href="/quote">Оформить заявку</a>
-            </Button>
+            <a href="/quote">
+              <Button className="w-full">Оформить заявку</Button>
+            </a>
           </div>
         </SheetContent>
       </Sheet>
