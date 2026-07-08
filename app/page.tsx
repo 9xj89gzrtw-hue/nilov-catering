@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustMarquee from "@/components/sections/TrustMarquee";
 import SocialProofBar from "@/components/sections/SocialProofBar";
@@ -13,11 +12,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import BlogSection from "@/components/sections/BlogSection";
 import FAQSection from "@/components/sections/FAQSection";
-
-const CTASection = dynamic(
-  () => import("@/components/sections/CTASection").then((m) => m.default),
-  { ssr: false, loading: () => <div className="h-64 bg-muted/30 animate-pulse" /> }
-);
+import CTASection from "@/components/sections/CTASection";
 
 export default function HomePage() {
   return (
