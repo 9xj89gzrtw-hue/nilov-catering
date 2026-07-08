@@ -65,8 +65,40 @@ export default function GallerySection() {
           </div>
         </AnimatedSection>
 
-        {/* Masonry grid */}
-        <motion.div layout className="columns-2 md:columns-3 gap-4 space-y-4">
+        {/* Mobile: regular grid, Desktop: masonry columns */}
+        <div className="grid grid-cols-2 gap-3 md:hidden">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((img, i) => (
+              <motion.div
+                key={img.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: i * 0.03 }}
+                className="cursor-pointer group"
+                onClick={() => openLightbox(i)}
+              >
+                <div className="relative rounded-xl overflow-hidden img-zoom aspect-[4/3]">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    placeholder="empty"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-active:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                    <Camera className="w-6 h-6 text-white opacity-0 group-active:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop masonry */}
+        <motion.div layout className="hidden md:block columns-3 gap-4 space-y-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((img, i) => (
               <motion.div

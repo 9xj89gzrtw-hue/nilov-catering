@@ -7,7 +7,8 @@ import { blogPosts } from "@/lib/data";
 import { motion } from "framer-motion";
 
 export default function BlogSection() {
-  const posts = blogPosts.slice(0, 3);
+  // Show 3 most recent posts (blogPosts are sorted by date desc in data)
+  const posts = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
 
   return (
     <section className="py-20 md:py-28">
