@@ -30,5 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "nilov-catering-repo", "nilov-catering", "skills", "v950-bot-fresh", "scripts", "download"]
 }

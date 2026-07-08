@@ -74,6 +74,7 @@ export interface PricingPackage {
   features: string[];
   isPopular?: boolean;
   includes?: string[];
+  menuItems?: string[];
 }
 
 export interface Service {
@@ -619,7 +620,7 @@ export const pricingPackages: PricingPackage[] = [
     name: "Эконом",
     description: "Идеально для небольших мероприятий и корпоративных встреч",
     pricePerPerson: 2500,
-    includes: ["1", "2", "3", "4", "20", "21", "28", "29", "36"],
+    menuItems: ["1", "2", "3", "4", "20", "21", "28", "29", "36"],
     pricePerGuest: 2500,
     minGuests: 20,
     features: [
@@ -641,7 +642,7 @@ export const pricingPackages: PricingPackage[] = [
     name: "Премиум",
     description: "Лучший выбор для свадеб, юбилеев и торжественных мероприятий",
     pricePerPerson: 4500,
-    includes: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "20", "21", "22", "23", "24", "25", "28", "29", "30", "31", "36", "37", "38", "39", "40"],
+    menuItems: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "20", "21", "22", "23", "24", "25", "28", "29", "30", "31", "36", "37", "38", "39", "40"],
     pricePerGuest: 4500,
     minGuests: 30,
     isPopular: true,

@@ -120,8 +120,8 @@ export default function RootLayout({
     <html lang="ru" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://odaeda.ru" />
-        <link rel="alternate" hreflang="ru-RU" href="https://odaeda.ru" />
-        <link rel="alternate" hreflang="x-default" href="https://odaeda.ru" />
+        <link rel="alternate" hrefLang="ru-RU" href="https://odaeda.ru" />
+        <link rel="alternate" hrefLang="x-default" href="https://odaeda.ru" />
         <meta name="theme-color" content="#C8782A" />
         <meta name="format-detection" content="telephone=yes" />
         <script
