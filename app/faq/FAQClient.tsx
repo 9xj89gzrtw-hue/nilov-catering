@@ -1,13 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { faqItems } from '@/lib/data';
 
-export default function FAQSection() {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+export default function FAQClient() {
   const [openId, setOpenId] = useState<string | null>(null);
 
   const toggle = (id: string) => {
@@ -15,32 +12,22 @@ export default function FAQSection() {
   };
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-muted" aria-label="Часто задаваемые вопросы">
+    <section className="py-12 md:py-16 bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">FAQ</p>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream">
-            Частые вопросы
-          </h2>
-        </div>
-
         <div className="space-y-2" role="region" aria-label="Аккордеон вопросов">
-          {faqItems.slice(0, 7).map((item, i) => {
+          {faqItems.map((item) => {
             const isOpen = openId === item.id;
             return (
-              <motion.div
+              <div
                 key={item.id}
                 className="border border-border rounded-md overflow-hidden"
-                initial={{ opacity: 0, y: 16 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
               >
                 <button
-                  id={`faq-btn-${item.id}`}
+                  id={`faq-page-btn-${item.id}`}
                   className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-card/50 transition-colors duration-200"
                   onClick={() => toggle(item.id)}
                   aria-expanded={isOpen}
-                  aria-controls={`faq-panel-${item.id}`}
+                  aria-controls={`faq-page-panel-${item.id}`}
                 >
                   <span className="text-sm font-medium text-cream pr-4">
                     {item.question}
@@ -53,9 +40,9 @@ export default function FAQSection() {
                   />
                 </button>
                 <div
-                  id={`faq-panel-${item.id}`}
+                  id={`faq-page-panel-${item.id}`}
                   role="region"
-                  aria-labelledby={`faq-btn-${item.id}`}
+                  aria-labelledby={`faq-page-btn-${item.id}`}
                   className={`overflow-hidden transition-all duration-300 ${
                     isOpen ? 'max-h-96' : 'max-h-0'
                   }`}
@@ -64,19 +51,19 @@ export default function FAQSection() {
                     {item.answer}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
-        {/* JSON-LD for FAQ */}
+        {/* JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.slice(0, 7).map((item) => ({
+              mainEntity: faqItems.map((item) => ({
                 "@type": "Question",
                 name: item.question,
                 acceptedAnswer: {

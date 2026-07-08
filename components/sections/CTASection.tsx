@@ -1,149 +1,169 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import AnimatedSection from "@/components/common/AnimatedSection";
-import { Clock, ArrowRight, Shield, Award, Zap } from "lucide-react";
-
-const CTA_IMG = "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&h=800&fit=crop";
-
-function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const now = new Date();
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
-    const diff = endOfMonth.getTime() - now.getTime();
-
-    const interval = setInterval(() => {
-      const remaining = endOfMonth.getTime() - Date.now();
-      if (remaining <= 0) { clearInterval(interval); return; }
-      setTimeLeft({
-        hours: Math.floor(remaining / (1000 * 60 * 60)),
-        minutes: Math.floor((remaining / (1000 * 60)) % 60),
-        seconds: Math.floor((remaining / 1000) % 60),
-      });
-    }, 1000);
-
-    setTimeLeft({
-      hours: Math.floor(diff / (1000 * 60 * 60)),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / (1000) % 60)),
-    });
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="flex items-center gap-3 text-white/90 text-sm">
-      <Clock className="w-4 h-4 text-accent" />
-      <span className="hidden sm:inline">Специальное предложение действует ещё:</span>
-      <span className="sm:hidden">Предложение:</span>
-      <div className="flex gap-1.5 font-mono font-bold">
-        {[
-          { val: timeLeft.hours, label: "ч" },
-          { val: timeLeft.minutes, label: "м" },
-          { val: timeLeft.seconds, label: "с" },
-        ].map(({ val, label }, i) => (
-          <div key={i} className="flex items-center gap-1">
-            <span className="glass text-white px-2 py-1 rounded text-sm">
-              {String(val).padStart(2, "0")}
-            </span>
-            <span className="text-accent/70 text-[10px]">{label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-const trustBadges = [
-  { icon: Shield, text: "Гарантия возврата" },
-  { icon: Award, text: "12 лет опыта" },
-  { icon: Zap, text: "Ответ за 2 часа" },
-];
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Phone, Mail, Send, Loader2 } from 'lucide-react';
 
 export default function CTASection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const body = {
+      name: data.get('name'),
+      phone: data.get('phone'),
+      date: data.get('date'),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
 
   return (
-    <section ref={ref} className="relative py-24 md:py-32 overflow-hidden grain-overlay">
-      <motion.div className="absolute inset-0" style={{ y }}>
-        <Image
-          src={CTA_IMG}
-          alt="Закажите кейтеринг"
-          fill
-          className="object-cover"
-          placeholder="empty"
+    <section
+      ref={ref}
+      className="relative py-20 md:py-28 overflow-hidden"
+      aria-label="Обсудить мероприятие"
+    >
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=800&fit=crop&q=80')",
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
-      </motion.div>
+        <div className="absolute inset-0 bg-[#0A0A0A]/85" />
+      </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <AnimatedSection>
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 rounded-full px-4 py-1.5 text-sm font-medium mb-6 backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            Бесплатная дегустация при заказе до конца месяца
-          </motion.div>
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Left — text */}
+          <div className="flex flex-col justify-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">
+              Свяжитесь с нами
+            </p>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream leading-tight mb-6">
+              Обсудим ваше
+              <br />
+              <span className="text-gold">мероприятие</span>
+            </h2>
+            <p className="text-sm text-cream/60 leading-relaxed mb-8 max-w-md">
+              Расскажите о вашем мероприятии — мы подготовим предложение с персональным меню и точной стоимостью в течение 24 часов.
+            </p>
 
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            Готовы создать
-            <span className="gradient-text"> незабываемое</span> мероприятие?
-          </h2>
-          <p className="text-white/70 text-lg mb-6 leading-relaxed">
-            Свяжитесь с нами для бесплатной консультации и расчёта стоимости.
-            Мы ответим в течение 2 часов.
-          </p>
-
-          <div className="mb-8 flex justify-center">
-            <CountdownTimer />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <Link
-                href="/quote"
-                className="btn-glow group inline-flex h-13 items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold bg-accent text-white hover:bg-accent-dark transition-all duration-300 shadow-xl shadow-accent/30 hover:shadow-accent/50"
-              >
-                Получить расчёт бесплатно
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <div className="space-y-4">
               <a
-                href="tel:+74959213456"
-                className="glass group inline-flex h-13 items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/15 transition-all duration-300"
+                href="tel:+78121234567"
+                className="flex items-center gap-3 text-sm text-cream/80 hover:text-gold transition-colors duration-200"
               >
-                Позвонить
+                <Phone className="w-4 h-4 text-gold/70" />
+                +7 (812) 123-45-67
               </a>
-            </motion.div>
+              <a
+                href="mailto:info@nilov-catering.ru"
+                className="flex items-center gap-3 text-sm text-cream/80 hover:text-gold transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4 text-gold/70" />
+                info@nilov-catering.ru
+              </a>
+            </div>
           </div>
 
-          {/* Trust badges */}
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            {trustBadges.map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-1.5 text-white/40 text-xs">
-                <Icon className="w-3.5 h-3.5" />
-                {text}
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
+          {/* Right — form */}
+          <form
+            onSubmit={handleSubmit}
+            className="bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 md:p-8 space-y-5"
+          >
+            <div>
+              <label htmlFor="cta-name" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+                Ваше имя
+              </label>
+              <input
+                id="cta-name"
+                name="name"
+                type="text"
+                required
+                placeholder="Анна"
+                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="cta-phone" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+                Телефон
+              </label>
+              <input
+                id="cta-phone"
+                name="phone"
+                type="tel"
+                required
+                placeholder="+7 (___) ___-__-__"
+                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="cta-date" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+                Дата мероприятия
+              </label>
+              <input
+                id="cta-date"
+                name="date"
+                type="date"
+                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full btn-primary text-xs uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-60"
+            >
+              {status === 'loading' ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Send className="w-4 h-4" />
+              )}
+              {status === 'loading' ? 'Отправка...' : 'Отправить заявку'}
+            </button>
+
+            {status === 'success' && (
+              <p className="text-sm text-green-400 text-center" role="alert">
+                Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="text-sm text-red-400 text-center" role="alert">
+                Произошла ошибка. Попробуйте позвонить нам.
+              </p>
+            )}
+          </form>
+        </motion.div>
       </div>
     </section>
   );

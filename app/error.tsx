@@ -1,39 +1,19 @@
-"use client";
+import Link from 'next/link';
 
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
-
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  useEffect(() => {
-    console.error("Page error:", error);
-  }, [error]);
-
+export default function ErrorPage() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center bg-background p-4">
-      <div className="text-center max-w-md">
-        <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-6">
-          <AlertTriangle className="w-8 h-8 text-destructive" />
-        </div>
-        <h1 className="text-2xl font-heading font-bold mb-3">Что-то пошло не так</h1>
-        <p className="text-muted-foreground mb-6 leading-relaxed">
-          Произошла непредвиденная ошибка при загрузке страницы.
-          Попробуйте обновить или вернитесь на главную.
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center px-4">
+        <p className="font-heading text-6xl font-semibold text-burgundy">Ошибка</p>
+        <p className="text-sm text-cream-muted mt-4 max-w-md mx-auto">
+          Что-то пошло не так. Попробуйте обновить страницу или вернуться на главную.
         </p>
-        <div className="flex gap-3 justify-center">
-          <Button onClick={reset} variant="default">
-            Попробовать снова
-          </Button>
-          <a href="/">
-            <Button variant="outline">На главную</Button>
-          </a>
-        </div>
+        <Link
+          href="/"
+          className="inline-block mt-8 btn-primary text-xs uppercase tracking-wider"
+        >
+          На главную
+        </Link>
       </div>
     </div>
   );

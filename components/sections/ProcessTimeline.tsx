@@ -1,107 +1,83 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Phone, ChefHat, Truck, PartyPopper, CheckCircle2 } from "lucide-react";
-import AnimatedSection from "@/components/common/AnimatedSection";
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { MessageSquare, Utensils, CalendarCheck, PartyPopper } from 'lucide-react';
 
 const steps = [
   {
-    icon: Phone,
-    step: "01",
-    title: "Звонок или заявка",
-    description: "Вы оставляете заявку на сайте или звоните нам. Мы обсуждаем формат, дату и количество гостей — ответим за 2 часа.",
+    icon: MessageSquare,
+    number: '01',
+    title: 'Знакомство',
+    description: 'Обсуждаем концепцию, формат и ваш бюджет. Выслушиваем пожелания и предлагаем варианты.',
   },
   {
-    icon: ChefHat,
-    step: "02",
-    title: "Дегустация и меню",
-    description: "Шеф-повар готовит 5–7 пробных блюд. Вы выбираете любимые, мы дорабатываем меню до идеала. Дегустация — бесплатно.",
+    icon: Utensils,
+    number: '02',
+    title: 'Меню',
+    description: 'Шеф-повар готовит авторское меню. Вы утверждаете состав и приезжаете на дегустацию.',
   },
   {
-    icon: Truck,
-    step: "03",
-    title: "Подготовка и логистика",
-    description: "За 48 часов до мероприятия согласовываем финальные детали. Свежие продукты доставляем напрямую от фермеров.",
+    icon: CalendarCheck,
+    number: '03',
+    title: 'Подготовка',
+    description: 'Закупаем свежие продукты, координируем логистику и готовим команду к мероприятию.',
   },
   {
     icon: PartyPopper,
-    step: "04",
-    title: "День мероприятия",
-    description: "Наша команда прибывает за 3 часа, настраивает зоны фуршета, готовит финальную подачу. Вы наслаждаетесь праздником.",
-  },
-  {
-    icon: CheckCircle2,
-    step: "05",
-    title: "Идеальный результат",
-    description: "98% клиентов возвращаются снова. После мероприятия мы собираем обратную связь и дарим скидку на следующий заказ.",
+    number: '04',
+    title: 'Мероприятие',
+    description: 'Безупречный сервис от первой до последней минуты. Ваша забота — наслаждаться.',
   },
 ];
 
 export default function ProcessTimeline() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(200,120,42,0.04),transparent_50%)]" />
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection>
-          <div className="text-center mb-14">
-            <p className="text-accent text-sm font-medium tracking-widest uppercase mb-3">
-              Как мы работаем
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              5 шагов к <span className="gradient-text">идеальному мероприятию</span>
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Прозрачный процесс от первого звонка до финальной подачи — без сюрпризов
-            </p>
-          </div>
-        </AnimatedSection>
+    <section ref={ref} className="py-20 md:py-28 bg-muted" aria-label="Как мы работаем">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-14 md:mb-18">
+          <p className="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">Процесс</p>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream">
+            Как мы работаем
+          </h2>
+        </div>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
-
+        {/* Timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
-            const isLeft = i % 2 === 0;
-
             return (
-              <AnimatedSection key={step.step} delay={i * 0.1}>
-                <div className={`relative flex items-start gap-6 mb-10 md:mb-14 ${
-                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                }`}>
-                  {/* Dot */}
-                  <div className="absolute left-5 md:left-1/2 w-3 h-3 bg-accent rounded-full -translate-x-1.5 mt-2 z-10 ring-4 ring-background" />
+              <motion.div
+                key={step.number}
+                className="relative text-center lg:text-left"
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                transition={{ duration: 0.5, delay: i * 0.12, ease: 'easeOut' }}
+              >
+                {/* Connector line (desktop only) */}
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] right-0 h-px bg-border-light" />
+                )}
 
-                  {/* Content */}
-                  <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${
-                    isLeft ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
-                  }`}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-5 md:p-6 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
-                    >
-                      <div className={`flex items-center gap-3 mb-3 ${
-                        isLeft ? "md:justify-end" : ""
-                      }`}>
-                        <span className="text-xs font-mono text-accent/50 font-bold">
-                          {step.step}
-                        </span>
-                        <div className={`w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center ${
-                          isLeft ? "md:order-last" : ""
-                        }`}>
-                          <Icon className="w-4.5 h-4.5 text-accent" />
-                        </div>
-                      </div>
-                      <h3 className="font-heading text-lg font-bold mb-1.5">
-                        {step.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  </div>
+                <span className="font-heading text-4xl font-semibold text-gold/20">
+                  {step.number}
+                </span>
+
+                <div className="mt-4 flex items-center gap-3 justify-center lg:justify-start">
+                  <Icon className="w-5 h-5 text-burgundy-light" />
+                  <h3 className="font-heading text-xl font-semibold text-cream">
+                    {step.title}
+                  </h3>
                 </div>
-              </AnimatedSection>
+
+                <p className="mt-3 text-sm text-cream-muted leading-relaxed max-w-xs mx-auto lg:mx-0">
+                  {step.description}
+                </p>
+              </motion.div>
             );
           })}
         </div>

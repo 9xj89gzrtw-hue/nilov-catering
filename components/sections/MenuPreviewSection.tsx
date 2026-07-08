@@ -1,88 +1,74 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Utensils, ArrowRight } from "lucide-react";
-import MenuCard from "@/components/menu/MenuCard";
-import AnimatedSection from "@/components/common/AnimatedSection";
-import { menuItems } from "@/lib/data";
-import { MenuBuilderProvider, useMenuBuilder } from "@/components/menu/MenuBuilder";
-
-const popularItems = menuItems.filter((item) => item.isPopular).slice(0, 6);
-
-function MenuGrid() {
-  const { addItem } = useMenuBuilder();
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {popularItems.map((item, i) => (
-        <AnimatedSection key={item.id} delay={i * 0.08}>
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <MenuCard item={item} onAdd={addItem} />
-          </motion.div>
-        </AnimatedSection>
-      ))}
-    </div>
-  );
-}
+import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { menuItems } from '@/lib/data';
+import { ArrowRight } from 'lucide-react';
 
 export default function MenuPreviewSection() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const highlights = menuItems.filter((item) => item.isPopular).slice(0, 6);
+
   return (
-    <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-gold/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection>
-          <div className="text-center mb-12 md:mb-16">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-accent/10 text-accent rounded-full px-4 py-1.5 text-xs font-medium tracking-wider uppercase mb-4"
-            >
-              <Utensils className="w-3.5 h-3.5" />
-              Наше меню
-            </motion.div>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Популярные <span className="gradient-text">блюда</span>
+    <section ref={ref} className="py-20 md:py-28" aria-label="Избранные блюда">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">Меню</p>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream">
+              Фирменные блюда
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Отборные позиции из нашего меню, которые чаще всего выбирают наши клиенты.
-              каждое блюдо — авторская разработка шеф-повара
-            </p>
           </div>
-        </AnimatedSection>
+          <Link
+            href="/menu"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-gold hover:text-gold-light transition-colors duration-200 font-medium shrink-0"
+          >
+            Всё меню
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
-        <MenuBuilderProvider>
-          <MenuGrid />
-        </MenuBuilderProvider>
-
-        <AnimatedSection delay={0.3}>
-          <div className="text-center mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
-              <Link
-                href="/menu"
-                className="btn-glow group inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 py-2 text-sm font-semibold bg-accent text-white hover:bg-accent-dark transition-all duration-300 shadow-lg shadow-accent/25"
-              >
-                Всё меню
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {highlights.map((item, i) => (
+            <motion.div
+              key={item.id}
+              className="group bg-card border border-border rounded-md overflow-hidden card-hover"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+            >
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading text-lg font-semibold text-cream truncate">
+                      {item.name}
+                    </h3>
+                    <p className="mt-1 text-xs text-cream-muted line-clamp-1">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span className="text-sm font-medium text-gold whitespace-nowrap">
+                    {item.price.toLocaleString('ru-RU')} ₽
+                  </span>
+                </div>
+              </div>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
-              <Link
-                href="/menu"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 py-2 text-sm font-semibold border border-border text-foreground hover:border-accent/50 hover:text-accent transition-all duration-300"
-              >
-                Скачать PDF меню
-              </Link>
-            </motion.div>
-          </div>
-        </AnimatedSection>
+          ))}
+        </div>
       </div>
     </section>
   );

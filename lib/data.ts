@@ -153,7 +153,8 @@ function menuImg(category: string, index: number): string {
   return imgs[index % imgs.length];
 }
 
-const IMG_WIDE = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _IMG_WIDE = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop";
 
 const AVATARS = [
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
@@ -533,7 +534,7 @@ export const teamMembers: TeamMember[] = [
     role: "Основатель и шеф-повар",
     specialization: "Европейская и авторская кухня",
     photo: TEAM_PHOTOS[0],
-    bio: "Более 15 лет опыта в сфере кейтеринга. Закончил кулинарную академию в Париже. Работал в ведущих ресторанах Москвы и Санкт-Петербурга.",
+    bio: "Более 15 лет опыта в сфере кейтеринга. Закончил кулинарную академию в Париже. Работал в ведущих ресторанах Санкт-Петербурга и Москвы.",
   },
   {
     id: "2",
@@ -575,7 +576,7 @@ export const faqItems: FAQItem[] = [
   {
     id: "3",
     question: "Можно ли изменить меню?",
-    answer: "Да, мы гибко подстраиваемся под ваши пожелания. Вы можете выбрать блюда из нашего меню, предложить свои варианты или заказать полностью индивидуальное меню. Шеф-подарок проконсультирует по сочетаемости блюд.",
+    answer: "Да, мы гибко подстраиваемся под ваши пожелания. Вы можете выбрать блюда из нашего меню, предложить свои варианты или заказать полностью индивидуальное меню. Шеф-повар проконсультирует по сочетаемости блюд.",
   },
   {
     id: "4",
@@ -595,7 +596,7 @@ export const faqItems: FAQItem[] = [
   {
     id: "7",
     question: "Доставляете ли вы за город?",
-    answer: "Да, мы выезжаем за город в радиусе 100 км от Москвы. Доставка за город оплачивается дополнительно в зависимости от расстояния. Также доступны выезды в другие регионы по договорённости.",
+    answer: "Да, мы выезжаем за город в радиусе 100 км от Санкт-Петербурга. Доставка за город оплачивается дополнительно в зависимости от расстояния. Также доступны выезды в другие регионы по договорённости.",
   },
   {
     id: "8",
@@ -737,6 +738,21 @@ export const services: Service[] = [
       "Фотозона и видеосъёмка",
     ],
   },
+  {
+    id: "4",
+    slug: "buffets",
+    title: "Фуршеты",
+    description: "Коктейльные приёмы, презентации и лёгкие форматы. Элегантные канапе, шоу-станции и авторские коктейли для любой аудитории.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop",
+    features: [
+      "Канапе и мини-закуски",
+      "Шоу-станции на выбор",
+      "Авторские коктейли",
+      "Кофе-брейк обслуживание",
+      "Мобильные бары",
+      "Эко-посуда по запросу",
+    ],
+  },
 ];
 
 export const additionalServices: AdditionalService[] = [
@@ -771,10 +787,10 @@ export const additionalServices: AdditionalService[] = [
 ];
 
 export const stats: Stat[] = [
-  { value: 12, suffix: "+", label: "Лет опыта" },
-  { value: 850, suffix: "+", label: "Мероприятий" },
-  { value: 50000, suffix: "+", label: "Довольных гостей" },
-  { value: 98, suffix: "%", label: "Положительных отзывов" },
+  { value: 800, suffix: "+", label: "Мероприятий" },
+  { value: 12, suffix: "", label: "Лет опыта" },
+  { value: 50, suffix: "+", label: "Корпоративных клиентов" },
+  { value: 98, suffix: "%", label: "Довольных клиентов" },
 ];
 
 export const galleryImages: GalleryImage[] = [
@@ -973,21 +989,19 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const navItems: NavItem[] = [
-  { label: "Главная", href: "/" },
-  { label: "О нас", href: "/about" },
   { label: "Услуги", href: "/services" },
   { label: "Меню", href: "/menu" },
   { label: "Галерея", href: "/gallery" },
-  { label: "Отзывы", href: "/testimonials" },
-  { label: "Цены", href: "/pricing" },
+  { label: "О нас", href: "/about" },
   { label: "Контакты", href: "/contact" },
 ];
 
 export const mobileNavItems: NavItem[] = [
   { label: "Главная", href: "/" },
+  { label: "Услуги", href: "/services" },
   { label: "Меню", href: "/menu" },
-  { label: "Калькулятор", href: "/menu#calculator" },
   { label: "Галерея", href: "/gallery" },
+  { label: "О нас", href: "/about" },
   { label: "Контакты", href: "/contact" },
 ];
 
