@@ -9,8 +9,9 @@ import CTASection from "@/components/sections/CTASection";
 import { services } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Корпоративный кейтеринг",
+  title: "Корпоративный кейтеринг | Nilov Catering",
   description: "Организация питания для корпоративных мероприятий, конференций и бизнес-ланчей. Безналичная оплата и налоговые документы.",
+  alternates: { canonical: "https://odaeda.ru/services/corporate" },
 };
 
 export default function CorporatePage() {

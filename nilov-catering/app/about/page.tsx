@@ -6,8 +6,9 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import { teamMembers } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "О компании",
+  title: "О компании | Nilov Catering",
   description: "Узнайте больше о кейтеринговой компании Nilov Catering — 12 лет опыта, команда профессионалов и уникальный подход к каждому мероприятию.",
+  alternates: { canonical: "https://odaeda.ru/about" },
 };
 
 export default function AboutPage() {

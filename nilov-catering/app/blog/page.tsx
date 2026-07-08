@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "@/lib/data";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Блог | Nilov Catering",
+  description: "Блог кейтеринговой компании Nilov Catering — советы по организации мероприятий, гастрономические тренды и идеи для вашего праздника.",
+  alternates: { canonical: "https://odaeda.ru/blog" },
+};
 
 export default function BlogPage() {
   const breadcrumbs = [

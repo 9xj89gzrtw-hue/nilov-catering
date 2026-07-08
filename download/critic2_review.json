@@ -1,0 +1,86 @@
+```json
+{
+  "scores": {
+    "A": 8,
+    "B": 7,
+    "C": 6,
+    "D": 9,
+    "E": 8,
+    "F": 7,
+    "total": 7.5
+  },
+  "top_fixes": [
+    {
+      "priority": 1,
+      "category": "C",
+      "file": "./app/layout.tsx",
+      "issue": "Missing structured data for FAQ and services",
+      "fix_code": "<script\n  type=\"application/ld+json\"\n  dangerouslySetInnerHTML={{\n    __html: JSON.stringify({\n      \"@context\": \"https://schema.org\",\n      \"@type\": \"FAQPage\",\n      \"mainEntity\": faqItems.map(item => ({\n        \"@type\": \"Question\",\n        \"name\": item.question,\n        \"acceptedAnswer\": {\n          \"@type\": \"Answer\",\n          \"text\": item.answer\n        }\n      }))\n    })\n  }}\n/>"
+    },
+    {
+      "priority": 1,
+      "category": "C",
+      "file": "./app/layout.tsx",
+      "issue": "Missing canonical URL",
+      "fix_code": "<link rel=\"canonical\" href=\"https://odaeda.ru\" />"
+    },
+    {
+      "priority": 1,
+      "category": "C",
+      "file": "./app/layout.tsx",
+      "issue": "Missing hreflang tags",
+      "fix_code": "<link rel=\"alternate\" hreflang=\"ru-RU\" href=\"https://odaeda.ru\" />\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://odaeda.ru\" />"
+    },
+    {
+      "priority": 2,
+      "category": "A",
+      "file": "./components/common/AnimatedSection.tsx",
+      "issue": "Missing loading skeleton",
+      "fix_code": "if (!mounted) {\n  return (\n    <div className={cn(className)}>\n      <SkeletonPulse className=\"h-4 w-full rounded mb-2\" />\n      <SkeletonPulse className=\"h-4 w-3/4 rounded mb-2\" />\n      <SkeletonPulse className=\"h-4 w-1/2 rounded\" />\n    </div>\n  );\n}"
+    },
+    {
+      "priority": 2,
+      "category": "C",
+      "file": "./app/layout.tsx",
+      "issue": "Missing robots.txt",
+      "fix_code": "export default function robots(): MetadataRoute.Robots {\n  return {\n    rules: {\n      userAgent: '*',\n      allow: '/',\n      disallow: '/private/',\n    },\n    sitemap: 'https://odaeda.ru/sitemap.xml',\n  };\n}"
+    },
+    {
+      "priority": 3,
+      "category": "A",
+      "file": "./app/page.tsx",
+      "issue": "Missing lazy loading for sections",
+      "fix_code": "import { lazy, Suspense } from 'react';\n\nconst HeroSection = lazy(() => import('@/components/sections/HeroSection'));\nconst ServicesSection = lazy(() => import('@/components/sections/ServicesSection'));\n\nexport default function HomePage() {\n  return (\n    <>\n      <Suspense fallback={<div className=\"h-screen bg-primary flex items-center justify-center\"><div className=\"text-white text-center\">Загрузка...</div></div>}>\n        <HeroSection />\n      </Suspense>\n      <Suspense fallback={<div className=\"h-96 bg-muted flex items-center justify-center\"><div className=\"text-muted-foreground\">Загрузка...</div></div>}>\n        <ServicesSection />\n      </Suspense>\n    </>\n  );\n}"
+    },
+    {
+      "priority": 3,
+      "category": "A",
+      "file": "./app/layout.tsx",
+      "issue": "Missing error boundary",
+      "fix_code": "function ErrorBoundary({ error, reset }: { error: Error; reset: () => void }) {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center bg-background p-4\">\n      <div className=\"text-center max-w-md\">\n        <h1 className=\"text-2xl font-bold mb-2\">Что-то пошло не так</h1>\n        <p className=\"text-muted-foreground mb-4\">Произошла ошибка при загрузке страницы</p>\n        <Button onClick={reset}>Попробовать снова</Button>\n      </div>\n    </div>\n  );\n}"
+    },
+    {
+      "priority": 4,
+      "category": "C",
+      "file": "./app/layout.tsx",
+      "issue": "Missing Open Graph image dimensions",
+      "fix_code": "\"images\": [\n  {\n    \"url\": \"https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=630&fit=crop\",\n    \"width\": 1200,\n    \"height\": 630,\n    \"alt\": \"Nilov Catering — кейтеринг в Москве\",\n    \"type\": \"image/jpeg\"\n  }\n]"
+    },
+    {
+      "priority": 4,
+      "category": "A",
+      "file": "./components/gallery/GalleryGrid.tsx",
+      "issue": "Missing lazy loading for images",
+      "fix_code": "import Image from 'next/image';\n\n<Image\n  src={image.src}\n  alt={image.alt}\n  fill\n  className=\"object-cover group-hover:scale-105 transition-transform duration-500\"\n  placeholder=\"blur\"\n  blurDataURL=\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=\"\n  sizes=\"(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw\"\n/>"
+    },
+    {
+      "priority": 5,
+      "category": "F",
+      "file": "./app/layout.tsx",
+      "issue": "Missing AMP version",
+      "fix_code": "export default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"ru\" className={`${headingFont.variable} ${bodyFont.variable}`}>\n      <head>\n        <link rel=\"amphtml\" href=\"https://odaeda.ru/amp\" />\n        <script\n          type=\"application/ld+json\"\n          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}\n        />\n      </head>\n      <body className=\"min-h-screen flex flex-col antialiased bg-background text-foreground\">\n        <SkipLink />\n        <Header />\n        <main id=\"main-content\" className=\"flex-1\">{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}"
+    }
+  ],
+  "summary_text": "Сайт Nilov Catering имеет хорошую базовую структуру с современным стеком технологий (Next.js 16, Tailwind 4, Framer Motion). Основные проблемы связаны с отсутствием технической оптимизации изображений, отсутствием error boundaries, неполными мета-тегами и отсутствием AMP-версии. Для улучшения производительности необходимо добавить ленивую загрузку изображений, оптимизировать бандл, добавить skeleton-скелеты и error boundaries. Для SEO нужно добавить структурированные данные FAQ, canonical URL и hreflang теги. Также рекомендуется добавить AMP-версию для мобильных устройств."
+}
+```

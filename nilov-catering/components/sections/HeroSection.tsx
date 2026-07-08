@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown, Phone, Play, Star, Quote } from "lucide-react";
 
 const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4";
 const HERO_FALLBACK_IMG = "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1920&h=1080&fit=crop";
@@ -57,6 +57,7 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [playVideo, setPlayVideo] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -76,18 +77,37 @@ export default function HeroSection() {
       <motion.div className="absolute inset-0" style={{ scale: springVideoScale }}>
         <video
           ref={videoRef}
-          autoPlay
+          autoPlay={playVideo}
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          aria-label="Фоновое видео кейтеринг-презентации"
           onLoadedData={() => setVideoLoaded(true)}
           onCanPlay={() => setVideoLoaded(true)}
+          id="hero-video"
           className="absolute inset-0 w-full h-full object-cover"
           poster={HERO_FALLBACK_IMG}
         >
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>
+
+        {/* Play button overlay */}
+        <motion.div
+          className="absolute inset-0 z-10 flex items-center justify-center"
+          style={{ opacity: playVideo ? 0 : 1, pointerEvents: playVideo ? "none" : "auto" }}
+          onClick={() => { if (videoRef.current) { videoRef.current.play(); setPlayVideo(true); } }}
+        >
+          <motion.button
+            className="w-20 h-20 md:w-24 md:h-24 rounded-full glass flex items-center justify-center hover:bg-white/20 transition-colors duration-300 cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Воспроизвести видео"
+            aria-controls="hero-video"
+          >
+            <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="white" />
+          </motion.button>
+        </motion.div>
 
         {!videoLoaded && (
           <div
@@ -200,6 +220,31 @@ export default function HeroSection() {
             <span>Ответ в течение 2 часов</span>
           </div>
         </LineReveal>
+      </motion.div>
+
+      {/* Floating testimonial card */}
+      <motion.div
+        initial={{ opacity: 0, x: 80, y: 100 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="hidden lg:block absolute bottom-32 right-8 xl:right-16 z-20 w-72 glass-dark rounded-2xl p-5"
+      >
+        <div className="flex items-center gap-1 mb-2">
+          {[1,2,3,4,5].map(n => (
+            <Star key={n} className="w-3.5 h-3.5 text-gold fill-gold" />
+          ))}
+        </div>
+        <Quote className="w-5 h-5 text-accent/30 absolute top-4 right-4" />
+        <p className="text-white/80 text-sm leading-relaxed mb-3">
+          &laquo;Невероятно вкусно и красиво. Гости были в восторге от сервировки и качества блюд!&raquo;
+        </p>
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-accent/30 flex items-center justify-center text-white text-xs font-bold">АК</div>
+          <div>
+            <p className="text-white text-xs font-medium">Анна Козлова</p>
+            <p className="text-white/50 text-[11px]">Свадьба, 250 гостей</p>
+          </div>
+        </div>
       </motion.div>
 
       {/* Scroll indicator with line animation */}

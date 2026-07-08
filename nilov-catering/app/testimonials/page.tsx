@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { testimonials } from "@/lib/data";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { Star } from "lucide-react";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Отзывы | Nilov Catering",
+  description: "Отзывы клиентов о кейтеринге Nilov Catering. Узнайте, что говорят о нас те, кто уже доверил нам своё мероприятие.",
+  alternates: { canonical: "https://odaeda.ru/testimonials" },
+};
 
 export default function TestimonialsPage() {
   const breadcrumbs = [

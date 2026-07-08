@@ -39,8 +39,8 @@ const features = [
 
 export default function WhyUsSection() {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(200,120,42,0.04),transparent_60%)]" />
+    <section className="py-20 md:py-28 relative overflow-hidden noise-bg">
+      <div className="absolute inset-0 mesh-gradient" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>

@@ -44,8 +44,33 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Nilov Catering — кейтеринг в Москве",
+        type: "image/jpeg",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nilov Catering — Профессиональный кейтеринг в Москве",
+    description:
+      "Организация свадебных, корпоративных и частных мероприятий. Авторское меню, 12 лет опыта.",
+    images: ["https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=630&fit=crop"],
+  },
+  verification: {
+    yandex: "yandex_verification_code",
+  },
+  alternates: {
+    canonical: "https://odaeda.ru",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -94,6 +119,11 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="canonical" href="https://odaeda.ru" />
+        <link rel="alternate" hreflang="ru-RU" href="https://odaeda.ru" />
+        <link rel="alternate" hreflang="x-default" href="https://odaeda.ru" />
+        <meta name="theme-color" content="#C8782A" />
+        <meta name="format-detection" content="telephone=yes" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

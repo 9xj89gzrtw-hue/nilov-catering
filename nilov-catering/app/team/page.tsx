@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { teamMembers } from "@/lib/data";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Команда | Nilov Catering",
+  description: "Познакомьтесь с командой профессионалов Nilov Catering — шеф-повара, су-шефы, официанты и координаторы мероприятий.",
+  alternates: { canonical: "https://odaeda.ru/team" },
+};
 
 export default function TeamPage() {
   const breadcrumbs = [
