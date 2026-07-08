@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: "Услуги",
-  description: "Кейтеринг для свадеб, корпоративных мероприятий, частных праздников и фуршетов в Санкт-Петербурге.",
+  description: "Кейтеринг для свадеб, корпоративных мероприятий, частных вечеринок и фуршетов в Санкт-Петербурге.",
 };
 
 export default function ServicesPage() {

@@ -4,8 +4,8 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { teamMembers } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: "О нас",
-  description: "Команда Нилов Кейтеринг — 12 лет опыта в организации премиального кейтеринга в Санкт-Петербурге. Шеф-повар, арт-директор, менеджер мероприятий, сомелье.",
+  title: "О компании",
+  description: "Нилов Кейтеринг — 12 лет опыта в организации премиальных мероприятий в Санкт-Петербурге.",
 };
 
 const values = [
@@ -118,6 +118,19 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 text-center border-t border-border/20">
+        <h2 className="font-heading text-3xl font-semibold mb-4">Давайте работать вместе</h2>
+        <p className="text-muted-foreground mb-8 max-w-md mx-auto">Расскажите о вашем мероприятии — мы подготовим индивидуальное предложение</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background font-medium rounded-[4px] hover:bg-accent/90 transition-colors">
+            Оставить заявку
+          </a>
+          <a href="tel:+78121234567" className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-foreground font-medium rounded-[4px] hover:bg-border/10 transition-colors">
+            +7 (812) 123-45-67
+          </a>
         </div>
       </section>
     </>

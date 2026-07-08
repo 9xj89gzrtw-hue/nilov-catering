@@ -4,7 +4,7 @@ import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
   title: "Контакты",
-  description: "Свяжитесь с Нилов Кейтеринг: телефон, email, адрес. Обсудим ваше мероприятие и подготовим предложение.",
+  description: "Свяжитесь с Нилов Кейтеринг для заказа премиального кейтеринга в Санкт-Петербурге.",
 };
 
 export default function ContactPage() {

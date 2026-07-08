@@ -1,35 +1,17 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay blocked — show poster instead
-      });
-    }
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Главный экран">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1920&h=1080&fit=crop&q=80"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_24fps.mp4" type="video/mp4" />
-        </video>
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[slowZoom_30s_ease-in-out_infinite_alternate]"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80')" }}
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-[#0A0A0A]/70" />
         {/* Gradient from bottom */}

@@ -5,7 +5,7 @@ import { pricingPackages } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: "Цены",
-  description: "Тарифы на кейтеринг: Эконом, Премиум, VIP. Прозрачные цены без скрытых платежей. Нилов Кейтеринг, Санкт-Петербург.",
+  description: "Стоимость кейтеринга: пакеты Эконом, Премиум и VIP для мероприятий любого масштаба.",
 };
 
 export default function PricingPage() {

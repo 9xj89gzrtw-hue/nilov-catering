@@ -240,6 +240,12 @@ html {
   display: none;
 }
 
+/* ===== Hero slow zoom animation ===== */
+@keyframes slowZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

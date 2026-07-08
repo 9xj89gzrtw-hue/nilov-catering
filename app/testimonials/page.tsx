@@ -4,7 +4,7 @@ import { testimonials } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: "Отзывы",
-  description: "Отзывы клиентов Нилов Кейтеринг. Реальные истории свадеб, корпоративов и частных мероприятий в Санкт-Петербурге.",
+  description: "Отзывы клиентов Нилов Кейтеринг — свадьбы, корпоративы и частные мероприятия.",
 };
 
 export default function TestimonialsPage() {
