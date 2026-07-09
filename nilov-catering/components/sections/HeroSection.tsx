@@ -236,13 +236,13 @@ export default function HeroSection() {
         </div>
         <Quote className="w-5 h-5 text-accent/30 absolute top-4 right-4" />
         <p className="text-white/80 text-sm leading-relaxed mb-3">
-          &laquo;Невероятно вкусно и красиво. Гости были в восторге от сервировки и качества блюд!&raquo;
+          &laquo;Фуршет на крыше в центре Петербурга — это было волшебно! Гости до сих пор вспоминают канапе с креветкой.&raquo;
         </p>
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-accent/30 flex items-center justify-center text-white text-xs font-bold">АК</div>
+          <div className="w-8 h-8 rounded-full bg-accent/30 flex items-center justify-center text-white text-xs font-bold">КП</div>
           <div>
-            <p className="text-white text-xs font-medium">Анна Козлова</p>
-            <p className="text-white/50 text-[11px]">Свадьба, 250 гостей</p>
+            <p className="text-white text-xs font-medium">Кристина Петрова</p>
+            <p className="text-white/50 text-[11px]">Свадьба на крыше, 80 гостей</p>
           </div>
         </div>
       </motion.div>
