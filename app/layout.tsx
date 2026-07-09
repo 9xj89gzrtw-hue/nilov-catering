@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { headingFont, bodyFont } from "@/lib/fonts";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import MobileNav from "@/components/layout/MobileNav";
-import SkipLink from "@/components/common/SkipLink";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import Preloader from "@/components/providers/Preloader";
+import CustomCursor from "@/components/effects/CustomCursor";
+import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,8 +55,6 @@ export const metadata: Metadata = {
   },
   verification: {
     yandex: "yandex_verification_code",
-  },
-  alternates: {
   },
   robots: {
     index: true,
@@ -124,7 +124,6 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
       <head>
-
         <meta name="theme-color" content="#0A0A0A" />
         <meta name="format-detection" content="telephone=yes" />
         <script
@@ -137,11 +136,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased bg-background text-foreground">
-        <SkipLink />
-        <Header />
-        <main id="main-content" className="flex-1">{children}</main>
-        <Footer />
-        <MobileNav />
+        <Preloader />
+        <SmoothScrollProvider>
+          <Header />
+          <main id="main-content" className="flex-1">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
+        <CustomCursor />
+        <NoiseOverlay />
       </body>
     </html>
   );

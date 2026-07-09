@@ -1,61 +1,142 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import MagneticButton from '@/components/effects/MagneticButton';
+import MaskReveal from '@/components/effects/TextReveal';
 
 export default function HeroSection() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Главный экран">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[slowZoom_30s_ease-in-out_infinite_alternate]"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80')" }}
+    <section
+      ref={ref}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+      aria-label="Главный экран"
+    >
+      {/* Background with parallax */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: bgY, scale: bgScale, willChange: 'transform' }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=85&auto=format"
+          alt=""
+          className="w-full h-[120%] object-cover"
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-[#0A0A0A]/70" />
-        {/* Gradient from bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-      </div>
+        {/* Cinematic overlays */}
+        <div className="absolute inset-0 bg-[#0A0A0A]/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]/40" />
+        {/* Vignette */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 40%, rgba(10,10,10,0.7) 100%)',
+          }}
+        />
+      </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-gold font-medium mb-6">
-          Премиальный кейтеринг в Санкт-Петербурге
-        </p>
-        <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-cream leading-[1.1] mb-6">
-          Гастрономия, которая
-          <br />
-          <span className="text-gold">создаёт впечатления</span>
-        </h1>
-        <p className="text-base sm:text-lg text-cream/60 max-w-xl mx-auto mb-10 leading-relaxed">
-          Авторское меню, безупречный сервис и внимание к каждой детали — для мероприятий, которые запоминаются
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
+      <motion.div
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center"
+        style={{ y: textY, opacity, willChange: 'transform, opacity' }}
+      >
+        {/* Overline */}
+        <MaskReveal delay={0.8}>
+          <p className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-gold/90 font-medium mb-6 md:mb-8">
+            Премиальный кейтеринг в Санкт-Петербурге
+          </p>
+        </MaskReveal>
+
+        {/* Main heading */}
+        <div className="overflow-hidden">
+          <motion.h1
+            className="font-heading text-[clamp(2.8rem,8vw,7rem)] font-semibold text-cream leading-[0.95] tracking-tight"
+            initial={{ y: '110%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.9, delay: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            Гастрономия,
+            <br />
+            <span className="text-gold italic">которая создаёт</span>
+            <br />
+            впечатления
+          </motion.h1>
+        </div>
+
+        {/* Subtitle */}
+        <MaskReveal delay={1.3}>
+          <p className="text-sm sm:text-base md:text-lg text-cream/50 max-w-lg mx-auto mt-6 md:mt-8 leading-relaxed font-light">
+            Авторское меню, безупречный сервис и внимание к каждой детали —
+            для мероприятий, которые запоминаются
+          </p>
+        </MaskReveal>
+
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
+        >
+          <MagneticButton
             href="/contact"
-            className="btn-primary text-xs uppercase tracking-wider w-full sm:w-auto"
+            className="btn-primary text-xs uppercase tracking-wider w-full sm:w-auto cursor-hover"
           >
             Обсудить мероприятие
-          </Link>
-          <Link
+          </MagneticButton>
+          <MagneticButton
             href="/menu"
-            className="btn-outline text-xs uppercase tracking-wider w-full sm:w-auto"
+            className="btn-outline text-xs uppercase tracking-wider w-full sm:w-auto cursor-hover"
           >
             Смотреть меню
-          </Link>
-        </div>
-      </div>
+          </MagneticButton>
+        </motion.div>
+      </motion.div>
 
       {/* Scroll indicator */}
-      <a
-        href="#social-proof"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/40 hover:text-cream/70 transition-colors duration-300"
-        aria-label="Прокрутить вниз"
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 0.8 }}
       >
-        <span className="text-[10px] uppercase tracking-widest">Далее</span>
-        <ChevronDown className="w-4 h-4 animate-bounce" />
-      </a>
+        <a
+          href="#social-proof"
+          className="flex flex-col items-center gap-2 text-cream/30 hover:text-cream/60 transition-colors duration-500 cursor-hover"
+          aria-label="Прокрутить вниз"
+        >
+          <span className="text-[9px] uppercase tracking-[0.3em] font-medium">Листайте</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <ChevronDown className="w-4 h-4" />
+          </motion.div>
+        </a>
+      </motion.div>
+
+      {/* Side decorations */}
+      <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3 z-10">
+        <div className="w-px h-16 bg-gradient-to-b from-transparent to-cream/20" />
+        <span className="text-[9px] uppercase tracking-[0.25em] text-cream/20 font-medium [writing-mode:vertical-lr] rotate-180">
+          Est. 2014
+        </span>
+        <div className="w-px h-16 bg-gradient-to-b from-cream/20 to-transparent" />
+      </div>
     </section>
   );
 }

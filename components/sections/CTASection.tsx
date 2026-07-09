@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, Send, Loader2 } from 'lucide-react';
+import MaskReveal from '@/components/effects/TextReveal';
 
 export default function CTASection() {
   const ref = useRef<HTMLElement>(null);
@@ -12,7 +13,6 @@ export default function CTASection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-
     const form = e.currentTarget;
     const data = new FormData(form);
     const body = {
@@ -20,7 +20,6 @@ export default function CTASection() {
       phone: data.get('phone'),
       date: data.get('date'),
     };
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -41,66 +40,91 @@ export default function CTASection() {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-28 overflow-hidden"
+      className="relative py-24 md:py-36 overflow-hidden"
       aria-label="Обсудить мероприятие"
     >
-      {/* Background */}
+      {/* Background with parallax effect via CSS */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=800&fit=crop&q=80')",
-          }}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=800&fit=crop&q=80&auto=format"
+          alt=""
+          className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-[#0A0A0A]/85" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/50" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Left — text */}
           <div className="flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">
-              Свяжитесь с нами
-            </p>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream leading-tight mb-6">
-              Обсудим ваше
-              <br />
-              <span className="text-gold">мероприятие</span>
-            </h2>
-            <p className="text-sm text-cream/60 leading-relaxed mb-8 max-w-md">
-              Расскажите о вашем мероприятии — мы подготовим предложение с персональным меню и точной стоимостью в течение 24 часов.
-            </p>
+            <MaskReveal>
+              <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">
+                Свяжитесь с нами
+              </p>
+            </MaskReveal>
+            <MaskReveal delay={0.1}>
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold text-cream leading-[0.95] mb-6">
+                Обсудим ваше
+                <br />
+                <span className="text-gold italic">мероприятие</span>
+              </h2>
+            </MaskReveal>
+            <MaskReveal delay={0.2}>
+              <p className="text-sm text-cream/50 leading-relaxed mb-10 max-w-md">
+                Расскажите о вашем мероприятии — мы подготовим предложение с персональным меню и точной стоимостью в течение 24 часов.
+              </p>
+            </MaskReveal>
 
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-5"
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
               <a
                 href="tel:+78121234567"
-                className="flex items-center gap-3 text-sm text-cream/80 hover:text-gold transition-colors duration-200"
+                className="flex items-center gap-4 text-sm text-cream/70 hover:text-gold transition-colors duration-300 group cursor-hover"
               >
-                <Phone className="w-4 h-4 text-gold/70" />
-                +7 (812) 123-45-67
+                <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-gold/50 transition-colors duration-300">
+                  <Phone className="w-4 h-4 text-gold/70" />
+                </div>
+                <div>
+                  <span className="block text-cream font-medium">+7 (812) 123-45-67</span>
+                  <span className="block text-[10px] text-cream-muted mt-0.5">Ежедневно 9:00 — 21:00</span>
+                </div>
               </a>
               <a
                 href="mailto:info@nilov-catering.ru"
-                className="flex items-center gap-3 text-sm text-cream/80 hover:text-gold transition-colors duration-200"
+                className="flex items-center gap-4 text-sm text-cream/70 hover:text-gold transition-colors duration-300 group cursor-hover"
               >
-                <Mail className="w-4 h-4 text-gold/70" />
-                info@nilov-catering.ru
+                <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-gold/50 transition-colors duration-300">
+                  <Mail className="w-4 h-4 text-gold/70" />
+                </div>
+                <div>
+                  <span className="block text-cream font-medium">info@nilov-catering.ru</span>
+                  <span className="block text-[10px] text-cream-muted mt-0.5">Ответим в течение 2 часов</span>
+                </div>
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — form */}
-          <form
+          <motion.form
             onSubmit={handleSubmit}
-            className="bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 md:p-8 space-y-5"
+            className="bg-card/60 backdrop-blur-md border border-border p-6 md:p-8 space-y-5"
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div>
-              <label htmlFor="cta-name" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+              <label htmlFor="cta-name" className="block text-[10px] uppercase tracking-widest text-cream-muted font-medium mb-2.5">
                 Ваше имя
               </label>
               <input
@@ -109,12 +133,12 @@ export default function CTASection() {
                 type="text"
                 required
                 placeholder="Анна"
-                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+                className="w-full bg-transparent border-b border-border focus:border-gold px-1 py-3 text-sm text-cream placeholder:text-cream-muted/30 focus:outline-none transition-colors duration-300"
               />
             </div>
 
             <div>
-              <label htmlFor="cta-phone" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+              <label htmlFor="cta-phone" className="block text-[10px] uppercase tracking-widest text-cream-muted font-medium mb-2.5">
                 Телефон
               </label>
               <input
@@ -123,26 +147,26 @@ export default function CTASection() {
                 type="tel"
                 required
                 placeholder="+7 (___) ___-__-__"
-                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+                className="w-full bg-transparent border-b border-border focus:border-gold px-1 py-3 text-sm text-cream placeholder:text-cream-muted/30 focus:outline-none transition-colors duration-300"
               />
             </div>
 
             <div>
-              <label htmlFor="cta-date" className="block text-xs uppercase tracking-wider text-cream-muted font-medium mb-2">
+              <label htmlFor="cta-date" className="block text-[10px] uppercase tracking-widest text-cream-muted font-medium mb-2.5">
                 Дата мероприятия
               </label>
               <input
                 id="cta-date"
                 name="date"
                 type="date"
-                className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-sm text-cream placeholder:text-cream-muted/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
+                className="w-full bg-transparent border-b border-border focus:border-gold px-1 py-3 text-sm text-cream placeholder:text-cream-muted/30 focus:outline-none transition-colors duration-300"
               />
             </div>
 
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full btn-primary text-xs uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-60"
+              className="w-full btn-primary text-xs uppercase tracking-wider flex items-center justify-center gap-2 disabled:opacity-60 mt-4 cursor-hover"
             >
               {status === 'loading' ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -153,16 +177,26 @@ export default function CTASection() {
             </button>
 
             {status === 'success' && (
-              <p className="text-sm text-green-400 text-center" role="alert">
+              <motion.p
+                className="text-sm text-green-400/80 text-center"
+                role="alert"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 Заявка отправлена! Мы свяжемся с вами в ближайшее время.
-              </p>
+              </motion.p>
             )}
             {status === 'error' && (
-              <p className="text-sm text-red-400 text-center" role="alert">
+              <motion.p
+                className="text-sm text-red-400/80 text-center"
+                role="alert"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 Произошла ошибка. Попробуйте позвонить нам.
-              </p>
+              </motion.p>
             )}
-          </form>
+          </motion.form>
         </motion.div>
       </div>
     </section>
