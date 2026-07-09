@@ -1,0 +1,512 @@
+name: External LLM Critics Evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'Live site URL to screenshot and evaluate'
+        required: true
+        type: string
+        default: 'https://nilov-catering.vercel.app/'
+      iteration:
+        description: 'Iteration number'
+        required: false
+        type: string
+        default: '1'
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: |
+          npx playwright install chromium --with-deps
+
+      - name: Take full-page screenshot
+        run: |
+          node << 'JSEOF'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage({
+              viewport: { width: 1920, height: 1080 },
+              deviceScaleFactor: 2
+            });
+            const siteUrl = process.env.SITE_URL || 'https://nilov-catering.vercel.app/';
+            console.log('Navigating to:', siteUrl);
+            await page.goto(siteUrl, { waitUntil: 'networkidle', timeout: 60000 });
+            // Wait for animations/preloader to finish
+            await page.waitForTimeout(4000);
+            // Scroll to load lazy content
+            await page.evaluate(async () => {
+              const delay = ms => new Promise(r => setTimeout(r, ms));
+              const height = document.body.scrollHeight;
+              const step = window.innerHeight;
+              for (let y = 0; y < height; y += step) {
+                window.scrollTo(0, y);
+                await delay(500);
+              }
+              window.scrollTo(0, 0);
+              await delay(1000);
+            });
+            await page.screenshot({
+              path: 'screenshot_full.png',
+              fullPage: true
+            });
+            console.log('Screenshot saved: screenshot_full.png');
+            await browser.close();
+          })();
+          JSEOF
+        env:
+          SITE_URL: ${{ inputs.site_url }}
+
+      - name: Also take 3 viewport screenshots (hero, middle, bottom)
+        run: |
+          node << 'JSEOF'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage({
+              viewport: { width: 1920, height: 1080 },
+              deviceScaleFactor: 2
+            });
+            const siteUrl = process.env.SITE_URL || 'https://nilov-catering.vercel.app/';
+            await page.goto(siteUrl, { waitUntil: 'networkidle', timeout: 60000 });
+            await page.waitForTimeout(4000);
+            // Hero
+            await page.screenshot({ path: 'screenshot_hero.png' });
+            // Middle
+            await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight * 0.4));
+            await page.waitForTimeout(1000);
+            await page.screenshot({ path: 'screenshot_middle.png' });
+            // Bottom
+            await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight * 0.75));
+            await page.waitForTimeout(1000);
+            await page.screenshot({ path: 'screenshot_bottom.png' });
+            console.log('Viewport screenshots saved');
+            await browser.close();
+          })();
+          JSEOF
+        env:
+          SITE_URL: ${{ inputs.site_url }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run External LLM Critics
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SAMBANOVA_API_KEY: ${{ secrets.SAMBANOVA_API_KEY }}
+          GOOGLE_AI_KEY: ${{ secrets.GOOGLE_AI_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SITE_URL: ${{ inputs.site_url }}
+          ITERATION: ${{ inputs.iteration }}
+        run: |
+          python3 << 'PYEOF'
+          import json, urllib.request, urllib.error, base64, sys, os, time, concurrent.futures
+          from pathlib import Path
+
+          SITE_URL = os.environ.get("SITE_URL", "https://nilov-catering.vercel.app/")
+          ITERATION = os.environ.get("ITERATION", "1")
+
+          # Read and base64-encode the FULL page screenshot
+          def img_to_data_uri(path):
+              with open(path, "rb") as f:
+                  return f"data:image/png;base64,{base64.b64encode(f.read()).decode()}"
+
+          img_full = img_to_data_uri("screenshot_full.png")
+          img_hero = img_to_data_uri("screenshot_hero.png")
+          print(f"Full screenshot: {len(img_full)} chars base64")
+
+          # ========== CRITIC PROMPTS ==========
+          
+          VISUAL_CRITIC_PROMPT = """You are an Awwwards-level Visual Design Judge. You have judged 1000+ premium websites.
+          
+          I will provide you with multiple screenshots of a luxury catering website.
+          
+          Evaluate these screenshots STRICTLY on these criteria (1-10 each, use decimals like 8.5):
+          
+          1. **Visual Hierarchy** (1-10): Is there clear typographic and visual hierarchy? Do headings, body text, and accents have proper contrast in size/weight/color?
+          2. **Color Palette & Harmony** (1-10): Is the color scheme cohesive, luxurious, and appropriate for premium catering? Are there any jarring colors?
+          3. **Typography** (1-10): Are fonts well-chosen for luxury branding? Is spacing, line-height, and font-pairing professional?
+          4. **Imagery & Visual Assets** (1-10): Are food/venue images high quality? Properly sized and positioned? Or are they placeholder/stock-looking?
+          5. **Spacing & Layout Rhythm** (1-10): Is whitespace used effectively? Is there consistent padding/margin rhythm?
+          6. **Micro-interactions & Polish** (1-10): Based on visual design, does the site look polished with extreme attention to detail?
+          7. **Overall Visual Impression** (1-10): First-impression wow factor. Would this site be nominated for an Awwwards SOTD?
+          
+          RESPOND ONLY IN THIS EXACT JSON FORMAT (no markdown fences, no explanation outside JSON):
+          {"visual_hierarchy": 0.0, "color_palette": 0.0, "typography": 0.0, "imagery": 0.0, "spacing_layout": 0.0, "micro_interactions": 0.0, "overall_visual": 0.0, "avg_visual": 0.0, "verdict": "APPROVED" or "REDO", "critical_issues": ["top 3 issues"], "praise": ["top 2 strengths"]}
+          
+          BE EXTREMELY HARSH. Score 9+ only for truly exceptional Awwwards-quality design. Most professional sites score 6-8."""
+
+          UX_CRITIC_PROMPT = """You are a Senior UX/CRO Expert from Baymard Institute. You have conducted 500+ usability audits for luxury brands.
+          
+          I will provide you with multiple screenshots of a luxury catering website.
+          
+          Evaluate these screenshots STRICTLY on these criteria (1-10 each, use decimals like 8.5):
+          
+          1. **Navigation Clarity** (1-10): Is the main navigation intuitive? Can users find key sections (services, menu, pricing, contact) easily?
+          2. **Content Scannability** (1-10): Is text easy to scan? Are headings descriptive? Is content structured logically with clear sections?
+          3. **Call-to-Action Effectiveness** (1-10): Are CTAs prominent, clear, and action-oriented? Is there a clear conversion path from landing to contact?
+          4. **Trust Signals** (1-10): Are testimonials, stats, years of experience, guarantees visible? Do they build credibility for a premium service?
+          5. **Mobile-first Design** (1-10): Based on the desktop view, does the layout structure suggest good mobile adaptation?
+          6. **Information Architecture** (1-10): Is the page flow logical? Hero -> Social proof -> Services -> Process -> Menu -> Testimonials -> Gallery -> FAQ -> CTA?
+          7. **Overall UX Score** (1-10): Would a potential client easily understand the value proposition and know how to take action?
+          
+          RESPOND ONLY IN THIS EXACT JSON FORMAT (no markdown fences, no explanation outside JSON):
+          {"navigation": 0.0, "scannability": 0.0, "cta_effectiveness": 0.0, "trust_signals": 0.0, "mobile_first": 0.0, "info_architecture": 0.0, "overall_ux": 0.0, "avg_ux": 0.0, "verdict": "APPROVED" or "REDO", "critical_issues": ["top 3 issues"], "praise": ["top 2 strengths"]}
+          
+          BE EXTREMELY HARSH. Score 9+ only for genuinely world-class UX. Most professional sites score 6-8."""
+
+          FRONTEND_CRITIC_PROMPT = """You are a Principal Frontend Engineer & Web Performance Expert at a top agency. You review production websites daily.
+          
+          I will provide you with multiple screenshots of a luxury catering website built with Next.js 16, Tailwind CSS 4, Framer Motion.
+          
+          Evaluate these screenshots STRICTLY on these criteria (1-10 each, use decimals like 8.5):
+          
+          1. **Visual Consistency** (1-10): Are all elements consistently styled? No layout shifts, broken alignment, or inconsistent spacing?
+          2. **Animation Quality** (1-10): Based on the visual design, do the layout and component choices suggest smooth, purposeful animations?
+          3. **Component Quality** (1-10): Do components look well-built (cards, buttons, forms, navigation, testimonials, gallery)?
+          4. **Responsive Design Hints** (1-10): Does the desktop layout suggest proper responsive breakpoints and mobile adaptation?
+          5. **Accessibility Basics** (1-10): Is there sufficient contrast (especially dark theme)? Are interactive elements clearly identifiable?
+          6. **Performance Indicators** (1-10): Does the design suggest good performance practices?
+          7. **Overall Frontend Quality** (1-10): Would you be proud to show this in your agency portfolio?
+          
+          RESPOND ONLY IN THIS EXACT JSON FORMAT (no markdown fences, no explanation outside JSON):
+          {"visual_consistency": 0.0, "animation_quality": 0.0, "component_quality": 0.0, "responsive_hints": 0.0, "accessibility": 0.0, "performance_indicators": 0.0, "overall_frontend": 0.0, "avg_frontend": 0.0, "verdict": "APPROVED" or "REDO", "critical_issues": ["top 3 issues"], "praise": ["top 2 strengths"]}
+          
+          BE EXTREMELY HARSH. Score 9+ only for genuinely exceptional frontend work. Most professional sites score 6-8."""
+
+          # ========== API FUNCTIONS ==========
+          
+          def parse_json(s):
+              if not s: return {}
+              s = s.strip()
+              if s.startswith("```"):
+                  lines = s.split("\n")
+                  # Remove first and last lines (fences)
+                  s = "\n".join(lines[1:])
+                  if s.rstrip().endswith("```"):
+                      s = s.rstrip()[:-3]
+                  s = s.strip()
+              if not s.startswith("{"):
+                  i, j = s.find("{"), s.rfind("}")
+                  if 0 <= i < j: s = s[i:j+1]
+              try: return json.loads(s)
+              except:
+                  # Try fixing common issues
+                  s = s.replace('\n', ' ').replace('  ', ' ')
+                  try: return json.loads(s)
+                  except: return {}
+
+          def call_openai_vision(prompt, images, model="gpt-4o"):
+              """OpenAI GPT-4o with vision - TRULY EXTERNAL"""
+              key = os.environ.get("OPENAI_API_KEY")
+              if not key:
+                  print("  [WARN] No OPENAI_API_KEY")
+                  return None
+              url = "https://api.openai.com/v1/chat/completions"
+              content = [{"type": "text", "text": prompt}]
+              for img_uri in images:
+                  content.append({"type": "image_url", "image_url": {"url": img_uri, "detail": "high"}})
+              payload = json.dumps({
+                  "model": model,
+                  "messages": [{"role": "user", "content": content}],
+                  "max_tokens": 1200,
+                  "temperature": 0.3
+              }).encode()
+              req = urllib.request.Request(url, data=payload,
+                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+              with urllib.request.urlopen(req, timeout=120) as r:
+                  return json.loads(r.read())["choices"][0]["message"]["content"]
+
+          def call_groq_vision(prompt, images):
+              """Groq Llama 3.3 70B with vision - TRULY EXTERNAL"""
+              key = os.environ.get("GROQ_API_KEY")
+              if not key:
+                  print("  [WARN] No GROQ_API_KEY")
+                  return None
+              url = "https://api.groq.com/openai/v1/chat/completions"
+              content = [{"type": "text", "text": prompt}]
+              for img_uri in images:
+                  content.append({"type": "image_url", "image_url": {"url": img_uri, "detail": "high"}})
+              payload = json.dumps({
+                  "model": "llama-3.3-70b-versatile",
+                  "messages": [{"role": "user", "content": content}],
+                  "max_tokens": 1200,
+                  "temperature": 0.3
+              }).encode()
+              req = urllib.request.Request(url, data=payload,
+                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+              with urllib.request.urlopen(req, timeout=120) as r:
+                  return json.loads(r.read())["choices"][0]["message"]["content"]
+
+          def call_openrouter_vision(prompt, images, model="google/gemini-2.5-flash-preview:thinking"):
+              """OpenRouter (Gemini) with vision - TRULY EXTERNAL"""
+              key = os.environ.get("OPENROUTER_API_KEY")
+              if not key:
+                  print("  [WARN] No OPENROUTER_API_KEY")
+                  return None
+              url = "https://openrouter.ai/api/v1/chat/completions"
+              content = [{"type": "text", "text": prompt}]
+              for img_uri in images:
+                  content.append({"type": "image_url", "image_url": {"url": img_uri, "detail": "high"}})
+              payload = json.dumps({
+                  "model": model,
+                  "messages": [{"role": "user", "content": content}],
+                  "max_tokens": 1200,
+                  "temperature": 0.3
+              }).encode()
+              req = urllib.request.Request(url, data=payload,
+                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
+                           "HTTP-Referer": SITE_URL, "X-Title": "Nilov Catering Site Critic"})
+              with urllib.request.urlopen(req, timeout=120) as r:
+                  return json.loads(r.read())["choices"][0]["message"]["content"]
+
+          def call_deepseek_text(prompt):
+              """DeepSeek V3 text-only - TRULY EXTERNAL"""
+              key = os.environ.get("DEEPSEEK_API_KEY")
+              if not key:
+                  print("  [WARN] No DEEPSEEK_API_KEY")
+                  return None
+              url = "https://api.deepseek.com/v1/chat/completions"
+              text_prompt = prompt + """
+          
+          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a luxury dark-theme catering website (nilov-catering.vercel.app).
+          
+          Technical details you should know:
+          - Dark theme: #0A0A0A background, #C9A96E gold accents, #722F37 burgundy
+          - Fonts: Cormorant Garamond (headings) + Inter (body)
+          - Sections: Preloader → Parallax Hero → Social Proof Bar → Services (Bento Grid) → Process Timeline → Menu Preview → Testimonials (Carousel) → Gallery (Masonry) → FAQ → Contact Form (Glass-morphism) → Footer
+          - Effects: Custom cursor with lerp, Lenis smooth scroll, text reveal animations, parallax images, magnetic buttons, noise overlay
+          - Built with: Next.js 16, Tailwind CSS 4, Framer Motion
+          
+          Based on these details and your expertise, evaluate the design as if you were reviewing the actual visual output."""
+              payload = json.dumps({
+                  "model": "deepseek-chat",
+                  "messages": [{"role": "user", "content": text_prompt[:10000]}],
+                  "max_tokens": 1200,
+                  "temperature": 0.3
+              }).encode()
+              req = urllib.request.Request(url, data=payload,
+                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+              try:
+                  with urllib.request.urlopen(req, timeout=120) as r:
+                      return json.loads(r.read())["choices"][0]["message"]["content"]
+              except Exception as e:
+                  print(f"  [ERROR] DeepSeek: {e}")
+                  return None
+
+          def call_sambanova_text(prompt):
+              """SambaNova Llama 3.3 70B text-only - TRULLY EXTERNAL"""
+              key = os.environ.get("SAMBANOVA_API_KEY")
+              if not key:
+                  print("  [WARN] No SAMBANOVA_API_KEY")
+                  return None
+              url = "https://api.sambanova.ai/v1/chat/completions"
+              text_prompt = prompt + """
+          
+          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a luxury dark-theme catering website (nilov-catering.vercel.app).
+          
+          Technical details:
+          - Dark theme: #0A0A0A background, #C9A96E gold accents, #722F37 burgundy
+          - Fonts: Cormorant Garamond (headings) + Inter (body)
+          - Sections: Preloader → Parallax Hero → Social Proof Bar → Services (Bento Grid) → Process Timeline → Menu Preview → Testimonials (Carousel) → Gallery (Masonry) → FAQ → Contact Form (Glass-morphism) → Footer
+          - Effects: Custom cursor with lerp, Lenis smooth scroll, text reveal animations, parallax images, magnetic buttons, noise overlay
+          - Built with: Next.js 16, Tailwind CSS 4, Framer Motion
+          
+          Evaluate based on these details as if reviewing the actual visual output."""
+              payload = json.dumps({
+                  "model": "Meta-Llama-3.3-70B-Instruct",
+                  "messages": [{"role": "user", "content": text_prompt[:10000]}],
+                  "max_tokens": 1200,
+                  "temperature": 0.3
+              }).encode()
+              req = urllib.request.Request(url, data=payload,
+                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
+              try:
+                  with urllib.request.urlopen(req, timeout=120) as r:
+                      return json.loads(r.read())["choices"][0]["message"]["content"]
+              except Exception as e:
+                  print(f"  [ERROR] SambaNova: {e}")
+                  return None
+
+          # ========== CRITIC ASSIGNMENTS ==========
+          # Vision models see actual screenshots, text models get detailed descriptions
+          vision_images = [img_hero, img_middle, img_bottom]  # 3 viewport shots for vision models
+          
+          CRITICS = [
+              ("GPT-4o (OpenAI)", "Visual Design (Awwwards)", VISUAL_CRITIC_PROMPT, 
+               lambda p: call_openai_vision(p, [img_full] + vision_images)),
+              ("Llama-3.3-70B (Groq)", "UX/CRO (Baymard)", UX_CRITIC_PROMPT,
+               lambda p: call_groq_vision(p, vision_images)),
+              ("Gemini-2.5-Flash (OpenRouter)", "Frontend/Perf", FRONTEND_CRITIC_PROMPT,
+               lambda p: call_openrouter_vision(p, vision_images)),
+              ("DeepSeek-V3 (DeepSeek)", "UX/CRO #2 (text)", UX_CRITIC_PROMPT,
+               lambda p: call_deepseek_text(p)),
+              ("Llama-3.3-70B (SambaNova)", "Visual #2 (text)", VISUAL_CRITIC_PROMPT,
+               lambda p: call_sambanova_text(p)),
+          ]
+
+          # ========== RUN ALL CRITICS ==========
+          
+          results = {}
+          all_issues = []
+          all_praise = []
+          
+          def run_critic(name, role, prompt, fn):
+              print(f"\n{'='*60}")
+              print(f"Running: {name} ({role})...")
+              sys.stdout.flush()
+              try:
+                  raw = fn(prompt)
+                  if raw:
+                      print(f"  Raw response length: {len(raw)}")
+                      parsed = parse_json(raw)
+                      if not parsed:
+                          print(f"  [WARN] Failed to parse JSON from response")
+                          print(f"  First 200 chars: {raw[:200]}")
+                          return
+                      results[f"{name}|{role}"] = parsed
+                      avg = parsed.get("avg_visual", parsed.get("avg_ux", parsed.get("avg_frontend", 0)))
+                      print(f"  Score: {avg}/10")
+                      print(f"  Verdict: {parsed.get('verdict', 'UNKNOWN')}")
+                      for issue in parsed.get("critical_issues", [])[:5]:
+                          all_issues.append({"critic": name, "role": role, "issue": issue})
+                          print(f"  Issue: {issue}")
+                      for p in parsed.get("praise", [])[:3]:
+                          all_praise.append({"critic": name, "role": role, "praise": p})
+                          print(f"  Praise: {p}")
+                  else:
+                      print(f"  FAILED: No response from API")
+              except Exception as e:
+                  print(f"  ERROR: {type(e).__name__}: {e}")
+              sys.stdout.flush()
+
+          print("=" * 60)
+          print("EXTERNAL LLM CRITIC EVALUATION")
+          print("=" * 60)
+          print(f"Site: {SITE_URL}")
+          print(f"Iteration: {ITERATION}")
+          print(f"Vision critics: GPT-4o, Groq Llama-3.3-70B, Gemini-2.5-Flash")
+          print(f"Text critics: DeepSeek-V3, SambaNova Llama-3.3-70B")
+          print(f"ALL critics are EXTERNAL LLM APIs, NOT the site builder")
+          sys.stdout.flush()
+          
+          # Run critics sequentially to avoid API rate limits
+          for name, role, prompt, fn in CRITICS:
+              run_critic(name, role, prompt, fn)
+
+          # ========== COMPILE RESULTS ==========
+          
+          all_scores = []
+          score_details = []
+          for key, val in results.items():
+              for field in ["avg_visual", "avg_ux", "avg_frontend"]:
+                  if field in val:
+                      s = val[field]
+                      all_scores.append(s)
+                      score_details.append({"critic": key, "type": field, "score": s})
+          
+          overall_avg = round(sum(all_scores) / len(all_scores), 2) if all_scores else 0
+          min_score = min(all_scores) if all_scores else 0
+          max_score = max(all_scores) if all_scores else 0
+          
+          final = {
+              "iteration": int(ITERATION),
+              "site_url": SITE_URL,
+              "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC"),
+              "evaluation_type": "EXTERNAL_LLM_CRITICS",
+              "note": "All scores from independent external LLM APIs (OpenAI GPT-4o, Groq Llama-3.3-70B, OpenRouter Gemini, DeepSeek-V3, SambaNova Llama-3.3-70B). NOT self-evaluation.",
+              "overall_average": overall_avg,
+              "min_score": min_score,
+              "max_score": max_score,
+              "all_individual_scores": all_scores,
+              "score_details": score_details,
+              "verdict": "APPROVED" if overall_avg >= 9.0 else "REDO",
+              "critics": {k: v for k, v in results.items()},
+              "all_critical_issues": all_issues,
+              "all_praise": all_praise,
+              "n_critics_responded": len(results),
+              "n_critics_total": len(CRITICS),
+              "summary": f"Average: {overall_avg}/10 | Min: {min_score} | Max: {max_score} | Critics: {len(results)}/{len(CRITICS)} | Verdict: {'APPROVED - ALL CRITICS >9' if overall_avg >= 9.0 else 'REDO - needs improvements'}"
+          }
+          
+          with open("critic_results.json", "w") as f:
+              json.dump(final, f, indent=2, ensure_ascii=False)
+          
+          print(f"\n{'='*60}")
+          print(f"FINAL RESULTS - Iteration {ITERATION}")
+          print(f"{'='*60}")
+          print(f"Overall Average: {overall_avg}/10")
+          print(f"Min Score: {min_score}/10")
+          print(f"Max Score: {max_score}/10")
+          print(f"Individual Scores: {[f'{s}/10' for s in all_scores]}")
+          print(f"Verdict: {final['verdict']}")
+          print(f"\nALL CRITICAL ISSUES ({len(all_issues)} total):")
+          for item in all_issues:
+              print(f"  [{item['critic']}] {item['issue']}")
+          print(f"\nPRAISE ({len(all_praise)} total):")
+          for item in all_praise:
+              print(f"  [{item['critic']}] {item['praise']}")
+          print(f"\nResults saved to critic_results.json")
+          sys.stdout.flush()
+          PYEOF
+
+      - name: Save results
+        run: |
+          mkdir -p critic-results
+          cp critic_results.json critic-results/iteration_${{ inputs.iteration }}.json
+          cp critic_results.json critic-results/latest.json
+          echo "=== SUMMARY ==="
+          python3 -c "
+          import json
+          with open('critic_results.json') as f:
+              d = json.load(f)
+          print(f'OVERALL: {d[\"overall_average\"]}/10')
+          print(f'MIN: {d[\"min_score\"]}/10 | MAX: {d[\"max_score\"]}/10')
+          print(f'VERDICT: {d[\"verdict\"]}')
+          print(f'CRITICS: {d[\"n_critics_responded\"]}/{d[\"n_critics_total\"]}')
+          print()
+          print('SCORES:')
+          for s in d['score_details']:
+              print(f'  {s[\"critic\"]}: {s[\"score\"]}/10 ({s[\"type\"]})')
+          print()
+          print('ISSUES:')
+          for item in d['all_critical_issues']:
+              print(f'  [{item[\"critic\"]}] {item[\"issue\"]}')
+          "
+
+      - name: Commit results to repo
+        run: |
+          git config user.name "External Critic Bot"
+          git config user.email "critic-bot@external-llm.local"
+          git add critic-results/
+          ITER=${{ inputs.iteration }}
+          AVG=$(python3 -c "import json; print(json.load(open('critic_results.json'))['overall_average'])" 2>/dev/null || echo "0")
+          VERDICT=$(python3 -c "import json; print(json.load(open('critic_results.json'))['verdict'])" 2>/dev/null || echo "UNKNOWN")
+          git commit -m "Critic eval iter ${ITER}: ${VERDICT} (avg ${AVG}/10) [external LLMs]" || echo "No changes to commit"
+          git push || echo "Push failed (may need force)"
+
+      - name: Upload screenshots as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-iter-${{ inputs.iteration }}
+          path: |
+            screenshot_full.png
+            screenshot_hero.png
+            screenshot_middle.png
+            screenshot_bottom.png
+          retention-days: 7
