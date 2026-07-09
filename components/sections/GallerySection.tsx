@@ -140,35 +140,38 @@ export default function GallerySection() {
 
             <button
               onClick={goPrev}
-              className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors cursor-hover"
+              className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-[#0A0A0A]/50 backdrop-blur-sm text-cream/50 hover:text-gold hover:bg-[#0A0A0A]/70 transition-all cursor-hover border border-border/30"
               aria-label="Предыдущее фото"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <motion.div
-              className="relative w-full max-w-4xl mx-16 aspect-[4/3]"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Image
-                src={images[lightbox.index].src}
-                alt={images[lightbox.index].alt}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
-              />
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={lightbox.index}
+                className="relative w-full max-w-4xl mx-16 aspect-[4/3]"
+                initial={{ scale: 0.92, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.92, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <Image
+                  src={images[lightbox.index].src}
+                  alt={images[lightbox.index].alt}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
 
             <button
               onClick={goNext}
-              className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors cursor-hover"
+              className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-[#0A0A0A]/50 backdrop-blur-sm text-cream/50 hover:text-gold hover:bg-[#0A0A0A]/70 transition-all cursor-hover border border-border/30"
               aria-label="Следующее фото"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-5 h-5" />
             </button>
 
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4">
