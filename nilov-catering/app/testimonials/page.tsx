@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Отзывы | Nilov Catering",
   description: "Отзывы клиентов о кейтеринге Nilov Catering. Узнайте, что говорят о нас те, кто уже доверил нам своё мероприятие.",
-  alternates: { canonical: "https://odaeda.ru/testimonials" },
+  alternates: { canonical: "https://nilov-catering.ru/testimonials" },
 };
 
 export default function TestimonialsPage() {

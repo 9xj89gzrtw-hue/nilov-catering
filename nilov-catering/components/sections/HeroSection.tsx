@@ -145,7 +145,7 @@ export default function HeroSection() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
             </span>
             <span className="glass text-white/90 text-xs md:text-sm font-medium tracking-[0.2em] uppercase px-4 py-2 rounded-full">
-              Премиальный кейтеринг в Москве
+              Премиальный кейтеринг в Санкт-Петербурге
             </span>
           </motion.div>
         </LineReveal>
@@ -212,10 +212,10 @@ export default function HeroSection() {
           <div className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-white/50 text-xs md:text-sm">
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5" />
-              <a href="tel:+74959213456" className="hover:text-white/80 transition-colors">+7 (495) 921-34-56</a>
+              <a href="tel:+78129195911" className="hover:text-white/80 transition-colors">+7 (812) 919-59-11</a>
             </div>
             <span className="hidden sm:block w-1 h-1 rounded-full bg-white/30" />
-            <span>850+ мероприятий безупречно проведено</span>
+            <span>3000+ мероприятий безупречно проведено</span>
             <span className="hidden sm:block w-1 h-1 rounded-full bg-white/30" />
             <span>Ответ в течение 2 часов</span>
           </div>

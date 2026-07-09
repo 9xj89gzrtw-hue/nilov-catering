@@ -11,7 +11,7 @@ import { services } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Корпоративный кейтеринг | Nilov Catering",
   description: "Организация питания для корпоративных мероприятий, конференций и бизнес-ланчей. Безналичная оплата и налоговые документы.",
-  alternates: { canonical: "https://odaeda.ru/services/corporate" },
+  alternates: { canonical: "https://nilov-catering.ru/services/corporate" },
 };
 
 export default function CorporatePage() {

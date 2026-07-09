@@ -21,7 +21,7 @@ export default function Footer() {
               Nilov Catering
             </h3>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
-              Профессиональный кейтеринг в Москве с 2013 года. Создаём
+              Профессиональный кейтеринг в Санкт-Петербурге с 2007 года. Создаём
               уникальные гастрономические впечатления для мероприятий любого
               масштаба.
             </p>
@@ -119,24 +119,24 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>г. Москва, ул. Тверская, д. 15, офис 301</span>
+                <span>Санкт-Петербург</span>
               </li>
               <li>
                 <a
-                  href="tel:+74959213456"
+                  href="tel:78129195911"
                   className="flex items-center gap-2.5 text-sm text-primary-foreground/70 hover:text-accent transition-colors"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
-                  +7 (495) 921-34-56
+                  +7 (812) 919-59-11
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@odaeda.ru"
+                  href="mailto:interfood-catering@yandex.ru"
                   className="flex items-center gap-2.5 text-sm text-primary-foreground/70 hover:text-accent transition-colors"
                 >
                   <Mail className="w-4 h-4 shrink-0" />
-                  info@odaeda.ru
+                  interfood-catering@yandex.ru
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-primary-foreground/70">

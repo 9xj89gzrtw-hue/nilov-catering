@@ -61,7 +61,7 @@ function CountdownTimer() {
 
 const trustBadges = [
   { icon: Shield, text: "Гарантия возврата" },
-  { icon: Award, text: "12 лет опыта" },
+  { icon: Award, text: "19 лет опыта" },
   { icon: Zap, text: "Ответ за 2 часа" },
 ];
 
@@ -126,7 +126,7 @@ export default function CTASection() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <a
-                href="tel:+74959213456"
+                href="tel:+78129195911"
                 className="glass group inline-flex h-13 items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/15 transition-all duration-300"
               >
                 Позвонить

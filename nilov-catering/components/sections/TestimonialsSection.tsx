@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
             <span className="text-muted-foreground">
-              <span className="font-bold text-foreground">850+</span> довольных клиентов
+              <span className="font-bold text-foreground">3000+</span> довольных клиентов
             </span>
           </div>
         </AnimatedSection>

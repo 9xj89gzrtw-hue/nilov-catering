@@ -12,12 +12,12 @@ const serviceCards = [
   {
     icon: Heart,
     title: "Свадьбы",
-    description: "Безупречный кейтеринг для самого важного дня. От канапе до многосоставного банкета с авторскими блюдами шеф-повара Николая Нилова. Мы создаём гастрономические истории, которые запоминаются навсегда.",
+    description: "Безупречный кейтеринг для самого важного дня. От канапе до многосоставного банкета с авторскими блюдами шеф-повара Дмитрия Нилова. Мы создаём гастрономические истории, которые запоминаются навсегда.",
     href: "/services/weddings",
     image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&h=400&fit=crop",
     span: "md:col-span-2 md:row-span-2",
     featured: true,
-    stats: "120+ свадеб в сезон",
+    stats: "500+ свадеб за всё время",
   },
   {
     icon: Briefcase,
@@ -27,7 +27,7 @@ const serviceCards = [
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
     span: "",
     featured: false,
-    stats: "Газпром, Сбербанк, Яндекс",
+    stats: "Emporio Armani, Mariinsky, Hermitage",
   },
   {
     icon: PartyPopper,
@@ -107,7 +107,7 @@ export default function ServicesSection() {
               Кейтеринг для <span className="gradient-text">любого повода</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              12 лет опыта в создании гастрономических впечатлений для мероприятий
+              19 лет опыта в создании гастрономических впечатлений для мероприятий
               любого масштаба и формата
             </p>
           </div>

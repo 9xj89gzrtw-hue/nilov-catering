@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 
 const TRUST_ITEMS = [
-  "Газпром", "Сбербанк", "Яндекс", "ВТБ", "Ростех",
-  "Лента", "МТС", "Роснефть", "СИБУР", "Лукойл",
+  "Hermitage Museum", "Mariinsky Theatre", "Gazprom Neft", "Severstal", "VTB Capital",
+  "Lenta", "Meridian", "Pulkovo Airport", "Baltika", "Saint Petersburg Philharmonic",
 ];
 
 export default function TrustMarquee() {

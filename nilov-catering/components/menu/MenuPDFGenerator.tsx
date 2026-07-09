@@ -100,7 +100,7 @@ export default function MenuPDFGenerator({ items, total, title }: MenuPDFGenerat
       <Page size="A4" style={styles.page}>
         <Text style={styles.header}>Nilov Catering</Text>
         <Text style={styles.subheader}>
-          {displayTitle} | odaeda.ru | +7 (495) 921-34-56
+          {displayTitle} | nilov-catering.ru | +7 (812) 919-59-11
         </Text>
         <View style={styles.divider} />
 
@@ -133,7 +133,7 @@ export default function MenuPDFGenerator({ items, total, title }: MenuPDFGenerat
 
         <View style={styles.footer}>
           <Text>Nilov Catering | г. Москва, ул. Тверская, д. 15</Text>
-          <Text>info@odaeda.ru | +7 (495) 921-34-56</Text>
+          <Text>interfood-catering@yandex.ru | +7 (812) 919-59-11</Text>
         </View>
       </Page>
     </Document>

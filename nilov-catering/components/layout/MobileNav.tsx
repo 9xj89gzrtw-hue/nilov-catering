@@ -39,7 +39,7 @@ export default function MobileNav() {
         }
       }
     } catch {}
-    return `https://wa.me/74959213456?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/79119417205?text=${encodeURIComponent(text)}`;
   };
 
   return (

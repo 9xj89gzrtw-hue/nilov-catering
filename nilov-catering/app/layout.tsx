@@ -11,16 +11,16 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://odaeda.ru"),
+  metadataBase: new URL("https://nilov-catering.ru"),
   title: {
-    default: "Nilov Catering — Профессиональный кейтеринг в Москве",
+    default: "Nilov Catering — Профессиональный кейтеринг в Санкт-Петербурге",
     template: "%s | Nilov Catering",
   },
   description:
-    "Кейтеринговая компания Nilov Catering — организация свадебных, корпоративных и частных мероприятий. Авторское меню, безупречный сервис, 12 лет опыта.",
+    "Кейтеринговая компания Nilov Catering — организация свадебных, корпоративных и частных мероприятий. Авторское меню, безупречный сервис, 19 лет опыта.",
   keywords: [
     "кейтеринг",
-    "Москва",
+    "Санкт-Петербург",
     "свадебный кейтеринг",
     "корпоративный кейтеринг",
     "выездное обслуживание",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://odaeda.ru",
+    url: "https://nilov-catering.ru",
     siteName: "Nilov Catering",
-    title: "Nilov Catering — Профессиональный кейтеринг в Москве",
+    title: "Nilov Catering — Профессиональный кейтеринг в Санкт-Петербурге",
     description:
       "Кейтеринговая компания Nilov Catering — организация свадебных, корпоративных и частных мероприятий.",
     images: [
@@ -43,23 +43,23 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=630&fit=crop",
         width: 1200,
         height: 630,
-        alt: "Nilov Catering — кейтеринг в Москве",
+        alt: "Nilov Catering — кейтеринг в Санкт-Петербурге",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nilov Catering — Профессиональный кейтеринг в Москве",
+    title: "Nilov Catering — Профессиональный кейтеринг в Санкт-Петербурге",
     description:
-      "Организация свадебных, корпоративных и частных мероприятий. Авторское меню, 12 лет опыта.",
+      "Организация свадебных, корпоративных и частных мероприятий. Авторское меню, 19 лет опыта.",
     images: ["https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=630&fit=crop"],
   },
   verification: {
     yandex: "yandex_verification_code",
   },
   alternates: {
-    canonical: "https://odaeda.ru",
+    canonical: "https://nilov-catering.ru",
   },
   robots: {
     index: true,
@@ -79,20 +79,20 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: "Nilov Catering",
   description:
-    "Профессиональный кейтеринг в Москве. Свадьбы, корпоративы, частные мероприятия.",
-  url: "https://odaeda.ru",
-  telephone: "+7-495-921-34-56",
-  email: "info@odaeda.ru",
+    "Профессиональный кейтеринг в Санкт-Петербурге. Свадьбы, корпоративы, частные мероприятия.",
+  url: "https://nilov-catering.ru",
+  telephone: "+7-812-919-59-11",
+  email: "interfood-catering@yandex.ru",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "ул. Тверская, д. 15, офис 301",
-    addressLocality: "Москва",
+    streetAddress: "Невский проспект, д. 28, офис 501",
+    addressLocality: "Санкт-Петербург",
     addressCountry: "RU",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 55.7654,
-    longitude: 37.6006,
+    latitude: 59.9343,
+    longitude: 30.3351,
   },
   openingHoursSpecification: [
     {
@@ -119,9 +119,9 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://odaeda.ru" />
-        <link rel="alternate" hreflang="ru-RU" href="https://odaeda.ru" />
-        <link rel="alternate" hreflang="x-default" href="https://odaeda.ru" />
+        <link rel="canonical" href="https://nilov-catering.ru" />
+        <link rel="alternate" hreflang="ru-RU" href="https://nilov-catering.ru" />
+        <link rel="alternate" hreflang="x-default" href="https://nilov-catering.ru" />
         <meta name="theme-color" content="#C8782A" />
         <meta name="format-detection" content="telephone=yes" />
         <script

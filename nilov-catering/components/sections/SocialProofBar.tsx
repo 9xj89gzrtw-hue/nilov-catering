@@ -5,8 +5,8 @@ import { Star, Users, Award, Clock } from "lucide-react";
 
 const proofItems = [
   { icon: Star, value: "4.9/5", label: "Средняя оценка", detail: "на основе 847 отзывов" },
-  { icon: Users, value: "850+", label: "Мероприятий", detail: "успешно проведено" },
-  { icon: Award, value: "12 лет", label: "Опыта", detail: "в индустрии кейтеринга" },
+  { icon: Users, value: "3000+", label: "Мероприятий", detail: "успешно проведено" },
+  { icon: Award, value: "19 лет", label: "Опыта", detail: "в индустрии кейтеринга" },
   { icon: Clock, value: "2 часа", label: "Ответ", detail: "среднее время реакции" },
 ];
 

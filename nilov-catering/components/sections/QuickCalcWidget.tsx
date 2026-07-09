@@ -21,7 +21,7 @@ const eventTypes = [
   { label: "Выпускной", emoji: "\uD83C\uDF93", multiplier: 0.85 },
 ];
 
-const BASE_PRICE_PER_GUEST = 3500;
+const BASE_PRICE_PER_GUEST = 3000;
 
 export default function QuickCalcWidget() {
   const [guestRange, setGuestRange] = useState(0);

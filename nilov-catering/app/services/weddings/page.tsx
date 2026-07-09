@@ -11,7 +11,7 @@ import { services, pricingPackages } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Свадебный кейтеринг",
   description: "Свадебный кейтеринг от Nilov Catering — изысканное меню, безупречная подача и премиальный сервис для вашего самого важного дня.",
-  alternates: { canonical: "https://odaeda.ru/services/weddings" },
+  alternates: { canonical: "https://nilov-catering.ru/services/weddings" },
 };
 
 export default function WeddingsPage() {

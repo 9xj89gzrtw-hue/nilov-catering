@@ -11,7 +11,7 @@ import { services } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Частные мероприятия | Nilov Catering",
   description: "Кейтеринг для дней рождения, юбилеев и семейных праздников. Превратим ваш праздник в незабываемое гастрономическое путешествие.",
-  alternates: { canonical: "https://odaeda.ru/services/private" },
+  alternates: { canonical: "https://nilov-catering.ru/services/private" },
 };
 
 export default function PrivatePage() {

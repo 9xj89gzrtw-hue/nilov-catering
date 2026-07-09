@@ -126,7 +126,7 @@ export default function Header() {
                 </AnimatePresence>
               </motion.button>
               <motion.a
-                href="tel:+74959213456"
+                href="tel:+78129195911"
                 whileHover={{ scale: 1.02 }}
                 className={cn(
                   "text-sm font-medium flex items-center gap-1.5 transition-all duration-200 px-3 py-1.5 rounded-lg",
@@ -134,7 +134,7 @@ export default function Header() {
                 )}
               >
                 <Phone className="w-3.5 h-3.5" />
-                +7 (495) 921-34-56
+                +7 (812) 919-59-11
               </motion.a>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link href="/quote">
@@ -214,11 +214,11 @@ export default function Header() {
                     </nav>
                     <div className="border-t border-border pt-4">
                       <a
-                        href="tel:+74959213456"
+                        href="tel:+78129195911"
                         className="flex items-center gap-2 text-sm font-medium text-foreground mb-4"
                       >
                         <Phone className="w-4 h-4" />
-                        +7 (495) 921-34-56
+                        +7 (812) 919-59-11
                       </a>
                       <Link href="/quote" onClick={() => setMobileOpen(false)}>
                         <Button className="w-full btn-glow shadow-lg shadow-accent/25">Рассчитать стоимость</Button>

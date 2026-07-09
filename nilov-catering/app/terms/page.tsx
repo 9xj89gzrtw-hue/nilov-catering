@@ -18,7 +18,7 @@ export default function TermsPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-muted-foreground leading-relaxed">
           <section>
             <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">1. Общие положения</h2>
-            <p>Настоящие Условия использования регулируют отношения между ООО &quot;Нилов Кейтеринг&quot; (Исполнитель) и пользователями сайта odaeda.ru (Пользователь). Используя сайт, Пользователь подтверждает своё согласие с настоящими Условиями.</p>
+            <p>Настоящие Условия использования регулируют отношения между ООО &quot;Нилов Кейтеринг&quot; (Исполнитель) и пользователями сайта nilov-catering.ru (Пользователь). Используя сайт, Пользователь подтверждает своё согласие с настоящими Условиями.</p>
           </section>
           <section>
             <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">2. Услуги</h2>
@@ -46,7 +46,7 @@ export default function TermsPage() {
           </section>
           <section>
             <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">8. Контакты</h2>
-            <p>По всем вопросам обращайтесь: email: info@odaeda.ru, телефон: +7 (495) 123-45-67, адрес: г. Москва, ул. Тверская, д. 15, офис 301.</p>
+            <p>По всем вопросам обращайтесь: email: interfood-catering@yandex.ru, телефон: +7 (812) 919-59-11, адрес: Санкт-Петербург.</p>
           </section>
         </div>
       </article>

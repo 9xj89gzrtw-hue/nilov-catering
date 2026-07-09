@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Блог | Nilov Catering",
   description: "Блог кейтеринговой компании Nilov Catering — советы по организации мероприятий, гастрономические тренды и идеи для вашего праздника.",
-  alternates: { canonical: "https://odaeda.ru/blog" },
+  alternates: { canonical: "https://nilov-catering.ru/blog" },
 };
 
 export default function BlogPage() {

@@ -7,7 +7,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Команда | Nilov Catering",
   description: "Познакомьтесь с командой профессионалов Nilov Catering — шеф-повара, су-шефы, официанты и координаторы мероприятий.",
-  alternates: { canonical: "https://odaeda.ru/team" },
+  alternates: { canonical: "https://nilov-catering.ru/team" },
 };
 
 export default function TeamPage() {

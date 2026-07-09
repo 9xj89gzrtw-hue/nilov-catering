@@ -74,15 +74,15 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <Phone className="w-5 h-5 mt-0.5 text-accent" />
-                    <div><p className="font-medium">Телефон</p><a href="tel:+74951234567" className="text-muted-foreground hover:text-accent">+7 (495) 123-45-67</a></div>
+                    <div><p className="font-medium">Телефон</p><a href="tel:78129195911" className="text-muted-foreground hover:text-accent">+7 (812) 919-59-11</a></div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Mail className="w-5 h-5 mt-0.5 text-accent" />
-                    <div><p className="font-medium">Email</p><a href="mailto:info@odaeda.ru" className="text-muted-foreground hover:text-accent">info@odaeda.ru</a></div>
+                    <div><p className="font-medium">Email</p><a href="mailto:interfood-catering@yandex.ru" className="text-muted-foreground hover:text-accent">interfood-catering@yandex.ru</a></div>
                   </div>
                   <div className="flex items-start gap-4">
                     <MapPin className="w-5 h-5 mt-0.5 text-accent" />
-                    <div><p className="font-medium">Адрес</p><p className="text-muted-foreground">г. Москва, ул. Тверская, д. 15, офис 301</p></div>
+                    <div><p className="font-medium">Адрес</p><p className="text-muted-foreground">Санкт-Петербург</p></div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Clock className="w-5 h-5 mt-0.5 text-accent" />
