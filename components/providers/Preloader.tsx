@@ -10,20 +10,19 @@ export default function Preloader() {
   useEffect(() => {
     let frame: number;
     let start: number | null = null;
-    const duration = 1800;
+    const duration = 1400; // Reduced from 1800
 
     const animate = (timestamp: number) => {
       if (!start) start = timestamp;
       const elapsed = timestamp - start;
       const p = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - p, 3);
       setProgress(Math.round(eased * 100));
 
       if (p < 1) {
         frame = requestAnimationFrame(animate);
       } else {
-        setTimeout(() => setIsLoading(false), 300);
+        setTimeout(() => setIsLoading(false), 200); // Reduced exit delay
       }
     };
 
@@ -36,15 +35,15 @@ export default function Preloader() {
       {isLoading && (
         <motion.div
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0A0A0A]"
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
         >
-          {/* Brand */}
+          {/* Brand with scale animation */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
             className="text-center mb-10"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <span className="font-heading text-4xl md:text-5xl font-semibold text-cream tracking-wide block">
               Нилов
@@ -56,7 +55,7 @@ export default function Preloader() {
           </motion.div>
 
           {/* Progress bar */}
-          <div className="w-48 h-px bg-border-light overflow-hidden">
+          <div className="w-40 h-px bg-border-light overflow-hidden">
             <motion.div
               className="h-full bg-gold origin-left"
               initial={{ scaleX: 0 }}
@@ -74,12 +73,6 @@ export default function Preloader() {
           >
             {progress}%
           </motion.span>
-
-          {/* Decorative lines */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-border-light/30 to-transparent" />
-            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-border-light/30 to-transparent" />
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
