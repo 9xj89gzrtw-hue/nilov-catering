@@ -170,7 +170,7 @@ const AVATARS = [
 const GALLERY_IMGS = [
   "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&h=1000&fit=crop",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=800&fit=crop",
   "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop",

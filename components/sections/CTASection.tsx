@@ -47,12 +47,13 @@ export default function CTASection() {
       <div className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=800&fit=crop&q=80&auto=format"
+          src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&h=800&fit=crop&q=80&auto=format"
           alt=""
           className="w-full h-full object-cover scale-110"
+          style={{ filter: 'saturate(0.3) contrast(1.1)' }}
         />
-        <div className="absolute inset-0 bg-[#0A0A0A]/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/50" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/82" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,7 +160,7 @@ export default function CTASection() {
                 id="cta-date"
                 name="date"
                 type="date"
-                className="w-full bg-transparent border-b border-border focus:border-gold px-1 py-3 text-sm text-cream placeholder:text-cream-muted/30 focus:outline-none transition-colors duration-300"
+                className="w-full bg-transparent border-b border-border focus:border-gold px-1 py-3 text-sm text-cream placeholder:text-cream-muted/30 focus:outline-none transition-colors duration-300 [color-scheme:dark]"
               />
             </div>
 
@@ -178,7 +179,7 @@ export default function CTASection() {
 
             {status === 'success' && (
               <motion.p
-                className="text-sm text-green-400/80 text-center"
+                className="text-sm text-gold/80 text-center"
                 role="alert"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -188,7 +189,7 @@ export default function CTASection() {
             )}
             {status === 'error' && (
               <motion.p
-                className="text-sm text-red-400/80 text-center"
+                className="text-sm text-burgundy-light/80 text-center"
                 role="alert"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -196,6 +197,9 @@ export default function CTASection() {
                 Произошла ошибка. Попробуйте позвонить нам.
               </motion.p>
             )}
+            <p className="text-[10px] text-cream-muted/30 text-center mt-3">
+              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+            </p>
           </motion.form>
         </motion.div>
       </div>

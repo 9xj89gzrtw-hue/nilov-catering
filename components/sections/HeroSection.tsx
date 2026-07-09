@@ -137,6 +137,25 @@ export default function HeroSection() {
         </span>
         <div className="w-px h-16 bg-gradient-to-b from-cream/20 to-transparent" />
       </div>
+
+      {/* Marquee strip — signature brand element */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-border/50 overflow-hidden py-3">
+        <motion.div
+          className="flex whitespace-nowrap gap-12"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+        >
+          {[
+            'СВАДЬБЫ', 'КОРПОРАТИВЫ', 'ФУРШЕТЫ', 'БАНКЕТЫ', 'ВЫЕЗДНАЯ СЕРВИРОВКА', 'ДЕСЕРТНЫЕ СТОЛЫ', 'ШОУ-СТАНЦИИ', 'ДЕТСКИЕ ПРАЗДНИКИ',
+            'СВАДЬБЫ', 'КОРПОРАТИВЫ', 'ФУРШЕТЫ', 'БАНКЕТЫ', 'ВЫЕЗДНАЯ СЕРВИРОВКА', 'ДЕСЕРТНЫЕ СТОЛЫ', 'ШОУ-СТАНЦИИ', 'ДЕТСКИЕ ПРАЗДНИКИ',
+          ].map((word, i) => (
+            <span key={i} className="text-[10px] uppercase tracking-[0.5em] text-cream/15 font-medium flex items-center gap-12">
+              {word}
+              <span className="text-gold/20 text-[6px]">◆</span>
+            </span>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

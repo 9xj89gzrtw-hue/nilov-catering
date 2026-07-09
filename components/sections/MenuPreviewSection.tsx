@@ -76,7 +76,7 @@ export default function MenuPreviewSection() {
                     <h3 className="font-heading text-lg font-semibold text-cream group-hover:text-gold transition-colors duration-300">
                       {item.name}
                     </h3>
-                    <p className="mt-1.5 text-xs text-cream-muted line-clamp-1 leading-relaxed">
+                    <p className="mt-1.5 text-xs text-cream-muted line-clamp-2 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -88,13 +88,13 @@ export default function MenuPreviewSection() {
                 {/* Tags */}
                 <div className="flex items-center gap-2 mt-3">
                   {item.isVegetarian && (
-                    <span className="text-[9px] uppercase tracking-wider text-cream-muted/60 border border-border px-2 py-0.5">
+                    <span className="text-[9px] uppercase tracking-wider text-gold/50 border border-gold/20 px-2 py-0.5">
                       Вегетарианское
                     </span>
                   )}
-                  {item.calories > 0 && (
-                    <span className="text-[9px] uppercase tracking-wider text-cream-muted/60 border border-border px-2 py-0.5">
-                      {item.calories} ккал
+                  {item.categoryLabel && (
+                    <span className="text-[9px] uppercase tracking-wider text-cream-muted/40 border border-border px-2 py-0.5">
+                      {item.categoryLabel}
                     </span>
                   )}
                 </div>

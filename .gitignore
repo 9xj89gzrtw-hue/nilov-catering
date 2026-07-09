@@ -20,3 +20,4 @@ worklog.md
 site-*.txt
 critic*.json
 final_*.json
+critic-results/

@@ -3,8 +3,15 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import Image from 'next/image';
 import { testimonials } from '@/lib/data';
 import MaskReveal from '@/components/effects/TextReveal';
+
+function formatDate(iso: string) {
+  try {
+    return new Intl.DateTimeFormat('ru-RU', { month: 'long', year: 'numeric' }).format(new Date(iso));
+  } catch { return iso; }
+}
 
 export default function TestimonialsSection() {
   const ref = useRef<HTMLElement>(null);
@@ -24,11 +31,14 @@ export default function TestimonialsSection() {
     setCurrent((prev) => (prev - 1 + featured.length) % featured.length);
   }, [featured.length]);
 
+  const [paused, setPaused] = useState(false);
+
   // Auto-play
   useEffect(() => {
+    if (paused) return;
     const timer = setInterval(goNext, 6000);
     return () => clearInterval(timer);
-  }, [goNext]);
+  }, [goNext, paused]);
 
   const variants = {
     enter: (dir: number) => ({ x: dir > 0 ? 200 : -200, opacity: 0 }),
@@ -61,7 +71,11 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <div className="min-h-[280px] md:min-h-[240px] flex items-center">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
@@ -89,12 +103,18 @@ export default function TestimonialsSection() {
                 </blockquote>
 
                 {/* Author */}
-                <footer className="mt-8">
-                  <cite className="not-italic">
+                <footer className="mt-8 flex flex-col items-center gap-3">
+                  {t.avatar && (
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gold/30">
+                      <Image src={t.avatar} alt={t.name} width={48} height={48} className="object-cover w-full h-full" />
+                    </div>
+                  )}
+                  <cite className="not-italic text-center">
                     <span className="block text-sm font-medium text-cream">{t.name}</span>
                     <span className="block text-xs text-cream-muted mt-1">
-                      {t.event} &middot; {t.date}
+                      {t.event} &middot; {formatDate(t.date)}
                     </span>
+                    <span className="block text-[10px] text-gold/40 mt-0.5">&#9733; &#9733; &#9733; &#9733; &#9733; Google</span>
                   </cite>
                 </footer>
               </motion.div>
