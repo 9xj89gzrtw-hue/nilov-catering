@@ -29,25 +29,28 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
-      <div className="pt-20 md:pt-24 pb-8 bg-background">
+      <div className="pt-20 md:pt-24 pb-4 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[
             { label: "Услуги", href: "/services" },
             { label: service.title },
           ]} />
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold text-cream mt-4">
-            {service.title}
-          </h1>
-          <p className="mt-3 text-sm text-cream-muted max-w-xl">
-            {service.description}
-          </p>
+          <div className="mt-6">
+            <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">Услуги</p>
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-cream leading-[0.95]">
+              {service.title}
+            </h1>
+            <p className="mt-4 text-sm text-cream-muted max-w-xl leading-relaxed">
+              {service.description}
+            </p>
+          </div>
         </div>
       </div>
 
       <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero image */}
-          <div className="relative aspect-[16/7] rounded-md overflow-hidden mb-12">
+          <div className="relative aspect-[16/7] rounded-md overflow-hidden mb-16">
             <Image
               src={service.image}
               alt={service.title}
@@ -61,11 +64,13 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           {/* Features */}
           <div className="max-w-2xl">
-            <h2 className="font-heading text-2xl font-semibold text-cream mb-6">Что входит</h2>
-            <ul className="space-y-3">
-              {service.features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-cream/80">
-                  <span className="text-gold mt-0.5">·</span>
+            <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">Что входит</p>
+            <ul className="space-y-4">
+              {service.features.map((f, i) => (
+                <li key={f} className="flex items-start gap-4 text-sm text-cream/70 leading-relaxed">
+                  <span className="text-gold/40 font-mono text-xs mt-0.5 shrink-0">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   {f}
                 </li>
               ))}
@@ -73,17 +78,17 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 pt-8 border-t border-border">
-            <p className="text-sm text-cream-muted mb-4">
+          <div className="mt-16 pt-8 border-t border-border">
+            <p className="text-sm text-cream-muted mb-6 leading-relaxed">
               Готовы обсудить {service.title.toLowerCase()}? Оставьте заявку — мы подготовим предложение в течение 24 часов.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/contact" className="btn-primary text-xs uppercase tracking-wider">
+              <Link href="/contact" className="btn-primary text-xs uppercase tracking-wider cursor-hover">
                 Обсудить мероприятие
               </Link>
               <Link
                 href="/services"
-                className="btn-outline text-xs uppercase tracking-wider inline-flex items-center gap-2"
+                className="btn-outline text-xs uppercase tracking-wider inline-flex items-center gap-2 cursor-hover"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 Все услуги

@@ -44,18 +44,18 @@ export default function GalleryClient() {
 
   return (
     <>
-      <section className="py-12 md:py-16 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filters */}
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-12">
             {galleryCategories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setActiveCategory(cat.value)}
-                className={`text-xs uppercase tracking-wider px-4 py-2 rounded-sm transition-colors duration-200 ${
+                className={`text-[10px] uppercase tracking-[0.15em] px-5 py-2.5 rounded-full transition-all duration-300 cursor-hover ${
                   activeCategory === cat.value
-                    ? 'bg-burgundy text-cream'
-                    : 'bg-muted text-cream-muted hover:text-cream border border-border'
+                    ? 'bg-gold/20 border border-gold/40 text-gold'
+                    : 'text-cream-muted hover:text-cream border border-border hover:border-border-light'
                 }`}
                 aria-pressed={activeCategory === cat.value}
               >
@@ -68,22 +68,22 @@ export default function GalleryClient() {
           <AnimatePresence mode="popLayout">
             <motion.div
               key={activeCategory}
-              className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4"
+              className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-3 md:gap-4 space-y-3 md:space-y-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
             >
               {filtered.map((img, i) => (
                 <motion.button
                   key={img.id}
                   onClick={() => openLightbox(i)}
-                  className="relative w-full break-inside-avoid overflow-hidden rounded-md group block"
+                  className="relative w-full break-inside-avoid overflow-hidden rounded-md group block cursor-hover"
                   layout
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: i * 0.03 }}
+                  transition={{ duration: 0.4, delay: i * 0.03, ease: [0.25, 0.46, 0.45, 0.94] }}
                   aria-label={`Открыть: ${img.alt}`}
                 >
                   <div className={`${heights[i % heights.length]} relative overflow-hidden`}>
@@ -92,12 +92,12 @@ export default function GalleryClient() {
                       alt={img.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/30 transition-colors duration-300" />
-                    <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs text-cream bg-[#0A0A0A]/60 backdrop-blur-sm px-2 py-1 rounded-sm">
+                    <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/40 transition-colors duration-500" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0A0A0A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <span className="text-[10px] uppercase tracking-widest text-cream/80 font-medium">
                         {img.categoryLabel}
                       </span>
                     </div>
@@ -110,54 +110,67 @@ export default function GalleryClient() {
       </section>
 
       {/* Lightbox */}
-      {lightbox.open && (
-        <div
-          className="fixed inset-0 z-[60] bg-[#0A0A0A]/95 flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Просмотр фотографии"
-        >
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-cream/70 hover:text-cream transition-colors"
-            aria-label="Закрыть"
-            autoFocus
+      <AnimatePresence>
+        {lightbox.open && (
+          <motion.div
+            className="fixed inset-0 z-[60] bg-[#0A0A0A]/95 backdrop-blur-sm flex items-center justify-center"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Просмотр фотографии"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <X className="w-6 h-6" />
-          </button>
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-cream/70 hover:text-cream transition-colors cursor-hover"
+              aria-label="Закрыть"
+              autoFocus
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-          <button
-            onClick={goPrev}
-            className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors"
-            aria-label="Предыдущее фото"
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
+            <button
+              onClick={goPrev}
+              className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors cursor-hover"
+              aria-label="Предыдущее фото"
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
 
-          <div className="relative w-full max-w-4xl mx-16 aspect-[4/3]">
-            <Image
-              src={filtered[lightbox.index].src}
-              alt={filtered[lightbox.index].alt}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
+            <motion.div
+              className="relative w-full max-w-4xl mx-16 aspect-[4/3]"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                src={filtered[lightbox.index].src}
+                alt={filtered[lightbox.index].alt}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
 
-          <button
-            onClick={goNext}
-            className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors"
-            aria-label="Следующее фото"
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
+            <button
+              onClick={goNext}
+              className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center text-cream/50 hover:text-cream transition-colors cursor-hover"
+              aria-label="Следующее фото"
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
 
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-cream-muted">
-            {filtered[lightbox.index].alt} — {lightbox.index + 1} / {filtered.length}
-          </p>
-        </div>
-      )}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4">
+              <span className="text-xs text-cream-muted">{filtered[lightbox.index].alt}</span>
+              <span className="text-xs text-cream-muted/50 font-mono">{lightbox.index + 1} / {filtered.length}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

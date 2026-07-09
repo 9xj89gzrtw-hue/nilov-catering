@@ -10,28 +10,42 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <>
-      <div className="pt-20 md:pt-24 pb-8 bg-background">
+      <div className="pt-20 md:pt-24 pb-4 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: "Меню" }]} />
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold text-cream mt-4">
-            Наше меню
-          </h1>
-          <p className="mt-3 text-sm text-cream-muted max-w-xl">
-            Каждое блюдо готовится из свежих продуктов шеф-поваром. Выберите позиции для вашего мероприятия или обратитесь за индивидуальным меню.
-          </p>
+          <div className="mt-6">
+            <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">Наше меню</p>
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-cream leading-[0.95]">
+              Авторская
+              <br />
+              <span className="text-cream/40">гастрономия</span>
+            </h1>
+            <p className="mt-4 text-sm text-cream-muted max-w-lg leading-relaxed">
+              Каждое блюдо готовится из свежих продуктов шеф-поваром. Выберите позиции или обратитесь за индивидуальным меню.
+            </p>
+          </div>
         </div>
       </div>
       <MenuPageClient />
-      <section className="py-20 px-6 text-center border-t border-border/20">
-        <h2 className="font-heading text-3xl font-semibold mb-4">Готовы обсудить меню?</h2>
-        <p className="text-muted-foreground mb-8 max-w-md mx-auto">Мы подготовим индивидуальное предложение для вашего мероприятия</p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background font-medium rounded-[4px] hover:bg-accent/90 transition-colors">
-            Оставить заявку
-          </a>
-          <a href="tel:+78121234567" className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-foreground font-medium rounded-[4px] hover:bg-border/10 transition-colors">
-            +7 (812) 123-45-67
-          </a>
+      <section className="py-20 md:py-28 bg-muted border-t border-border">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">Индивидуально</p>
+          <h2 className="font-heading text-4xl sm:text-5xl font-semibold text-cream leading-[0.95] mb-6">
+            Готовы обсудить
+            <br />
+            <span className="text-cream/40">меню?</span>
+          </h2>
+          <p className="text-sm text-cream-muted mb-10 max-w-md mx-auto leading-relaxed">
+            Мы подготовим индивидуальное предложение для вашего мероприятия
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact" className="btn-primary text-xs uppercase tracking-wider cursor-hover">
+              Оставить заявку
+            </a>
+            <a href="tel:+78121234567" className="btn-outline text-xs uppercase tracking-wider cursor-hover">
+              +7 (812) 123-45-67
+            </a>
+          </div>
         </div>
       </section>
     </>
