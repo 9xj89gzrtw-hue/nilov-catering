@@ -8,7 +8,34 @@
 
 ## 1. Обзор проекта
 
-[Ошибка извлечения из V2]
+### 1.1 О компании
+
+**NiloV Catering** — кейтеринговая компания из Санкт-Петербурга, работающая на рынке 19 лет. За это время проведено более 3 000 мероприятий. Ключевые клиенты: Государственный Эрмитаж, Мариинский театр, Armani/Casa. Телефон: +7(812)919-59-11, WhatsApp: +7 911 941 72 05.
+
+### 1.2 Целевая аудитория
+
+| Сегмент | Доля выручки | Описание | Типичные заказы |
+|---------|-------------|----------|----------------|
+| B2B-primary | ~70% | Корпоративные event-менеджеры, HR-директора, wedding-планеры, агентства | 50-500 гостей |
+| B2C-secondary | ~30% | Невесты, организаторы юбилеев, дни рождения | 30-150 гостей |
+
+### 1.3 Цель проекта
+
+Создать лучший в мире кейтеринговый веб-сайт уровня **Awwwards SOTD**, обеспечивающий максимальную конверсию состоятельных заказчиков через кинематографический пользовательский опыт.
+
+### 1.4 Ключевое отличие: 5 шагов до конверсии vs 8-10 у конкурентов
+
+| Шаг | Действие пользователя | Ключевой элемент |
+|-----|----------------------|------------------|
+| 1 | Заход (Яндекс «кейтеринг СПб», рекомендация, VK/Telegram) | Hero-видео (3 сек) → CTA «Выбрать формат» |
+| 2 | Выбор формата (фуршет/банкет/кофе-брейк) | Карточка формата → пример меню → CTA «Рассчитать стоимость» |
+| 3 | Калькулятор (пакет, гости, опции) | Мгновенный расчёт с countUp → CTA «Получить КП» |
+| 4 | PDF-КП (генерация <300мс на клиенте) | Скачивание → QR-код на оплату депозита (30%) |
+| 5 | Оплата депозита (ЮKassa) | СБП/карта/МИР → webhook → менеджер звонит |
+
+По данным Baymard Institute (2024), каждый лишний шаг снижает конверсию на ~20%.
+
+---
 
 ### 1.5 Обоснование гибридной бизнес-модели
 
@@ -76,6 +103,1123 @@
 
 ---
 
+## 2. Страницы и компоненты
+
+### 2.1 Главная страница — `/`
+
+**Файл:** `app/page.tsx`
+
+Составные секции (рендерятся сверху вниз):
+
+---
+
+#### 2.1.1 Hero
+
+**Компонент:** `components/sections/Hero.tsx`
+
+**Описание:** Full-screen видеосекция с эмблематичным заголовком и двумя CTA.
+
+**Ключевые особенности из манифеста:**
+- Full-screen видео (десктоп) / статичное изображение с CSS-анимацией (мобильный fallback)
+- Заголовок: «Гастрономия мирового уровня для ваших мероприятий»
+- Видео: атмосферные кадры приготовления блюд (шеф-повар, фламбе, декорирование), WebM + MP4 fallback, resolution 720p, bitrate 2-3 Mbps, длительность 8-12 сек, loop
+- CTA-кнопки: «Выбрать формат» (основная, золотая) + «Позвонить» (вторичная, обводка)
+- GSAP timeline-оркестрация: текст появляется после 3-секундного видео, scroll-triggered parallax
+
+**Acceptance criteria:**
+- [ ] Видео автовоспроизводится muted + autoplay с `playsinline` атрибутом
+- [ ] На мобильных — fallback на статичное изображение с CSS-анимацией (проверка `navigator.connection.effectiveType`)
+- [ ] FCP < 1.5s, LCP < 2.5s на мобильном
+- [ ] CTA «Выбрать формат» скроллит к секции форматов
+- [ ] CTA «Позвонить» инициирует вызов по `tel:+78129195911`
+- [ ] GSAP timeline управляется через `useGSAP` с `scope: containerRef`
+
+---
+
+#### 2.1.2 Social Proof Bar
+
+**Компонент:** `components/sections/SocialProofBar.tsx`
+
+**Описание:** Бегущая строка (marquee) с логотипами ключевых клиентов и счётчиками достижений.
+
+**Ключевые особенности:**
+- Логотипы: Эрмитаж, Мариинский, Armani
+- Счётчики с countUp-анимацией: «19 лет», «3 000+ мероприятий», «5 форматов обслуживания»
+- Бесконечный marquee через CSS `animation: scroll 30s linear infinite`
+
+**Acceptance criteria:**
+- [ ] Бегущая строка работает плавно на 60 FPS (CSS transform, не left/margin)
+- [ ] Счётчики анимируются при входе в viewport (IntersectionObserver или GSAP ScrollTrigger)
+- [ ] Числа отображаются в JetBrains Mono
+- [ ] Логотипы клиентов в чёрно-белом → цвет при hover
+
+---
+
+#### 2.1.3 Форматы мероприятий
+
+**Компонент:** `components/sections/FormatsSection.tsx`
+**Карточка формата:** `components/cards/FormatCard.tsx`
+
+**Описание:** 5-6 карточек форматов с фото, названием, диапазоном цен и кнопкой «Подробнее».
+
+**Форматы:**
+
+| Формат | Пакеты (руб./чел.) | Описание |
+|--------|---------------------|----------|
+| Фуршет | Classic 2450 / Premium 3350 / Imperial 4450 / Royal 5350 | Холодные и горячие закуски, канапе, напитки. Гости стоят/свободно перемещаются |
+| Банкет | Classic 4470 / Premium 5670 / Imperial 6970 | Посадочное обслуживание, многоходовое меню, сомелье |
+| Кофе-брейк | Light 950 / Standard 1450 / Premium 1950 / Deluxe 2450 | Кофе, чай, десерты, мини-сэндвичи |
+| Бизнес-ланч | Light 1200 / Standard 1800 | Облегчённый формат для конференций (аналог Brain Food от Crouton) |
+| Гастрономические наборы | Классика 4900 / Премиум 7900 / Империал 12 500 (на 5-8 чел.) | Готовые боксы с доставкой (аналог GURMADE/RevelTime) |
+| Выездной бар | +250 / +350 / +500 к основному формату | Коктейльный / пивной / безалкогольный бар |
+
+**Acceptance criteria:**
+- [ ] Карточки рендерятся из данных `/content/formats.json`
+- [ ] Каждая карточка содержит: фото (Cloudflare R2, next/image с webp), название формата, диапазон цен, краткое описание, кнопку «Подробнее»
+- [ ] Hover-раскрытие: `mask-image: linear-gradient(to bottom, black 60%, transparent 100%)` → `mask-image: none` за 400ms
+- [ ] Кнопка «Подробнее» ведёт на `/menu/[format]` (SSG с ISR)
+- [ ] Кнопка «Рассчитать стоимость» скроллит к калькулятору с предзаполненным форматом
+
+---
+
+#### 2.1.4 Интерактивный калькулятор
+
+**Компонент:** `components/sections/CalculatorSection.tsx`
+**Подкомпоненты:** `components/calculator/FormatSelector.tsx`, `components/calculator/PackageSelector.tsx`, `components/calculator/GuestsSlider.tsx`, `components/calculator/AddonToggles.tsx`, `components/calculator/ResultDisplay.tsx`
+
+**Описание:** Основной конверсионный элемент сайта. Секция с двухколоночной раскладкой (десктоп) или вертикальным стеком (мобильный).
+
+**Подробная спецификация — см. раздел 3.**
+
+**Acceptance criteria:**
+- [ ] Расчёт выполняется мгновенно (0ms, чистый клиентский код)
+- [ ] Изменение любого параметра пересчитывает сумму с анимацией countUp
+- [ ] Цена отображается в JetBrains Mono без знака валюты: «573 726» (не «573 726.00 руб.»)
+- [ ] Кнопка «Получить КП» генерирует PDF (секция 4 манифеста)
+- [ ] Mobile: ползунок гостей работает с touch-жестами, чекбоксы доп. опций — тапабельные
+
+---
+
+#### 2.1.5 Галерея
+
+**Компонент:** `components/sections/GallerySection.tsx`
+**Подкомпоненты:** `components/gallery/GalleryGrid.tsx`, `components/gallery/GalleryLightbox.tsx`
+
+**Описание:** Masonry-grid с фильтрацией по формату. Лайтбокс с swipe на мобильных.
+
+**Ключевые особенности:**
+- Фильтрация: «Все», «Фуршет», «Банкет», «Кофе-брейк», «Барбекю», «Корпоративы», «Свадьбы»
+- Анимация фильтрации: Framer Motion `layout` + `AnimatePresence`
+- Лайтбокс: Framer Motion `drag="x"` для swipe, пинч-to-zoom на фотографиях
+- Изображения из Cloudflare R2, lazy loading через `loading="lazy"`
+
+**Acceptance criteria:**
+- [ ] Фильтрация работает без перезагрузки страницы (клиентский state)
+- [ ] Masonry-grid корректно перераспределяется при фильтрации (Framer Motion layout)
+- [ ] Лайтбокс закрывается по Escape, клику на оверлей, свайпу вниз на мобильном
+- [ ] Пинч-to-zoom работает на touch-устройствах
+- [ ] Schema.org ImageObject для каждого изображения
+
+---
+
+#### 2.1.6 Отзывы
+
+**Компонент:** `components/sections/ReviewsSection.tsx`
+**Подкомпоненты:** `components/reviews/ReviewCard.tsx`, `components/reviews/ReviewCarousel.tsx`
+
+**Описание:** Карусель отзывов с рейтингом 1-5 звёзд.
+
+**Ключевые особенности:**
+- 3 visible на десктопе, 1 на мобильном
+- Каждый отзыв: фото клиента, текст, имя, должность/компания, рейтинг
+- Автопрокрутка с паузой при hover
+- Schema.org AggregateRating + Review
+
+**Acceptance criteria:**
+- [ ] Отзывы загружаются из `/content/reviews.json` через `GET /api/reviews`
+- [ ] Карусель работает с touch-swipe (Framer Motion)
+- [ ] Автопрокрутка: каждые 5 сек, пауза при hover/focus
+- [ ] Рейтинг отображается звёздами (#C9A96E)
+
+---
+
+#### 2.1.7 FAQ
+
+**Компонент:** `components/sections/FAQSection.tsx`
+**Подкомпонент:** `components/faq/FAQAccordion.tsx`
+
+**Описание:** Аккордеон с 10 вопросами. Schema.org FAQPage.
+
+**Типичные вопросы:**
+1. Как заказать кейтеринг?
+2. Какова минимальная стоимость заказа?
+3. Можно ли привезти свой алкоголь?
+4. За сколько нужно заказать?
+5. Что входит в стоимость?
+6. Есть ли дегустация перед мероприятием?
+7. Как происходит оплата?
+8. В каких районах СПб вы работаете?
+9. Можно ли изменить меню после утверждения?
+10. Что если количество гостей изменится?
+
+**Acceptance criteria:**
+- [ ] Аккордеон: один вопрос открыт одновременно (close-others behaviour)
+- [ ] Анимация раскрытия: height auto через Framer Motion (не max-height hack)
+- [ ] Schema.org FAQPage — JSON-LD в `<script type="application/ld+json">`
+- [ ] Клавиатурная навигация: Enter/Space для раскрытия, стрелки между элементами
+
+---
+
+#### 2.1.8 Footer
+
+**Компонент:** `components/layout/Footer.tsx`
+
+**Описание:** Многосекционный футер с контактами, навигацией, соцсетями и юридическими ссылками.
+
+**Секции футера:**
+1. Контактная информация: телефон, WhatsApp, email, адрес
+2. Навигация: ссылки на все страницы
+3. Соцсети: Telegram (t.me/nilov_catering), VK, Instagram (с дисклеймером «Доступен через VPN»)
+4. Юридическое: Политика конфиденциальности, Cookie-политика, Оферта
+5. Платёжные системы: логотипы СБП, МИР, Visa (ЮKassa)
+
+**Acceptance criteria:**
+- [ ] Номер телефона кликабелен (`tel:`)
+- [ ] WhatsApp ссылка ведёт на `https://wa.me/79119417205`
+- [ ] Юридические ссылки ведут на отдельные страницы
+- [ ] Логотипы платёжных систем отображаются в нижнем колонтитуле
+
+---
+
+#### 2.1.9 Cookie Consent Banner
+
+**Компонент:** `components/legal/CookieConsent.tsx`
+
+**Описание:** Фиксированный баннер внизу при первом визите.
+
+**Текст:** «Мы используем файлы cookie для аналитики и улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с Политикой cookie.»
+
+**Кнопки:**
+- «Принять» — все cookie (сохраняет выбор в localStorage)
+- «Только необходимые» — отклоняет аналитические cookie
+
+**Acceptance criteria:**
+- [ ] Баннер показывается только при первом визите (проверка localStorage)
+- [ ] При нажатии «Принять» — Яндекс.Метрика инициализируется
+- [ ] При нажатии «Только необходимые» — Метрика не загружается
+- [ ] Баннер не перекрывает CTA-кнопки (min-height на body для отступа)
+- [ ] Соответствие 152-ФЗ и GDPR-принципам
+
+---
+
+### 2.2 Страница формата с меню — `/menu/[format]`
+
+**Файл:** `app/menu/[format]/page.tsx`
+**Компонент:** `components/pages/MenuFormatPage.tsx`
+
+**Описание:** Страница конкретного формата с полным меню, описанием и CTA.
+
+**Данные:** формируются из `/content/formats.json`, SSG с ISR (revalidate: 3600).
+
+**Структура страницы:**
+1. Hero-баннер формата (фото + название + диапазон цен)
+2. Описание формата (логистика, официанты, особенности)
+3. Пакеты формата с ценой за чел.
+4. Пример меню (3-5 позиций для каждого пакета)
+5. Кнопка «Рассчитать стоимость» → скролл к калькулятору на главной
+6. Кнопка «Получить КП» → редирект на `/calculator?format=[format]`
+
+**Acceptance criteria:**
+- [ ] Динамические маршруты: `/menu/furshet`, `/menu/banket`, `/menu/coffee-break`, `/menu/business-lunch`, `/menu/gastro-boxes`, `/menu/bar`
+- [ ] GenerateStaticParams для pre-render всех форматов
+- [ ] Каждое блюдо: название, описание, аллергены, изображение
+- [ ] Schema.org MenuSection + MenuItem для каждого блюда
+- [ ] 404 для несуществующих форматов (`notFound()` из Next.js)
+
+---
+
+### 2.3 Страница калькулятора — `/calculator`
+
+**Файл:** `app/calculator/page.tsx`
+**Компонент:** `components/pages/CalculatorPage.tsx`
+
+**Описание:** Полноэкранная версия калькулятора (альтернатива секции на главной).
+
+**Особенности:**
+- Поддержка query-параметров: `/calculator?format=banket&package=premium&guests=80`
+- Расширенный интерфейс: добавление дат мероприятия для расчёта скидки за раннее бронирование
+- Кнопка «Получить КП» → генерация PDF
+
+**Acceptance criteria:**
+- [ ] Query-параметры pre-fill форму калькулятора
+- [ ] URL обновляется при изменении параметров (history.replaceState)
+- [ ] Калькулятор доступен как секция на главной И как отдельная страница
+- [ ] Результат идентичен на обоих вариантах (общий hook `useCalculator`)
+
+---
+
+### 2.4 Галерея — `/gallery`
+
+**Файл:** `app/gallery/page.tsx`
+**Компонент:** `components/pages/GalleryPage.tsx`
+
+**Описание:** Полноэкранная галерея с расширенной фильтрацией.
+
+**Отличие от секции на главной:** больше изображений, более детальная фильтрация (по формату + по типу мероприятия + по году), пагинация или infinite scroll.
+
+**Acceptance criteria:**
+- [ ] Infinite scroll или «Загрузить ещё» (не пагинация)
+- [ ] URL обновляется при фильтрации: `/gallery?format=furshet&type=corporate`
+- [ ] Изображения оптимизированы (WebP, srcset, sizes)
+- [ ] Skeleton loading при загрузке изображений
+
+---
+
+### 2.5 О компании — `/about`
+
+**Файл:** `app/about/page.tsx`
+**Компонент:** `components/pages/AboutPage.tsx`
+
+**Описание:** История компании (19 лет), команда, ценности, ключевые клиенты.
+
+**Секции:**
+1. История NiloV (таймлайн)
+2. Команда (фото шеф-повара, менеджеров)
+3. Ключевые клиенты (Эрмитаж, Мариинский, Armani — с логотипами)
+4. Цифры: 19 лет, 3000+ мероприятий, 5 форматов
+5. CTA «Заказать кейтеринг»
+
+**Acceptance criteria:**
+- [ ] Таймлайн анимируется при скролле (GSAP ScrollTrigger)
+- [ ] Счётчики достижений с countUp-анимацией
+- [ ] Фото команды из Cloudflare R2, lazy loading
+
+---
+
+### 2.6 Контакты — `/contact`
+
+**Файл:** `app/contact/page.tsx`
+**Компонент:** `components/pages/ContactPage.tsx`
+**Форма:** `components/forms/ContactForm.tsx`
+
+**Описание:** Контактная информация + форма обратной связи.
+
+**Поля формы (Zod-валидация):**
+- Имя: `z.string().min(2)`
+- Телефон: `z.string().regex(/^\+7\d{10}$/)` или `z.string().regex(/^8\d{10}$/)`
+- Email: `z.string().email().optional()`
+- Тип мероприятия: `z.enum(['corporate', 'wedding', 'birthday', 'other'])`
+- Дата: `z.string().optional()` (предполагаемая дата)
+- Сообщение: `z.string().min(10).max(2000)`
+
+**Acceptance criteria:**
+- [ ] Форма отправляется через `POST /api/contact`
+- [ ] Валидация на клиенте (Zod) + на сервере (дублирующая проверка)
+- [ ] Toast-уведомление об успешной отправке
+- [ ] Защита от спама: rate limiting (1 сообщение в минуту с одного IP)
+- [ ] Карта (Яндекс.Карты или 2GIS embed)
+
+---
+
+### 2.7 Admin CMS — `/admin`
+
+**Файл:** `app/admin/page.tsx` (layout: `app/admin/layout.tsx`)
+**Компоненты:** `components/admin/AdminMenuEditor.tsx`, `components/admin/AdminGalleryEditor.tsx`, `components/admin/AdminReviewEditor.tsx`
+
+**Описание:** Self-service панель для владельца NiloV.
+
+**Функционал:**
+1. Редактирование меню (названия, описания, цены, фото, аллергены)
+2. Управление галереей (загрузка/удаление фото, назначение формата)
+3. Управление отзывами (добавление, редактирование, удаление)
+4. Редактирование текстов страниц (о компании, FAQ)
+
+**Аутентификация:**
+- JWT-токен в httpOnly cookie (expires 7 дней)
+- Логин/пароль из переменных окружения (`ADMIN_LOGIN`, `ADMIN_PASSWORD`)
+- Middleware Next.js проверяет токен на каждом запросе к `/api/admin/*`
+
+**Data flow:**
+```
+/admin → JWT-auth → GET /api/admin/menu → react-quill редактор
+  → POST /api/admin/menu → Zod-валидация → запись в /content/formats.json
+  → git commit → git push → Vercel auto-deploy (2-3 мин)
+```
+
+**Acceptance criteria:**
+- [ ] Доступ только по JWT (редирект на `/admin/login` при отсутствии токена)
+- [ ] Drag-and-drop загрузка фото → Cloudflare R2 через `POST /api/admin/upload`
+- [ ] Все текстовые поля с WYSIWYG-редактором (react-quill)
+- [ ] Pre-deploy validation: `npm run validate-content` проверяет JSON-схемы
+- [ ] Toast-уведомление при сохранении изменений
+- [ ] Изменения видны на сайте через 2-3 минуты после сохранения
+
+---
+## 3. Калькулятор — детальная спецификация
+
+### 3.1 Математическая модель
+
+**Формула:**
+
+```
+P_total = N * (P_base + SUM(C_addon_i)) * (1 - gamma(N)) * (1 - early_booking_discount)
+```
+
+**Переменные:**
+- `N` — количество гостей (минимум 10, максимум 10000)
+- `P_base` — базовая стоимость выбранного формата/пакета на человека
+- `C_addon_i` — стоимость дополнительных услуг на человека
+- `gamma(N)` — коэффициент прогрессивной скидки за объём
+- `early_booking_discount` — скидка за раннее бронирование
+
+**Коэффициент прогрессивной скидки:**
+
+```
+gamma(N) = gamma_max * (N - N_min) / (K + (N - N_min))
+```
+
+- `gamma_max = 0.15` (макс. скидка 15%)
+- `N_min = 10`
+- `K = 150` (коэффициент полунасыщения)
+
+### 3.2 Форматы и пакеты
+
+| Формат | Пакет | Цена/чел. (руб.) |
+|--------|-------|-------------------|
+| Фуршет | Classic | 2 450 |
+| Фуршет | Premium | 3 350 |
+| Фуршет | Imperial | 4 450 |
+| Фуршет | Royal | 5 350 |
+| Банкет | Classic | 4 470 |
+| Банкет | Premium | 5 670 |
+| Банкет | Imperial | 6 970 |
+| Кофе-брейк | Light | 950 |
+| Кофе-брейк | Standard | 1 450 |
+| Кофе-брейк | Premium | 1 950 |
+| Кофе-брейк | Deluxe | 2 450 |
+| Бизнес-ланч | Light | 1 200 |
+| Бизнес-ланч | Standard | 1 800 |
+| Гастрономические наборы | Классика (5-8 чел.) | 4 900 |
+| Гастрономические наборы | Премиум (5-8 чел.) | 7 900 |
+| Гастрономические наборы | Империал (5-8 чел.) | 12 500 |
+| Выездной бар | Безалкогольный | +250 |
+| Выездной бар | Пивной | +350 |
+| Выездной бар | Коктейльный | +500 |
+
+### 3.3 Дополнительные опции
+
+| Опция | Цена/чел. (руб.) | Описание |
+|-------|-------------------|----------|
+| Сомелье | +350 | Профессиональный сомелье подбирает вина к меню |
+| Шоу-станции | +800 | Хамон-станция с кортадором, раклет-бар или фламбировочная станция |
+| Кулинарный мастер-класс | +600 | Шеф-повар проводит мастер-класс для гостей |
+| Свой алкоголь | 0 | Клиент приносит свой алкоголь, NiloV предоставляет бокалы и сервировку |
+
+### 3.4 Скидка за раннее бронирование
+
+| Дней до мероприятия | Скидка |
+|---------------------|--------|
+| 30+ дней | -5% |
+| 60+ дней | -10% |
+| 90+ дней | -15% |
+
+### 3.5 Пример расчёта
+
+**Входные данные:** Банкет Premium, 100 гостей, сомелье (+350), шоу-станция (+800), бронирование за 60 дней.
+
+```
+N = 100
+P_base = 5 670
+C_addon = 350 + 800 = 1 150
+gamma(100) = 0.15 * (100 - 10) / (150 + (100 - 10)) = 0.15 * 90 / 240 = 0.0563
+early_booking_discount = 0.10
+
+P_total = 100 * (5670 + 1150) * (1 - 0.0563) * (1 - 0.10)
+P_total = 100 * 6820 * 0.9437 * 0.90
+P_total = 100 * 6820 * 0.8493
+P_total = 579 223 руб.
+```
+
+Отображение в интерфейсе:
+- Цена за человека: `5 792` (в JetBrains Mono, без знака валюты)
+- Итого: `579 223` (в JetBrains Mono)
+- Скидка за объём: `~6%`
+- Скидка за раннее бронирование: `10%`
+
+### 3.6 Реализация
+
+**Общий хук:** `hooks/useCalculator.ts`
+
+```typescript
+interface CalculatorState {
+  format: FormatId;
+  package: PackageId;
+  guests: number;
+  addons: AddonId[];
+  eventDate?: string; // ISO date для расчёта early_booking_discount
+}
+
+interface CalculatorResult {
+  perPerson: number;
+  subtotal: number;
+  volumeDiscount: number;    // gamma(N) в процентах
+  earlyBookingDiscount: number; // 0, 5, 10 или 15
+  total: number;
+  deposit: number;           // 30% от total
+}
+```
+
+**API endpoint:** `POST /api/calculate` — дублирует клиентский расчёт для валидации и логирования.
+
+**Форматирование цен:**
+- Шрифт: JetBrains Mono
+- Разделитель тысяч: пробел
+- Нет знака валюты, нет копеек
+- Пример: `579 223`
+
+---
+## 4. Конкурентные преимущества (из анализа 74 компаний)
+
+### 4.1 Рыночный контекст
+
+Проведён систематический анализ 74 кейтеринговых компаний по 6 независимым источникам: Restoclub.ru, vc.ru, bash.today, CaterMe.ru, RevelTime.ru, Soulfulloft.ru. Каждая компания верифицирована через минимум 2 источника.
+
+
+### 4.2 Анализ рынка дизайна кейтеринга в РФ
+
+Проведён систематический анализ 74 кейтеринговых компаний по 6 источникам (Restoclub.ru, vc.ru, bash.today, CaterMe.ru, RevelTime.ru, Soulfulloft.ru). Ключевые выводы о цифровом уровне рынка:
+
+**Технологическая картина рынка:**
+- **~60% компаний** используют конструктор Tilda (средний вес страницы 800-1200 КБ HTML, ограниченная анимация, нет сложной интерактивности)
+- **~25%** — кастомные сайты на WordPress/1С-Битрикс (устаревший дизайн, медленная загрузка)
+- **~10%** — современные сайты на React/Next.js (GURMADE, Crouton — хороший минимализм, но без Awwwards-уровня)
+- **~5%** — одностраничные ленды или сайты-заглушки
+- **0 компаний** из 74 имеют Awwwards-награды или сайт уровня SOTD
+
+**Что это значит для NiloV:** кастомный Next.js + GSAP сайт с Awwwards SOTD дизайном — это не просто «красиво», а фундаментальное конкурентное преимущество, невозможное для воспроизведения на Tilda. Технологические фичи (калькулятор, PDF-КП, онлайн-оплата) не воспроизводимы конкурентами без полной переработки их сайтов.
+
+### 4.2 Уникальные преимущества NiloV
+
+| Преимущество | NiloV | Ближайший конкурент | Статус на рынке РФ |
+|-------------|-------|-------------------|-------------------|
+| Онлайн-калькулятор стоимости | **Да** | Нет ни одного из 74 | **Единственный в кейтеринге РФ** |
+| Клиентская PDF-генерация КП | **Да** | Нет ни одного из 74 | **Единственный в кейтеринге РФ** |
+| Онлайн-оплата депозита (ЮKassa) | **Да** | Нет ни одного из 74 | **Единственный в кейтеринге РФ** |
+| Awwwards SOTD дизайн | **Да** | GURMADE (хороший минимализм) | Уникальный уровень |
+| Портфель: Эрмитаж, Мариинский | **Да** | Concord (политики, без имён) | **Уникально для кейтеринга СПб** |
+| Технологический стек (Next.js+GSAP) | **Да** | ~60% на Tilda | Уникальный |
+| Прозрачные цены на сайте | **Да** | Muscat (Москва), Crouton (СПб) | Редкость (~10% рынка) |
+
+### 4.3 Фичи, заимствованные у конкурентов
+
+| Фича | Источник | Внедрение в NiloV |
+|------|----------|-------------------|
+| Brain Food (еда для продуктивных конференций) | Crouton Catering | Формат «Бизнес-ланч» (от 1 200 руб./чел.) |
+| Гастрономические боксы с доставкой | GURMADE (от 820 ₽/чел.), RevelTime | «Гастрономические наборы» (от 4 900 за 5-8 чел.) |
+| Хамон-станция с кортадором | Constanta (раклет-бар, хамон) | Доп. опция «Шоу-станции» (+800 руб./чел.) |
+| Раннее бронирование со скидкой | A-Catering (5-15% за раннее бронь) | -5%/30д, -10%/60д, -15%/90д |
+| Свой алкоголь без пробкового сбора | Фартук кейтеринг | Доп. опция «Свой алкоголь» (0 руб.) |
+| Выездной бар как отдельная услуга | Фартук (коктейли, пунш, сангрия) | Формат «Выездной бар» (+250-500 руб./чел.) |
+
+### 4.4 Ошибки конкурентов, которых NiloV избегает
+
+1. **Статичные PDF-меню** (большинство) → NiloV: структурированные HTML-меню с Schema.org MenuItem
+2. **Tilda-сайты** (~60% рынка, 800-1200 Кб HTML) → NiloV: кастомный Next.js + GSAP
+3. **Отсутствие калькулятора** (100% конкурентов СПб) → NiloV: мгновенный расчёт на клиенте
+4. **Нет онлайн-оплаты** (100% конкурентов) → NiloV: ЮKassa интеграция
+5. **Слабая мобильная версия** → NiloV: mobile-first, bottom nav, skeleton loading
+6. **Устаревший дизайн** → NiloV: Awwwards SOTD уровень
+7. **Цены «по запросу»** (~70% конкурентов) → NiloV: полная прозрачность
+8. **Фрагментированная воронка** (8-10 шагов) → NiloV: 5 шагов до конверсии
+
+### 4.5 Ключевые конкуренты СПб (матрица позиционирования)
+
+| Фактор | NiloV | GURMADE | Crouton | Concord | Фартук | СЗКК |
+|--------|-------|---------|---------|---------|--------|------|
+| Опыт (лет) | 19 | 16 | 14 | ~20 | — | 18 |
+| Мероприятий | 3000+ | 3000+ | — | — | — | — |
+| Топ-клиенты | Эрмитаж, Мариинский, Armani | BVLGARI, PRADA, Forbes | Сбербанк, Volvo, Skoda | Политики | — | — |
+| Калькулятор | Да | Нет | Нет | Нет | Нет | Нет |
+| PDF-КП | Да | Нет | Нет | Нет | Нет | Нет |
+| Онлайн-оплата | Да | Нет | Нет | Нет | Нет | Нет |
+| Дизайн | Awwwards SOTD | Хороший минимализм | Хороший минимализм | Базовый | Базовый | Базовый |
+
+---
+## 5. Технологический стек
+
+### 5.1 Итоговая таблица
+
+| Слой | Технология | Версия | Обоснование |
+|------|-----------|--------|-------------|
+| Фреймворк | Next.js (App Router) | 16 | React 19, гибридный SSR/ISR, Image Optimization, middleware |
+| UI-библиотека | React | 19 | Последняя версия, Server Components |
+| Стилизация | Tailwind CSS | 4 | Утилитарные классы, кастомные CSS-переменные |
+| Анимация (scroll) | GSAP + ScrollTrigger | 3.15 | 26.7 Кб gzip, императивный контроль, 60 FPS |
+| Анимация (UI) | Motion (Framer Motion) | 12.x | 60.6 Кб gzip, декларативные переходы, жесты |
+| Генерация PDF | @react-pdf/renderer | latest | Клиентская генерация КП <300мс, MIT |
+| Платежи | ЮKassa API | v3 | СБП, карты, МИР, 54-ФЗ чеки |
+| Валидация | Zod | latest | Схемы для форм, API, CMS |
+| Хостинг (этап 1) | Vercel | — | Быстрый деплой, Preview Deployments |
+| Хостинг (этап 2) | Timeweb Cloud / Selectel CDN | — | Российские ноды, TTFB < 30ms |
+| Медиа-хранилище | Cloudflare R2 | — | S3-совместимое, CDN, $0.015/ГБ/мес |
+| Аналитика | Яндекс.Метрика | — | Российский рынок, 152-ФЗ compliance |
+| WYSIWYG | react-quill | latest | Для admin-панели (тексты, описания) |
+| Шрифты | Playfair Display + Inter + JetBrains Mono | — | Google Fonts, font-display: swap |
+
+### 5.2 Структура проекта
+
+```
+nilov-catering/
+├── app/
+│   ├── layout.tsx                    # Root layout (шрифты, метрики, cookie consent)
+│   ├── page.tsx                      # Главная страница
+│   ├── menu/
+│   │   └── [format]/
+│   │       └── page.tsx              # Страница формата с меню
+│   ├── calculator/
+│   │   └── page.tsx                  # Полноэкранный калькулятор
+│   ├── gallery/
+│   │   └── page.tsx                  # Полноэкранная галерея
+│   ├── about/
+│   │   └── page.tsx                  # О компании
+│   ├── contact/
+│   │   └── page.tsx                  # Контакты
+│   ├── admin/
+│   │   ├── layout.tsx                # Admin layout (JWT check)
+│   │   ├── page.tsx                  # Dashboard
+│   │   └── login/
+│   │       └── page.tsx              # Форма логина
+│   ├── privacy/
+│   │   └── page.tsx                  # Политика конфиденциальности
+│   ├── cookies/
+│   │   └── page.tsx                  # Cookie-политика
+│   ├── api/
+│   │   ├── menu/
+│   │   │   └── route.ts              # GET /api/menu
+│   │   ├── calculate/
+│   │   │   └── route.ts              # POST /api/calculate
+│   │   ├── availability/
+│   │   │   ├── route.ts              # GET /api/availability
+│   │   │   └── tasting/
+│   │   │       └── route.ts          # POST /api/availability/tasting
+│   │   ├── booking/
+│   │   │   └── route.ts              # POST /api/booking
+│   │   ├── payment/
+│   │   │   ├── create/
+│   │   │   │   └── route.ts          # POST /api/payment/create
+│   │   │   └── webhook/
+│   │   │       └── route.ts          # POST /api/payment/webhook
+│   │   ├── reviews/
+│   │   │   └── route.ts              # GET /api/reviews
+│   │   ├── contact/
+│   │   │   └── route.ts              # POST /api/contact
+│   │   └── admin/
+│   │       ├── menu/
+│   │       │   └── route.ts          # GET/POST /api/admin/menu
+│   │       ├── gallery/
+│   │       │   └── route.ts          # GET/POST/DELETE /api/admin/gallery
+│   │       ├── reviews/
+│   │       │   └── route.ts          # GET/POST/DELETE /api/admin/reviews
+│   │       └── upload/
+│   │           └── route.ts          # POST /api/admin/upload → Cloudflare R2
+│   ├── globals.css                   # Tailwind + CSS-переменные бренда
+│   └── middleware.ts                  # JWT check для /admin/*, rate limiting
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx                # Навигация (desktop: fixed top, mobile: bottom)
+│   │   ├── Footer.tsx                # Многосекционный футер
+│   │   ├── CustomCursor.tsx          # Custom cursor (desktop only)
+│   │   ├── MobileNav.tsx             # Bottom navigation bar (mobile)
+│   │   └── SkipLink.tsx              # WCAG skip-link
+│   ├── sections/
+│   │   ├── Hero.tsx                  # Full-screen Hero
+│   │   ├── SocialProofBar.tsx        # Бегущая строка с логотипами
+│   │   ├── FormatsSection.tsx        # Карточки форматов
+│   │   ├── CalculatorSection.tsx     # Секция калькулятора на главной
+│   │   ├── GallerySection.tsx        # Masonry-gallery с фильтрацией
+│   │   ├── ReviewsSection.tsx        # Карусель отзывов
+│   │   └── FAQSection.tsx            # Аккордеон FAQ
+│   ├── cards/
+│   │   ├── FormatCard.tsx            # Карточка формата
+│   │   └── ReviewCard.tsx            # Карточка отзыва
+│   ├── calculator/
+│   │   ├── FormatSelector.tsx        # Выбор формата
+│   │   ├── PackageSelector.tsx       # Выбор пакета
+│   │   ├── GuestsSlider.tsx          # Ползунок количества гостей
+│   │   ├── AddonToggles.tsx          # Чекбоксы доп. опций
+│   │   ├── DatePicker.tsx            # Дата мероприятия
+│   │   └── ResultDisplay.tsx         # Итоговая сумма с countUp
+│   ├── gallery/
+│   │   ├── GalleryGrid.tsx           # Masonry-grid
+│   │   ├── GalleryFilter.tsx         # Фильтры
+│   │   └── GalleryLightbox.tsx       # Лайтбокс с swipe/zoom
+│   ├── pdf/
+│   │   └── ProposalPDF.tsx           # @react-pdf/renderer документ КП
+│   ├── forms/
+│   │   └── ContactForm.tsx           # Форма обратной связи
+│   ├── legal/
+│   │   └── CookieConsent.tsx         # Cookie consent banner
+│   ├── admin/
+│   │   ├── AdminMenuEditor.tsx       # Редактор меню
+│   │   ├── AdminGalleryEditor.tsx    # Редактор галереи
+│   │   └── AdminReviewEditor.tsx     # Редактор отзывов
+│   └── ui/
+│       ├── Button.tsx                # CTA-кнопка с золотым градиентом
+│       ├── Skeleton.tsx              # Skeleton loading
+│       ├── Toast.tsx                 # Toast-уведомления
+│       └── AnimatedCounter.tsx       # CountUp-анимация чисел
+├── hooks/
+│   ├── useCalculator.ts             # Бизнес-логика калькулятора
+│   ├── useCookieConsent.ts          # Управление cookie consent
+│   └── useMediaQuery.ts             # Адаптивные проверки
+├── lib/
+│   ├── calculator.ts                # Чистые функции расчёта (gamma, discount)
+│   ├── pdf-generator.ts             # Обёртка над @react-pdf/renderer
+│   ├── yookassa.ts                  # Клиент ЮKassa API
+│   ├── cloudflare-r2.ts             # Клиент Cloudflare R2 (upload, delete)
+│   └── telegram.ts                  # Отправка уведомлений в Telegram
+├── content/
+│   ├── formats.json                 # Меню по форматам
+│   ├── reviews.json                 # Отзывы клиентов
+│   ├── gallery.json                 # Метаданные галереи
+│   ├── faq.json                     # Вопросы и ответы
+│   └── company.json                 # О компании
+├── public/
+│   ├── fonts/                       # Локальные копии шрифтов (fallback)
+│   ├── videos/                      # Hero-видео (WebM + MP4)
+│   └── textures/                    # SVG-шум для фона
+├── schemas/
+│   ├── format.schema.ts             # Zod-схема формата
+│   ├── review.schema.ts             # Zod-схема отзыва
+│   └── contact.schema.ts            # Zod-схема контактной формы
+├── .env.local                       # Секреты (JWT, ЮKassa, R2, Telegram)
+├── next.config.ts                   # Конфигурация Next.js
+├── tailwind.config.ts               # Конфигурация Tailwind CSS 4
+├── next-sitemap.config.js           # Конфигурация sitemap.xml
+└── tsconfig.json                    # TypeScript конфигурация
+```
+
+### 5.3 GSAP: правила использования
+
+1. **Только `useGSAP` hook** — не использовать `useEffect` + `gsap.to()` напрямую
+2. **`scope: containerRef`** — все строковые селекторы scoped к контейнеру, запрещён `document.querySelector`
+3. **`contextSafe`** — обработчики событий оборачиваются в `contextSafe` из `useGSAP`
+4. **Только `'use client'`** — GSAP никогда не импортируется в Server Components
+5. **Разделение с Framer Motion:**
+   - GSAP → ScrollTrigger, SVG-морфинг, timeline-оркестрация, countUp
+   - Framer Motion → UI-переходы, mount/unmount, layout, жесты, hover
+
+### 5.4 PDF-генерация
+
+**Библиотека:** `@react-pdf/renderer` (клиентская, MIT)
+
+**Динамический импорт:**
+```typescript
+const PDFDocument = dynamic(() => import('./ProposalPDF'), {
+  ssr: false,
+  loading: () => <Skeleton className="h-64" />
+});
+```
+
+**Содержимое PDF-КП:**
+- Фирменный стиль (цвета #0A0A0A, #C9A96E, #722F37, шрифты)
+- Смета с формулой ценообразования
+- Описания выбранных блюд
+- QR-код для оплаты депозита (30% от суммы)
+- Контактная информация NiloV
+
+---
+## 6. Дизайн-система
+
+### 6.1 Цветовая палитра
+
+| Роль | Название | HEX | Контраст с #0A0A0A | WCAG |
+|------|----------|-----|---------------------|------|
+| Фон | Антрацитовый чёрный | `#0A0A0A` | — | — |
+| Акцент 1 | Благородное золото | `#C9A96E` | 5.8:1 | AA |
+| Акцент 2 | Бордо | `#722F37` | 3.2:1 | — |
+| Текст основной | Тёплый белый | `#F5F0EB` | 15.2:1 | AAA |
+| Текст вторичный | Благородный серый | `#8A8580` | 4.8:1 | AA |
+
+**CSS-переменные (Tailwind CSS 4):**
+```css
+@theme {
+  --color-bg: #0A0A0A;
+  --color-gold: #C9A96E;
+  --color-gold-dark: #A88B5A;
+  --color-burgundy: #722F37;
+  --color-text: #F5F0EB;
+  --color-text-muted: #8A8580;
+}
+```
+
+### 6.2 Типографика
+
+| Элемент | Шрифт | Вес | Размер | Letter-spacing | Line-height |
+|---------|-------|-----|--------|---------------|-------------|
+| H1 | Playfair Display | 400-700 | `clamp(2.5rem, 5vw, 4.5rem)` | -0.02em | 1.1 |
+| H2 | Playfair Display | 400-700 | `clamp(1.8rem, 3.5vw, 3rem)` | -0.01em | 1.2 |
+| H3 | Playfair Display | 400-600 | `clamp(1.4rem, 2.5vw, 2rem)` | -0.01em | 1.3 |
+| Body | Inter | 400-500 | `clamp(1rem, 1.2vw, 1.125rem)` | 0.01em | 1.6 |
+| Цены/метки | JetBrains Mono | 400 | `clamp(0.875rem, 1vw, 1rem)` | 0 | 1.4 |
+
+**Загрузка шрифтов:**
+```html
+<link rel="preload" href="/fonts/PlayfairDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+```
+Атрибут `font-display: swap` в `@font-face`.
+
+### 6.3 Цифровая материальность
+
+1. **SVG-текстура фона:** `feTurbulence` (baseFrequency: 0.65, numOctaves: 3), `mix-blend-mode: soft-light`, opacity 0.03-0.05
+2. **Градиенты «шлифованного металла»:** Линейный от `#C9A96E` до `#8B7340`, угол 135°, для разделителей и обводок
+3. **Depth system (тени):**
+   - Elevation-1 (карточки): `0 2px 4px rgba(0,0,0,0.1)`
+   - Elevation-2 (модальные панели): `0 8px 24px rgba(0,0,0,0.3)`
+   - Elevation-3 (полноэкранные оверлеи): `0 24px 48px rgba(0,0,0,0.5)`
+   - Золотистое свечение: `rgba(201,169,110,0.08)`
+
+### 6.4 Микро-взаимодействия
+
+- **Custom cursor:** SVG-круг 40px, stroke `#C9A96E`, `mix-blend-mode: difference`. Hover → 60px с заполнением `rgba(201,169,110,0.15)`. Отключается на `@media (pointer: coarse)`
+- **CTA-кнопки:** `background: linear-gradient(135deg, #C9A96E, #A88B5A)`, `background-size: 200% 200%`. Hover: сдвиг `background-position` за 600ms — эффект «живого золота»
+- **Hover-раскрытие карточек:** CSS `mask-image` transition за 400ms
+- **Scroll parallax:** GSAP ScrollTrigger `scrub: true`, `translateY` 20-40px
+
+### 6.5 Мобильная спецификация
+
+- **Mobile-first:** 68-72% трафика — мобильный (Яндекс.Метрика, 2025)
+- **Bottom navigation bar:** Фиксированная панель, 64px, `backdrop-filter: blur(20px)`, фон `rgba(10,10,10,0.85)`. Кнопки: «Меню», «Калькулятор», «Звонок»
+- **Touch-жесты:** Swipe между форматами (Framer Motion `drag="x"` с snap), пинч-to-zoom в лайтбоксе
+- **Skeleton loading:** `background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%)`, `background-size: 200% 100%`
+- **Performance budget (mobile):** FCP < 1.5s, LCP < 2.5s, CLS < 0.05, TBT < 200ms
+
+---
+## 7. Порядок разработки (фазы)
+
+### Phase 1: MVP (2-3 дня)
+
+**Цель:** Работающий сайт с основным конверсионным путём (5 шагов). Деплой на Vercel.
+
+**Задачи:**
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 1.1 | Инициализация проекта (Next.js 16, Tailwind CSS 4, TypeScript) | `package.json`, `next.config.ts`, `tailwind.config.ts` | Критичное |
+| 1.2 | Дизайн-система: цвета, шрифты, CSS-переменные | `app/globals.css`, `public/fonts/` | Критичное |
+| 1.3 | Layout: Header, Footer, CustomCursor, SkipLink | `components/layout/*`, `app/layout.tsx` | Критичное |
+| 1.4 | Hero-секция (видео + заголовок + CTA) | `components/sections/Hero.tsx` | Критичное |
+| 1.5 | Social Proof Bar (marquee + счётчики) | `components/sections/SocialProofBar.tsx` | Высокое |
+| 1.6 | Форматы: карточки с данными из JSON | `components/sections/FormatsSection.tsx`, `components/cards/FormatCard.tsx`, `content/formats.json` | Критичное |
+| 1.7 | Калькулятор: полный функционал | `components/calculator/*`, `hooks/useCalculator.ts`, `lib/calculator.ts` | Критичное |
+| 1.8 | PDF-генерация КП | `components/pdf/ProposalPDF.tsx`, `lib/pdf-generator.ts` | Критичное |
+| 1.9 | API: `/api/menu`, `/api/calculate`, `/api/contact` | `app/api/*/route.ts` | Критичное |
+| 1.10 | Контент: `content/formats.json`, `content/faq.json`, `content/company.json` | `content/*.json` | Критичное |
+| 1.11 | FAQ секция (аккордеон) | `components/sections/FAQSection.tsx` | Высокое |
+| 1.12 | Страницы: `/menu/[format]`, `/calculator` | `app/menu/*/page.tsx`, `app/calculator/page.tsx` | Высокое |
+| 1.13 | Базовый SEO: meta-теги, Schema.org (Organization, LocalBusiness) | `app/layout.tsx`, `app/page.tsx` | Высокое |
+| 1.14 | Деплой на Vercel, базовое тестирование | Vercel dashboard | Критичное |
+
+### Phase 2: Контент и SEO (3-5 дней)
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 2.1 | Галерея: masonry-grid, фильтрация, лайтбокс | `components/gallery/*`, `app/gallery/page.tsx`, `content/gallery.json` | Высокое |
+| 2.2 | Отзывы: карусель, данные, API | `components/sections/ReviewsSection.tsx`, `content/reviews.json`, `app/api/reviews/route.ts` | Высокое |
+| 2.3 | Страница «О компании» | `app/about/page.tsx`, `content/company.json` | Среднее |
+| 2.4 | Страница «Контакты» с формой | `app/contact/page.tsx`, `components/forms/ContactForm.tsx` | Высокое |
+| 2.5 | Cookie Consent Banner | `components/legal/CookieConsent.tsx` | Высокое |
+| 2.6 | Политика конфиденциальности, Cookie-политика | `app/privacy/page.tsx`, `app/cookies/page.tsx` | Среднее |
+| 2.7 | Расширенный SEO: Schema.org MenuItem, MenuSection, FAQPage, AggregateRating | Все страницы | Высокое |
+| 2.8 | sitemap.xml, robots.txt, Яндекс.Вебмастер | `next-sitemap.config.js` | Высокое |
+| 2.9 | Schema.org разметка на всех страницах | JSON-LD в `<script>` тегах | Среднее |
+
+### Phase 3: Admin CMS, Календарь, ЮKassa (5-7 дней)
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 3.1 | Admin: аутентификация (JWT, login page) | `app/admin/*`, `app/middleware.ts` | Высокое |
+| 3.2 | Admin: редактор меню (react-quill, drag-drop) | `components/admin/AdminMenuEditor.tsx`, `app/api/admin/menu/route.ts` | Высокое |
+| 3.3 | Admin: загрузка фото в Cloudflare R2 | `app/api/admin/upload/route.ts`, `lib/cloudflare-r2.ts` | Высокое |
+| 3.4 | Admin: редактор галереи и отзывов | `components/admin/Admin*Editor.tsx`, `app/api/admin/*/route.ts` | Среднее |
+| 3.5 | Pre-deploy validation (Zod-схемы для контента) | `npm run validate-content`, `schemas/*.ts` | Среднее |
+| 3.6 | ЮKassa: создание платежа | `app/api/payment/create/route.ts`, `lib/yookassa.ts` | Высокое |
+| 3.7 | ЮKassa: webhook обработка | `app/api/payment/webhook/route.ts` | Высокое |
+| 3.8 | Календарь: микро-календарь дегустаций | `components/calendar/TastingCalendar.tsx` | Среднее |
+| 3.9 | Календарь: макро-календарь мероприятий | `components/calendar/EventCalendar.tsx`, `app/api/availability/route.ts` | Среднее |
+| 3.10 | Telegram-уведомления (новая заявка, оплата) | `lib/telegram.ts` | Среднее |
+
+### Phase 4: Анимации и Mobile optimization (3-5 дней)
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 4.1 | GSAP: ScrollTrigger-анимации (parallax, reveal, progress-bar) | Все секции | Среднее |
+| 4.2 | GSAP: countUp-анимация для чисел | `components/ui/AnimatedCounter.tsx` | Среднее |
+| 4.3 | Framer Motion: layout-анимации галереи | `components/gallery/*` | Среднее |
+| 4.4 | Framer Motion: AnimatePresence для фильтрации | `components/sections/FormatsSection.tsx` | Среднее |
+| 4.5 | Custom cursor: полный функционал | `components/layout/CustomCursor.tsx` | Низкое |
+| 4.6 | Mobile bottom nav bar | `components/layout/MobileNav.tsx` | Высокое |
+| 4.7 | Mobile: touch-жесты, skeleton loading | Все интерактивные компоненты | Высокое |
+| 4.8 | Mobile: video optimization (720p, WebM+MP4, preload) | `components/sections/Hero.tsx` | Высокое |
+| 4.9 | SVG-текстуры на фоне | `app/globals.css`, `public/textures/` | Низкое |
+| 4.10 | Lighthouse CI (Performance > 90, Accessibility > 95) | `.github/workflows/lighthouse.yml` | Среднее |
+
+### Phase 5: Миграция на российский хостинг (1-2 дня)
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 5.1 | Docker: `Dockerfile` + `docker-compose.yml` | Root проекта | Высокое |
+| 5.2 | CI/CD: GitHub Actions → SSH-деплой на Timeweb | `.github/workflows/deploy.yml` | Высокое |
+| 5.3 | Selectel CDN настройка | DNS, конфигурация CDN | Высокое |
+| 5.4 | SSL: Let's Encrypt (Certbot) | Серверная настройка | Высокое |
+| 5.5 | Мониторинг: UptimeRobot, Sentry, Яндекс.Метрика WebVitals | Внешние сервисы | Среднее |
+| 5.6 | Финальное E2E-тестирование (Playwright) | `tests/*.spec.ts` | Высокое |
+
+### Phase 6: AI-ассистент и продвинутая аналитика (2-3 недели)
+
+| # | Задача | Файлы | Приоритет |
+|---|--------|-------|-----------|
+| 6.1 | Деплой Ollama + Qwen2.5-7B на Timeweb GPU VPS | Docker-контейнер, API | Высокое |
+| 6.2 | API: `/api/ai/recommend` — рекомендации меню | `app/api/ai/recommend/route.ts` | Высокое |
+| 6.3 | API: `/api/ai/summary` — сводка для менеджера | `app/api/ai/summary/route.ts` | Среднее |
+| 6.4 | AI-виджет на сайте: «Подберите меню с ИИ» | `components/ai/AIAssistant.tsx` | Среднее |
+| 6.5 | A/B-тестирование: конверсия с AI vs без AI | Яндекс.Метрика, логирование | Среднее |
+| 6.6 | Аналитическая панель: конверсия по форматам, CAC, ROAS | `app/admin/analytics/page.tsx` | Низкое |
+
+## 8. API Endpoints
+
+Все endpoints реализованы как Next.js Route Handlers (`app/api/*/route.ts`).
+
+### 8.1 Публичные endpoints
+
+| Endpoint | Метод | Описание | Request Body | Response |
+|----------|-------|----------|-------------|----------|
+| `/api/menu` | GET | Структурированное меню по форматам (из `/content/formats.json`) | — | `{ formats: Format[] }` |
+| `/api/menu?format=furshet` | GET | Фильтрация по формату | — | `{ format: Format }` |
+| `/api/calculate` | POST | Расчёт стоимости | `{ format, package, guests, addons[], eventDate? }` | `{ perPerson, total, volumeDiscount, earlyBookingDiscount, deposit }` |
+| `/api/availability` | GET | Доступные даты | `?type=event&month=2026-08` | `{ dates: DateSlot[] }` |
+| `/api/availability/tasting` | POST | Бронирование дегустации | `{ date, time, name, phone }` | `{ success: true, bookingId: string }` |
+| `/api/booking` | POST | Создание заявки на мероприятие | `{ format, package, guests, addons[], eventDate, name, phone, email, message? }` | `{ success: true, bookingId: string }` |
+| `/api/reviews` | GET | Отзывы клиентов (из `/content/reviews.json`) | — | `{ reviews: Review[] }` |
+| `/api/contact` | POST | Форма обратной связи | `{ name, phone, email?, eventType, eventDate?, message }` | `{ success: true }` |
+
+### 8.2 Платёжные endpoints
+
+| Endpoint | Метод | Описание | Request Body | Response |
+|----------|-------|----------|-------------|----------|
+| `/api/payment/create` | POST | Создание платежа в ЮKassa | `{ amount, description, bookingId }` | `{ confirmationUrl, paymentId }` |
+| `/api/payment/webhook` | POST | Webhook от ЮKassa | ЮKassa payload (IP verification: 185.71.76.0/27, 185.71.77.0/27) | `200 OK` |
+
+**Безопасность webhook:**
+- Верификация IP-адреса (whitelist ЮKassa)
+- Idempotency: проверка `paymentId` в БД — если уже обработан, возврат `200 OK`
+- При ошибке создания платежа: exponential backoff (1с, 2с, 4с), максимум 3 попытки
+- Fallback: при постоянной ошибке — CTA «Позвоните нам» с номером телефона
+
+### 8.3 Admin endpoints (защищены JWT-middleware)
+
+| Endpoint | Метод | Описание | Request Body | Response |
+|----------|-------|----------|-------------|----------|
+| `/api/admin/menu` | GET | Получение меню для редактирования | — | `{ formats: Format[] }` |
+| `/api/admin/menu` | POST | Сохранение изменений меню | `{ formats: Format[] }` | `{ success: true }` |
+| `/api/admin/gallery` | GET | Список фотографий галереи | — | `{ images: GalleryImage[] }` |
+| `/api/admin/gallery` | POST | Добавление фото | `FormData (file + metadata)` | `{ url: string }` |
+| `/api/admin/gallery` | DELETE | Удаление фото | `{ imageId: string }` | `{ success: true }` |
+| `/api/admin/reviews` | GET | Список отзывов | — | `{ reviews: Review[] }` |
+| `/api/admin/reviews` | POST | Добавление отзыва | `{ review: Review }` | `{ success: true }` |
+| `/api/admin/reviews` | DELETE | Удаление отзыва | `{ reviewId: string }` | `{ success: true }` |
+| `/api/admin/upload` | POST | Загрузка файла в Cloudflare R2 | `FormData (file)` | `{ url: string, key: string }` |
+
+---
+## 9. SEO и юридическое соответствие
+
+### 9.1 Schema.org разметка
+
+| Тип | Применение | Страницы |
+|-----|-----------|----------|
+| `Organization` | NiloV Catering, Санкт-Петербург | Все страницы (layout) |
+| `LocalBusiness` | Адрес, телефон, часы работы | Главная, Контакты |
+| `MenuSection` | Каждый формат мероприятия | `/menu/[format]` |
+| `MenuItem` | Каждое блюдо с ценой, аллергенами | `/menu/[format]` |
+| `AggregateRating` | Общий рейтинг из отзывов | Главная, Отзывы |
+| `Review` | Каждый отзыв | Главная, `/gallery` |
+| `FAQPage` | Вопросы и ответы | Главная (секция FAQ) |
+| `ImageObject` | Каждое изображение галереи | Галерея |
+| `Event` | Предстоящие мероприятия | О компании (при наличии) |
+
+### 9.2 Local SEO
+
+- **Google Business Profile:** отзывы, фото, Q&A
+- **Яндекс.Бизнес:** фирменный профиль с фото, часами, прайс-листом, Q&A, ссылкой на сайт
+- **2GIS:** точка на карте с рейтингом и отзывами
+- **NAP-консистентность:** Name (NiloV Catering), Address, Phone — одинаковы на всех площадках
+
+### 9.3 Ключевые запросы (СПб, 2026)
+
+- «кейтеринг Санкт-Петербург»
+- «заказать фуршет СПб»
+- «банкетное меню кейтеринг»
+- «корпоративный кейтеринг»
+- «свадебный кейтеринг СПб»
+- «кофе-брейк заказ»
+- «выездной барбекю»
+- «кейтеринг с калькулятором» (уникальный для NiloV)
+
+### 9.4 sitemap.xml и robots.txt
+
+- Генерация: `next-sitemap` (конфиг в `next-sitemap.config.js`)
+- Включает: все статические страницы + динамические `/menu/[format]` (ISR)
+- Auto-ping: Яндекс.Webmaster + Google Search Console при каждом деплое
+- `robots.txt`: разрешает всех ботов, блокирует `/api/*`, `/admin/*`
+
+### 9.5 Юридическое соответствие
+
+| Требование | Реализация | Компонент/Файл |
+|-----------|-------------|----------------|
+| **152-ФЗ (ПД)** | Чекбокс согласия в форме, политика конфиденциальности | `components/forms/ContactForm.tsx`, `app/privacy/page.tsx` |
+| **152-ФЗ (ст. 18)** | Данные хранятся на серверах в РФ | ЮKassa (РФ), Timeweb Cloud (этап 2) |
+| **54-ФЗ (чеки)** | ЮKassa автоматически отправляет чеки в ОФД | Настройка ЮKassa |
+| **ТСПУ** | Яндекс.Метрика (не Google Analytics), Cloudflare CDN (ноды в Москве) | `app/layout.tsx` |
+| **Cookie consent** | Баннер при первом визите, localStorage | `components/legal/CookieConsent.tsx` |
+| **WCAG 2.2 AA** | Контраст ≥ 4.5:1, alt-текст, focus-visible, skip-link, ARIA-метки | Все компоненты |
+
+### 9.6 WCAG 2.2: конкретные требования
+
+- Контраст текста: основной ≥ 4.5:1, крупный ≥ 3:1
+- Все изображения: обязательный `alt`-текст
+- Навигация с клавиатуры: `focus-visible` — `outline: 2px solid #C9A96E`
+- Skip-link: «Перейти к основному содержанию» (скрыт, видим при focus)
+- ARIA-метки на всех интерактивных элементах (калькулятор, аккордеон, карусель)
+- Нет `alert()`/`confirm()` — только toast-уведомления
+- Reduced motion: `@media (prefers-reduced-motion: reduce)` отключает GSAP/Framer анимации
+
+---
+
+### 9.6 Таблица соответствия российскому законодательству (IT-инфраструктура)
+
+| Слой | Запрещено в РФ (с 2025-2026) | Допустимая альтернатива NiloV | Закон / основание |
+|------|------------------------------|------------------------------|-------------------|
+| **Хостинг** | AWS, Azure, Google Cloud для ПДн | Timeweb Cloud, Selectel (Phase 5) | 152-ФЗ ст.18 (локализация данных) |
+| **База данных** | MongoDB Atlas, AWS RDS, Supabase | PostgreSQL на VPS в РФ / JSON-файлы (Phase 1) | 152-ФЗ (запрет трансграничного хранения ПДн с 01.07.2025) |
+| **Авторизация** | «Войти через Google», «Войти через Facebook» | Email+пароль (JWT), Сбер ID, ЕСИА | Прямой запрет иностранных сервисов авторизации (2026) |
+| **Аналитика** | Google Analytics, Mixpanel | Яндекс.Метрика (бесплатно) | 152-ФЗ, ТСПУ |
+| **CDN** | Cloudflare (зарубежные ноды) | Selectel CDN, Timeweb CDN (российские ноды, TTFB < 30ms) | ТСПУ, суверенный интернет |
+| **LLM / AI** | OpenAI, Anthropic, Google Gemini API | Qwen2.5/Llama через Ollama (локально), GigaChat (Сбер) | 152-ФЗ (запрет трансграничной обработки ПДн, включая обучение моделей) |
+| **Платежи** | Stripe, PayPal | ЮKassa (РФ, 54-ФЗ) | 54-ФЗ (кассовые чеки через ОФД) |
+| **Картины** | Google Fonts (запрещён с 2026) | Локальные копии шрифтов в `/public/fonts/` + `@font-face` | Блокировки Google в РФ |
+| **Карты** | Google Maps | Яндекс.Карты, 2GIS (embed) | Блокировки Google в РФ |
+| **Мессенджеры** | WhatsApp (-owned by Meta, блокируется) | Telegram, VK Messages | Блокировка Meta в РФ |
+
+**Стратегия миграции (Phase 5):** Vercel используется как временный хостинг для Phase 1-4. Все ПДн хранятся в JSON-файлах (не в БД на Vercel). При миграции на Timeweb Cloud (Phase 5) данные переносятся на российские серверы. Cloudflare R2 хранит только медиа (фото, видео) — не ПДн.
+
+## 10. KPI и метрики
+
+### 10.1 Целевые показатели
+
+| Метрика | Текущее (оценка) | Цель (3 мес.) | Цель (6 мес.) | Метод измерения |
+|---------|-------------------|---------------|---------------|-----------------|
+| Конверсия «визит → заявка» | 1.5% (отраслевой средний) | 3.5% | 5% | Яндекс.Метрика (цели) |
+| Среднее время на сайте | 45 сек | 2 мин 30 сек | 3 мин | Яндекс.Метрика |
+| Bounce rate | 65% | 45% | 35% | Яндекс.Метрика |
+| Мобильная конверсия | 0.8% | 2.5% | 4% | Яндекс.Метрика (сегмент) |
+| Доля КП из калькулятора | 0% (нет калькулятора) | 30% заявок | 50% заявок | Логирование `POST /api/calculate` |
+| Конверсия «КП → оплата депозита» | 0% (нет онлайн-оплаты) | 15% | 25% | ЮKassa dashboard |
+
+### 10.2 Performance-метрики (Lighthouse)
+
+| Метрика | Порог (MVP) | Цель (Phase 4) | Инструмент |
+|---------|-------------|----------------|------------|
+| Performance | > 80 | > 90 | Lighthouse CI |
+| Accessibility | > 90 | > 95 | Lighthouse CI |
+| Best Practices | > 85 | > 90 | Lighthouse CI |
+| FCP (mobile) | < 2.0s | < 1.5s | Яндекс.Метрика WebVitals |
+| LCP (mobile) | < 3.0s | < 2.5s | Яндекс.Метрика WebVitals |
+| CLS | < 0.1 | < 0.05 | Яндекс.Метрика WebVitals |
+| TBT | < 300ms | < 200ms | Яндекс.Метрика WebVitals |
+| INP | < 200ms | < 150ms | Яндекс.Метрика WebVitals |
+
+### 10.3 Бизнес-метрики
+
+| Метрика | Описание | Источник данных |
+|---------|----------|-----------------|
+| Средний чек заказа | Средняя стоимость мероприятия | ЮKassa + CRM |
+| CAC (стоимость привлечения) | Яндекс.Директ / SEO расходы ÷ количество заявок | Яндекс.Директ + Метрика |
+| ROAS | Выручка от сайта ÷ расходы на маркетинг | Бухгалтерия |
+| Доля онлайн-заявок vs телефонных | Соотношение self-service к ручным заявкам | CRM |
+| Время от заявки до звонка менеджера | SLA обработки | CRM |
+
+### 10.4 Мониторинг
+
+| Инструмент | Назначение | Стоимость |
+|-----------|-----------|-----------|
+| UptimeRobot | Uptime-мониторинг (5 мониторов, 1-мин интервал) | Бесплатно |
+| Яндекс.Метрика | Real User Monitoring, WebVitals, конверсии | Бесплатно |
+| Sentry | Error tracking, sourcemaps | 5000 events/month (бесплатно) |
+| Lighthouse CI | Автоматический аудит при pull request | Бесплатно (GitHub Action) |
+
+### 10.5 E2E-тестирование (Playwright)
+
+Критические пользовательские пути:
+
+1. **Главная → Форматы → Калькулятор → PDF-КП**
+   - Открыть главную
+   - Кликнуть «Выбрать формат»
+   - Выбрать «Банкет»
+   - Кликнуть «Рассчитать стоимость»
+   - Выбрать пакет Premium
+   - Установить 80 гостей
+   - Добавить «Сомелье»
+   - Проверить: итоговая сумма корректна
+   - Кликнуть «Получить КП»
+   - Проверить: PDF скачан
+
+2. **Форма обратной связи**
+   - Открыть `/contact`
+   - Заполнить все поля
+   - Отправить
+   - Проверить: toast «Отправлено»
+
+3. **Галерея с фильтрацией**
+   - Открыть `/gallery`
+   - Выбрать фильтр «Фуршет»
+   - Проверить: отображаются только фото фуршетов
+   - Открыть лайтбокс
+   - Проверить: закрытие по Escape
+
+---
+## Приложение А: Маркетинговые каналы
+
+| Канал | Используют конкуренты | Доля рынка | Рекомендация NiloV |
+|-------|----------------------|------------|---------------------|
+| Restoclub.ru | 29/46 компаний СПб | ~80% | Обязательное присутствие |
+| CaterMe.ru | Большинство | ~60% | Полный каталог с ценами |
+| VK | Комильфо, Caramel, другие | ~70% | Активная группа |
+| Telegram | Единицы | ~15% | **Опережающий канал** — NiloV будет первым |
+| Яндекс.Бизнес | ~50% | ~50% | Обязательное: фото, часы, прайс, Q&A |
+| Instagram (VPN) | Комильфо, Concord | ~40% | Профиль с дисклеймером |
+| Яндекс.Дзен | Единицы | ~5% | **Опережающий канал** — статьи о кейтеринге |
+
+## Приложение Б: Риски и угрозы
+
+| Риск | Уровень | Стратегия |
+|------|---------|-----------|
+| GURMADE Catering (ближайший конкурент) | Высокий | Технологические преимущества (калькулятор, PDF, оплата) невозможно воспроизвести |
+| Агрегаторы (CaterMe, RevelTime) | Средний | Присутствие на агрегаторах + SEO-доминирование |
+| Федеральные игроки (Edelweiss, Кросс) | Средний | Фокус на локальное SEO + уникальный портфель (Эрмитаж) |
+| Tilda-конкуренты с редизайном | Низкий | Технологические фичи не воспроизводимы на Tilda |
+| Блокировка Vercel в РФ | Средний | Плановая миграция на Timeweb (Phase 5) |
+
+---
+
+> **Итого:** 10 разделов, 5 фаз разработки, 10 публичных + 11 admin API endpoints, 6 форматов мероприятий, 4 доп. опции, 3 уровня скидок. Конкурентное преимущество: единственный кейтеринг в РФ с онлайн-калькулятором, клиентской PDF-генерацией КП и онлайн-оплатой депозита.
+
+| Авторизация через иностранные сервисы | Высокий (штрафы с 2026) | Только email+пароль (JWT) или Сбер ID, никаких Google/Facebook login |
+| Трансграничная передача ПДн | Высокий (штрафы до 18 млн ₽) | Vercel (Phase 1-4) не хранит ПДн — только JSON-контент. Миграция на Timeweb (Phase 5) |
+| Блокировка Google Fonts в РФ | Средний | Локальные копии шрифтов в `/public/fonts/` уже предусмотрены |
+| LLM галлюцинации (цены, меню) | Средний | Цены только из `formats.json`, LLM-рекомендации с дисклеймером |
+
+---
 
 
 > **Итого V3:** 10 разделов, 6 фаз разработки (включая Phase 6 AI), 10 публичных + 11 admin API endpoints, 6 форматов мероприятий, 4 доп. опции, 3 уровня скидок. Новое по сравнению с V2: обоснование гибридной бизнес-модели, CRM-интеграция, таблица РФ-регулирования IT-инфраструктуры, LLM-стратегия (Qwen2.5/GigaChat), анализ рынка дизайна РФ (74 компании, 60% Tilda). Конкурентное преимущество: единственный кейтеринг в РФ с онлайн-калькулятором, клиентской PDF-генерацией КП, онлайн-оплатой депозита и Awwwards SOTD дизайном.
