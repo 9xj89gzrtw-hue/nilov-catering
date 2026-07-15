@@ -1,28 +1,40 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { ChevronRight, Home } from "lucide-react";
 
 interface BreadcrumbItem {
   label: string;
-  href?: string;
+  href: string;
 }
 
-export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+interface BreadcrumbsProps {
+  items: BreadcrumbItem[];
+}
+
+export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Хлебные крошки">
-      <ol className="flex items-center gap-1.5 text-xs text-cream-muted">
+    <nav aria-label="Навигация по сайту" className="py-4">
+      <ol className="flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
         <li>
-          <Link href="/" className="hover:text-cream transition-colors duration-200">
-            Главная
+          <Link
+            href="/"
+            className="flex items-center gap-1 hover:text-foreground transition-colors"
+          >
+            <Home className="w-3.5 h-3.5" />
+            <span>Главная</span>
           </Link>
         </li>
         {items.map((item, i) => (
-          <li key={i} className="flex items-center gap-1.5">
-            <span aria-hidden="true">/</span>
-            {item.href ? (
-              <Link href={item.href} className="hover:text-cream transition-colors duration-200">
+          <li key={item.href} className="flex items-center gap-1.5">
+            <ChevronRight className="w-3.5 h-3.5" />
+            {i === items.length - 1 ? (
+              <span className="text-foreground font-medium">{item.label}</span>
+            ) : (
+              <Link
+                href={item.href}
+                className="hover:text-foreground transition-colors"
+              >
                 {item.label}
               </Link>
-            ) : (
-              <span className="text-cream/80">{item.label}</span>
             )}
           </li>
         ))}
