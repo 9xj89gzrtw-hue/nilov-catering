@@ -98,14 +98,24 @@ export default function MenuPageClient() {
                       aria-label={item.imageAlt || item.name}
                     />
                   ) : (
-                    <Image
-                      src={item.image}
-                      alt={item.imageAlt || item.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-110"
-                      loading="lazy"
-                    />
+                    <>
+                      <Image
+                        src={item.image}
+                        alt={item.imageAlt || item.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-115 animate-kenburns-slow"
+                        loading="lazy"
+                      />
+                      {/* Steam/particle overlay on hover */}
+                      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <div className="absolute -top-1/4 left-1/4 w-1 h-1/2 bg-gradient-to-t from-transparent via-white/8 to-transparent blur-md animate-steam-rise-1" />
+                        <div className="absolute -top-1/4 left-1/2 w-1 h-1/2 bg-gradient-to-t from-transparent via-white/6 to-transparent blur-md animate-steam-rise-2" />
+                        <div className="absolute -top-1/4 left-3/4 w-1 h-1/2 bg-gradient-to-t from-transparent via-white/7 to-transparent blur-md animate-steam-rise-3" />
+                      </div>
+                      {/* Warm glow pulse */}
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-gold/0 via-gold/0 to-gold/0 group-hover:from-gold/8 group-hover:to-transparent transition-all duration-700" />
+                    </>
                   )}
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
