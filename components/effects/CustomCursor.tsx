@@ -18,6 +18,7 @@ export default function CustomCursor() {
     // Only show on devices with fine pointer (mouse)
     const mq = window.matchMedia('(pointer: fine)');
     if (!mq.matches) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
 
     const onMove = (e: MouseEvent) => {

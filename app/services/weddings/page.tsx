@@ -93,7 +93,7 @@ export default function WeddingsPage() {
               <h2 className="font-heading text-3xl font-bold text-center mb-12">Тарифы</h2>
             </AnimatedSection>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {pricingPackages.map((pkg, i) => (
+              {pricingPackages.filter((pkg) => pkg.format === "banket").map((pkg, i) => (
                 <AnimatedSection key={pkg.id} delay={i * 0.1}>
                   <Card className={`h-full relative ${pkg.isPopular ? "border-accent" : ""}`}>
                     {pkg.isPopular && (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, createContext, useContext, useCallback, type ReactNode } from 'react';
+import { useEffect, useRef, useState, createContext, useContext, useCallback, type ReactNode } from 'react';
 import Lenis from 'lenis';
 
 interface ScrollContextType {
@@ -14,6 +14,7 @@ export const useSmoothScroll = () => useContext(ScrollContext);
 
 export default function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -24,6 +25,8 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
     });
 
     lenisRef.current = lenis;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLenisInstance(lenis);
 
     function raf(time: number) {
       lenis.raf(time);
@@ -51,6 +54,7 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
     return () => {
       document.removeEventListener('click', handleAnchorClick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
@@ -59,7 +63,7 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
   }, []);
 
   return (
-    <ScrollContext.Provider value={{ lenis: lenisRef.current, scrollTo }}>
+    <ScrollContext.Provider value={{ lenis: lenisInstance, scrollTo }}>
       {children}
     </ScrollContext.Provider>
   );
