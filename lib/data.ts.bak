@@ -111,37 +111,124 @@ export interface NavItem {
   href: string;
 }
 
+// Menu item images by category — real food photography from Unsplash
+const MENU_IMGS = {
+  kanape: [
+    "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1598103442097-8b74f5352c4e?w=600&h=450&fit=crop",
+  ],
+  salaty: [
+    "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1540148426947-6d6f68c5c4ed?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1608032077018-c9aad9565d29?w=600&h=450&fit=crop",
+  ],
+  goryachee: [
+    "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1432139509613-5c4255a1d197?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1558030006-450675393462?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=600&h=450&fit=crop",
+  ],
+  deserty: [
+    "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1488477304112-4944851de03d?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=450&fit=crop",
+  ],
+  napitki: [
+    "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1497534446932-c925b458314e?w=600&h=450&fit=crop",
+  ],
+  sezonnye: [
+    "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1547928576-b822bc410bdf?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1543352634-99a5d50ae78e?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1512058564366-18575be11754?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=450&fit=crop",
+  ],
+  bbq: [
+    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1512838163236-94e2b54f53d1?w=600&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1558030006-450675393462?w=600&h=450&fit=crop",
+  ],
+  // legacy aliases kept for backwards compatibility with older consumers
+  zakuski: [
+    "https://images.unsplash.com/photo-1541014741259-de529411b96a?w=600&h=450&fit=crop",
+  ],
+  garniry: [
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop",
+  ],
+  "set-meny": [
+    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=450&fit=crop",
+  ],
+};
+
+function menuImg(category: string, index: number): string {
+  const imgs = (MENU_IMGS as Record<string, string[]>)[category] || MENU_IMGS.zakuski;
+  return imgs[index % imgs.length];
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _IMG_WIDE = "/images/hero/catering-hero.jpg";
+const _IMG_WIDE = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop";
 
 const AVATARS = [
-  "/images/testimonials/avatar1.jpg",
-  "/images/testimonials/avatar2.jpg",
-  "/images/testimonials/avatar3.jpg",
-  "/images/testimonials/avatar4.jpg",
-  "/images/testimonials/avatar5.jpg",
-  "/images/testimonials/avatar6.jpg",
-  "/images/testimonials/avatar7.jpg",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&h=100&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop&crop=face",
 ];
 
 const GALLERY_IMGS = [
-  "/images/gallery/wedding-banquet.jpg",
-  "/images/gallery/corporate-furshet.jpg",
-  "/images/gallery/servirovka.jpg",
-  "/images/gallery/dessert-table.jpg",
-  "/images/gallery/show-station.jpg",
-  "/images/gallery/banket.jpg",
-  "/images/gallery/furshet-menu.jpg",
-  "/images/gallery/cocktail.jpg",
-  "/images/gallery/kids.jpg",
+  "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&h=1000&fit=crop",
+  "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=800&fit=crop",
+  "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=700&fit=crop",
+  "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=900&fit=crop",
+  "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=800&fit=crop",
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=700&fit=crop",
 ];
 
 const TEAM_PHOTOS = [
-  "/images/team/chef-nilov.jpg",
-  "/images/team/art-director.jpg",
-  "/images/team/manager.jpg",
-  "/images/team/sommelier.jpg",
+  "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&h=500&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=500&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=500&fit=crop&crop=face",
 ];
 
 export const menuItems: MenuItem[] = [
@@ -160,7 +247,7 @@ export const menuItems: MenuItem[] = [
     proteins: 5,
     fats: 4,
     carbs: 4,
-    image: "/images/menu/kanape/k1.jpg",
+    image: menuImg("kanape", 0),
   },
   {
     id: "k2",
@@ -176,7 +263,7 @@ export const menuItems: MenuItem[] = [
     proteins: 5,
     fats: 5,
     carbs: 4,
-    image: "/images/menu/kanape/k2.jpg",
+    image: menuImg("kanape", 1),
   },
   {
     id: "k3",
@@ -191,7 +278,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 5,
     carbs: 6,
-    image: "/images/menu/kanape/k3.jpg",
+    image: menuImg("kanape", 2),
   },
   {
     id: "k4",
@@ -206,7 +293,7 @@ export const menuItems: MenuItem[] = [
     proteins: 5,
     fats: 4,
     carbs: 4,
-    image: "/images/menu/kanape/k4.jpg",
+    image: menuImg("kanape", 3),
   },
   {
     id: "k5",
@@ -221,7 +308,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 4,
     carbs: 7,
-    image: "/images/menu/kanape/k5.jpg",
+    image: menuImg("kanape", 4),
   },
   {
     id: "k6",
@@ -236,7 +323,7 @@ export const menuItems: MenuItem[] = [
     proteins: 5,
     fats: 4,
     carbs: 5,
-    image: "/images/menu/kanape/k6.jpg",
+    image: menuImg("kanape", 5),
   },
   {
     id: "k7",
@@ -252,7 +339,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 4,
     carbs: 14,
-    image: "/images/menu/kanape/k7.jpg",
+    image: menuImg("kanape", 6),
   },
   {
     id: "k8",
@@ -268,7 +355,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 6,
     carbs: 7,
-    image: "/images/menu/kanape/k8.jpg",
+    image: menuImg("kanape", 7),
   },
   {
     id: "k9",
@@ -284,7 +371,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 6,
     carbs: 4,
-    image: "/images/menu/kanape/k9.jpg",
+    image: menuImg("kanape", 8),
   },
 
   // ===== Салаты (9) =====
@@ -302,7 +389,7 @@ export const menuItems: MenuItem[] = [
     proteins: 22,
     fats: 14,
     carbs: 8,
-    image: "/images/menu/salaty/s1.jpg",
+    image: menuImg("salaty", 0),
   },
   {
     id: "s2",
@@ -318,7 +405,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 14,
     carbs: 10,
-    image: "/images/menu/salaty/s2.jpg",
+    image: menuImg("salaty", 1),
   },
   {
     id: "s3",
@@ -334,7 +421,7 @@ export const menuItems: MenuItem[] = [
     proteins: 18,
     fats: 18,
     carbs: 6,
-    image: "/images/menu/salaty/s3.jpg",
+    image: menuImg("salaty", 2),
   },
   {
     id: "s4",
@@ -349,7 +436,7 @@ export const menuItems: MenuItem[] = [
     proteins: 10,
     fats: 14,
     carbs: 14,
-    image: "/images/menu/salaty/s4.jpg",
+    image: menuImg("salaty", 3),
   },
   {
     id: "s5",
@@ -365,7 +452,7 @@ export const menuItems: MenuItem[] = [
     proteins: 10,
     fats: 14,
     carbs: 8,
-    image: "/images/menu/salaty/s5.jpg",
+    image: menuImg("salaty", 4),
   },
   {
     id: "s6",
@@ -380,7 +467,7 @@ export const menuItems: MenuItem[] = [
     proteins: 18,
     fats: 12,
     carbs: 10,
-    image: "/images/menu/salaty/s6.jpg",
+    image: menuImg("salaty", 5),
   },
   {
     id: "s7",
@@ -395,7 +482,7 @@ export const menuItems: MenuItem[] = [
     proteins: 22,
     fats: 14,
     carbs: 6,
-    image: "/images/menu/salaty/s7.jpg",
+    image: menuImg("salaty", 6),
   },
   {
     id: "s8",
@@ -410,7 +497,7 @@ export const menuItems: MenuItem[] = [
     proteins: 10,
     fats: 14,
     carbs: 14,
-    image: "/images/menu/salaty/s8.jpg",
+    image: menuImg("salaty", 7),
   },
   {
     id: "s9",
@@ -427,7 +514,7 @@ export const menuItems: MenuItem[] = [
     proteins: 8,
     fats: 14,
     carbs: 12,
-    image: "/images/menu/salaty/s9.jpg",
+    image: menuImg("salaty", 8),
   },
 
   // ===== Горячие блюда (8) =====
@@ -445,7 +532,7 @@ export const menuItems: MenuItem[] = [
     proteins: 32,
     fats: 14,
     carbs: 4,
-    image: "/images/menu/goryachee/h1.jpg",
+    image: menuImg("goryachee", 0),
   },
   {
     id: "h2",
@@ -461,7 +548,7 @@ export const menuItems: MenuItem[] = [
     proteins: 38,
     fats: 18,
     carbs: 6,
-    image: "/images/menu/goryachee/h2.jpg",
+    image: menuImg("goryachee", 1),
   },
   {
     id: "h3",
@@ -476,7 +563,7 @@ export const menuItems: MenuItem[] = [
     proteins: 32,
     fats: 14,
     carbs: 8,
-    image: "/images/menu/goryachee/h3.jpg",
+    image: menuImg("goryachee", 2),
   },
   {
     id: "h4",
@@ -492,7 +579,7 @@ export const menuItems: MenuItem[] = [
     proteins: 30,
     fats: 22,
     carbs: 6,
-    image: "/images/menu/goryachee/h4.jpg",
+    image: menuImg("goryachee", 3),
   },
   {
     id: "h5",
@@ -507,7 +594,7 @@ export const menuItems: MenuItem[] = [
     proteins: 32,
     fats: 18,
     carbs: 14,
-    image: "/images/menu/goryachee/h5.jpg",
+    image: menuImg("goryachee", 4),
   },
   {
     id: "h6",
@@ -522,7 +609,7 @@ export const menuItems: MenuItem[] = [
     proteins: 30,
     fats: 13,
     carbs: 6,
-    image: "/images/menu/goryachee/h6.jpg",
+    image: menuImg("goryachee", 5),
   },
   {
     id: "h7",
@@ -537,7 +624,7 @@ export const menuItems: MenuItem[] = [
     proteins: 28,
     fats: 18,
     carbs: 10,
-    image: "/images/menu/goryachee/h7.jpg",
+    image: menuImg("goryachee", 6),
   },
   {
     id: "h8",
@@ -554,7 +641,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 8,
     carbs: 16,
-    image: "/images/menu/goryachee/h8.jpg",
+    image: menuImg("goryachee", 7),
   },
 
   // ===== Десерты (9) =====
@@ -572,7 +659,7 @@ export const menuItems: MenuItem[] = [
     proteins: 7,
     fats: 22,
     carbs: 30,
-    image: "/images/menu/deserty/d1.jpg",
+    image: menuImg("deserty", 0),
   },
   {
     id: "d2",
@@ -588,7 +675,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 20,
     carbs: 30,
-    image: "/images/menu/deserty/d2.jpg",
+    image: menuImg("deserty", 1),
   },
   {
     id: "d3",
@@ -603,7 +690,7 @@ export const menuItems: MenuItem[] = [
     proteins: 5,
     fats: 12,
     carbs: 24,
-    image: "/images/menu/deserty/d3.jpg",
+    image: menuImg("deserty", 2),
   },
   {
     id: "d4",
@@ -618,7 +705,7 @@ export const menuItems: MenuItem[] = [
     proteins: 7,
     fats: 18,
     carbs: 48,
-    image: "/images/menu/deserty/d4.jpg",
+    image: menuImg("deserty", 3),
   },
   {
     id: "d5",
@@ -635,7 +722,7 @@ export const menuItems: MenuItem[] = [
     proteins: 2,
     fats: 1,
     carbs: 26,
-    image: "/images/menu/deserty/d5.jpg",
+    image: menuImg("deserty", 4),
   },
   {
     id: "d6",
@@ -651,7 +738,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 24,
     carbs: 36,
-    image: "/images/menu/deserty/d6.jpg",
+    image: menuImg("deserty", 5),
   },
   {
     id: "d7",
@@ -666,7 +753,7 @@ export const menuItems: MenuItem[] = [
     proteins: 8,
     fats: 14,
     carbs: 48,
-    image: "/images/menu/deserty/d7.jpg",
+    image: menuImg("deserty", 6),
   },
   {
     id: "d8",
@@ -681,7 +768,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 18,
     carbs: 38,
-    image: "/images/menu/deserty/d8.jpg",
+    image: menuImg("deserty", 7),
   },
   {
     id: "d9",
@@ -697,7 +784,7 @@ export const menuItems: MenuItem[] = [
     proteins: 3,
     fats: 12,
     carbs: 22,
-    image: "/images/menu/deserty/d9.jpg",
+    image: menuImg("deserty", 8),
   },
 
   // ===== Напитки (4, безалкогольные) =====
@@ -716,7 +803,7 @@ export const menuItems: MenuItem[] = [
     proteins: 0,
     fats: 0,
     carbs: 20,
-    image: "/images/menu/napitki/n1.jpg",
+    image: menuImg("napitki", 0),
   },
   {
     id: "n2",
@@ -734,7 +821,7 @@ export const menuItems: MenuItem[] = [
     proteins: 0,
     fats: 0,
     carbs: 22,
-    image: "/images/menu/napitki/n2.jpg",
+    image: menuImg("napitki", 1),
   },
   {
     id: "n3",
@@ -751,7 +838,7 @@ export const menuItems: MenuItem[] = [
     proteins: 0,
     fats: 0,
     carbs: 1,
-    image: "/images/menu/napitki/n3.jpg",
+    image: menuImg("napitki", 2),
   },
   {
     id: "n4",
@@ -768,7 +855,7 @@ export const menuItems: MenuItem[] = [
     proteins: 0,
     fats: 0,
     carbs: 0,
-    image: "/images/menu/napitki/n4.jpg",
+    image: menuImg("napitki", 3),
   },
 
   // ===== Сезонные хиты (7) =====
@@ -787,7 +874,7 @@ export const menuItems: MenuItem[] = [
     proteins: 8,
     fats: 6,
     carbs: 10,
-    image: "/images/menu/sezonnye/se1.jpg",
+    image: menuImg("sezonnye", 0),
   },
   {
     id: "se2",
@@ -804,7 +891,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 7,
     carbs: 10,
-    image: "/images/menu/sezonnye/se2.jpg",
+    image: menuImg("sezonnye", 1),
   },
   {
     id: "se3",
@@ -821,7 +908,7 @@ export const menuItems: MenuItem[] = [
     proteins: 6,
     fats: 4,
     carbs: 6,
-    image: "/images/menu/sezonnye/se3.jpg",
+    image: menuImg("sezonnye", 2),
   },
   {
     id: "se4",
@@ -839,7 +926,7 @@ export const menuItems: MenuItem[] = [
     proteins: 22,
     fats: 14,
     carbs: 28,
-    image: "/images/menu/sezonnye/se4.jpg",
+    image: menuImg("sezonnye", 3),
   },
   {
     id: "se5",
@@ -857,7 +944,7 @@ export const menuItems: MenuItem[] = [
     proteins: 14,
     fats: 10,
     carbs: 32,
-    image: "/images/menu/sezonnye/se5.jpg",
+    image: menuImg("sezonnye", 4),
   },
   {
     id: "se6",
@@ -874,7 +961,7 @@ export const menuItems: MenuItem[] = [
     proteins: 9,
     fats: 8,
     carbs: 18,
-    image: "/images/menu/sezonnye/se6.jpg",
+    image: menuImg("sezonnye", 5),
   },
   {
     id: "se7",
@@ -890,7 +977,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 12,
     carbs: 14,
-    image: "/images/menu/sezonnye/se7.jpg",
+    image: menuImg("sezonnye", 6),
   },
 
   // ===== BBQ и гриль (5) =====
@@ -908,7 +995,7 @@ export const menuItems: MenuItem[] = [
     proteins: 32,
     fats: 28,
     carbs: 6,
-    image: "/images/menu/bbq/b1.jpg",
+    image: menuImg("bbq", 0),
   },
   {
     id: "b2",
@@ -923,7 +1010,7 @@ export const menuItems: MenuItem[] = [
     proteins: 32,
     fats: 12,
     carbs: 6,
-    image: "/images/menu/bbq/b2.jpg",
+    image: menuImg("bbq", 1),
   },
   {
     id: "b3",
@@ -938,7 +1025,7 @@ export const menuItems: MenuItem[] = [
     proteins: 28,
     fats: 32,
     carbs: 12,
-    image: "/images/menu/bbq/b3.jpg",
+    image: menuImg("bbq", 2),
   },
   {
     id: "b4",
@@ -955,7 +1042,7 @@ export const menuItems: MenuItem[] = [
     proteins: 4,
     fats: 8,
     carbs: 14,
-    image: "/images/menu/bbq/b4.jpg",
+    image: menuImg("bbq", 3),
   },
   {
     id: "b5",
@@ -971,7 +1058,7 @@ export const menuItems: MenuItem[] = [
     proteins: 48,
     fats: 48,
     carbs: 2,
-    image: "/images/menu/bbq/b5.jpg",
+    image: menuImg("bbq", 4),
   },
 ];
 
@@ -1422,7 +1509,7 @@ export const services: Service[] = [
     slug: "weddings",
     title: "Свадебный кейтеринг",
     description: "Создаём гастрономическое настроение для самого важного дня. От изысканных канапе до многосоставного банкета — каждое блюдо станет украшением вашего торжества.",
-    image: "/images/gallery/wedding-banquet.jpg",
+    image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=800&fit=crop",
     features: [
       "Дегустация меню перед мероприятием",
       "Индивидуальное проектирование меню",
@@ -1437,7 +1524,7 @@ export const services: Service[] = [
     slug: "corporate",
     title: "Корпоративный кейтеринг",
     description: "Организуем питание для деловых мероприятий любого масштаба — от офисных фуршетов до масштабных конференций и корпоративов.",
-    image: "/images/gallery/corporate-furshet.jpg",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=800&fit=crop",
     features: [
       "Бизнес-ланчи и кофе-брейки",
       "Фуршет для конференций",
@@ -1452,7 +1539,7 @@ export const services: Service[] = [
     slug: "private",
     title: "Частные мероприятия",
     description: "Дни рождения, юбилеи, семейные праздники и романтические ужины. Превратим ваш праздник в незабываемое гастрономическое путешествие.",
-    image: "/images/gallery/dessert-table.jpg",
+    image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&h=800&fit=crop",
     features: [
       "Тематические меню",
       "Кейтеринг на дому",
@@ -1467,7 +1554,7 @@ export const services: Service[] = [
     slug: "buffets",
     title: "Фуршеты",
     description: "Коктейльные приёмы, презентации и лёгкие форматы. Элегантные канапе, шоу-станции и авторские коктейли для любой аудитории.",
-    image: "/images/gallery/show-station.jpg",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop",
     features: [
       "Канапе и мини-закуски",
       "Шоу-станции на выбор",
@@ -1557,7 +1644,7 @@ export const blogPosts: BlogPost[] = [
 
 6. Комфорт-фуд премиум-класса
 Бургеры с трюфелем, ремесленные пиццы, авторские рамены —Simple блюда с премиальными ингредиентами и безупречным исполнением.`,
-    image: "/images/gallery/banket.jpg",
+    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
     author: "Николай Нилов",
     date: "2026-06-15",
     category: "Тренды",
@@ -1583,7 +1670,7 @@ export const blogPosts: BlogPost[] = [
 
 Напитки
 Рассчитывайте 2-3 бокала на человека в первый час и 1-2 бокала в последующие часы. Обязательно предусмотрите безалкогольные варианты.`,
-    image: "/images/gallery/furshet-menu.jpg",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop",
     author: "Мария Кузнецова",
     date: "2026-05-20",
     category: "Гайды",
@@ -1624,7 +1711,7 @@ export const blogPosts: BlogPost[] = [
 
 10. Экономия на напитках
 Гармонично подобранные напитки завершают гастрономическое впечатление.`,
-    image: "/images/gallery/cocktail.jpg",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
     author: "Андрей Соколов",
     date: "2026-04-10",
     category: "Советы",
@@ -1647,7 +1734,7 @@ export const blogPosts: BlogPost[] = [
 
 Летние супы
 Гаспачо, окрошка на квасе с треской, тайский том-ям — холодные супы спасают в жару и придают разнообразие фуршету.`,
-    image: "/images/gallery/kids.jpg",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop",
     author: "Николай Нилов",
     date: "2026-07-01",
     category: "Гастрономия",
@@ -1679,7 +1766,7 @@ export const blogPosts: BlogPost[] = [
 
 7. Упаковка с заботой
 Коробочки с канапе на вынос — гость уходит с приятным впечатлением и вашим брендом в руках.`,
-    image: "/images/gallery/servirovka.jpg",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
     author: "Мария Кузнецова",
     date: "2026-06-22",
     category: "Гайды",
@@ -1705,7 +1792,7 @@ export const blogPosts: BlogPost[] = [
 
 Без сахара
 Стевия, эритрит, monk fruit — десерты без сахара стали полноценными по вкусу и появились в каждом нашем меню.`,
-    image: "/images/gallery/wedding-banquet.jpg",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=600&fit=crop",
     author: "Николай Нилов",
     date: "2026-06-08",
     category: "Гастрономия",

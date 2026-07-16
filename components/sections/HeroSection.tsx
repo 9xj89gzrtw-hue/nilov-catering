@@ -32,7 +32,7 @@ export default function HeroSection() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=85&auto=format"
+          src="/images/hero/catering-hero.jpg"
           alt=""
           className="w-full h-[120%] object-cover"
         />
