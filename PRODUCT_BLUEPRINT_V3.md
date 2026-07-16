@@ -1,11 +1,12 @@
 # Продукт-блупринт NiloV Catering v3
 
-> **Версия:** 3.3 | **Дата:** июль 2026 | **Статус:** активная разработка
+> **Версия:** 3.4 | **Дата:** июль 2026 | **Статус:** активная разработка
 > **Источник:** V2.1 + аналитическая статья (гибридная модель, РФ-регулирование, CRM, LLM)
 > **Изменения от V2:** +обоснование гибридной модели, +CRM-интеграция, +таблица РФ-регулирования, +LLM-стратегия, +Phase 6 AI, +анализ рынка дизайна РФ
 > **Изменения V3.0 → V3.1:** +услуга «Индивидуальное меню по запросу» (§1.7.1, §2.7), +услуга «Выезд шефа / private chef» (§1.7.2, §2.8), +форматы/пакеты (§2.1.3, §3.2), +конкурентные преимущества (§4.2, §4.3), +Schema.org Service/Offer (§9.1), +SEO-ключи (§9.3)
 > **Изменения V3.1 → V3.2:** +услуга «Сомелье/Миксолог на дом» (§1.7.3, §2.9), §1.7.2 официанты теперь опция (не «не входит»), +западные тренды после панели 10 критиков (§4.2, §4.3), вердикты по gift cards/pop-up/tasting box/pantry
 > **Изменения V3.2 → V3.3:** +глава 11 «Медиа-контент: источники и конвейер» (откуда брать меню, фото, видео), +источники медиа для всех 51 блюда + hero/gallery/sections, +CSS-эффекты как замена video-gen для 48 блюд, +масштабирование видео
+> **Изменения V3.3 → V3.4:** +глава 12 «AI-возможности» (AI-консьерж, voice search, Telegram-бот, real-time календарь, AI discovery), +глава 13 «Production-готовность» (CI/CD, security OWASP, monitoring, PWA), +глава 14 «Personas и User Journey» (5 аватаров клиентов), цель — 10/10 «лучший в мире»
 
 ---
 
@@ -1874,6 +1875,285 @@ ffmpeg -y -i input.mp4 \
 8. [ ] Добавить `video: "/videos/menu/[id].webm"` в data.ts
 9. [ ] `bun run lint` — 0 errors
 10. [ ] Commit + push
+
+---
+
+## 12. AI-возможности
+
+Тренды 2026 (веб-поиск): 50% поисков голосовые к 2026 (Mobal.io), AI discovery через ChatGPT/voice assistants (Bloom Intelligence), AI-консьерж в кейтеринге (Zerocater CaterAi). Для «лучшего в мире» сайта NiloV эти возможности — обязательны.
+
+### 12.1 AI-консьерж (чат-бот на сайте)
+
+**Сценарий:** клиент заходит на сайт, AI-консьерж помогает выбрать формат, состав меню, рассчитать бюджет, ответить на вопросы — как живой шеф-менеджер. Ведёт к заявке.
+
+**Реализация:**
+- **Backend:** LLM через `z-ai chat` SDK (бэкенд, не клиент — 152-ФЗ) или GigaChat (Сбер, РФ-локализация)
+- **Frontend:** floating-виджет справа внизу, открывается по клику
+- **System prompt:** «Ты — AI-консьерж NiloV Catering. Помогаешь выбрать формат (фуршет/банкет/кофе-брейк/chef-at-home), состав меню под бюджет, ответить на вопросы об аллергенах, доставке, оплате. Ведёшь к заявке. Всегда предлагаешь связаться с менеджером (tel:+78129195911)»
+- **Контекст:** menuItems, pricingPackages, FAQ из `lib/data.ts`
+- **Rate limit:** 20 сообщений/сессия, 1 сессия/IP/час
+- **Fallback:** при ошибке → кнопка «Позвонить менеджеру»
+
+**API endpoint:** `POST /api/chat` — принимает message + sessionId, возвращает response + suggestedActions
+
+**Acceptance criteria:**
+- [ ] Floating-виджет на всех страницах
+- [ ] Понимает запросы: «хочу фуршет на 30 человек», «веганское меню», «аллергия на орехи», «сколько стоит банкет»
+- [ ] Предлагает кнопки: «Рассчитать стоимость», «Позвонить», «Оставить заявку»
+- [ ] 152-ФЗ: согласие на обработку ПДн при первом сообщении
+- [ ] Fallback на менеджера при сложных вопросах
+
+### 12.2 Voice search
+
+**Сценарий:** пользователь нажимает микрофон в поиске/калькуляторе, говорит «фуршет на 50 человек с лососем», сайт заполняет форму.
+
+**Реализация:**
+- **Web Speech API** (`webkitSpeechRecognition`) — нативно в Chrome/Safari, бесплатно
+- **Язык:** `lang: 'ru-RU'`
+- **Интеграция:** кнопка микрофона в калькуляторе + в поиске по меню
+- **Fallback:** при отсутствии API — скрыть кнопку
+
+**Acceptance criteria:**
+- [ ] Кнопка микрофона в калькуляторе (поле «гостей» и «формат»)
+- [ ] Распознаёт: «тридцать человек», «банкет», «фуршет», «премиум»
+- [ ] Заполняет форму voice-вводом
+- [ ] Mobile: работает на iOS Safari + Android Chrome
+
+### 12.3 Telegram-бот для заказов
+
+**Сценарий:** клиент пишет в Telegram-бота NiloV, выбирает формат, получает меню, рассчитывает стоимость, оставляет заявку — без звонка.
+
+**Реализация:**
+- **Backend:** Telegram Bot API (long polling), Python `python-telegram-bot` или Node.js `telegraf`
+- **LLM:** тот же что в AI-консьерже (z-ai/GigaChat)
+- **Интеграция:** webhook → `POST /api/booking` (тот же endpoint что у сайта)
+- **Команды:** `/start`, `/menu`, `/calculate`, `/book`, `/contact`
+- **Mini App:** Telegram Web App для калькулятора (inline)
+
+**Acceptance criteria:**
+- [ ] Бот @nilov_catering_bot работает
+- [ ] Inline-кнопки: Фуршет / Банкет / Кофе-брейк / Chef-at-home
+- [ ] Calculator Mini App (Telegram Web App)
+- [ ] Заявки падают в ту же CRM что с сайта
+- [ ] Уведомления менеджеру в Telegram при новой заявке
+
+### 12.4 Real-time календарь занятости
+
+**Сценарий:** клиент видит занятые/свободные даты — «3 даты в августе уже заняты» → urgency + конверсия.
+
+**Реализация:**
+- **Backend:** `GET /api/availability?month=2026-08` — возвращает JSON с датами
+- **Frontend:** календарь в калькуляторе/форме заявки
+- **Data source:** CRM (АДЕН24/Puree) или JSON-файл `/content/calendar.json` (обновляется менеджером)
+- **Цвета:** зелёный = свободно, жёлтый = 1-2 заявки, красный = занято
+
+**Acceptance criteria:**
+- [ ] Календарь в калькуляторе (при выборе даты)
+- [ ] urgency-сообщение: «Осталось 3 свободных даты в августе»
+- [ ] Sync с CRM каждые 5 минут
+- [ ] Mobile-friendly
+
+### 12.5 AI discovery (ChatGPT / голосовые ассистенты)
+
+**Сценарий:** клиент спрашивает ChatGPT/Алису/Сбер «заказать кейтеринг СПб» — NiloV должен быть в ответе.
+
+**Реализация:**
+- **Schema.org `LocalBusiness`** с полным описанием услуг, цен, гео (уже в §9.1)
+- **llms.txt** в корне сайта — для AI-сканеров (новый стандарт 2026)
+- **Structured data `Service` + `Offer`** для каждой услуги (§9.1)
+- **Контент-стратегия:** статьи в блоге с ответами на voice-запросы («сколько стоит кейтеринг на 50 человек»)
+- **Яндекс.Бизнес + 2GIS** — актуальные данные (§9.2)
+
+**Acceptance criteria:**
+- [ ] `llms.txt` в корне
+- [ ] Schema.org LocalBusiness + Service + Offer валидны (Rich Results Test)
+- [ ] Блог: 10 статей с ответами на voice-запросы
+- [ ] Яндекс.Бизнес и 2GIS обновлены
+
+### 12.6 AR-меню (опционально, Phase 6)
+
+**Сценарий:** клиент наводит камеру телефона на стол — видит 3D-модель блюда в реальном размере.
+
+**Реализация:**
+- **WebXR / Model Viewer** (`<model-viewer>` Google)
+- **3D-модели:** топ-5 блюд (канапе, стейк, тирамису) — генерация через Luma AI / Meshy
+- **Fallback:** 2D-фото с CSS-эффектами (§11.4)
+
+**Acceptance criteria:**
+- [ ] 3D-модели 5 топ-блюд
+- [ ] AR-режим в карточке блюда (кнопка «Посмотреть в AR»)
+- [ ] Fallback на фото если WebXR недоступен
+
+### 12.7 Мультиязычность (EN/中文)
+
+**Сценарий:** иностранные клиенты (туристы, экспаты, дипломаты) — Ermitage/Mariinsky посещают международные гости.
+
+**Реализация:**
+- **next-intl** (App Router-ready)
+- **Языки:** RU (основной), EN, 中文 (китайский — растущий туристический поток)
+- **Переключатель:** в Header (флаг/аббревиатура)
+- **Контент:** меню, тарифы, услуги — переводятся; блог — только RU
+- **SEO:** `hreflang` теги, отдельные sitemap для каждого языка
+
+**Acceptance criteria:**
+- [ ] Переключатель RU/EN/中文 в Header
+- [ ] Все страницы доступны на 3 языках
+- [ ] hreflang теги в head
+- [ ] Отдельные sitemap: /sitemap-ru.xml, /sitemap-en.xml, /sitemap-zh.xml
+
+---
+
+## 13. Production-готовность
+
+### 13.1 CI/CD (GitHub Actions)
+
+**Workflow:** `.github/workflows/deploy.yml`
+```yaml
+name: Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: bun install
+      - run: bun run lint
+      - run: bun run build
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+```
+
+**Pre-deploy checks:**
+- Lint: 0 errors
+- Build: success
+- Type check: `tsc --noEmit`
+- Bundle size: < 500 KB JS
+
+### 13.2 Security (OWASP Top 10)
+
+| Угроза | Реализация |
+|--------|------------|
+| A01 Broken Access Control | JWT на /api/admin/*, middleware check |
+| A02 Cryptographic Failures | HTTPS only, bcrypt для паролей, httpOnly cookies |
+| A03 Injection | Zod-валидация на всех API endpoints, parameterized queries |
+| A04 Insecure Design | Rate limiting (1 req/sec/IP), CORS whitelist |
+| A05 Security Misconfiguration | env vars в Vercel, не в коде; `.env.local` в .gitignore |
+| A06 Vulnerable Components | `bun audit` в CI, Dependabot alerts |
+| A07 Auth Failures | 2FA для admin, session timeout 7 дней |
+| A08 Software Integrity | Subresource Integrity (SRI) для CDN scripts |
+| A09 Logging Failures | Логи в Sentry, audit log для admin-действий |
+| A10 SSRF | Whitelist для outbound HTTP (ЮKassa, Telegram, CRM) |
+
+### 13.3 Monitoring
+
+- **Sentry** — ошибки frontend + backend, release tracking
+- **Яндекс.Метрика** — поведенческая аналитика (152-ФЗ)
+- **Vercel Analytics** — Core Web Vitals (LCP, FID, CLS)
+- **Uptime Robot** — мониторинг доступности (ping каждые 5 мин)
+- **Alerts:** Telegram-бот с уведомлениями при downtime/error spike
+
+### 13.4 PWA (Progressive Web App)
+
+- **manifest.json** — name, icons (192/512), theme_color (#C9A961), display: standalone
+- **Service Worker** — offline-fallback для статичных страниц (home, menu)
+- **Install prompt** — «Установить приложение» на iOS/Android
+- **Push notifications** — через Vercel + web-push API (опционально)
+
+**Acceptance criteria:**
+- [ ] Lighthouse PWA score ≥ 90
+- [ ] Offline: home + menu доступны
+- [ ] Installable на iOS/Android
+
+### 13.5 Performance-цели (Lighthouse)
+
+| Метрика | Цель | Как |
+|---------|------|-----|
+| LCP | < 2.5s | Hero poster + lazy-load |
+| FID/INP | < 200ms | Code splitting, deferred JS |
+| CLS | < 0.1 | width/height на images, font-display: swap |
+| Bundle JS | < 500 KB | Dynamic imports, tree-shaking |
+| Lighthouse Performance | ≥ 90 | Все выше |
+
+### 13.6 Backup и disaster recovery
+
+- **Git** — все изменения в GitHub (версионирование)
+- **Media** — Cloudflare R2 с versioning
+- **Content** (`/content/*.json`) — в git, ежедневный backup branch
+- **CRM** — отвечает провайдер (АДЕН24/Puree)
+- **RTO/RPO:** RTO 1 час, RPO 1 день
+
+---
+
+## 14. Personas и User Journey
+
+### 14.1 Personas (5 аватаров клиентов)
+
+#### Persona 1: Елена, корпоративный event-менеджер (B2B)
+- **Роль:** HR-директор IT-компании, организует корпоратив 100-300 человек
+- **Возраст:** 32-45
+- **Боли:** бюджет, отчётность, аллергии сотрудников, дедлайны
+- **Цель:** закрыть KPI мероприятия без стресса
+- **Канал:** сайт → калькулятор → PDF-КП → согласование с бухгалтерией
+- **Ключевая фича:** онлайн-калькулятор + PDF-КП (для отчётности)
+
+#### Persona 2: Анна, невеста (B2C)
+- **Роль:** планирует свадьбу 50-150 гостей
+- **Возраст:** 25-35
+- **Боли:** эстетика, дегустация, бюджет родителей, сезонность
+- **Цель:** идеальная свадьба в рамках бюджета
+- **Канал:** Instagram → сайт → gallery → индивидуальное меню → дегустация
+- **Ключевая фича:** gallery + индивидуальное меню + дегустация
+
+#### Persona 3: Дмитрий, CEO (private dining)
+- **Роль:** топ-менеджер, камерный ужин дома 6-12 человек
+- **Возраст:** 40-55
+- **Боли:** конфиденциальность, премиум-качество, wine-pairing
+- **Цель:** впечатлить партнёров/друзей
+- **Канал:** Telegram → chef-at-home + sommelier → личный звонок
+- **Ключевая фича:** chef-at-home + sommelier-at-home
+
+#### Persona 4: Мария, wedding-планер агентства (B2B)
+- **Роль:** организует 5-10 свадеб/сезон, ищет надёжного кейтерера
+- **Возраст:** 28-40
+- **Боли:** надёжность, договор, комиссия, гибкость меню
+- **Цель:** долгосрочный партнёр
+- **Канал:** рекомендации → сайт → portfolio → B2B-договор
+- **Ключевая фича:** portfolio + индивидуальное меню + B2B-условия
+
+#### Persona 5: Сергей, HR ежедневных обедов (B2B recurring)
+- **Роль:** офис-менеджер, заказывает корпоративные обеды 15-50 человек ежедневно
+- **Возраст:** 30-45
+- **Боли:** разнообразие, бюджет, доставка вовремя
+- **Цель:** накормить команду без хлопот
+- **Канал:** сайт → корпоративный обед → подписка
+- **Ключевая фича:** корпоративный обед + подписка (план)
+
+### 14.2 User Journey (основной путь)
+
+```
+Persona → Канал → Hero (video) → Формат → Калькулятор
+  → AI-консьедж (помощь) → PDF-КП → Оплата депозита (ЮKassa)
+  → Менеджер звонит (15 мин SLA) → Согласование меню → Мероприятие
+  → Follow-up (отзыв + фото в gallery)
+```
+
+### 14.3 Конверсионные точки по personas
+
+| Persona | Главная конверсия | Secondary CTA |
+|---------|------------------|---------------|
+| Елена (B2B corp) | PDF-КП → бухгалтерия | Позвонить менеджеру |
+| Анна (невеста) | Индивидуальное меню + дегустация | Gallery |
+| Дмитрий (CEO) | Chef-at-home + sommelier | Telegram |
+| Мария (планер) | B2B-договор + portfolio | Позвонить |
+| Сергей (HR обеды) | Подписка на обеды | Калькулятор |
 
 ---
 
