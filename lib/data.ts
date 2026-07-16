@@ -164,6 +164,7 @@ export const menuItems: MenuItem[] = [
     carbs: 4,
     image: "/images/menu/kanape/k1.jpg",
     imageAlt: "Канапе с лососем и сливочным сыром на чёрном хлебе — кейтеринг NiloV СПб",
+    video: "/videos/menu/k1.webm",
   },
   {
     id: "k2",
@@ -1025,7 +1026,7 @@ export const menuItems: MenuItem[] = [
     carbs: 2,
     image: "/images/menu/bbq/b5.jpg",
     imageAlt: "Стейк рибай на гриле с розмарином — премиум-мясо кейтеринг СПб",
-    video: "/videos/menu/b5.mp4",
+    video: "/videos/menu/b5.webm",
   },
 ];
 

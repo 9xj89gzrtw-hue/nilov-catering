@@ -87,7 +87,7 @@ export default function MenuPageClient() {
                 <div className="relative aspect-[3/2] overflow-hidden">
                   {item.video ? (
                     <video
-                      src={item.video}
+                      src={item.video} type="video/webm"
                       poster={item.image}
                       autoPlay
                       muted
