@@ -85,14 +85,28 @@ export default function MenuPageClient() {
                 className="group bg-card border border-border overflow-hidden cursor-hover hover:border-border-light transition-colors duration-500"
               >
                 <div className="relative aspect-[3/2] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.imageAlt || item.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-110"
-                    loading="lazy"
-                  />
+                  {item.video ? (
+                    <video
+                      src={item.video}
+                      poster={item.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="object-cover w-full h-full transition-transform duration-[1s] ease-out group-hover:scale-110"
+                      aria-label={item.imageAlt || item.name}
+                    />
+                  ) : (
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt || item.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  )}
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
                     {item.isVegetarian && (

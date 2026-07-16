@@ -18,6 +18,7 @@ export interface MenuItem {
   carbs: number;
   image: string;
   imageAlt?: string;
+  video?: string;
 }
 
 export interface Testimonial {
@@ -1024,6 +1025,7 @@ export const menuItems: MenuItem[] = [
     carbs: 2,
     image: "/images/menu/bbq/b5.jpg",
     imageAlt: "Стейк рибай на гриле с розмарином — премиум-мясо кейтеринг СПб",
+    video: "/videos/menu/b5.mp4",
   },
 ];
 
