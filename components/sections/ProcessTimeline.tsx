@@ -37,8 +37,20 @@ export default function ProcessTimeline() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 md:py-36 bg-muted relative" aria-label="Как мы работаем">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} className="py-24 md:py-36 bg-muted relative overflow-hidden" aria-label="Как мы работаем">
+      {/* Background video */}
+      <video
+        src="/videos/sections/process.webm"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-muted/70 pointer-events-none" />
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16 md:mb-20">
           <MaskReveal>

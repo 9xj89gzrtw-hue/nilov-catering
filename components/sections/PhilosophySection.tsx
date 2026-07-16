@@ -17,7 +17,20 @@ export default function PhilosophySection() {
       {/* Decorative gold line top */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background video */}
+      <video
+        src="/videos/sections/philosophy.webm"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-[#0A0A0A]/60 pointer-events-none" />
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left — decorative number + quote */}
           <motion.div

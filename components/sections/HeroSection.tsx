@@ -31,9 +31,15 @@ export default function HeroSection() {
         style={{ y: bgY, scale: bgScale, willChange: 'transform' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/hero/catering-hero.jpg"
-          alt=""
+        <video
+          src="/videos/hero/banquet.webm"
+          poster="/images/hero/catering-hero.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
           className="w-full h-[120%] object-cover"
         />
         {/* Cinematic overlays */}

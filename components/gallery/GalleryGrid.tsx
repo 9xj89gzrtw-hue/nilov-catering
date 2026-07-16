@@ -32,14 +32,28 @@ export default function GalleryGrid({ images, onImageClick }: GalleryGridProps) 
               index % 3 === 0 ? "aspect-[4/3]" : index % 3 === 1 ? "aspect-square" : "aspect-[3/4]"
             )}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              placeholder="empty"
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            />
+            {image.video ? (
+              <video
+                src={image.video}
+                poster={image.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={image.alt}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                placeholder="empty"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+            )}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-end">
               <div className="p-3 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p className="text-white text-sm font-medium">{image.alt}</p>

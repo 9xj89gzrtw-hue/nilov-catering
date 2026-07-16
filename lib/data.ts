@@ -62,6 +62,7 @@ export interface GalleryImage {
   id: string;
   src: string;
   alt: string;
+  video?: string;
   category: string;
   categoryLabel: string;
   width: number;
@@ -1573,11 +1574,11 @@ export const stats: Stat[] = [
 ];
 
 export const galleryImages: GalleryImage[] = [
-    { id: "g1", src: GALLERY_IMGS[0], alt: "Свадебный банкет", category: "weddings", categoryLabel: "Свадьбы", width: 800, height: 600 },
+    { id: "g1", src: GALLERY_IMGS[0], alt: "Свадебный банкет", video: "/videos/gallery/food.webm", category: "weddings", categoryLabel: "Свадьбы", width: 800, height: 600 },
     { id: "g2", src: GALLERY_IMGS[1], alt: "Корпоративный фуршет", category: "corporate", categoryLabel: "Корпоративы", width: 800, height: 600 },
     { id: "g3", src: GALLERY_IMGS[2], alt: "Выездная сервировка", category: "private", categoryLabel: "Частные мероприятия", width: 800, height: 600 },
-    { id: "g4", src: GALLERY_IMGS[3], alt: "Десертный стол", category: "weddings", categoryLabel: "Свадьбы", width: 800, height: 600 },
-    { id: "g5", src: GALLERY_IMGS[4], alt: "Шоу-станция", category: "corporate", categoryLabel: "Корпоративы", width: 800, height: 600 },
+    { id: "g4", src: GALLERY_IMGS[3], alt: "Десертный стол", video: "/videos/gallery/cooking.webm", category: "weddings", categoryLabel: "Свадьбы", width: 800, height: 600 },
+    { id: "g5", src: GALLERY_IMGS[4], alt: "Шоу-станция", video: "/videos/gallery/chef.webm", category: "corporate", categoryLabel: "Корпоративы", width: 800, height: 600 },
     { id: "g6", src: GALLERY_IMGS[5], alt: "Банкетная подача", category: "private", categoryLabel: "Частные мероприятия", width: 800, height: 600 },
     { id: "g7", src: GALLERY_IMGS[6], alt: "Фуршетное меню", category: "weddings", categoryLabel: "Свадьбы", width: 800, height: 600 },
     { id: "g8", src: GALLERY_IMGS[7], alt: "Коктейльный приём", category: "corporate", categoryLabel: "Корпоративы", width: 800, height: 600 },
