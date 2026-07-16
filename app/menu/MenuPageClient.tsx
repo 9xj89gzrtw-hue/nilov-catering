@@ -87,7 +87,7 @@ export default function MenuPageClient() {
                 <div className="relative aspect-[3/2] overflow-hidden">
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt={item.imageAlt || item.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-[1s] ease-out group-hover:scale-110"

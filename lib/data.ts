@@ -17,6 +17,7 @@ export interface MenuItem {
   fats: number;
   carbs: number;
   image: string;
+  imageAlt?: string;
 }
 
 export interface Testimonial {
@@ -161,6 +162,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 4,
     image: "/images/menu/kanape/k1.jpg",
+    imageAlt: "Канапе с лососем и сливочным сыром на чёрном хлебе — кейтеринг NiloV СПб",
   },
   {
     id: "k2",
@@ -177,6 +179,7 @@ export const menuItems: MenuItem[] = [
     fats: 5,
     carbs: 4,
     image: "/images/menu/kanape/k2.jpg",
+    imageAlt: "Канапе с красной икрой на бородинском хлебе — премиум-кейтеринг Санкт-Петербург",
   },
   {
     id: "k3",
@@ -192,6 +195,7 @@ export const menuItems: MenuItem[] = [
     fats: 5,
     carbs: 6,
     image: "/images/menu/kanape/k3.jpg",
+    imageAlt: "Тарталетка с салатом оливье в песочной корзиночке — кейтеринг NiloV",
   },
   {
     id: "k4",
@@ -207,6 +211,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 4,
     image: "/images/menu/kanape/k4.jpg",
+    imageAlt: "Канапе с пармской ветчиной и моцареллой — фуршетный кейтеринг СПб",
   },
   {
     id: "k5",
@@ -222,6 +227,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 7,
     image: "/images/menu/kanape/k5.jpg",
+    imageAlt: "Рулетик из лаваша с курицей и овощами — кейтеринг на выезд СПб",
   },
   {
     id: "k6",
@@ -237,6 +243,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 5,
     image: "/images/menu/kanape/k6.jpg",
+    imageAlt: "Канапе с тигровой креветкой и авокадо — премиум-кейтеринг NiloV",
   },
   {
     id: "k7",
@@ -253,6 +260,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 14,
     image: "/images/menu/kanape/k7.jpg",
+    imageAlt: "Брускетта с томатами моцареллой и базиликом — итальянский кейтеринг СПб",
   },
   {
     id: "k8",
@@ -269,6 +277,7 @@ export const menuItems: MenuItem[] = [
     fats: 6,
     carbs: 7,
     image: "/images/menu/kanape/k8.jpg",
+    imageAlt: "Канапе с сыром бри виноградом и мёдом — сырная тарелка кейтеринг",
   },
   {
     id: "k9",
@@ -285,6 +294,7 @@ export const menuItems: MenuItem[] = [
     fats: 6,
     carbs: 4,
     image: "/images/menu/kanape/k9.jpg",
+    imageAlt: "Капрезе на шпажке с песто — итальянская закуска кейтеринг NiloV",
   },
 
   // ===== Салаты (9) =====
@@ -303,6 +313,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 8,
     image: "/images/menu/salaty/s1.jpg",
+    imageAlt: "Салат Цезарь с курицей гренками и пармезаном — кейтеринг СПб",
   },
   {
     id: "s2",
@@ -319,6 +330,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 10,
     image: "/images/menu/salaty/s2.jpg",
+    imageAlt: "Греческий салат с фетой оливками и овощами — кейтеринг NiloV",
   },
   {
     id: "s3",
@@ -335,6 +347,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 6,
     image: "/images/menu/salaty/s3.jpg",
+    imageAlt: "Салат с слабосолёным лососем и авокадо — премиум-кейтеринг СПб",
   },
   {
     id: "s4",
@@ -350,6 +363,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 14,
     image: "/images/menu/salaty/s4.jpg",
+    imageAlt: "Классический оливье с курицей — традиционный салат кейтеринг",
   },
   {
     id: "s5",
@@ -366,6 +380,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 8,
     image: "/images/menu/salaty/s5.jpg",
+    imageAlt: "Капрезе с моцареллой томатами и бальзамиком — кейтеринг NiloV",
   },
   {
     id: "s6",
@@ -381,6 +396,7 @@ export const menuItems: MenuItem[] = [
     fats: 12,
     carbs: 10,
     image: "/images/menu/salaty/s6.jpg",
+    imageAlt: "Салат с тигровыми креветками манго и авокадо — премиум-кейтеринг",
   },
   {
     id: "s7",
@@ -396,6 +412,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 6,
     image: "/images/menu/salaty/s7.jpg",
+    imageAlt: "Тёплый салат с говяжьей вырезкой и шпинатом — кейтеринг СПб",
   },
   {
     id: "s8",
@@ -411,6 +428,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 14,
     image: "/images/menu/salaty/s8.jpg",
+    imageAlt: "Селёдка под шубой — классический русский салат кейтеринг NiloV",
   },
   {
     id: "s9",
@@ -428,6 +446,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 12,
     image: "/images/menu/salaty/s9.jpg",
+    imageAlt: "Салат с клубникой фетой и кедровыми орехами — летний кейтеринг",
   },
 
   // ===== Горячие блюда (8) =====
@@ -446,6 +465,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 4,
     image: "/images/menu/goryachee/h1.jpg",
+    imageAlt: "Сибас на гриле с лимоном и розмарином — рыбное блюдо кейтеринг СПб",
   },
   {
     id: "h2",
@@ -462,6 +482,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 6,
     image: "/images/menu/goryachee/h2.jpg",
+    imageAlt: "Медальоны из говяжьей вырезки в соусе красное вино — премиум-кейтеринг",
   },
   {
     id: "h3",
@@ -477,6 +498,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 8,
     image: "/images/menu/goryachee/h3.jpg",
+    imageAlt: "Куриная грудка в соусе песто с черри — кейтеринг NiloV СПб",
   },
   {
     id: "h4",
@@ -493,6 +515,7 @@ export const menuItems: MenuItem[] = [
     fats: 22,
     carbs: 6,
     image: "/images/menu/goryachee/h4.jpg",
+    imageAlt: "Лосось в сливочно-шпинатном соусе — рыбное блюдо кейтеринг",
   },
   {
     id: "h5",
@@ -508,6 +531,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 14,
     image: "/images/menu/goryachee/h5.jpg",
+    imageAlt: "Свиная вырезка с запечёнными яблоками — мясное блюдо кейтеринг СПб",
   },
   {
     id: "h6",
@@ -523,6 +547,7 @@ export const menuItems: MenuItem[] = [
     fats: 13,
     carbs: 6,
     image: "/images/menu/goryachee/h6.jpg",
+    imageAlt: "Дорадо на гриле с цитрусовыми — средиземноморский кейтеринг",
   },
   {
     id: "h7",
@@ -538,6 +563,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 10,
     image: "/images/menu/goryachee/h7.jpg",
+    imageAlt: "Бефстроганов из говядины с грибами — классическое блюдо кейтеринг",
   },
   {
     id: "h8",
@@ -555,6 +581,7 @@ export const menuItems: MenuItem[] = [
     fats: 8,
     carbs: 16,
     image: "/images/menu/goryachee/h8.jpg",
+    imageAlt: "Овощное рагу по-летнему с кабачками и баклажанами — веганский кейтеринг",
   },
 
   // ===== Десерты (9) =====
@@ -573,6 +600,7 @@ export const menuItems: MenuItem[] = [
     fats: 22,
     carbs: 30,
     image: "/images/menu/deserty/d1.jpg",
+    imageAlt: "Тирамису с маскарпоне и кофе — итальянский десерт кейтеринг NiloV",
   },
   {
     id: "d2",
@@ -589,6 +617,7 @@ export const menuItems: MenuItem[] = [
     fats: 20,
     carbs: 30,
     image: "/images/menu/deserty/d2.jpg",
+    imageAlt: "Чизкейк Нью-Йорк с ягодами — десерт кейтеринг СПб",
   },
   {
     id: "d3",
@@ -604,6 +633,7 @@ export const menuItems: MenuItem[] = [
     fats: 12,
     carbs: 24,
     image: "/images/menu/deserty/d3.jpg",
+    imageAlt: "Эклеры с заварным кремом — французский десерт кейтеринг",
   },
   {
     id: "d4",
@@ -619,6 +649,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 48,
     image: "/images/menu/deserty/d4.jpg",
+    imageAlt: "Макаронс ассорти малина фисташка шоколад — премиум-десерт кейтеринг",
   },
   {
     id: "d5",
@@ -636,6 +667,7 @@ export const menuItems: MenuItem[] = [
     fats: 1,
     carbs: 26,
     image: "/images/menu/deserty/d5.jpg",
+    imageAlt: "Фруктовая тарелка клубника черника дыня — свежие фрукты кейтеринг",
   },
   {
     id: "d6",
@@ -652,6 +684,7 @@ export const menuItems: MenuItem[] = [
     fats: 24,
     carbs: 36,
     image: "/images/menu/deserty/d6.jpg",
+    imageAlt: "Шоколадный фондан с мороженым — тёплый десерт кейтеринг NiloV",
   },
   {
     id: "d7",
@@ -667,6 +700,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 48,
     image: "/images/menu/deserty/d7.jpg",
+    imageAlt: "Панкейки с клубникой и сиропом — утренний десерт кейтеринг СПб",
   },
   {
     id: "d8",
@@ -682,6 +716,7 @@ export const menuItems: MenuItem[] = [
     fats: 18,
     carbs: 38,
     image: "/images/menu/deserty/d8.jpg",
+    imageAlt: "Торт Наполеон с заварным кремом — классический десерт кейтеринг",
   },
   {
     id: "d9",
@@ -698,6 +733,7 @@ export const menuItems: MenuItem[] = [
     fats: 12,
     carbs: 22,
     image: "/images/menu/deserty/d9.jpg",
+    imageAlt: "Шоколадный брауни с солёной карамелью — десерт кейтеринг NiloV",
   },
 
   // ===== Напитки (4, безалкогольные) =====
@@ -717,6 +753,7 @@ export const menuItems: MenuItem[] = [
     fats: 0,
     carbs: 20,
     image: "/images/menu/napitki/n1.jpg",
+    imageAlt: "Клюквенный морс в стакане — натуральный напиток кейтеринг СПб",
   },
   {
     id: "n2",
@@ -735,6 +772,7 @@ export const menuItems: MenuItem[] = [
     fats: 0,
     carbs: 22,
     image: "/images/menu/napitki/n2.jpg",
+    imageAlt: "Домашний лимонад с лимоном мятой и имбирём — кейтеринг NiloV",
   },
   {
     id: "n3",
@@ -752,6 +790,7 @@ export const menuItems: MenuItem[] = [
     fats: 0,
     carbs: 1,
     image: "/images/menu/napitki/n3.jpg",
+    imageAlt: "Чай ассорти чёрный зелёный травяной — кейтеринг напитки СПб",
   },
   {
     id: "n4",
@@ -769,6 +808,7 @@ export const menuItems: MenuItem[] = [
     fats: 0,
     carbs: 0,
     image: "/images/menu/napitki/n4.jpg",
+    imageAlt: "Эспрессо кофе в чашке — кофейная станция кейтеринг NiloV",
   },
 
   // ===== Сезонные хиты (7) =====
@@ -788,6 +828,7 @@ export const menuItems: MenuItem[] = [
     fats: 6,
     carbs: 10,
     image: "/images/menu/sezonnye/se1.jpg",
+    imageAlt: "Костный бульон с пирожком — ЗОЖ-кейтеринг NiloV СПб",
   },
   {
     id: "se2",
@@ -805,6 +846,7 @@ export const menuItems: MenuItem[] = [
     fats: 7,
     carbs: 10,
     image: "/images/menu/sezonnye/se2.jpg",
+    imageAlt: "Крем-суп из тыквы с семечками — вегетарианский кейтеринг осень",
   },
   {
     id: "se3",
@@ -822,6 +864,7 @@ export const menuItems: MenuItem[] = [
     fats: 4,
     carbs: 6,
     image: "/images/menu/sezonnye/se3.jpg",
+    imageAlt: "Том-ям с креветкой в шотере — азиатский кейтеринг NiloV",
   },
   {
     id: "se4",
@@ -840,6 +883,7 @@ export const menuItems: MenuItem[] = [
     fats: 14,
     carbs: 28,
     image: "/images/menu/sezonnye/se4.jpg",
+    imageAlt: "Поке с лососем авокадо и киноа — ЗОЖ-кейтеринг СПб",
   },
   {
     id: "se5",
@@ -858,6 +902,7 @@ export const menuItems: MenuItem[] = [
     fats: 10,
     carbs: 32,
     image: "/images/menu/sezonnye/se5.jpg",
+    imageAlt: "Будда-боул с тофу и овощами — веганский кейтеринг NiloV",
   },
   {
     id: "se6",
@@ -875,6 +920,7 @@ export const menuItems: MenuItem[] = [
     fats: 8,
     carbs: 18,
     image: "/images/menu/sezonnye/se6.jpg",
+    imageAlt: "Бао с томлёной свининой — азиатский фьюжн кейтеринг СПб",
   },
   {
     id: "se7",
@@ -891,6 +937,7 @@ export const menuItems: MenuItem[] = [
     fats: 12,
     carbs: 14,
     image: "/images/menu/sezonnye/se7.jpg",
+    imageAlt: "Кедровый раф кофе — премиум-напиток кейтеринг NiloV",
   },
 
   // ===== BBQ и гриль (5) =====
@@ -909,6 +956,7 @@ export const menuItems: MenuItem[] = [
     fats: 28,
     carbs: 6,
     image: "/images/menu/bbq/b1.jpg",
+    imageAlt: "Шашлык из свинины на углях — летний BBQ кейтеринг СПб",
   },
   {
     id: "b2",
@@ -924,6 +972,7 @@ export const menuItems: MenuItem[] = [
     fats: 12,
     carbs: 6,
     image: "/images/menu/bbq/b2.jpg",
+    imageAlt: "Шашлык из курицы в йогуртном маринаде — BBQ кейтеринг NiloV",
   },
   {
     id: "b3",
@@ -939,6 +988,7 @@ export const menuItems: MenuItem[] = [
     fats: 32,
     carbs: 12,
     image: "/images/menu/bbq/b3.jpg",
+    imageAlt: "Люля-кебаб из баранины на углях с лавашем — восточный кейтеринг",
   },
   {
     id: "b4",
@@ -956,6 +1006,7 @@ export const menuItems: MenuItem[] = [
     fats: 8,
     carbs: 14,
     image: "/images/menu/bbq/b4.jpg",
+    imageAlt: "Овощи гриль кабачки баклажаны перец — веганский BBQ кейтеринг",
   },
   {
     id: "b5",
@@ -972,6 +1023,7 @@ export const menuItems: MenuItem[] = [
     fats: 48,
     carbs: 2,
     image: "/images/menu/bbq/b5.jpg",
+    imageAlt: "Стейк рибай на гриле с розмарином — премиум-мясо кейтеринг СПб",
   },
 ];
 
