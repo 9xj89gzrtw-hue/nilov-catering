@@ -984,12 +984,33 @@ interface CalculatorResult {
 **API endpoint:** `POST /api/calculate` — дублирует клиентский расчёт для валидации и логирования.
 
 **Форматирование цен:**
-- Шрифт: JetBrains Mono
+- Шрифт: JetBrains Mono (для цифр калькулятора — техническая точность) + Playfair Display для заголовков секций (премиум-контраст)
 - Разделитель тысяч: пробел
 - Нет знака валюты, нет копеек
 - Пример: `579 223`
+- Премиум-контраст: цифры в JetBrains Mono gold (#C9A961), подпись «₽ / итого» в Inter cream
+
+### 3.7 Визуальный mockup калькулятора (Awwwards level)
+
+**Раскладка (desktop):** двухколоночная — слева элементы управления (40%), справа ResultDisplay (60%, sticky).
+**Раскладка (mobile):** вертикальный стек, ResultDisplay fixed-bottom.
+
+**Визуальные элементы:**
+- **FormatSelector**: 3 карточки (Фуршет/Банкет/Кофе-брейк) с мини-фото, hover → scale + gold border
+- **PackageSelector**: горизонтальный slider с 4 тарифами, цена обновляется с countUp (spring physics, 400ms)
+- **GuestsSlider**: большой ползунок с magnetic-эффектом, цифра гостей в Playfair Display 64px gold
+- **AddonToggles**: чекбоксы-карточки с иконками, toggle-анимация (Framer Motion layout)
+- **DatePicker**: календарь с занятыми/свободными датами (§12.4), urgency-бейдж «3 даты в августе заняты»
+- **ResultDisplay**: большая цена (JetBrains Mono 80px), разбивка (база, скидки, доп. опции), CTA «Получить КП» (magnetic-кнопка gold)
+
+**Интерактивность (wow-фактор):**
+- Любое изменение → price countUp + subtle haptic (mobile)
+- При наведении на цену → tooltip с разбивкой
+- AI-подсказки (§3.3.2): «Добавьте шоу-станцию для вау-эффекта» — inline-баннер
+- PDF-превью: mini-preview справа, обновляется в реальном времени
 
 ---
+
 ## 4. Конкурентные преимущества (из анализа 74 компаний)
 
 ### 4.1 Рыночный контекст
