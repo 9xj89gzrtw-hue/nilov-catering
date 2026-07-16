@@ -1,10 +1,11 @@
 # Продукт-блупринт NiloV Catering v3
 
-> **Версия:** 3.2 | **Дата:** июль 2026 | **Статус:** активная разработка
+> **Версия:** 3.3 | **Дата:** июль 2026 | **Статус:** активная разработка
 > **Источник:** V2.1 + аналитическая статья (гибридная модель, РФ-регулирование, CRM, LLM)
 > **Изменения от V2:** +обоснование гибридной модели, +CRM-интеграция, +таблица РФ-регулирования, +LLM-стратегия, +Phase 6 AI, +анализ рынка дизайна РФ
 > **Изменения V3.0 → V3.1:** +услуга «Индивидуальное меню по запросу» (§1.7.1, §2.7), +услуга «Выезд шефа / private chef» (§1.7.2, §2.8), +форматы/пакеты (§2.1.3, §3.2), +конкурентные преимущества (§4.2, §4.3), +Schema.org Service/Offer (§9.1), +SEO-ключи (§9.3)
 > **Изменения V3.1 → V3.2:** +услуга «Сомелье/Миксолог на дом» (§1.7.3, §2.9), §1.7.2 официанты теперь опция (не «не входит»), +западные тренды после панели 10 критиков (§4.2, §4.3), вердикты по gift cards/pop-up/tasting box/pantry
+> **Изменения V3.2 → V3.3:** +глава 11 «Медиа-контент: источники и конвейер» (откуда брать меню, фото, видео), +источники медиа для всех 51 блюда + hero/gallery/sections, +CSS-эффекты как замена video-gen для 48 блюд, +масштабирование видео
 
 ---
 
@@ -1298,6 +1299,8 @@ const PDFDocument = dynamic(() => import('./ProposalPDF'), {
 | `Service` | Услуга «Выезд шефа» | `/services/chef-at-home` |
 | `Service` | Услуга «Сомелье на дом» | `/services/sommelier-at-home` |
 | `Offer` | Цена услуги (почасовая/фикс) | `/services/individual`, `/services/chef-at-home`, `/services/sommelier-at-home` |
+| `ImageObject` | Каждое фото блюда в каталоге | `/menu` (51 блюдо) |
+| `VideoObject` | Dish-видео (k1, b5, d1) | `/menu` (где есть item.video) |
 
 ### 9.2 Local SEO
 
@@ -1648,7 +1651,235 @@ interface APIError {
 
 ---
 
+## 11. Медиа-контент: источники и конвейер
+
+Эта глава документирует **откуда брать** каждый тип медиа на сайте и **как обрабатывать**. Источник правды для команды: при добавлении новых блюд, фото, видео — следовать этому конвейеру.
+
+### 11.1 Меню (контент блюд)
+
+**Источник правды:** `NILOV_UNIFIED_MENU.md` (v4, commit 895d800) — единое меню кейтеринга.
+
+**Конвейер обновления меню:**
+1. Редактирование `NILOV_UNIFIED_MENU.md` (структура: 4 фуршет + 3 банкет + 4 кофе-брейк тарифа + каталог 51 блюда с аллергенами)
+2. Синхронизация `lib/data.ts` с md-файлом (interface `MenuItem`: id, name, description, price, weight, category, allergens, image, imageAlt, video?, isVegetarian/isGlutenFree/isNew/isPopular, calories/БЖУ)
+3. `pricingPackages` в `lib/data.ts` — 11 тарифов с полем `format: 'furshet'|'banket'|'kofe-breyk'`
+4. Lint: `bun run lint` — 0 errors
+5. Commit + push в main
+
+**Правила:**
+- Единственный источник правды — `NILOV_UNIFIED_MENU.md`. `lib/data.ts` — его reflection для рендера.
+- Цены/веса/аллергены — из md, не выдумывать.
+- 14 аллергенов по ТР ТС 021/2011 для каждого блюда.
+
+### 11.2 Фото блюд (51 позиция)
+
+**Источник:** `z-ai image-search` (ZAI in-house service, OSS-hosted URLs).
+
+**Конвейер:**
+```bash
+# 1. Поиск фото по конкретному запросу блюда
+z-ai image-search -q "канапе с лососем и сливочным сыром на чёрном хлебе" -c 3 --gl us -o /tmp/result.json
+
+# 2. Скачивание (ключ в JSON: results[].original_url)
+curl -sS -o public/images/menu/[category]/[id].jpg "$(python3 -c "import json;print(json.load(open('/tmp/result.json'))['results'][0]['original_url'])")"
+```
+
+**Структура папок:**
+```
+public/images/menu/
+├── kanape/    (k1-k9, 9 фото)
+├── salaty/    (s1-s9, 9 фото)
+├── goryachee/ (h1-h8, 8 фото)
+├── deserty/   (d1-d9, 9 фото)
+├── napitki/   (n1-n4, 4 фото)
+├── sezonnye/  (se1-se7, 7 фото)
+└── bbq/       (b1-b5, 5 фото)
+```
+
+**Alt-тексты (SEO):** поле `imageAlt` в `MenuItem` — описательное с ключевыми словами.
+Пример: `"Канапе с лососем и сливочным сыром на чёрном хлебе — кейтеринг NiloV СПб"`.
+
+**Альтернативные источники (если z-ai image-search недоступен):**
+- Unsplash API (нужен API key, может блокироваться в РФ)
+- Pexels API (бесплатно, требует регистрацию)
+- Ручная съёмка (лучший quality, для топ-блюд)
+
+### 11.3 Видео блюд (real AI video)
+
+**Источник:** `z-ai video --image-url` (модель `cogvideox-3`, image-to-video).
+
+**Конвейер:**
+```bash
+# 1. Получить URL фото блюда (из image-search или локальный OSS)
+# 2. Генерация видео (5 сек, 1280×720, speed mode)
+z-ai video --image-url "<photo-url>" \
+  --prompt "<dish description>, cinematic close-up, warm light, gentle zoom, steam rising" \
+  -q speed -d 5 -s "1280x720" --poll --poll-interval 10 --max-polls 20 \
+  -o /tmp/video.json
+
+# 3. Скачать + re-encode в WebM VP9 480p
+vurl=$(python3 -c "import json;print(json.load(open('/tmp/video.json'))['video_result'][0]['url'])")
+curl -sS -o /tmp/raw.mp4 "$vurl"
+ffmpeg -y -i /tmp/raw.mp4 -c:v libvpx-vp9 -b:v 200k -cpu-used 4 -vf "scale=640:-2" -an -t 5 public/videos/menu/[id].webm
+
+# 4. Добавить в lib/data.ts: video: "/videos/menu/[id].webm"
+```
+
+**Текущее состояние:** 3 блюда с real video (k1 канапе с лососем, b5 стейк рибай, d1 тирамису).
+
+**Ограничения квоты:** z-ai cogvideox-3 — ~1 видео за временной лаг (429 при превышении). Для 51 блюда — недели работы или платный API.
+
+**Альтернативные источники video-gen:**
+- HuggingFace Spaces (SVD, img2vid) — бесплатно, но GPU quota быстро исчерпывается
+- RunwayML API — ~$0.50/видео, безлимитно
+- Kling API — платный, качественный
+- Pexels stock video — бесплатно, но generic (не dish-specific)
+
+### 11.4 CSS-видео-эффекты для блюд без real video
+
+**Применяется к:** 48 блюдам (все, у которых нет `item.video`).
+
+**Реализация:** чистый CSS, 0 KB к весу страницы.
+
+```tsx
+// app/menu/MenuPageClient.tsx
+<Image
+  src={item.image}
+  alt={item.imageAlt || item.name}
+  className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-115 animate-kenburns-slow"
+/>
+{/* Steam particles on hover */}
+<div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+  <div className="animate-steam-rise-1" />
+  <div className="animate-steam-rise-2" />
+  <div className="animate-steam-rise-3" />
+</div>
+{/* Gold glow pulse */}
+<div className="absolute inset-0 bg-gradient-to-tr from-gold/0 to-gold/0 group-hover:from-gold/8 transition-all duration-700" />
+```
+
+**CSS-анимации** (в `app/globals.css`):
+- `kenburns-slow` — медленный zoom 18s infinite loop (блюдо «дышит»)
+- `steam-rise-1/2/3` — 3 потока пара с разными delay (3.5–4.2s, ease-out infinite)
+- `prefers-reduced-motion` — все анимации отключаются для accessibility
+
+**Результат:** все 51 блюдо интерактивны — 3 с real video + 48 с CSS-эффектами. Drinkit.ru style достигнут без генерации 48 видео.
+
+### 11.5 Hero / Gallery / Section видео
+
+**Источник:** Mixkit (https://mixkit.co/free-stock-video/) — бесплатно, без watermark, без API key.
+
+**Конвейер:**
+```bash
+# 1. Найти видео на mixkit.co/free-stock-video/food/ (или /cooking/, /banquet/)
+# 2. Извлечь прямой mp4 URL со страницы:
+curl -sS "https://mixkit.co/free-stock-video/food/" | grep -oE 'https://assets\.mixkit\.co/[^"]+\.mp4'
+
+# 3. Скачать + re-encode WebM VP9 480p
+curl -sS -o /tmp/raw.mp4 "https://assets.mixkit.co/videos/49231/49231-720.mp4"
+ffmpeg -y -i /tmp/raw.mp4 -c:v libvpx-vp9 -b:v 300k -cpu-used 4 -vf "scale=1280:-2" -an -t 8 public/videos/hero/banquet.webm
+```
+
+**Текущее состояние:**
+- Hero: `public/videos/hero/banquet.webm` (439 KB, 8с, банкетная атмосфера)
+- Gallery: 3 видео (`food.webm` 164 KB, `cooking.webm` 128 KB, `chef.webm` 112 KB)
+- Sections: 2 background видео (`philosophy.webm` 276 KB, `process.webm` 204 KB)
+
+**Интеграция:**
+- Hero: `<video autoplay muted loop poster={image} playsInline>` в `HeroSection.tsx`
+- Gallery: `GalleryImage.video?` поле, `GalleryGrid.tsx` рендерит `<video>` при наличии
+- Sections: background `<video>` с `opacity-20` + overlay в `PhilosophySection.tsx`, `ProcessTimeline.tsx`
+
+### 11.6 Team / Avatars / Gallery photos
+
+**Источник:** `z-ai image-search`.
+
+**Team (4 фото):**
+```
+public/images/team/
+├── chef-nilov.jpg      (Николай Нилов, шеф-повар)
+├── art-director.jpg    (Мария Кузнецова, арт-директор)
+├── manager.jpg         (Андрей Соколов, менеджер)
+└── sommelier.jpg       (Екатерина Белова, сомелье)
+```
+
+**Testimonial avatars (7 фото):** `public/images/testimonials/avatar1.jpg` ... `avatar7.jpg`
+
+**Gallery photos (9):** `public/images/gallery/` — wedding-banquet, corporate-furshet, servirovka, dessert-table, show-station, banket, furshet-menu, cocktail, kids.
+
+### 11.7 Re-encode конвейер (ffmpeg)
+
+**Все видео** конвертируются в WebM VP9 480p для оптимального веса:
+```bash
+ffmpeg -y -i input.mp4 \
+  -c:v libvpx-vp9 \
+  -b:v 200k \         # bitrate: 200kbps (dishes), 300kbps (hero)
+  -cpu-used 4 \       # fast encoding
+  -vf "scale=640:-2" \ # 480p (dishes), 1280:-2 (hero)
+  -an \               # no audio (autoplay requires muted)
+  -t 5 \              # 5s (dishes), 8s (hero/sections)
+  output.webm
+```
+
+**Результат:** mp4 3.2 MB → webm 180 KB (-94%).
+
+### 11.8 Полный инвентарь медиа
+
+| Тип | Кол-во | Источник | Вес |
+|-----|--------|----------|-----|
+| Dish videos (real AI) | 3 | z-ai cogvideox-3 | 536 KB |
+| Dish photos + CSS | 48 | z-ai image-search | 0 KB (CSS) |
+| Menu photos (all) | 51 | z-ai image-search | ~15 MB |
+| Hero video | 1 | Mixkit | 439 KB |
+| Gallery videos | 3 | Mixkit | 404 KB |
+| Section bg videos | 2 | Mixkit | 480 KB |
+| Gallery photos | 9 | z-ai image-search | ~3 MB |
+| Team photos | 4 | z-ai image-search | ~1 MB |
+| Avatars | 7 | z-ai image-search | ~2 MB |
+| Hero poster | 1 | z-ai image-search | ~350 KB |
+| **ИТОГО** | **9 видео + 72 фото** | | **~22 MB** |
+
+### 11.9 План масштабирования видео
+
+**Цель:** real video для топ-10 хитов (сейчас 3 из 10).
+
+**Приоритет (по продажам):**
+1. ✅ k1 Канапе с лососем
+2. ✅ b5 Стейк Рибай
+3. ✅ d1 Тирамису
+4. ⏳ k2 Канапе с икрой (premium)
+5. ⏳ s1 Цезарь с курицей (хит)
+6. ⏳ h1 Сибас на гриле (premium)
+7. ⏳ d6 Шоколадный фондан (хит)
+8. ⏳ b1 Шашлык из свинины (лето хит)
+9. ⏳ d9 Брауни с карамелью (хит)
+10. ⏳ s3 Салат с лососем (premium)
+
+**Путь:** 1-2 видео/день через z-ai (quota), пока не покрою топ-10. Остальные 41 — CSS-эффекты (уже работают).
+
+**Для полного покрытия (51 video):**
+- Платный API (Runway/Kling) — ~$25 за 48 видео, 1 день
+- Или видеосъёмка — лучший quality, но $$
+
+### 11.10 Чеклист добавления нового блюда
+
+При добавлении нового блюда в меню:
+1. [ ] Добавить в `NILOV_UNIFIED_MENU.md` (с аллергенами, весом, ценой)
+2. [ ] Синхронизировать в `lib/data.ts` (interface MenuItem)
+3. [ ] Найти фото: `z-ai image-search -q "<dish>" -c 3 --gl us`
+4. [ ] Скачать в `public/images/menu/[category]/[id].jpg`
+5. [ ] Добавить `imageAlt` с SEO-ключевыми словами
+6. [ ] (опционально) Сгенерировать video: `z-ai video --image-url <url> --prompt "<desc>" --poll`
+7. [ ] Re-encode в WebM: `ffmpeg ... public/videos/menu/[id].webm`
+8. [ ] Добавить `video: "/videos/menu/[id].webm"` в data.ts
+9. [ ] `bun run lint` — 0 errors
+10. [ ] Commit + push
+
+---
+
 ## Приложение В: Справочник российских сервисов
+
+> **См. также главу 11** — «Медиа-контент: источники и конвейер» (откуда брать меню, фото, видео).
 
 | Категория | Сервис | Назначение |
 |-----------|--------|------------|
