@@ -6,6 +6,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Preloader from "@/components/providers/Preloader";
 import CustomCursor from "@/components/effects/CustomCursor";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import AIConcierge from "@/components/ai/AIConcierge";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -122,7 +123,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
+    <html lang="ru" manifest="/manifest.json" className={`${headingFont.variable} ${bodyFont.variable}`} suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#0A0A0A" />
         <meta name="format-detection" content="telephone=yes" />
@@ -141,6 +142,7 @@ export default function RootLayout({
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
+          <AIConcierge />
         </SmoothScrollProvider>
         <CustomCursor />
         <NoiseOverlay />

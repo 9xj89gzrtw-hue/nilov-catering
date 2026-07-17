@@ -1,0 +1,12 @@
+# NiloV Catering
+> Премиальный кейтеринг в Санкт-Петербурге. 19 лет, 3000+ мероприятий.
+> Фуршет, банкет, кофе-брейк, private chef, sommelier-at-home.
+## Услуги
+- [Фуршет](/menu) — от 2450 ₽/гость
+- [Банкет](/menu) — от 4470 ₽/гость
+- [Конструктор меню](/constructor) — соберите за 2 минуты
+- [Private chef](/services/chef-at-home) — от 5000 ₽/час
+- [Сомелье](/services/sommelier-at-home) — от 4000 ₽/час
+## Контакты
+- Телефон: +7 (812) 919-59-11
+- Email: info@nilov-catering.ru
