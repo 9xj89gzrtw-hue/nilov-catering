@@ -75,11 +75,11 @@ export default function ServicesSection() {
                   {service.description}
                 </p>
                 <Link
-                  href={`/services/${service.slug}`}
+                  href={`/constructor`}
                   className="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-gold/80 hover:text-gold transition-colors duration-300 font-medium group/link cursor-hover"
-                  aria-label={`Подробнее: ${service.title}`}
+                  aria-label={`Рассчитать: ${service.title}`}
                 >
-                  Подробнее
+                  Рассчитать
                   <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1.5" />
                 </Link>
               </div>
