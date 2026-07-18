@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           <h2 className="font-heading text-xl font-semibold text-cream mt-8">4. Хранение и защита</h2>
           <p>Данные хранятся на защищённых серверах в соответствии с требованиями законодательства РФ о защите персональных данных (152-ФЗ).</p>
           <h2 className="font-heading text-xl font-semibold text-cream mt-8">5. Контакты</h2>
-          <p>По вопросам обработки персональных данных обращайтесь: info@nilov-catering.ru или +7 (812) 123-45-67.</p>
+          <p>По вопросам обработки персональных данных обращайтесь: info@nilov-catering.ru или +7 (812) 919-59-11.</p>
         </div>
       </section>
     </>

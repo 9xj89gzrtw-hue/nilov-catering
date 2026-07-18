@@ -77,7 +77,7 @@ const jsonLd = {
   description:
     "Премиальный кейтеринг в Санкт-Петербурге. Свадьбы, корпоративы, частные мероприятия, фуршеты.",
   url: "https://nilov-catering.vercel.app",
-  telephone: "+7-812-123-45-67",
+  telephone: "+7-812-919-59-11",
   email: "info@nilov-catering.ru",
   address: {
     "@type": "PostalAddress",
@@ -110,7 +110,7 @@ const orgJsonLd = {
   logo: "https://nilov-catering.vercel.app/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+7-812-123-45-67",
+    telephone: "+7-812-919-59-11",
     contactType: "sales",
     areaServed: "RU-SPE",
     availableLanguage: "Russian",

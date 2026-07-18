@@ -162,8 +162,8 @@ export default function AboutPage() {
             <a href="/contact" className="btn-primary text-xs uppercase tracking-wider cursor-hover">
               Оставить заявку
             </a>
-            <a href="tel:+78121234567" className="btn-outline text-xs uppercase tracking-wider cursor-hover">
-              +7 (812) 123-45-67
+            <a href="tel:+78129195911" className="btn-outline text-xs uppercase tracking-wider cursor-hover">
+              +7 (812) 919-59-11
             </a>
           </div>
         </div>

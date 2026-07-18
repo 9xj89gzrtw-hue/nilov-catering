@@ -90,14 +90,14 @@ export default function CTASection() {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <a
-                href="tel:+78121234567"
+                href="tel:+78129195911"
                 className="flex items-center gap-4 text-sm text-cream/70 hover:text-gold transition-colors duration-300 group cursor-hover"
               >
                 <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-gold/50 transition-colors duration-300">
                   <Phone className="w-4 h-4 text-gold/70" />
                 </div>
                 <div>
-                  <span className="block text-cream font-medium">+7 (812) 123-45-67</span>
+                  <span className="block text-cream font-medium">+7 (812) 919-59-11</span>
                   <span className="block text-[10px] text-cream-muted mt-0.5">Ежедневно 9:00 — 21:00</span>
                 </div>
               </a>

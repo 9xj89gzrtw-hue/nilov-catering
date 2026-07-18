@@ -1769,8 +1769,10 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const navItems: NavItem[] = [
-  { label: "Услуги", href: "/services" },
   { label: "Меню", href: "/menu" },
+  { label: "Конструктор", href: "/constructor" },
+  { label: "Цены", href: "/pricing" },
+  { label: "Услуги", href: "/services" },
   { label: "Галерея", href: "/gallery" },
   { label: "О нас", href: "/about" },
   { label: "Контакты", href: "/contact" },
@@ -1778,10 +1780,9 @@ export const navItems: NavItem[] = [
 
 export const mobileNavItems: NavItem[] = [
   { label: "Главная", href: "/" },
-  { label: "Услуги", href: "/services" },
   { label: "Меню", href: "/menu" },
-  { label: "Галерея", href: "/gallery" },
-  { label: "О нас", href: "/about" },
+  { label: "Конструктор", href: "/constructor" },
+  { label: "Цены", href: "/pricing" },
   { label: "Контакты", href: "/contact" },
 ];
 

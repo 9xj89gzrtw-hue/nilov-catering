@@ -20,7 +20,7 @@ export default function MobileNav() {
             </Link>
           ))}
           <a
-            href="tel:+78121234567"
+            href="tel:+78129195911"
             className="flex flex-col items-center justify-center text-gold hover:text-gold-light transition-colors duration-200 text-[10px] gap-0.5"
             aria-label="Позвонить"
           >

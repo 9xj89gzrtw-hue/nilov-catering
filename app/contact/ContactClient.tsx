@@ -49,13 +49,13 @@ export default function ContactClient() {
             </h2>
 
             <div className="space-y-7">
-              <a href="tel:+78121234567" className="flex items-start gap-4 group cursor-hover">
+              <a href="tel:+78129195911" className="flex items-start gap-4 group cursor-hover">
                 <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center shrink-0 group-hover:border-gold/40 transition-colors duration-300">
                   <Phone className="w-4 h-4 text-gold/70" />
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-cream-muted mb-1">Телефон</p>
-                  <p className="text-sm text-cream group-hover:text-gold transition-colors duration-300">+7 (812) 123-45-67</p>
+                  <p className="text-sm text-cream group-hover:text-gold transition-colors duration-300">+7 (812) 919-59-11</p>
                   <p className="text-[10px] text-cream-muted/50 mt-0.5">Ежедневно 9:00 — 21:00</p>
                 </div>
               </a>

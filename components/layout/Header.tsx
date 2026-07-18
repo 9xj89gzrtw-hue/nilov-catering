@@ -82,12 +82,12 @@ export default function Header() {
             {/* CTA + Mobile Toggle */}
             <div className="flex items-center gap-4">
               <a
-                href="tel:+78121234567"
+                href="tel:+78129195911"
                 className="hidden md:flex items-center gap-2 text-sm text-cream/50 hover:text-gold transition-colors duration-300 cursor-hover"
-                aria-label="Позвонить: +7 (812) 123-45-67"
+                aria-label="Позвонить: +7 (812) 919-59-11"
               >
                 <Phone className="w-3.5 h-3.5" />
-                <span className="text-xs font-medium tracking-wide">+7 (812) 123-45-67</span>
+                <span className="text-xs font-medium tracking-wide">+7 (812) 919-59-11</span>
               </a>
 
               <Link
@@ -146,8 +146,8 @@ export default function Header() {
                   exit={{ opacity: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <a href="tel:+78121234567" className="text-gold font-medium text-lg">
-                    +7 (812) 123-45-67
+                  <a href="tel:+78129195911" className="text-gold font-medium text-lg">
+                    +7 (812) 919-59-11
                   </a>
                   <Link
                     href="/contact"

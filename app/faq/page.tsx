@@ -29,8 +29,8 @@ export default function FAQPage() {
           <a href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background font-medium rounded-[4px] hover:bg-accent/90 transition-colors">
             Оставить заявку
           </a>
-          <a href="tel:+78121234567" className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-foreground font-medium rounded-[4px] hover:bg-border/10 transition-colors">
-            +7 (812) 123-45-67
+          <a href="tel:+78129195911" className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-foreground font-medium rounded-[4px] hover:bg-border/10 transition-colors">
+            +7 (812) 919-59-11
           </a>
         </div>
       </section>

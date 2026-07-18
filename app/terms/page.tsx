@@ -18,7 +18,7 @@ export default function TermsPage() {
           <h2 className="font-heading text-xl font-semibold text-cream mt-8">3. Отмена</h2>
           <p>При отмене более чем за 7 дней — полный возврат предоплаты. При отмене за 3-7 дней — удерживается 30%. При отмене менее чем за 3 дня — предоплата не возвращается.</p>
           <h2 className="font-heading text-xl font-semibold text-cream mt-8">4. Контакты</h2>
-          <p>По всем вопросам: info@nilov-catering.ru или +7 (812) 123-45-67.</p>
+          <p>По всем вопросам: info@nilov-catering.ru или +7 (812) 919-59-11.</p>
         </div>
       </section>
     </>
