@@ -99,13 +99,13 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 1.6 }}
         >
           <MagneticButton
-            href="/contact"
+            href="tel:+78129195911"
             className="btn-primary text-xs uppercase tracking-wider w-full sm:w-auto cursor-hover"
           >
             Обсудить мероприятие
           </MagneticButton>
           <MagneticButton
-            href="/menu"
+            href="/constructor"
             className="btn-outline text-xs uppercase tracking-wider w-full sm:w-auto cursor-hover"
           >
             Смотреть меню
