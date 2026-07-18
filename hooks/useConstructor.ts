@@ -71,10 +71,10 @@ export const useConstructor = create<ConstructorState>()(
 );
 
 export const FORMAT_CARDS = [
-  { id: 'furshet', name: 'Фуршет', price: 2450, minGuests: 20, icon: '🥂', desc: 'Холодные и горячие закуски, канапе, напитки' },
-  { id: 'banket', name: 'Банкет', price: 4470, minGuests: 15, icon: '🍽️', desc: 'Посадочное обслуживание, многоходовое меню' },
-  { id: 'coffee-break', name: 'Кофе-брейк', price: 950, minGuests: 10, icon: '☕', desc: 'Кофе, чай, выпечка, мини-сэндвичи' },
-  { id: 'mobile-furshet', name: 'Мобильный фуршет', price: 858, minGuests: 10, icon: '📦', desc: 'Готовые наборы с доставкой' },
+  { id: 'furshet', name: 'Фуршет', price: 2450, minGuests: 20, icon: '🥂', image: '/images/hero/banquet.jpg.svg', desc: 'Холодные и горячие закуски, канапе, напитки' },
+  { id: 'banket', name: 'Банкет', price: 4470, minGuests: 15, icon: '🍽️', image: '/images/dishes/hot.svg', desc: 'Посадочное обслуживание, многоходовое меню' },
+  { id: 'coffee-break', name: 'Кофе-брейк', price: 950, minGuests: 10, icon: '☕', image: '/images/dishes/drink.svg', desc: 'Кофе, чай, выпечка, мини-сэндвичи' },
+  { id: 'mobile-furshet', name: 'Мобильный фуршет', price: 858, minGuests: 10, icon: '📦', image: '/images/dishes/breakfast.svg', desc: 'Готовые наборы с доставкой' },
 ];
 
 export const ADD_ON_CATALOG: AddOn[] = [
