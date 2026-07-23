@@ -50,12 +50,12 @@ export default function GlutenFreePage() {
               <p className="text-muted-foreground">Верифицированные БГ-производители: миндальная мука Bob's Red Mill, рисовая мука ТМ Гарнец, БГ овсянка.</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-1">Перекрёстное загрязнение глютеном</h3>
+              <h3 className="font-semibold mb-1">⚠ Перекрёстное загрязнение глютеном</h3>
               <p className="text-muted-foreground">Приготовление в отдельной смене. Без пересечения с пшеничной мукой в воздухе. Отдельный фритюр.</p>
             </div>
             <div>
               <h3 className="font-semibold mb-1">⚠ Перекрёстное загрязнение орехами</h3>
-              <p className="text-muted-foreground">5 БГ-блюд используют миндальную/кедровую муку. Для гостей с combined целиакия + анафилаксия на орехи — укажите в заявке, приготовим отдельное nut-free БГ-подмножество.</p>
+              <p className="text-muted-foreground">5 БГ-блюд используют миндальную муку + 1 БГ-напиток содержит кедровый орех (Кедровый раф). Для гостей с combined целиакия + анафилаксия на орехи — укажите в заявке, приготовим отдельное nut-free БГ-подмножество.</p>
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 italic">

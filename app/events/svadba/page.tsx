@@ -72,7 +72,7 @@ export default function SvadbaPage() {
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li>✓ Доставка в КАД</li>
                 <li>✓ Сервировка и персонал</li>
-                <li>✓ Вино красное/белое (2 бокала)</li>
+                <li>✓ Барная станция (вкл. вино 2 бокала — опц. безалк. для халяль)</li>
                 <li>✓ Десертный стол</li>
                 <li>✗ Свадебный торт</li>
                 <li>✗ Координатор события</li>
@@ -83,7 +83,7 @@ export default function SvadbaPage() {
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li>✓ Всё из Стандарта</li>
                 <li>✓ Welcome drink</li>
-                <li>✓ Винная карта (безлимит)</li>
+                <li>✓ Барная станция (вкл. винная карта безлимит — опц. безалк. для халяль)</li>
                 <li>✓ Шампанское (2 бокала)</li>
                 <li>✓ Морепродукты</li>
                 <li>✗ Свадебный торт</li>
@@ -95,7 +95,7 @@ export default function SvadbaPage() {
                 <li>✓ Всё из Расширенного</li>
                 <li>✓ Свадебный торт на заказ</li>
                 <li>✓ Координатор события</li>
-                <li>✓ Сомелье + 5 вин</li>
+                <li>✓ Сомелье + 5 вин (опц. безалк. дегустация для халяль)</li>
                 <li>✓ Чёрная икра</li>
                 <li>✓ Эко-упаковка остатков</li>
               </ul>
