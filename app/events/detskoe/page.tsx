@@ -25,7 +25,8 @@ export default function DetskoeEventPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-red-300 bg-red-50">
           <h2 className="font-heading text-base font-bold text-red-900 mb-2">🥜 Анафилаксия на орехи? Безопасно.</h2>
           <p className="text-sm text-red-900 mb-3">
-            <strong>В детском меню НЕТ блюд с орехами</strong> (арахис, лесной, кедровый, грецкий) — по умолчанию.
+            <strong>В детском меню НЕТ блюд с цельными орехами</strong> (арахис, лесной, кедровый, грецкий) — по умолчанию.
+            Несколько БГ-десертов используют миндальную муку — они имеют значок ⚠ Орехи и НЕ рекомендуются при анафилаксии на миндаль.
             При заявленной анафилаксии:
           </p>
           <ul className="text-sm text-red-900 space-y-1 mb-3 ml-4 list-disc">

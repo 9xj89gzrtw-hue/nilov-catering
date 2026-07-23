@@ -349,7 +349,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           {editMode ? 'Редактирую…' : '✎ Настроить меню'}
         </button>
         <Link
-          href={`/plan/constructor?format=${EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}`}
+          href={`/plan/constructor?format=${offer.formatOverride || EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}`}
           onClick={() => {
             // Если пользователь редактировал состав — сохраняем в sessionStorage
             if (editMode && customItems.length > 0) {

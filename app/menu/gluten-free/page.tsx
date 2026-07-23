@@ -50,16 +50,35 @@ export default function GlutenFreePage() {
               <p className="text-muted-foreground">Верифицированные БГ-производители: миндальная мука Bob's Red Mill, рисовая мука ТМ Гарнец, БГ овсянка.</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-1">Перекрёстное загрязнение</h3>
+              <h3 className="font-semibold mb-1">Перекрёстное загрязнение глютеном</h3>
               <p className="text-muted-foreground">Приготовление в отдельной смене. Без пересечения с пшеничной мукой в воздухе. Отдельный фритюр.</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-1">Состав блюд</h3>
-              <p className="text-muted-foreground">Полный состав каждого БГ-блюда с указанием марки и поставщика ингредиентов. По запросу — спецификация.</p>
+              <h3 className="font-semibold mb-1">⚠ Перекрёстное загрязнение орехами</h3>
+              <p className="text-muted-foreground">5 БГ-блюд используют миндальную/кедровую муку. Для гостей с combined целиакия + анафилаксия на орехи — укажите в заявке, приготовим отдельное nut-free БГ-подмножество.</p>
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 italic">
             При заказе для целиакии: укажите в заявке — менеджер подтвердит протокол и пришлёт спецификацию БГ-блюд.
+            Для combined целиакия + анафилаксия на орехи — укажите обе диеты, шеф подберёт nut-free БГ-меню.
+          </p>
+        </div>
+
+        {/* Nut-free warning для БГ + nut-anaphylaxis */}
+        <div className="mb-8 p-4 rounded-xl border-2 border-amber-300 bg-amber-50">
+          <p className="text-sm font-semibold text-amber-900 mb-2">⚠ Внимание: БГ-меню и орехи</p>
+          <p className="text-sm text-amber-900 mb-2">
+            5 блюд в БГ-меню используют <strong>миндальную муку</strong> (БГ шоколадный торт, БГ капкейки, БГ пицца, БГ тарт, БГ хлеб)
+            и 1 блюдо содержит <strong>кедровый орех</strong> (Кедровый раф). Эти блюда:
+          </p>
+          <ul className="text-sm text-amber-900 space-y-1 mb-2 ml-4 list-disc">
+            <li>✓ Безопасны для целейных гостей (celiac-safe, &lt;20 ppm)</li>
+            <li>✗ <strong>НЕ безопасны</strong> для гостей с анафилаксией на орехи (миндаль/кедровый)</li>
+            <li>✗ Промаркированы значком ⚠ Орехи</li>
+          </ul>
+          <p className="text-sm text-amber-900">
+            <strong>Для combined целиакия + анафилаксия на орехи</strong> — укажите обе диеты в заявке.
+            Шеф подготовит nut-free БГ-подмножество (на рисовой/овсяной/подсолнечной муке).
           </p>
         </div>
 

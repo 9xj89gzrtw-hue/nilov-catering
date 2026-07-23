@@ -22,6 +22,8 @@ export interface TariffOffer {
   highlights: string[]; // 3–4 ключевых пункта
   composition: TariffDishItem[];
   imagePlaceholder: string; // emoji-заглушка пока нет фото
+  /** Override format for constructor URL (default: EVENT_TO_FORMAT[eventId]) */
+  formatOverride?: string;
 }
 
 // ═══════════════════════════════════════════
@@ -231,6 +233,7 @@ const VYPUSKNOY: TariffOffer[] = [
     description: 'Спец. тариф для школ и образовательных учреждений. Канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад. Бумажная посуда.',
     highlights: ['Школы / вузы / детсады', 'Документы для Роспот', 'Бумажная посуда', 'Станция напитков'],
     imagePlaceholder: '🎓',
+    formatOverride: 'furshet',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр, виноград, крекер', category: 'Канапе', qty: '2 шт/гость' },
