@@ -45,7 +45,7 @@ export default function Header() {
           >
             📞 {SITE.phone}
           </a>
-          <Link href="/plan/constructor" className="hidden lg:inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+          <Link href="/plan/calculator" className="hidden lg:inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Спланировать
           </Link>
         </div>

@@ -97,13 +97,13 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           preload="metadata"
           poster="/images/gallery/furshet-hero-768.webp"
           aria-hidden="true"
-          onCanPlayThrough={() => setVideoReady(true)}
+          onCanPlayThrough={() => setVideoReady(true)} onPlay={() => setVideoPaused(false)} onPause={() => setVideoPaused(true)}
         >
           <source src="/videos/hero/banquet.mp4" type="video/mp4" />
           <source src="/videos/hero/banquet.webm" type="video/webm" />
         </video>
         {/* Darker overlay for text legibility — centered text needs uniform dark bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/60 to-black/70" />
       </motion.div>
 
       {/* Video pause button — always rendered in SSR for WCAG 2.2.2 */}
@@ -127,11 +127,11 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-white/90 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-sm text-white hover:text-white transition-colors"
           >
             <span className="text-amber-400 text-base">★★★★★</span>
             <span className="font-semibold">4.9</span>
-            <span className="text-white/60">· 217 отзывов</span>
+            <span className="text-white/90">· 217 отзывов</span>
           </a>
         </div>
 
@@ -145,7 +145,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
         </h1>
 
         {/* One-line subtitle — minimal */}
-        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto animate-fade-up" style={{ animationDelay: '0.15s' }}>
+        <p className="text-lg md:text-xl text-white mb-8 max-w-xl mx-auto animate-fade-up" style={{ animationDelay: '0.15s' }}>
           От 6 до 500 гостей. Ресторанное качество по честной цене.
         </p>
 
@@ -162,7 +162,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           </Link>
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="text-sm text-white/70 hover:text-white transition-colors min-h-[44px] flex items-center"
+            className="text-sm text-white/90 hover:text-white transition-colors min-h-[44px] flex items-center"
           >
             или позвоните: {SITE.phone}
           </a>
