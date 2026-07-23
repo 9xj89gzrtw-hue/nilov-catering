@@ -101,7 +101,9 @@ export default function SvadbaPage() {
               </ul>
             </div>
           </div>
-          <p className="text-[10px] text-muted-foreground mt-3">💡 Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
+          <p className="text-[11px] text-muted-foreground mt-3">💡 Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
+          <p className="text-[11px] text-muted-foreground mt-2">🕌 <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-[11px] text-muted-foreground mt-2">🥜 <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">/allergens</a>.</p>
         </div>
       </div>
     </main>

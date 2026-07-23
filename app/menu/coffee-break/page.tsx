@@ -30,6 +30,38 @@ export default function CoffeeBreakPage() {
 
         <MenuTariffs format="coffee-break" formatLabel="Кофе-брейк" />
 
+        {/* Multi-day conference pricing */}
+        <div className="mt-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
+          <h2 className="font-heading text-xl font-medium mb-3">💼 Многодневные конференции (3+ дня)</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Для конференций 3+ дня — пакетная цена со скидкой 20% + объёмные скидки.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-line bg-background">
+              <p className="text-sm font-semibold mb-1">Пример: 200 чел × 3 дня × 6 кофе-брейков</p>
+              <p className="text-xs text-muted-foreground">690 ₽ × 200 × 6 × 3 = 2 484 000 ₽ (без скидок)</p>
+              <p className="text-xs text-muted-foreground">Со скидками 15% (объём) + 20% (многодневность) = <strong className="text-foreground">1 690 752 ₽</strong></p>
+              <p className="text-xs text-muted-foreground">Экономия: 793 248 ₽</p>
+            </div>
+            <div className="p-3 rounded-lg border border-line bg-background">
+              <p className="text-sm font-semibold mb-1">Пример: 100 чел × 2 дня × 4 кофе-брейка</p>
+              <p className="text-xs text-muted-foreground">690 ₽ × 100 × 4 × 2 = 552 000 ₽ (без скидок)</p>
+              <p className="text-xs text-muted-foreground">Со скидкой 10% (объём) = <strong className="text-foreground">496 800 ₽</strong></p>
+              <p className="text-xs text-muted-foreground">Экономия: 55 200 ₽</p>
+            </div>
+          </div>
+          <div className="text-sm text-muted-foreground mb-3">
+            Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%, от 500 — индивидуально.
+            Многодневные конференции (3+ дня) — дополнительно -20%.
+          </div>
+          <Link
+            href="/contact?subject=Многодневная-конференция"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+          >
+            ✍️ Запросить точную смету для конференции
+          </Link>
+        </div>
+
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все блюда кофе-брейка ({coffeeDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {coffeeDishes.map(dish => (
