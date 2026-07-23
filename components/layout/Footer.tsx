@@ -76,11 +76,17 @@ export default function Footer() {
               <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
             ))}
           </div>
-          {/* Rating badge (03_JOURNEYS / 30_REVIEWS) */}
+          {/* Rating badge (03_JOURNEYS / 30_REVIEWS) — ссылка на Яндекс.Карты для верификации */}
           <div className="flex items-center gap-4">
-            <span className="text-xs text-muted-foreground flex items-center gap-1">
-              ★ 4.8 <span className="hidden sm:inline">на Яндекс.Картах</span>
-            </span>
+            <a
+              href="https://yandex.ru/maps/?text=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D1%83%D0%B4%20%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
+              title="Посмотреть отзывы на Яндекс.Картах"
+            >
+              ★ 4.8 <span className="hidden sm:inline">на Яндекс.Картах →</span>
+            </a>
           </div>
         </div>
 
@@ -93,8 +99,28 @@ export default function Footer() {
           <TextSizeToggle />
         </div>
 
+        {/* Юридические реквизиты (реальные данные — ИП Нилов Д.И.) */}
+        <div className="mt-6 pt-6 border-t border-line/50 text-center">
+          <p className="text-sm text-foreground">
+            <span className="font-semibold">{SITE.legalName}</span>
+            {' · '}
+            <span>ИНН {SITE.inn}</span>
+            {' · '}
+            <span>ОГРНИП {SITE.ogrnip}</span>
+          </p>
+          <p className="text-sm text-muted-foreground mt-1">
+            {SITE.legalAddress}
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Бренд {SITE.name} работает с 2007 года. Документы и договор — по запросу{' '}
+            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground">{SITE.email}</a>
+            {' · '}
+            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground">{SITE.phone}</a>
+          </p>
+        </div>
+
         <p className="mt-4 text-center text-xs text-muted-foreground">
-          Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции».
+          Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции». Маркировка 14 аллергенов по ТР ТС 022/2011 Приложение 3.
         </p>
       </div>
     </footer>

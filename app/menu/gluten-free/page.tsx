@@ -1,51 +1,163 @@
 'use client';
 
 import { useMemo } from 'react';
+import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
-import MenuTariffs from '@/components/blocks/MenuTariffs';
+import { SITE } from '@/lib/data';
 
 export default function GlutenFreePage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('gluten-free')), []);
-  const tariffs = dishes.length > 0 ? 'gluten-free' : null;
+  const desserts = dishes.filter(d => d.station === 'desserts');
+  const mains = dishes.filter(d => d.station === 'hot' || d.station === 'cold');
+  const drinks = dishes.filter(d => d.station === 'drinks');
 
   return (
     <main className="pt-24 pb-20">
-      <div className="container-site max-w-3xl">
-        <h1 className="mb-2">Безглютен-линия</h1>
-        <p className="text-muted-foreground mb-8">
-          Меню без глютена. Все блюда готовятся отдельно, маркировка по 14 аллергенам (ТР ТС 022/2011). Подходит для целиакии и ЗОЖ. {dishes.length} безглютеновых блюд в каталоге.
+      <div className="container-site max-w-4xl">
+        <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
+          <Link href="/" className="hover:text-foreground">Главная</Link>
+          {' / '}
+          <Link href="/menu" className="hover:text-foreground">Меню</Link>
+          {' / '}
+          <span className="text-foreground">Без глютена</span>
+        </nav>
+
+        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">Безглютеновое меню</h1>
+        <p className="text-lg text-muted-foreground mb-6">
+          {dishes.length} блюд без глютена — от закусок до десертов. Отдельная линия кухни,
+          отдельная посуда (синяя маркировка), тестирование &lt;20 ppm. Подходит для целиакии.
         </p>
 
-        <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все GF-блюда ({dishes.length})</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-          {dishes.map(dish => (
-            <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
-              <div className="flex items-start justify-between">
-                <h3 className="font-medium text-sm mb-1 pr-2">{dish.name}</h3>
-                <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium shrink-0">GF</span>
-              </div>
-              <p className="text-xs text-muted-foreground mb-2">{dish.description}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-gold-text">{dish.pricePerGuest} ₽/гость</span>
-              </div>
-              {dish.allergens.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-1">
-                  {dish.allergens.map(a => (
-                    <span key={a} className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
-                  ))}
-                </div>
-              )}
+        {/* Целиакия-протокол */}
+        <div className="mb-8 p-6 rounded-2xl border-2 border-blue-200 bg-blue-50">
+          <h2 className="font-heading text-xl font-medium mb-4">🌾 Протокол для целиакии</h2>
+          <div className="grid sm:grid-cols-2 gap-4 text-sm">
+            <div>
+              <h3 className="font-semibold mb-1">Отдельная зона кухни</h3>
+              <p className="text-muted-foreground">Отдельные разделочные столы, плиты, духовки. Не пересекаются с пшеничными блюдами.</p>
             </div>
-          ))}
+            <div>
+              <h3 className="font-semibold mb-1">Отдельная посуда</h3>
+              <p className="text-muted-foreground">Ножи, доски, сковороды, противни — отдельные, с синей цветовой маркировкой.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">Тестирование &lt;20 ppm</h3>
+              <p className="text-muted-foreground">Целевая норма &lt;20 ppm gluten (соответствует Codex Alimentarius, GFCO, Coeliac UK). Регулярная проверка.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">Поставщики</h3>
+              <p className="text-muted-foreground">Верифицированные БГ-производители: миндальная мука Bob's Red Mill, рисовая мука ТМ Гарнец, БГ овсянка.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">Перекрёстное загрязнение</h3>
+              <p className="text-muted-foreground">Приготовление в отдельной смене. Без пересечения с пшеничной мукой в воздухе. Отдельный фритюр.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">Состав блюд</h3>
+              <p className="text-muted-foreground">Полный состав каждого БГ-блюда с указанием марки и поставщика ингредиентов. По запросу — спецификация.</p>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-4 italic">
+            При заказе для целиакии: укажите в заявке — менеджер подтвердит протокол и пришлёт спецификацию БГ-блюд.
+          </p>
         </div>
 
-        <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
-          <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
-          <p className="text-xs text-muted-foreground mb-3">Шеф соберёт GF-меню под бюджет и пожелания.</p>
-          <a href="/plan/constructor?diet=gluten-free" className="text-sm text-gold-text font-semibold hover:underline">
-            Составить меню с шефом →
-          </a>
+        {/* Десерты — выделены отдельно (торт, хлеб, капкейки) */}
+        <div className="mb-10">
+          <h2 className="font-heading text-2xl font-medium mb-2">🍰 БГ-десерты и выпечка</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб, БГ пицца, БГ панкейки — для ребёнка с целиакией.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {desserts.map(dish => (
+              <div key={dish.id} className="rounded-xl border-2 border-blue-200 bg-blue-50/50 p-4 hover:border-gold-text transition-colors">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
+                  <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                  <span className="text-xs text-muted-foreground">&lt;20 ppm</span>
+                </div>
+                {dish.allergens.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {dish.allergens.map(a => (
+                      <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Основные блюда */}
+        <div className="mb-10">
+          <h2 className="font-heading text-2xl font-medium mb-2">🥗 БГ-закуски и горячее</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {mains.map(dish => (
+              <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
+                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                </div>
+                {dish.allergens.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {dish.allergens.map(a => (
+                      <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Напитки */}
+        {drinks.length > 0 && (
+          <div className="mb-10">
+            <h2 className="font-heading text-2xl font-medium mb-2">☕ БГ-напитки</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {drinks.map(dish => (
+                <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
+          <h2 className="font-heading text-lg font-medium mb-2">Заказать полностью БГ-меню</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Соберите БГ-меню в конструкторе с фильтром «без глютена» или позвоните — шеф-повар подберёт под ваш бюджет.
+            Для целиакии — обязательное подтверждение протокола перед бронированием.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/plan/constructor?diet=gluten-free" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+              ✨ Собрать БГ-меню
+            </Link>
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+              📞 {SITE.phone}
+            </a>
+            <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+              ✍️ Заявка
+            </Link>
+          </div>
         </div>
       </div>
     </main>

@@ -104,7 +104,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
 
           {/* Simple, clear subtitle — one sentence with prices */}
           <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-            {subtitle || 'Ресторанное качество кейтеринга. От камерного ужина до банкета на 500 гостей.'}
+            {subtitle || 'Ресторанное качество кейтеринга. От камерного ужина на 6 персон до банкета на 200 гостей или корпоратива на 500.'}
           </p>
 
           {/* Quick price anchor — видно за 10 секунд */}

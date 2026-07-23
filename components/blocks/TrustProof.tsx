@@ -161,7 +161,7 @@ export default function TrustProof({ cmsFacts }: { cmsFacts?: TrustProofItem[] }
 
         <motion.div
           className="flex flex-wrap lg:grid lg:grid-cols-5 gap-3 lg:gap-5 justify-center"
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           transition={{ staggerChildren: 0.15 }}

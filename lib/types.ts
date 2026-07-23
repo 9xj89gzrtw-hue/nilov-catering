@@ -163,8 +163,21 @@ export interface SiteConfig {
   domain: string;
   phone: string;
   phoneTel: string;
+  /** Дополнительный мобильный (interfood-catering.ru) */
+  phoneMobile?: string;
+  phoneMobileTel?: string;
   whatsapp: string;
   email: string;
+  /** Email для B2B-запросов */
+  b2bEmail?: string;
   address: string;
   ogImage: string;
+  /** Юр.лицо (ИП Нилов Д.И., ИНН 781433059704, ОГРНИП 314784710400401) */
+  legalName: string;
+  legalShort: string;
+  inn: string;
+  ogrnip: string;
+  legalAddress: string;
+  /** Сайт-двойник (для verification) */
+  altDomain?: string;
 }

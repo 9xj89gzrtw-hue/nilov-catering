@@ -404,7 +404,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
   const sorted = [...offers].sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
 
   return (
-    <main className="pt-24 pb-20">
+    <section className="pt-24 pb-20">
       <div className="container-site">
         {/* Event type tabs — only if standalone */}
         {isStandalone && (
@@ -416,16 +416,26 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-2 mb-12">
-              {events.map(([id, m]) => (
-                <button key={id} onClick={() => setSelectedEvent(id)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    selectedEvent === id
-                      ? 'bg-gold-text text-white'
-                      : 'border border-line text-muted-foreground hover:border-gold-text'
-                  }`}>
-                  {m.emoji} {m.label}
-                </button>
-              ))}
+              {events.map(([id, m]) => {
+                const isActive = selectedEvent === id;
+                const href = `/pricing?event=${id}`;
+                return (
+                  <Link
+                    key={id}
+                    href={href}
+                    prefetch={false}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors no-underline ${
+                      isActive
+                        ? 'bg-gold-text text-white'
+                        : 'border border-line text-muted-foreground hover:border-gold-text'
+                    }`}
+                    aria-pressed={isActive}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {m.emoji} {m.label}
+                  </Link>
+                );
+              })}
             </div>
           </>
         )}
@@ -508,6 +518,6 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           </Link>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

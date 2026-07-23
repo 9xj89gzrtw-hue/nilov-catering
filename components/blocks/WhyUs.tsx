@@ -8,7 +8,7 @@ export default function WhyUs() {
         <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-3">О нас</p>
         <h2 id="why-us-heading" className="mb-4">Почему NiloV Catering</h2>
         <p className="text-muted-foreground mb-8 text-balance text-sm md:text-base">
-          Начали в 2007 году. Дмитрий Нилов собрал команду из лучших ресторанов Петербурга. Сегодня — 40+ человек, 3 000+ событий. От ужина на 10 до банкета на 500.
+          Начали в 2007 году. Дмитрий Нилов собрал команду из лучших ресторанов Петербурга. Сегодня — 40+ человек, 3 000+ событий. От ужина на 6 до банкета на 200 или корпоратива на 500 гостей.
         </p>
 
         {/* Stats row — compact */}

@@ -4,14 +4,14 @@ import { useRef, type ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, type Variants } from 'framer-motion';
 
 const revealVariants: Variants = {
-  hidden: { y: 24, opacity: 0 },
+  hidden: { y: 24, opacity: 1 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
 /** Блок, появляющийся при скролле (whileInView reveal) */
 export function RevealBlock({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
-    <motion.div variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} transition={{ delay }} className={className}>
+    <motion.div variants={revealVariants} initial="visible" whileInView="visible" viewport={{ once: true, margin: '-40px' }} transition={{ delay }} className={className}>
       {children}
     </motion.div>
   );
@@ -75,10 +75,10 @@ export function RevealSection({ children, className = '' }: { children: ReactNod
   return (
     <motion.section
       className={className}
-      initial="hidden"
+      initial="visible"
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+      variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
     >
       {children}
     </motion.section>
