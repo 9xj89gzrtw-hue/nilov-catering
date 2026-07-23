@@ -12,7 +12,7 @@ import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
 import FAQTeaser from '@/components/blocks/FAQTeaser';
-import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
+import { getTrustProofs, getReviews } from '@/lib/cms';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -22,21 +22,15 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function HomePage() {
-  const [cmsFacts, pageTexts, cmsReviews] = await Promise.all([
+  const [cmsFacts, cmsReviews] = await Promise.all([
     getTrustProofs(),
-    getAllPageTexts(),
     getReviews(),
   ]);
 
-  const textMap = Object.fromEntries(pageTexts.map(t => [t.key, t.value]));
-
   return (
     <main id="main">
-      {/* 1. Hero — what we do, why it matters */}
-      <HeroBlock
-        subtitle={textMap['hero-sub']}
-        disclaimer={textMap['hero-disclaimer']}
-      />
+      {/* 1. Hero — minimal: headline, subtitle, CTA, trust badge (4 elements) */}
+      <HeroBlock />
 
       {/* 2. Quick pricing + action strip */}
       <HeroExtras />
