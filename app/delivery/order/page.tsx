@@ -175,7 +175,7 @@ export default function DeliveryOrderPage() {
             {/* === Step 1: Delivery zone + time === */}
             {step === 1 && (
               <div className="max-w-3xl mx-auto">
-                <h2 className="font-heading text-xl mb-4">Зона доставки</h2>
+                <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2">⚠ выберите зону</span>}</h2>
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                   {DELIVERY_ZONES.map(zone => (
                     <button

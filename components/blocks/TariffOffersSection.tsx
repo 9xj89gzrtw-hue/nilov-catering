@@ -369,7 +369,16 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
   const [selectedEvent, setSelectedEvent] = useState<string>(propEventId || 'svadba');
 
   useEffect(() => {
-    if (propEventId) setSelectedEvent(propEventId);
+    if (propEventId) {
+      setSelectedEvent(propEventId);
+    } else if (typeof window !== 'undefined') {
+      // Чтение ?event= из URL для диплинков (например /pricing?event=korporativ)
+      const params = new URLSearchParams(window.location.search);
+      const eventParam = params.get('event');
+      if (eventParam && EVENT_META[eventParam]) {
+        setSelectedEvent(eventParam);
+      }
+    }
   }, [propEventId]);
 
   const isStandalone = !propEventId;

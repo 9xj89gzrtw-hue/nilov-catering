@@ -36,6 +36,9 @@ export interface ConstructorState {
   // Custom menu
   selectedItems: SelectedItem[];
 
+  // Excluded allergens (из AllergenFilterBar) — передаются в заявку
+  excludedAllergens: string[];
+
   // Add-ons
   addOns: AddOn[];
 
@@ -71,6 +74,7 @@ export interface ConstructorState {
   prevStep: () => void;
   toggleAddOn: (a: AddOn) => void;
   setContact: (c: Partial<ConstructorState['contact']>) => void;
+  setExcludedAllergens: (allergens: string[]) => void;
 
   // Custom menu management (drag-and-drop)
   addDish: (dishId: string) => void;
@@ -83,7 +87,7 @@ export interface ConstructorState {
   reset: () => void;
 }
 
-const INITIAL: Pick<ConstructorState, '_hasHydrated' | 'format' | 'guestCount' | 'childGuests' | 'diet' | 'tierMode' | 'tier' | 'selectedItems' | 'addOns' | 'contact' | 'currentStep' | 'isCalculating' | 'errors' | 'guestEdge' | 'base' | 'addonsTotal' | 'total' | 'perGuest' | 'savings' | 'service' | 'pricing'> = {
+const INITIAL: Pick<ConstructorState, '_hasHydrated' | 'format' | 'guestCount' | 'childGuests' | 'diet' | 'tierMode' | 'tier' | 'selectedItems' | 'excludedAllergens' | 'addOns' | 'contact' | 'currentStep' | 'isCalculating' | 'errors' | 'guestEdge' | 'base' | 'addonsTotal' | 'total' | 'perGuest' | 'savings' | 'service' | 'pricing'> = {
   _hasHydrated: false,
   format: null,
   guestCount: 20,
@@ -93,6 +97,7 @@ const INITIAL: Pick<ConstructorState, '_hasHydrated' | 'format' | 'guestCount' |
   tierMode: 'preset',
   tier: null,
   selectedItems: [],
+  excludedAllergens: [],
   addOns: [],
   contact: { name: '', phone: '', date: '', comment: '' },
   currentStep: 0,
@@ -156,6 +161,8 @@ export const useConstructor = create<ConstructorState>()(
       },
 
       setContact: (c) => set(s => ({ contact: { ...s.contact, ...c } })),
+
+      setExcludedAllergens: (allergens) => set({ excludedAllergens: allergens }),
 
       // === Custom menu management (drag-and-drop) ===
       addDish: (dishId) => {
@@ -264,6 +271,7 @@ export const useConstructor = create<ConstructorState>()(
         tierMode: s.tierMode,
         tier: s.tier,
         selectedItems: s.selectedItems,
+        excludedAllergens: s.excludedAllergens,
         addOns: s.addOns,
         contact: s.contact,
         currentStep: s.currentStep,

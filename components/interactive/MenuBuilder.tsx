@@ -36,13 +36,15 @@ export interface MenuBuilderProps {
   onRemove: (dishId: string) => void;
   onSetQty: (dishId: string, qty: number) => void;
   onReorder?: (fromIdx: number, toIdx: number) => void;
+  // Опционально: контролируемые excludedAllergens (если передан — синхронизируются со store)
+  excludedAllergens?: Set<Allergen>;
+  onExcludedAllergensChange?: (allergens: Set<Allergen>) => void;
   formatFilter?: string;
   catalogTitle?: string;
   cartTitle?: string;
   emptyCartText?: string;
   unit?: string;
   enableReorder?: boolean;
-  // Гибридный режим — позволяет тумблером "показать блюда других форматов" (для детей+взрослых)
   enableHybridMode?: boolean;
 }
 
@@ -52,6 +54,8 @@ export default function MenuBuilder({
   onRemove,
   onSetQty,
   onReorder,
+  excludedAllergens: controlledExcluded,
+  onExcludedAllergensChange,
   formatFilter,
   catalogTitle = 'Каталог блюд',
   cartTitle = 'Ваше меню',
@@ -63,13 +67,19 @@ export default function MenuBuilder({
   const [search, setSearch] = useState('');
   const [station, setStation] = useState<string>('all');
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
-  const [excludedAllergens, setExcludedAllergens] = useState<Set<Allergen>>(new Set());
+  // Локальный state — используется если не передан controlledExcluded
+  const [localExcludedAllergens, setLocalExcludedAllergens] = useState<Set<Allergen>>(new Set());
+  // Actual excludedAllergens (controlled or local)
+  const excludedAllergens = controlledExcluded !== undefined ? controlledExcluded : localExcludedAllergens;
+  const setExcludedAllergens = (next: Set<Allergen>) => {
+    if (onExcludedAllergensChange) onExcludedAllergensChange(next);
+    else setLocalExcludedAllergens(next);
+  };
   const [allergenMode, setAllergenMode] = useState<'highlight' | 'hide'>('highlight');
   const [showExtraAllergens, setShowExtraAllergens] = useState(false);
   const [dragOverIdx, setDragOverIdx] = useState<number | null>(null);
   const [draggedFromIdx, setDraggedFromIdx] = useState<number | null>(null);
   const [dragOverCart, setDragOverCart] = useState(false);
-  // Гибридный режим — показывает блюда всех форматов
   const [showAllFormats, setShowAllFormats] = useState(false);
 
   const toggleDiet = (d: string) => {

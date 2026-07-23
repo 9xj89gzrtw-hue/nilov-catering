@@ -54,14 +54,27 @@ export const SERVICE_STAFF_HOURS = 8;
 export const GUEST_QUICK_BUTTONS = [10, 20, 50, 100, 150, 200, 300, 500];
 
 // ═══════════════════════════════════════════
-// Цены — канон из 07_CALCULATOR_SPEC / NILOV_UNIFIED_MENU
+// Цены — ЕДИНЫЙ ИСТОЧНИК ПРАВДЫ: tariff-offers.ts через getPricesForFormat
+// Чтобы цены на сайте не расходились между UI и calcTotal
 // ═══════════════════════════════════════════
+// Используется в lib/pricing.ts (calcTotal) для расчёта стоимости
+// Берётся из tariff-offers.ts — единый источник с UI
+// (lib/tariff-offers.ts -> getPricesForFormat -> PRICE_PER_GUEST)
+
+// Чтобы избежать циклической зависимости — дублируем цены здесь.
+// Эти значения ДОЛЖНЫ совпадать с lib/tariff-offers.ts (SVADBA, KORPORATIV, DETSKOE, CHEF_AT_HOME)
+// и COFFEE_BREAK_PRICES. Если правите тут — правьте и в tariff-offers.ts.
 export const PRICE_PER_GUEST: Record<Format, Partial<Record<Tier, number>>> = {
-  furshet:          { economy: 2450, standard: 3450, premium: 4350, luxury: 5350 },
-  banket:           { economy: 4470, standard: 5470, premium: 5970, luxury: 7950 },
+  // furshet ← CHASTNOE (см. tariff-offers.ts: economy=2450, standard=3950, premium=5950, luxury=нет)
+  furshet:          { economy: 2450, standard: 3950, premium: 5950 },
+  // banket ← SVADBA (economy=3950, standard=5470, premium=7350, luxury=9950)
+  banket:           { economy: 3950, standard: 5470, premium: 7350, luxury: 9950 },
+  // coffee-break ← COFFEE_BREAK_PRICES (нет в tariff-offers, захардкожено)
   'coffee-break':   { economy: 390,  standard: 1450, premium: 1950, luxury: 2450 },
-  'mobile-furshet': { economy: 2450, standard: 3450, premium: 4350, luxury: 5350 },
-  detskoe:          { economy: 1950, standard: 2450, premium: 2950, luxury: 3450 },
+  'mobile-furshet': { economy: 2450, standard: 3950, premium: 5950 },
+  // detskoe ← DETSKOE (economy=1550, standard=2450, premium=3450, luxury=нет)
+  detskoe:          { economy: 1550, standard: 2450, premium: 3450 },
+  // chef-at-home ← CHEF_AT_HOME (economy=4500, standard=7500 — hourly, не perGuest)
   'chef-at-home':   {},
 };
 

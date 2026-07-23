@@ -6,7 +6,8 @@ import { useConstructor } from '@/hooks/useConstructor';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALL_TARIFF_OFFERS, getPricesForFormat, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
-import type { Format, Tier } from '@/lib/types';
+import { ALLERGEN_LABEL } from '@/lib/types';
+import type { Format, Tier, Allergen } from '@/lib/types';
 
 // Метаданные форматов — только UI (icon, label, desc). Цены берутся из getPricesForFormat.
 const TARIFF_META: { format: Format; label: string; icon: string; desc: string }[] = [
@@ -282,6 +283,8 @@ export default function ConstructorWizard() {
               onRemove={store.removeDish}
               onSetQty={store.setItemQty}
               onReorder={store.reorderItems}
+              excludedAllergens={new Set(store.excludedAllergens as Allergen[])}
+              onExcludedAllergensChange={(next) => store.setExcludedAllergens([...next])}
               formatFilter={store.format || undefined}
               catalogTitle="Каталог блюд"
               cartTitle="Ваше меню"
@@ -351,6 +354,23 @@ export default function ConstructorWizard() {
                     );
                   })}
                 </ul>
+              </div>
+            )}
+
+            {/* Excluded allergens — передаются в заявку менеджеру */}
+            {store.excludedAllergens.length > 0 && (
+              <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4 mb-6">
+                <h3 className="text-sm font-medium mb-2">⚠ Исключённые аллергены (передаётся менеджеру):</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {store.excludedAllergens.map(a => (
+                    <span key={a} className="text-xs bg-destructive text-white px-2 py-0.5 rounded-full font-semibold">
+                      {ALLERGEN_LABEL[a as Allergen] || a}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-2">
+                  Менеджер подтвердит по телефону, что в заказе нет блюд с этими аллергенами.
+                </p>
               </div>
             )}
 

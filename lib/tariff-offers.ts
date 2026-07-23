@@ -498,9 +498,10 @@ export interface FormatPriceTier {
   eventId?: string;
 }
 
-// Получить 4 тарифа для формата — единый источник правды
+// Получить 4 тарифа для формата — берёт из PRICE_PER_GUEST (единый источник)
+// Возвращает состав из tariff-offers если есть
 export function getPricesForFormat(format: Format): FormatPriceTier[] {
-  // Coffee-break — особый (нет в tariff-offers)
+  // Coffee-break — особый (нет в tariff-offers, цены захардкожены)
   if (format === 'coffee-break') {
     return [
       { tier: 'economy', pricePerGuest: COFFEE_BREAK_PRICES.economy, minGuests: 10 },
@@ -522,5 +523,5 @@ export function getPricesForFormat(format: Format): FormatPriceTier[] {
       minGuests: offer?.minGuests ?? 10,
       eventId,
     };
-  });
+  }).filter(p => p.pricePerGuest > 0); // не показывать недоступные тиры (например, luxury для furshet)
 }

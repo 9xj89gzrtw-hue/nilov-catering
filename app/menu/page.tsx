@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 // Группируем блюда по форматам
 const FORMATS = [
   { slug: 'furshet', label: 'Фуршет', href: '/menu/furshet', price: 'от 2 450 ₽/гость', emoji: '🥪', desc: 'Канапе, тарталетки, закуски. Для корпоративов и дней рождения. Гости едят стоя.' },
-  { slug: 'banket', label: 'Банкет', href: '/menu/banquet', price: 'от 4 470 ₽/гость', emoji: '🍽️', desc: 'Полноценный обед с посадкой. Салаты, суп, горячее. Для свадеб и торжеств.' },
+  { slug: 'banket', label: 'Банкет', href: '/menu/banquet', price: 'от 3 950 ₽/гость', emoji: '🍽️', desc: 'Полноценный обед с посадкой. Салаты, суп, горячее. Для свадеб и торжеств.' },
   { slug: 'coffee-break', label: 'Кофе-брейк', href: '/menu/coffee-break', price: 'от 390 ₽/гость', emoji: '☕', desc: 'Выпечка, сэндвичи, десерты, кофе. Для конференций и тренингов.' },
   { slug: 'detskoe', label: 'Детское', href: '/menu/detskoe', price: 'от 1 550 ₽/гость', emoji: '🎈', desc: 'Бургеры, наггетсы, смузи. Безопасное и вкусное меню для детей.' },
   { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 1 500 ₽/гость', emoji: '🥬', desc: 'Растительное меню без продуктов животного происхождения.' },

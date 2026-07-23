@@ -194,7 +194,7 @@ export const useDeliveryCart = create<DeliveryCartState>()(
 
       items: [],
       contact: { ...INITIAL_CONTACT },
-      zoneId: 'kad',
+      zoneId: '', // пустая зона — пользователь должен явно выбрать
       needThermobox: false,
 
       addDish: (dishId) => {
@@ -248,14 +248,19 @@ export const useDeliveryCart = create<DeliveryCartState>()(
       setZone: (zoneId) => {
         // Если выбрана зона без холодовой цепи — автоматически включаем термобокс
         const zone = DELIVERY_ZONES.find(z => z.id === zoneId);
-        set({ zoneId, needThermobox: zone ? !zone.coldChain : get().needThermobox });
+        // Сбросить контактные поля подъезд/этаж/домофон при смене зоны (т.к. они переиспользуются для city/country)
+        set(s => ({
+          zoneId,
+          needThermobox: zone ? !zone.coldChain : get().needThermobox,
+          contact: { ...s.contact, entrance: '', floor: '', intercom: '', apartment: '' },
+        }));
       },
       setThermobox: (need) => set({ needThermobox: need }),
 
       reset: () => set({
         items: [],
         contact: { ...INITIAL_CONTACT },
-        zoneId: 'kad',
+        zoneId: '',
         needThermobox: false,
       }),
     }),
