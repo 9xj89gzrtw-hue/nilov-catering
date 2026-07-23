@@ -77,9 +77,10 @@ export default function TeamPage() {
 
         {/* Founder highlight */}
         <div className="mb-12 p-8 rounded-2xl border-2 border-gold-tint bg-gold-tint/10 text-center max-w-2xl mx-auto">
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-tint to-gold-text flex items-center justify-center text-4xl font-bold text-white">
+          <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-tint to-gold-text flex items-center justify-center text-4xl font-bold text-white" title="Фото по запросу после первого контакта">
             ДН
           </div>
+          <p className="text-xs text-muted-foreground italic mb-3">📷 Фото команды предоставляется по запросу после первого контакта — для верификации в LinkedIn, ОК, VK.</p>
           <h2 className="font-heading text-2xl font-medium mb-1">Дмитрий Нилов</h2>
           <p className="text-gold-text font-medium mb-3">Основатель, шеф-повар · с 2007 года</p>
           <p className="text-sm text-muted-foreground mb-4 max-w-xl mx-auto">

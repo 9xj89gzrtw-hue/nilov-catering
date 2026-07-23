@@ -87,7 +87,7 @@ export default function VypusknoyPage() {
           </div>
 
           <div className="p-4 rounded-lg bg-white border border-emerald-200 mb-4">
-            <h3 className="font-semibold text-sm mb-2">🎓 Спец. тариф для школ (от 60 детей + родителей)</h3>
+            <h3 className="font-semibold text-sm mb-2">🎓 Спец. тариф для школ (от 30 детей + родителей)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Школьный пакет: <strong className="text-foreground">от 1 800 ₽/гость</strong> — фуршет с детским меню + станция напитков + бумажная посуда.
               Включает: канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад.

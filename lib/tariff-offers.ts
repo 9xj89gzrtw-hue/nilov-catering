@@ -229,7 +229,7 @@ const KORPORATIV: TariffOffer[] = [
 const VYPUSKNOY: TariffOffer[] = [
   {
     eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'economy', tierLabel: 'Школьный пакет',
-    pricePerGuest: 1800, minGuests: 60,
+    pricePerGuest: 1800, minGuests: 30,
     description: 'Спец. тариф для школ и образовательных учреждений. Канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад. Бумажная посуда.',
     highlights: ['Школы / вузы / детсады', 'Документы для Роспот', 'Бумажная посуда', 'Станция напитков'],
     imagePlaceholder: '🎓',
@@ -251,6 +251,7 @@ const VYPUSKNOY: TariffOffer[] = [
     description: 'Молодёжный фуршет. Пицца-станция, бургеры, лимонады.',
     highlights: ['Пицца-станция', 'Мини-бургеры', 'Лимонады', 'Фотозона'],
     imagePlaceholder: '🎓',
+    formatOverride: 'furshet',
     composition: [
       { dishId: 'pizza-station', name: 'Пицца-станция', desc: 'Пицца из дровяной печи: маргарита, пепперони, 4 сыра', category: 'Горячее', qty: '1 станция' },
       { dishId: 'mini-burger', name: 'Мини-бургер', desc: 'Говяжья котлета, чеддер, карамелизированный лук, булочка бриошь', category: 'Горячее', qty: '2 шт/гость' },
@@ -268,6 +269,7 @@ const VYPUSKNOY: TariffOffer[] = [
     description: 'Праздничный банкет. Горячее, десерты, безалкогольный бар.',
     highlights: ['2 горячих', 'Десертный стол', 'Mocktail-бар', 'DJ + свет'],
     imagePlaceholder: '🎓',
+    formatOverride: 'furshet',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
@@ -289,6 +291,7 @@ const VYPUSKNOY: TariffOffer[] = [
     description: 'Выпускной с размахом. Шоу-станции, бар, сладкий стол.',
     highlights: ['3 шоу-станции', 'Mocktail-бар', 'Конфетти-пушка', 'Фотограф'],
     imagePlaceholder: '🎓',
+    formatOverride: 'furshet',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '3 шт/гость' },
       { dishId: 'antipasto', name: 'Антипасто-плато', desc: 'Прошутто, салями, артишоки, оливки, каперсы', category: 'Закуски', qty: '1 станция' },

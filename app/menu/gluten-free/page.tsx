@@ -72,7 +72,7 @@ export default function GlutenFreePage() {
             и 1 блюдо содержит <strong>кедровый орех</strong> (Кедровый раф). Эти блюда:
           </p>
           <ul className="text-sm text-amber-900 space-y-1 mb-2 ml-4 list-disc">
-            <li>✓ Безопасны для целейных гостей (celiac-safe, &lt;20 ppm)</li>
+            <li>✓ Безопасны для гостей с целиакией (celiac-safe, &lt;20 ppm)</li>
             <li>✗ <strong>НЕ безопасны</strong> для гостей с анафилаксией на орехи (миндаль/кедровый)</li>
             <li>✗ Промаркированы значком ⚠ Орехи</li>
           </ul>
