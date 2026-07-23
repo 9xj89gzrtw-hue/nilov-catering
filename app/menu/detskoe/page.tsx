@@ -20,14 +20,30 @@ export default function DetskoePage() {
         </p>
 
         {/* Safety banner — ВВЕРХУ, перед тарифами и блюдами */}
-        <div className="mb-8 p-4 rounded-xl border border-destructive/30 bg-destructive/5">
-          <p className="text-sm font-medium mb-1">⚠ Аллергены в детском меню</p>
-          <p className="text-xs text-muted-foreground">
-            Блюда с орехами и глютеном выделены красным. Если у ребёнка аллергия — отметьте её в конструкторе меню или предупредите менеджера по телефону. Все блюда маркируются по 14 аллергенам ТР ТС 022/2011.
+        <div className="mb-8 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
+          <p className="text-base font-bold text-amber-900 mb-2">⚠ Аллергены в детском меню — безопасность детей</p>
+          <p className="text-sm text-amber-900 mb-3">
+            Блюда с орехами (арахис, лесной, кедровый, грецкий) и глютеном промаркированы.
+            <strong> Если у ребёнка аллергия или анафилаксия — укажите это в заявке.</strong>
+            Менеджер свяжется с вами для подтверждения протокола безопасности (отдельная зона кухни,
+            отдельные доски/ножи, EpiPen на руках у ответственного сотрудника).
           </p>
-          <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline mt-2 inline-block">
-            Собрать детское меню в конструкторе →
-          </Link>
+          <p className="text-sm text-amber-900 mb-3">
+            Все блюда маркируются по 14 аллергенам ТР ТС 022/2011 (Приложение 3).
+            Безглютеновое детское меню доступно на <Link href="/menu/gluten-free" className="underline font-semibold">/menu/gluten-free</Link>.
+            Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+              Собрать детское меню в конструкторе →
+            </Link>
+            <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+              📋 Протокол безопасности
+            </Link>
+            <Link href="/contact" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+              ✍️ Заявка с аллергией
+            </Link>
+          </div>
         </div>
 
         {/* CTA: "Не нашли — составим" */}

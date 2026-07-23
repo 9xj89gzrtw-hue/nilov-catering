@@ -56,7 +56,7 @@ export default function TastingPage() {
             },
             {
               title: '🥗 Диеты и аллергены',
-              text: 'Для целейакии, анафилаксии, халяль, веган — дегустация по отдельному протоколу. Можно попробовать безглютеновый торт, халяль-шашлык, веган-десерт. Укажите диеты в форме ниже.',
+              text: 'Для целиакии, анафилаксии, халяль, веган — дегустация по отдельному протоколу. Можно попробовать безглютеновый торт, халяль-шашлык, веган-десерт, безореховое меню. Укажите диеты в форме ниже.',
             },
           ].map((item) => (
             <div key={item.title} className="rounded-lg border border-line bg-card p-4">
@@ -90,7 +90,7 @@ export default function TastingPage() {
               </div>
               <div>
                 <label htmlFor="guests" className="block text-sm font-medium text-foreground mb-1">Кол-во гостей на дегустацию</label>
-                <input id="guests" name="guests" type="number" min="1" max="6" defaultValue="2" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="guests" name="guests" type="number" min="1" max="12" defaultValue="2" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
             </div>
 

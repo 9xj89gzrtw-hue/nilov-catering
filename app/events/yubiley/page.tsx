@@ -49,35 +49,15 @@ export default function YubileyPage() {
 
         {/* Бюджетные решения — для 15 чел на 50к */}
         <div className="mb-8 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3">💰 Бюджетные решения для 15 гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">💰 Что помещается в бюджет 50 000 ₽ на 15 гостей</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Золотая свадьба или юбилей на 15 пожилых гостей — нужен банкет с посадкой.
-            Вот 3 варианта под бюджет 50 000 ₽:
+            Вот реальные варианты под бюджет 50 000 ₽:
           </p>
           <div className="space-y-3">
-            <div className="p-4 rounded-lg border border-line bg-background">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold">Вариант 1: Фуршет-Эконом + посадка</h3>
-                <span className="text-base font-bold text-gold-text">15 × 2 450 ₽ = 36 750 ₽</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Лёгкие закуски, канапе, горячее, чай/кофе. Гости могут сидеть за столом, но без полноценной подачи.
-                Экономия ~13 000 ₽ от бюджета.
-              </p>
-            </div>
-            <div className="p-4 rounded-lg border border-line bg-background">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold">Вариант 2: Банкет-Максимальный (от 15 гостей)</h3>
-                <span className="text-base font-bold text-gold-text">15 × 9 950 ₽ = 149 250 ₽</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Полноценный банкет: 5 закусок, 2 горячих, икорная станция, сомелье, торт, координатор.
-                Премиум-формат для особого повода. Превышение бюджета — но можно согласовать рассрочку.
-              </p>
-            </div>
             <div className="p-4 rounded-lg border-2 border-gold-tint bg-gold-tint/10">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-semibold">⭐ Вариант 3: Индивидуальный пакет «Юбилейный»</h3>
+              <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+                <h3 className="font-semibold">⭐ Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
                 <span className="text-base font-bold text-gold-text">от 50 000 ₽ за 15 чел</span>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -91,7 +71,26 @@ export default function YubileyPage() {
                 📞 Обсудить пакет «Юбилейный»
               </a>
             </div>
+            <div className="p-4 rounded-lg border border-line bg-background">
+              <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+                <h3 className="font-semibold">Вариант 2: Фуршет-Эконом с посадкой</h3>
+                <span className="text-base font-bold text-gold-text">15 × 2 450 ₽ = 36 750 ₽</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Лёгкие закуски, канапе, горячее, чай/кофе. Гости могут сидеть за столом, но без полноценной подачи.
+                Экономия ~13 000 ₽ от бюджета — можно добавить торт или расширить меню.
+              </p>
+            </div>
           </div>
+        </div>
+
+        {/* Premium (вне бюджета) — отдельный блок */}
+        <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
+          <h3 className="font-heading text-base font-medium mb-2">💎 Премиум-вариант (вне бюджета 50к)</h3>
+          <p className="text-sm text-muted-foreground">
+            Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
+            сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.
+          </p>
         </div>
 
         <TariffOffersSection

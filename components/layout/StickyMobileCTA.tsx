@@ -23,7 +23,7 @@ export default function StickyMobileCTA({
   return (
     <motion.div
       className="fixed bottom-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-t border-line px-3 py-2 flex items-center gap-2 lg:hidden safe-area-bottom"
-      initial={{ y: 100 }}
+      initial={{ y: 0 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.3 }}
       aria-label="Быстрые действия"

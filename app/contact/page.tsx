@@ -145,61 +145,125 @@ export default function ContactPage() {
             </div>
 
             {/* Группы гостей с диетами — для multi-diet заказа */}
-            <details className="rounded-lg border border-line bg-secondary/30 p-3">
-              <summary className="text-sm font-medium cursor-pointer">
-                🥗 Несколько групп гостей с разными диетами? (optional)
-              </summary>
+            <fieldset className="rounded-lg border border-line bg-secondary/30 p-3">
+              <legend className="text-sm font-medium px-2">
+                🥗 Несколько групп гостей с разными диетами? (заполните при необходимости)
+              </legend>
               <p className="text-xs text-muted-foreground mt-2 mb-3">
-                Например: 10 веганов + 8 халяль + 4 без глютена + 57 всеядных.
+                Например: 10 веганов + 8 халяль + 4 без глютена + 1 без орехов + 57 всеядных.
                 Каждая группа получит своё под-меню с фильтром по диете.
               </p>
               <div className="space-y-2">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <input type="number" name="groupOmnivore" min="0" placeholder="Всеядные" className="rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <input type="number" name="groupVegan" min="0" placeholder="Веганы" className="rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <input type="number" name="groupHalal" min="0" placeholder="Халяль" className="rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <input type="number" name="groupGlutenFree" min="0" placeholder="Без глютена" className="rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <input type="number" name="groupNutFree" min="0" placeholder="Без орехов" className="rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <input type="number" name="groupOther" min="0" placeholder="Другое" className="rounded border border-line bg-background px-3 py-2 text-sm" />
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Всеядные</span>
+                    <input type="number" name="groupOmnivore" id="groupOmnivore" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Веганы</span>
+                    <input type="number" name="groupVegan" id="groupVegan" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Халяль</span>
+                    <input type="number" name="groupHalal" id="groupHalal" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Без глютена (целиакия)</span>
+                    <input type="number" name="groupGlutenFree" id="groupGlutenFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Без орехов (анафилаксия)</span>
+                    <input type="number" name="groupNutFree" id="groupNutFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Другая диета / аллергия</span>
+                    <input type="number" name="groupOther" id="groupOther" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
                 </div>
+                <label className="flex items-center gap-2 text-sm mt-2">
+                  <input type="checkbox" name="medicalDiet" />
+                  Медицинская диета (целиакия / анафилаксия) — требуется документированный протокол безопасности
+                </label>
               </div>
-            </details>
+            </fieldset>
 
-            {/* B2B toggle */}
-            <details className="rounded-lg border border-line bg-secondary/30 p-3">
+            {/* B2B toggle — open by default для корпоративных клиентов */}
+            <details className="rounded-lg border border-line bg-secondary/30 p-3" open>
               <summary className="text-sm font-medium cursor-pointer">
-                💼 Заявка от юридического лица? (B2B)
+                💼 Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
               <p className="text-xs text-muted-foreground mt-2 mb-3">
                 Для корпоративов, школ, учреждений, гос. заказчиков (44-ФЗ, 223-ФЗ).
-                Работаем с НДС и без НДС, ЭДО (Диадок/СБИС), отсрочка для постоянных клиентов.
+                Работаем с НДС (ОСН) или без НДС (УСН — уточните при звонке), ЭДО (Диадок/СБИС).
               </p>
               <div className="space-y-2">
-                <input type="text" name="companyName" placeholder="Название организации" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Название организации</span>
+                  <input type="text" name="companyName" placeholder="ООО «Ромашка» / ГБОУ Школа №123" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                </label>
                 <div className="grid grid-cols-2 gap-2">
-                  <input type="text" name="companyInn" placeholder="ИНН организации" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
-                  <select name="edo" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
-                    <option value="">ЭДО (не выбран)</option>
-                    <option value="Контур.Диадок">Контур.Диадок</option>
-                    <option value="СБИС">СБИС</option>
-                    <option value="Другое">Другое</option>
-                    <option value="Без ЭДО">Без ЭДО</option>
-                  </select>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">ИНН организации (10 или 12 цифр)</span>
+                    <input type="text" name="companyInn" inputMode="numeric" pattern="[0-9]{10,12}" placeholder="7800000000" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">КПП (если есть)</span>
+                    <input type="text" name="companyKpp" inputMode="numeric" pattern="[0-9]{9}" placeholder="780101001" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                  </label>
                 </div>
-                <select name="vat" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
-                  <option value="">НДС (не выбран)</option>
-                  <option value="С НДС">Работаем с НДС (ОСН)</option>
-                  <option value="Без НДС">Без НДС (УСН/ПСН)</option>
-                  <option value="Уточнить">Уточнить при звонке</option>
-                </select>
-                <label className="flex items-center gap-2 text-sm">
-                  <input type="checkbox" name="needDocsForRospot" />
-                  Нужен пакет документов для Роспотребнадзора (медкнижки, бракераж, ППК)
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Юр.адрес организации</span>
+                  <input type="text" name="companyAddress" placeholder="191123, г. Санкт-Петербург, ул. ..." className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                 </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input type="checkbox" name="needContract" />
-                  Нужен договор юр.лицо-юр.лицо с фиксированной сметой
-                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">ЭДО-система</span>
+                    <select name="edo" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
+                      <option value="">Не выбран</option>
+                      <option value="Контур.Диадок">Контур.Диадок</option>
+                      <option value="СБИС">СБИС</option>
+                      <option value="Другое">Другое</option>
+                      <option value="Без ЭДО">Без ЭДО</option>
+                    </select>
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Налоговый режим</span>
+                    <select name="vat" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
+                      <option value="">Не выбран</option>
+                      <option value="С НДС (ОСН)">Работаем с НДС (ОСН)</option>
+                      <option value="Без НДС (УСН)">Без НДС (УСН)</option>
+                      <option value="Уточнить">Уточнить при звонке</option>
+                    </select>
+                  </label>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Период события (дней)</span>
+                    <input type="number" name="daysCount" min="1" placeholder="1" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                  </label>
+                  <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Бюджет (₽)</span>
+                    <input type="number" name="totalBudget" min="0" placeholder="500000" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                  </label>
+                </div>
+                <div className="space-y-2 mt-2">
+                  <label className="flex items-center gap-2 text-sm">
+                    <input type="checkbox" name="needDocsForRospot" />
+                    Нужен пакет документов для Роспотребнадзора (медкнижки, бракераж, ППК)
+                  </label>
+                  <label className="flex items-center gap-2 text-sm">
+                    <input type="checkbox" name="needContract" />
+                    Нужен договор юр.лицо-юр.лицо с фиксированной сметой
+                  </label>
+                  <label className="flex items-center gap-2 text-sm">
+                    <input type="checkbox" name="needSLA" />
+                    Нужен SLA в договоре (метрики punctuality, штрафы, страхование)
+                  </label>
+                  <label className="flex items-center gap-2 text-sm">
+                    <input type="checkbox" name="procurement44FZ" />
+                    Закупка по 44-ФЗ / 223-ФЗ (тендер)
+                  </label>
+                </div>
               </div>
             </details>
 

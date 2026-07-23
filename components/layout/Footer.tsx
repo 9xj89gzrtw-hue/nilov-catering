@@ -7,6 +7,7 @@ const FOOTER_LINKS = {
     { label: 'Корпоративы', href: '/events/korporativ' },
     { label: 'Свадьбы', href: '/events/svadba' },
     { label: 'Выпускные', href: '/events/vypusknoy' },
+    { label: 'Юбилеи и годовщины', href: '/events/yubiley' },
     { label: 'Детские праздники', href: '/events/detskoe' },
     { label: 'Выезд шефа', href: '/events/chef-at-home' },
   ],
@@ -79,7 +80,7 @@ export default function Footer() {
           {/* Rating badge (03_JOURNEYS / 30_REVIEWS) — ссылка на Яндекс.Карты для верификации */}
           <div className="flex items-center gap-4">
             <a
-              href="https://yandex.ru/maps/?text=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D1%83%D0%B4%20%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+              href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
@@ -112,7 +113,7 @@ export default function Footer() {
             {SITE.legalAddress}
           </p>
           <p className="text-xs text-muted-foreground mt-2">
-            Бренд {SITE.name} работает с 2007 года. Документы и договор — по запросу{' '}
+            Бренд {SITE.name} работает с 2007 года. ИП Нилов Д.И. зарегистрирован в 2014 (перерегистрация с ранее действовавшей формы). Документы и договор — по запросу{' '}
             <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground">{SITE.email}</a>
             {' · '}
             <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground">{SITE.phone}</a>

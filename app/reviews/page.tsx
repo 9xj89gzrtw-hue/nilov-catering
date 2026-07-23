@@ -105,7 +105,7 @@ export default function ReviewsPage() {
           <div className="text-4xl font-bold text-gold-text mb-1">★ 4.8 / 5.0</div>
           <p className="text-sm text-muted-foreground mb-3">На основе отзывов с 2007 года</p>
           <a
-            href="https://yandex.ru/maps/?text=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D1%83%D0%B4%20%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
+            href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
@@ -142,7 +142,7 @@ export default function ReviewsPage() {
             Все отзывы выше — реальные. Большинство проверены на Яндекс.Картах (значок «Yandex.Maps»).
             Отзывы с пометкой «B2B-договор» или «Чек школы» — подтверждены документально.
             Если вы наш клиент и хотите оставить отзыв — пишите на <a href={`mailto:${SITE.email}`} className="text-gold-text hover:underline">{SITE.email}</a> или{' '}
-            <a href="https://yandex.ru/maps/?text=Интерфуд+кейтеринг+Санкт-Петербург" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">оставьте на Яндекс.Картах</a>.
+            <a href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">оставьте на Яндекс.Картах</a>.
           </p>
         </div>
 
