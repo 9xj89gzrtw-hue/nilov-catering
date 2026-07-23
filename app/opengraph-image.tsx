@@ -17,7 +17,7 @@ export default async function OgImage() {
         <div style={{ fontSize: 72, fontWeight: 500, color: '#1C1815', marginBottom: 20 }}>NiloV Catering</div>
         <div style={{ fontSize: 28, color: '#4A423B', fontFamily: 'system-ui', marginBottom: 10 }}>Кейтеринг под ключ в Санкт-Петербурге</div>
         <div style={{ fontSize: 24, color: '#8A6D3B', fontFamily: 'system-ui', marginBottom: 10 }}>Фуршет · Банкет · Кофе-брейк · Доставка</div>
-        <div style={{ fontSize: 22, color: '#B08D57', fontFamily: 'system-ui' }}>С 2007 года · 3000+ событий · 4.8 на Яндекс.Картах</div>
+        <div style={{ fontSize: 22, color: '#B08D57', fontFamily: 'system-ui' }}>С 2007 года · 3 247 событий · 4.9 на Яндекс.Картах</div>
       </div>
     ),
     { ...size }

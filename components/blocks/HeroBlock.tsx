@@ -19,7 +19,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
   const [videoReady, setVideoReady] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
-  const [videoPaused, setVideoPaused] = useState(false);
+  const [videoPaused, setVideoPaused] = useState(true); // Start true (paused) — SSR label says "Включить"
 
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -27,13 +27,15 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
     const isSlow = conn?.effectiveType && !['4g', '5g'].includes(conn.effectiveType);
     const isDataSaver = conn?.saveData === true;
     const isLowMem = (navigator as any).deviceMemory < 4;
-    if (!isSlow && !isDataSaver && !isLowMem && !reducedMotion) setShouldAutoplay(true);
-
-    try {
-      if (localStorage.getItem('hero-video-paused') === 'true') {
-        setVideoPaused(true);
-      }
-    } catch {}
+    if (!isSlow && !isDataSaver && !isLowMem && !reducedMotion) {
+      setShouldAutoplay(true);
+      // Check localStorage — only unpause if user hasn't explicitly paused before
+      try {
+        if (localStorage.getItem('hero-video-paused') !== 'true') {
+          setVideoPaused(false);
+        }
+      } catch {}
+    }
 
     const id = rIC(() => {
       if (videoRef.current) videoRef.current.load();
@@ -83,7 +85,6 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             alt="Фуршетные канапе и закуски — кейтеринг NiloV в Санкт-Петербурге"
             className="absolute inset-0 w-full h-full object-cover"
             fetchPriority="high"
-            aria-hidden="true"
           />
         </picture>
         <video
