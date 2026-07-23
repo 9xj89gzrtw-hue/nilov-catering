@@ -39,6 +39,9 @@ export default function Header() {
           <a href={`tel:${SITE.phone}`} className="text-sm font-medium text-foreground hover:text-gold-text transition-colors">
             📞 {SITE.phone}
           </a>
+          <Link href="/delivery/order" className="text-sm font-medium text-muted-foreground hover:text-gold-text transition-colors">
+            🚚 Доставка
+          </Link>
           <Link href="/plan" className="inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Спланировать
           </Link>

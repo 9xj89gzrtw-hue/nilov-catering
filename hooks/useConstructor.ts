@@ -7,6 +7,9 @@ import type { PricingData } from '@/lib/pricing-types';
 import { DEFAULT_PRICING } from '@/lib/pricing-types';
 import { MIN_GUESTS } from '@/lib/constants';
 import { calcTotal } from '@/lib/pricing';
+import { ALL_DISHES } from '@/lib/menu-data';
+
+const DISH_MAP = new Map(ALL_DISHES.map(d => [d.id, d]));
 
 export interface SelectedItem {
   dishId: string;
@@ -68,6 +71,14 @@ export interface ConstructorState {
   prevStep: () => void;
   toggleAddOn: (a: AddOn) => void;
   setContact: (c: Partial<ConstructorState['contact']>) => void;
+
+  // Custom menu management (drag-and-drop)
+  addDish: (dishId: string) => void;
+  removeDish: (dishId: string) => void;
+  setItemQty: (dishId: string, qty: number) => void;
+  reorderItems: (fromIdx: number, toIdx: number) => void;
+  clearItems: () => void;
+
   recalc: () => void;
   reset: () => void;
 }
@@ -146,10 +157,78 @@ export const useConstructor = create<ConstructorState>()(
 
       setContact: (c) => set(s => ({ contact: { ...s.contact, ...c } })),
 
+      // === Custom menu management (drag-and-drop) ===
+      addDish: (dishId) => {
+        const items = get().selectedItems;
+        if (items.some(i => i.dishId === dishId)) return; // already selected
+        set({ selectedItems: [...items, { dishId, qty: 1 }] });
+        get().recalc();
+      },
+
+      removeDish: (dishId) => {
+        set({ selectedItems: get().selectedItems.filter(i => i.dishId !== dishId) });
+        get().recalc();
+      },
+
+      setItemQty: (dishId, qty) => {
+        const next = Math.max(0, Math.min(99, qty));
+        if (next === 0) {
+          set({ selectedItems: get().selectedItems.filter(i => i.dishId !== dishId) });
+        } else {
+          set({
+            selectedItems: get().selectedItems.map(i =>
+              i.dishId === dishId ? { ...i, qty: next } : i
+            ),
+          });
+        }
+        get().recalc();
+      },
+
+      reorderItems: (fromIdx, toIdx) => {
+        const items = [...get().selectedItems];
+        if (fromIdx < 0 || fromIdx >= items.length || toIdx < 0 || toIdx >= items.length) return;
+        const [moved] = items.splice(fromIdx, 1);
+        items.splice(toIdx, 0, moved);
+        set({ selectedItems: items });
+      },
+
+      clearItems: () => {
+        set({ selectedItems: [] });
+        get().recalc();
+      },
+
       recalc: () => {
-        const { format, guestCount, childGuests, tier, addOns, pricing } = get();
+        const { format, guestCount, childGuests, tier, tierMode, selectedItems, addOns, pricing } = get();
         if (!format || !tier) {
           set({ base: 0, addonsTotal: 0, total: 0, perGuest: 0, savings: 0, service: 0 });
+          return;
+        }
+
+        // Custom mode: calculate from selected dishes
+        if (tierMode === 'custom' && selectedItems.length > 0) {
+          const itemsForCalc = selectedItems
+            .map(i => {
+              const dish = DISH_MAP.get(i.dishId);
+              return dish ? { pricePerGuest: dish.pricePerGuest, qty: i.qty } : null;
+            })
+            .filter((x): x is { pricePerGuest: number; qty: number } => x !== null);
+
+          const result = calcTotal(guestCount, format, 'custom', addOns, {
+            discounts: true,
+            childGuests,
+            serviceBreakdown: false,
+            pricing,
+            items: itemsForCalc,
+          });
+
+          set({
+            base: result.base,
+            addonsTotal: result.addonsTotal,
+            total: result.total,
+            perGuest: result.perGuest,
+            savings: result.savings,
+            service: result.service,
+          });
           return;
         }
 

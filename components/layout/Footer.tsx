@@ -18,7 +18,7 @@ const FOOTER_LINKS = {
   ],
   Инструменты: [
     { label: 'Калькулятор', href: '/plan/calculator' },
-    { label: 'Конструктор', href: '/plan/constructor' },
+    { label: 'Конструктор меню', href: '/plan/constructor' },
     { label: 'Помощник', href: '/plan/helper' },
     { label: 'FAQ', href: '/faq' },
   ],
@@ -30,10 +30,10 @@ const FOOTER_LINKS = {
     { label: 'Блог', href: '/blog' },
   ],
   Инфо: [
-    { label: 'Доставка', href: '/delivery' },
+    { label: 'Доставка кейтеринга', href: '/delivery/order' },
+    { label: 'Зоны доставки', href: '/delivery' },
     { label: 'Сертификаты', href: '/certificates' },
     { label: 'Аллергены', href: '/allergens' },
-    { label: 'Глоссарий', href: '/help/formats' },
     { label: 'Дегустация', href: '/tasting' },
   ],
 };

@@ -11,17 +11,19 @@ const KEY_LINKS = [
   { href: '/', label: 'Главная' },
   { href: '/events', label: 'События' },
   { href: '/menu', label: 'Меню' },
-  { href: '/gallery', label: 'Галерея' },
+  { href: '/delivery/order', label: '🚚 Доставка' },
   { href: '/plan', label: 'Спланировать' },
 ];
 
 const EXTRA_LINKS = [
   { href: '/pricing', label: 'Тарифы и цены' },
+  { href: '/plan/constructor', label: 'Конструктор меню' },
   { href: '/reviews', label: 'Отзывы' },
   { href: '/why-us', label: 'Почему мы' },
   { href: '/contact', label: 'Контакты' },
   { href: '/faq', label: 'Вопросы' },
   { href: '/plan/calculator', label: 'Калькулятор' },
+  { href: '/delivery', label: 'Зоны доставки' },
 ];
 
 export default function MobileMenu() {

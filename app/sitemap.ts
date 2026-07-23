@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/menu/show-cooking', '/menu/bar',
     '/gallery', '/why-us', '/team', '/reviews', '/seasonal',
     '/plan', '/plan/calculator', '/plan/constructor', '/plan/helper',
-    '/contact', '/faq', '/blog', '/delivery', '/certificates', '/venues',
+    '/contact', '/faq', '/blog', '/delivery', '/delivery/order', '/certificates', '/venues',
     '/tasting', '/accessibility', '/help/formats', '/allergens',
     '/privacy', '/terms', '/cookies',
     '/en', '/subscribe', '/media-kit', '/careers',
