@@ -69,7 +69,7 @@ export default function GlutenFreePage() {
           <p className="text-sm font-semibold text-amber-900 mb-2">⚠ Внимание: БГ-меню и орехи</p>
           <p className="text-sm text-amber-900 mb-2">
             5 блюд в БГ-меню используют <strong>миндальную муку</strong> (БГ шоколадный торт, БГ капкейки, БГ пицца, БГ тарт, БГ хлеб)
-            и 1 блюдо содержит <strong>кедровый орех</strong> (Кедровый раф). Эти блюда:
+            и 1 БГ-напиток содержит <strong>кедровый орех</strong> (Кедровый раф). Эти блюда:
           </p>
           <ul className="text-sm text-amber-900 space-y-1 mb-2 ml-4 list-disc">
             <li>✓ Безопасны для гостей с целиакией (celiac-safe, &lt;20 ppm)</li>

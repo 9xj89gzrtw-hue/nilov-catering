@@ -52,8 +52,8 @@ const SVADBA: TariffOffer[] = [
   {
     eventId: 'svadba', eventName: 'Свадьба', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 5470, minGuests: 25,
-    description: 'Полноценный свадебный банкет с посадкой. Официанты, вино, горячее.',
-    highlights: ['5 закусок', '2 горячих блюда', 'Вино (2 бокала)', 'Welcome drink'],
+    description: 'Полноценный свадебный банкет с посадкой. Официанты, барная станция (опц. безалк. для халяль), горячее.',
+    highlights: ['5 закусок', '2 горячих блюда', 'Барная станция (опц. безалк. для халяль)', 'Welcome drink'],
     imagePlaceholder: '💍',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
@@ -155,7 +155,7 @@ const KORPORATIV: TariffOffer[] = [
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 5470, minGuests: 20,
-    description: 'Банкет с посадкой. Мясное/рыбное горячее, вино, десерты.',
+    description: 'Банкет с посадкой. Мясное/рыбное горячее, барная станция (опц. безалк. для халяль), десерты.',
     highlights: ['7 закусок', '2 горячих', 'Вино/пиво', 'Десертный стол'],
     imagePlaceholder: '💼',
     composition: [

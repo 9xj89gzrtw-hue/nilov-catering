@@ -109,7 +109,7 @@ export default function TeamPage() {
           {TEAM.slice(1).map((m) => (
             <div key={m.name} className="rounded-xl border border-line bg-card p-5">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center text-xl font-bold text-foreground shrink-0">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center text-xl font-bold text-foreground shrink-0" title="Фото по запросу после первого контакта">
                   {m.initials}
                 </div>
                 <div className="min-w-0">
