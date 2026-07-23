@@ -58,7 +58,14 @@ export default function CoffeeBreakPage() {
             href="/contact?subject=Многодневная-конференция"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-            ✍️ Запросить точную смету для конференции
+            ☕ Подписка для офисов
+
+Для регулярных кофе-брейков (4+ раза в месяц):
+      Еженедельно: 4 события × 50 чел × 390 ₽ = 78 000 ₽/мес → со скидкой 15% = 66 300 ₽/мес
+      Годовой контракт: фикс-цена 60 000 ₽/мес (скидка 23%), ежемесячный ЭДО-инвойс, SLA в комплекте
+      Ротация меню: 8-недельный цикл без повторов, сезонные обновления
+
+✍️ Запросить точную смету для конференции
           </Link>
         </div>
 

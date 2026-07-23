@@ -13,6 +13,8 @@ export default function ChastnoePage() {
         <h1 className="mb-2">Частные события</h1>
         <p className="text-muted-foreground mb-8">
           Дни рождения, юбилеи, семейные ужины. Дома, на веранде, на крыше — мы приедем куда скажете.
+
+      Праздник для ТСЖ / соседей? Кофе-брейк от 390 ₽/гость — на 100 человек = 39 000 ₽. Без официантов, доставка по ЖК. → /menu/coffee-break
         </p>
 
         <TariffOffersSection
