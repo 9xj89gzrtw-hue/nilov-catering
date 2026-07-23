@@ -4,6 +4,7 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/menu' },
   title: 'Меню и цены',
   description: 'Фуршет, банкет, кофе-брейк — меню и цены на кейтеринг в СПб. От 390 ₽/гость. Все блюда с ценами и составом.',
 };

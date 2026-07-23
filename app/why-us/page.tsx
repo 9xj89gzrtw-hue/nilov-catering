@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/why-us' },
   title: 'Почему мы',
-  description: 'NiloV Catering — 19 лет в Петербурге. 3000+ событий. Ресторанное качество по реальной цене.',
+  description: 'NiloV Catering — кейтеринг в Петербурге с 2007 года. 3000+ событий. Ресторанное качество по реальной цене.',
 };
 
 export default function WhyUsPage() {

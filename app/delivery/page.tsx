@@ -3,6 +3,7 @@ import Link from 'next/link';
 import DeliveryZonesMap from '@/components/blocks/DeliveryZonesMap';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/delivery' },
   title: 'Доставка кейтеринга',
   description: 'Закажите доставку готовых блюд на дом или в офис. Бесплатно в пределах КАД. Минимальный заказ 5000 ₽. Соберите меню сами.',
 };

@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import ConstructorWizard from '@/components/interactive/ConstructorWizard';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/plan/constructor' },
   title: 'Конструктор меню',
   description: 'Соберите меню под ваше событие за 2 минуты. Фуршет, банкет, кофе-брейк, детский праздник — рассчитайте стоимость онлайн.',
 };

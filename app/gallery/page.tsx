@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { title: 'Галерея' };
+export const metadata: Metadata = {
+  alternates: { canonical: '/gallery' }, title: 'Галерея' };
 
 const PHOTOS = Array.from({ length: 12 }).map((_, i) => ({
   src: `/placeholders/hero-${['furshet','banket','coffee-break','detskoe','chef-at-home','poster'][i % 6]}.svg`,

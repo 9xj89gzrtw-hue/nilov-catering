@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { title: 'Отзывы' };
+export const metadata: Metadata = {
+  alternates: { canonical: '/reviews' }, title: 'Отзывы' };
 
 export default function ReviewsPage() {
   return (

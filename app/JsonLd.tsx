@@ -7,7 +7,7 @@ export function OrganizationJsonLd() {
     '@id': `https://${SITE.domain}/#organization`,
     name: SITE.name,
     url: `https://${SITE.domain}`,
-    telephone: SITE.phone,
+    telephone: SITE.phoneTel,
     email: SITE.email,
     address: { '@type': 'PostalAddress', addressLocality: 'Санкт-Петербург', addressCountry: 'RU' },
     sameAs: [

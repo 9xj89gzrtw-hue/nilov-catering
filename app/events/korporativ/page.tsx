@@ -5,6 +5,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Корпоративы',
     description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 500 человек.',
+    alternates: { canonical: '/events/korporativ' },
   };
 }
 

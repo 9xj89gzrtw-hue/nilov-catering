@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Контакты',
   description: 'Свяжитесь с NiloV Catering: телефон, WhatsApp, Telegram. Санкт-Петербург.',
 };
@@ -17,7 +18,7 @@ export default function ContactPage() {
               {/* Contact cards */}
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { label: 'Телефон', value: SITE.phone, href: `tel:${SITE.phone}`, icon: '📞' },
+                  { label: 'Телефон', value: SITE.phone, href: `tel:${SITE.phoneTel}`, icon: '📞' },
                   { label: 'WhatsApp', value: 'Написать', href: `https://wa.me/${SITE.phone.replace(/[\s\(\)\-\+]/g,'')}`, icon: '💬' },
                   { label: 'Telegram', value: '@nilovcatering', href: 'https://t.me/nilovcatering', icon: '✈️' },
                   { label: 'Email', value: SITE.email, href: `mailto:${SITE.email}`, icon: '✉️' },
