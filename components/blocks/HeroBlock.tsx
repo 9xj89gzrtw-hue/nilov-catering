@@ -191,7 +191,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             </Link>
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-gold-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold text-foreground hover:border-gold-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring min-h-[44px]"
             >
               📞 {SITE.phone}
             </a>
