@@ -5,26 +5,24 @@ import Link from 'next/link';
 import { useConstructor } from '@/hooks/useConstructor';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
 import { ALL_DISHES } from '@/lib/menu-data';
-import { ALL_TARIFF_OFFERS } from '@/lib/tariff-offers';
+import { ALL_TARIFF_OFFERS, getPricesForFormat, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
 import type { Format, Tier } from '@/lib/types';
 
-const TARIFFS: { format: Format; label: string; icon: string; desc: string; minGuests: number; prices: Record<Tier, number> }[] = [
-  { format: 'furshet', label: 'Фуршет', icon: '🥪', desc: 'Стоячий приём, лёгкие закуски', minGuests: 20, prices: { economy: 2450, standard: 3450, premium: 4350, luxury: 5350 } },
-  { format: 'banket', label: 'Банкет', icon: '🍽️', desc: 'Посадка за стол, официанты', minGuests: 15, prices: { economy: 4470, standard: 5470, premium: 5970, luxury: 6970 } },
-  { format: 'coffee-break', label: 'Кофе-брейк', icon: '☕', desc: 'Кофе, выпечка, десерты', minGuests: 10, prices: { economy: 390, standard: 1450, premium: 1950, luxury: 2450 } },
-  { format: 'detskoe', label: 'Детский', icon: '🎈', desc: 'Меню для детей, аниматор', minGuests: 10, prices: { economy: 1950, standard: 2450, premium: 2950, luxury: 3450 } },
-  { format: 'chef-at-home', label: 'Шеф на дом', icon: '👨‍🍳', desc: 'Шеф готовит у вас', minGuests: 4, prices: { economy: 2500, standard: 4500, premium: 7500, luxury: 10000 } },
+// Метаданные форматов — только UI (icon, label, desc). Цены берутся из getPricesForFormat.
+const TARIFF_META: { format: Format; label: string; icon: string; desc: string }[] = [
+  { format: 'furshet', label: 'Фуршет', icon: '🥪', desc: 'Стоячий приём, лёгкие закуски' },
+  { format: 'banket', label: 'Банкет', icon: '🍽️', desc: 'Посадка за стол, официанты' },
+  { format: 'coffee-break', label: 'Кофе-брейк', icon: '☕', desc: 'Кофе, выпечка, десерты' },
+  { format: 'detskoe', label: 'Детский', icon: '🎈', desc: 'Меню для детей, аниматор' },
+  { format: 'chef-at-home', label: 'Шеф на дом', icon: '👨‍🍳', desc: 'Шеф готовит у вас' },
 ];
 
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
 const TIER_LABEL: Record<Tier, string> = { economy: 'Эконом', standard: 'Стандарт', premium: 'Расширенный', luxury: 'Максимальный' };
 const QUICK_GUESTS = [10, 15, 20, 30, 50, 80, 100, 150, 200, 300, 500];
 
-// Сокращённый wizard: 5 шагов вместо 7
-// 0: Формат | 1: Гости | 2: Тариф/режим | 3: Меню | 4: Итог+Контакты | 5: Готово (после отправки)
 const STEPS = ['Формат', 'Гости', 'Тариф', 'Меню', 'Контакты', 'Готово'];
 
-// Маппинг eventId (svadba, korporativ, ...) → формат
 const EVENT_TO_FORMAT: Record<string, Format> = {
   svadba: 'banket',
   korporativ: 'banket',
@@ -33,7 +31,6 @@ const EVENT_TO_FORMAT: Record<string, Format> = {
   detskoe: 'detskoe',
   'chef-at-home': 'chef-at-home',
   'coffee-break': 'coffee-break',
-  // прямые форматы
   furshet: 'furshet',
   banket: 'banket',
 };
@@ -42,20 +39,18 @@ export default function ConstructorWizard() {
   const store = useConstructor();
   const [submitted, setSubmitted] = useState(false);
 
-  // Hydrate from query string: ?format=&tier=&guests= или ?event=
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
 
-    // Поддержка ?event=svadba (старый формат ссылок)
     const eventParam = params.get('event') as string | null;
     const formatParam = params.get('format') as string | null;
     const tierParam = params.get('tier') as Tier | null;
     const guestsParam = params.get('guests');
+    const customItemsJson = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('tariffCustomItems') : null;
 
-    // Resolve format: from event or from format directly
     let resolvedFormat: Format | null = null;
-    if (formatParam && TARIFFS.some(t => t.format === formatParam)) {
+    if (formatParam && TARIFF_META.some(t => t.format === formatParam)) {
       resolvedFormat = formatParam as Format;
     } else if (eventParam && EVENT_TO_FORMAT[eventParam]) {
       resolvedFormat = EVENT_TO_FORMAT[eventParam];
@@ -71,29 +66,33 @@ export default function ConstructorWizard() {
         store.setTier(tierParam);
         store.setTierMode('preset');
 
-        // Загрузить состав пресета в selectedItems (ключевая фича!)
-        // Ищем тариф в ALL_TARIFF_OFFERS по eventId или формат+tier
-        const eventId = eventParam || (
-          resolvedFormat === 'banket' ? 'svadba' :
-          resolvedFormat === 'furshet' ? 'chastnoe' :
-          resolvedFormat === 'detskoe' ? 'detskoe' :
-          resolvedFormat === 'chef-at-home' ? 'chef-at-home' :
-          resolvedFormat === 'coffee-break' ? 'coffee-break' :
-          'korporativ'
-        );
-        const offers = ALL_TARIFF_OFFERS[eventId] || [];
-        const offer = offers.find(o => o.tier === tierParam);
-        if (offer) {
-          // Очистить и загрузить состав тарифа
-          store.clearItems();
-          for (const item of offer.composition) {
-            // Проверяем что блюдо существует в каталоге
-            if (ALL_DISHES.find(d => d.id === item.dishId)) {
-              store.addDish(item.dishId);
+        if (customItemsJson) {
+          try {
+            const customItems = JSON.parse(customItemsJson);
+            store.clearItems();
+            for (const item of customItems) {
+              if (ALL_DISHES.find(d => d.id === item.dishId)) {
+                store.addDish(item.dishId);
+                if (item.qty > 1) store.setItemQty(item.dishId, item.qty);
+              }
+            }
+            sessionStorage.removeItem('tariffCustomItems');
+          } catch {
+            // ignore
+          }
+        } else {
+          const eventId = FORMAT_TO_EVENT[resolvedFormat];
+          const offers = ALL_TARIFF_OFFERS[eventId] || [];
+          const offer = offers.find(o => o.tier === tierParam);
+          if (offer) {
+            store.clearItems();
+            for (const item of offer.composition) {
+              if (ALL_DISHES.find(d => d.id === item.dishId)) {
+                store.addDish(item.dishId);
+              }
             }
           }
         }
-        // Перейти сразу к шагу "Меню" (step 3)
         store.setStep(3);
       } else {
         store.setStep(2);
@@ -103,7 +102,8 @@ export default function ConstructorWizard() {
   }, []);
 
   const step = store.currentStep;
-  const tariff = store.format ? TARIFFS.find(t => t.format === store.format) : null;
+  const formatMeta = store.format ? TARIFF_META.find(t => t.format === store.format) : null;
+  const prices = store.format ? getPricesForFormat(store.format) : [];
 
   const canNext =
     step === 0 ? store.format !== null :
@@ -119,14 +119,13 @@ export default function ConstructorWizard() {
   const total = store.total;
   const perGuest = store.perGuest;
 
-  // Live price display
   const livePriceText = store.format && store.guestCount > 0 && store._hasHydrated
     ? store.tierMode === 'custom'
       ? store.selectedItems.length > 0
         ? `${store.guestCount} гостей · ${store.selectedItems.length} блюд · ${total.toLocaleString('ru-RU')} ₽`
         : null
       : store.tier
-      ? `${store.guestCount} гостей · ${tariff?.label} · ${TIER_LABEL[store.tier]} = ${total.toLocaleString('ru-RU')} ₽`
+      ? `${store.guestCount} гостей · ${formatMeta?.label} · ${TIER_LABEL[store.tier]} = ${total.toLocaleString('ru-RU')} ₽`
       : null
     : null;
 
@@ -135,7 +134,6 @@ export default function ConstructorWizard() {
       <div className="container-site max-w-6xl">
         <h1 className="mb-6 text-center">Конструктор меню</h1>
 
-        {/* Progress */}
         <div className="flex gap-1 mb-8" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={STEPS.length}>
           {STEPS.map((label, i) => (
             <div key={label} className="flex-1 flex flex-col items-center gap-1">
@@ -145,14 +143,12 @@ export default function ConstructorWizard() {
           ))}
         </div>
 
-        {/* Live price */}
         {livePriceText && (
           <div className="mb-6 p-4 rounded-xl border border-gold-tint bg-gold-tint/50 text-center">
             <span className="text-lg font-bold text-gold-text">{livePriceText}</span>
           </div>
         )}
 
-        {/* Hydration guard with skeleton (не "Загрузка…") */}
         {!store._hasHydrated && (
           <div className="space-y-4">
             <div className="h-12 bg-muted/50 rounded-lg animate-pulse" />
@@ -162,22 +158,26 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 0: Format === */}
         {store._hasHydrated && step === 0 && (
           <div>
             <p className="text-muted-foreground mb-6 text-center">Выберите формат мероприятия</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
-              {TARIFFS.map(t => (
-                <button key={t.format} type="button"
-                  onClick={() => store.setFormat(t.format)}
-                  className={`rounded-xl border p-5 text-left transition-all ${store.format === t.format ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-card hover:border-gold-text'}`}>
-                  <span className="text-3xl mb-2 block">{t.icon}</span>
-                  <h3 className="font-heading text-lg font-medium mb-1">{t.label}</h3>
-                  <p className="text-xs text-muted-foreground mb-2">{t.desc}</p>
-                  <span className="text-xs text-gold-text font-semibold">от {t.minGuests} гостей</span>
-                  <span className="text-xs text-muted-foreground block mt-1">от {t.prices.economy.toLocaleString('ru-RU')} ₽/гость</span>
-                </button>
-              ))}
+              {TARIFF_META.map(t => {
+                const fmtPrices = getPricesForFormat(t.format);
+                const minPrice = Math.min(...fmtPrices.map(p => p.pricePerGuest));
+                const minGuests = Math.min(...fmtPrices.map(p => p.minGuests));
+                return (
+                  <button key={t.format} type="button"
+                    onClick={() => store.setFormat(t.format)}
+                    className={`rounded-xl border p-5 text-left transition-all ${store.format === t.format ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-card hover:border-gold-text'}`}>
+                    <span className="text-3xl mb-2 block">{t.icon}</span>
+                    <h3 className="font-heading text-lg font-medium mb-1">{t.label}</h3>
+                    <p className="text-xs text-muted-foreground mb-2">{t.desc}</p>
+                    <span className="text-xs text-gold-text font-semibold">от {minGuests} гостей</span>
+                    <span className="text-xs text-muted-foreground block mt-1">от {minPrice.toLocaleString('ru-RU')} ₽/гость</span>
+                  </button>
+                );
+              })}
             </div>
             <div className="text-center">
               <Link href="/plan/helper" className="text-sm text-muted-foreground hover:text-gold-text transition-colors">🤔 Не знаете, что выбрать? Подберём за 3 вопроса →</Link>
@@ -185,7 +185,6 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 1: Guests === */}
         {store._hasHydrated && step === 1 && (
           <div className="max-w-lg mx-auto text-center">
             <p className="text-muted-foreground mb-4">Сколько гостей?</p>
@@ -211,12 +210,10 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 2: Tier === */}
-        {store._hasHydrated && step === 2 && tariff && (
+        {store._hasHydrated && step === 2 && formatMeta && (
           <div className="max-w-2xl mx-auto">
             <p className="text-muted-foreground mb-6 text-center">Выберите тариф или режим</p>
 
-            {/* Mode toggle */}
             <div className="flex gap-2 mb-5 p-1 bg-muted rounded-lg max-w-md mx-auto">
               <button
                 onClick={() => store.setTierMode('preset')}
@@ -235,7 +232,8 @@ export default function ConstructorWizard() {
             {store.tierMode === 'preset' ? (
               <div className="space-y-3">
                 {TIER_ORDER.map(t => {
-                  const price = tariff.prices[t];
+                  const priceTier = prices.find(p => p.tier === t);
+                  if (!priceTier || priceTier.pricePerGuest === 0) return null;
                   const isRec = t === 'standard';
                   return (
                     <button key={t} type="button" onClick={() => store.setTier(t)}
@@ -245,9 +243,9 @@ export default function ConstructorWizard() {
                           <span className="font-heading text-lg font-medium">{TIER_LABEL[t]}</span>
                           {isRec && <span className="ml-2 text-xs bg-gold-text text-white px-2 py-0.5 rounded">Рекомендуем</span>}
                         </div>
-                        <span className="text-gold-text font-semibold text-lg">{price.toLocaleString('ru-RU')} ₽/гость</span>
+                        <span className="text-gold-text font-semibold text-lg">{priceTier.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-1">{store.guestCount} × {price.toLocaleString('ru-RU')} = {(store.guestCount * price).toLocaleString('ru-RU')} ₽</p>
+                      <p className="text-xs text-muted-foreground mt-1">{store.guestCount} × {priceTier.pricePerGuest.toLocaleString('ru-RU')} = {(store.guestCount * priceTier.pricePerGuest).toLocaleString('ru-RU')} ₽</p>
                       <p className="text-[10px] text-muted-foreground mt-1">После выбора тарифа вы сможете убрать/заменить блюда на следующем шаге.</p>
                     </button>
                   );
@@ -263,7 +261,6 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 3: Menu builder === */}
         {store._hasHydrated && step === 3 && (
           <div>
             <div className="mb-4 text-center">
@@ -291,9 +288,9 @@ export default function ConstructorWizard() {
               emptyCartText="Нажмите «+ Добавить» на блюде или перетащите его сюда"
               unit="на гостя"
               enableReorder
+              enableHybridMode
             />
 
-            {/* Live calc summary */}
             {store.selectedItems.length > 0 && (
               <div className="mt-6 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 flex items-center justify-between">
                 <div>
@@ -309,14 +306,12 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 4: Summary + Contacts (объединённый шаг) === */}
-        {store._hasHydrated && step === 4 && tariff && (
+        {store._hasHydrated && step === 4 && formatMeta && (
           <div className="max-w-2xl mx-auto">
             <h2 className="font-heading text-xl mb-4 text-center">Итог и контакты</h2>
 
-            {/* Summary */}
             <div className="rounded-xl border border-line bg-card p-6 space-y-3 mb-6">
-              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Формат</span><span className="font-medium">{tariff.label}</span></div>
+              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Формат</span><span className="font-medium">{formatMeta.label}</span></div>
               <div className="flex justify-between text-sm"><span className="text-muted-foreground">Гости</span><span className="font-medium">{store.guestCount}</span></div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Тариф</span>
@@ -341,7 +336,6 @@ export default function ConstructorWizard() {
               </p>
             </div>
 
-            {/* Selected dishes preview */}
             {store.selectedItems.length > 0 && (
               <div className="rounded-xl border border-line bg-card/50 p-4 mb-6">
                 <h3 className="text-sm font-medium mb-2">Состав вашего меню:</h3>
@@ -360,7 +354,6 @@ export default function ConstructorWizard() {
               </div>
             )}
 
-            {/* Contacts (на том же шаге) */}
             <div className="rounded-xl border border-line bg-card p-5 space-y-4 mb-6">
               <h3 className="text-sm font-medium">Контакты для заявки</h3>
               <input type="text" placeholder="Ваше имя *" value={store.contact.name} onChange={e => store.setContact({ name: e.target.value })}
@@ -375,7 +368,6 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* === Step 5: Done === */}
         {store._hasHydrated && step === 5 && (
           <div className="text-center py-8">
             <span className="text-5xl block mb-4">🎉</span>
@@ -388,7 +380,6 @@ export default function ConstructorWizard() {
           </div>
         )}
 
-        {/* Navigation */}
         {store._hasHydrated && step < 5 && (
           <div className="flex justify-between mt-8 max-w-2xl mx-auto">
             {step > 0 ? (

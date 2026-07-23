@@ -1,7 +1,7 @@
 // Стандартные предложения тарифов с полным составом меню
 // Для каждого события × тарифа: список блюд, цена, описание
 
-import type { Tier } from './types';
+import type { Tier, Format } from './types';
 
 export interface TariffDishItem {
   dishId: string;
@@ -465,4 +465,62 @@ export const ALL_TARIFF_OFFERS: Record<string, TariffOffer[]> = {
 
 export function getOffersForEvent(eventId: string): TariffOffer[] {
   return ALL_TARIFF_OFFERS[eventId] || [];
+}
+
+// ═══════════════════════════════════════════
+// ЕДИНЫЙ ИСТОЧНИК ЦЕН ПО ФОРМАТАМ
+// Используется в ConstructorWizard, pricing, menu — чтобы цены не расходились
+// ═══════════════════════════════════════════
+
+// Маппинг формат → событие-источник тарифов (для цен и составов)
+export const FORMAT_TO_EVENT: Record<Format, string> = {
+  banket: 'svadba',
+  furshet: 'chastnoe',
+  'coffee-break': 'korporativ', // не идеально, ноCoffee-break цен нет в тарифах — будет отдельный ниже
+  'mobile-furshet': 'chastnoe',
+  detskoe: 'detskoe',
+  'chef-at-home': 'chef-at-home',
+};
+
+// Базовые цены для формата coffee-break (нет в tariff-offers как отдельных)
+export const COFFEE_BREAK_PRICES: Record<Tier, number> = {
+  economy: 390,
+  standard: 1450,
+  premium: 1950,
+  luxury: 2450,
+};
+
+export interface FormatPriceTier {
+  tier: Tier;
+  pricePerGuest: number;
+  minGuests: number;
+  // Ссылка на оффер (если есть) для подгрузки состава в конструкторе
+  eventId?: string;
+}
+
+// Получить 4 тарифа для формата — единый источник правды
+export function getPricesForFormat(format: Format): FormatPriceTier[] {
+  // Coffee-break — особый (нет в tariff-offers)
+  if (format === 'coffee-break') {
+    return [
+      { tier: 'economy', pricePerGuest: COFFEE_BREAK_PRICES.economy, minGuests: 10 },
+      { tier: 'standard', pricePerGuest: COFFEE_BREAK_PRICES.standard, minGuests: 10 },
+      { tier: 'premium', pricePerGuest: COFFEE_BREAK_PRICES.premium, minGuests: 10 },
+      { tier: 'luxury', pricePerGuest: COFFEE_BREAK_PRICES.luxury, minGuests: 10 },
+    ];
+  }
+
+  const eventId = FORMAT_TO_EVENT[format];
+  const offers = ALL_TARIFF_OFFERS[eventId] || [];
+
+  const tierOrder: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
+  return tierOrder.map(tier => {
+    const offer = offers.find(o => o.tier === tier);
+    return {
+      tier,
+      pricePerGuest: offer?.pricePerGuest ?? 0,
+      minGuests: offer?.minGuests ?? 10,
+      eventId,
+    };
+  });
 }

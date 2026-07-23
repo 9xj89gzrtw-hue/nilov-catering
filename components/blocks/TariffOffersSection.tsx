@@ -338,7 +338,18 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
         >
           {editMode ? 'Редактирую…' : '✎ Настроить меню'}
         </button>
-        <Link href={`/plan/constructor?format=${EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}&guests=${offer.minGuests}`}
+        <Link
+          href={`/plan/constructor?format=${EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}&guests=${offer.minGuests}`}
+          onClick={() => {
+            // Если пользователь редактировал состав — сохраняем в sessionStorage
+            if (editMode && customItems.length > 0) {
+              try {
+                sessionStorage.setItem('tariffCustomItems', JSON.stringify(customItems));
+              } catch {
+                // ignore
+              }
+            }
+          }}
           className="block w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground text-center hover:bg-primary/90 transition-colors">
           Выбрать этот тариф →
         </Link>
@@ -409,6 +420,42 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <TariffCard key={`${offer.eventId}-${offer.tier}`} offer={offer} />
           ))}
         </div>
+
+        {/* Format switcher для korporativ — показываем что есть ещё фуршет-вариант */}
+        {selectedEvent === 'korporativ' && (
+          <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
+            <p className="text-base font-medium mb-1">🥪 Нужен корпоративный фуршет в офисе — без посадки?</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong> — дешевле банкета.
+              Гости едят стоя, лёгкие закуски, идеален для офисных мероприятий.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link href="/menu/furshet"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                Смотреть фуршет-меню →
+              </Link>
+              <Link href="/plan/constructor?format=furshet"
+                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors">
+                Собрать фуршет в конструкторе
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {/* Мост coffee-break → доставка (для тех, кому нужна просто еда без персонала) */}
+        {selectedEvent === 'coffee-break' && (
+          <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
+            <p className="text-base font-medium mb-1">🚚 Нужен кофе-брейк без официантов — просто доставка?</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
+              Готовый пресет «Кофе-брейк на 40 чел.» ≈ 16 800 ₽.
+            </p>
+            <Link href="/delivery/order"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+              🛒 Собрать заказ доставки →
+            </Link>
+          </div>
+        )}
 
         {/* Allergen safety banner */}
         <div className="mt-10 p-4 rounded-xl border border-success/30 bg-success/5 text-center">

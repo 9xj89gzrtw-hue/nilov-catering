@@ -68,11 +68,30 @@ export default function DeliveryOrderPage() {
         </div>
 
         {!hydrated ? (
-          <div className="space-y-4">
-            <div className="h-12 bg-muted/50 rounded-lg animate-pulse" />
-            <div className="grid grid-cols-3 gap-4">
-              {[1,2,3].map(i => <div key={i} className="h-32 bg-muted/50 rounded-xl animate-pulse" />)}
-            </div>
+          // На SSR показываем структуру страницы (пресеты + шаги), без интерактива
+          // Это лучше чем animate-pulse — пользователь видит что на странице
+          <div>
+            {step === 0 && (
+              <div>
+                <div className="mb-6">
+                  <h3 className="font-heading text-lg font-medium mb-3">⚡ Быстрый старт</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    {DELIVERY_PRESETS.map(preset => (
+                      <div key={preset.id} className="rounded-xl border border-line bg-card p-4">
+                        <span className="text-2xl mb-1 block">{preset.emoji}</span>
+                        <h4 className="text-sm font-semibold mb-0.5">{preset.label}</h4>
+                        <p className="text-[10px] text-muted-foreground mb-2">{preset.description}</p>
+                        <span className="text-xs text-gold-text font-semibold">~{preset.estimatedTotal.toLocaleString('ru-RU')} ₽</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-center text-sm text-muted-foreground py-8">Загрузка каталога блюд…</p>
+              </div>
+            )}
+            {step > 0 && (
+              <div className="text-center py-12 text-sm text-muted-foreground">Загрузка формы…</div>
+            )}
           </div>
         ) : (
           <>
@@ -135,13 +154,19 @@ export default function DeliveryOrderPage() {
                   catalogTitle="Каталог блюд для доставки"
                   cartTitle="Ваш заказ"
                   emptyCartText="Выберите пресет выше или нажмите «+ Добавить» на блюде"
-                  unit="порц."
+                  unit="порц. (= чел.)"
                   enableReorder
                 />
 
                 {cart.items.length === 0 && (
                   <div className="mt-6 p-4 rounded-xl border border-dashed border-line text-center">
-                    <p className="text-sm text-muted-foreground">💡 Среднее блюдо — 250 ₽ за порцию. На 10 человек возьмите 5-7 блюд × 10 порций.</p>
+                    <p className="text-sm text-muted-foreground">💡 1 порция = 1 человек. Среднее блюдо — 250 ₽ за порцию. На 10 человек возьмите 5-7 блюд × 10 порций.</p>
+                  </div>
+                )}
+
+                {cart.items.length > 0 && (
+                  <div className="mt-4 p-3 rounded-lg bg-gold-tint/30 text-center text-xs text-muted-foreground">
+                    💡 1 порция = 1 человек. Сумма порций по всем блюдам должна покрывать количество гостей.
                   </div>
                 )}
               </div>
@@ -270,18 +295,39 @@ export default function DeliveryOrderPage() {
                     onChange={e => cart.setContact({ address: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
 
-                  {/* Подъезд/этаж/домофон — для загородной доставки критично */}
-                  <div className="grid grid-cols-3 gap-3">
-                    <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
-                      onChange={e => cart.setContact({ entrance: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
-                    <input type="text" placeholder="Этаж" value={cart.contact.floor}
-                      onChange={e => cart.setContact({ floor: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
-                    <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
-                      onChange={e => cart.setContact({ intercom: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
-                  </div>
+                  {/* Для загородной доставки — поля подъезд/этаж/домофон */}
+                  {cart.zoneId === 'kad' && (
+                    <div className="grid grid-cols-3 gap-3">
+                      <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
+                        onChange={e => cart.setContact({ entrance: e.target.value })}
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      <input type="text" placeholder="Этаж" value={cart.contact.floor}
+                        onChange={e => cart.setContact({ floor: e.target.value })}
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
+                        onChange={e => cart.setContact({ intercom: e.target.value })}
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                    </div>
+                  )}
+
+                  {/* Для загородной доставки — поля код ворот/КП/участок */}
+                  {cart.zoneId !== 'kad' && (
+                    <div className="rounded-xl border border-gold-tint bg-gold-tint/20 p-3 space-y-2">
+                      <p className="text-xs text-muted-foreground">📍 Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
+                      <div className="grid grid-cols-2 gap-3">
+                        <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
+                          onChange={e => cart.setContact({ entrance: e.target.value })}
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                        <input type="text" placeholder="№ участка / дома" value={cart.contact.floor}
+                          onChange={e => cart.setContact({ floor: e.target.value })}
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                      </div>
+                      <input type="text" placeholder="Код ворот / как проехать (необязательно)" value={cart.contact.intercom}
+                        onChange={e => cart.setContact({ intercom: e.target.value })}
+                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                    </div>
+                  )}
+
                   <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
                     onChange={e => cart.setContact({ apartment: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />

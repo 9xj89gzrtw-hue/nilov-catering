@@ -42,6 +42,8 @@ export interface MenuBuilderProps {
   emptyCartText?: string;
   unit?: string;
   enableReorder?: boolean;
+  // Гибридный режим — позволяет тумблером "показать блюда других форматов" (для детей+взрослых)
+  enableHybridMode?: boolean;
 }
 
 export default function MenuBuilder({
@@ -56,6 +58,7 @@ export default function MenuBuilder({
   emptyCartText = 'Нажмите «+» на блюде или перетащите его сюда',
   unit = 'порц.',
   enableReorder = true,
+  enableHybridMode = false,
 }: MenuBuilderProps) {
   const [search, setSearch] = useState('');
   const [station, setStation] = useState<string>('all');
@@ -66,6 +69,8 @@ export default function MenuBuilder({
   const [dragOverIdx, setDragOverIdx] = useState<number | null>(null);
   const [draggedFromIdx, setDraggedFromIdx] = useState<number | null>(null);
   const [dragOverCart, setDragOverCart] = useState(false);
+  // Гибридный режим — показывает блюда всех форматов
+  const [showAllFormats, setShowAllFormats] = useState(false);
 
   const toggleDiet = (d: string) => {
     const next = new Set(activeDiets);
@@ -83,7 +88,7 @@ export default function MenuBuilder({
 
   const filtered = useMemo(() => {
     let dishes: Dish[] = ALL_DISHES;
-    if (formatFilter) {
+    if (formatFilter && !showAllFormats) {
       dishes = dishes.filter(d => d.format.includes(formatFilter as Dish['format'][number]));
     }
     if (station !== 'all') dishes = dishes.filter(d => d.station === station);
@@ -99,7 +104,7 @@ export default function MenuBuilder({
       dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
-  }, [station, activeDiets, search, formatFilter, excludedAllergens, allergenMode]);
+  }, [station, activeDiets, search, formatFilter, excludedAllergens, allergenMode, showAllFormats]);
 
   // Количество блюд, скрытых фильтром аллергенов (для подсказки)
   const hiddenByAllergens = useMemo(() => {
@@ -211,6 +216,21 @@ export default function MenuBuilder({
           ))}
         </div>
 
+        {/* Hybrid mode toggle — для смешанных событий (дети + взрослые) */}
+        {enableHybridMode && formatFilter && (
+          <div className="mb-3">
+            <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer">
+              <input
+                type="checkbox"
+                checked={showAllFormats}
+                onChange={e => setShowAllFormats(e.target.checked)}
+                className="accent-gold-text"
+              />
+              <span>🔀 Показать блюда других форматов (для гибрида «дети + взрослые» или смешанных диет)</span>
+            </label>
+          </div>
+        )}
+
         {/* Diet filters */}
         <div className="flex flex-wrap gap-1.5 mb-3">
           {DIETS.map(d => (
@@ -298,6 +318,10 @@ export default function MenuBuilder({
             const isSelected = selectedIds.has(dish.id);
             const hasExcludedAllergen = excludedAllergens.size > 0 && dish.allergens.some(a => excludedAllergens.has(a));
             const dimmed = allergenMode === 'highlight' && hasExcludedAllergen;
+            // Опасные аллергены (орехи, арахис) — аларм по умолчанию, без активации фильтра
+            const hasNuts = dish.allergens.some(a => a === 'nuts' || a === 'peanuts');
+            const isKidsFormat = formatFilter === 'detskoe';
+            const alarmNutsInKids = hasNuts && isKidsFormat;
             return (
               <div
                 key={dish.id}
@@ -308,6 +332,8 @@ export default function MenuBuilder({
                     ? 'border-gold-text ring-1 ring-gold-text opacity-60'
                     : dimmed
                     ? 'border-destructive/40 opacity-50'
+                    : alarmNutsInKids
+                    ? 'border-destructive/60 ring-1 ring-destructive/40'
                     : 'border-line hover:border-gold-text hover:shadow-sm'
                 }`}
               >
@@ -329,6 +355,12 @@ export default function MenuBuilder({
                       ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
                     </div>
                   )}
+                  {/* Nuts alarm — по умолчанию в детском меню */}
+                  {alarmNutsInKids && !hasExcludedAllergen && (
+                    <div className="absolute bottom-1 left-1 right-1 text-[8px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+                      ⚠ 🥜 Орехи
+                    </div>
+                  )}
                 </div>
                 <div className="p-2">
                   <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-2">{dish.name}</h4>
@@ -336,7 +368,9 @@ export default function MenuBuilder({
                   {dish.allergens.length > 0 && (
                     <div className="flex flex-wrap gap-0.5 mb-1">
                       {dish.allergens.slice(0, 4).map(a => (
-                        <span key={a} className="text-[8px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none" title={ALLERGEN_LABEL[a]}>
+                        <span key={a} className={`text-[8px] px-1 py-0.5 rounded leading-none ${
+                          a === 'nuts' || a === 'peanuts' ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                        }`} title={ALLERGEN_LABEL[a]}>
                           {ALLERGEN_LABEL[a].slice(0, 4)}
                         </span>
                       ))}
@@ -369,10 +403,25 @@ export default function MenuBuilder({
         {filtered.length === 0 && (
           <div className="text-center py-10 text-sm text-muted-foreground">
             <p className="mb-2">Ничего не найдено — попробуйте изменить фильтры</p>
+
+            {/* Спец-баннер для халяль-фильтра */}
+            {activeDiets.has('halal') && (
+              <div className="mt-4 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
+                <p className="text-sm font-medium text-foreground mb-1">☪️ Халяль-меню готовим под заказ</p>
+                <p className="text-xs text-muted-foreground mb-2">
+                  В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
+                  по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
+                </p>
+                <a href="/menu/halal" className="text-xs text-gold-text font-semibold hover:underline">
+                  Подробнее про халяль-меню →
+                </a>
+              </div>
+            )}
+
             {(excludedAllergens.size > 0 || activeDiets.size > 0) && (
               <button
                 onClick={() => { setExcludedAllergens(new Set()); setActiveDiets(new Set()); }}
-                className="text-xs text-gold-text hover:underline"
+                className="text-xs text-gold-text hover:underline mt-3"
               >
                 Сбросить все фильтры
               </button>
