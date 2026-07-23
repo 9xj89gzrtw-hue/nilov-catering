@@ -104,9 +104,6 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
       </button>
 
       <motion.div
-      </motion.div>
-
-      <motion.div
         className="relative z-10 container-site py-20 md:py-28"
         style={reducedMotion ? {} : { y: textY }}
       >
