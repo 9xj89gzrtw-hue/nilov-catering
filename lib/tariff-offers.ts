@@ -216,7 +216,7 @@ const KORPORATIV: TariffOffer[] = [
       { dishId: 'champagne-premium', name: 'Шампанское премиум', desc: 'Шампанское AOC, брют/розе', category: 'Бар', qty: 'безлимит' },
       { dishId: 'cocktail-bar', name: 'Коктейльный бар', desc: 'Бармен + 5 коктейлей: Апероль Шприц, Мохито, Космополитен, Негрони, Маргарита', category: 'Бар', qty: '2 бармена' },
       { dishId: 'whisky-bar', name: 'Виски-бар', desc: 'Коллекция виски: бурбон, скотч, ирландский, японский', category: 'Бар', qty: '1 станция' },
-      { dishId: 'cigar-service', name: 'Сигарное сопровождение', desc: 'Сигары, хьюмидор, гильотина, сопровождение', category: 'Бар', qty: 'по запросу' },
+      { dishId: 'cigar-service', name: 'Сигарный lounge (21+)', desc: 'Сигарный lounge по запросу, хьюмидор, гильотина. Только для совершеннолетних', category: 'Бар', qty: 'по запросу' },
     ],
   },
 ];

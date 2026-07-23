@@ -138,13 +138,18 @@ export default function CatalogPage() {
         )}
 
         <div className="mt-12 space-y-4">
-          <a href="/menu/catalog/pdf" download className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-all active:scale-[0.98]">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Скачать каталог (PDF)
-          </a>
-          <Link href="/plan/constructor" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98] transition-transform inline-block">
-            Собрать меню в конструкторе
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <a href="/menu/catalog/pdf" download className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-all active:scale-[0.98]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Скачать каталог (PDF)
+            </a>
+            <Link href="/plan/constructor" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98] transition-transform inline-block">
+              Собрать меню в конструкторе
+            </Link>
+            <Link href="/delivery/order" className="rounded-lg border border-gold-text px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors inline-block">
+              🛒 В заказ доставки
+            </Link>
+          </div>
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
             <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
             <p className="text-xs text-muted-foreground mb-3">Шеф соберёт меню под ваш бюджет, формат и пожелания.</p>

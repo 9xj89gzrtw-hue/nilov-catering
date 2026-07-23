@@ -40,6 +40,7 @@ const EVENT_TO_FORMAT: Record<string, Format> = {
 export default function ConstructorWizard() {
   const store = useConstructor();
   const [submitted, setSubmitted] = useState(false);
+  const [orderId, setOrderId] = useState('');
   const [activeGroupId, setActiveGroupId] = useState<string | null>(null);
 
   // Активная группа (если groupsEnabled)
@@ -495,6 +496,41 @@ export default function ConstructorWizard() {
                     );
                   })}
                 </ul>
+                {/* Per-group subtotals */}
+                {store.groupsEnabled && store.guestGroups.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-line space-y-1">
+                    <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">Подытоги по группам:</p>
+                    {store.guestGroups.map(g => {
+                      const groupItems = store.selectedItems.filter(i => i.groupId === g.id);
+                      const groupTotal = groupItems.reduce((sum, item) => {
+                        const dish = ALL_DISHES.find(d => d.id === item.dishId);
+                        return sum + (dish ? dish.pricePerGuest * item.qty * g.count : 0);
+                      }, 0);
+                      const ungroupedItems = store.selectedItems.filter(i => !i.groupId);
+                      const ungroupedTotal = ungroupedItems.reduce((sum, item) => {
+                        const dish = ALL_DISHES.find(d => d.id === item.dishId);
+                        return sum + (dish ? dish.pricePerGuest * item.qty * store.guestCount : 0);
+                      }, 0);
+                      return (
+                        <div key={g.id} className="flex justify-between text-[11px]">
+                          <span className="text-muted-foreground">{g.name || 'Без названия'} ({g.count} чел.)</span>
+                          <span className="tabular-nums font-medium">{groupTotal.toLocaleString('ru-RU')} ₽</span>
+                        </div>
+                      );
+                    })}
+                    {store.selectedItems.some(i => !i.groupId) && (
+                      <div className="flex justify-between text-[11px]">
+                        <span className="text-muted-foreground">На всех ({store.guestCount} чел.)</span>
+                        <span className="tabular-nums font-medium">
+                          {store.selectedItems.filter(i => !i.groupId).reduce((sum, item) => {
+                            const dish = ALL_DISHES.find(d => d.id === item.dishId);
+                            return sum + (dish ? dish.pricePerGuest * item.qty * store.guestCount : 0);
+                          }, 0).toLocaleString('ru-RU')} ₽
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
 
@@ -533,6 +569,11 @@ export default function ConstructorWizard() {
           <div className="text-center py-8">
             <span className="text-5xl block mb-4">🎉</span>
             <h2 className="text-xl font-heading font-medium mb-2">Заявка принята!</h2>
+            {orderId && (
+              <p className="text-sm text-muted-foreground mb-2">
+                Номер заявки: <strong className="text-foreground font-mono">{orderId}</strong>
+              </p>
+            )}
             <p className="text-muted-foreground mb-6">Менеджер свяжется с вами в течение 15 минут для уточнения деталей и финальной проверки аллергенов.</p>
             <div className="flex flex-col gap-2 max-w-xs mx-auto">
               <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
@@ -553,7 +594,7 @@ export default function ConstructorWizard() {
               </button>
             ) : step === 4 ? (
               <button type="button"
-                onClick={() => {
+                onClick={async () => {
                   // Сборка авто-комментария: аллергены + группы гостей
                   const autoLines: string[] = [];
                   if (store.excludedAllergens.length > 0) {
@@ -568,12 +609,42 @@ export default function ConstructorWizard() {
                       .join('; ');
                     autoLines.push(`Группы гостей: ${groupsList}`);
                   }
+                  let finalComment = store.contact.comment || '';
                   if (autoLines.length > 0) {
                     const autoBlock = `[АВТО] ${autoLines.join('\n[АВТО] ')}`;
                     const existingComment = store.contact.comment || '';
-                    // Strip старых [АВТО] блоков и re-merge новых — актуализация при повторной отправке
                     const cleanedComment = existingComment.replace(/^\[АВТО\][\s\S]*?(?=\n\n|\n\[АВТО\]|$)/g, '').replace(/^\[АВТО\][\s\S]*$/m, '').trim();
-                    store.setContact({ comment: cleanedComment ? `${autoBlock}\n\n${cleanedComment}` : autoBlock });
+                    finalComment = cleanedComment ? `${autoBlock}\n\n${cleanedComment}` : autoBlock;
+                    store.setContact({ comment: finalComment });
+                  }
+
+                  // Реальная отправка заявки на бэкенд
+                  try {
+                    const response = await fetch('/api/quote', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        name: store.contact.name,
+                        phone: store.contact.phone,
+                        date: store.contact.date,
+                        format: store.format,
+                        tier: store.tier,
+                        guests: store.guestCount,
+                        total: store.total,
+                        comment: finalComment,
+                        excludedAllergens: store.excludedAllergens,
+                        guestGroups: store.guestGroups,
+                        selectedItems: store.selectedItems,
+                        source: 'constructor',
+                      }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                      setOrderId(data.orderId || '');
+                    }
+                  } catch (e) {
+                    // Даже если API упал — показываем экран заявки (контакт в comment)
+                    console.error('Submit error:', e);
                   }
                   setSubmitted(true);
                   store.setStep(5);

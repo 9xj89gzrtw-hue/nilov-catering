@@ -400,6 +400,17 @@ export default function DeliveryOrderPage() {
                     ⚠ Минимальный заказ — {MIN_ORDER_AMOUNT.toLocaleString('ru-RU')} ₽. Добавьте ещё на {totals.remainingToMin.toLocaleString('ru-RU')} ₽.
                   </div>
                 )}
+
+                {/* Trust badges перед кнопкой отправки */}
+                <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground mb-4 flex-wrap">
+                  <span>★ 4.8 Яндекс.Карты</span>
+                  <span>·</span>
+                  <span>С 2007 года</span>
+                  <span>·</span>
+                  <span>3000+ событий</span>
+                  <span>·</span>
+                  <span>Курьер позвонит за 30 мин</span>
+                </div>
               </div>
             )}
 

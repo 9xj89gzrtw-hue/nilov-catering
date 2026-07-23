@@ -433,6 +433,28 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           </div>
         )}
 
+        {/* Мост coffee-break → доставка — ПЕРЕД тарифами (для coffee-break это релевантнее) */}
+        {selectedEvent === 'coffee-break' && (
+          <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
+            <p className="text-base font-medium mb-1">🚚 Нужен кофе-брейк без официантов — просто доставка?</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
+              <br />
+              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong> (с сырным плато и кедровым рафом).
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link href="/delivery/order"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                🛒 Собрать заказ доставки →
+              </Link>
+              <Link href="/delivery"
+                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
+                Зоны доставки
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* Tariff grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {sorted.map(offer => (

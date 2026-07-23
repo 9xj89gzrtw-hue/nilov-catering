@@ -8,7 +8,7 @@ import { KenBurnsCard } from '@/components/effects/PhotoAliveCard';
 
 const EVENTS: { format: Format; href: string; price: string; label: string; desc?: string }[] = [
   // Для корпоративов минимальная цена = фуршет-эконом (2450), не банкет-эконом (3950)
-  { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
+  { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽ (фуршет)', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
   { format: 'banket', href: '/events/svadba', price: 'от 3 950 ₽', label: 'Свадьбы', desc: 'От камерной до банкета на 200 гостей' },
   { format: 'furshet', href: '/events/vypusknoy', price: 'от 2 450 ₽', label: 'Выпускные', desc: 'Школьные и студенческие мероприятия' },
   { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Частное', desc: 'Дни рождения, юбилеи, семейные ужины' },
