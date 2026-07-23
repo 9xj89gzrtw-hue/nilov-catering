@@ -8,9 +8,14 @@ import { SITE } from '@/lib/data';
 
 export default function GlutenFreePage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('gluten-free')), []);
-  const desserts = dishes.filter(d => d.station === 'desserts');
-  const mains = dishes.filter(d => d.station === 'hot' || d.station === 'cold');
-  const drinks = dishes.filter(d => d.station === 'drinks');
+  // Split desserts: nut-free DEFAULT vs nut-containing OPTION
+  const dessertsNutFree = dishes.filter(d => d.station === 'desserts' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const dessertsWithNuts = dishes.filter(d => d.station === 'desserts' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const mainsNutFree = dishes.filter(d => (d.station === 'hot' || d.station === 'cold') && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const mainsWithNuts = dishes.filter(d => (d.station === 'hot' || d.station === 'cold') && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const drinksNutFree = dishes.filter(d => d.station === 'drinks' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const drinksWithNuts = dishes.filter(d => d.station === 'drinks' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const allWithNuts = [...dessertsWithNuts, ...mainsWithNuts, ...drinksWithNuts];
 
   return (
     <main className="pt-24 pb-20">
@@ -64,36 +69,31 @@ export default function GlutenFreePage() {
           </p>
         </div>
 
-        {/* Nut-free warning для БГ + nut-anaphylaxis */}
-        <div className="mb-8 p-4 rounded-xl border-2 border-amber-300 bg-amber-50">
-          <p className="text-sm font-semibold text-amber-900 mb-2">⚠ Внимание: БГ-меню и орехи</p>
-          <p className="text-sm text-amber-900 mb-2">
-            5 блюд в БГ-меню используют <strong>миндальную муку</strong> (БГ шоколадный торт, БГ капкейки, БГ пицца, БГ тарт, БГ хлеб)
-            и 1 БГ-напиток содержит <strong>кедровый орех</strong> (Кедровый раф). Эти блюда:
+        {/* Nut-free DEFAULT banner */}
+        <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50">
+          <p className="text-sm font-semibold text-emerald-900 mb-2">✅ БГ-меню по умолчанию — nut-free (без орехов)</p>
+          <p className="text-sm text-emerald-900 mb-2">
+            Все блюда в основном БГ-меню ниже — на <strong>рисовой и овсяной муке</strong>, без миндальной муки и кедрового ореха.
+            Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
-          <ul className="text-sm text-amber-900 space-y-1 mb-2 ml-4 list-disc">
-            <li>✓ Безопасны для гостей с целиакией (celiac-safe, &lt;20 ppm)</li>
-            <li>✗ <strong>НЕ безопасны</strong> для гостей с анафилаксией на орехи (миндаль/кедровый)</li>
-            <li>✗ Промаркированы значком ⚠ Орехи</li>
-          </ul>
-          <p className="text-sm text-amber-900">
-            <strong>Для combined целиакия + анафилаксия на орехи</strong> — укажите обе диеты в заявке.
-            Шеф подготовит nut-free БГ-подмножество (на рисовой/овсяной/подсолнечной муке).
+          <p className="text-sm text-emerald-900">
+            БГ-блюда с миндальной мукой / кедровым орехом (5 шт.) вынесены в отдельный блок <strong>«Опция (содержит орехи)»</strong> внизу страницы — доступны только по явному запросу.
           </p>
         </div>
 
-        {/* Десерты — выделены отдельно (торт, хлеб, капкейки) */}
+        {/* Десерты — DEFAULT nut-free */}
         <div className="mb-10">
-          <h2 className="font-heading text-2xl font-medium mb-2">🍰 БГ-десерты и выпечка</h2>
+          <h2 className="font-heading text-2xl font-medium mb-2">🍰 БГ-десерты и выпечка (nut-free по умолчанию)</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб, БГ пицца, БГ панкейки — для ребёнка с целиакией.
+            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong> (без орехов).
+            Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {desserts.map(dish => (
+            {dessertsNutFree.map(dish => (
               <div key={dish.id} className="rounded-xl border-2 border-blue-200 bg-blue-50/50 p-4 hover:border-gold-text transition-colors">
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                  <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                  <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded font-semibold shrink-0">GF ✓ nut-free</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
                 <div className="flex items-center justify-between">
@@ -112,15 +112,15 @@ export default function GlutenFreePage() {
           </div>
         </div>
 
-        {/* Основные блюда */}
+        {/* Основные блюда — DEFAULT nut-free */}
         <div className="mb-10">
-          <h2 className="font-heading text-2xl font-medium mb-2">🥗 БГ-закуски и горячее</h2>
+          <h2 className="font-heading text-2xl font-medium mb-2">🥗 БГ-закуски и горячее (nut-free по умолчанию)</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {mains.map(dish => (
+            {mainsNutFree.map(dish => (
               <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF ✓ nut-free</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
                 <div className="flex items-center justify-between">
@@ -138,21 +138,55 @@ export default function GlutenFreePage() {
           </div>
         </div>
 
-        {/* Напитки */}
-        {drinks.length > 0 && (
+        {/* Напитки — DEFAULT nut-free */}
+        {drinksNutFree.length > 0 && (
           <div className="mb-10">
-            <h2 className="font-heading text-2xl font-medium mb-2">☕ БГ-напитки</h2>
+            <h2 className="font-heading text-2xl font-medium mb-2">☕ БГ-напитки (nut-free по умолчанию)</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {drinks.map(dish => (
+              {drinksNutFree.map(dish => (
                 <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF</span>
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF ✓ nut-free</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Опция — блюда с миндальной мукой / кедровым орехом (НЕ для анафилаксии на орехи) */}
+        {allWithNuts.length > 0 && (
+          <div className="mb-10 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
+            <h2 className="font-heading text-xl font-medium mb-2 text-amber-900">⚠ Опция: БГ-блюда с орехами (НЕ по умолчанию)</h2>
+            <p className="text-sm text-amber-900 mb-4">
+              Эти блюда <strong>безопасны для целиакии</strong> (&lt;20 ppm), но <strong>содержат миндальную муку или кедровый орех</strong>.
+              Не заказывайте их при анафилаксии на орехи. По умолчанию БГ-меню состоит только из nut-free блюд выше.
+              Эти блюда доступны только по явному запросу.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {allWithNuts.map(dish => (
+                <div key={dish.id} className="rounded-xl border border-amber-300 bg-white p-4">
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
+                    <span className="text-xs bg-amber-600 text-white px-2 py-0.5 rounded font-semibold shrink-0">⚠ Орехи</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                    <span className="text-xs text-amber-700 font-medium">опция</span>
+                  </div>
+                  {dish.allergens.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {dish.allergens.map(a => (
+                        <span key={a} className="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-800">{ALLERGEN_LABEL[a]}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

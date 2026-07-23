@@ -42,6 +42,11 @@ export default function CatalogPage() {
     return dishes;
   }, [station, activeDiets, search]);
 
+  // Split into halal / non-halal for visual separation
+  const halalDishes = useMemo(() => filtered.filter(d => d.dietBadges.includes('halal')), [filtered]);
+  const porkDishes = useMemo(() => filtered.filter(d => d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
+  const otherDishes = useMemo(() => filtered.filter(d => !d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
+
   const stationCounts = useMemo(() => {
     const counts: Record<string, number> = { all: ALL_DISHES.length };
     for (const s of STATIONS) {
@@ -109,12 +114,43 @@ export default function CatalogPage() {
             : `Найдено: ${filtered.length} из ${ALL_DISHES.length}`}
         </p>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map(dish => (
-            <DishCard key={dish.id} dish={dish} />
-          ))}
-        </div>
+        {/* Grid — visual separation: halal / other / pork */}
+        {otherDishes.length > 0 && (
+          <div className="mb-8">
+            {halalDishes.length > 0 && porkDishes.length > 0 && (
+              <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
+            )}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {otherDishes.map(dish => (
+                <DishCard key={dish.id} dish={dish} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {halalDishes.length > 0 && (
+          <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
+            <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
+            <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {halalDishes.map(dish => (
+                <DishCard key={dish.id} dish={dish} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {porkDishes.length > 0 && (
+          <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
+            <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
+            <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {porkDishes.map(dish => (
+                <DishCard key={dish.id} dish={dish} />
+              ))}
+            </div>
+          </div>
+        )}
 
         {filtered.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">

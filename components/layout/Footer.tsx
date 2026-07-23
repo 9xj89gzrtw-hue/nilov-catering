@@ -96,7 +96,7 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-foreground transition-colors">Условия</Link>
           <Link href="/cookies" className="hover:text-foreground transition-colors">Cookies</Link>
           <Link href="/accessibility" className="hover:text-foreground transition-colors">Доступность</Link>
-          <span>© 2007–2025 {SITE.name}</span>
+          <span>© 2007–2026 {SITE.name}</span>
           <TextSizeToggle />
         </div>
 

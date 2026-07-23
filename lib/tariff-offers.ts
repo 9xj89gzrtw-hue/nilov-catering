@@ -564,6 +564,7 @@ export const ALL_TARIFF_OFFERS: Record<string, TariffOffer[]> = {
   svadba: SVADBA,
   korporativ: KORPORATIV,
   vypusknoy: VYPUSKNOY,
+  shkola: VYPUSKNOY, // Школьный тариф = выпускной (Школьный пакет уже в VYPUSKNOY)
   chastnoe: CHASTNOE,
   detskoe: DETSKOE,
   'chef-at-home': CHEF_AT_HOME,
