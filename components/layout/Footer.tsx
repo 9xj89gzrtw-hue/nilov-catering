@@ -86,7 +86,7 @@ export default function Footer() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
               title="Посмотреть отзывы на Яндекс.Картах"
             >
-              ★ 4.9 <span className="hidden sm:inline">на Яндекс.Картах →</span>
+              ★ 4.8 <span className="hidden sm:inline">на Яндекс.Картах →</span>
             </a>
           </div>
         </div>

@@ -50,7 +50,7 @@ export default function CorporatePage() {
 
           <div className="grid sm:grid-cols-2 gap-4 text-sm mb-6">
             <div>
-              <p className="font-medium mb-1">🛡 SLA в договоре (для событий от 60 гостей (B2B)):</p>
+              <p className="font-medium mb-1">🛡 SLA в договоре (для событий от 30 гостей (B2B)):</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
                 <li>✓ Punctuality: опоздание ≤15 мин</li>
                 <li>✓ Качество: жалобы ≤5% гостей</li>

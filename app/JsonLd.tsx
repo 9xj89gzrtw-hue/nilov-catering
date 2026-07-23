@@ -19,7 +19,7 @@ export function OrganizationJsonLd() {
     priceRange: '₽₽₽',
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
+      ratingValue: '4.8',
       reviewCount: '217',
       bestRating: '5',
     },
