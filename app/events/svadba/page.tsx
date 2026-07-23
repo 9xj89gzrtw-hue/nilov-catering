@@ -21,7 +21,7 @@ export default function SvadbaPage() {
         </div>
 
         {/* Direct order CTAs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Link href="/plan/constructor?event=svadba" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Оставить заявку на свадьбу
           </Link>
@@ -30,6 +30,17 @@ export default function SvadbaPage() {
           </Link>
           <Link href="/pricing" className="rounded-lg border border-line px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors">
             Все тарифы и цены
+          </Link>
+        </div>
+
+        {/* Аллергии — прямой мост в конструктор */}
+        <div className="mb-10 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 text-center">
+          <p className="text-sm font-medium mb-1">🛡 Аллергии у гостей? Рыба, орехи, глютен?</p>
+          <p className="text-xs text-muted-foreground mb-3">
+            В конструкторе меню можно исключить конкретные аллергены фильтром — 14 аллергенов ТР ТС 022/2011. Менеджер подтвердит по телефону.
+          </p>
+          <Link href="/plan/constructor?format=banket" className="text-xs text-gold-text font-semibold hover:underline">
+            Собрать свадебное меню с фильтром аллергенов →
           </Link>
         </div>
 

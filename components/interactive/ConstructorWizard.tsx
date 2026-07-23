@@ -269,7 +269,6 @@ export default function ConstructorWizard() {
                             <option value="vegan">Веган</option>
                             <option value="gluten-free">Без глютена</option>
                             <option value="halal">Халяль</option>
-                            <option value="omnivore">Всеядные</option>
                           </select>
                           <button
                             onClick={() => store.removeGroup(g.id)}
