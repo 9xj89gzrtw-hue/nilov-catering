@@ -289,6 +289,20 @@ export default function ConstructorWizard() {
                       <span>Общих гостей: <strong className="text-foreground">{store.guestCount}</strong></span>
                     </div>
                   )}
+                  {store.guestGroups.length > 0 && (() => {
+                    const groupSum = store.guestGroups.reduce((s, g) => s + g.count, 0);
+                    const mismatch = groupSum !== store.guestCount;
+                    return mismatch ? (
+                      <div className="mt-2 p-2 rounded-lg border border-warning/40 bg-warning/10 text-xs text-warning">
+                        ⚠ Сумма гостей в группах ({groupSum}) не совпадает с общим числом гостей ({store.guestCount}).
+                        Блюда без привязки к группе будут рассчитаны на {store.guestCount} чел. — уточните количество.
+                      </div>
+                    ) : (
+                      <div className="mt-2 p-2 rounded-lg border border-success/30 bg-success/5 text-xs text-success">
+                        ✓ Сумма гостей в группах совпадает с общим числом ({store.guestCount} чел.)
+                      </div>
+                    );
+                  })()}
                   <p className="text-[10px] text-muted-foreground">
                     💡 На следующем шаге выберите блюда для каждой группы отдельно — каталог будет фильтроваться по диете группы.
                   </p>
@@ -344,7 +358,7 @@ export default function ConstructorWizard() {
                 <p className="text-sm mb-1 font-medium">⚡ Режим «Собрать самому»</p>
                 <p className="text-xs text-muted-foreground mb-2">На следующем шаге выберите блюда из каталога. Подходит для особых диет (веган, без глютена) и если стандартный тариф не подходит.</p>
                 <p className="text-[10px] text-muted-foreground">💡 Цена = Σ(цена блюда × кол-во) × гости. Можно исключить аллергены фильтром.</p>
-                <p className="text-[10px] text-muted-foreground mt-1">📞 Для смешанных групп гостей (например, 10 веганов + 8 халяль + 12 всеядных) — оставьте заявку, менеджер поможет разделить меню.</p>
+                <p className="text-[10px] text-muted-foreground mt-1">✓ На шаге 1 вы можете включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете.</p>
               </div>
             )}
           </div>
@@ -553,9 +567,9 @@ export default function ConstructorWizard() {
                   if (autoLines.length > 0) {
                     const autoBlock = `[АВТО] ${autoLines.join('\n[АВТО] ')}`;
                     const existingComment = store.contact.comment || '';
-                    if (!existingComment.includes('[АВТО]')) {
-                      store.setContact({ comment: existingComment ? `${autoBlock}\n\n${existingComment}` : autoBlock });
-                    }
+                    // Strip старых [АВТО] блоков и re-merge новых — актуализация при повторной отправке
+                    const cleanedComment = existingComment.replace(/^\[АВТО\][\s\S]*?(?=\n\n|\n\[АВТО\]|$)/g, '').replace(/^\[АВТО\][\s\S]*$/m, '').trim();
+                    store.setContact({ comment: cleanedComment ? `${autoBlock}\n\n${cleanedComment}` : autoBlock });
                   }
                   setSubmitted(true);
                   store.setStep(5);

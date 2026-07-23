@@ -45,10 +45,10 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
         {dish.allergens.length > 0 && (
           <div className="flex flex-wrap gap-0.5">
             {dish.allergens.slice(0, 4).map(a => {
-              const isNut = a === 'nuts' || a === 'peanuts';
+              const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten';
               return (
                 <span key={a} className={`text-[9px] px-1 py-0.5 rounded leading-none ${
-                  isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                  isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                 }`} title={ALLERGEN_LABEL[a]}>
                   {ALLERGEN_LABEL[a].slice(0, 4)}
                 </span>

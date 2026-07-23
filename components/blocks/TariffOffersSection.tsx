@@ -76,7 +76,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
   const colorIdx = TIER_ORDER.indexOf(offer.tier);
   const color = colors[colorIdx >= 0 ? colorIdx : 1] || 'bg-amber-100';
 
-  const CAT_ORDER = ['Канапе', 'Тарталетки', 'Закуски', 'Премиум', 'Амюз-буш', 'Горячее', 'Шоу', 'Основное', 'Десерты', 'Десерт', 'Фрукты', 'Бар', 'Напитки', 'Сыр', 'Брускетты'];
+  const CAT_ORDER = ['Канапе', 'Тарталетки', 'Закуски', 'Закуска', 'Премиум', 'Амюз-буш', 'Выпечка', 'Горячее', 'Завтрак', 'Шоу', 'Основное', 'Десерты', 'Десерт', 'Фрукты', 'Бар', 'Кофе', 'Напитки', 'Сыр', 'Брускетты'];
 
   // === Edit mode logic ===
   const removeDish = (dishId: string) => setCustomItems(items => items.filter(i => i.dishId !== dishId));
@@ -485,7 +485,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         <div className="mt-16 text-center py-10 rounded-2xl border border-line bg-muted/30">
           <p className="text-xl font-heading font-medium mb-2">Не подходит ни один тариф?</p>
           <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.</p>
-          <p className="text-xs text-muted-foreground mb-5">📞 Для смешанных групп гостей (веганы + халяль + без глютена + всеядные) — оставьте заявку, менеджер поможет разделить меню.</p>
+          <p className="text-xs text-muted-foreground mb-5">✓ В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + всеядные в одном заказе).</p>
           <Link href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Собрать своё меню

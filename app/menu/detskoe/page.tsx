@@ -49,12 +49,12 @@ export default function DetskoePage() {
               {dish.allergens.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {dish.allergens.slice(0, 4).map(a => {
-                    const isNut = a === 'nuts' || a === 'peanuts';
+                    const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten';
                     return (
                       <span key={a} className={`text-[8px] px-1 py-0.5 rounded ${
-                        isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                        isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                       }`}>
-                        {isNut && '⚠ '}{ALLERGEN_LABEL[a]}
+                        {isHighRisk && '⚠ '}{ALLERGEN_LABEL[a]}
                       </span>
                     );
                   })}
@@ -71,7 +71,7 @@ export default function DetskoePage() {
         <div className="mt-8 p-4 rounded-xl border border-destructive/30 bg-destructive/5">
           <p className="text-sm font-medium mb-1">⚠ Аллергены в детском меню</p>
           <p className="text-xs text-muted-foreground">
-            Блюда с орехами выделены красным. Если у ребёнка аллергия — отметьте её в конструкторе меню или предупредите менеджера по телефону. Все блюда маркируются по 14 аллергенам ТР ТС 022/2011.
+            Блюда с орехами и глютеном выделены красным. Если у ребёнка аллергия — отметьте её в конструкторе меню или предупредите менеджера по телефону. Все блюда маркируются по 14 аллергенам ТР ТС 022/2011.
           </p>
           <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline mt-2 inline-block">
             Собрать детское меню в конструкторе →

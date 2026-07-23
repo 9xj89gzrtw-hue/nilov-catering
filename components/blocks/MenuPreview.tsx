@@ -7,6 +7,7 @@ const CATS = [
   { title: 'Детское', href: '/menu/detskoe', items: 'Бутерброды, капкейки, соки', icon: '🎈' },
   { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', icon: '🥬' },
   { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', icon: '🌾' },
+  { title: 'Халяль', href: '/menu/halal', items: '8 блюд халяль на отдельной линии', icon: '☪️' },
 ];
 
 export default function MenuPreview() {

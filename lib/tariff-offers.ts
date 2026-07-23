@@ -51,7 +51,7 @@ const SVADBA: TariffOffer[] = [
     eventId: 'svadba', eventName: 'Свадьба', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 5470, minGuests: 25,
     description: 'Полноценный свадебный банкет с посадкой. Официанты, вино, горячее.',
-    highlights: ['8 видов канапе + тарталетки', '2 горячих блюда', 'Вино (2 бокала)', 'Welcome drink'],
+    highlights: ['5 закусок', '2 горячих блюда', 'Вино (2 бокала)', 'Welcome drink'],
     imagePlaceholder: '💍',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
@@ -154,7 +154,7 @@ const KORPORATIV: TariffOffer[] = [
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 5470, minGuests: 20,
     description: 'Банкет с посадкой. Мясное/рыбное горячее, вино, десерты.',
-    highlights: ['10+ закусок', '2 горячих', 'Вино/пиво', 'Десертный стол'],
+    highlights: ['7 закусок', '2 горячих', 'Вино/пиво', 'Десертный стол'],
     imagePlaceholder: '💼',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
@@ -456,7 +456,7 @@ const COFFEE_BREAK: TariffOffer[] = [
     eventId: 'coffee-break', eventName: 'Кофе-брейк', tier: 'economy', tierLabel: 'Эконом',
     pricePerGuest: 390, minGuests: 10,
     description: 'Базовый кофе-брейк: выпечка, чай, кофе. Для конференций и семинаров.',
-    highlights: ['3 вида выпечки', 'Чай/кофе', 'Минеральная вода'],
+    highlights: ['2 вида выпечки', 'Мини-сэндвич', 'Лимонад/морс безлимит'],
     imagePlaceholder: '☕',
     composition: [
       { dishId: 'croissant', name: 'Круассан классический', desc: 'Сливочное масло 82.5%, слоёное тесто', category: 'Выпечка', qty: '1 шт/гость' },
