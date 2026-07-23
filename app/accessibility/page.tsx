@@ -87,7 +87,7 @@ export default function AccessibilityPage() {
           </div>
 
           <p className="text-sm text-muted-foreground pt-4 border-t border-line">
-            Последнее обновление: ноябрь 2024. Стандарт: WCAG 2.2 AA. Проверка: axe-core, Lighthouse, ручное тестирование с NVDA.
+            Последнее обновление: июль 2026. Стандарт: WCAG 2.2 AA. Проверка: axe-core, Lighthouse, ручное тестирование с NVDA.
           </p>
         </div>
       </div>
