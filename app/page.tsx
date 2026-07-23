@@ -31,7 +31,7 @@ export default async function HomePage() {
   const textMap = Object.fromEntries(pageTexts.map(t => [t.key, t.value]));
 
   return (
-    <main>
+    <main id="main">
       {/* 1. Hero — what we do, why it matters */}
       <HeroBlock
         subtitle={textMap['hero-sub']}

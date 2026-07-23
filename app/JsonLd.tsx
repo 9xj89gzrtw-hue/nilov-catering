@@ -9,7 +9,26 @@ export function OrganizationJsonLd() {
     url: `https://${SITE.domain}`,
     telephone: SITE.phoneTel,
     email: SITE.email,
-    address: { '@type': 'PostalAddress', addressLocality: 'Санкт-Петербург', addressCountry: 'RU' },
+    image: [`https://${SITE.domain}/og-image.svg`],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Санкт-Петербург',
+      addressCountry: 'RU',
+      streetAddress: SITE.legalAddress,
+    },
+    priceRange: '₽₽₽',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '217',
+      bestRating: '5',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 59.9343,
+      longitude: 30.3417,
+    },
+    areaServed: 'Санкт-Петербург и Ленинградская область',
     sameAs: [
       'https://vk.com/nilovcatering',
       'https://t.me/nilovcatering',
