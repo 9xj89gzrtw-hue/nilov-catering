@@ -23,7 +23,8 @@ export default function DetskoePage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
           <p className="text-base font-bold text-amber-900 mb-2">⚠ Аллергены в детском меню — безопасность детей</p>
           <p className="text-sm text-amber-900 mb-3">
-            Блюда с орехами (арахис, лесной, кедровый, грецкий) и глютеном промаркированы.
+            <strong>В детском меню НЕТ блюд с орехами</strong> (арахис, лесной, кедровый, грецкий) — по умолчанию.
+            Блюда с глютеном промаркированы значком ⚠.
             <strong> Если у ребёнка аллергия или анафилаксия — укажите это в заявке.</strong>
             Менеджер свяжется с вами для подтверждения протокола безопасности (отдельная зона кухни,
             отдельные доски/ножи, EpiPen на руках у ответственного сотрудника).
@@ -40,8 +41,11 @@ export default function DetskoePage() {
             <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
               📋 Протокол безопасности
             </Link>
-            <Link href="/contact" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
-              ✍️ Заявка с аллергией
+            <Link href="/allergens" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+              🥜 14 аллергенов
+            </Link>
+            <Link href="/events/vypusknoy" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+              🎓 Школьный выпускной
             </Link>
           </div>
         </div>

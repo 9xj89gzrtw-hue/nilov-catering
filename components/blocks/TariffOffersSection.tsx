@@ -511,7 +511,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         <div className="mt-16 text-center py-10 rounded-2xl border border-line bg-muted/30">
           <p className="text-xl font-heading font-medium mb-2">Не подходит ни один тариф?</p>
           <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.</p>
-          <p className="text-xs text-muted-foreground mb-5">✓ В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + всеядные в одном заказе).</p>
+          <p className="text-xs text-muted-foreground mb-5">✓ В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + без орехов + всеядные в одном заказе).</p>
           <Link href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Собрать своё меню

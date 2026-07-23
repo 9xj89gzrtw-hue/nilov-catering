@@ -226,6 +226,23 @@ const KORPORATIV: TariffOffer[] = [
 // ═══════════════════════════════════════════
 const VYPUSKNOY: TariffOffer[] = [
   {
+    eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'economy', tierLabel: 'Школьный пакет',
+    pricePerGuest: 1800, minGuests: 60,
+    description: 'Спец. тариф для школ и образовательных учреждений. Канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад. Бумажная посуда.',
+    highlights: ['Школы / вузы / детсады', 'Документы для Роспот', 'Бумажная посуда', 'Станция напитков'],
+    imagePlaceholder: '🎓',
+    composition: [
+      { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр, виноград, крекер', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'mini-sandwich', name: 'Мини-сэндвичи', desc: 'Курица, огурец, булочка', category: 'Закуски', qty: '2 шт/гость' },
+      { dishId: 'fruit-platter', name: 'Фруктовое плато', desc: 'Ананас, виноград, клубника, киви', category: 'Фрукты', qty: '150 г/гость' },
+      { dishId: 'mini-pizza', name: 'Мини-пицца', desc: 'Маргарита, пепперони, 4 сыра', category: 'Горячее', qty: '2 шт/гость' },
+      { dishId: 'cupcakes', name: 'Капкейки', desc: 'С кремом и посыпкой', category: 'Десерты', qty: '2 шт/гость' },
+      { dishId: 'cranberry-mors', name: 'Клюквенный морс', desc: 'Домашний морс с мятой', category: 'Напитки', qty: '2 стакана' },
+      { dishId: 'lemonade-berry', name: 'Ягодный лимонад', desc: 'Микс ягод, лимон, мята', category: 'Напитки', qty: '2 стакана' },
+    ],
+  },
+  {
     eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'economy', tierLabel: 'Эконом',
     pricePerGuest: 2450, minGuests: 20,
     description: 'Молодёжный фуршет. Пицца-станция, бургеры, лимонады.',
