@@ -20,7 +20,7 @@ export default function HalalPage() {
         </div>
 
         <p className="text-muted-foreground mb-8">
-          Халяль-совместимых блюд в базовом каталоге: {dishes.length}. Для индивидуального халяль-меню — свяжитесь с нами.
+          Халяль-совместимых блюд в каталоге: {dishes.length}. Можно собрать меню через конструктор с фильтром «Халяль».
         </p>
 
         {dishes.length > 0 && (
@@ -39,13 +39,24 @@ export default function HalalPage() {
                   </div>
                   {dish.allergens.length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1">
-                      {dish.allergens.map(a => (
-                        <span key={a} className="text-[8px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
-                      ))}
+                      {dish.allergens.map(a => {
+                        const isNut = a === 'nuts' || a === 'peanuts';
+                        return (
+                          <span key={a} className={`text-[8px] px-1 py-0.5 rounded ${
+                            isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                          }`}>{ALLERGEN_LABEL[a]}</span>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
               ))}
+            </div>
+
+            <div className="mb-10">
+              <a href="/plan/constructor?format=furshet" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                🛒 Собрать халяль-меню в конструкторе →
+              </a>
             </div>
           </>
         )}

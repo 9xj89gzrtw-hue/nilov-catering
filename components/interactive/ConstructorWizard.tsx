@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useConstructor } from '@/hooks/useConstructor';
+import type { GuestGroup } from '@/hooks/useConstructor';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALL_TARIFF_OFFERS, getPricesForFormat, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
@@ -39,6 +40,13 @@ const EVENT_TO_FORMAT: Record<string, Format> = {
 export default function ConstructorWizard() {
   const store = useConstructor();
   const [submitted, setSubmitted] = useState(false);
+  const [activeGroupId, setActiveGroupId] = useState<string | null>(null);
+
+  // Активная группа (если groupsEnabled)
+  const activeGroup = store.groupsEnabled && activeGroupId
+    ? store.guestGroups.find(g => g.id === activeGroupId) || null
+    : null;
+  const activeGroupDiet = activeGroup?.diet && activeGroup.diet !== 'omnivore' ? activeGroup.diet : null;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -204,11 +212,88 @@ export default function ConstructorWizard() {
             <input type="range" min={10} max={500} step={5} value={store.guestCount}
               onChange={e => store.setGuestCount(Number(e.target.value))}
               className="w-full mb-4 accent-gold-text" />
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
               {QUICK_GUESTS.map(n => (
                 <button key={n} type="button" onClick={() => store.setGuestCount(n)}
                   className={`rounded-full border px-3 py-1 text-xs transition-colors ${store.guestCount === n ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'}`}>{n}</button>
               ))}
+            </div>
+
+            {/* === Группы гостей (для смешанных мероприятий) === */}
+            <div className="mt-6 p-4 rounded-xl border border-line bg-card text-left max-w-xl">
+              <label className="flex items-start gap-2 cursor-pointer mb-2">
+                <input
+                  type="checkbox"
+                  checked={store.groupsEnabled}
+                  onChange={e => store.setGroupsEnabled(e.target.checked)}
+                  className="mt-1 accent-gold-text"
+                />
+                <div>
+                  <p className="text-sm font-medium">🔀 Несколько групп гостей с разными диетами</p>
+                  <p className="text-xs text-muted-foreground">Например: 10 веганов + 8 халяль + 12 всеядных. Каждая группа получит своё под-меню.</p>
+                </div>
+              </label>
+
+              {store.groupsEnabled && (
+                <div className="mt-4 space-y-3">
+                  {store.guestGroups.length > 0 && (
+                    <div className="space-y-2">
+                      {store.guestGroups.map(g => (
+                        <div key={g.id} className="flex flex-wrap items-center gap-2 p-2 rounded-lg border border-line bg-background">
+                          <input
+                            type="text"
+                            placeholder="Название"
+                            value={g.name}
+                            onChange={e => store.updateGroup(g.id, { name: e.target.value })}
+                            className="flex-1 min-w-[100px] rounded border border-line bg-card px-2 py-1 text-xs"
+                          />
+                          <input
+                            type="number"
+                            placeholder="Гостей"
+                            min={0}
+                            value={g.count}
+                            onChange={e => store.updateGroup(g.id, { count: parseInt(e.target.value) || 0 })}
+                            className="w-20 rounded border border-line bg-card px-2 py-1 text-xs"
+                          />
+                          <select
+                            value={g.diet || ''}
+                            onChange={e => store.updateGroup(g.id, { diet: (e.target.value || null) as GuestGroup['diet'] })}
+                            className="rounded border border-line bg-card px-2 py-1 text-xs"
+                          >
+                            <option value="">Всеядные</option>
+                            <option value="vegan">Веган</option>
+                            <option value="gluten-free">Без глютена</option>
+                            <option value="halal">Халяль</option>
+                            <option value="omnivore">Всеядные</option>
+                          </select>
+                          <button
+                            onClick={() => store.removeGroup(g.id)}
+                            className="text-xs text-muted-foreground hover:text-destructive px-2"
+                            aria-label="Удалить группу"
+                          >✕</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() => store.addGroup({ name: '', count: 0, diet: 'omnivore' })}
+                    className="w-full py-2 rounded-lg border border-dashed border-gold-text text-gold-text text-xs font-medium hover:bg-gold-tint/30 transition-colors"
+                  >
+                    + Добавить группу
+                  </button>
+
+                  {store.guestGroups.length > 0 && (
+                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-line">
+                      <span>Всего в группах: <strong className="text-foreground">{store.guestGroups.reduce((s, g) => s + g.count, 0)}</strong></span>
+                      <span>Общих гостей: <strong className="text-foreground">{store.guestCount}</strong></span>
+                    </div>
+                  )}
+                  <p className="text-[10px] text-muted-foreground">
+                    💡 На следующем шаге выберите блюда для каждой группы отдельно — каталог будет фильтроваться по диете группы.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -282,20 +367,49 @@ export default function ConstructorWizard() {
 
             <MenuBuilder
               selectedItems={store.selectedItems}
-              onAdd={store.addDish}
+              onAdd={(dishId) => store.addDish(dishId, activeGroupId || undefined)}
               onRemove={store.removeDish}
               onSetQty={store.setItemQty}
               onReorder={store.reorderItems}
               excludedAllergens={new Set(store.excludedAllergens as Allergen[])}
               onExcludedAllergensChange={(next) => store.setExcludedAllergens([...next])}
               formatFilter={store.format || undefined}
-              catalogTitle="Каталог блюд"
+              dietFilter={activeGroupDiet || undefined}
+              catalogTitle={activeGroup ? `Каталог для группы: ${activeGroup.name || 'Без названия'} (${activeGroup.count} чел.)` : 'Каталог блюд'}
               cartTitle="Ваше меню"
               emptyCartText="Нажмите «+ Добавить» на блюде или перетащите его сюда"
               unit="на гостя"
               enableReorder
               enableHybridMode
             />
+
+            {/* Переключатель активной группы — над каталогом внутри того же шага */}
+            {store.groupsEnabled && store.guestGroups.length > 0 && (
+              <div className="mb-4 p-3 rounded-xl border border-gold-tint bg-gold-tint/20">
+                <p className="text-xs font-medium mb-2">🔀 Активная группа (каталог фильтруется по её диете):</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setActiveGroupId(null)}
+                    className={`rounded-full px-3 py-1 text-xs border transition-colors ${
+                      !activeGroupId ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'
+                    }`}
+                  >
+                    Все группы (без фильтра)
+                  </button>
+                  {store.guestGroups.map(g => (
+                    <button
+                      key={g.id}
+                      onClick={() => setActiveGroupId(g.id)}
+                      className={`rounded-full px-3 py-1 text-xs border transition-colors ${
+                        activeGroupId === g.id ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'
+                      }`}
+                    >
+                      {g.name || 'Без названия'} · {g.count} чел. {g.diet && g.diet !== 'omnivore' && `· ${g.diet}`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {store.selectedItems.length > 0 && (
               <div className="mt-6 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 flex items-center justify-between">
@@ -346,13 +460,19 @@ export default function ConstructorWizard() {
               <div className="rounded-xl border border-line bg-card/50 p-4 mb-6">
                 <h3 className="text-sm font-medium mb-2">Состав вашего меню:</h3>
                 <ul className="text-xs text-muted-foreground space-y-1 max-h-40 overflow-y-auto">
-                  {store.selectedItems.map(item => {
+                  {store.selectedItems.map((item, idx) => {
                     const dish = ALL_DISHES.find(d => d.id === item.dishId);
                     if (!dish) return null;
+                    const group = item.groupId ? store.guestGroups.find(g => g.id === item.groupId) : null;
+                    const groupSize = group?.count || store.guestCount;
+                    const itemTotal = dish.pricePerGuest * item.qty * groupSize;
                     return (
-                      <li key={item.dishId} className="flex justify-between">
-                        <span>{dish.name} × {item.qty}</span>
-                        <span className="tabular-nums">{(dish.pricePerGuest * item.qty).toLocaleString('ru-RU')} ₽</span>
+                      <li key={`${item.dishId}-${item.groupId || 'nogroup'}-${idx}`} className="flex justify-between gap-2">
+                        <span className="min-w-0 flex-1">
+                          {dish.name} × {item.qty}
+                          {group && <span className="text-[10px] text-muted-foreground ml-1">[{group.name || 'Группа'} · {group.count}ч]</span>}
+                        </span>
+                        <span className="tabular-nums shrink-0">{itemTotal.toLocaleString('ru-RU')} ₽</span>
                       </li>
                     );
                   })}
@@ -416,15 +536,25 @@ export default function ConstructorWizard() {
             ) : step === 4 ? (
               <button type="button"
                 onClick={() => {
-                  // Merge excludedAllergens в comment — чтобы менеджер точно увидел
+                  // Сборка авто-комментария: аллергены + группы гостей
+                  const autoLines: string[] = [];
                   if (store.excludedAllergens.length > 0) {
                     const allergensList = store.excludedAllergens
                       .map(a => ALLERGEN_LABEL[a as Allergen] || a)
                       .join(', ');
+                    autoLines.push(`Исключённые аллергены: ${allergensList}`);
+                  }
+                  if (store.groupsEnabled && store.guestGroups.length > 0) {
+                    const groupsList = store.guestGroups
+                      .map(g => `${g.name || 'Без названия'}: ${g.count} чел. (${g.diet || 'всеядные'})`)
+                      .join('; ');
+                    autoLines.push(`Группы гостей: ${groupsList}`);
+                  }
+                  if (autoLines.length > 0) {
+                    const autoBlock = `[АВТО] ${autoLines.join('\n[АВТО] ')}`;
                     const existingComment = store.contact.comment || '';
-                    const allergenLine = `[АВТО] Исключённые аллергены: ${allergensList}`;
                     if (!existingComment.includes('[АВТО]')) {
-                      store.setContact({ comment: existingComment ? `${allergenLine}\n\n${existingComment}` : allergenLine });
+                      store.setContact({ comment: existingComment ? `${autoBlock}\n\n${existingComment}` : autoBlock });
                     }
                   }
                   setSubmitted(true);

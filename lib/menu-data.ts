@@ -156,8 +156,20 @@ export const SHOW_COOKING_STATIONS: ShowCookingStation[] = [
   { id: 'raclette-bar', name: 'Раклет-бар', description: 'Швейцарский раклет плавится при гостях', pricePerPortion: 0, stationCost: 40000, minPortions: 0 },
 ];
 
+// §9 — ХАЛЯЛЬ-МЕНЮ (8 блюд, готовится на отдельной линии по запросу, от 3 рабочих дней)
+const HALAL: Dish[] = [
+  { id: 'halal-chicken-shashlik', name: 'Шашлык из курицы (халяль)', description: 'Куриное бедро в маринаде из йогурта и специй, мангал. Без свинины, без алкоголя.', image: '', station: 'hot', format: ['furshet', 'banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 380, servingsPerGuest: 1, allergens: ['milk'], dietBadges: ['halal'], childFriendly: true },
+  { id: 'halal-lamb-kofta', name: 'Кюфта из баранины (халяль)', description: 'Баранина рубленая с кинзой и зирой, гриль. Без свинины, без алкоголя.', image: '', station: 'hot', format: ['furshet', 'banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 420, servingsPerGuest: 1, allergens: [], dietBadges: ['halal', 'gluten-free'], childFriendly: false },
+  { id: 'halal-beef-burger', name: 'Бургер с говядиной (халяль)', description: 'Говяжья котлета (халяль-забой), бриошь, чеддер, карамелизированный лук. Без свинины.', image: '', station: 'hot', format: ['furshet', 'detskoe'], tier: ['economy', 'standard', 'premium', 'luxury'], pricePerGuest: 290, servingsPerGuest: 1, allergens: ['gluten', 'milk', 'eggs'], dietBadges: ['halal'], childFriendly: true },
+  { id: 'halal-plov', name: 'Плов с говядиной (халяль)', description: 'Узбекский плов с говядиной халяль, морковь, нут, зира. Без свинины.', image: '', station: 'hot', format: ['banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 450, servingsPerGuest: 1, allergens: [], dietBadges: ['halal', 'gluten-free'], childFriendly: true },
+  { id: 'halal-samsa', name: 'Самса с курицей (халяль)', description: 'Слоёное тесто, куриная начинка, лук, специи. Без свинины, без алкоголя.', image: '', station: 'hot', format: ['furshet'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 220, servingsPerGuest: 1, allergens: ['gluten', 'milk'], dietBadges: ['halal'], childFriendly: true },
+  { id: 'halal-kebab-plate', name: 'Кебаб-плато (халяль)', description: 'Ассорти из курицы, баранины и говядины халяль на гриле. Без свинины.', image: '', station: 'hot', format: ['furshet', 'banket'], tier: ['premium', 'luxury'], pricePerGuest: 520, servingsPerGuest: 1, allergens: [], dietBadges: ['halal', 'gluten-free'], childFriendly: false },
+  { id: 'halal-hummus', name: 'Хумус с питой (веганский, халяль)', description: 'Нут, тахини, лимон, чеснок. Подаётся с тёплой питой. Без животных жиров.', image: '', station: 'cold', format: ['furshet', 'banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 180, servingsPerGuest: 1, allergens: ['gluten', 'sesame'], dietBadges: ['halal', 'vegan'], childFriendly: true },
+  { id: 'halal-fattoush', name: 'Салат фаттуш (веганский, халяль)', description: 'Овощи, зелень, обжаренная пит а, сумах. Без животных жиров.', image: '', station: 'cold', format: ['furshet', 'banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 200, servingsPerGuest: 1, allergens: ['gluten'], dietBadges: ['halal', 'vegan'], childFriendly: true },
+];
+
 // ═══════════════════════════════════════════
-// ПОЛНЫЙ КАТАЛОГ (78 SKU)
+// ПОЛНЫЙ КАТАЛОГ (86 SKU: 78 базовых + 8 халяль)
 // ═══════════════════════════════════════════
 export const ALL_DISHES: Dish[] = [
   ...GLOBAL_SMALL_PLATES,
@@ -171,6 +183,7 @@ export const ALL_DISHES: Dish[] = [
   ...WEDDING_EXTRA,
   ...KIDS,
   ...BRUNCH,
+  ...HALAL,
 ];
 
 // Группировки для UI

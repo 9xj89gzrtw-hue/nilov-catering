@@ -40,6 +40,8 @@ export interface MenuBuilderProps {
   excludedAllergens?: Set<Allergen>;
   onExcludedAllergensChange?: (allergens: Set<Allergen>) => void;
   formatFilter?: string;
+  // Фильтр по диете активной группы (например 'vegan' / 'halal' / 'gluten-free')
+  dietFilter?: string;
   catalogTitle?: string;
   cartTitle?: string;
   emptyCartText?: string;
@@ -57,6 +59,7 @@ export default function MenuBuilder({
   excludedAllergens: controlledExcluded,
   onExcludedAllergensChange,
   formatFilter,
+  dietFilter,
   catalogTitle = 'Каталог блюд',
   cartTitle = 'Ваше меню',
   emptyCartText = 'Нажмите «+» на блюде или перетащите его сюда',
@@ -102,7 +105,10 @@ export default function MenuBuilder({
       dishes = dishes.filter(d => d.format.includes(formatFilter as Dish['format'][number]));
     }
     if (station !== 'all') dishes = dishes.filter(d => d.station === station);
-    if (activeDiets.size > 0) {
+    // Diet filter — либо из активной группы (dietFilter prop), либо из ручных чипов (activeDiets)
+    if (dietFilter) {
+      dishes = dishes.filter(d => d.dietBadges.includes(dietFilter as Diet));
+    } else if (activeDiets.size > 0) {
       dishes = dishes.filter(d => [...activeDiets].every(diet => d.dietBadges.includes(diet as Diet)));
     }
     // Allergen filter
@@ -114,7 +120,7 @@ export default function MenuBuilder({
       dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
-  }, [station, activeDiets, search, formatFilter, excludedAllergens, allergenMode, showAllFormats]);
+  }, [station, activeDiets, search, formatFilter, excludedAllergens, allergenMode, showAllFormats, dietFilter]);
 
   // Количество блюд, скрытых фильтром аллергенов (для подсказки)
   const hiddenByAllergens = useMemo(() => {

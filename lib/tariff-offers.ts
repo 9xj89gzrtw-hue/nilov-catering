@@ -449,6 +449,91 @@ const CHEF_AT_HOME: TariffOffer[] = [
 ];
 
 // ═══════════════════════════════════════════
+// КОФЕ-БРЕЙК (полноценные тарифы с составом)
+// ═══════════════════════════════════════════
+const COFFEE_BREAK: TariffOffer[] = [
+  {
+    eventId: 'coffee-break', eventName: 'Кофе-брейк', tier: 'economy', tierLabel: 'Эконом',
+    pricePerGuest: 390, minGuests: 10,
+    description: 'Базовый кофе-брейк: выпечка, чай, кофе. Для конференций и семинаров.',
+    highlights: ['3 вида выпечки', 'Чай/кофе', 'Минеральная вода'],
+    imagePlaceholder: '☕',
+    composition: [
+      { dishId: 'croissant', name: 'Круассан классический', desc: 'Сливочное масло 82.5%, слоёное тесто', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'muffin', name: 'Маффин', desc: 'Черничный или шоколадный', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'mini-sandwich', name: 'Мини-сэндвич', desc: 'Ветчина, сыр, огурец на бриоши', category: 'Канапе', qty: '1 шт/гость' },
+      { dishId: 'fruit-platter', name: 'Фруктовая тарелка', desc: 'Сезонные фрукты', category: 'Фрукты', qty: '1 станция' },
+      { dishId: 'lemonade-tarragon', name: 'Лимонад эстрагон', desc: 'Эстрагон, лайм, содовая', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'cranberry-mors', name: 'Клюквенный морс', desc: 'Домашний морс с мятой и лаймом', category: 'Напитки', qty: 'безлимит' },
+    ],
+  },
+  {
+    eventId: 'coffee-break', eventName: 'Кофе-брейк', tier: 'standard', tierLabel: 'Стандарт',
+    pricePerGuest: 1450, minGuests: 10,
+    description: 'Сытный кофе-брейк: 4 вида выпечки, канапе, десерты, бариста.',
+    highlights: ['4 вида выпечки', 'Канапе', 'Десерты', 'Бариста', 'Соки/морсы'],
+    imagePlaceholder: '☕',
+    composition: [
+      { dishId: 'croissant', name: 'Круассан классический', desc: 'Сливочное масло 82.5%, слоёное тесто', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'eclair', name: 'Эклер', desc: 'Заварное тесто, ванильный крем, глазурь', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'muffin', name: 'Маффин', desc: 'Черничный или шоколадный', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'mini-sandwich', name: 'Мини-сэндвич', desc: 'Ветчина, сыр, огурец на бриоши', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'canape-caprese', name: 'Канапе «Капрезе»', desc: 'Моцарелла, томаты черри, песто', category: 'Канапе', qty: '1 шт/гость' },
+      { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс в стакане', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'mini-tart', name: 'Мини-тарт-ассорти', desc: 'Лимонный, ягодный, шоколадный', category: 'Десерты', qty: '1 шт/гость' },
+      { dishId: 'fruit-platter', name: 'Фруктовая тарелка', desc: 'Сезонные фрукты', category: 'Фрукты', qty: '1 станция' },
+      { dishId: 'lemonade-berry', name: 'Ягодный лимонад', desc: 'Микс ягод, лимон, мята, содовая', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'seabuckthorn-tea', name: 'Облепиховый чай', desc: 'Облепиха, имбирь, мёд', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'latte', name: 'Латте (бариста)', desc: 'Кофейный бар с бариста', category: 'Кофе', qty: 'безлимит' },
+    ],
+  },
+  {
+    eventId: 'coffee-break', eventName: 'Кофе-брейк', tier: 'premium', tierLabel: 'Расширенный',
+    pricePerGuest: 1950, minGuests: 10,
+    description: 'Премиум-брейк: миндальные круассаны, бриошь с заварным кремом, 3 десерта, смузи-бар.',
+    highlights: ['Премиум-выпечка', '3 десерта', 'Смузи-бар', 'Бариста', 'Канапе с лососем/хамоном'],
+    imagePlaceholder: '✨',
+    composition: [
+      { dishId: 'croissant-ham', name: 'Круассан с ветчиной', desc: 'Тёплый, с ветчиной и сыром', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'eclair', name: 'Эклер', desc: 'Заварное тесто, ванильный крем, глазурь', category: 'Выпечка', qty: '1 шт/гость' },
+      { dishId: 'greek-yogurt', name: 'Греческий йогурт', desc: 'С мёдом, гранолой и ягодами', category: 'Завтрак', qty: '1 порция' },
+      { dishId: 'mini-sandwich', name: 'Мини-сэндвич', desc: 'Ветчина, сыр, огурец на бриоши', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'canape-caprese', name: 'Канапе «Капрезе»', desc: 'Моцарелла, томаты черри, песто', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс в стакане', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'cheesecake-shooter', name: 'Чизкейк-шутер', desc: 'Чизкейк в стакане, ягодное кули', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'brownie-shooter', name: 'Брауни-шутер', desc: 'Шоколадный брауни в стакане с карамелью', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'fruit-platter', name: 'Фруктовая тарелка', desc: 'Сезонные фрукты', category: 'Фрукты', qty: '1 станция' },
+      { dishId: 'cedar-raf', name: 'Кедровый раф', desc: 'Кофейный напиток с кедровым молоком', category: 'Кофе', qty: 'безлимит' },
+      { dishId: 'lemonade-berry', name: 'Ягодный лимонад', desc: 'Микс ягод, лимон, мята, содовая', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'seabuckthorn-tea', name: 'Облепиховый чай', desc: 'Облепиха, имбирь, мёд', category: 'Напитки', qty: 'безлимит' },
+    ],
+  },
+  {
+    eventId: 'coffee-break', eventName: 'Кофе-брейк', tier: 'luxury', tierLabel: 'Максимальный',
+    pricePerGuest: 2450, minGuests: 10,
+    description: 'Максимальный кофе-брейк: премиум-выпечка, яйца-бенедикт, сырное плато, игристое.',
+    highlights: ['Премиум-выпечка', 'Яйца-бенедикт', 'Сырное плато', 'Игристое', 'Свежевыжатый сок', 'Бариста'],
+    imagePlaceholder: '👑',
+    composition: [
+      { dishId: 'croissant-ham', name: 'Круассан с ветчиной', desc: 'Тёплый, с ветчиной и сыром', category: 'Выпечка', qty: '2 шт/гость' },
+      { dishId: 'eggs-benedict', name: 'Яичница-бенедикт', desc: 'Яйцо пашот, бекон, голландский соус', category: 'Завтрак', qty: '1 порция' },
+      { dishId: 'omelette', name: 'Омлет', desc: 'Нежный, с зеленью и сыром', category: 'Завтрак', qty: '1 порция' },
+      { dishId: 'greek-yogurt', name: 'Греческий йогурт', desc: 'С мёдом, гранолой и ягодами', category: 'Завтрак', qty: '1 порция' },
+      { dishId: 'cheese-platter', name: 'Сырная тарелка', desc: 'Камамбер, маасдам, пармезан, мёд, орехи, виноград', category: 'Премиум', qty: '1 станция' },
+      { dishId: 'canape-caprese', name: 'Канапе «Капрезе»', desc: 'Моцарелла, томаты черри, песто', category: 'Канапе', qty: '2 шт/гость' },
+      { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс в стакане', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'cheesecake-shooter', name: 'Чизкейк-шутер', desc: 'Чизкейк в стакане, ягодное кули', category: 'Десерты', qty: '1 стакан' },
+      { dishId: 'fruit-platter', name: 'Фруктовая тарелка', desc: 'Сезонные фрукты', category: 'Фрукты', qty: '1 станция' },
+      { dishId: 'fresh-juice', name: 'Свежевыжатый сок', desc: 'Апельсиновый, грейпфрутовый', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'cedar-raf', name: 'Кедровый раф', desc: 'Кофейный напиток с кедровым молоком', category: 'Кофе', qty: 'безлимит' },
+      { dishId: 'lemonade-berry', name: 'Ягодный лимонад', desc: 'Микс ягод, лимон, мята, содовая', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'seabuckthorn-tea', name: 'Облепиховый чай', desc: 'Облепиха, имбирь, мёд', category: 'Напитки', qty: 'безлимит' },
+      { dishId: 'welcome-drink', name: 'Игристое (welcome)', desc: 'Игристое брют + канапе с лососем', category: 'Бар', qty: '1 бокал' },
+    ],
+  },
+];
+
+// ═══════════════════════════════════════════
 // ЕДИНЫЙ КАТАЛОГ
 // ═══════════════════════════════════════════
 
@@ -459,6 +544,7 @@ export const ALL_TARIFF_OFFERS: Record<string, TariffOffer[]> = {
   chastnoe: CHASTNOE,
   detskoe: DETSKOE,
   'chef-at-home': CHEF_AT_HOME,
+  'coffee-break': COFFEE_BREAK,
 };
 
 export function getOffersForEvent(eventId: string): TariffOffer[] {
@@ -474,7 +560,7 @@ export function getOffersForEvent(eventId: string): TariffOffer[] {
 export const FORMAT_TO_EVENT: Record<Format, string> = {
   banket: 'svadba',
   furshet: 'chastnoe',
-  'coffee-break': 'korporativ', // не идеально, ноCoffee-break цен нет в тарифах — будет отдельный ниже
+  'coffee-break': 'coffee-break',
   'mobile-furshet': 'chastnoe',
   detskoe: 'detskoe',
   'chef-at-home': 'chef-at-home',
@@ -499,16 +585,6 @@ export interface FormatPriceTier {
 // Получить 4 тарифа для формата — берёт из PRICE_PER_GUEST (единый источник)
 // Возвращает состав из tariff-offers если есть
 export function getPricesForFormat(format: Format): FormatPriceTier[] {
-  // Coffee-break — особый (нет в tariff-offers, цены захардкожены)
-  if (format === 'coffee-break') {
-    return [
-      { tier: 'economy', pricePerGuest: COFFEE_BREAK_PRICES.economy, minGuests: 10 },
-      { tier: 'standard', pricePerGuest: COFFEE_BREAK_PRICES.standard, minGuests: 10 },
-      { tier: 'premium', pricePerGuest: COFFEE_BREAK_PRICES.premium, minGuests: 10 },
-      { tier: 'luxury', pricePerGuest: COFFEE_BREAK_PRICES.luxury, minGuests: 10 },
-    ];
-  }
-
   const eventId = FORMAT_TO_EVENT[format];
   const offers = ALL_TARIFF_OFFERS[eventId] || [];
 
