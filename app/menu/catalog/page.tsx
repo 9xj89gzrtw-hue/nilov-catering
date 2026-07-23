@@ -200,17 +200,22 @@ function DishCard({ dish }: { dish: Dish }) {
           </div>
         </div>
 
-        {/* Allergens */}
+        {/* Allergens — high-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
         {dish.allergens.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1">
-            {dish.allergens.slice(0, 3).map(a => (
-              <span key={a} className="text-[9px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
-                {ALLERGEN_LABEL[a]}
-              </span>
-            ))}
-            {dish.allergens.length > 3 && (
+            {dish.allergens.slice(0, 4).map(a => {
+              const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
+              return (
+                <span key={a} className={`text-[9px] px-1.5 py-0.5 rounded ${
+                  isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                }`}>
+                  {ALLERGEN_LABEL[a]}
+                </span>
+              );
+            })}
+            {dish.allergens.length > 4 && (
               <span className="text-[9px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
-                +{dish.allergens.length - 3}
+                +{dish.allergens.length - 4}
               </span>
             )}
           </div>

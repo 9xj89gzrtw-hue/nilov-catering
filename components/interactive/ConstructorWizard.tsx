@@ -123,6 +123,10 @@ export default function ConstructorWizard() {
     step === 3 ? (store.tierMode === 'custom' ? store.selectedItems.length > 0 : true) :
     step === 4 ? !!store.contact.name && !!store.contact.phone :
     true;
+  // Блокировка отправки если группы включены, но сумма не совпадает с guestCount
+  const groupsMismatch = store.groupsEnabled && store.guestGroups.length > 0
+    && store.guestGroups.reduce((s, g) => s + g.count, 0) !== store.guestCount;
+  const canSubmit = canNext && !groupsMismatch;
 
   const handleNext = () => { if (canNext) store.setStep(Math.min(step + 1, 5)); };
   const handlePrev = () => store.setStep(Math.max(step - 1, 0));
@@ -574,7 +578,7 @@ export default function ConstructorWizard() {
                   setSubmitted(true);
                   store.setStep(5);
                 }}
-                disabled={!canNext}
+                disabled={!canSubmit}
                 className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-50 hover:bg-primary/90 transition-colors">
                 Отправить заявку
               </button>

@@ -49,7 +49,7 @@ export default function DetskoePage() {
               {dish.allergens.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {dish.allergens.slice(0, 4).map(a => {
-                    const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten';
+                    const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
                     return (
                       <span key={a} className={`text-[8px] px-1 py-0.5 rounded ${
                         isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
