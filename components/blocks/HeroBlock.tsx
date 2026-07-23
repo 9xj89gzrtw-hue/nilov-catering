@@ -74,13 +74,19 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
         className="absolute inset-0 z-0"
         style={reducedMotion ? {} : { scale, opacity }}
       >
-        <img
-          src="/images/gallery/wedding-banquet.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          fetchPriority="high"
-          aria-hidden="true"
-        />
+        <picture>
+          <source srcSet="/images/gallery/wedding-banquet-1920.avif" type="image/avif" media="(min-width: 768px)" />
+          <source srcSet="/images/gallery/wedding-banquet-768.avif" type="image/avif" media="(max-width: 767px)" />
+          <source srcSet="/images/gallery/wedding-banquet-1920.webp" type="image/webp" media="(min-width: 768px)" />
+          <source srcSet="/images/gallery/wedding-banquet-768.webp" type="image/webp" media="(max-width: 767px)" />
+          <img
+            src="/images/gallery/wedding-banquet-768.webp"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            fetchPriority="high"
+            aria-hidden="true"
+          />
+        </picture>
         <video
           ref={videoRef}
           suppressHydrationWarning
@@ -95,6 +101,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           onCanPlayThrough={() => setVideoReady(true)}
         >
           {/* MP4 first for Safari/iOS, then WebM for Chrome/Firefox */}
+          <source src="/videos/hero/banquet.mp4" type="video/mp4" />
           <source src="/videos/hero/banquet.webm" type="video/webm" />
         </video>
         {/* Asymmetric overlay: strong top/bottom for text, transparent middle for video */}
