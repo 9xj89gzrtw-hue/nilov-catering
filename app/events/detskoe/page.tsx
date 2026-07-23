@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 
 export const metadata: Metadata = {
   title: 'Детские праздники',
   description: 'Организация детских праздников NiloV: кейтеринг, аниматоры, шоу-программа. Безопасно и весело.',
+  alternates: { canonical: '/events/detskoe' },
 };
 
 export default function DetskoeEventPage() {
@@ -17,6 +19,17 @@ export default function DetskoeEventPage() {
         <p className="text-xs text-muted-foreground mb-8">
           Все цены ориентировочные. Меню адаптируется под возраст детей.
         </p>
+
+        {/* Гибрид: дети + взрослые */}
+        <div className="mb-8 p-4 rounded-xl border border-gold-tint bg-gold-tint/30">
+          <p className="text-sm font-medium mb-1">👨‍👩‍👧‍👦 Нужен и взрослый стол?</p>
+          <p className="text-xs text-muted-foreground mb-3">
+            В конструкторе меню можно включить режим «Несколько групп гостей» — отдельно собрать детское меню и отдельно взрослое, с раздельным расчётом цены.
+          </p>
+          <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline">
+            Собрать гибридное меню в конструкторе →
+          </Link>
+        </div>
 
         <TariffOffersSection
           eventId="detskoe"

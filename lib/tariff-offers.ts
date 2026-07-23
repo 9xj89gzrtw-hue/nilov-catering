@@ -201,7 +201,7 @@ const KORPORATIV: TariffOffer[] = [
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'luxury', tierLabel: 'Максимальный',
     pricePerGuest: 7950, minGuests: 15,
     description: 'Полный бар, две живые станции, чёрная икра, сигары.',
-    highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарная карта', 'Координатор'],
+    highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарный lounge 21+', 'Координатор'],
     imagePlaceholder: '👑',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },

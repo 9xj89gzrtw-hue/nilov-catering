@@ -506,11 +506,6 @@ export default function ConstructorWizard() {
                         const dish = ALL_DISHES.find(d => d.id === item.dishId);
                         return sum + (dish ? dish.pricePerGuest * item.qty * g.count : 0);
                       }, 0);
-                      const ungroupedItems = store.selectedItems.filter(i => !i.groupId);
-                      const ungroupedTotal = ungroupedItems.reduce((sum, item) => {
-                        const dish = ALL_DISHES.find(d => d.id === item.dishId);
-                        return sum + (dish ? dish.pricePerGuest * item.qty * store.guestCount : 0);
-                      }, 0);
                       return (
                         <div key={g.id} className="flex justify-between text-[11px]">
                           <span className="text-muted-foreground">{g.name || 'Без названия'} ({g.count} чел.)</span>
