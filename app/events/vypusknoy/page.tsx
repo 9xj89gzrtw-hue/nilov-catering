@@ -55,7 +55,7 @@ export default function VypusknoyPage() {
         <div className="mt-12 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
           <h2 className="font-heading text-xl font-medium mb-3">🏫 Для школ и образовательных учреждений</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Работаем с Schools, вузами, детскими садами, гос. учреждениями. Полное согласование с Роспотребнадзором.
+            Работаем с школами, вузами, детскими садами, гос. учреждениями. Полное согласование с Роспотребнадзором.
             Закупки по 44-ФЗ и 223-ФЗ — поддерживаем.
           </p>
 
