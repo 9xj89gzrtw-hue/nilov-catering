@@ -102,10 +102,26 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             </span>
           </h1>
 
-          {/* Simple, clear subtitle — one sentence */}
-          <p className="text-base md:text-lg text-muted-foreground mb-10 animate-fade-up" style={{ animationDelay: '0.15s' }}>
+          {/* Simple, clear subtitle — one sentence with prices */}
+          <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
             {subtitle || 'Ресторанное качество кейтеринга. От камерного ужина до банкета на 500 гостей.'}
           </p>
+
+          {/* Quick price anchor — видно за 10 секунд */}
+          <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{ animationDelay: '0.25s' }}>
+            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+              Фуршет от 2 450 ₽/гость
+            </span>
+            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+              Банкет от 3 950 ₽/гость
+            </span>
+            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+              Кофе-брейк от 390 ₽/гость
+            </span>
+            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+              Доставка от 5 000 ₽
+            </span>
+          </div>
 
           {/* ONE strong CTA + ONE secondary (instead of 3 CTAs) */}
           <div className="flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>

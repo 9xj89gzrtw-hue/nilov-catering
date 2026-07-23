@@ -63,6 +63,25 @@ export default function ContactPage() {
               <label className="block text-xs font-medium text-muted-foreground mb-1">Дата события</label>
               <input type="date" name="date" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
             </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-medium text-muted-foreground mb-1">Тип события</label>
+                <select name="eventType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+                  <option value="">Выберите...</option>
+                  <option value="Корпоратив">Корпоратив</option>
+                  <option value="Свадьба">Свадьба</option>
+                  <option value="День рождения">День рождения</option>
+                  <option value="Выпускной">Выпускной</option>
+                  <option value="Кофе-брейк">Кофе-брейк</option>
+                  <option value="Доставка еды">Доставка еды</option>
+                  <option value="Другое">Другое</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-muted-foreground mb-1">Гостей</label>
+                <input type="number" name="guests" min="1" placeholder="напр. 50" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+              </div>
+            </div>
             <div>
               <label className="block text-xs font-medium text-muted-foreground mb-1">Комментарий</label>
               <textarea name="comment" rows={3} placeholder="Тип события, количество гостей, пожелания..." className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow resize-none" />

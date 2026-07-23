@@ -75,7 +75,7 @@ const FACTS: TrustFact[] = [
   {
     id: 'customs-union',
     icon: ClipboardCheck,
-    label: 'ТР ТС 021/2011',
+    label: 'ТР ТС 022/2011',
     sublabel: 'пищевая безопасность',
     value: 1,
     suffix: '',

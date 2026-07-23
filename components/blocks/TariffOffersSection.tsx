@@ -363,6 +363,12 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           className="block w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground text-center hover:bg-primary/90 transition-colors">
           Выбрать этот тариф →
         </Link>
+        <Link
+          href="/contact"
+          className="block w-full rounded-lg border border-gold-text py-2.5 text-xs font-semibold text-gold-text text-center hover:bg-gold-tint transition-colors"
+        >
+          ⚡ Быстрая заявка
+        </Link>
         <a
           href="/pricing/pdf"
           download
@@ -406,7 +412,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-heading mb-4">Тарифы и цены</h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доплат не будет.
+                Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доплат за персонал и посуду не будет. Доставка за КАД — от 3 000 ₽.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -478,28 +484,6 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
               <Link href="/plan/constructor?format=furshet"
                 className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors">
                 Собрать фуршет в конструкторе
-              </Link>
-            </div>
-          </div>
-        )}
-
-        {/* Мост coffee-break → доставка (для тех, кому нужна просто еда без персонала) */}
-        {selectedEvent === 'coffee-break' && (
-          <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
-            <p className="text-base font-medium mb-1">🚚 Нужен кофе-брейк без официантов — просто доставка?</p>
-            <p className="text-sm text-muted-foreground mb-4">
-              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
-              <br />
-              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong> (с сырным плато и кедровым рафом).
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/delivery/order"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-                🛒 Собрать заказ доставки →
-              </Link>
-              <Link href="/delivery"
-                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
-                Зоны доставки
               </Link>
             </div>
           </div>

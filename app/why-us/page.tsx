@@ -29,7 +29,7 @@ export default function WhyUsPage() {
           <h2 className="font-heading text-2xl text-foreground mt-12">Наши принципы</h2>
           <ul className="space-y-3">
             <li><strong className="text-foreground">Честные цены.</strong> Вы видите итоговую сумму до оформления заявки — без скрытых платежей.</li>
-            <li><strong className="text-foreground">Прозрачность.</strong> 14 аллергенов ТР ТС 021/2011. Состав каждого блюда. Фото реальных событий.</li>
+            <li><strong className="text-foreground">Прозрачность.</strong> 14 аллергенов ТР ТС 022/2011. Состав каждого блюда. Фото реальных событий.</li>
             <li><strong className="text-foreground">Персональный менеджер.</strong> Один человек ведёт ваше событие от заявки до фотоотчёта.</li>
             <li><strong className="text-foreground">Гарантия перезвона.</strong> 15 минут в рабочее время. Мы не заставляем ждать.</li>
           </ul>

@@ -15,9 +15,20 @@ export default function DetskoePage() {
     <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-4xl">
         <h1 className="mb-2">Детское меню</h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-4">
           Безопасное, вкусное и красивое меню для детских праздников. Все ингредиенты согласованы, аллергены промаркированы. Минимум 10 гостей.
         </p>
+
+        {/* Safety banner — ВВЕРХУ, перед тарифами и блюдами */}
+        <div className="mb-8 p-4 rounded-xl border border-destructive/30 bg-destructive/5">
+          <p className="text-sm font-medium mb-1">⚠ Аллергены в детском меню</p>
+          <p className="text-xs text-muted-foreground">
+            Блюда с орехами и глютеном выделены красным. Если у ребёнка аллергия — отметьте её в конструкторе меню или предупредите менеджера по телефону. Все блюда маркируются по 14 аллергенам ТР ТС 022/2011.
+          </p>
+          <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline mt-2 inline-block">
+            Собрать детское меню в конструкторе →
+          </Link>
+        </div>
 
         {/* CTA: "Не нашли — составим" */}
         <div className="mb-8 p-4 rounded-xl border border-gold-text bg-gold-tint flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -75,17 +86,6 @@ export default function DetskoePage() {
               )}
             </div>
           ))}
-        </div>
-
-        {/* Safety banner — для аллергиков */}
-        <div className="mt-8 p-4 rounded-xl border border-destructive/30 bg-destructive/5">
-          <p className="text-sm font-medium mb-1">⚠ Аллергены в детском меню</p>
-          <p className="text-xs text-muted-foreground">
-            Блюда с орехами и глютеном выделены красным. Если у ребёнка аллергия — отметьте её в конструкторе меню или предупредите менеджера по телефону. Все блюда маркируются по 14 аллергенам ТР ТС 022/2011.
-          </p>
-          <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline mt-2 inline-block">
-            Собрать детское меню в конструкторе →
-          </Link>
         </div>
       </div>
     </main>
