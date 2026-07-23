@@ -1,167 +1,57 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { navItems } from '@/lib/data';
-import { Menu, X, Phone } from 'lucide-react';
+import { SITE } from '@/lib/data';
+import TextSizeToggle from '@/components/effects/TextSizeToggle';
+import MobileMenu from '@/components/layout/MobileMenu';
+import MegaMenu from '@/components/layout/MegaMenu';
 
 export default function Header() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
-
   return (
-    <>
-      {/* Scroll progress bar */}
-      <motion.div
-        className="scroll-progress"
-        style={{ scaleX }}
-      />
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-line/50 bg-background/80 backdrop-blur-md" role="banner">
+      <nav className="container-site flex h-16 items-center justify-between" aria-label="Главная навигация">
+        {/* Logo */}
+        <Link href="/" className="font-heading text-xl font-semibold tracking-tight text-foreground hover:text-gold-text transition-colors">
+          NiloV
+        </Link>
 
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-border/50'
-            : 'bg-transparent'
-        }`}
-        role="banner"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="font-heading text-2xl md:text-[1.7rem] font-semibold text-cream tracking-wide cursor-hover"
-              aria-label="Нилов Кейтеринг — на главную"
-            >
-              Нилов
-              <span className="text-gold ml-1.5 font-normal text-lg md:text-xl">Кейтеринг</span>
+        {/* Desktop: 2 mega-menu items + 3 plain links */}
+        <MegaMenu />
+        <ul className="hidden lg:flex items-center gap-1" role="list">
+          <li>
+            <Link href="/gallery" className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Галерея
             </Link>
+          </li>
+          <li>
+            <Link href="/pricing" className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Тарифы
+            </Link>
+          </li>
+          <li>
+            <Link href="/why-us" className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              О нас
+            </Link>
+          </li>
+        </ul>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8" aria-label="Основная навигация">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-[11px] font-medium uppercase tracking-[0.15em] transition-colors duration-300 cursor-hover relative group ${
-                    pathname === item.href ? 'text-gold' : 'text-cream/50 hover:text-cream'
-                  }`
-                }
-                >
-                  {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-300 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                </Link>
-              ))}
-            </nav>
-
-            {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+78129195911"
-                className="hidden md:flex items-center gap-2 text-sm text-cream/50 hover:text-gold transition-colors duration-300 cursor-hover"
-                aria-label="Позвонить: +7 (812) 919-59-11"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                <span className="text-xs font-medium tracking-wide">+7 (812) 919-59-11</span>
-              </a>
-
-              <Link
-                href="/contact"
-                className="hidden md:inline-flex btn-primary text-[10px] uppercase tracking-wider cursor-hover"
-              >
-                Обсудить
-              </Link>
-
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden flex items-center justify-center w-10 h-10 text-cream cursor-hover"
-                aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
-                aria-expanded={mobileOpen}
-              >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
+        {/* Desktop: phone + CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          <TextSizeToggle />
+          <a href={`tel:${SITE.phone}`} className="text-sm font-medium text-foreground hover:text-gold-text transition-colors">
+            📞 {SITE.phone}
+          </a>
+          <Link href="/plan" className="inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+            Спланировать
+          </Link>
         </div>
 
-        {/* Mobile Nav Overlay */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              className="lg:hidden fixed inset-0 top-0 bg-[#0A0A0A]/95 backdrop-blur-xl z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col items-center justify-center h-full gap-8">
-                {navItems.map((item, i) => (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ delay: 0.05 + i * 0.04, duration: 0.3 }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`font-heading text-3xl transition-colors duration-300 cursor-hover block ${
-                        pathname === item.href ? 'text-gold' : 'text-cream hover:text-gold'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-                <motion.div
-                  className="mt-8 flex flex-col items-center gap-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <a href="tel:+78129195911" className="text-gold font-medium text-lg">
-                    +7 (812) 919-59-11
-                  </a>
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="btn-primary text-sm uppercase tracking-wider mt-2 cursor-hover"
-                  >
-                    Обсудить мероприятие
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-    </>
+        {/* Mobile: phone + burger */}
+        <div className="flex lg:hidden items-center gap-1">
+          <a href={`tel:${SITE.phone}`} className="w-11 h-11 flex items-center justify-center text-foreground hover:text-gold-text transition-colors" aria-label="Позвонить">
+            📞
+          </a>
+          <MobileMenu />
+        </div>
+      </nav>
+    </header>
   );
 }

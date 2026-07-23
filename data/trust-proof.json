@@ -1,0 +1,90 @@
+[
+  {
+    "id": "years",
+    "icon": "Calendar",
+    "label": "более 19 лет",
+    "sublabel": "с 2007",
+    "value": 19,
+    "suffix": "+",
+    "status": "verified"
+  },
+  {
+    "id": "events",
+    "icon": "Sparkles",
+    "label": "событий",
+    "value": 3000,
+    "suffix": "+",
+    "status": "verified"
+  },
+  {
+    "id": "price",
+    "icon": "Coffee",
+    "label": "кофе-брейк",
+    "prefix": "от ",
+    "value": 390,
+    "suffix": " ₽/гость",
+    "status": "verified"
+  },
+  {
+    "id": "allergens",
+    "icon": "ShieldCheck",
+    "label": "аллергенов ТР ТС",
+    "value": 14,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "law152",
+    "icon": "ScrollText",
+    "label": "152-ФЗ",
+    "sublabel": "защита персданных",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "customs-union",
+    "icon": "ClipboardCheck",
+    "label": "ТР ТС 021/2011",
+    "sublabel": "пищевая безопасность",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "kad",
+    "icon": "Truck",
+    "label": "доставка в КАД",
+    "sublabel": "0 ₽, включена",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "sous-vide",
+    "icon": "ChefHat",
+    "label": "кухня су-вид",
+    "sublabel": "медленная варка",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "contract",
+    "icon": "FileText",
+    "label": "договор и чек",
+    "sublabel": "прозрачные условия",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  },
+  {
+    "id": "insurance",
+    "icon": "Flag",
+    "label": "страховка",
+    "sublabel": "ответственность",
+    "value": 1,
+    "suffix": "",
+    "status": "verified"
+  }
+]

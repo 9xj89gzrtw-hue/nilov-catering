@@ -1,37 +1,74 @@
-import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
+'use client';
 
-interface BreadcrumbItem {
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ChevronRight } from 'lucide-react';
+
+interface Crumb {
   label: string;
   href?: string;
 }
 
-interface BreadcrumbsProps {
-  items: BreadcrumbItem[];
-}
+/** Маппинг путей на человеческие названия */
+const LABELS: Record<string, string> = {
+  events: 'События',
+  korporativ: 'Корпоратив',
+  wedding: 'Свадьба',
+  vypusknoi: 'Выпускной',
+  detskoe: 'Детский праздник',
+  chastnoe: 'Частное',
+  'chef-at-home': 'Шеф на дом',
+  menu: 'Меню',
+  catalog: 'Каталог',
+  bar: 'Бар',
+  plan: 'Спланировать',
+  calculator: 'Калькулятор',
+  constructor: 'Конструктор',
+  helper: 'Помощник',
+  blog: 'Блог',
+};
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs() {
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter(Boolean);
+
+  // Не показываем на корне и main-страницах
+  if (segments.length === 0) return null;
+  if (['why-us', 'contact', 'faq', 'reviews'].includes(segments[0]) && segments.length === 1) return null;
+
+  const crumbs: Crumb[] = [{ label: 'Главная', href: '/' }];
+
+  let accumulated = '';
+  for (const seg of segments) {
+    accumulated += `/${seg}`;
+    crumbs.push({
+      label: LABELS[seg] || decodeURIComponent(seg),
+      href: accumulated,
+    });
+  }
+
+  // Последний элемент — текущая страница, без ссылки
+  const last = crumbs.pop()!;
+
   return (
-    <nav aria-label="Навигация по сайту" className="py-4">
-      <ol className="flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
-        <li>
-          <Link href="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-            <Home className="w-3.5 h-3.5" />
-            <span>Главная</span>
-          </Link>
-        </li>
-        {items.map((item, i) => (
-          <li key={i} className="flex items-center gap-1.5">
-            <ChevronRight className="w-3.5 h-3.5" />
-            {i === items.length - 1 || !item.href ? (
-              <span className="text-foreground font-medium">{item.label}</span>
-            ) : (
-              <Link href={item.href} className="hover:text-foreground transition-colors">
-                {item.label}
-              </Link>
-            )}
+    <nav aria-label="Хлебные крошки" className="py-3">
+      <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+        {crumbs.map((crumb) => (
+          <li key={crumb.href} className="flex items-center gap-1">
+            <Link
+              href={crumb.href!}
+              className="hover:text-gold-text transition-colors"
+            >
+              {crumb.label}
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
           </li>
         ))}
+        <li>
+          <span className="text-foreground font-medium" aria-current="page">
+            {last.label}
+          </span>
+        </li>
       </ol>
     </nav>
   );

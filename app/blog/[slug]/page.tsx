@@ -1,111 +1,108 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Breadcrumbs from "@/components/common/Breadcrumbs";
-import { blogPosts } from '@/lib/data';
-import { ArrowLeft } from 'lucide-react';
+import { notFound } from 'next/navigation';
+
+const ARTICLES: Record<string, { t: string; d: string; desc: string; body: string[] }> = {
+  'furshet-vs-banket': {
+    t: 'Как выбрать формат кейтеринга: фуршет или банкет?',
+    d: '10.07.2026',
+    desc: 'Разбор плюсов и минусов двух главных форматов. Когда фуршет выигрывает, а когда без банкета не обойтись.',
+    body: [
+      'Выбор между фуршетом и банкетом — один из первых вопросов при планировании события. Оба формата имеют свои сильные стороны, и правильный выбор зависит от типа мероприятия, количества гостей и желаемой атмосферы.',
+      'Фуршет — это стоячий приём с лёгкими закусками. Гости свободно перемещаются, общаются, пробуют канапе и тарталетки. Идеально для корпоративов, презентаций, открытий и коктейльных вечеринок. Минимум 20 гостей, цена от 2 450 ₽/гость.',
+      'Банкет — классическая посадка за стол с официантами и сменой блюд. Торжественно, структурированно, с вниманием к каждому гостю. Выбор для свадеб, юбилеев и статусных приёмов. Минимум 15 гостей, цена от 4 470 ₽/гость.',
+      'Главное правило: для мероприятий до 30 человек банкет комфортнее, для 50+ — фуршет даёт больше свободы общения. Но всё индивидуально — позвоните нам, и мы поможем выбрать.',
+      'Статья-демо. Реальный контент добавляется с заказчиком.',
+    ],
+  },
+  'allergeny-markirovka': {
+    t: '14 аллергенов: почему маркировка важна для вашего события',
+    d: '01.07.2026',
+    desc: 'Что требует ТР ТС 022/2011 и как мы защищаем гостей с пищевой непереносимостью.',
+    body: [
+      'Пищевая аллергия — не редкость. По статистике, на мероприятии из 50 гостей минимум у 2–3 есть те или иные ограничения. Игнорировать это — рисковать здоровьем людей и репутацией.',
+      'Технический регламент Таможенного союза ТР ТС 022/2011 требует маркировки 14 аллергенов: глютен, ракообразные, яйца, рыба, арахис, соя, молоко, орехи, сельдерей, горчица, кунжут, сульфиты, люпин, моллюски.',
+      'В NiloV мы маркируем каждое блюдо по полному списку из 14 аллергенов. При составлении меню учитываем индивидуальные ограничения гостей — просто сообщите нам о них заранее.',
+      'Для детских праздников это критически важно: родители детей-аллергиков должны быть уверены, что ребёнок в безопасности. Мы предлагаем отдельную консультацию с шеф-поваром для составления безопасного меню.',
+      'Статья-демо. Реальный контент добавляется с заказчиком.',
+    ],
+  },
+  'svadebnyi-keitering-5-veshei': {
+    t: 'Свадебный кейтеринг: 5 вещей, о которых забывают',
+    d: '15.06.2026',
+    desc: 'Координатор, дегустация, детское меню и другие детали, которые спасают свадьбу.',
+    body: [
+      'Свадьба — событие, где каждая деталь на счету. За годы работы мы видели, какие моменты чаще всего упускают из виду пары при планировании кейтеринга.',
+      '1. Детское меню. Если на свадьбе будут дети, им нужно отдельное меню — не просто «половина взрослой порции», а блюда, которые дети действительно будут есть: наггетсы, макароны, фрукты, соки.',
+      '2. Дегустация. Никогда не заказывайте меню без предварительной дегустации. Фотографии и описания не передают вкус. Мы проводим дегустации для всех пар за 2–4 недели до свадьбы.',
+      '3. Тайминг подачи. Горячее должно быть горячим. Свадебный торт — в нужный момент. Координатор события следит за этим, но обсудите тайминг заранее.',
+      '4. Welcome-зона. Гости приходят в разное время. Welcome-напитки и лёгкие закуски на входе снимают напряжение и задают тон.',
+      '5. Еда для команды. Фотограф, видеооператор, ведущий, музыканты — они работают весь день. Покормите их, и они скажут вам спасибо качественной работой.',
+      'Статья-демо. Реальный контент добавляется с заказчиком.',
+    ],
+  },
+  'sezonnoe-menyu-leto-2026': {
+    t: 'Сезонное меню: лето 2026',
+    d: '01.06.2026',
+    desc: 'Гриль, холодные супы, ягодные десерты — что мы готовим этим летом.',
+    body: [
+      'Лето — время свежих продуктов, ярких вкусов и открытых площадок. Наше летнее меню 2026 построено вокруг трёх принципов: локальные фермерские продукты, минимум термической обработки, максимум вкуса.',
+      'Холодные закуски: карпаччо из свёклы с дымком, будда-боул с тофу, поке с лососем и авокадо. Лёгкие, свежие, идеальны для летнего фуршета.',
+      'Горячее с гриля: jerk-курица на плантане, тайские мясные шарики, овощи гриль. Готовятся на открытом огне при гостях — это и шоу, и гарантия свежести.',
+      'Напитки: лимонад с эстрагоном, ягодный лимонад, клюквенный морс с мятой, комбуча. Без искусственных сиропов — только натуральные ингредиенты.',
+      'Десерты: веррин чиа-пудинг с манго и маракуйей, шоколадный мусс из авокадо, мини-тарты с ягодами. Лёгкие, не приторные, с сезонными фруктами.',
+      'Статья-демо. Реальный контент добавляется с заказчиком.',
+    ],
+  },
+  'kofe-breik-na-konferentsii': {
+    t: 'Кофе-брейк на конференции: как не ошибиться',
+    d: '15.05.2026',
+    desc: 'Сколько кофе на человека, какие закуски выбрать и почему круассаны — не всегда хорошая идея.',
+    body: [
+      'Кофе-брейк кажется простым форматом, но именно на нём чаще всего экономят — и зря. Голодные и уставшие участники конференции — это потеря внимания и негативные отзывы.',
+      'Кофе: рассчитывайте минимум 1,5 чашки на человека за кофе-брейк. Лучше иметь 3 сорта кофе + чай + вода. Для летних конференций добавляйте холодные напитки: лимонады, морсы.',
+      'Еда: забудьте про жирные круассаны, от которых клонит в сон. Выбирайте лёгкие закуски: канапе, мини-сэндвичи, фрукты, орехи. Углеводы дают быструю энергию, белок — длительное насыщение.',
+      'Тайминг: кофе-брейк каждые 2 часа — золотой стандарт. 15–20 минут достаточно, чтобы выпить кофе и перекусить, но не потерять темп конференции.',
+      'Специальные диеты: всегда имейте веганские и безглютеновые опции. Минимум 10% участников оценят. Мы маркируем аллергены на каждом блюде.',
+      'Статья-демо. Реальный контент добавляется с заказчиком.',
+    ],
+  },
+};
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
-  if (!post) return { title: "Не найдено" };
-  return {
-    title: post.title,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [{ url: post.image, width: 1200, height: 630 }],
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author],
-    },
-  };
+  const article = ARTICLES[slug];
+  if (!article) return { title: 'Статья не найдена' };
+  return { title: article.t, description: article.desc };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogArticlePage({ params }: Props) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
-  if (!post) notFound();
+  const article = ARTICLES[slug];
+  if (!article) notFound();
 
   return (
-    <article className="pt-20 md:pt-24 pb-16 bg-background">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[
-          { label: "Блог", href: "/blog" },
-          { label: post.title },
-        ]} />
-
-        {/* Header */}
-        <header className="mt-8 mb-10">
-          <span className="text-[10px] uppercase tracking-wider bg-burgundy/80 text-cream px-2 py-0.5 rounded-sm">
-            {post.category}
-          </span>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-cream mt-4 leading-tight">
-            {post.title}
-          </h1>
-          <div className="flex items-center gap-3 mt-4 text-xs text-cream-muted">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
-            </time>
-            <span>·</span>
-            <span>{post.author}</span>
-          </div>
-        </header>
-
-        {/* Image */}
-        <div className="relative aspect-[16/9] rounded-md overflow-hidden mb-10">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
+    <main className="pt-24 pb-20">
+      <article className="container-site max-w-2xl">
+        <Link href="/blog" className="text-sm text-muted-foreground hover:text-gold-text transition-colors mb-4 inline-block">
+          ← Назад в блог
+        </Link>
+        <p className="text-xs text-muted-foreground mb-2">{article.d}</p>
+        <h1 className="text-2xl font-heading font-medium mb-6">{article.t}</h1>
+        <div className="prose prose-sm max-w-none space-y-4">
+          {article.body.map((p, i) => (
+            <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
+          ))}
         </div>
-
-        {/* Content */}
-        <div className="prose-custom">
-          {post.content.split('\n\n').map((paragraph, i) => {
-            if (paragraph.match(/^\d+\./)) {
-              const items = paragraph.split('\n');
-              return (
-                <ol key={i} className="space-y-2 mb-6">
-                  {items.map((item, j) => (
-                    <li key={j} className="text-sm text-cream/80 leading-relaxed pl-1">
-                      {item.replace(/^\d+\.\s*/, '')}
-                    </li>
-                  ))}
-                </ol>
-              );
-            }
-            return (
-              <p key={i} className="text-sm text-cream/80 leading-relaxed mb-4">
-                {paragraph}
-              </p>
-            );
-          })}
-        </div>
-
-        {/* Back link */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-gold font-medium"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Все статьи
+        <div className="mt-10 p-5 rounded-xl border border-line bg-card">
+          <p className="text-sm font-medium mb-2">Обсудить меню для вашего события</p>
+          <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">
+            Собрать меню в конструкторе →
           </Link>
         </div>
-      </div>
-    </article>
+      </article>
+    </main>
   );
 }

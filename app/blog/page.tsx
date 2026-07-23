@@ -1,66 +1,33 @@
-import type { Metadata } from "next";
-import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Breadcrumbs from "@/components/common/Breadcrumbs";
-import { blogPosts } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: "Блог",
-  description: "Статьи о кейтеринге, трендах гастрономии, советы по организации мероприятий.",
+  title: 'Блог NiloV Catering',
+  description: 'Советы, кейсы, сезонные идеи от команды NiloV Catering. Ресторанный кейтеринг в Петербурге.',
 };
+
+const ARTICLES = [
+  { t: 'Как выбрать формат кейтеринга: фуршет или банкет?', d: '10.07.2026', slug: 'furshet-vs-banket', desc: 'Разбор плюсов и минусов двух главных форматов. Когда фуршет выигрывает, а когда без банкета не обойтись.' },
+  { t: '14 аллергенов: почему маркировка важна для вашего события', d: '01.07.2026', slug: 'allergeny-markirovka', desc: 'Что требует ТР ТС 022/2011 и как мы защищаем гостей с пищевой непереносимостью.' },
+  { t: 'Свадебный кейтеринг: 5 вещей, о которых забывают', d: '15.06.2026', slug: 'svadebnyi-keitering-5-veshei', desc: 'Координатор, дегустация, детское меню и другие детали, которые спасают свадьбу.' },
+  { t: 'Сезонное меню: лето 2026', d: '01.06.2026', slug: 'sezonnoe-menyu-leto-2026', desc: 'Гриль, холодные супы, ягодные десерты — что мы готовим этим летом.' },
+  { t: 'Кофе-брейк на конференции: как не ошибиться', d: '15.05.2026', slug: 'kofe-breik-na-konferentsii', desc: 'Сколько кофе на человека, какие закуски выбрать и почему круассаны — не всегда хорошая идея.' },
+];
 
 export default function BlogPage() {
   return (
-    <>
-      <div className="pt-20 md:pt-24 pb-8 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Блог" }]} />
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold text-cream mt-4">
-            Блог
-          </h1>
-          <p className="mt-3 text-sm text-cream-muted max-w-xl">
-            Тренды кейтеринга, советы по организации мероприятий и гастрономические истории.
-          </p>
-        </div>
+    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+      <h1 className="mb-2">Блог</h1>
+      <p className="text-muted-foreground mb-12">Советы, кейсы и сезонные идеи от команды NiloV. Статьи — демо, реальный контент добавляется с заказчиком.</p>
+      <div className="space-y-6">
+        {ARTICLES.map((a) => (
+          <Link key={a.slug} href={`/blog/${a.slug}`} className="block rounded-xl border border-line bg-card p-5 hover:border-gold-text transition-colors">
+            <p className="text-xs text-muted-foreground mb-1">{a.d}</p>
+            <h2 className="font-heading text-lg font-medium mb-2">{a.t}</h2>
+            <p className="text-sm text-muted-foreground">{a.desc}</p>
+          </Link>
+        ))}
       </div>
-
-      <section className="py-12 md:py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((post) => (
-              <Link
-                key={post.id}
-                href={`/blog/${post.slug}`}
-                className="group bg-card border border-border rounded-md overflow-hidden card-hover block"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <span className="absolute top-3 left-3 text-[10px] uppercase tracking-wider bg-burgundy/80 text-cream px-2 py-0.5 rounded-sm">
-                    {post.category}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <time className="text-[11px] text-cream-muted" dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
-                  </time>
-                  <h2 className="font-heading text-xl font-semibold text-cream mt-2 mb-2 line-clamp-2 group-hover:text-gold transition-colors duration-200">
-                    {post.title}
-                  </h2>
-                  <p className="text-xs text-cream-muted line-clamp-2">{post.excerpt}</p>
-                  <p className="text-xs text-gold mt-3">{post.author}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+    </div></main>
   );
 }

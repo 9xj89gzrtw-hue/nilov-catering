@@ -1,59 +1,46 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { animate, useInView } from 'framer-motion';
 
 interface AnimatedCounterProps {
-  target: number;
+  value: number;
   suffix?: string;
+  prefix?: string;
   duration?: number;
   className?: string;
+  once?: boolean;
 }
 
 export default function AnimatedCounter({
-  target,
+  value,
   suffix = '',
-  duration = 2,
+  prefix = '',
+  duration = 1.5,
   className = '',
+  once = true,
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const hasAnimated = useRef(false);
+  const inView = useInView(ref, { once, margin: '-30px' });
+  const [displayed, setDisplayed] = useState(value); // start with value, not 0
 
   useEffect(() => {
-    if (!isInView || hasAnimated.current) return;
-    hasAnimated.current = true;
+    if (!inView) return;
 
-    let frame: number;
-    const startTime = performance.now();
+    const controls = animate(0, value, {
+      duration,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => setDisplayed(Math.round(latest)),
+    });
 
-    const animate = (now: number) => {
-      const elapsed = (now - startTime) / 1000;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out quart
-      const eased = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.round(eased * target));
-
-      if (progress < 1) {
-        frame = requestAnimationFrame(animate);
-      }
-    };
-
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, [isInView, target, duration]);
+    return () => controls.stop();
+  }, [inView, value, duration]);
 
   return (
-    <motion.span
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
-    >
-      {count.toLocaleString('ru-RU')}
-      <span className="text-gold">{suffix}</span>
-    </motion.span>
+    <span ref={ref} className={className} aria-label={`${prefix}${value}${suffix}`}>
+      {prefix}
+      {displayed.toLocaleString('ru-RU')}
+      {suffix}
+    </span>
   );
 }

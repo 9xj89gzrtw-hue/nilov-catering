@@ -1,39 +1,41 @@
-import type { Metadata } from "next";
-import Breadcrumbs from "@/components/common/Breadcrumbs";
-import FAQClient from "./FAQClient";
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: "Часто задаваемые вопросы",
-  description: "Ответы на популярные вопросы о кейтеринге: заказ, меню, цены, логистика.",
-};
+export const metadata: Metadata = { title: 'FAQ' };
+
+const FAQS = [
+  { q: 'Какая минимальная сумма заказа?', a: 'Кофе-брейк — от 10 гостей и 390 ₽/гость. Фуршет — от 20 гостей и 2 450 ₽/гость. Банкет — от 15 гостей и 4 470 ₽/гость.' },
+  { q: 'За сколько дней бронировать?', a: 'Минимум 3 дня. Рекомендуем 2–4 недели. Скидка 10% за 60+ дней, 15% за 90+ дней.' },
+  { q: 'Работаете ли за КАД?', a: 'Да, по всей ЛО. В пределах КАД — бесплатно. Надбавка за городом зависит от расстояния.' },
+  { q: 'Можно ли заказать дегустацию?', a: 'Да, для событий от 30 гостей — обязательно. Для меньших — по запросу.' },
+  { q: 'Что с аллергиями?', a: 'Маркируем 14 аллергенов ТР ТС 021/2011. Веган, безглютен, халяль — отдельные линии меню.' },
+  { q: 'Включены ли чаевые?', a: 'Нет, чаевые не включены и остаются на усмотрение заказчика.' },
+];
 
 export default function FAQPage() {
   return (
-    <>
-      <div className="pt-20 md:pt-24 pb-8 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "FAQ" }]} />
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold text-cream mt-4">
-            Частые вопросы
-          </h1>
-          <p className="mt-3 text-sm text-cream-muted max-w-xl">
-            Собрали самые популярные вопросы о нашем сервисе. Не нашли ответ? Позвоните нам.
-          </p>
-        </div>
+    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQS.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }) }} />
+      <h1 className="text-center mb-4">Частые вопросы</h1>
+      <p className="text-center text-muted-foreground mb-16">Всё, что вы хотели знать о кейтеринге.</p>
+      <div className="space-y-4">
+        {FAQS.map((f, i) => (
+          <details key={i} className="group rounded-xl border border-line bg-card">
+            <summary className="p-5 cursor-pointer font-medium text-foreground list-none flex items-center justify-between">
+              {f.q}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-muted-foreground group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg>
+            </summary>
+            <p className="px-5 pb-5 text-sm text-muted-foreground">{f.a}</p>
+          </details>
+        ))}
       </div>
-      <FAQClient />
-      <section className="py-20 px-6 text-center border-t border-border/20">
-        <h2 className="font-heading text-3xl font-semibold mb-4">Остались вопросы?</h2>
-        <p className="text-muted-foreground mb-8 max-w-md mx-auto">Свяжитесь с нами — мы с радостью ответим на все ваши вопросы</p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" className="inline-flex items-center justify-center px-8 py-3.5 bg-accent text-background font-medium rounded-[4px] hover:bg-accent/90 transition-colors">
-            Оставить заявку
-          </a>
-          <a href="tel:+78129195911" className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-foreground font-medium rounded-[4px] hover:bg-border/10 transition-colors">
-            +7 (812) 919-59-11
-          </a>
-        </div>
-      </section>
-    </>
+      <div className="mt-12 text-center">
+        <Link href="/plan" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Спланировать событие</Link>
+      </div>
+    </div></main>
   );
 }

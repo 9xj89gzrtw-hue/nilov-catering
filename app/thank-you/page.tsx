@@ -1,0 +1,4 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+export const metadata: Metadata = { title: 'Заявка принята', robots: { index: false } };
+export default function Page() { return <main className="min-h-screen flex items-center justify-center pt-24 pb-20"><div className="container-site max-w-lg text-center"><div className="text-5xl mb-4">✅</div><h1>Заявка принята!</h1><p className="text-lg text-muted-foreground mt-4 mb-8">Менеджер перезвонит вам в течение 15 минут в рабочее время.</p><div className="flex items-center justify-center gap-4"><Link href="/plan" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">К спланированному событию</Link><Link href="/" className="text-sm text-gold-text hover:underline">На главную</Link></div></div></main>; }

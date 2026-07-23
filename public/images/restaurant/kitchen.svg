@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="38%" r="80%">
+      <stop offset="0%" stop-color="#4a3326"/>
+      <stop offset="55%" stop-color="#1f140c"/>
+      <stop offset="100%" stop-color="#1A1714"/>
+    </radialGradient>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#e9e0d2" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <radialGradient id="vig" cx="50%" cy="50%" r="75%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1A1714" stop-opacity="0.55"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <g opacity="0.9">
+    <ellipse cx="800" cy="560" rx="360" ry="120" fill="url(#plate)"/>
+    <ellipse cx="800" cy="548" rx="250" ry="82" fill="#c9a06e" opacity="0.25"/>
+    <circle cx="800" cy="540" r="120" fill="#b8893d" opacity="0.35"/>
+    <circle cx="800" cy="540" r="70" fill="#7a5a2e" opacity="0.4"/>
+    <path d="M800 430 q-18 -60 0 -110 q18 50 0 110" stroke="#ffffff" stroke-opacity="0.5" stroke-width="6" fill="none" filter="url(#soft)"/>
+  </g>
+  <rect width="1600" height="900" fill="url(#vig)"/>
+  <text x="60" y="850" font-family="Georgia, serif" font-size="26" fill="#F5F0E8" opacity="0.7">Центральная кухня</text>
+</svg>

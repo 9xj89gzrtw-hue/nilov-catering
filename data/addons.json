@@ -1,0 +1,189 @@
+[
+  {
+    "id": "a1",
+    "name": "Свадебный торт",
+    "description": "Торт на заказ: от классического до naked cake. До 4 ярусов.",
+    "priceType": "fixed",
+    "price": 8000,
+    "category": "service",
+    "formats": [
+      "banket"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a2",
+    "name": "Кэнди-бар",
+    "description": "Стол со сладостями: макарон, капкейки, маршмэллоу, леденцы.",
+    "priceType": "perGuest",
+    "price": 250,
+    "category": "entertainment",
+    "formats": [
+      "furshet",
+      "banket",
+      "detskoe"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a3",
+    "name": "Фотограф",
+    "description": "Профессиональная съёмка мероприятия. 4 часа.",
+    "priceType": "fixed",
+    "price": 15000,
+    "category": "entertainment",
+    "formats": [
+      "furshet",
+      "banket",
+      "coffee-break",
+      "detskoe"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a4",
+    "name": "Видео-рекап",
+    "description": "Видеосъёмка + монтаж 2-минутного ролика.",
+    "priceType": "fixed",
+    "price": 25000,
+    "category": "entertainment",
+    "formats": [
+      "banket",
+      "furshet"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a5",
+    "name": "Живая музыка",
+    "description": "Джазовое трио / кавер-группа / скрипач. 3 часа.",
+    "priceType": "fixed",
+    "price": 35000,
+    "category": "entertainment",
+    "formats": [
+      "banket",
+      "furshet"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a6",
+    "name": "Флористика",
+    "description": "Центральные композиции на столы (10 шт).",
+    "priceType": "fixed",
+    "price": 12000,
+    "category": "decoration",
+    "formats": [
+      "banket"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a7",
+    "name": "Текстиль и сервировка",
+    "description": "Скатерти, салфетки, приборы, посуда — премиум-класса.",
+    "priceType": "perGuest",
+    "price": 180,
+    "category": "decoration",
+    "formats": [
+      "banket",
+      "furshet"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a8",
+    "name": "Проектор и экран",
+    "description": "Аренда проектора 4K + экран 3м.",
+    "priceType": "fixed",
+    "price": 8000,
+    "category": "tech",
+    "formats": [
+      "banket",
+      "furshet",
+      "coffee-break"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a9",
+    "name": "Звуковое оборудование",
+    "description": "Колонки, микшер, микрофоны — для тостов и фона.",
+    "priceType": "fixed",
+    "price": 10000,
+    "category": "tech",
+    "formats": [
+      "banket",
+      "furshet"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a10",
+    "name": "Бармен-шоу",
+    "description": "2 бармена, 3 часа, коктейли по меню.",
+    "priceType": "perGuest",
+    "price": 400,
+    "category": "entertainment",
+    "formats": [
+      "furshet",
+      "banket"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a11",
+    "name": "Детский аниматор",
+    "description": "2 часа игр и конкурсов для детей.",
+    "priceType": "fixed",
+    "price": 8000,
+    "category": "entertainment",
+    "formats": [
+      "detskoe"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a12",
+    "name": "Фотозона",
+    "description": "Баннер, реквизит, свет — готовая фотозона.",
+    "priceType": "fixed",
+    "price": 7000,
+    "category": "decoration",
+    "formats": [
+      "furshet",
+      "banket",
+      "detskoe"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a13",
+    "name": "Доставка за КАД",
+    "description": "Доплата за выезд за пределы КАД (зона 2, до 50 км).",
+    "priceType": "fixed",
+    "price": 5000,
+    "category": "service",
+    "formats": [
+      "furshet",
+      "banket",
+      "coffee-break",
+      "detskoe",
+      "chef-at-home"
+    ],
+    "image": ""
+  },
+  {
+    "id": "a14",
+    "name": "Трансфер официантов",
+    "description": "Организованный трансфер персонала на площадку и обратно.",
+    "priceType": "fixed",
+    "price": 3000,
+    "category": "service",
+    "formats": [
+      "furshet",
+      "banket"
+    ],
+    "image": ""
+  }
+]

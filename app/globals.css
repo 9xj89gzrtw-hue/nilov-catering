@@ -1,323 +1,256 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
-/* ===== Design System: Heritage Palette ===== */
+/* ═══════════════════════════════════════════
+   NiloV Catering — Design Tokens (светлая система)
+   Источник: 06_TOKENS.md (2026-07-18)
+   Стек: Tailwind CSS v4 + shadcn
+   КРИТИЧНО: меняем ЗНАЧЕНИЯ, не имена —
+   иначе components/ui/* (button/card/badge) сломаются
+   ═══════════════════════════════════════════ */
+
 @theme {
-  /* Dark mode as default */
-  --color-background: rgb(10 10 10);
-  --color-foreground: rgb(245 240 232);
+  /* === shadcn-база (совпадает с components/ui/*) === */
+  --color-background: #FAF7F2;           /* ivory base */
+  --color-foreground: #1C1815;           /* ink, текст */
+  --color-card: #FFFFFF;                 /* карточки */
+  --color-card-foreground: #1C1815;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1C1815;
+  --color-primary: #B08D57;              /* gold = заливка CTA */
+  --color-primary-foreground: #1C1815;   /* ink на gold = 5.7:1 AA */
+  --color-secondary: #F2ECE3;            /* cream-alt секции */
+  --color-secondary-foreground: #1C1815;
+  --color-muted: #F2ECE3;
+  --color-muted-foreground: #4A423B;     /* warm grey, AAA 9.2:1 */
+  --color-accent: #EFE6D6;               /* gold-tint бейджей */
+  --color-accent-foreground: #6E5631;    /* 5.582:1 AAA на gold-tint */
+  --color-border: #E4DCCF;               /* hairline */
+  --color-input: #E4DCCF;
+  --color-ring: #8A6D3B;                 /* focus-visible 4.537:1 */
+  --color-destructive: #A6443B;
+  --color-destructive-foreground: #FFFFFF;
 
-  --color-card: rgb(18 18 18);
-  --color-card-foreground: rgb(245 240 232);
+  /* === Бренд-расширения === */
+  --color-gold: #B08D57;                 /* заливка/CTA-фон/разделители */
+  --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
+  --color-gold-text: #8A6D3B;            /* золото ДЛЯ ТЕКСТА на ivory = 4.54:1 AA */
+  --color-gold-text-on-secondary: #6E5631; /* золотой текст на cream */
+  --color-gold-tint: #EFE6D6;            /* фон бейджей */
+  --color-earth: #7C6A55;
+  --color-burgundy: #722F37;             /* ТОЛЬКО редко (печати), НЕ primary */
+  --color-burgundy-tint: #F3E7E9;
+  --color-line: #E4DCCF;
+  --color-success: #4F7A52;
+  --color-warning: #B5803A;
+  --color-sage: #7E8B6B;
 
-  --color-primary: rgb(245 240 232);
-  --color-primary-foreground: rgb(10 10 10);
+  /* === Типографика === */
+  --font-heading: var(--font-heading), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
 
-  --color-burgundy: rgb(114 47 55);
-  --color-burgundy-light: rgb(140 62 72);
-  --color-burgundy-dark: rgb(90 35 42);
+  /* === Типографика scale (06_TOKENS:100-118) === */
+  --text-2xs: 0.625rem;    /* 10px */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-hero: clamp(2.5rem, 6vw, 5rem);
+  /* === Радиусы (06_TOKENS канон) === */
+  --radius-sm: 0.5rem;    /* 8px */
+  --radius-md: 0.75rem;   /* 12px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-xl: 1.5rem;    /* 24px */
+  --radius-pill: 999px;
+  --radius-circle: 50%;
 
-  --color-cream: rgb(245 240 232);
-  --color-cream-dark: rgb(220 215 205);
-  --color-cream-muted: rgb(180 175 165);
+  /* === Тени (06_TOKENS) === */
+  --shadow-card: 0 1px 3px rgba(28, 24, 21, 0.06);
+  --shadow-soft: 0 4px 12px rgba(28, 24, 21, 0.05);
+  --shadow-hover: 0 8px 24px rgba(28, 24, 21, 0.08);
+  --shadow-gold-glow: 0 0 24px rgba(176, 141, 87, 0.15);
 
-  --color-gold: rgb(201 169 110);
-  --color-gold-light: rgb(220 195 145);
-  --color-gold-dark: rgb(170 140 85);
+  /* === Motion-токены (06_TOKENS) === */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 350ms;
+  --dur-slow: 600ms;
+  --wipe-dur: 1s;
 
-  --color-muted: rgb(24 24 24);
-  --color-muted-foreground: rgb(160 155 148);
+  /* === Семантические алиасы (06_TOKENS) === */
+  --color-bg: #FAF7F2;
+  --color-bg-alt: #F2ECE3;
+  --color-ink: #1C1815;
+  --color-ink-soft: #4A423B;
+  --color-surface: #FFFFFF;
 
-  --color-border: rgb(35 32 30);
-  --color-border-light: rgb(50 46 42);
+  /* === Контейнер / отступы (06_TOKENS) === */
+  --container-max: 1280px;
+  --container-pad: 1.5rem;
+  --section-y: 5rem;
 
-  --color-accent: rgb(114 47 55);
-  --color-accent-foreground: rgb(245 240 232);
-
-  --color-destructive: rgb(200 50 50);
-
-  --color-ring: rgb(201 169 110);
-
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius: 8px;
-
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  /* === Frame (06_TOKENS) === */
+  --frame-object-pos: 50% 40%;
 }
 
-body {
-  font-family: var(--font-body);
-  color: var(--color-foreground);
-  background-color: var(--color-background);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-::selection {
-  background-color: var(--color-burgundy);
-  color: var(--color-cream);
-}
-
-/* ===== Scrollbar styling ===== */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-light);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-dark);
-}
-
-/* ===== Mobile touch improvements ===== */
-@media (max-width: 768px) {
+/* === Базовые слои === */
+@layer base {
   * {
-    -webkit-tap-highlight-color: transparent;
+    border-color: var(--color-border);
   }
 
-  a, button {
-    min-height: 44px;
-    min-width: 44px;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  input[type="number"], input[type="email"], input[type="text"],
-  input[type="tel"], input[type="date"], textarea, select {
-    min-height: 44px;
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+
+  /* Focus */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-gold-tint);
+    color: var(--color-foreground);
   }
 }
 
-/* ===== Scroll offset for fixed header ===== */
-[id] {
-  scroll-margin-top: 5rem;
+/* === Утилиты === */
+@utility text-gold {
+  color: var(--color-gold-text);
 }
 
-/* ===== Focus visible — gold ring for keyboard nav ===== */
-*:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 2px;
-  border-radius: 4px;
+@utility text-balance {
+  text-wrap: balance;
 }
 
-/* ===== Focus reset for mouse users ===== */
-*:focus:not(:focus-visible) {
-  outline: none;
+@utility container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (width >= 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Ultra-wide (≥1920px): fluid full-bleed */
+  @media (width >= 1920px) {
+    max-width: 1600px;
+  }
 }
 
-/* ===== Safe area for mobile bottom ===== */
-.safe-area-bottom {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+/* Tablet: 768-1023px — StickyMobileCTA active, Masonry 2-col */
+@layer utilities {
+  .tablet-only {
+    display: none;
+  }
+  @media (width >= 768px) and (width < 1024px) {
+    .tablet-only { display: revert; }
+    .tablet-col-2 { grid-template-columns: repeat(2, 1fr); }
+    .tablet-flex-row { flex-direction: row; }
+  }
 }
 
-/* ===== Section divider ===== */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border-light), transparent);
+/* === Анимации === */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Custom scrollbar for overflow containers ===== */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-light) transparent;
-}
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-border-light);
-  border-radius: 2px;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-/* ===== Card hover transition (CSS only, no framer-motion) ===== */
-.card-hover {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.3s ease;
-}
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 56px -12px rgba(0, 0, 0, 0.6);
-  border-color: var(--color-border-light);
+@keyframes clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 
-/* ===== Image zoom on hover (CSS transition) ===== */
-.img-zoom {
-  overflow: hidden;
-}
-.img-zoom img,
-.img-zoom .img-inner {
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.img-zoom:hover img,
-.img-zoom:hover .img-inner {
-  transform: scale(1.06);
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Quote mark decoration ===== */
-.quote-mark {
-  font-family: var(--font-heading);
-  font-size: 5rem;
-  line-height: 1;
-  color: var(--color-burgundy);
-  opacity: 0.2;
-  position: absolute;
-  top: -0.25rem;
-  left: 0.5rem;
+@utility animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
 }
 
-/* ===== Preloader z-index management ===== */
-.lenis.lenis-stopped {
-  overflow: hidden;
+@utility animate-clip-reveal {
+  animation: clip-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ===== Gold line accent ===== */
-.gold-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-}
-
-/* ===== Button base styles ===== */
-.btn-primary {
-  background-color: var(--color-burgundy);
-  color: var(--color-cream);
-  border-radius: 9999px;
-  padding: 0.85rem 2.4rem;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 30%, rgba(201,169,110,0.15) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-.btn-primary:hover::before {
-  transform: translateX(100%);
-}
-.btn-primary:hover {
-  background-color: var(--color-burgundy-light);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -8px rgba(114, 47, 55, 0.5), 0 0 0 1px rgba(201,169,110,0.1);
-}
-
-.btn-outline {
-  border: 1px solid var(--color-cream-muted);
-  color: var(--color-cream);
-  border-radius: 9999px;
-  padding: 0.85rem 2.4rem;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.btn-outline:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(201,169,110,0.2);
-}
-
-/* ===== Scroll progress bar ===== */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
-  z-index: 9999;
-  transform-origin: left;
-}
-
-/* ===== Scrollbar hide ===== */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* ===== Lenis smooth scroll integration ===== */
-html.lenis, html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-/* ===== Reduced motion ===== */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
-/* ===== Menu dish video-effects (Ken Burns + steam particles) ===== */
-@keyframes kenburns-slow {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.06) translate(-1%, -1%); }
-  100% { transform: scale(1) translate(0, 0); }
-}
-.animate-kenburns-slow {
-  animation: kenburns-slow 18s ease-in-out infinite;
-}
-.group:hover .animate-kenburns-slow {
-  animation-play-state: paused;
+
+/* === Mobile improvements === */
+@layer base {
+  /* Touch targets ≥44px per WCAG 2.5.5 */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Prevent double-tap zoom on buttons */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Safe area for iPhone notch */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Reduce Ken Burns on mobile (save GPU) */
+    @media (pointer: coarse) {
+      [class*="group-hover"] {
+        transform: none !important;
+      }
+    }
 }
 
-@keyframes steam-rise-1 {
-  0% { transform: translateY(60%) scaleY(0.3); opacity: 0; }
-  40% { opacity: 0.7; }
-  100% { transform: translateY(-120%) scaleY(1.2); opacity: 0; }
-}
-.animate-steam-rise-1 {
-  animation: steam-rise-1 3.5s ease-out infinite;
-  animation-delay: 0s;
-}
-
-@keyframes steam-rise-2 {
-  0% { transform: translateY(60%) scaleY(0.3); opacity: 0; }
-  40% { opacity: 0.5; }
-  100% { transform: translateY(-140%) scaleY(1.3); opacity: 0; }
-}
-.animate-steam-rise-2 {
-  animation: steam-rise-2 4.2s ease-out infinite;
-  animation-delay: 0.8s;
-}
-
-@keyframes steam-rise-3 {
-  0% { transform: translateY(60%) scaleY(0.3); opacity: 0; }
-  40% { opacity: 0.6; }
-  100% { transform: translateY(-130%) scaleY(1.1); opacity: 0; }
-}
-.animate-steam-rise-3 {
-  animation: steam-rise-3 3.8s ease-out infinite;
-  animation-delay: 1.6s;
-}
-
-/* Scale utility for hover */
-.group-hover\:scale-115:hover {
-  transform: scale(1.15);
+/* Hide scrollbar for horizontal scroll */
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }

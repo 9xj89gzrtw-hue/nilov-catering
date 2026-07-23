@@ -7,7 +7,7 @@ on:
         description: 'Live site URL to screenshot and evaluate'
         required: true
         type: string
-        default: 'https://nilov-catering.vercel.app/'
+        default: 'https://odaeda.ru/'
       iteration:
         description: 'Iteration number'
         required: false
@@ -41,7 +41,7 @@ jobs:
               viewport: { width: 1920, height: 1080 },
               deviceScaleFactor: 2
             });
-            const siteUrl = process.env.SITE_URL || 'https://nilov-catering.vercel.app/';
+            const siteUrl = process.env.SITE_URL || 'https://odaeda.ru/';
             console.log('Navigating to:', siteUrl);
             await page.goto(siteUrl, { waitUntil: 'networkidle', timeout: 60000 });
             // Wait for animations/preloader to finish
@@ -79,7 +79,7 @@ jobs:
               viewport: { width: 1920, height: 1080 },
               deviceScaleFactor: 2
             });
-            const siteUrl = process.env.SITE_URL || 'https://nilov-catering.vercel.app/';
+            const siteUrl = process.env.SITE_URL || 'https://odaeda.ru/';
             await page.goto(siteUrl, { waitUntil: 'networkidle', timeout: 60000 });
             await page.waitForTimeout(4000);
             // Hero
@@ -126,7 +126,7 @@ jobs:
           import json, urllib.request, urllib.error, base64, sys, os, time, concurrent.futures
           from pathlib import Path
 
-          SITE_URL = os.environ.get("SITE_URL", "https://nilov-catering.vercel.app/")
+          SITE_URL = os.environ.get("SITE_URL", "https://odaeda.ru/")
           ITERATION = os.environ.get("ITERATION", "1")
 
           # Read and base64-encode the FULL page screenshot
@@ -292,10 +292,10 @@ jobs:
               url = "https://api.deepseek.com/v1/chat/completions"
               text_prompt = prompt + """
           
-          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a luxury dark-theme catering website (nilov-catering.vercel.app).
+          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a light-theme (drinkit) luxury catering website (odaeda.ru).
           
           Technical details you should know:
-          - Dark theme: #0A0A0A background, #C9A96E gold accents, #722F37 burgundy
+          - Светлая тема (дринкит): ivory #FAF7F2 background, ink #1C1815 text, gold #B08D57 акцент, burgundy #722F37 вторичный
           - Fonts: Cormorant Garamond (headings) + Inter (body)
           - Sections: Preloader → Parallax Hero → Social Proof Bar → Services (Bento Grid) → Process Timeline → Menu Preview → Testimonials (Carousel) → Gallery (Masonry) → FAQ → Contact Form (Glass-morphism) → Footer
           - Effects: Custom cursor with lerp, Lenis smooth scroll, text reveal animations, parallax images, magnetic buttons, noise overlay
@@ -326,10 +326,10 @@ jobs:
               url = "https://api.sambanova.ai/v1/chat/completions"
               text_prompt = prompt + """
           
-          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a luxury dark-theme catering website (nilov-catering.vercel.app).
+          IMPORTANT: I cannot provide images to you. This is a full-page screenshot of a light-theme (drinkit) luxury catering website (odaeda.ru).
           
           Technical details:
-          - Dark theme: #0A0A0A background, #C9A96E gold accents, #722F37 burgundy
+          - Светлая тема (дринкит): ivory #FAF7F2 background, ink #1C1815 text, gold #B08D57 акцент, burgundy #722F37 вторичный
           - Fonts: Cormorant Garamond (headings) + Inter (body)
           - Sections: Preloader → Parallax Hero → Social Proof Bar → Services (Bento Grid) → Process Timeline → Menu Preview → Testimonials (Carousel) → Gallery (Masonry) → FAQ → Contact Form (Glass-morphism) → Footer
           - Effects: Custom cursor with lerp, Lenis smooth scroll, text reveal animations, parallax images, magnetic buttons, noise overlay

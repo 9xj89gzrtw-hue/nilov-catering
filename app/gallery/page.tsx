@@ -1,29 +1,31 @@
-import type { Metadata } from "next";
-import Breadcrumbs from "@/components/common/Breadcrumbs";
-import GalleryClient from "./GalleryClient";
+import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: "Галерея",
-  description: "Фотографии мероприятий от Нилов Кейтеринг: свадьбы, корпоративы, банкеты и фуршеты в Санкт-Петербурге.",
-};
+export const metadata: Metadata = { title: 'Галерея' };
+
+const PHOTOS = Array.from({ length: 12 }).map((_, i) => ({
+  src: `/placeholders/hero-${['furshet','banket','coffee-break','detskoe','chef-at-home','poster'][i % 6]}.svg`,
+  caption: ['Свадьба · 120 гостей','Корпоратив · 300 гостей','Камерный ужин','Детский праздник','Выезд шефа','Банкет под ключ'][i % 6],
+}));
 
 export default function GalleryPage() {
   return (
-    <>
-      <div className="pt-20 md:pt-24 pb-4 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Галерея" }]} />
-          <div className="mt-6">
-            <p className="text-[11px] uppercase tracking-[0.35em] text-gold font-medium mb-4">Портфолио</p>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-cream leading-[0.95]">
-              Наши
-              <br />
-              <span className="text-cream/40">мероприятия</span>
-            </h1>
-          </div>
+    <main className="pt-24 pb-20">
+      <div className="container-site">
+        <h1 className="mb-2">Галерея</h1>
+        <p className="text-muted-foreground mb-8">Фото и видео с наших событий.</p>
+
+        {/* Mobile: 2-col compact, Desktop: 3-col */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
+          {PHOTOS.map((p, i) => (
+            <div key={i} className="relative aspect-[4/3] rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group">
+              <img src={p.src} alt={p.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-2 md:p-3">
+                <p className="text-[10px] md:text-xs font-medium text-foreground">{p.caption}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-      <GalleryClient />
-    </>
+    </main>
   );
 }

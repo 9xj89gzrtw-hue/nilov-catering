@@ -1,0 +1,92 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+
+const FAQS = [
+  {
+    q: 'Какая минимальная сумма заказа?',
+    a: 'Минимальный заказ зависит от формата. Кофе-брейк — от 10 гостей и 390 ₽/гость. Фуршет — от 20 гостей и 2 450 ₽/гость. Банкет — от 15 гостей и 4 470 ₽/гость. Точную сумму рассчитает наш калькулятор за 30 секунд.',
+  },
+  {
+    q: 'За сколько дней нужно бронировать?',
+    a: 'Минимальный срок бронирования — 3 полных дня. Но мы рекомендуем бронировать за 2–4 недели, особенно в высокий сезон (май–сентябрь, декабрь). При бронировании за 60+ дней действует скидка 10%, за 90+ дней — 15%.',
+  },
+  {
+    q: 'Выезжаете ли вы за КАД?',
+    a: 'Да, работаем по всему Санкт-Петербургу и Ленинградской области. Доставка в пределах КАД включена в стоимость. Выезд за КАД — с надбавкой, зависящей от расстояния. Точную надбавку покажет калькулятор.',
+  },
+  {
+    q: 'Можно ли заказать дегустацию?',
+    a: 'Да, дегустация — обязательный этап для событий от 30 гостей. Вы пробуете блюда, которые войдут в меню, и утверждаете каждое. Для небольших событий дегустация — по запросу.',
+  },
+  {
+    q: 'Что делать, если у гостей аллергии или особые диеты?',
+    a: 'Мы маркируем все блюда по 14 аллергенам ТР ТС 021/2011. В конструкторе меню можно исключить конкретные аллергены. Для веганов, безглютеновой и халяльной диет — отдельные линии меню.',
+  },
+  {
+    q: 'Как работает депозит и можно ли его вернуть?',
+    a: 'Депозит — 30% от стоимости заказа. Он бронирует дату и закупает продукты. Если вы отменяете за 14+ дней до события — депозит возвращаем полностью. За 7–13 дней — 50%. Менее 7 дней — не возвращается. При переносе даты депозит сохраняется.',
+  },
+  {
+    q: 'Не знаю, что такое фуршет/банкет/кофе-брейк. В чём разница?',
+    a: '<strong>Фуршет</strong> — гости едят стоя, общаются свободно, едят руками (канапе, тарталетки). Нужен меньше персонала.<br/><strong>Банкет</strong> — гости сидят за столами, официанты подают смену блюд. Классика для свадеб/гала.<br/><strong>Кофе-брейк</strong> — лёгкий перерыв: кофе, чай, выпечка, десерты. Для конференций/тренингов.<br/>Не знаете, что выбрать? — <Link href="/plan/helper" className="text-gold-text underline">Помогите подобрать за 3 вопроса →</Link>',
+  },
+  {
+    q: 'Сколько еды на человека? Боюсь, не наедят или закажу слишком много.',
+    a: 'Наш калькулятор считает по профессиональным нормам: фуршет — 8–10 закусок на гостя, банкет — 1.2–1.5 кг еды с учётом горячего. Детские порции — ×0.7. Вы можете скорректировать в конструкторе. Остатки еды — ваши, мы упакуем.',
+  },
+];
+
+export default function FAQTeaser() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <section className="py-20 bg-background" aria-labelledby="faq-heading">
+      <div className="container-site max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 id="faq-heading" className="mb-4">Частые вопросы</h2>
+          <p className="text-muted-foreground">
+            Коротко о главном. Не нашли ответ? — <Link href="/faq" className="text-gold-text hover:underline">полный список вопросов</Link>.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {FAQS.map((faq, i) => (
+            <div key={i} className="rounded-xl border border-line bg-card overflow-hidden">
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors"
+                aria-expanded={open === i}
+              >
+                <span className="font-medium text-foreground pr-4">{faq.q}</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className={`shrink-0 text-muted-foreground transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
+                  aria-hidden="true"
+                >
+                  <path d="M8 3v10M3 8h10" />
+                </svg>
+              </button>
+              <div
+                className={`px-5 overflow-hidden transition-all duration-300 ${
+                  open === i ? 'pb-5 max-h-96' : 'max-h-0'
+                }`}
+              >
+                <p
+                  className="text-sm text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: faq.a }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
