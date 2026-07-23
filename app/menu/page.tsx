@@ -4,7 +4,7 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
-  title: 'Меню и цены — NiloV Catering',
+  title: 'Меню и цены',
   description: 'Фуршет, банкет, кофе-брейк — меню и цены на кейтеринг в СПб. От 390 ₽/гость. Все блюда с ценами и составом.',
 };
 
@@ -33,8 +33,8 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
         </div>
         {dish.dietBadges.length > 0 && (
           <div className="absolute top-2 left-2 flex gap-1">
-            {dish.dietBadges.includes('vegan') && <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
-            {dish.dietBadges.includes('gluten-free') && <span className="text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
+            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
+            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
           </div>
         )}
       </div>
@@ -47,15 +47,15 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
               return (
-                <span key={a} className={`text-[9px] px-1 py-0.5 rounded leading-none ${
+                <span key={a} className={`text-[10px] px-1 py-0.5 rounded leading-none ${
                   isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                 }`} title={ALLERGEN_LABEL[a]}>
-                  {ALLERGEN_LABEL[a].slice(0, 4)}
+                  {ALLERGEN_LABEL[a]}
                 </span>
               );
             })}
             {dish.allergens.length > 4 && (
-              <span className="text-[9px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
+              <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
             )}
           </div>
         )}

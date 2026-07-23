@@ -20,11 +20,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
-  title: { default: `${SITE.name} — Кейтеринг под ключ в Санкт-Петербурге`, template: `%s | ${SITE.name}` },
+  title: { default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`, template: `%s — ${SITE.name}` },
   description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. Более 19 лет в Петербурге.',
   keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
   openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name, images: [{ url: SITE.ogImage, width: 1200, height: 630 }] },
   robots: { index: true, follow: true },
+  alternates: { canonical: '/' },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

@@ -36,7 +36,7 @@ export default function Header() {
         {/* Desktop: phone + CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <TextSizeToggle />
-          <a href={`tel:${SITE.phone}`} className="text-sm font-medium text-foreground hover:text-gold-text transition-colors">
+          <a href={`tel:${SITE.phoneTel}`} className="text-sm font-medium text-foreground hover:text-gold-text transition-colors">
             📞 {SITE.phone}
           </a>
           <Link href="/delivery/order" className="text-sm font-medium text-muted-foreground hover:text-gold-text transition-colors">

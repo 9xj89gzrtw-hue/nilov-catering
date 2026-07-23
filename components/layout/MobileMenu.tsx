@@ -121,7 +121,7 @@ export default function MobileMenu() {
                 {/* Bottom actions — phone + CTA */}
                 <div className="p-5 border-t border-line space-y-3">
                   <a
-                    href={`tel:${SITE.phone}`}
+                    href={`tel:${SITE.phoneTel}`}
                     className="flex items-center justify-center gap-2 w-full rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors"
                   >
                     📞 {SITE.phone}

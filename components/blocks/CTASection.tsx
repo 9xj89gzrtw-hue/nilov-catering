@@ -7,12 +7,12 @@ export default function CTASection() {
       <div className="container-site text-center max-w-xl mx-auto">
         <h2 id="cta-heading" className="mb-3">Готовы спланировать событие?</h2>
         <p className="text-muted-foreground mb-8 text-balance">
-          Оставьте заявку — мы подберём решение под ваш бюджет. Звонок бесплатный.
+          Оставьте заявку — мы подберём решение под ваш бюджет. Перезвоним за 15 минут.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
           <Link
-            href="/plan"
+            href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
           >
             Спланировать событие
@@ -26,7 +26,7 @@ export default function CTASection() {
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Или позвоните: <a href={`tel:${SITE.phone}`} className="text-foreground font-medium hover:text-gold-text transition-colors">{SITE.phone}</a>
+          Или позвоните: <a href={`tel:${SITE.phoneTel}`} className="text-foreground font-medium hover:text-gold-text transition-colors">{SITE.phone}</a>
         </p>
       </div>
     </section>

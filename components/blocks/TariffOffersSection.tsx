@@ -175,7 +175,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
               <ul className="space-y-1 max-h-56 overflow-y-auto">
                 {Array.from(customCategories.entries()).map(([cat, dishes]) => (
                   <li key={cat}>
-                    <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold mb-0.5">{cat}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-0.5">{cat}</div>
                     <ul className="space-y-1">
                       {dishes.map(d => {
                         const dish = findDishById(d.dishId);
@@ -189,19 +189,19 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                               {dish && dish.allergens.length > 0 && (
                                 <div className="flex flex-wrap gap-0.5 mt-0.5">
                                   {dish.allergens.slice(0, 4).map(a => (
-                                    <span key={a} className="text-[7px] bg-destructive/10 text-destructive px-1 rounded leading-none">
-                                      {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a].slice(0, 4)}
+                                    <span key={a} className="text-[10px] bg-destructive/10 text-destructive px-1 rounded leading-none">
+                                      {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                                     </span>
                                   ))}
                                 </div>
                               )}
-                              <div className="text-[9px] text-gold-text font-semibold mt-0.5">{price} ₽ × {d.qty} = {price * d.qty} ₽</div>
+                              <div className="text-[10px] text-gold-text font-semibold mt-0.5">{price} ₽ × {d.qty} = {price * d.qty} ₽</div>
                             </div>
                             <div className="flex items-center gap-0.5">
                               <button onClick={() => setQty(d.dishId, d.qty - 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">−</button>
                               <span className="text-[10px] font-semibold w-3 text-center">{d.qty}</span>
                               <button onClick={() => setQty(d.dishId, d.qty + 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">+</button>
-                              <button onClick={() => removeDish(d.dishId)} className="text-[9px] text-muted-foreground hover:text-destructive ml-0.5">✕</button>
+                              <button onClick={() => removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5">✕</button>
                             </div>
                           </li>
                         );
@@ -234,7 +234,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
               <div className="flex flex-wrap gap-0.5 mb-1.5">
                 {[{k:'all',l:'Все'},{k:'cold',l:'🥗'},{k:'hot',l:'🍖'},{k:'desserts',l:'🍰'},{k:'drinks',l:'🥂'}].map(s => (
                   <button key={s.k} onClick={() => setCatalogStation(s.k)}
-                    className={`rounded-full px-1.5 py-0.5 text-[9px] border transition-colors ${
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] border transition-colors ${
                       catalogStation === s.k ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'
                     }`}>{s.l}</button>
                 ))}
@@ -247,11 +247,11 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                       <div className="text-base mb-0.5">{STATION_EMOJI[dish.station]}</div>
                       <h5 className="text-[10px] font-medium leading-tight mb-0.5 line-clamp-2">{dish.name}</h5>
                       <div className="flex items-center justify-between gap-1">
-                        <span className="text-[9px] text-gold-text font-semibold">{dish.pricePerGuest} ₽</span>
+                        <span className="text-[10px] text-gold-text font-semibold">{dish.pricePerGuest} ₽</span>
                         <button
                           onClick={() => isSelected ? null : addDish(dish.id)}
                           disabled={isSelected}
-                          className={`text-[9px] px-1 py-0.5 rounded font-medium ${
+                          className={`text-[10px] px-1 py-0.5 rounded font-medium ${
                             isSelected ? 'bg-muted text-muted-foreground cursor-not-allowed' : 'bg-gold-text text-white hover:bg-gold-text/90'
                           }`}
                         >
@@ -308,13 +308,13 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                             {allergens.length > 0 && (
                               <div className="flex flex-wrap gap-0.5 mt-0.5">
                                 {allergens.slice(0, 4).map(a => (
-                                  <span key={a} className="text-[8px] bg-destructive/10 text-destructive px-1 rounded leading-none"
+                                  <span key={a} className="text-[10px] bg-destructive/10 text-destructive px-1 rounded leading-none"
                                         title={ALLERGEN_LABEL[a]}>
-                                    {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a].slice(0, 4)}
+                                    {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                                   </span>
                                 ))}
                                 {allergens.length > 4 && (
-                                  <span className="text-[8px] bg-muted text-muted-foreground px-1 rounded leading-none">+{allergens.length - 4}</span>
+                                  <span className="text-[10px] bg-muted text-muted-foreground px-1 rounded leading-none">+{allergens.length - 4}</span>
                                 )}
                               </div>
                             )}

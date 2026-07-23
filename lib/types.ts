@@ -162,6 +162,8 @@ export interface SiteConfig {
   name: string;
   domain: string;
   phone: string;
+  phoneTel: string;
+  whatsapp: string;
   email: string;
   address: string;
   ogImage: string;

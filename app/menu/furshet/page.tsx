@@ -88,8 +88,8 @@ export default function FurshetPage() {
                         </div>
                         {dish.dietBadges.length > 0 && (
                           <div className="absolute top-1.5 left-1.5 flex gap-0.5">
-                            {dish.dietBadges.includes('vegan') && <span className="text-[8px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
-                            {dish.dietBadges.includes('gluten-free') && <span className="text-[8px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
+                            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
+                            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
                           </div>
                         )}
                       </div>
@@ -99,7 +99,7 @@ export default function FurshetPage() {
                         {dish.allergens.length > 0 && (
                           <div className="mt-1 flex flex-wrap gap-0.5">
                             {dish.allergens.slice(0, 2).map(a => (
-                              <span key={a} className="text-[7px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
+                              <span key={a} className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
                             ))}
                           </div>
                         )}

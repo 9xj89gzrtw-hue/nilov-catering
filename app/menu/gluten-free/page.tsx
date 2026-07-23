@@ -32,7 +32,7 @@ export default function GlutenFreePage() {
               {dish.allergens.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {dish.allergens.map(a => (
-                    <span key={a} className="text-[8px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
+                    <span key={a} className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
                   ))}
                 </div>
               )}

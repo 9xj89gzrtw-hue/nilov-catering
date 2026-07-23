@@ -42,7 +42,7 @@ export default function HalalPage() {
                       {dish.allergens.map(a => {
                         const isNut = a === 'nuts' || a === 'peanuts';
                         return (
-                          <span key={a} className={`text-[8px] px-1 py-0.5 rounded ${
+                          <span key={a} className={`text-[10px] px-1 py-0.5 rounded ${
                             isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                           }`}>{ALLERGEN_LABEL[a]}</span>
                         );

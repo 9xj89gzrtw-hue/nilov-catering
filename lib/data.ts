@@ -4,9 +4,11 @@ export const SITE: SiteConfig = {
   name: 'NiloV Catering',
   domain: 'odaeda.ru',
   phone: '+7 (812) 919-59-11',
+  phoneTel: '+78129195911',
+  whatsapp: 'https://wa.me/78129195911',
   email: 'info@odaeda.ru',
   address: 'Санкт-Петербург',
-  ogImage: '/og-image.jpg',
+  ogImage: '/og-image.svg',
 };
 
 export const NAV_ITEMS: NavItem[] = [
@@ -33,7 +35,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'vk', url: 'https://vk.com/nilovcatering', label: 'ВКонтакте' },
   { platform: 'telegram', url: 'https://t.me/nilovcatering', label: 'Telegram' },
-  { platform: 'whatsapp', url: 'https://wa.me/78121234567', label: 'WhatsApp' },
+  { platform: 'whatsapp', url: 'https://wa.me/78129195911', label: 'WhatsApp' },
   { platform: 'rutube', url: 'https://rutube.ru/channel/nilovcatering', label: 'Rutube' },
 ];
 

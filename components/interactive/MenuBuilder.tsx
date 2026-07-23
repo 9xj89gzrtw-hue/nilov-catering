@@ -360,20 +360,20 @@ export default function MenuBuilder({
                   )}
                   {/* Diet badges */}
                   <div className="absolute top-1 left-1 flex gap-0.5">
-                    {dish.dietBadges.includes('vegan') && <span className="text-[9px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
-                    {dish.dietBadges.includes('gluten-free') && <span className="text-[9px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
-                    {dish.dietBadges.includes('halal') && <span className="text-[9px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
-                    {dish.childFriendly && <span className="text-[9px] bg-purple-500 text-white px-1 py-0.5 rounded font-bold">Дети</span>}
+                    {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
+                    {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
+                    {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
+                    {dish.childFriendly && <span className="text-[10px] bg-purple-500 text-white px-1 py-0.5 rounded font-bold">Дети</span>}
                   </div>
                   {/* Allergen warning badge */}
                   {hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 text-[8px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+                    <div className="absolute bottom-1 left-1 right-1 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
                       ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
                     </div>
                   )}
                   {/* Nuts alarm — по умолчанию в детском меню */}
                   {alarmNutsInKids && !hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 text-[8px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+                    <div className="absolute bottom-1 left-1 right-1 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
                       ⚠ 🥜 Орехи
                     </div>
                   )}
@@ -384,14 +384,14 @@ export default function MenuBuilder({
                   {dish.allergens.length > 0 && (
                     <div className="flex flex-wrap gap-0.5 mb-1">
                       {dish.allergens.slice(0, 4).map(a => (
-                        <span key={a} className={`text-[8px] px-1 py-0.5 rounded leading-none ${
+                        <span key={a} className={`text-[10px] px-1 py-0.5 rounded leading-none ${
                           a === 'nuts' || a === 'peanuts' ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                         }`} title={ALLERGEN_LABEL[a]}>
-                          {ALLERGEN_LABEL[a].slice(0, 4)}
+                          {ALLERGEN_LABEL[a]}
                         </span>
                       ))}
                       {dish.allergens.length > 4 && (
-                        <span className="text-[8px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
+                        <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
                       )}
                     </div>
                   )}
@@ -522,17 +522,17 @@ export default function MenuBuilder({
                       <div className="flex items-center gap-1 flex-wrap">
                         <span className="text-[10px] text-muted-foreground">{DISH_CATEGORIES[dish.station] || dish.station}</span>
                         {/* Diet badges in cart */}
-                        {dish.dietBadges.includes('vegan') && <span className="text-[8px] bg-emerald-100 text-emerald-700 px-1 rounded">VG</span>}
-                        {dish.dietBadges.includes('gluten-free') && <span className="text-[8px] bg-amber-100 text-amber-700 px-1 rounded">GF</span>}
-                        {dish.childFriendly && <span className="text-[8px] bg-purple-100 text-purple-700 px-1 rounded">Дети</span>}
+                        {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">VG</span>}
+                        {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1 rounded">GF</span>}
+                        {dish.childFriendly && <span className="text-[10px] bg-purple-100 text-purple-700 px-1 rounded">Дети</span>}
                         {/* Allergen tags in cart */}
                         {dish.allergens.slice(0, 3).map(a => (
-                          <span key={a} className={`text-[8px] px-1 rounded ${excludedAllergens.has(a) ? 'bg-destructive text-white font-semibold' : 'bg-muted text-muted-foreground'}`}>
-                            {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a].slice(0, 4)}
+                          <span key={a} className={`text-[10px] px-1 rounded ${excludedAllergens.has(a) ? 'bg-destructive text-white font-semibold' : 'bg-muted text-muted-foreground'}`}>
+                            {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                           </span>
                         ))}
                         {dish.allergens.length > 3 && (
-                          <span className="text-[8px] bg-muted text-muted-foreground px-1 rounded">+{dish.allergens.length - 3}</span>
+                          <span className="text-[10px] bg-muted text-muted-foreground px-1 rounded">+{dish.allergens.length - 3}</span>
                         )}
                       </div>
                       {excludedInDish.length > 0 && (

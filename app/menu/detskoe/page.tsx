@@ -42,8 +42,8 @@ export default function DetskoePage() {
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gold-text font-semibold">{dish.pricePerGuest} ₽/гость</span>
                 <div className="flex gap-1">
-                  {dish.dietBadges.includes('vegan') && <span className="text-[9px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium">VG</span>}
-                  {dish.dietBadges.includes('gluten-free') && <span className="text-[9px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">GF</span>}
+                  {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium">VG</span>}
+                  {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">GF</span>}
                 </div>
               </div>
               {dish.allergens.length > 0 && (
@@ -51,7 +51,7 @@ export default function DetskoePage() {
                   {dish.allergens.slice(0, 4).map(a => {
                     const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
                     return (
-                      <span key={a} className={`text-[8px] px-1 py-0.5 rounded ${
+                      <span key={a} className={`text-[10px] px-1 py-0.5 rounded ${
                         isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                       }`}>
                         {isHighRisk && '⚠ '}{ALLERGEN_LABEL[a]}
@@ -59,7 +59,7 @@ export default function DetskoePage() {
                     );
                   })}
                   {dish.allergens.length > 4 && (
-                    <span className="text-[8px] bg-muted text-muted-foreground px-1 py-0.5 rounded">+{dish.allergens.length - 4}</span>
+                    <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">+{dish.allergens.length - 4}</span>
                   )}
                 </div>
               )}

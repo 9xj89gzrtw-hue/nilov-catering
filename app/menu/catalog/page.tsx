@@ -206,7 +206,7 @@ function DishCard({ dish }: { dish: Dish }) {
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
               return (
-                <span key={a} className={`text-[9px] px-1.5 py-0.5 rounded ${
+                <span key={a} className={`text-[10px] px-1.5 py-0.5 rounded ${
                   isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                 }`}>
                   {ALLERGEN_LABEL[a]}
@@ -214,7 +214,7 @@ function DishCard({ dish }: { dish: Dish }) {
               );
             })}
             {dish.allergens.length > 4 && (
-              <span className="text-[9px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+              <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
                 +{dish.allergens.length - 4}
               </span>
             )}
