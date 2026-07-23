@@ -1,14 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#FAF7F2"/>
-  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)"/>
-  <defs>
-    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FAF7F2" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#F2ECE3" stop-opacity="1"/>
-    </linearGradient>
-  </defs>
   <text x="600" y="280" font-family="Georgia, serif" font-size="72" font-weight="500" fill="#1C1815" text-anchor="middle">NiloV Catering</text>
   <text x="600" y="350" font-family="system-ui, sans-serif" font-size="28" fill="#4A423B" text-anchor="middle">Кейтеринг под ключ в Санкт-Петербурге</text>
   <text x="600" y="420" font-family="system-ui, sans-serif" font-size="24" fill="#8A6D3B" text-anchor="middle">Фуршет · Банкет · Кофе-брейк · Доставка</text>
-  <text x="600" y="490" font-family="system-ui, sans-serif" font-size="22" fill="#B08D57" text-anchor="middle">3000+ событий · 17 лет · ★ 4.8 на Яндекс.Картах</text>
+  <text x="600" y="490" font-family="system-ui, sans-serif" font-size="22" fill="#B08D57" text-anchor="middle">С 2007 года · 3000+ событий · ★ 4.8 на Яндекс.Картах</text>
 </svg>

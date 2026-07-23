@@ -11,7 +11,7 @@ function ConstructorSkeleton() {
   return (
     <div className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
-        <h1 className="mb-6 text-center">Конструктор меню</h1>
+        <div className="h-10 bg-muted/50 rounded-lg animate-pulse mb-6" aria-hidden="true" />
         <div className="space-y-8">
           <div className="h-12 bg-muted/50 rounded-lg animate-pulse" />
           <div className="grid grid-cols-3 gap-4">

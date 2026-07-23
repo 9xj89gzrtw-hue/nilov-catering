@@ -49,7 +49,7 @@ export default function Header() {
 
         {/* Mobile: phone + burger */}
         <div className="flex lg:hidden items-center gap-1">
-          <a href={`tel:${SITE.phone}`} className="w-11 h-11 flex items-center justify-center text-foreground hover:text-gold-text transition-colors" aria-label="Позвонить">
+          <a href={`tel:${SITE.phoneTel}`} className="w-11 h-11 flex items-center justify-center text-foreground hover:text-gold-text transition-colors" aria-label="Позвонить">
             📞
           </a>
           <MobileMenu />
