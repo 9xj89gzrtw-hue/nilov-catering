@@ -1,41 +1,173 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE } from '@/lib/data';
 
-export const metadata: Metadata = { title: 'FAQ' };
+export const metadata: Metadata = {
+  alternates: { canonical: '/faq' },
+  title: 'FAQ — частые вопросы о кейтеринге | NiloV Catering',
+  description: 'Ответы на 18 частых вопросов: цены, минимальный заказ, дегустация, аллергены, B2B, договор, ЭДО, НДС, медкнижки, бракераж, страхование, форс-мажор.',
+};
 
-const FAQS = [
-  { q: 'Какая минимальная сумма заказа?', a: 'Минимум зависит от формата и тарифа. Кофе-брейк — от 10 гостей × 390 ₽ = 3 900 ₽. Фуршет — от 15 гостей × 2 450 ₽ = 36 750 ₽ (Расширенный) или от 20 × 2 450 ₽ = 49 000 ₽ (Эконом). Банкет — от 15 гостей × 9 950 ₽ = 149 250 ₽ (Максимальный) до от 30 × 3 950 ₽ = 118 500 ₽ (Эконом свадебный) или от 30 × 4 470 ₽ = 134 100 ₽ (Эконом корпоративный). Точную сумму рассчитает калькулятор за 30 секунд.' },
-  { q: 'За сколько дней бронировать?', a: 'Минимум 3 дня. Рекомендуем 2–4 недели. Скидка 10% за 60+ дней, 15% за 90+ дней.' },
-  { q: 'Работаете ли за КАД?', a: 'Да, по всей ЛО. В пределах КАД — бесплатно. Надбавка за городом зависит от расстояния.' },
-  { q: 'Можно ли заказать дегустацию?', a: 'Да, для событий от 30 гостей — обязательно. Для меньших — по запросу.' },
-  { q: 'Что с аллергиями?', a: 'Маркируем 14 аллергенов ТР ТС 022/2011. Веган, безглютен, халяль — отдельные линии меню.' },
-  { q: 'Включены ли чаевые?', a: 'Нет, чаевые не включены и остаются на усмотрение заказчика.' },
+const FAQS_B2C = [
+  {
+    q: 'Какая минимальная сумма заказа?',
+    a: 'Минимум зависит от формата и тарифа. Кофе-брейк — от 10 гостей × 390 ₽ = 3 900 ₽. Фуршет — от 15 гостей × 2 450 ₽ = 36 750 ₽ (Расширенный) или от 20 × 2 450 ₽ = 49 000 ₽ (Эконом). Банкет — от 15 гостей × 9 950 ₽ = 149 250 ₽ (Максимальный) до от 30 × 3 950 ₽ = 118 500 ₽ (Эконом свадебный) или от 30 × 4 470 ₽ = 134 100 ₽ (Эконом корпоративный). Точную сумму рассчитает калькулятор за 30 секунд.',
+  },
+  {
+    q: 'За сколько дней бронировать?',
+    a: 'Минимум 3 дня. Рекомендуем 2–4 недели, особенно в высокий сезон (май–сентябрь, декабрь). При бронировании за 60+ дней — скидка 10%, за 90+ дней — 15%.',
+  },
+  {
+    q: 'Работаете ли за КАД?',
+    a: 'Да, по всей Ленинградской области. В пределах КАД — доставка бесплатно. За КАД — надбавка от 3 000 ₽ в зависимости от расстояния (зависит от километража и логистики).',
+  },
+  {
+    q: 'Можно ли заказать дегустацию?',
+    a: 'Да, для событий от 30 гостей — обязательная бесплатная дегустация (до 6 блюд из вашего тарифа). Для меньших событий — по запросу. Дегустация с выездом к вам — от 5 000 ₽ за выезд. Для медицинских диет (целиакия, анафилаксия) — обязательная дегустация от 1 гостя.',
+  },
+  {
+    q: 'Что с аллергиями?',
+    a: 'Маркируем 14 аллергенов по ТР ТС 022/2011 (Приложение 3): глютен, ракообразные, яйца, рыба, арахис, соя, молоко, орехи, сельдерей, горчица, кунжут, сульфиты, люпин, моллюски. Веган, безглютен, халяль — отдельные линии меню с отдельным оборудованием. При заявленной анафилаксии — отдельная смена, отдельные доски/ножи, наличие EpiPen. Укажите аллергены в заявке — менеджер свяжется для подтверждения протокола.',
+  },
+  {
+    q: 'Включены ли чаевые?',
+    a: 'Нет, чаевые не включены и остаются на усмотрение заказчика. Официанты и повара получают фиксированную оплату по договору — чаевые не являются их основным доходом.',
+  },
+  {
+    q: 'Можно ли заказать несколько диет в одном заказе?',
+    a: 'Да! В конструкторе есть режим «Несколько групп гостей». Каждая группа получает своё под-меню с фильтром по диете: веганы + халяль + без глютена + всеядные в одном заказе. Per-group pricing — вы платите только за блюда своей группы. Например, свадьба на 80: 10 веганов + 8 халяль + 4 БГ + 58 всеядных.',
+  },
+  {
+    q: 'Что входит в стоимость тарифа?',
+    a: 'Всё включено: еда и напитки по тарифу, официанты (1 на 10 гостей), координатор события, посуда и столовые приборы, текстиль, доставка в пределах КАД, установка и сервировка, уборка после события. Доплаты: доставка за КАД (от 3 000 ₽), аренда оборудования (от 5 000 ₽), бармен-шоу (от 8 000 ₽), шампанское безлимит (от 1 500 ₽/гость), свадебный торт (от 1 200 ₽/кг).',
+  },
+  {
+    q: 'Депозит и возврат?',
+    a: 'Депозит 30% от стоимости заказа — для брони даты. Возврат: за 7+ дней до события — 100% возврат, 3-7 дней — 50%, менее 3 дней — невозврат (но перенос даты бесплатный). Форс-мажор (пожар, авария, болезнь) — перенос без штрафов.',
+  },
+  {
+    q: 'Можно ли изменить меню после брони?',
+    a: 'Да. Изменения состава — за 7+ дней до события бесплатно. За 3-7 дней — согласование с шефом. Менее 3 дней — только количественные изменения (не состав).',
+  },
+];
+
+const FAQS_B2B = [
+  {
+    q: 'Работаете с юридическими лицами?',
+    a: 'Да, B2B — наше основное направление. Договор юр.лицо ↔ юр.лицо с фиксированной сметой. Счёт на оплату (безналичный расчёт). Закрывающие документы: акт + счёт-фактура. ЭДО: Контур.Диадок, СБИС. Работаем с НДС (ОСН) и без НДС (УСН/ПСН) — по соглашению. Кассовый чек по 54-ФЗ.',
+  },
+  {
+    q: 'Какие документы предоставляете для Роспотребнадзора?',
+    a: 'Полный пакет: действующие медицинские книжки 100% персонала, журнал бракеража на каждое событие, программа производственного контроля (ППК), декларация соответствия ЕАЭС, ТР ТС 021/2011 + HACCP, температурный режим (холодовая цепь ≤+6 °C), сертификаты на все продукты. По запросу — сканы с замазанными личными данными. Подробнее: /certificates',
+  },
+  {
+    q: 'Работаете по 44-ФЗ и 223-ФЗ?',
+    a: 'Да, поддерживаем закупочные процедуры. Готовим документы для тендера: тех. задание, спецификация, смета, реквизиты. ИНН/ОГРНИП — опубликованы на сайте. Срок подготовки тендерной документации — 1-2 рабочих дня. Связаться с B2B-менеджером: info@odaeda.ru, +7 (812) 919-59-11.',
+  },
+  {
+    q: 'Есть ли SLA в договоре?',
+    a: 'Да, для B2B-клиентов с объёмом от 200 гостей — индивидуальный SLA. Метрики: punctuality (опоздание ≤15 мин), качество (жалобы ≤5% гостей), компенсация при нарушении (штраф 5-15% от стоимости). Страхование гражданской ответственности — полис на 5 000 000 ₽. Contingency plan: запасной повар, резервный транспорт, замена поставщика в течение 4 часов.',
+  },
+  {
+    q: 'Отсрочка платежа для B2B?',
+    a: 'Для постоянных клиентов (3+ событий) — отсрочка 7-14 дней. Для новых B2B-клиентов — 50% предоплата, 50% постоплата в течение 3 дней после события. Депозит 30% бронируется за дату. Для гос. заказчиков по 44-ФЗ — оплата по факту после приёмки.',
+  },
+  {
+    q: 'Скидки за объём?',
+    a: 'От 50 гостей — 5%, от 100 гостей — 10%, от 200 гостей — 15%, от 500 гостей — индивидуально. Для многодневных конференций (3+ дня) — пакетная цена со скидкой 20%. Для школ и учреждений — спец. тариф от 1 800 ₽/гость.',
+  },
+  {
+    q: 'Страхование и форс-мажор?',
+    a: 'Полис страхования гражданской ответственности — 5 000 000 ₽ на событие (СОГАЗ / РЕСО-Гарантия). Покрытие: ущерб здоровью гостей, имуществу заказчика, порча продуктов. Форс-мажор (пожар, авария на производстве, болезнь шеф-повара) — перенос даты без штрафов. Contingency plan: резервный шеф, запасной транспорт, замена поставщика в течение 4 часов.',
+  },
+  {
+    q: 'Можно ли получить договор и реквизиты заранее?',
+    a: 'Да. Реквизиты ИП Нилов Д.И. (ИНН 781433059704, ОГРНИП 314784710400401) — опубликованы на /certificates. Шаблон договора и образец сметы — отправим на email по запросу. Для B2B-клиентов — индивидуальный договор с фиксированной сметой.',
+  },
 ];
 
 export default function FAQPage() {
+  const allFaqs = [...FAQS_B2C, ...FAQS_B2B];
+
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: FAQS.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-      }) }} />
-      <h1 className="text-center mb-4">Частые вопросы</h1>
-      <p className="text-center text-muted-foreground mb-16">Всё, что вы хотели знать о кейтеринге.</p>
-      <div className="space-y-4">
-        {FAQS.map((f, i) => (
-          <details key={i} className="group rounded-xl border border-line bg-card">
-            <summary className="p-5 cursor-pointer font-medium text-foreground list-none flex items-center justify-between">
-              {f.q}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-muted-foreground group-open:rotate-45 transition-transform"><path d="M8 3v10M3 8h10"/></svg>
-            </summary>
-            <p className="px-5 pb-5 text-sm text-muted-foreground">{f.a}</p>
-          </details>
-        ))}
+    <main className="pt-24 pb-20">
+      <div className="container-site max-w-3xl">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: allFaqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+
+        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3 text-center">
+          Частые вопросы
+        </h1>
+        <p className="text-center text-muted-foreground mb-12">
+          18 ответов о кейтеринге — для частных клиентов и B2B. Не нашли ответ?{' '}
+          <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">Позвоните {SITE.phone}</a>.
+        </p>
+
+        {/* B2C FAQ */}
+        <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
+          <span className="text-2xl">👥</span> Для частных клиентов
+        </h2>
+        <div className="space-y-3 mb-12">
+          {FAQS_B2C.map((f, i) => (
+            <details key={`b2c-${i}`} className="group rounded-xl border border-line bg-card">
+              <summary className="p-4 cursor-pointer font-medium text-foreground list-none flex items-center justify-between gap-2">
+                <span>{f.q}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-muted-foreground group-open:rotate-45 transition-transform">
+                  <path d="M8 3v10M3 8h10" />
+                </svg>
+              </summary>
+              <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+
+        {/* B2B FAQ */}
+        <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
+          <span className="text-2xl">💼</span> Для бизнеса (B2B)
+        </h2>
+        <div className="space-y-3 mb-12">
+          {FAQS_B2B.map((f, i) => (
+            <details key={`b2b-${i}`} className="group rounded-xl border border-line bg-card">
+              <summary className="p-4 cursor-pointer font-medium text-foreground list-none flex items-center justify-between gap-2">
+                <span>{f.q}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-muted-foreground group-open:rotate-45 transition-transform">
+                  <path d="M8 3v10M3 8h10" />
+                </svg>
+              </summary>
+              <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="p-6 rounded-xl bg-primary text-primary-foreground text-center">
+          <h2 className="font-heading text-xl font-medium mb-2">Не нашли ответ?</h2>
+          <p className="text-sm mb-4 opacity-90">Позвоните или оставьте заявку — ответим за 15 минут.</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+              📞 {SITE.phone}
+            </a>
+            <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+              ✍️ Оставить заявку
+            </Link>
+            <Link href="/certificates" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+              📋 Сертификаты
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className="mt-12 text-center">
-        <Link href="/plan" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Спланировать событие</Link>
-      </div>
-    </div></main>
+    </main>
   );
 }

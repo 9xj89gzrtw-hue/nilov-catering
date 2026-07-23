@@ -148,7 +148,11 @@ export default function ConstructorWizard() {
   return (
     <div className="pt-24 pb-20">
       <div className="container-site max-w-6xl">
-        <h1 className="mb-6 text-center">Конструктор меню</h1>
+        {/* H1 рендерится только после гидратации (когда _hasHydrated=true).
+            На сервере fallback уже содержит H1 — не дублируем. */}
+        {store._hasHydrated && (
+          <h1 className="mb-6 text-center">Конструктор меню</h1>
+        )}
 
         <div className="flex gap-1 mb-8" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={STEPS.length}>
           {STEPS.map((label, i) => (
