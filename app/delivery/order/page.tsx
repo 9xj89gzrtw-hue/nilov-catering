@@ -123,7 +123,7 @@ export default function DeliveryOrderPage() {
                       ))}
                     </div>
                     <div className="text-center mb-4">
-                      <p className="text-xs text-muted-foreground">💡 1 порция = 1 человек. Можно менять количество после выбора пресета.</p>
+                      <p className="text-xs text-muted-foreground">💡 1 порция = 1 гость. На 10 человек: 5-7 блюд × 10 порций = 50-70 порций.</p>
                     </div>
                   </div>
                 )}
@@ -160,13 +160,13 @@ export default function DeliveryOrderPage() {
 
                 {cart.items.length === 0 && (
                   <div className="mt-6 p-4 rounded-xl border border-dashed border-line text-center">
-                    <p className="text-sm text-muted-foreground">💡 1 порция = 1 человек. Среднее блюдо — 250 ₽ за порцию. На 10 человек возьмите 5-7 блюд × 10 порций.</p>
+                    <p className="text-sm text-muted-foreground">💡 На 10 человек возьмите 5-7 разных блюд × по 10 порций = 50-70 порций всего. 1 порция рассчитана на 1 гостя.</p>
                   </div>
                 )}
 
                 {cart.items.length > 0 && (
                   <div className="mt-4 p-3 rounded-lg bg-gold-tint/30 text-center text-xs text-muted-foreground">
-                    💡 1 порция = 1 человек. Сумма порций по всем блюдам должна покрывать количество гостей.
+                    💡 1 порция = 1 гость. На N гостей берите по N порций каждого блюда. Пресет «Семейный ужин на 10» = 6 блюд × 10 порций = 60 порций на 10 человек.
                   </div>
                 )}
               </div>

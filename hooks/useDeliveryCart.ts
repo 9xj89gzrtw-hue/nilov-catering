@@ -266,8 +266,23 @@ export const useDeliveryCart = create<DeliveryCartState>()(
     }),
     {
       name: 'nilov-delivery-cart',
+      version: 2,
       onRehydrateStorage: () => (state) => {
         if (state) state.setHasHydrated();
+      },
+      migrate: (persistedState: unknown, version: number) => {
+        // v1 → v2: сбросить zoneId в '' (раньше дефолт 'kad' приводил к молчаливой бесплатной доставке)
+        // и сбросить contact.entrance/floor/intercom (могли быть заполнены в city-формате)
+        if (version < 2 && persistedState && typeof persistedState === 'object') {
+          const s = persistedState as Partial<DeliveryCartState>;
+          return {
+            ...s,
+            zoneId: '',
+            needThermobox: false,
+            contact: { ...INITIAL_CONTACT, name: s.contact?.name || '', phone: s.contact?.phone || '' },
+          };
+        }
+        return persistedState as DeliveryCartState;
       },
       partialize: (s) => ({
         items: s.items,

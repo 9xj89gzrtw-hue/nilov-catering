@@ -118,6 +118,20 @@ export default function CatalogPage() {
           <div className="text-center py-16 text-muted-foreground">
             <p className="text-lg mb-2">Ничего не найдено</p>
             <p className="text-sm">Попробуйте изменить фильтры или поисковый запрос</p>
+
+            {/* Спец-баннер для халяль-фильтра */}
+            {activeDiets.has('halal') && (
+              <div className="mt-6 p-5 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
+                <p className="text-sm font-medium text-foreground mb-1">☪️ Халяль-меню готовим под заказ</p>
+                <p className="text-xs text-muted-foreground mb-3">
+                  В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
+                  по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
+                </p>
+                <a href="/menu/halal" className="text-xs text-gold-text font-semibold hover:underline">
+                  Подробнее про халяль-меню →
+                </a>
+              </div>
+            )}
           </div>
         )}
 

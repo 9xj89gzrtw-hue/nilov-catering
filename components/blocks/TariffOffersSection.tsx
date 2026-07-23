@@ -477,7 +477,8 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Custom CTA */}
         <div className="mt-16 text-center py-10 rounded-2xl border border-line bg-muted/30">
           <p className="text-xl font-heading font-medium mb-2">Не подходит ни один тариф?</p>
-          <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Подходит для смешанных диет (веганы + халяль + без глютена + всеядные).</p>
+          <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.</p>
+          <p className="text-xs text-muted-foreground mb-5">📞 Для смешанных групп гостей (веганы + халяль + без глютена + всеядные) — оставьте заявку, менеджер поможет разделить меню.</p>
           <Link href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Собрать своё меню

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
+import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: 'Меню и цены — NiloV Catering',
@@ -39,7 +40,25 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
       </div>
       <div className="p-3">
         <h3 className="text-sm font-medium leading-tight mb-1 group-hover:text-gold-text transition-colors">{dish.name}</h3>
-        <p className="text-[11px] text-muted-foreground line-clamp-2">{dish.description}</p>
+        <p className="text-[11px] text-muted-foreground line-clamp-2 mb-2">{dish.description}</p>
+        {/* Allergen chips — visible на /menu */}
+        {dish.allergens.length > 0 && (
+          <div className="flex flex-wrap gap-0.5">
+            {dish.allergens.slice(0, 4).map(a => {
+              const isNut = a === 'nuts' || a === 'peanuts';
+              return (
+                <span key={a} className={`text-[9px] px-1 py-0.5 rounded leading-none ${
+                  isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                }`} title={ALLERGEN_LABEL[a]}>
+                  {ALLERGEN_LABEL[a].slice(0, 4)}
+                </span>
+              );
+            })}
+            {dish.allergens.length > 4 && (
+              <span className="text-[9px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

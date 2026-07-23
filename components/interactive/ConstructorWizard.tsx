@@ -94,9 +94,11 @@ export default function ConstructorWizard() {
             }
           }
         }
-        store.setStep(3);
+        // Если guests передан — сразу к меню (step 3). Иначе — к выбору гостей (step 1).
+        store.setStep(guestsParam ? 3 : 1);
       } else {
-        store.setStep(2);
+        // Если передан только format (без tier) — на шаг гостей (step 1)
+        store.setStep(1);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -255,8 +257,9 @@ export default function ConstructorWizard() {
             ) : (
               <div className="rounded-xl border border-gold-tint bg-gold-tint/30 p-5 text-center">
                 <p className="text-sm mb-1 font-medium">⚡ Режим «Собрать самому»</p>
-                <p className="text-xs text-muted-foreground mb-2">На следующем шаге выберите блюда из каталога. Подходит для смешанных диет (веганы + халяль + без глютена + всеядные).</p>
+                <p className="text-xs text-muted-foreground mb-2">На следующем шаге выберите блюда из каталога. Подходит для особых диет (веган, без глютена) и если стандартный тариф не подходит.</p>
                 <p className="text-[10px] text-muted-foreground">💡 Цена = Σ(цена блюда × кол-во) × гости. Можно исключить аллергены фильтром.</p>
+                <p className="text-[10px] text-muted-foreground mt-1">📞 Для смешанных групп гостей (например, 10 веганов + 8 халяль + 12 всеядных) — оставьте заявку, менеджер поможет разделить меню.</p>
               </div>
             )}
           </div>
@@ -412,7 +415,21 @@ export default function ConstructorWizard() {
               </button>
             ) : step === 4 ? (
               <button type="button"
-                onClick={() => { setSubmitted(true); store.setStep(5); }}
+                onClick={() => {
+                  // Merge excludedAllergens в comment — чтобы менеджер точно увидел
+                  if (store.excludedAllergens.length > 0) {
+                    const allergensList = store.excludedAllergens
+                      .map(a => ALLERGEN_LABEL[a as Allergen] || a)
+                      .join(', ');
+                    const existingComment = store.contact.comment || '';
+                    const allergenLine = `[АВТО] Исключённые аллергены: ${allergensList}`;
+                    if (!existingComment.includes('[АВТО]')) {
+                      store.setContact({ comment: existingComment ? `${allergenLine}\n\n${existingComment}` : allergenLine });
+                    }
+                  }
+                  setSubmitted(true);
+                  store.setStep(5);
+                }}
                 disabled={!canNext}
                 className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-50 hover:bg-primary/90 transition-colors">
                 Отправить заявку

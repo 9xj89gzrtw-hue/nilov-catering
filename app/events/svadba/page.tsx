@@ -38,17 +38,58 @@ export default function SvadbaPage() {
           description="Выберите готовый тариф или настройте меню под себя. Каждый тариф — полный состав блюд с ценами."
         />
 
-        {/* What's included */}
+        {/* What's included — с разбивкой по тирам */}
         <div className="mt-12 p-6 rounded-xl border border-line bg-card">
-          <h2 className="font-heading text-lg font-medium mb-3">Что входит в полный цикл</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            {[{ icon: '👨‍🍳', text: 'Дегустация меню' }, { icon: '🍽️', text: 'Сервировка и персонал' }, { icon: '💐', text: 'Флористика (бесплатно)' }, { icon: '🎂', text: 'Свадебный торт' }, { icon: '🚚', text: 'Доставка в КАД' }, { icon: '📋', text: 'Координатор события' }, { icon: '🍷', text: 'Винная карта' }, { icon: '♻️', text: 'Эко-упаковка остатков' }].map(item => (
-              <div key={item.text} className="flex items-center gap-2 p-2">
-                <span className="text-xl">{item.icon}</span>
-                <span>{item.text}</span>
-              </div>
-            ))}
+          <h2 className="font-heading text-lg font-medium mb-2">Что входит в тариф</h2>
+          <p className="text-xs text-muted-foreground mb-4">Состав «полного цикла» зависит от выбранного тарифа. Ниже — что входит в каждый.</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div className="rounded-lg border border-line p-3 bg-secondary/30">
+              <h3 className="font-medium text-sm mb-2">🟢 Эконом (3 950 ₽)</h3>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>✓ Доставка в КАД</li>
+                <li>✓ Сервировка и базовый персонал</li>
+                <li>✓ Чай/кофе, морс</li>
+                <li>✗ Свадебный торт</li>
+                <li>✗ Винная карта</li>
+                <li>✗ Координатор события</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-line p-3 bg-secondary/30">
+              <h3 className="font-medium text-sm mb-2">🔵 Стандарт (5 470 ₽)</h3>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>✓ Доставка в КАД</li>
+                <li>✓ Сервировка и персонал</li>
+                <li>✓ Вино красное/белое (2 бокала)</li>
+                <li>✓ Десертный стол</li>
+                <li>✗ Свадебный торт</li>
+                <li>✗ Координатор события</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-line p-3 bg-secondary/30">
+              <h3 className="font-medium text-sm mb-2">🟡 Расширенный (7 350 ₽)</h3>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>✓ Всё из Стандарта</li>
+                <li>✓ Welcome drink</li>
+                <li>✓ Винная карта (безлимит)</li>
+                <li>✓ Шампанское (2 бокала)</li>
+                <li>✓ Морепродукты</li>
+                <li>✗ Свадебный торт</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-gold-text p-3 bg-gold-tint/30">
+              <h3 className="font-medium text-sm mb-2">👑 Максимальный (9 950 ₽)</h3>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>✓ Всё из Расширенного</li>
+                <li>✓ Свадебный торт на заказ</li>
+                <li>✓ Координатор события</li>
+                <li>✓ Сомелье + 5 вин</li>
+                <li>✓ Чёрная икра</li>
+                <li>✓ Эко-упаковка остатков</li>
+              </ul>
+            </div>
           </div>
+          <p className="text-[10px] text-muted-foreground mt-3">💡 Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
         </div>
       </div>
     </main>
