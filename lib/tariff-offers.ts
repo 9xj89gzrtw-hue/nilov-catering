@@ -51,7 +51,7 @@ const SVADBA: TariffOffer[] = [
     eventId: 'svadba', eventName: 'Свадьба', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 5470, minGuests: 25,
     description: 'Полноценный свадебный банкет с посадкой. Официанты, вино, горячее.',
-    highlights: ['8 видов канапе + тарталетки', '2 горячих блюда', 'Винная карта', 'Свадебный торт'],
+    highlights: ['8 видов канапе + тарталетки', '2 горячих блюда', 'Вино (2 бокала)', 'Welcome drink'],
     imagePlaceholder: '💍',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
@@ -67,7 +67,6 @@ const SVADBA: TariffOffer[] = [
       { dishId: 'cauli-steak', name: 'Стейк из цветной капусты', desc: 'Цельный стейк из цветной капусты, тапенада из оливок', category: 'Горячее', qty: 'веган-опция' },
       { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс (фисташка/малина/шоколад) в дегустационном стакане', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'donut-wall', name: 'Донат-стена', desc: 'Мини-донаты с глазурью (ваниль/шоколад/карамель), оформление стеной', category: 'Десерты', qty: '1 станция' },
-      { dishId: 'wedding-cake', name: 'Свадебный торт', desc: 'Свадебный торт: бисквит, крем-чиз, ягоды, индивидуальный дизайн', category: 'Десерты', qty: '1 шт (до 50 персон)' },
       { dishId: 'welcome-drink', name: 'Welcome drink', desc: 'Игристое просекко + канапе с лососем', category: 'Напитки', qty: '1 бокал' },
       { dishId: 'cranberry-mors', name: 'Клюквенный морс', desc: 'Домашний морс из клюквы с мятой и лаймом', category: 'Напитки', qty: 'безлимит' },
       { dishId: 'wine-red', name: 'Вино красное', desc: 'Красное сухое: Кьянти/Риоха/Кот дю Рон', category: 'Бар', qty: '2 бокала' },
@@ -78,7 +77,7 @@ const SVADBA: TariffOffer[] = [
     eventId: 'svadba', eventName: 'Свадьба', tier: 'premium', tierLabel: 'Расширенный',
     pricePerGuest: 7350, minGuests: 20,
     description: 'Свадьба ресторанного уровня: морепродукты, бармен-шоу, живая станция.',
-    highlights: ['Икорная станция', 'Морепродукты', 'Бармен-шоу', 'Живая станция пасты', 'Свадебный торт'],
+    highlights: ['Икорная станция', 'Морепродукты', 'Бармен-шоу', 'Живая станция пасты', 'Шампанское безлимит'],
     imagePlaceholder: '💎',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },
@@ -93,7 +92,6 @@ const SVADBA: TariffOffer[] = [
       { dishId: 'pasta-station', name: 'Живая паста-станция', desc: 'Паста на выбор (спагетти/пенне/равиоли), 3 соуса, пармезан', category: 'Шоу', qty: '1 станция' },
       { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс (фисташка/малина/шоколад) в дегустационном стакане', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'cheesecake-shooter', name: 'Чизкейк-шутер', desc: 'Классический чизкейк нью-йорк в стакане, ягодное кули', category: 'Десерты', qty: '1 стакан' },
-      { dishId: 'wedding-cake', name: 'Свадебный торт', desc: 'Свадебный торт: бисквит, крем-чиз, ягоды, индивидуальный дизайн', category: 'Десерты', qty: 'индив. дизайн' },
       { dishId: 'welcome-drink', name: 'Welcome drink', desc: 'Игристое просекко + канапе с лососем', category: 'Напитки', qty: '1 бокал' },
       { dishId: 'champagne', name: 'Шампанское', desc: 'Игристое брют, просекко', category: 'Бар', qty: 'безлимит' },
       { dishId: 'wine-red', name: 'Вино красное', desc: 'Красное сухое: Кьянти/Риоха/Кот дю Рон', category: 'Бар', qty: 'безлимит' },
@@ -390,7 +388,7 @@ const DETSKOE: TariffOffer[] = [
   },
   {
     eventId: 'detskoe', eventName: 'Детский праздник', tier: 'premium', tierLabel: 'Расширенный',
-    pricePerGuest: 3450, minGuests: 8,
+    pricePerGuest: 3450, minGuests: 10,
     description: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф.',
     highlights: ['Шоу-программа', 'Candy-bar', 'Фотограф', 'Пиньята + квест'],
     imagePlaceholder: '🎈',

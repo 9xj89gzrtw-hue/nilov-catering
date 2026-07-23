@@ -37,12 +37,14 @@ export default function DeliveryPage() {
 
       {/* Feature blocks */}
       <section className="container-site py-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { icon: '🚚', title: 'Бесплатно в КАД', text: 'Доставка в пределах КАД — бесплатно. Вне КАД — честные надбавки.' },
             { icon: '💰', title: 'Мин. заказ 5 000 ₽', text: 'Минимальная сумма заказа для доставки. Можно набрать из любых блюд.' },
             { icon: '❄️', title: 'Холодовая цепь', text: 'Сохраняем температуру блюд. Для дальних зон — термобоксы с залогом.' },
-            { icon: '⏱', title: 'Слоты времени', text: 'Утро, день, полдень, вечер или поздний вечер — выберите удобное время.' },
+            { icon: '⏱', title: 'Слоты + точное время', text: '7 слотов по 2 часа (09:00–23:00). Можно указать точное время подачи — например, к 19:00.' },
+            { icon: '📅', title: 'На следующий день', text: 'Доставка оформляется минимум на завтра. Срочные заказы — по телефону.' },
+            { icon: '📞', title: 'Курьер позвонит', text: 'За 30 минут до прибытия курьер позвонит — будете готовы встретить.' },
           ].map(f => (
             <div key={f.title} className="rounded-xl border border-line bg-card p-5">
               <span className="text-3xl mb-2 block">{f.icon}</span>

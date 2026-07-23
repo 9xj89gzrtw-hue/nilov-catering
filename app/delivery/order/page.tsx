@@ -328,9 +328,12 @@ export default function DeliveryOrderPage() {
                     </div>
                   )}
 
-                  <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
-                    onChange={e => cart.setContact({ apartment: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                  {/* Квартира/офис — только для зоны kad */}
+                  {cart.zoneId === 'kad' && (
+                    <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
+                      onChange={e => cart.setContact({ apartment: e.target.value })}
+                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                  )}
 
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Дата доставки *</label>

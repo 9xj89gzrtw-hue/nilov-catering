@@ -13,6 +13,7 @@ const EVENTS: { format: Format; href: string; price: string; label: string; desc
   { format: 'furshet', href: '/events/vypusknoy', price: 'от 2 450 ₽', label: 'Выпускные', desc: 'Школьные и студенческие мероприятия' },
   { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Частное', desc: 'Дни рождения, юбилеи, семейные ужины' },
   { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детское', desc: 'Меню для детей, аниматоры, шоу' },
+  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: '☕ Кофе-брейк', desc: 'Конференции, семинары — или доставкой без официантов' },
   { format: 'chef-at-home', href: '/events/chef-at-home', price: 'от 2 500 ₽/ч', label: 'Шеф дома', desc: 'Шеф-повар готовит у вас дома' },
 ];
 
@@ -49,7 +50,7 @@ export default function EventTypeSelector() {
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="font-heading text-base font-medium text-foreground mb-1">{e.label}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">{FORMAT_DESCRIPTIONS[e.format]}</p>
+                  <p className="text-xs text-muted-foreground mb-3">{e.desc || FORMAT_DESCRIPTIONS[e.format]}</p>
                   <p className="mt-auto text-sm font-semibold text-gold-text">{e.price}</p>
                 </div>
               </Link>

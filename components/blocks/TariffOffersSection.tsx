@@ -339,7 +339,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           {editMode ? 'Редактирую…' : '✎ Настроить меню'}
         </button>
         <Link
-          href={`/plan/constructor?format=${EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}&guests=${offer.minGuests}`}
+          href={`/plan/constructor?format=${EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}`}
           onClick={() => {
             // Если пользователь редактировал состав — сохраняем в sessionStorage
             if (editMode && customItems.length > 0) {
@@ -457,12 +457,19 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <p className="text-base font-medium mb-1">🚚 Нужен кофе-брейк без официантов — просто доставка?</p>
             <p className="text-sm text-muted-foreground mb-4">
               Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
-              Готовый пресет «Кофе-брейк на 40 чел.» ≈ 16 800 ₽.
+              <br />
+              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong> (с сырным плато и кедровым рафом).
             </p>
-            <Link href="/delivery/order"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-              🛒 Собрать заказ доставки →
-            </Link>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link href="/delivery/order"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                🛒 Собрать заказ доставки →
+              </Link>
+              <Link href="/delivery"
+                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
+                Зоны доставки
+              </Link>
+            </div>
           </div>
         )}
 
