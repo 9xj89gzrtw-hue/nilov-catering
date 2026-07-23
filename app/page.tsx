@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import HeroBlock from '@/components/blocks/HeroBlock';
 import HeroExtras from '@/components/blocks/HeroExtras';
 import DeliveryBanner from '@/components/blocks/DeliveryBanner';
@@ -12,8 +11,9 @@ import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
 import FAQTeaser from '@/components/blocks/FAQTeaser';
-import { getTrustProofs, getReviews } from '@/lib/cms';
+import Link from 'next/link';
 import { SITE } from '@/lib/data';
+import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -22,15 +22,21 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function HomePage() {
-  const [cmsFacts, cmsReviews] = await Promise.all([
+  const [cmsFacts, pageTexts, cmsReviews] = await Promise.all([
     getTrustProofs(),
+    getAllPageTexts(),
     getReviews(),
   ]);
 
+  const textMap = Object.fromEntries(pageTexts.map(t => [t.key, t.value]));
+
   return (
-    <main id="main">
-      {/* 1. Hero — minimal: headline, subtitle, CTA, trust badge (4 elements) */}
-      <HeroBlock />
+    <main>
+      {/* 1. Hero — what we do, why it matters */}
+      <HeroBlock
+        subtitle={textMap['hero-sub']}
+        disclaimer={textMap['hero-disclaimer']}
+      />
 
       {/* 2. Quick pricing + action strip */}
       <HeroExtras />
@@ -38,7 +44,7 @@ export default async function HomePage() {
       {/* 2b. Delivery banner — для тех, кому нужна просто еда без мероприятия */}
       <DeliveryBanner />
 
-      {/* 3. EVENT TYPES — what do you need? (8 cards including yubiley) */}
+      {/* 3. EVENT TYPES — what do you need? (6 cards) */}
       <EventTypeSelector />
 
       {/* 3b. B2B BLOCK — для корпоративных клиентов, школ, учреждений */}
@@ -57,7 +63,6 @@ export default async function HomePage() {
                 </p>
               </div>
             </div>
-
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
               <div className="p-3 rounded-lg border border-line bg-background">
                 <p className="text-sm font-semibold mb-1">📋 Документы</p>
@@ -76,30 +81,17 @@ export default async function HomePage() {
                 <p className="text-xs text-muted-foreground">Спец. тариф от 1 800 ₽/гость. Пакет документов для тендера.</p>
               </div>
             </div>
-
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/events/korporativ"
-                className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
-              >
+              <Link href="/events/korporativ" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                 B2B-кейтеринг →
               </Link>
-              <Link
-                href="/events/vypusknoy"
-                className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
-              >
+              <Link href="/events/vypusknoy" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
                 🎓 Школьный выпускной
               </Link>
-              <Link
-                href="/certificates"
-                className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
-              >
+              <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
                 📋 Сертификаты
               </Link>
-              <a
-                href={`mailto:${SITE.email}?subject=B2B-запрос`}
-                className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
-              >
+              <a href={'mailto:' + SITE.email + '?subject=B2B-запрос'} className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
                 ✉️ {SITE.email}
               </a>
             </div>
