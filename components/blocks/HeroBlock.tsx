@@ -65,7 +65,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[90svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden"
       aria-label="Главный экран"
     >
       {/* Background: food close-up image + optional video */}
@@ -80,7 +80,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           <source srcSet="/images/gallery/furshet-hero-768.webp" type="image/webp" media="(max-width: 767px)" />
           <img
             src="/images/gallery/furshet-hero-768.webp"
-            alt=""
+            alt="Фуршетные канапе и закуски — кейтеринг NiloV в Санкт-Петербурге"
             className="absolute inset-0 w-full h-full object-cover"
             fetchPriority="high"
             aria-hidden="true"
@@ -109,7 +109,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
       {/* Video pause button — always rendered in SSR for WCAG 2.2.2 */}
       <button
         onClick={toggleVideo}
-        className="absolute top-24 right-4 z-20 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 p-2.5 text-white hover:bg-black/70 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white"
+        className="absolute top-24 right-4 z-20 rounded-full bg-white/90 backdrop-blur-sm border-2 border-white p-2.5 text-black hover:bg-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white"
         aria-label={videoPaused ? 'Включить фоновое видео' : 'Остановить фоновое видео'}
       >
         {videoPaused ? (
@@ -122,7 +122,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
       {/* Centered content — minimal, clean */}
       <div className="relative z-10 container-site text-center px-6">
         {/* Social proof — minimal */}
-        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-up">
+        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100">
           <a
             href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
             target="_blank"
@@ -137,7 +137,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
 
         {/* Single powerful headline — centered, large, white on dark */}
         <h1
-          className="mb-4 animate-fade-up text-white"
+          className="mb-4 animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100 text-white"
           style={{ lineHeight: 1.1, letterSpacing: '-0.02em' }}
         >
           <span className="block text-4xl md:text-6xl lg:text-7xl font-bold">Кейтеринг</span>
@@ -145,12 +145,12 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
         </h1>
 
         {/* One-line subtitle — minimal */}
-        <p className="text-lg md:text-xl text-white mb-8 max-w-xl mx-auto animate-fade-up" style={{ animationDelay: '0.15s' }}>
+        <p className="text-lg md:text-xl text-white mb-8 max-w-xl mx-auto animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100" style={{ animationDelay: '0.15s' }}>
           От 6 до 500 гостей. Ресторанное качество по честной цене.
         </p>
 
         {/* Single primary CTA — centered, large */}
-        <div className="flex flex-col items-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+        <div className="flex flex-col items-center gap-4 animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100" style={{ animationDelay: '0.3s' }}>
           <Link
             href="/plan/calculator"
             className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-10 py-4 text-base font-semibold text-black shadow-2xl shadow-amber-500/30 hover:bg-amber-400 transition-all hover:scale-[1.03] active:scale-[0.98] min-h-[52px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
@@ -164,13 +164,13 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             href={`tel:${SITE.phoneTel}`}
             className="text-sm text-white/90 hover:text-white transition-colors min-h-[44px] flex items-center"
           >
-            или позвоните: {SITE.phone}
+            или позвоните: {SITE.phone} (ежедневно 9-21)
           </a>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce motion-reduce:animate-none">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" aria-hidden="true" className="opacity-50">
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
