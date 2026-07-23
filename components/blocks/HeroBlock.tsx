@@ -155,7 +155,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             href="/plan/calculator"
             className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-10 py-4 text-base font-semibold text-black shadow-2xl shadow-amber-500/30 hover:bg-amber-400 transition-all hover:scale-[1.03] active:scale-[0.98] min-h-[52px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
-            Рассчитать стоимость
+            Рассчитать за 30 секунд
             <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>
@@ -166,6 +166,12 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           >
             или позвоните: {SITE.phone} (ежедневно 9-21)
           </a>
+        </div>
+
+        {/* Longevity + urgency */}
+        <div className="mt-5 flex flex-col items-center gap-1.5">
+          <p className="text-sm text-white/90">С 2007 года · 3 247 событий · 19 лет в Петербурге</p>
+          <p className="text-sm text-amber-400 font-medium">🎁 Бесплатная дегустация при заказе от 50 000 ₽</p>
         </div>
       </div>
 

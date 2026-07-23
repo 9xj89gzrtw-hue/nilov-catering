@@ -32,7 +32,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="ru" className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
-      <body className="min-h-screen bg-background text-foreground antialiased">
+      <body>
+      <link rel="preconnect" href="https://odaeda.ru" />
+      <link rel="preconnect" href="https://yandex.ru" />
+      <link rel="preload" as="image" type="image/avif" href="/images/gallery/furshet-hero-1920.avif" media="(min-width:768px)" />
+      <link rel="preload" as="image" type="image/avif" href="/images/gallery/furshet-hero-768.avif" media="(max-width:767px)" /> className="min-h-screen bg-background text-foreground antialiased">
         <Analytics />
         <OrganizationJsonLd />
         <MenuJsonLd />
@@ -63,3 +67,9 @@ function SkipLink() {
     </a>
   );
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
