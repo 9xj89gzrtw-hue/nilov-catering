@@ -1,5 +1,6 @@
 import HeroBlock from '@/components/blocks/HeroBlock';
 import HeroExtras from '@/components/blocks/HeroExtras';
+import DeliveryBanner from '@/components/blocks/DeliveryBanner';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import FormatShowcase from '@/components/blocks/FormatShowcase';
 import MenuPreview from '@/components/blocks/MenuPreview';
@@ -32,6 +33,9 @@ export default async function HomePage() {
 
       {/* 2. Quick pricing + action strip */}
       <HeroExtras />
+
+      {/* 2b. Delivery banner — для тех, кому нужна просто еда без мероприятия */}
+      <DeliveryBanner />
 
       {/* 3. EVENT TYPES — what do you need? (6 cards) */}
       <EventTypeSelector />

@@ -2,19 +2,24 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useDeliveryCart, MIN_ORDER_AMOUNT, TIME_SLOTS, calcCartTotal } from '@/hooks/useDeliveryCart';
+import { useDeliveryCart, MIN_ORDER_AMOUNT, TIME_SLOTS, DELIVERY_PRESETS, calcCartTotal } from '@/hooks/useDeliveryCart';
 import { DELIVERY_ZONES } from '@/lib/service-spec';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
 import { ALL_DISHES } from '@/lib/menu-data';
 
 const STEPS = ['Меню', 'Доставка', 'Контакты', 'Готово'];
 
+const PAYMENT_METHODS = [
+  { id: 'card', label: 'Карта курьеру', icon: '💳' },
+  { id: 'cash', label: 'Наличные', icon: '💵' },
+  { id: 'transfer', label: 'Перевод по СБП', icon: '📱' },
+];
+
 export default function DeliveryOrderPage() {
   const cart = useDeliveryCart();
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
-  // Hydration guard
   const hydrated = cart._hasHydrated;
 
   const totals = calcCartTotal(cart);
@@ -33,10 +38,13 @@ export default function DeliveryOrderPage() {
     setStep(3);
   };
 
-  // Минимальная дата — завтра
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split('T')[0];
+
+  // Текущая зона (для скрытия термобокса)
+  const currentZone = DELIVERY_ZONES.find(z => z.id === cart.zoneId);
+  const showThermobox = currentZone ? !currentZone.coldChain : false;
 
   return (
     <div className="pt-24 pb-20">
@@ -60,12 +68,47 @@ export default function DeliveryOrderPage() {
         </div>
 
         {!hydrated ? (
-          <div className="text-center py-12 text-muted-foreground text-sm">Загрузка корзины…</div>
+          <div className="space-y-4">
+            <div className="h-12 bg-muted/50 rounded-lg animate-pulse" />
+            <div className="grid grid-cols-3 gap-4">
+              {[1,2,3].map(i => <div key={i} className="h-32 bg-muted/50 rounded-xl animate-pulse" />)}
+            </div>
+          </div>
         ) : (
           <>
             {/* === Step 0: Menu builder === */}
             {step === 0 && (
               <div>
+                {/* Presets */}
+                {cart.items.length === 0 && (
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="font-heading text-lg font-medium">⚡ Быстрый старт</h3>
+                      <span className="text-xs text-muted-foreground">или соберите сами ↓</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                      {DELIVERY_PRESETS.map(preset => (
+                        <button
+                          key={preset.id}
+                          onClick={() => cart.applyPreset(preset.id)}
+                          className="rounded-xl border border-line bg-card p-4 text-left hover:border-gold-text hover:shadow-sm transition-all"
+                        >
+                          <span className="text-2xl mb-1 block">{preset.emoji}</span>
+                          <h4 className="text-sm font-semibold mb-0.5">{preset.label}</h4>
+                          <p className="text-[10px] text-muted-foreground mb-2 line-clamp-2">{preset.description}</p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gold-text font-semibold">~{preset.estimatedTotal.toLocaleString('ru-RU')} ₽</span>
+                            <span className="text-[10px] text-muted-foreground">{preset.items.length} блюд</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                    <div className="text-center mb-4">
+                      <p className="text-xs text-muted-foreground">💡 1 порция = 1 человек. Можно менять количество после выбора пресета.</p>
+                    </div>
+                  </div>
+                )}
+
                 {/* Sticky cart summary */}
                 <div className="mb-6 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -91,15 +134,14 @@ export default function DeliveryOrderPage() {
                   onReorder={cart.reorderItems}
                   catalogTitle="Каталог блюд для доставки"
                   cartTitle="Ваш заказ"
-                  emptyCartText="Перетащите блюда сюда или нажмите «+»"
+                  emptyCartText="Выберите пресет выше или нажмите «+ Добавить» на блюде"
                   unit="порц."
                   enableReorder
                 />
 
                 {cart.items.length === 0 && (
                   <div className="mt-6 p-4 rounded-xl border border-dashed border-line text-center">
-                    <p className="text-sm text-muted-foreground mb-3">💡 Подсказка: для первого заказа рекомендуем собрать 5-7 блюд — хватит на 8-10 человек.</p>
-                    <p className="text-xs text-muted-foreground">Среднее блюдо в каталоге — около 250 ₽ за порцию.</p>
+                    <p className="text-sm text-muted-foreground">💡 Среднее блюдо — 250 ₽ за порцию. На 10 человек возьмите 5-7 блюд × 10 порций.</p>
                   </div>
                 )}
               </div>
@@ -126,7 +168,7 @@ export default function DeliveryOrderPage() {
                           {zone.surcharge === 0 ? 'Бесплатно' : `+${zone.surcharge.toLocaleString('ru-RU')} ₽`}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground mb-2">{zone.distance}</p>
+                      <p className="text-xs text-muted-foreground mb-2">{zone.distance} за КАД</p>
                       <div className="text-[10px] text-muted-foreground space-y-0.5">
                         <p>❄️ Холодовая цепь: {zone.coldChain ? '✅' : '⚠ только термобоксы'}</p>
                         <p>⏱ Ответ: до {zone.slaHours}ч</p>
@@ -135,25 +177,27 @@ export default function DeliveryOrderPage() {
                   ))}
                 </div>
 
-                {/* Thermobox option */}
-                <div className="rounded-xl border border-line bg-card p-4 mb-6">
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={cart.needThermobox}
-                      onChange={e => cart.setThermobox(e.target.checked)}
-                      className="mt-1 accent-gold-text"
-                    />
-                    <div>
-                      <p className="text-sm font-medium">📦 Аренда термобокса (+1 500 ₽)</p>
-                      <p className="text-xs text-muted-foreground">Рекомендуется для зон без холодовой цепи — сохранит блюда свежими при транспортировке.</p>
-                    </div>
-                  </label>
-                </div>
+                {/* Thermobox — только для зон без холодовой цепи */}
+                {showThermobox && (
+                  <div className="rounded-xl border border-warning/30 bg-warning/5 p-4 mb-6">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={cart.needThermobox}
+                        onChange={e => cart.setThermobox(e.target.checked)}
+                        className="mt-1 accent-gold-text"
+                      />
+                      <div>
+                        <p className="text-sm font-medium">📦 Аренда термобокса (залог 1 500 ₽, возвращается при сдаче)</p>
+                        <p className="text-xs text-muted-foreground">В вашей зоне нет холодовой цепи — рекомендуем термобокс для сохранения свежести блюд.</p>
+                      </div>
+                    </label>
+                  </div>
+                )}
 
-                {/* Time slot */}
+                {/* Time slot — узкие 2-часовые окна */}
                 <h2 className="font-heading text-xl mb-4">Время доставки</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 mb-4">
                   {TIME_SLOTS.map(slot => (
                     <button
                       key={slot.id}
@@ -165,9 +209,32 @@ export default function DeliveryOrderPage() {
                       }`}
                     >
                       <span className="text-lg block mb-1">{slot.icon}</span>
-                      <span className="text-xs font-medium">{slot.label}</span>
+                      <span className="text-[11px] font-medium leading-tight block">{slot.label}</span>
                     </button>
                   ))}
+                </div>
+
+                {/* Точное время — для запланированных ужинов */}
+                <div className="rounded-xl border border-line bg-card p-4 mb-6">
+                  <label className="block">
+                    <span className="text-sm font-medium block mb-1">⏰ Точное время подачи (необязательно)</span>
+                    <p className="text-xs text-muted-foreground mb-2">Для запланированных мероприятий — укажите, к какому часу подать еду</p>
+                    <input
+                      type="time"
+                      value={cart.contact.exactTime}
+                      onChange={e => cart.setContact({ exactTime: e.target.value })}
+                      className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text"
+                    />
+                  </label>
+                  <label className="flex items-center gap-2 mt-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={cart.contact.callAhead}
+                      onChange={e => cart.setContact({ callAhead: e.target.checked })}
+                      className="accent-gold-text"
+                    />
+                    <span className="text-xs">📞 Позвонить за 30 минут до прибытия</span>
+                  </label>
                 </div>
 
                 {/* Live total preview */}
@@ -175,7 +242,7 @@ export default function DeliveryOrderPage() {
                   <div className="flex justify-between"><span className="text-muted-foreground">Стоимость блюд</span><span>{totals.subtotal.toLocaleString('ru-RU')} ₽</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Доставка</span><span>{totals.delivery === 0 ? 'Бесплатно' : `${totals.delivery.toLocaleString('ru-RU')} ₽`}</span></div>
                   {totals.thermobox > 0 && (
-                    <div className="flex justify-between"><span className="text-muted-foreground">Термобокс</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
+                    <div className="flex justify-between"><span className="text-muted-foreground">Термобокс (залог)</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
                   )}
                   <div className="flex justify-between font-semibold pt-2 border-t border-line">
                     <span>Итого</span><span className="text-gold-text text-lg">{totals.total.toLocaleString('ru-RU')} ₽</span>
@@ -186,28 +253,68 @@ export default function DeliveryOrderPage() {
 
             {/* === Step 2: Contacts + address === */}
             {step === 2 && (
-              <div className="max-w-md mx-auto">
+              <div className="max-w-2xl mx-auto">
                 <h2 className="font-heading text-xl mb-4 text-center">Контакты и адрес</h2>
-                <div className="space-y-4 mb-6">
-                  <input type="text" placeholder="Ваше имя *" value={cart.contact.name}
-                    onChange={e => cart.setContact({ name: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
-                  <input type="tel" placeholder="+7 (___) ___-__-__ *" value={cart.contact.phone}
-                    onChange={e => cart.setContact({ phone: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+
+                {/* Контактные данные */}
+                <div className="space-y-3 mb-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <input type="text" placeholder="Имя *" value={cart.contact.name}
+                      onChange={e => cart.setContact({ name: e.target.value })}
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                    <input type="tel" placeholder="+7 (___) ___-__-__ *" value={cart.contact.phone}
+                      onChange={e => cart.setContact({ phone: e.target.value })}
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                  </div>
                   <input type="text" placeholder="Адрес доставки *" value={cart.contact.address}
                     onChange={e => cart.setContact({ address: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+
+                  {/* Подъезд/этаж/домофон — для загородной доставки критично */}
+                  <div className="grid grid-cols-3 gap-3">
+                    <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
+                      onChange={e => cart.setContact({ entrance: e.target.value })}
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                    <input type="text" placeholder="Этаж" value={cart.contact.floor}
+                      onChange={e => cart.setContact({ floor: e.target.value })}
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                    <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
+                      onChange={e => cart.setContact({ intercom: e.target.value })}
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                  </div>
                   <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
                     onChange={e => cart.setContact({ apartment: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Дата доставки *</label>
                     <input type="date" min={minDate} value={cart.contact.date}
                       onChange={e => cart.setContact({ date: e.target.value })}
                       className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
                   </div>
-                  <textarea placeholder="Комментарий к заказу (необязательно)" value={cart.contact.comment}
+
+                  {/* Способ оплаты */}
+                  <div>
+                    <label className="text-xs text-muted-foreground block mb-1">Способ оплаты</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {PAYMENT_METHODS.map(m => (
+                        <button
+                          key={m.id}
+                          onClick={() => cart.setContact({ paymentMethod: m.id })}
+                          className={`rounded-xl border p-2.5 text-center transition-all ${
+                            cart.contact.paymentMethod === m.id
+                              ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text'
+                              : 'border-line bg-card hover:border-gold-text'
+                          }`}
+                        >
+                          <span className="text-base block mb-0.5">{m.icon}</span>
+                          <span className="text-[10px] font-medium">{m.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <textarea placeholder="Комментарий к заказу (особые пожелания, аллергии гостей, код ворот и т.д.)" value={cart.contact.comment}
                     onChange={e => cart.setContact({ comment: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text min-h-[80px] resize-none" />
                 </div>
@@ -231,7 +338,7 @@ export default function DeliveryOrderPage() {
                   <div className="flex justify-between"><span className="text-muted-foreground">Блюда</span><span>{totals.subtotal.toLocaleString('ru-RU')} ₽</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Доставка</span><span>{totals.delivery === 0 ? 'Бесплатно' : `${totals.delivery.toLocaleString('ru-RU')} ₽`}</span></div>
                   {totals.thermobox > 0 && (
-                    <div className="flex justify-between"><span className="text-muted-foreground">Термобокс</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
+                    <div className="flex justify-between"><span className="text-muted-foreground">Термобокс (залог)</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
                   )}
                   <div className="flex justify-between font-semibold pt-2 border-t border-line">
                     <span>Итого</span><span className="text-gold-text text-lg">{totals.total.toLocaleString('ru-RU')} ₽</span>
@@ -256,7 +363,9 @@ export default function DeliveryOrderPage() {
                   Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong> для подтверждения.
                 </p>
                 <p className="text-sm text-muted-foreground mb-6">
-                  Доставка: <strong className="text-foreground">{cart.contact.date}</strong>, {TIME_SLOTS.find(s => s.id === cart.contact.timeSlot)?.label}
+                  Доставка: <strong className="text-foreground">{cart.contact.date}</strong>
+                  {cart.contact.exactTime && <> к <strong className="text-foreground">{cart.contact.exactTime}</strong></>}
+                  {!cart.contact.exactTime && <> · {TIME_SLOTS.find(s => s.id === cart.contact.timeSlot)?.label}</>}
                 </p>
                 <div className="flex flex-col gap-2">
                   <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>

@@ -8,14 +8,95 @@ import { DELIVERY_ZONES } from '@/lib/service-spec';
 // Минимальная сумма заказа для доставки
 export const MIN_ORDER_AMOUNT = 5000;
 
-// Слоты времени доставки
+// Слоты времени доставки (более узкие — 1.5 часа)
 export const TIME_SLOTS = [
-  { id: 'morning', label: 'Утро (09:00–12:00)', icon: '🌅' },
-  { id: 'day', label: 'День (12:00–15:00)', icon: '☀️' },
-  { id: 'afternoon', label: 'Полдень (15:00–18:00)', icon: '🌇' },
-  { id: 'evening', label: 'Вечер (18:00–21:00)', icon: '🌆' },
-  { id: 'night', label: 'Поздний вечер (21:00–23:00)', icon: '🌙' },
+  { id: 'morning', label: 'Утро (09:00–11:00)', icon: '🌅' },
+  { id: 'midday', label: 'День (11:00–13:00)', icon: '🌤️' },
+  { id: 'lunch', label: 'Обед (13:00–15:00)', icon: '☀️' },
+  { id: 'afternoon', label: 'Полдень (15:00–17:00)', icon: '🌇' },
+  { id: 'dinner', label: 'Ужин (17:00–19:00)', icon: '🌆' },
+  { id: 'evening', label: 'Вечер (19:00–21:00)', icon: '🌃' },
+  { id: 'late', label: 'Поздний вечер (21:00–23:00)', icon: '🌙' },
 ] as const;
+
+// Пресеты для быстрого старта —一键填 корзину
+export interface DeliveryPreset {
+  id: string;
+  label: string;
+  emoji: string;
+  description: string;
+  guests: number;
+  estimatedTotal: number;
+  items: { dishId: string; qty: number }[];
+}
+
+export const DELIVERY_PRESETS: DeliveryPreset[] = [
+  {
+    id: 'coffee-break-15',
+    label: 'Кофе-брейк на 15 чел.',
+    emoji: '☕',
+    description: 'Кофе, выпечка, фрукты — для офисной планёрки',
+    guests: 15,
+    estimatedTotal: 6800,
+    items: [
+      { dishId: 'croissant', qty: 15 },
+      { dishId: 'muffin', qty: 15 },
+      { dishId: 'mini-sandwich', qty: 15 },
+      { dishId: 'fruit-platter', qty: 8 },
+      { dishId: 'lemonade-tarragon', qty: 15 },
+    ],
+  },
+  {
+    id: 'coffee-break-40',
+    label: 'Кофе-брейк на 40 чел.',
+    emoji: '☕',
+    description: 'Для конференции или семинара — всё включено',
+    guests: 40,
+    estimatedTotal: 16800,
+    items: [
+      { dishId: 'croissant', qty: 40 },
+      { dishId: 'eclair', qty: 40 },
+      { dishId: 'muffin', qty: 40 },
+      { dishId: 'mini-sandwich', qty: 40 },
+      { dishId: 'fruit-platter', qty: 15 },
+      { dishId: 'lemonade-berry', qty: 40 },
+      { dishId: 'seabuckthorn-tea', qty: 40 },
+    ],
+  },
+  {
+    id: 'family-dinner-10',
+    label: 'Семейный ужин на 10 чел.',
+    emoji: '🍽️',
+    description: '2 горячих + закуски + десерт + напитки',
+    guests: 10,
+    estimatedTotal: 9800,
+    items: [
+      { dishId: 'beef-stroganoff', qty: 10 },
+      { dishId: 'caesar', qty: 10 },
+      { dishId: 'meat-platter', qty: 10 },
+      { dishId: 'cheese-platter', qty: 10 },
+      { dishId: 'choc-mousse', qty: 10 },
+      { dishId: 'cranberry-mors', qty: 10 },
+    ],
+  },
+  {
+    id: 'party-20',
+    label: 'Фуршет-набор на 20 чел.',
+    emoji: '🥂',
+    description: 'Канапе, тарталетки, закуски — для вечеринки',
+    guests: 20,
+    estimatedTotal: 12400,
+    items: [
+      { dishId: 'canape-salmon', qty: 20 },
+      { dishId: 'canape-caprese', qty: 20 },
+      { dishId: 'tartaletka-olivier', qty: 20 },
+      { dishId: 'bruschetta-tomato', qty: 20 },
+      { dishId: 'mini-burger', qty: 20 },
+      { dishId: 'macaron-shooter', qty: 20 },
+      { dishId: 'lemonade-berry', qty: 20 },
+    ],
+  },
+];
 
 export interface DeliveryCartItem {
   dishId: string;
@@ -34,8 +115,14 @@ export interface DeliveryCartState {
     phone: string;
     address: string;
     apartment: string;
-    date: string;     // ISO date (YYYY-MM-DD)
-    timeSlot: string; // id из TIME_SLOTS
+    entrance: string;     // подъезд
+    floor: string;        // этаж
+    intercom: string;     // код домофона
+    date: string;         // ISO date (YYYY-MM-DD)
+    timeSlot: string;     // id из TIME_SLOTS
+    exactTime: string;    // ЧЧ:ММ — точное время подачи (опционально)
+    callAhead: boolean;   // позвонить за 30 мин до прибытия
+    paymentMethod: string; // card / cash / transfer
     comment: string;
   };
 
@@ -51,6 +138,7 @@ export interface DeliveryCartState {
   setQty: (dishId: string, qty: number) => void;
   reorderItems: (fromIdx: number, toIdx: number) => void;
   clearItems: () => void;
+  applyPreset: (presetId: string) => void;
 
   setContact: (c: Partial<DeliveryCartState['contact']>) => void;
   setZone: (zoneId: string) => void;
@@ -68,8 +156,14 @@ const INITIAL_CONTACT = {
   phone: '',
   address: '',
   apartment: '',
+  entrance: '',
+  floor: '',
+  intercom: '',
   date: '',
-  timeSlot: 'day',
+  timeSlot: 'lunch',
+  exactTime: '',
+  callAhead: true,
+  paymentMethod: 'card',
   comment: '',
 };
 
@@ -120,6 +214,16 @@ export const useDeliveryCart = create<DeliveryCartState>()(
       },
 
       clearItems: () => set({ items: [] }),
+
+      applyPreset: (presetId) => {
+        const preset = DELIVERY_PRESETS.find(p => p.id === presetId);
+        if (!preset) return;
+        // Загружаем элементы пресета в корзину
+        const items = preset.items
+          .filter(pi => DISH_MAP.has(pi.dishId))
+          .map(pi => ({ dishId: pi.dishId, qty: pi.qty }));
+        set({ items });
+      },
 
       setContact: (c) => set(s => ({ contact: { ...s.contact, ...c } })),
       setZone: (zoneId) => {

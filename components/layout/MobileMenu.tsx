@@ -127,7 +127,7 @@ export default function MobileMenu() {
                     📞 {SITE.phone}
                   </a>
                   <Link
-                    href="/plan"
+                    href="/plan/constructor"
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform"
                   >
