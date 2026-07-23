@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'NiloV Catering — English',
+  title: 'English version',
   description: 'Catering in St. Petersburg since 2007. Restaurant-quality service for any budget.',
 };
 

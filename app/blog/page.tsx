@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Блог NiloV Catering',
+  title: 'Блог',
   description: 'Советы, кейсы, сезонные идеи от команды NiloV Catering. Ресторанный кейтеринг в Петербурге.',
 };
 

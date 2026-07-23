@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
-  title: 'Дегустация меню | NiloV Catering',
+  title: 'Дегустация меню',
   description: 'Запишитесь на бесплатную дегустацию меню для свадьбы или корпоратива. Попробуйте блюда, обсудите меню с шефом, получите КП.',
 };
 

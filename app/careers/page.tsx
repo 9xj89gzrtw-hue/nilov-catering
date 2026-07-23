@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Карьера в NiloV Catering',
+  title: 'Карьера',
   description: 'Вакансии NiloV Catering в Санкт-Петербурге. Повара, кондитеры, менеджеры событий.',
 };
 

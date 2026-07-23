@@ -84,7 +84,7 @@ function ConstructorServerFallback() {
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           Соберите меню под ваше событие за 2 минуты. Выберите формат — рассчитаем стоимость и состав instantly.
-          Multi-диета: веган + халяль + без глютена + всеядные в одном заказе с per-group pricing.
+          Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе с per-group pricing.
         </p>
 
         {/* Шаг 1 — формат (виден SSR) */}
@@ -121,8 +121,66 @@ function ConstructorServerFallback() {
           </h2>
           <p className="text-sm text-muted-foreground ml-11">
             Укажите количество гостей. Включите «Несколько групп гостей» — каждая группа получит своё под-меню
-            с фильтром по диете (веган / халяль / без глютена / всеядные). Per-group pricing: вы платите только за блюда своей группы.
+            с фильтром по диете (веган / халяль / без глютена / без орехов / всеядные). Per-group pricing: вы платите только за блюда своей группы.
           </p>
+
+          {/* Static SSR form for guests (no-JS fallback) */}
+          <form className="ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3" action="/api/quote" method="POST">
+            <input type="hidden" name="source" value="constructor-ssr" />
+            <div className="grid grid-cols-2 gap-3">
+              <label className="block">
+                <span className="text-xs text-muted-foreground block mb-1">Кол-во гостей *</span>
+                <input type="number" name="guests" min="6" required placeholder="напр. 25" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+              </label>
+              <label className="block">
+                <span className="text-xs text-muted-foreground block mb-1">Дата события</span>
+                <input type="date" name="date" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+              </label>
+            </div>
+            <fieldset className="border border-line rounded p-3">
+              <legend className="text-xs font-medium px-2">🥗 Группы гостей по диетам (заполните при необходимости)</legend>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Всеядные</span>
+                  <input type="number" name="groupOmnivore" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Веганы</span>
+                  <input type="number" name="groupVegan" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Халяль</span>
+                  <input type="number" name="groupHalal" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Без глютена</span>
+                  <input type="number" name="groupGlutenFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Без орехов</span>
+                  <input type="number" name="groupNutFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Другое</span>
+                  <input type="number" name="groupOther" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+              </div>
+            </fieldset>
+            <div className="grid grid-cols-2 gap-3">
+              <label className="block">
+                <span className="text-xs text-muted-foreground block mb-1">Имя *</span>
+                <input type="text" name="name" required className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+              </label>
+              <label className="block">
+                <span className="text-xs text-muted-foreground block mb-1">Телефон *</span>
+                <input type="tel" name="phone" required placeholder="+7" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+              </label>
+            </div>
+            <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+              ✍️ Отправить заявку (no-JS)
+            </button>
+            <p className="text-xs text-muted-foreground text-center">Менеджер перезвонит ≤15 мин. Или используйте интерактивный конструктор выше (нужен JS).</p>
+          </form>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">3</span>

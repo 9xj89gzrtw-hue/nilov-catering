@@ -4,7 +4,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/team' },
-  title: 'Команда — NiloV Catering СПб',
+  title: 'Команда',
   description: 'Команда NiloV Catering: шеф-повар Дмитрий Нилов (19 лет опыта), шеф-кондитер, су-шеф, event-координаторы. 40+ профессионалов с медкнижками и санминимумом.',
 };
 

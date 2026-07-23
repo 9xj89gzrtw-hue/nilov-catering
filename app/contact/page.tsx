@@ -4,7 +4,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
-  title: 'Контакты — NiloV Catering, СПб',
+  title: 'Контакты, СПб',
   description: 'Свяжитесь с NiloV Catering: телефон, WhatsApp, Telegram. Санкт-Петербург, В.О., 20-я линия 11. Юр.лицо: ИП Нилов Д.И.',
 };
 
@@ -194,7 +194,8 @@ export default function ContactPage() {
               </summary>
               <p className="text-xs text-muted-foreground mt-2 mb-3">
                 Для корпоративов, школ, учреждений, гос. заказчиков (44-ФЗ, 223-ФЗ).
-                Работаем с НДС (ОСН) или без НДС (УСН — уточните при звонке), ЭДО (Диадок/СБИС).
+                ИП Нилов Д.И. — УСН (без НДС). Для плательщиков НДС — работаем через партнёрское ООО (по запросу).
+                ЭДО: Контур.Диадок, СБИС.
               </p>
               <div className="space-y-2">
                 <label className="block">
@@ -305,6 +306,8 @@ export default function ContactPage() {
             <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">📞 {SITE.phone}</a>
             <span className="text-muted-foreground">·</span>
             <Link href="/events/korporativ" className="text-gold-text hover:underline">B2B-блок →</Link>
+            <span className="text-muted-foreground">·</span>
+            <Link href="/events/vypusknoy" className="text-gold-text hover:underline">Школьный B2B →</Link>
           </div>
         </div>
       </div>

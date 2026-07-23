@@ -4,7 +4,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/allergens' },
-  title: '14 аллергенов ТР ТС 022/2011 — протоколы безопасности | NiloV Catering',
+  title: '14 аллергенов ТР ТС 022/2011 — протоколы безопасности',
   description: '14 аллергенов ТР ТС 022/2011, протоколы для целиакии (<20 ppm), анафилаксии (nut-free), халяль. Раздельное оборудование, маркировка блюд, EpiPen.',
 };
 
