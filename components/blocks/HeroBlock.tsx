@@ -67,7 +67,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100svh] md:min-h-[90vh] flex items-center justify-center overflow-hidden"
       aria-label="Главный экран"
     >
       {/* Background: food close-up image + optional video */}
@@ -147,14 +147,14 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
 
         {/* One-line subtitle — minimal */}
         <p className="text-lg md:text-xl text-white mb-8 max-w-xl mx-auto animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100" style={{ animationDelay: '0.15s' }}>
-          От 6 до 500 гостей. Ресторанное качество по честной цене.
+          Шеф Дмитрий Нилов · 19 лет опыта. От 6 до 500 гостей — ресторанное качество без переплат.
         </p>
 
         {/* Single primary CTA — centered, large */}
         <div className="flex flex-col items-center gap-4 animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100" style={{ animationDelay: '0.3s' }}>
           <Link
             href="/plan/calculator"
-            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-10 py-4 text-base font-semibold text-black shadow-2xl shadow-amber-500/30 hover:bg-amber-400 transition-all hover:scale-[1.03] active:scale-[0.98] min-h-[52px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-10 py-4 text-base font-semibold text-black shadow-2xl shadow-amber-500/30 hover:bg-amber-400 transition-all hover:scale-[1.03] active:scale-[0.98] min-h-[56px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             Рассчитать за 30 секунд
             <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -163,7 +163,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           </Link>
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="text-sm text-white/90 hover:text-white transition-colors min-h-[44px] flex items-center"
+            className="text-base text-white/90 hover:text-white transition-colors min-h-[44px] flex items-center px-4 py-2 rounded-lg hover:bg-white/10"
           >
             или позвоните: {SITE.phone} (ежедневно 9-21)
           </a>
@@ -174,6 +174,22 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           <p className="text-sm text-white/90">С 2007 года · 3 247 событий · 19 лет в Петербурге</p>
           <p className="text-sm text-amber-400 font-medium">🎁 Бесплатная дегустация при заказе от 50 000 ₽</p>
         </div>
+
+        {/* Event type quick-select */}
+        <nav className="mt-6 flex flex-wrap items-center justify-center gap-2" aria-label="Выберите тип события">
+          <Link href="/events/svadba" className="rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/15 hover:border-white/50 transition-all min-h-[40px] inline-flex items-center">
+            💍 Свадьба
+          </Link>
+          <Link href="/events/korporativ" className="rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/15 hover:border-white/50 transition-all min-h-[40px] inline-flex items-center">
+            💼 Корпоратив
+          </Link>
+          <Link href="/events/yubiley" className="rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/15 hover:border-white/50 transition-all min-h-[40px] inline-flex items-center">
+            🏅 Юбилей
+          </Link>
+          <Link href="/events/vypusknoy" className="rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/15 hover:border-white/50 transition-all min-h-[40px] inline-flex items-center">
+            🎓 Выпускной
+          </Link>
+        </nav>
       </div>
 
       {/* Scroll indicator */}
