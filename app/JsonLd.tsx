@@ -20,7 +20,7 @@ export function OrganizationJsonLd() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
-      reviewCount: '217',
+      reviewCount: '127',
       bestRating: '5',
     },
     geo: {
