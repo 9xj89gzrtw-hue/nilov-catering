@@ -2,6 +2,8 @@
 
 import { useMemo } from 'react';
 import { ALL_DISHES } from '@/lib/menu-data';
+import { getDishImage } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
 import Link from 'next/link';
@@ -33,17 +35,25 @@ export default function DetskoePage() {
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все детские блюда ({kidsDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {kidsDishes.map(dish => (
-            <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
-              <h3 className="font-medium text-sm mb-1">
-                {dish.name}
-                {dish.childFriendly && <span className="ml-1 text-[10px] bg-purple-100 text-purple-700 px-1 py-0.5 rounded font-medium">Дети</span>}
-              </h3>
-              <p className="text-[11px] text-muted-foreground mb-2 line-clamp-2">{dish.description}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gold-text font-semibold">{dish.pricePerGuest} ₽/гость</span>
-                <div className="flex gap-1">
-                  {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium">VG</span>}
-                  {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">GF</span>}
+            <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors group">
+              <FoodPhoto
+                src={getDishImage(dish.id, dish.station)}
+                alt={dish.name}
+                aspectRatio="square"
+                className="w-full"
+              />
+              <div className="p-3">
+                <h3 className="font-medium text-sm mb-1">
+                  {dish.name}
+                  {dish.childFriendly && <span className="ml-1 text-[10px] bg-purple-100 text-purple-700 px-1 py-0.5 rounded font-medium">Дети</span>}
+                </h3>
+                <p className="text-[11px] text-muted-foreground mb-2 line-clamp-2">{dish.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gold-text font-semibold">{dish.pricePerGuest} ₽/гость</span>
+                  <div className="flex gap-1">
+                    {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium">VG</span>}
+                    {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">GF</span>}
+                  </div>
                 </div>
               </div>
               {dish.allergens.length > 0 && (

@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS } from '@/lib/menu-data';
+import { getDishImage } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish, Diet, Allergen } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
@@ -353,13 +355,19 @@ export default function MenuBuilder({
                     : 'border-line hover:border-gold-text hover:shadow-sm'
                 }`}
               >
-                <div className="aspect-square bg-secondary flex items-center justify-center text-3xl relative">
-                  <span>{STATION_EMOJI[dish.station] || '🍽️'}</span>
+                <div className="aspect-square relative overflow-hidden bg-secondary group">
+                  <FoodPhoto
+                    src={getDishImage(dish.id, dish.station)}
+                    alt={dish.name}
+                    aspectRatio="square"
+                    objectPosition="center 40%"
+                    className="w-full h-full"
+                  />
                   {isSelected && (
-                    <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold">✓</div>
+                    <div className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold">✓</div>
                   )}
                   {/* Diet badges */}
-                  <div className="absolute top-1 left-1 flex gap-0.5">
+                  <div className="absolute top-1 left-1 z-10 flex gap-0.5">
                     {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
                     {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
                     {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
@@ -367,13 +375,13 @@ export default function MenuBuilder({
                   </div>
                   {/* Allergen warning badge */}
                   {hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+                    <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
                       ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
                     </div>
                   )}
                   {/* Nuts alarm — по умолчанию в детском меню */}
                   {alarmNutsInKids && !hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+                    <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
                       ⚠ 🥜 Орехи
                     </div>
                   )}

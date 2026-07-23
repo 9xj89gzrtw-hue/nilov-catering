@@ -3,6 +3,8 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
+import { getDishImage } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
@@ -155,30 +157,19 @@ export default function CatalogPage() {
 }
 
 function DishCard({ dish }: { dish: Dish }) {
-  const [imgError, setImgError] = useState(false);
-  const hasImage = dish.image && !imgError;
+  const dishImg = getDishImage(dish.id, dish.station);
 
   return (
     <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg">
-      {/* Image area */}
-      <div className="aspect-square bg-secondary flex items-center justify-center text-3xl relative overflow-hidden">
-        {hasImage ? (
-          <img
-            src={dish.image}
-            alt={dish.name}
-            loading="lazy"
-            onError={() => setImgError(true)}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <span className="text-4xl" role="img" aria-hidden="true">
-            {dish.station === 'cold' && '🥗'}
-            {dish.station === 'hot' && '🍖'}
-            {dish.station === 'desserts' && '🍰'}
-            {dish.station === 'drinks' && '🥂'}
-            {dish.station === 'show' && '🔥'}
-          </span>
-        )}
+      {/* Image area — FoodPhoto с анимацией Drinqit */}
+      <div className="relative">
+        <FoodPhoto
+          src={dishImg}
+          alt={dish.name}
+          aspectRatio="square"
+          objectPosition="center 40%"
+          className="w-full"
+        />
       </div>
 
       {/* Info */}

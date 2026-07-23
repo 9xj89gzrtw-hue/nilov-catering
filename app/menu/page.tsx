@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
+import { getDishImage } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
@@ -23,17 +25,22 @@ const FORMATS = [
 const POPULAR = ALL_DISHES.filter(d => d.id.startsWith('canape-') || d.id.startsWith('tartaletka-')).slice(0, 8);
 
 function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
-  const colors = ['from-amber-100 to-amber-200', 'from-rose-100 to-rose-200', 'from-emerald-100 to-emerald-200', 'from-sky-100 to-sky-200', 'from-violet-100 to-violet-200', 'from-orange-100 to-orange-200', 'from-pink-100 to-pink-200', 'from-lime-100 to-lime-200'];
-  const color = colors[dish.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % colors.length];
+  const dishImg = getDishImage(dish.id, dish.station);
   return (
     <div className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:-translate-y-0.5 transition-all duration-300 group">
-      <div className={`aspect-[4/3] bg-gradient-to-br ${color} flex items-center justify-center relative`}>
-        <span className="text-4xl opacity-40 select-none">{dish.name.charAt(0)}</span>
-        <div className="absolute bottom-2 right-2">
+      <div className="relative">
+        <FoodPhoto
+          src={dishImg}
+          alt={dish.name}
+          aspectRatio="wide"
+          objectPosition="center 40%"
+          className="w-full"
+        />
+        <div className="absolute bottom-2 right-2 z-10">
           <span className="text-xs bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 font-semibold">{dish.pricePerGuest} ₽/гость</span>
         </div>
         {dish.dietBadges.length > 0 && (
-          <div className="absolute top-2 left-2 flex gap-1">
+          <div className="absolute top-2 left-2 z-10 flex gap-1">
             {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
             {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
           </div>

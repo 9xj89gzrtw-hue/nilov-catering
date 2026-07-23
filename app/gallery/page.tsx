@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { GALLERY_IMAGES } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/gallery' }, title: 'Галерея' };
-
-const PHOTOS = Array.from({ length: 12 }).map((_, i) => ({
-  src: `/placeholders/hero-${['furshet','banket','coffee-break','detskoe','chef-at-home','poster'][i % 6]}.svg`,
-  caption: ['Свадьба · 120 гостей','Корпоратив · 300 гостей','Камерный ужин','Детский праздник','Выезд шефа','Банкет под ключ'][i % 6],
-}));
+  alternates: { canonical: '/gallery' },
+  title: 'Галерея',
+  description: 'Фото с наших мероприятий: свадьбы, корпоративы, банкеты, фуршеты, детские праздники. Реальные события NiloV Catering.',
+};
 
 export default function GalleryPage() {
+  // Дублируем фото для большего визуального объема
+  const photos = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
+
   return (
     <main className="pt-24 pb-20">
       <div className="container-site">
@@ -17,11 +20,17 @@ export default function GalleryPage() {
 
         {/* Mobile: 2-col compact, Desktop: 3-col */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
-          {PHOTOS.map((p, i) => (
-            <div key={i} className="relative aspect-[4/3] rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group">
-              <img src={p.src} alt={p.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-2 md:p-3">
-                <p className="text-[10px] md:text-xs font-medium text-foreground">{p.caption}</p>
+          {photos.map((p, i) => (
+            <div key={i} className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group">
+              <FoodPhoto
+                src={p.src}
+                alt={p.alt}
+                aspectRatio="wide"
+                objectPosition="center 40%"
+                className="w-full"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-2 md:p-3 z-10">
+                <p className="text-[10px] md:text-xs font-medium text-white">{p.caption}</p>
               </div>
             </div>
           ))}

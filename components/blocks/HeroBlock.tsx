@@ -52,7 +52,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
         style={reducedMotion ? {} : { scale, opacity }}
       >
         <img
-          src="/placeholders/hero-poster.svg"
+          src="/images/gallery/wedding-banquet.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           fetchPriority="high"

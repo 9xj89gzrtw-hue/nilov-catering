@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { ALL_TARIFF_OFFERS, type TariffOffer } from '@/lib/tariff-offers';
 import { type Tier } from '@/lib/types';
 import { ALL_DISHES, DISH_CATEGORIES } from '@/lib/menu-data';
+import { getDishImage, FORMAT_HERO_IMAGES } from '@/lib/dish-images';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import Link from 'next/link';
 
@@ -146,8 +148,16 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
         <p className="text-sm text-muted-foreground">/ гость · мин. {offer.minGuests} гостей</p>
       </div>
 
-      <div className={`aspect-[16/9] ${color} flex items-center justify-center`}>
-        <span className="text-5xl select-none">{offer.imagePlaceholder}</span>
+      <div className="relative">
+        <FoodPhoto
+          src={FORMAT_HERO_IMAGES[EVENT_TO_FORMAT[offer.eventId] || 'furshet'] || '/images/gallery/wedding-banquet.jpg'}
+          alt={`${offer.eventName} · ${offer.tierLabel}`}
+          aspectRatio="wide"
+          className="w-full"
+        />
+        <div className="absolute top-2 right-2 z-10">
+          <span className="text-2xl">{offer.imagePlaceholder}</span>
+        </div>
       </div>
 
       <div className="px-5 py-4 space-y-2 flex-1">
