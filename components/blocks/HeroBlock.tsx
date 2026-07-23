@@ -96,7 +96,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           loop
           autoPlay={shouldAutoplay && !videoPaused}
           preload="metadata"
-          poster="/images/gallery/wedding-banquet.jpg"
+          poster="/images/gallery/wedding-banquet-768.webp"
           aria-hidden="true"
           onCanPlayThrough={() => setVideoReady(true)}
         >
@@ -202,24 +202,18 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             >
               📞 {SITE.phone}
             </a>
-            <Link
-              href="/menu"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-            >
-              Смотреть меню
-            </Link>
           </div>
 
-          {/* Trust signals — B2B + compliance + urgency (was text-xs) */}
+          {/* Trust signals — appetite-positive + B2B compliance */}
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground animate-fade-up" style={{ animationDelay: '0.45s' }}>
             <span>✓ Доставка в КАД включена</span>
-            <span>✓ HACCP · 14 аллергенов ТР ТС 022/2011</span>
+            <span>✓ Шеф-повар с опытом 19 лет</span>
             <span>✓ ЭДО · 44-ФЗ · 223-ФЗ</span>
           </div>
 
           {/* Urgency element */}
           <p className="mt-3 text-sm text-gold-text font-medium animate-fade-up" style={{ animationDelay: '0.5s' }}>
-            🎁 Бесплатная дегустация перед заказом от 30 гостей →
+            🎁 Бесплатная дегустация при заказе от 50 000 ₽ →
           </p>
         </div>
       </motion.div>
