@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import HeroBlock from '@/components/blocks/HeroBlock';
 import HeroExtras from '@/components/blocks/HeroExtras';
 import DeliveryBanner from '@/components/blocks/DeliveryBanner';
@@ -11,6 +12,10 @@ import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
 import FAQTeaser from '@/components/blocks/FAQTeaser';
 import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 export const revalidate = 3600;
 

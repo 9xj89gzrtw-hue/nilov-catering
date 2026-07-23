@@ -24,11 +24,10 @@ const RATIOS: Record<string, string> = {
 };
 
 /**
- * FoodPhoto — компонент фотографии блюда с анимацией в стиле Drinqit:
- * - Ken Burns: медленный zoom-in при появлении (4s ease-out)
- * - Hover-zoom: плавное увеличение при наведении (0.6s)
- * - Shimmer: эффект загрузки (blur → sharp)
- * - Lazy loading с native loading="lazy"
+ * FoodPhoto — компонент фотографии блюда с анимацией в стиле Drinqit.
+ * 
+ * КЛЮЧЕВОЕ: <img> рендерится ВСЕГДА (в SSR тоже) — для SEO и LCP.
+ * Анимации (ken-burns, shimmer, hover-zoom) работают поверх через CSS-классы.
  */
 export default function FoodPhoto({
   src,
@@ -40,51 +39,31 @@ export default function FoodPhoto({
   overlay,
 }: FoodPhotoProps) {
   const [loaded, setLoaded] = useState(false);
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '50px' }
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div
-      ref={ref}
-      className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className}`}
+      className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className} group`}
     >
-      {/* Shimmer placeholder пока фото не загрузилось */}
-      {!loaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary animate-pulse" />
-      )}
+      {/* Фото рендерится ВСЕГДА — SSR + клиент. Lazy loading через native attribute. */}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
+          loaded ? 'opacity-100' : 'opacity-0'
+        } ${animate ? 'group-hover:scale-110' : ''}`}
+        style={{
+          objectPosition,
+          animation: animate && loaded
+            ? 'kenBurns 4s ease-out both'
+            : undefined,
+        }}
+      />
 
-      {/* Фото с Ken Burns + hover-zoom */}
-      {inView && (
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-all duration-[600ms] ease-out ${
-            loaded ? 'opacity-100' : 'opacity-0'
-          } ${animate ? 'group-hover:scale-110' : ''}`}
-          style={{
-            objectPosition,
-            animation: animate && loaded
-              ? 'kenBurns 4s ease-out both'
-              : undefined,
-          }}
-        />
+      {/* Shimmer placeholder пока фото не загрузилось — поверх, не заменяет <img> */}
+      {!loaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary animate-pulse pointer-events-none" />
       )}
 
       {/* Overlay */}
@@ -94,9 +73,9 @@ export default function FoodPhoto({
         </div>
       )}
 
-      {/* Цена бейдж — по умолчанию в правом нижнем углу */}
+      {/* Градиент для читаемости текста */}
       {loaded && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
       )}
     </div>
   );

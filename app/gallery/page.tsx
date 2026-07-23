@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
-  // Дублируем фото для большего визуального объема
-  const photos = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
+  const photos = GALLERY_IMAGES;
 
   return (
     <main className="pt-24 pb-20">
