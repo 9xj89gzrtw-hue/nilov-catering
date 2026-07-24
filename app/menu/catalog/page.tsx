@@ -61,7 +61,7 @@ export default function CatalogPage() {
       <div className="container-site">
         <h1 className="mb-2">Каталог блюд</h1>
         <p className="text-muted-foreground mb-8">
-          {ALL_DISHES.length} блюд с фото, аллергенами и КБЖУ. Выберите — и мы приготовим под ваше событие.
+          {ALL_DISHES.length} блюд с фото, аллергенами и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия).
         </p>
 
         {/* Search */}

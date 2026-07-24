@@ -5,7 +5,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 export function generateMetadata(): Metadata {
   return {
     title: 'Корпоративы',
-    description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 500 человек.',
+    description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 1500 человек (через сеть партнёрских кухонь).',
     alternates: { canonical: '/events/korporativ' },
   };
 }
@@ -16,7 +16,7 @@ export default function CorporatePage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Корпоративы</h1>
         <p className="text-muted-foreground mb-8">
-          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 500 гостей.
+          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 1500 гостей (через сеть партнёрских кухонь и субподрядных бригад).
         </p>
 
         <TariffOffersSection
@@ -52,7 +52,7 @@ export default function CorporatePage() {
             <div>
               <p className="font-medium mb-1">🛡 SLA в договоре (для событий от 30 гостей (B2B)):</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
-                <li>✓ Punctuality: опоздание ≤15 мин</li>
+                <li>✓ Punctuality: опоздание ≤0 мин (с штрафом 1% за каждую минуту, начиная с 1-й; максимум 30% от суммы заказа)</li>
                 <li>✓ Качество: жалобы ≤5% гостей</li>
                 <li>✓ Компенсация: штраф 5-15% при нарушении</li>
                 <li>✓ Страхование ГО: 5 000 000 ₽ (СОГАЗ/РЕСО)</li>

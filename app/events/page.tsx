@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 const EVENTS = [
-  { title: 'Корпоративы', href: '/events/korporativ', desc: 'Бизнес-ланчи, фуршеты, банкеты для компаний. От 10 до 500 человек.', price: 'от 2 450 ₽/гость', primary: true },
+  { title: 'Корпоративы', href: '/events/korporativ', desc: 'Бизнес-ланчи, фуршеты, банкеты для компаний. От 10 до 1500 человек (через сеть партнёрских кухонь).', price: 'от 2 450 ₽/гость', primary: true },
   { title: 'Свадьбы', href: '/events/svadba', desc: 'Меню, сервировка, торт, флористика. Полный цикл подготовки.', price: 'от 3 950 ₽/гость' },
   { title: 'Выпускные', href: '/events/vypusknoy', desc: 'Фуршеты и банкеты для школ и вузов. B2B: документы для Роспот.', price: 'от 2 450 ₽/гость' },
   { title: 'Частные события', href: '/events/chastnoe', desc: 'Дни рождения, юбилеи, семейные ужины. Дома, на веранде, на крыше.', price: 'от 2 450 ₽/гость' },

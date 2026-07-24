@@ -90,6 +90,12 @@ export default function ContactPage() {
             Для срочных заявок звоните: <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">{SITE.phone}</a>.
           </p>
           <form className="space-y-4" action="/api/contact" method="POST">
+            <input type="hidden" name="source" value="contact-b2c" />
+            {/* Honeypot — невидимое поле для ботов. Реальные пользователи его не видят. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label htmlFor="website-hp">Не заполняйте это поле</label>
+              <input id="website-hp" type="text" name="website" tabIndex={-1} autoComplete="off" />
+            </div>
             {/* B2C fields */}
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
@@ -127,6 +133,8 @@ export default function ContactPage() {
                   <option value="Конференция">Конференция / семинар</option>
                   <option value="Кофе-брейк">Кофе-брейк</option>
                   <option value="Шеф на дом">Шеф на дом</option>
+                  <option value="Поминки">Поминки (поминальный обед)</option>
+                  <option value="Ифтар / Рамадан">Ифтар / Рамадан (халяль)</option>
                   <option value="Доставка еды">Доставка еды</option>
                   <option value="Другое">Другое</option>
                 </select>
@@ -188,7 +196,7 @@ export default function ContactPage() {
             </fieldset>
 
             {/* B2B toggle — open by default для корпоративных клиентов */}
-            <details className="rounded-lg border border-line bg-secondary/30 p-3" open>
+            <details className="rounded-lg border border-line bg-secondary/30 p-3">
               <summary className="text-sm font-medium cursor-pointer">
                 💼 Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
