@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/why-us' },
+  alternates: { canonical: '/why-us', languages: { 'ru': '/', 'en': '/en' } },
   title: 'Почему мы',
   description: 'NiloV Catering — кейтеринг в Петербурге с 2007 года. 3000+ событий. Дмитрий Нилов (шеф), команда 40+ чел. Ресторанное качество по реальной цене.',
 };

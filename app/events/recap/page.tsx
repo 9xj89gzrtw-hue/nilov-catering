@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/events/recap' },
+  alternates: { canonical: '/events/recap', languages: { 'ru': '/', 'en': '/en' } },
   title: 'Кейсы и видео-рекапы событий',
   description:
     'Кейсы и видео-рекапы событий NiloV Catering: свадьбы, корпоративы, халяль-банкеты, детские праздники с медицинскими диетами. Реальные отзывы клиентов.',

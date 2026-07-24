@@ -262,7 +262,7 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
 
         <div className="flex items-center justify-between">
           <span className="text-xs text-gold-text font-semibold">
-            {dish.pricePerGuest} ₽{dish.servingsPerGuest > 1 && `/гость`}
+            {dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span>
           </span>
 
           <div className="flex gap-1 flex-wrap">

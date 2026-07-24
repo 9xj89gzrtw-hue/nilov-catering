@@ -16,7 +16,7 @@ import { SITE } from '@/lib/data';
 import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/' },
+  alternates: { canonical: '/', languages: { 'ru': '/', 'en': '/en' } },
   openGraph: {
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },

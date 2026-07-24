@@ -3,7 +3,7 @@ import { GALLERY_IMAGES } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/gallery' },
+  alternates: { canonical: '/gallery', languages: { 'ru': '/', 'en': '/en' } },
   title: 'Галерея',
   description: 'Фото с наших мероприятий: свадьбы, корпоративы, банкеты, фуршеты, детские праздники. Реальные события NiloV Catering.',
 };

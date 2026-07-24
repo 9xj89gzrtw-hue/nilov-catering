@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/privacy' },
+  alternates: { canonical: '/privacy', languages: { 'ru': '/', 'en': '/en' } },
   title: 'Политика конфиденциальности',
   description:
     'Политика обработки персональных данных ИП Нилов Д.И. в соответствии с 152-ФЗ. Сбор, хранение, использование, передача. СПб.',

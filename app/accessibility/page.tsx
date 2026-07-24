@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/accessibility' },
+  alternates: { canonical: '/accessibility', languages: { 'ru': '/', 'en': '/en' } },
   title: 'Доступность (WCAG 2.2 AA)',
   description: 'Заявление о доступности сайта NiloV Catering. WCAG 2.2 AA. Skip-link, A−/A/A+ переключатель шрифта, prefers-reduced-motion, контраст AA.',
 };
