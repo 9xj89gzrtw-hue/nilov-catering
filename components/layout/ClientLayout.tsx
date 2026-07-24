@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { type ReactNode } from 'react';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 
 export function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -16,6 +17,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.15 }}
       >
+        <Breadcrumbs />
         {children}
       </motion.div>
     </AnimatePresence>

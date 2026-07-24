@@ -72,9 +72,8 @@ export default function Breadcrumbs() {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
 
-  // Не показываем на корне и main-страницах
+  // Не показываем на корне
   if (segments.length === 0) return null;
-  if (['why-us', 'contact', 'faq', 'reviews'].includes(segments[0]) && segments.length === 1) return null;
 
   const crumbs: Crumb[] = [{ label: 'Главная', href: '/' }];
 
