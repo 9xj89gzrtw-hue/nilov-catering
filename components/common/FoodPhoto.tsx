@@ -58,6 +58,7 @@ export default function FoodPhoto({
         src={src}
         alt={alt}
         loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
         className={`absolute inset-0 w-full h-full object-cover ${
           loaded ? 'opacity-100 z-10' : 'foodphoto-ssr-visible'

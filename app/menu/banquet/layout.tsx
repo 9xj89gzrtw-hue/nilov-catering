@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Банкет',
-  description: 'Кейтеринг Банкет в Санкт-Петербурге. Цены, состав, аллергены. Закажите онлайн.',
+  title: 'Банкет — кейтеринг в СПб',
+  description: 'Банкетный кейтеринг в СПб: посадка за стол, официанты, классическая подача. От 3 950 ₽/гость. Свадьбы, корпоративы, юбилеи.',
   alternates: { canonical: '/menu/banquet' },
 };
 

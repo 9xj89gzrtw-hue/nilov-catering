@@ -15,7 +15,7 @@ const STATIONS = [
   { key: 'drinks', label: 'Напитки' },
 ] as const;
 
-const DIETS: Diet[] = ['vegan', 'gluten-free', 'halal'];
+const DIETS: Diet[] = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'];
 
 // 14 обязательных аллергенов ТР ТС 022/2011 / EU 1169/2011
 // Сокращённый набор для UI (топ-6 частых) + expandable для остальных
@@ -408,7 +408,7 @@ export default function MenuBuilder({
                     <button
                       onClick={() => isSelected ? onRemove(dish.id) : onAdd(dish.id)}
                       disabled={isSelected}
-                      className={`text-xs px-2 py-0.5 rounded font-medium transition-colors ${
+                      className={`text-xs px-3 py-1.5 rounded font-medium transition-colors touch-target ${
                         isSelected
                           ? 'bg-muted text-muted-foreground cursor-not-allowed'
                           : 'bg-gold-text text-white hover:bg-gold-text/90'
@@ -508,14 +508,14 @@ export default function MenuBuilder({
                         <button
                           onClick={() => moveItem(idx, -1)}
                           disabled={idx === 0}
-                          className="text-[10px] text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-1"
+                          className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
                           aria-label="Поднять вверх"
                         >▲</button>
                         <div className="text-muted-foreground/40 select-none hidden lg:block cursor-grab" aria-hidden="true">⠿</div>
                         <button
                           onClick={() => moveItem(idx, 1)}
                           disabled={idx === selectedItems.length - 1}
-                          className="text-[10px] text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-1"
+                          className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
                           aria-label="Опустить вниз"
                         >▼</button>
                       </div>
@@ -559,7 +559,7 @@ export default function MenuBuilder({
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => onSetQty(item.dishId, item.qty - 1)}
-                          className="w-6 h-6 rounded-full border border-line flex items-center justify-center text-xs hover:border-gold-text hover:text-gold-text transition-colors"
+                          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
                           aria-label="Уменьшить"
                         >
                           −
@@ -567,7 +567,7 @@ export default function MenuBuilder({
                         <span className="text-xs font-semibold w-5 text-center tabular-nums">{item.qty}</span>
                         <button
                           onClick={() => onSetQty(item.dishId, item.qty + 1)}
-                          className="w-6 h-6 rounded-full border border-line flex items-center justify-center text-xs hover:border-gold-text hover:text-gold-text transition-colors"
+                          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
                           aria-label="Увеличить"
                         >
                           +
@@ -575,7 +575,7 @@ export default function MenuBuilder({
                       </div>
                       <button
                         onClick={() => onRemove(item.dishId)}
-                        className="text-[10px] text-muted-foreground hover:text-destructive transition-colors"
+                        className="text-xs text-muted-foreground hover:text-destructive transition-colors px-2 py-1 touch-target rounded"
                         aria-label="Удалить"
                       >
                         ✕ удалить

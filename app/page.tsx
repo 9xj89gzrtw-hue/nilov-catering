@@ -17,6 +17,9 @@ import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
+  openGraph: {
+    images: [{ url: '/images/gallery/furshet-hero-1920.avif', width: 1920, height: 1080 }],
+  },
 };
 
 export const revalidate = 3600;

@@ -7,15 +7,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '', '/events', '/events/korporativ', '/events/svadba', '/events/chastnoe',
     '/events/detskoe', '/events/vypusknoy', '/events/chef-at-home', '/events/recap',
+    '/events/pominki', '/events/yubiley',
     '/menu', '/menu/furshet', '/menu/banquet', '/menu/coffee-break', '/menu/detskoe',
     '/menu/catalog', '/menu/vegan', '/menu/gluten-free', '/menu/halal',
     '/menu/show-cooking', '/menu/bar',
     '/gallery', '/why-us', '/team', '/reviews', '/seasonal',
+    '/seasonal/bbq', '/seasonal/maslenitsa', '/seasonal/new-year',
     '/plan', '/plan/calculator', '/plan/constructor', '/plan/helper',
-    '/contact', '/faq', '/blog', '/delivery', '/delivery/order', '/certificates', '/venues',
+    '/pricing', '/contact', '/faq', '/blog', '/delivery', '/delivery/order', '/certificates', '/venues',
     '/tasting', '/accessibility', '/help/formats', '/allergens',
-    '/privacy', '/terms', '/cookies',
-    '/en', '/subscribe', '/media-kit', '/careers',
+    '/privacy', '/terms', '/cookies', '/offer',
+    '/en', '/subscribe', '/media-kit', '/careers', '/partners',
   ];
 
   return routes.map((route) => ({

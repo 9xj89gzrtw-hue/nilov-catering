@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Фуршет',
-  description: 'Кейтеринг Фуршет в Санкт-Петербурге. Цены, состав, аллергены. Закажите онлайн.',
+  title: 'Фуршет — кейтеринг в СПб',
+  description: 'Фуршетный кейтеринг в СПб: канапе, тарталетки, мини-бургеры. От 2 450 ₽/гость. 14 аллергенов маркированы. Веган, халяль, БГ-опции.',
   alternates: { canonical: '/menu/furshet' },
 };
 

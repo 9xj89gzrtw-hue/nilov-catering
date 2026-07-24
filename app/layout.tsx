@@ -13,7 +13,7 @@ import CookieBanner from '@/components/layout/CookieBanner';
 import ScrollProgress from '@/components/common/ScrollProgress';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
-import { OrganizationJsonLd, MenuJsonLd } from './JsonLd';
+import { OrganizationJsonLd } from './JsonLd';
 import Analytics from '@/components/layout/Analytics';
 import { getPricing } from '@/lib/cms';
 import './globals.css';
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: { default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`, template: `%s — ${SITE.name}` },
   description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.',
   keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
-  openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name, images: [{ url: SITE.ogImage, width: 1200, height: 630 }] },
+  openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name, images: [{ url: '/og-image.png', width: 1200, height: 630 }] },
   robots: { index: true, follow: true },
 };
 
@@ -35,11 +35,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-screen bg-background text-foreground antialiased">
       <link rel="preconnect" href="https://odaeda.ru" />
       <link rel="preconnect" href="https://yandex.ru" />
-      <link rel="preload" as="image" type="image/avif" href="/images/gallery/furshet-hero-1920.avif" media="(min-width:768px)" />
-      <link rel="preload" as="image" type="image/avif" href="/images/gallery/furshet-hero-768.avif" media="(max-width:767px)" />
         <Analytics />
         <OrganizationJsonLd />
-        <MenuJsonLd />
         <SkipLink />
         <PricingWrapper cmsPricing={cmsPricing}>
           <SmoothScrollProvider>

@@ -6,7 +6,7 @@ import type { Review } from '@/lib/cms-store';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/reviews' },
-  title: 'Отзывы клиентов — NiloV Catering, СПб',
+  title: 'Отзывы клиентов',
   description:
     'Реальные отзывы клиентов NiloV Catering с 2007 года. Свадьбы, корпоративы, юбилеи, детские праздники, халяль, БГ-меню. Средний рейтинг рассчитан из опубликованных отзывов.',
 };

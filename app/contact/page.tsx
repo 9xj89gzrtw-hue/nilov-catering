@@ -110,11 +110,11 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">Имя *</label>
-                <input id="name" type="text" name="name" required className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="name" type="text" name="name" required autoComplete="name" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон *</label>
-                <input id="phone" type="tel" name="phone" required placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="phone" type="tel" name="phone" required inputMode="tel" autoComplete="tel" placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
             </div>
 
@@ -131,7 +131,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
 
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-foreground mb-1">Адрес доставки (или «не определилась»)</label>
-              <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+              <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" autoComplete="street-address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               <p className="text-sm text-muted-foreground mt-1">Нужен для расчёта зоны доставки. В пределах КАД — бесплатно.</p>
             </div>
 
