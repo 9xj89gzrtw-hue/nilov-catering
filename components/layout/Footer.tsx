@@ -9,6 +9,7 @@ const FOOTER_LINKS = {
     { label: 'Выпускные', href: '/events/vypusknoy' },
     { label: 'Юбилеи и годовщины', href: '/events/yubiley' },
     { label: 'Детские праздники', href: '/events/detskoe' },
+    { label: 'Поминки', href: '/events/pominki' },
     { label: 'Выезд шефа', href: '/events/chef-at-home' },
   ],
   Меню: [
@@ -77,14 +78,14 @@ export default function Footer() {
               <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
             ))}
           </div>
-          {/* Rating badge — рассчитан из /reviews (17 отзывов, среднее 4.9). Ссылка на отзывы для верификации. */}
+          {/* Rating badge — рассчитан из /reviews (17 отзывов, среднее 4.8). Ссылка на отзывы для верификации. */}
           <div className="flex items-center gap-4">
             <Link
               href="/reviews"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
               title="Все 17 отзывов с расчётом среднего рейтинга"
             >
-              ★ 4.9 <span className="hidden sm:inline">из 17 отзывов →</span>
+              ★ 4.8 <span className="hidden sm:inline">из 17 отзывов →</span>
             </Link>
           </div>
         </div>

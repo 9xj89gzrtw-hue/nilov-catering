@@ -18,7 +18,7 @@ export const TIER_LABEL: Record<Tier, string> = {
   luxury: 'Максимальный',
 };
 
-export type Diet = 'vegan' | 'gluten-free' | 'halal';
+export type Diet = 'vegan' | 'gluten-free' | 'halal' | 'sugar-free' | 'nut-free';
 
 export type Allergen =
   | 'gluten'

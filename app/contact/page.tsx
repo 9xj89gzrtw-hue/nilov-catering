@@ -190,7 +190,7 @@ export default function ContactPage() {
                 </div>
                 <label className="flex items-center gap-2 text-sm mt-2">
                   <input type="checkbox" name="medicalDiet" />
-                  Медицинская диета (целиакия / анафилаксия) — требуется документированный протокол безопасности
+                  Медицинская диета (целиакия / анафилаксия / сахарный диабет СД1/СД2) — требуется документированный протокол безопасности и обязательная дегустация
                 </label>
               </div>
             </fieldset>

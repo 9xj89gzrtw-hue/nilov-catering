@@ -11,18 +11,31 @@ interface ReviewCard {
   date: string;
 }
 
-const HARDCODED: ReviewCard[] = [
-  { author: 'Анна и Михаил', text: 'Свадьба на 80 гостей с 4 диетами (веган, халяль, БГ, орехи). Дмитрий лично курирует. Безглютеновый торт для тёти-целиакика — отдельное спасибо!', date: 'Сентябрь 2024' },
-  { author: 'Марина К.', text: 'У сына анафилаксия на арахис. Прислали протокол — отдельная зона, EpiPen на руках у менеджера. Праздник прошёл без единого инцидента.', date: 'Май 2024' },
-  { author: 'Сергей П.', text: 'Корпоратив на 50 человек с НДС и ЭДО (Диадок). Бюджет 350к вписали в Стандарт-банкет (273 500 ₽). Счёт-фактура на следующий день.', date: 'Декабрь 2024' },
-];
-
 export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Review[] }) {
-  const reviews: ReviewCard[] = cmsReviews && cmsReviews.length > 0
-    ? cmsReviews.map(r => ({ author: r.clientName, text: r.quote, date: r.date }))
-    : HARDCODED;
+  // Если реальных отзывов нет — показываем заглушку со ссылкой на /reviews.
+  // Никаких захардкоженных фейковых отзывов (как было ранее).
+  const reviews: ReviewCard[] = (cmsReviews || []).map(r => ({
+    author: r.clientName,
+    text: r.quote,
+    date: r.date,
+  }));
 
   const [i, setI] = useState(0);
+
+  if (reviews.length === 0) {
+    return (
+      <section className="py-16 md:py-20 bg-secondary" aria-labelledby="reviews-heading">
+        <div className="container-site max-w-lg mx-auto text-center">
+          <h2 id="reviews-heading" className="mb-6">Отзывы</h2>
+          <p className="text-muted-foreground mb-6">
+            Скоро здесь появятся отзывы наших клиентов. А пока —{' '}
+            <Link href="/reviews" className="underline text-gold-text">посмотрите все 17 отзывов →</Link>
+          </p>
+        </div>
+      </section>
+    );
+  }
+
   const r = reviews[i];
 
   return (

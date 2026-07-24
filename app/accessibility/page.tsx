@@ -69,7 +69,7 @@ export default function AccessibilityPage() {
           <div className="space-y-3">
             <h2 className="font-heading text-xl font-medium text-foreground">⚠ Известные ограничения</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
-              <li>Видео-контент — субтитры в процессе внедрения (план — Q1 2025)</li>
+              <li>Видео-контент — субтитры в процессе внедрения (план — Q3 2026)</li>
               <li>Конструктор меню — интерактивный режим требует JavaScript (есть SSR fallback с формой)</li>
               <li>Галерея — masonry-сетка может быть сложна для навигации скринридером</li>
               <li>Карусель отзывов — переключение требует JS (есть SSR с одним отзывом)</li>

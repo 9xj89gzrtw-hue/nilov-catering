@@ -217,7 +217,7 @@ const PREMIUM_EXTRA: Dish[] = [
   { id: 'gf-cupcakes', name: 'Безглютеновые капкейки', description: 'Миндальная мука, крем-чиз, ягоды. 3 шт/гость. Без пшеничной муки, <20 ppm.', image: '', station: 'desserts', format: ['furshet', 'banket', 'detskoe', 'coffee-break'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 220, servingsPerGuest: 3, allergens: ['eggs', 'milk', 'nuts'], dietBadges: ['gluten-free'], childFriendly: true },
   { id: 'gf-bread', name: 'Безглютеновый хлеб', description: 'Рисовая и миндальная мука, семена подсолнечника и тыквы. Без пшеницы, <20 ppm.', image: '', station: 'cold', format: ['furshet', 'banket', 'coffee-break'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 90, servingsPerGuest: 2, allergens: ['nuts'], dietBadges: ['gluten-free', 'vegan'], childFriendly: true },
   { id: 'gf-pizza', name: 'Безглютеновая мини-пицца (с миндалём)', description: 'Основа из миндальной муки, томаты, моццарелла, базилик. Без пшеничной муки, <20 ppm. СОДЕРЖИТ ОРЕХИ (миндаль).', image: '', station: 'hot', format: ['furshet', 'detskoe'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 240, servingsPerGuest: 2, allergens: ['milk', 'nuts'], dietBadges: ['gluten-free'], childFriendly: true },
-  { id: 'gf-pancakes', name: 'Безглютеновые панкейки', description: 'Рисовая мука, кленовый сироп, ягоды. Без пшеницы, <20 ppm. Детский праздник любимое.', image: '', station: 'desserts', format: ['detskoe', 'furshet'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 180, servingsPerGuest: 2, allergens: ['eggs', 'milk'], dietBadges: ['gluten-free'], childFriendly: true },
+  { id: 'gf-pancakes', name: 'Безглютеновые панкейки', description: 'Рисовая мука, ягодный соус без сахара, свежие ягоды. Без пшеницы, <20 ppm. Детский праздник любимое. Без добавленного сахара — подходит для СД1.', image: '', station: 'desserts', format: ['detskoe', 'furshet'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 180, servingsPerGuest: 2, allergens: ['eggs', 'milk'], dietBadges: ['gluten-free', 'sugar-free'], childFriendly: true },
   { id: 'gf-brownie', name: 'Безглютеновый брауни', description: 'Тёмный шоколад, миндальная мука, какао. Без пшеничной муки. <20 ppm.', image: '', station: 'desserts', format: ['furshet', 'banket', 'coffee-break'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 200, servingsPerGuest: 1, allergens: ['eggs', 'milk', 'nuts'], dietBadges: ['gluten-free'], childFriendly: true },
   { id: 'gf-tart-fruit', name: 'Безглютеновый фруктовый торт', description: 'Основа из миндальной муки, заварной крем, сезонные фрукты. Без пшеницы.', image: '', station: 'desserts', format: ['furshet', 'banket'], tier: ['premium', 'luxury'], pricePerGuest: 280, servingsPerGuest: 1, allergens: ['eggs', 'milk', 'nuts'], dietBadges: ['gluten-free'], childFriendly: true },
   // Полноразмерные пиццы (30 см, 8 кусков)
@@ -259,6 +259,8 @@ export const DIET_FILTERS: Record<string, string> = {
   'vegan': 'Веган',
   'gluten-free': 'Без глютена',
   'halal': 'Халяль (по запросу)',
+  'sugar-free': 'Без сахара (СД1/СД2)',
+  'nut-free': 'Без орехов',
 };
 
 // Формат → список ID для быстрого поиска

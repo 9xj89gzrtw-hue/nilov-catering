@@ -105,7 +105,7 @@ export default function Page() {
           <section>
             <h2 className="font-heading text-xl font-medium mb-3">6. Cookie и аналитика</h2>
             <p className="text-sm leading-relaxed mb-3">
-              6.1. Сайт использует cookie для запоминания корзины,偏好 и аналитики (Яндекс.Метрика).
+              6.1. Сайт использует cookie для запоминания корзины, настроек и аналитики (Яндекс.Метрика).
               См.{' '}
               <a href="/cookies" className="underline">
                 Политику cookie

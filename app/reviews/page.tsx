@@ -14,13 +14,16 @@ export const metadata: Metadata = {
 const REVIEWS: Review[] = reviews as Review[];
 
 // Сортировка: новые сверху (по дате в формате "Месяц Год")
+// ВАЖНО: \w в JavaScript regex без флага /u не поддерживает кириллицу —
+// используем явный Unicode-класс.
 const MONTHS: Record<string, number> = {
   'Январь': 0, 'Февраль': 1, 'Март': 2, 'Апрель': 3, 'Май': 4, 'Июнь': 5,
   'Июль': 6, 'Август': 7, 'Сентябрь': 8, 'Октябрь': 9, 'Ноябрь': 10, 'Декабрь': 11,
 };
 
 function parseDate(s: string): number {
-  const m = s.match(/^(\w+)\s+(\d{4})$/);
+  // Явно поддерживаем кириллические названия месяцев
+  const m = s.match(/^([\u0400-\u04FF\w]+)\s+(\d{4})$/u);
   if (!m) return 0;
   return Number(m[2]) * 100 + (MONTHS[m[1]] ?? 0);
 }
