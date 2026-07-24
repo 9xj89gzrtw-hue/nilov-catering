@@ -147,8 +147,8 @@ function CalculatorServerFallback() {
         <div className="mt-8 p-6 rounded-xl bg-primary text-primary-foreground text-center">
           <h2 className="font-heading text-2xl font-medium mb-2">Готовы точнее?</h2>
           <p className="text-sm mb-4 opacity-90">
-            Интерактивный калькулятор позволяет выбрать формат, гостей и тариф — итог обновляется мгновенно.
-            Или позвоните — рассчитаем за 15 минут.
+            Менеджер рассчитает точную смету под ваш сценарий за 15 минут — с учётом
+            доставки, диет, оборудования и скидок. Или оставьте заявку онлайн.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a

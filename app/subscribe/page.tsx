@@ -27,7 +27,7 @@ export default function SubscribePage() {
             <p className="text-sm text-muted-foreground mb-2">
               4 события × 50 чел × 390 ₽ = 78 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">66 300 ₽/мес</strong>
             </p>
-            <p className="text-xs text-muted-foreground">Ротация меню: 8-недельный цикл без повторов. Сезонные обновления.</p>
+            <p className="text-xs text-muted-foreground">Ротация меню: 8-недельный цикл без повторов. Сезонные обновления. Минимум — 20 сотрудников. Тестовый период — 1 неделя.</p>
           </div>
 
           <div className="p-5 rounded-xl border-2 border-gold-text/40 bg-gold-tint/5">
@@ -47,7 +47,7 @@ export default function SubscribePage() {
               4 обеда × 50 чел × 650 ₽ = 130 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">110 500 ₽/мес</strong>
             </p>
             <p className="text-xs text-muted-foreground">
-              Горячее + салат + суп + напиток. Ротация: 12-недельный цикл.
+              Горячее + салат + суп + напиток. Ротация: 12-недельный цикл. Минимум — 20 сотрудников. Тестовый период — 1 неделя.
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function SubscribePage() {
               со скидкой 20% = <strong className="text-foreground">166 400 ₽/мес</strong>
             </p>
             <p className="text-xs text-muted-foreground">
-              Полный рабочий день питания. Экономия 41 600 ₽/мес vs раздельные заказы.
+              Полный рабочий день питания. Экономия 41 600 ₽/мес vs раздельные заказы. Минимум — 30 сотрудников. Тестовый период — 1 неделя.
             </p>
           </div>
         </div>

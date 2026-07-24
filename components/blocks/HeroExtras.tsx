@@ -12,7 +12,7 @@ export default function HeroExtras() {
             href="/plan/calculator"
             className="rounded-lg border border-gold-text text-gold-text px-5 py-2.5 text-sm font-semibold hover:bg-gold-tint transition-colors"
           >
-            Рассчитать стоимость
+            Узнать цены
           </Link>
           <Link
             href="/plan/helper"

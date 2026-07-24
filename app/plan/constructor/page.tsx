@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/constructor' },
-  title: 'Конструктор меню — соберите кейтеринг под ваше событие',
+  title: 'Заявка на подбор меню — соберите кейтеринг под ваше событие',
   description: 'Соберите меню под ваше событие за 2 минуты. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе.',
 };
 
@@ -76,14 +76,14 @@ function ConstructorServerFallback() {
           {' / '}
           <Link href="/plan" className="hover:text-foreground">Спланировать</Link>
           {' / '}
-          <span className="text-foreground">Конструктор меню</span>
+          <span className="text-foreground">Подбор меню</span>
         </nav>
 
         <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">
-          Конструктор меню
+          Подбор меню
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Соберите меню под ваше событие за 2 минуты. Выберите формат — рассчитаем стоимость и состав instantly.
+          Соберите меню под ваше событие за 2 минуты. Выберите формат — подберём меню под ваш бюджет и диеты.
           Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе с per-group pricing.
         </p>
 
