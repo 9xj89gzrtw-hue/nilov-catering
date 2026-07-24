@@ -29,7 +29,7 @@ export default function GalleryPage() {
                 className="w-full"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-2 md:p-3 z-10">
-                <p className="text-[10px] md:text-xs font-medium text-white">{p.caption}</p>
+                <p className="text-sm font-medium text-white">{p.caption}</p>
               </div>
             </div>
           ))}

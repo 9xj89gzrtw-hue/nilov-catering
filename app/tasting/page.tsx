@@ -21,7 +21,7 @@ export default function TastingPage() {
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">Дегустация</h1>
         <p className="text-muted-foreground mb-4 text-lg">
           Пробуем меню вместе перед событием. Вы выбираете блюда, мы готовим — вы дегустируете и утверждаете.
-          Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, СД1) — обязательно от 1 гостя.
+          Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) — обязательно от 1 гостя.
         </p>
         <p className="text-sm text-muted-foreground mb-8 p-3 rounded-lg bg-blue-50 border border-blue-200">
           📍 <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}

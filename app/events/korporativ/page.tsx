@@ -16,7 +16,7 @@ export default function CorporatePage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Корпоративы</h1>
         <p className="text-muted-foreground mb-8">
-          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (через сеть партнёрских кухонь и субподрядных бригад).
+          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (через сеть партнёрских кухонь и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
         </p>
 
         <TariffOffersSection
