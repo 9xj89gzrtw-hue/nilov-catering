@@ -16,16 +16,16 @@ const TRUST_CLIENTS: {
   id: string;
   name: string;
   status: 'verified' | 'pending';
-  ref?: { event: string; date: string; venue: string };
+  ref?: { event: string; date: string; venue: string; reviewId?: string };
 }[] = [
-  { id: 'c1', name: 'IT-стартап 50 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Декабрь 2024', venue: 'Лофт «Севкабель»' } },
-  { id: 'c2', name: 'Школа №355, 75 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Июнь 2024', venue: 'ГБОУ школа №355' } },
-  { id: 'c3', name: 'Конференция Expoforum, 150 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Октябрь 2024', venue: 'Конгресс-холл «Экспофорум»' } },
-  { id: 'c4', name: 'Свадьба 100 чел', status: 'verified', ref: { event: 'Свадьба', date: 'Июль 2024', venue: 'Загородный отель «Скандинавия»' } },
-  { id: 'c5', name: 'Гимназия №209, 65 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Май 2025', venue: 'Гимназия №209' } },
-  { id: 'c6', name: 'Никях 60 чел (халяль)', status: 'verified', ref: { event: 'Никях', date: 'Август 2025', venue: 'Ресторан «Восток»' } },
-  { id: 'c7', name: 'Конференция 80 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Март 2025', venue: 'Технополис Meta' } },
-  { id: 'c8', name: 'Корпоратив 120 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Октябрь 2025', venue: 'ККТ «Космос»' } },
+  { id: 'c1', name: 'IT-стартап 50 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Декабрь 2024', venue: 'Лофт «Севкабель»', reviewId: 'rev-003' } },
+  { id: 'c2', name: 'Школа №355, 75 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Июнь 2024', venue: 'ГБОУ школа №355', reviewId: 'rev-004' } },
+  { id: 'c3', name: 'Конференция Expoforum, 150 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Октябрь 2024', venue: 'Конгресс-холл «Экспофорум»', reviewId: 'rev-006' } },
+  { id: 'c4', name: 'Свадьба 100 чел', status: 'verified', ref: { event: 'Свадьба', date: 'Июль 2024', venue: 'Загородный отель «Скандинавия»', reviewId: 'rev-010' } },
+  { id: 'c5', name: 'Гимназия №209, 65 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Май 2025', venue: 'Гимназия №209', reviewId: 'rev-012' } },
+  { id: 'c6', name: 'Никях 60 чел (халяль)', status: 'verified', ref: { event: 'Никях', date: 'Август 2025', venue: 'Ресторан «Восток»', reviewId: 'rev-015' } },
+  { id: 'c7', name: 'Конференция 80 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Март 2025', venue: 'Технополис Meta', reviewId: 'rev-011' } },
+  { id: 'c8', name: 'Корпоратив 120 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Октябрь 2025', venue: 'ККТ «Космос»', reviewId: 'rev-016' } },
 ];
 
 export default function TrustBar() {

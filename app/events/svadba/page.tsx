@@ -43,6 +43,16 @@ export default function SvadbaPage() {
           </p>
         </div>
 
+        {/* Remote/Moscow client note */}
+        <div className="mb-6 p-4 rounded-xl border border-blue-200 bg-blue-50/50 text-center">
+          <p className="text-sm text-foreground/90">
+            <span className="font-medium">📍 Невеста из Москвы или другого города?</span> Работаем
+            удалённо: поможем найти площадку в СПб, организуем видеодегустацию по Zoom, согласуем
+            меню через WhatsApp/Telegram. Связь — <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
+            или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
+          </p>
+        </div>
+
         {/* Direct order CTAs */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Link href="/plan/constructor?event=svadba" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">

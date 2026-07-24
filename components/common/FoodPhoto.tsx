@@ -27,12 +27,11 @@ const RATIOS: Record<string, string> = {
  * FoodPhoto — компонент фотографии блюда с анимацией в стиле Drinqit.
  *
  * КЛЮЧЕВОЕ: <img> рендерится ВСЕГДА (в SSR тоже) — для SEO и LCP.
- * Анимации (ken-burns, shimmer, hover-zoom) работают поверх через CSS-классы.
  *
- * ПРОБЛЕМА W14→W18: фото имели opacity-0 в SSR без JS — блогеры и скриншот-боты
- * видели серые placeholder'ы вместо еды. ФИКС: используем CSS animation
- * (fade-in 0.6s), которая работает даже без JS hydration. Если JS загрузился —
- * onLoad переключает на opacity-100 мгновенно (без анимации).
+ * ВАЖНО (W20 fix): shimmer overlay рендерится ТОЛЬКО после client-side
+ * hydration (useEffect → mounted=true). В SSR overlay отсутствует — фото
+ * видно сразу с лёгкой fade-in анимацией. После hydration если фото ещё
+ * не загрузилось — показывается shimmer.
  */
 export default function FoodPhoto({
   src,
@@ -44,6 +43,11 @@ export default function FoodPhoto({
   overlay,
 }: FoodPhotoProps) {
   const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div
@@ -56,7 +60,7 @@ export default function FoodPhoto({
         loading="lazy"
         onLoad={() => setLoaded(true)}
         className={`absolute inset-0 w-full h-full object-cover ${
-          loaded ? 'opacity-100' : 'foodphoto-ssr-visible'
+          loaded ? 'opacity-100 z-10' : 'foodphoto-ssr-visible'
         } ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
         style={{
           objectPosition,
@@ -66,8 +70,9 @@ export default function FoodPhoto({
         }}
       />
 
-      {/* Shimmer placeholder только пока фото загружается (поверх фото) */}
-      {!loaded && (
+      {/* Shimmer overlay только ПОСЛЕ client-side hydration и пока фото не загружилось.
+          В SSR — фото видно сразу, без overlay. */}
+      {mounted && !loaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-muted/80 to-secondary/80 animate-pulse pointer-events-none" />
       )}
 

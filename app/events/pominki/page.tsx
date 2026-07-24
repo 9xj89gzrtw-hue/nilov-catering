@@ -76,6 +76,12 @@ export default function PominkiPage() {
             <li>Чек выдаём на руки. Договор и закрывающие документы — для родных.</li>
             <li>Бюджет: от 1 800 ₽/гость. Минимум — 10 человек.</li>
           </ul>
+          <p className="mt-4 p-3 rounded-lg bg-gold-tint/10 text-sm">
+            <strong>Пример расчёта:</strong> 25 гостей × 1 800 ₽ ={' '}
+            <strong className="text-gold-text">45 000 ₽</strong>. Это базовый расчёт. Финальная
+            смета зависит от выбора блюд (рыбные дороже постных) и адреса доставки. Менеджер
+            пришлёт точную смету после звонка.
+          </p>
         </div>
 
         <div className="mb-8 p-5 rounded-xl border border-gold-text/40 bg-gold-text/5">

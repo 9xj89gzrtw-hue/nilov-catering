@@ -80,7 +80,7 @@ export default function ReviewsPage() {
         {/* Reviews list */}
         <div className="space-y-5">
           {SORTED_REVIEWS.map((r) => (
-            <div key={r.id} className="p-5 rounded-xl border border-line bg-card">
+            <div key={r.id} id={r.id} className="p-5 rounded-xl border border-line bg-card scroll-mt-24">
               <div className="flex items-start justify-between mb-2 flex-wrap gap-2">
                 <div>
                   <p className="font-semibold text-base">{r.clientName}</p>
