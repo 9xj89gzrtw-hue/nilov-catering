@@ -14,6 +14,7 @@ const STATIONS = [
   { key: 'hot', label: 'Горячее' },
   { key: 'desserts', label: 'Десерты' },
   { key: 'drinks', label: 'Напитки' },
+  { key: 'show', label: 'Шоу-станции' },
 ] as const;
 
 const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as const;

@@ -19,9 +19,16 @@ export default function TastingPage() {
         </nav>
 
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">Дегустация</h1>
-        <p className="text-muted-foreground mb-8 text-lg">
+        <p className="text-muted-foreground mb-4 text-lg">
           Пробуем меню вместе перед событием. Вы выбираете блюда, мы готовим — вы дегустируете и утверждаете.
-          Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия) — обязательно от 1 гостя.
+          Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, СД1) — обязательно от 1 гостя.
+        </p>
+        <p className="text-sm text-muted-foreground mb-8 p-3 rounded-lg bg-blue-50 border border-blue-200">
+          📍 <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}
+          <strong>видеодегустацию по Zoom</strong> — шеф покажет готовые блюда, расскажет состав,
+          ответит на вопросы. Для бронирования достаточно видеодегустации. Запись —{' '}
+          <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
+          или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
         </p>
 
         {/* Free/paid block */}
