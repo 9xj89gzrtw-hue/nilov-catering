@@ -18,8 +18,13 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
     <main className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">Контакты</h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-4">
           Позвоните или напишите — подберём решение за 15 минут. Работаем ежедневно с 9:00 до 21:00.
+        </p>
+        <p className="text-xs text-muted-foreground mb-8">
+          📍 Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
+          работаем удалённо через WhatsApp/Telegram, поможем найти площадку в СПб, организуем
+          видеодегустацию по Zoom.
         </p>
 
         {/* Contact cards — large readable */}
@@ -196,6 +201,10 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                     <input type="number" name="groupNutFree" id="groupNutFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
+                    <span className="text-xs text-muted-foreground block mb-1">Без сахара (СД1/СД2)</span>
+                    <input type="number" name="groupSugarFree" id="groupSugarFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
                     <span className="text-xs text-muted-foreground block mb-1">Другая диета / аллергия</span>
                     <input type="number" name="groupOther" id="groupOther" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
@@ -278,7 +287,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                   </label>
                   <label className="flex items-center gap-2 text-sm">
                     <input type="checkbox" name="needSLA" />
-                    Нужен SLA в договоре (метрики punctuality, штрафы, страхование)
+                    Нужен SLA в договоре (метрики доставки, штрафы, страхование)
                   </label>
                   <label className="flex items-center gap-2 text-sm">
                     <input type="checkbox" name="procurement44FZ" />

@@ -32,9 +32,9 @@ export default function CoffeeBreakPage() {
 
         {/* Multi-day conference pricing */}
         <div className="mt-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-xl font-medium mb-3">💼 Многодневные конференции (3+ дня)</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">💼 Многодневные конференции (2+ дня)</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Для конференций 3+ дня — пакетная цена со скидкой 20% + объёмные скидки.
+            Для конференций 2+ дня — пакетная цена со скидкой 20% + объёмные скидки.
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="p-3 rounded-lg border border-line bg-background">
@@ -52,7 +52,7 @@ export default function CoffeeBreakPage() {
           </div>
           <div className="text-sm text-muted-foreground mb-3">
             Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%, от 500 — индивидуально.
-            Многодневные конференции (3+ дня) — дополнительно -20%.
+            Многодневные конференции (2+ дня) — дополнительно -20%.
           </div>
           <div className="rounded-lg border border-line bg-secondary/30 p-4 mb-3">
             <p className="font-medium mb-2">☕ Подписка для офисов</p>

@@ -45,6 +45,41 @@ export default function DetskoeEventPage() {
           </p>
         </div>
 
+        {/* СД1/СД2-протокол */}
+        <div className="mb-8 p-5 rounded-xl border-2 border-purple-300 bg-purple-50">
+          <h2 className="font-heading text-base font-bold text-purple-900 mb-2">💉 Сахарный диабет (СД1/СД2)? Безопасно.</h2>
+          <p className="text-sm text-purple-900 mb-3">
+            <strong>Candy-bar и сладкий стол в пакетах «Стандарт» и «Расширенный» — по умолчанию.</strong>{' '}
+            Для ребёнка с СД1 мы заменяем их на сырно-фруктовую тарелку (брусника, черника,
+            киви, твёрдые сыры — низкий ГИ) или десерты без добавленного сахара (стевия/эритрит).
+          </p>
+          <ul className="text-sm text-purple-900 space-y-1 mb-3 ml-4 list-disc">
+            <li>✓ Расчёт хлебных единиц (ХЕ) на каждое блюдо — 1 ХЕ = 10–12 г углеводов</li>
+            <li>✓ Без добавленного сахара, мёда, фруктозы, сиропов (включая кленовый, агавы)</li>
+            <li>✓ Без скрытых сахаров в соусах (кетчуп, терияки — либо исключаем, либо готовим без сахара)</li>
+            <li>✓ Фрукты с низким ГИ (клубника, киви, черника) — без банана, винограда, дыни</li>
+            <li>✓ Состав БЖУ + ХЕ указываем в карточке блюда и в меню-карте</li>
+            <li>✓ Шеф-кондитер Елена Соколова специализируется на диабетической выпечке</li>
+            <li>✓ Обязательная дегустация для гостя с СД1 — подтверждение состава и расчёта ХЕ</li>
+            <li>✓ Ищите в каталоге блюда со значком <span className="inline-block bg-purple-200 text-purple-800 px-1.5 py-0.5 rounded text-[10px] font-medium">SF</span> (sugar-free)</li>
+          </ul>
+          <p className="text-sm text-purple-900">
+            Укажите «СД1» или «СД2» в заявке. Полный протокол — на странице{' '}
+            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>
+          </p>
+        </div>
+
+        {/* Целиакия-протокол */}
+        <div className="mb-8 p-5 rounded-xl border-2 border-blue-300 bg-blue-50">
+          <h2 className="font-heading text-base font-bold text-blue-900 mb-2">🌾 Целиакия? Безопасно.</h2>
+          <p className="text-sm text-blue-900 mb-3">
+            <strong>Безглютеновое детское меню</strong> на миндальной/рисовой муке — отдельная
+            линия кухни, тестирование &lt;20 ppm (GFCO standard). БГ торт, БГ капкейки, БГ пицца,
+            БГ панкейки без сахара (для СД1). {' '}
+            <Link href="/menu/gluten-free" className="underline font-semibold">БГ-меню →</Link>
+          </p>
+        </div>
+
         {/* Гибрид: дети + взрослые */}
         <div className="mb-8 p-4 rounded-xl border border-gold-tint bg-gold-tint/30">
           <p className="text-sm font-medium mb-1">👨‍👩‍👧‍👦 Нужен и взрослый стол?</p>
