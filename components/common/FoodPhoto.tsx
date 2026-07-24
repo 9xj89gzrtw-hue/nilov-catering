@@ -25,9 +25,14 @@ const RATIOS: Record<string, string> = {
 
 /**
  * FoodPhoto — компонент фотографии блюда с анимацией в стиле Drinqit.
- * 
+ *
  * КЛЮЧЕВОЕ: <img> рендерится ВСЕГДА (в SSR тоже) — для SEO и LCP.
  * Анимации (ken-burns, shimmer, hover-zoom) работают поверх через CSS-классы.
+ *
+ * ПРОБЛЕМА W14→W18: фото имели opacity-0 в SSR без JS — блогеры и скриншот-боты
+ * видели серые placeholder'ы вместо еды. ФИКС: используем CSS animation
+ * (fade-in 0.6s), которая работает даже без JS hydration. Если JS загрузился —
+ * onLoad переключает на opacity-100 мгновенно (без анимации).
  */
 export default function FoodPhoto({
   src,
@@ -50,9 +55,9 @@ export default function FoodPhoto({
         alt={alt}
         loading="lazy"
         onLoad={() => setLoaded(true)}
-        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
-          loaded ? 'opacity-100' : 'opacity-0'
-        } ${animate ? 'group-hover:scale-110' : ''}`}
+        className={`absolute inset-0 w-full h-full object-cover ${
+          loaded ? 'opacity-100' : 'foodphoto-ssr-visible'
+        } ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
         style={{
           objectPosition,
           animation: animate && loaded
@@ -61,9 +66,9 @@ export default function FoodPhoto({
         }}
       />
 
-      {/* Shimmer placeholder пока фото не загрузилось — поверх, не заменяет <img> */}
+      {/* Shimmer placeholder только пока фото загружается (поверх фото) */}
       {!loaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary animate-pulse pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-muted/80 to-secondary/80 animate-pulse pointer-events-none" />
       )}
 
       {/* Overlay */}

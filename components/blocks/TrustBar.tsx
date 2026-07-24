@@ -1,13 +1,31 @@
+import Link from 'next/link';
 import { TrustMarquee } from './TrustMarquee';
 
-// Настоящие categories клиентов
-const TRUST_CLIENTS: { id: string; name: string; status: 'verified' | 'pending'; disclaimer?: string }[] = [
-  { id: 'c1', name: 'IT-компания', status: 'verified' },
-  { id: 'c2', name: 'Федеральный банк', status: 'verified' },
-  { id: 'c3', name: 'Нефтегазовая компания', status: 'verified' },
-  { id: 'c4', name: 'Телеком-оператор', status: 'verified' },
-  { id: 'c5', name: 'Гос. учреждение', status: 'verified' },
-  { id: 'c6', name: 'Медиа-холдинг', status: 'verified' },
+/**
+ * Честные категории клиентов (без выдуманных названий конкретных компаний).
+ *
+ * ВАЖНО: вместо выдуманных "Сбербанк / Газпром / Яндекс" показываем категории
+ * с привязкой к реальным отзывам. Каждая категория подтверждена хотя бы одним
+ * отзывом на /reviews (статус "verified" или "B2B-договор").
+ *
+ * ФИКС W19 (C9): вместо "IT-компания / Федеральный банк / Нефтегазовая"
+ * (placeholder-категории) показываем категории, для которых есть реальные
+ * отзывы с venue/датой/гостями.
+ */
+const TRUST_CLIENTS: {
+  id: string;
+  name: string;
+  status: 'verified' | 'pending';
+  ref?: { event: string; date: string; venue: string };
+}[] = [
+  { id: 'c1', name: 'IT-стартап 50 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Декабрь 2024', venue: 'Лофт «Севкабель»' } },
+  { id: 'c2', name: 'Школа №355, 75 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Июнь 2024', venue: 'ГБОУ школа №355' } },
+  { id: 'c3', name: 'Конференция Expoforum, 150 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Октябрь 2024', venue: 'Конгресс-холл «Экспофорум»' } },
+  { id: 'c4', name: 'Свадьба 100 чел', status: 'verified', ref: { event: 'Свадьба', date: 'Июль 2024', venue: 'Загородный отель «Скандинавия»' } },
+  { id: 'c5', name: 'Гимназия №209, 65 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Май 2025', venue: 'Гимназия №209' } },
+  { id: 'c6', name: 'Никях 60 чел (халяль)', status: 'verified', ref: { event: 'Никях', date: 'Август 2025', venue: 'Ресторан «Восток»' } },
+  { id: 'c7', name: 'Конференция 80 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Март 2025', venue: 'Технополис Meta' } },
+  { id: 'c8', name: 'Корпоратив 120 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Октябрь 2025', venue: 'ККТ «Космос»' } },
 ];
 
 export default function TrustBar() {
@@ -16,16 +34,18 @@ export default function TrustBar() {
       <div className="container-site">
         <h2 className="text-center mb-4">Нам доверяют</h2>
         <p className="text-center text-sm text-muted-foreground mb-8">
-          Более 3 000 мероприятий для крупных компаний и частных клиентов
+          {TRUST_CLIENTS.length} подтверждённых кейсов (из 17 отзывов на /reviews). Конкретные
+          имена корпоративных заказчиков раскрываем только по их согласию — пишите на{' '}
+          <a href="mailto:b2b@odaeda.ru" className="underline">b2b@odaeda.ru</a> для референсов.
         </p>
       </div>
 
       <TrustMarquee clients={TRUST_CLIENTS} />
 
-      <div className="container-site mt-4">
-        <p className="text-xs text-muted-foreground text-center leading-relaxed">
-          Конкретные имена раскрываются при заключении договора
-        </p>
+      <div className="container-site mt-6 text-center">
+        <Link href="/reviews" className="text-xs text-gold-text hover:underline">
+          Посмотреть все 17 отзывов с venue, датой и количеством гостей →
+        </Link>
       </div>
     </section>
   );

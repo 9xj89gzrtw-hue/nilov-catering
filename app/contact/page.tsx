@@ -169,11 +169,11 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
             </div>
 
-            {/* Группы гостей с диетами — для multi-diet заказа */}
-            <fieldset className="rounded-lg border border-line bg-secondary/30 p-3">
-              <legend className="text-sm font-medium px-2">
-                🥗 Несколько групп гостей с разными диетами? (заполните при необходимости)
-              </legend>
+            {/* Группы гостей с диетами — collapsible по умолчанию для простых B2C заявок */}
+            <details className="rounded-lg border border-line bg-secondary/30 p-3">
+              <summary className="text-sm font-medium cursor-pointer">
+                🥗 Несколько групп гостей с разными диетами? (раскройте при необходимости)
+              </summary>
               <p className="text-xs text-muted-foreground mt-2 mb-3">
                 Например: 10 веганов + 8 халяль + 4 без глютена + 1 без орехов + 57 всеядных.
                 Каждая группа получит своё под-меню с фильтром по диете.
@@ -214,7 +214,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                   Медицинская диета (целиакия / анафилаксия / сахарный диабет СД1/СД2) — требуется документированный протокол безопасности и обязательная дегустация
                 </label>
               </div>
-            </fieldset>
+            </details>
 
             {/* B2B toggle — open by default для корпоративных клиентов */}
             <details className="rounded-lg border border-line bg-secondary/30 p-3">
