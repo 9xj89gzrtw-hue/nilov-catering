@@ -127,7 +127,7 @@ function ConstructorServerFallback() {
           {/* Static SSR form for guests (no-JS fallback) */}
           <form className="ml-0 md:ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3" action="/api/quote" method="POST">
             <input type="hidden" name="source" value="constructor-ssr" />
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Кол-во гостей *</span>
                 <input type="number" name="guests" min="6" required placeholder="напр. 25" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
@@ -139,7 +139,7 @@ function ConstructorServerFallback() {
             </div>
             <fieldset className="border border-line rounded p-3">
               <legend className="text-xs font-medium px-2">🥗 Группы гостей по диетам (заполните при необходимости)</legend>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-2">
                 <label className="block">
                   <span className="text-xs text-muted-foreground block mb-1">Всеядные</span>
                   <input type="number" name="groupOmnivore" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
@@ -178,7 +178,20 @@ function ConstructorServerFallback() {
                 </label>
               </div>
             </fieldset>
-            <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block mb-1">
+                <span className="text-xs text-muted-foreground block mb-1">Тариф</span>
+              </label>
+              <select name="tier" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
+                <option value="">Не выбран</option>
+                <option value="economy">Эконом</option>
+                <option value="standard">Стандарт</option>
+                <option value="premium">Расширенный</option>
+                <option value="luxury">Максимальный</option>
+              </select>
+              <p className="text-xs text-muted-foreground mt-1">Цены: Эконом от 390 ₽/гость (кофе-брейк) до 3 950 ₽ (банкет). Максимальный — от 5 950 до 9 950 ₽/гость.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Имя *</span>
                 <input type="text" name="name" required className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />

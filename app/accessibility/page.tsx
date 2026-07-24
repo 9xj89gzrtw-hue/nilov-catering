@@ -71,6 +71,7 @@ export default function AccessibilityPage() {
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Видео-контент — субтитры в процессе внедрения (план — Q3 2026)</li>
               <li>Конструктор меню — интерактивный режим требует JavaScript (есть SSR fallback с формой)</li>
+              <li>Выпадающие меню навигации (События, Меню) требуют JavaScript. Без JS используйте ссылки в подвале сайта или <Link href="/sitemap.xml" className="underline">карту сайта</Link>.</li>
               <li>Галерея — masonry-сетка может быть сложна для навигации скринридером</li>
               <li>Карусель отзывов — переключение требует JS (есть SSR с одним отзывом)</li>
             </ul>

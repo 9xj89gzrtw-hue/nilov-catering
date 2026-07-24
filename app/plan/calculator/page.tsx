@@ -8,7 +8,7 @@ import type { Format } from '@/lib/types';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/calculator' },
-  title: 'Калькулятор стоимости кейтеринга ',
+  title: 'Тарифы и таблицы — кейтеринг СПб',
   description: 'Рассчитайте стоимость кейтеринга . Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Всё включено: еда, персонал, посуда, доставка по КАД.',
 };
 
@@ -62,14 +62,14 @@ function CalculatorServerFallback() {
           {' / '}
           <Link href="/plan" className="hover:text-foreground">Спланировать</Link>
           {' / '}
-          <span className="text-foreground">Калькулятор</span>
+          <span className="text-foreground">Тарифы</span>
         </nav>
 
         <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4 text-center">
-          Калькулятор стоимости
+          Тарифы и таблицы
         </h1>
         <p className="text-lg text-muted-foreground mb-8 text-center">
-          Базовая формула: <strong>гостей × цена за гостя</strong>. Всё включено — еда, персонал, посуда, доставка по КАД.
+          Базовая формула: <strong>гостей × цена за гостя</strong>. Всё включено — еда, персонал, посуда, доставка по КАД. Для точного расчёта под ваш сценарий — <a href="/contact" className="underline text-gold-text">оставьте заявку</a>.
         </p>
 
         {/* Статичная таблица тарифов — видна SSR */}

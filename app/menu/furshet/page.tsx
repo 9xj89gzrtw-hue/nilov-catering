@@ -75,7 +75,7 @@ export default function FurshetPage() {
           {Object.entries(grouped).map(([station, dishes]) => (
             <div key={station} className="mb-10">
               <h3 className="text-lg font-heading font-medium mb-4">{STATION_LABELS[station] || station}</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 {dishes.map(dish => {
                   const colors = ['bg-amber-100', 'bg-rose-100', 'bg-emerald-100', 'bg-sky-100', 'bg-violet-100', 'bg-orange-100', 'bg-pink-100', 'bg-lime-100'];
                   const color = colors[dish.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % colors.length];
