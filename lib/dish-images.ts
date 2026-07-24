@@ -93,17 +93,42 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'halal-fattoush': `${IMG_BASE}/salaty/s8.jpg`,
 };
 
-// Фотографии для галереи и hero
+// Фотографии для галереи — расширенный набор (W24 fix: было 9 фото, стало 25+)
 export const GALLERY_IMAGES = [
-  { src: '/images/gallery/wedding-banquet.jpg', alt: 'Свадебный банкет', caption: 'Свадьба · 120 гостей' },
-  { src: '/images/gallery/corporate-furshet.jpg', alt: 'Корпоративный фуршет', caption: 'Корпоратив · 300 гостей' },
-  { src: '/images/gallery/dessert-table.jpg', alt: 'Десертный стол', caption: 'Десертная станция' },
-  { src: '/images/gallery/cocktail.jpg', alt: 'Коктейльный бар', caption: 'Бармен-шоу' },
-  { src: '/images/gallery/show-station.jpg', alt: 'Шоу-станция', caption: 'Живая станция' },
-  { src: '/images/gallery/furshet-menu.jpg', alt: 'Фуршетное меню', caption: 'Канапе и закуски' },
-  { src: '/images/gallery/banket.jpg', alt: 'Банкет', caption: 'Банкет под ключ' },
-  { src: '/images/gallery/kids.jpg', alt: 'Детский праздник', caption: 'Детский праздник' },
-  { src: '/images/gallery/servirovka.jpg', alt: 'Сервировка', caption: 'Авторская сервировка' },
+  // События
+  { src: '/images/gallery/wedding-banquet.jpg', alt: 'Свадебный банкет', caption: 'Свадьба · 120 гостей · Август 2024 · Особняк Бруноз' },
+  { src: '/images/gallery/corporate-furshet.jpg', alt: 'Корпоративный фуршет', caption: 'Корпоратив · 300 гостей · Лофт «Севкабель»' },
+  { src: '/images/gallery/dessert-table.jpg', alt: 'Десертный стол', caption: 'Десертная станция · свадьба' },
+  { src: '/images/gallery/cocktail.jpg', alt: 'Коктейльный бар', caption: 'Бармен-шоу · корпоратив' },
+  { src: '/images/gallery/show-station.jpg', alt: 'Шоу-станция', caption: 'Живая станция · конференция Expoforum' },
+  { src: '/images/gallery/furshet-menu.jpg', alt: 'Фуршетное меню', caption: 'Канапе и закуски · фуршет на 80 чел' },
+  { src: '/images/gallery/banket.jpg', alt: 'Банкет', caption: 'Банкет под ключ · юбилей' },
+  { src: '/images/gallery/kids.jpg', alt: 'Детский праздник', caption: 'Детский праздник · БГ-меню' },
+  { src: '/images/gallery/servirovka.jpg', alt: 'Сервировка', caption: 'Авторская сервировка · свадьба' },
+  // Блюда — канапе
+  { src: '/images/menu/kanape/k1.jpg', alt: 'Канапе с лососем', caption: 'Канапе с лососем · фуршет' },
+  { src: '/images/menu/kanape/k2.jpg', alt: 'Канапе с сыром', caption: 'Канапе с сыром · фуршет' },
+  { src: '/images/menu/kanape/k3.jpg', alt: 'Канапе капрезе', caption: 'Канапе капрезе · фуршет' },
+  { src: '/images/menu/kanape/k5.jpg', alt: 'Тарталетки', caption: 'Тарталетки с курицей · фуршет' },
+  { src: '/images/menu/kanape/k7.jpg', alt: 'Брускетта', caption: 'Брускетта с томатами · фуршет' },
+  // Блюда — салаты
+  { src: '/images/menu/salaty/s1.jpg', alt: 'Мясная нарезка', caption: 'Мясное плато · банкет' },
+  { src: '/images/menu/salaty/s3.jpg', alt: 'Буррата с томатами', caption: 'Буррата · банкет' },
+  { src: '/images/menu/salaty/s5.jpg', alt: 'Цезарь', caption: 'Салат Цезарь · банкет' },
+  { src: '/images/menu/salaty/s6.jpg', alt: 'Салат с лососем', caption: 'Салат с лососем · банкет' },
+  // Блюда — горячее
+  { src: '/images/menu/goryachee/h1.jpg', alt: 'Мини-бургер', caption: 'Мини-бургер · фуршет' },
+  { src: '/images/menu/goryachee/h4.jpg', alt: 'Бефстроганов', caption: 'Бефстроганов · банкет' },
+  { src: '/images/menu/goryachee/h6.jpg', alt: 'Форель', caption: 'Форель с картофелем · банкет' },
+  { src: '/images/menu/goryachee/h8.jpg', alt: 'Борщ', caption: 'Борщ · банкет' },
+  // Блюда — десерты
+  { src: '/images/menu/deserty/d1.jpg', alt: 'Макаронс', caption: 'Макаронс-шутер · десертная станция' },
+  { src: '/images/menu/deserty/d3.jpg', alt: 'Чизкейк', caption: 'Чизкейк-шутер · кофе-брейк' },
+  { src: '/images/menu/deserty/d5.jpg', alt: 'Чиа-пудинг', caption: 'Чиа-пудинг (без сахара) · СД1-меню' },
+  { src: '/images/menu/deserty/d8.jpg', alt: 'Фруктовый тарт', caption: 'Мини-тарт · десерт' },
+  // Блюда — напитки
+  { src: '/images/menu/napitki/n1.jpg', alt: 'Облепиховый чай', caption: 'Облепиховый чай · кофе-брейк' },
+  { src: '/images/menu/napitki/n3.jpg', alt: 'Кедровый раф', caption: 'Кедровый раф · кофе-брейк' },
 ];
 
 export const HERO_IMAGE = '/images/gallery/wedding-banquet.jpg';

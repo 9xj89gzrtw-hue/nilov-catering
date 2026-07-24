@@ -52,7 +52,7 @@ export default function Footer() {
             <input type="email" name="email" placeholder="Ваш email" required className="flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
             <button type="submit" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">Подписаться</button>
           </form>
-          <p className="mt-2 text-xs text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>
+          <p className="mt-2 text-sm text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>
         </div>
 
         {/* Link columns */}
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-muted-foreground">
           <Link href="/privacy" className="hover:text-foreground transition-colors">Политика</Link>
           <Link href="/terms" className="hover:text-foreground transition-colors">Условия</Link>
           <Link href="/cookies" className="hover:text-foreground transition-colors">Cookies</Link>
@@ -111,7 +111,7 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground mt-1">
             {SITE.legalAddress}
           </p>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="text-sm text-muted-foreground mt-2">
             Бренд {SITE.name} работает с 2007 года. ИП Нилов Д.И. зарегистрирован в 2014 (перерегистрация с ранее действовавшей формы). Документы и договор — по запросу{' '}
             <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground">{SITE.email}</a>
             {' · '}
@@ -119,7 +119,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <p className="mt-4 text-center text-xs text-muted-foreground">
+        <p className="mt-4 text-center text-sm text-muted-foreground">
           Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции». Маркировка 14 аллергенов по ТР ТС 022/2011 Приложение 3.
         </p>
       </div>
