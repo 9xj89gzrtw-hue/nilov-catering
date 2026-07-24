@@ -20,6 +20,29 @@ export default function SvadbaPage() {
           <p className="text-xs text-muted-foreground">Цены ориентировочные. Итоговая смета — после дегустации и выбора площадки.</p>
         </div>
 
+        {/* Multi-diet callout — для невест с разными диетами среди гостей */}
+        <div className="mb-6 p-5 rounded-xl border-2 border-emerald-300 bg-emerald-50 text-center">
+          <h2 className="font-heading text-base font-medium mb-2">🥬 Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
+          <p className="text-sm text-foreground/90 mb-3">
+            Да! В конструкторе меню есть режим «Несколько групп гостей». Каждая группа получает
+            своё под-меню с фильтром по диете. Например, свадьба на 80: 10 веганов + 8 халяль +
+            4 БГ + 1 без орехов + 57 всеядных. Per-group pricing — платите только за блюда своей группы.
+          </p>
+          <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            Собрать свадебное меню с разными диетами →
+          </Link>
+        </div>
+
+        {/* Vegan wedding cake callout */}
+        <div className="mb-6 p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 text-center">
+          <p className="text-sm text-foreground/90">
+            <span className="font-medium">Веганский свадебный торт?</span> Да — отдельная выпечка
+            на миндальной/рисовой муке с кокосовыми сливками. Также: БГ-торт (&lt;20 ppm),
+            без-сахара торт (для СД1, на стевии). Цены — от 1 200 ₽/кг.{' '}
+            <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню →</Link>
+          </p>
+        </div>
+
         {/* Direct order CTAs */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Link href="/plan/constructor?event=svadba" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">

@@ -16,7 +16,7 @@ const STATIONS = [
   { key: 'drinks', label: 'Напитки' },
 ] as const;
 
-const DIETS = ['vegan', 'gluten-free', 'halal'] as const;
+const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as const;
 
 export default function CatalogPage() {
   const [search, setSearch] = useState('');
@@ -228,6 +228,8 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
             {dish.dietBadges.includes('vegan') && <Badge label="VG" color="green" />}
             {dish.dietBadges.includes('gluten-free') && <Badge label="GF" color="amber" />}
             {dish.dietBadges.includes('halal') && <Badge label="H" color="blue" />}
+            {dish.dietBadges.includes('sugar-free') && <Badge label="SF" color="purple" />}
+            {dish.dietBadges.includes('nut-free') && <Badge label="NF" color="red" />}
             {dish.childFriendly && <Badge label="Дети" color="purple" />}
           </div>
         </div>

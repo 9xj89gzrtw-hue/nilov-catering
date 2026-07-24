@@ -120,20 +120,20 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
               <div>
                 <label htmlFor="guests" className="block text-sm font-medium text-foreground mb-1">Кол-во гостей</label>
-                <input id="guests" type="number" name="guests" min="1" placeholder="напр. 50" defaultValue={preGuests} className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="guests" type="number" name="guests" min="1" placeholder="напр. 50" defaultValue={preGuests} data-prefill="guests" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
             </div>
 
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-foreground mb-1">Адрес доставки (или «не определилась»)</label>
-              <input id="address" type="text" name="address" defaultValue={preAddress} placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+              <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               <p className="text-xs text-muted-foreground mt-1">Нужен для расчёта зоны доставки. В пределах КАД — бесплатно.</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="eventType" className="block text-sm font-medium text-foreground mb-1">Тип события</label>
-                <select id="eventType" name="eventType" defaultValue={preEventType} className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+                <select id="eventType" name="eventType" defaultValue={preEventType} data-prefill="eventType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
                   <option value="">Выберите...</option>
                   <option value="Свадьба">Свадьба</option>
                   <option value="Корпоратив">Корпоратив</option>
@@ -152,7 +152,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
               <div>
                 <label htmlFor="format" className="block text-sm font-medium text-foreground mb-1">Формат</label>
-                <select id="format" name="format" defaultValue={preFormat} className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+                <select id="format" name="format" defaultValue={preFormat} data-prefill="format" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
                   <option value="">Не определились</option>
                   <option value="Фуршет">Фуршет (стоя, закуски)</option>
                   <option value="Банкет">Банкет (посадка, официанты)</option>
@@ -331,6 +331,35 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
           </div>
         </div>
       </div>
+
+      {/* Pre-fill form fields from URL search params (client-side, for static export compatibility) */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){
+            try {
+              var sp = new URLSearchParams(window.location.search);
+              var fields = ['eventType', 'format', 'guests', 'address'];
+              fields.forEach(function(name) {
+                var val = sp.get(name);
+                if (!val) return;
+                var el = document.querySelector('[data-prefill="' + name + '"]');
+                if (!el) return;
+                if (el.tagName === 'SELECT') {
+                  // For select, set value if option exists
+                  for (var i = 0; i < el.options.length; i++) {
+                    if (el.options[i].value === val) {
+                      el.value = val;
+                      break;
+                    }
+                  }
+                } else {
+                  el.value = val;
+                }
+              });
+            } catch (e) { /* silent */ }
+          })();`,
+        }}
+      />
     </main>
   );
 }

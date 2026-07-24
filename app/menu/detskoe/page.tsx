@@ -34,6 +34,15 @@ export default function DetskoePage() {
             Безглютеновое детское меню доступно на <Link href="/menu/gluten-free" className="underline font-semibold">/menu/gluten-free</Link>.
             Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
           </p>
+          <p className="text-sm text-amber-900 mb-3">
+            <strong>💉 Сахарный диабет (СД1/СД2)?</strong> По умолчанию candy-bar / сладкий стол
+            включены в пакеты «Стандарт» и «Расширенный». Для ребёнка с СД1 мы заменяем их на
+            сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
+            десерты без добавленного сахара (стевия/эритрит). Ищите в каталоге блюда со значком{' '}
+            <span className="inline-block bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded text-[10px] font-medium">SF</span>{' '}
+            (sugar-free). Полный протокол — на странице{' '}
+            <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
+          </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
               Собрать детское меню в конструкторе →
@@ -84,6 +93,8 @@ export default function DetskoePage() {
                   <div className="flex gap-1">
                     {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium">VG</span>}
                     {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">GF</span>}
+                    {dish.dietBadges.includes('sugar-free') && <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded font-medium" title="Без добавленного сахара — подходит для СД1/СД2">SF</span>}
+                    {dish.dietBadges.includes('nut-free') && <span className="text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-medium" title="Без орехов — для анафилаксии">NF</span>}
                   </div>
                 </div>
               </div>
