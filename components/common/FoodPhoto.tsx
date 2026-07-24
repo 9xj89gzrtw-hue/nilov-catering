@@ -28,10 +28,9 @@ const RATIOS: Record<string, string> = {
  *
  * КЛЮЧЕВОЕ: <img> рендерится ВСЕГДА (в SSR тоже) — для SEO и LCP.
  *
- * ВАЖНО (W20 fix): shimmer overlay рендерится ТОЛЬКО после client-side
- * hydration (useEffect → mounted=true). В SSR overlay отсутствует — фото
- * видно сразу с лёгкой fade-in анимацией. После hydration если фото ещё
- * не загрузилось — показывается shimmer.
+ * W36: мигрирован на <picture> с AVIF + WebP + JPG fallback.
+ * AVIF/WebP варианты генерируются из JPG через sharp при сборке.
+ * Если AVIF/WebP файла нет — браузер использует JPG fallback.
  */
 export default function FoodPhoto({
   src,
@@ -49,30 +48,39 @@ export default function FoodPhoto({
     setMounted(true);
   }, []);
 
+  // Generate AVIF and WebP paths from JPG src
+  const avifSrc = src.replace(/\.jpg$|\.jpeg$/i, '.avif');
+  const webpSrc = src.replace(/\.jpg$|\.jpeg$/i, '.webp');
+
   return (
     <div
       className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className} group`}
     >
-      {/* Фото рендерится ВСЕГДА — SSR + клиент. Lazy loading через native attribute. */}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-        className={`absolute inset-0 w-full h-full object-cover ${
-          loaded ? 'opacity-100 z-10' : 'foodphoto-ssr-visible'
-        } ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
-        style={{
-          objectPosition,
-          animation: animate && loaded
-            ? 'kenBurns 4s ease-out both'
-            : undefined,
-        }}
-      />
+      <picture>
+        {/* AVIF — best compression, modern browsers */}
+        <source srcSet={avifSrc} type="image/avif" />
+        {/* WebP — good compression, wider support */}
+        <source srcSet={webpSrc} type="image/webp" />
+        {/* JPG fallback — universal */}
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover ${
+            loaded ? 'opacity-100 z-10' : 'foodphoto-ssr-visible'
+          } ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
+          style={{
+            objectPosition,
+            animation: animate && loaded
+              ? 'kenBurns 4s ease-out both'
+              : undefined,
+          }}
+        />
+      </picture>
 
-      {/* Shimmer overlay только ПОСЛЕ client-side hydration и пока фото не загружилось.
-          В SSR — фото видно сразу, без overlay. */}
+      {/* Shimmer overlay только ПОСЛЕ client-side hydration и пока фото не загружилось. */}
       {mounted && !loaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-muted/80 to-secondary/80 animate-pulse pointer-events-none" />
       )}

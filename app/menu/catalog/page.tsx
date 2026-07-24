@@ -101,7 +101,7 @@ export default function CatalogPage() {
             <button
               key={s.key}
               onClick={() => setStation(s.key)}
-              className={`rounded-full border px-4 py-1.5 text-xs transition-colors ${
+              className={`rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
                 station === s.key
                   ? 'border-gold-text bg-gold-tint text-gold-text'
                   : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
@@ -119,7 +119,7 @@ export default function CatalogPage() {
               key={d}
               onClick={() => toggleDiet(d)}
               aria-pressed={activeDiets.has(d)}
-              className={`rounded-full border px-4 py-1.5 text-xs transition-colors ${
+              className={`rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
                 activeDiets.has(d)
                   ? 'border-gold-text bg-gold-tint text-gold-text'
                   : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
@@ -138,7 +138,7 @@ export default function CatalogPage() {
               key={a.key}
               onClick={() => toggleAllergen(a.key)}
               aria-pressed={excludedAllergens.has(a.key)}
-              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+              className={`rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
                 excludedAllergens.has(a.key)
                   ? 'border-destructive bg-destructive/10 text-destructive font-medium'
                   : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'

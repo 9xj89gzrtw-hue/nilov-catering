@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   title: { default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`, template: `%s — ${SITE.name}` },
   description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.',
   keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
+  alternates: { languages: { 'ru': '/', 'en': '/en' } },
   openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name, images: [{ url: '/og-image.png', width: 1200, height: 630 }] },
   robots: { index: true, follow: true },
 };

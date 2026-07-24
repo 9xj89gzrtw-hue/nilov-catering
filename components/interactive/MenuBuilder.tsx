@@ -345,6 +345,10 @@ export default function MenuBuilder({
                 key={dish.id}
                 draggable
                 onDragStart={e => handleCatalogDragStart(e, dish.id)}
+                role="button"
+                tabIndex={0}
+                aria-label={`${dish.name}, ${dish.pricePerGuest} ₽. Нажмите Enter чтобы добавить в меню.`}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isSelected) onAdd(dish.id); } }}
                 className={`rounded-xl border bg-card overflow-hidden transition-all cursor-grab active:cursor-grabbing ${
                   isSelected
                     ? 'border-gold-text ring-1 ring-gold-text opacity-60'
@@ -404,7 +408,7 @@ export default function MenuBuilder({
                     </div>
                   )}
                   <div className="flex items-center justify-between gap-1">
-                    <span className="text-[11px] text-gold-text font-semibold whitespace-nowrap">{dish.pricePerGuest} ₽</span>
+                    <span className="text-[11px] text-gold-text font-semibold whitespace-nowrap">{dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span></span>
                     <button
                       onClick={() => isSelected ? onRemove(dish.id) : onAdd(dish.id)}
                       disabled={isSelected}
@@ -476,7 +480,7 @@ export default function MenuBuilder({
           <div className="text-center py-12">
             <div className="text-4xl mb-3 opacity-50">🍽️</div>
             <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
-            <p className="text-[10px] text-muted-foreground/70 mt-2">💡 На мобильном — просто нажмите «+ Добавить»</p>
+            <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Перетащите блюдо в корзину или нажмите «+ Добавить». На мобильном работают кнопки ▲▼.</p>
           </div>
         ) : (
           <ul className="space-y-2">
@@ -495,6 +499,8 @@ export default function MenuBuilder({
                   onDragEnd={handleCartDragEnd}
                   onDragOver={e => handleCartDragOver(e, idx)}
                   onDrop={e => { e.stopPropagation(); handleCartDrop(e, idx); }}
+                  role="listitem"
+                  aria-label={`Блюдо ${idx + 1}: ${dish.name}. Используйте кнопки вверх/вниз для перестановки.`}
                   className={`rounded-xl border bg-card p-2.5 transition-all ${
                     isDragging ? 'opacity-40' : ''
                   } ${
