@@ -50,8 +50,9 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile (sm only): phone-icon visible + burger */}
+        {/* Mobile (sm only): phone-icon visible + burger + A+ */}
         <div className="flex md:hidden items-center gap-1 shrink-0">
+          <TextSizeToggle />
           <a
             href={`tel:${SITE.phoneTel}`}
             className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"

@@ -21,7 +21,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
         <p className="text-muted-foreground mb-4">
           Позвоните или напишите — подберём решение за 15 минут. Работаем ежедневно с 9:00 до 21:00.
         </p>
-        <p className="text-xs text-muted-foreground mb-8">
+        <p className="text-sm text-muted-foreground mb-8">
           📍 Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
           работаем удалённо через WhatsApp/Telegram, поможем найти площадку в СПб, организуем
           видеодегустацию по Zoom.
@@ -43,9 +43,9 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors no-underline"
             >
               <span className="text-3xl block mb-1" aria-hidden="true">{c.icon}</span>
-              <p className="text-xs text-muted-foreground">{c.label}</p>
+              <p className="text-sm text-muted-foreground">{c.label}</p>
               <p className="text-base font-semibold text-foreground">{c.value}</p>
-              <p className="text-xs text-muted-foreground mt-1">{c.sub}</p>
+              <p className="text-sm text-muted-foreground mt-1">{c.sub}</p>
             </a>
           ))}
         </div>
@@ -57,7 +57,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <span className="text-2xl" aria-hidden="true">📍</span>
               <div>
                 <p className="text-sm font-semibold">{SITE.legalAddress}</p>
-                <p className="text-xs text-muted-foreground mt-1">Производство: м. Василеостровская. Доставка: КАД — бесплатно, за КАД — от 3 000 ₽.</p>
+                <p className="text-sm text-muted-foreground mt-1">Производство: м. Василеостровская. Доставка: КАД — бесплатно, за КАД — от 3 000 ₽.</p>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <span className="text-2xl" aria-hidden="true">🕐</span>
               <div>
                 <p className="text-sm font-semibold">Ежедневно 9:00–21:00</p>
-                <p className="text-xs text-muted-foreground mt-1">Заявки через сайт принимаем круглосуточно. События — в любой день недели.</p>
+                <p className="text-sm text-muted-foreground mt-1">Заявки через сайт принимаем круглосуточно. События — в любой день недели.</p>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             <dt className="text-muted-foreground">ОГРНИП:</dt>
             <dd className="font-mono">{SITE.ogrnip}</dd>
           </dl>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="text-sm text-muted-foreground mt-2">
             Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru →</a>
             {' · '}
             <Link href="/certificates" className="text-gold-text hover:underline">все сертификаты →</Link>
@@ -132,7 +132,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-foreground mb-1">Адрес доставки (или «не определилась»)</label>
               <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
-              <p className="text-xs text-muted-foreground mt-1">Нужен для расчёта зоны доставки. В пределах КАД — бесплатно.</p>
+              <p className="text-sm text-muted-foreground mt-1">Нужен для расчёта зоны доставки. В пределах КАД — бесплатно.</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
@@ -174,7 +174,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <summary className="text-sm font-medium cursor-pointer">
                 🥗 Несколько групп гостей с разными диетами? (раскройте при необходимости)
               </summary>
-              <p className="text-xs text-muted-foreground mt-2 mb-3">
+              <p className="text-sm text-muted-foreground mt-2 mb-3">
                 Например: 10 веганов + 8 халяль + 4 без глютена + 1 без орехов + 57 всеядных.
                 Каждая группа получит своё под-меню с фильтром по диете.
               </p>
@@ -221,7 +221,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <summary className="text-sm font-medium cursor-pointer">
                 💼 Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
-              <p className="text-xs text-muted-foreground mt-2 mb-3">
+              <p className="text-sm text-muted-foreground mt-2 mb-3">
                 Для корпоративов, школ, учреждений, гос. заказчиков (44-ФЗ, 223-ФЗ).
                 ИП Нилов Д.И. — УСН (без НДС). Для плательщиков НДС — работаем через партнёрское ООО (по запросу).
                 ЭДО: Контур.Диадок, СБИС.
@@ -315,7 +315,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             >
               Отправить заявку
             </button>
-            <p className="text-xs text-muted-foreground text-center">
+            <p className="text-sm text-muted-foreground text-center">
               Менеджер перезвонит ≤15 минут в рабочее время. Нажимая кнопку, вы соглашаетесь с{' '}
               <Link href="/privacy" className="underline hover:text-foreground">политикой конфиденциальности (152-ФЗ)</Link>.
             </p>

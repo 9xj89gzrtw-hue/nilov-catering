@@ -36,7 +36,7 @@ export default function TastingPage() {
           <h2 className="font-heading text-lg font-medium mb-3">💸 Стоимость дегустации</h2>
           <ul className="text-sm space-y-2">
             <li>✓ <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
-            <li>✓ <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия) от 1 гостя</li>
+            <li>✓ <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
             <li>✓ <strong>1 500 ₽</strong> — для событий до 30 гостей (3 блюда на выбор)</li>
             <li>✓ <strong>3 000 ₽</strong> — расширенная дегустация (6 блюд + вино pairing)</li>
             <li>✓ <strong>От 5 000 ₽</strong> — выезд к вам (выездные расходы)</li>
