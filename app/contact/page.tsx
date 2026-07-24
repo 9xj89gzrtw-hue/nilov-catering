@@ -205,13 +205,51 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                     <input type="number" name="groupSugarFree" id="groupSugarFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
+                    <span className="text-sm text-muted-foreground block mb-1">Без молока (анафилаксия)</span>
+                    <input type="number" name="groupDairyFree" id="groupDairyFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
+                    <span className="text-sm text-muted-foreground block mb-1">Без яиц (анафилаксия)</span>
+                    <input type="number" name="groupEggFree" id="groupEggFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
+                  </label>
+                  <label className="block">
                     <span className="text-sm text-muted-foreground block mb-1">Другая диета / аллергия</span>
                     <input type="number" name="groupOther" id="groupOther" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                 </div>
                 <label className="flex items-center gap-2 text-sm mt-2">
                   <input type="checkbox" name="medicalDiet" />
-                  Медицинская диета (целиакия / анафилаксия / сахарный диабет СД1/СД2) — требуется документированный протокол безопасности и обязательная дегустация
+                  Медицинская диета (целиакия / анафилаксия / сахарный диабет СД1/СД2 / анафилаксия на молоко/яйца) — требуется документированный протокол безопасности и обязательная дегустация
+                </label>
+              </div>
+            </details>
+
+            {/* Multi-session / recurring orders */}
+            <details className="rounded-lg border border-line bg-secondary/30 p-3">
+              <summary className="text-sm font-medium cursor-pointer">
+                📅 Многодневное мероприятие или регулярные заказы? (раскройте при необходимости)
+              </summary>
+              <p className="text-sm text-muted-foreground mt-2 mb-3">
+                Для конференций (2+ дня), еженедельных офисных обедов, серий мероприятий —
+                укажите расписание сессий. Менеджер составит комплексную смету со скидкой до 20%.
+              </p>
+              <div className="space-y-2">
+                <label className="block">
+                  <span className="text-sm text-muted-foreground block mb-1">Тип заказа</span>
+                  <select name="orderType" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
+                    <option value="single">Разовое событие</option>
+                    <option value="multi-day">Многодневная конференция (2+ дня)</option>
+                    <option value="recurring-weekly">Еженедельные обеды/кофе-брейки</option>
+                    <option value="recurring-monthly">Ежемесячные мероприятия</option>
+                  </select>
+                </label>
+                <label className="block">
+                  <span className="text-sm text-muted-foreground block mb-1">Количество сессий/дней</span>
+                  <input type="number" name="sessionCount" min="1" placeholder="напр. 6 кофе-брейков × 2 дня" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-sm text-muted-foreground block mb-1">Расписание (опционально)</span>
+                  <textarea name="schedule" rows={2} placeholder="напр. День 1: 10:00 кофе-брейк, 13:00 обед, 15:00 кофе-брейк. День 2: ..." className="w-full rounded border border-line bg-background px-3 py-2 text-sm resize-none" />
                 </label>
               </div>
             </details>

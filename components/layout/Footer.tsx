@@ -22,6 +22,7 @@ const FOOTER_LINKS = {
     { label: 'Калькулятор', href: '/plan/calculator' },
     { label: 'Конструктор меню', href: '/plan/constructor' },
     { label: 'Помощник', href: '/plan/helper' },
+    { label: 'Подписка на обеды', href: '/subscribe' },
     { label: 'FAQ', href: '/faq' },
   ],
   Компания: [

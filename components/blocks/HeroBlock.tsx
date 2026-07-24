@@ -154,6 +154,13 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             </span>
           </div>
 
+          {/* Quick format glossary for first-time buyers */}
+          <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6 animate-fade-up text-xs text-muted-foreground" style={{ animationDelay: '0.28s' }}>
+            <span><strong className="text-foreground/80">Фуршет</strong> — гости стоят, закуски руками</span>
+            <span><strong className="text-foreground/80">Банкет</strong> — посадка за стол, официанты</span>
+            <span><strong className="text-foreground/80">Кофе-брейк</strong> — перерыв на конференции</span>
+          </div>
+
           {/* ONE strong CTA + ONE secondary (instead of 3 CTAs) */}
           <div className="flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <Link

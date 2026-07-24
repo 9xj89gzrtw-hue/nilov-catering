@@ -184,6 +184,33 @@ export default function Page() {
           </p>
         </div>
 
+        {/* Анафилаксия на молоко/яйца — протокол */}
+        <div className="mb-8 p-6 rounded-2xl border-2 border-orange-200 bg-orange-50">
+          <h2 className="font-heading text-xl font-medium mb-3">
+            🥛🥚 Анафилаксия на молоко и/или яйца
+          </h2>
+          <p className="text-sm text-foreground mb-3">
+            Анафилаксия на молочный белок (казеин, сыворотка) и яичный белок — одни из самых
+            распространённых пищевых аллергий у детей. Протокол безопасности аналогичен
+            ореховой анафилаксии:
+          </p>
+          <ul className="text-sm text-foreground space-y-1.5 mb-3">
+            <li>✓ <span className="font-medium">Отдельная смена приготовления</span> — без пересечения с блюдами, содержащими молоко/яйца</li>
+            <li>✓ <span className="font-medium">Отдельная зона кухни</span> с оранжевой цветовой маркировкой (молоко) и жёлтой (яйца)</li>
+            <li>✓ <span className="font-medium">Отдельные доски, ножи, посуда</span> — никогда не используются для молочных/яичных блюд</li>
+            <li>✓ <span className="font-medium">Без скрытых источников:</span> сливочное масло в соусах, яичный порошок в выпечке, сухое молоко в какао, лактоза в колбасах, яичный лецитин (E322) — все исключаются</li>
+            <li>✓ <span className="font-medium">Per-dish маркировка</span> на событии — этикетка с составом на каждом блюде</li>
+            <li>✓ <span className="font-medium">EpiPen / адреналин</span> на руках у ответственного сотрудника (обучаем персонал ежегодно)</li>
+            <li>✓ <span className="font-medium">Менеджер звонит клиенту за 24 часа</span> до события для подтверждения протокола и типа аллергена (молоко, яйца или оба)</li>
+            <li>✓ <span className="font-medium">Веган-меню = безопасный выбор</span> по умолчанию (без молока, без яиц, без мёда) — 24 веган-блюда в каталоге</li>
+          </ul>
+          <p className="text-sm text-muted-foreground">
+            Укажите «анафилаксия на молоко» и/или «анафилаксия на яйца» в заявке. В каталоге
+            используйте фильтр «Без молока» и «Без яиц» для подбора безопасных блюд.{' '}
+            <Link href="/menu/vegan" className="text-gold-text hover:underline">Веган-меню →</Link>
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="p-6 rounded-xl bg-primary text-primary-foreground text-center">
           <h2 className="font-heading text-xl font-medium mb-2">Заказать меню с исключением аллергенов</h2>

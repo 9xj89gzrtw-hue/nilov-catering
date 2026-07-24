@@ -19,15 +19,33 @@ const STATIONS = [
 
 const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as const;
 
+// Allergen exclusion filters — filter OUT dishes containing specific allergens
+const EXCLUDE_ALLERGENS: { key: string; label: string }[] = [
+  { key: 'milk', label: 'Без молока' },
+  { key: 'eggs', label: 'Без яиц' },
+  { key: 'nuts', label: 'Без орехов' },
+  { key: 'fish', label: 'Без рыбы' },
+  { key: 'soy', label: 'Без сои' },
+  { key: 'peanuts', label: 'Без арахиса' },
+  { key: 'sesame', label: 'Без кунжута' },
+];
+
 export default function CatalogPage() {
   const [search, setSearch] = useState('');
   const [station, setStation] = useState<string>('all');
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
+  const [excludedAllergens, setExcludedAllergens] = useState<Set<string>>(new Set());
 
   const toggleDiet = (d: string) => {
     const next = new Set(activeDiets);
     if (next.has(d)) next.delete(d); else next.add(d);
     setActiveDiets(next);
+  };
+
+  const toggleAllergen = (a: string) => {
+    const next = new Set(excludedAllergens);
+    if (next.has(a)) next.delete(a); else next.add(a);
+    setExcludedAllergens(next);
   };
 
   const filtered = useMemo(() => {
@@ -36,12 +54,15 @@ export default function CatalogPage() {
     if (activeDiets.size > 0) {
       dishes = dishes.filter(d => [...activeDiets].every(diet => d.dietBadges.includes(diet as typeof DIETS[number])));
     }
+    if (excludedAllergens.size > 0) {
+      dishes = dishes.filter(d => ![...excludedAllergens].some(a => d.allergens.includes(a as typeof d.allergens[number])));
+    }
     if (search.trim()) {
       const q = search.toLowerCase();
       dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
-  }, [station, activeDiets, search]);
+  }, [station, activeDiets, excludedAllergens, search]);
 
   // Split into halal / non-halal for visual separation
   const halalDishes = useMemo(() => filtered.filter(d => d.dietBadges.includes('halal')), [filtered]);
@@ -92,11 +113,12 @@ export default function CatalogPage() {
         </div>
 
         {/* Diet filters */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-4">
           {DIETS.map(d => (
             <button
               key={d}
               onClick={() => toggleDiet(d)}
+              aria-pressed={activeDiets.has(d)}
               className={`rounded-full border px-4 py-1.5 text-xs transition-colors ${
                 activeDiets.has(d)
                   ? 'border-gold-text bg-gold-tint text-gold-text'
@@ -104,6 +126,25 @@ export default function CatalogPage() {
               }`}
             >
               {DIET_FILTERS[d]}
+            </button>
+          ))}
+        </div>
+
+        {/* Allergen exclusion filters */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          <span className="text-xs text-muted-foreground self-center mr-1">Исключить:</span>
+          {EXCLUDE_ALLERGENS.map(a => (
+            <button
+              key={a.key}
+              onClick={() => toggleAllergen(a.key)}
+              aria-pressed={excludedAllergens.has(a.key)}
+              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                excludedAllergens.has(a.key)
+                  ? 'border-destructive bg-destructive/10 text-destructive font-medium'
+                  : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
+              }`}
+            >
+              {a.label}
             </button>
           ))}
         </div>
@@ -121,7 +162,7 @@ export default function CatalogPage() {
             {halalDishes.length > 0 && porkDishes.length > 0 && (
               <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
             )}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {otherDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx} />
               ))}
@@ -133,7 +174,7 @@ export default function CatalogPage() {
           <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
             <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {halalDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 100} />
               ))}
@@ -145,7 +186,7 @@ export default function CatalogPage() {
           <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
             <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {porkDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 200} />
               ))}
