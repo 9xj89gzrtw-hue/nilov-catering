@@ -98,7 +98,7 @@ export default function PominkiPage() {
             <li>Менеджер предложит меню под ваш бюджет — от 1 800 ₽/гость.</li>
             <li>Курьер привезёт за 60 минут до начала. Сервируем тихо.</li>
           </ol>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             Если вам тяжело говорить — напишите в WhatsApp:{' '}
             <a
               href="https://wa.me/78129195911"
@@ -129,11 +129,11 @@ export default function PominkiPage() {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <h4 className="font-medium text-sm mb-1">{item.name}</h4>
-                      <span className="text-xs font-semibold text-gold-text shrink-0">
+                      <span className="text-sm font-semibold text-gold-text shrink-0">
                         {item.price}
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -143,7 +143,7 @@ export default function PominkiPage() {
 
         <div className="mb-10 p-5 rounded-xl border border-dashed border-line bg-card/50">
           <p className="text-sm font-medium mb-2">Заказать поминки</p>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Можно звонком или через форму заявки (выберите тип события «Поминки»).
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
@@ -170,7 +170,7 @@ export default function PominkiPage() {
           </div>
         </div>
 
-        <p className="text-xs text-muted-foreground text-center">
+        <p className="text-sm text-muted-foreground text-center">
           Принимаем срочные заказы — даже на день обращения, если есть свободная бригада.
         </p>
       </div>

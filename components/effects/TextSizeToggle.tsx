@@ -23,10 +23,11 @@ export default function TextSizeToggle() {
   return (
     <button
       onClick={cycle}
-      className="text-xs text-muted-foreground hover:text-foreground px-2 py-1 rounded border border-line transition-colors"
+      className="text-sm text-muted-foreground hover:text-foreground px-3 py-1.5 rounded border border-line transition-colors font-medium"
       aria-label={`Размер текста: ${size === 'normal' ? 'обычный' : size === 'large' ? 'крупный' : 'очень крупный'}. Нажмите чтобы изменить.`}
+      title="Увеличить размер текста"
     >
-      {size === 'normal' ? 'A− A A+' : size === 'large' ? 'A− A A+' : 'A− A A+'}
+      <span aria-hidden="true">A+</span>
       <span className="ml-1 text-xs align-top">
         {size === 'normal' ? '100%' : size === 'large' ? '125%' : '150%'}
       </span>

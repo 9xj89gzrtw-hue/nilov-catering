@@ -93,6 +93,12 @@ export default function VeganPage() {
             Шеф соберёт веган-меню под бюджет и пожелания. Премиум-веган от 4 500 ₽/гость с
             трюфелем, лесными грибами, эдамаме, киноa, ферментированными овощами.
           </p>
+          <p className="text-xs text-muted-foreground mb-3">
+            <strong>💡 Веган + всеядные в одной свадьбе?</strong> В тарифе «Per-group pricing»
+            веган-группа платит 2 950 ₽/гость (Стандарт), всеядная — по тарифу свадебного банкета.
+            Например, 50 веганов × 2 950 + 30 всеядных × 5 470 = 311 600 ₽ за 80 гостей.{' '}
+            <Link href="/events/svadba" className="underline text-gold-text">Подробнее →</Link>
+          </p>
           <Link
             href="/plan/constructor?diet=vegan"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"

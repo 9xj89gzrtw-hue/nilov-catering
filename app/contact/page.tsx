@@ -181,31 +181,31 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <div className="space-y-2">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Всеядные</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Всеядные</span>
                     <input type="number" name="groupOmnivore" id="groupOmnivore" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Веганы</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Веганы</span>
                     <input type="number" name="groupVegan" id="groupVegan" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Халяль</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Халяль</span>
                     <input type="number" name="groupHalal" id="groupHalal" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Без глютена (целиакия)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Без глютена (целиакия)</span>
                     <input type="number" name="groupGlutenFree" id="groupGlutenFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Без орехов (анафилаксия)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Без орехов (анафилаксия)</span>
                     <input type="number" name="groupNutFree" id="groupNutFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Без сахара (СД1/СД2)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Без сахара (СД1/СД2)</span>
                     <input type="number" name="groupSugarFree" id="groupSugarFree" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Другая диета / аллергия</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Другая диета / аллергия</span>
                     <input type="number" name="groupOther" id="groupOther" min="0" placeholder="0" className="rounded border border-line bg-background px-3 py-2 text-sm w-full" />
                   </label>
                 </div>
@@ -228,26 +228,26 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </p>
               <div className="space-y-2">
                 <label className="block">
-                  <span className="text-xs text-muted-foreground block mb-1">Название организации</span>
+                  <span className="text-sm text-muted-foreground block mb-1">Название организации</span>
                   <input type="text" name="companyName" placeholder="ООО «Ромашка» / ГБОУ Школа №123" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">ИНН организации (10 или 12 цифр)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">ИНН организации (10 или 12 цифр)</span>
                     <input type="text" name="companyInn" inputMode="numeric" pattern="[0-9]{10,12}" placeholder="7800000000" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">КПП (если есть)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">КПП (если есть)</span>
                     <input type="text" name="companyKpp" inputMode="numeric" pattern="[0-9]{9}" placeholder="780101001" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                   </label>
                 </div>
                 <label className="block">
-                  <span className="text-xs text-muted-foreground block mb-1">Юр.адрес организации</span>
+                  <span className="text-sm text-muted-foreground block mb-1">Юр.адрес организации</span>
                   <input type="text" name="companyAddress" placeholder="191123, г. Санкт-Петербург, ул. ..." className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">ЭДО-система</span>
+                    <span className="text-sm text-muted-foreground block mb-1">ЭДО-система</span>
                     <select name="edo" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
                       <option value="">Не выбран</option>
                       <option value="Контур.Диадок">Контур.Диадок</option>
@@ -257,7 +257,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                     </select>
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Налоговый режим</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Налоговый режим</span>
                     <select name="vat" className="w-full rounded border border-line bg-background px-3 py-2 text-sm">
                       <option value="">Не выбран</option>
                       <option value="С НДС (ОСН)">Работаем с НДС (ОСН)</option>
@@ -268,11 +268,11 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Период события (дней)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Период события (дней)</span>
                     <input type="number" name="daysCount" min="1" placeholder="1" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                   </label>
                   <label className="block">
-                    <span className="text-xs text-muted-foreground block mb-1">Бюджет (₽)</span>
+                    <span className="text-sm text-muted-foreground block mb-1">Бюджет (₽)</span>
                     <input type="number" name="totalBudget" min="0" placeholder="500000" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
                   </label>
                 </div>
@@ -342,6 +342,15 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
       </div>
 
       {/* Pre-fill form fields from URL search params (client-side, for static export compatibility) */}
+      <noscript>
+        <div className="container-site max-w-3xl py-4">
+          <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 p-3 rounded-lg">
+            ⚠ JavaScript отключён. Форма работает, но поля не подставятся автоматически из ссылки.
+            Заполните, пожалуйста, вручную. Или позвоните:{' '}
+            <a href="tel:+78129195911" className="underline font-semibold">+7 (812) 919-59-11</a>.
+          </p>
+        </div>
+      </noscript>
       <script
         dangerouslySetInnerHTML={{
           __html: `(function(){
