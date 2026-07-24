@@ -3,7 +3,7 @@ import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/privacy' },
-  title: 'Политика конфиденциальности — NiloV Catering',
+  title: 'Политика конфиденциальности',
   description:
     'Политика обработки персональных данных ИП Нилов Д.И. в соответствии с 152-ФЗ. Сбор, хранение, использование, передача. СПб.',
 };

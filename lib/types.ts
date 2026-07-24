@@ -53,6 +53,15 @@ export const ALLERGEN_LABEL: Record<Allergen, string> = {
   molluscs: 'Моллюски',
 };
 
+// Лейблы для диетических бейджей (используется в карточках блюд)
+export const DIET_LABEL: Record<Diet, { short: string; full: string; color: string }> = {
+  'vegan': { short: 'VG', full: 'Веган — без животных продуктов', color: 'emerald' },
+  'gluten-free': { short: 'GF', full: 'Без глютена — <20 ppm', color: 'amber' },
+  'halal': { short: 'H', full: 'Халяль — сертификат СМР', color: 'blue' },
+  'sugar-free': { short: 'SF', full: 'Без сахара — подходит для СД1/СД2', color: 'purple' },
+  'nut-free': { short: 'NF', full: 'Без орехов — для анафилаксии', color: 'red' },
+};
+
 export interface Dish {
   id: string;
   name: string;

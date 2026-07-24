@@ -3,7 +3,7 @@ import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/cookies' },
-  title: 'Политика использования cookie — NiloV Catering',
+  title: 'Политика использования cookie',
   description:
     'Использование cookie на сайте odaeda.ru. Типы cookie, сроки хранения, отключение. 152-ФЗ.',
 };

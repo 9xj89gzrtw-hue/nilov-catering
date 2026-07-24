@@ -3,7 +3,7 @@ import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/offer' },
-  title: 'Публичная оферта — NiloV Catering',
+  title: 'Публичная оферта',
   description:
     'Публичная оферта ИП Нилов Д.И. на оказание услуг кейтеринга. Акцепт осуществляется путём размещения заказа. СПб.',
 };
