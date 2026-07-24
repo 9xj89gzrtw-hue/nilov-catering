@@ -19,8 +19,56 @@ export default function SubscribePage() {
         </p>
 
         {/* Pricing tiers */}
-        <div className="mb-8 space-y-4">
+        <div className="mb-8">
           <h2 className="font-heading text-xl font-medium mb-3">Тарифы подписки</h2>
+
+          {/* Comparison table */}
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b-2 border-line">
+                  <th className="text-left py-2 pr-4 font-medium text-muted-foreground">Тариф</th>
+                  <th className="text-right py-2 px-2 font-medium text-muted-foreground">Цена/мес</th>
+                  <th className="text-right py-2 px-2 font-medium text-muted-foreground">Скидка</th>
+                  <th className="text-right py-2 px-2 font-medium text-muted-foreground">Минимум</th>
+                  <th className="text-right py-2 pl-2 font-medium text-muted-foreground">Тест</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-line/60">
+                  <td className="py-2 pr-4 font-medium">☕ Кофе-брейк weekly</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽</td>
+                  <td className="text-right py-2 px-2">15%</td>
+                  <td className="text-right py-2 px-2">20 сотр.</td>
+                  <td className="text-right py-2 pl-2">1 нед.</td>
+                </tr>
+                <tr className="border-b border-line/60 bg-gold-tint/5">
+                  <td className="py-2 pr-4 font-medium">💼 Годовой контракт</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽</td>
+                  <td className="text-right py-2 px-2">23%</td>
+                  <td className="text-right py-2 px-2">30 сотр.</td>
+                  <td className="text-right py-2 pl-2">1 нед.</td>
+                </tr>
+                <tr className="border-b border-line/60">
+                  <td className="py-2 pr-4 font-medium">🍽 Бизнес-ланч weekly</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽</td>
+                  <td className="text-right py-2 px-2">15%</td>
+                  <td className="text-right py-2 px-2">20 сотр.</td>
+                  <td className="text-right py-2 pl-2">1 нед.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4 font-medium">📦 Комбо (CB+обед)</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">166 400 ₽</td>
+                  <td className="text-right py-2 px-2">20%</td>
+                  <td className="text-right py-2 px-2">30 сотр.</td>
+                  <td className="text-right py-2 pl-2">1 нед.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Detailed cards */}
+          <div className="space-y-4">
 
           <div className="p-5 rounded-xl border border-line bg-card">
             <h3 className="font-heading text-base font-medium mb-1">☕ Кофе-брейк — еженедельно</h3>
@@ -60,6 +108,7 @@ export default function SubscribePage() {
             <p className="text-xs text-muted-foreground">
               Полный рабочий день питания. Экономия 41 600 ₽/мес vs раздельные заказы. Минимум — 30 сотрудников. Тестовый период — 1 неделя.
             </p>
+          </div>
           </div>
         </div>
 

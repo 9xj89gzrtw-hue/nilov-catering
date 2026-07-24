@@ -76,6 +76,28 @@ export default function CoffeeBreakPage() {
           </Link>
         </div>
 
+        {/* Conference Day Package */}
+        <div className="mt-6 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
+          <h2 className="font-heading text-lg font-medium mb-2">📦 Конференционный пакет (на делегата/день)</h2>
+          <p className="text-sm text-foreground/90 mb-3">
+            Комплексная цена: утренний кофе-брейк + обед + дневной кофе-брейк.
+            Один счёт, одна доставка, одна смета — без раздельных заказов.
+          </p>
+          <ul className="text-sm space-y-1 mb-3 list-disc list-inside text-foreground/90">
+            <li><strong>Стандарт:</strong> 1 430 ₽/делегат/день (кофе-брейк 390 + обед 650 + кофе-брейк 390)</li>
+            <li><strong>Скидка 20%</strong> для 2+ дневных конференций → 1 144 ₽/делегат/день</li>
+            <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong> (включая доставку, посуду, официантов)</li>
+            <li>Ротация: 3 разных кофе-брейк-сета + 2 разных обеда — без повторов</li>
+            <li>Координатор конференции: <strong>Мария Кузнецова</strong>, прямой мобильный через <a href="/contact" className="underline text-gold-text">форму B2B-заявки</a></li>
+          </ul>
+          <Link
+            href="/contact?eventType=Конференция&format=Кофе-брейк&comment=Конференционный пакет"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+          >
+            ✍️ Заказать конференционный пакет →
+          </Link>
+        </div>
+
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все блюда кофе-брейка ({coffeeDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {coffeeDishes.map(dish => (

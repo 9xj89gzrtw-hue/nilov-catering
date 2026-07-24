@@ -21,7 +21,7 @@ export default function CTASection() {
             href="/plan/calculator"
             className="inline-flex items-center gap-2 rounded-lg border border-gold-text px-6 py-3.5 text-sm font-medium text-gold-text hover:bg-gold-tint transition-colors"
           >
-            Рассчитать цену
+            Узнать цены
           </Link>
         </div>
 

@@ -9,7 +9,7 @@ export default function PlanPage() {
       <p className="text-lg text-muted-foreground mb-12 text-balance">Выберите инструмент — и мы поможем.</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {[
-          { title: 'Калькулятор', desc: 'Рассчитайте стоимость за 30 секунд', href: '/plan/calculator' },
+          { title: 'Калькулятор', desc: 'Тарифы и таблицы за 30 секунд', href: '/plan/calculator' },
           { title: 'Конструктор', desc: 'Соберите меню шаг за шагом', href: '/plan/constructor' },
           { title: 'Помощник', desc: 'Не знаете с чего начать? Подберём за 3 вопроса', href: '/plan/helper' },
         ].map((t) => (
