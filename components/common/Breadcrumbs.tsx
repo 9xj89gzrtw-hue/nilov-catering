@@ -90,8 +90,22 @@ export default function Breadcrumbs() {
   // Последний элемент — текущая страница, без ссылки
   const last = crumbs.pop()!;
 
+  // BreadcrumbList JSON-LD for SEO rich results
+  const allCrumbs = [...crumbs, { label: last.label, href: undefined }];
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: allCrumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.label,
+      ...(c.href ? { item: `https://odaeda.ru${c.href}` } : {}),
+    })),
+  };
+
   return (
     <nav aria-label="Хлебные крошки" className="py-3">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
         {crumbs.map((crumb) => (
           <li key={crumb.href} className="flex items-center gap-1">

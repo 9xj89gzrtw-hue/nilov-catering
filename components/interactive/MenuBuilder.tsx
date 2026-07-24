@@ -1,8 +1,20 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS } from '@/lib/menu-data';
 import { getDishImage } from '@/lib/dish-images';
+import {
+  DndContext,
+  PointerSensor,
+  TouchSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+  useDraggable,
+  useDroppable,
+  closestCenter,
+} from '@dnd-kit/core';
+import { CSS } from '@dnd-kit/utilities';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish, Diet, Allergen } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
@@ -86,6 +98,28 @@ export default function MenuBuilder({
   const [draggedFromIdx, setDraggedFromIdx] = useState<number | null>(null);
   const [dragOverCart, setDragOverCart] = useState(false);
   const [showAllFormats, setShowAllFormats] = useState(false);
+
+  // dnd-kit sensors: PointerSensor (desktop), TouchSensor (mobile), KeyboardSensor (a11y)
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 8 } }),
+    useSensor(KeyboardSensor),
+  );
+
+  const handleDndKitDragEnd = (event: any) => {
+    const { active, over } = event;
+    if (!over) return;
+    const activeId = active.id as string;
+    const overId = over.id as string;
+    if (overId === 'cart' && activeId.startsWith('dish-')) {
+      const dishId = activeId.replace('dish-', '');
+      if (!selectedIds.has(dishId)) onAdd(dishId);
+    } else if (overId.startsWith('cart-item-') && activeId.startsWith('cart-item-')) {
+      const fromIdx = parseInt(activeId.replace('cart-item-', ''));
+      const toIdx = parseInt(overId.replace('cart-item-', ''));
+      if (onReorder && fromIdx !== toIdx) onReorder(fromIdx, toIdx);
+    }
+  };
 
   const toggleDiet = (d: string) => {
     const next = new Set(activeDiets);
@@ -198,6 +232,7 @@ export default function MenuBuilder({
   };
 
   return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDndKitDragEnd}>
     <div className="grid lg:grid-cols-[1fr_400px] gap-6">
       {/* === КАТАЛОГ === */}
       <div>
@@ -604,5 +639,6 @@ export default function MenuBuilder({
         )}
       </div>
     </div>
+    </DndContext>
   );
 }

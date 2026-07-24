@@ -57,10 +57,18 @@ export default function FoodPhoto({
       className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className} group`}
     >
       <picture>
-        {/* AVIF — best compression, modern browsers */}
-        <source srcSet={avifSrc} type="image/avif" />
-        {/* WebP — good compression, wider support */}
-        <source srcSet={webpSrc} type="image/webp" />
+        {/* AVIF — best compression, modern browsers. Responsive srcset. */}
+        <source
+          srcSet={`${avifSrc.replace(/\.avif$/, '-480.avif')} 480w, ${avifSrc.replace(/\.avif$/, '-768.avif')} 768w, ${avifSrc} 1920w`}
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          type="image/avif"
+        />
+        {/* WebP — good compression, wider support. Responsive srcset. */}
+        <source
+          srcSet={`${webpSrc.replace(/\.webp$/, '-480.webp')} 480w, ${webpSrc.replace(/\.webp$/, '-768.webp')} 768w, ${webpSrc} 1920w`}
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          type="image/webp"
+        />
         {/* JPG fallback — universal */}
         <img
           src={src}
