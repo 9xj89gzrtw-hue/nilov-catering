@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
-import { getDishImage } from '@/lib/dish-images';
+import { getDishImageByIndex } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
@@ -121,8 +121,8 @@ export default function CatalogPage() {
               <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
             )}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {otherDishes.map(dish => (
-                <DishCard key={dish.id} dish={dish} />
+              {otherDishes.map((dish, idx) => (
+                <DishCard key={dish.id} dish={dish} index={idx} />
               ))}
             </div>
           </div>
@@ -133,8 +133,8 @@ export default function CatalogPage() {
             <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {halalDishes.map(dish => (
-                <DishCard key={dish.id} dish={dish} />
+              {halalDishes.map((dish, idx) => (
+                <DishCard key={dish.id} dish={dish} index={idx + 100} />
               ))}
             </div>
           </div>
@@ -145,8 +145,8 @@ export default function CatalogPage() {
             <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {porkDishes.map(dish => (
-                <DishCard key={dish.id} dish={dish} />
+              {porkDishes.map((dish, idx) => (
+                <DishCard key={dish.id} dish={dish} index={idx + 200} />
               ))}
             </div>
           </div>
@@ -197,8 +197,8 @@ export default function CatalogPage() {
   );
 }
 
-function DishCard({ dish }: { dish: Dish }) {
-  const dishImg = getDishImage(dish.id, dish.station);
+function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
+  const dishImg = getDishImageByIndex(dish.id, dish.station, index);
 
   return (
     <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg">

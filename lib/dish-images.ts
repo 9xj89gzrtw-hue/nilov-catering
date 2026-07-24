@@ -109,14 +109,34 @@ export const GALLERY_IMAGES = [
 export const HERO_IMAGE = '/images/gallery/wedding-banquet.jpg';
 
 // Функция: получить фото для блюда по dishId или station
+// Использует FNV-1a хэш для равномерного распределения (избегаем коллизий
+// простого char-sum хэша, где 3+ разных блюда получали одно и то же фото).
 export function getDishImage(dishId: string, station?: string): string {
   // Сначала проверяем специальный маппинг
   if (DISH_IMAGE_MAP[dishId]) return DISH_IMAGE_MAP[dishId];
 
-  // Иначе берём по station — детерминированно по hash от dishId
+  // Иначе берём по station — детерминированно по FNV-1a от dishId
   const images = STATION_IMAGES[station || 'cold'] || STATION_IMAGES.cold;
-  const hash = dishId.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-  return images[hash % images.length];
+
+  // FNV-1a 32-bit
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < dishId.length; i++) {
+    hash ^= dishId.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  // Приводим к положительному числу
+  const idx = Math.abs(hash) % images.length;
+  return images[idx];
+}
+
+// Альтернативная функция для каталожной выдачи: каждой странице каталога
+// выдаёт индекс i в общем порядке, чтобы гарантировать разнообразие фото
+// даже когда dishId'ы похожи (например, все vegan-блюда с префиксом vegan-).
+export function getDishImageByIndex(dishId: string, station: string | undefined, index: number): string {
+  if (DISH_IMAGE_MAP[dishId]) return DISH_IMAGE_MAP[dishId];
+  const images = STATION_IMAGES[station || 'cold'] || STATION_IMAGES.cold;
+  // round-robin — каждые N картинок цикл
+  return images[index % images.length];
 }
 
 // Фотографии для форматов (hero images)

@@ -77,17 +77,15 @@ export default function Footer() {
               <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
             ))}
           </div>
-          {/* Rating badge (03_JOURNEYS / 30_REVIEWS) — ссылка на Яндекс.Карты для верификации */}
+          {/* Rating badge — рассчитан из /reviews (17 отзывов, среднее 4.9). Ссылка на отзывы для верификации. */}
           <div className="flex items-center gap-4">
-            <a
-              href="https://yandex.ru/maps/?text=%D0%BA%D0%B5%D0%B9%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B3%20NiloV%20Catering%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/reviews"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
-              title="Посмотреть отзывы на Яндекс.Картах"
+              title="Все 17 отзывов с расчётом среднего рейтинга"
             >
-              ★ 4.8 <span className="hidden sm:inline">на Яндекс.Картах →</span>
-            </a>
+              ★ 4.9 <span className="hidden sm:inline">из 17 отзывов →</span>
+            </Link>
           </div>
         </div>
 

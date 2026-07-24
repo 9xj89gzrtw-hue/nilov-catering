@@ -144,10 +144,13 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
               Банкет от 3 950 ₽/гость
             </span>
             <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
-              Кофе-брейк от 390 ₽/гость
+              🥬 Веган от 2 950 ₽/гость
             </span>
             <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
-              Доставка от 5 000 ₽
+              🕌 Халяль от 2 450 ₽/гость
+            </span>
+            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+              Кофе-брейк от 390 ₽/гость
             </span>
           </div>
 
