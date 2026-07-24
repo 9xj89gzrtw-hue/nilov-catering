@@ -223,7 +223,7 @@ export default function MenuBuilder({
             <button
               key={s.key}
               onClick={() => setStation(s.key)}
-              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+              className={`rounded-full border px-3 py-1.5 text-xs touch-target transition-colors ${
                 station === s.key
                   ? 'border-gold-text bg-gold-tint text-gold-text'
                   : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
@@ -255,7 +255,7 @@ export default function MenuBuilder({
             <button
               key={d}
               onClick={() => toggleDiet(d)}
-              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+              className={`rounded-full border px-3 py-1.5 text-xs touch-target transition-colors ${
                 activeDiets.has(d)
                   ? 'border-gold-text bg-gold-tint text-gold-text'
                   : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
@@ -274,13 +274,13 @@ export default function MenuBuilder({
               <div className="flex bg-muted rounded-md p-0.5">
                 <button
                   onClick={() => setAllergenMode('highlight')}
-                  className={`text-[10px] px-2 py-0.5 rounded ${allergenMode === 'highlight' ? 'bg-card shadow-sm' : 'text-muted-foreground'}`}
+                  className={`text-xs px-3 py-1.5 rounded touch-target ${allergenMode === 'highlight' ? 'bg-card shadow-sm' : 'text-muted-foreground'}`}
                 >
                   Подсветить
                 </button>
                 <button
                   onClick={() => setAllergenMode('hide')}
-                  className={`text-[10px] px-2 py-0.5 rounded ${allergenMode === 'hide' ? 'bg-card shadow-sm' : 'text-muted-foreground'}`}
+                  className={`text-xs px-3 py-1.5 rounded touch-target ${allergenMode === 'hide' ? 'bg-card shadow-sm' : 'text-muted-foreground'}`}
                 >
                   Скрыть
                 </button>
@@ -288,7 +288,7 @@ export default function MenuBuilder({
             </div>
             <button
               onClick={() => setShowExtraAllergens(!showExtraAllergens)}
-              className="text-[10px] text-muted-foreground hover:text-foreground transition-colors"
+              className="text-xs text-muted-foreground hover:text-foreground touch-target px-2 py-1 transition-colors"
             >
               {showExtraAllergens ? '← основные' : 'ещё аллергены →'}
             </button>
@@ -301,7 +301,7 @@ export default function MenuBuilder({
                 <button
                   key={a}
                   onClick={() => toggleAllergen(a)}
-                  className={`text-[10px] px-2 py-1 rounded-full border transition-all ${
+                  className={`text-xs px-2.5 py-1.5 rounded-full touch-target border transition-all ${
                     isOn
                       ? 'bg-destructive text-white border-destructive font-semibold'
                       : 'bg-card text-muted-foreground border-line hover:border-destructive/50'
@@ -445,7 +445,7 @@ export default function MenuBuilder({
             {(excludedAllergens.size > 0 || activeDiets.size > 0) && (
               <button
                 onClick={() => { setExcludedAllergens(new Set()); setActiveDiets(new Set()); }}
-                className="text-xs text-gold-text hover:underline mt-3"
+                className="text-xs text-gold-text hover:underline mt-3 touch-target px-3 py-1.5 rounded"
               >
                 Сбросить все фильтры
               </button>

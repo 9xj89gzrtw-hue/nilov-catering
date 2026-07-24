@@ -54,7 +54,7 @@ export const SITE: SiteConfig = {
   email: 'info@odaeda.ru',
   b2bEmail: 'info@odaeda.ru',
   address: 'Санкт-Петербург, В.О., 20-я линия, 11',
-  ogImage: '/og-image.svg',
+  ogImage: '/og-image.png',
   legalName: 'ИП Нилов Дмитрий Игоревич',
   legalShort: 'ИП Нилов Д. И.',
   inn: '781433059704',

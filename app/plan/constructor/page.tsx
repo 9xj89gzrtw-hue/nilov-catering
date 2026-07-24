@@ -194,11 +194,11 @@ function ConstructorServerFallback() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Имя *</span>
-                <input type="text" name="name" required className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                <input type="text" name="name" required autoComplete="name" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Телефон *</span>
-                <input type="tel" name="phone" required placeholder="+7" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                <input type="tel" name="phone" required inputMode="tel" autoComplete="tel" placeholder="+7" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
               </label>
             </div>
             <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
