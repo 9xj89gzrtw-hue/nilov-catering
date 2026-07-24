@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/partners', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/partners', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Партнёрам — агентствам, площадкам, поставщикам',
   description:
     'Партнёрская программа NiloV Catering: комиссия 10-15% агентствам, обмен лидами, SLA, NDA, шаблон договора. ЭДО. СПб и ЛО.',

@@ -5,7 +5,7 @@ import ConstructorWizard from '@/components/interactive/ConstructorWizard';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/plan/constructor', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/plan/constructor', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Заявка на подбор меню — соберите кейтеринг под ваше событие',
   description: 'Соберите меню под ваше событие за 2 минуты. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе.',
 };

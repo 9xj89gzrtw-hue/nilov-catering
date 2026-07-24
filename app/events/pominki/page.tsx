@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/events/pominki', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/events/pominki', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Поминки — кейтеринг в СПб, поминальное меню',
   description:
     'Поминальный обед в Санкт-Петербурге. Постное меню без алкоголя: кутья, блины, кисель, рыбные блюда. Доставка в кафе и домой. От 1 800 ₽/гость.',

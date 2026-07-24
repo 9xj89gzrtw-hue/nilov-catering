@@ -6,7 +6,7 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/menu', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/menu', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Меню и цены',
   description: 'Фуршет, банкет, кофе-брейк — меню и цены на кейтеринг в СПб. От 390 ₽/гость. Все блюда с ценами и составом.',
 };

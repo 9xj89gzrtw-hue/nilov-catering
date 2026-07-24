@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/offer', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/offer', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Публичная оферта',
   description:
     'Публичная оферта ИП Нилов Д.И. на оказание услуг кейтеринга. Акцепт осуществляется путём размещения заказа. СПб.',

@@ -5,7 +5,7 @@ import reviews from '@/data/reviews.json';
 import type { Review } from '@/lib/cms-store';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/reviews', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/reviews', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Отзывы клиентов',
   description:
     'Реальные отзывы клиентов NiloV Catering с 2007 года. Свадьбы, корпоративы, юбилеи, детские праздники, халяль, БГ-меню. Средний рейтинг рассчитан из опубликованных отзывов.',

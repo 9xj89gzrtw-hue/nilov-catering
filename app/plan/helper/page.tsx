@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/plan/helper', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/plan/helper', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Помощник выбора кейтеринга — 3 вопроса, 30 секунд',
   description: 'Ответьте на 3 простых вопроса — подберём идеальный формат кейтеринга: повод, гостей, место. Без регистрации, без телефона.',
 };

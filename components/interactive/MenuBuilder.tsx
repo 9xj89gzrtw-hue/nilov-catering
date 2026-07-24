@@ -183,8 +183,8 @@ export default function MenuBuilder({
           onReorder(fromIdx, toIdx);
         }
       }
-    } catch {
-      // ignore parse errors
+    } catch (err) {
+      console.warn('[MenuBuilder] Drop parse error:', err);
     }
     setDraggedFromIdx(null);
   };
@@ -466,6 +466,8 @@ export default function MenuBuilder({
         className={`rounded-2xl border-2 border-dashed p-4 transition-colors sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto ${
           dragOverCart ? 'border-gold-text bg-gold-tint/40' : 'border-line bg-card/50'
         }`}
+        aria-live="polite"
+        aria-label={`Корзина меню: ${selectedItems.length} ${selectedItems.length === 1 ? 'блюдо' : 'блюд'}`}
       >
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-heading text-lg font-medium">{cartTitle}</h3>

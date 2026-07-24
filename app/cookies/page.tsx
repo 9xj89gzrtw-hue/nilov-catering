@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/cookies', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/cookies', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
   title: 'Политика использования cookie',
   description:
     'Использование cookie на сайте odaeda.ru. Типы cookie, сроки хранения, отключение. 152-ФЗ.',

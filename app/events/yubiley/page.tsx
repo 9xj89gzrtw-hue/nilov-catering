@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Юбилей и годовщина — кейтеринг для пожилых',
   description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 15 гостей, бюджетные решения от 50 000 ₽. Честные цены, реальные отзывы, большой шрифт.',
-  alternates: { canonical: '/events/yubiley', languages: { 'ru': '/', 'en': '/en' } },
+  alternates: { canonical: '/events/yubiley', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
 };
 
 export default function YubileyPage() {
