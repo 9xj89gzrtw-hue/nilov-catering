@@ -204,7 +204,7 @@ function ConstructorServerFallback() {
             <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
               ✍️ Отправить заявку (no-JS)
             </button>
-            <p className="text-xs text-muted-foreground text-center">Менеджер перезвонит ≤15 мин. Или используйте интерактивный конструктор выше (нужен JS).</p>
+            <p className="text-xs text-muted-foreground text-center">Менеджер перезвонит ≤15 мин. Или позвоните: +7 (812) 919-59-11.</p>
           </form>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
@@ -267,7 +267,7 @@ function ConstructorServerFallback() {
 
         <noscript>
           <div className="mt-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm">
-            <strong>Внимание:</strong> интерактивный конструктор требует JavaScript.
+            <strong>Внимание:</strong> полная интерактивная версия конструктора требует JavaScript. Выше — SSR-форма заявки, которая работает без JS..
             Вы можете выбрать формат выше или связаться напрямую по телефону{' '}
             <a href={`tel:${SITE.phoneTel}`} className="underline">{SITE.phone}</a>.
           </div>

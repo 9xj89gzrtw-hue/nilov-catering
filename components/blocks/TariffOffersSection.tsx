@@ -411,7 +411,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {isStandalone && (
           <>
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-heading mb-4">Тарифы и цены</h2>
+              <h2 className="text-2xl md:text-3xl font-heading mb-4 text-muted-foreground">Выберите тип события</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доплат за персонал и посуду не будет. Доставка за КАД — от 3 000 ₽.
               </p>
