@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/allergens', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/allergens', languages: { 'ru': '/allergens', 'en': '/en', 'x-default': '/allergens' } },
   title: 'Аллергены, медицинские диеты и поминальный протокол',
   description: '14 аллергенов ТР ТС 022/2011, протоколы для целиакии (<20 ppm), анафилаксии (nut-free), халяль, веган, сахарный диабет (расчёт ХЕ), поминки (без алкоголя). Раздельное оборудование, маркировка блюд, EpiPen.',
 };

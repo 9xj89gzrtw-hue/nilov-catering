@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/team', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/team', languages: { 'ru': '/team', 'en': '/en', 'x-default': '/team' } },
   title: 'Команда',
   description: 'Команда NiloV Catering: шеф-повар Дмитрий Нилов (19 лет опыта), шеф-кондитер, су-шеф, event-координаторы. 40+ профессионалов с медкнижками и санминимумом.',
 };

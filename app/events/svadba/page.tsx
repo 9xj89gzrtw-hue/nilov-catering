@@ -3,7 +3,7 @@ import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/events/svadba', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/events/svadba', languages: { 'ru': '/events/svadba', 'en': '/en', 'x-default': '/events/svadba' } },
   title: 'Свадебный кейтеринг',
   description: 'Свадебный кейтеринг NiloV в СПб: банкет, фуршет, торт, флористика. Полный цикл подготовки свадьбы под ключ.',
 };

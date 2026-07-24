@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/pricing', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
   title: 'Тарифы и цены',
   description: 'Прозрачные цены на кейтеринг в СПб. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Все тарифы с полным составом меню.',
 };

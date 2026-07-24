@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/contact', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/contact', languages: { 'ru': '/contact', 'en': '/en', 'x-default': '/contact' } },
   title: 'Контакты, СПб',
   description: 'Свяжитесь с NiloV Catering: телефон, WhatsApp, Telegram. Санкт-Петербург, В.О., 20-я линия 11. Юр.лицо: ИП Нилов Д.И.',
 };

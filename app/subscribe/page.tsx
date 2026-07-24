@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/subscribe', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/subscribe', languages: { 'ru': '/subscribe', 'en': '/en', 'x-default': '/subscribe' } },
   title: 'Подписка на кейтеринг — офисные обеды и кофе-брейки',
   description:
     'Регулярный кейтеринг для офисов: кофе-брейки, бизнес-ланчи. Скидки до 23%. Годовой контракт с ЭДО и SLA. СПб.',

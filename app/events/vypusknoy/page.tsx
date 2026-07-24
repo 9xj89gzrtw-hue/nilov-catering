@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Выпускные — кейтеринг для школ и вузов СПб',
   description: 'Кейтеринг на выпускной: фуршеты и банкеты для школ и вузов. Бюджетные решения от 390 ₽/гость. B2B: договор, ЭДО, медкнижки, бракераж, согласование с Роспотребнадзором.',
-  alternates: { canonical: '/events/vypusknoy', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/events/vypusknoy', languages: { 'ru': '/events/vypusknoy', 'en': '/en', 'x-default': '/events/vypusknoy' } },
 };
 
 export default function VypusknoyPage() {

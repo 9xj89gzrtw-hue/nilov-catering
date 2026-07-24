@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/certificates', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/certificates', languages: { 'ru': '/certificates', 'en': '/en', 'x-default': '/certificates' } },
   title: 'Сертификаты, безопасность и документы',
   description: 'Полный пакет документов: ИНН/ОГРНИП, декларация ЕАЭС, ТР ТС 022/2011, HACCP, медицинские книжки, журнал бракеража, программа производственного контроля, страхование ответственности.',
 };

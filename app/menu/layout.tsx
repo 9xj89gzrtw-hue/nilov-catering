@@ -4,7 +4,7 @@ import { MenuJsonLd } from '@/app/JsonLd';
 export const metadata: Metadata = {
   title: 'Меню кейтеринга',
   description: 'Полный каталог кейтеринг-меню: фуршет, банкет, кофе-брейк, халяль, веган, без глютена. 132 блюда с фото, аллергенами, составом.',
-  alternates: { canonical: '/menu', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/menu', languages: { 'ru': '/menu', 'en': '/en', 'x-default': '/menu' } },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

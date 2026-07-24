@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/terms', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/terms', languages: { 'ru': '/terms', 'en': '/en', 'x-default': '/terms' } },
   title: 'Условия оказания услуг',
   description:
     'Условия оказания услуг кейтеринга ИП Нилов Д.И. Бронирование, оплата, отмена, ответственность, форс-мажор. СПб.',

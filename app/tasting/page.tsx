@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/tasting', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/tasting', languages: { 'ru': '/tasting', 'en': '/en', 'x-default': '/tasting' } },
   title: 'Дегустация меню',
   description: 'Дегустация перед событием: бесплатно для событий от 30 гостей, от 1 гостя для медицинских диет. До 6 блюд, аперитив, комплимент от шефа.',
 };

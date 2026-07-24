@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/faq', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/faq', languages: { 'ru': '/faq', 'en': '/en', 'x-default': '/faq' } },
   title: 'FAQ — частые вопросы о кейтеринге',
   description: 'Ответы на 21 частый вопрос: цены, минимальный заказ, дегустация, аллергены, B2B, договор, ЭДО, НДС, NDA, медкнижки, бракераж, страхование, форс-мажор, диабет, поминки.',
 };

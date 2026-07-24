@@ -6,7 +6,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Корпоративы',
     description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 800+ человек (через сеть партнёрских кухонь).',
-    alternates: { canonical: '/events/korporativ', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+    alternates: { canonical: '/events/korporativ', languages: { 'ru': '/events/korporativ', 'en': '/en', 'x-default': '/events/korporativ' } },
   };
 }
 
