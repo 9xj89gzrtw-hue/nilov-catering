@@ -241,6 +241,8 @@ export const DIET_FILTERS: Record<string, string> = {
   'vegan': 'Веган',
   'gluten-free': 'Без глютена',
   'halal': 'Халяль (по запросу)',
+  'sugar-free': 'Без сахара (СД1/СД2)',
+  'nut-free': 'Без орехов',
 };
 
 // Формат → список ID для быстрого поиска

@@ -372,11 +372,10 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           ⚡ Быстрая заявка
         </Link>
         <a
-          href="/pricing/pdf"
-          download
+          href="/menu/catalog"
           className="block w-full rounded-lg border border-line py-2.5 text-xs font-medium text-muted-foreground text-center hover:bg-muted transition-colors"
         >
-          Скачать PDF-меню
+          📋 Смотреть каталог блюд
         </a>
       </div>
     </div>
@@ -412,7 +411,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {isStandalone && (
           <>
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-heading mb-4">Тарифы и цены</h1>
+              <h2 className="text-4xl md:text-5xl font-heading mb-4">Тарифы и цены</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доплат за персонал и посуду не будет. Доставка за КАД — от 3 000 ₽.
               </p>

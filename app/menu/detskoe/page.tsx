@@ -43,6 +43,13 @@ export default function DetskoePage() {
             (sugar-free). Полный протокол — на странице{' '}
             <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
           </p>
+          <p className="text-sm text-amber-900 mb-3">
+            <strong>🥛🥚 Анафилаксия на молоко и/или яйца?</strong> Те же протоколы безопасности:
+            отдельная смена, отдельные доски/ножи, EpiPen. Веган-меню = безопасный выбор
+            (без молока, без яиц). В каталоге используйте фильтр «Без молока» и «Без яиц».
+            Подробнее на{' '}
+            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>.
+          </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
               Собрать детское меню в конструкторе →

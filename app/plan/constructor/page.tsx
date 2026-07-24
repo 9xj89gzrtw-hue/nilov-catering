@@ -93,10 +93,10 @@ function ConstructorServerFallback() {
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm mr-3">1</span>
             Выберите формат
           </h2>
-          <p className="text-sm text-muted-foreground mb-6 ml-11">
+          <p className="text-sm text-muted-foreground mb-6 ml-0 md:ml-11">
             Цены указаны за гостя. Всё включено: еда, персонал, посуда, доставка по КАД.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-11">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-0 md:ml-11">
             {formats.map((f) => (
               <a
                 key={f.name}
@@ -114,18 +114,18 @@ function ConstructorServerFallback() {
         </div>
 
         {/* Шаг 2-5 — preview (видны SSR как roadmap) */}
-        <div className="mb-8 ml-11 space-y-4">
+        <div className="mb-8 ml-0 md:ml-11 space-y-4">
           <h2 className="font-heading text-2xl font-medium mb-2">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">2</span>
             Гости и диеты
           </h2>
-          <p className="text-sm text-muted-foreground ml-11">
+          <p className="text-sm text-muted-foreground ml-0 md:ml-11">
             Укажите количество гостей. Включите «Несколько групп гостей» — каждая группа получит своё под-меню
             с фильтром по диете (веган / халяль / без глютена / без орехов / всеядные). Per-group pricing: вы платите только за блюда своей группы.
           </p>
 
           {/* Static SSR form for guests (no-JS fallback) */}
-          <form className="ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3" action="/api/quote" method="POST">
+          <form className="ml-0 md:ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3" action="/api/quote" method="POST">
             <input type="hidden" name="source" value="constructor-ssr" />
             <div className="grid grid-cols-2 gap-3">
               <label className="block">
@@ -161,6 +161,18 @@ function ConstructorServerFallback() {
                   <input type="number" name="groupNutFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
                 </label>
                 <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Без сахара (СД1)</span>
+                  <input type="number" name="groupSugarFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Без молока</span>
+                  <input type="number" name="groupDairyFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
+                  <span className="text-xs text-muted-foreground block mb-1">Без яиц</span>
+                  <input type="number" name="groupEggFree" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
+                </label>
+                <label className="block">
                   <span className="text-xs text-muted-foreground block mb-1">Другое</span>
                   <input type="number" name="groupOther" min="0" placeholder="0" className="w-full rounded border border-line bg-background px-2 py-1.5 text-sm" />
                 </label>
@@ -186,7 +198,7 @@ function ConstructorServerFallback() {
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">3</span>
             Тариф
           </h2>
-          <p className="text-sm text-muted-foreground ml-11">
+          <p className="text-sm text-muted-foreground ml-0 md:ml-11">
             Эконом / Стандарт / Расширенный / Максимальный. Цены варьируются от 390 ₽/гость (кофе-брейк) до 9 950 ₽/гость (свадебный люкс).
           </p>
 
@@ -194,23 +206,24 @@ function ConstructorServerFallback() {
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">4</span>
             Меню
           </h2>
-          <p className="text-sm text-muted-foreground ml-11">
-            121 блюдо в каталоге. Drag-and-drop сборка. Фильтр по 14 аллергенам ТР ТС 022/2011.
-            Гибридный режим: можно добавить блюда из другого формата.
+          <p className="text-sm text-muted-foreground ml-0 md:ml-11">
+            121 блюдо в каталоге с фото, аллергенами и составом. Менеджер подберёт блюда под
+            ваш тариф и диетические требования. Фильтр по 14 аллергенам ТР ТС 022/2011
+            доступен в <a href="/menu/catalog" className="underline">каталоге блюд</a>.
           </p>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">5</span>
             Контакты и отправка
           </h2>
-          <p className="text-sm text-muted-foreground ml-11">
+          <p className="text-sm text-muted-foreground ml-0 md:ml-11">
             Заполняете имя + телефон — заявка уходит на <a href={`mailto:${SITE.email}`} className="underline">{SITE.email}</a>.
             Получаете orderId и перезвон в течение 15 минут.
           </p>
         </div>
 
         {/* No-JS fallback: прямая заявка */}
-        <div className="ml-11 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
+        <div className="ml-0 md:ml-11 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
           <h3 className="font-heading text-lg font-medium mb-2">Не хотите собирать вручную?</h3>
           <p className="text-sm text-muted-foreground mb-4">
             Позвоните или напишите — шеф-повар Дмитрий Нилов подберёт меню под ваш бюджет и диеты за 15 минут.
