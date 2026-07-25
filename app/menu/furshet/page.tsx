@@ -63,13 +63,13 @@ export default function FurshetPage() {
         </div>
 
         {/* Tariffs */}
-        <div id="tariffs">
+        <div id="tariffs" className="scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Тарифы</h2>
           <MenuTariffs format="furshet" formatLabel="Фуршет" />
         </div>
 
         {/* All dishes by station */}
-        <div id="dishes" className="mt-16">
+        <div id="dishes" className="mt-16 scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Все блюда фуршета</h2>
 
           {Object.entries(grouped).map(([station, dishes]) => (

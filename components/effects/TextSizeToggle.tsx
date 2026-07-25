@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Type } from 'lucide-react';
 
 export default function TextSizeToggle() {
   const [size, setSize] = useState<'normal' | 'large' | 'xlarge'>('normal');
@@ -20,17 +21,17 @@ export default function TextSizeToggle() {
     setSize(s => s === 'normal' ? 'large' : s === 'large' ? 'xlarge' : 'normal');
   };
 
+  const label = size === 'normal' ? '100%' : size === 'large' ? '125%' : '150%';
+
   return (
     <button
       onClick={cycle}
-      className="text-sm text-muted-foreground hover:text-foreground px-3 py-2 rounded border border-line transition-colors font-medium touch-target"
+      className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-2 rounded-md hover:bg-secondary/50 transition-colors font-medium touch-target"
       aria-label={`Размер текста: ${size === 'normal' ? 'обычный' : size === 'large' ? 'крупный' : 'очень крупный'}. Нажмите чтобы изменить.`}
-      title="Увеличить размер текста"
+      title={`Размер текста: ${label}. Нажмите чтобы увеличить.`}
     >
-      <span aria-hidden="true">A+</span>
-      <span className="ml-1 text-xs align-top">
-        {size === 'normal' ? '100%' : size === 'large' ? '125%' : '150%'}
-      </span>
+      <Type className="w-4 h-4" aria-hidden="true" />
+      <span className="hidden sm:inline">{label}</span>
     </button>
   );
 }

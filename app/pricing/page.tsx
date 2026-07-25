@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
+import PageHeader from '@/components/common/PageHeader';
+import PrintButton from '@/components/common/PrintButton';
+import { FileDown } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
@@ -12,13 +17,34 @@ export const dynamic = 'force-static';
 
 export default function PricingPage() {
   return (
-    <main className="pt-24 pb-20">
-      <div className="container-site max-w-3xl">
-        <h1 className="mb-4">Тарифы и цены</h1>
-        <p className="text-muted-foreground mb-8">
-          Прозрачные цены без скрытых платежей. Все тарифы включают: меню, официантов,
-          координатора, доставку в пределах КАД, сервировку и уборку.
-        </p>
+    <main className="pt-24 pb-20" id="main">
+      <div className="container-site max-w-5xl">
+        <Breadcrumbs />
+
+        <PageHeader
+          title="Тарифы и цены"
+          eyebrow="Прозрачные цены"
+          subtitle={
+            <>
+              Все тарифы включают: меню, официантов, координатора, доставку в пределах КАД,
+              сервировку и уборку. <strong className="text-foreground">Без скрытых платежей.</strong>
+            </>
+          }
+          actions={
+            <>
+              <Link
+                href="/api/templates/dogovor"
+                download="nilov-dogovor-template.pdf"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+              >
+                <FileDown className="w-4 h-4" aria-hidden="true" />
+                Договор PDF
+              </Link>
+              <PrintButton label="Печать тарифов" />
+            </>
+          }
+        />
+
         <TariffOffersSection />
       </div>
     </main>

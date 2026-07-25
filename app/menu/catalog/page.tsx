@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
 import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
+import PageHeader from '@/components/common/PageHeader';
 import type { Dish } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
@@ -86,13 +88,30 @@ export default function CatalogPage() {
     setExcludedAllergens(new Set());
   };
 
+  // Allergen visibility toggle — show/hide allergen badges on cards
+  const [showAllergens, setShowAllergens] = useState(true);
+
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site">
-        <h1 className="mb-2">Каталог блюд</h1>
-        <p className="text-muted-foreground mb-6">
-          {ALL_DISHES.length} блюд с фото, аллергенами и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия).
-        </p>
+        <Breadcrumbs />
+        <PageHeader
+          title="Каталог блюд"
+          eyebrow={`${ALL_DISHES.length} позиций`}
+          subtitle={
+            <>
+              Все блюда с фото и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия).{' '}
+              <button
+                onClick={() => setShowAllergens(!showAllergens)}
+                className="text-gold-text hover:underline font-medium ml-1"
+                aria-pressed={!showAllergens}
+                type="button"
+              >
+                {showAllergens ? 'Скрыть аллергены' : 'Показать аллергены'}
+              </button>
+            </>
+          }
+        />
 
         {/* Sticky filter bar — sticks below header (top-16 = 64px = h-16 header) */}
         <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 bg-background/95 backdrop-blur-md border-b border-line/60 rounded-xl">
@@ -186,7 +205,7 @@ export default function CatalogPage() {
             )}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {otherDishes.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx} />
+                <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
@@ -198,7 +217,7 @@ export default function CatalogPage() {
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {halalDishes.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx + 100} />
+                <DishCard key={dish.id} dish={dish} index={idx + 100} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
@@ -210,7 +229,7 @@ export default function CatalogPage() {
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {porkDishes.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx + 200} />
+                <DishCard key={dish.id} dish={dish} index={idx + 200} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
@@ -261,33 +280,34 @@ export default function CatalogPage() {
   );
 }
 
-function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
+function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index?: number; showAllergens?: boolean }) {
   const dishImg = getDishImageByIndex(dish.id, dish.station, index);
+  const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20`;
 
   return (
-    <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg">
+    <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg flex flex-col">
       {/* Image area — FoodPhoto с анимацией Drinqit */}
-      <div className="relative">
+      <Link href={constructorHref} className="relative block" aria-label={`${dish.name} — добавить в конструктор меню`}>
         <FoodPhoto
           src={dishImg}
           alt={dish.name}
           aspectRatio="square"
           objectPosition={getObjectPositionForDish(dish.id, dish.station)}
-          className="w-full"
+          className="w-full transition-transform duration-500 group-hover:scale-105"
         />
-      </div>
+      </Link>
 
       {/* Info */}
-      <div className="p-3">
+      <div className="p-3 flex-1 flex flex-col">
         <h3 className="font-medium text-sm mb-1 leading-tight">{dish.name}</h3>
         <p className="text-[11px] text-muted-foreground mb-2 line-clamp-2">{dish.description}</p>
 
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-gold-text font-semibold">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <span className="text-xs text-gold-text font-semibold whitespace-nowrap">
             {dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span>
           </span>
 
-          <div className="flex gap-1 flex-wrap">
+          <div className="flex gap-1 flex-wrap justify-end">
             {/* Diet badges */}
             {dish.dietBadges.includes('vegan') && <Badge label="VG" color="green" />}
             {dish.dietBadges.includes('gluten-free') && <Badge label="GF" color="amber" />}
@@ -296,18 +316,18 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
             {dish.dietBadges.includes('nut-free') && <Badge label="NF" color="red" />}
             {dish.childFriendly && <Badge label="Дети" color="purple" />}
           </div>
-
-          {/* ХЕ (хлебные единицы) — extracted from description for СД1 visibility */}
-          {dish.description.match(/ХЕ=([0-9.]+)/) && (
-            <p className="text-[10px] text-purple-700 font-semibold mt-1.5">
-              ХЕ={dish.description.match(/ХЕ=([0-9.]+)/)?.[1]} · для СД1
-            </p>
-          )}
         </div>
 
-        {/* Allergens — high-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
-        {dish.allergens.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
+        {/* ХЕ (хлебные единицы) — extracted from description for СД1 visibility */}
+        {dish.description.match(/ХЕ=([0-9.]+)/) && (
+          <p className="text-[10px] text-purple-700 font-semibold mb-2">
+            ХЕ={dish.description.match(/ХЕ=([0-9.]+)/)?.[1]} · для СД1
+          </p>
+        )}
+
+        {/* Allergens — shown/hidden via toggle. High-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
+        {showAllergens && dish.allergens.length > 0 && (
+          <div className="mt-1 flex flex-wrap gap-1 mb-3">
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
               return (
@@ -325,6 +345,14 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
             )}
           </div>
         )}
+
+        {/* CTA: Add to constructor */}
+        <Link
+          href={constructorHref}
+          className="mt-auto inline-flex items-center justify-center rounded-lg bg-gold-text text-white px-3 py-2 text-xs font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline"
+        >
+          + В меню
+        </Link>
       </div>
     </div>
   );

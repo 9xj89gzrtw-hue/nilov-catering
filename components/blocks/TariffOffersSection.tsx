@@ -399,15 +399,15 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
   const sorted = [...offers].sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
 
   return (
-    <section className="pt-24 pb-20">
+    <section>
       <div className="container-site">
         {/* Event type tabs — only if standalone */}
         {isStandalone && (
           <>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-heading mb-4 text-muted-foreground">Выберите тип события</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доплат за персонал и посуду не будет. Доставка за КАД — от 3 000 ₽.
+            <div className="text-center mb-10">
+              <h2 className="text-xl md:text-2xl font-heading mb-3 text-muted-foreground">Выберите тип события</h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доставка за КАД — от 3 000 ₽.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-2 mb-12">

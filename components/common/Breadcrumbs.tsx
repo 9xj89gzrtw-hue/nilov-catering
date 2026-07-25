@@ -103,9 +103,9 @@ export default function Breadcrumbs() {
   };
 
   return (
-    <nav aria-label="Хлебные крошки" className="py-3">
+    <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+      <ol className="flex flex-wrap items-center gap-1">
         {crumbs.map((crumb) => (
           <li key={crumb.href} className="flex items-center gap-1">
             <Link

@@ -120,7 +120,7 @@ export default function ConstructorWizard() {
 
   const canNext =
     step === 0 ? store.format !== null :
-    step === 1 ? store.guestCount >= 10 :
+    step === 1 ? store.guestCount >= 6 :
     step === 2 ? (store.tierMode === 'custom' ? true : store.tier !== null) :
     step === 3 ? (store.tierMode === 'custom' ? store.selectedItems.length > 0 : true) :
     step === 4 ? !!store.contact.name && !!store.contact.phone :
@@ -208,24 +208,44 @@ export default function ConstructorWizard() {
 
         {store._hasHydrated && step === 1 && (
           <div className="max-w-lg mx-auto text-center">
-            <p className="text-muted-foreground mb-4">Сколько гостей?</p>
+            <p className="text-muted-foreground mb-4">Сколько гостей? Можно ввести любое число от 6 до 500.</p>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <button type="button" onClick={() => store.setGuestCount(Math.max(10, store.guestCount - 5))}
-                className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-xl hover:border-gold-text">−</button>
+              <button type="button" onClick={() => store.setGuestCount(Math.max(6, store.guestCount - 1))}
+                className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-xl hover:border-gold-text hover:bg-secondary/50 transition-colors touch-target" aria-label="Уменьшить на 1">−</button>
               <div className="text-center">
-                <span className="text-6xl font-heading text-gold-text">{store.guestCount}</span>
+                {/* Editable number input — allows arbitrary values like 23, 87 */}
+                <input
+                  type="number"
+                  min={6}
+                  max={500}
+                  value={store.guestCount}
+                  onChange={e => {
+                    const v = Number(e.target.value);
+                    if (!isNaN(v)) {
+                      store.setGuestCount(Math.max(6, Math.min(500, v)));
+                    }
+                  }}
+                  onBlur={e => {
+                    const v = Number(e.target.value);
+                    if (isNaN(v) || v < 6) store.setGuestCount(6);
+                    if (v > 500) store.setGuestCount(500);
+                  }}
+                  className="w-32 text-5xl md:text-6xl font-heading text-gold-text text-center bg-transparent border-b-2 border-line focus:border-gold-text focus:outline-none transition-colors"
+                  aria-label="Количество гостей"
+                  inputMode="numeric"
+                />
                 <p className="text-muted-foreground mt-1">гостей</p>
               </div>
-              <button type="button" onClick={() => store.setGuestCount(Math.min(500, store.guestCount + 5))}
-                className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-xl hover:border-gold-text">+</button>
+              <button type="button" onClick={() => store.setGuestCount(Math.min(500, store.guestCount + 1))}
+                className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-xl hover:border-gold-text hover:bg-secondary/50 transition-colors touch-target" aria-label="Увеличить на 1">+</button>
             </div>
-            <input type="range" min={10} max={500} step={5} value={store.guestCount}
+            <input type="range" min={6} max={500} step={1} value={store.guestCount}
               onChange={e => store.setGuestCount(Number(e.target.value))}
-              className="w-full mb-4 accent-gold-text" />
+              className="w-full mb-4 accent-gold-text" aria-label="Количество гостей (ползунок)" />
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               {QUICK_GUESTS.map(n => (
                 <button key={n} type="button" onClick={() => store.setGuestCount(n)}
-                  className={`rounded-full border px-3 py-1 text-xs transition-colors ${store.guestCount === n ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'}`}>{n}</button>
+                  className={`rounded-full border px-3 py-1.5 text-xs transition-colors touch-target ${store.guestCount === n ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'}`}>{n}</button>
               ))}
             </div>
 

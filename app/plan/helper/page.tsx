@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE } from '@/lib/data';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/helper', languages: { 'ru': '/plan/helper', 'en': '/en', 'x-default': '/plan/helper' } },
@@ -63,13 +64,7 @@ export default function PlanHelperPage({
     return (
       <main className="pt-24 pb-20">
         <div className="container-site max-w-2xl mx-auto">
-          <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
-            <Link href="/" className="hover:text-foreground">Главная</Link>
-            {' / '}
-            <Link href="/plan" className="hover:text-foreground">Спланировать</Link>
-            {' / '}
-            <span className="text-foreground">Помощник</span>
-          </nav>
+          <Breadcrumbs />
 
           <div className="text-center mb-8">
             <div className="text-5xl mb-4">🎉</div>
@@ -157,13 +152,7 @@ export default function PlanHelperPage({
   return (
     <main className="pt-24 pb-20">
       <div className="container-site max-w-2xl mx-auto">
-        <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Главная</Link>
-          {' / '}
-          <Link href="/plan" className="hover:text-foreground">Спланировать</Link>
-          {' / '}
-          <span className="text-foreground">Помощник</span>
-        </nav>
+        <Breadcrumbs />
 
         {/* Progress bar */}
         <div className="flex gap-1 mb-10" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>

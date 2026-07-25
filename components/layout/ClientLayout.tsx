@@ -3,8 +3,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { type ReactNode } from 'react';
-import Breadcrumbs from '@/components/common/Breadcrumbs';
 
+/**
+ * ClientLayout — wraps page content with page transition animation only.
+ *
+ * Breadcrumbs are added by individual pages INSIDE <main pt-24>,
+ * so they appear below the fixed header (not hidden behind it).
+ *
+ * Pages should include <Breadcrumbs /> at the top of <main className="pt-24 pb-20">.
+ */
 export function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
@@ -17,7 +24,6 @@ export function ClientLayout({ children }: { children: ReactNode }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.15 }}
       >
-        <Breadcrumbs />
         {children}
       </motion.div>
     </AnimatePresence>

@@ -24,3 +24,4 @@ final_*.json
 critic-results/
 snapshots/
 snapshots-js/
+snapshots-pretty/
