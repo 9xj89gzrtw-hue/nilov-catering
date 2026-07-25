@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ShareButton from '@/components/common/ShareButton';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/events/pominki', languages: { 'ru': '/events/pominki', 'en': '/en', 'x-default': '/events/pominki' } },
@@ -55,15 +56,32 @@ export default function PominkiPage() {
   const totalMin = POMINKI_MENU.reduce((acc, s) => acc + s.items.length, 0);
 
   return (
-    <main className="pt-24 pb-20">
+    <main className="pt-24 pb-20" data-hide-newsletter="true">
       <div className="container-site max-w-3xl">
+        <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
+          <Link href="/" className="hover:text-foreground">Главная</Link>
+          {' / '}
+          <Link href="/events" className="hover:text-foreground">События</Link>
+          {' / '}
+          <span className="text-foreground">Поминки</span>
+        </nav>
+
         <h1 className="mb-2">Поминки</h1>
-        <p className="text-muted-foreground mb-6">
+        <p className="text-muted-foreground mb-4">
           Поминальный обед — особый вид мероприятия. Мы готовим по православной традиции:
           постное меню без алкоголя, без торта «С днём рождения», без шумных тостов. Кутья,
-          блины, кисель — обязательно. Доставка в кафе, в церковный зал или домой. Тихо,
+          блины, кисель — обязательно. Доставка в кафе, в церковный зал, в кафе рядом с кладбищем или домой. Тихо,
           достойно, профессионально.
         </p>
+
+        {/* Share button — отправить ссылку сыну/родным */}
+        <div className="mb-6">
+          <ShareButton
+            title="Поминки — кейтеринг NiloV"
+            text="Посмотри поминальное меню и цены — нужно согласовать"
+            label="📤 Отправить ссылку родным (WhatsApp / Telegram / Email)"
+          />
+        </div>
 
         <div className="mb-8 p-5 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-lg font-medium mb-3">Что важно знать</h2>
@@ -71,16 +89,14 @@ export default function PominkiPage() {
             <li>Меню полностью без алкоголя. Шампанское, вино, пиво — исключены.</li>
             <li>Без торта со свечками и надписями. Можно подать кутью и постные пирожки.</li>
             <li>Без музыки, без аниматоров, без фотосессии.</li>
-            <li>Возможна доставка в кафе у дома или в храм (с согласованием).</li>
+            <li>Возможна доставка в кафе у дома, в храм или в кафе рядом с кладбищем (Богословское, Смоленское, Ковалёвское, Северное — согласуем с менеджером).</li>
             <li>Срок организации: от 1 рабочего дня (срочные поминки — возможно).</li>
             <li>Чек выдаём на руки. Договор и закрывающие документы — для родных.</li>
-            <li>Бюджет: от 1 800 ₽/гость. Минимум — 10 человек.</li>
+            <li><strong>Бюджет: 1 800 ₽/гость — фиксированная цена.</strong> Включает: еда, посуда, доставка по СПб (в пределах КАД), салфетки, столовые приборы. Доплаты: выезд за КАД (+30 ₽/км), дополнительный персонал на площадке (+1 500 ₽/час). Минимум — 10 человек.</li>
           </ul>
           <p className="mt-4 p-3 rounded-lg bg-gold-tint/10 text-sm">
             <strong>Пример расчёта:</strong> 25 гостей × 1 800 ₽ ={' '}
-            <strong className="text-gold-text">45 000 ₽</strong>. Это базовый расчёт. Финальная
-            смета зависит от выбора блюд (рыбные дороже постных) и адреса доставки. Менеджер
-            пришлёт точную смету после звонка.
+            <strong className="text-gold-text">45 000 ₽</strong>. Это финальная цена для кафе/дома в пределах КАД. Без скрытых доплат.
           </p>
         </div>
 
@@ -94,8 +110,8 @@ export default function PominkiPage() {
               </a>{' '}
               (с городского телефона в СПб набирайте просто 919-59-11, без 812).
             </li>
-            <li>Скажите: дату, время, количество гостей, адрес (дом или кафе).</li>
-            <li>Менеджер предложит меню под ваш бюджет — от 1 800 ₽/гость.</li>
+            <li>Скажите: дату, время, количество гостей, адрес (дом, кафе или кладбище).</li>
+            <li>Менеджер предложит меню под ваш бюджет — фикс 1 800 ₽/гость.</li>
             <li>Курьер привезёт за 60 минут до начала. Сервируем тихо.</li>
           </ol>
           <p className="text-sm text-muted-foreground">
@@ -108,7 +124,7 @@ export default function PominkiPage() {
             >
               wa.me/78129195911
             </a>
-            . Менеджер свяжется в течение 15 минут.
+            . Менеджер свяжется в течение 15 минут. Можно общаться только по email/ЭДО — укажите это в форме заявки.
           </p>
         </div>
 

@@ -118,7 +118,7 @@ const CERTIFICATES = [
     status: 'Отдельная линия · <20 ppm',
     statusColor: 'success',
     details: [
-      '61 блюдо в безглютеновом меню — от закусок до десертов.',
+      '53 блюда в безглютеновом меню — от закусок до десертов.',
       'Безглютеновый торт, БГ капкейки, БГ хлеб, БГ пицца на миндальной/рисовой муке.',
       'Отдельная зона кухни: отдельные разделочные столы, отдельные плиты, отдельные духовки (не пересекаются с пшеничными блюдами).',
       'Отдельная посуда: ножи, доски, сковороды, противни — отдельные, с синей цветовой маркировкой.',
@@ -166,13 +166,13 @@ const CERTIFICATES = [
     statusColor: 'gold',
     details: [
       'NDA (Non-Disclosure Agreement) — подписываем до начала переговоров по запросу клиента.',
-      'Шаблон NDA доступен — пришлём на email в течение 1 рабочего дня. Также работаем по вашему шаблону.',
+      'Шаблон NDA доступен для ПРЯМОГО скачивания ниже в разделе «Шаблоны документов». Также работаем по вашему шаблону.',
       'Конфиденциальность клиентов: не разглашаем имена корпоративных заказчиков без письменного согласия (исключения — публичные кейсы на сайте с согласия).',
       'Сотрудники: NDA подписывают все — повара, официанты, менеджеры, координаторы. Срок действия — 3 года после увольнения.',
       'Фотосъёмка на мероприятиях: только с согласия заказчика. Без согласия — только общие планы без лиц.',
       'Список гостей, меню, бюджет, логистика — конфиденциальная информация. Не передаётся третьим лицам.',
     ],
-    note: 'Запросить шаблон NDA: b2b@odaeda.ru. Подпись ЭДО (Диадок/СБИС) или оригинал с печатью.',
+    note: 'Скачать шаблон NDA напрямую: см. раздел «Шаблоны документов» ниже. Подпись — ЭДО (Диадок/СБИС) или оригинал с печатью. Также работаем по вашему шаблону — пришлите на b2b@odaeda.ru.',
   },
   {
     icon: '🌐',
@@ -267,8 +267,26 @@ export default function CertificatesPage() {
           ))}
         </div>
 
+        {/* Quick links to related pages */}
+        <div className="mt-10 mb-4 grid sm:grid-cols-2 gap-4">
+          <Link href="/partners" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
+            <h3 className="font-heading text-base font-medium mb-1">🌐 Партнёрская сеть</h3>
+            <p className="text-sm text-muted-foreground">
+              Сертифицированные кухни-партнёры для событий 500+ гостей. Аудит: медкнижки, ХАССП, страхование ГО.
+            </p>
+            <p className="text-xs text-gold-text font-semibold mt-2">Смотреть партнёров →</p>
+          </Link>
+          <Link href="/account/orders" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
+            <h3 className="font-heading text-base font-medium mb-1">💼 Личный кабинет B2B</h3>
+            <p className="text-sm text-muted-foreground">
+              История заказов, закрывающие документы на скачивание, статусы событий. Для постоянных B2B-клиентов.
+            </p>
+            <p className="text-xs text-gold-text font-semibold mt-2">Войти в ЛК →</p>
+          </Link>
+        </div>
+
         {/* Downloadable templates */}
-        <div className="mt-10 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
+        <div className="mt-4 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
           <h2 className="font-heading text-2xl font-medium mb-2">📄 Шаблоны документов для скачивания</h2>
           <p className="text-sm text-muted-foreground mb-5">
             Скачайте шаблоны прямо сейчас — без email-ожидания. Все шаблоны согласуются индивидуально

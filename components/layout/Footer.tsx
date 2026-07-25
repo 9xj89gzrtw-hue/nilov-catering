@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SITE, SOCIAL_LINKS } from '@/lib/data';
 import TextSizeToggle from '@/components/effects/TextSizeToggle';
+import { NewsletterBlock } from '@/components/blocks/NewsletterBlock';
 
 const FOOTER_LINKS = {
   События: [
@@ -45,16 +46,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-secondary/50" role="contentinfo">
       <div className="container-site py-16">
-        {/* Newsletter signup (03_JOURNEYS) */}
-        <div className="mb-12 p-6 rounded-xl border border-line bg-card text-center">
-          <h3 className="font-heading text-lg font-medium mb-2">Будьте в курсе</h3>
-          <p className="text-sm text-muted-foreground mb-4">Сезонные предложения и новые меню — раз в месяц, без спама.</p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/api/newsletter" method="POST">
-            <input type="email" name="email" placeholder="Ваш email" required className="flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
-            <button type="submit" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">Подписаться</button>
-          </form>
-          <p className="mt-2 text-sm text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>
-        </div>
+        {/* Newsletter signup — hidden on dignity/somber pages (поминки) */}
+        <NewsletterBlock />
 
         {/* Link columns */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">

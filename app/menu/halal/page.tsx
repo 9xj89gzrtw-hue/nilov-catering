@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import { SITE } from '@/lib/data';
+import FoodPhoto from '@/components/common/FoodPhoto';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function HalalPage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('halal')), []);
@@ -21,10 +23,90 @@ export default function HalalPage() {
         </nav>
 
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">Халяль-кейтеринг</h1>
-        <p className="text-lg text-muted-foreground mb-6">
+        <p className="text-lg text-muted-foreground mb-3">
           Настоящий халяль: забой по обряду зибха (zibh) с произнесением такбира (tasmiya).
           Сертификат от Совета муфтиев России — Международного центра стандартизации и сертификации «Халяль». Рег. № СМР-Халяль-2026-142, действует до 31.12.2026. Отдельное оборудование, без свинины, без алкоголя.
         </p>
+        <p className="text-sm text-muted-foreground mb-6">
+          📜 Проверить подлинность сертификата: {' '}
+          <a href="https://halalrf.ru" target="_blank" rel="noopener noreferrer" className="text-gold-text font-semibold underline">
+            реестр МЦСС «Халяль» (halalrf.ru) →
+          </a>
+          {' · '}
+          <Link href="/certificates" className="text-gold-text font-semibold underline">скан PDF на странице сертификатов →</Link>
+        </p>
+
+        {/* Ифтар / Рамадан блок */}
+        <div className="mb-8 p-6 rounded-2xl border-2 border-amber-300 bg-amber-50">
+          <h2 className="font-heading text-xl font-medium mb-3">🌙 Рамадан и ифтар — меню разговения</h2>
+          <p className="text-sm text-amber-900 mb-3">
+            В месяц Рамадан организуем ифтары (разговение после заката солнца) для коллективов и семей.
+            Подача синхронизирована с временем магриба — готовое меню доставляем за 30 минут до захода.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-3 text-sm">
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">📅 Традиционное начало</p>
+              <p className="text-xs text-amber-800">Финики (3 шт./гость) + вода + молоко — открывают пост по сунне Пророка ﷺ.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">🍲 Суп (чорба / харис)</p>
+              <p className="text-xs text-amber-800">Горячий суп после фиников — баранья чорба или пшеничная харис.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">🍖 Основное + салаты</p>
+              <p className="text-xs text-amber-800">Халяль-шашлык, плов, фаттуш, табуле, хумус — на выбор.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">🍯 Десерт (чак-чак)</p>
+              <p className="text-xs text-amber-800">Татарский чак-чак или пахлава с чаем из трав.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">🚚 Логистика магриба</p>
+              <p className="text-xs text-amber-800">Доставка с учётом точного времени заката. Менеджер уточнит время за день до ифтара.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-amber-900 mb-1">👥 Минимум — 10 чел</p>
+              <p className="text-xs text-amber-800">Ифтар-пакет от 1 800 ₽/гость. Для коллектива 30+ — скидка 10%.</p>
+            </div>
+          </div>
+          <p className="text-xs text-amber-800 mt-3">
+            <Link href="/contact?eventType=Ифтар+%2F+Рамадан+%28халяль%29&format=Ифтар&guests=30" className="font-semibold underline">Заказать ифтар →</Link>
+            {' · '}
+            <Link href="/plan/constructor?format=furshet&diet=halal" className="font-semibold underline">Собрать халяль-меню в конструкторе →</Link>
+          </p>
+        </div>
+
+        {/* Никах блок */}
+        <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-300 bg-emerald-50">
+          <h2 className="font-heading text-xl font-medium mb-3">💍 Никах — исламская свадебная церемония</h2>
+          <p className="text-sm text-emerald-900 mb-3">
+            Организуем помолвку и никах с учётом исламских традиций: без алкоголя, без свинины,
+            раздельные станции для мужчин и женщин (по запросу), традиционные блюда.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 text-sm">
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-emerald-900 mb-1">🍽️ Меню никаха</p>
+              <p className="text-xs text-emerald-800">Плов, манты, чебуреки, самса, халяль-шашлык, чак-чак, пахлава, чайная церемония.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-emerald-900 mb-1">🚫 Без алкоголя и свинины</p>
+              <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, mocktails. Винный уксус исключён.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-emerald-900 mb-1">👥 Раздельный зал</p>
+              <p className="text-xs text-emerald-800">По запросу — раздельные станции для мужчин и женщин, перегородка, женский зал с женским персоналом.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-emerald-900 mb-1">📜 Сертификат СМР</p>
+              <p className="text-xs text-emerald-800">Предоставляем копию сертификата Совета муфтиев России на подписанный договор.</p>
+            </div>
+          </div>
+          <p className="text-xs text-emerald-800 mt-3">
+            <Link href="/contact?eventType=Никах+%28халяль%29&format=Банкет&guests=50" className="font-semibold underline">Заказать никах →</Link>
+            {' · '}
+            <Link href="/events/svadba" className="font-semibold underline">Свадебный кейтеринг (общая страница) →</Link>
+          </p>
+        </div>
 
         {/* Халяль-протокол — детально */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
@@ -81,36 +163,57 @@ export default function HalalPage() {
 
         <h2 className="font-heading text-2xl font-medium mb-4">Халяль-блюда в каталоге ({dishes.length})</h2>
         <p className="text-sm text-muted-foreground mb-6">
-          Каждое мясное блюдо — из мяса халяль-забоя. Пометка «халяль-забой» в составе. Без свинины, без алкоголя.
+          Каждое мясное блюдо — из мяса халяль-забоя по обряду зибха. Веганские блюда (хумус, фаттуш, табуле)
+          помечены «веган» — они не содержат мяса, забой не требуется. Без свинины, без алкоголя.
         </p>
 
         {dishes.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 mb-10">
-            {dishes.map(dish => (
-              <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                  <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold shrink-0">Халяль</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
-                  <span className="text-xs text-muted-foreground">забой: зибха</span>
-                </div>
-                {dish.allergens.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {dish.allergens.map(a => {
-                      const isNut = a === 'nuts' || a === 'peanuts';
-                      return (
-                        <span key={a} className={`text-xs px-2 py-0.5 rounded ${
-                          isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
-                        }`}>{ALLERGEN_LABEL[a]}</span>
-                      );
-                    })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {dishes.map(dish => {
+              const isVegan = dish.dietBadges.includes('vegan');
+              const isMeat = !isVegan; // For halal dishes: vegan = no meat, others = meat from zibha
+              return (
+                <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-secondary">
+                    <FoodPhoto
+                      src={getDishImage(dish.id, dish.station)}
+                      alt={dish.name}
+                      aspectRatio="wide"
+                      objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                      className="w-full h-full"
+                    />
+                    <div className="absolute top-2 left-2 flex gap-1">
+                      <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">H Халяль</span>
+                      {isVegan && <span className="text-[10px] bg-emerald-700 text-white px-1.5 py-0.5 rounded font-bold">VG Веган</span>}
+                    </div>
                   </div>
-                )}
-              </div>
-            ))}
+                  <div className="p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                      <span className="text-xs text-muted-foreground" title={isMeat ? 'Забой по обряду зибха с такбиром' : 'Веганское блюдо — забой не требуется'}>
+                        {isMeat ? '🗡️ забой: зибха' : '🌱 веган'}
+                      </span>
+                    </div>
+                    {dish.allergens.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1">
+                        {dish.allergens.map(a => {
+                          const isNut = a === 'nuts' || a === 'peanuts';
+                          return (
+                            <span key={a} className={`text-xs px-2 py-0.5 rounded ${
+                              isNut ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+                            }`}>{ALLERGEN_LABEL[a]}</span>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
 

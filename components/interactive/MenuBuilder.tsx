@@ -500,6 +500,8 @@ function DraggableDishCard({
           {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
           {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
           {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
+          {dish.dietBadges.includes('sugar-free') && <span className="text-[10px] bg-purple-600 text-white px-1 py-0.5 rounded font-bold" title="Без добавленного сахара — для СД1/СД2">SF</span>}
+          {dish.dietBadges.includes('nut-free') && <span className="text-[10px] bg-red-500 text-white px-1 py-0.5 rounded font-bold" title="Без орехов — для анафилаксии">NF</span>}
           {dish.childFriendly && <span className="text-[10px] bg-purple-500 text-white px-1 py-0.5 rounded font-bold">Дети</span>}
         </div>
         {/* Allergen warning badge */}
@@ -517,6 +519,12 @@ function DraggableDishCard({
       </div>
       <div className="p-2">
         <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-2">{dish.name}</h4>
+        {/* ХЕ (хлебные единицы) — extracted from description for СД1 visibility */}
+        {dish.description.match(/ХЕ=([0-9.]+)/) && (
+          <p className="text-[10px] text-purple-700 font-semibold mb-0.5">
+            ХЕ={dish.description.match(/ХЕ=([0-9.]+)/)?.[1]} · для СД1
+          </p>
+        )}
         {/* Compact allergen tags */}
         {dish.allergens.length > 0 && (
           <div className="flex flex-wrap gap-0.5 mb-1">

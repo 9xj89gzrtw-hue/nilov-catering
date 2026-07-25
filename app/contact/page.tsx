@@ -141,7 +141,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <select id="customerType" name="customerType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
                 <option value="individual">Физлицо (частный заказ)</option>
                 <option value="company">Юрлицо (B2B, ЭДО)</option>
-                <option value="school">Школа / учреждение (Роспот, 44-ФЗ)</option>
+                <option value="school">Школа / учреждение (Роспотребнадзор, 44-ФЗ)</option>
                 <option value="government">Госзаказчик (44-ФЗ / 223-ФЗ)</option>
                 <option value="agency">Event-агентство (субподряд)</option>
               </select>

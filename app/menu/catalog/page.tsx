@@ -296,6 +296,13 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
             {dish.dietBadges.includes('nut-free') && <Badge label="NF" color="red" />}
             {dish.childFriendly && <Badge label="Дети" color="purple" />}
           </div>
+
+          {/* ХЕ (хлебные единицы) — extracted from description for СД1 visibility */}
+          {dish.description.match(/ХЕ=([0-9.]+)/) && (
+            <p className="text-[10px] text-purple-700 font-semibold mt-1.5">
+              ХЕ={dish.description.match(/ХЕ=([0-9.]+)/)?.[1]} · для СД1
+            </p>
+          )}
         </div>
 
         {/* Allergens — high-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
