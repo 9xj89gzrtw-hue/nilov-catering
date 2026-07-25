@@ -70,7 +70,7 @@ export default function HalalPage() {
             </div>
           </div>
           <p className="text-xs text-amber-800 mt-3">
-            <Link href="/contact?eventType=Ифтар+%2F+Рамадан+%28халяль%29&format=Ифтар&guests=30" className="font-semibold underline">Заказать ифтар →</Link>
+            <Link href="/contact?eventType=Ифтар+%2F+Рамадан&format=Ифтар&guests=30" className="font-semibold underline">Заказать ифтар →</Link>
             {' · '}
             <Link href="/plan/constructor?format=furshet&diet=halal" className="font-semibold underline">Собрать халяль-меню в конструкторе →</Link>
           </p>

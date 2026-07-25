@@ -57,7 +57,7 @@ export default function Page() {
 
         {/* Целиакия-протокол */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-blue-200 bg-blue-50">
-          <h2 className="font-heading text-xl font-medium mb-3">🌾 Протокол для целиакии (без глютена)</h2>
+          <h2 id="celiakia" className="font-heading text-xl font-medium mb-3 scroll-mt-20">🌾 Протокол для целиакии (без глютена)</h2>
           <ul className="text-sm text-foreground space-y-1.5 mb-3">
             <li>✓ Отдельная зона кухни — без пересечения с пшеничной мукой</li>
             <li>✓ Отдельные разделочные столы, плиты, духовки</li>
@@ -76,7 +76,7 @@ export default function Page() {
 
         {/* Анафилаксия-протокол (nut-free) */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-red-200 bg-red-50">
-          <h2 className="font-heading text-xl font-medium mb-3">🥜 Протокол для анафилаксии на орехи (nut-free)</h2>
+          <h2 id="anafilaksiya" className="font-heading text-xl font-medium mb-3 scroll-mt-20">🥜 Протокол для анафилаксии на орехи (nut-free)</h2>
           <p className="text-sm text-foreground mb-3">
             Если у гостя анафилаксия на арахис, лесной, кедровый, грецкий или любой другой орех:
           </p>
@@ -133,7 +133,7 @@ export default function Page() {
 
         {/* Диабет-протокол (сахарный диабет 1 типа) */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-purple-200 bg-purple-50">
-          <h2 className="font-heading text-xl font-medium mb-3">
+          <h2 id="sd1" className="font-heading text-xl font-medium mb-3 scroll-mt-20">
             💉 Протокол для сахарного диабета (СД1, СД2)
           </h2>
           <p className="text-sm text-foreground mb-3">

@@ -161,6 +161,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                   <option value="Шеф на дом">Шеф на дом</option>
                   <option value="Поминки">Поминки (поминальный обед)</option>
                   <option value="Ифтар / Рамадан">Ифтар / Рамадан (халяль)</option>
+                  <option value="Никах (халяль)">Никах (исламская свадьба, халяль)</option>
                   <option value="Доставка еды">Доставка еды</option>
                   <option value="Другое">Другое</option>
                 </select>
