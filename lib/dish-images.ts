@@ -52,7 +52,7 @@ export const STATION_OBJECT_POSITION: Record<string, string> = {
 };
 
 // AI-generated photos — high quality, match each dish description exactly
-const AI_BASE = '/images/ai';
+const AI_BASE = '/images/dishes-ai';
 
 // Специальные изображения для конкретных блюд — W56 AI photos for exact match
 const DISH_IMAGE_MAP: Record<string, string> = {

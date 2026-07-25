@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
 import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
@@ -86,19 +86,31 @@ export default function CatalogPage() {
     setStation('all');
     setActiveDiets(new Set());
     setExcludedAllergens(new Set());
+    setVisibleCount(24); // Reset pagination when filters reset
   };
+
+  // Reset pagination when filters change
+  useEffect(() => {
+    setVisibleCount(24);
+  }, [search, station, activeDiets, excludedAllergens]);
 
   // Allergen visibility toggle — show/hide allergen badges on cards
   const [showAllergens, setShowAllergens] = useState(true);
-  // Pagination — show first 24 dishes, then "Показать ещё"
-  const [visibleCount, setVisibleCount] = useState(24);
+  // Pagination — client-side progressive enhancement. SSR shows ALL dishes.
+  // JS pagination kicks in only after hydration to reduce initial DOM for slow devices.
+  const [visibleCount, setVisibleCount] = useState<number | null>(null); // null = show all (SSR default)
 
-  // Slice dishes for pagination
-  const paginatedOther = otherDishes.slice(0, visibleCount);
-  const paginatedHalal = halalDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length));
-  const paginatedPork = porkDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length - paginatedHalal.length));
+  // After mount, switch to paginated mode
+  useEffect(() => {
+    setVisibleCount(24);
+  }, []);
+
+  const showAll = visibleCount === null;
+  const paginatedOther = showAll ? otherDishes : otherDishes.slice(0, visibleCount);
+  const paginatedHalal = showAll ? halalDishes : halalDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length));
+  const paginatedPork = showAll ? porkDishes : porkDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length - paginatedHalal.length));
   const totalShown = paginatedOther.length + paginatedHalal.length + paginatedPork.length;
-  const hasMore = totalShown < filtered.length;
+  const hasMore = !showAll && totalShown < filtered.length;
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -246,7 +258,7 @@ export default function CatalogPage() {
         {hasMore && (
           <div className="text-center py-8">
             <button
-              onClick={() => setVisibleCount(c => c + 24)}
+              onClick={() => setVisibleCount(c => (c ?? 24) + 24)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
               type="button"
               aria-controls="dishes-grid"

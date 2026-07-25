@@ -121,9 +121,14 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                 <input id="name" type="text" name="name" required autoComplete="name" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон *</label>
-                <input id="phone" type="tel" name="phone" required inputMode="tel" autoComplete="tel" placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон <span className="text-muted-foreground text-xs">(или email ниже)</span></label>
+                <input id="phone" type="tel" name="phone" inputMode="tel" autoComplete="tel" placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">Email <span className="text-muted-foreground text-xs">(если не хотите звонок — укажите email)</span></label>
+              <input id="email" type="email" name="email" autoComplete="email" placeholder="example@mail.ru" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
