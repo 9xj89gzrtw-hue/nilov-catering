@@ -94,6 +94,12 @@ export default async function HomePage() {
               <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
                 📋 Сертификаты
               </Link>
+              <Link href="/partners" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+                🌐 Партнёры (500+)
+              </Link>
+              <Link href="/account/orders" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+                💼 Личный кабинет
+              </Link>
               <a href={'mailto:' + SITE.email + '?subject=B2B-запрос'} className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
                 ✉️ {SITE.email}
               </a>

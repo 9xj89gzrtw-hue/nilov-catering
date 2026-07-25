@@ -30,7 +30,7 @@ export default function AccessibilityPage() {
             <h2 className="font-heading text-xl font-medium text-foreground">✓ Что реализовано</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Skip-link «Перейти к содержимому» в начале каждой страницы (виден при Tab)</li>
-              <li><strong>Переключатель размера шрифта A− / A / A+ в подвале</strong> каждой страницы (100% / 110% / 125%)</li>
+              <li><strong>Переключатель размера шрифта A+ в шапке</strong> каждой страницы (100% / 125% / 150%)</li>
               <li>Все изображения имеют alt-текст</li>
               <li>Навигация возможна с клавиатуры (Tab, Enter, Escape)</li>
               <li>Focus-visible кольцо на всех интерактивных элементах (4.54:1 AA)</li>
@@ -47,7 +47,7 @@ export default function AccessibilityPage() {
             <h2 className="font-heading text-xl font-medium text-foreground">👵 Для пожилых пользователей</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Телефон <a href={`tel:${SITE.phoneTel}`} className="text-gold-text underline">{SITE.phone}</a> — кликабелен в шапке на всех страницах (text-base 16px)</li>
-              <li>Переключатель A− / A / A+ в подвале — увеличивает шрифт до 125%</li>
+              <li>Переключатель A+ в шапке — увеличивает шрифт до 150% (3 уровня: 100% / 125% / 150%)</li>
               <li>Контраст gold-text на background — AA-совместимый</li>
               <li>Крупные кнопки CTA (min 44×44 px touch target)</li>
               <li>На странице <Link href="/events/yubiley" className="text-gold-text underline">/events/yubiley</Link> — приоритет телефону над формой</li>

@@ -19,6 +19,7 @@ const FORMATS = [
   { slug: 'detskoe', label: 'Детское', href: '/menu/detskoe', price: 'от 1 550 ₽/гость', emoji: '🎈', desc: 'Бургеры, наггетсы, смузи. Безопасное и вкусное меню для детей.' },
   { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 1 500 ₽/гость', emoji: '🥬', desc: 'Растительное меню без продуктов животного происхождения.' },
   { slug: 'show-cooking', label: 'Show-cooking', href: '/menu/show-cooking', price: '', emoji: '🔥', desc: 'Живые станции: паста, суши, пицца. Еда как шоу для ваших гостей.' },
+  { slug: 'pominki', label: 'Поминки', href: '/events/pominki', price: 'от 1 800 ₽/гость', emoji: '🕯️', desc: 'Поминальный обед по православной традиции: кутья, блины, кисель, рыба. Без алкоголя.' },
 ];
 
 // Популярные блюда со всех меню (для витрины)
@@ -138,6 +139,8 @@ export default function MenuPage() {
               { label: '🥬 Веган', href: '/menu/vegan', desc: 'Без мяса, молока, яиц' },
               { label: '🌾 Без глютена', href: '/menu/gluten-free', desc: 'Для целиакии и чувствительности' },
               { label: '☪️ Халяль', href: '/menu/halal', desc: 'Сертифицированное халяль-меню' },
+              { label: '💉 Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
+              { label: '🥜 Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
             ].map(d => (
               <Link key={d.href} href={d.href} className="rounded-xl border border-line bg-card px-5 py-3 hover:border-gold-text hover:-translate-y-0.5 transition-all">
                 <div className="text-sm font-medium mb-0.5">{d.label}</div>

@@ -404,7 +404,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
           __html: `(function(){
             try {
               var sp = new URLSearchParams(window.location.search);
-              var fields = ['eventType', 'format', 'guests', 'address'];
+              var fields = ['eventType', 'format', 'guests', 'address', 'customerType', 'companyName', 'companyInn', 'companyKpp', 'companyAddress', 'edo', 'comment'];
               fields.forEach(function(name) {
                 var val = sp.get(name);
                 if (!val) return;

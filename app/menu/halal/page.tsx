@@ -90,7 +90,11 @@ export default function HalalPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">🚫 Без алкоголя и свинины</p>
-              <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, mocktails. Винный уксус исключён.</p>
+              <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, mocktails. Винный уксус, мирин, коньяк, <strong>ванильный экстракт (35% алк.)</strong>, ром в пропитке тортов — исключены. Заменяем на ванильный порошок/пасту.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/60">
+              <p className="font-semibold text-emerald-900 mb-1">💰 Цена никаха</p>
+              <p className="text-xs text-emerald-800">От <strong>4 500 ₽/гость</strong> (минимум 30 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">👥 Раздельный зал</p>
@@ -130,7 +134,7 @@ export default function HalalPage() {
             </div>
             <div>
               <h3 className="font-semibold mb-1">Без алкоголя</h3>
-              <p className="text-muted-foreground">Халяль-заказы готовятся в окне без алкогольных ингредиентов. Винный уксус, мирин, коньяк — исключены. Соусы на халяль-базе.</p>
+              <p className="text-muted-foreground">Халяль-заказы готовятся в окне без алкогольных ингредиентов. Винный уксус, мирин, коньяк, <strong>ванильный экстракт (35% алк.)</strong>, ром в пропитке тортов — исключены. Заменяем на ванильный порошок/пасту. Соусы на халяль-базе.</p>
             </div>
             <div>
               <h3 className="font-semibold mb-1">Доставка</h3>

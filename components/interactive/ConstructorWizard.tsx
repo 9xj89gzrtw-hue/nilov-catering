@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useConstructor } from '@/hooks/useConstructor';
 import type { GuestGroup } from '@/hooks/useConstructor';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
+import ShareButton from '@/components/common/ShareButton';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALL_TARIFF_OFFERS, getPricesForFormat, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
 import { ALLERGEN_LABEL } from '@/lib/types';
@@ -385,6 +386,15 @@ export default function ConstructorWizard() {
                   ? 'Нажмите «+ Добавить» на блюде или перетащите его в корзину. На телефоне — долгое нажатие. Цена пересчитывается автоматически.'
                   : 'Состав тарифа загружен. Можно убрать блюда, заменить, добавить. Цена пересчитывается автоматически.'}
               </p>
+              {store.selectedItems.length > 0 && (
+                <div className="mt-3 inline-block">
+                  <ShareButton
+                    title="Моё меню — NiloV Catering"
+                    text={`Меню на ${store.guestCount} гостей: ${store.selectedItems.length} блюд, итого ${store.total.toLocaleString('ru-RU')} ₽`}
+                    label="📤 Отправить меню родным/коллегам"
+                  />
+                </div>
+              )}
             </div>
 
             <MenuBuilder

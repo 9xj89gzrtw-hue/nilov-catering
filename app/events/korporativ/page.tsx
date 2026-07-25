@@ -44,7 +44,7 @@ export default function CorporatePage() {
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1">💳 Оплата</p>
-              <p className="text-xs text-muted-foreground">50% предоплата, 50% постоплата в течение 5 рабочих дней. Для постоянных B2B (3+ событий) — отсрочка 7-14 дней.</p>
+              <p className="text-xs text-muted-foreground">50% предоплата, 50% постоплата в течение 5 рабочих дней. Для постоянных B2B (3+ событий) — отсрочка 14 рабочих дней (фиксированно).</p>
             </div>
           </div>
 
