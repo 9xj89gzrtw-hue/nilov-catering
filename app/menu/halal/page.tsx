@@ -85,7 +85,7 @@ export default function HalalPage() {
         </p>
 
         {dishes.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 mb-10">
             {dishes.map(dish => (
               <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
                 <div className="flex items-start justify-between mb-2">

@@ -378,13 +378,11 @@ export default function MenuBuilder({
             return (
               <div
                 key={dish.id}
-                draggable
-                onDragStart={e => handleCatalogDragStart(e, dish.id)}
                 role="button"
                 tabIndex={0}
                 aria-label={`${dish.name}, ${dish.pricePerGuest} ₽. Нажмите Enter чтобы добавить в меню.`}
                 onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isSelected) onAdd(dish.id); } }}
-                className={`rounded-xl border bg-card overflow-hidden transition-all cursor-grab active:cursor-grabbing ${
+                className={`rounded-xl border bg-card overflow-hidden transition-all cursor-pointer ${
                   isSelected
                     ? 'border-gold-text ring-1 ring-gold-text opacity-60'
                     : dimmed
@@ -503,8 +501,7 @@ export default function MenuBuilder({
         }`}
         aria-live="polite"
         aria-label={`Корзина меню: ${selectedItems.length} ${selectedItems.length === 1 ? 'блюдо' : 'блюд'}`}
-      >
-        <div className="flex items-center justify-between mb-3">
+      >        <div className="flex items-center justify-between mb-3">
           <h3 className="font-heading text-lg font-medium">{cartTitle}</h3>
           {selectedItems.length > 0 && (
             <span className="text-xs bg-gold-tint text-gold-text px-2 py-0.5 rounded-full font-semibold">
@@ -517,7 +514,7 @@ export default function MenuBuilder({
           <div className="text-center py-12">
             <div className="text-4xl mb-3 opacity-50">🍽️</div>
             <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
-            <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Перетащите блюдо в корзину или нажмите «+ Добавить». На мобильном работают кнопки ▲▼.</p>
+            <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Нажмите «+ Добавить» на блюде. Для перестановки используйте кнопки ▲▼.</p>
           </div>
         ) : (
           <ul className="space-y-2">
@@ -531,11 +528,6 @@ export default function MenuBuilder({
               return (
                 <li
                   key={item.dishId}
-                  draggable={enableReorder}
-                  onDragStart={e => handleCartDragStart(e, idx)}
-                  onDragEnd={handleCartDragEnd}
-                  onDragOver={e => handleCartDragOver(e, idx)}
-                  onDrop={e => { e.stopPropagation(); handleCartDrop(e, idx); }}
                   role="listitem"
                   aria-label={`Блюдо ${idx + 1}: ${dish.name}. Используйте кнопки вверх/вниз для перестановки.`}
                   className={`rounded-xl border bg-card p-2.5 transition-all ${
@@ -634,7 +626,7 @@ export default function MenuBuilder({
         {/* Helper hint */}
         {selectedItems.length > 0 && enableReorder && (
           <p className="text-[10px] text-muted-foreground/70 mt-3 text-center">
-            ⟲ Перетащите карточку или используйте ▲▼ для порядка
+            ⟲ Используйте ▲▼ для порядка блюд
           </p>
         )}
       </div>

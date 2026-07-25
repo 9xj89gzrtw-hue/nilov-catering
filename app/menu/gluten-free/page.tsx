@@ -88,7 +88,7 @@ export default function GlutenFreePage() {
             Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong> (без орехов).
             Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {dessertsNutFree.map(dish => (
               <div key={dish.id} className="rounded-xl border-2 border-blue-200 bg-blue-50/50 p-4 hover:border-gold-text transition-colors">
                 <div className="flex items-start justify-between mb-2">
@@ -115,7 +115,7 @@ export default function GlutenFreePage() {
         {/* Основные блюда — DEFAULT nut-free */}
         <div className="mb-10">
           <h2 className="font-heading text-2xl font-medium mb-2">🥗 БГ-закуски и горячее (nut-free по умолчанию)</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {mainsNutFree.map(dish => (
               <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
                 <div className="flex items-start justify-between mb-2">
@@ -142,7 +142,7 @@ export default function GlutenFreePage() {
         {drinksNutFree.length > 0 && (
           <div className="mb-10">
             <h2 className="font-heading text-2xl font-medium mb-2">☕ БГ-напитки (nut-free по умолчанию)</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {drinksNutFree.map(dish => (
                 <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
                   <div className="flex items-start justify-between mb-2">
@@ -168,7 +168,7 @@ export default function GlutenFreePage() {
               Не заказывайте их при анафилаксии на орехи. По умолчанию БГ-меню состоит только из nut-free блюд выше.
               Эти блюда доступны только по явному запросу.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {allWithNuts.map(dish => (
                 <div key={dish.id} className="rounded-xl border border-amber-300 bg-white p-4">
                   <div className="flex items-start justify-between mb-2">

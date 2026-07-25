@@ -20,7 +20,7 @@ export default function StickyMobileCTA({
   const pathname = usePathname();
 
   // Hide sticky CTA on pages where it would compete with the page's own CTA
-  if (pathname === '/contact' || pathname === '/plan/constructor' || pathname === '/plan/calculator') {
+  if (pathname === '/contact' || pathname === '/plan/constructor' || pathname === '/plan/calculator' || pathname === '/plan/helper' || pathname === '/faq' || pathname === '/tasting') {
     return null;
   }
 

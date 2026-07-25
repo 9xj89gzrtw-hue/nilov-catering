@@ -265,7 +265,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             </details>
 
             {/* B2B toggle — open by default для корпоративных клиентов */}
-            <details className="rounded-lg border border-line bg-secondary/30 p-3">
+            <details id="b2b-details" className="rounded-lg border border-line bg-secondary/30 p-3">
               <summary className="text-sm font-medium cursor-pointer">
                 💼 Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
@@ -423,7 +423,21 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
                 }
               });
             } catch (e) { /* silent */ }
-          })();`,
+          })();
+
+          // Auto-expand B2B section when customerType = company/school/government
+          var ct = document.getElementById('customerType');
+          var b2b = document.getElementById('b2b-details');
+          if (ct && b2b) {
+            function checkB2B() {
+              var v = ct.value;
+              if (v === 'company' || v === 'school' || v === 'government' || v === 'agency') {
+                b2b.setAttribute('open', '');
+              }
+            }
+            ct.addEventListener('change', checkB2B);
+            checkB2B();
+          }`,
         }}
       />
     </main>

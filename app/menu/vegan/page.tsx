@@ -39,7 +39,7 @@ export default function VeganPage() {
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">
           Все веган-блюда ({dishes.length})
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
           {dishes.map((dish, idx) => (
             <div
               key={dish.id}
