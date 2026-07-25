@@ -404,13 +404,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Event type tabs — only if standalone */}
         {isStandalone && (
           <>
-            <div className="text-center mb-10">
-              <h2 className="text-xl md:text-2xl font-heading mb-3 text-muted-foreground">Выберите тип события</h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                Прозрачные цены за человека. Всё включено: еда, персонал, посуда, доставка по КАД. Доставка за КАД — от 3 000 ₽.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <div className="flex flex-wrap justify-center gap-2 mb-10">
               {events.map(([id, m]) => {
                 const isActive = selectedEvent === id;
                 const href = `/pricing?event=${id}`;

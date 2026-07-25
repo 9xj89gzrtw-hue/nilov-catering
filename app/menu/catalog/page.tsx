@@ -98,18 +98,16 @@ export default function CatalogPage() {
         <PageHeader
           title="Каталог блюд"
           eyebrow={`${ALL_DISHES.length} позиций`}
-          subtitle={
-            <>
-              Все блюда с фото и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия).{' '}
-              <button
-                onClick={() => setShowAllergens(!showAllergens)}
-                className="text-gold-text hover:underline font-medium ml-1"
-                aria-pressed={!showAllergens}
-                type="button"
-              >
-                {showAllergens ? 'Скрыть аллергены' : 'Показать аллергены'}
-              </button>
-            </>
+          subtitle="Все блюда с фото и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия)."
+          actions={
+            <button
+              onClick={() => setShowAllergens(!showAllergens)}
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors touch-target"
+              aria-pressed={!showAllergens}
+              type="button"
+            >
+              {showAllergens ? '👁 Скрыть аллергены' : '👁 Показать аллергены'}
+            </button>
           }
         />
 

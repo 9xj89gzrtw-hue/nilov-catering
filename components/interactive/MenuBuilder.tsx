@@ -357,11 +357,11 @@ export default function MenuBuilder({
 
         {/* Drag hint */}
         <p className="text-[11px] text-muted-foreground mb-2 px-1">
-          💡 Нажмите «+ Добавить» или перетащите карточку блюда в корзину. На телефоне — долгое нажатие.
+          💡 Нажмите «+ Добавить» на блюде или перетащите его в корзину (на десктопе).
         </p>
 
         {/* Catalog grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:max-h-[calc(100vh-8rem)] md:overflow-y-auto pr-1 -mr-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {filtered.map(dish => {
             const isSelected = selectedIds.has(dish.id);
             const hasExcludedAllergen = excludedAllergens.size > 0 && dish.allergens.some(a => excludedAllergens.has(a));
@@ -461,7 +461,8 @@ function DraggableDishCard({
     transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
     opacity: isDragging ? 0.5 : undefined,
     zIndex: isDragging ? 50 : undefined,
-    touchAction: 'none', // important for touch dragging
+    // touch-action: none ONLY when actively dragging — otherwise page scroll works normally
+    touchAction: isDragging ? 'none' : undefined,
   };
 
   return (
@@ -674,7 +675,8 @@ function SortableCartItem({
     transition,
     opacity: isDragging ? 0.5 : undefined,
     zIndex: isDragging ? 50 : undefined,
-    touchAction: 'none',
+    // touch-action: none ONLY when actively dragging — otherwise page scroll works normally
+    touchAction: isDragging ? 'none' : undefined,
   };
 
   // Check if dish has excluded allergen (warning in cart)

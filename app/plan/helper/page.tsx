@@ -68,8 +68,9 @@ export default function PlanHelperPage({
 
           <div className="text-center mb-8">
             <div className="text-5xl mb-4">🎉</div>
-            <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">
-              Готово! Вот что мы подобрали
+            <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">Готово</p>
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
+              Вот что мы подобрали
             </h1>
             <p className="text-lg text-muted-foreground">
               <strong className="text-foreground">{occasion}</strong>
@@ -167,10 +168,10 @@ export default function PlanHelperPage({
         </div>
 
         <div className="text-center mb-10">
-          <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">
+          <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">
             Шаг {step + 1} из 3
           </p>
-          <h1 className="text-3xl md:text-4xl font-heading font-medium tracking-tight">
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
             {current.q}
           </h1>
         </div>

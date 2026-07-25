@@ -42,8 +42,8 @@ export default function GalleryPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent p-2 md:p-3 z-10 flex items-end">
                 <p className="text-xs md:text-sm font-medium text-white line-clamp-2">{p.caption}</p>
               </div>
-              {/* Zoom icon overlay */}
-              <div className="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* Zoom icon overlay — visible on hover (desktop) AND on touch (active state) */}
+              <div className="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:active:opacity-100 transition-opacity">
                 <svg className="w-4 h-4 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>

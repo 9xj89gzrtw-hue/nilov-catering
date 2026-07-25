@@ -40,6 +40,22 @@ export default function PricingPage() {
                 <FileDown className="w-4 h-4" aria-hidden="true" />
                 Договор PDF
               </Link>
+              <Link
+                href="/api/templates/nda"
+                download="nilov-nda-template.pdf"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+              >
+                <FileDown className="w-4 h-4" aria-hidden="true" />
+                NDA PDF
+              </Link>
+              <Link
+                href="/api/templates/sla"
+                download="nilov-sla-template.pdf"
+                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+              >
+                <FileDown className="w-4 h-4" aria-hidden="true" />
+                SLA PDF
+              </Link>
               <PrintButton label="Печать тарифов" />
             </>
           }
