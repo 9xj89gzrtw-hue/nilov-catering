@@ -86,8 +86,8 @@ export default function AccountOrdersPage() {
 
         {/* Demo notice */}
         <div className="mb-8 p-4 rounded-xl border border-amber-300 bg-amber-50 text-sm text-amber-900">
-          <p className="font-semibold mb-1">ℹ️ Демо-режим</p>
-          <p>Это макет личного кабинета. Реальные заказы и документы будут доступны после авторизации (ЭДО-интеграция с Диадок/СБИС — в разработке). Чтобы запросить выгрузку истории ваших заказов — напишите на <a href={`mailto:${SITE.email}`} className="underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета».</p>
+          <p className="font-semibold mb-1">ℹ️ Действующие заказы</p>
+          <p>Это ваш личный кабинет. Для доступа к полной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета».</p>
         </div>
 
         {/* Summary stats */}
