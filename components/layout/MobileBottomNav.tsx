@@ -21,15 +21,15 @@ export default function MobileBottomNav() {
       className="fixed bottom-0 left-0 right-0 z-50 border-t border-line bg-background/95 backdrop-blur-md lg:hidden safe-area-bottom"
       aria-label="Мобильная навигация"
     >
-      <ul className="flex items-center justify-evenly h-16 gap-2" role="list">
+      <ul className="flex items-center justify-evenly h-16 gap-1" role="list">
         {MOBILE_LINKS.map((link) => {
           const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
           const isPrimary = link.href === '/plan';
           return (
-            <li key={link.href}>
+            <li key={link.href} className="flex-1">
               <Link
                 href={link.href}
-                className={`flex flex-col items-center gap-0.5 px-2 py-1 text-xs font-medium transition-colors touch-target ${
+                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center ${
                   isActive
                     ? isPrimary ? 'text-gold-text' : 'text-foreground'
                     : 'text-muted-foreground'

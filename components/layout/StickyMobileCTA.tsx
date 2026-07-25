@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
 import { SITE } from '@/lib/data';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   ctaLabel?: string;
@@ -16,6 +17,13 @@ export default function StickyMobileCTA({
   ctaHref = '/plan/constructor',
   waContext,
 }: Props) {
+  const pathname = usePathname();
+
+  // Hide sticky CTA on pages where it would compete with the page's own CTA
+  if (pathname === '/contact' || pathname === '/plan/constructor' || pathname === '/plan/calculator') {
+    return null;
+  }
+
   const waHref = waContext
     ? `${SITE.whatsapp}?text=${encodeURIComponent(waContext)}`
     : SITE.whatsapp;

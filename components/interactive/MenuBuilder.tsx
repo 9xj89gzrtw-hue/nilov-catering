@@ -233,7 +233,7 @@ export default function MenuBuilder({
 
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDndKitDragEnd}>
-    <div className="grid lg:grid-cols-[1fr_400px] gap-6">
+    <div className="grid md:grid-cols-[1fr_360px] lg:grid-cols-[1fr_400px] gap-4 md:gap-6">
       {/* === КАТАЛОГ === */}
       <div>
         <div className="flex items-center justify-between mb-3">
@@ -366,7 +366,7 @@ export default function MenuBuilder({
         </div>
 
         {/* Catalog grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[640px] overflow-y-auto pr-1 -mr-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:max-h-[calc(100vh-8rem)] md:overflow-y-auto pr-1 -mr-1">
           {filtered.map(dish => {
             const isSelected = selectedIds.has(dish.id);
             const hasExcludedAllergen = excludedAllergens.size > 0 && dish.allergens.some(a => excludedAllergens.has(a));

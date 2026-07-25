@@ -162,7 +162,7 @@ export default function CatalogPage() {
             {halalDishes.length > 0 && porkDishes.length > 0 && (
               <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
             )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {otherDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx} />
               ))}
@@ -174,7 +174,7 @@ export default function CatalogPage() {
           <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
             <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {halalDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 100} />
               ))}
@@ -186,7 +186,7 @@ export default function CatalogPage() {
           <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
             <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {porkDishes.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 200} />
               ))}
