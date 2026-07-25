@@ -76,7 +76,7 @@ export default function MenuBuilder({
   dietFilter,
   catalogTitle = 'Каталог блюд',
   cartTitle = 'Ваше меню',
-  emptyCartText = 'Нажмите «+» на блюде или перетащите его сюда',
+  emptyCartText = 'Нажмите «+ Добавить» на блюде, чтобы добавить его в меню',
   unit = 'порц.',
   enableReorder = true,
   enableHybridMode = false,

@@ -399,7 +399,7 @@ export default function ConstructorWizard() {
               dietFilter={activeGroupDiet || undefined}
               catalogTitle={activeGroup ? `Каталог для группы: ${activeGroup.name || 'Без названия'} (${activeGroup.count} чел.)` : 'Каталог блюд'}
               cartTitle="Ваше меню"
-              emptyCartText="Нажмите «+ Добавить» на блюде или перетащите его сюда"
+              emptyCartText="Нажмите «+ Добавить» на блюде, чтобы добавить его в меню"
               unit="на гостя"
               enableReorder
               enableHybridMode

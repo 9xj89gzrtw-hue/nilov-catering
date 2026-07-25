@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'Планирование' };
 
@@ -6,7 +7,12 @@ export default function PlanPage() {
   return (
     <main className="pt-24 pb-20"><div className="container-site max-w-3xl text-center">
       <h1 className="mb-4">Спланировать событие</h1>
-      <p className="text-lg text-muted-foreground mb-12 text-balance">Выберите инструмент — и мы поможем.</p>
+      <p className="text-lg text-muted-foreground mb-8 text-balance">Выберите инструмент — и мы поможем.</p>
+      <div className="mb-12">
+        <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target">
+          🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+        </Link>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {[
           { title: 'Калькулятор', desc: 'Тарифы и таблицы за 30 секунд', href: '/plan/calculator' },

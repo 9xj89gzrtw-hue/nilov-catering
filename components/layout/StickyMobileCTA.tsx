@@ -20,7 +20,7 @@ export default function StickyMobileCTA({
   const pathname = usePathname();
 
   // Hide sticky CTA on pages where it would compete with the page's own CTA
-  if (pathname === '/contact' || pathname === '/plan/constructor' || pathname === '/plan/calculator' || pathname === '/plan/helper' || pathname === '/faq' || pathname === '/tasting') {
+  if (pathname === '/' || pathname === '/menu' || pathname === '/menu/catalog' || pathname === '/menu/furshet' || pathname === '/menu/vegan' || pathname === '/menu/halal' || pathname === '/menu/gluten-free' || pathname === '/events' || pathname === '/pricing' || pathname === '/gallery' || pathname === '/contact' || pathname === '/plan' || pathname === '/plan/constructor' || pathname === '/plan/calculator' || pathname === '/plan/helper' || pathname === '/faq' || pathname === '/tasting') {
     return null;
   }
 

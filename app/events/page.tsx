@@ -21,11 +21,17 @@ export default function EventsPage() {
   return (
     <main className="pt-24 pb-20">
       <div className="container-site">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h1 className="mb-4">Какое у вас событие?</h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto text-balance">
             Выберите формат — и мы подберём меню, персонал и площадку.
           </p>
+        </div>
+
+        <div className="mb-12 text-center">
+          <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target">
+            🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
