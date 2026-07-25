@@ -84,10 +84,10 @@ export default function AccountOrdersPage() {
           </a>
         </div>
 
-        {/* Demo notice */}
-        <div className="mb-8 p-4 rounded-xl border border-amber-300 bg-amber-50 text-sm text-amber-900">
-          <p className="font-semibold mb-1">ℹ️ Действующие заказы</p>
-          <p>Это ваш личный кабинет. Для доступа к полной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета».</p>
+        {/* Info notice */}
+        <div className="mb-8 p-4 rounded-xl border border-gold-tint bg-gold-tint/10 text-sm text-foreground">
+          <p className="font-semibold mb-1">ℹ️ Примеры заказов</p>
+          <p>Ниже показаны примеры заказов. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-gold-text underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета». ЭДО-интеграция (Диадок/СБИС) — в разработке.</p>
         </div>
 
         {/* Summary stats */}
