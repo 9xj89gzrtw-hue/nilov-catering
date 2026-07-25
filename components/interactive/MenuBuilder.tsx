@@ -356,7 +356,7 @@ export default function MenuBuilder({
         </div>
 
         {/* Drag hint */}
-        <p className="text-[11px] text-muted-foreground mb-2 px-1">
+        <p className="text-xs text-muted-foreground mb-2 px-1">
           💡 Нажмите «+ Добавить» на блюде или перетащите его в корзину (на десктопе).
         </p>
 
@@ -591,7 +591,7 @@ function DroppableCart({
   return (
     <div
       ref={setNodeRef}
-      className={`rounded-2xl border-2 border-dashed p-4 transition-colors sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto ${
+      className={`rounded-2xl border-2 border-dashed p-4 transition-colors sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto overscroll-contain ${
         isOver && activeDragId?.startsWith('dish-')
           ? 'border-gold-text bg-gold-tint/40 scale-[1.02]'
           : 'border-line bg-card/50'

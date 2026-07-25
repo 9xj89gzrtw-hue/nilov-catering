@@ -4,7 +4,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
 import PrintButton from '@/components/common/PrintButton';
-import { FileDown } from 'lucide-react';
+import { FileText, FileSignature, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
@@ -36,24 +36,27 @@ export default function PricingPage() {
                 href="/api/templates/dogovor"
                 download="nilov-dogovor-template.pdf"
                 className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+                title="Шаблон договора на оказание кейтеринговых услуг"
               >
-                <FileDown className="w-4 h-4" aria-hidden="true" />
+                <FileText className="w-4 h-4" aria-hidden="true" />
                 Договор PDF
               </Link>
               <Link
                 href="/api/templates/nda"
                 download="nilov-nda-template.pdf"
                 className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+                title="Шаблон соглашения о неразглашении (NDA)"
               >
-                <FileDown className="w-4 h-4" aria-hidden="true" />
+                <FileSignature className="w-4 h-4" aria-hidden="true" />
                 NDA PDF
               </Link>
               <Link
                 href="/api/templates/sla"
                 download="nilov-sla-template.pdf"
                 className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+                title="Шаблон SLA — уровень обслуживания для B2B"
               >
-                <FileDown className="w-4 h-4" aria-hidden="true" />
+                <ShieldCheck className="w-4 h-4" aria-hidden="true" />
                 SLA PDF
               </Link>
               <PrintButton label="Печать тарифов" />
