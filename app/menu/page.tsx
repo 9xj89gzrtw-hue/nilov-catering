@@ -77,11 +77,17 @@ export default function MenuPage() {
     <main className="pt-24 pb-20">
       <div className="container-site">
         {/* Hero */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-heading mb-4">Меню и цены</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Любой формат — от кофе-брейка до банкета. Все цены указаны за человека.
           </p>
+        </div>
+
+        <div className="mb-12 text-center">
+          <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target">
+            🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+          </Link>
         </div>
 
         {/* Quick price anchors */}
