@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import MenuCTABlock from '@/components/blocks/MenuCTABlock';
@@ -25,6 +25,7 @@ const STATION_LABELS: Record<string, string> = {
 
 export default function FurshetPage() {
   const furshetDishes = useMemo(() => ALL_DISHES.filter(d => d.format.includes('furshet')), []);
+  const [visibleStations, setVisibleStations] = useState(2); // Show first 2 stations, then "Показать ещё"
 
   const grouped = useMemo(() => {
     const map: Record<string, typeof ALL_DISHES> = {};
@@ -68,11 +69,11 @@ export default function FurshetPage() {
           <MenuTariffs format="furshet" formatLabel="Фуршет" />
         </div>
 
-        {/* All dishes by station */}
+        {/* All dishes by station — with pagination */}
         <div id="dishes" className="mt-16 scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Все блюда фуршета</h2>
 
-          {Object.entries(grouped).map(([station, dishes]) => (
+          {Object.entries(grouped).slice(0, visibleStations).map(([station, dishes]) => (
             <div key={station} className="mb-10">
               <h3 className="text-lg font-heading font-medium mb-4">{STATION_LABELS[station] || station}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
@@ -110,6 +111,24 @@ export default function FurshetPage() {
               </div>
             </div>
           ))}
+
+          {/* Pagination for stations */}
+          {visibleStations < Object.keys(grouped).length && (
+            <div className="text-center py-8">
+              <button
+                onClick={() => setVisibleStations(s => s + 2)}
+                className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
+                type="button"
+                aria-controls="dishes"
+                aria-expanded={visibleStations > 2 ? 'true' : 'false'}
+              >
+                Показать ещё станции ↓
+              </button>
+              <p className="text-xs text-muted-foreground mt-2" aria-live="polite">
+                Показано {visibleStations} из {Object.keys(grouped).length} категорий
+              </p>
+            </div>
+          )}
         </div>
 
         <MenuCTABlock format="furshet" formatLabel="Фуршет" />

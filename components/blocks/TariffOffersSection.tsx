@@ -24,6 +24,7 @@ const EVENT_META: Record<string, { label: string; emoji: string; desc: string; g
   detskoe:    { label: 'Детское',     emoji: '🎈', desc: 'Праздники с аниматорами и шоу', gradient: 'from-purple-50 to-purple-100' },
   'chef-at-home': { label: 'Шеф на дом', emoji: '👨‍🍳', desc: 'Шеф-повар и сомелье у вас дома', gradient: 'from-orange-50 to-orange-100' },
   'coffee-break': { label: 'Кофе-брейк', emoji: '☕', desc: 'Конференции, семинары, тренинги — от 390 ₽/гость', gradient: 'from-amber-50 to-yellow-100' },
+  pominki:     { label: 'Поминки',     emoji: '🕯️', desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
 };
 
 // Маппинг событие → формат (для ссылки в конструктор)
