@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
-import { getDishImage } from '@/lib/dish-images';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
@@ -33,7 +33,7 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
           src={dishImg}
           alt={dish.name}
           aspectRatio="wide"
-          objectPosition="center 40%"
+          objectPosition={getObjectPositionForDish(dish.id, dish.station)}
           className="w-full"
         />
         <div className="absolute bottom-2 right-2 z-10">

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
-import { getDishImageByIndex } from '@/lib/dish-images';
+import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
 
@@ -50,7 +50,7 @@ export default function VeganPage() {
                   src={getDishImageByIndex(dish.id, dish.station, idx)}
                   alt={dish.name}
                   aspectRatio="square"
-                  objectPosition="center 40%"
+                  objectPosition={getObjectPositionForDish(dish.id, dish.station)}
                   className="w-full"
                 />
               </div>

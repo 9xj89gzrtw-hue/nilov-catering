@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
-import { getDishImageByIndex } from '@/lib/dish-images';
+import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
@@ -78,83 +78,105 @@ export default function CatalogPage() {
     return counts;
   }, []);
 
+  const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size > 0 || excludedAllergens.size > 0;
+  const resetFilters = () => {
+    setSearch('');
+    setStation('all');
+    setActiveDiets(new Set());
+    setExcludedAllergens(new Set());
+  };
+
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site">
         <h1 className="mb-2">Каталог блюд</h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-6">
           {ALL_DISHES.length} блюд с фото, аллергенами и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия).
         </p>
 
-        {/* Search */}
-        <input
-          type="search"
-          placeholder="Поиск по названию или описанию…"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-4 focus:outline-none focus:border-gold-text transition-colors"
-        />
+        {/* Sticky filter bar — sticks below header (top-16 = 64px = h-16 header) */}
+        <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 bg-background/95 backdrop-blur-md border-b border-line/60 rounded-xl">
+          {/* Search */}
+          <input
+            type="search"
+            placeholder="Поиск по названию или описанию…"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            aria-label="Поиск блюд"
+            className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-3 focus:outline-none focus:border-gold-text transition-colors"
+          />
 
-        {/* Station filters */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {STATIONS.map(s => (
-            <button
-              key={s.key}
-              onClick={() => setStation(s.key)}
-              className={`rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
-                station === s.key
-                  ? 'border-gold-text bg-gold-tint text-gold-text'
-                  : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
-              }`}
-            >
-              {s.label} ({stationCounts[s.key]})
-            </button>
-          ))}
+          {/* Station filters — horizontally scrollable on mobile */}
+          <div className="flex gap-2 mb-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Фильтр по типу станции">
+            {STATIONS.map(s => (
+              <button
+                key={s.key}
+                onClick={() => setStation(s.key)}
+                aria-pressed={station === s.key}
+                className={`shrink-0 rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
+                  station === s.key
+                    ? 'border-gold-text bg-gold-tint text-gold-text'
+                    : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
+                }`}
+              >
+                {s.label} ({stationCounts[s.key]})
+              </button>
+            ))}
+          </div>
+
+          {/* Diet filters */}
+          <div className="flex gap-2 mb-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Фильтр по диете">
+            {DIETS.map(d => (
+              <button
+                key={d}
+                onClick={() => toggleDiet(d)}
+                aria-pressed={activeDiets.has(d)}
+                className={`shrink-0 rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
+                  activeDiets.has(d)
+                    ? 'border-gold-text bg-gold-tint text-gold-text'
+                    : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
+                }`}
+              >
+                {DIET_FILTERS[d]}
+              </button>
+            ))}
+          </div>
+
+          {/* Allergen exclusion filters */}
+          <div className="flex gap-2 items-center overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Исключить аллергены">
+            <span className="shrink-0 text-xs text-muted-foreground self-center mr-1">Исключить:</span>
+            {EXCLUDE_ALLERGENS.map(a => (
+              <button
+                key={a.key}
+                onClick={() => toggleAllergen(a.key)}
+                aria-pressed={excludedAllergens.has(a.key)}
+                className={`shrink-0 rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
+                  excludedAllergens.has(a.key)
+                    ? 'border-destructive bg-destructive/10 text-destructive font-medium'
+                    : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
+                }`}
+              >
+                {a.label}
+              </button>
+            ))}
+            {hasActiveFilters && (
+              <button
+                onClick={resetFilters}
+                className="shrink-0 ml-auto text-xs text-gold-text hover:underline px-2 py-1 touch-target"
+                aria-label="Сбросить все фильтры"
+              >
+                ✕ Сбросить
+              </button>
+            )}
+          </div>
+
+          {/* Results count */}
+          <p className="text-xs text-muted-foreground mt-2" aria-live="polite">
+            {filtered.length === ALL_DISHES.length
+              ? `Показаны все ${ALL_DISHES.length} блюд`
+              : `Найдено: ${filtered.length} из ${ALL_DISHES.length}`}
+          </p>
         </div>
-
-        {/* Diet filters */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {DIETS.map(d => (
-            <button
-              key={d}
-              onClick={() => toggleDiet(d)}
-              aria-pressed={activeDiets.has(d)}
-              className={`rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
-                activeDiets.has(d)
-                  ? 'border-gold-text bg-gold-tint text-gold-text'
-                  : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
-              }`}
-            >
-              {DIET_FILTERS[d]}
-            </button>
-          ))}
-        </div>
-
-        {/* Allergen exclusion filters */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          <span className="text-xs text-muted-foreground self-center mr-1">Исключить:</span>
-          {EXCLUDE_ALLERGENS.map(a => (
-            <button
-              key={a.key}
-              onClick={() => toggleAllergen(a.key)}
-              aria-pressed={excludedAllergens.has(a.key)}
-              className={`rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
-                excludedAllergens.has(a.key)
-                  ? 'border-destructive bg-destructive/10 text-destructive font-medium'
-                  : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
-              }`}
-            >
-              {a.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Results count */}
-        <p className="text-xs text-muted-foreground mb-4">
-          {filtered.length === ALL_DISHES.length
-            ? `Показаны все ${ALL_DISHES.length} блюд`
-            : `Найдено: ${filtered.length} из ${ALL_DISHES.length}`}
-        </p>
 
         {/* Grid — visual separation: halal / other / pork */}
         {otherDishes.length > 0 && (
@@ -250,7 +272,7 @@ function DishCard({ dish, index = 0 }: { dish: Dish; index?: number }) {
           src={dishImg}
           alt={dish.name}
           aspectRatio="square"
-          objectPosition="center 40%"
+          objectPosition={getObjectPositionForDish(dish.id, dish.station)}
           className="w-full"
         />
       </div>

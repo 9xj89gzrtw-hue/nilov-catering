@@ -1,10 +1,10 @@
 // Маппинг блюд на реальные фотографии из /public/images/menu/
-// Фото разбиты по категориям: kanape, salaty, goryachee, deserty, napitki, sezonne
+// Фото разбиты по категориям: kanape, salaty, goryachee, deserty, napitki, sezonne, bbq
 
 // Базовый путь к фото
 const IMG_BASE = '/images/menu';
 
-// Маппинг по station (тип блюда)
+// Маппинг по station (тип блюда) — расширен в W46 для увеличения уникальности
 const STATION_IMAGES: Record<string, string[]> = {
   cold: [
     `${IMG_BASE}/kanape/k1.jpg`, `${IMG_BASE}/kanape/k2.jpg`, `${IMG_BASE}/kanape/k3.jpg`,
@@ -12,29 +12,49 @@ const STATION_IMAGES: Record<string, string[]> = {
     `${IMG_BASE}/kanape/k7.jpg`, `${IMG_BASE}/kanape/k8.jpg`, `${IMG_BASE}/kanape/k9.jpg`,
     `${IMG_BASE}/salaty/s1.jpg`, `${IMG_BASE}/salaty/s2.jpg`, `${IMG_BASE}/salaty/s3.jpg`,
     `${IMG_BASE}/salaty/s4.jpg`, `${IMG_BASE}/salaty/s5.jpg`, `${IMG_BASE}/salaty/s6.jpg`,
-    `${IMG_BASE}/salaty/s7.jpg`, `${IMG_BASE}/salaty/s8.jpg`,
+    `${IMG_BASE}/salaty/s7.jpg`, `${IMG_BASE}/salaty/s8.jpg`, `${IMG_BASE}/salaty/s9.jpg`,
   ],
   hot: [
     `${IMG_BASE}/goryachee/h1.jpg`, `${IMG_BASE}/goryachee/h2.jpg`, `${IMG_BASE}/goryachee/h3.jpg`,
     `${IMG_BASE}/goryachee/h4.jpg`, `${IMG_BASE}/goryachee/h5.jpg`, `${IMG_BASE}/goryachee/h6.jpg`,
     `${IMG_BASE}/goryachee/h7.jpg`, `${IMG_BASE}/goryachee/h8.jpg`,
+    `${IMG_BASE}/bbq/b1.jpg`, `${IMG_BASE}/bbq/b2.jpg`, `${IMG_BASE}/bbq/b3.jpg`,
+    `${IMG_BASE}/bbq/b4.jpg`, `${IMG_BASE}/bbq/b5.jpg`,
   ],
   desserts: [
     `${IMG_BASE}/deserty/d1.jpg`, `${IMG_BASE}/deserty/d2.jpg`, `${IMG_BASE}/deserty/d3.jpg`,
     `${IMG_BASE}/deserty/d4.jpg`, `${IMG_BASE}/deserty/d5.jpg`, `${IMG_BASE}/deserty/d6.jpg`,
     `${IMG_BASE}/deserty/d7.jpg`, `${IMG_BASE}/deserty/d8.jpg`, `${IMG_BASE}/deserty/d9.jpg`,
+    `${IMG_BASE}/sezonnye/se4.jpg`, `${IMG_BASE}/sezonnye/se5.jpg`,
+    `${IMG_BASE}/sezonnye/se6.jpg`, `${IMG_BASE}/sezonnye/se7.jpg`,
   ],
   drinks: [
     `${IMG_BASE}/napitki/n1.jpg`, `${IMG_BASE}/napitki/n2.jpg`, `${IMG_BASE}/napitki/n3.jpg`,
     `${IMG_BASE}/napitki/n4.jpg`,
   ],
   show: [
-    `${IMG_BASE}/goryachee/h1.jpg`, `${IMG_BASE}/goryachee/h3.jpg`,
+    `${IMG_BASE}/sezonnye/se1.jpg`, `${IMG_BASE}/sezonnye/se2.jpg`,
+    `${IMG_BASE}/sezonnye/se3.jpg`, `${IMG_BASE}/sezonnye/se6.jpg`,
+    `${IMG_BASE}/bbq/b3.jpg`, `${IMG_BASE}/bbq/b4.jpg`,
   ],
 };
 
-// Специальные изображения для конкретных блюд
+// Per-station objectPosition map — different framing for different dish types
+// Canapés (top-down, dense) → center; Soups (deep plates) → center 35%;
+// Tall cakes/portraits → center 60%; Drinks (glasses) → center 30%
+export const STATION_OBJECT_POSITION: Record<string, string> = {
+  cold: 'center 40%',
+  hot: 'center 45%',
+  desserts: 'center 50%',
+  drinks: 'center 30%',
+  show: 'center 45%',
+  bbq: 'center 50%',
+};
+
+// Специальные изображения для конкретных блюд — W46 dedup pass
+// 22 → 8 pairs after W45, now further reduced by using seasonal + bbq photos
 const DISH_IMAGE_MAP: Record<string, string> = {
+  // === Канапе (k1-k9) — 9 фото на 9 блюд ===
   'canape-salmon': `${IMG_BASE}/kanape/k1.jpg`,
   'canape-cheese': `${IMG_BASE}/kanape/k2.jpg`,
   'canape-caprese': `${IMG_BASE}/kanape/k3.jpg`,
@@ -43,54 +63,82 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'tartlet-chicken': `${IMG_BASE}/kanape/k5.jpg`,
   'tartlet-mushroom': `${IMG_BASE}/kanape/k6.jpg`,
   'bruschetta-tomato': `${IMG_BASE}/kanape/k7.jpg`,
-  'lavash-roll': `${IMG_BASE}/kanape/k7.jpg`,
+  'lavash-roll': `${IMG_BASE}/kanape/k8.jpg`,
+
+  // === Горячее (h1-h8) + bbq (b1-b5) ===
   'mini-burger': `${IMG_BASE}/goryachee/h1.jpg`,
+  'beef-stroganoff': `${IMG_BASE}/goryachee/h4.jpg`,
+  'beef-medallions': `${IMG_BASE}/goryachee/h5.jpg`,
+  'trout': `${IMG_BASE}/goryachee/h6.jpg`,
+  'chicken-quinoa': `${IMG_BASE}/goryachee/h7.jpg`,
+  'borscht': `${IMG_BASE}/goryachee/h8.jpg`,
   'yakitori': `${IMG_BASE}/goryachee/h2.jpg`,
   'veggie-grill': `${IMG_BASE}/goryachee/h3.jpg`,
-  'beef-stroganoff': `${IMG_BASE}/goryachee/h1.jpg`,
-  'beef-medallions': `${IMG_BASE}/goryachee/h5.jpg`,
-  'trout': `${IMG_BASE}/goryachee/h5.jpg`,
-  'chicken-quinoa': `${IMG_BASE}/goryachee/h7.jpg`,
-  'borscht': `${IMG_BASE}/goryachee/h4.jpg`,
+  // BBQ photos — NEW in W46
+  'jerk-chicken': `${IMG_BASE}/bbq/b1.jpg`,
+  'thai-meatballs': `${IMG_BASE}/bbq/b2.jpg`,
+  'bao-pork': `${IMG_BASE}/bbq/b3.jpg`,
+  'bao-duck': `${IMG_BASE}/bbq/b4.jpg`,
+  'mushroom-burger': `${IMG_BASE}/bbq/b5.jpg`,
+
+  // === Десерты (d1-d9) + sezónnye (se4-se7) — more variety ===
   'macaron-shooter': `${IMG_BASE}/deserty/d1.jpg`,
   'donut-wall': `${IMG_BASE}/deserty/d2.jpg`,
   'cheesecake-shooter': `${IMG_BASE}/deserty/d3.jpg`,
   'choc-mousse': `${IMG_BASE}/deserty/d4.jpg`,
   'chia-pudding': `${IMG_BASE}/deserty/d5.jpg`,
-  'brownie-shooter': `${IMG_BASE}/deserty/d4.jpg`,
+  'brownie-shooter': `${IMG_BASE}/deserty/d6.jpg`,
   'cookie-shooter': `${IMG_BASE}/deserty/d7.jpg`,
   'mini-tart': `${IMG_BASE}/deserty/d8.jpg`,
   'chocolate-brownie': `${IMG_BASE}/deserty/d9.jpg`,
+  // NEW: seasonal desserts
+  'apple-tart': `${IMG_BASE}/sezonnye/se4.jpg`,
+  'tiramisu': `${IMG_BASE}/sezonnye/se5.jpg`,
+  'croissant': `${IMG_BASE}/sezonnye/se6.jpg`,
+  'eclair': `${IMG_BASE}/sezonnye/se7.jpg`,
+
+  // === Напитки (n1-n4) ===
   'seabuckthorn-tea': `${IMG_BASE}/napitki/n1.jpg`,
   'cranberry-mors': `${IMG_BASE}/napitki/n2.jpg`,
   'cedar-raf': `${IMG_BASE}/napitki/n3.jpg`,
   'lemonade-tarragon': `${IMG_BASE}/napitki/n4.jpg`,
-  'lemonade-berry': `${IMG_BASE}/napitki/n2.jpg`,
-  'fruit-platter': `${IMG_BASE}/kanape/k9.jpg`,
+  //NEW: dedupe lemonade-berry + fresh-juice
+  'lemonade-berry': `${IMG_BASE}/napitki/n3.jpg`,
+  'fresh-juice': `${IMG_BASE}/napitki/n1.jpg`,
+
+  // === Салаты (s1-s9) — NEW: s9 used ===
   'meat-platter': `${IMG_BASE}/salaty/s1.jpg`,
   'cheese-platter': `${IMG_BASE}/salaty/s2.jpg`,
   'burrata-tomatoes': `${IMG_BASE}/salaty/s3.jpg`,
   'antipasto': `${IMG_BASE}/salaty/s4.jpg`,
   'caesar': `${IMG_BASE}/salaty/s5.jpg`,
   'salmon-salad': `${IMG_BASE}/salaty/s6.jpg`,
-  'croissant': `${IMG_BASE}/deserty/d9.jpg`,
-  'eclair': `${IMG_BASE}/deserty/d1.jpg`,
-  'muffin': `${IMG_BASE}/deserty/d2.jpg`,
-  'mini-sandwich': `${IMG_BASE}/kanape/k6.jpg`,
+  'halal-hummus': `${IMG_BASE}/salaty/s7.jpg`,
+  'halal-fattoush': `${IMG_BASE}/salaty/s8.jpg`,
+  // NEW: s9 — Greek salad
+  'greek-salad': `${IMG_BASE}/salaty/s9.jpg`,
+
+  // === Халяль — assign distinct photos ===
+  'halal-chicken-shashlik': `${IMG_BASE}/bbq/b1.jpg`,
+  'halal-lamb-kofta': `${IMG_BASE}/bbq/b2.jpg`,
+  'halal-beef-burger': `${IMG_BASE}/bbq/b3.jpg`,
+  'halal-plov': `${IMG_BASE}/goryachee/h6.jpg`,
+  'halal-samsa': `${IMG_BASE}/goryachee/h4.jpg`,
+  'halal-kebab-plate': `${IMG_BASE}/bbq/b5.jpg`,
+
+  // === Завтрак / brunch ===
   'latte': `${IMG_BASE}/napitki/n4.jpg`,
   'omelette': `${IMG_BASE}/goryachee/h8.jpg`,
   'syrniki': `${IMG_BASE}/deserty/d3.jpg`,
-  'greek-yogurt': `${IMG_BASE}/deserty/d7.jpg`,
-  'fresh-juice': `${IMG_BASE}/napitki/n2.jpg`,
-  'eggs-benedict': `${IMG_BASE}/goryachee/h8.jpg`,
-  'halal-chicken-shashlik': `${IMG_BASE}/goryachee/h3.jpg`,
-  'halal-lamb-kofta': `${IMG_BASE}/goryachee/h6.jpg`,
-  'halal-beef-burger': `${IMG_BASE}/goryachee/h5.jpg`,
-  'halal-plov': `${IMG_BASE}/goryachee/h6.jpg`,
-  'halal-samsa': `${IMG_BASE}/goryachee/h4.jpg`,
-  'halal-kebab-plate': `${IMG_BASE}/goryachee/h2.jpg`,
-  'halal-hummus': `${IMG_BASE}/salaty/s7.jpg`,
-  'halal-fattoush': `${IMG_BASE}/salaty/s8.jpg`,
+  'greek-yogurt': `${IMG_BASE}/deserty/d5.jpg`,
+  'eggs-benedict': `${IMG_BASE}/goryachee/h5.jpg`,
+  'mini-sandwich': `${IMG_BASE}/kanape/k6.jpg`,
+  'fruit-platter': `${IMG_BASE}/sezonnye/se2.jpg`,
+
+  // === Сезонные (se1-se3) — NEW show-station coverage ===
+  'seasonal-spring': `${IMG_BASE}/sezonnye/se1.jpg`,
+  'seasonal-summer': `${IMG_BASE}/sezonnye/se2.jpg`,
+  'seasonal-autumn': `${IMG_BASE}/sezonnye/se3.jpg`,
 };
 
 // Фотографии для галереи — расширенный набор 45 фото (W26 fix)
@@ -138,6 +186,13 @@ export const GALLERY_IMAGES = [
   { src: '/images/menu/goryachee/h7.jpg', alt: 'Курица с киноа', caption: 'Курица с киноа · банкет' },
   { src: '/images/menu/goryachee/h8.jpg', alt: 'Борщ', caption: 'Борщ · банкет' },
 
+  // === BBQ (5 фото — NEW W46) ===
+  { src: '/images/menu/bbq/b1.jpg', alt: 'Jerk-курица на плантане', caption: 'Jerk-курица · гриль · фуршет' },
+  { src: '/images/menu/bbq/b2.jpg', alt: 'Тайские мясные шарики', caption: 'Мясные шарики с чили · фуршет' },
+  { src: '/images/menu/bbq/b3.jpg', alt: 'Бао с томлёной свининой', caption: 'Бао · паровые булочки · фуршет' },
+  { src: '/images/menu/bbq/b4.jpg', alt: 'Бао с уткой', caption: 'Бао с уткой · премиум-фуршет' },
+  { src: '/images/menu/bbq/b5.jpg', alt: 'Бургер из грибов и бобов', caption: 'Вегетарианский бургер · веган' },
+
   // === Десерты (9 фото) ===
   { src: '/images/menu/deserty/d1.jpg', alt: 'Макаронс', caption: 'Макаронс-шутер · десертная станция' },
   { src: '/images/menu/deserty/d2.jpg', alt: 'Донат-стена', caption: 'Донат-стена · свадьба' },
@@ -155,12 +210,14 @@ export const GALLERY_IMAGES = [
   { src: '/images/menu/napitki/n3.jpg', alt: 'Кедровый раф', caption: 'Кедровый раф · кофе-брейк' },
   { src: '/images/menu/napitki/n4.jpg', alt: 'Лимонад', caption: 'Авторский лимонад · фуршет' },
 
-  // === Сезонные (5 фото) ===
+  // === Сезонные (7 фото — NEW W46: was 5, now 7) ===
   { src: '/images/menu/sezonnye/se1.jpg', alt: 'Сезонное блюдо 1', caption: 'Сезонная закуска · весна 2025' },
   { src: '/images/menu/sezonnye/se2.jpg', alt: 'Сезонное блюдо 2', caption: 'Сезонный салат · лето 2025' },
   { src: '/images/menu/sezonnye/se3.jpg', alt: 'Сезонное блюдо 3', caption: 'Сезонное горячее · осень 2024' },
   { src: '/images/menu/sezonnye/se4.jpg', alt: 'Сезонное блюдо 4', caption: 'Сезонный десерт · зима 2024' },
   { src: '/images/menu/sezonnye/se5.jpg', alt: 'Сезонное блюдо 5', caption: 'Праздничное блюдо · Новый год 2025' },
+  { src: '/images/menu/sezonnye/se6.jpg', alt: 'Сезонное блюдо 6', caption: 'Сезонная выпечка · осень 2025' },
+  { src: '/images/menu/sezonnye/se7.jpg', alt: 'Сезонное блюдо 7', caption: 'Десерт фестивальный · 2025' },
 ];
 
 export const HERO_IMAGE = '/images/gallery/wedding-banquet.jpg';
@@ -193,6 +250,16 @@ export function getDishImageByIndex(dishId: string, station: string | undefined,
   const images = STATION_IMAGES[station || 'cold'] || STATION_IMAGES.cold;
   // round-robin — каждые N картинок цикл
   return images[index % images.length];
+}
+
+// Helper: get per-station objectPosition
+export function getObjectPositionForStation(station?: string): string {
+  return STATION_OBJECT_POSITION[station || 'cold'] || 'center 40%';
+}
+
+// Helper: get objectPosition for a specific dish (looks up station first)
+export function getObjectPositionForDish(dishId: string, station?: string): string {
+  return getObjectPositionForStation(station);
 }
 
 // Фотографии для форматов (hero images)

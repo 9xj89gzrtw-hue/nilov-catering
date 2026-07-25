@@ -267,11 +267,77 @@ export default function CertificatesPage() {
           ))}
         </div>
 
+        {/* Downloadable templates */}
+        <div className="mt-10 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
+          <h2 className="font-heading text-2xl font-medium mb-2">📄 Шаблоны документов для скачивания</h2>
+          <p className="text-sm text-muted-foreground mb-5">
+            Скачайте шаблоны прямо сейчас — без email-ожидания. Все шаблоны согласуются индивидуально
+            под ваш контракт. Подпись — ЭДО (Диадок/СБИС) или оригинал с печатью.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <a
+              href="/api/templates/dogovor"
+              download="nilov-dogovor-template.pdf"
+              className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
+            >
+              <div className="flex items-start gap-3 mb-2">
+                <span className="text-3xl" aria-hidden="true">📋</span>
+                <div>
+                  <h3 className="font-heading text-base font-medium">Договор</h3>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~25 КБ</p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Шаблон договора на оказание кейтеринговых услуг: предмет, обязанности, оплата, форс-мажор, реквизиты.
+              </p>
+            </a>
+            <a
+              href="/api/templates/nda"
+              download="nilov-nda-template.pdf"
+              className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
+            >
+              <div className="flex items-start gap-3 mb-2">
+                <span className="text-3xl" aria-hidden="true">🤝</span>
+                <div>
+                  <h3 className="font-heading text-base font-medium">NDA</h3>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~20 КБ</p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Соглашение о неразглашении: список гостей, меню, бюджет, фото. Срок 3 года, фото — бессрочно.
+              </p>
+            </a>
+            <a
+              href="/api/templates/sla"
+              download="nilov-sla-template.pdf"
+              className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
+            >
+              <div className="flex items-start gap-3 mb-2">
+                <span className="text-3xl" aria-hidden="true">⚡</span>
+                <div>
+                  <h3 className="font-heading text-base font-medium">SLA</h3>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~22 КБ</p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Уровень обслуживания: время реакции ≤2ч, тайминг события, штрафы за нарушение, эскалация.
+              </p>
+            </a>
+          </div>
+          <p className="text-xs text-muted-foreground italic mt-4">
+            Также работаем по вашему шаблону NDA/SLA. Запросить индивидуальный пакет документов:
+            {' '}
+            <a href={`mailto:${SITE.email}`} className="text-gold-text hover:underline">{SITE.email}</a>
+            {' · '}
+            <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">{SITE.phone}</a>
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="mt-10 p-6 rounded-xl bg-primary text-primary-foreground text-center">
-          <h2 className="font-heading text-xl font-medium mb-2">Нужен пакет документов?</h2>
+          <h2 className="font-heading text-xl font-medium mb-2">Нужен полный пакет документов?</h2>
           <p className="text-sm mb-4 opacity-90">
-            Для школ, учреждений, B2B: договор, счёт, акт, счёт-фактура, медкнижки, бракеражный журнал,
+            Для школ, учреждений, B2B: счёт, акт, счёт-фактура, медкнижки, бракеражный журнал,
             программа производственного контроля, декларация ЕАЭС, полис страхования.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -279,7 +345,7 @@ export default function CertificatesPage() {
               href={`mailto:${SITE.email}?subject=Запрос пакета документов`}
               className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline"
             >
-              ✉️ Запросить документы
+              ✉️ Запросить полный пакет
             </a>
             <a
               href={`tel:${SITE.phoneTel}`}

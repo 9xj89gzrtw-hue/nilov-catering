@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS } from '@/lib/menu-data';
-import { getDishImage } from '@/lib/dish-images';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import {
   DndContext,
   PointerSensor,
@@ -13,7 +13,15 @@ import {
   useDraggable,
   useDroppable,
   closestCenter,
+  type DragEndEvent,
+  type DragStartEvent,
 } from '@dnd-kit/core';
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  sortableKeyboardCoordinates,
+  useSortable,
+} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import type { Dish, Diet, Allergen } from '@/lib/types';
@@ -76,7 +84,7 @@ export default function MenuBuilder({
   dietFilter,
   catalogTitle = 'Каталог блюд',
   cartTitle = 'Ваше меню',
-  emptyCartText = 'Нажмите «+ Добавить» на блюде, чтобы добавить его в меню',
+  emptyCartText = 'Нажмите «+ Добавить» на блюде или перетащите его сюда',
   unit = 'порц.',
   enableReorder = true,
   enableHybridMode = false,
@@ -94,30 +102,51 @@ export default function MenuBuilder({
   };
   const [allergenMode, setAllergenMode] = useState<'highlight' | 'hide'>('highlight');
   const [showExtraAllergens, setShowExtraAllergens] = useState(false);
-  const [dragOverIdx, setDragOverIdx] = useState<number | null>(null);
-  const [draggedFromIdx, setDraggedFromIdx] = useState<number | null>(null);
-  const [dragOverCart, setDragOverCart] = useState(false);
   const [showAllFormats, setShowAllFormats] = useState(false);
+  const [isDraggingOverCart, setIsDraggingOverCart] = useState(false);
+  const [activeDragId, setActiveDragId] = useState<string | null>(null);
 
   // dnd-kit sensors: PointerSensor (desktop), TouchSensor (mobile), KeyboardSensor (a11y)
+  // TouchSensor with delay prevents accidental drags when scrolling
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 8 } }),
-    useSensor(KeyboardSensor),
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 8 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
-  const handleDndKitDragEnd = (event: any) => {
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveDragId(event.active.id as string);
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
+    setActiveDragId(null);
+    setIsDraggingOverCart(false);
     if (!over) return;
+
     const activeId = active.id as string;
     const overId = over.id as string;
-    if (overId === 'cart' && activeId.startsWith('dish-')) {
+
+    // Case 1: dragging catalog dish → cart zone (add to cart)
+    if (activeId.startsWith('dish-') && (overId === 'cart-dropzone' || overId === 'cart-empty')) {
       const dishId = activeId.replace('dish-', '');
       if (!selectedIds.has(dishId)) onAdd(dishId);
-    } else if (overId.startsWith('cart-item-') && activeId.startsWith('cart-item-')) {
+      return;
+    }
+
+    // Case 2: dragging cart item → reorder
+    if (activeId.startsWith('cart-item-') && overId.startsWith('cart-item-') && onReorder) {
       const fromIdx = parseInt(activeId.replace('cart-item-', ''));
       const toIdx = parseInt(overId.replace('cart-item-', ''));
-      if (onReorder && fromIdx !== toIdx) onReorder(fromIdx, toIdx);
+      if (fromIdx !== toIdx) onReorder(fromIdx, toIdx);
+      return;
+    }
+
+    // Case 3: dragging catalog dish over a cart item — add to cart at that position
+    if (activeId.startsWith('dish-') && overId.startsWith('cart-item-')) {
+      const dishId = activeId.replace('dish-', '');
+      if (!selectedIds.has(dishId)) onAdd(dishId);
+      return;
     }
   };
 
@@ -175,54 +204,6 @@ export default function MenuBuilder({
     return count;
   }, [excludedAllergens, allergenMode, formatFilter, station, activeDiets, search]);
 
-  const handleCatalogDragStart = (e: React.DragEvent, dishId: string) => {
-    e.dataTransfer.setData('text/plain', JSON.stringify({ type: 'catalog', dishId }));
-    e.dataTransfer.effectAllowed = 'copy';
-  };
-
-  const handleCartDragStart = (e: React.DragEvent, idx: number) => {
-    if (!enableReorder) return;
-    setDraggedFromIdx(idx);
-    e.dataTransfer.setData('text/plain', JSON.stringify({ type: 'cart', idx }));
-    e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const handleCartDragEnd = () => {
-    setDraggedFromIdx(null);
-    setDragOverIdx(null);
-    setDragOverCart(false);
-  };
-
-  const handleCartDragOver = (e: React.DragEvent, idx?: number) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = draggedFromIdx !== null ? 'move' : 'copy';
-    if (idx !== undefined) setDragOverIdx(idx);
-    else setDragOverCart(true);
-  };
-
-  const handleCartDrop = (e: React.DragEvent, dropIdx?: number) => {
-    e.preventDefault();
-    setDragOverIdx(null);
-    setDragOverCart(false);
-    try {
-      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-      if (data.type === 'catalog' && data.dishId) {
-        if (!selectedIds.has(data.dishId)) {
-          onAdd(data.dishId);
-        }
-      } else if (data.type === 'cart' && onReorder && draggedFromIdx !== null) {
-        const fromIdx = draggedFromIdx;
-        const toIdx = dropIdx !== undefined ? dropIdx : selectedItems.length - 1;
-        if (fromIdx !== toIdx) {
-          onReorder(fromIdx, toIdx);
-        }
-      }
-    } catch (err) {
-      console.warn('[MenuBuilder] Drop parse error:', err);
-    }
-    setDraggedFromIdx(null);
-  };
-
   // Touch-friendly: move item up/down via buttons (works without drag)
   const moveItem = (idx: number, direction: -1 | 1) => {
     if (!onReorder) return;
@@ -231,14 +212,23 @@ export default function MenuBuilder({
     onReorder(idx, toIdx);
   };
 
+  // Cart sortable ids
+  const cartItemIds = selectedItems.map((_, idx) => `cart-item-${idx}`);
+
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDndKitDragEnd}>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDragCancel={() => { setActiveDragId(null); setIsDraggingOverCart(false); }}
+    >
     <div className="grid md:grid-cols-[1fr_360px] lg:grid-cols-[1fr_400px] gap-4 md:gap-6">
       {/* === КАТАЛОГ === */}
       <div>
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-heading text-lg font-medium">{catalogTitle}</h3>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted--foreground">
             {filtered.length} доступно{hiddenByAllergens > 0 && ` · ${hiddenByAllergens} скрыто аллергенами`}
           </span>
         </div>
@@ -365,6 +355,11 @@ export default function MenuBuilder({
           <span><span className="inline-block w-3 h-3 bg-purple-500 rounded-sm align-middle mr-0.5" /><b className="font-semibold">Дети</b> — безопасно для детей</span>
         </div>
 
+        {/* Drag hint */}
+        <p className="text-[11px] text-muted-foreground mb-2 px-1">
+          💡 Нажмите «+ Добавить» или перетащите карточку блюда в корзину. На телефоне — долгое нажатие.
+        </p>
+
         {/* Catalog grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:max-h-[calc(100vh-8rem)] md:overflow-y-auto pr-1 -mr-1">
           {filtered.map(dish => {
@@ -376,87 +371,18 @@ export default function MenuBuilder({
             const isKidsFormat = formatFilter === 'detskoe';
             const alarmNutsInKids = hasNuts && isKidsFormat;
             return (
-              <div
+              <DraggableDishCard
                 key={dish.id}
-                role="button"
-                tabIndex={0}
-                aria-label={`${dish.name}, ${dish.pricePerGuest} ₽. Нажмите Enter чтобы добавить в меню.`}
-                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isSelected) onAdd(dish.id); } }}
-                className={`rounded-xl border bg-card overflow-hidden transition-all cursor-pointer ${
-                  isSelected
-                    ? 'border-gold-text ring-1 ring-gold-text opacity-60'
-                    : dimmed
-                    ? 'border-destructive/40 opacity-50'
-                    : alarmNutsInKids
-                    ? 'border-destructive/60 ring-1 ring-destructive/40'
-                    : 'border-line hover:border-gold-text hover:shadow-sm'
-                }`}
-              >
-                <div className="aspect-square relative overflow-hidden bg-secondary group">
-                  <FoodPhoto
-                    src={getDishImage(dish.id, dish.station)}
-                    alt={dish.name}
-                    aspectRatio="square"
-                    objectPosition="center 40%"
-                    className="w-full h-full"
-                  />
-                  {isSelected && (
-                    <div className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold">✓</div>
-                  )}
-                  {/* Diet badges */}
-                  <div className="absolute top-1 left-1 z-10 flex gap-0.5">
-                    {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
-                    {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
-                    {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
-                    {dish.childFriendly && <span className="text-[10px] bg-purple-500 text-white px-1 py-0.5 rounded font-bold">Дети</span>}
-                  </div>
-                  {/* Allergen warning badge */}
-                  {hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
-                      ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
-                    </div>
-                  )}
-                  {/* Nuts alarm — по умолчанию в детском меню */}
-                  {alarmNutsInKids && !hasExcludedAllergen && (
-                    <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
-                      ⚠ 🥜 Орехи
-                    </div>
-                  )}
-                </div>
-                <div className="p-2">
-                  <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-2">{dish.name}</h4>
-                  {/* Compact allergen tags */}
-                  {dish.allergens.length > 0 && (
-                    <div className="flex flex-wrap gap-0.5 mb-1">
-                      {dish.allergens.slice(0, 4).map(a => (
-                        <span key={a} className={`text-[10px] px-1 py-0.5 rounded leading-none ${
-                          a === 'nuts' || a === 'peanuts' ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
-                        }`} title={ALLERGEN_LABEL[a]}>
-                          {ALLERGEN_LABEL[a]}
-                        </span>
-                      ))}
-                      {dish.allergens.length > 4 && (
-                        <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
-                      )}
-                    </div>
-                  )}
-                  <div className="flex items-center justify-between gap-1">
-                    <span className="text-[11px] text-gold-text font-semibold whitespace-nowrap">{dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span></span>
-                    <button
-                      onClick={() => isSelected ? onRemove(dish.id) : onAdd(dish.id)}
-                      disabled={isSelected}
-                      className={`text-xs px-3 py-1.5 rounded font-medium transition-colors touch-target ${
-                        isSelected
-                          ? 'bg-muted text-muted-foreground cursor-not-allowed'
-                          : 'bg-gold-text text-white hover:bg-gold-text/90'
-                      }`}
-                      aria-label={isSelected ? 'Уже добавлено' : 'Добавить в меню'}
-                    >
-                      {isSelected ? '✓' : '+ Добавить'}
-                    </button>
-                  </div>
-                </div>
-              </div>
+                dish={dish}
+                isSelected={isSelected}
+                dimmed={dimmed}
+                alarmNutsInKids={alarmNutsInKids}
+                hasExcludedAllergen={hasExcludedAllergen}
+                excludedAllergens={excludedAllergens}
+                isKidsFormat={isKidsFormat}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
             );
           })}
         </div>
@@ -492,145 +418,357 @@ export default function MenuBuilder({
       </div>
 
       {/* === КОРЗИНА (Droppable) === */}
-      <div
-        onDragOver={e => handleCartDragOver(e)}
-        onDragLeave={() => { setDragOverCart(false); setDragOverIdx(null); }}
-        onDrop={e => handleCartDrop(e)}
-        className={`rounded-2xl border-2 border-dashed p-4 transition-colors sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto ${
-          dragOverCart ? 'border-gold-text bg-gold-tint/40' : 'border-line bg-card/50'
-        }`}
-        aria-live="polite"
-        aria-label={`Корзина меню: ${selectedItems.length} ${selectedItems.length === 1 ? 'блюдо' : 'блюд'}`}
-      >        <div className="flex items-center justify-between mb-3">
-          <h3 className="font-heading text-lg font-medium">{cartTitle}</h3>
-          {selectedItems.length > 0 && (
-            <span className="text-xs bg-gold-tint text-gold-text px-2 py-0.5 rounded-full font-semibold">
-              {selectedItems.length}
-            </span>
-          )}
-        </div>
+      <DroppableCart
+        cartTitle={cartTitle}
+        emptyCartText={emptyCartText}
+        unit={unit}
+        selectedItems={selectedItems}
+        enableReorder={!!onReorder && enableReorder}
+        excludedAllergens={excludedAllergens}
+        isDraggingOver={isDraggingOverCart}
+        onDragOverChange={setIsDraggingOverCart}
+        activeDragId={activeDragId}
+        onRemove={onRemove}
+        onSetQty={onSetQty}
+        onMoveItem={moveItem}
+      />
+    </div>
+    </DndContext>
+  );
+}
 
-        {selectedItems.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-4xl mb-3 opacity-50">🍽️</div>
-            <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
-            <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Нажмите «+ Добавить» на блюде. Для перестановки используйте кнопки ▲▼.</p>
+// === DraggableDishCard ===
+function DraggableDishCard({
+  dish, isSelected, dimmed, alarmNutsInKids, hasExcludedAllergen, excludedAllergens, isKidsFormat,
+  onAdd, onRemove,
+}: {
+  dish: Dish;
+  isSelected: boolean;
+  dimmed: boolean;
+  alarmNutsInKids: boolean;
+  hasExcludedAllergen: boolean;
+  excludedAllergens: Set<Allergen>;
+  isKidsFormat: boolean;
+  onAdd: (dishId: string) => void;
+  onRemove: (dishId: string) => void;
+}) {
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+    id: `dish-${dish.id}`,
+    disabled: isSelected, // disable drag for already-added dishes
+  });
+
+  const style: React.CSSProperties = {
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    opacity: isDragging ? 0.5 : undefined,
+    zIndex: isDragging ? 50 : undefined,
+    touchAction: 'none', // important for touch dragging
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      role="button"
+      tabIndex={0}
+      aria-label={`${dish.name}, ${dish.pricePerGuest} ₽. Нажмите Enter чтобы добавить в меню. Или перетащите в корзину.`}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isSelected) onAdd(dish.id); } }}
+      className={`rounded-xl border bg-card overflow-hidden transition-all cursor-pointer ${
+        isSelected
+          ? 'border-gold-text ring-1 ring-gold-text opacity-60'
+          : dimmed
+          ? 'border-destructive/40 opacity-50'
+          : alarmNutsInKids
+          ? 'border-destructive/60 ring-1 ring-destructive/40'
+          : 'border-line hover:border-gold-text hover:shadow-sm'
+      } ${isDragging ? 'shadow-2xl ring-2 ring-gold-text' : ''}`}
+    >
+      <div className="aspect-square relative overflow-hidden bg-secondary group">
+        <FoodPhoto
+          src={getDishImage(dish.id, dish.station)}
+          alt={dish.name}
+          aspectRatio="square"
+          objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+          className="w-full h-full"
+        />
+        {isSelected && (
+          <div className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold">✓</div>
+        )}
+        {/* Diet badges */}
+        <div className="absolute top-1 left-1 z-10 flex gap-0.5">
+          {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
+          {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
+          {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
+          {dish.childFriendly && <span className="text-[10px] bg-purple-500 text-white px-1 py-0.5 rounded font-bold">Дети</span>}
+        </div>
+        {/* Allergen warning badge */}
+        {hasExcludedAllergen && (
+          <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+            ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
           </div>
-        ) : (
+        )}
+        {/* Nuts alarm — по умолчанию в детском меню */}
+        {alarmNutsInKids && !hasExcludedAllergen && (
+          <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
+            ⚠ 🥜 Орехи
+          </div>
+        )}
+      </div>
+      <div className="p-2">
+        <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-2">{dish.name}</h4>
+        {/* Compact allergen tags */}
+        {dish.allergens.length > 0 && (
+          <div className="flex flex-wrap gap-0.5 mb-1">
+            {dish.allergens.slice(0, 4).map(a => (
+              <span key={a} className={`text-[10px] px-1 py-0.5 rounded leading-none ${
+                a === 'nuts' || a === 'peanuts' ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
+              }`} title={ALLERGEN_LABEL[a]}>
+                {ALLERGEN_LABEL[a]}
+              </span>
+            ))}
+            {dish.allergens.length > 4 && (
+              <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
+            )}
+          </div>
+        )}
+        <div className="flex items-center justify-between gap-1">
+          <span className="text-[11px] text-gold-text font-semibold whitespace-nowrap">{dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span></span>
+          <button
+            onClick={(e) => { e.stopPropagation(); isSelected ? onRemove(dish.id) : onAdd(dish.id); }}
+            disabled={isSelected}
+            className={`text-xs px-3 py-1.5 rounded font-medium transition-colors touch-target ${
+              isSelected
+                ? 'bg-muted text-muted-foreground cursor-not-allowed'
+                : 'bg-gold-text text-white hover:bg-gold-text/90'
+            }`}
+            aria-label={isSelected ? 'Уже добавлено' : 'Добавить в меню'}
+          >
+            {isSelected ? '✓' : '+ Добавить'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// === DroppableCart ===
+function DroppableCart({
+  cartTitle, emptyCartText, unit, selectedItems, enableReorder, excludedAllergens,
+  isDraggingOver, onDragOverChange, activeDragId, onRemove, onSetQty, onMoveItem,
+}: {
+  cartTitle: string;
+  emptyCartText: string;
+  unit: string;
+  selectedItems: { dishId: string; qty: number }[];
+  enableReorder: boolean;
+  excludedAllergens: Set<Allergen>;
+  isDraggingOver: boolean;
+  onDragOverChange: (v: boolean) => void;
+  activeDragId: string | null;
+  onRemove: (dishId: string) => void;
+  onSetQty: (dishId: string, qty: number) => void;
+  onMoveItem: (idx: number, direction: -1 | 1) => void;
+}) {
+  const { setNodeRef, isOver } = useDroppable({ id: 'cart-dropzone' });
+
+  // Update parent state for visual feedback when isOver changes
+  useMemo(() => {
+    onDragOverChange(isOver && !!activeDragId?.startsWith('dish-'));
+  }, [isOver, activeDragId, onDragOverChange]);
+
+  const cartItemIds = selectedItems.map((_, idx) => `cart-item-${idx}`);
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`rounded-2xl border-2 border-dashed p-4 transition-colors sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto ${
+        isOver && activeDragId?.startsWith('dish-')
+          ? 'border-gold-text bg-gold-tint/40 scale-[1.02]'
+          : 'border-line bg-card/50'
+      }`}
+      aria-live="polite"
+      aria-label={`Корзина меню: ${selectedItems.length} ${selectedItems.length === 1 ? 'блюдо' : 'блюд'}`}
+    >
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="font-heading text-lg font-medium">{cartTitle}</h3>
+        {selectedItems.length > 0 && (
+          <span className="text-xs bg-gold-tint text-gold-text px-2 py-0.5 rounded-full font-semibold">
+            {selectedItems.length}
+          </span>
+        )}
+      </div>
+
+      {selectedItems.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="text-4xl mb-3 opacity-50">🍽️</div>
+          <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
+          <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Нажмите «+ Добавить» на блюде или перетащите его сюда.</p>
+        </div>
+      ) : (
+        <SortableContext items={cartItemIds} strategy={verticalListSortingStrategy}>
           <ul className="space-y-2">
             {selectedItems.map((item, idx) => {
               const dish = ALL_DISHES.find(d => d.id === item.dishId);
               if (!dish) return null;
-              const isDragging = draggedFromIdx === idx;
-              const isDropTarget = dragOverIdx === idx;
-              // Check if dish has excluded allergen (warning in cart)
-              const excludedInDish = dish.allergens.filter(a => excludedAllergens.has(a));
               return (
-                <li
+                <SortableCartItem
                   key={item.dishId}
-                  role="listitem"
-                  aria-label={`Блюдо ${idx + 1}: ${dish.name}. Используйте кнопки вверх/вниз для перестановки.`}
-                  className={`rounded-xl border bg-card p-2.5 transition-all ${
-                    isDragging ? 'opacity-40' : ''
-                  } ${
-                    isDropTarget ? 'border-gold-text ring-2 ring-gold-text/30' : 'border-line'
-                  } ${excludedInDish.length > 0 ? 'border-destructive/40 bg-destructive/5' : ''}`}
-                >
-                  <div className="flex gap-2.5">
-                    {/* Drag handle (desktop) + ↑↓ buttons (mobile/always) */}
-                    {enableReorder && (
-                      <div className="flex flex-col items-center gap-0.5">
-                        <button
-                          onClick={() => moveItem(idx, -1)}
-                          disabled={idx === 0}
-                          className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
-                          aria-label="Поднять вверх"
-                        >▲</button>
-                        <div className="text-muted-foreground/40 select-none hidden lg:block cursor-grab" aria-hidden="true">⠿</div>
-                        <button
-                          onClick={() => moveItem(idx, 1)}
-                          disabled={idx === selectedItems.length - 1}
-                          className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
-                          aria-label="Опустить вниз"
-                        >▼</button>
-                      </div>
-                    )}
-                    {/* Image placeholder */}
-                    <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-lg shrink-0">
-                      {STATION_EMOJI[dish.station] || '🍽️'}
-                    </div>
-                    {/* Info */}
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-1">{dish.name}</h4>
-                      <div className="flex items-center gap-1 flex-wrap">
-                        <span className="text-[10px] text-muted-foreground">{DISH_CATEGORIES[dish.station] || dish.station}</span>
-                        {/* Diet badges in cart */}
-                        {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">VG</span>}
-                        {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1 rounded">GF</span>}
-                        {dish.childFriendly && <span className="text-[10px] bg-purple-100 text-purple-700 px-1 rounded">Дети</span>}
-                        {/* Allergen tags in cart */}
-                        {dish.allergens.slice(0, 3).map(a => (
-                          <span key={a} className={`text-[10px] px-1 rounded ${excludedAllergens.has(a) ? 'bg-destructive text-white font-semibold' : 'bg-muted text-muted-foreground'}`}>
-                            {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
-                          </span>
-                        ))}
-                        {dish.allergens.length > 3 && (
-                          <span className="text-[10px] bg-muted text-muted-foreground px-1 rounded">+{dish.allergens.length - 3}</span>
-                        )}
-                      </div>
-                      {excludedInDish.length > 0 && (
-                        <p className="text-[10px] text-destructive font-medium mt-0.5">
-                          ⚠ Содержит исключённый аллерген!
-                        </p>
-                      )}
-                      <div className="flex items-center justify-between mt-1.5">
-                        <span className="text-[11px] text-gold-text font-semibold">
-                          {dish.pricePerGuest} ₽ × {item.qty} {unit} = {(dish.pricePerGuest * item.qty).toLocaleString('ru-RU')} ₽
-                        </span>
-                      </div>
-                    </div>
-                    {/* Qty controls */}
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="flex items-center gap-1">
-                        <button
-                          onClick={() => onSetQty(item.dishId, item.qty - 1)}
-                          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
-                          aria-label="Уменьшить"
-                        >
-                          −
-                        </button>
-                        <span className="text-xs font-semibold w-5 text-center tabular-nums">{item.qty}</span>
-                        <button
-                          onClick={() => onSetQty(item.dishId, item.qty + 1)}
-                          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
-                          aria-label="Увеличить"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <button
-                        onClick={() => onRemove(item.dishId)}
-                        className="text-xs text-muted-foreground hover:text-destructive transition-colors px-2 py-1 touch-target rounded"
-                        aria-label="Удалить"
-                      >
-                        ✕ удалить
-                      </button>
-                    </div>
-                  </div>
-                </li>
+                  id={`cart-item-${idx}`}
+                  dish={dish}
+                  qty={item.qty}
+                  unit={unit}
+                  idx={idx}
+                  total={selectedItems.length}
+                  excludedAllergens={excludedAllergens}
+                  enableReorder={enableReorder}
+                  onRemove={onRemove}
+                  onSetQty={onSetQty}
+                  onMoveItem={onMoveItem}
+                />
               );
             })}
           </ul>
-        )}
+        </SortableContext>
+      )}
 
-        {/* Helper hint */}
-        {selectedItems.length > 0 && enableReorder && (
-          <p className="text-[10px] text-muted-foreground/70 mt-3 text-center">
-            ⟲ Используйте ▲▼ для порядка блюд
-          </p>
-        )}
-      </div>
+      {/* Helper hint */}
+      {selectedItems.length > 0 && enableReorder && (
+        <p className="text-[10px] text-muted-foreground/70 mt-3 text-center">
+          ⟲ Перетащите карточку за ручку ⠿ или используйте ▲▼ для порядка блюд
+        </p>
+      )}
     </div>
-    </DndContext>
+  );
+}
+
+// === SortableCartItem ===
+function SortableCartItem({
+  id, dish, qty, unit, idx, total, excludedAllergens, enableReorder,
+  onRemove, onSetQty, onMoveItem,
+}: {
+  id: string;
+  dish: Dish;
+  qty: number;
+  unit: string;
+  idx: number;
+  total: number;
+  excludedAllergens: Set<Allergen>;
+  enableReorder: boolean;
+  onRemove: (dishId: string) => void;
+  onSetQty: (dishId: string, qty: number) => void;
+  onMoveItem: (idx: number, direction: -1 | 1) => void;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : undefined,
+    zIndex: isDragging ? 50 : undefined,
+    touchAction: 'none',
+  };
+
+  // Check if dish has excluded allergen (warning in cart)
+  const excludedInDish = dish.allergens.filter(a => excludedAllergens.has(a));
+
+  return (
+    <li
+      ref={setNodeRef}
+      style={style}
+      role="listitem"
+      aria-label={`Блюдо ${idx + 1}: ${dish.name}. Перетащите за ручку ⠿ для перестановки или используйте кнопки ▲▼.`}
+      className={`rounded-xl border bg-card p-2.5 transition-all ${
+        isDragging ? 'border-gold-text ring-2 ring-gold-text shadow-lg' : 'border-line'
+      } ${excludedInDish.length > 0 ? 'border-destructive/40 bg-destructive/5' : ''}`}
+    >
+      <div className="flex gap-2.5">
+        {/* Drag handle (desktop + mobile via dnd-kit) + ↑↓ buttons */}
+        {enableReorder && (
+          <div className="flex flex-col items-center gap-0.5">
+            <button
+              onClick={() => onMoveItem(idx, -1)}
+              disabled={idx === 0}
+              className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
+              aria-label="Поднять вверх"
+            >▲</button>
+            <button
+              {...attributes}
+              {...listeners}
+              className="text-muted-foreground hover:text-gold-text cursor-grab active:cursor-grabbing px-2 py-1.5 touch-target rounded"
+              aria-label="Перетащить для перестановки"
+              title="Перетащите для перестановки"
+            >⠿</button>
+            <button
+              onClick={() => onMoveItem(idx, 1)}
+              disabled={idx === total - 1}
+              className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
+              aria-label="Опустить вниз"
+            >▼</button>
+          </div>
+        )}
+        {/* Image placeholder */}
+        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-lg shrink-0">
+          {STATION_EMOJI[dish.station] || '🍽️'}
+        </div>
+        {/* Info */}
+        <div className="flex-1 min-w-0">
+          <h4 className="text-xs font-medium leading-tight mb-0.5 line-clamp-1">{dish.name}</h4>
+          <div className="flex items-center gap-1 flex-wrap">
+            <span className="text-[10px] text-muted-foreground">{DISH_CATEGORIES[dish.station] || dish.station}</span>
+            {/* Diet badges in cart */}
+            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1 rounded">VG</span>}
+            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-100 text-amber-700 px-1 rounded">GF</span>}
+            {dish.childFriendly && <span className="text-[10px] bg-purple-100 text-purple-700 px-1 rounded">Дети</span>}
+            {/* Allergen tags in cart */}
+            {dish.allergens.slice(0, 3).map(a => (
+              <span key={a} className={`text-[10px] px-1 rounded ${excludedAllergens.has(a) ? 'bg-destructive text-white font-semibold' : 'bg-muted text-muted-foreground'}`}>
+                {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
+              </span>
+            ))}
+            {dish.allergens.length > 3 && (
+              <span className="text-[10px] bg-muted text-muted-foreground px-1 rounded">+{dish.allergens.length - 3}</span>
+            )}
+          </div>
+          {excludedInDish.length > 0 && (
+            <p className="text-[10px] text-destructive font-medium mt-0.5">
+              ⚠ Содержит исключённый аллерген!
+            </p>
+          )}
+          <div className="flex items-center justify-between mt-1.5">
+            <span className="text-[11px] text-gold-text font-semibold">
+              {dish.pricePerGuest} ₽ × {qty} {unit} = {(dish.pricePerGuest * qty).toLocaleString('ru-RU')} ₽
+            </span>
+          </div>
+        </div>
+        {/* Qty controls */}
+        <div className="flex flex-col items-center gap-1">
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => onSetQty(dish.id, qty - 1)}
+              className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
+              aria-label="Уменьшить"
+            >
+              −
+            </button>
+            <span className="text-xs font-semibold w-5 text-center tabular-nums">{qty}</span>
+            <button
+              onClick={() => onSetQty(dish.id, qty + 1)}
+              className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-sm hover:border-gold-text hover:text-gold-text transition-colors touch-target"
+              aria-label="Увеличить"
+            >
+              +
+            </button>
+          </div>
+          <button
+            onClick={() => onRemove(dish.id)}
+            className="text-xs text-muted-foreground hover:text-destructive transition-colors px-2 py-1 touch-target rounded"
+            aria-label="Удалить"
+          >
+            ✕ удалить
+          </button>
+        </div>
+      </div>
+    </li>
   );
 }
