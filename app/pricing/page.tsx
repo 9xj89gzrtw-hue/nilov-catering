@@ -64,7 +64,48 @@ export default function PricingPage() {
           }
         />
 
+        {/* Quick navigation to event types — visible in SSR, no JS needed */}
+        <nav className="mb-8 flex flex-wrap gap-2" aria-label="Быстрая навигация по типам событий">
+          <Link href="/pricing?event=svadba" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">💍 Свадьба</Link>
+          <Link href="/pricing?event=korporativ" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">💼 Корпоратив</Link>
+          <Link href="/pricing?event=vypusknoy" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🎓 Выпускной</Link>
+          <Link href="/pricing?event=coffee-break" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">☕ Кофе-брейк</Link>
+          <Link href="/pricing?event=detskoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🎈 Детское</Link>
+          <Link href="/pricing?event=pominki" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🕯️ Поминки</Link>
+          <Link href="/pricing?event=chastnoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🥂 Частное</Link>
+          <Link href="/pricing?event=chef-at-home" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">👨‍🍳 Шеф на дом</Link>
+        </nav>
+
         <TariffOffersSection />
+
+        {/* SSR price summary table — visible without JS, all event types at once */}
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-medium mb-4">Сводная таблица цен</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-line rounded-lg overflow-hidden">
+              <thead className="bg-secondary">
+                <tr>
+                  <th className="text-left p-3 font-semibold">Тип события</th>
+                  <th className="text-left p-3 font-semibold">Тариф</th>
+                  <th className="text-right p-3 font-semibold">Цена/гость</th>
+                  <th className="text-right p-3 font-semibold">Мин. гостей</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t border-line"><td className="p-3" rowSpan={4}>💍 Свадьба</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">5 470 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">7 350 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Максимальный</td><td className="p-3 text-right font-semibold text-gold-text">9 950 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line bg-secondary/30"><td className="p-3">☕ Кофе-брейк</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">390 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line"><td className="p-3" rowSpan={2}>🕯️ Поминки</td><td className="p-3">Базовый</td><td className="p-3 text-right font-semibold text-gold-text">1 800 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">2 500 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line bg-secondary/30"><td className="p-3">🎈 Детское</td><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">1 550 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line"><td className="p-3">👨‍🍳 Шеф на дом</td><td className="p-3">Премиум</td><td className="p-3 text-right font-semibold text-gold-text">5 000 ₽</td><td className="p-3 text-right">6</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">Все цены включают: еду, персонал, посуду, доставку по КАД. Доставка за КАД — от 3 000 ₽.</p>
+        </section>
       </div>
     </main>
   );
