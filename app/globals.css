@@ -225,6 +225,133 @@
   to { opacity: 1; }
 }
 
+/* ═══════════════════════════════════════════
+   Drinqit-style 3D Animations
+   Tilt + Parallax + Depth on hover for food cards
+   ═══════════════════════════════════════════ */
+
+/* 3D tilt container — wraps any card for perspective effect */
+.drinqit-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* 3D tilt inner — applies the rotation on hover */
+.drinqit-3d-inner {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Hover tilt — desktop only (touch devices get no tilt) */
+@media (hover: hover) and (pointer: fine) {
+  .drinqit-3d:hover .drinqit-3d-inner {
+    transform: rotateX(4deg) rotateY(-4deg) scale(1.03);
+  }
+
+  /* Image floats up in Z for depth */
+  .drinqit-3d:hover .drinqit-3d-img {
+    transform: translateZ(30px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Text content stays grounded */
+  .drinqit-3d:hover .drinqit-3d-text {
+    transform: translateZ(15px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Shadow deepens for floating effect */
+  .drinqit-3d:hover .drinqit-3d-shadow {
+    transform: translateZ(-20px) scale(0.95);
+    opacity: 0.4;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Base state transitions */
+.drinqit-3d-img,
+.drinqit-3d-text,
+.drinqit-3d-shadow {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+/* Drinqit-style shine sweep on hover */
+.drinqit-shine {
+  position: relative;
+  overflow: hidden;
+}
+.drinqit-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg) translateX(0);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+@media (hover: hover) and (pointer: fine) {
+  .drinqit-shine:hover::after {
+    transform: skewX(-25deg) translateX(300%);
+  }
+}
+
+/* Drinqit-style entrance animation — cards "rise" into view */
+@keyframes drinqit-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.drinqit-rise {
+  animation: drinqit-rise 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Drinqit-style floating animation — subtle infinite float */
+@keyframes drinqit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.drinqit-float {
+  animation: drinqit-float 3s ease-in-out infinite;
+}
+
+/* Smooth scroll for horizontal carousels */
+.carousel-horizontal {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) transparent;
+}
+.carousel-horizontal::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel-horizontal::-webkit-scrollbar-track {
+  background: transparent;
+}
+.carousel-horizontal::-webkit-scrollbar-thumb {
+  background-color: var(--color-gold);
+  border-radius: 3px;
+}
+.carousel-item {
+  scroll-snap-align: start;
+}
+
 @utility animate-fade-up {
   animation: fade-up 0.6s ease-out both;
 }

@@ -284,15 +284,16 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
   const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
 
   return (
-    <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg flex flex-col">
-      {/* Image area — FoodPhoto с анимацией Drinqit */}
-      <Link href={constructorHref} className="relative block" aria-label={`${dish.name} — открыть в конструкторе меню`}>
+    <div className="drinqit-3d drinqit-shine rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-xl flex flex-col">
+      <div className="drinqit-3d-inner">
+      {/* Image area — FoodPhoto с анимацией Drinqit 3D */}
+      <Link href={constructorHref} className="relative block drinqit-3d-img" aria-label={`${dish.name} — открыть в конструкторе меню`}>
         <FoodPhoto
           src={dishImg}
           alt={dish.name}
           aspectRatio="square"
           objectPosition={getObjectPositionForDish(dish.id, dish.station)}
-          className="w-full transition-transform duration-500 group-hover:scale-105"
+          className="w-full"
         />
       </Link>
 
@@ -353,6 +354,7 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
         >
           Открыть в конструкторе →
         </Link>
+      </div>
       </div>
     </div>
   );
