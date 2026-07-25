@@ -282,12 +282,13 @@ export default function CatalogPage() {
 
 function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index?: number; showAllergens?: boolean }) {
   const dishImg = getDishImageByIndex(dish.id, dish.station, index);
-  const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20`;
+  // Pass dish ID via URL so constructor can pre-add it
+  const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
 
   return (
     <div className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-lg flex flex-col">
       {/* Image area — FoodPhoto с анимацией Drinqit */}
-      <Link href={constructorHref} className="relative block" aria-label={`${dish.name} — добавить в конструктор меню`}>
+      <Link href={constructorHref} className="relative block" aria-label={`${dish.name} — открыть в конструкторе меню`}>
         <FoodPhoto
           src={dishImg}
           alt={dish.name}
@@ -346,12 +347,13 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
           </div>
         )}
 
-        {/* CTA: Add to constructor */}
+        {/* CTA: Open in constructor with dish pre-added */}
         <Link
           href={constructorHref}
           className="mt-auto inline-flex items-center justify-center rounded-lg bg-gold-text text-white px-3 py-2 text-xs font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline"
+          aria-label={`Открыть ${dish.name} в конструкторе меню`}
         >
-          + В меню
+          Открыть в конструкторе →
         </Link>
       </div>
     </div>

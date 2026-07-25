@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import ConstructorWizard from '@/components/interactive/ConstructorWizard';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
+import PageHeader from '@/components/common/PageHeader';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -69,23 +71,15 @@ function ConstructorServerFallback() {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20" id="main">
       <div className="container-site max-w-4xl">
-        <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Главная</Link>
-          {' / '}
-          <Link href="/plan" className="hover:text-foreground">Спланировать</Link>
-          {' / '}
-          <span className="text-foreground">Подбор меню</span>
-        </nav>
+        <Breadcrumbs />
 
-        <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">
-          Подбор меню
-        </h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          Соберите меню под ваше событие за 2 минуты. Выберите формат — подберём меню под ваш бюджет и диеты.
-          Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе с per-group pricing.
-        </p>
+        <PageHeader
+          title="Подбор меню"
+          eyebrow="Конструктор меню"
+          subtitle="Соберите меню под ваше событие за 2 минуты. Выберите формат — подберём меню под ваш бюджет и диеты. Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе с per-group pricing."
+        />
 
         {/* Шаг 1 — формат (виден SSR) */}
         <div className="mb-8">

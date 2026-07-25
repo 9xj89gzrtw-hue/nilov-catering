@@ -35,7 +35,7 @@ export default function FormatShowcase() {
                     src={f.img}
                     alt={getFormatName(f.format)}
                     aspectRatio="video"
-                    frameShape="diamond"
+                    frameShape="rounded-xl"
                     className="group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>

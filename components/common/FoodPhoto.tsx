@@ -88,9 +88,10 @@ export default function FoodPhoto({
         />
       </picture>
 
-      {/* Shimmer overlay только ПОСЛЕ client-side hydration и пока фото не загружилось. */}
+      {/* Subtle placeholder только ПОСЛЕ client-side hydration и пока фото не загружилось.
+          No animate-pulse — it looks like an eternal skeleton-loader. Just static bg. */}
       {mounted && !loaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-muted/80 to-secondary/80 animate-pulse pointer-events-none" />
+        <div className="absolute inset-0 bg-secondary pointer-events-none" />
       )}
 
       {/* Overlay */}

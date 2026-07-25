@@ -25,7 +25,7 @@ export default function CookieBanner() {
 
   return (
     <div
-      className="fixed bottom-16 lg:bottom-0 left-0 right-0 z-40 bg-card border-t border-line p-3 sm:p-4 shadow-lg"
+      className="fixed left-0 right-0 z-40 bg-card border-t border-line p-3 sm:p-4 shadow-lg bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:bottom-0"
       role="dialog"
       aria-label="Уведомление об использовании cookie"
     >

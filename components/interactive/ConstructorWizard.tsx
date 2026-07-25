@@ -58,6 +58,7 @@ export default function ConstructorWizard() {
     const formatParam = params.get('format') as string | null;
     const tierParam = params.get('tier') as Tier | null;
     const guestsParam = params.get('guests');
+    const dishParam = params.get('dish'); // NEW: pre-add specific dish from catalog
     const customItemsJson = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('tariffCustomItems') : null;
 
     let resolvedFormat: Format | null = null;
@@ -109,6 +110,23 @@ export default function ConstructorWizard() {
       } else {
         // Если передан только format (без tier) — на шаг гостей (step 1)
         store.setStep(1);
+      }
+    }
+
+    // NEW: Pre-add specific dish from catalog (?dish=...)
+    if (dishParam) {
+      const dish = ALL_DISHES.find(d => d.id === dishParam);
+      if (dish && !store.selectedItems.find(i => i.dishId === dishParam)) {
+        // Switch to custom mode and add the dish
+        store.setTierMode('custom');
+        store.clearItems();
+        store.addDish(dishParam);
+        // Jump to step 3 (menu) so user sees the dish in their cart
+        if (guestsParam) {
+          const g = parseInt(guestsParam, 10);
+          if (!isNaN(g) && g >= 6) store.setGuestCount(g);
+          store.setStep(3);
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -40,13 +40,30 @@ export default function Header() {
           className="flex items-center gap-2 shrink-0 group"
           aria-label="NiloV Catering — на главную"
         >
-          {/* Brand mark — minimalist gold diamond */}
-          <span
-            className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-gold-text to-gold-text/70 text-background font-heading font-bold text-lg shadow-sm group-hover:shadow-md transition-shadow"
+          {/* Brand mark — SVG diamond with monogram */}
+          <svg
+            className="w-8 h-8 group-hover:scale-105 transition-transform"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
-            N
-          </span>
+            <defs>
+              <linearGradient id="nilov-gold" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#C9A66B" />
+                <stop offset="1" stopColor="#8C7140" />
+              </linearGradient>
+            </defs>
+            <rect width="40" height="40" rx="8" fill="url(#nilov-gold)" />
+            <path
+              d="M12 28 L12 12 L20 22 L28 12 L28 28"
+              stroke="#FFFEF7"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
           <span className="font-heading text-xl font-semibold tracking-tight text-foreground group-hover:text-gold-text transition-colors">
             NiloV
           </span>

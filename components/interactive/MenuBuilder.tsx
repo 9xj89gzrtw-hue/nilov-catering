@@ -228,7 +228,7 @@ export default function MenuBuilder({
       <div>
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-heading text-lg font-medium">{catalogTitle}</h3>
-          <span className="text-xs text-muted--foreground">
+          <span className="text-xs text-muted-foreground">
             {filtered.length} доступно{hiddenByAllergens > 0 && ` · ${hiddenByAllergens} скрыто аллергенами`}
           </span>
         </div>

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE } from '@/lib/data';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
+import PageHeader from '@/components/common/PageHeader';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/contact', languages: { 'ru': '/contact', 'en': '/en', 'x-default': '/contact' } },
@@ -15,17 +17,23 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
   const preGuests = Array.isArray(sp.guests) ? sp.guests[0] : sp.guests || '';
   const preAddress = Array.isArray(sp.address) ? sp.address[0] : sp.address || '';
   return (
-    <main className="pt-24 pb-20">
+    <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-3xl">
-        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">Контакты</h1>
-        <p className="text-muted-foreground mb-4">
-          Позвоните или напишите — подберём решение за 15 минут. Работаем ежедневно с 9:00 до 21:00.
-        </p>
-        <p className="text-sm text-muted-foreground mb-8">
-          📍 Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
-          работаем удалённо через WhatsApp/Telegram, поможем найти площадку в СПб, организуем
-          видеодегустацию по Zoom.
-        </p>
+        <Breadcrumbs />
+
+        <PageHeader
+          title="Контакты"
+          eyebrow="Свяжитесь с нами"
+          subtitle={
+            <>
+              Позвоните или напишите — подберём решение за 15 минут. Работаем ежедневно с 9:00 до 21:00.
+              <br />
+              📍 Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
+              работаем удалённо через WhatsApp/Telegram, поможем найти площадку в СПб, организуем
+              видеодегустацию по Zoom.
+            </>
+          }
+        />
 
         {/* Contact cards — large readable */}
         <div className="grid grid-cols-2 gap-3 mb-6">

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
+import PageHeader from '@/components/common/PageHeader';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
@@ -75,21 +77,20 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
 
 export default function MenuPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main className="pt-24 pb-20" id="main">
       <div className="container-site">
-        {/* Hero */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-heading mb-4">Меню и цены</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Любой формат — от кофе-брейка до банкета. Все цены указаны за человека.
-          </p>
-        </div>
+        <Breadcrumbs />
 
-        <div className="mb-12 text-center">
-          <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target">
-            🎯 Не знаете что выбрать? Подберём за 3 вопроса →
-          </Link>
-        </div>
+        <PageHeader
+          title="Меню и цены"
+          eyebrow="Все форматы"
+          subtitle="Любой формат — от кофе-брейка до банкета. Все цены указаны за человека."
+          actions={
+            <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target no-underline">
+              🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+            </Link>
+          }
+        />
 
         {/* Quick price anchors */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">

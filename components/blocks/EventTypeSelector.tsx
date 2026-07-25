@@ -47,7 +47,7 @@ export default function EventTypeSelector() {
                     src={FORMAT_HERO_IMAGES[e.format]}
                     alt={e.label}
                     aspectRatio="video"
-                    frameShape="diamond"
+                    frameShape="rounded-xl"
                     className="group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
