@@ -63,6 +63,7 @@ interface DishItem {
 
 interface MenuTariff {
   name: string;
+  tier: string;
   price: string;
   desc: string;
   highlights: string[];
@@ -74,7 +75,7 @@ interface MenuTariff {
 const TARIFFS: Record<string, MenuTariff[]> = {
   furshet: [
     {
-      name: 'Эконом', price: '2 450 ₽/гость', desc: 'Лёгкий фуршет. Канапе, закуски, напитки.',
+      name: 'Эконом', tier: 'economy', price: '2 450 ₽/гость', desc: 'Лёгкий фуршет. Канапе, закуски, напитки.',
       highlights: ['5 видов канапе', '2 вида тарталеток', 'Фрукты', '2 напитка'],
       dishes: [
         { cat: 'Канапе', items: [
@@ -96,7 +97,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Стандарт', price: '3 950 ₽/гость', desc: 'Полноценный фуршет. Горячие закуски, плато, десерты, вино.',
+      name: 'Стандарт', tier: 'standard', price: '3 950 ₽/гость', desc: 'Полноценный фуршет. Горячие закуски, плато, десерты, вино.',
       highlights: ['8+ закусок', 'Горячие мини-блюда', 'Сырное/мясное плато', 'Десертный стол', 'Вино'],
       dishes: [
         { cat: 'Канапе', items: [
@@ -132,7 +133,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Расширенный', price: '5 950 ₽/гость', desc: 'Премиум-фуршет. Морепродукты, гастро-ужин, сомелье, шампанское.',
+      name: 'Расширенный', tier: 'premium', price: '5 950 ₽/гость', desc: 'Премиум-фуршет. Морепродукты, гастро-ужин, сомелье, шампанское.',
       highlights: ['Устрицы', 'Тартар из тунца', 'Рибай', 'Сомелье', 'Шампанское'],
       dishes: [
         { cat: 'Премиум', items: [
@@ -160,7 +161,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
   ],
   banquet: [
     {
-      name: 'Эконом', price: '3 950 ₽/гость', desc: 'Камерный банкет с посадкой. 5 закусок, горячее, чай/кофе. Минимум 30 гостей.',
+      name: 'Эконом', tier: 'economy', price: '3 950 ₽/гость', desc: 'Камерный банкет с посадкой. 5 закусок, горячее, чай/кофе. Минимум 30 гостей.',
       highlights: ['5 видов канапе', 'Горячее блюдо', 'Welcome drink', 'Чай/кофе'],
       dishes: [
         { cat: 'Закуски', items: [
@@ -181,7 +182,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Стандарт', price: '5 470 ₽/гость', desc: 'Расширенный банкет: 2 горячих, винная карта (по запросу — безалкогольная для халяль), сырная тарелка.',
+      name: 'Стандарт', tier: 'standard', price: '5 470 ₽/гость', desc: 'Расширенный банкет: 2 горячих, винная карта (по запросу — безалкогольная для халяль), сырная тарелка.',
       highlights: ['2 горячих блюда', 'Сырное/мясное плато', 'Вино (опционально — безалк. для халяль)', 'Десертный стол'],
       dishes: [
         { cat: 'Закуски', items: [
@@ -206,7 +207,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Расширенный', price: '7 350 ₽/гость', desc: 'Ресторанный уровень. Морепродукты, винная карта, сомелье.',
+      name: 'Расширенный', tier: 'premium', price: '7 350 ₽/гость', desc: 'Ресторанный уровень. Морепродукты, винная карта, сомелье.',
       highlights: ['Морепродукты', 'Сомелье', 'Винная карта', 'Десертный стол'],
       dishes: [
         { cat: 'Закуски', items: [
@@ -233,7 +234,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Максимальный', price: '9 950 ₽/гость', desc: 'Полный бар, чёрная икра, две живые станции, сомелье, координатор.',
+      name: 'Максимальный', tier: 'luxury', price: '9 950 ₽/гость', desc: 'Полный бар, чёрная икра, две живые станции, сомелье, координатор.',
       highlights: ['Чёрная икра', 'Сомелье', 'Полный бар', 'Координатор', 'Фейерверк-десерт'],
       dishes: [
         { cat: 'Премиум', items: [
@@ -265,7 +266,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
   ],
   'coffee-break': [
     {
-      name: 'Эконом', price: '390 ₽/гость', desc: 'Базовый кофе-брейк: выпечка, чай, кофе.',
+      name: 'Эконом', tier: 'economy', price: '390 ₽/гость', desc: 'Базовый кофе-брейк: выпечка, чай, кофе.',
       highlights: ['3 вида выпечки', 'Чай/кофе', 'Минеральная вода'],
       dishes: [
         { cat: 'Выпечка', items: [
@@ -280,7 +281,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Стандарт', price: '690 ₽/гость', desc: 'Сытный кофе-брейк: выпечка, канапе, десерты.',
+      name: 'Стандарт', tier: 'standard', price: '690 ₽/гость', desc: 'Сытный кофе-брейк: выпечка, канапе, десерты.',
       highlights: ['Выпечка + канапе', 'Десерты', 'Бариста', 'Соки/морсы'],
       dishes: [
         { cat: 'Выпечка', items: [
@@ -303,7 +304,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Расширенный', price: '950 ₽/гость', desc: 'Премиум-брейк: бариста, смузи, десерты, канапе.',
+      name: 'Расширенный', tier: 'premium', price: '950 ₽/гость', desc: 'Премиум-брейк: бариста, смузи, десерты, канапе.',
       highlights: ['Бариста', 'Смузи-бар', 'Десертный стол', 'Канапе'],
       dishes: [
         { cat: 'Выпечка', items: [
@@ -330,7 +331,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
   ],
   detskoe: [
     {
-      name: 'Эконом', price: '1 550 ₽/гость', desc: 'Весёлый детский фуршет. Бургеры, наггетсы, соки, аниматор 1 час.',
+      name: 'Эконом', tier: 'economy', price: '1 550 ₽/гость', desc: 'Весёлый детский фуршет. Бургеры, наггетсы, соки, аниматор 1 час.',
       highlights: ['Мини-бургеры', 'Наггетсы', 'Соки/морсы', 'Аниматор 1 час'],
       dishes: [
         { cat: 'Горячее', items: [
@@ -347,7 +348,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Стандарт', price: '2 450 ₽/гость', desc: 'Праздник с аниматором 2 часа. Бургеры, мини-хот-доги, сладкий стол, шоу мыльных пузырей.',
+      name: 'Стандарт', tier: 'standard', price: '2 450 ₽/гость', desc: 'Праздник с аниматором 2 часа. Бургеры, мини-хот-доги, сладкий стол, шоу мыльных пузырей.',
       highlights: ['Мини-бургеры + хот-доги', 'Сладкий стол', 'Аниматор 2 часа', 'Шоу мыльных пузырей'],
       dishes: [
         { cat: 'Горячее', items: [
@@ -366,7 +367,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: 'Расширенный', price: '3 450 ₽/гость', desc: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф, пиньята.',
+      name: 'Расширенный', tier: 'premium', price: '3 450 ₽/гость', desc: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф, пиньята.',
       highlights: ['Шоу-программа', 'Candy-bar', 'Фотограф', 'Пиньята + квест'],
       dishes: [
         { cat: 'Горячее', items: [
@@ -388,7 +389,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
   ],
   vegan: [
     {
-      name: 'Стандарт', price: '2 950 ₽/гость', desc: 'Веган-меню: растительные закуски, горячее, десерты.',
+      name: 'Стандарт', tier: 'standard', price: '2 950 ₽/гость', desc: 'Веган-меню: растительные закуски, горячее, десерты.',
       highlights: ['100% растительное', '5 видов закусок', 'Горячее', 'Веган-десерты'],
       dishes: [
         { cat: 'Закуски', items: [
@@ -413,7 +414,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
   ],
   'show-cooking': [
     {
-      name: 'Стандарт', price: '3 950 ₽/гость', desc: 'Шоу-станция: паста или пицца, приготовление при гостях.',
+      name: 'Стандарт', tier: 'standard', price: '3 950 ₽/гость', desc: 'Шоу-станция: паста или пицца, приготовление при гостях.',
       highlights: ['Живая станция', 'Шеф-повар', '3 вида на выбор', 'Интерактив'],
       dishes: [
         { cat: 'Станция', items: [
@@ -512,6 +513,19 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
                 </ul>
               </div>
             ))}
+
+            {/* Edit menu CTA — lets user customize this tariff in constructor */}
+            <div className="pt-3 mt-3 border-t border-line">
+              <Link
+                href={`/plan/constructor?format=${format}&tier=${tariff.tier}&guests=20`}
+                className="inline-flex items-center gap-2 rounded-lg bg-gold-text text-white px-4 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline w-full justify-center"
+              >
+                ✏️ Отредактировать это меню →
+              </Link>
+              <p className="text-xs text-muted-foreground mt-2 text-center">
+                Уберите ненужные блюда, замените, добавьте свои. Цена пересчитается автоматически.
+              </p>
+            </div>
           </div>
         )}
       </div>
