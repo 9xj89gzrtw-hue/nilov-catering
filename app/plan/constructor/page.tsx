@@ -124,7 +124,7 @@ function ConstructorServerFallback() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Кол-во гостей *</span>
-                <input type="number" name="guests" min="6" required placeholder="напр. 25" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                <input type="number" name="guests" min="6" required placeholder="напр. 25" data-prefill="guests" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
               </label>
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Дата события</span>
@@ -266,6 +266,29 @@ function ConstructorServerFallback() {
             <a href={`tel:${SITE.phoneTel}`} className="underline">{SITE.phone}</a>.
           </div>
         </noscript>
+
+        {/* URL prefill script — mirrors /contact pattern, reads guests/format/tier from URL */}
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(){
+            try {
+              var sp = new URLSearchParams(window.location.search);
+              var fields = ['guests', 'date', 'format', 'tier'];
+              fields.forEach(function(name) {
+                var val = sp.get(name);
+                if (!val) return;
+                var el = document.querySelector('[data-prefill="' + name + '"]');
+                if (!el) return;
+                if (el.tagName === 'SELECT') {
+                  for (var i = 0; i < el.options.length; i++) {
+                    if (el.options[i].value === val) { el.value = val; break; }
+                  }
+                } else {
+                  el.value = val;
+                }
+              });
+            } catch (e) { console.warn('prefill error:', e); }
+          })();`
+        }} />
       </div>
     </div>
   );

@@ -90,6 +90,15 @@ export default function CatalogPage() {
 
   // Allergen visibility toggle — show/hide allergen badges on cards
   const [showAllergens, setShowAllergens] = useState(true);
+  // Pagination — show first 24 dishes, then "Показать ещё"
+  const [visibleCount, setVisibleCount] = useState(24);
+
+  // Slice dishes for pagination
+  const paginatedOther = otherDishes.slice(0, visibleCount);
+  const paginatedHalal = halalDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length));
+  const paginatedPork = porkDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length - paginatedHalal.length));
+  const totalShown = paginatedOther.length + paginatedHalal.length + paginatedPork.length;
+  const hasMore = totalShown < filtered.length;
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -195,41 +204,55 @@ export default function CatalogPage() {
           </p>
         </div>
 
-        {/* Grid — visual separation: halal / other / pork */}
-        {otherDishes.length > 0 && (
+        {/* Grid — visual separation: halal / other / pork — with pagination */}
+        {paginatedOther.length > 0 && (
           <div className="mb-8">
             {halalDishes.length > 0 && porkDishes.length > 0 && (
               <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
             )}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {otherDishes.map((dish, idx) => (
+              {paginatedOther.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
         )}
 
-        {halalDishes.length > 0 && (
+        {paginatedHalal.length > 0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
             <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {halalDishes.map((dish, idx) => (
+              {paginatedHalal.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 100} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
         )}
 
-        {porkDishes.length > 0 && (
+        {paginatedPork.length > 0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
             <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {porkDishes.map((dish, idx) => (
+              {paginatedPork.map((dish, idx) => (
                 <DishCard key={dish.id} dish={dish} index={idx + 200} showAllergens={showAllergens} />
               ))}
             </div>
+          </div>
+        )}
+
+        {/* "Показать ещё" pagination button */}
+        {hasMore && (
+          <div className="text-center py-8">
+            <button
+              onClick={() => setVisibleCount(c => c + 24)}
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
+              type="button"
+            >
+              Показать ещё {Math.min(24, filtered.length - totalShown)} из {filtered.length - totalShown} блюд ↓
+            </button>
+            <p className="text-xs text-muted-foreground mt-2">Показано {totalShown} из {filtered.length} блюд</p>
           </div>
         )}
 
