@@ -127,11 +127,31 @@ export default function FAQPage() {
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3 text-center">
           Частые вопросы
         </h1>
-        <p className="text-center text-muted-foreground mb-12">
+        <p className="text-center text-muted-foreground mb-8">
           21 ответ о кейтеринге — для частных клиентов и B2B. Не нашли ответ?{' '}
           <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">Позвоните {SITE.phone}</a>.
         </p>
 
+        {/* Quick search */}
+        <div className="mb-8">
+          <input
+            type="search"
+            id="faq-search"
+            placeholder="🔍 Поиск по вопросам…"
+            className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow"
+          />
+        </div>
+        <script dangerouslySetInnerHTML={{ __html: `
+          document.getElementById('faq-search').addEventListener('input', function(e) {
+            var q = e.target.value.toLowerCase();
+            document.querySelectorAll('#faq-list details').forEach(function(el) {
+              var text = el.textContent.toLowerCase();
+              el.style.display = text.includes(q) ? '' : 'none';
+            });
+          });
+        `}} />
+
+        <div id="faq-list">
         {/* B2C FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
           <span className="text-2xl">👥</span> Для частных клиентов
@@ -183,6 +203,7 @@ export default function FAQPage() {
               📋 Сертификаты
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </main>

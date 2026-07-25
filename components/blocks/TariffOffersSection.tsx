@@ -152,7 +152,13 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
 
       <div className="relative">
         <FoodPhoto
-          src={FORMAT_HERO_IMAGES[EVENT_TO_FORMAT[offer.eventId] || 'furshet'] || '/images/gallery/wedding-banquet.jpg'}
+          src={
+            offer.tier === 'economy' ? '/images/gallery/furshet-menu.jpg' :
+            offer.tier === 'standard' ? '/images/gallery/wedding-banquet.jpg' :
+            offer.tier === 'premium' ? '/images/gallery/dessert-table.jpg' :
+            offer.tier === 'luxury' ? '/images/gallery/cocktail.jpg' :
+            FORMAT_HERO_IMAGES[EVENT_TO_FORMAT[offer.eventId] || 'furshet'] || '/images/gallery/wedding-banquet.jpg'
+          }
           alt={`${offer.eventName} · ${offer.tierLabel}`}
           aspectRatio="wide"
           className="w-full"
@@ -344,12 +350,6 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
       )}
 
       <div className="px-5 pb-5 flex flex-col gap-2">
-        <button
-          onClick={() => { setEditMode(true); setExpanded(false); }}
-          className="block w-full rounded-lg border border-line py-2.5 text-xs font-semibold text-foreground hover:bg-muted transition-colors"
-        >
-          {editMode ? 'Редактирую…' : '✎ Настроить меню'}
-        </button>
         <Link
           href={`/plan/constructor?format=${offer.formatOverride || EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}`}
           onClick={() => {
@@ -362,18 +362,12 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
               }
             }
           }}
-          className="block w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground text-center hover:bg-primary/90 transition-colors">
+          className="block w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground text-center hover:bg-primary/90 transition-colors touch-target">
           Выбрать этот тариф →
-        </Link>
-        <Link
-          href="/contact"
-          className="block w-full rounded-lg border border-gold-text py-2.5 text-xs font-semibold text-gold-text text-center hover:bg-gold-tint transition-colors"
-        >
-          ⚡ Быстрая заявка
         </Link>
         <a
           href="/menu/catalog"
-          className="block w-full rounded-lg border border-line py-2.5 text-xs font-medium text-muted-foreground text-center hover:bg-muted transition-colors"
+          className="block w-full rounded-lg border border-line py-2.5 text-xs font-medium text-muted-foreground text-center hover:bg-muted transition-colors touch-target"
         >
           📋 Смотреть каталог блюд
         </a>
