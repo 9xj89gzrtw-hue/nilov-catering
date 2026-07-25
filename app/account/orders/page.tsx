@@ -141,9 +141,15 @@ export default function AccountOrdersPage() {
                     <li key={doc.type} className="flex items-center justify-between gap-3 text-sm">
                       <span>{doc.type}</span>
                       {doc.ready ? (
-                        <a href={doc.url} download className="text-gold-text font-semibold hover:underline">
-                          {doc.url === '#' ? 'Запросить →' : 'Скачать PDF →'}
-                        </a>
+                        doc.url === '#' ? (
+                          <a href={`mailto:${SITE.email}?subject=Запрос%20документа%3A%20${encodeURIComponent(doc.type)}%20(${order.id})`} className="text-gold-text font-semibold hover:underline">
+                            Запросить →
+                          </a>
+                        ) : (
+                          <a href={doc.url} download className="text-gold-text font-semibold hover:underline">
+                            Скачать PDF →
+                          </a>
+                        )
                       ) : (
                         <span className="text-muted-foreground text-xs italic">будет доступен после события</span>
                       )}
