@@ -22,6 +22,7 @@ function ConstructorServerFallback() {
   const formats = [
     {
       name: 'Фуршет',
+      slug: 'furshet',
       emoji: '🥪',
       price: 'от 2 450 ₽/гость',
       minGuests: 'мин. 20 гостей',
@@ -30,6 +31,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Банкет',
+      slug: 'banket',
       emoji: '🍽️',
       price: 'от 3 950 ₽/гость',
       minGuests: 'мин. 15 гостей',
@@ -38,6 +40,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Кофе-брейк',
+      slug: 'coffee-break',
       emoji: '☕',
       price: 'от 390 ₽/гость',
       minGuests: 'мин. 10 гостей',
@@ -45,7 +48,7 @@ function ConstructorServerFallback() {
       href: '/plan/constructor?format=coffee-break',
     },
     {
-      name: 'Детский праздник',
+      name: 'Детский праздник', slug: 'detskoe',
       emoji: '🧒',
       price: 'от 1 550 ₽/гость',
       minGuests: 'мин. 10 детей',
@@ -53,7 +56,7 @@ function ConstructorServerFallback() {
       href: '/plan/constructor?format=detskoe',
     },
     {
-      name: 'Выезд шефа',
+      name: 'Выезд шефа', slug: 'chef-at-home',
       emoji: '👨‍🍳',
       price: 'от 5 000 ₽/гость',
       minGuests: 'мин. 6 гостей',
@@ -61,7 +64,7 @@ function ConstructorServerFallback() {
       href: '/plan/constructor?format=chef-at-home',
     },
     {
-      name: 'Мобильный фуршет',
+      name: 'Мобильный фуршет', slug: 'mobile-furshet',
       emoji: '🚚',
       price: 'от 1 500 ₽/гость',
       minGuests: 'мин. 30 гостей',
@@ -95,6 +98,7 @@ function ConstructorServerFallback() {
               <a
                 key={f.name}
                 href={f.href}
+                data-format-card={f.slug}
                 className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors no-underline"
               >
                 <div className="text-3xl mb-2">{f.emoji}</div>
@@ -128,7 +132,7 @@ function ConstructorServerFallback() {
               </label>
               <label className="block">
                 <span className="text-xs text-muted-foreground block mb-1">Дата события</span>
-                <input type="date" name="date" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
+                <input type="date" name="date" data-prefill="date" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
               </label>
             </div>
             <fieldset className="border border-line rounded p-3">
@@ -267,25 +271,52 @@ function ConstructorServerFallback() {
           </div>
         </noscript>
 
-        {/* URL prefill script — mirrors /contact pattern, reads guests/format/tier from URL */}
+        {/* URL prefill script — reads guests/date/format/tier from URL, highlights active format card */}
         <script dangerouslySetInnerHTML={{
           __html: `(function(){
             try {
               var sp = new URLSearchParams(window.location.search);
-              var fields = ['guests', 'date', 'format', 'tier'];
+
+              // Prefill form fields
+              var fields = ['guests', 'date'];
               fields.forEach(function(name) {
                 var val = sp.get(name);
                 if (!val) return;
                 var el = document.querySelector('[data-prefill="' + name + '"]');
-                if (!el) return;
-                if (el.tagName === 'SELECT') {
-                  for (var i = 0; i < el.options.length; i++) {
-                    if (el.options[i].value === val) { el.value = val; break; }
-                  }
-                } else {
-                  el.value = val;
-                }
+                if (el) el.value = val;
               });
+
+              // Highlight active format card
+              var fmt = sp.get('format');
+              if (fmt) {
+                var card = document.querySelector('[data-format-card="' + fmt + '"]');
+                if (card) {
+                  card.style.borderColor = 'var(--color-gold, #B08D57)';
+                  card.style.borderWidth = '2px';
+                  card.style.background = 'var(--color-gold-tint, #EFE6D6)';
+                  card.setAttribute('aria-current', 'true');
+                  // Add checkmark badge
+                  var badge = document.createElement('div');
+                  badge.textContent = '✓ Выбрано';
+                  badge.style.cssText = 'position:absolute;top:8px;right:8px;background:var(--color-gold,#B08D57);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600';
+                  card.style.position = 'relative';
+                  card.appendChild(badge);
+                }
+              }
+
+              // Highlight active tier in the tier select
+              var tier = sp.get('tier');
+              if (tier) {
+                var tierSelect = document.querySelector('[name="tier"]');
+                if (tierSelect) {
+                  for (var i = 0; i < tierSelect.options.length; i++) {
+                    if (tierSelect.options[i].value === tier) {
+                      tierSelect.selectedIndex = i;
+                      break;
+                    }
+                  }
+                }
+              }
             } catch (e) { console.warn('prefill error:', e); }
           })();`
         }} />
