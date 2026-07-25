@@ -249,8 +249,10 @@ export default function CatalogPage() {
               onClick={() => setVisibleCount(c => c + 24)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
               type="button"
+              aria-controls="dishes-grid"
+              aria-expanded={visibleCount > 24 ? 'true' : 'false'}
             >
-              Показать ещё {Math.min(24, filtered.length - totalShown)} из {filtered.length - totalShown} блюд ↓
+              Показать ещё {Math.min(24, filtered.length - totalShown)} блюд ↓
             </button>
             <p className="text-xs text-muted-foreground mt-2">Показано {totalShown} из {filtered.length} блюд</p>
           </div>

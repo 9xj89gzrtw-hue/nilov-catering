@@ -71,6 +71,14 @@ function ConstructorServerFallback() {
       desc: 'Выезд на площадку без кухни',
       href: '/plan/constructor?format=mobile-furshet',
     },
+    {
+      name: 'Поминки', slug: 'pominki',
+      emoji: '🕯️',
+      price: 'от 1 800 ₽/гость',
+      minGuests: 'мин. 10 гостей',
+      desc: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя.',
+      href: '/events/pominki',
+    },
   ];
 
   return (
@@ -233,16 +241,22 @@ function ConstructorServerFallback() {
           </p>
         </div>
 
-        {/* No-JS fallback: прямая заявка */}
+        {/* Quick budget calculator link + No-JS fallback */}
         <div className="ml-0 md:ml-11 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h3 className="font-heading text-lg font-medium mb-2">Не хотите собирать вручную?</h3>
+          <h3 className="font-heading text-lg font-medium mb-2">Быстрый расчёт бюджета</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            Позвоните или напишите — шеф-повар Дмитрий Нилов подберёт меню под ваш бюджет и диеты за 15 минут.
+            Не хотите собирать вручную? Посмотрите цены в калькуляторе или позвоните — шеф-повар Дмитрий Нилов подберёт меню под ваш бюджет.
           </p>
           <div className="flex flex-wrap gap-3">
+            <Link
+              href="/plan/calculator"
+              className="rounded-lg bg-gold-text text-white px-5 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors no-underline"
+            >
+              💰 Калькулятор бюджета →
+            </Link>
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:border-gold-text transition-colors no-underline"
             >
               📞 {SITE.phone}
             </a>
