@@ -557,6 +557,55 @@ const COFFEE_BREAK: TariffOffer[] = [
 ];
 
 // ═══════════════════════════════════════════
+// ПОМИНКИ
+// ═══════════════════════════════════════════
+const POMINKI: TariffOffer[] = [
+  {
+    eventId: 'pominki', eventName: 'Поминки', tier: 'economy', tierLabel: 'Базовый',
+    pricePerGuest: 1800, minGuests: 10,
+    description: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя. Тихо, достойно.',
+    highlights: ['Кутья + блины', 'Борщ постный', 'Рыба запечённая', 'Кисель + морс'],
+    imagePlaceholder: '🕯️',
+    composition: [
+      { dishId: 'kutya', name: 'Кутья (коливо)', desc: 'Пшеница с мёдом, маком и изюмом. По православной традиции.', category: 'Обязательные', qty: '1 порция' },
+      { dishId: 'blini-postnye', name: 'Блины постные', desc: 'С мёдом или без начинки. Подаются первыми.', category: 'Обязательные', qty: '2 шт/гость' },
+      { dishId: 'kissel', name: 'Кисель овсяный', desc: 'Традиционный поминальный напиток.', category: 'Обязательные', qty: '1 стакан' },
+      { dishId: 'seledka-kartoshka', name: 'Селёдка с отварным картофелем', desc: 'Классика поминального стола.', category: 'Холодные', qty: '1 порция' },
+      { dishId: 'vinegret', name: 'Винегрет', desc: 'Свёкла, морковь, картофель, солёные огурцы, квашеная капуста.', category: 'Холодные', qty: '1 порция' },
+      { dishId: 'pirozhki-postnye', name: 'Пирожки постные с капустой и грибами', desc: 'Домашние, из печи.', category: 'Холодные', qty: '2 шт/гость' },
+      { dishId: 'borsh-postnyy', name: 'Борщ постный', desc: 'Без мясного бульона, с фасолью.', category: 'Первые', qty: '1 порция' },
+      { dishId: 'ryba-zapechennaya', name: 'Рыба запечённая с гарниром', desc: 'Судак или треска с отварным картофелем.', category: 'Горячие', qty: '1 порция' },
+      { dishId: 'mors-klyukvennyy', name: 'Морс клюквенный', desc: 'Домашний.', category: 'Напитки', qty: '2 стакана' },
+      { dishId: 'chay', name: 'Чай (чёрный, зелёный)', desc: 'С мёдом и лимоном.', category: 'Напитки', qty: 'безлимит' },
+    ],
+  },
+  {
+    eventId: 'pominki', eventName: 'Поминки', tier: 'standard', tierLabel: 'Расширенный',
+    pricePerGuest: 2500, minGuests: 10,
+    description: 'Расширенное поминальное меню: уха, грибы, котлеты рыбные, компот. Без алкоголя.',
+    highlights: ['Кутья + блины', 'Уха рыбацкая', 'Грибы жареные', 'Компот + морс'],
+    imagePlaceholder: '🕯️',
+    composition: [
+      { dishId: 'kutya', name: 'Кутья (коливо)', desc: 'Пшеница с мёдом, маком и изюмом.', category: 'Обязательные', qty: '1 порция' },
+      { dishId: 'blini-postnye', name: 'Блины постные', desc: 'С мёдом.', category: 'Обязательные', qty: '2 шт/гость' },
+      { dishId: 'kissel', name: 'Кисель ягодный', desc: 'Традиционный поминальный напиток.', category: 'Обязательные', qty: '1 стакан' },
+      { dishId: 'seledka-kartoshka', name: 'Селёдка с отварным картофелем', desc: 'Классика.', category: 'Холодные', qty: '1 порция' },
+      { dishId: 'vinegret', name: 'Винегрет', desc: 'Свёкла, морковь, картофель, огурцы.', category: 'Холодные', qty: '1 порция' },
+      { dishId: 'pirozhki-postnye', name: 'Пирожки постные', desc: 'С капустой и грибами.', category: 'Холодные', qty: '3 шт/гость' },
+      { dishId: 'solenye-ovoshchi', name: 'Солёные огурцы и помидоры', desc: 'Домашние заготовки.', category: 'Холодные', qty: '1 тарелка' },
+      { dishId: 'borsh-postnyy', name: 'Борщ постный', desc: 'С фасолью.', category: 'Первые', qty: '1 порция' },
+      { dishId: 'ukha-rybatskaya', name: 'Уха рыбацкая', desc: 'Из трёх видов рыбы. С расстегаем.', category: 'Первые', qty: '1 порция' },
+      { dishId: 'ryba-zapechennaya', name: 'Рыба запечённая', desc: 'Судак с картофелем.', category: 'Горячие', qty: '1 порция' },
+      { dishId: 'griby-kartoshka', name: 'Грибы жареные с картофелем', desc: 'Лесные грибы, молодой картофель.', category: 'Горячие', qty: '1 порция' },
+      { dishId: 'kotlety-rybnye', name: 'Котлеты рыбные', desc: 'Из трески с зеленью.', category: 'Горячие', qty: '1 порция' },
+      { dishId: 'mors-klyukvennyy', name: 'Морс клюквенный', desc: 'Домашний.', category: 'Напитки', qty: '2 стакана' },
+      { dishId: 'kompot-sukhofrukty', name: 'Компот из сухофруктов', desc: 'Без сахара.', category: 'Напитки', qty: '2 стакана' },
+      { dishId: 'chay', name: 'Чай', desc: 'С мёдом и лимоном.', category: 'Напитки', qty: 'безлимит' },
+    ],
+  },
+];
+
+// ═══════════════════════════════════════════
 // ЕДИНЫЙ КАТАЛОГ
 // ═══════════════════════════════════════════
 
@@ -569,6 +618,7 @@ export const ALL_TARIFF_OFFERS: Record<string, TariffOffer[]> = {
   detskoe: DETSKOE,
   'chef-at-home': CHEF_AT_HOME,
   'coffee-break': COFFEE_BREAK,
+  pominki: POMINKI,
 };
 
 export function getOffersForEvent(eventId: string): TariffOffer[] {

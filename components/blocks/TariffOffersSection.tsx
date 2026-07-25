@@ -37,6 +37,7 @@ const EVENT_TO_FORMAT: Record<string, string> = {
   detskoe: 'detskoe',
   'chef-at-home': 'chef-at-home',
   'coffee-break': 'coffee-break',
+  pominki: 'pominki',
 };
 
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
