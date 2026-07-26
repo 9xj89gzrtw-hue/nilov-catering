@@ -3,30 +3,24 @@ import { SITE } from '@/lib/data';
 
 export default function CTASection() {
   return (
-    <section className="py-16 md:py-20 bg-secondary" aria-labelledby="cta-heading">
+    <section className="py-20 md:py-28 bg-primary" aria-labelledby="cta-heading">
       <div className="container-site text-center max-w-xl mx-auto">
-        <h2 id="cta-heading" className="mb-3">Готовы спланировать событие?</h2>
-        <p className="text-muted-foreground mb-8 text-balance">
-          Оставьте заявку — мы подберём решение под ваш бюджет. Перезвоним за 15 минут.
+        <h2 id="cta-heading" className="font-heading text-3xl md:text-4xl font-medium mb-4 text-primary-foreground">
+          Рассчитаем стоимость за 2 минуты
+        </h2>
+        <p className="text-primary-foreground/80 mb-8 text-lg">
+          Ответьте на 3 вопроса — подберём меню и рассчитаем цену. Без звонка, без регистрации.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-          <Link
-            href="/plan/constructor"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-          >
-            Спланировать событие
-          </Link>
-          <Link
-            href="/plan/calculator"
-            className="inline-flex items-center gap-2 rounded-lg border border-gold-text px-6 py-3.5 text-sm font-medium text-gold-text hover:bg-gold-tint transition-colors"
-          >
-            Узнать цены
-          </Link>
-        </div>
+        <Link
+          href="/plan/helper"
+          className="inline-flex items-center gap-2 rounded-lg bg-background text-foreground px-10 py-5 text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 no-underline"
+        >
+          Рассчитать стоимость →
+        </Link>
 
-        <p className="text-sm text-muted-foreground">
-          Или позвоните: <a href={`tel:${SITE.phoneTel}`} className="text-foreground font-medium hover:text-gold-text transition-colors">{SITE.phone}</a>
+        <p className="mt-8 text-sm text-primary-foreground/60">
+          Или позвоните: <a href={`tel:${SITE.phoneTel}`} className="text-primary-foreground font-medium underline underline-offset-2 hover:no-underline">{SITE.phone}</a>
         </p>
       </div>
     </section>

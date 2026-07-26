@@ -135,7 +135,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             {subtitle || 'Ресторанный кейтеринг и доставка фуршетов в СПб. От 2 450 ₽/гость — еда, персонал, посуда, доставка включены.'}
           </p>
 
-          {/* Quick price anchor — кликабельные ссылки */}
+          {/* 2 ключевые ценовые точки — не 5 */}
           <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{ animationDelay: '0.25s' }}>
             <Link href="/menu/furshet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Фуршет от 2 450 ₽/гость
@@ -143,39 +143,24 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             <Link href="/menu/banquet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Банкет от 3 950 ₽/гость
             </Link>
-            <Link href="/menu/vegan" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
-              Веган от 2 950 ₽/гость
-            </Link>
-            <Link href="/menu/halal" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
-              Халяль от 2 450 ₽/гость
-            </Link>
-            <Link href="/menu/coffee-break" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
-              Кофе-брейк от 390 ₽/гость
-            </Link>
           </div>
 
-          {/* ONE strong CTA + ONE secondary (instead of 3 CTAs) */}
+          {/* ONE primary CTA — единая точка конверсии */}
           <div className="flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <Link
-              href="/plan"
+              href="/plan/helper"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              Спланировать событие
+              Рассчитать стоимость
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
             </Link>
-            <Link
-              href="/menu"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
-            >
-              Смотреть меню
-            </Link>
           </div>
 
-          {/* One-line trust signal (not a paragraph) */}
-          <p className="mt-8 text-xs text-muted-foreground animate-fade-up" style={{ animationDelay: '0.45s' }}>
-            {disclaimer || 'Доставка в КАД включена · Технология су-вид · 14 аллергенов на каждом блюде'}
+          {/* One-line trust signal */}
+          <p className="mt-6 text-xs text-muted-foreground animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            С 2007 года · 3000+ событий · Рейтинг 4.8 · Доставка по КАД включена
           </p>
         </div>
       </motion.div>
