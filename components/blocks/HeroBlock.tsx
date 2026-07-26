@@ -132,7 +132,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
 
           {/* Simple, clear subtitle — one sentence with prices */}
           <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-            {subtitle || 'Ресторанное качество кейтеринга. От камерного ужина до фестиваля на 800+ гостей (через сеть партнёрских кухонь).'}
+            {subtitle || 'Ресторанный кейтеринг и доставка фуршетов в СПб. От 2 450 ₽/гость — еда, персонал, посуда, доставка включены.'}
           </p>
 
           {/* Quick price anchor — кликабельные ссылки */}
@@ -152,13 +152,6 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             <Link href="/menu/coffee-break" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Кофе-брейк от 390 ₽/гость
             </Link>
-          </div>
-
-          {/* Quick format glossary for first-time buyers */}
-          <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6 animate-fade-up text-xs text-muted-foreground" style={{ animationDelay: '0.28s' }}>
-            <span><strong className="text-foreground/80">Фуршет</strong> — гости стоят, закуски руками</span>
-            <span><strong className="text-foreground/80">Банкет</strong> — посадка за стол, официанты</span>
-            <span><strong className="text-foreground/80">Кофе-брейк</strong> — перерыв на конференции</span>
           </div>
 
           {/* ONE strong CTA + ONE secondary (instead of 3 CTAs) */}

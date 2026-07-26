@@ -73,7 +73,7 @@ export default async function HomePage() {
               </div>
               <div className="p-3 rounded-lg border border-line bg-background">
                 <p className="text-sm font-semibold mb-1">💰 НДС</p>
-                <p className="text-xs text-muted-foreground">ИП Нилов Д.И. — УСН (без НДС). Для плательщиков НДС — партнёрское ООО.</p>
+                <p className="text-xs text-muted-foreground">ИП Нилов Д.И. — УСН (без НДС). Работаем с НДС и без НДС.</p>
               </div>
               <div className="p-3 rounded-lg border border-line bg-background">
                 <p className="text-sm font-semibold mb-1">🛡 Роспотребнадзор</p>

@@ -5,7 +5,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 export function generateMetadata(): Metadata {
   return {
     title: 'Корпоративы',
-    description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 800+ человек (через сеть партнёрских кухонь).',
+    description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 800+ человек (с расширением производственных мощностей).',
     alternates: { canonical: '/events/korporativ', languages: { 'ru': '/events/korporativ', 'en': '/en', 'x-default': '/events/korporativ' } },
   };
 }
@@ -16,7 +16,7 @@ export default function CorporatePage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Корпоративы</h1>
         <p className="text-muted-foreground mb-8">
-          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (через сеть партнёрских кухонь и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
+          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (с расширением производственных мощностей и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
         </p>
 
         <TariffOffersSection

@@ -7,16 +7,15 @@ import { FORMAT_DESCRIPTIONS, FORMAT_HERO_IMAGES } from '@/lib/data';
 import { KenBurnsCard } from '@/components/effects/PhotoAliveCard';
 
 const EVENTS: { format: Format; href: string; price: string; label: string; desc?: string }[] = [
-  // Для корпоративов минимальная цена = фуршет-эконом (2450), не банкет-эконом (3950)
-  { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽ (фуршет)', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
+  // Частным клиентам
   { format: 'banket', href: '/events/svadba', price: 'от 3 950 ₽', label: 'Свадьбы', desc: 'От камерной до банкета на 200 гостей' },
+  { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Дни рождения', desc: 'Фуршет или банкет для близких' },
   { format: 'furshet', href: '/events/vypusknoy', price: 'от 2 450 ₽', label: 'Выпускные', desc: 'Школьные и студенческие мероприятия' },
-  { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Частное', desc: 'Дни рождения, юбилеи, семейные ужины' },
-  { format: 'banket', href: '/events/yubiley', price: 'от 50 000 ₽', label: 'Юбилеи', desc: 'Золотая свадьба, годовщина — для пожилых гостей' },
-  { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детское', desc: 'Меню для детей, аниматоры, шоу' },
-  { format: 'banket', href: '/events/pominki', price: 'от 1 800 ₽', label: 'Поминки', desc: 'Поминальный обед: кутья, блины, кисель. Без алкоголя' },
-  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: 'Кофе-брейк', desc: 'Конференции, семинары — или доставкой без официантов' },
-  { format: 'chef-at-home', href: '/events/chef-at-home', price: 'от 2 500 ₽/ч', label: 'Шеф дома', desc: 'Шеф-повар готовит у вас дома' },
+  { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детские праздники', desc: 'Меню для детей, аниматоры, шоу' },
+  { format: 'banket', href: '/events/yubiley', price: 'от 50 000 ₽', label: 'Юбилеи', desc: 'Торжественный банкет для семьи и друзей' },
+  // Бизнесу
+  { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
+  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: 'Кофе-брейк', desc: 'Конференции, семинары, тренинги' },
 ];
 
 export default function EventTypeSelector() {

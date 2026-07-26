@@ -11,8 +11,8 @@ export default function DeliveryBanner() {
               <h2 className="font-heading text-2xl font-medium">Нужна просто еда — без официантов?</h2>
             </div>
             <p className="text-sm text-muted-foreground max-w-xl mx-auto md:mx-0">
-              Доставка готовых блюд домой или в офис — от <strong className="text-foreground">5 000 ₽</strong>, без минимума по гостям.
-              Привезём от 1 порции. Бесплатно в пределах КАД.
+              Доставка готовых блюд домой или в офис. Минимальный заказ — <strong className="text-foreground">5 000 ₽</strong>.
+              Бесплатная доставка в пределах КАД. Готовые сеты для офиса и дома.
             </p>
           </div>
           <div className="flex flex-col gap-2 shrink-0">
