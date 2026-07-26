@@ -15,16 +15,16 @@ interface Props {
   description?: string;
 }
 
-const EVENT_META: Record<string, { label: string; emoji: string; desc: string; gradient: string }> = {
-  svadba:     { label: 'Свадьба',     emoji: '💍', desc: 'От камерной росписи до банкета на 200 гостей', gradient: 'from-rose-50 to-rose-100' },
-  korporativ: { label: 'Корпоратив',  emoji: '💼', desc: 'Бизнес-ланчи, гала-ужины, тимбилдинги', gradient: 'from-sky-50 to-sky-100' },
-  vypusknoy:  { label: 'Выпускной',   emoji: '🎓', desc: 'Школьные и студенческие выпускные', gradient: 'from-amber-50 to-amber-100' },
-  shkola:     { label: 'Школы',       emoji: '🏫', desc: 'Спец. тариф для школ и учреждений от 1 800 ₽/гость', gradient: 'from-emerald-50 to-emerald-100' },
-  chastnoe:   { label: 'Частное',     emoji: '🥂', desc: 'Дни рождения, юбилеи, семейные ужины', gradient: 'from-emerald-50 to-emerald-100' },
-  detskoe:    { label: 'Детское',     emoji: '🎈', desc: 'Праздники с аниматорами и шоу', gradient: 'from-purple-50 to-purple-100' },
-  'chef-at-home': { label: 'Шеф на дом', emoji: '👨‍🍳', desc: 'Шеф-повар и сомелье у вас дома', gradient: 'from-orange-50 to-orange-100' },
-  'coffee-break': { label: 'Кофе-брейк', emoji: '☕', desc: 'Конференции, семинары, тренинги — от 390 ₽/гость', gradient: 'from-amber-50 to-yellow-100' },
-  pominki:     { label: 'Поминки',     emoji: '🕯️', desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
+const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; gradient: string }> = {
+  svadba:     { label: 'Свадьба',     desc: 'От камерной росписи до банкета на 200 гостей', gradient: 'from-rose-50 to-rose-100' },
+  korporativ: { label: 'Корпоратив',  desc: 'Бизнес-ланчи, гала-ужины, тимбилдинги', gradient: 'from-sky-50 to-sky-100' },
+  vypusknoy:  { label: 'Выпускной',   desc: 'Школьные и студенческие выпускные', gradient: 'from-amber-50 to-amber-100' },
+  shkola:     { label: 'Школы',       desc: 'Спец. тариф для школ и учреждений от 1 800 ₽/гость', gradient: 'from-emerald-50 to-emerald-100' },
+  chastnoe:   { label: 'Частное',     desc: 'Дни рождения, юбилеи, семейные ужины', gradient: 'from-emerald-50 to-emerald-100' },
+  detskoe:    { label: 'Детское',     desc: 'Праздники с аниматорами и шоу', gradient: 'from-purple-50 to-purple-100' },
+  'chef-at-home': { label: 'Шеф на дом', desc: 'Шеф-повар и сомелье у вас дома', gradient: 'from-orange-50 to-orange-100' },
+  'coffee-break': { label: 'Кофе-брейк', desc: 'Конференции, семинары, тренинги — от 390 ₽/гость', gradient: 'from-amber-50 to-yellow-100' },
+  pominki:     { label: 'Поминки',     desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
 };
 
 // Маппинг событие → формат (для ссылки в конструктор)
@@ -423,7 +423,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
                     aria-pressed={isActive}
                     aria-current={isActive ? 'page' : undefined}
                   >
-                    {m.emoji} {m.label}
+                    {m.label}
                   </Link>
                 );
               })}
@@ -434,7 +434,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Event hero */}
         {meta && (
           <div className={`rounded-2xl bg-gradient-to-br ${meta.gradient} p-6 mb-10 text-center`}>
-            <span className="text-4xl block mb-2">{meta.emoji}</span>
+            
             <h2 className="text-2xl font-heading font-medium mb-1">{eventName || meta.label}</h2>
             <p className="text-muted-foreground">{description || meta.desc}</p>
           </div>
