@@ -68,7 +68,7 @@ const DISH_IMAGE_MAP: Record<string, string> = {
 
   'mini-burger': `${IMG_BASE}/goryachee/h1.jpg`,
   'beef-stroganoff': `${IMG_BASE}/goryachee/h4.jpg`,
-  'beef-medallions': `${DISH_IMG_BASE}/beef-medallions.png`,
+  'beef-medallions': '/images/real/beef-medallions.jpg',
   'trout': `${DISH_IMG_BASE}/trout.png`,
   'chicken-quinoa': `${IMG_BASE}/goryachee/h7.jpg`,
   'borscht': `${IMG_BASE}/goryachee/h8.jpg`,
@@ -78,21 +78,21 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'bao-pork': `${DISH_IMG_BASE}/bao-pork.png`,
   'bao-duck': `${DISH_IMG_BASE}/bao-duck.png`,
   'mushroom-burger': `${DISH_IMG_BASE}/mushroom-burger.png`,
-  'taco-fish': `${DISH_IMG_BASE}/taco-fish.png`,
-  'poke-salmon': `${DISH_IMG_BASE}/poke-salmon.png`,
+  'taco-fish': '/images/real/fish-taco.jpg',
+  'poke-salmon': '/images/real/poke-bowl.jpg',
   'cauli-steak': `${DISH_IMG_BASE}/cauli-steak.png`,
-  'buddha-bowl': `${DISH_IMG_BASE}/buddha-bowl.png`,
+  'buddha-bowl': '/images/real/vegetarian-bowl.jpg',
 
   'burrata-tomatoes': `${DISH_IMG_BASE}/burrata-tomatoes.png`,
   'beet-carpaccio': `${DISH_IMG_BASE}/beet-carpaccio.png`,
-  'meat-platter': `${DISH_IMG_BASE}/meat-platter.png`,
-  'cheese-platter': `${DISH_IMG_BASE}/cheese-platter.png`,
+  'meat-platter': '/images/real/charcuterie.jpg',
+  'cheese-platter': '/images/real/charcuterie.jpg',
 
-  'macaron-shooter': `${DISH_IMG_BASE}/macaron-shooter.png`,
-  'choc-mousse': `${DISH_IMG_BASE}/choc-mousse.png`,
+  'macaron-shooter': '/images/real/macarons.jpg',
+  'choc-mousse': '/images/real/chocolate-mousse.jpg',
   'chia-pudding': `${DISH_IMG_BASE}/chia-pudding.png`,
   'brownie-shooter': `${DISH_IMG_BASE}/brownie-shooter.png`,
-  'gluten-free-cake': `${DISH_IMG_BASE}/gluten-free-cake.png`,
+  'gluten-free-cake': '/images/real/cake-berry.jpg',
   'donut-wall': `${IMG_BASE}/deserty/d2.jpg`,
   'cheesecake-shooter': `${IMG_BASE}/deserty/d3.jpg`,
   'cookie-shooter': `${IMG_BASE}/deserty/d7.jpg`,
@@ -103,10 +103,10 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'croissant': `${IMG_BASE}/sezonnye/se6.jpg`,
   'eclair': `${IMG_BASE}/sezonnye/se7.jpg`,
 
-  'seabuckthorn-tea': `${DISH_IMG_BASE}/seabuckthorn-tea.png`,
-  'cranberry-mors': `${DISH_IMG_BASE}/cranberry-mors.png`,
-  'cedar-raf': `${DISH_IMG_BASE}/cedar-raf.png`,
-  'lemonade-tarragon': `${DISH_IMG_BASE}/lemonade-tarragon.png`,
+  'seabuckthorn-tea': '/images/real/tea-drink.jpg',
+  'cranberry-mors': '/images/real/cranberry-juice.jpg',
+  'cedar-raf': '/images/real/coffee-drink.jpg',
+  'lemonade-tarragon': '/images/real/cranberry-juice.jpg',
   'lemonade-berry': `${IMG_BASE}/napitki/n3.jpg`,
   'fresh-juice': `${IMG_BASE}/napitki/n1.jpg`,
 
@@ -273,3 +273,19 @@ export const FORMAT_HERO_IMAGES: Record<string, string> = {
   'chef-at-home': '/images/gallery/servirovka.jpg',
   'mobile-furshet': '/images/gallery/corporate-furshet.jpg',
 };
+
+// Real photos from Unsplash
+export const REAL_GALLERY_IMAGES = [
+  { src: '/images/real/wedding-banquet.jpg', alt: 'Свадебный банкет', caption: 'Свадебный банкет · 100 гостей · Загородный отель' },
+  { src: '/images/real/corporate-buffet.jpg', alt: 'Корпоративный буфет', caption: 'Корпоратив · 150 гостей · Бизнес-центр' },
+  { src: '/images/real/canape-platter.jpg', alt: 'Канапе плато', caption: 'Канапе-плато · 8 видов · фуршет' },
+  { src: '/images/real/dessert-table.jpg', alt: 'Десертный стол', caption: 'Десертная станция · свадьба' },
+  { src: '/images/real/beef-medallions.jpg', alt: 'Медальоны из говядины', caption: 'Медальоны из вырезки · банкет' },
+  { src: '/images/real/poke-bowl.jpg', alt: 'Поке-боул', caption: 'Поке с лососем · фуршет' },
+  { src: '/images/real/macarons.jpg', alt: 'Макаронс', caption: 'Французские макаронс · кофе-брейк' },
+  { src: '/images/real/charcuterie.jpg', alt: 'Шаркетери-борд', caption: 'Мясное и сырное плато · банкет' },
+  { src: '/images/real/chocolate-mousse.jpg', alt: 'Шоколадный мусс', caption: 'Десерт · веган · без сахара' },
+  { src: '/images/real/vegetarian-bowl.jpg', alt: 'Вегетарианский боул', caption: 'Будда-боул · веган · фуршет' },
+  { src: '/images/real/cranberry-juice.jpg', alt: 'Клюквенный морс', caption: 'Авторские напитки · кофе-брейк' },
+  { src: '/images/real/coffee-drink.jpg', alt: 'Кофе', caption: 'Кофейная станция · конференция' },
+];

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { GALLERY_IMAGES } from '@/lib/dish-images';
+import { GALLERY_IMAGES, REAL_GALLERY_IMAGES } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
@@ -9,7 +9,7 @@ import Lightbox from '@/components/common/Lightbox';
 
 export default function GalleryPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const photos = GALLERY_IMAGES;
+  const photos = [...REAL_GALLERY_IMAGES, ...GALLERY_IMAGES];
 
   return (
     <main className="pt-24 pb-20" id="main">
