@@ -193,10 +193,7 @@ export default function SvadbaPage() {
             </div>
           </div>
         </div>
-      </div>
-    </main>
-  );
-}
+
         {/* Extended rider — technical requirements */}
         <div className="mt-6 p-6 rounded-xl border border-line bg-secondary/30">
           <h3 className="font-semibold mb-3 text-gold-text">Технические требования к площадке</h3>
@@ -219,3 +216,7 @@ export default function SvadbaPage() {
             </div>
           </div>
         </div>
+      </div>
+    </main>
+  );
+}
