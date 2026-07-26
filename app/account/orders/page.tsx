@@ -16,7 +16,7 @@ const ORDERS = [
     event: 'Новогодний корпоратив Корпоративный клиент (NDA)',
     format: 'Банкет',
     guests: 120,
-    venue: 'Лофт «Севкабель»',
+    venue: 'Лофт на Васильевском (NDA)',
     total: 656400,
     status: 'Завершён',
     documents: [
@@ -33,7 +33,7 @@ const ORDERS = [
     event: 'День рождения компании IT-компания (NDA)',
     format: 'Фуршет',
     guests: 80,
-    venue: 'Офис заказчика',
+    venue: 'Офис клиента (NDA)',
     total: 196000,
     status: 'Завершён',
     documents: [
@@ -49,7 +49,7 @@ const ORDERS = [
     event: 'День Святого Валентина — корпоратив отдела',
     format: 'Кофе-брейк',
     guests: 35,
-    venue: 'Офис заказчика',
+    venue: 'Офис клиента (NDA)',
     total: 28000,
     status: 'Подтверждён',
     documents: [

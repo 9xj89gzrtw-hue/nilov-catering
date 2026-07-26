@@ -72,6 +72,16 @@ export default function Header() {
           </li>
         </ul>
 
+
+        {/* Language switcher */}
+        <Link
+          href="/en"
+          className="hidden md:inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors px-2"
+          aria-label="Switch to English"
+        >
+          EN
+        </Link>
+
         {/* Actions */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <TextSizeToggle />
