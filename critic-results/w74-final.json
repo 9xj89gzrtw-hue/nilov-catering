@@ -1,0 +1,194 @@
+{
+  "evaluation_round": "W74-final",
+  "critic_group": "C53-C59",
+  "role": "RED",
+  "bias": -1,
+  "goal_threshold": 9.3,
+  "snapshot_basis": [
+    "root.html",
+    "rootmenu__catalog.html",
+    "rootmenu__furshet.html",
+    "rootmenu__detskoe.html",
+    "rootplan__constructor.html",
+    "plan__constructor__furshet_standard.html",
+    "rootpricing.html",
+    "rootgallery.html",
+    "rootcontact.html",
+    "rootcertificates.html",
+    "rootevents__svadba.html",
+    "rootmenu__halal.html",
+    "rootallergens.html",
+    "rootfaq.html",
+    "rootaccount__orders.html",
+    "rootpartners.html",
+    "rootplan__helper.html"
+  ],
+  "fix_verification": {
+    "fix_1_extended_production_rider_inside_component": {
+      "status": "VERIFIED",
+      "evidence": "rootevents__svadba.html snapshot now renders all 4 previously-orphaned rider subsections INSIDE the component tree, both in visible HTML AND in the React serialization mirror (proof the JSX is no longer orphaned module-level code). Verbatim extracts: (1) 'Электричество — Не менее 6 кВт для раздаточной зоны. Розетки 220В с заземлением. При недостатке мощности — генератор за отдельную плату.'; (2) 'Вода и канализация — Доступ к проточной воде (для мытья рук персонала). При отсутствии — бутылированная вода + биотуалет для персонала.'; (3) 'Раздевалка для персонала — Отдельное помещение 6+ м² для переодевания и хранения личных вещей персонала (8-15 чел).'; (4) 'Мусор и отходы — Контейнеры для пищевых отходов + пластик/стекло. Вывоз организует NiloV Catering (включено).' All four subsections are wrapped in <p class=\"font-medium text-foreground mb-1\"> headings and sit in the same parent <div> chain as the rest of the rider (Тайминги / Штат / Оборудование / Логистика). The React JSON mirror contains matching serialized nodes — definitive proof that the JSX placement bug from W73 is resolved. End-user-visible behavior now matches the W72/W73 source-level intent.",
+      "caveat": "Rider now has 8 substantive operational subsections (Тайминги, Штат, Оборудование (включено), Логистика, + Электричество, Вода и канализация, Раздевалка, Мусор и отходы). Still no explicit smoke-ejection / fire-suppression / load-in door width / elevator capacity / cargo parking details — minor residual."
+    },
+    "fix_2_newsletter_label_visible_holding": {
+      "status": "VERIFIED-PERSISTING",
+      "evidence": "0 files in snapshots-js match the W72 false-claim pattern class=\"sr-only\">Email для подписки. Spot-check on root.html confirms <label for=\"newsletter-email\" class=\"block text-sm font-medium text-foreground mb-1\">Email для подписки</label> renders directly above the input. The W73 fix (sr-only → visible) persists in W74 — no regression.",
+      "caveat": "Placeholder 'Ваш email' still present as secondary cue; only newsletter form audited."
+    },
+    "fix_3_venue_masked_in_account_orders_holding": {
+      "status": "VERIFIED-PERSISTING",
+      "evidence": "rootaccount__orders.html snapshot: 1 match for 'Лофт на Васильевском (NDA)' in order metadata; 0 matches for 'Севкабель' on this page. Real third-party venue brand no longer leaks in NDA-protected client order context. The W73 fix persists in W74.",
+      "caveat": "root.html marketing carousel still shows 'Лофт «Севкабель»' (3 occurrences in visible HTML + React mirror) as a verified-events case study — public marketing context, not NDA-protected order history, but the brand is still discoverable site-wide."
+    },
+    "fix_4_en_language_switcher_holding": {
+      "status": "VERIFIED-PERSISTING",
+      "evidence": "<a aria-label=\"Switch to English\" href=\"/en\">EN</a> present in <header> on 22/22 snapshot files (17 main + 5 mobile). Server-rendered into the HTML even on mobile (CSS-hidden but DOM-present). The W73 fix persists in W74.",
+      "caveat": "Link still class='hidden md:inline-flex' — visually hidden on mobile viewport (no visible UI affordance for mobile users to reach /en). /en page content still unverifiable (no /en snapshot in set)."
+    },
+    "fix_5_sanpin_detskoe_holding": {
+      "status": "VERIFIED-PERSISTING",
+      "evidence": "rootmenu__detskoe.html snapshot still renders 'Соответствие СанПиН 2.3/2.5.6.1079-01' in the intro description paragraph. Additional cross-reference to 'ТР ТС 022/2011 (Приложение 3)' for the 14-allergen labeling now visible on the detskoe page itself (not just in the global footer). Minor enrichment vs W73.",
+      "caveat": "SanPiN citation still embedded in flowing description paragraph — NOT a dedicated 'Регуляторное соответствие' section. No ТР ТС 021/2011, HACCP, or ЕАЭС декларация citations on /menu/detskoe itself."
+    },
+    "fix_6_service_jsonld_holding": {
+      "status": "VERIFIED-PERSISTING",
+      "evidence": "Service-typed JSON-LD with AggregateOffer (lowPrice:390, highPrice:9950, priceCurrency:RUB, offerCount:4) present on 22/22 snapshot files (27 total occurrences — some pages have 2 JSON-LD blocks). The W72 fix persists in W74."
+    },
+    "fix_7_certificates_banking_block_holding": {
+      "status": "PERSISTING-GAP",
+      "evidence": "rootcertificates.html still renders: 'Банк: Филиал «Северная столица» ПАО «Банк ВТБ»', 'БИК: 044030706', 'К/с: 30101810200000000706', 'Р/с: — предоставляется в счёте после договора'. The Р/с field remains a placeholder string, not a real settlement account number. No downloadable banking letterhead PDF linked from /certificates. Unchanged from W72/W73 — no W74 fix targeted this.",
+      "caveat": "Banking block is structurally complete (Банк / БИК / К/с all valid); only Р/с field is a placeholder. Not a regression — a long-standing unaddressed gap."
+    }
+  },
+  "critics": [
+    {
+      "id": "C53",
+      "previous_score_w73": 9.4,
+      "score": 9.4,
+      "delta": 0.0,
+      "mapped_fix": "fix_2_newsletter_label_visible_holding",
+      "fix_status": "VERIFIED-PERSISTING",
+      "rationale": "HOLD. W74 did not target C53 directly, but the W73 fix persists with no regression: 0/22 snapshots still carry class=\"sr-only\" on the newsletter label, and root.html confirms <label for=\"newsletter-email\" class=\"block text-sm font-medium text-foreground mb-1\">Email для подписки</label> renders directly above the input. WCAG 3.3.2 (Labels or Instructions) remains satisfied via the visible <label>. RED bias: above 9.3 threshold, but minor residuals cap further upward movement.",
+      "gaps": [
+        "Placeholder 'Ваш email' still present as secondary cue (disappears on input) — visible label is primary, so minor",
+        "Only newsletter form audited; cannot verify other forms (constructor, contact) have visible labels",
+        "No explicit error-message programmatically associated with the input via aria-describedby",
+        "No W74 fix targeted this critic — score held, not improved"
+      ]
+    },
+    {
+      "id": "C54",
+      "previous_score_w73": 8.6,
+      "score": 8.6,
+      "delta": 0.0,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "HOLD. No W74 fix targets C54 directly. /certificates banking block unchanged: Банк: Филиал «Северная столица» ПАО «Банк ВТБ»; БИК: 044030706; К/с: 30101810200000000706 — all valid. Р/с field remains the placeholder string '— предоставляется в счёте после договора' rather than a real account number. No downloadable banking letterhead PDF linked. RED bias: long-standing gap, no targeted W74 fix, score held at 8.6.",
+      "gaps": [
+        "Р/с field is still a placeholder string, not a real settlement account number",
+        "No downloadable banking letterhead PDF linked from /certificates",
+        "No W74 fix targets this critic — third consecutive round (W72/W73/W74) with this gap unaddressed"
+      ]
+    },
+    {
+      "id": "C55",
+      "previous_score_w73": 9.1,
+      "score": 9.1,
+      "delta": 0.0,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "HOLD. No W74 fix targets C55 directly. /menu/detskoe still renders the СанПиН 2.3/2.5.6.1079-01 citation in the intro description paragraph (not a dedicated compliance section). Minor enrichment vs W73: the detskoe page now also references 'ТР ТС 022/2011 (Приложение 3)' for the 14-allergen labeling directly in-page (previously only in the global footer). However, the structural gap (citation in description paragraph, not dedicated 'Регуляторное соответствие' section) persists. RED bias: no targeted W74 fix, structural gap persists. Score held at 9.1.",
+      "gaps": [
+        "SanPiN citation is in a description paragraph, not a dedicated compliance section",
+        "Only СанПиН 2.3/2.5.6.1079-01 + ТР ТС 022/2011 on /menu/detskoe; ТР ТС 021/2011 / HACCP / ЕАЭС декларация not cross-referenced from detskoe itself",
+        "No other child-specific regulatory framework references (e.g., СП 2.4.5.2409-08 for school meals)",
+        "No W74 fix targets this critic — third consecutive round with this gap unaddressed"
+      ]
+    },
+    {
+      "id": "C56",
+      "previous_score_w73": 9.4,
+      "score": 9.4,
+      "delta": 0.0,
+      "mapped_fix": "fix_3_venue_masked_in_account_orders_holding",
+      "fix_status": "VERIFIED-PERSISTING",
+      "rationale": "HOLD. W74 did not target C56 directly, but the W73 venue-masking fix persists: rootaccount__orders.html has 1 match for 'Лофт на Васильевском (NDA)' and 0 matches for 'Севкабель'. Real third-party venue brand no longer leaks in NDA-protected client order context. Above 9.3 threshold. RED bias: caveat that the venue brand 'Лофт «Севкабель»' still appears in root.html marketing carousel (3 visible occurrences + 1 in React mirror) as a verified past-event case study — public marketing context, but the brand is still discoverable elsewhere on the site.",
+      "gaps": [
+        "Real venue brand 'Лофт «Севкабель»' still appears in root.html verified-events marketing carousel (3 visible HTML occurrences + 1 React serialization mirror) — public context, not NDA order history, but still discoverable",
+        "Cannot verify backend / API responses also anonymize venue (snapshots are static HTML)",
+        "Masking scheme is manual per-order; no programmatic guarantee that future orders will be masked",
+        "No W74 fix targeted this critic — score held, not improved"
+      ]
+    },
+    {
+      "id": "C57",
+      "previous_score_w73": 9.6,
+      "score": 9.6,
+      "delta": 0.0,
+      "mapped_fix": "fix_4_en_language_switcher_holding + fix_6_service_jsonld_holding",
+      "fix_status": "VERIFIED-PERSISTING",
+      "rationale": "HOLD. W74 did not target C57 directly, but all W72/W73 SEO wins persist: (1) ServiceJsonLd with AggregateOffer on 22/22 snapshots (27 total JSON-LD blocks); (2) hreflang ru/en/x-default triplet in <head>; (3) EN language switcher <a aria-label=\"Switch to English\" href=\"/en\">EN</a> present in <header> on 22/22 snapshots (server-rendered, present even on mobile snapshots). Above 9.3 threshold. RED bias: cannot verify /en returns HTTP 200 or that content is actually translated (no /en snapshot in set); EN link visually hidden on mobile viewport via class='hidden md:inline-flex'.",
+      "gaps": [
+        "Cannot verify /en page exists with translated content (no /en snapshot in set)",
+        "EN link visually hidden on mobile (class='hidden md:inline-flex') — mobile users have no visible UI affordance to reach /en (though the link is server-rendered in DOM)",
+        "Cannot verify /sitemap.xml HTTP 200 + valid XML + robots.txt cross-reference (runtime check, not snapshot)",
+        "No W74 fix targeted this critic — score held, not improved"
+      ]
+    },
+    {
+      "id": "C58",
+      "previous_score_w73": 8.7,
+      "score": 9.4,
+      "delta": 0.7,
+      "mapped_fix": "fix_1_extended_production_rider_inside_component",
+      "fix_status": "VERIFIED",
+      "rationale": "MAJOR IMPROVEMENT (+0.7). The W73 score of 8.7 was specifically because the extended rider JSX was placed AFTER the component's closing brace — orphaned module-level JSX that SWC silently dropped at build time. The W73 'verified in source, builds OK' claim was technically true but misleading: end-user-visible behavior was unchanged from W72. W74 ACTUALLY moves the rider INSIDE the component: rootevents__svadba.html now renders all 4 previously-orphaned subsections in BOTH visible HTML AND the React serialization mirror (definitive proof of correct JSX placement): (1) Электричество — 'Не менее 6 кВт для раздаточной зоны. Розетки 220В с заземлением. При недостатке мощности — генератор за отдельную плату.'; (2) Вода и канализация — 'Доступ к проточной воде (для мытья рук персонала). При отсутствии — бутылированная вода + биотуалет для персонала.'; (3) Раздевалка для персонала — 'Отдельное помещение 6+ м² для переодевания и хранения личных вещей персонала (8-15 чел).'; (4) Мусор и отходы — 'Контейнеры для пищевых отходов + пластик/стекло. Вывоз организует NiloV Catering (включено).' The rider now has 8 substantive operational subsections (Тайминги, Штат, Оборудование, Логистика, + the 4 newly-rendered ones). The W73 process integrity concern is RESOLVED. Above 9.3 threshold. RED bias: residual gaps (no smoke-ejection / fire-suppression / load-in door width / elevator capacity / cargo parking details) cap further upward movement.",
+      "gaps": [
+        "Rider still lacks explicit fire-suppression / smoke-ejection requirements",
+        "No load-in door width / elevator capacity / cargo parking details for venue logistics",
+        "Rider is single-page (/events/svadba) — not propagated to other event-type pages (e.g., /events/corporate, /events/yubilej — not in snapshot set, cannot verify)"
+      ]
+    },
+    {
+      "id": "C59",
+      "previous_score_w73": 9.2,
+      "score": 9.4,
+      "delta": 0.2,
+      "mapped_fix": "fix_1_extended_production_rider_inside_component (process integrity resolution)",
+      "fix_status": "VERIFIED",
+      "rationale": "Meaningful improvement (+0.2). The W73 score of 9.2 was capped primarily by the orphaned-JSX bug on the extended rider — a C59-class process integrity concern where the W73 'verified in source, builds OK' claim was technically true but misleading (rendered output was identical to W72). W74 RESOLVES this: the rider now actually renders in the snapshot, both in visible HTML and the React serialization mirror. The fix-builds-OK-actually-ships behavior is restored. Additionally, all 3 W73 cross-page wins persist: (1) Newsletter label visible on 17/17 main snapshots (sr-only gone); (2) Venue masked to 'Лофт на Васильевском (NDA)' in /account/orders; (3) EN language switcher in header on 22/22 snapshots. Above 9.3 threshold. RED bias: 2 long-standing gaps remain unaddressed (Р/с placeholder on /certificates, SanPiN citation in description paragraph on /menu/detskoe), and the venue brand 'Лофт «Севкабель»' still appears in root.html marketing carousel — these cap further upward movement.",
+      "gaps": [
+        "2 long-standing gaps not addressed in W74: Р/с placeholder on /certificates (C54), SanPiN citation in description paragraph not dedicated section on /menu/detskoe (C55)",
+        "/en page content unverifiable (no /en snapshot in set)",
+        "EN switcher visually hidden on mobile viewport — mobile users have no visible UI affordance to reach /en (link is in DOM, just CSS-hidden)",
+        "Venue brand 'Лофт «Севкабель»' still appears in root.html marketing carousel (public context, but discoverable site-wide)",
+        "Cannot verify /sitemap.xml HTTP 200 + valid XML + robots.txt cross-reference (runtime check, not snapshot)"
+      ]
+    }
+  ],
+  "median_overall": 9.4,
+  "all_above_9_3": false,
+  "summary": {
+    "verified_fixes": 1,
+    "partially_verified_fixes": 0,
+    "failed_fixes": 0,
+    "persisting_fixes_from_prior_rounds": 6,
+    "above_threshold": 5,
+    "at_or_above_9_0": 7,
+    "below_9_0": 0,
+    "below_6_0": 0,
+    "biggest_improvement": "C58 (+0.7, extended rider now ACTUALLY renders — orphaned-JSX bug from W73 resolved; rider has 8 substantive subsections)",
+    "biggest_regression": "none (no regressions; C53/C54/C55/C56/C57 held flat, C58 and C59 improved)",
+    "blockers_to_goal": [
+      "C54 (8.6): No W74 fix; Р/с placeholder persists on /certificates — needs real account number or downloadable banking letterhead PDF. Third consecutive round (W72/W73/W74) with this gap unaddressed.",
+      "C55 (9.1): No W74 fix; SanPiN citation still in description paragraph on /menu/detskoe — needs dedicated 'Регуляторное соответствие' section with cross-references to ТР ТС 021/2011, 022/2011, HACCP, ЕАЭС декларация. Third consecutive round (W72/W73/W74) with this gap unaddressed."
+    ],
+    "next_actions": [
+      "Populate real Р/с account number on /certificates OR link a downloadable banking letterhead PDF — unblocks C54 (last standing sub-9.3 blocker #1)",
+      "Move SanPiN citation into a dedicated 'Регуляторное соответствие' section on /menu/detskoe with cross-references to ТР ТС 021/2011, 022/2011, HACCP, ЕАЭС декларация — unblocks C55 (last standing sub-9.3 blocker #2)",
+      "Capture /en snapshot and verify English content is actually translated (not Russian content under /en URL) — supports C57 and C59",
+      "Add visible EN language switcher on mobile (currently class='hidden md:inline-flex') — supports C57",
+      "Consider masking 'Лофт «Севкабель»' in root.html marketing carousel too, OR explicitly mark it as a public case-study disclosure distinct from NDA-protected order history — supports C56/C59",
+      "Optional: enrich rider with fire-suppression / load-in door width / cargo parking details — pushes C58 toward 9.6+"
+    ]
+  }
+}

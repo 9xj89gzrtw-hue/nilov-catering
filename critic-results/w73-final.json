@@ -1,0 +1,181 @@
+{
+  "evaluation_round": "W73-final",
+  "critic_group": "C53-C59",
+  "role": "RED",
+  "bias": -1,
+  "goal_threshold": 9.3,
+  "snapshot_basis": [
+    "root.html",
+    "rootmenu__catalog.html",
+    "rootmenu__furshet.html",
+    "rootmenu__detskoe.html",
+    "rootplan__constructor.html",
+    "plan__constructor__furshet_standard.html",
+    "rootpricing.html",
+    "rootgallery.html",
+    "rootcontact.html",
+    "rootcertificates.html",
+    "rootevents__svadba.html",
+    "rootmenu__halal.html",
+    "rootallergens.html",
+    "rootfaq.html",
+    "rootaccount__orders.html",
+    "rootpartners.html",
+    "rootplan__helper.html"
+  ],
+  "fix_verification": {
+    "fix_1_newsletter_label_visible": {
+      "status": "VERIFIED",
+      "evidence": "17/17 sampled snapshots now render <label for=\"newsletter-email\" class=\"block text-sm font-medium text-foreground mb-1\">Email для подписки</label>. The class=\"sr-only\" attribute is GONE on all 17 pages. Visible label text 'Email для подписки' renders above the input. W72 false-claim is now ACTUALLY applied in W73. WCAG 3.3.2 (Labels or Instructions) now satisfied via a true visible <label> element, not just heading+description context.",
+      "caveat": "Input still carries placeholder=\"Ваш email\" which disappears on input — minor fragile secondary cue, but the visible <label> is the primary accessible name and fully resolves the W71b/W72 blocker."
+    },
+    "fix_2_venue_masked_in_account_orders": {
+      "status": "VERIFIED",
+      "evidence": "rootaccount__orders.html snapshot: 0 matches for 'Севкабель', 2 matches for 'Лофт на Васильевском (NDA)' (1 in visible HTML, 1 in React serialization mirror). The exact W73 fix string 'Лофт на Васильевском (NDA)' is rendered in the order metadata where 'Лофт «Севкабель»' previously appeared in W72. Real third-party venue brand no longer leaks in NDA-protected client order context.",
+      "caveat": "root.html (homepage) still contains 'Лофт «Севкабель»' in the verified-events marketing carousel — 2 visible HTML occurrences + 1 in JSON serialization. This is a PUBLIC case-study context (marketing social proof), distinct from the NDA-protected /account/orders context, so not a C56 regression per se, but the venue brand is still discoverable elsewhere on the site."
+    },
+    "fix_3_en_language_switcher_in_header": {
+      "status": "VERIFIED",
+      "evidence": "Header element on all sampled pages contains <a class=\"hidden md:inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors px-2\" aria-label=\"Switch to English\" href=\"/en\">EN</a>. The EN link sits inside <header role=\"banner\"> after the main nav <ul>. Verified on 6/6 sampled pages (root, pricing, gallery, events/svadba, menu/catalog, account/orders). Directly closes the W72 gap ('No visible language switcher in UI for users to reach /en').",
+      "caveat": "Link is hidden on mobile (class='hidden md:inline-flex') — mobile users still have no UI affordance to reach /en. The actual /en page content remains unverifiable from the snapshot set (no /en snapshot exists)."
+    },
+    "fix_4_extended_production_rider": {
+      "status": "PARTIAL — SOURCE-ONLY, NOT RENDERED",
+      "evidence": "Source file app/events/svadba/page.tsx lines 200-221 DO contain the extended rider: 'Электричество — Не менее 6 кВт для раздаточной зоны. Розетки 220В с заземлением. При недостатке мощности — генератор за отдельную плату.', 'Вода и канализация — Доступ к проточной воде (для мытья рук персонала). При отсутствии — бутылированная вода + биотуалет для персонала.', 'Раздевалка для персонала — Отдельное помещение 6+ м² для переодевания и хранения личных вещей персонала (8-15 чел).', 'Мусор и отходы — Контейнеры для пищевых отходов + пластик/стекло. Вывоз организует NiloV Catering (включено).'. CRITICAL BUG: this JSX block is placed AFTER the component's closing brace `}` on line 199 — i.e., it is orphaned/unreachable module-level JSX, not inside the returned <main> tree. Snapshot rootevents__svadba.html (timestamp 15:21, NEWER than source 15:09) confirms ZERO matches for 'Электричество', '6 кВт', 'Вода и канализация', 'Раздевалка', 'Мусор и отходы' — the rider section is NOT rendered. The 4-section rider (Тайминги, Штат, Оборудование (включено), Логистика) is followed directly by </main> in the rendered output. Project-wide `npx tsc --noEmit` exits 0 — the orphaned JSX does not trigger a type error, and Next.js/SWC silently drops it during build. The W73 claim 'verified in source, builds OK' is technically true but misleading: end-user-visible behavior is unchanged from W72.",
+      "caveat": "RED critic cannot award full credit because the rendered output (what users actually see) is identical to W72. The source-level fix attempt is real, but the JSX placement bug means it is dead code."
+    }
+  },
+  "critics": [
+    {
+      "id": "C53",
+      "previous_score_w72": 8.5,
+      "score": 9.4,
+      "delta": 0.9,
+      "mapped_fix": "fix_1_newsletter_label_visible",
+      "fix_status": "VERIFIED",
+      "rationale": "MAJOR IMPROVEMENT (+0.9). W72 score of 8.5 was specifically because the newsletter <label> still had class=\"sr-only\" despite the W72 claim of visibility. W73 ACTUALLY applies the fix: 17/17 sampled snapshots now render <label for=\"newsletter-email\" class=\"block text-sm font-medium text-foreground mb-1\">Email для подписки</label>. The visible label text provides a persistent accessible name that does not disappear when the user starts typing — directly resolving the W71b/W72 WCAG 3.3.2 concern. RED bias: above 9.3 threshold because the fix is verified across all 17 pages with consistent implementation. Minor residual: placeholder=\"Ваш email\" still present (fragile secondary cue) and only the newsletter form was audited — other forms (constructor, contact) not in scope.",
+      "gaps": [
+        "Placeholder 'Ваш email' still present as secondary cue (disappears on input) — visible label is primary, so this is minor",
+        "Only newsletter form audited; cannot verify other forms (constructor, contact) have visible labels",
+        "No explicit error-message programmatically associated with the input via aria-describedby"
+      ]
+    },
+    {
+      "id": "C54",
+      "previous_score_w72": 8.6,
+      "score": 8.6,
+      "delta": 0.0,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "No W73 fix targets C54 directly. /certificates banking block is unchanged from W72: Банк: Филиал «Северная столица» ПАО «Банк ВТБ»; БИК: 044030706; К/с: 30101810200000000706 — all present and valid. Р/с field remains the placeholder string '— предоставляется в счёте после договора' rather than a real account number. RED bias: no targeted W73 fix, placeholder persists. Score held at 8.6.",
+      "gaps": [
+        "Р/с field is still a placeholder string, not a real settlement account number",
+        "No downloadable banking letterhead PDF linked from /certificates",
+        "No W73 fix targets this critic"
+      ]
+    },
+    {
+      "id": "C55",
+      "previous_score_w72": 9.1,
+      "score": 9.1,
+      "delta": 0.0,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "No W73 fix targets C55 directly. /menu/detskoe still renders the СанПиН 2.3/2.5.6.1079-01 citation in the intro description paragraph (not a dedicated compliance section). The W72 caveat ('citation in description paragraph, not dedicated section; only single-page coverage') was not addressed. RED bias: no targeted W73 fix, structural gap persists. Score held at 9.1.",
+      "gaps": [
+        "SanPiN citation is in a description paragraph, not a dedicated compliance section",
+        "Only one regulatory citation on /menu/detskoe; ТР ТС 021/2011 / 022/2011 / HACCP not cross-referenced from detskoe",
+        "No other child-specific regulatory framework references (e.g., СП 2.4.5.2409-08 for school meals)",
+        "No W73 fix targets this critic"
+      ]
+    },
+    {
+      "id": "C56",
+      "previous_score_w72": 8.8,
+      "score": 9.4,
+      "delta": 0.6,
+      "mapped_fix": "fix_2_venue_masked_in_account_orders",
+      "fix_status": "VERIFIED",
+      "rationale": "Solid improvement (+0.6). W72 score of 8.8 was specifically because the real venue brand 'Лофт «Севкабель»' was still visible in /account/orders order metadata despite the NDA protection context. W73 ACTUALLY masks it: rootaccount__orders.html snapshot now has 0 matches for 'Севкабель' and renders 'Лофт на Васильевском (NDA)' in its place — both in visible HTML and in the React serialization mirror. Real third-party venue brand no longer leaks in NDA-protected client order context. Above 9.3 threshold. RED bias: caveat that the venue brand 'Лофт «Севкабель»' still appears in root.html marketing carousel (3 occurrences) as a verified past-event case study — this is a public marketing context, not NDA-protected order history, but the brand is still discoverable elsewhere on the site.",
+      "gaps": [
+        "Real venue brand 'Лофт «Севкабель»' still appears in root.html verified-events marketing carousel (3 occurrences) — public context, not NDA order history, but still discoverable",
+        "Cannot verify backend / API responses also anonymize venue (snapshots are static HTML)",
+        "Masking scheme is manual per-order; no programmatic guarantee that future orders will be masked"
+      ]
+    },
+    {
+      "id": "C57",
+      "previous_score_w72": 9.4,
+      "score": 9.6,
+      "delta": 0.2,
+      "mapped_fix": "fix_3_en_language_switcher_in_header",
+      "fix_status": "VERIFIED",
+      "rationale": "Incremental improvement (+0.2). C57 (SEO/discoverability) was already at 9.4 in W72 thanks to ServiceJsonLd + hreflang en alternate links. W73 directly closes the W72 gap ('No visible language switcher in UI for users to reach /en'): header element on 6/6 sampled pages now contains <a aria-label=\"Switch to English\" href=\"/en\">EN</a> inside <header role=\"banner\">. Users now have a UI affordance to reach /en, complementing the machine-readable hreflang triplet (ru/en/x-default). Above 9.3 threshold. RED bias: cannot verify /en page returns HTTP 200 or that content is actually translated (no /en snapshot in set); link is hidden on mobile (class='hidden md:inline-flex'), so mobile users still have no UI affordance.",
+      "gaps": [
+        "Cannot verify /en page exists with translated content (no /en snapshot in set)",
+        "EN link hidden on mobile (class='hidden md:inline-flex') — mobile users have no UI affordance to reach /en",
+        "Cannot verify /sitemap.xml HTTP 200 + valid XML + robots.txt cross-reference (runtime check, not snapshot)"
+      ]
+    },
+    {
+      "id": "C58",
+      "previous_score_w72": 8.5,
+      "score": 8.7,
+      "delta": 0.2,
+      "mapped_fix": "fix_4_extended_production_rider",
+      "fix_status": "PARTIAL — SOURCE-ONLY, NOT RENDERED",
+      "rationale": "Marginal improvement (+0.2) — but the W73 fix is functionally NOT applied for end users. Source file app/events/svadba/page.tsx lines 200-221 DO contain the extended rider (electricity 6 кВт + 220В розетки; water/канализация + проточная вода + биотуалет; dressing room 6+ м²; waste containers + plastic/glass + removal). However, CRITICAL BUG: this JSX block is placed AFTER the component's closing brace `}` on line 199 — it is orphaned module-level JSX, not inside the returned <main> tree. Snapshot rootevents__svadba.html (timestamp 15:21, NEWER than source 15:09) confirms ZERO matches for 'Электричество', '6 кВт', 'Вога и канализация', 'Раздевалка', 'Мусор и отходы'. The rider section in the rendered output ends at 'Логистика' followed directly by </main>. Project-wide `npx tsc --noEmit` exits 0 — the orphaned JSX does not trigger a type error, and Next.js/SWC silently drops it during build. The W73 claim 'verified in source, builds OK' is technically true but misleading: end-user-visible behavior is unchanged from W72. As a RED critic, I award small credit (+0.2) for the source-level fix attempt, but cannot give full credit because the rendered output (what users actually see) is identical to W72. The 4-section rider remains substantive but the explicitly promised extension did not reach users.",
+      "gaps": [
+        "Extended rider JSX placed AFTER component closing brace `}` on line 199 — orphaned/unreachable module-level JSX",
+        "Snapshot confirms rider section NOT rendered (0 matches for electricity/water/dressing room/waste keywords in rootevents__svadba.html)",
+        "End-user-visible behavior on /events/svadba is unchanged from W72 — rider still has 4 sections (Тайминги, Штат, Оборудование (включено), Логистика)",
+        "W73 claim 'builds OK' is true at tsc level but misleading — orphaned JSX silently dropped by SWC/Next.js compiler",
+        "Need to move lines 200-221 INSIDE the <main> element (before </main> on line 197) for the rider to actually render"
+      ]
+    },
+    {
+      "id": "C59",
+      "previous_score_w72": 8.7,
+      "score": 9.2,
+      "delta": 0.5,
+      "mapped_fix": "cross-cutting: fix_1 + fix_2 + fix_3 + fix_4",
+      "fix_status": "MIXED — 3 VERIFIED + 1 PARTIAL",
+      "rationale": "Meaningful improvement (+0.5) driven by three verifiable cross-page wins: (1) Newsletter label visible (class='block text-sm font-medium text-foreground mb-1' replacing sr-only) on 17/17 pages — fixes the W72 false-claim and restores process integrity on that fix; (2) Venue masked to 'Лофт на Васильевском (NDA)' in /account/orders — directly closes the W72 venue-leak gap; (3) EN language switcher added to header on 6/6 sampled pages — closes the W72 'no visible EN switcher' gap. The cross-page consistency in applying these three fixes is strong (17/17 for newsletter, 6/6 for EN switcher, 1/1 for venue on account/orders). However, the 4th fix (extended rider) is functionally not applied: source contains the rider but it is orphaned module-level JSX placed after the component's closing `}` — snapshot confirms it is NOT rendered. This is a C59-class process integrity concern: claiming 'verified in source, builds OK' while the rendered output is unchanged is misleading. Additionally, two long-standing gaps remain unaddressed in W73 (Р/с placeholder on /certificates, SanPiN not in dedicated section on /menu/detskoe). RED bias: substantial cross-page progress, but the orphaned-JSX bug + 2 unaddressed long-standing gaps cap the score at 9.2, narrowly missing the 9.3 threshold.",
+      "gaps": [
+        "1 of 4 W73 fixes (extended rider) is functionally not applied — source has it, but orphaned JSX placement means it is silently dropped at build time. Misleading 'builds OK' claim is a process integrity concern.",
+        "/en page content unverifiable (no snapshot in set)",
+        "EN switcher hidden on mobile — mobile users have no UI affordance to reach /en",
+        "2 long-standing gaps not addressed in W73: Р/с placeholder on /certificates (C54), SanPiN citation in description paragraph not dedicated section on /menu/detskoe (C55)",
+        "Venue brand 'Лофт «Севкабель»' still appears in root.html marketing carousel (public context, but discoverable)"
+      ]
+    }
+  ],
+  "median_overall": 9.2,
+  "all_above_9_3": false,
+  "summary": {
+    "verified_fixes": 3,
+    "partially_verified_fixes": 1,
+    "failed_fixes": 0,
+    "above_threshold": 3,
+    "at_or_above_9_0": 5,
+    "below_9_0": 2,
+    "below_6_0": 0,
+    "biggest_improvement": "C53 (+0.9, newsletter label ACTUALLY visible on 17/17 pages — fixes the W72 false-claim)",
+    "biggest_regression": "none (no regressions; C54 and C55 held flat)",
+    "blockers_to_goal": [
+      "C54 (8.6): No W73 fix; Р/с placeholder persists on /certificates — needs real account number or downloadable banking letterhead PDF",
+      "C55 (9.1): No W73 fix; SanPiN citation still in description paragraph on /menu/detskoe — needs dedicated 'Регуляторное соответствие' section with cross-references to ТР ТС 021/2011, 022/2011, HACCP, ЕАЭС декларация",
+      "C58 (8.7): W73 fix #4 (extended rider) is SOURCE-ONLY — JSX placed AFTER component closing `}` (orphaned). Snapshot confirms rider NOT rendered. MUST move lines 200-221 INSIDE <main> before </main> on line 197",
+      "C59 (9.2): Narrow miss — 3 verified + 1 partial. The orphaned-JSX bug on the rider fix is itself a C59-class process integrity concern"
+    ],
+    "next_actions": [
+      "CRITICAL: Move extended rider JSX (lines 200-221 of app/events/svadba/page.tsx) INSIDE the <main> element, before </main> on line 197. Currently orphaned after the component's closing `}` — silently dropped by SWC. This unblocks C58 and C59.",
+      "Populate real Р/с account number on /certificates OR link a downloadable banking letterhead PDF — unblocks C54",
+      "Move SanPiN citation into a dedicated 'Регуляторное соответствие' section on /menu/detskoe with cross-references to ТР ТС 021/2011, 022/2011, HACCP, ЕАЭС декларация — unblocks C55",
+      "Capture /en snapshot and verify English content is actually translated (not Russian content under /en URL) — supports C57 and C59",
+      "Add visible EN language switcher on mobile (currently class='hidden md:inline-flex') — supports C57",
+      "Consider masking 'Лофт «Севкабель»' in root.html marketing carousel too, OR explicitly mark it as a public case-study disclosure distinct from NDA-protected order history",
+      "Run end-to-end build verification after rider JSX move: `npx tsc --noEmit` AND visual snapshot diff to confirm the rider section renders"
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "evaluation_round": "W72-final",
+  "critic_group": "C53-C59",
+  "role": "RED",
+  "bias": -1,
+  "goal_threshold": 9.3,
+  "snapshot_basis": [
+    "root.html",
+    "rootmenu__catalog.html",
+    "rootmenu__furshet.html",
+    "rootmenu__detskoe.html",
+    "rootplan__constructor.html",
+    "plan__constructor__furshet_standard.html",
+    "rootpricing.html",
+    "rootgallery.html",
+    "rootcontact.html",
+    "rootcertificates.html",
+    "rootevents__svadba.html",
+    "rootmenu__halal.html",
+    "rootallergens.html",
+    "rootfaq.html",
+    "rootaccount__orders.html",
+    "rootpartners.html",
+    "rootplan__helper.html"
+  ],
+  "fix_verification": {
+    "fix_1_newsletter_label_visible": {
+      "status": "FAILED",
+      "evidence": "All 17/17 sampled snapshots still render <label for=\"newsletter-email\" class=\"sr-only\">Email для подписки</label> immediately before the email input. The class=\"sr-only\" attribute is still present — the label is still visually hidden. W72 claim 'visible (not sr-only)' is NOT reflected in snapshots.",
+      "mitigating_factor": "Each newsletter form is preceded by a visible <h3>Будьте в курсе</h3> heading and a description paragraph 'Сезонные предложения и новые меню — раз в месяц, без спама.' — this provides sighted-user context and satisfies WCAG 3.3.2 (Labels or Instructions) at the form level, even though the technical fix claim itself was not applied.",
+      "caveat": "RED critic cannot award credit for a fix that did not happen in the rendered output. The accessibility outcome is acceptable, but the claimed W72 intervention is false."
+    },
+    "fix_2_extended_production_rider": {
+      "status": "FAILED",
+      "evidence": "/events/svadba 'Производственный райдер' section still contains exactly 4 H3 subsections — Тайминги, Штат, Оборудование (включено), Логистика — identical to W71b. Comprehensive grep for '6кВт', '6 кВт', 'кВт', 'электропитание', 'электричест', 'розетк', 'гардероб', 'бытовка', 'разделочн', 'водоснаб', 'горячая вода', 'холодная вода', 'отход', 'мусор', 'утилиз', 'dressing room', 'green room', 'раздевалк', 'комната персонал' returned ZERO matches inside the rider block. The only 'вода' matches on the page are 'мята-вода' (mocktail ingredient) in the халяль variant paragraph — unrelated to production water supply.",
+      "caveat": "W72 claim of rider extension (electricity 6kW, water, dressing room, waste management) is NOT reflected in snapshot. False claim."
+    },
+    "fix_3_service_jsonld_all_pages": {
+      "status": "VERIFIED",
+      "evidence": "17/17 sampled snapshots contain a well-formed <script type=\"application/ld+json\"> block with @type:Service, name:'Кейтеринг под ключ', provider:{@type:LocalBusiness,@id:https://odaeda.ru/#organization}, areaServed:'Санкт-Петербург и Ленинградская область', serviceType:'Кейтеринг, выездное ресторанное обслуживание', and offers:{@type:AggregateOffer, priceCurrency:RUB, lowPrice:'390', highPrice:'9950', offerCount:'4'}. Validated JSON parse on root.html. Identical lowPrice/highPrice/currency on all 17 pages — consistent cross-page implementation.",
+      "caveat": "Cannot verify the price range (390–9950 RUB) matches the actual service catalogue from snapshots alone, but the structured-data shape is textbook-correct and eligible for Google rich results."
+    },
+    "fix_4_sanpin_detskoe": {
+      "status": "VERIFIED",
+      "evidence": "rootmenu__detskoe.html snapshot now exists in snapshots-js. Visible paragraph text reads: 'Безопасное, вкусное и красивое меню для детских праздников. Все ингредиенты согласованы, аллергены промаркированы. Соответствие СанПиН 2.3/2.5.6.1079-01. Минимум 10 гостей (для медицинских диет — целиакия, анафилаксия — от 6 детей).' The exact regulatory citation СанПиН 2.3/2.5.6.1079-01 is rendered as user-visible text immediately below the page header, before the allergen warning block.",
+      "caveat": "SanPiN citation appears only in the intro paragraph, not in a dedicated 'Compliance' / 'Регуляторное соответствие' section. No other regulatory citations (ТР ТС 021/2011, ТР ТС 022/2011, HACCP, ЕАЭС декларация) verified on /menu/detskoe itself — those remain on /certificates. Single-page coverage only."
+    },
+    "fix_5_english_page_en": {
+      "status": "PARTIALLY_VERIFIED",
+      "evidence": "All 17/17 sampled snapshots include <link rel=\"alternate\" hrefLang=\"en\" href=\"https://odaeda.ru/en\"/> in <head>, plus the React serialization mirror. hrefLang=\"ru\" and hrefLang=\"x-default\" also present — full hreflang triplet implemented correctly for Google international targeting.",
+      "caveat": "No /en snapshot exists in the snapshot set, so the actual English page content cannot be verified. Additionally, no visible language switcher (EN button, 'English' link, lang-switch control) was found in nav/header/footer of root.html — users have no UI affordance to reach /en from the page. Only machine-readable hreflang exists. Cannot confirm /en returns HTTP 200 or that the content is actually translated (vs. Russian content under /en URL)."
+    }
+  },
+  "critics": [
+    {
+      "id": "C53",
+      "previous_score_w71b": 8.8,
+      "score": 8.5,
+      "delta": -0.3,
+      "mapped_fix": "fix_1_newsletter_label_visible",
+      "fix_status": "FAILED",
+      "rationale": "W72 claimed the newsletter label would become visible (not sr-only). Snapshot evidence contradicts the claim: class=\"sr-only\" is still present on the <label> element on all 17/17 sampled pages. The form IS preceded by a visible <h3>Будьте в курсе</h3> heading and a description paragraph, which programmatically satisfies WCAG 3.3.2 (Labels or Instructions) for sighted users — so the accessibility outcome is acceptable. However, as a RED critic, I cannot award credit for a fix that did not actually render. The W71b caveat ('label is sr-only — sighted users still rely on placeholder') was NOT addressed despite the W72 claim. Score reduced from 8.8 → 8.5 to reflect the false fix claim; the underlying accessibility is salvaged by the visible heading + description.",
+      "gaps": [
+        "Label element still has class=\"sr-only\" — claimed fix not applied",
+        "Visible heading + description mitigate but are not the same as a visible label",
+        "Placeholder 'Ваш email' still disappears on input — fragile per WCAG 3.3.2",
+        "Only newsletter form audited; cannot verify other forms (constructor, contact) have visible labels"
+      ]
+    },
+    {
+      "id": "C54",
+      "previous_score_w71b": 8.7,
+      "score": 8.6,
+      "delta": -0.1,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "No W72 fix targets C54 directly. /certificates banking block is unchanged from W71b: Банк: Филиал «Северная столица» ПАО «Банк ВТБ»; БИК: 044030706; К/с: 30101810200000000706 — all present and valid. Р/с field remains the placeholder string '— предоставляется в счёте после договора' rather than a real account number. The indirect W72 win is that ServiceJsonLd on /certificates now provides structured-data provenance (LocalBusiness provider), which marginally supports verification. RED bias: slight reduction because the placeholder Р/с issue persists and no targeted fix was attempted in W72.",
+      "gaps": [
+        "Р/с field is still a placeholder string, not a real settlement account number",
+        "No downloadable banking letterhead PDF linked from /certificates",
+        "No W72 fix targets this critic"
+      ]
+    },
+    {
+      "id": "C55",
+      "previous_score_w71b": 5.2,
+      "score": 9.1,
+      "delta": 3.9,
+      "mapped_fix": "fix_4_sanpin_detskoe",
+      "fix_status": "VERIFIED",
+      "rationale": "LARGEST IMPROVEMENT in the round (+3.9). The previous W71b score of 5.2 was specifically because the SanPiN reference was UNVERIFIABLE (no /menu/detskoe snapshot existed). W72 closes that exact blocker: the snapshot now exists, and the page renders the exact regulatory citation 'СанПиН 2.3/2.5.6.1079-01' as visible user-facing text in the intro paragraph, with context about minimum guest count (10 / 6 for medical diets). This directly addresses the lowest-scoring critic from W71b. RED bias: the citation appears in a flowing description paragraph rather than a dedicated compliance section, and it is the only SanPiN/ТР ТС/HACCP citation on the detskoe page — complementary regulatory references (ТР ТС 021/2011, 022/2011, ЕАЭС декларация) remain only on /certificates. Single-page coverage. Cannot push above 9.3.",
+      "gaps": [
+        "SanPiN citation is in a description paragraph, not a dedicated compliance section",
+        "Only one regulatory citation on /menu/detskoe; ТР ТС 021/2011 / 022/2011 / HACCP not cross-referenced from detskoe",
+        "No other child-specific regulatory framework references (e.g., СП 2.4.5.2409-08 for school meals)"
+      ]
+    },
+    {
+      "id": "C56",
+      "previous_score_w71b": 8.9,
+      "score": 8.8,
+      "delta": -0.1,
+      "mapped_fix": null,
+      "fix_status": "NO_DEDICATED_FIX",
+      "rationale": "No W72 fix targets C56 directly. /account/orders still shows client identities anonymized ('Корпоративный клиент (NDA)', 'IT-компания (NDA)') and the NDA PDF download link /api/templates/nda is present. However, the venue name 'Лофт «Севкабель»' (a real St. Petersburg venue brand) still appears in the order metadata: '12 декабря 2025 г. · Банкет · 120 гостей · Лофт «Севкабель»'. RED bias: persisting third-party brand visibility in NDA-protected order context, no targeted W72 fix.",
+      "gaps": [
+        "Real venue brand 'Лофт «Севкабель»' still visible in order metadata",
+        "No W72 fix targets this critic",
+        "Cannot verify backend / API responses also anonymize (snapshots are static HTML)"
+      ]
+    },
+    {
+      "id": "C57",
+      "previous_score_w71b": 9.2,
+      "score": 9.4,
+      "delta": 0.2,
+      "mapped_fix": "fix_3_service_jsonld_all_pages + fix_5_english_page_en",
+      "fix_status": "VERIFIED + PARTIALLY_VERIFIED",
+      "rationale": "C57 (SEO/discoverability) is the strongest beneficiary of W72. Sitemap link still present on 17/17 pages (<link rel=\"sitemap\" href=\"/sitemap.xml\" type=\"application/xml\"/>). Two new substantial wins: (1) ServiceJsonLd with AggregateOffer (lowPrice:'390', highPrice:'9950', priceCurrency:'RUB', offerCount:'4') added to ALL 17/17 pages — textbook-correct structured data eligible for Google Service rich results; (2) hreflang en alternate link on 17/17 pages with full ru/en/x-default triplet — correct international targeting. These are major, verifiable, cross-page SEO improvements that push C57 above the 9.3 threshold. RED bias: cannot verify /sitemap.xml HTTP 200, /en page actual content (no snapshot), or robots.txt cross-reference from static snapshots — these unknowns cap further upward movement.",
+      "gaps": [
+        "Cannot verify /sitemap.xml returns HTTP 200 with valid XML",
+        "Cannot verify /en page exists with translated content (no /en snapshot)",
+        "Cannot verify robots.txt references sitemap or that /en is crawlable",
+        "No visible language switcher in UI for users to reach /en"
+      ]
+    },
+    {
+      "id": "C58",
+      "previous_score_w71b": 9.0,
+      "score": 8.5,
+      "delta": -0.5,
+      "mapped_fix": "fix_2_extended_production_rider",
+      "fix_status": "FAILED",
+      "rationale": "W72 claimed the /events/svadba production rider would be extended with electricity (6kW), water, dressing room, and waste management. Snapshot evidence contradicts the claim: the rider section still contains exactly the same 4 H3 subsections as W71b (Тайминги, Штат, Оборудование (включено), Логистика). Comprehensive grep for '6кВт', 'кВт', 'электропитание', 'розетк', 'гардероб', 'бытовка', 'разделочн', 'водоснаб', 'отход', 'мусор', 'утилиз', 'dressing room', 'green room' returned ZERO matches inside the rider block. The only 'вода' matches on the page are 'мята-вода' (mocktail ingredient) — unrelated. As a RED critic, this is a false fix claim that regresses the critic below its W71b baseline. The 4-section rider remains substantive but the explicitly promised extension did not happen.",
+      "gaps": [
+        "No electrical power / kW requirements for equipment (claimed 6kW not present)",
+        "No water supply / drainage requirements (claimed, not present)",
+        "No dressing room / green room for staff (claimed, not present)",
+        "No waste / garbage removal logistics (claimed, not present)",
+        "W72 fix claim is false — rider unchanged from W71b"
+      ]
+    },
+    {
+      "id": "C59",
+      "previous_score_w71b": 5.7,
+      "score": 8.7,
+      "delta": 3.0,
+      "mapped_fix": "cross-cutting: fix_3 + fix_4 + fix_5",
+      "fix_status": "MIXED",
+      "rationale": "C59 (cross-cutting / overall consistency) is the second-largest improvement in the round (+3.0) driven by three verifiable cross-page wins: (1) ServiceJsonLd deployed consistently on 17/17 pages with identical lowPrice/highPrice/currency — major cross-page structured-data consistency; (2) SanPiN reference now verifiable on /menu/detskoe — closes the W71b process gap that was itself a C59-class concern; (3) hreflang en on 17/17 pages — consistent international targeting. However, 2 of 5 W72 fixes did NOT actually apply: fix_1 (newsletter label still sr-only) and fix_2 (rider extension absent). Additionally, /en page content is unverifiable (no snapshot) and no visible language switcher exists. RED bias: substantial cross-page progress, but the false fix claims for #1 and #2 are themselves a C59-class process integrity concern — claiming fixes that don't render is a regression in operational discipline.",
+      "gaps": [
+        "2 of 5 W72 fixes (newsletter label, rider extension) did not actually apply — false claims are a process integrity issue",
+        "/en page content unverifiable (no snapshot in set)",
+        "No visible language switcher UI to access /en",
+        "Cross-page consistency in structured data is excellent but price range (390–9950 RUB) not reconciled against actual catalogue"
+      ]
+    }
+  ],
+  "median_overall": 8.7,
+  "all_above_9_3": false,
+  "summary": {
+    "verified_fixes": 2,
+    "partially_verified_fixes": 1,
+    "failed_fixes": 2,
+    "above_threshold": 1,
+    "at_or_above_9_0": 2,
+    "below_9_0": 5,
+    "below_6_0": 0,
+    "biggest_improvement": "C55 (+3.9, SanPiN now verifiable on /menu/detskoe)",
+    "biggest_regression": "C58 (-0.5, claimed rider extension did not apply)",
+    "blockers_to_goal": [
+      "C53 (8.5): W72 fix #1 (newsletter label visible) DID NOT APPLY — label still sr-only on 17/17 pages",
+      "C54 (8.6): No W72 fix; Р/с placeholder persists on /certificates",
+      "C55 (9.1): SanPiN verified but only single-page coverage; citation in description paragraph not dedicated section",
+      "C56 (8.8): No W72 fix; venue brand 'Лофт «Севкабель»' still visible in NDA-protected orders",
+      "C58 (8.5): W72 fix #2 (rider extension: 6kW/water/dressing room/waste) DID NOT APPLY — rider unchanged from W71b",
+      "C59 (8.7): 2 of 5 W72 fixes failed to render — process integrity concern"
+    ],
+    "next_actions": [
+      "ACTUALLY deploy fix #1: remove class=\"sr-only\" from newsletter <label> OR replace with visible label text above input. Current snapshot shows fix claim is false.",
+      "ACTUALLY deploy fix #2: add 5th rider section on /events/svadba covering electricity (6kW), water supply, dressing room, waste management. Current snapshot shows rider is unchanged from W71b.",
+      "Capture /en snapshot and verify English content is actually translated (not Russian content under /en URL)",
+      "Add a visible language switcher (EN/RU button) in header so users can reach /en from the UI",
+      "Move SanPiN citation into a dedicated 'Регуляторное соответствие' section on /menu/detskoe with cross-references to ТР ТС 021/2011, 022/2011, HACCP, ЕАЭС декларация",
+      "Populate real Р/с account number on /certificates or link a downloadable banking letterhead PDF",
+      "Mask venue brand 'Лофт «Севкабель»' to generic 'Лофт в Василеостровском р-не' on /account/orders for stricter NDA posture",
+      "Verify /sitemap.xml HTTP 200 + valid XML + robots.txt cross-reference (runtime check, not snapshot)"
+    ]
+  }
+}
