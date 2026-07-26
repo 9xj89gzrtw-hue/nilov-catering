@@ -108,3 +108,22 @@ export function MenuJsonLd() {
 
 // FAQPageJsonLd удалён — дублировал JSON-LD, который генерируется на странице /faq напрямую.
 // См. app/faq/page.tsx для актуальной FAQPage schema.
+
+export function ServiceJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    'name': 'Кейтеринг под ключ',
+    'provider': { '@type': 'LocalBusiness', '@id': 'https://odaeda.ru/#organization' },
+    'areaServed': 'Санкт-Петербург и Ленинградская область',
+    'serviceType': 'Кейтеринг, выездное ресторанное обслуживание',
+    'offers': {
+      '@type': 'AggregateOffer',
+      'priceCurrency': 'RUB',
+      'lowPrice': '390',
+      'highPrice': '9950',
+      'offerCount': '4',
+    },
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}

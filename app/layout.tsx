@@ -13,7 +13,7 @@ import CookieBanner from '@/components/layout/CookieBanner';
 import ScrollProgress from '@/components/common/ScrollProgress';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
-import { OrganizationJsonLd } from './JsonLd';
+import { OrganizationJsonLd, ServiceJsonLd } from './JsonLd';
 import Analytics from '@/components/layout/Analytics';
 import { getPricing } from '@/lib/cms';
 import './globals.css';
@@ -39,6 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
         <Analytics />
         <OrganizationJsonLd />
+        <ServiceJsonLd />
         <SkipLink />
         <PricingWrapper cmsPricing={cmsPricing}>
           <SmoothScrollProvider>

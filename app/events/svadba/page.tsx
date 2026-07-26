@@ -197,3 +197,25 @@ export default function SvadbaPage() {
     </main>
   );
 }
+        {/* Extended rider — technical requirements */}
+        <div className="mt-6 p-6 rounded-xl border border-line bg-secondary/30">
+          <h3 className="font-semibold mb-3 text-gold-text">Технические требования к площадке</h3>
+          <div className="grid sm:grid-cols-2 gap-4 text-sm text-muted-foreground">
+            <div>
+              <p className="font-medium text-foreground mb-1">Электричество</p>
+              <p>Не менее 6 кВт для раздаточной зоны. Розетки 220В с заземлением. При недостатке мощности — генератор за отдельную плату.</p>
+            </div>
+            <div>
+              <p className="font-medium text-foreground mb-1">Вода и канализация</p>
+              <p>Доступ к проточной воде (для мытья рук персонала). При отсутствии — бутылированная вода + биотуалет для персонала.</p>
+            </div>
+            <div>
+              <p className="font-medium text-foreground mb-1">Раздевалка для персонала</p>
+              <p>Отдельное помещение 6+ м² для переодевания и хранения личных вещей персонала (8-15 чел).</p>
+            </div>
+            <div>
+              <p className="font-medium text-foreground mb-1">Мусор и отходы</p>
+              <p>Контейнеры для пищевых отходов + пластик/стекло. Вывоз организует NiloV Catering (включено).</p>
+            </div>
+          </div>
+        </div>
