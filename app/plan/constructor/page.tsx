@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import ConstructorWizard from '@/components/interactive/ConstructorWizard';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
+import ShareButton from '@/components/common/ShareButton';
 import PageHeader from '@/components/common/PageHeader';
 import { SITE } from '@/lib/data';
 
@@ -159,6 +160,13 @@ function ConstructorServerFallback() {
           <p className="text-xs text-muted-foreground mt-3">
             Отметьте блюда — менеджер включит их в предложение. Полный интерактивный конструктор с drag-and-drop доступен при включённом JavaScript.
           </p>
+          <div className="mt-4">
+            <ShareButton
+              title="Моё меню — NiloV Catering"
+              text="Посмотри меню — нужно согласовать"
+              label="📤 Отправить ссылку родным/коллегам"
+            />
+          </div>
         </div>
 
           {/* Static SSR form for guests (no-JS fallback) */}
