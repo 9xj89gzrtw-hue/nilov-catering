@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function DeliveryPage() {
   return (
-    <main className="pt-24">
+    <main id="main" className="pt-24">
       {/* Hero */}
       <section className="container-site py-10">
         <div className="max-w-2xl">

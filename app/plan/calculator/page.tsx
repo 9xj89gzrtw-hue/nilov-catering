@@ -9,7 +9,7 @@ import type { Format } from '@/lib/types';
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/calculator', languages: { 'ru': '/plan/calculator', 'en': '/en', 'x-default': '/plan/calculator' } },
   title: 'Тарифы и таблицы — кейтеринг СПб',
-  description: 'Тарифы и таблицы: стоимость кейтеринга . Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Всё включено: еда, персонал, посуда, доставка по КАД.',
+  description: 'Тарифы и таблицы: стоимость кейтеринга. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Всё включено: еда, персонал, посуда, доставка по КАД.',
 };
 
 /**
@@ -186,7 +186,7 @@ function CalculatorServerFallback() {
 
 export default function CalculatorPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <Suspense fallback={<CalculatorServerFallback />}>
         <Calculator />
       </Suspense>

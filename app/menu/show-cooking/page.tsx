@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ShowCookingPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-2xl">
         <h1 className="mb-2">Show-cooking</h1>
         <p className="text-muted-foreground mb-2">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+    <main id="main" className="pt-24 pb-20"><div className="container-site max-w-2xl">
       <h1 className="mb-2">Карьера в NiloV</h1>
       <p className="text-muted-foreground mb-10">Мы растём и ищем профессионалов. Актуальные вакансии уточняются у менеджера.</p>
       {[

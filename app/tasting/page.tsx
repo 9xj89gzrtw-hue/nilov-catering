@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function TastingPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-2xl">
         <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
           <Link href="/" className="hover:text-foreground">Главная</Link>

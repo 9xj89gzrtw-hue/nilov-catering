@@ -62,7 +62,7 @@ export default function PlanHelperPage({
     const format = formatMatch?.format || 'furshet';
 
     return (
-      <main className="pt-24 pb-20">
+      <main id="main" className="pt-24 pb-20">
         <div className="container-site max-w-2xl mx-auto">
           <Breadcrumbs />
 
@@ -151,7 +151,7 @@ export default function PlanHelperPage({
   };
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-2xl mx-auto">
         <Breadcrumbs />
 

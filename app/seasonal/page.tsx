@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Сезонные предложен�
 
 export default function SeasonalPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site">
+    <main id="main" className="pt-24 pb-20"><div className="container-site">
       <h1 className="text-center mb-4">Сезонные предложения</h1>
       <p className="text-center text-muted-foreground mb-16">Специальные форматы по сезону.</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">

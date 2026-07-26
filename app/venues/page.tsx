@@ -17,7 +17,7 @@ const VENUES = [
 
 export default function VenuesPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site">
+    <main id="main" className="pt-24 pb-20"><div className="container-site">
       <h1 className="text-center mb-2">Площадки, которые мы обслуживаем</h1>
       <p className="text-center text-muted-foreground mb-6 max-w-xl mx-auto">Работаем на вашей площадке в СПб и ЛО. Нет кухни? Привезём всё с собой.</p>
       <p className="text-center text-sm text-muted-foreground mb-12 max-w-xl mx-auto p-3 rounded-lg bg-blue-50 border border-blue-200">

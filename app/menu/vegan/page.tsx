@@ -12,7 +12,7 @@ export default function VeganPage() {
   const dishes = useMemo(() => ALL_DISHES.filter((d) => d.dietBadges.includes('vegan')), []);
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Веган-меню</h1>
         <p className="text-muted-foreground mb-6">

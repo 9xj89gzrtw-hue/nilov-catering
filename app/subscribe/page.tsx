@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function SubscribePage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-2xl">
         <h1 className="mb-4">Регулярный кейтеринг для офисов</h1>
         <p className="text-muted-foreground mb-8">

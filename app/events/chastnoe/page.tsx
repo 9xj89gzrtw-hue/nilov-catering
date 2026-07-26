@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ChastnoePage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Частные события</h1>
         <p className="text-muted-foreground mb-8">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function VypusknoyPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-4xl">
         <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
           <Link href="/" className="hover:text-foreground">Главная</Link>
@@ -96,7 +96,7 @@ export default function VypusknoyPage() {
               Бюджет на 90 чел (60 детей + 30 родителей): ~162 000 ₽ — вписывается в типовой школьный бюджет 200 000 ₽.
             </p>
             <p className="text-xs text-muted-foreground mt-2 p-2 rounded bg-amber-50 border border-amber-200">
-              <strong>Tight budget? Пример:</strong> 85 детей × 1 800 ₽ = 153 000 ₽. Если бюджет
+              <strong>Ограниченный бюджет? Пример:</strong> 85 детей × 1 800 ₽ = 153 000 ₽. Если бюджет
               150 000 ₽ — сократите до 80 детей (144 000 ₽) или замените фуршет на кофе-брейк
               (85 × 390 ₽ = 33 150 ₽ + доставка 5 000 ₽ = 38 150 ₽). Также возможна рассрочка
               или спонсорская скидка — <Link href="/contact" className="underline">обсудите с менеджером</Link>.

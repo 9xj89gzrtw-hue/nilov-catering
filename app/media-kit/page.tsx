@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Медиа-кит', description: 'П
 
 export default function MediaKitPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-xl">
         <h1 className="mb-4">Медиа-кит</h1>
         <p className="text-muted-foreground mb-8">Материалы для журналистов, блогеров и партнёров.</p>

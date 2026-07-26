@@ -56,7 +56,7 @@ export default function PominkiPage() {
   const totalMin = POMINKI_MENU.reduce((acc, s) => acc + s.items.length, 0);
 
   return (
-    <main className="pt-24 pb-20" data-hide-newsletter="true">
+    <main id="main" className="pt-24 pb-20" data-hide-newsletter="true">
       <div className="container-site max-w-3xl">
         <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
           <Link href="/" className="hover:text-foreground">Главная</Link>

@@ -107,7 +107,7 @@ export default function FAQPage() {
   const allFaqs = [...FAQS_B2C, ...FAQS_B2B];
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <script
           type="application/ld+json"

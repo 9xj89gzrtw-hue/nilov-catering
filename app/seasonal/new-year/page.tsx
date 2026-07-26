@@ -20,7 +20,7 @@ const DISHES = [
 
 export default function NewYearPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Новый год</h1>
         <p className="text-muted-foreground mb-8">

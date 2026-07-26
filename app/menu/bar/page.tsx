@@ -17,7 +17,7 @@ const SERVICES = [
 
 export default function BarPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+    <main id="main" className="pt-24 pb-20"><div className="container-site max-w-2xl">
       <h1 className="mb-2">Бар и mixology</h1>
       <p className="text-muted-foreground mb-8">Бармен-шоу, коктейльная карта, винное сопровождение — добавим стиля вашему событию. Цены ориентировочные.</p>
 

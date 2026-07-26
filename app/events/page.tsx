@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site">
         <div className="text-center mb-8">
           <h1 className="mb-4">Какое у вас событие?</h1>

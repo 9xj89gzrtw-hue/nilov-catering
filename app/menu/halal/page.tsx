@@ -12,7 +12,7 @@ export default function HalalPage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('halal')), []);
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-4xl">
         <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
           <Link href="/" className="hover:text-foreground">Главная</Link>

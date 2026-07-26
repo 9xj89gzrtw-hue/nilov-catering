@@ -84,7 +84,7 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!article) notFound();
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <article className="container-site max-w-2xl">
         <Link href="/blog" className="text-sm text-muted-foreground hover:text-gold-text transition-colors mb-4 inline-block">
           ← Назад в блог

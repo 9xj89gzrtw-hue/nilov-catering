@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Планирование' };
 
 export default function PlanPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-3xl text-center">
+    <main id="main" className="pt-24 pb-20"><div className="container-site max-w-3xl text-center">
       <h1 className="mb-4">Спланировать событие</h1>
       <p className="text-lg text-muted-foreground mb-8 text-balance">Выберите инструмент — и мы поможем.</p>
       <div className="mb-12">

@@ -22,7 +22,7 @@ export default async function DegustatsiyaPage() {
   const reviews = await getReviews();
 
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-4xl">
         {/* Hero section */}
         <section className="mb-16 text-center" aria-labelledby="degust-heading">

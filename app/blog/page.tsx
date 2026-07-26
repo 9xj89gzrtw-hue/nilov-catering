@@ -16,7 +16,7 @@ const ARTICLES = [
 
 export default function BlogPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+    <main id="main" className="pt-24 pb-20"><div className="container-site max-w-2xl">
       <h1 className="mb-2">Блог</h1>
       <p className="text-muted-foreground mb-12">Советы, кейсы и сезонные идеи от команды NiloV. Статьи — демо, реальный контент добавляется с заказчиком.</p>
       <div className="space-y-6">

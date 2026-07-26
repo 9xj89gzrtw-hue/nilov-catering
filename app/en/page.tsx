@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function EnPage() {
   return (
-    <main className="pt-24 pb-20"><div className="container-site max-w-2xl">
+    <main id="main" className="pt-24 pb-20"><div className="container-site max-w-2xl">
       <h1 className="mb-4">NiloV Catering</h1>
       <p className="text-lg text-muted-foreground mb-8">Restaurant-quality catering in St. Petersburg since 2007.</p>
 

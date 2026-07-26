@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function OfferPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-3xl">
         <h1 className="mb-4">Публичная оферта</h1>
         <p className="text-sm text-muted-foreground mb-8">

@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <NavLink href="/admin/reviews">⭐ Отзывы</NavLink>
           <NavLink href="/admin/videos">🎬 Видео</NavLink>
         </nav>
-        <main className="flex-1 p-6">{children}</main>
+        <main id="main" className="flex-1 p-6">{children}</main>
       </div>
     </div>
   );

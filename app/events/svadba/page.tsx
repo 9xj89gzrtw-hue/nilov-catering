@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
+import ShareButton from '@/components/common/ShareButton';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/events/svadba', languages: { 'ru': '/events/svadba', 'en': '/en', 'x-default': '/events/svadba' } },
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SvadbaPage() {
   return (
-    <main className="pt-24 pb-20">
+    <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-5xl">
         <div className="text-center mb-8">
           <h1 className="mb-2">Свадебный кейтеринг</h1>
@@ -18,6 +19,13 @@ export default function SvadbaPage() {
             Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
           </p>
           <p className="text-xs text-muted-foreground">Цены фиксированы по тарифам (₽/гость). Доплата только за индивидуальные позиции (торт с декором, доп. персонал, выезд за КАД). Финальная смета фиксируется в договоре после согласования меню.</p>
+          <div className="mt-4">
+            <ShareButton
+              title="Свадебный кейтеринг — NiloV"
+              text="Посмотри свадебные тарифы и меню — нужно согласовать"
+              label="📤 Отправить ссылку жениху/родным"
+            />
+          </div>
         </div>
 
         {/* Multi-diet callout — для невест с разными диетами среди гостей */}
