@@ -6,6 +6,7 @@ import TrustBar from '@/components/blocks/TrustBar';
 import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
+import WowCase from '@/components/blocks/WowCase';
 import Link from 'next/link';
 import { SITE } from '@/lib/data';
 import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
@@ -51,7 +52,10 @@ export default async function HomePage() {
       {/* 6. RESPONSES — отзывы клиентов */}
       <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
 
-      {/* 7. CTA — одно главное действие */}
+      {/* 7. WOW CASE — кейс месяца */}
+      <WowCase />
+
+      {/* 8. CTA — одно главное действие */}
       <CTASection />
     </main>
   );
