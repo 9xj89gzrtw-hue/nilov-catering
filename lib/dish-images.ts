@@ -51,7 +51,7 @@ export const STATION_OBJECT_POSITION: Record<string, string> = {
   bbq: 'center 50%',
 };
 
-// AI-generated photos — high quality, match each dish description exactly
+
 const AI_BASE = '/images/dishes';
 
 // Специальные изображения для конкретных блюд — W56 AI photos for exact match

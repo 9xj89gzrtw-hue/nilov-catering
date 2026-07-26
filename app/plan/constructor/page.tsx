@@ -175,7 +175,7 @@ function ConstructorServerFallback() {
               </label>
             </div>
             <fieldset className="border border-line rounded p-3">
-              <legend className="text-xs font-medium px-2">🥗 Группы гостей по диетам (заполните при необходимости)</legend>
+              <legend className="text-xs font-medium px-2">Группы гостей по диетам (заполните при необходимости)</legend>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-2">
                 <label className="block">
                   <span className="text-xs text-muted-foreground block mb-1">Всеядные</span>

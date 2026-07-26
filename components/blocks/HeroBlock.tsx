@@ -135,23 +135,23 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             {subtitle || 'Ресторанное качество кейтеринга. От камерного ужина до фестиваля на 800+ гостей (через сеть партнёрских кухонь).'}
           </p>
 
-          {/* Quick price anchor — видно за 10 секунд */}
+          {/* Quick price anchor — кликабельные ссылки */}
           <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{ animationDelay: '0.25s' }}>
-            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+            <Link href="/menu/furshet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Фуршет от 2 450 ₽/гость
-            </span>
-            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+            </Link>
+            <Link href="/menu/banquet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Банкет от 3 950 ₽/гость
-            </span>
-            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
-              🥬 Веган от 2 950 ₽/гость
-            </span>
-            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
-              🕌 Халяль от 2 450 ₽/гость
-            </span>
-            <span className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text">
+            </Link>
+            <Link href="/menu/vegan" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
+              Веган от 2 950 ₽/гость
+            </Link>
+            <Link href="/menu/halal" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
+              Халяль от 2 450 ₽/гость
+            </Link>
+            <Link href="/menu/coffee-break" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
               Кофе-брейк от 390 ₽/гость
-            </span>
+            </Link>
           </div>
 
           {/* Quick format glossary for first-time buyers */}
