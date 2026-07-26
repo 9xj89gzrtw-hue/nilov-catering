@@ -108,7 +108,7 @@ const COFFEE_BREAK_EXTRA: Dish[] = [
 
 // СВАДЬБА (2)
 const WEDDING_EXTRA: Dish[] = [
-  { id: 'wedding-cake', name: 'Свадебный торт', description: 'Индивидуальный от кондитера, 3 яруса. ХЕ=2, БЖУ: белки 4 г / жиры 12 г / углеводы 24 г.', image: '', station: 'desserts', format: ['banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 15000, servingsPerGuest: 1, allergens: ['gluten', 'eggs', 'milk', 'nuts'], dietBadges: [], childFriendly: true },
+  { id: 'wedding-cake', name: 'Свадебный торт', description: 'Индивидуальный от кондитера, 3 яруса. ХЕ=2, БЖУ: белки 4 г / жиры 12 г / углеводы 24 г.', image: '', station: 'desserts', format: ['banket'], tier: ['standard', 'premium', 'luxury'], pricePerGuest: 1500, servingsPerGuest: 1, allergens: ['gluten', 'eggs', 'milk', 'nuts'], dietBadges: [], childFriendly: true },
   { id: 'soup-shooter', name: 'Суп-шутер', description: 'Борщ/окрошка в дегустационном стакане. ХЕ=1, БЖУ: белки 6 г / жиры 4 г / углеводы 12 г.', image: '', station: 'hot', format: ['furshet', 'banket'], tier: ['premium', 'luxury'], pricePerGuest: 180, servingsPerGuest: 1, allergens: ['milk'], dietBadges: [], childFriendly: false },
 ];
 

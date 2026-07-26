@@ -66,14 +66,14 @@ export default function PricingPage() {
 
         {/* Quick navigation to event types — visible in SSR, no JS needed */}
         <nav className="mb-8 flex flex-wrap gap-2" aria-label="Быстрая навигация по типам событий">
-          <Link href="/pricing?event=svadba" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">💍 Свадьба</Link>
+          <Link href="/pricing?event=svadba" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Свадьба</Link>
           <Link href="/pricing?event=korporativ" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">💼 Корпоратив</Link>
           <Link href="/pricing?event=vypusknoy" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🎓 Выпускной</Link>
           <Link href="/pricing?event=coffee-break" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">☕ Кофе-брейк</Link>
-          <Link href="/pricing?event=detskoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🎈 Детское</Link>
-          <Link href="/pricing?event=pominki" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🕯️ Поминки</Link>
+          <Link href="/pricing?event=detskoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Детское</Link>
+          <Link href="/pricing?event=pominki" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Поминки</Link>
           <Link href="/pricing?event=chastnoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🥂 Частное</Link>
-          <Link href="/pricing?event=chef-at-home" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">👨‍🍳 Шеф на дом</Link>
+          <Link href="/pricing?event=chef-at-home" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Шеф на дом</Link>
         </nav>
 
         <TariffOffersSection />
@@ -92,15 +92,17 @@ export default function PricingPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-line"><td className="p-3" rowSpan={4}>💍 Свадьба</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3" rowSpan={4}>Свадьба</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
                 <tr className="border-t border-line"><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">5 470 ₽</td><td className="p-3 text-right">30</td></tr>
                 <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">7 350 ₽</td><td className="p-3 text-right">30</td></tr>
                 <tr className="border-t border-line"><td className="p-3">Максимальный</td><td className="p-3 text-right font-semibold text-gold-text">9 950 ₽</td><td className="p-3 text-right">30</td></tr>
-                <tr className="border-t border-line bg-secondary/30"><td className="p-3">☕ Кофе-брейк</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">390 ₽</td><td className="p-3 text-right">10</td></tr>
-                <tr className="border-t border-line"><td className="p-3" rowSpan={2}>🕯️ Поминки</td><td className="p-3">Базовый</td><td className="p-3 text-right font-semibold text-gold-text">1 800 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line bg-secondary/30"><td className="p-3">Кофе-брейк</td><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">390 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Корпоратив</td><td className="p-3">Фуршет</td><td className="p-3 text-right font-semibold text-gold-text">2 450 ₽</td><td className="p-3 text-right">20</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Корпоратив</td><td className="p-3">Банкет</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3" rowSpan={2}>Поминки</td><td className="p-3">Базовый</td><td className="p-3 text-right font-semibold text-gold-text">1 800 ₽</td><td className="p-3 text-right">10</td></tr>
                 <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">2 500 ₽</td><td className="p-3 text-right">10</td></tr>
-                <tr className="border-t border-line bg-secondary/30"><td className="p-3">🎈 Детское</td><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">1 550 ₽</td><td className="p-3 text-right">10</td></tr>
-                <tr className="border-t border-line"><td className="p-3">👨‍🍳 Шеф на дом</td><td className="p-3">Премиум</td><td className="p-3 text-right font-semibold text-gold-text">5 000 ₽</td><td className="p-3 text-right">6</td></tr>
+                <tr className="border-t border-line bg-secondary/30"><td className="p-3">Детское</td><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">1 550 ₽</td><td className="p-3 text-right">10</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Шеф на дом</td><td className="p-3">Премиум</td><td className="p-3 text-right font-semibold text-gold-text">5 000 ₽</td><td className="p-3 text-right">6</td></tr>
               </tbody>
             </table>
           </div>
