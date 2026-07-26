@@ -4,13 +4,13 @@ import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 
 const CATS = [
-  { title: 'Фуршет', href: '/menu/furshet', items: 'Канапе, тарталетки, мини-бургеры', emoji: '🥪', dishId: 'canape-salmon' },
-  { title: 'Банкет', href: '/menu/banquet', items: 'Закуски, горячее, винная карта', emoji: '🍽️', dishId: 'beef-medallions' },
-  { title: 'Кофе-брейк', href: '/menu/coffee-break', items: 'Выпечка, канапе, кофе, чай', emoji: '☕', dishId: 'macaron-shooter' },
-  { title: 'Детское', href: '/menu/detskoe', items: 'Бутерброды, капкейки, соки', emoji: '🎈', dishId: 'mini-burger' },
-  { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', emoji: '🥬', dishId: 'buddha-bowl' },
-  { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', emoji: '🌾', dishId: 'gluten-free-cake' },
-  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, emoji: '☪️', dishId: 'halal-chicken-shashlik' },
+  { title: 'Фуршет', href: '/menu/furshet', items: 'Канапе, тарталетки, мини-бургеры', dishId: 'canape-salmon' },
+  { title: 'Банкет', href: '/menu/banquet', items: 'Закуски, горячее, винная карта', dishId: 'beef-medallions' },
+  { title: 'Кофе-брейк', href: '/menu/coffee-break', items: 'Выпечка, канапе, кофе, чай', dishId: 'macaron-shooter' },
+  { title: 'Детское', href: '/menu/detskoe', items: 'Бутерброды, капкейки, соки', dishId: 'mini-burger' },
+  { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', dishId: 'buddha-bowl' },
+  { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', dishId: 'gluten-free-cake' },
+  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shashlik' },
 ];
 
 export default function MenuPreview() {
@@ -42,7 +42,7 @@ export default function MenuPreview() {
                     </div>
                   </div>
                 </div>
-                <h3 className="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">{cat.emoji} {cat.title}</h3>
+                <h3 className="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">{cat.title}</h3>
                 <p className="text-[11px] text-muted-foreground text-center mt-0.5">{cat.items}</p>
               </Link>
             );

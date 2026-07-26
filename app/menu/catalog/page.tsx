@@ -216,6 +216,23 @@ export default function CatalogPage() {
           </p>
         </div>
 
+
+        <noscript>
+          <div className="mb-6 p-4 rounded-lg border border-amber-200 bg-amber-50 text-sm text-amber-900">
+            <p className="font-medium mb-2">Фильтры требуют JavaScript. Без JS доступны ссылки по категориям:</p>
+            <div className="flex flex-wrap gap-2">
+              <a href="/menu" className="text-gold-text underline">Все меню</a>
+              <a href="/menu/furshet" className="text-gold-text underline">Фуршет</a>
+              <a href="/menu/banquet" className="text-gold-text underline">Банкет</a>
+              <a href="/menu/coffee-break" className="text-gold-text underline">Кофе-брейк</a>
+              <a href="/menu/vegan" className="text-gold-text underline">Веган</a>
+              <a href="/menu/halal" className="text-gold-text underline">Халяль</a>
+              <a href="/menu/gluten-free" className="text-gold-text underline">Без глютена</a>
+              <a href="/menu/detskoe" className="text-gold-text underline">Детское</a>
+            </div>
+          </div>
+        </noscript>
+
         {/* Grid — visual separation: halal / other / pork — with pagination */}
         {paginatedOther.length > 0 && (
           <div className="mb-8">

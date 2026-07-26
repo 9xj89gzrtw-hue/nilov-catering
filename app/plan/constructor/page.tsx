@@ -130,6 +130,37 @@ function ConstructorServerFallback() {
             с фильтром по диете (веган / халяль / без глютена / без орехов / всеядные). Per-group pricing: вы платите только за блюда своей группы.
           </p>
 
+
+        {/* SSR dish selection — works without JS */}
+        <div className="ml-0 md:ml-11 mb-6 p-4 rounded-lg border border-line bg-card">
+          <h3 className="font-heading text-base font-medium mb-3">Популярные блюда (отметьте нужные)</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+            {[
+              { id: 'canape-salmon', name: 'Канапе с лососем', price: '190 ₽' },
+              { id: 'canape-cheese', name: 'Канапе с сыром', price: '180 ₽' },
+              { id: 'tartlet-chicken', name: 'Тарталетка куриная', price: '160 ₽' },
+              { id: 'mini-burger', name: 'Мини-бургер', price: '250 ₽' },
+              { id: 'yakitori', name: 'Куриные якитори', price: '220 ₽' },
+              { id: 'borscht', name: 'Борщ', price: '280 ₽' },
+              { id: 'beef-medallions', name: 'Медальоны из вырезки', price: '580 ₽' },
+              { id: 'trout', name: 'Форель с картофельным муссом', price: '520 ₽' },
+              { id: 'macaron-shooter', name: 'Макаронс-шутер', price: '220 ₽' },
+              { id: 'brownie-shooter', name: 'Брауни-шутер', price: '190 ₽' },
+              { id: 'cranberry-mors', name: 'Клюквенный морс', price: '100 ₽' },
+              { id: 'seabuckthorn-tea', name: 'Облепиховый чай', price: '120 ₽' },
+            ].map(d => (
+              <label key={d.id} className="flex items-center gap-2 p-2 rounded border border-line hover:border-gold-text transition-colors cursor-pointer">
+                <input type="checkbox" name="dishes" value={d.id} className="accent-gold-text" />
+                <span className="text-sm flex-1">{d.name}</span>
+                <span className="text-xs text-gold-text font-semibold">{d.price}</span>
+              </label>
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">
+            Отметьте блюда — менеджер включит их в предложение. Полный интерактивный конструктор с drag-and-drop доступен при включённом JavaScript.
+          </p>
+        </div>
+
           {/* Static SSR form for guests (no-JS fallback) */}
           <form className="ml-0 md:ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3" action="/api/quote" method="POST">
             <input type="hidden" name="source" value="constructor-ssr" />
