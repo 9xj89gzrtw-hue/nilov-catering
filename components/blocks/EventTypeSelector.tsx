@@ -15,7 +15,7 @@ const EVENTS: { format: Format; href: string; price: string; label: string; desc
   { format: 'banket', href: '/events/yubiley', price: 'от 50 000 ₽', label: 'Юбилеи', desc: 'Золотая свадьба, годовщина — для пожилых гостей' },
   { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детское', desc: 'Меню для детей, аниматоры, шоу' },
   { format: 'banket', href: '/events/pominki', price: 'от 1 800 ₽', label: '🕯 Поминки', desc: 'Поминальный обед: кутья, блины, кисель. Без алкоголя' },
-  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: '☕ Кофе-брейк', desc: 'Конференции, семинары — или доставкой без официантов' },
+  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: 'Кофе-брейк', desc: 'Конференции, семинары — или доставкой без официантов' },
   { format: 'chef-at-home', href: '/events/chef-at-home', price: 'от 2 500 ₽/ч', label: 'Шеф дома', desc: 'Шеф-повар готовит у вас дома' },
 ];
 

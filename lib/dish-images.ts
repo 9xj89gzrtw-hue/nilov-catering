@@ -52,9 +52,8 @@ export const STATION_OBJECT_POSITION: Record<string, string> = {
 };
 
 
-const AI_BASE = '/images/dishes';
+const DISH_IMG_BASE = '/images/dishes';
 
-// Специальные изображения для конкретных блюд — W56 AI photos for exact match
 const DISH_IMAGE_MAP: Record<string, string> = {
   // === Канапе (k1-k9) — real photos still good ===
   'canape-salmon': `${IMG_BASE}/kanape/k1.jpg`,
@@ -67,38 +66,33 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'bruschetta-tomato': `${IMG_BASE}/kanape/k7.jpg`,
   'lavash-roll': `${IMG_BASE}/kanape/k8.jpg`,
 
-  // === Горячее — AI photos for exact match ===
   'mini-burger': `${IMG_BASE}/goryachee/h1.jpg`,
   'beef-stroganoff': `${IMG_BASE}/goryachee/h4.jpg`,
-  'beef-medallions': `${AI_BASE}/beef-medallions.png`,
-  'trout': `${AI_BASE}/trout.png`,
+  'beef-medallions': `${DISH_IMG_BASE}/beef-medallions.png`,
+  'trout': `${DISH_IMG_BASE}/trout.png`,
   'chicken-quinoa': `${IMG_BASE}/goryachee/h7.jpg`,
   'borscht': `${IMG_BASE}/goryachee/h8.jpg`,
   'yakitori': `${IMG_BASE}/goryachee/h2.jpg`,
   'veggie-grill': `${IMG_BASE}/goryachee/h3.jpg`,
-  // AI photos — exact match to dish description
-  'jerk-chicken': `${AI_BASE}/jerk-chicken.png`,
-  'bao-pork': `${AI_BASE}/bao-pork.png`,
-  'bao-duck': `${AI_BASE}/bao-duck.png`,
-  'mushroom-burger': `${AI_BASE}/mushroom-burger.png`,
-  'taco-fish': `${AI_BASE}/taco-fish.png`,
-  'poke-salmon': `${AI_BASE}/poke-salmon.png`,
-  'cauli-steak': `${AI_BASE}/cauli-steak.png`,
-  'buddha-bowl': `${AI_BASE}/buddha-bowl.png`,
+  'jerk-chicken': `${DISH_IMG_BASE}/jerk-chicken.png`,
+  'bao-pork': `${DISH_IMG_BASE}/bao-pork.png`,
+  'bao-duck': `${DISH_IMG_BASE}/bao-duck.png`,
+  'mushroom-burger': `${DISH_IMG_BASE}/mushroom-burger.png`,
+  'taco-fish': `${DISH_IMG_BASE}/taco-fish.png`,
+  'poke-salmon': `${DISH_IMG_BASE}/poke-salmon.png`,
+  'cauli-steak': `${DISH_IMG_BASE}/cauli-steak.png`,
+  'buddha-bowl': `${DISH_IMG_BASE}/buddha-bowl.png`,
 
-  // === Холодные блюда — AI photos ===
-  'burrata-tomatoes': `${AI_BASE}/burrata-tomatoes.png`,
-  'beet-carpaccio': `${AI_BASE}/beet-carpaccio.png`,
-  'meat-platter': `${AI_BASE}/meat-platter.png`,
-  'cheese-platter': `${AI_BASE}/cheese-platter.png`,
+  'burrata-tomatoes': `${DISH_IMG_BASE}/burrata-tomatoes.png`,
+  'beet-carpaccio': `${DISH_IMG_BASE}/beet-carpaccio.png`,
+  'meat-platter': `${DISH_IMG_BASE}/meat-platter.png`,
+  'cheese-platter': `${DISH_IMG_BASE}/cheese-platter.png`,
 
-  // === Десерты — AI photos for exact match ===
-  'macaron-shooter': `${AI_BASE}/macaron-shooter.png`,
-  'choc-mousse': `${AI_BASE}/choc-mousse.png`,
-  'chia-pudding': `${AI_BASE}/chia-pudding.png`,
-  'brownie-shooter': `${AI_BASE}/brownie-shooter.png`,
-  'gluten-free-cake': `${AI_BASE}/gluten-free-cake.png`,
-  // Keep existing photos for dishes without AI versions
+  'macaron-shooter': `${DISH_IMG_BASE}/macaron-shooter.png`,
+  'choc-mousse': `${DISH_IMG_BASE}/choc-mousse.png`,
+  'chia-pudding': `${DISH_IMG_BASE}/chia-pudding.png`,
+  'brownie-shooter': `${DISH_IMG_BASE}/brownie-shooter.png`,
+  'gluten-free-cake': `${DISH_IMG_BASE}/gluten-free-cake.png`,
   'donut-wall': `${IMG_BASE}/deserty/d2.jpg`,
   'cheesecake-shooter': `${IMG_BASE}/deserty/d3.jpg`,
   'cookie-shooter': `${IMG_BASE}/deserty/d7.jpg`,
@@ -109,18 +103,14 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'croissant': `${IMG_BASE}/sezonnye/se6.jpg`,
   'eclair': `${IMG_BASE}/sezonnye/se7.jpg`,
 
-  // === Напитки — AI photos for exact match ===
-  'seabuckthorn-tea': `${AI_BASE}/seabuckthorn-tea.png`,
-  'cranberry-mors': `${AI_BASE}/cranberry-mors.png`,
-  'cedar-raf': `${AI_BASE}/cedar-raf.png`,
-  'lemonade-tarragon': `${AI_BASE}/lemonade-tarragon.png`,
-  // Keep existing for drinks without AI versions
+  'seabuckthorn-tea': `${DISH_IMG_BASE}/seabuckthorn-tea.png`,
+  'cranberry-mors': `${DISH_IMG_BASE}/cranberry-mors.png`,
+  'cedar-raf': `${DISH_IMG_BASE}/cedar-raf.png`,
+  'lemonade-tarragon': `${DISH_IMG_BASE}/lemonade-tarragon.png`,
   'lemonade-berry': `${IMG_BASE}/napitki/n3.jpg`,
   'fresh-juice': `${IMG_BASE}/napitki/n1.jpg`,
 
-  // === Салаты (s1-s9) — AI photos override for key dishes ===
   // Note: meat-platter, cheese-platter, burrata-tomatoes, beet-carpaccio
-  // already mapped above to AI photos — these are removed here to avoid
   // duplicate key override (TS would error on duplicate keys in object literal)
   'antipasto': `${IMG_BASE}/salaty/s4.jpg`,
   'caesar': `${IMG_BASE}/salaty/s5.jpg`,
