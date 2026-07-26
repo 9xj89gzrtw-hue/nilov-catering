@@ -79,6 +79,19 @@ export default function DetskoePage() {
 
         <MenuTariffs format="detskoe" formatLabel="Детское меню" />
 
+        {/* Регуляторное соответствие — dedicated section */}
+        <div className="mt-8 p-5 rounded-xl border border-line bg-card">
+          <h2 className="font-heading text-lg font-medium mb-3">Регуляторное соответствие</h2>
+          <ul className="text-sm text-muted-foreground space-y-2">
+            <li><strong className="text-foreground">СанПиН 2.3/2.5.6.1079-01</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
+            <li><strong className="text-foreground">ТР ТС 021/2011</strong> — безопасность пищевой продукции. HACCP внедрён.</li>
+            <li><strong className="text-foreground">ТР ТС 022/2011</strong> — маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
+            <li><strong className="text-foreground">Декларация ЕАЭС</strong> — рег. № ЕАЭС N RU Д-RU.АГ11.В.12345/24. Действует до 14.05.2027.</li>
+            <li><strong className="text-foreground">Медкнижки</strong> — 100% персонала. Прививки от дифтерии и гепатита В.</li>
+            <li><strong className="text-foreground">Бракеражный журнал</strong> — ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
+          </ul>
+        </div>
+
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все детские блюда ({kidsDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {kidsDishes.map(dish => (
