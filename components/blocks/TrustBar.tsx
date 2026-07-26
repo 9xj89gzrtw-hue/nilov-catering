@@ -34,7 +34,7 @@ export default function TrustBar() {
       <div className="container-site">
         <h2 className="text-center mb-4">Нам доверяют</h2>
         <p className="text-center text-sm text-muted-foreground mb-8">
-          {TRUST_CLIENTS.length} подтверждённых кейсов (из 17 отзывов на /reviews). Конкретные
+          {TRUST_CLIENTS.length} подтверждённых кейсов (из 27 отзывов на /reviews). Конкретные
           имена корпоративных заказчиков раскрываем только по их согласию — пишите на{' '}
           <a href="mailto:b2b@odaeda.ru" className="underline">b2b@odaeda.ru</a> для референсов.
         </p>
@@ -44,7 +44,7 @@ export default function TrustBar() {
 
       <div className="container-site mt-6 text-center">
         <Link href="/reviews" className="text-xs text-gold-text hover:underline">
-          Посмотреть все 17 отзывов с venue, датой и количеством гостей →
+          Посмотреть все 27 отзывов с venue, датой и количеством гостей →
         </Link>
       </div>
     </section>

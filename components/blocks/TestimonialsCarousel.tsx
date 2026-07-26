@@ -29,7 +29,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
           <h2 id="reviews-heading" className="mb-6">Отзывы</h2>
           <p className="text-muted-foreground mb-6">
             Скоро здесь появятся отзывы наших клиентов. А пока —{' '}
-            <Link href="/reviews" className="underline text-gold-text">посмотрите все 17 отзывов →</Link>
+            <Link href="/reviews" className="underline text-gold-text">посмотрите все 27 отзывов →</Link>
           </p>
         </div>
       </section>

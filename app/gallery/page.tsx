@@ -63,3 +63,60 @@ export default function GalleryPage() {
     </main>
   );
 }
+
+        {/* Video section */}
+        <div className="mt-12">
+          <h2 className="font-heading text-2xl font-medium mb-6">Видео с событий</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-xl overflow-hidden border border-line">
+              <video
+                src="/videos/hero/banquet.mp4"
+                poster="/images/gallery/wedding-banquet.jpg"
+                controls
+                playsInline
+                className="w-full aspect-video object-cover"
+                preload="metadata"
+              >
+                <source src="/videos/hero/banquet.webm" type="video/webm" />
+                <source src="/videos/hero/banquet.mp4" type="video/mp4" />
+              </video>
+              <p className="p-3 text-sm text-muted-foreground">Свадебный банкет · сервировка · подача</p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-line">
+              <video
+                src="/videos/gallery/food.webm"
+                controls
+                playsInline
+                className="w-full aspect-video object-cover"
+                preload="metadata"
+              >
+                <source src="/videos/gallery/food.webm" type="video/webm" />
+              </video>
+              <p className="p-3 text-sm text-muted-foreground">Приготовление блюд · live cooking</p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-line">
+              <video
+                src="/videos/gallery/cooking.webm"
+                controls
+                playsInline
+                className="w-full aspect-video object-cover"
+                preload="metadata"
+              >
+                <source src="/videos/gallery/cooking.webm" type="video/webm" />
+              </video>
+              <p className="p-3 text-sm text-muted-foreground">Шеф-повар за работой</p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-line">
+              <video
+                src="/videos/gallery/chef.webm"
+                controls
+                playsInline
+                className="w-full aspect-video object-cover"
+                preload="metadata"
+              >
+                <source src="/videos/gallery/chef.webm" type="video/webm" />
+              </video>
+              <p className="p-3 text-sm text-muted-foreground">Шеф Дмитрий Нилов</p>
+            </div>
+          </div>
+        </div>
