@@ -25,7 +25,8 @@ export function NewsletterBlock() {
       <h3 className="font-heading text-lg font-medium mb-2">Будьте в курсе</h3>
       <p className="text-sm text-muted-foreground mb-4">Сезонные предложения и новые меню — раз в месяц, без спама.</p>
       <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/api/newsletter" method="POST">
-        <input type="email" name="email" placeholder="Ваш email" required className="flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
+        <label htmlFor="newsletter-email" className="sr-only">Email для подписки</label>
+        <input id="newsletter-email" type="email" name="email" placeholder="Ваш email" required className="flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
         <button type="submit" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">Подписаться</button>
       </form>
       <p className="mt-2 text-sm text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>

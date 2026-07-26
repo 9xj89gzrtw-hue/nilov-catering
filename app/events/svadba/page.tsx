@@ -146,6 +146,53 @@ export default function SvadbaPage() {
           <p className="text-[11px] text-muted-foreground mt-2">🕌 <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
           <p className="text-[11px] text-muted-foreground mt-2">🥜 <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">/allergens</a>.</p>
         </div>
+
+        {/* Production rider — тайминги, оборудование, штат */}
+        <div className="mt-12 p-6 rounded-xl border border-line bg-card">
+          <h2 className="font-heading text-2xl font-medium mb-4">Производственный райдер</h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold mb-2 text-gold-text">Тайминги</h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>Заезд команды: за 4 часа до начала (банкет 100+ — за 6 часов)</li>
+                <li>Готовность раздаточных столов: за 30 мин до начала</li>
+                <li>Подача блюд: по согласованному таймингу (±5 мин фуршет, ±10 мин банкет)</li>
+                <li>Демонтаж: после завершения + 30 мин</li>
+                <li>Вывоз оборудования: 1.5 часа</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2 text-gold-text">Штат</h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>1 официант на 10 гостей (банкет), на 15 (фуршет)</li>
+                <li>1 шеф-повар + 2 повара на 50 гостей</li>
+                <li>1 координатор-менеджер на мероприятие</li>
+                <li>Сомелье — опционально (тарифы Расширенный/Максимальный)</li>
+                <li>Бармен — при наличии бара (1 на 30 гостей)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2 text-gold-text">Оборудование (включено)</h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>Столы раздаточные, chafing-dishes, мармиты</li>
+                <li>Посуда, столовые приборы, бокалы (бокалы Riedel — тариф Премиум+)</li>
+                <li>Скатерти, салфетки, текстиль (цвет — по запросу)</li>
+                <li>Освещение раздаточных столов (LED-споты)</li>
+                <li>Музыкальное оборудование — не входит (предоставляется площадкой)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2 text-gold-text">Логистика</h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>Доставка по СПб (в пределах КАД) — включена</li>
+                <li>Доставка за КАД — от 3 000 ₽ (зависит от расстояния)</li>
+                <li>Парковка для транспорта — предоставляется площадкой</li>
+                <li>Разгрузка — 30-45 мин, нужна зона разгрузки</li>
+                <li>Кухня на площадке — не требуется (полуфабрикаты высокой готовности)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );

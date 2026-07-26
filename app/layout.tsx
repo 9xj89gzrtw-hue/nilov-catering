@@ -36,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-screen bg-background text-foreground antialiased">
       <link rel="preconnect" href="https://odaeda.ru" />
       <link rel="preconnect" href="https://yandex.ru" />
+      <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
         <Analytics />
         <OrganizationJsonLd />
         <SkipLink />
