@@ -60,9 +60,6 @@ export default function GalleryPage() {
           onClose={() => setLightboxIndex(null)}
         />
       )}
-    </main>
-  );
-}
 
         {/* Video section */}
         <div className="mt-12">
@@ -120,3 +117,6 @@ export default function GalleryPage() {
             </div>
           </div>
         </div>
+    </main>
+  );
+}

@@ -115,6 +115,7 @@ export default function RecapPage() {
                     muted
                     loop
                     playsInline
+                    controls
                     preload="metadata"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
