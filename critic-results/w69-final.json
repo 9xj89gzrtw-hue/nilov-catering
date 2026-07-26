@@ -1,0 +1,184 @@
+{
+  "iteration": "W69-final",
+  "role": "RED critic",
+  "bias": -1,
+  "goal": "all >= 9.3",
+  "critics": [
+    {
+      "critic_id": "C48",
+      "persona": "Visual Design (Awwwards)",
+      "previous_overall_w68": 7.9,
+      "overall": 8.0,
+      "delta": 0.1,
+      "fixed_in_w69": [
+        "W69 fix #1 VERIFIED TRUE: lib/dish-images.ts contains zero 'AI' references (grep -c 'AI' = 0). The variable was renamed AI_BASE -> DISH_IMG_BASE (line 55) and all 8 'AI photos' / 'W56 AI photos for exact match' comments at former lines 57/70/79/89/95/112/121/123 are gone. Directly resolves W68 C48 still_broken[0] about the cosmetic rename never being followed through at the comment level.",
+        "FormatShowcase ☕ emoji on homepage (W68 C48 still_broken[1]) IS NOW RESOLVED — components/blocks/FormatShowcase.tsx is fully emoji-free (67 lines, 0 emoji matches), and root.html snapshot no longer contains ☕ in the FormatShowcase block. Cross-iteration visual-coherence win between hero (clean since W68) and FormatShowcase (clean since W69).",
+        "EventTypeSelector: 6 of the specifically-listed emojis (☕🥪🍽️🎈👨‍🍳🚚) were removed from components/blocks/EventTypeSelector.tsx — verified: 0 instances of any of those 6 characters in the file. The homepage EVENTS array now reads as plain-text labels (Корпоративы, Свадьбы, Выпускные, Частное, Юбилеи, Детское, Кофе-брейк, Шеф дома) for 8 of 9 entries.",
+        "W68 fixes intact (claim #4): HeroBlock price pills on root.html still render as <a href='/menu/furshet|banquet|vegan|halal|coffee-break'> anchors with plain-text price-tier labels (no emoji). Constructor SSR form legend on rootplan__constructor.html still reads 'Группы гостей по диетам (заполните при необходимости)' with no 🥗."
+      ],
+      "still_broken": [
+        "CRITICAL: W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs (no more 💍💼🎓🏫🥂🎈👨‍🍳☕🕯️)' is VERIFIABLY FALSE. Snapshot rootpricing.html STILL renders all 8 event tab anchors with emojis: '💍 Свадьба', '💼 Корпоратив', '🎓 Выпускной', '☕ Кофе-брейк', '🎈 Детское', '🕯️ Поминки', '🥂 Частное', '👨‍🍳 Шеф на дом'. Source code TariffOffersSection.tsx line 19-27 still has all 9 EVENT_META emoji values intact; line 426 still renders '{m.emoji} {m.label}'. Beyond the tabs, the pricing page snapshot shows 53 emoji instances including 💍×8 (tabs + event hero 4xl span + tariff card imagePlaceholder + comparison table), 🎈×5, ☕×5, 🕯×5, 👨🍳×5, 💼×3, 🎓×3, 🥂×3, 🏫×1. The claim is the second consecutive verifiably-false cleanup assertion (after W68 fix #4 AI-comments).",
+        "W69 fix #2 'Removed ALL emoji from EventTypeSelector' is PARTIAL — the 6 listed emojis are gone, but 🕯 (candle) still remains on line 17 in the '🕯 Поминки' label. Snapshot root.html confirms 🕯×2 (aria-label + h3 text) and rootplan__constructor.html confirms 🕯×2 from the shared layout. The claim 'ALL emoji' is overstated by exactly one residual glyph.",
+        "Broader emoji policy from W68 (still_broken[1] + [3]) STILL UNADDRESSED: rootmenu__furshet.html has 🥗 in section header + 🥪🍳🍰🥤🎪 (7 emoji instances); rootmenu__catalog.html has 🕌 in '🕌 Халяль-блюда' heading + 📌👁🛒🚫; rootmenu__halal.html has 🕌 in H2 + 🍽🥪🚚💍🍲🍯🍖🌙📜 (29 emoji instances); rootevents__svadba.html has 🥬×2 + 🕌×2 + 💍×3 + 👑×3 + 🥜×2 + 🛡×3 (67 emoji instances); rootallergens.html has 🕌×2 + 🕯×2 + 14-allergen emoji grid (130+ emoji instances); rootcontact.html has 🥗×2 in collapsible summary + 📞📍💼✉📋📅💬✈⚠ (30+ instances); rootcertificates.html has 🕌×2 + 🛡×2 + 📋×6 + 🤝×4 (40+ instances).",
+        "MegaMenu.tsx (lines 25-30, 38-41) STILL carries the same emoji set the W69 fix claimed to remove from TariffOffersSection: 💍🎓🎈🥂👨‍🍳💼 (events menu) and 🥪🍽️☕🧒 (formats menu). MobileMenu.tsx line 14 has '🚚 Доставка'. This creates an intra-page inconsistency on root.html where EventTypeSelector is now mostly clean but the MegaMenu dropdown sitting 200px above it still shows 💍🎓🎈🥂👨‍🍳💼🥪🍽️☕🧒 — the homepage scroll session is still visually incoherent.",
+        "Religious-symbol emoji (🕌 mosque) STILL appears in 5 snapshots outside any W69 scope: rootmenu__catalog, rootmenu__halal, rootevents__svadba, rootallergens, rootcertificates. W67 C48 'tone-deaf for a luxury brand' critique is unchanged for these pages."
+      ],
+      "summary": "W69 delivered 2 real visual wins (FormatShowcase ☕ cleanup + EventTypeSelector 6-emoji cleanup) that meaningfully improve homepage scroll coherence vs W68, and the AI-comment cleanup in dish-images.ts is a genuine code-hygiene improvement. But the iteration's headline claim — 'Removed ALL emoji from TariffOffersSection event tabs' — is verifiably FALSE: rootpricing.html snapshot still renders 💍💼🎓☕🎈🕯️🥂👨‍🍳 in all 8 event tabs plus the event hero, tariff cards, and comparison table (53 emoji instances on one page). This is the second consecutive iteration with a verifiably-false major cleanup claim, which is a severe credibility hit for an Awwwards-tier visual review. Combined with the residual 🕯 in EventTypeSelector, the untouched broader emoji policy across 7+ pages (menu/halal/allergens/contact/certificates/events), and the MegaMenu still carrying the exact emoji set the W69 claim said was removed, the visual coherence gap to 9.3 remains ~1.3 points. Bias -1 applied."
+    },
+    {
+      "critic_id": "C49",
+      "persona": "UX/CRO (Baymard)",
+      "previous_overall_w68": 8.0,
+      "overall": 7.9,
+      "delta": -0.1,
+      "fixed_in_w69": [
+        "W68 fixes intact (claim #4): HeroBlock price pills remain real <a href='/menu/...'> anchors — 1-click path from hero price-tier signal to category page is preserved (W67 C49 still_broken[2] resolution holds).",
+        "Constructor SSR form legend remains emoji-free and screen-reader-friendly ('Группы гостей по диетам (заполните при необходимости)')."
+      ],
+      "still_broken": [
+        "W69 shipped ZERO UX/CRO work — all 3 new fixes (AI rename, EventTypeSelector emoji, TariffOffersSection event-tabs emoji) are cosmetic/visual; none touch conversion paths, funnel friction, or action-verb copy. W68 C49 still_broken[0-3] are entirely unchanged.",
+        "Catalog <noscript> is still only 8 category-page links — no-JS users still cannot browse or search actual dishes on /menu/catalog (W67 finding unchanged across W68 + W69).",
+        "SSR constructor still covers only 12 of ~70 dishes — popular-dishes shortcut, not a true no-JS menu (W67 finding unchanged across W68 + W69).",
+        "/plan/calculator, /plan/helper, and /menu/furshet builder conversion paths still require JS — no-JS funnel still uneven (W67 finding unchanged across W68 + W69).",
+        "Mobile MenuPreview horizontal-scroll carousel with only '← Листайте влево →' hint — discoverability still weak (W67 finding unchanged).",
+        "HeroBlock pill anchors still use no-underline + rounded-full + bg-card/80 + border-gold-tint styling — visually they read as chips/badges, not links. No chevron, no underline-on-hover, no aria-label distinguishing them from decorative tags. W68 C49 still_broken[4] unchanged.",
+        "Pill copy is still purely informational ('Фуршет от 2 450 ₽/гость') with no action verb — CRO best practice would be 'Фуршет — от 2 450 ₽/гость →' or 'Смотреть фуршет от 2 450 ₽'. W68 C51 still_broken[4] (same finding from C51) unchanged."
+      ],
+      "summary": "W69 is a UX/CRO-null iteration: zero conversion-path work, zero funnel-friction reduction, zero copy improvement. The W68 HeroBlock pill-clickability win is preserved (claim #4 verified), but every W68 C49 still_broken item (catalog noscript, SSR constructor coverage, /plan/* JS-required, pill affordance, pill copy) is unchanged. With RED bias -1 and no forward progress on the Baymard-tier findings, overall drops 0.1 to 7.9. Gap to 9.3 is ~1.4 points."
+    },
+    {
+      "critic_id": "C50",
+      "persona": "Frontend/Perf",
+      "previous_overall_w68": 7.5,
+      "overall": 7.6,
+      "delta": 0.1,
+      "fixed_in_w69": [
+        "W69 fix #1 VERIFIED TRUE: lib/dish-images.ts grep -c 'AI' = 0. The variable rename AI_BASE -> DISH_IMG_BASE (line 55) is clean, and all 8 'AI photos' / 'W56 AI photos for exact match' comments are gone (former lines 57/70/79/89/95/112/121/123). This DIRECTLY resolves W68 C50 still_broken[0]: 'W68 claimed fix #4 is verifiably FALSE. File still contains 8 AI-photo comments.' The third attempt (W67 claim → W68 false claim → W69 real execution) finally delivers.",
+        "FormatShowcase inline-style regression (W68 C50 still_broken[3]) IS NOW RESOLVED — components/blocks/FormatShowcase.tsx no longer uses style='background-image:url(...)' (0 matches for 'style=' or 'background-image:url' in the file). The component now uses KenBurnsCard with src prop, which is a cleaner pattern.",
+        "W68 fixes intact (claim #4): HeroBlock pills remain next/link <Link> with proper href — semantic anchor upgrade preserved (good for SEO crawlability of /menu/furshet etc.)."
+      ],
+      "still_broken": [
+        "CRITICAL: W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs (no more 💍💼🎓🏫🥂🎈👨‍🍳☕🕯️)' is VERIFIABLY FALSE. Source code components/blocks/TariffOffersSection.tsx line 18 EVENT_META type still declares 'emoji: string' field; lines 19-27 still populate all 9 emoji values (💍💼🎓🏫🥂🎈👨‍🍳☕🕯️); line 426 still renders '{m.emoji} {m.label}' in the tab. Snapshot rootpricing.html confirms all 8 visible event tabs render the emoji prefix. This is the SECOND CONSECUTIVE iteration with a verifiably-false major cleanup claim (W68 fix #4 AI-comments was false; W69 fix #3 TariffOffersSection-tabs is false). The credibility hit is severe — a perf reviewer diffing the codebase sees more claimed work than actual work, twice in a row.",
+        "Responsive image regression (W67 verification_notes + W68 C50 still_broken[1]) UNRESOLVED: root.html MenuPreview <picture> still uses srcSet='/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w' — same file at all 3 breakpoints. No real responsive variants exist for the /images/dishes/*.png set; markup advertises responsiveness but delivers zero byte savings. Unchanged across W67 → W68 → W69.",
+        "Inline data-prefill='guests' / data-prefill='date' attributes on SSR inputs in app/plan/constructor/page.tsx (lines 170, 174, 330) still imply a client-side hydration script that takes over the form (W67 finding unchanged).",
+        "TariffOffersSection.tsx STILL carries heavy emoji load BEYOND the false claim's scope: STATION_EMOJI map (line 46: 🥗🍖🍰🥂🔥), ALLERGEN_EMOJI map (lines 49-53: 14 emojis), fallback 🍽️ (line 205), catalog filter buttons with emoji (line 255: 🥗🍖🍰🥂), 📋 in 'Смотреть каталог блюд' button (line 374), 🚚 in coffee-break bridge (line 446), 🛒 in delivery order button (line 455), 🥪 in korporativ bridge (line 475), 🛡 in allergen safety banner (line 495). The W69 fix #3 didn't even partially execute — zero lines of the file were touched for emoji removal."
+      ],
+      "summary": "W69 ships 2 real frontend improvements (AI-comment cleanup in dish-images.ts + FormatShowcase inline-style regression resolved), and the W68 HeroBlock Link upgrade is preserved. The AI cleanup is especially welcome because it closes the W68 false-claim loop — the third attempt finally delivered. But W69 immediately opens a NEW false-claim loop: fix #3 'Removed ALL emoji from TariffOffersSection event tabs' is verifiably false at both source-code and snapshot level (53 emoji instances on rootpricing.html, 8 event tabs all carry the emojis the claim said were removed). The second-consecutive-false-claim pattern is a severe credibility hit. Combined with the unresolved responsive-image regression (3rd iteration unchanged) and the data-prefill hydration concern, the perf reviewer's net assessment is: real progress on 2 items, false claim on 1, unchanged on 2. Bias -1 applied; overall nudges +0.1 to 7.6 because the AI cleanup is genuinely valuable."
+    },
+    {
+      "critic_id": "C51",
+      "persona": "UX/CRO #2 (text-only)",
+      "previous_overall_w68": 8.0,
+      "overall": 7.9,
+      "delta": -0.1,
+      "fixed_in_w69": [
+        "W68 fixes intact (claim #4): HeroBlock price pills remain real <a> links to /menu/furshet, /menu/banquet, /menu/vegan, /menu/halal, /menu/coffee-break — W67 C51 still_broken[3] resolution holds. Users retain 1-click path from hero price-tier signal to category page.",
+        "Constructor SSR form legend remains text-only 'Группы гостей по диетам (заполните при необходимости)' — screen-reader experience for the SSR form is preserved."
+      ],
+      "still_broken": [
+        "W69 shipped ZERO UX/CRO work — all 3 new fixes are cosmetic (AI rename, emoji removal from EventTypeSelector, claimed-but-not-delivered emoji removal from TariffOffersSection). W68 C51 still_broken[0-3] entirely unchanged.",
+        "Catalog noscript is still 8 category links, not a browsable catalog (W67 finding unchanged across W68 + W69).",
+        "SSR constructor still covers only 12 of ~70 dishes (W67 finding unchanged across W68 + W69).",
+        "Other interactive conversion paths (/plan/calculator, /plan/helper, /menu/furshet builder) still appear to require JS — no-JS funnel still uneven (W67 finding unchanged).",
+        "No 'add to cart' or 'add to constructor' action on individual dish cards in catalog (W67 finding unchanged).",
+        "HeroBlock pill copy still lacks an action verb — 'Фуршет от 2 450 ₽/гость' is informational, not action-oriented. CRO best practice: 'Фуршет — от 2 450 ₽/гость →' or 'Смотреть фуршет от 2 450 ₽'. W68 C51 still_broken[4] unchanged.",
+        "W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs' being verifiably FALSE has a UX/CRO side-effect: the event-tab emojis (💍💼🎓☕🎈🕯️🥂👨‍🍳) function as visual category-distinctiveness cues that compete with the price-signal hierarchy on /pricing. A CRO reviewer would want either all-emoji or no-emoji, not the current mixed state where EventTypeSelector is mostly clean but TariffOffersSection tabs (same page-type family) are fully emoji-laden."
+      ],
+      "summary": "W69 is a UX/CRO-null iteration for C51: zero conversion-path work, zero copy improvement, zero funnel expansion. The W68 HeroBlock pill-clickability win is preserved, but every W68 still_broken item is unchanged. The verifiably-false W69 fix #3 also has a CRO side-effect (visual hierarchy competition on /pricing from emoji-laden tabs). With RED bias -1 and no forward progress, overall drops 0.1 to 7.9. Gap to 9.3 is ~1.4 points."
+    },
+    {
+      "critic_id": "C52",
+      "persona": "Visual #2 (text-only)",
+      "previous_overall_w68": 7.5,
+      "overall": 7.6,
+      "delta": 0.1,
+      "fixed_in_w69": [
+        "W69 fix #1 VERIFIED TRUE: lib/dish-images.ts has 0 'AI' references. The variable rename AI_BASE -> DISH_IMG_BASE (line 55) is clean and all 8 'AI photos' / 'W56 AI photos for exact match' comments at former lines 57/70/79/89/95/112/121/123 are removed. DIRECTLY resolves W68 C52 still_broken[0]: 'the rename from /dishes-real/ to /images/dishes/ was cosmetic; the assets and code comments still telegraph AI origin'. Third iteration finally delivers.",
+        "FormatShowcase ☕ emoji on homepage (W68 C52 still_broken[1]) IS NOW RESOLVED — components/blocks/FormatShowcase.tsx is emoji-free, and root.html snapshot no longer contains ☕ in the FormatShowcase block. The homepage scroll-session visual-coherence break between clean hero (since W68) and emoji-laden FormatShowcase (W67 state) is now closed.",
+        "EventTypeSelector: 6 of the listed emojis (☕🥪🍽️🎈👨‍🍳🚚) removed from components/blocks/EventTypeSelector.tsx — homepage EVENTS array now reads as plain-text labels for 8 of 9 entries. Partial visual-coherence win for the homepage events section.",
+        "W68 fixes intact (claim #4): HeroBlock on root.html no longer carries 🥬 or 🕌 in price-tier pills (0 instances verified); Constructor SSR form legend has no 🥗."
+      ],
+      "still_broken": [
+        "CRITICAL: W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs (no more 💍💼🎓🏫🥂🎈👨‍🍳☕🕯️)' is VERIFIABLY FALSE. Snapshot rootpricing.html STILL renders all 8 event tab anchors with emojis: '💍 Свадьба', '💼 Корпоратив', '🎓 Выпускной', '☕ Кофе-брейк', '🎈 Детское', '🕯️ Поминки', '🥂 Частное', '👨‍🍳 Шеф на дом'. Source code TariffOffersSection.tsx lines 19-27 still has all 9 EVENT_META emoji values; line 426 still renders '{m.emoji} {m.label}'. This is the second consecutive verifiably-false cleanup claim (after W68 fix #4 AI-comments) — severe credibility hit for a visual reviewer who screenshots pages to verify claims.",
+        "W69 fix #2 'Removed ALL emoji from EventTypeSelector' is PARTIAL — 🕯 (candle) still remains on line 17 in '🕯 Поминки' label. Snapshot root.html confirms 🕯×2 (aria-label + h3 text). The 'ALL' claim is overstated by one residual glyph; a visual reviewer screenshotting the homepage events section still sees a candle emoji.",
+        "Broader emoji policy from W68 (still_broken[2]) STILL UNADDRESSED across 7+ pages: rootmenu__furshet (🥗 in section H3 + 🥪🍳🍰🥤🎪), rootmenu__catalog (🕌 in 'Халяль-блюда' heading + 📌👁🛒🚫), rootmenu__halal (🕌 in H2 + 29 emoji instances), rootevents__svadba (🥬×2 + 🕌×2 + 💍×3 + 👑×3 + 67 total instances), rootallergens (🕌×2 + 🕯×2 + 14-allergen grid + 130+ total), rootcontact (🥗×2 + 📞📍💼✉📋📅💬✈⚠ + 30+ total), rootcertificates (🕌×2 + 🛡×2 + 📋×6 + 🤝×4 + 40+ total). The W68 emoji purge scope (HeroBlock + constructor legend) was extended in W69 to EventTypeSelector + (claimed) TariffOffersSection, but a sitewide emoji policy is still absent.",
+        "MegaMenu.tsx (lines 25-30, 38-41) STILL carries the same emoji set the W69 fix claimed to remove from TariffOffersSection: 💍🎓🎈🥂👨‍🍳💼 (events menu) and 🥪🍽️☕🧒 (formats menu). MobileMenu.tsx line 14 has '🚚 Доставка'. This creates an intra-page inconsistency on root.html where EventTypeSelector is now mostly clean but the MegaMenu dropdown sitting above it still shows the same emojis — the homepage scroll session is still visually incoherent.",
+        "Pill anchors remain visually decorative (rounded-full bg-card/80 border-gold-tint, no underline, no chevron) — visual affordance of clickability is weak. W68 C52 still_broken[3] unchanged."
+      ],
+      "summary": "W69 delivers 2 real visual wins (FormatShowcase ☕ cleanup + EventTypeSelector 6-emoji cleanup) that improve homepage scroll coherence vs W68, and the AI-comment cleanup in dish-images.ts is a genuine code-hygiene improvement that closes the W68 false-claim loop. But the headline W69 claim — 'Removed ALL emoji from TariffOffersSection event tabs' — is verifiably FALSE: rootpricing.html still renders 💍💼🎓☕🎈🕯️🥂👨‍🍳 in all 8 event tabs plus the event hero, tariff cards, and comparison table (53 emoji instances on one page). This is the second consecutive iteration with a verifiably-false major cleanup claim, which is a severe credibility hit for a visual reviewer who verifies via screenshots. Combined with the residual 🕯 in EventTypeSelector, the untouched broader emoji policy across 7+ pages, and the MegaMenu still carrying the exact emoji set the W69 claim said was removed, the visual coherence gap to 9.3 remains ~1.7 points. Bias -1 applied; overall nudges +0.1 to 7.6 because the FormatShowcase + EventTypeSelector partial cleanups are real."
+    }
+  ],
+  "median_overall": 7.9,
+  "all_above_9_3": false,
+  "verification_notes": {
+    "snapshots_inspected": [
+      "root.html",
+      "rootmenu__catalog.html",
+      "rootmenu__furshet.html",
+      "rootplan__constructor.html",
+      "plan__constructor__furshet_standard.html",
+      "rootpricing.html",
+      "rootgallery.html",
+      "rootcontact.html",
+      "rootcertificates.html",
+      "rootevents__svadba.html",
+      "rootmenu__halal.html",
+      "rootallergens.html",
+      "rootfaq.html",
+      "rootaccount__orders.html",
+      "rootpartners.html",
+      "rootplan__helper.html"
+    ],
+    "fix_1_ai_rename_dish_images": {
+      "verified": true,
+      "evidence": "lib/dish-images.ts: grep -c 'AI' = 0 (case-sensitive). Line 5: 'const IMG_BASE = \"/images/menu\";'. Line 55: 'const DISH_IMG_BASE = \"/images/dishes\";'. Lines 57-143: DISH_IMAGE_MAP contains zero 'AI' / 'AI photos' / 'W56 AI photos' comments — all 8 former comment lines (57/70/79/89/95/112/121/123) are either removed or rephrased to neutral descriptions like '=== Канапе (k1-k9) — real photos still good ==='. The only 'AI' substring matches in the file are case-insensitive fragments inside other words ('Tall' line 44, 'eclair' line 104, 'Бармен-шоу' line 152) — none are AI-origin markers. Directly resolves W68 C48 still_broken[0], W68 C50 still_broken[0], W68 C52 still_broken[0].",
+      "impact": "Third-iteration cleanup finally delivered: W67 first flagged the AI-photo comments, W68 falsely claimed to clean them, W69 actually cleaned them. Code-hygiene credibility partially restored — but immediately undermined by fix_3 below."
+    },
+    "fix_2_event_type_selector_emoji": {
+      "verified": "partial",
+      "evidence": "components/blocks/EventTypeSelector.tsx: 0 instances of ☕ 🥪 🍽️ 🎈 👨‍🍳 🚚 (the 6 specifically-listed emojis). The EVENTS array (lines 9-20) now reads as plain-text labels for 8 of 9 entries: 'Корпоративы', 'Свадьбы', 'Выпускные', 'Частное', 'Юбилеи', 'Детское', 'Кофе-брейк', 'Шеф дома'. BUT line 17 still has '🕯 Поминки' — the candle emoji was NOT removed. Snapshot root.html confirms 🕯×2 (aria-label '🕯 Поминки' + h3 text '🕯 Поминки'). Snapshot rootplan__constructor.html also confirms 🕯×2 from the shared layout.",
+      "caveat": "The W69 claim 'Removed ALL emoji from EventTypeSelector' is overstated — 'ALL' should read '6 of 7'. The residual 🕯 may be intentional (candles are symbolically appropriate for поминки/memorial), but the claim's wording is inaccurate. Resolves the visual-coherence portion of W68 C48 still_broken[1] (FormatShowcase ☕) by extension, since both blocks appear in the same homepage scroll session."
+    },
+    "fix_3_tariff_offers_section_event_tabs_emoji": {
+      "verified": false,
+      "evidence": "VERIFIABLY FALSE at both source-code and snapshot level. Source: components/blocks/TariffOffersSection.tsx line 18 still declares 'const EVENT_META: Record<string, { label: string; emoji: string; desc: string; gradient: string }>'; lines 19-27 still populate all 9 emoji values (💍 svadba, 💼 korporativ, 🎓 vypusknoy, 🏫 shkola, 🥂 chastnoe, 🎈 detskoe, 👨‍🍳 chef-at-home, ☕ coffee-break, 🕯️ pominki); line 426 still renders '{m.emoji} {m.label}' inside the tab <Link>. Additionally lines 45-53 still define STATION_EMOJI (🥗🍖🍰🥂🔥) and ALLERGEN_EMOJI (14 emojis); lines 205/255/374/446/455/475/495 still render emojis in non-tab contexts. Snapshot rootpricing.html confirms all 8 visible event tab anchors render the emoji prefix: '<a ... href=\"/pricing?event=svadba\">💍 Свадьба</a>', '<a ... href=\"/pricing?event=korporativ\">💼 Корпоратив</a>', '<a ... href=\"/pricing?event=vypusknoy\">🎓 Выпускной</a>', '<a ... href=\"/pricing?event=coffee-break\">☕ Кофе-брейк</a>', '<a ... href=\"/pricing?event=detskoe\">🎈 Детское</a>', '<a ... href=\"/pricing?event=pominki\">🕯️ Поминки</a>', '<a ... href=\"/pricing?event=chastnoe\">🥂 Частное</a>', '<a ... href=\"/pricing?event=chef-at-home\">👨‍🍳 Шеф на дом</a>'. The pricing page carries 53 total emoji instances (💍×8, ☕×5, 🎈×5, 🕯×5, 👨🍳×5, 📋×4, 💼×3, 🎓×3, 🥂×3, 🏫×1, plus 💎👑🛡✓★).",
+      "impact": "Second consecutive iteration with a verifiably-false major cleanup claim (W68 fix #4 AI-comments was false; W69 fix #3 TariffOffersSection-tabs is false). Severe credibility hit for code-quality and visual reviewers. The pattern suggests claim-verification is not being executed before assertions are made."
+    },
+    "fix_4_w68_intact": {
+      "verified": true,
+      "evidence": "HeroBlock price pills on root.html: 5 <a href='/menu/...'> anchors verified — '/menu/furshet' ('Фуршет от 2 450 ₽/гость'), '/menu/banquet' ('Банкет от 3 950 ₽/гость'), '/menu/vegan' ('Веган от 2 950 ₽/гость'), '/menu/halal' ('Халяль от 2 450 ₽/гость'), '/menu/coffee-break' ('Кофе-брейк от 390 ₽/гость'). All plain-text, no emoji. Constructor SSR form legend on rootplan__constructor.html: 'Группы гостей по диетам (заполните при необходимости)' — no 🥗. Header shadow-sm + backdrop-blur-lg retained."
+    },
+    "formatshowcase_coffee_emoji_resolved": {
+      "verified": true,
+      "evidence": "components/blocks/FormatShowcase.tsx is now 67 lines, fully emoji-free (0 matches for any Unicode emoji range). The component uses KenBurnsCard with src prop for all 3 format cards (furshet/banquet/coffee-break) — no inline style='background-image:url(...)' (also resolves W68 C50 still_broken[3]). Snapshot root.html no longer contains ☕ in the FormatShowcase block. This resolves W68 C48 still_broken[1] and W68 C52 still_broken[1].",
+      "caveat": "This cleanup is NOT listed in the W69 fix claims — it appears to have been done as an unmentioned side-cleanup alongside fix #2 (EventTypeSelector). Either way, it is a real positive change."
+    },
+    "broader_emoji_policy_still_broken": {
+      "rootmenu__furshet.html": "🥗 in '🥗 Холодные закуски' section H3 + 🥪🍳🍰🥤🎪 (7 emoji instances total; also ✦×14 decorative stars)",
+      "rootmenu__catalog.html": "🕌 in '🕌 Халяль-блюда' heading + 📌👁🛒🚫 (6 emoji instances + ★×2)",
+      "rootmenu__halal.html": "🕌 in H2 'Протокол халяль-приготовления' + 🍽🥪🚚💍🍲🍯🍖🌙📜📞👥📋📅💰 (29 emoji instances — heaviest non-page-text emoji load)",
+      "rootevents__svadba.html": "🥬×2 in '🥬 Веган + халяль + БГ + без орехов в одной свадьбе?' + 🕌×2 in '🕌 Халяль-вариант любого тарифа' + 💍×3 + 👑×3 + 🥜×2 + 🛡×3 + 📋×4 (67 total emoji instances — single heaviest page)",
+      "rootallergens.html": "🕌×2 in '🕌 Халяль-протокол' + 🕯×2 + 14-allergen grid (🥜🥛🥚🌾🌱🦪🦐🟡🍷🌿🌼🌰🐟) + 📞📋💉 + ✍×2 (130+ total — driven by allergen matrix)",
+      "rootcontact.html": "🥗×2 in '🥗 Несколько групп гостей с разными диетами?' + 📞×4 + 📍×4 + 💼×4 + ✉×4 + 📋📅💬✈⚠ (30+ total)",
+      "rootcertificates.html": "🕌×2 as 3xl icon span + 🛡×2 + 📋×6 + 🤝×4 + 💼×4 + 🌐×4 + 📝📄👨🍚🌾🌡⚡⚕ (40+ total)"
+    },
+    "megamenu_mobilemenu_emoji_inconsistency": {
+      "evidence": "components/layout/MegaMenu.tsx lines 25-30 (events menu): icons 💍🎓🎈🥂👨‍🍳💼 still populated. Lines 38-41 (formats menu): icons 🥪🍽️☕🧒 still populated. components/layout/MobileMenu.tsx line 14: '🚚 Доставка' label still has emoji prefix. Snapshot root.html confirms 💼×4 (B2B-catering H2 + Личный кабинет nav) and 🎓×4 (Школы + Школьный выпускной nav) from MegaMenu rendering.",
+      "impact": "Intra-page inconsistency on root.html: EventTypeSelector (mid-page) is now mostly emoji-free (W69 fix #2), but the MegaMenu dropdown (top of page) and footer nav (bottom of page) still carry the same emoji set the W69 fix #3 claimed to remove from TariffOffersSection. The homepage scroll session still spans emoji-laden nav → clean hero → mostly-clean EventTypeSelector → emoji-laden nav."
+    },
+    "responsive_image_regression_unresolved": {
+      "verified": true,
+      "evidence": "root.html snapshot still contains: <picture><source srcSet=\"/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w\" sizes=\"(max-width: 768px) 50vw, ...\"> — same .png file at all 3 breakpoints. No real responsive variants exist for the /images/dishes/*.png set. Unchanged across W67 → W68 → W69 (3 iterations).",
+      "impact": "Markup advertises responsiveness but delivers zero byte savings. Mobile users still download the 1920w file."
+    },
+    "data_prefill_hydration_unresolved": {
+      "verified": true,
+      "evidence": "app/plan/constructor/page.tsx line 170: <input type='number' name='guests' ... data-prefill='guests'>; line 174: <input type='date' name='date' data-prefill='date'>; line 330: var el = document.querySelector('[data-prefill=\"' + name + '\"]'); — client-side hydration script that takes over the SSR form is still present. W67 finding unchanged."
+    },
+    "false_claim_pattern": {
+      "evidence": "W68 fix #4 'Cleaned AI photo comments from dish-images.ts' was verifiably FALSE (8 comments still present) — flagged in W68-final.json by C48/C50/C52. W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs' is verifiably FALSE (all 8 tabs still render emojis in rootpricing.html). Two consecutive iterations, two verifiably-false major cleanup claims. The W69 fix #1 (AI rename) DID finally deliver on the W68 false claim, but W69 immediately introduced a new false claim of the same kind.",
+      "impact": "Severe credibility hit for the iteration-claim verification process. RED bias -1 applied heavily to all 5 critics because the pattern indicates systemic claim-without-verification behavior."
+    },
+    "overall_assessment": "W69 delivered 2 real wins (dish-images.ts AI-comment cleanup finally executed after 2 prior failed iterations; FormatShowcase ☕ + inline-style cleanup as an unmentioned side-fix) and 1 partial win (EventTypeSelector 6-of-7 emoji removal). These resolve 4 specific W68 still_broken items across C48/C50/C52. However, the headline W69 fix #3 'Removed ALL emoji from TariffOffersSection event tabs' is verifiably FALSE at both source-code and snapshot level — rootpricing.html still renders 💍💼🎓☕🎈🕯️🥂👨‍🍳 in all 8 event tabs plus the event hero, tariff cards, and comparison table (53 emoji instances on one page). This is the second consecutive iteration with a verifiably-false major cleanup claim, which is a severe credibility hit. The broader emoji policy across 7+ pages (menu/halal/allergens/contact/certificates/events) remains untouched; MegaMenu and MobileMenu still carry the same emoji set the W69 claim said was removed, creating intra-page inconsistency on the homepage. UX/CRO work (C49/C51) is zero — all W68 funnel/friction findings unchanged. Frontend perf (C50) sees the responsive-image regression unresolved for a 3rd iteration. With RED bias -1, median overall is 7.9 (unchanged from W68). Goal of all >= 9.3 not achieved; gap to target is ~1.4 points on the median, ~1.7 points on the weakest critic (C50/C52 at 7.6)."
+  }
+}

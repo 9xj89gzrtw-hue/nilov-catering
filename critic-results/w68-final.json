@@ -1,0 +1,166 @@
+{
+  "iteration": "W68-final",
+  "role": "RED critic",
+  "bias": -1,
+  "goal": "all >= 9.3",
+  "critics": [
+    {
+      "critic_id": "C48",
+      "persona": "Visual Design (Awwwards)",
+      "previous_overall_w67": 8.3,
+      "overall": 7.9,
+      "delta": -0.4,
+      "fixed_in_w68": [
+        "HeroBlock price pills on root.html no longer carry emojis — verified: 0 instances of 🥬 or 🕌 in root.html snapshot; all 5 pills render as plain-text anchors ('Фуршет от 2 450 ₽/гость' etc.) without decorative glyphs",
+        "Constructor SSR form legend in rootplan__constructor.html no longer carries 🥗 — now reads 'Группы гостей по диетам (заполните при необходимости)'",
+        "Header retains shadow-sm + backdrop-blur-lg + border-line/60 (verified in Header.tsx line 13)"
+      ],
+      "still_broken": [
+        "W68 claimed fix #4 'Cleaned AI photo comments from dish-images.ts' is FALSE — 8 instances of 'AI photos' / 'AI-generated photos' / 'W56 AI photos for exact match' remain in lib/dish-images.ts at lines 57, 70, 79, 89, 95, 112, 121, 123; the cosmetic rename from W67 was never followed through at the comment level",
+        "Emoji cleanup was scoped to HeroBlock pills + constructor legend only — broader site still polluted: rootmenu__furshet.html has 🥗 in '🥗 Холодные закуски' section header; rootmenu__catalog.html has 🕌 in '🕌 Халяль-блюда' heading; rootmenu__halal.html has 🕌 in '🕌 Протокол халяль-приготовления' page H2; rootevents__svadba.html has 🥬 in '🥬 Веган + халяль + БГ + без орехов в одной свадьбе?' heading AND 🕌 in '🕌 Халяль-вариант любого тарифа' note; rootallergens.html has 🕌 in '🕌 Халяль-протокол'; rootcontact.html has 🥗 in '🥗 Несколько групп гостей с разными диетами?' collapsible summary; rootcertificates.html has 🕌 as a 3xl icon span",
+        "FormatShowcase ☕ emoji on homepage (called out in W67 C48 still_broken[1]) was NOT addressed in W68 — same homepage, same scroll session, still inconsistent visual language",
+        "Religious-symbol emoji (🕌 mosque) still appears in 5 snapshots outside HeroBlock — the W67 'tone-deaf for a luxury brand' critique is only partially resolved (hero cleared, but halal menu, allergens, certificates, events pages still show it)"
+      ],
+      "summary": "W68 successfully removed the two most brand-damaging emojis from the homepage hero (🥬 + 🕌) and the constructor legend 🥗 — these directly answered W67's C48 findings. But the same iteration claimed to clean AI-photo comments from dish-images.ts and that claim is verifiably false (8 comments still present). The emoji purge also stayed scoped to two specific W67 callouts — FormatShowcase ☕ on the homepage and 🕌 icons on halal/allergens/certificates/events pages remain. Awwwards-tier visual coherence requires a sitewide emoji policy, not two targeted substitutions. Bias -1 applied."
+    },
+    {
+      "critic_id": "C49",
+      "persona": "UX/CRO (Baymard)",
+      "previous_overall_w67": 8.3,
+      "overall": 8.0,
+      "delta": -0.3,
+      "fixed_in_w68": [
+        "HeroBlock price pills are now real <a href='/menu/furshet'>, /menu/banquet, /menu/vegan, /menu/halal, /menu/coffee-break> anchors — verified in root.html snapshot (5 anchor tags with href to category pages, each containing price-tier text). Directly resolves W67 C49 still_broken[2]: 'pills are non-clickable spans (not <a> or <button>)'. Users can now act on a price signal in 1 click from the hero.",
+        "Constructor SSR form legend is now emoji-free and reads cleanly as 'Группы гостей по диетам (заполните при необходимости)'"
+      ],
+      "still_broken": [
+        "Catalog <noscript> is still only 8 category-page links — no-JS users still cannot browse or search actual dishes on /menu/catalog (W67 finding unchanged)",
+        "SSR constructor still covers only 12 of ~70 dishes — popular-dishes shortcut, not a true no-JS menu (W67 finding unchanged)",
+        "/plan/calculator, /plan/helper, and /menu/furshet builder conversion paths still appear to require JS — no-JS funnel still uneven (W67 finding unchanged)",
+        "Mobile MenuPreview horizontal-scroll carousel with only '← Листайте влево →' hint — discoverability still weak (W67 finding unchanged)",
+        "Pill anchors use no-underline + hover:bg-gold-tint/20 + rounded-full styling — visually they read as chips/badges, not links; users on assistive tech or with low digital literacy may not realize they are clickable (no underline, no chevron icon, no aria-label distinguishing them from decorative tags)"
+      ],
+      "summary": "Making the HeroBlock price pills clickable is a real Baymard-tier micro-conversion win — it eliminates a hero-section dead-end where users saw price tiers but had no immediate path to act. But this is the only conversion-path fix in W68; the broader no-JS funnel gaps from W67 (catalog noscript is just links, SSR constructor covers 12 dishes, /plan/calculator still requires JS) are untouched. The pill styling (rounded-full bg-card/80 border-gold-tint, no underline) is also ambiguous about clickability — a CRO reviewer would want either an explicit chevron icon or underline-on-hover. Net: small positive delta from W67, but with bias -1 the overall lands at 8.0."
+    },
+    {
+      "critic_id": "C50",
+      "persona": "Frontend/Perf",
+      "previous_overall_w67": 8.2,
+      "overall": 7.5,
+      "delta": -0.7,
+      "fixed_in_w68": [
+        "Constructor SSR form legend emoji removed — minor source-cleanliness improvement in app/plan/constructor/page.tsx line 178",
+        "HeroBlock pills converted from <span> to next/link <Link> with proper href attribute — semantic upgrade from decorative tag to navigable anchor (good for SEO crawlability of /menu/furshet etc.)"
+      ],
+      "still_broken": [
+        "CRITICAL: W68 claimed fix #4 'Cleaned AI photo comments from dish-images.ts' is verifiably FALSE. File still contains 8 'AI photos' / 'W56 AI photos for exact match' comments at lines 57, 70, 79, 89, 95, 112, 121, 123. This is the second iteration in a row (W67 verification_notes also flagged this) where the AI-photo comment cleanup was claimed but not executed. The code-level AI-origin marker remains in source, undermining the W67 URL rename from /dishes-real/ → /images/dishes/.",
+        "Responsive image regression from W67 verification_notes.responsive_image_regression is UNRESOLVED — root.html MenuPreview <picture> still uses '/images/dishes/beef-medallions.png 480w, 768w, 1920w' (same file at all 3 breakpoints). No real responsive variants exist for the renamed /images/dishes/*.png set; the markup advertises responsiveness but delivers none of the byte savings.",
+        "Header 'shadow-sm for visual depth' (W68 fix #5) was ALREADY present in W67 (Header.tsx line 13: '... bg-background/90 backdrop-blur-lg shadow-sm'). W67-final.json fix_2_header_cleanup explicitly verified shadow-sm. W68 fix #5 is a redundant re-claim of an already-shipped change.",
+        "FormatShowcase still uses inline style='background-image:url(...)' instead of Tailwind bg-[url(...)] class (W67 finding unchanged)",
+        "Inline data-prefill='guests' / data-prefill='date' attributes on SSR inputs still imply a client-side hydration script that may take over the form (W67 finding unchanged)"
+      ],
+      "summary": "Frontend-wise, W68 is the weakest iteration of the last 3: it ships a real semantic upgrade (span → next/link in HeroBlock) and removes one emoji from one legend, but it (a) falsely claims to have cleaned AI-photo comments that are still verifiably present in 8 places, (b) re-claims a shadow-sm header change that was already shipped in W67, and (c) leaves the responsive-image regression from W67 unresolved. A perf reviewer who diffs the codebase sees more claimed work than actual work. Bias -1 applied heavily."
+    },
+    {
+      "critic_id": "C51",
+      "persona": "UX/CRO #2 (text-only)",
+      "previous_overall_w67": 8.2,
+      "overall": 8.0,
+      "delta": -0.2,
+      "fixed_in_w68": [
+        "HeroBlock price pills ('Фуршет от 2 450 ₽/гость' etc.) are now real <a> links to /menu/furshet, /menu/banquet, /menu/vegan, /menu/halal, /menu/coffee-break — directly resolves W67 C51 still_broken[3]: 'pills are static spans, not links — users cannot act on the price-tier signal without scrolling to find a CTA'",
+        "Constructor SSR form legend is now text-only 'Группы гостей по диетам (заполните при необходимости)' — improves screen-reader experience for the new SSR form"
+      ],
+      "still_broken": [
+        "Catalog noscript is still 8 category links, not a browsable catalog (W67 finding unchanged)",
+        "SSR constructor still covers only 12 of ~70 dishes (W67 finding unchanged)",
+        "Other interactive conversion paths (/plan/calculator, /plan/helper, /menu/furshet builder) still appear to require JS — no-JS funnel still uneven (W67 finding unchanged)",
+        "No 'add to cart' or 'add to constructor' action on individual dish cards in catalog (W67 finding unchanged)",
+        "HeroBlock pills now clickable, but pill copy is purely informational ('Фуршет от 2 450 ₽/гость') with no action verb — users may not realize these are links vs. decorative price tags. CRO best practice would be 'Фуршет — от 2 450 ₽/гость →' or 'Смотреть фуршет от 2 450 ₽' to telegraph the action."
+      ],
+      "summary": "The HeroBlock pill → <Link> conversion is exactly the W67 C51 finding addressed, and it is a real UX improvement — users now have a 1-click path from hero price-tier signal to category page. But W68 ships only this one conversion-path fix; the broader no-JS funnel gaps from W67 (catalog noscript as link list, SSR constructor covering 12 dishes, /plan/calculator still JS-required) remain. Pill copy also lacks an action verb, slightly weakening the CTA strength. With bias -1, overall lands at 8.0."
+    },
+    {
+      "critic_id": "C52",
+      "persona": "Visual #2 (text-only)",
+      "previous_overall_w67": 7.8,
+      "overall": 7.5,
+      "delta": -0.3,
+      "fixed_in_w68": [
+        "HeroBlock on root.html no longer carries 🥬 (vegetarian) or 🕌 (mosque) emojis in the price-tier pills — verified: 0 instances of either emoji in root.html. This directly resolves W67 C52 still_broken[0] about 'religious symbol emoji on a homepage hero is brand-damaging for a premium catering service'.",
+        "Constructor SSR form legend no longer has 🥗 — W67 C52 still_broken[3] resolved.",
+        "Header shadow-sm + backdrop-blur-lg retained (was already present in W67; W68 fix #5 is essentially a re-verification, not new visual work)"
+      ],
+      "still_broken": [
+        "W68 claimed fix #4 'Cleaned AI photo comments from dish-images.ts' is FALSE — 8 'AI photos' comments remain at lines 57, 70, 79, 89, 95, 112, 121, 123 of lib/dish-images.ts. W67 C52 still_broken[4] explicitly called this out: 'the rename from /dishes-real/ to /images/dishes/ was cosmetic; the assets and code comments still telegraph AI origin'. W68 claimed to fix this and did not.",
+        "FormatShowcase ☕ emoji on homepage (W67 C52 still_broken[1]) NOT addressed in W68 — same homepage, still inconsistent visual language within one scroll session.",
+        "Other pages still carry heavy emoji load: rootmenu__furshet.html has 🥗 in section header; rootmenu__catalog.html has 🕌; rootmenu__halal.html has 🕌; rootevents__svadba.html has 🥬 + 🕌; rootallergens.html has 🕌; rootcontact.html has 🥗; rootcertificates.html has 🕌. The W68 emoji purge was scoped to exactly 2 callouts (HeroBlock + constructor legend), not a sitewide policy.",
+        "Pill anchors are now links but visually still look like decorative price chips (rounded-full bg-card/80 border border-gold-tint, no underline, no chevron) — visual affordance of clickability is weak; users may miss that they are interactive"
+      ],
+      "summary": "Removing 🥬 and 🕌 from the homepage hero is a real visual win and directly answers the most brand-damaging W67 C52 finding (mosque emoji on luxury catering hero). But the same iteration that claimed to also clean AI-photo comments from source code did not do so — the cosmetic URL rename from W67 remains cosmetically renamed, with code comments still telegraphing AI origin. The emoji purge also stayed scoped to 2 callouts: FormatShowcase ☕ on the homepage, halal-page 🕌, allergens-page 🕌, certificates-page 🕌 icon, contact-page 🥗, and furshet-menu 🥗 all remain. A visual reviewer screenshotting root.html no longer sees emoji in the first fold — but scrolling to FormatShowcase still shows ☕, and visiting any halal/allergens/certificates/events page still shows religious-symbol emoji. With bias -1, overall lands at 7.5."
+    }
+  ],
+  "median_overall": 7.9,
+  "all_above_9_3": false,
+  "verification_notes": {
+    "snapshots_inspected": [
+      "root.html",
+      "rootmenu__catalog.html",
+      "rootmenu__furshet.html",
+      "rootplan__constructor.html",
+      "plan__constructor__furshet_standard.html",
+      "rootpricing.html",
+      "rootgallery.html",
+      "rootcontact.html",
+      "rootcertificates.html",
+      "rootevents__svadba.html",
+      "rootmenu__halal.html",
+      "rootallergens.html",
+      "rootfaq.html",
+      "rootaccount__orders.html",
+      "rootpartners.html",
+      "rootplan__helper.html"
+    ],
+    "fix_1_heroblock_pills_to_link": {
+      "verified": true,
+      "evidence": "components/blocks/HeroBlock.tsx lines 140, 143, 146, 149, 152: all 5 price pills are <Link href='/menu/furshet'> / '/menu/banquet' / '/menu/vegan' / '/menu/halal' / '/menu/coffee-break'> with className 'rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline'. Snapshot root.html verified via Python regex: 5 <a href='/menu/...'> tags with price text inside ('Фуршет от 2 450 ₽/гость', 'Банкет от 3 950 ₽/гость', 'Веган от 2 950 ₽/гость', 'Халяль от 2 450 ₽/гость', 'Кофе-брейк от 390 ₽/гость'). Directly resolves W67 C49 still_broken[2] and W67 C51 still_broken[3]."
+    },
+    "fix_2_heroblock_emoji_removed": {
+      "verified": true,
+      "evidence": "grep -c '🥬' root.html = 0; grep -c '🕌' root.html = 0. HeroBlock pills render as plain-text anchors with no emoji prefix. Directly resolves W67 C48 still_broken[0] and W67 C52 still_broken[0].",
+      "caveat": "Other pages still carry these emojis: rootmenu__catalog.html (🕌 ×1), rootmenu__halal.html (🕌 ×1), rootevents__svadba.html (🥬 ×2, 🕌 ×2), rootallergens.html (🕌 ×2), rootcertificates.html (🕌 ×2). The W68 fix was scoped to HeroBlock only."
+    },
+    "fix_3_constructor_legend_emoji_removed": {
+      "verified": true,
+      "evidence": "app/plan/constructor/page.tsx line 178: <legend className=\"text-xs font-medium px-2\">Группы гостей по диетам (заполните при необходимости)</legend> — no 🥗 emoji. Snapshot rootplan__constructor.html verified: 0 instances of 🥗. Directly resolves W67 C48 still_broken[3], W67 C50 still_broken[2], W67 C52 still_broken[3]."
+    },
+    "fix_4_ai_photo_comments_cleaned": {
+      "verified": false,
+      "evidence": "lib/dish-images.ts STILL contains 8 'AI photo' comments at lines 57 (// Специальные изображения для конкретных блюд — W56 AI photos for exact match), 70 (// === Горячее — AI photos for exact match ===), 79 (// AI photos — exact match to dish description), 89 (// === Холодные блюда — AI photos ===), 95 (// === Десерты — AI photos for exact match ===), 112 (// === Напитки — AI photos for exact match ===), 121 (// === Салаты (s1-s9) — AI photos override for key dishes ===), 123 (// already mapped above to AI photos — these are removed here to avoid). W68 fix #4 claim is FALSE. W67 C48 still_broken[4], W67 C50 still_broken[3], W67 C52 still_broken[4] all explicitly called this out — none resolved.",
+      "impact": "Second iteration in a row claiming this cleanup; neither W67 nor W68 actually executed it. Credibility hit for code-quality critic."
+    },
+    "fix_5_header_shadow_sm": {
+      "verified": true,
+      "evidence": "components/layout/Header.tsx line 13: className=\"fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-background/90 backdrop-blur-lg shadow-sm\"",
+      "caveat": "REDUNDANT CLAIM: shadow-sm was already present in W67 (W67-final.json fix_2_header_cleanup verified the exact same className string). W68 fix #5 is a re-verification of already-shipped work, not new visual depth. No diff between W67 and W68 Header.tsx for this attribute."
+    },
+    "remaining_emoji_locations_outside_w68_scope": {
+      "rootmenu__furshet.html": "🥗 in '🥗 Холодные закуски' section H3",
+      "rootmenu__catalog.html": "🕌 in '🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)' heading",
+      "rootmenu__halal.html": "🕌 in '🕌 Протокол халяль-приготовления' page H2",
+      "rootevents__svadba.html": "🥬 in '🥬 Веган + халяль + БГ + без орехов в одной свадьбе?' H2 (×2: SSR + RSC payload); 🕌 in '🕌 Халяль-вариант любого тарифа' note (×2: SSR + RSC payload)",
+      "rootallergens.html": "🕌 in '🕌 Халяль-протокол (раздельное оборудование)' H2 (×2: SSR + RSC payload)",
+      "rootcontact.html": "🥗 in '🥗 Несколько групп гостей с разными диетами?' collapsible summary (×2: SSR + RSC payload)",
+      "rootcertificates.html": "🕌 as 3xl icon span (aria-hidden) in card layout (×2: SSR + RSC payload)"
+    },
+    "formatshowcase_coffee_emoji_unresolved": {
+      "verified": true,
+      "evidence": "W67 C48 still_broken[1] and W67 C52 still_broken[1] both flagged ☕ emoji in FormatShowcase 'Кофе-брейк' card aria-label AND h3 on the homepage. W68 did not address this — same homepage scroll session still has emoji in FormatShowcase block. Visual coherence between hero (now clean) and FormatShowcase (still emoji) remains broken."
+    },
+    "responsive_image_regression_unresolved": {
+      "verified": true,
+      "evidence": "W67 verification_notes.responsive_image_regression flagged /images/dishes/*.png used at 480w/768w/1920w breakpoints with same file. W68 did not generate real responsive variants. Issue persists."
+    },
+    "overall_assessment": "W68 successfully delivered 3 of 5 claimed fixes (HeroBlock pills → Link, HeroBlock emoji removed, Constructor legend emoji removed) — these directly resolved 6 specific W67 still_broken items across C48/C49/C50/C51/C52. However: (a) fix #4 'AI photo comments cleaned' is verifiably FALSE (8 comments still in dish-images.ts), (b) fix #5 'Header shadow-sm' is a redundant re-claim of W67 work, (c) FormatShowcase ☕ emoji on homepage is still unresolved, (d) broader emoji policy across halal/allergens/certificates/events/contact/menu pages remains incoherent. Net delta vs W67 is small positive on UX/CRO (pills clickable) and small negative on Frontend (false AI-comment claim + redundant shadow-sm claim). With RED bias -1, median overall drops to 7.9 (from W67 median 8.2). Goal of all ≥9.3 not achieved; gap to target is ~1.4 points on the median."
+  }
+}
