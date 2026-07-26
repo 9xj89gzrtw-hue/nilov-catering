@@ -276,7 +276,7 @@ export default function CertificatesPage() {
           <Link href="/partners" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
             <h3 className="font-heading text-base font-medium mb-1">🌐 Партнёрская сеть</h3>
             <p className="text-sm text-muted-foreground">
-              Сертифицированные кухни-партнёры для событий 500+ гостей. Аудит: медкнижки, ХАССП, страхование ГО.
+              Сертифицированные кухни для событий 500+ гостей. Аудит: медкнижки, ХАССП, страхование ГО.
             </p>
             <p className="text-xs text-gold-text font-semibold mt-2">Смотреть партнёров →</p>
           </Link>
