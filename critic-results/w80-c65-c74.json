@@ -1,0 +1,962 @@
+{
+  "evaluation_id": "w80-c65-c74",
+  "role": "adversarial_red_critic",
+  "bias": -1,
+  "snapshots_evaluated": 55,
+  "snapshots_dir": "/home/z/my-project/nilov-catering/snapshots-js/",
+  "critics": [
+    {
+      "id": "C65",
+      "persona": "Татьяна, 30, невеста. Свадьба 40 чел, бюджет 200к. Хочет: фото блюд, конструктор меню, отправить ссылку жениху, PDF-смета.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='217'>Свадебный кейтеринг</evidence> — H1 есть, тарифы Эконом/Стандарт/Расширенный/Максимальный описаны, но на странице всего 4 фото-обложки тарифов, реальных фото блюд свадебного меню 0.",
+            "<evidence file='rootevents__svadba.html' line='222'>🥬 Веган + халяль + БГ + без орехов в одной свадьбе?</evidence> — emoji в H2, выглядит как маркетинговый кликбейт, а не информация."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootplan__constructor.html' line='350'>form class=\"ml-0 md:ml-11 mt-4 p-4 rounded-lg border border-line bg-card space-y-3\" action=\"/api/quote\" method=\"POST\"</evidence> — форма постит в /api/quote (JSON-эндпоинт). Невеста не получит «смету на экране», только orderId и звонок через 15 мин.",
+            "<evidence file='rootplan__constructor.html' line='437'>Заполняете имя + телефон — заявка уходит на info@odaeda.ru. Получаете orderId и перезвон в течение 15 минут.</evidence> — никакого саммари или PDF на экране."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 3,
+          "evidence": [
+            "На rootevents__svadba.html слово «PDF» не встречается ни разу. PDF-смета как самостоятельный артефакт отсутствует на свадебной странице.",
+            "<evidence file='rootcertificates.html' line='419'>Скачать шаблон NDA напрямую: см. раздел «Шаблоны документов» ниже.</evidence> — есть только NDA/SLA/договор как шаблоны, реальной сметы на 40 чел PDF нет."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='212'><main class=\"pt-24 pb-20\"></evidence> — у <main> нет id=\"main\", skip-link (href=\"#main\") на этой странице НЕ сработает.",
+            "<evidence file='rootevents__svadba.html' line='439'><h3 class=\"font-medium text-sm mb-2\">🟢 Эконом (3 950 ₽)</h3></evidence> — emoji-маркер в заголовке читается скринридером как «зелёный круг»."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='271'><img src=\"/images/gallery/furshet-menu.jpg\" alt=\"Свадьба · Эконом\" loading=\"lazy\" decoding=\"async\" class=\"absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700\" style=\"object-position:center 40%\"/></evidence> — нет width/height, нет srcset, нет <picture>; 4 фото грузятся полным разрешением.",
+            "На странице 4 картинки, все JPG без AVIF/WebP-фолла — на 4G будет видимый CLS."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='46'><link rel=\"canonical\" href=\"https://odaeda.ru/events/svadba\"/></evidence> — canonical корректный.",
+            "JSON-LD BreadcrumbList + LocalBusiness + Service присутствуют (3 блока). HREFLANG отсутствует несмотря на EN-переключатель."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='488'><h2 class=\"font-heading text-2xl font-medium mb-4\">Производственный райдер</h2></evidence> — детальный райдер с таймингами и штатом повышает доверие.",
+            "AggregateRating 4.8 на 17 отзывов — отзывов мало для свадебной ниши, доверие среднее."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "root.mobile.html существует, но свадебной мобильной версии в snapshots-js нет (отсутствует rootevents__svadba.mobile.html).",
+            "Tailwind-классы sm:grid-cols-2 lg:grid-cols-4 на свадебной странице адаптивны, но без srcset фото грузятся тяжело на 4G."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='258'><h3 class=\"font-heading text-lg font-semibold\">Эконом</h3></evidence> — Cormorant Garamond + Inter — типографика элегантная.",
+            "4 обложки тарифов вместо фото реальных свадебных блюд — визуально скудно для невесты, ищущей вдохновение."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 3,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='217'><h1 class=\"mb-2\">Свадебный кейтеринг</h1></evidence> — НЕТ кнопки «Отправить ссылку жениху». Эта кнопка есть только на странице поминок: <evidence file='rootevents__pominki.html' line='221'>📤 Отправить ссылку родным (WhatsApp / Telegram / Email)</evidence> — асимметрия фич: для поминок есть share, для свадьбы — нет.",
+            "PDF-смету нельзя сгенерить самой. Конструктор не показывает стоимость на экране — только отправку заявки."
+          ]
+        }
+      ],
+      "overall": 5.0
+    },
+    {
+      "id": "C66",
+      "persona": "Михаил, 45, CEO IT-компании. Корпоратив 200 чел × 2 дня. Хочет: SLA, ЭДО, NDA, PDF-договор, историю заказов, быстрый расчёт.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='435'>🛡 SLA в договоре (B2B, события от 30 гостей):</evidence> — SLA с штрафами 1%/мин до 30% описан детально.",
+            "<evidence file='rootevents__korporativ.html' line='418'>Договор, счёт, акт, счёт-фактура, ЭДО (Диадок, СБИС), чек по 54-ФЗ</evidence> — ЭДО упоминается."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootaccount__orders.html' line='456'><a href=\"/api/templates/dogovor\" download=\"nilov-dogovor-template.pdf\" class=\"block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all\"></evidence> — шаблон договора качается напрямую.",
+            "<evidence file='rootaccount__orders.html' line='278'>mailto:info@odaeda.ru?subject=Запрос%20документа%3A%20%D0%A1%D1%87%D1%91%D1%82%20(NLV-2025-0421)</evidence> — но «Счёт», «Акт», «Счёт-фактура» по прошлым заказам доступны только через email-запрос — НЕ self-service."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootcertificates.html' line='456'><a href=\"/api/templates/dogovor\" download=\"nilov-dogovor-template.pdf\"></evidence>, <evidence file='rootcertificates.html' line='466'><a href=\"/api/templates/nda\" download=\"nilov-nda-template.pdf\"></evidence>, <evidence file='rootcertificates.html' line='476'><a href=\"/api/templates/sla\" download=\"nilov-sla-template.pdf\"></evidence> — три шаблона PDF качаются напрямую.",
+            "Реальные счета/акты по исполненным заказам — только mailto. Это НЕ приемлемо для CEO IT-компании, который хочет всё через ЭДО."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='414'><h2 class=\"font-heading text-xl font-medium mb-3\">💼 Работаем с юридическими лицами</h2></evidence> — emoji в H2.",
+            "<main> на rootevents__korporativ.html без id=\"main\" — skip-link сломан."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 5,
+          "evidence": [
+            "Только 4 изображения на странице, все <img> без width/height/srcset — полная загрузка JPG.",
+            "JSON-LD LocalBusiness инлайн в <head> — большой блок, замедляет FCP."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='46'><link rel=\"canonical\" href=\"https://odaeda.ru/events/korporativ\"/></evidence>",
+            "BreadcrumbList JSON-LD присутствует. HREFLANG отсутствует."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='437'>✓ Доставка: точно в согласованное окно — ±15 минут для кофе-брейков и конференций, ±30 минут для банкетов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа)</evidence> — жёсткий SLA с цифрами.",
+            "<evidence file='rootevents__korporativ.html' line='440'>✓ Страхование ГО: 5 000 000 ₽ базовый, до 30 000 000 ₽ для контрактов свыше 5 млн ₽ (СОГАЗ/РЕСО/Ингосстрах)</evidence>."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "Mobile-снапшот rootevents__korporativ.mobile.html отсутствует в snapshots-js — проверить реальную мобильную вёрстку невозможно.",
+            "Tailwind-классы адаптивные, но длинные таблицы SLA в ul.text-xs на мобильном будут перегружены."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "4 карточки тарифов одинаковой структуры — читаемо, но без визуальной дифференциации (кроме цвета emoji-маркеров).",
+            "Цвета: gold-text для цен — узнаваемо, но нет визуальной иерархии «что важнее для B2B»."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootplan__calculator.html' line='197'><h1 class=\"font-heading text-4xl md:text-5xl font-medium mb-4 text-center\">Тарифы и таблицы</h1></evidence> — быстрый расчёт доступен, но заголовок «Тарифы и таблицы» совпадает с rootpricing.html («Тарифы и цены») — CEO запутается.",
+            "<evidence file='rootaccount__orders.html' line='278'>mailto:info@odaeda.ru?subject=Запрос%20документа</evidence> — история заказов есть, но реальные документы прошлого заказа НЕ скачиваются — нужно писать email. Это убивает смысл «истории заказов»."
+          ]
+        }
+      ],
+      "overall": 6.1
+    },
+    {
+      "id": "C67",
+      "persona": "Лейла, 27, мусульманка. Никах 50 чел + ифтар 30 чел. Хочет: сертифицированный халяль, верификацию сертификата, раздельные станции.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='195'>Настоящий халяль: забой по обряду зибха (zibh) с произнесением такбира (tasmiya). Сертификат от Совета муфтиев России — Международного центра стандартизации и сертификации «Халяль». Рег. № СМР-Халяль-2026-142, действует до 31.12.2026.</evidence> — данные сертификации подробные.",
+            "<evidence file='rootmenu__halal.html' line='233'>Организуем помолвку и никах с учётом исламских традиций: без алкоголя, без свинины, раздельные станции для мужчин и женщин (по запросу), традиционные блюда.</evidence> — никах описан.",
+            "<evidence file='rootmenu__halal.html' line='199'><h2 class=\"font-heading text-xl font-medium mb-3\">🌙 Рамадан и ифтар — меню разговения</h2></evidence> — ифтар есть."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 4,
+          "evidence": [
+            "НЕТ QR-кода для верификации сертификата халяль на сайте. Лейла не может сама проверить подлинность сертификата СМР-Халяль-2026-142 онлайн.",
+            "Скан сертификата только по запросу: <evidence file='rootcertificates.html' line='341'>Скан декларации ЕАЭС (PDF, 0.8 МБ) предоставляется по запросу на b2b@odaeda.ru в течение 1 рабочего дн</evidence> — паттерн «по запросу» повторяется для всех сканов."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootcertificates.html' line='341'>Скан декларации ЕАЭС (PDF, 0.8 МБ) предоставляется по запросу на b2b@odaeda.ru в течение 1 рабочего дня</evidence>",
+            "Нет прямого PDF-скана сертификата халяль на rootmenu__halal.html — Лейла должна ждать email 1 рабочий день, чтобы увидеть документ."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='199'><h2 class=\"font-heading text-xl font-medium mb-3\">🌙 Рамадан и ифтар — меню разговения</h2></evidence> — emoji 🌙 в H2.",
+            "<evidence file='rootmenu__halal.html' line='232'><h2 class=\"font-heading text-xl font-medium mb-3\">💍 Никах — исламская свадебная церемония</h2></evidence> — emoji 💍 в H2.",
+            "<evidence file='rootmenu__halal.html' line='261'><h2 class=\"font-heading text-xl font-medium mb-4\">🕌 Протокол халяль-приготовления</h2></evidence> — emoji 🕌 в H2.",
+            "<main> без id=\"main\" — skip-link не работает."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='319'><h3 class=\"font-heading text-base font-medium pr-2\">Шашлык из курицы (халяль)</h3></evidence> — 14 фото блюд, все <img> без width/height/srcset.",
+            "Нет <picture>/AVIF как на rootmenu.html — непоследовательная стратегия изображений."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='46'><link rel=\"canonical\" href=\"https://odaeda.ru/menu/halal\"/></evidence>",
+            "JSON-LD Menu с hasMenuSection — хорошо для гастрономического SEO."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='276'><h3 class=\"font-semibold mb-1\">Раздельное оборудование</h3></evidence>",
+            "<evidence file='rootmenu__halal.html' line='285'>Отдельный транспорт для халяль-заказов, без пересечения со свининой. Водитель-экспедитор — с медкнижкой.</evidence> — разделение оборудования и транспорта детально описано."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "Mobile-снапшот rootmenu__halal.mobile.html отсутствует — реальную мобильную вёрстку проверить нельзя.",
+            "Grid sm:grid-cols-2 адаптивный, но 14 фото на мобильном будут долго грузиться без srcset."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 7,
+          "evidence": [
+            "Зелёная цветовая схема emerald-900 для халяль-блоков — уместна культурно.",
+            "Реальные фото блюд (/images/real/...) присутствуют, не AI."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootmenu__halal.html' line='249'>По запросу — раздельные станции для мужчин и женщин, перегородка, женский зал с женским персоналом.</evidence> — раздельные станции только «по запросу», не по умолчанию. Лейле нужно специально оговаривать.",
+            "НЕТ верификации сертификата (QR или линк на сайт Совета муфтиев России) — это КЛЮЧЕВОЕ требование Лейлы не выполнено."
+          ]
+        }
+      ],
+      "overall": 5.8
+    },
+    {
+      "id": "C68",
+      "persona": "Владимир, 68, вдовец. Поминки 25 чел. Плохо видит, боится телефонов. Хочет: крупный текст, минимум кликов, dignified tone.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='217'><h1 class=\"mb-2\">Поминки</h1></evidence> — простой dignified заголовок без emoji.",
+            "<evidence file='rootevents__pominki.html' line='225'><h2 class=\"font-heading text-lg font-medium mb-3\">Что важно знать</h2></evidence> — структурированная информация.",
+            "<evidence file='rootevents__pominki.html' line='249'><h2 class=\"font-heading text-xl font-medium mt-12 mb-4\">Поминальное меню (15 блюд)</h2></evidence> — меню с обязательными блюдами (кутья, блины, кисель)."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='221'><button class=\"inline-flex items-center gap-2 rounded-lg border border-gold-text px-5 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target no-underline\" aria-label=\"Поделиться ссылкой\">📤 Отправить ссылку родным (WhatsApp / Telegram / Email)</button></evidence> — есть share-кнопка для родных.",
+            "<evidence file='rootevents__pominki.html' line='247'>Если вам тяжело говорить — напишите в WhatsApp: wa.me/78129195911. Менеджер свяжется в течение 15 минут.</evidence> — учитывается, что пожилой человек боится телефона."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "PDF-меню поминок отсутствует. Только share-ссылка.",
+            "На странице rootevents__pominki.html слово PDF не встречается."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 3,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='212'><main class=\"pt-24 pb-20\" data-hide-newsletter=\"true\"></evidence> — у <main> НЕТ id=\"main\". Skip-link (href=\"#main\" в layout.tsx) на странице поминок НЕ СРАБОТАЕТ. Это критично для пожилого пользователя с плохим зрением, который использует клавиатуру.",
+            "<evidence file='rootevents__pominki.html' line='125'><button class=\"...\" aria-label=\"Размер текста: обычный. Нажмите чтобы изменить.\" title=\"Размер текста: 100%. Нажмите чтобы увеличить.\"></evidence> — кнопка увеличения шрифта есть, но на мобильном (root.mobile.html) её может не быть видно."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 8,
+          "evidence": [
+            "На rootevents__pominki.html 0 изображений — страница грузится мгновенно, что важно для пожилого пользователя с медленным интернетом.",
+            "0 CLS по причине отсутствия изображений."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='43'><meta name=\"description\" content=\"Поминальный обед в Санкт-Петербурге. Постное меню без алкоголя: кутья, блины, кисель, рыбные блюда. Доставка в кафе и домой. От 1 800 ₽/гость.\"/></evidence> — описание с dignified tone, с ценой.",
+            "BreadcrumbList JSON-LD присутствует."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='242'>Позвоните: +7 (812) 919-59-11 (с городского телефона в СПб набирайте просто 919-59-11, без 812).</evidence> — инструкции для пожилых с городским телефоном.",
+            "<evidence file='rootevents__pominki.html' line='247'>Менеджер свяжется в течение 15 минут.</evidence>"
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 7,
+          "evidence": [
+            "rootevents__pominki.mobile.html отсутствует — проверить мобильную вёрстку нельзя.",
+            "Tailwind-классы адаптивные, тексты text-sm/text-lg читаемы."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 8,
+          "evidence": [
+            "Без emoji в H1/H2 — dignified tone соблюдён.",
+            "Без ярких картинок — соответствует характеру мероприятия."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootevents__pominki.html' line='242'>Позвоните: +7 (812) 919-59-11</evidence> — 4 шага: позвонить → сказать дату/время/гостей/адрес → менеджер предложит меню → курьер привезёт за 60 минут. Минимум кликов — да.",
+            "Но skip-link сломан (нет id=\"main\" на <main>) — клавиатурный пользователь не сможет быстро перепрыгнуть меню. Это нарушает WCAG 2.4.1 (Bypass Blocks)."
+          ]
+        }
+      ],
+      "overall": 6.7
+    },
+    {
+      "id": "C69",
+      "persona": "Карен, 33, ресторанный критик. Оценивает: качество фото (реальные vs AI), читаемость меню, дизайн, типографика, whitespace.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootmenu__catalog.html' line='215'><h1 class=\"font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight\">Каталог блюд</h1></evidence> — каталог с 124 блюдами.",
+            "<evidence file='rootmenu__catalog.html' line='248'><p class=\"text-xs text-muted-foreground mt-2\" aria-live=\"polite\">Показаны все 124 блюд</p></evidence> — есть aria-live для фильтра."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 6,
+          "evidence": [
+            "Фильтры по категориям (Холодные/Горячее/Десерты/Напитки/Шоу-станции) и диетам (Веган/БГ/Халяль/Без сахара) — функционально.",
+            "Кнопка «👁 Скрыть аллергены» — переключатель аллергенов есть."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "PDF-меню отсутствует как загружаемый документ на каталоге.",
+            "1 упоминание PDF на странице не дает функционала печати."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootmenu__furshet.html' line='192'><h1 class=\"text-4xl md:text-5xl font-heading mb-4\">🥪 Фуршет</h1></evidence> — emoji в H1 недопустимо для ресторанного критика.",
+            "<evidence file='rootmenu__catalog.html' line='266'><h2 class=\"font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide\">📌 Основные блюда</h2></evidence> — emoji 📌 в H2, мелкий text-sm для раздела H2 — плохая иерархия.",
+            "<evidence file='rootmenu__catalog.html' line='3440'><h2 class=\"font-heading text-base font-medium text-emerald-900 mb-1\">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2></evidence> — emoji 🕌 в H2.",
+            "<evidence file='rootmenu__catalog.html' line='3861'><h2 class=\"font-heading text-base font-medium text-red-900 mb-1\">🚫 Блюда со свининой (НЕ халяль)</h2></evidence> — emoji 🚫 в H2."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 2,
+          "evidence": [
+            "На rootmenu__catalog.html 133 <img> тега, ВСЕ без width/height, ВСЕ без srcset, ВСЕ без <picture>. Это КРИТИЧЕСКИЙ CLS-риск — при загрузке 133 картинок страница будет дрожать.",
+            "<evidence file='rootmenu__catalog.html' line='275'><img src=\"/images/dishes/bao-duck.png\" alt=\"Бао с уткой и хойсином\" loading=\"lazy\" decoding=\"async\" class=\"absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700\" style=\"object-position:center 45%\"/></evidence> — PNG (!) вместо JPG/WebP/AVIF, 10 PNG-файлов в каталоге — устаревший формат для фото.",
+            "110 фото из /images/menu/ — подозрительно, могут быть AI-генерированные заглушки (нет /real/ в пути)."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "JSON-LD Menu присутствует на rootmenu.html и rootmenu__halal.html.",
+            "HREFLANG отсутствует."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootmenu__catalog.html' line='305'><img src=\"/images/real/fish-taco.jpg\" alt=\"Мини-тако с рыбой\"/></evidence> — есть реальные фото (/images/real/).",
+            "Только 13 из 133 фото в /images/real/, остальные 110 в /images/menu/ — непонятно, реальные или сток. Это ВАЖНО для критика."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "rootmenu__catalog.mobile.html существует (444KB) — тяжёлый мобильный вариант.",
+            "133 фото без srcset — на 4G катастрофа по трафику."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 5,
+          "evidence": [
+            "Cormorant Garamond + Inter — изысканная пара, но emoji в H1 «🥪 Фуршет» разрушает ресторанную эстетику.",
+            "<evidence file='rootmenu__banquet.html' line='309'><h2 class=\"text-xl font-heading font-medium mt-12 mb-4\">Все блюда банкета (85)</h2></evidence> — заявлено 85 блюд банкета, но на странице 0 <img> тегов! Критик не увидит НИ ОДНОГО фото 85 блюд банкета. Это нечитаемое меню.",
+            "На rootmenu.html используется <picture> с AVIF/WebP/srcset, а на rootmenu__catalog.html — голые <img>. Непоследовательная стратегия изображений."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 3,
+          "evidence": [
+            "<evidence file='rootmenu__banquet.html' line='309'>Все блюда банкета (85)</evidence> — H2 заявляет 85 блюд, но НЕТ ни одной фотографии. Для ресторанного критика это провал: невозможно оценить визуально 85 блюд.",
+            "<evidence file='rootmenu__furshet.html' line='293'><h2 class=\"text-2xl font-heading font-medium mb-6\">Все блюда фуршета</h2></evidence> — тоже 0 изображений на странице фуршета.",
+            "133 фото в каталоге без width/height — визуальный хаос при загрузке."
+          ]
+        }
+      ],
+      "overall": 5.1
+    },
+    {
+      "id": "C70",
+      "persona": "Ольга, 52, директор школы. Выпускной 90 чел. Хочет: медкнижки, ППК, декларацию ЕАЭС, СанПиН, спецтариф.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__vypusknoy.html' line='446'>Школьный пакет: от 1 800 ₽/гость — фуршет с детским меню + станция напитков + бумажная посуда.</evidence> — спецтариф для школ описан.",
+            "<evidence file='rootevents__vypusknoy.html' line='465'>• Персонал с медкнижками и санминимумом</evidence> — медкнижки упомянуты.",
+            "<evidence file='rootcertificates.html' line='245'><h2 class=\"font-heading text-base font-medium mb-1\">Декларация о соответствии ЕАЭС</h2></evidence> — декларация ЕАЭС описана."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootcertificates.html' line='456'><a href=\"/api/templates/dogovor\" download=\"nilov-dogovor-template.pdf\"></evidence> — шаблон договора качается напрямую.",
+            "Но скан декларации ЕАЭС, скан медкнижек, ППК — только по email-запросу: <evidence file='rootcertificates.html' line='341'>Скан декларации ЕАЭС (PDF, 0.8 МБ) предоставляется по запросу на b2b@odaeda.ru в течение 1 рабочего дн</evidence>."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 6,
+          "evidence": [
+            "3 шаблона PDF доступны напрямую (dogovor, nda, sla).",
+            "Сканы сертификатов — только через email. Для директора школы, которой нужно срочно собрать пакет для Роспотребнадзора, это замедление."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 3,
+          "evidence": [
+            "<evidence file='rootevents__vypusknoy.html' line='449'><strong>Tight budget? Пример:</strong></evidence> — АНГЛИЙСКИЙ текст «Tight budget?» на русскоязычной странице (lang=\"ru\"). Шокирующая небрежность для школы.",
+            "<evidence file='rootevents__vypusknoy.html' line='431'><h2 class=\"font-heading text-lg font-medium mb-2\">💰 Ограниченный бюджет?</h2></evidence> — emoji 💰 в H2.",
+            "<evidence file='rootevents__vypusknoy.html' line='458'><h2 class=\"font-heading text-lg font-medium mb-2\">🛡 Безопасность детей</h2></evidence> — emoji 🛡 в H2.",
+            "<main> без id=\"main\" — skip-link сломан."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 5,
+          "evidence": [
+            "4 <img> на странице, все без width/height/srcset — полная загрузка JPG.",
+            "На rootcertificates.html 0 изображений — но 0 width/height везде."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__vypusknoy.html' line='43'><meta name=\"description\" content=\"Кейтеринг на выпускной: фуршеты и банкеты для школ и вузов. Бюджетные решения от 390 ₽/гость. B2B: договор, ЭДО, медкнижки, бракераж, согласование с Роспотребнадзором.\"/></evidence> — SEO-описание содержит все ключевые B2B-термины."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootcertificates.html' line='298'><h2 class=\"font-heading text-base font-medium mb-1\">Медицинские книжки персонала</h2></evidence>",
+            "<evidence file='rootcertificates.html' line='492'>Для школ, учреждений, B2B: счёт, акт, счёт-фактура, медкнижки, бракеражный журнал, программа производственного контроля, декларация ЕАЭС, полис страхования.</evidence> — полный пакет перечислен."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "rootevents__vypusknoy.mobile.html отсутствует.",
+            "Длинные <ul> с text-xs на мобильном плохо читаемы для 52-летней Ольги."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "Tailwind-классы корректны, иерархия H1/H2/H3 выдержана (кроме emoji).",
+            "Текст text-xs/text-sm для юридической информации — мелко для директора школы 52 лет."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__vypusknoy.html' line='447'>Бюджет на 90 чел (60 детей + 30 родителей): ~162 000 ₽ — вписывается в типовой школьный бюджет 200 000 ₽.</evidence> — расчёт под школьный бюджет Олеси непосредственно на странице.",
+            "Но: <evidence file='rootevents__vypusknoy.html' line='449'>Tight budget? Пример:</evidence> — англицизм «Tight budget?» подрывает доверие директора школы. СанПиН явно в тексте не упомянут — только «ТР ТС 021/2011, HACCP»."
+          ]
+        }
+      ],
+      "overall": 6.2
+    },
+    {
+      "id": "C71",
+      "persona": "Тимур, 25, UX-исследователь. Проверяет: WCAG 2.2 AAA, SSR-доступность, ARIA, keyboard nav, semantic HTML, CLS.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootaccessibility.html' line='36'><title>Доступность (WCAG 2.2 AA) — NiloV Catering</title></evidence> — страница декларирует WCAG 2.2 AA, НЕ AAA. Тимур проверяет AAA — изначальный мISMATCH.",
+            "<evidence file='rootaccessibility.html' line='247'>Стандарт: WCAG 2.2 AA. Проверка: axe-core, Lighthouse, ручное тестирование с NVDA.</evidence> — AA, не AAA."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 2,
+          "evidence": [
+            "<evidence file='root.html' line='71'><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground\">Перейти к содержимому</a></evidence> — skip-link присутствует в layout.",
+            "НО skip-link ЦЕЛЬ #main существует ТОЛЬКО на 3 страницах из 55: <evidence file='root.html' line='185'><main id=\"main\"></evidence>, <evidence file='rootcontact.html' line='188'><main class=\"pt-24 pb-20\" id=\"main\"></evidence>. На ВСЕХ остальных <main> без id (например <evidence file='rootaccessibility.html' line='186'><main class=\"pt-24 pb-20\"></evidence> — иронично, на странице доступности!)."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "Accessibility statement присутствует, но не является downloadable PDF."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 2,
+          "evidence": [
+            "MASSIVE FAIL: 52/55 страниц имеют <main> БЕЗ id=\"main\", на rootdelivery__order.html вообще НЕТ <main> тега, на rootplan__constructor.html используется <div id=\"main\"> вместо <main> — нарушение семантики и WCAG 2.4.1 Bypass Blocks.",
+            "<evidence file='rootaccessibility.html' line='186'><main class=\"pt-24 pb-20\"></evidence> — на самой странице accessibility нет id=\"main\" — skip-link сломан.",
+            "Emoji в заголовках на множестве страниц: <evidence file='rootevents__svadba.html' line='222'>🥬 Веган + халяль + БГ + без орехов в одной свадьбе?</evidence>, <evidence file='rootmenu__furshet.html' line='192'>🥪 Фуршет</evidence>, <evidence file='rootmenu__halal.html' line='199'>🌙 Рамадан и ифтар</evidence>, <evidence file='rootaccessibility.html' line='195'>✓ Что реализовано</evidence>, <evidence file='rootaccessibility.html' line='212'>👵 Для пожилых пользователей</evidence>, <evidence file='rootaccessibility.html' line='235'>⚠ Известные ограничения</evidence>.",
+            "<evidence file='rootpricing.html' line='466'><table class=\"w-full text-sm border border-line rounded-lg overflow-hidden\"></evidence> — НЕТ <caption>, НЕТ scope=\"col\"/scope=\"row\" на <th> — нарушение WCAG 1.3.1.",
+            "НЕТ aria-live на динамическом контенте в rootgallery.html (72 фото), rootpricing.html (фильтр тарифов). Только rootmenu__catalog.html line 248 имеет aria-live=\"polite\".",
+            "<evidence file='rootcontact.html' line='299'><input id=\"date\" type=\"date\" class=\"w-full rounded-lg border border-line bg-background px-4 py-3 text-base\" name=\"date\"/></evidence> — НЕТ autocomplete на дате (хотя на name/tel/email есть).",
+            "<evidence file='rootevents__vypusknoy.html' line='480'><input id=\"newsletter-email\" type=\"email\" placeholder=\"Ваш email\" required=\"\" class=\"flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm\" name=\"email\"/></evidence> — newsletter форма БЕЗ autocomplete=\"email\"."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 3,
+          "evidence": [
+            "ВСЕ изображения на сайте (галерея 72, каталог 133, свадьба 4, и т.д.) БЕЗ width/height — КРИТИЧЕСКИЙ CLS-риск, нарушение WCAG 1.4.10 и Core Web Vitals.",
+            "Только rootmenu.html использует <picture> с AVIF/WebP/srcset — все остальные страницы используют голый <img>."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "JSON-LD LocalBusiness + Service на всех страницах.",
+            "BreadcrumbList на вложенных страницах.",
+            "HREFLANG отсутствует — нарушение для мультиязычного сайта (есть EN-переключатель)."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootaccessibility.html' line='195'><h2 class=\"font-heading text-xl font-medium text-foreground\">✓ Что реализовано</h2></evidence> — заявление есть, но реальные нарушения (skip-link broken на 52/55) противоречат ему."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "root.mobile.html, rootgallery.mobile.html, rootmenu__catalog.mobile.html существуют.",
+            "Однако мобильные версии не покрывают все ключевые страницы (нет rootcertificates.mobile, rootevents__pominki.mobile и др.)."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "Cormorant Garamond + Inter — профессиональная типографика.",
+            "Кнопка A-/A/A+ переключателя шрифта — отличная SSR-фича."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 2,
+          "evidence": [
+            "<evidence file='rootaccessibility.html' line='247'>Стандарт: WCAG 2.2 AA</evidence> — сайт НЕ декларирует AAA. Тимур проверяет AAA — изначально fail.",
+            "Реальные нарушения: skip-link broken на 52/55 (WCAG 2.4.1 FAIL), emoji в заголовках (WCAG 1.3.1 нарушение для скринридеров), нет <caption>/scope в таблицах (WCAG 1.3.1), нет aria-live на динамике (WCAG 4.1.3), нет autocomplete на формах (WCAG 3.3.4 в перспективе).",
+            "Сайт НЕ соответствует даже AA по fact-проверке, не говоря о AAA."
+          ]
+        }
+      ],
+      "overall": 4.2
+    },
+    {
+      "id": "C72",
+      "persona": "Дмитрий, 23, frontend-разработчик. Проверяет: structured data, canonical, sitemap, hreflang, performance hints, meta tags.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 8,
+          "evidence": [
+            "<evidence file='root.html' line='42'><link rel=\"canonical\" href=\"https://odaeda.ru\"/></evidence> — canonical есть.",
+            "sitemap.ts и robots.ts существуют, sitemap включает 50+ маршрутов.",
+            "JSON-LD LocalBusiness + Service + BreadcrumbList + Menu — разнообразная structured data."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 7,
+          "evidence": [
+            "Все canonical-линки корректные на всех 55 страницах.",
+            "Meta description уникальный на каждой странице.",
+            "OG-теги (title/description/image/locale/site_name) присутствуют."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "robots.txt блокирует /admin и /api — правильно.",
+            "Sitemap включает /en, но <evidence file='/home/z/my-project/nilov-catering/app/en/page.tsx' line='29'>Full English version coming soon.</evidence> — EN-страница это stub, не полноценный контент."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 5,
+          "evidence": [
+            "Не приоритет для frontend dev, но: og:image:width/height присутствуют на всех страницах — хорошо для соцсетей.",
+            "Twitter card теги есть."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 4,
+          "evidence": [
+            "rootmenu__catalog.html: 133 <img> без srcset, без <picture>, без width/height — massive LCP/CLS риск.",
+            "Только rootmenu.html использует <picture> с AVIF — непоследовательно.",
+            "<evidence file='root.html' line='14'><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/1o-k3n6qtv4a6.js\"/></evidence> — fetchPriority hints используются.",
+            "<evidence file='root.html' line='193'><img src=\"/images/gallery/wedding-banquet.jpg\" alt=\"\" class=\"absolute inset-0 w-full h-full object-cover\" fetchPriority=\"high\" aria-hidden=\"true\"/></evidence> — hero с fetchPriority=\"high\" — хорошо."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 6,
+          "evidence": [
+            "HREFLANG ОТСУТСТВУЕТ несмотря на EN-переключатель: <evidence file='root.html' line='118'><a class=\"hidden md:inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors px-2\" aria-label=\"Switch to English\" href=\"/en\">EN</a></evidence> — линк есть, но hreflang в <head> не объявлен.",
+            "<evidence file='rootplan__calculator.html' line='39'><meta name=\"description\" content=\"Тарифы и таблицы: стоимость кейтеринга . Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Всё включено: еда, персонал, посуда, доставка по КАД.\"/></evidence> — TYPO в description: «стоимость кейтеринга .» (лишний пробел и точка).",
+            "<evidence file='rootplan__calculator.html' line='197'><h1 class=\"font-heading text-4xl md:text-5xl font-medium mb-4 text-center\">Тарифы и таблицы</h1></evidence> — H1 конфликтует с rootpricing.html H1 «Тарифы и цены» — дублирование title-prefix в поиске."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='root.html' line='69'><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://odaeda.ru/#organization\",\"name\":\"NiloV Catering\",\"legalName\":\"Индивидуальный предприниматель Нилов Дмитрий Игоревич\",\"url\":\"https://odaeda.ru\",\"telephone\":\"+78129195911\",\"email\":\"info@odaeda.ru\",\"image\":[\"https://odaeda.ru/og-image.png\"],\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Санкт-Петербург\",\"addressCountry\":\"RU\",\"streetAddress\":\"199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11, помещение 5-Н\",\"postalCode\":\"199106\"},\"priceRange\":\"₽₽₽\",\"taxID\":\"781433059704\",\"foundingDate\":\"2007\"}</evidence> — полный LocalBusiness JSON-LD с taxID и foundingDate."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "Meta viewport правильный: <evidence file='root.html' line='13'><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"/></evidence>.",
+            "Mobile snapshots частично есть, но не покрывают все страницы."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "Preload шрифтов woff2 с crossorigin — правильно.",
+            "Cormorant Garamond + Inter + JetBrains Mono — три семейства, возможно избыточно для производительности."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 4,
+          "evidence": [
+            "HREFLANG отсутствует — критично для билингвального сайта. Google не поймёт, что /en — английская версия /.",
+            "<evidence file='rootplan__calculator.html' line='39'>стоимость кейтеринга .</evidence> — TYPO в meta description ( лишний пробел и точка) — отображается в выдаче Google.",
+            "<evidence file='/home/z/my-project/nilov-catering/app/en/page.tsx' line='19'>{ title: 'Pricing', text: 'From 390 ₽/guest for coffee breaks. Banquet from 4 470 ₽/guest. All prices include staff, coordinator, and delivery within the Ring Road.' }</evidence> — EN-страница содержит ЦЕНУ 4 470 ₽, тогда как русская root.html/rootevents__svadba.html — 3 950 ₽. РАСХОЖДЕНИЕ цен между языковыми версиями.",
+            "Sitemap включает маршруты /venues, /seasonal/bbq, /seasonal/maslenitsa, /seasonal/new-year, /menu/show-cooking, /menu/bar, /help/formats, /media-kit, /careers — НО их нет в snapshots-js, что говорит о неполном покрытии тестами."
+          ]
+        }
+      ],
+      "overall": 5.9
+    },
+    {
+      "id": "C73",
+      "persona": "Жанна, 38, event-продюсер. Свадьба 120 чел в особняке. Хочет: тайминги, оборудование, штат, логистику, площадку.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 9,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='488'><h2 class=\"font-heading text-2xl font-medium mb-4\">Производственный райдер</h2></evidence>",
+            "<evidence file='rootevents__svadba.html' line='491'><h3 class=\"font-semibold mb-2 text-gold-text\">Тайминги</h3></evidence> — тайминги детальные (заезд 4-6ч, готовность 30 мин, подача ±5/±10 мин).",
+            "<evidence file='rootevents__svadba.html' line='501'><h3 class=\"font-semibold mb-2 text-gold-text\">Штат</h3></evidence> — штат (1 официант/10, шеф+2 повара/50).",
+            "<evidence file='rootevents__svadba.html' line='511'><h3 class=\"font-semibold mb-2 text-gold-text\">Оборудование (включено)</h3></evidence>",
+            "<evidence file='rootevents__svadba.html' line='521'><h3 class=\"font-semibold mb-2 text-gold-text\">Логистика</h3></evidence>",
+            "<evidence file='rootevents__svadba.html' line='533'><h3 class=\"font-semibold mb-3 text-gold-text\">Технические требования к площадке</h3></evidence>"
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 7,
+          "evidence": [
+            "Все 4 секции райдера на одной странице — Жанна может прочитать за 1 заход.",
+            "Но нет кнопки «Скачать райдер PDF» — нужно копировать вручную."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "На rootevents__svadba.html нет кнопки печати/экспорта райдера в PDF.",
+            "На rootpricing.html есть <evidence file='rootpricing.html' line='219'>Печать тарифов</evidence> — но это для тарифов, не для райдера."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='439'><h3 class=\"font-medium text-sm mb-2\">🟢 Эконом (3 950 ₽)</h3></evidence> — emoji 🟢 в H3.",
+            "<evidence file='rootevents__svadba.html' line='450'>🔵 Стандарт (5 470 ₽)</evidence>, <evidence file='rootevents__svadba.html' line='461'>🟡 Расширенный (7 350 ₽)</evidence>, <evidence file='rootevents__svadba.html' line='472'>👑 Максимальный (9 950 ₽)</evidence> — четыре emoji-маркера в H3.",
+            "<main> без id=\"main\" на rootevents__svadba.html — skip-link сломан."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 5,
+          "evidence": [
+            "4 <img> на странице, все без width/height/srcset.",
+            "Длинные <ul> списки райдера — хорошо для чтения, но text-sm уменьшает читаемость."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "BreadcrumbList JSON-LD присутствует.",
+            "Canonical корректный: <evidence file='rootevents__svadba.html' line='46'>https://odaeda.ru/events/svadba</evidence>.",
+            "HREFLANG отсутствует."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__svadba.html' line='537'>Не менее 6 кВт для раздаточной зоны. Розетки 220В с заземлением. При недостатке мощности — генератор за отдельную плату.</evidence> — конкретные технические требования.",
+            "<evidence file='rootevents__svadba.html' line='545'>Отдельное помещение 6+ м² для переодевания и хранения личных вещей персонала (8-15 чел).</evidence> — продуманные детали."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "rootevents__svadba.mobile.html отсутствует.",
+            "Grid sm:grid-cols-2 для райдера — на мобильном будет 1 колонка, но 4 секции в длинный scroll."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "Cormorant Garamond H2/H3 + Inter body — профессионально.",
+            "Но emoji 🟢🔵🟡👑 рядом с ценами — снижают «продюсерскую» серьёзность."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 7,
+          "evidence": [
+            "Райдер покрывает все 5 требований Жанны (тайминги/штат/оборудование/логистика/площадка).",
+            "<evidence file='rootevents__svadba.html' line='517'>Музыкальное оборудование — не входит (предоставляется площадкой)</evidence> — Жанне нужно координировать отдельно с особняком.",
+            "Нет PDF-экспорта райдера — Жанна не может переслать его площадке/тех-директору в 1 клик."
+          ]
+        }
+      ],
+      "overall": 6.5
+    },
+    {
+      "id": "C74",
+      "persona": "Рустам, 35, B2B-закупщик. Конференция 150 чел. Хочет: PDF-смету для бухгалтерии, счёт-фактуру, ЭДО, быстрый расчёт.",
+      "bias": -1,
+      "criteria": [
+        {
+          "name": "information_completeness",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='418'>Договор, счёт, акт, счёт-фактура, ЭДО (Диадок, СБИС), чек по 54-ФЗ</evidence> — все B2B-документы перечислены.",
+            "<evidence file='rootcertificates.html' line='370'><h2 class=\"font-heading text-base font-medium mb-1\">Договор, счёт, акт, счёт-фактура</h2></evidence> — отдельный раздел на /certificates.",
+            "<evidence file='rootplan__calculator.html' line='197'>Тарифы и таблицы</evidence> — быстрый расчёт доступен, но название конфликтует с rootpricing.html."
+          ]
+        },
+        {
+          "name": "self_service_capability",
+          "score": 5,
+          "evidence": [
+            "<evidence file='rootcertificates.html' line='456'><a href=\"/api/templates/dogovor\" download=\"nilov-dogovor-template.pdf\"></evidence>, <evidence file='rootcertificates.html' line='466'><a href=\"/api/templates/nda\" download=\"nilov-nda-template.pdf\"></evidence>, <evidence file='rootcertificates.html' line='476'><a href=\"/api/templates/sla\" download=\"nilov-sla-template.pdf\"></evidence> — шаблоны качаются напрямую, хорошо.",
+            "НО past order documents на <evidence file='rootaccount__orders.html' line='278'>mailto:info@odaeda.ru?subject=Запрос%20документа%3A%20%D0%A1%D1%87%D1%91%D1%82%20(NLV-2025-0421)</evidence> — счета по исполненным заказам доступны только через email — НЕ self-service."
+          ]
+        },
+        {
+          "name": "document_delivery",
+          "score": 5,
+          "evidence": [
+            "3 шаблона PDF доступны напрямую (dogovor/nda/sla).",
+            "Счета/акты/счет-фактуры по фактическим заказам — ТОЛЬКО через mailto. Для B2B-закупщика, который хочет скачать счёт-фактуру для бухгалтерии немедленно, это нарушение процесса.",
+            "На rootplan__calculator.html нет кнопки «Скачать смету PDF» — Рустам может только отправить заявку и ждать."
+          ]
+        },
+        {
+          "name": "accessibility",
+          "score": 4,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='414'><h2 class=\"font-heading text-xl font-medium mb-3\">💼 Работаем с юридическими лицами</h2></evidence> — emoji 💼 в H2.",
+            "<evidence file='rootevents__korporativ.html' line='457'><h3 class=\"font-heading text-base font-medium mb-2\">🏛 Логистика для Expoforum, ККТ «Космос», конгресс-холлов</h3></evidence> — emoji 🏛 в H3.",
+            "<main> без id=\"main\" на всех B2B-страницах — skip-link сломан."
+          ]
+        },
+        {
+          "name": "performance_cls",
+          "score": 5,
+          "evidence": [
+            "4 <img> на rootevents__korporativ.html без width/height/srcset.",
+            "На rootaccount__orders.html 0 изображений — хорошо."
+          ]
+        },
+        {
+          "name": "seo_structured_data",
+          "score": 7,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='46'>canonical https://odaeda.ru/events/korporativ</evidence>",
+            "BreadcrumbList JSON-LD присутствует."
+          ]
+        },
+        {
+          "name": "trust_signals",
+          "score": 8,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='437'>✓ Доставка: точно в согласованное окно — ±15 минут для кофе-брейков и конференций, ±30 минут для банкетов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа)</evidence> — SLA с реальными штрафами.",
+            "<evidence file='rootevents__korporativ.html' line='430'>50% предоплата, 50% постоплата в течение 5 рабочих дней. Для постоянных B2B (3+ событий) — отсрочка 14 рабочих дней (фиксированно).</evidence> — прозрачные условия оплаты.",
+            "<evidence file='rootevents__korporativ.html' line='451'>✓ Многодневные конференции (2+ дня) — дополнительно -20%</evidence> — скидка под 2-дневную конференцию Рустама."
+          ]
+        },
+        {
+          "name": "mobile_responsive",
+          "score": 6,
+          "evidence": [
+            "rootevents__korporativ.mobile.html отсутствует.",
+            "Tailwind-классы адаптивные, но длинные списки SLA с text-xs на мобильном плохо читаемы."
+          ]
+        },
+        {
+          "name": "visual_typography",
+          "score": 6,
+          "evidence": [
+            "H1/H2/H3 иерархия выдержана.",
+            "4 карточки в grid sm:grid-cols-2 lg:grid-cols-4 — читаемо на десктопе, но на мобильном становятся длинным столбиком."
+          ]
+        },
+        {
+          "name": "task_fit",
+          "score": 6,
+          "evidence": [
+            "<evidence file='rootevents__korporativ.html' line='447'>✓ 44-ФЗ и 223-ФЗ — тендерная документация</evidence> — для госзакупок предусмотрено.",
+            "<evidence file='rootevents__korporativ.html' line='450'>✓ Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%</evidence> — для 150 чел скидка 10%, многодневка -20%, итого -30% — отличный расчёт.",
+            "НО: счёт-фактура на исполненный заказ — только через mailto. Бухгалтерия Рустама не получит PDF в 1 клик. Это блокер для повторных заказов."
+          ]
+        }
+      ],
+      "overall": 5.9
+    }
+  ],
+  "median_overall": 5.9,
+  "all_above_9_3": false,
+  "summary_of_critical_findings": [
+    "WCAG 2.4.1 Bypass Blocks FAIL: 52 из 55 страниц имеют <main> БЕЗ id=\"main\". Skip-link (href=\"#main\") работает только на root.html, rootcontact.html, и как <div> на rootplan__constructor.html. На странице rootaccessibility.html — иронично — skip-link тоже сломан.",
+    "Emoji в заголовках повсеместно: 🥬🥪📌🕌🚫🌙💍🕌📋📄👵🥜⚠💼🌾💰🏫🛡🟢🔵🟡👑 в H1/H2/H3 — нарушение WCAG 1.3.1 для скринридеров и ресторанной эстетики.",
+    "Изображения: 0 srcset на всех страницах кроме rootmenu.html (которая использует <picture>+AVIF). 0 width/height на ВСЕХ изображениях — критический CLS-риск. Каталог: 133 <img> без srcset/width/height, 10 PNG, 110/133 в /images/menu/ (подозрение на сток/AI).",
+    "PDF-документы: только 3 шаблона (dogovor/nda/sla) качаются напрямую через /api/templates/. Счета/акты/счет-фактуры по прошлым заказам — только через mailto:. Сертификаты (ЕАЭС, Халяль) — только по email-запросу 1 рабочий день.",
+    "HREFLANG отсутствует несмотря на EN-переключатель (href=\"/en\" на всех страницах). /en — stub-страница с текстом 'Full English version coming soon'. Цены на /en: 'Banquet from 4 470 ₽/guest' против русских '3 950 ₽' — РАСХОЖДЕНИЕ.",
+    "Англицизм на русскоязычной странице: <evidence file='rootevents__vypusknoy.html' line='449'>Tight budget? Пример:</evidence> — для директора школы недопустимо.",
+    "TYPO в meta description: <evidence file='rootplan__calculator.html' line='39'>стоимость кейтеринга .</evidence> (лишний пробел и точка) — попадает в выдачу Google.",
+    "Breadcrumb bug: <evidence file='rootcontact.html' line='201'>aria-current=\"page\">contact</evidence> — на странице 'Контакты' breadcrumb показывает 'contact' (английский нижний регистр).",
+    "Несоответствие заголовков: rootpricing.html H1 «Тарифы и цены» vs rootplan__calculator.html H1 «Тарифы и таблицы» — дублирование title-prefix в выдаче Google.",
+    "Таблица цен <evidence file='rootpricing.html' line='466'><table></evidence> без <caption> и без scope=\"col\"/scope=\"row\" — нарушение WCAG 1.3.1.",
+    "Asymmetric share feature: кнопка 'Отправить ссылку родным' есть ТОЛЬКО на rootevents__pominki.html. Невеста (C65) не может отправить ссылку жениху с rootevents__svadba.html или rootplan__constructor.html.",
+    "Newsletter форма <evidence file='rootevents__vypusknoy.html' line='480'>input type=email required</evidence> без autocomplete=\"email\" — нарушение WCAG 3.3.4 (Identify Input Purpose).",
+    "Меню банкета (85 блюд) и фуршета: 0 изображений на rootmenu__banquet.html и rootmenu__furshet.html — невозможно оценить блюда визуально."
+  ],
+  "next_actions": [
+    "ДОБАВИТЬ id=\"main\" на <main> всех 52 страниц где его нет — критично для WCAG 2.4.1.",
+    "ЗАМЕНИТЬ <div id=\"main\"> на <main id=\"main\"> на rootplan__constructor.html.",
+    "УБРАТЬ все emoji из H1/H2/H3 — заменить на CSS-маркеры или aria-hidden иконки.",
+    "ДОБАВИТЬ width/height на ВСЕ <img> — критично для CLS.",
+    "МИГРИРОВАТЬ все <img> на <picture> с AVIF/WebP/srcset как на rootmenu.html — последовательная стратегия.",
+    "ДОБАВИТЬ HREFLANG (ru-RU и en) на все страницы; доделать /en-версию или убрать EN-переключатель.",
+    "ИСПРАВИТЬ typo в meta description rootplan__calculator.html (убрать ' .').",
+    "ИСПРАВИТЬ breadcrumb на rootcontact.html — показать 'Контакты' вместо 'contact'.",
+    "РЕАЛИЗОВАТЬ self-service скачивание счетов/акт/счет-фактур на /account/orders (вместо mailto).",
+    "ДОБАВИТЬ QR-код для верификации сертификата халяль на rootmenu__halal.html (линк на сайт Совета муфтиев России).",
+    "ДОБАВИТЬ прямые PDF-сканы сертификатов (ЕАЭС, Халяль, HACCP) на rootcertificates.html (вместо email-запроса).",
+    "ДОБАВИТЬ кнопку 'Поделиться ссылкой' на rootevents__svadba.html и rootplan__constructor.html (как на rootevents__pominki.html).",
+    "ДОБАВИТЬ кнопки PDF-экспорта сметы/райдера на rootplan__constructor.html и rootevents__svadba.html.",
+    "ДОБАВИТЬ фото блюд на rootmenu__banquet.html и rootmenu__furshet.html (сейчас 0 фото при 85+ блюдах).",
+    "ИСПРАВИТЬ англицизм 'Tight budget?' на rootevents__vypusknoy.html line 449.",
+    "СИНХРОНИЗИРОВАТЬ цены на /en с русскими (3 950 vs 4 470 ₽).",
+    "ДОБАВИТЬ autocomplete=\"email\" на все email-формы (newsletter).",
+    "ДОБАВИТЬ <caption> и scope=\"col\"/scope=\"row\" на таблицу цен в rootpricing.html.",
+    "ПОВЫСИТЬ стандарт до WCAG 2.2 AAA или явно зафиксировать AA и убрать упоминания AAA из требований.",
+    "СОЗДАТЬ мобильные снапшоты для всех ключевых страниц (сейчас только 7 из 55 имеют .mobile-версию)."
+  ]
+}
