@@ -170,6 +170,14 @@ export default function PricingPage() {
             Если у конкурентов появились обновления — сообщите, обновим таблицу.
           </p>
         </section>
+
+        {/* Referral program */}
+        <section className="mt-8 p-5 rounded-xl border-2 border-dashed border-gold-text/30 bg-gold-tint/5 text-center">
+          <p className="text-sm font-medium mb-1">🎁 Рекомендуйте нас — получайте бонусы</p>
+          <p className="text-xs text-muted-foreground">
+            Поделитесь ссылкой с друзьями. За каждый рекомендованный заказ — скидка 500 ₽ на следующее мероприятие.
+          </p>
+        </section>
       </div>
     </main>
   );
