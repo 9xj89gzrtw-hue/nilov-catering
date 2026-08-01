@@ -860,6 +860,14 @@ export default function ConstructorWizard() {
               </div>
             </div>
 
+            {/* Referral program — growth loop */}
+            <div className="text-left rounded-xl border-2 border-dashed border-gold-text/30 bg-gold-tint/5 p-4 mb-6 max-w-md mx-auto">
+              <p className="text-sm font-medium mb-1">🎁 Рекомендуйте нас — получайте бонусы</p>
+              <p className="text-xs text-muted-foreground">
+                Поделитесь ссылкой с друзьями. За каждый рекомендованный заказ — скидка 500 ₽ на следующее мероприятие.
+              </p>
+            </div>
+
             <div className="flex flex-col gap-2 max-w-xs mx-auto">
               <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
               <Link href="/pricing" className="text-xs text-muted-foreground hover:text-foreground">Посмотреть тарифы →</Link>
