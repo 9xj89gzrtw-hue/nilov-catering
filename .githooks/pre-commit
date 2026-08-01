@@ -1,0 +1,12 @@
+#!/bin/sh
+# FACT-GATE pre-commit hook (CODE_REALITY_BACKLOG п.3).
+# Блокирует коммит при нарушении канон-инвариантов.
+echo "→ fact-gate…"
+node scripts/fact-gate.mjs
+status=$?
+if [ $status -ne 0 ]; then
+  echo "✗ Коммит заблокирован: fact-gate провалён (см. вывод выше)."
+  exit 1
+fi
+echo "✓ fact-gate пройден."
+exit 0

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#3a4250"/>
+      <stop offset="100%" stop-color="#161a22"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="340" rx="210" ry="70" fill="#ffffff" opacity="0.92"/>
+  <ellipse cx="400" cy="330" rx="150" ry="48" fill="#b8893d" opacity="0.3"/>
+  <circle cx="400" cy="322" r="78" fill="#7a5a2e" opacity="0.45"/>
+  <circle cx="400" cy="322" r="40" fill="#c9a06e" opacity="0.55"/>
+  <text x="400" y="500" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#F5F0E8" opacity="0.85">NiloV · кейс 3</text>
+</svg>

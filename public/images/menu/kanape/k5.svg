@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Канапе с рыбой" >
+<defs>
+<linearGradient id="bgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FAF7F2"/><stop offset="100%" stop-color="#F2ECE3"/></linearGradient>
+<radialGradient id="plate" cx="50%" cy="46%" r="56%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="80%" stop-color="#EFE6D6"/><stop offset="100%" stop-color="#E4DCCF"/></radialGradient>
+<linearGradient id="gld" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A961"/><stop offset="100%" stop-color="#B08D57"/></linearGradient>
+<linearGradient id="food" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3E8D2"/><stop offset="100%" stop-color="#D9C3A0"/></linearGradient>
+</defs><rect width="800" height="600" fill="url(#bgG)"/>
+<circle cx="400" cy="300" r="250.0" fill="#B08D57" opacity="0.05">
+<animate attributeName="opacity" values="0.04;0.09;0.04" dur="8s" repeatCount="indefinite"/>
+<animate attributeName="r" values="230.0;272.0;230.0" dur="8s" repeatCount="indefinite"/>
+</circle>
+<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -10;0 0" dur="6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"/>
+<ellipse cx="400" cy="430" rx="200" ry="54" fill="#1C1815" opacity="0.05"/>
+<circle cx="400" cy="330" r="158" fill="url(#plate)" stroke="#E4DCCF" stroke-width="2"/><circle cx="400" cy="330" r="158" fill="none" stroke="url(#gld)" stroke-width="2.4" opacity="0.5"/>
+<g transform="translate(400 330)"><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="4.6s" repeatCount="indefinite"/>
+<rect x="-26" y="-17" width="52" height="34" rx="7" fill="url(#food)" stroke="url(#gld)" stroke-width="1.6"/>
+<path d="M-14 -4 q14 -16 28 0 q-14 10 -28 0 z" fill="#E8A07A" opacity="0.85"/><circle cx="10" cy="-9" r="2.2" fill="#3A2E22"/></g><g transform="translate(-70 18)"><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="4.6s" repeatCount="indefinite"/>
+<rect x="-26" y="-17" width="52" height="34" rx="7" fill="url(#food)" stroke="url(#gld)" stroke-width="1.6"/>
+<path d="M-14 -4 q14 -16 28 0 q-14 10 -28 0 z" fill="#E8A07A" opacity="0.85"/><circle cx="10" cy="-9" r="2.2" fill="#3A2E22"/></g></g><g transform="translate(70 18)"><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="4.6s" repeatCount="indefinite"/>
+<rect x="-26" y="-17" width="52" height="34" rx="7" fill="url(#food)" stroke="url(#gld)" stroke-width="1.6"/>
+<path d="M-14 -4 q14 -16 28 0 q-14 10 -28 0 z" fill="#E8A07A" opacity="0.85"/><circle cx="10" cy="-9" r="2.2" fill="#3A2E22"/></g></g></g></g>
+<text x="400" y="542" text-anchor="middle" font-family="Georgia, 'Cormorant', serif" font-size="28" fill="#1C1815" opacity="0.78">Канапе с рыбой</text>
+<text x="400" y="568" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" letter-spacing="3" fill="#B08D57" opacity="0.85">ФОТО ПОЯВИТСЯ ПОЗЖЕ</text>
+</svg>

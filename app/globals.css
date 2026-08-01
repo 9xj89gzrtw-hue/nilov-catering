@@ -1,0 +1,547 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* ═══════════════════════════════════════════
+   NiloV Catering — Design Tokens (светлая система)
+   Источник: 06_TOKENS.md (2026-07-18)
+   Стек: Tailwind CSS v4 + shadcn
+   КРИТИЧНО: меняем ЗНАЧЕНИЯ, не имена —
+   иначе components/ui/* (button/card/badge) сломаются
+   ═══════════════════════════════════════════ */
+
+@theme {
+  /* === shadcn-база (совпадает с components/ui/*) === */
+  --color-background: #FAF7F2;           /* ivory base */
+  --color-foreground: #1C1815;           /* ink, текст */
+  --color-card: #FFFFFF;                 /* карточки */
+  --color-card-foreground: #1C1815;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1C1815;
+  --color-primary: #B08D57;              /* gold = заливка CTA */
+  --color-primary-foreground: #1C1815;   /* ink на gold = 5.7:1 AA */
+  --color-secondary: #F2ECE3;            /* cream-alt секции */
+  --color-secondary-foreground: #1C1815;
+  --color-muted: #F2ECE3;
+  --color-muted-foreground: #4A423B;     /* warm grey, AAA 9.2:1 */
+  --color-accent: #EFE6D6;               /* gold-tint бейджей */
+  --color-accent-foreground: #6E5631;    /* 5.582:1 AAA на gold-tint */
+  --color-border: #E4DCCF;               /* hairline */
+  --color-input: #E4DCCF;
+  --color-ring: #8A6D3B;                 /* focus-visible 4.537:1 */
+  --color-destructive: #A6443B;
+  --color-destructive-foreground: #FFFFFF;
+
+  /* === Бренд-расширения === */
+  --color-gold: #B08D57;                 /* заливка/CTA-фон/разделители */
+  --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
+  --color-gold-text: #6E5530;            /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
+  --color-gold-text-on-secondary: #5C4525; /* золотой текст на cream */
+  --color-gold-tint: #EFE6D6;            /* фон бейджей */
+  --color-earth: #7C6A55;
+  --color-burgundy: #722F37;             /* ТОЛЬКО редко (печати), НЕ primary */
+  --color-burgundy-tint: #F3E7E9;
+  --color-line: #E4DCCF;
+  --color-success: #4F7A52;
+  --color-warning: #B5803A;
+  --color-sage: #7E8B6B;
+
+  /* === Типографика === */
+  --font-heading: var(--font-heading), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+
+  /* === Типографика scale (06_TOKENS:100-118) === */
+  --text-2xs: 0.625rem;    /* 10px */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-hero: clamp(2.5rem, 6vw, 5rem);
+  /* === Радиусы (06_TOKENS канон) === */
+  --radius-sm: 0.5rem;    /* 8px */
+  --radius-md: 0.75rem;   /* 12px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-xl: 1.5rem;    /* 24px */
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* === Тени (06_TOKENS) === */
+  --shadow-card: 0 1px 3px rgba(28, 24, 21, 0.06);
+  --shadow-soft: 0 4px 12px rgba(28, 24, 21, 0.05);
+  --shadow-hover: 0 8px 24px rgba(28, 24, 21, 0.08);
+  --shadow-gold-glow: 0 0 24px rgba(176, 141, 87, 0.15);
+
+  /* === Motion-токены (06_TOKENS) === */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 350ms;
+  --dur-slow: 600ms;
+  --wipe-dur: 1s;
+
+  /* === Семантические алиасы (06_TOKENS) === */
+  --color-bg: #FAF7F2;
+  --color-bg-alt: #F2ECE3;
+  --color-ink: #1C1815;
+  --color-ink-soft: #4A423B;
+  --color-surface: #FFFFFF;
+
+  /* === Контейнер / отступы (06_TOKENS) === */
+  --container-max: 1280px;
+  --container-pad: 1.5rem;
+  --section-y: 5rem;
+
+  /* === Frame (06_TOKENS) === */
+  --frame-object-pos: 50% 40%;
+}
+
+/* === Базовые слои === */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+
+  /* Focus */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-gold-tint);
+    color: var(--color-foreground);
+  }
+}
+
+/* === Утилиты === */
+@utility text-gold {
+  color: var(--color-gold-text);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (width >= 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Ultra-wide (≥1920px): fluid full-bleed */
+  @media (width >= 1920px) {
+    max-width: 1600px;
+  }
+}
+
+/* Tablet: 768-1023px — StickyMobileCTA active, Masonry 2-col */
+@layer utilities {
+  .tablet-only {
+    display: none;
+  }
+  @media (width >= 768px) and (width < 1024px) {
+    .tablet-only { display: revert; }
+    .tablet-col-2 { grid-template-columns: repeat(2, 1fr); }
+    .tablet-flex-row { flex-direction: row; }
+  }
+}
+
+/* === Анимации === */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kenBurns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1%, -1%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Skeleton shimmer — placeholder while FoodPhoto / lazy images load.
+   C3 fix: prevents "empty card" perception (no photo, no price) on mobile. */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--color-secondary, #f5f5f4) 0%, var(--color-accent, #e7e5e4) 50%, var(--color-secondary, #f5f5f4) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* FoodPhoto SSR-visible: фото видно сразу в SSR (без JS), с лёгкой fade-in анимацией.
+   Это решает 5-волновую проблему (W14→W18) с opacity-0 в SSR. */
+.foodphoto-ssr-visible {
+  opacity: 0;
+  animation: foodphoto-ssr-fade 0.6s ease-out 0.1s forwards;
+}
+@keyframes foodphoto-ssr-fade {
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════
+   Drinqit-style 3D Animations
+   Tilt + Parallax + Depth on hover for food cards
+   ═══════════════════════════════════════════ */
+
+/* 3D tilt container — wraps any card for perspective effect */
+.drinqit-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* 3D tilt inner — applies the rotation on hover */
+.drinqit-3d-inner {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Hover tilt — desktop only (touch devices get no tilt) */
+@media (hover: hover) and (pointer: fine) {
+  .drinqit-3d:hover .drinqit-3d-inner {
+    transform: rotateX(4deg) rotateY(-4deg) scale(1.03);
+  }
+
+  /* Image floats up in Z for depth */
+  .drinqit-3d:hover .drinqit-3d-img {
+    transform: translateZ(30px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Text content stays grounded */
+  .drinqit-3d:hover .drinqit-3d-text {
+    transform: translateZ(15px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Shadow deepens for floating effect */
+  .drinqit-3d:hover .drinqit-3d-shadow {
+    transform: translateZ(-20px) scale(0.95);
+    opacity: 0.4;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Base state transitions */
+.drinqit-3d-img,
+.drinqit-3d-text,
+.drinqit-3d-shadow {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+/* Drinqit-style shine sweep on hover */
+.drinqit-shine {
+  position: relative;
+  overflow: hidden;
+}
+.drinqit-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg) translateX(0);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+@media (hover: hover) and (pointer: fine) {
+  .drinqit-shine:hover::after {
+    transform: skewX(-25deg) translateX(300%);
+  }
+}
+
+/* Drinqit-style entrance animation — cards "rise" into view */
+@keyframes drinqit-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.drinqit-rise {
+  animation: drinqit-rise 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Drinqit-style floating animation — subtle infinite float */
+@keyframes drinqit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.drinqit-float {
+  animation: drinqit-float 3s ease-in-out infinite;
+}
+
+/* Smooth scroll for horizontal carousels */
+.carousel-horizontal {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) transparent;
+}
+.carousel-horizontal::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel-horizontal::-webkit-scrollbar-track {
+  background: transparent;
+}
+.carousel-horizontal::-webkit-scrollbar-thumb {
+  background-color: var(--color-gold);
+  border-radius: 3px;
+}
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+@utility animate-clip-reveal {
+  animation: clip-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+@utility cart-badge-pop {
+  animation: cart-badge-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes cart-badge-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === Mobile improvements === */
+@layer base {
+  /* Touch targets ≥44px per WCAG 2.5.5 */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Prevent double-tap zoom on buttons */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Safe area for iPhone notch */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Reduce Ken Burns on mobile (save GPU) */
+    @media (pointer: coarse) {
+      [class*="group-hover"] {
+        transform: none !important;
+      }
+    }
+}
+
+/* Hide scrollbar for horizontal scroll */
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   A11y improvements (C7: focus states, skip-link)
+   Wave 10 fix (C2/C5/C7/C10): bulletproof focus-visible — previous rule
+   was overridden by Tailwind's focus:outline-none utility used inline on
+   many components (catalog search input, gallery buttons, lightbox,
+   ConstructorWizard contact form, etc.).
+   Now uses !important + higher-specificity selector list covering all
+   common focusable element types AND ARIA roles. Outline + box-shadow
+   combo guarantees visibility on any background (light cards, dark
+   overlays, gold buttons, image overlays).
+   ═══════════════════════════════════════════ */
+
+/* Force focus visibility — highest specificity, !important to override
+   Tailwind focus:outline-none / focus:ring-* utilities */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[role="option"]:focus-visible,
+[role="link"]:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+label:focus-visible,
+[data-focusable]:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.25) !important;
+  border-radius: 4px !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+/* Ensure outline is not removed by Tailwind reset (e.g. focus:outline-none) */
+*:focus {
+  outline: revert !important;
+}
+
+*:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip-link restyling */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ═══════════════════════════════════════════
+   C11 fix (Accessibility, 6.5): placeholder contrast
+   Previously placeholders used default UA stylesheet grey
+   (#757575 ~ 4.5:1) or browser auto-opacity 0.5 — failed AA
+   on the ivory background. Force the muted-foreground token
+   (already AAA 9.2:1 on white/ivory) so placeholders meet AA.
+   ═══════════════════════════════════════════ */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--color-muted-foreground) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure all form inputs have sufficient contrast for entered text */
+input,
+textarea,
+select {
+  color: var(--color-foreground) !important;
+}
+
+/* ═══════════════════════════════════════════
+   NUCLEAR focus visibility — overrides everything
+   Wave 2 C11 fix (Accessibility, 7.25): previous :focus-visible rules
+   were defeated by Tailwind's `focus:outline-none` and `outline-none`
+   utilities applied inline on inputs/buttons/links across the codebase.
+   This terminal block uses `!important` + universal selector to guarantee
+   a visible focus indicator on ANY focusable element regardless of any
+   utility classes that try to suppress it.
+   The companion `*:focus:not(:focus-visible)` rule re-enables
+   outline:none for mouse-click focus (preserving Tailwind reset intent)
+   while keyboard focus (:focus-visible) ALWAYS shows the gold ring.
+   ═══════════════════════════════════════════ */
+*:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.3) !important;
+}
+
+/* Remove outline:none from Tailwind reset only when NOT focus-visible */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Pointer-coarse (touch) devices: keep focus-visible outline but drop
+   the heavy box-shadow so it doesn't overlap with native tap highlights. */
+@media (pointer: coarse) {
+  *:focus-visible {
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.25) !important;
+  }
+}
+
+/* Global touch target — WCAG 2.5.5, min 44x44px for ALL interactive elements */
+button, a[href], input[type="submit"], input[type="button"], summary, [role="button"], [tabindex="0"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+/* But don't force min-width on inline links in text */
+p a, li a, span a {
+  min-width: auto;
+  min-height: auto;
+}

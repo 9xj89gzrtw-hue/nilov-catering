@@ -1,0 +1,29 @@
+name: Fact-Gate (canon invariants)
+
+# Исполняет FACT-GATE (scripts/fact-gate.mjs) на каждый push/PR.
+# Закрывает CODE_REALITY_BACKLOG п.3: гейт «спроектирован → исполнен в CI».
+# Проверяет 7 инвариантов: публичный лексикон, gold-ring/tokens, «18 лет»,
+# фейк-подтверждения, голый text-gold, и CODE-REALITY (живой код:
+# премиум-лексикон / AI-консьерж / битая маска tel:). Красный CI при нарушении.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch: {}
+
+jobs:
+  fact-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run Fact-Gate
+        run: node scripts/fact-gate.mjs

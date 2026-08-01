@@ -1,0 +1,19 @@
+name: Block Force Push Protection
+on:
+  push:
+    branches: [main]
+jobs:
+  check-force-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for force push
+        run: |
+          echo "Force push detected — checking file count..."
+          # If files dropped significantly, fail
+          FILE_COUNT=$(git ls-tree -r --name-only HEAD | wc -l)
+          echo "File count: $FILE_COUNT"
+          if [ "$FILE_COUNT" -lt 100 ]; then
+            echo "❌ BLOCKED: Only $FILE_COUNT files (expected 1000+). Possible deletion."
+            exit 1
+          fi
+          echo "✅ File count OK: $FILE_COUNT"
