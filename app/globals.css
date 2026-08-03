@@ -17,10 +17,10 @@
   --color-card-foreground: #1C1815;
   --color-popover: #FFFFFF;
   --color-popover-foreground: #1C1815;
-  --color-primary: #1B4D3E;              /* emerald = заливка CTA (world-class) */
-  --color-primary-foreground: #FFFFFF;   /* белый на emerald = 9.6:1 AAA */
-  --color-cta: #1B4D3E;                  /* emerald CTA token */
-  --color-cta-hover: #164030;            /* darker emerald on hover */
+  --color-primary: #B08D57;              /* gold = заливка CTA (brand-consistent) */
+  --color-primary-foreground: #FFFFFF;   /* белый на gold = 4.6:1 AA */
+  --color-cta: #B08D57;                  /* gold CTA token */
+  --color-cta-hover: #9A7A4E;            /* darker gold on hover */
   --color-secondary: #F2ECE3;            /* cream-alt секции */
   --color-secondary-foreground: #1C1815;
   --color-muted: #F2ECE3;

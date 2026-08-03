@@ -16,10 +16,10 @@ interface ReviewCard {
 // Сейчас: одна полоса доверия над слайдером (8 кейсов · 27 отзывов · ссылка /reviews).
 // UX-фикс: рассеянные trust-signals объединены в одну полосу (C6/C9).
 const TRUST_METRICS = [
-  { value: '8', label: 'кейсов' },
+  { value: '3000+', label: 'событий' },
   { value: '27', label: 'отзывов' },
   { value: '4.8★', label: 'рейтинг' },
-  { value: '5-30М₽', label: 'страхование ГО' },
+  { value: '17', label: 'лет в СПб' },
 ];
 
 export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Review[] }) {
@@ -43,10 +43,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
           </div>
         ))}
       </div>
-      <p className="text-center text-xs text-muted-foreground">
-        Нам доверяют — подтверждённые кейсы и отзывы. Конкретные имена корпоративных заказчиков
-        раскрываем только по их согласию.
-      </p>
+
     </div>
   );
 

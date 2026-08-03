@@ -3,10 +3,8 @@
 import Link from 'next/link';
 import { Phone, Calculator } from 'lucide-react';
 import { SITE } from '@/lib/data';
-import TextSizeToggle from '@/components/effects/TextSizeToggle';
 import MobileMenu from '@/components/layout/MobileMenu';
 import MegaMenu from '@/components/layout/MegaMenu';
-import CartBadge from '@/components/layout/CartBadge';
 
 export default function Header() {
   return (
@@ -73,32 +71,19 @@ export default function Header() {
           </li>
         </ul>
 
-
-        {/* Language switcher */}
-        <Link
-          href="/en"
-          className="hidden md:inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors px-2"
-          aria-label="Switch to English"
-        >
-          EN
-        </Link>
-
-        {/* Actions */}
+        {/* Right side */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          <TextSizeToggle />
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-gold-text transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-gold-text transition-colors"
             aria-label={`Позвонить ${SITE.phone}`}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
             <span className="hidden lg:inline">{SITE.phone}</span>
-            <span className="lg:hidden">Позвонить</span>
           </a>
-          <CartBadge />
           <Link
-            href="/plan/calculator"
-            className="hidden lg:inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
+            href="/plan/helper"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
           >
             <Calculator className="w-4 h-4" aria-hidden="true" />
             Калькулятор
@@ -107,7 +92,6 @@ export default function Header() {
 
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-1 shrink-0">
-          <TextSizeToggle />
           <a
             href={`tel:${SITE.phoneTel}`}
             className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
