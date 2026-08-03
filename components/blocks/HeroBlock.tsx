@@ -64,7 +64,7 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
           <source srcSet="/images/gallery/wedding-banquet-768.webp" type="image/webp" media="(max-width: 767px)" />
           <img
             src="/images/gallery/wedding-banquet.jpg"
-            alt=""
+            alt="Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering"
             className="absolute inset-0 w-full h-full object-cover"
             fetchPriority="high"
             aria-hidden="true"

@@ -123,7 +123,7 @@ export default function PricingPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-muted-foreground mt-3">Все цены включают: еду, персонал, посуду, доставку по КАД. Доставка за КАД — от 3 000 ₽.</p>
+          <p className="text-xs text-muted-foreground mt-3">Все цены включают: еду, персонал, посуду, доставку по КАД. Доставка за КАД — от 3 000 ₽. Минимум: банкет от 15 гостей, фуршет от 20 гостей, кофе-брейк от 10 гостей.</p>
         </section>
 
         {/* Competitive comparison — moat visualization */}
@@ -176,6 +176,7 @@ export default function PricingPage() {
           <p className="text-sm font-medium mb-1">🎁 Рекомендуйте нас — получайте бонусы</p>
           <p className="text-xs text-muted-foreground">
             Поделитесь ссылкой с друзьями. За каждый рекомендованный заказ — скидка 500 ₽ на следующее мероприятие.
+            Сохраните своё меню в конструкторе — пришлём ссылку на email.
           </p>
         </section>
       </div>

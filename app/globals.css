@@ -545,3 +545,10 @@ p a, li a, span a {
   min-width: auto;
   min-height: auto;
 }
+
+/* Fix small touch targets on text links */
+a.text-sm, a.text-xs {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
