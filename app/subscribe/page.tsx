@@ -36,28 +36,28 @@ export default function SubscribePage() {
               </thead>
               <tbody>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium">☕ Кофе-брейк weekly</td>
+                  <td className="py-2 pr-4 font-medium"> Кофе-брейк weekly</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽</td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60 bg-gold-tint/5">
-                  <td className="py-2 pr-4 font-medium">💼 Годовой контракт</td>
+                  <td className="py-2 pr-4 font-medium"> Годовой контракт</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽</td>
                   <td className="text-right py-2 px-2">23%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium">🍽 Бизнес-ланч weekly</td>
+                  <td className="py-2 pr-4 font-medium"> Бизнес-ланч weekly</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽</td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium">📦 Комбо (CB+обед)</td>
+                  <td className="py-2 pr-4 font-medium"> Комбо (CB+обед)</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">166 400 ₽</td>
                   <td className="text-right py-2 px-2">20%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
@@ -71,7 +71,7 @@ export default function SubscribePage() {
           <div className="space-y-4">
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1">☕ Кофе-брейк — еженедельно</h3>
+            <h3 className="font-heading text-base font-medium mb-1"> Кофе-брейк — еженедельно</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 события × 50 чел × 390 ₽ = 78 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">66 300 ₽/мес</strong>
             </p>
@@ -79,7 +79,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border-2 border-gold-text/40 bg-gold-tint/5">
-            <h3 className="font-heading text-base font-medium mb-1">💼 Годовой контракт (кофе-брейк)</h3>
+            <h3 className="font-heading text-base font-medium mb-1"> Годовой контракт (кофе-брейк)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong> (скидка 23%).
               Ежемесячный ЭДО-инвойс. SLA ±15 минут включён.
@@ -90,7 +90,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1">🍽 Бизнес-ланч — еженедельно</h3>
+            <h3 className="font-heading text-base font-medium mb-1"> Бизнес-ланч — еженедельно</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 обеда × 50 чел × 650 ₽ = 130 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">110 500 ₽/мес</strong>
             </p>
@@ -100,7 +100,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1">📦 Комбо (кофе-брейк + обед)</h3>
+            <h3 className="font-heading text-base font-medium mb-1"> Комбо (кофе-брейк + обед)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 дня × (кофе-брейк 390 ₽ + обед 650 ₽) × 50 чел = 208 000 ₽/мес →
               со скидкой 20% = <strong className="text-foreground">166 400 ₽/мес</strong>
@@ -116,14 +116,14 @@ export default function SubscribePage() {
         <div className="mb-8 p-5 rounded-xl border border-line bg-secondary/30">
           <h2 className="font-heading text-lg font-medium mb-3">Что входит в подписку</h2>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
-            <li>✓ Фикс-цена на весь срок контракта (защита от инфляции)</li>
-            <li>✓ ЭДО-инвойс ежемесячно (Диадок / СБИС)</li>
-            <li>✓ SLA: доставка ±15 минут, штраф 1%/мин опоздания</li>
-            <li>✓ Ротация меню — без повторов 8–12 недель</li>
-            <li>✓ Персональный менеджер с прямым мобильным</li>
-            <li>✓ Сезонные обновления меню (весна/лето/осень/зима)</li>
-            <li>✓ Доставка в пределах КАД — бесплатно</li>
-            <li>✓ Возможность паузы (отпуск, праздники) — без штрафа</li>
+            <li> Фикс-цена на весь срок контракта (защита от инфляции)</li>
+            <li> ЭДО-инвойс ежемесячно (Диадок / СБИС)</li>
+            <li> SLA: доставка ±15 минут, штраф 1%/мин опоздания</li>
+            <li> Ротация меню — без повторов 8–12 недель</li>
+            <li> Персональный менеджер с прямым мобильным</li>
+            <li> Сезонные обновления меню (весна/лето/осень/зима)</li>
+            <li> Доставка в пределах КАД — бесплатно</li>
+            <li> Возможность паузы (отпуск, праздники) — без штрафа</li>
           </ul>
         </div>
 

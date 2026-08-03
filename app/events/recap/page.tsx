@@ -121,12 +121,12 @@ export default function RecapPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                   <span className="absolute top-2 right-2 text-sm bg-black/60 text-white px-2 py-1 rounded">
-                    ▶ видео
+                     видео
                   </span>
                 </div>
               ) : (
                 <div className="aspect-video bg-gradient-to-br from-secondary via-muted to-secondary flex items-center justify-center text-4xl group-hover:scale-105 transition-transform">
-                  <span aria-hidden="true">🎥</span>
+                  <span aria-hidden="true"></span>
                 </div>
               )}
               <div className="p-4">
@@ -159,7 +159,7 @@ export default function RecapPage() {
         {/* Composite festival case */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-lg font-medium mb-2">
-            🏛 Festival-scale (800+ чел)
+             Festival-scale (800+ чел)
           </h2>
           <p className="text-sm text-foreground/90 mb-2">
             <strong>
@@ -182,7 +182,7 @@ export default function RecapPage() {
 
         <div className="p-4 rounded-xl border border-line bg-secondary/30 mb-8">
           <p className="text-sm text-muted-foreground">
-            📹 <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
+             <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
             <a href="mailto:info@odaeda.ru" className="underline text-gold-text">
               info@odaeda.ru

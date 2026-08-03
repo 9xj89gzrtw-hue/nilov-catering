@@ -37,33 +37,33 @@ export default function TenderHub() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Document package */}
           <div className="p-6 rounded-2xl border border-line bg-card">
-            <h3 className="font-heading text-lg font-medium mb-3">📄 Пакет документов для тендера</h3>
+            <h3 className="font-heading text-lg font-medium mb-3"> Пакет документов для тендера</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Готовый пакет для загрузки на ЭТП (электронные торговые площадки):
             </p>
             <ul className="text-sm space-y-2 mb-4">
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>Выписка ЕГРИП (актуальная)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>ИНН 781433059704, ОГРНИП 314784710400401</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>Страхование ГО 5-30М₽ (полис)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>Сертификат Халяль СМР №142 (при необходимости)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>Декларации соответствия (ТР ТС 021/2011, 022/2011)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-emerald-600 mt-0.5"></span>
                 <span>Сертификаты безопасности пищевой продукции</span>
               </li>
             </ul>
@@ -79,7 +79,7 @@ export default function TenderHub() {
 
           {/* Case studies — premium display typography */}
           <div className="p-6 rounded-2xl border border-line bg-card">
-            <h3 className="font-heading text-lg font-medium mb-3">📊 Опыт работы с тендерами</h3>
+            <h3 className="font-heading text-lg font-medium mb-3"> Опыт работы с тендерами</h3>
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-secondary/30 border-l-4 border-gold-text">
                 <p className="font-heading text-base font-medium mb-1">Конференция «Экспофорум»</p>
@@ -112,16 +112,16 @@ export default function TenderHub() {
         {/* 44-ФЗ / 223-ФЗ badges — premium styling */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-300 text-blue-900 text-sm font-semibold shadow-sm">
-            🏛 44-ФЗ · Госзакупки
+             44-ФЗ · Госзакупки
           </span>
           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-300 text-emerald-900 text-sm font-semibold shadow-sm">
-            🏢 223-ФЗ · Госкорпорации
+             223-ФЗ · Госкорпорации
           </span>
           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-300 text-amber-900 text-sm font-semibold shadow-sm">
-            💼 Коммерческие закупки
+             Коммерческие закупки
           </span>
           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-300 text-purple-900 text-sm font-semibold shadow-sm">
-            🕌 Халяль-сертификат СМР
+             Халяль-сертификат СМР
           </span>
         </div>
 

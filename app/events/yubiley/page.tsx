@@ -31,7 +31,7 @@ export default function YubileyPage() {
 
         {/* Phone CTA — large for elderly */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-xl font-medium mb-2">📞 Позвоните — поможем выбрать</h2>
+          <h2 className="font-heading text-xl font-medium mb-2"> Позвоните — поможем выбрать</h2>
           <p className="text-base text-muted-foreground mb-4">
             Не любите заполнять формы? Позвоните — шеф-повар Дмитрий Нилов лично подберёт меню
             под ваш бюджет и повод. Перезвоним в течение 15 минут.
@@ -40,7 +40,7 @@ export default function YubileyPage() {
             href={`tel:${SITE.phoneTel}`}
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-4 text-xl font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-            📞 {SITE.phone}
+             {SITE.phone}
           </a>
           <p className="text-sm text-muted-foreground mt-3">
             Звонок бесплатный из любой точки РФ. Работаем ежедневно с 9:00 до 21:00.
@@ -49,7 +49,7 @@ export default function YubileyPage() {
 
         {/* Бюджетные решения — для 15 чел на 50к */}
         <div className="mb-8 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3">💰 Что помещается в бюджет 50 000 ₽ на 15 гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Что помещается в бюджет 50 000 ₽ на 15 гостей</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Золотая свадьба или юбилей на 15 пожилых гостей — нужен банкет с посадкой.
             Вот реальные варианты под бюджет 50 000 ₽:
@@ -68,7 +68,7 @@ export default function YubileyPage() {
                 href={`tel:${SITE.phoneTel}`}
                 className="inline-block mt-3 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
               >
-                📞 Обсудить пакет «Юбилейный»
+                 Обсудить пакет «Юбилейный»
               </a>
             </div>
             <div className="p-4 rounded-lg border border-line bg-background">
@@ -86,7 +86,7 @@ export default function YubileyPage() {
 
         {/* Premium (вне бюджета) — отдельный блок */}
         <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
-          <h3 className="font-heading text-base font-medium mb-2">💎 Премиум-вариант (вне бюджета 50к)</h3>
+          <h3 className="font-heading text-base font-medium mb-2"> Премиум-вариант (вне бюджета 50к)</h3>
           <p className="text-sm text-muted-foreground">
             Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
             сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.
@@ -101,21 +101,21 @@ export default function YubileyPage() {
 
         {/* Что важно для пожилых гостей */}
         <div className="mt-12 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3">🪑 Что важно для пожилых гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Что важно для пожилых гостей</h2>
           <ul className="text-base text-muted-foreground space-y-2">
-            <li>✓ Банкет с посадкой (не фуршет стоя) — пожилым тяжело стоять 2+ часа</li>
-            <li>✓ Меню с диетическими опциями (без острого, без жареного, без сырой рыбы)</li>
-            <li>✓ Возможность безглютенового и безмолочного меню для аллергиков</li>
-            <li>✓ Официанты с опытом работы с пожилыми гостями (терпение, вежливость)</li>
-            <li>✓ Чайная станция с травяными чаями (облепиха, ромашка, иван-чай)</li>
-            <li>✓ Тишина и неспешная подача — без шумных станций и бармен-шоу</li>
-            <li>✓ Возможность тоста и музыкального сопровождения (по запросу)</li>
+            <li> Банкет с посадкой (не фуршет стоя) — пожилым тяжело стоять 2+ часа</li>
+            <li> Меню с диетическими опциями (без острого, без жареного, без сырой рыбы)</li>
+            <li> Возможность безглютенового и безмолочного меню для аллергиков</li>
+            <li> Официанты с опытом работы с пожилыми гостями (терпение, вежливость)</li>
+            <li> Чайная станция с травяными чаями (облепиха, ромашка, иван-чай)</li>
+            <li> Тишина и неспешная подача — без шумных станций и бармен-шоу</li>
+            <li> Возможность тоста и музыкального сопровождения (по запросу)</li>
           </ul>
         </div>
 
         {/* Юридическая прозрачность */}
         <div className="mt-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-lg font-medium mb-2">📋 Юридическая прозрачность</h2>
+          <h2 className="font-heading text-lg font-medium mb-2"> Юридическая прозрачность</h2>
           <dl className="text-base space-y-1">
             <div className="flex gap-2">
               <dt className="text-muted-foreground shrink-0">Юр.лицо:</dt>
@@ -162,13 +162,13 @@ export default function YubileyPage() {
               href={`tel:${SITE.phoneTel}`}
               className="rounded-lg bg-background text-foreground px-6 py-3 text-base font-semibold hover:bg-background/90 transition-colors no-underline"
             >
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link
               href="/contact"
               className="rounded-lg border-2 border-background px-6 py-3 text-base font-semibold hover:bg-background/10 transition-colors no-underline"
             >
-              ✍️ Оставить заявку
+               Оставить заявку
             </Link>
           </div>
         </div>

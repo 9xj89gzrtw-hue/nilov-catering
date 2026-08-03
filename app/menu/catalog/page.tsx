@@ -42,20 +42,20 @@ const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as con
 // Allergen emoji map — unified with ConstructorWizard / MenuBuilder AllergenFilterBar
 // Same source of truth: ALLERGEN_LABEL (full words) + ALLERGEN_EMOJI (consistent visual)
 const ALLERGEN_EMOJI: Record<Allergen, string> = {
-  gluten: '🌾',
-  crustaceans: '🦐',
-  eggs: '🥚',
-  fish: '🐟',
-  peanuts: '🥜',
-  soy: '🌱',
-  milk: '🥛',
-  nuts: '🥜',
-  celery: '🌿',
-  mustard: '🟡',
-  sesame: '▪️',
-  sulphites: '🍷',
-  lupin: '🌼',
-  molluscs: '🦪',
+  gluten: '',
+  crustaceans: '',
+  eggs: '',
+  fish: '',
+  peanuts: '',
+  soy: '',
+  milk: '',
+  nuts: '',
+  celery: '',
+  mustard: '',
+  sesame: '',
+  sulphites: '',
+  lupin: '',
+  molluscs: '',
 };
 
 // High-risk allergens (анфилаксия priority) — same set as ConstructorWizard DraggableDishCard
@@ -64,7 +64,7 @@ const HIGH_RISK_ALLERGENS: Allergen[] = [
 ];
 
 // Allergen exclusion filters — unified with constructor: emoji + ALLERGEN_LABEL (full words)
-// Previously used prefix-style "Без молока"; now matches constructor style "🥛 Молоко" for consistency.
+// Previously used prefix-style "Без молока"; now matches constructor style " Молоко" for consistency.
 const EXCLUDE_ALLERGENS: Allergen[] = [
   'milk', 'eggs', 'nuts', 'fish', 'soy', 'peanuts', 'sesame',
 ];
@@ -73,14 +73,14 @@ const EXCLUDE_ALLERGENS: Allergen[] = [
 // Instead of facing all 124 dishes, users see 8 popular, format-agnostic picks first.
 // Curated mix: canapé + hot + dessert + drink, balanced across price tiers.
 const CHEF_RECOMMENDS_IDS = [
-  'canape-salmon',     // классическая закуска
-  'mini-burger',       // хит фуршетов
-  'beef-medallions',   // премиум-горячее
-  'macaron-shooter',   // десерт-шутер
-  'borscht',           // русская классика
-  'yakitori',          // азиатская нота
-  'tartlet-chicken',   // тарталетка
-  'cranberry-mors',    // напиток
+  'canape-salmon', // классическая закуска
+  'mini-burger', // хит фуршетов
+  'beef-medallions', // премиум-горячее
+  'macaron-shooter', // десерт-шутер
+  'borscht', // русская классика
+  'yakitori', // азиатская нота
+  'tartlet-chicken', // тарталетка
+  'cranberry-mors', // напиток
 ] as const;
 
 export default function CatalogPage() {
@@ -175,10 +175,26 @@ export default function CatalogPage() {
               aria-pressed={!showAllergens}
               type="button"
             >
-              {showAllergens ? '👁 Скрыть аллергены' : '👁 Показать аллергены'}
+              {showAllergens ? ' Скрыть аллергены' : ' Показать аллергены'}
             </button>
           }
         />
+
+        {/* Chef recommends — MOVED ABOVE filter bar so dish photos are visible above the fold.
+            VLM critic flagged "No actual product images visible above the fold for a 'catalog'". */}
+        {chefRecommends.length > 0 && (
+          <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
+            <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1 flex items-center gap-2">
+              Шеф рекомендует
+            </h2>
+            <p className="text-sm text-muted-foreground mb-5">8 самых популярных блюд — начните с этих</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {chefRecommends.map((dish, idx) => (
+                <DishCard key={`rec-${dish.id}`} dish={dish} index={idx} showAllergens={showAllergens} recommended />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Sticky filter bar — sticks below header (top-16 = 64px = h-16 header) */}
         <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 bg-background/95 backdrop-blur-md border-b border-line/60 rounded-xl">
@@ -246,7 +262,7 @@ export default function CatalogPage() {
                       : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
                   }`}
                 >
-                  <span aria-hidden="true">{ALLERGEN_EMOJI[a]}</span>{' '}{ALLERGEN_LABEL[a]}{isHighRisk && <span className="ml-0.5" aria-hidden="true">⚠</span>}
+                  <span aria-hidden="true">{ALLERGEN_EMOJI[a]}</span>{' '}{ALLERGEN_LABEL[a]}{isHighRisk && <span className="ml-0.5" aria-hidden="true"></span>}
                 </button>
               );
             })}
@@ -256,7 +272,7 @@ export default function CatalogPage() {
                 className="shrink-0 ml-auto text-xs text-gold-text hover:underline px-2 py-1 touch-target"
                 aria-label="Сбросить все фильтры"
               >
-                ✕ Сбросить
+                 Сбросить
               </button>
             )}
           </div>
@@ -292,48 +308,31 @@ export default function CatalogPage() {
         
 
         {/* Allergen legend — ТР ТС 022/2011 (14 allergens) */}
-        <div className="mb-4 p-3 rounded-lg bg-secondary/50 flex flex-wrap items-center gap-2 text-xs">
-          <span className="font-medium">Аллергены (ТР ТС 022/2011):</span>
+        <div className="mb-4 p-3 rounded-lg bg-secondary/40 flex flex-wrap items-center gap-1.5 text-xs">
+          <span className="font-medium text-foreground mr-1">Аллергены:</span>
           {Object.entries(ALLERGEN_LABEL).map(([code, label]) => {
             const isHighRisk = HIGH_RISK_ALLERGENS.includes(code as Allergen);
             return (
-              <span key={code} className="inline-flex items-center gap-1">
-                <span
-                  className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${
-                    /* A11y: amber-700 #B45309 + white = 5.02:1 AA. amber-500 (#FE9A00 rendered)
-                       + white = 2.13:1 FAIL. red-600 + white = 4.83:1 pass (unchanged). */
-                    isHighRisk ? 'bg-red-600 text-white' : 'bg-[#B45309] text-white'
-                  }`}
-                  title={`${label}${isHighRisk ? ' — высокий риск анафилаксии' : ''}`}
-                >
-                  {label}
-                </span>
+              <span
+                key={code}
+                className={`px-2 py-0.5 rounded-full text-[11px] font-medium border ${
+                  isHighRisk
+                    ? 'border-red-700/40 text-red-800 bg-red-50'
+                    : 'border-amber-700/30 text-amber-800 bg-amber-50'
+                }`}
+                title={`${label}${isHighRisk ? ' — высокий риск анафилаксии' : ''}`}
+              >
+                {label}
               </span>
             );
           })}
-          <span className="text-[11px] text-muted-foreground ml-2">
-            <span className="inline-block w-2.5 h-2.5 rounded-sm bg-red-600 align-middle mr-1" />— высокий риск
-            <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#B45309] align-middle mr-1 ml-2" />— прочие
+          <span className="text-[11px] text-muted-foreground ml-2 flex items-center gap-3">
+            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full bg-red-700" />высокий риск</span>
+            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-700" />прочие</span>
           </span>
         </div>
 
-        {/* Chef recommends — top picks to reduce cognitive load (C3 + C8 fix).
-            C3: prominent gradient background + larger heading makes this the
-            visual anchor of the catalog — a clear starting point instead of
-            an undifferentiated wall of 124 dishes. */}
-        {chefRecommends.length > 0 && (
-          <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
-            <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1 flex items-center gap-2">
-              <span aria-hidden="true">⭐</span> Шеф рекомендует
-            </h2>
-            <p className="text-sm text-muted-foreground mb-5">8 самых популярных блюд — начните с этих</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {chefRecommends.map((dish, idx) => (
-                <DishCard key={`rec-${dish.id}`} dish={dish} index={idx} showAllergens={showAllergens} recommended />
-              ))}
-            </div>
-          </section>
-        )}
+        {/* (Chef recommends section moved to top of page, above the sticky filter bar.) */}
 
         {/* C3 fix: station-grouped sections with clear headers + per-section pagination.
             Replaces previous flat «other / halal / pork» split that read as a Pinterest feed.
@@ -346,7 +345,7 @@ export default function CatalogPage() {
             {/* Спец-баннер для халяль-фильтра */}
             {activeDiets.has('halal') && (
               <div className="mt-6 p-5 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
-                <p className="text-sm font-medium text-foreground mb-1">☪️ Халяль-меню готовим под заказ</p>
+                <p className="text-sm font-medium text-foreground mb-1"> Халяль-меню готовим под заказ</p>
                 <p className="text-xs text-muted-foreground mb-3">
                   В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
@@ -383,7 +382,7 @@ export default function CatalogPage() {
               Собрать меню в конструкторе
             </Link>
             <Link href="/delivery/order" className="rounded-lg border border-gold-text px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors inline-block">
-              🛒 В заказ доставки
+               В заказ доставки
             </Link>
           </div>
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
@@ -477,8 +476,8 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
   const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
 
   // C3 fix: detect pork-containing dishes (previously broken out into a separate
-  // «🚫 Блюда со свининой» section). With station grouping we lose that section,
-  // so we add a small inline «🚫 свин» badge on the image to keep the halal
+  // « Блюда со свининой» section). With station grouping we lose that section,
+  // so we add a small inline « свин» badge on the image to keep the halal
   // safety signal visible at a glance.
   const hasPork = /свинин|бекон|сало/i.test(dish.description);
 
@@ -495,20 +494,20 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
             accidentally selecting these dishes. */}
         {hasPork && (
           <span
-            className="absolute bottom-2 left-2 z-10 inline-flex items-center gap-1 rounded-full bg-red-600 text-white text-[10px] font-semibold px-2 py-0.5 shadow-md"
+            className="absolute bottom-2 left-2 z-10 inline-flex items-center gap-1 rounded-full bg-rose-900/85 text-white text-[10px] font-semibold px-2 py-0.5 backdrop-blur-sm"
             aria-label="Содержит свинину — не подходит для халяль-мероприятий"
             title="Содержит свинину — не подходит для халяль-мероприятий"
           >
-            🚫 свин
+            свин
           </span>
         )}
-        {/* Recommended badge — ⭐ star, top-right corner. C8 fix. */}
+        {/* Recommended badge — top-right corner */}
         {recommended && (
           <span
             className="absolute top-2 right-2 z-10 inline-flex items-center gap-1 rounded-full bg-gold-text text-white text-[10px] font-semibold px-2 py-0.5 shadow-md"
             aria-label="Шеф рекомендует"
           >
-            ⭐ Хит
+            Хит
           </span>
         )}
         <FoodPhoto
@@ -555,7 +554,7 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
         )}
 
         {/* Allergen summary — single compact line per C8/C3/C4 cognitive load fix.
-            Full allergen chips on image show high-risk only (⚠ badge).
+            Full allergen chips on image show high-risk only ( badge).
             Here: compact text line with count + expandable title. Reduces the
             "wall of colored tags" that competed with dish name & price. */}
         {showAllergens && dish.allergens.length > 0 && (

@@ -11,8 +11,8 @@ export async function GET(_request: Request) {
 
   for (const [eventId, offers] of Object.entries(ALL_TARIFF_OFFERS)) {
     const eventLabel: Record<string, string> = {
-      svadba: '💍 Свадьба', korporativ: '💼 Корпоратив', vypusknoy: '🎓 Выпускной',
-      chastnoe: '🥂 Частное событие', detskoe: '🎈 Детский праздник', 'chef-at-home': '👨‍🍳 Шеф на дом',
+      svadba: ' Свадьба', korporativ: ' Корпоратив', vypusknoy: ' Выпускной',
+      chastnoe: ' Частное событие', detskoe: ' Детский праздник', 'chef-at-home': ' Шеф на дом',
     };
     rows.push(`<h2 style="color:#8A6D3B; font-size:18px; margin-top:28px;">${eventLabel[eventId] || eventId}</h2>`);
 

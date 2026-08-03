@@ -24,7 +24,7 @@ export default function DeliveryPage() {
               href="/delivery/order"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              🛒 Собрать заказ доставки
+               Собрать заказ доставки
             </Link>
             <Link
               href="/menu/catalog"
@@ -40,12 +40,12 @@ export default function DeliveryPage() {
       <section className="container-site py-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { icon: '🚚', title: 'Бесплатно в КАД', text: 'Доставка в пределах КАД — бесплатно. Вне КАД — честные надбавки.' },
-            { icon: '💰', title: 'Мин. заказ 5 000 ₽', text: 'Минимальная сумма заказа для доставки. Можно набрать из любых блюд.' },
-            { icon: '❄️', title: 'Холодовая цепь', text: 'Блюда везём в сумках-холодильниках при +2…+6 °C, не дольше 90 минут от кухни. Для дальних зон — термобоксы с залогом.' },
+            { icon: '', title: 'Бесплатно в КАД', text: 'Доставка в пределах КАД — бесплатно. Вне КАД — честные надбавки.' },
+            { icon: '', title: 'Мин. заказ 5 000 ₽', text: 'Минимальная сумма заказа для доставки. Можно набрать из любых блюд.' },
+            { icon: '', title: 'Холодовая цепь', text: 'Блюда везём в сумках-холодильниках при +2…+6 °C, не дольше 90 минут от кухни. Для дальних зон — термобоксы с залогом.' },
             { icon: '⏱', title: 'Слоты + точное время', text: '7 слотов по 2 часа (09:00–23:00). Для B2B-событий (конференции, кофе-брейки) — доставка в окно ±15 минут от согласованного времени. SLA: штраф 1% за минуту опоздания.' },
-            { icon: '📅', title: 'На следующий день', text: 'Доставка оформляется на следующий день. Срочная доставка в день заказа (при заказе до 13:00) — +30% надбавка, звоните +7 (812) 919-59-11.' },
-            { icon: '📞', title: 'Курьер позвонит', text: 'За 30 минут до прибытия курьер позвонит — будете готовы встретить.' },
+            { icon: '', title: 'На следующий день', text: 'Доставка оформляется на следующий день. Срочная доставка в день заказа (при заказе до 13:00) — +30% надбавка, звоните +7 (812) 919-59-11.' },
+            { icon: '', title: 'Курьер позвонит', text: 'За 30 минут до прибытия курьер позвонит — будете готовы встретить.' },
           ].map(f => (
             <div key={f.title} className="rounded-xl border border-line bg-card p-5">
               <span className="text-3xl mb-2 block">{f.icon}</span>
@@ -70,7 +70,7 @@ export default function DeliveryPage() {
             href="/delivery/order"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            🛒 Начать сборку заказа →
+             Начать сборку заказа →
           </Link>
         </div>
       </section>

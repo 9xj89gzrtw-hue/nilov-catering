@@ -15,7 +15,7 @@ export default function B2BPortalSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <div className="p-5 rounded-xl border border-line bg-card">
-            <div className="text-2xl mb-2">📅</div>
+            <div className="text-2xl mb-2"></div>
             <h3 className="font-heading text-base font-medium mb-2">Регулярные заказы</h3>
             <p className="text-xs text-muted-foreground mb-3">
               Ежедневные/еженедельные кофе-брейки и обеды. Фикс-цена по контракту,
@@ -29,7 +29,7 @@ export default function B2BPortalSection() {
           </div>
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <div className="text-2xl mb-2">📊</div>
+            <div className="text-2xl mb-2"></div>
             <h3 className="font-heading text-base font-medium mb-2">Конференции</h3>
             <p className="text-xs text-muted-foreground mb-3">
               Многодневные конференции, семинары, тренинги. Конференционный пакет
@@ -43,7 +43,7 @@ export default function B2BPortalSection() {
           </div>
 
           <div className="p-5 rounded-xl border-2 border-gold-text bg-gold-tint/20">
-            <div className="text-2xl mb-2">💼</div>
+            <div className="text-2xl mb-2"></div>
             <h3 className="font-heading text-base font-medium mb-2">Тендеры и 44-ФЗ</h3>
             <p className="text-xs text-muted-foreground mb-3">
               Участвуем в тендерах по 44-ФЗ и 223-ФЗ. Полный пакет документов:
@@ -81,7 +81,7 @@ export default function B2BPortalSection() {
             Запросить КП и пакет документов →
           </Link>
           <a href="tel:+78129195911" className="rounded-lg border border-line bg-card px-6 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-            📞 +7 (812) 919-59-11
+             +7 (812) 919-59-11
           </a>
         </div>
       </div>

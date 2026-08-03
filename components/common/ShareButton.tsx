@@ -16,7 +16,7 @@ interface ShareButtonProps {
 export default function ShareButton({
   title = 'Кейтеринг NiloV',
   text = 'Посмотри меню и цены',
-  label = '📤 Поделиться ссылкой',
+  label = ' Поделиться ссылкой',
   className,
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
@@ -75,19 +75,19 @@ export default function ShareButton({
           <div className="flex flex-wrap gap-2 mb-3">
             <a href={waUrl} target="_blank" rel="noopener noreferrer"
                className="inline-flex items-center gap-1.5 rounded-lg bg-[#065F46] text-white px-4 py-2 text-sm font-medium hover:bg-[#064E3B] transition-colors touch-target no-underline">
-              💬 WhatsApp
+               WhatsApp
             </a>
             <a href={tgUrl} target="_blank" rel="noopener noreferrer"
                className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 text-white px-4 py-2 text-sm font-medium hover:bg-sky-700 transition-colors touch-target no-underline">
-              ✈️ Telegram
+               Telegram
             </a>
             <a href={mailUrl}
                className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors touch-target no-underline">
-              ✉️ Email
+               Email
             </a>
             <button onClick={handleCopy}
                     className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-background px-4 py-2 text-sm font-medium hover:border-gold-text transition-colors touch-target">
-              {copied ? '✓ Скопировано' : '📋 Копировать ссылку'}
+              {copied ? ' Скопировано' : ' Копировать ссылку'}
             </button>
           </div>
           <p className="text-xs text-muted-foreground break-all">

@@ -7,7 +7,7 @@ export default function DeliveryBanner() {
         <div className="rounded-2xl bg-gradient-to-r from-gold-tint to-secondary border border-gold-tint p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left flex-1">
             <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
-              <span className="text-3xl">🚚</span>
+              <span className="text-3xl"></span>
               <h2 className="font-heading text-2xl font-medium">Нужна просто еда — без официантов?</h2>
             </div>
             <p className="text-sm text-muted-foreground max-w-xl mx-auto md:mx-0">

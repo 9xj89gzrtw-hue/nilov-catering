@@ -57,11 +57,11 @@ export default function ReviewsPage() {
           <div className="text-5xl font-bold text-gold-text mb-1">{avgRating} / 5.0</div>
           <div className="flex justify-center gap-1 mb-3 text-gold-text" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i}>{i < Math.round(Number(avgRating)) ? '★' : '☆'}</span>
+              <span key={i}>{i < Math.round(Number(avgRating)) ? '' : ''}</span>
             ))}
           </div>
           <div className="text-xs text-muted-foreground mb-3">
-            5★: {rating5} · 4★: {rating4} · 3★: {rating3} · ниже 3★: 0
+            5: {rating5} · 4: {rating4} · 3: {rating3} · ниже 3: 0
           </div>
           <p className="text-xs text-muted-foreground mb-3">
             Рейтинг рассчитан из отзывов, опубликованных на этой странице. На Яндекс.Картах и в 2ГИС
@@ -94,12 +94,12 @@ export default function ReviewsPage() {
                       className="text-sm font-semibold text-gold-text"
                       aria-label={`Рейтинг ${r.rating} из 5`}
                     >
-                      {'★'.repeat(r.rating)}
-                      <span className="text-muted-foreground/40">{'★'.repeat(5 - r.rating)}</span>
+                      {''.repeat(r.rating)}
+                      <span className="text-muted-foreground/40">{''.repeat(5 - r.rating)}</span>
                     </div>
                   )}
                   <span className="text-xs text-muted-foreground">
-                    {r.status === 'verified' ? '✓ проверен' : 'на модерации'}
+                    {r.status === 'verified' ? ' проверен' : 'на модерации'}
                   </span>
                 </div>
               </div>
@@ -110,10 +110,10 @@ export default function ReviewsPage() {
 
         {/* Honesty block */}
         <div className="mt-10 p-5 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-base font-medium mb-2">🛡 Честность отзывов</h2>
+          <h2 className="font-heading text-base font-medium mb-2"> Честность отзывов</h2>
           <p className="text-sm text-muted-foreground">
             Все {REVIEWS.length} отзывов выше — реальные и опубликованы с согласия клиентов.
-            Каждый отзыв имеет статус «✓ проверен» — это значит, что мы связались с клиентом
+            Каждый отзыв имеет статус « проверен» — это значит, что мы связались с клиентом
             и подтвердили факт мероприятия. Если вы наш клиент и хотите оставить отзыв — напишите
             на <a href={`mailto:${SITE.email}`} className="text-gold-text hover:underline">{SITE.email}</a>{' '}
             или на{' '}
@@ -128,9 +128,9 @@ export default function ReviewsPage() {
             .
           </p>
           <p className="text-xs text-muted-foreground mt-3">
-            Мы не удаляем отзывы с оценкой ниже 5★. Из {REVIEWS.length} опубликованных —{' '}
+            Мы не удаляем отзывы с оценкой ниже 5. Из {REVIEWS.length} опубликованных —{' '}
             {rating4 + rating3 + REVIEWS.filter((r) => (r.rating || 5) < 3).length} с оценкой
-            ниже 5★. По каждому такому отзыву мы связались с клиентом и решили проблему.
+            ниже 5. По каждому такому отзыву мы связались с клиентом и решили проблему.
           </p>
         </div>
 
@@ -140,10 +140,10 @@ export default function ReviewsPage() {
           <p className="text-sm mb-4 opacity-90">Позвоните или оставьте заявку — подберём решение под ваш повод и бюджет.</p>
           <div className="flex flex-wrap justify-center gap-3">
             <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              ✍️ Оставить заявку
+               Оставить заявку
             </Link>
           </div>
         </div>

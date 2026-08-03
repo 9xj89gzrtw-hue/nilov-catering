@@ -102,7 +102,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
       {totalDiscount > 0 && (
         <div className="mb-3 p-3 rounded-lg bg-emerald-50 border border-emerald-200">
           <p className="text-xs text-emerald-800 font-medium mb-1">
-            🎉 Скидка {Math.round(totalDiscount * 100)}% ({savings.toLocaleString('ru-RU')} ₽)
+             Скидка {Math.round(totalDiscount * 100)}% ({savings.toLocaleString('ru-RU')} ₽)
           </p>
           <p className="text-[10px] text-emerald-700">
             {volumeDiscount > earlyBirdDiscount
@@ -118,7 +118,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
         <div className="mb-3 p-3 rounded-lg bg-amber-50 border border-amber-200">
           {feasibilityWarnings.map((w, i) => (
             <p key={i} className="text-xs text-amber-800 mb-1 last:mb-0">
-              ⚠️ {w}
+               {w}
             </p>
           ))}
         </div>

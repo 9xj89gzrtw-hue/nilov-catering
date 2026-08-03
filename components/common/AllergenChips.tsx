@@ -36,10 +36,9 @@ export function AllergenChips({ dish, className = '' }: { dish: Dish; className?
       title={`Высокий риск анафилаксии: ${labels}. Полный список аллергенов — в карточке блюда.`}
     >
       <span
-        className="inline-flex items-center gap-1 rounded-full bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 ring-1 ring-white shadow-sm"
+        className="inline-flex items-center gap-1 rounded-full bg-rose-900/85 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 ring-1 ring-white/40 shadow-sm"
         aria-label={`Внимание: блюдо содержит аллергены высокого риска: ${labels}`}
       >
-        <span aria-hidden="true">⚠</span>
         {highRisk.length}
       </span>
     </div>

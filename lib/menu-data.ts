@@ -1,6 +1,6 @@
 // Единый каталог блюд NiloV — 78 уникальных SKU
 // Источник: 23_MENU_STRATEGY.md, 04_BLOCKS.md
-// Все цены 🟡 pending-verification
+// Все цены pending-verification
 import type { Dish } from './types';
 
 // ═══════════════════════════════════════════

@@ -28,3 +28,10 @@ snapshots-pretty/
 snapshots/
 snapshots-js/
 snapshots-pretty/
+
+# Eval and screenshot artifacts (local-only)
+snapshots-v2/
+snapshots-v2-resized/
+vlm-eval-*.json
+research-data/
+

@@ -43,13 +43,13 @@ const TOP_ALLERGENS: Allergen[] = ['nuts', 'peanuts', 'fish', 'milk', 'eggs', 's
 const EXTRA_ALLERGENS: Allergen[] = ['gluten', 'crustaceans', 'celery', 'mustard', 'sesame', 'sulphites', 'lupin', 'molluscs'];
 
 const STATION_EMOJI: Record<string, string> = {
-  cold: '🥗', hot: '🍖', desserts: '🍰', drinks: '🥂', show: '🔥',
+  cold: '', hot: '', desserts: '', drinks: '', show: '',
 };
 
 const ALLERGEN_EMOJI: Record<string, string> = {
-  nuts: '🥜', peanuts: '🥜', fish: '🐟', milk: '🥛', eggs: '🥚', soy: '🌱',
-  gluten: '🌾', crustaceans: '🦐', celery: '🌿', mustard: '🟡', sesame: '▪️',
-  sulphites: '🍷', lupin: '🌼', molluscs: '🦪',
+  nuts: '', peanuts: '', fish: '', milk: '', eggs: '', soy: '',
+  gluten: '', crustaceans: '', celery: '', mustard: '', sesame: '',
+  sulphites: '', lupin: '', molluscs: '',
 };
 
 export interface MenuBuilderProps {
@@ -269,7 +269,7 @@ export default function MenuBuilder({
                 onChange={e => setShowAllFormats(e.target.checked)}
                 className="accent-gold-text"
               />
-              <span>🔀 Показать блюда других форматов (для гибрида «дети + взрослые» или смешанных диет)</span>
+              <span> Показать блюда других форматов (для гибрида «дети + взрослые» или смешанных диет)</span>
             </label>
           </div>
         )}
@@ -295,7 +295,7 @@ export default function MenuBuilder({
         <div className="rounded-xl border border-line bg-card p-3 mb-3">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-foreground">🛡 Исключить аллергены</span>
+              <span className="text-xs font-semibold text-foreground"> Исключить аллергены</span>
               <div className="flex bg-muted rounded-md p-0.5">
                 <button
                   onClick={() => setAllergenMode('highlight')}
@@ -358,7 +358,7 @@ export default function MenuBuilder({
 
           {excludedAllergens.size > 0 && (
             <p className="text-[10px] text-muted-foreground mt-2">
-              ⚠ Фильтр носит информационный характер. Финальную проверку по аллергенам делает менеджер по телефону перед заказом.
+               Фильтр носит информационный характер. Финальную проверку по аллергенам делает менеджер по телефону перед заказом.
             </p>
           )}
         </div>
@@ -373,7 +373,7 @@ export default function MenuBuilder({
 
         {/* Drag hint */}
         <p className="text-xs text-muted-foreground mb-2 px-1">
-          💡 Нажмите «+ Добавить» на блюде или перетащите его в корзину (на десктопе).
+           Нажмите «+ Добавить» на блюде или перетащите его в корзину (на десктопе).
         </p>
 
         {/* Catalog grid */}
@@ -410,7 +410,7 @@ export default function MenuBuilder({
             {/* Спец-баннер для халяль-фильтра */}
             {activeDiets.has('halal') && (
               <div className="mt-4 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
-                <p className="text-sm font-medium text-foreground mb-1">☪️ Халяль-меню готовим под заказ</p>
+                <p className="text-sm font-medium text-foreground mb-1"> Халяль-меню готовим под заказ</p>
                 <p className="text-xs text-muted-foreground mb-2">
                   В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
@@ -510,7 +510,7 @@ function DraggableDishCard({
           className="w-full h-full"
         />
         {isSelected && (
-          <div className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold">✓</div>
+          <div className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-gold-text text-white text-xs flex items-center justify-center font-bold"></div>
         )}
         {/* Diet badges */}
         <div className="absolute top-1 left-1 z-10 flex gap-0.5">
@@ -524,13 +524,13 @@ function DraggableDishCard({
         {/* Allergen warning badge */}
         {hasExcludedAllergen && (
           <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
-            ⚠ {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
+             {dish.allergens.filter(a => excludedAllergens.has(a)).map(a => ALLERGEN_EMOJI[a] || '·').join(' ')}
           </div>
         )}
         {/* Nuts alarm — по умолчанию в детском меню */}
         {alarmNutsInKids && !hasExcludedAllergen && (
           <div className="absolute bottom-1 left-1 right-1 z-10 text-[10px] bg-destructive text-white px-1 py-0.5 rounded text-center font-semibold">
-            ⚠ 🥜 Орехи
+              Орехи
           </div>
         )}
       </div>
@@ -569,7 +569,7 @@ function DraggableDishCard({
             }`}
             aria-label={isSelected ? 'Уже добавлено' : 'Добавить в меню'}
           >
-            {isSelected ? '✓' : '+ Добавить'}
+            {isSelected ? '' : '+ Добавить'}
           </button>
         </div>
       </div>
@@ -626,9 +626,9 @@ function DroppableCart({
 
       {selectedItems.length === 0 ? (
         <div className="text-center py-12">
-          <div className="text-4xl mb-3 opacity-50">🍽️</div>
+          <div className="text-4xl mb-3 opacity-50"></div>
           <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
-          <p className="text-[10px] text-muted-foreground/70 mt-2">💡 Нажмите «+ Добавить» на блюде или перетащите его сюда.</p>
+          <p className="text-[10px] text-muted-foreground/70 mt-2"> Нажмите «+ Добавить» на блюде или перетащите его сюда.</p>
         </div>
       ) : (
         <SortableContext items={cartItemIds} strategy={verticalListSortingStrategy}>
@@ -660,7 +660,7 @@ function DroppableCart({
       {/* Helper hint */}
       {selectedItems.length > 0 && enableReorder && (
         <p className="text-[10px] text-muted-foreground/70 mt-3 text-center">
-          ⟲ Перетащите карточку за ручку ⠿ или используйте ▲▼ для порядка блюд
+          ⟲ Перетащите карточку за ручку ⠿ или используйте для порядка блюд
         </p>
       )}
     </div>
@@ -703,7 +703,7 @@ function SortableCartItem({
       ref={setNodeRef}
       style={style}
       role="listitem"
-      aria-label={`Блюдо ${idx + 1}: ${dish.name}. Перетащите за ручку ⠿ для перестановки или используйте кнопки ▲▼.`}
+      aria-label={`Блюдо ${idx + 1}: ${dish.name}. Перетащите за ручку ⠿ для перестановки или используйте кнопки .`}
       className={`rounded-xl border bg-card p-2.5 transition-all ${
         isDragging ? 'border-gold-text ring-2 ring-gold-text shadow-lg' : 'border-line'
       } ${excludedInDish.length > 0 ? 'border-destructive/40 bg-destructive/5' : ''}`}
@@ -717,7 +717,7 @@ function SortableCartItem({
               disabled={idx === 0}
               className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
               aria-label="Поднять вверх"
-            >▲</button>
+            ></button>
             <button
               {...attributes}
               {...listeners}
@@ -730,12 +730,12 @@ function SortableCartItem({
               disabled={idx === total - 1}
               className="text-xs text-muted-foreground hover:text-gold-text disabled:opacity-30 disabled:cursor-not-allowed px-2 py-1.5 touch-target rounded"
               aria-label="Опустить вниз"
-            >▼</button>
+            ></button>
           </div>
         )}
         {/* Image placeholder */}
         <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-lg shrink-0">
-          {STATION_EMOJI[dish.station] || '🍽️'}
+          {STATION_EMOJI[dish.station] || ''}
         </div>
         {/* Info */}
         <div className="flex-1 min-w-0">
@@ -758,7 +758,7 @@ function SortableCartItem({
           </div>
           {excludedInDish.length > 0 && (
             <p className="text-[10px] text-destructive font-medium mt-0.5">
-              ⚠ Содержит исключённый аллерген!
+               Содержит исключённый аллерген!
             </p>
           )}
           <div className="flex items-center justify-between mt-1.5">
@@ -791,7 +791,7 @@ function SortableCartItem({
             className="text-xs text-muted-foreground hover:text-destructive transition-colors px-2 py-1 touch-target rounded"
             aria-label="Удалить"
           >
-            ✕ удалить
+             удалить
           </button>
         </div>
       </div>

@@ -16,15 +16,15 @@ interface Props {
 }
 
 const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; gradient: string }> = {
-  svadba:     { label: 'Свадьба',     desc: 'От камерной росписи до банкета на 200 гостей', gradient: 'from-rose-50 to-rose-100' },
-  korporativ: { label: 'Корпоратив',  desc: 'Бизнес-ланчи, гала-ужины, тимбилдинги', gradient: 'from-sky-50 to-sky-100' },
-  vypusknoy:  { label: 'Выпускной',   desc: 'Школьные и студенческие выпускные', gradient: 'from-amber-50 to-amber-100' },
-  shkola:     { label: 'Школы',       desc: 'Спец. тариф для школ и учреждений от 1 800 ₽/гость', gradient: 'from-emerald-50 to-emerald-100' },
-  chastnoe:   { label: 'Частное',     desc: 'Дни рождения, юбилеи, семейные ужины', gradient: 'from-emerald-50 to-emerald-100' },
-  detskoe:    { label: 'Детское',     desc: 'Праздники с аниматорами и шоу', gradient: 'from-purple-50 to-purple-100' },
+  svadba: { label: 'Свадьба', desc: 'От камерной росписи до банкета на 200 гостей', gradient: 'from-rose-50 to-rose-100' },
+  korporativ: { label: 'Корпоратив', desc: 'Бизнес-ланчи, гала-ужины, тимбилдинги', gradient: 'from-sky-50 to-sky-100' },
+  vypusknoy: { label: 'Выпускной', desc: 'Школьные и студенческие выпускные', gradient: 'from-amber-50 to-amber-100' },
+  shkola: { label: 'Школы', desc: 'Спец. тариф для школ и учреждений от 1 800 ₽/гость', gradient: 'from-emerald-50 to-emerald-100' },
+  chastnoe: { label: 'Частное', desc: 'Дни рождения, юбилеи, семейные ужины', gradient: 'from-emerald-50 to-emerald-100' },
+  detskoe: { label: 'Детское', desc: 'Праздники с аниматорами и шоу', gradient: 'from-purple-50 to-purple-100' },
   'chef-at-home': { label: 'Шеф на дом', desc: 'Шеф-повар и сомелье у вас дома', gradient: 'from-orange-50 to-orange-100' },
   'coffee-break': { label: 'Кофе-брейк', desc: 'Конференции, семинары, тренинги — от 390 ₽/гость', gradient: 'from-amber-50 to-yellow-100' },
-  pominki:     { label: 'Поминки',     desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
+  pominki: { label: 'Поминки', desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
 };
 
 // Маппинг событие → формат (для ссылки в конструктор)
@@ -43,13 +43,13 @@ const EVENT_TO_FORMAT: Record<string, string> = {
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
 
 const STATION_EMOJI: Record<string, string> = {
-  cold: '🥗', hot: '🍖', desserts: '🍰', drinks: '🥂', show: '🔥',
+  cold: '', hot: '', desserts: '', drinks: '', show: '',
 };
 
 const ALLERGEN_EMOJI: Record<string, string> = {
-  nuts: '🥜', peanuts: '🥜', fish: '🐟', milk: '🥛', eggs: '🥚', soy: '🌱',
-  gluten: '🌾', crustaceans: '🦐', celery: '🌿', mustard: '🟡', sesame: '▪️',
-  sulphites: '🍷', lupin: '🌼', molluscs: '🦪',
+  nuts: '', peanuts: '', fish: '', milk: '', eggs: '', soy: '',
+  gluten: '', crustaceans: '', celery: '', mustard: '', sesame: '',
+  sulphites: '', lupin: '', molluscs: '',
 };
 
 // Поиск блюда в каталоге по dishId (для аллергенов и цены)
@@ -202,7 +202,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                         const price = dish?.pricePerGuest ?? 0;
                         return (
                           <li key={d.dishId} className="flex items-start gap-1.5 py-1 px-1.5 rounded bg-white border border-line/40">
-                            <span className="text-sm mt-0.5">{dish ? STATION_EMOJI[dish.station] : '🍽️'}</span>
+                            <span className="text-sm mt-0.5">{dish ? STATION_EMOJI[dish.station] : ''}</span>
                             <div className="flex-1 min-w-0">
                               <div className="text-[11px] font-medium text-foreground">{d.name}</div>
                               {/* Аллергены в edit-режиме */}
@@ -221,7 +221,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                               <button onClick={() => setQty(d.dishId, d.qty - 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">−</button>
                               <span className="text-[10px] font-semibold w-3 text-center">{d.qty}</span>
                               <button onClick={() => setQty(d.dishId, d.qty + 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">+</button>
-                              <button onClick={() => removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5">✕</button>
+                              <button onClick={() => removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5"></button>
                             </div>
                           </li>
                         );
@@ -239,7 +239,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
             className="w-full flex items-center justify-between py-2 px-3 rounded-lg bg-gold-tint/50 hover:bg-gold-tint text-xs font-medium transition-colors mb-2"
           >
             <span>{showCatalog ? 'Скрыть каталог' : '+ Добавить блюдо'}</span>
-            <span className="text-[10px]">{showCatalog ? '▲' : '▼'}</span>
+            <span className="text-[10px]">{showCatalog ? '' : ''}</span>
           </button>
 
           {showCatalog && (
@@ -252,7 +252,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                 className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
               />
               <div className="flex flex-wrap gap-0.5 mb-1.5">
-                {[{k:'all',l:'Все'},{k:'cold',l:'🥗'},{k:'hot',l:'🍖'},{k:'desserts',l:'🍰'},{k:'drinks',l:'🥂'}].map(s => (
+                {[{k:'all',l:'Все'},{k:'cold',l:''},{k:'hot',l:''},{k:'desserts',l:''},{k:'drinks',l:''}].map(s => (
                   <button key={s.k} onClick={() => setCatalogStation(s.k)}
                     className={`rounded-full px-1.5 py-0.5 text-[10px] border transition-colors ${
                       catalogStation === s.k ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'
@@ -275,7 +275,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                             isSelected ? 'bg-muted text-muted-foreground cursor-not-allowed' : 'bg-gold-text text-white hover:bg-gold-text/90'
                           }`}
                         >
-                          {isSelected ? '✓' : '+ доб'}
+                          {isSelected ? '' : '+ доб'}
                         </button>
                       </div>
                     </div>
@@ -290,7 +290,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
               onClick={() => setEditMode(false)}
               className="flex-1 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              ✓ Готово
+               Готово
             </button>
             <button
               onClick={() => { setEditMode(false); setCustomItems([]); }}
@@ -371,7 +371,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           href="/menu/catalog"
           className="block w-full rounded-lg border border-line py-2.5 text-xs font-medium text-muted-foreground text-center hover:bg-muted transition-colors touch-target"
         >
-          📋 Смотреть каталог блюд
+           Смотреть каталог блюд
         </a>
       </div>
     </div>
@@ -443,7 +443,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Мост coffee-break → доставка — ПЕРЕД тарифами (для coffee-break это релевантнее) */}
         {selectedEvent === 'coffee-break' && (
           <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
-            <p className="text-base font-medium mb-1">🚚 Нужен кофе-брейк без официантов — просто доставка?</p>
+            <p className="text-base font-medium mb-1"> Нужен кофе-брейк без официантов — просто доставка?</p>
             <p className="text-sm text-muted-foreground mb-4">
               Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
               <br />
@@ -452,7 +452,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/delivery/order"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-                🛒 Собрать заказ доставки →
+                 Собрать заказ доставки →
               </Link>
               <Link href="/delivery"
                 className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
@@ -472,7 +472,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Format switcher для korporativ — показываем что есть ещё фуршет-вариант */}
         {selectedEvent === 'korporativ' && (
           <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
-            <p className="text-base font-medium mb-1">🥪 Нужен корпоративный фуршет в офисе — без посадки?</p>
+            <p className="text-base font-medium mb-1"> Нужен корпоративный фуршет в офисе — без посадки?</p>
             <p className="text-sm text-muted-foreground mb-4">
               У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong> — дешевле банкета.
               Гости едят стоя, лёгкие закуски, идеален для офисных мероприятий.
@@ -492,7 +492,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
 
         {/* Allergen safety banner */}
         <div className="mt-10 p-4 rounded-xl border border-success/30 bg-success/5 text-center">
-          <p className="text-sm font-medium mb-1">🛡 Безопасность по аллергенам</p>
+          <p className="text-sm font-medium mb-1"> Безопасность по аллергенам</p>
           <p className="text-xs text-muted-foreground">
             Все блюда маркируются по 14 аллергенам ТР ТС 022/2011. В составе тарифа аллергены видны. В конструкторе можно исключить конкретные аллергены фильтром. Финальную проверку делает менеджер по телефону.
           </p>
@@ -502,7 +502,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         <div className="mt-16 text-center py-10 rounded-2xl border border-line bg-muted/30">
           <p className="text-xl font-heading font-medium mb-2">Не подходит ни один тариф?</p>
           <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.</p>
-          <p className="text-xs text-muted-foreground mb-5">✓ В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + без орехов + всеядные в одном заказе).</p>
+          <p className="text-xs text-muted-foreground mb-5"> В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + без орехов + всеядные в одном заказе).</p>
           <Link href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Собрать своё меню

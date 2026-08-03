@@ -80,13 +80,13 @@ export default function AccountOrdersPage() {
             <p className="text-muted-foreground">История заказов, закрывающие документы на скачивание, статусы событий.</p>
           </div>
           <a href={`mailto:${SITE.email}?subject=B2B-запрос%20из%20личного%20кабинета`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors">
-            ✉️ Запросить доступ / поддержку
+             Запросить доступ / поддержку
           </a>
         </div>
 
         {/* Info notice */}
         <div className="mb-8 p-4 rounded-xl border border-gold-tint bg-gold-tint/10 text-sm text-foreground">
-          <p className="font-semibold mb-1">ℹ️ Примеры заказов</p>
+          <p className="font-semibold mb-1">ℹ Примеры заказов</p>
           <p>Ниже показаны примеры заказов. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-gold-text underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета». ЭДО-интеграция (Диадок/СБИС) — в разработке.</p>
         </div>
 
@@ -135,7 +135,7 @@ export default function AccountOrdersPage() {
                 </div>
               </summary>
               <div className="p-5 border-t border-line bg-secondary/30">
-                <p className="text-sm font-semibold mb-3">📄 Документы на скачивание</p>
+                <p className="text-sm font-semibold mb-3"> Документы на скачивание</p>
                 <ul className="space-y-2">
                   {order.documents.map(doc => (
                     <li key={doc.type} className="flex items-center justify-between gap-3 text-sm">
@@ -164,15 +164,15 @@ export default function AccountOrdersPage() {
         {/* Quick links */}
         <div className="mt-10 grid sm:grid-cols-3 gap-3">
           <Link href="/certificates" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1">📋 Сертификаты</p>
+            <p className="font-heading font-medium mb-1"> Сертификаты</p>
             <p className="text-xs text-muted-foreground">Декларация ЕАЭС, медкнижки, ППК, полис страхования</p>
           </Link>
           <Link href="/api/templates/sla" download="nilov-sla-template.pdf" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1">⚡ Скачать SLA (PDF)</p>
+            <p className="font-heading font-medium mb-1"> Скачать SLA (PDF)</p>
             <p className="text-xs text-muted-foreground">Шаблон SLA для нового контракта</p>
           </Link>
           <Link href="/api/templates/nda" download="nilov-nda-template.pdf" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1">🤝 Скачать NDA (PDF)</p>
+            <p className="font-heading font-medium mb-1"> Скачать NDA (PDF)</p>
             <p className="text-xs text-muted-foreground">Для нового тендера / контрагента</p>
           </Link>
         </div>
@@ -183,10 +183,10 @@ export default function AccountOrdersPage() {
           <p className="text-xs text-muted-foreground mb-3">Менеджер B2B ответит в течение 1 рабочего дня</p>
           <div className="flex flex-wrap justify-center gap-2 text-sm">
             <a href={`mailto:${SITE.email}`} className="rounded-lg bg-primary text-primary-foreground px-4 py-2 font-semibold hover:bg-primary/90 transition-colors no-underline">
-              ✉️ {SITE.email}
+               {SITE.email}
             </a>
             <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-background px-4 py-2 font-semibold hover:border-gold-text transition-colors no-underline">
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
           </div>
         </div>

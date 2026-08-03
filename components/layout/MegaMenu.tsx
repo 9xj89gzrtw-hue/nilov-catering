@@ -66,7 +66,7 @@ export default function MegaMenu() {
   }, []);
 
   return (
-    <ul className="hidden lg:flex items-center gap-1" role="menubar" ref={ref}>
+    <ul className="hidden md:flex items-center gap-1" role="menubar" ref={ref}>
       {GROUPS.map((group) => (
         <li key={group.href} className="relative" role="none">
           <button

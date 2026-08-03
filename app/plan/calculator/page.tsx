@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 function CalculatorServerFallback() {
   const formats: { format: Format; label: string; emoji: string; tiers: { tier: string; price: number; min: number }[] }[] = [
     {
-      format: 'furshet', label: 'Фуршет', emoji: '🥪',
+      format: 'furshet', label: 'Фуршет', emoji: '',
       tiers: [
         { tier: 'Эконом', price: 2450, min: 20 },
         { tier: 'Стандарт', price: 3950, min: 20 },
@@ -28,7 +28,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'banket', label: 'Банкет', emoji: '🍽️',
+      format: 'banket', label: 'Банкет', emoji: '',
       tiers: [
         { tier: 'Эконом', price: 3950, min: 30 },
         { tier: 'Стандарт', price: 5470, min: 25 },
@@ -37,7 +37,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'coffee-break', label: 'Кофе-брейк', emoji: '☕',
+      format: 'coffee-break', label: 'Кофе-брейк', emoji: '',
       tiers: [
         { tier: 'Эконом', price: 390, min: 10 },
         { tier: 'Стандарт', price: 1450, min: 10 },
@@ -45,7 +45,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'detskoe', label: 'Детский', emoji: '🧒',
+      format: 'detskoe', label: 'Детский', emoji: '',
       tiers: [
         { tier: 'Эконом', price: 1550, min: 10 },
         { tier: 'Стандарт', price: 2450, min: 10 },
@@ -108,7 +108,7 @@ function CalculatorServerFallback() {
         {/* Что включено */}
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h2 className="font-heading text-lg font-medium mb-3">✓ Что включено в цену</h2>
+            <h2 className="font-heading text-lg font-medium mb-3"> Что включено в цену</h2>
             <ul className="text-sm space-y-1.5 text-muted-foreground">
               <li>• Еда и напитки по тарифу</li>
               <li>• Официанты (1 на 10 гостей)</li>
@@ -120,7 +120,7 @@ function CalculatorServerFallback() {
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h2 className="font-heading text-lg font-medium mb-3">💳 Дополнительно (опционально)</h2>
+            <h2 className="font-heading text-lg font-medium mb-3"> Дополнительно (опционально)</h2>
             <ul className="text-sm space-y-1.5 text-muted-foreground">
               <li>• Доставка за КАД — от 3 000 ₽</li>
               <li>• Аренда оборудования — от 5 000 ₽</li>
@@ -135,7 +135,7 @@ function CalculatorServerFallback() {
 
         {/* Скидки */}
         <div className="mt-6 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-lg font-medium mb-2">🎁 Скидки</h2>
+          <h2 className="font-heading text-lg font-medium mb-2"> Скидки</h2>
           <ul className="text-sm space-y-1.5">
             <li>• <strong>Раннее бронирование:</strong> 10% за 60+ дней, 15% за 90+ дней</li>
             <li>• <strong>Объём:</strong> от 100 гостей — индивидуальная скидка</li>
@@ -155,19 +155,19 @@ function CalculatorServerFallback() {
               href={`tel:${SITE.phoneTel}`}
               className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline"
             >
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link
               href="/plan/constructor"
               className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
             >
-              ✨ Открыть конструктор
+               Открыть конструктор
             </Link>
             <Link
               href="/contact"
               className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
             >
-              ✍️ Оставить заявку
+               Оставить заявку
             </Link>
           </div>
         </div>

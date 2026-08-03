@@ -32,7 +32,7 @@ const FACTS: TrustFact[] = [
   {
     id: 'years',
     icon: Calendar,
-    label: 'более 19 лет', // 🟡 fact-checked 2026-07
+    label: 'более 19 лет', // fact-checked 2026-07
     sublabel: 'с 2007',
     value: 19,
     suffix: '+',
@@ -206,7 +206,7 @@ export default function TrustProof({ cmsFacts }: { cmsFacts?: TrustProofItem[] }
 function FactValue({ fact }: { fact: TrustFact }) {
   if (fact.value === 1 && !fact.suffix) {
     return (
-      <span className="text-3xl lg:text-4xl font-heading font-semibold text-green-600 tabular-nums">✓</span>
+      <span className="text-3xl lg:text-4xl font-heading font-semibold text-green-600 tabular-nums"></span>
     );
   }
 

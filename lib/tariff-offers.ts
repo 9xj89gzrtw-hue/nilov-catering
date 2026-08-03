@@ -6,7 +6,7 @@ import type { Tier, Format } from './types';
 export interface TariffDishItem {
   dishId: string;
   name: string;
-  desc: string;   // состав/ингредиенты — что внутри блюда
+  desc: string; // состав/ингредиенты — что внутри блюда
   category: string;
   qty: string;
 }
@@ -35,7 +35,7 @@ const SVADBA: TariffOffer[] = [
     pricePerGuest: 3950, minGuests: 30,
     description: 'Свадебный приём в фуршетном формате (без посадки). 5 видов канапе, горячее, welcome drink. Достойно, без излишеств.',
     highlights: ['5 видов канапе', 'Горячее блюдо', 'Welcome drink', 'Чай/кофе'],
-    imagePlaceholder: '💍',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
@@ -54,7 +54,7 @@ const SVADBA: TariffOffer[] = [
     pricePerGuest: 5470, minGuests: 25,
     description: 'Полноценный свадебный банкет с посадкой. Официанты, барная станция (опц. безалк. для халяль), горячее.',
     highlights: ['5 закусок', '2 горячих блюда', 'Барная станция (опц. безалк. для халяль)', 'Welcome drink'],
-    imagePlaceholder: '💍',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
@@ -80,7 +80,7 @@ const SVADBA: TariffOffer[] = [
     pricePerGuest: 7350, minGuests: 20,
     description: 'Свадьба ресторанного уровня: морепродукты, бармен-шоу, живая станция.',
     highlights: ['Икорная станция', 'Морепродукты', 'Бармен-шоу', 'Живая станция пасты', 'Шампанское безлимит'],
-    imagePlaceholder: '💎',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },
       { dishId: 'oyster-bar', name: 'Устричный бар', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Премиум', qty: '3 шт/гость' },
@@ -106,7 +106,7 @@ const SVADBA: TariffOffer[] = [
     pricePerGuest: 9950, minGuests: 15,
     description: 'Всё включено. Чёрная икра, сомелье, гала-ужин под ключ.',
     highlights: ['Чёрная икра', 'Сомелье', 'Фейерверк-десерт', 'Полный бар', 'Координатор'],
-    imagePlaceholder: '👑',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция (чёрная + красная)', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },
       { dishId: 'oyster-bar', name: 'Устричный бар', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Премиум', qty: '6 шт/гость' },
@@ -139,7 +139,7 @@ const KORPORATIV: TariffOffer[] = [
     pricePerGuest: 4470, minGuests: 30,
     description: 'Банкет с посадкой. Сытные закуски, горячее, напитки.',
     highlights: ['Закуски + салаты', 'Горячее блюдо', 'Чай/кофе/вода', 'Доставка в КАД'],
-    imagePlaceholder: '💼',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-ham', name: 'Канапе с хамоном', desc: 'Хамон, дыня, руккола на багете', category: 'Канапе', qty: '2 шт/гость' },
@@ -157,7 +157,7 @@ const KORPORATIV: TariffOffer[] = [
     pricePerGuest: 5470, minGuests: 20,
     description: 'Банкет с посадкой. Мясное/рыбное горячее, барная станция (опц. безалк. для халяль), десерты.',
     highlights: ['7 закусок', '2 горячих', 'Вино/пиво', 'Десертный стол'],
-    imagePlaceholder: '💼',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
@@ -181,7 +181,7 @@ const KORPORATIV: TariffOffer[] = [
     pricePerGuest: 5950, minGuests: 20,
     description: 'Ресторанный уровень. Морепродукты, бармен, живая станция.',
     highlights: ['Устрицы/креветки', 'Живая станция', 'Бармен-шоу', 'Фотозона'],
-    imagePlaceholder: '💎',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'oyster-bar', name: 'Устричный бар', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Премиум', qty: '3 шт/гость' },
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '3 шт/гость' },
@@ -204,7 +204,7 @@ const KORPORATIV: TariffOffer[] = [
     pricePerGuest: 7950, minGuests: 15,
     description: 'Полный бар, две живые станции, чёрная икра, сигары.',
     highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарный lounge 21+', 'Координатор'],
-    imagePlaceholder: '👑',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },
       { dishId: 'oyster-bar', name: 'Устричный бар', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Премиум', qty: '6 шт/гость' },
@@ -232,7 +232,7 @@ const VYPUSKNOY: TariffOffer[] = [
     pricePerGuest: 1800, minGuests: 30,
     description: 'Спец. тариф для школ и образовательных учреждений. Канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад. Бумажная посуда.',
     highlights: ['Школы / вузы / детсады', 'Документы для Роспот', 'Бумажная посуда', 'Станция напитков'],
-    imagePlaceholder: '🎓',
+    imagePlaceholder: '',
     formatOverride: 'furshet',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп', category: 'Канапе', qty: '2 шт/гость' },
@@ -250,7 +250,7 @@ const VYPUSKNOY: TariffOffer[] = [
     pricePerGuest: 2450, minGuests: 20,
     description: 'Молодёжный фуршет. Пицца-станция, бургеры, лимонады.',
     highlights: ['Пицца-станция', 'Мини-бургеры', 'Лимонады', 'Фотозона'],
-    imagePlaceholder: '🎓',
+    imagePlaceholder: '',
     formatOverride: 'furshet',
     composition: [
       { dishId: 'pizza-station', name: 'Пицца-станция', desc: 'Пицца из дровяной печи: маргарита, пепперони, 4 сыра', category: 'Горячее', qty: '1 станция' },
@@ -268,7 +268,7 @@ const VYPUSKNOY: TariffOffer[] = [
     pricePerGuest: 3450, minGuests: 15,
     description: 'Праздничный банкет. Горячее, десерты, безалкогольный бар.',
     highlights: ['2 горячих', 'Десертный стол', 'Mocktail-бар', 'DJ + свет'],
-    imagePlaceholder: '🎓',
+    imagePlaceholder: '',
     formatOverride: 'banket',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
@@ -290,7 +290,7 @@ const VYPUSKNOY: TariffOffer[] = [
     pricePerGuest: 4950, minGuests: 15,
     description: 'Выпускной с размахом. Шоу-станции, бар, сладкий стол.',
     highlights: ['3 шоу-станции', 'Mocktail-бар', 'Конфетти-пушка', 'Фотограф'],
-    imagePlaceholder: '🎓',
+    imagePlaceholder: '',
     formatOverride: 'banket',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '3 шт/гость' },
@@ -319,7 +319,7 @@ const CHASTNOE: TariffOffer[] = [
     pricePerGuest: 2450, minGuests: 15,
     description: 'Камерный фуршет. Закуски, горячее, напитки — без лишнего.',
     highlights: ['6 видов закусок', '1 горячее', 'Чай/кофе', 'Доставка'],
-    imagePlaceholder: '🥂',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-cheese', name: 'Канапе с сыром', desc: 'Сыр дор-блю, грецкий орех, медовые соты на крекере', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'canape-ham', name: 'Канапе с хамоном', desc: 'Хамон, дыня, руккола на багете', category: 'Канапе', qty: '2 шт/гость' },
@@ -336,7 +336,7 @@ const CHASTNOE: TariffOffer[] = [
     pricePerGuest: 3950, minGuests: 10,
     description: 'Уютный банкет. Закуски, 2 горячих, вино, десерты.',
     highlights: ['Закуски + плато', '2 горячих', 'Вино', 'Десерты'],
-    imagePlaceholder: '🥂',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'canape-red-fish', name: 'Канапе с красной рыбой', desc: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе', category: 'Канапе', qty: '2 шт/гость' },
       { dishId: 'meat-platter', name: 'Мясное плато', desc: 'Буженина, ростбиф, индейка, горчица, корнишоны', category: 'Закуски', qty: '1 станция' },
@@ -355,7 +355,7 @@ const CHASTNOE: TariffOffer[] = [
     pricePerGuest: 5950, minGuests: 8,
     description: 'Гастрономический ужин. Морепродукты, рибай, сомелье.',
     highlights: ['Устрицы', 'Рибай', 'Сомелье', 'Гастро-десерт'],
-    imagePlaceholder: '🥂',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'oyster-bar', name: 'Устричный бар', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Премиум', qty: '3 шт/гость' },
       { dishId: 'tuna-tartare', name: 'Тартар из тунца', desc: 'Тунец блюфин, авокадо, соус понзу, кунжут', category: 'Премиум', qty: '1 порция' },
@@ -379,7 +379,7 @@ const DETSKOE: TariffOffer[] = [
     pricePerGuest: 1550, minGuests: 10,
     description: 'Весёлый детский фуршет. Бургеры, наггетсы, соки.',
     highlights: ['Мини-бургеры', 'Наггетсы', 'Соки/морсы', 'Аниматор (1 час)'],
-    imagePlaceholder: '🎈',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'mini-burger', name: 'Мини-бургер', desc: 'Говяжья котлета, чеддер, карамелизированный лук, булочка бриошь', category: 'Горячее', qty: '2 шт/гость' },
       { dishId: 'nuggets', name: 'Куриные наггетсы', desc: 'Куриная грудка в хрустящей панировке, томатный соус', category: 'Горячее', qty: '3 шт/гость' },
@@ -395,7 +395,7 @@ const DETSKOE: TariffOffer[] = [
     pricePerGuest: 2450, minGuests: 10,
     description: 'Праздник с аниматором. Бургеры, мини-хот-доги, сладкий стол.',
     highlights: ['Мини-бургеры + хот-доги', 'Сладкий стол', 'Аниматор (2 часа)', 'Шоу мыльных пузырей'],
-    imagePlaceholder: '🎈',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'mini-burger', name: 'Мини-бургер', desc: 'Говяжья котлета, чеддер, карамелизированный лук, булочка бриошь', category: 'Горячее', qty: '2 шт/гость' },
       { dishId: 'mini-hotdog', name: 'Мини-хот-дог', desc: 'Колбаска гриль, карамелизированный лук, горчица, булочка', category: 'Горячее', qty: '2 шт/гость' },
@@ -414,7 +414,7 @@ const DETSKOE: TariffOffer[] = [
     pricePerGuest: 3450, minGuests: 10,
     description: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф.',
     highlights: ['Шоу-программа', 'Candy-bar', 'Фотограф', 'Пиньята + квест'],
-    imagePlaceholder: '🎈',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'mini-burger', name: 'Мини-бургер', desc: 'Говяжья котлета, чеддер, карамелизированный лук, булочка бриошь', category: 'Горячее', qty: '2 шт/гость' },
       { dishId: 'mini-hotdog', name: 'Мини-хот-дог', desc: 'Колбаска гриль, карамелизированный лук, горчица, булочка', category: 'Горячее', qty: '2 шт/гость' },
@@ -440,7 +440,7 @@ const CHEF_AT_HOME: TariffOffer[] = [
     pricePerGuest: 4500, minGuests: 4,
     description: 'Шеф готовит у вас. 4 блюда, сервировка, уборка кухни.',
     highlights: ['4 курса', 'Сервировка', 'Уборка кухни', '4 часа работы шефа'],
-    imagePlaceholder: '👨‍🍳',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'burrata-tomatoes', name: 'Буррата + томаты', desc: 'Свежая буррата, томаты черри, базилик, оливковое масло', category: 'Закуска', qty: '1 порция' },
       { dishId: 'tuna-tartare', name: 'Тартар из тунца', desc: 'Тунец блюфин, авокадо, соус понзу, кунжут', category: 'Закуска', qty: '1 порция' },
@@ -456,7 +456,7 @@ const CHEF_AT_HOME: TariffOffer[] = [
     pricePerGuest: 7500, minGuests: 2,
     description: 'Гастрономический опыт. Шеф + сомелье, 6 курсов с wine pairing.',
     highlights: ['6 курсов', 'Wine pairing', 'Шеф + сомелье', '6 часов'],
-    imagePlaceholder: '👨‍🍳',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'oyster-bar', name: 'Устрицы', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Амюз-буш', qty: '3 шт/гость' },
       { dishId: 'tuna-tartare', name: 'Тартар из тунца', desc: 'Тунец блюфин, авокадо, соус понзу, кунжут', category: 'Закуска', qty: '1 порция' },
@@ -480,7 +480,7 @@ const COFFEE_BREAK: TariffOffer[] = [
     pricePerGuest: 390, minGuests: 10,
     description: 'Базовый кофе-брейк: выпечка, чай, кофе. Для конференций и семинаров.',
     highlights: ['2 вида выпечки', 'Мини-сэндвич', 'Лимонад/морс безлимит'],
-    imagePlaceholder: '☕',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'croissant', name: 'Круассан классический', desc: 'Сливочное масло 82.5%, слоёное тесто', category: 'Выпечка', qty: '1 шт/гость' },
       { dishId: 'muffin', name: 'Маффин', desc: 'Черничный или шоколадный', category: 'Выпечка', qty: '1 шт/гость' },
@@ -495,7 +495,7 @@ const COFFEE_BREAK: TariffOffer[] = [
     pricePerGuest: 1450, minGuests: 10,
     description: 'Сытный кофе-брейк: 4 вида выпечки, канапе, десерты, бариста.',
     highlights: ['4 вида выпечки', 'Канапе', 'Десерты', 'Бариста', 'Соки/морсы'],
-    imagePlaceholder: '☕',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'croissant', name: 'Круассан классический', desc: 'Сливочное масло 82.5%, слоёное тесто', category: 'Выпечка', qty: '1 шт/гость' },
       { dishId: 'eclair', name: 'Эклер', desc: 'Заварное тесто, ванильный крем, глазурь', category: 'Выпечка', qty: '1 шт/гость' },
@@ -515,7 +515,7 @@ const COFFEE_BREAK: TariffOffer[] = [
     pricePerGuest: 1950, minGuests: 10,
     description: 'Премиум-брейк: миндальные круассаны, бриошь с заварным кремом, 3 десерта, смузи-бар.',
     highlights: ['Премиум-выпечка', '3 десерта', 'Смузи-бар', 'Бариста', 'Канапе с лососем/хамоном'],
-    imagePlaceholder: '✨',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'croissant-ham', name: 'Круассан с ветчиной', desc: 'Тёплый, с ветчиной и сыром', category: 'Выпечка', qty: '1 шт/гость' },
       { dishId: 'eclair', name: 'Эклер', desc: 'Заварное тесто, ванильный крем, глазурь', category: 'Выпечка', qty: '1 шт/гость' },
@@ -536,7 +536,7 @@ const COFFEE_BREAK: TariffOffer[] = [
     pricePerGuest: 2450, minGuests: 10,
     description: 'Максимальный кофе-брейк: премиум-выпечка, яйца-бенедикт, сырное плато, игристое.',
     highlights: ['Премиум-выпечка', 'Яйца-бенедикт', 'Сырное плато', 'Игристое', 'Свежевыжатый сок', 'Бариста'],
-    imagePlaceholder: '👑',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'croissant-ham', name: 'Круассан с ветчиной', desc: 'Тёплый, с ветчиной и сыром', category: 'Выпечка', qty: '2 шт/гость' },
       { dishId: 'eggs-benedict', name: 'Яичница-бенедикт', desc: 'Яйцо пашот, бекон, голландский соус', category: 'Завтрак', qty: '1 порция' },
@@ -565,7 +565,7 @@ const POMINKI: TariffOffer[] = [
     pricePerGuest: 1800, minGuests: 10,
     description: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя. Тихо, достойно.',
     highlights: ['Кутья + блины', 'Борщ постный', 'Рыба запечённая', 'Кисель + морс'],
-    imagePlaceholder: '🕯️',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'kutya', name: 'Кутья (коливо)', desc: 'Пшеница с мёдом, маком и изюмом. По православной традиции.', category: 'Обязательные', qty: '1 порция' },
       { dishId: 'blini-postnye', name: 'Блины постные', desc: 'С мёдом или без начинки. Подаются первыми.', category: 'Обязательные', qty: '2 шт/гость' },
@@ -584,7 +584,7 @@ const POMINKI: TariffOffer[] = [
     pricePerGuest: 2500, minGuests: 10,
     description: 'Расширенное поминальное меню: уха, грибы, котлеты рыбные, компот. Без алкоголя.',
     highlights: ['Кутья + блины', 'Уха рыбацкая', 'Грибы жареные', 'Компот + морс'],
-    imagePlaceholder: '🕯️',
+    imagePlaceholder: '',
     composition: [
       { dishId: 'kutya', name: 'Кутья (коливо)', desc: 'Пшеница с мёдом, маком и изюмом.', category: 'Обязательные', qty: '1 порция' },
       { dishId: 'blini-postnye', name: 'Блины постные', desc: 'С мёдом.', category: 'Обязательные', qty: '2 шт/гость' },

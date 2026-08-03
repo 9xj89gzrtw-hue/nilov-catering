@@ -33,7 +33,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             <>
               Позвоните или напишите — подберём решение за 15 минут. Работаем ежедневно с 9:00 до 21:00.
               <br />
-              📍 Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
+               Работаем в Санкт-Петербурге и ЛО. Для иногородних клиентов (Москва и регионы):
               работаем удалённо через WhatsApp/Telegram, поможем найти площадку в СПб, организуем
               видеодегустацию по Zoom.
             </>
@@ -43,10 +43,10 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
         {/* Contact cards — large readable */}
         <div className="grid grid-cols-2 gap-3 mb-6">
           {[
-            { label: 'Телефон', value: SITE.phone, href: `tel:${SITE.phoneTel}`, icon: '📞', sub: 'Перезвоним ≤15 мин' },
-            { label: 'WhatsApp', value: 'Написать в WhatsApp', href: SITE.whatsapp, icon: '💬', sub: 'Ответ за 5 мин' },
-            { label: 'Telegram', value: '@nilovcatering', href: 'https://t.me/nilovcatering', icon: '✈️', sub: 'Канал + чат' },
-            { label: 'Email', value: SITE.email, href: `mailto:${SITE.email}`, icon: '✉️', sub: 'Для документов и B2B' },
+            { label: 'Телефон', value: SITE.phone, href: `tel:${SITE.phoneTel}`, icon: '', sub: 'Перезвоним ≤15 мин' },
+            { label: 'WhatsApp', value: 'Написать в WhatsApp', href: SITE.whatsapp, icon: '', sub: 'Ответ за 5 мин' },
+            { label: 'Telegram', value: '@nilovcatering', href: 'https://t.me/nilovcatering', icon: '', sub: 'Канал + чат' },
+            { label: 'Email', value: SITE.email, href: `mailto:${SITE.email}`, icon: '', sub: 'Для документов и B2B' },
           ].map((c) => (
             <a
               key={c.label}
@@ -67,7 +67,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
         <div className="grid sm:grid-cols-2 gap-3 mb-6">
           <div className="rounded-xl border border-line bg-card p-4">
             <div className="flex items-start gap-3">
-              <span className="text-2xl" aria-hidden="true">📍</span>
+              <span className="text-2xl" aria-hidden="true"></span>
               <div>
                 <p className="text-sm font-semibold">{SITE.legalAddress}</p>
                 <p className="text-sm text-muted-foreground mt-1">Производство: м. Василеостровская. Доставка: КАД — бесплатно, за КАД — от 3 000 ₽.</p>
@@ -76,7 +76,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           </div>
           <div className="rounded-xl border border-line bg-card p-4">
             <div className="flex items-start gap-3">
-              <span className="text-2xl" aria-hidden="true">🕐</span>
+              <span className="text-2xl" aria-hidden="true"></span>
               <div>
                 <p className="text-sm font-semibold">Ежедневно 9:00–21:00</p>
                 <p className="text-sm text-muted-foreground mt-1">Заявки через сайт принимаем круглосуточно. События — в любой день недели.</p>
@@ -87,7 +87,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
         {/* Legal block */}
         <div className="rounded-xl border-2 border-gold-tint bg-gold-tint/5 p-4 mb-10">
-          <h2 className="font-heading text-base font-medium mb-2">📋 Юридическое лицо</h2>
+          <h2 className="font-heading text-base font-medium mb-2"> Юридическое лицо</h2>
           <dl className="grid sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
             <dt className="text-muted-foreground">Юр.лицо:</dt>
             <dd className="font-medium">{SITE.legalName}</dd>
@@ -117,7 +117,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           </p>
           {/* Form optimization — show it's quick */}
           <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="text-emerald-600">⚡</span>
+            <span className="text-emerald-600"></span>
             <span>Заполните 3 обязательных поля — остальное по желанию. Ответ за 15 минут.</span>
           </div>
           <form className="space-y-4" action="/api/contact" method="POST">
@@ -253,7 +253,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             {/* Группы гостей с диетами — collapsible по умолчанию для простых B2C заявок */}
             <details className="rounded-lg border border-line bg-secondary/30 p-3">
               <summary className="text-sm font-medium cursor-pointer touch-target">
-                🥗 Несколько групп гостей с разными диетами? (раскройте при необходимости)
+                 Несколько групп гостей с разными диетами? (раскройте при необходимости)
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
                 Например: 10 веганов + 8 халяль + 4 без глютена + 1 без орехов + 57 всеядных.
@@ -308,7 +308,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             {/* Multi-session / recurring orders */}
             <details className="rounded-lg border border-line bg-secondary/30 p-3">
               <summary className="text-sm font-medium cursor-pointer touch-target">
-                📅 Многодневное мероприятие или регулярные заказы? (раскройте при необходимости)
+                 Многодневное мероприятие или регулярные заказы? (раскройте при необходимости)
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
                 Для конференций (2+ дня), еженедельных офисных обедов, серий мероприятий —
@@ -338,7 +338,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             {/* B2B toggle — open by default для корпоративных клиентов */}
             <details id="b2b-details" className="rounded-lg border border-line bg-secondary/30 p-3">
               <summary className="text-sm font-medium cursor-pointer touch-target">
-                💼 Заявка от юридического лица? (B2B) — раскройте, если организация
+                 Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
                 Для корпоративов, школ, учреждений, гос. заказчиков (44-ФЗ, 223-ФЗ).
@@ -431,15 +431,15 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
         {/* B2B-менеджер */}
         <div className="mt-6 p-5 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-base font-medium mb-2">💼 B2B-менеджер</h2>
+          <h2 className="font-heading text-base font-medium mb-2"> B2B-менеджер</h2>
           <p className="text-sm text-muted-foreground mb-3">
             Для корпоративных клиентов, школ, учреждений, гос. заказчиков — отдельный менеджер.
             Поможет с договором, ЭДО, НДС, отсрочкой, спец. ценами от 100 гостей.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
-            <a href={`mailto:${SITE.email}?subject=B2B-запрос`} className="text-gold-text hover:underline">✉️ {SITE.email}</a>
+            <a href={`mailto:${SITE.email}?subject=B2B-запрос`} className="text-gold-text hover:underline"> {SITE.email}</a>
             <span className="text-muted-foreground">·</span>
-            <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">📞 {SITE.phone}</a>
+            <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline"> {SITE.phone}</a>
             <span className="text-muted-foreground">·</span>
             <Link href="/events/korporativ" className="text-gold-text hover:underline">B2B-блок →</Link>
             <span className="text-muted-foreground">·</span>
@@ -481,7 +481,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
               <h3 className="font-heading text-lg font-medium">Отзывы на Яндекс.Картах</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div className="flex text-amber-400">
-                  {'★'.repeat(5)}
+                  {''.repeat(5)}
                 </div>
                 <span className="text-sm font-semibold">4.8</span>
                 <span className="text-sm text-muted-foreground">· 27 отзывов</span>
@@ -506,7 +506,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                   <span className="text-sm font-medium">{r.author}</span>
                   <span className="text-xs text-muted-foreground">{r.date}</span>
                 </div>
-                <div className="text-amber-400 text-xs mb-1">★★★★★</div>
+                <div className="text-amber-400 text-xs mb-1"></div>
                 <p className="text-xs text-muted-foreground">{r.text}</p>
               </div>
             ))}
@@ -518,7 +518,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
       <noscript>
         <div className="container-site max-w-3xl py-4">
           <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 p-3 rounded-lg">
-            ⚠ JavaScript отключён. Форма работает, но поля не подставятся автоматически из ссылки.
+             JavaScript отключён. Форма работает, но поля не подставятся автоматически из ссылки.
             Заполните, пожалуйста, вручную. Или позвоните:{' '}
             <a href="tel:+78129195911" className="underline font-semibold">+7 (812) 919-59-11</a>.
           </p>

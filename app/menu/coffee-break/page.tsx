@@ -28,8 +28,8 @@ export default function CoffeeBreakPage() {
         {/* CTA: "Не нашли — составим" */}
         <div className="mb-8 p-4 rounded-xl border border-gold-text bg-gold-tint flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm font-medium">Не нашли подходящее меню? Составим индивидуально.</p>
-          <Link 
-            href="/plan/helper" 
+          <Link
+            href="/plan/helper"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             Составить меню
@@ -40,7 +40,7 @@ export default function CoffeeBreakPage() {
 
         {/* Multi-day conference pricing */}
         <div className="mt-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-xl font-medium mb-3">💼 Многодневные конференции (2+ дня)</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Многодневные конференции (2+ дня)</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Для конференций 2+ дня — пакетная цена со скидкой 20% + объёмные скидки.
           </p>
@@ -63,7 +63,7 @@ export default function CoffeeBreakPage() {
             Многодневные конференции (2+ дня) — дополнительно -20%.
           </div>
           <div className="rounded-lg border border-line bg-secondary/30 p-4 mb-3">
-            <p className="font-medium mb-2">☕ Подписка для офисов</p>
+            <p className="font-medium mb-2"> Подписка для офисов</p>
             <p className="text-xs text-muted-foreground mb-2">
               Для регулярных кофе-брейков (4+ раза в месяц): еженедельно 4 события × 50 чел × 390 ₽
               = 78 000 ₽/мес → со скидкой 15% = 66 300 ₽/мес. Годовой контракт: фикс-цена 60 000 ₽/мес
@@ -80,13 +80,13 @@ export default function CoffeeBreakPage() {
             href="/contact?subject=Многодневная-конференция"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-            ✍️ Запросить точную смету для конференции
+             Запросить точную смету для конференции
           </Link>
         </div>
 
         {/* Conference Day Package */}
         <div className="mt-6 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
-          <h2 className="font-heading text-lg font-medium mb-2">📦 Конференционный пакет (на делегата/день)</h2>
+          <h2 className="font-heading text-lg font-medium mb-2"> Конференционный пакет (на делегата/день)</h2>
           <p className="text-sm text-foreground/90 mb-3">
             Комплексная цена: утренний кофе-брейк + обед + дневной кофе-брейк.
             Один счёт, одна доставка, одна смета — без раздельных заказов.
@@ -102,7 +102,7 @@ export default function CoffeeBreakPage() {
             href="/contact?eventType=Конференция&format=Кофе-брейк&comment=Конференционный пакет"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-            ✍️ Заказать конференционный пакет →
+             Заказать конференционный пакет →
           </Link>
         </div>
 

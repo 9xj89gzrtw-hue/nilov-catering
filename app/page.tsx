@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import HeroBlock from '@/components/blocks/HeroBlock';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import MenuPreview from '@/components/blocks/MenuPreview';
+import WhyUs from '@/components/blocks/WhyUs';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
 import { getReviews } from '@/lib/cms';
@@ -21,6 +22,7 @@ export default async function HomePage() {
       <HeroBlock />
       <EventTypeSelector />
       <MenuPreview />
+      <WhyUs />
       <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
       <CTASection />
     </main>

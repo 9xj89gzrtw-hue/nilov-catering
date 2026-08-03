@@ -36,7 +36,7 @@ export default function NikahPage() {
           <div className="flex gap-2 flex-wrap">
             <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать меню</Link>
             <Link href="/menu/halal" className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Каталог халяль-блюд</Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors no-underline">📞 {SITE.phone}</a>
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> {SITE.phone}</a>
           </div>
         </div>
         <section className="mb-10">
@@ -61,7 +61,7 @@ export default function NikahPage() {
           <h2 className="font-heading text-2xl font-medium mb-4">Никах или ифтар?</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-5 rounded-xl border-2 border-emerald-200 bg-emerald-50/30">
-              <h3 className="font-heading text-xl font-medium mb-2 text-emerald-900">💍 Никах</h3>
+              <h3 className="font-heading text-xl font-medium mb-2 text-emerald-900"> Никах</h3>
               <p className="text-sm text-muted-foreground mb-3">Мусульманская свадебная церемония. Банкет с посадкой, отдельно мужская и женская зоны по запросу. Меню от 3 950 ₽/гость, мин. 30 гостей.</p>
               <ul className="text-sm space-y-1 text-foreground/90">
                 <li>• Банкет с посадкой, 4–6 перемен блюд</li>
@@ -72,7 +72,7 @@ export default function NikahPage() {
               </ul>
             </div>
             <div className="p-5 rounded-xl border-2 border-amber-200 bg-amber-50/30">
-              <h3 className="font-heading text-xl font-medium mb-2 text-amber-900">🌙 Ифтар</h3>
+              <h3 className="font-heading text-xl font-medium mb-2 text-amber-900"> Ифтар</h3>
               <p className="text-sm text-muted-foreground mb-3">Разговение после заката в месяц Рамадан. Фуршетный формат с датами, водой и лёгкими закусками. Меню от 1 800 ₽/гость, мин. 20 гостей.</p>
               <ul className="text-sm space-y-1 text-foreground/90">
                 <li>• Финики и вода — традиционное начало</li>
@@ -85,7 +85,7 @@ export default function NikahPage() {
           </div>
         </section>
         <section className="mb-10 p-6 rounded-xl border-2 border-gold-text bg-gold-tint/20">
-          <h2 className="font-heading text-xl font-medium mb-3">💼 B2B и тендеры · НДС</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> B2B и тендеры · НДС</h2>
           <p className="text-sm text-foreground mb-2">Работаем с НДС 20% и без НДС. ЭДО: Контур.Диадок, СБИС. Договор: ИП Нилов Д.И., ИНН 781433059704, ОГРНИП 314784710400401.</p>
           <Link href="/contact?subject=B2B-тендер" className="text-gold-text font-semibold hover:underline text-sm">Запросить КП и пакет документов →</Link>
         </section>
@@ -93,9 +93,9 @@ export default function NikahPage() {
           <h2 className="font-heading text-xl font-medium mb-3">Готовы обсудить детали?</h2>
           <p className="text-sm text-muted-foreground mb-4">Шеф-повар Дмитрий Нилов лично подберёт меню под ваш праздник. Перезвоним в течение 15 минут.</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">✍️ Оставить заявку</Link>
-            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">🍽 Собрать меню</Link>
-            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">💬 WhatsApp</a>
+            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"> Оставить заявку</Link>
+            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> Собрать меню</Link>
+            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> WhatsApp</a>
           </div>
         </section>
       </div>

@@ -31,7 +31,7 @@ export default function HalalPage() {
           Сертификат от Совета муфтиев России — Международного центра стандартизации и сертификации «Халяль». Рег. № СМР-Халяль-2026-142, действует до 31.12.2026. Отдельное оборудование, без свинины, без алкоголя.
         </p>
         <p className="text-sm text-muted-foreground mb-6">
-          📜 Проверить подлинность сертификата: {' '}
+           Проверить подлинность сертификата: {' '}
           <a href="https://halalrf.ru" target="_blank" rel="noopener noreferrer" className="text-gold-text font-semibold underline">
             реестр МЦСС «Халяль» (halalrf.ru) →
           </a>
@@ -46,34 +46,34 @@ export default function HalalPage() {
 
         {/* Ифтар / Рамадан блок */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-amber-300 bg-amber-50">
-          <h2 className="font-heading text-xl font-medium mb-3">🌙 Рамадан и ифтар — меню разговения</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Рамадан и ифтар — меню разговения</h2>
           <p className="text-sm text-amber-900 mb-3">
             В месяц Рамадан организуем ифтары (разговение после заката солнца) для коллективов и семей.
             Подача синхронизирована с временем магриба — готовое меню доставляем за 30 минут до захода.
           </p>
           <div className="grid sm:grid-cols-3 gap-3 text-sm">
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">📅 Традиционное начало</p>
+              <p className="font-semibold text-amber-900 mb-1"> Традиционное начало</p>
               <p className="text-xs text-amber-800">Финики (3 шт./гость) + вода + молоко — открывают пост по сунне Пророка ﷺ.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">🍲 Суп (чорба / харис)</p>
+              <p className="font-semibold text-amber-900 mb-1"> Суп (чорба / харис)</p>
               <p className="text-xs text-amber-800">Горячий суп после фиников — баранья чорба или пшеничная харис.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">🍖 Основное + салаты</p>
+              <p className="font-semibold text-amber-900 mb-1"> Основное + салаты</p>
               <p className="text-xs text-amber-800">Халяль-шашлык, плов, фаттуш, табуле, хумус — на выбор.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">🍯 Десерт (чак-чак)</p>
+              <p className="font-semibold text-amber-900 mb-1"> Десерт (чак-чак)</p>
               <p className="text-xs text-amber-800">Татарский чак-чак или пахлава с чаем из трав.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">🚚 Логистика магриба</p>
+              <p className="font-semibold text-amber-900 mb-1"> Логистика магриба</p>
               <p className="text-xs text-amber-800">Доставка с учётом точного времени заката. Менеджер уточнит время за день до ифтара.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1">👥 Минимум — 10 чел</p>
+              <p className="font-semibold text-amber-900 mb-1"> Минимум — 10 чел</p>
               <p className="text-xs text-amber-800">Ифтар-пакет от 1 800 ₽/гость. Для коллектива 30+ — скидка 10%.</p>
             </div>
           </div>
@@ -86,30 +86,30 @@ export default function HalalPage() {
 
         {/* Никах блок */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-300 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-3">💍 Никах — исламская свадебная церемония</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Никах — исламская свадебная церемония</h2>
           <p className="text-sm text-emerald-900 mb-3">
             Организуем помолвку и никах с учётом исламских традиций: без алкоголя, без свинины,
             раздельные станции для мужчин и женщин (по запросу), традиционные блюда.
           </p>
           <div className="grid sm:grid-cols-2 gap-3 text-sm">
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-emerald-900 mb-1">🍽️ Меню никаха</p>
+              <p className="font-semibold text-emerald-900 mb-1"> Меню никаха</p>
               <p className="text-xs text-emerald-800">Плов, манты, чебуреки, самса, халяль-шашлык, чак-чак, пахлава, чайная церемония.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-emerald-900 mb-1">🚫 Без алкоголя и свинины</p>
+              <p className="font-semibold text-emerald-900 mb-1"> Без алкоголя и свинины</p>
               <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, mocktails. Винный уксус, мирин, коньяк, <strong>ванильный экстракт (35% алк.)</strong>, ром в пропитке тортов — исключены. Заменяем на ванильный порошок/пасту.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-emerald-900 mb-1">💰 Цена никаха</p>
+              <p className="font-semibold text-emerald-900 mb-1"> Цена никаха</p>
               <p className="text-xs text-emerald-800">От <strong>4 500 ₽/гость</strong> (минимум 30 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-emerald-900 mb-1">👥 Раздельный зал</p>
+              <p className="font-semibold text-emerald-900 mb-1"> Раздельный зал</p>
               <p className="text-xs text-emerald-800">По запросу — раздельные станции для мужчин и женщин, перегородка, женский зал с женским персоналом.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-emerald-900 mb-1">📜 Сертификат СМР</p>
+              <p className="font-semibold text-emerald-900 mb-1"> Сертификат СМР</p>
               <p className="text-xs text-emerald-800">Предоставляем копию сертификата Совета муфтиев России на подписанный договор.</p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function HalalPage() {
 
         {/* Халяль-протокол — детально */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-4">🕌 Протокол халяль-приготовления</h2>
+          <h2 className="font-heading text-xl font-medium mb-4"> Протокол халяль-приготовления</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
               <h3 className="font-semibold mb-1">Сертифицирующий орган</h3>
@@ -162,13 +162,13 @@ export default function HalalPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Link href="/plan/constructor?format=furshet&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-              🥪 Халяль-фуршет
+               Халяль-фуршет
             </Link>
             <Link href="/plan/constructor?format=banket&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-              🍽️ Халяль-банкет
+               Халяль-банкет
             </Link>
             <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-              📞 Позвонить
+               Позвонить
             </a>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function HalalPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                       <span className="text-xs text-muted-foreground" title={isMeat ? 'Забой по обряду зибха с такбиром' : 'Веганское блюдо — забой не требуется'}>
-                        {isMeat ? '🗡️ забой: зибха' : '🌱 веган'}
+                        {isMeat ? ' забой: зибха' : ' веган'}
                       </span>
                     </div>
                     {dish.allergens.length > 0 && (
@@ -242,13 +242,13 @@ export default function HalalPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-              ✍️ Оставить заявку
+               Оставить заявку
             </Link>
             <Link href="/certificates" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-              📋 Сертификаты
+               Сертификаты
             </Link>
           </div>
         </div>

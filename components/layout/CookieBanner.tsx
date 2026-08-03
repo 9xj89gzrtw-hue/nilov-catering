@@ -14,18 +14,31 @@ export default function CookieBanner() {
       localStorage.setItem('cookie-consent', 'accepted');
       localStorage.setItem('cookie-consent-shown', 'true');
       setShow(false);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(t);
   }, [show]);
   if (!show) return null;
+  // Bottom-right pill — minimal footprint, doesn't obscure full-width content
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-20 bg-background/98 border-t border-line/50" role="dialog" aria-label="Cookie">
-      <div className="container-site py-1.5 flex items-center justify-between gap-2">
-        <p className="text-[10px] text-muted-foreground/70">
-          Cookie · <Link href="/privacy" className="underline">Подробнее</Link>
-        </p>
-        <button onClick={() => { localStorage.setItem('cookie-consent','accepted'); localStorage.setItem('cookie-consent-shown','true'); setShow(false); }} className="text-[10px] text-muted-foreground/70 hover:text-foreground underline">OK</button>
-      </div>
+    <div
+      className="fixed bottom-3 right-3 z-20 max-w-xs rounded-full bg-foreground/85 backdrop-blur-md px-4 py-1.5 shadow-md"
+      role="dialog"
+      aria-label="Использование cookie"
+    >
+      <p className="text-[10px] text-background/80 inline">
+        Cookie · <Link href="/privacy" className="underline hover:text-background">Подробнее</Link>
+        <button
+          onClick={() => {
+            localStorage.setItem('cookie-consent', 'accepted');
+            localStorage.setItem('cookie-consent-shown', 'true');
+            setShow(false);
+          }}
+          className="ml-2 text-background hover:text-[#E8C97E] underline"
+          aria-label="Принять cookie"
+        >
+          OK
+        </button>
+      </p>
     </div>
   );
 }

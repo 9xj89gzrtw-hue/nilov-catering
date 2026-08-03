@@ -11,7 +11,7 @@ const KEY_LINKS = [
   { href: '/', label: 'Главная' },
   { href: '/events', label: 'События' },
   { href: '/menu', label: 'Меню' },
-  { href: '/delivery/order', label: '🚚 Доставка' },
+  { href: '/delivery/order', label: ' Доставка' },
   { href: '/plan', label: 'Спланировать' },
 ];
 
@@ -124,7 +124,7 @@ export default function MobileMenu() {
                     href={`tel:${SITE.phoneTel}`}
                     className="flex items-center justify-center gap-2 w-full rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors"
                   >
-                    📞 {SITE.phone}
+                     {SITE.phone}
                   </a>
                   <Link
                     href="/plan/constructor"

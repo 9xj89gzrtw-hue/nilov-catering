@@ -24,7 +24,7 @@ export default function NewYearPage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Новый год</h1>
         <p className="text-muted-foreground mb-8">
-          Корпоративы и частные вечеринки. 🎄 Бронируйте заранее — декабрь и январь разбирают быстро. Цены ориентировочные.
+          Корпоративы и частные вечеринки. Бронируйте заранее — декабрь и январь разбирают быстро. Цены ориентировочные.
         </p>
 
         <SeasonalPackages season="new-year" label="Новый год" ctaFormat="furshet" />
