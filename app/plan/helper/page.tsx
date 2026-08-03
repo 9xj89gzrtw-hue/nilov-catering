@@ -13,14 +13,14 @@ export const metadata: Metadata = {
 };
 
 const OCCASIONS = [
-  { label: 'Свадьба', emoji: '💍', format: 'banket' },
-  { label: 'Корпоратив', emoji: '🏢', format: 'banket' },
-  { label: 'День рождения', emoji: '🎂', format: 'furshet' },
-  { label: 'Детский праздник', emoji: '🧒', format: 'detskoe' },
-  { label: 'Выпускной', emoji: '🎓', format: 'banket' },
-  { label: 'Юбилей', emoji: '🏅', format: 'banket' },
-  { label: 'Конференция', emoji: '🎤', format: 'coffee-break' },
-  { label: 'Просто ужин', emoji: '🍽️', format: 'furshet' },
+  { label: 'Свадьба', emoji: '♥', format: 'banket' },
+  { label: 'Корпоратив', emoji: '■', format: 'banket' },
+  { label: 'День рождения', emoji: '★', format: 'furshet' },
+  { label: 'Детский праздник', emoji: '◆', format: 'detskoe' },
+  { label: 'Выпускной', emoji: '▲', format: 'banket' },
+  { label: 'Юбилей', emoji: '●', format: 'banket' },
+  { label: 'Конференция', emoji: '▪', format: 'coffee-break' },
+  { label: 'Просто ужин', emoji: '◦', format: 'furshet' },
 ];
 
 const GUEST_RANGES = [

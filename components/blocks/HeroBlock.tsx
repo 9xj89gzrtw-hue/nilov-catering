@@ -122,9 +122,9 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
             NiloV · Петербург · с 2007
           </p>
 
-          {/* Single powerful headline */}
+          {/* Single powerful headline — concrete USP */}
           <h1 className="mb-6 tracking-tight animate-fade-up" style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-            <span className="text-foreground">Кейтеринг, </span>
+            <span className="text-foreground">Кейтеринг в СПб </span>
             <span
               className="relative"
               style={{
@@ -135,13 +135,13 @@ export default function HeroBlock({ subtitle, disclaimer }: Props) {
                 backgroundClip: 'text',
               }}
             >
-              который чувствуешь заранее
+              от 390 ₽/гость
             </span>
           </h1>
 
           {/* Simple, clear subtitle — one sentence with prices */}
           <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-            {subtitle || 'Ресторанный кейтеринг и доставка фуршетов в СПб. От 2 450 ₽/гость — еда, персонал, посуда, доставка включены.'}
+            {subtitle || '17 лет, 3000+ событий. Фуршет, банкет, кофе-брейк. Халяль-сертификат. 124 блюда, 14 аллергенов под контролем.'}
           </p>
 
           {/* Trust badges — халяль (PRIMARY) / ЭДО / страхование */}

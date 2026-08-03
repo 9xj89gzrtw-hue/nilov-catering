@@ -14,11 +14,11 @@ import type { Format, Tier, Allergen } from '@/lib/types';
 
 // Метаданные форматов — только UI (icon, label, desc). Цены берутся из getPricesForFormat.
 const TARIFF_META: { format: Format; label: string; icon: string; desc: string }[] = [
-  { format: 'furshet', label: 'Фуршет', icon: '🥪', desc: 'Стоячий приём, лёгкие закуски' },
-  { format: 'banket', label: 'Банкет', icon: '🍽️', desc: 'Посадка за стол, официанты' },
-  { format: 'coffee-break', label: 'Кофе-брейк', icon: '☕', desc: 'Кофе, выпечка, десерты' },
-  { format: 'detskoe', label: 'Детский', icon: '🎈', desc: 'Меню для детей, аниматор' },
-  { format: 'chef-at-home', label: 'Шеф на дом', icon: '👨‍🍳', desc: 'Шеф готовит у вас' },
+  { format: 'furshet', label: 'Фуршет', icon: '▲', desc: 'Стоячий приём, лёгкие закуски' },
+  { format: 'banket', label: 'Банкет', icon: '■', desc: 'Посадка за стол, официанты' },
+  { format: 'coffee-break', label: 'Кофе-брейк', icon: '●', desc: 'Кофе, выпечка, десерты' },
+  { format: 'detskoe', label: 'Детский', icon: '◆', desc: 'Меню для детей, аниматор' },
+  { format: 'chef-at-home', label: 'Шеф на дом', icon: '★', desc: 'Шеф готовит у вас' },
   { format: 'pominki', label: 'Поминки', icon: '🕯️', desc: 'Поминальный обед, без алкоголя' },
 ];
 

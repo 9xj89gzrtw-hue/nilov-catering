@@ -8,7 +8,7 @@ import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images
 import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
-import B2BBanner from '@/components/common/B2BBanner';
+
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 import type { Dish, Allergen } from '@/lib/types';
@@ -270,7 +270,7 @@ export default function CatalogPage() {
         </div>
 
 
-        <B2BBanner />
+        
 
         <noscript>
           <div className="mb-6 p-4 rounded-lg border border-amber-200 bg-amber-50 text-sm text-amber-900">
@@ -288,8 +288,8 @@ export default function CatalogPage() {
           </div>
         </noscript>
 
-        {/* B2B banner — НДС indicator for corporate clients */}
-        <B2BBanner />
+        
+        
 
         {/* Allergen legend — ТР ТС 022/2011 (14 allergens) */}
         <div className="mb-4 p-3 rounded-lg bg-secondary/50 flex flex-wrap items-center gap-2 text-xs">

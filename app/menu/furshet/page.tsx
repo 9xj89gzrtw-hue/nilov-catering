@@ -46,7 +46,7 @@ export default function FurshetPage() {
       <div className="container-site">
         {/* Hero */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading mb-4">🥪 Фуршет</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-4">Фуршет</h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Лёгкие закуски на стоячем приёме. Канапе, тарталетки, брускетты, мини-бургеры.
             Гости свободно перемещаются и общаются.
