@@ -25,29 +25,51 @@ export default async function HomePage() {
 
   return (
     <main id="main">
-      {/* 1. HERO — один чёткий оффер, одно главное CTA.
-          Trust-метрики (халяль/17 лет/3000+/4.8★) уже встроены в подвал hero,
-          отдельный trust-strip удалён за избыточностью (см. C8 — number noise). */}
+      {/* 1. HERO — full-screen atmospheric photo with centered serif headline.
+          Replaces previous split layout (text on white + blurry video). */}
       <HeroBlock
         subtitle={textMap['hero-sub']}
         disclaimer={textMap['hero-disclaimer']}
       />
 
-      {/* 2. EVENT TYPES — 4 основных формата + ссылка "Ещё".
-          Раньше было 7 карточек в 2 группах → cognitive overload. */}
+      {/* 2. ATMOSPHERIC PHOTO BAND — full-width banquet table image.
+          World-class catering sites (Great Performances, Paula LeDuc) use
+          this pause between hero and content to set emotional tone. */}
+      <section className="relative w-full h-[40vh] md:h-[55vh] overflow-hidden" aria-label="Атмосфера событий NiloV">
+        <picture>
+          <source srcSet="/images/real/corporate-buffet.avif" type="image/avif" />
+          <source srcSet="/images/real/corporate-buffet.webp" type="image/webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/real/corporate-buffet.jpg"
+            alt="Сервировка фуршетного стола — кейтеринг NiloV"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </picture>
+        <div
+          className="absolute inset-0 flex items-end justify-center pb-12 md:pb-16"
+          style={{
+            background:
+              'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.25) 100%)',
+          }}
+          aria-hidden="true"
+        />
+        <p className="absolute bottom-10 md:bottom-14 left-0 right-0 text-center text-white/90 font-heading text-xl md:text-3xl italic px-6" style={{ fontWeight: 400 }}>
+          Каждая деталь продумана — от фермерских продуктов до финального штриха
+        </p>
+      </section>
+
+      {/* 3. EVENT TYPES — 4 основных формата с реальными фото. */}
       <EventTypeSelector />
 
-      {/* 3. MENU PREVIEW — фото блюд + быстрый переход в каталог */}
+      {/* 4. MENU PREVIEW — фото блюд + быстрый переход в каталог. */}
       <MenuPreview />
 
-      {/* 4. TESTIMONIALS + unified trust strip — отзывы клиентов.
-          TrustBar (кейсы/маркиз) объединён сюда как компактная полоса доверия
-          над отзывами. Больше не отдельная секция. */}
+      {/* 5. TESTIMONIALS — отзывы клиентов. */}
       <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
 
-      {/* 5. CTA — одно главное действие + телефон.
-          Удалены: Brand Story (→ /why-us), ProcessSteps (→ /plan),
-          WowCase (→ /gallery) — вынесены на тематические страницы. */}
+      {/* 6. CTA — одно главное действие + телефон. */}
       <CTASection />
     </main>
   );
