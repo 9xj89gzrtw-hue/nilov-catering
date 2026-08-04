@@ -334,10 +334,9 @@ export const useConstructor = create<ConstructorState>()(
           }
           const totalSum = Math.round(base - discount + addonsTotal);
           const perGuest = guestCount > 0 ? Math.round(totalSum / guestCount) : 0;
-          // Savings vs luxury
-          const maxPrice = pricing.pricePerGuest[format]?.['luxury'] ?? base * 1.5;
-          const maxBase = format === 'chef-at-home' ? base * 1.5 : maxPrice * guestCount;
-          const savings = Math.max(0, Math.round(maxBase - totalSum));
+          // Removed fake "savings vs luxury" anchor-pricing calculation.
+          // It compared actual total to a hypothetical luxury-tier price the user never selected — deceptive.
+          const savings = 0;
           set({
             base: Math.round(base),
             addonsTotal: Math.round(addonsTotal),

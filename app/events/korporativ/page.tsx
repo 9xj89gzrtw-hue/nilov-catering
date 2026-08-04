@@ -17,7 +17,21 @@ export default function CorporatePage() {
   return (
     <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-5xl">
-        <h1 className="mb-2">Корпоративы</h1>
+        {/* Hero photo — corporate buffet */}
+        <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden mb-8">
+          <picture>
+            <source srcSet="/images/real/corporate-buffet-480.avif 480w, /images/real/corporate-buffet-768.avif 768w, /images/real/corporate-buffet.avif 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/avif" />
+            <source srcSet="/images/real/corporate-buffet-480.webp 480w, /images/real/corporate-buffet-768.webp 768w, /images/real/corporate-buffet.webp 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/real/corporate-buffet.jpg" alt="Корпоративный фуршет — кейтеринг NiloV" className="w-full h-full object-cover" />
+          </picture>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Корпоративный кейтеринг</p>
+            <h1 className="font-heading text-2xl md:text-3xl text-white" style={{ fontWeight: 500 }}>Корпоративы</h1>
+          </div>
+        </div>
+
         <p className="text-muted-foreground mb-8">
           Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (с расширением производственных мощностей и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
         </p>

@@ -403,7 +403,7 @@ export default function DeliveryOrderPage() {
 
                 {/* Trust badges перед кнопкой отправки */}
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground mb-4 flex-wrap">
-                  <span> 4.8 Яндекс.Карты</span>
+                  <span>4.8 средняя оценка</span>
                   <span>·</span>
                   <span>С 2007 года</span>
                   <span>·</span>

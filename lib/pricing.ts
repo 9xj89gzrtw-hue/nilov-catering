@@ -129,10 +129,8 @@ export function calcTotal(
   const total = base - discount + addonsTotal + delivery;
   const perGuest = g > 0 ? Math.round(total / g) : 0;
 
-  // 6. Savings vs Максимальный (luxury tier)
-  const maxPrice = prices[format]?.['luxury'] ?? base * 1.5;
-  const maxBase = format === 'chef-at-home' ? base * 1.5 : maxPrice * effectiveGuests;
-  const savings = Math.max(0, maxBase - total);
+  // Removed fake "savings vs luxury tier" anchor-pricing calculation — deceptive.
+  const savings = 0;
 
   const result: CalcResult = {
     base: Math.round(base),

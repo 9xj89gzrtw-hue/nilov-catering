@@ -13,8 +13,22 @@ export default function SvadbaPage() {
   return (
     <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-5xl">
+        {/* Hero photo — real wedding banquet */}
+        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
+          <picture>
+            <source srcSet="/images/real/wedding-banquet-480.avif 480w, /images/real/wedding-banquet-768.avif 768w, /images/real/wedding-banquet.avif 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/avif" />
+            <source srcSet="/images/real/wedding-banquet-480.webp 480w, /images/real/wedding-banquet-768.webp 768w, /images/real/wedding-banquet.webp 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/real/wedding-banquet.jpg" alt="Свадебный банкет — кейтеринг NiloV" className="w-full h-full object-cover" />
+          </picture>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
+          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Свадьбы под ключ</p>
+            <h1 className="font-heading text-2xl md:text-4xl text-white" style={{ fontWeight: 500 }}>Свадебный кейтеринг</h1>
+          </div>
+        </div>
+
         <div className="text-center mb-8">
-          <h1 className="mb-2">Свадебный кейтеринг</h1>
           <p className="text-muted-foreground mb-2 max-w-xl mx-auto">
             Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
           </p>
