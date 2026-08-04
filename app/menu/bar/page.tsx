@@ -39,7 +39,7 @@ export default function BarPage() {
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
             <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
             <p className="text-xs text-muted-foreground mb-3">Шеф-бармен соберёт коктейльную карту под ваш бюджет и формат.</p>
-            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить барную карту с шефом →</Link>
+            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить барную карту с шефом </Link>
           </div>
         </div>
     </div></main>

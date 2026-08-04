@@ -21,7 +21,7 @@ export default function VenuesPage() {
       <h1 className="text-center mb-2">Площадки, которые мы обслуживаем</h1>
       <p className="text-center text-muted-foreground mb-6 max-w-xl mx-auto">Работаем на вашей площадке в СПб и ЛО. Нет кухни? Привезём всё с собой.</p>
       <p className="text-center text-sm text-muted-foreground mb-12 max-w-xl mx-auto p-3 rounded-lg bg-blue-50 border border-blue-200">
-        📍 <strong>Иногородним клиентам (Москва и регионы):</strong> поможем подобрать площадку
+         <strong>Иногородним клиентам (Москва и регионы):</strong> поможем подобрать площадку
         в СПб под ваш формат и бюджет. Присылайте параметры — пришлём 3-5 вариантов с фото и
         ценой. Организуем <strong>видеодегустацию по Zoom</strong>. Связь:{' '}
         <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
@@ -40,7 +40,7 @@ export default function VenuesPage() {
 
       <div className="mt-12 text-center">
         <p className="text-sm text-muted-foreground mb-4">Не нашли свою площадку? Обсудим.</p>
-        <Link href="/contact" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Связаться →</Link>
+        <Link href="/contact" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Связаться </Link>
       </div>
     </div></main>
   );

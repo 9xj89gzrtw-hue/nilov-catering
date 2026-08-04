@@ -12,7 +12,7 @@ const EVENTS: { format: Format; href: string; price: string; label: string; desc
   { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Дни рождения', desc: 'Фуршет или банкет для близких' },
   { format: 'furshet', href: '/events/vypusknoy', price: 'от 2 450 ₽', label: 'Выпускные', desc: 'Школьные и студенческие мероприятия' },
   { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детские праздники', desc: 'Меню для детей, аниматоры, шоу' },
-  { format: 'banket', href: '/events/yubiley', price: 'от 50 000 ₽', label: 'Юбилеи', desc: 'Торжественный банкет для семьи и друзей' },
+  { format: 'banket', href: '/events/yubiley', price: 'от 3 950 ₽', label: 'Юбилеи', desc: 'Торжественный банкет для семьи и друзей' },
   // Бизнесу
   { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
   { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: 'Кофе-брейк', desc: 'Конференции, семинары, тренинги' },
@@ -31,7 +31,7 @@ export default function EventTypeSelector() {
         </motion.div>
 
         {/* Horizontal scroll on mobile, grid on desktop */}
-        <p className="md:hidden text-xs text-muted-foreground mb-2 text-center">← Листайте влево чтобы увидеть все варианты →</p>
+        <p className="md:hidden text-xs text-muted-foreground mb-2 text-center"> Листайте влево чтобы увидеть все варианты </p>
         <div className="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none pb-2">
           {EVENTS.map((e, i) => (
             <motion.div key={e.href} className="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" variants={{ visible: { y: 0, opacity: 1, transition: { delay: i * 0.06, duration: 0.4 } } }}>

@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 
 // Группируем блюда по форматам
 const FORMATS = [
-  { slug: 'furshet', label: 'Фуршет', href: '/menu/furshet', price: 'от 2 450 ₽/гость', emoji: '🥪', desc: 'Канапе, тарталетки, закуски. Для корпоративов и дней рождения. Гости едят стоя.' },
-  { slug: 'banket', label: 'Банкет', href: '/menu/banquet', price: 'от 3 950 ₽/гость', emoji: '🍽️', desc: 'Полноценный обед с посадкой. Салаты, суп, горячее. Для свадеб и торжеств.' },
-  { slug: 'coffee-break', label: 'Кофе-брейк', href: '/menu/coffee-break', price: 'от 390 ₽/гость', emoji: '☕', desc: 'Выпечка, сэндвичи, десерты, кофе. Для конференций и тренингов.' },
-  { slug: 'detskoe', label: 'Детское', href: '/menu/detskoe', price: 'от 1 550 ₽/гость', emoji: '🎈', desc: 'Бургеры, наггетсы, смузи. Безопасное и вкусное меню для детей.' },
-  { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 1 500 ₽/гость', emoji: '🥬', desc: 'Растительное меню без продуктов животного происхождения.' },
-  { slug: 'show-cooking', label: 'Show-cooking', href: '/menu/show-cooking', price: '', emoji: '🔥', desc: 'Живые станции: паста, суши, пицца. Еда как шоу для ваших гостей.' },
-  { slug: 'pominki', label: 'Поминки', href: '/events/pominki', price: 'от 1 800 ₽/гость', emoji: '🕯️', desc: 'Поминальный обед по православной традиции: кутья, блины, кисель, рыба. Без алкоголя.' },
+  { slug: 'furshet', label: 'Фуршет', href: '/menu/furshet', price: 'от 2 450 ₽/гость', emoji: '', desc: 'Канапе, тарталетки, закуски. Для корпоративов и дней рождения. Гости едят стоя.' },
+  { slug: 'banket', label: 'Банкет', href: '/menu/banquet', price: 'от 3 950 ₽/гость', emoji: '', desc: 'Полноценный обед с посадкой. Салаты, суп, горячее. Для свадеб и торжеств.' },
+  { slug: 'coffee-break', label: 'Кофе-брейк', href: '/menu/coffee-break', price: 'от 390 ₽/гость', emoji: '', desc: 'Выпечка, сэндвичи, десерты, кофе. Для конференций и тренингов.' },
+  { slug: 'detskoe', label: 'Детское', href: '/menu/detskoe', price: 'от 1 550 ₽/гость', emoji: '', desc: 'Бургеры, наггетсы, смузи. Безопасное и вкусное меню для детей.' },
+  { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 1 500 ₽/гость', emoji: '', desc: 'Растительное меню без продуктов животного происхождения.' },
+  { slug: 'show-cooking', label: 'Show-cooking', href: '/menu/show-cooking', price: '', emoji: '', desc: 'Живые станции: паста, суши, пицца. Еда как шоу для ваших гостей.' },
+  { slug: 'pominki', label: 'Поминки', href: '/events/pominki', price: 'от 1 800 ₽/гость', emoji: '', desc: 'Поминальный обед по православной традиции: кутья, блины, кисель, рыба. Без алкоголя.' },
 ];
 
 // Популярные блюда со всех меню (для витрины)
@@ -87,7 +87,7 @@ export default function MenuPage() {
           subtitle="Любой формат — от кофе-брейка до банкета. Все цены указаны за человека."
           actions={
             <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target no-underline">
-              🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+               Не знаете что выбрать? Подберём за 3 вопроса
             </Link>
           }
         />
@@ -116,7 +116,7 @@ export default function MenuPage() {
                 <span className="text-sm font-bold text-gold-text">{f.price}</span>
               )}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-xs bg-gold-text text-white px-3 py-1 rounded-full">→</span>
+                <span className="text-xs bg-gold-text text-white px-3 py-1 rounded-full"></span>
               </div>
             </Link>
           ))}
@@ -137,12 +137,12 @@ export default function MenuPage() {
           <p className="text-muted-foreground text-center mb-6">Для гостей с особыми предпочтениями</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { label: '🥬 Веган', href: '/menu/vegan', desc: 'Без мяса, молока, яиц' },
-              { label: '🌾 Без глютена', href: '/menu/gluten-free', desc: 'Для целиакии (отдельная линия <20 ppm)' },
-              { label: '☪️ Халяль', href: '/menu/halal', desc: 'Сертифицированное халяль-меню' },
-              { label: '💉 Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
-              { label: '🥜 Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
-              { label: '🌾 Целиакия-протокол', href: '/allergens#celiakia', desc: 'Отдельная зона + синяя маркировка' },
+              { label: ' Веган', href: '/menu/vegan', desc: 'Без мяса, молока, яиц' },
+              { label: ' Без глютена', href: '/menu/gluten-free', desc: 'Для целиакии (отдельная линия <20 ppm)' },
+              { label: ' Халяль', href: '/menu/halal', desc: 'Сертифицированное халяль-меню' },
+              { label: ' Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
+              { label: ' Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
+              { label: ' Целиакия-протокол', href: '/allergens#celiakia', desc: 'Отдельная зона + синяя маркировка' },
             ].map(d => (
               <Link key={d.href} href={d.href} className="rounded-xl border border-line bg-card px-5 py-3 hover:border-gold-text hover:-translate-y-0.5 transition-all">
                 <div className="text-sm font-medium mb-0.5">{d.label}</div>

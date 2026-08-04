@@ -230,7 +230,7 @@ export default async function DegustatsiyaPage() {
             href="/plan/calculator"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground"
           >
-            Открыть калькулятор →
+            Открыть калькулятор
           </Link>
         </section>
       </div>

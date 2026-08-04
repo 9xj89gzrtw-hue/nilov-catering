@@ -13,11 +13,11 @@ import type { Format, Tier, Allergen } from '@/lib/types';
 
 // Метаданные форматов — только UI (icon, label, desc). Цены берутся из getPricesForFormat.
 const TARIFF_META: { format: Format; label: string; icon: string; desc: string }[] = [
-  { format: 'furshet', label: 'Фуршет', icon: '🥪', desc: 'Стоячий приём, лёгкие закуски' },
-  { format: 'banket', label: 'Банкет', icon: '🍽️', desc: 'Посадка за стол, официанты' },
-  { format: 'coffee-break', label: 'Кофе-брейк', icon: '☕', desc: 'Кофе, выпечка, десерты' },
-  { format: 'detskoe', label: 'Детский', icon: '🎈', desc: 'Меню для детей, аниматор' },
-  { format: 'chef-at-home', label: 'Шеф на дом', icon: '👨‍🍳', desc: 'Шеф готовит у вас' },
+  { format: 'furshet', label: 'Фуршет', icon: '', desc: 'Стоячий приём, лёгкие закуски' },
+  { format: 'banket', label: 'Банкет', icon: '', desc: 'Посадка за стол, официанты' },
+  { format: 'coffee-break', label: 'Кофе-брейк', icon: '', desc: 'Кофе, выпечка, десерты' },
+  { format: 'detskoe', label: 'Детский', icon: '', desc: 'Меню для детей, аниматор' },
+  { format: 'chef-at-home', label: 'Шеф на дом', icon: '', desc: 'Шеф готовит у вас' },
 ];
 
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
@@ -42,6 +42,7 @@ export default function ConstructorWizard() {
   const store = useConstructor();
   const [submitted, setSubmitted] = useState(false);
   const [orderId, setOrderId] = useState('');
+  const [submitError, setSubmitError] = useState('');
   const [activeGroupId, setActiveGroupId] = useState<string | null>(null);
 
   // Активная группа (если groupsEnabled)
@@ -222,7 +223,7 @@ export default function ConstructorWizard() {
               })}
             </div>
             <div className="text-center">
-              <Link href="/plan/helper" className="text-sm text-muted-foreground hover:text-gold-text transition-colors">🤔 Не знаете, что выбрать? Подберём за 3 вопроса →</Link>
+              <Link href="/plan/helper" className="text-sm text-muted-foreground hover:text-gold-text transition-colors"> Не знаете, что выбрать? Подберём за 3 вопроса </Link>
             </div>
           </div>
         )}
@@ -280,7 +281,7 @@ export default function ConstructorWizard() {
                   className="mt-1 accent-gold-text"
                 />
                 <div>
-                  <p className="text-sm font-medium">🔀 Несколько групп гостей с разными диетами</p>
+                  <p className="text-sm font-medium"> Несколько групп гостей с разными диетами</p>
                   <p className="text-xs text-muted-foreground">Например: 10 веганов + 8 халяль + 12 всеядных. Каждая группа получит своё под-меню.</p>
                 </div>
               </label>
@@ -320,7 +321,7 @@ export default function ConstructorWizard() {
                             onClick={() => store.removeGroup(g.id)}
                             className="text-xs text-muted-foreground hover:text-destructive px-2"
                             aria-label="Удалить группу"
-                          >✕</button>
+                          ></button>
                         </div>
                       ))}
                     </div>
@@ -344,17 +345,17 @@ export default function ConstructorWizard() {
                     const mismatch = groupSum !== store.guestCount;
                     return mismatch ? (
                       <div className="mt-2 p-2 rounded-lg border border-warning/40 bg-warning/10 text-xs text-warning">
-                        ⚠ Сумма гостей в группах ({groupSum}) не совпадает с общим числом гостей ({store.guestCount}).
+                         Сумма гостей в группах ({groupSum}) не совпадает с общим числом гостей ({store.guestCount}).
                         Блюда без привязки к группе будут рассчитаны на {store.guestCount} чел. — уточните количество.
                       </div>
                     ) : (
                       <div className="mt-2 p-2 rounded-lg border border-success/30 bg-success/5 text-xs text-success">
-                        ✓ Сумма гостей в группах совпадает с общим числом ({store.guestCount} чел.)
+                         Сумма гостей в группах совпадает с общим числом ({store.guestCount} чел.)
                       </div>
                     );
                   })()}
                   <p className="text-[10px] text-muted-foreground">
-                    💡 На следующем шаге выберите блюда для каждой группы отдельно — каталог будет фильтроваться по диете группы.
+                     На следующем шаге выберите блюда для каждой группы отдельно — каталог будет фильтроваться по диете группы.
                   </p>
                 </div>
               )}
@@ -377,7 +378,7 @@ export default function ConstructorWizard() {
                 onClick={() => { store.setTierMode('custom'); store.setTier(null); store.clearItems(); }}
                 className={`flex-1 py-2 rounded-md text-sm font-medium transition-all ${store.tierMode === 'custom' ? 'bg-card shadow-sm text-foreground' : 'text-muted-foreground'}`}
               >
-                ⚡ Собрать самому
+                 Собрать самому
               </button>
             </div>
 
@@ -405,10 +406,10 @@ export default function ConstructorWizard() {
               </div>
             ) : (
               <div className="rounded-xl border border-gold-tint bg-gold-tint/30 p-5 text-center">
-                <p className="text-sm mb-1 font-medium">⚡ Режим «Собрать самому»</p>
+                <p className="text-sm mb-1 font-medium"> Режим «Собрать самому»</p>
                 <p className="text-xs text-muted-foreground mb-2">На следующем шаге выберите блюда из каталога. Подходит для особых диет (веган, без глютена) и если стандартный тариф не подходит.</p>
-                <p className="text-[10px] text-muted-foreground">💡 Цена = Σ(цена блюда × кол-во) × гости. Можно исключить аллергены фильтром.</p>
-                <p className="text-[10px] text-muted-foreground mt-1">✓ На шаге 1 вы можете включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете.</p>
+                <p className="text-[10px] text-muted-foreground"> Цена = Σ(цена блюда × кол-во) × гости. Можно исключить аллергены фильтром.</p>
+                <p className="text-[10px] text-muted-foreground mt-1"> На шаге 1 вы можете включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете.</p>
               </div>
             )}
           </div>
@@ -419,8 +420,8 @@ export default function ConstructorWizard() {
             <div className="mb-4 text-center">
               <h2 className="font-heading text-xl mb-1">
                 {store.tierMode === 'custom'
-                  ? '🍽️ Соберите своё меню'
-                  : '✏️ Настройте меню тарифа'}
+                  ? ' Соберите своё меню'
+                  : ' Настройте меню тарифа'}
               </h2>
               <p className="text-sm text-muted-foreground">
                 {store.tierMode === 'custom'
@@ -432,7 +433,7 @@ export default function ConstructorWizard() {
                   <ShareButton
                     title="Моё меню — NiloV Catering"
                     text={`Меню на ${store.guestCount} гостей: ${store.selectedItems.length} блюд, итого ${store.total.toLocaleString('ru-RU')} ₽`}
-                    label="📤 Отправить меню родным/коллегам"
+                    label=" Отправить меню родным/коллегам"
                   />
                 </div>
               )}
@@ -459,7 +460,7 @@ export default function ConstructorWizard() {
             {/* Переключатель активной группы — над каталогом внутри того же шага */}
             {store.groupsEnabled && store.guestGroups.length > 0 && (
               <div className="mb-4 p-3 rounded-xl border border-gold-tint bg-gold-tint/20">
-                <p className="text-xs font-medium mb-2">🔀 Активная группа (каталог фильтруется по её диете):</p>
+                <p className="text-xs font-medium mb-2"> Активная группа (каталог фильтруется по её диете):</p>
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setActiveGroupId(null)}
@@ -525,7 +526,7 @@ export default function ConstructorWizard() {
                 <span>Итого</span><span className="text-gold-text text-xl">{total.toLocaleString('ru-RU')} ₽</span>
               </div>
               <p className="text-[10px] text-muted-foreground text-center bg-success/5 rounded p-2">
-                ✓ Это финальная сумма. Доплат за персонал, посуду и доставку по КАД не будет.
+                 Это финальная сумма. Доплат за персонал, посуду и доставку по КАД не будет.
               </p>
             </div>
 
@@ -586,7 +587,7 @@ export default function ConstructorWizard() {
             {/* Excluded allergens — передаются в заявку менеджеру */}
             {store.excludedAllergens.length > 0 && (
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4 mb-6">
-                <h3 className="text-sm font-medium mb-2">⚠ Исключённые аллергены (передаётся менеджеру):</h3>
+                <h3 className="text-sm font-medium mb-2"> Исключённые аллергены (передаётся менеджеру):</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {store.excludedAllergens.map(a => (
                     <span key={a} className="text-xs bg-destructive text-white px-2 py-0.5 rounded-full font-semibold">
@@ -616,7 +617,7 @@ export default function ConstructorWizard() {
 
         {store._hasHydrated && step === 5 && (
           <div className="text-center py-8">
-            <span className="text-5xl block mb-4">🎉</span>
+            <span className="text-5xl block mb-4"></span>
             <h2 className="text-xl font-heading font-medium mb-2">Заявка принята!</h2>
             {orderId && (
               <p className="text-sm text-muted-foreground mb-2">
@@ -625,8 +626,8 @@ export default function ConstructorWizard() {
             )}
             <p className="text-muted-foreground mb-6">Менеджер свяжется с вами в течение 15 минут для уточнения деталей и финальной проверки аллергенов.</p>
             <div className="flex flex-col gap-2 max-w-xs mx-auto">
-              <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
-              <Link href="/pricing" className="text-xs text-muted-foreground hover:text-foreground">Посмотреть тарифы →</Link>
+              <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную </Link>
+              <Link href="/pricing" className="text-xs text-muted-foreground hover:text-foreground">Посмотреть тарифы </Link>
             </div>
           </div>
         )}
@@ -634,7 +635,7 @@ export default function ConstructorWizard() {
         {store._hasHydrated && step < 5 && (
           <div className="flex justify-between mt-8 max-w-2xl mx-auto">
             {step > 0 ? (
-              <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground">← Назад</button>
+              <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground"> Назад</button>
             ) : <div />}
             {step < 4 ? (
               <button type="button" onClick={handleNext} disabled={!canNext}
@@ -642,6 +643,7 @@ export default function ConstructorWizard() {
                 Далее
               </button>
             ) : step === 4 ? (
+              <>
               <button type="button"
                 onClick={async () => {
                   // Сборка авто-комментария: аллергены + группы гостей
@@ -660,14 +662,17 @@ export default function ConstructorWizard() {
                   }
                   let finalComment = store.contact.comment || '';
                   if (autoLines.length > 0) {
-                    const autoBlock = `[АВТО] ${autoLines.join('\n[АВТО] ')}`;
-                    const existingComment = store.contact.comment || '';
-                    const cleanedComment = existingComment.replace(/^\[АВТО\][\s\S]*?(?=\n\n|\n\[АВТО\]|$)/g, '').replace(/^\[АВТО\][\s\S]*$/m, '').trim();
-                    finalComment = cleanedComment ? `${autoBlock}\n\n${cleanedComment}` : autoBlock;
-                    store.setContact({ comment: finalComment });
+                    // Build auto-summary for backend only — NOT written back to visible textarea
+                    const autoBlock = autoLines.join('\n');
+                    finalComment = store.contact.comment
+                      ? `${store.contact.comment}\n\n[Авто-сводка]\n${autoBlock}`
+                      : `[Авто-сводка]\n${autoBlock}`;
+                    // Do NOT call store.setContact — keep the user's textarea clean
                   }
 
-                  // Реальная отправка заявки на бэкенд
+                  // Реальная отправка заявки на бэкенд — с честной обработкой ошибок
+                  let submitOk = false;
+                  let submitError = '';
                   try {
                     const response = await fetch('/api/quote', {
                       method: 'POST',
@@ -690,18 +695,32 @@ export default function ConstructorWizard() {
                     const data = await response.json();
                     if (data.success) {
                       setOrderId(data.orderId || '');
+                      submitOk = true;
+                    } else {
+                      submitError = data.message || 'Сервер не подтвердил заявку';
                     }
                   } catch (e) {
-                    // Даже если API упал — показываем экран заявки (контакт в comment)
+                    submitError = e instanceof Error ? e.message : 'Сеть недоступна';
                     console.error('Submit error:', e);
                   }
-                  setSubmitted(true);
-                  store.setStep(5);
+                  if (submitOk) {
+                    setSubmitted(true);
+                    store.setStep(5);
+                  } else {
+                    setSubmitError(`Не удалось отправить заявку: ${submitError}. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp — мы зафиксируем заказ вручную.`);
+                  }
                 }}
                 disabled={!canSubmit}
                 className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-50 hover:bg-primary/90 transition-colors">
                 Отправить заявку
               </button>
+              {submitError && (
+                <div className="mt-4 p-4 rounded-xl border border-red-300 bg-red-50 text-red-900" role="alert">
+                  <p className="text-sm font-medium mb-1">Ошибка отправки</p>
+                  <p className="text-sm">{submitError}</p>
+                </div>
+              )}
+              </>
             ) : null}
           </div>
         )}

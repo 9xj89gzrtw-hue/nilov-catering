@@ -10,14 +10,14 @@ export const metadata: Metadata = {
 };
 
 const OCCASIONS = [
-  { label: 'Свадьба', emoji: '💍', format: 'banket' },
-  { label: 'Корпоратив', emoji: '🏢', format: 'banket' },
-  { label: 'День рождения', emoji: '🎂', format: 'furshet' },
-  { label: 'Детский праздник', emoji: '🧒', format: 'detskoe' },
-  { label: 'Выпускной', emoji: '🎓', format: 'banket' },
-  { label: 'Юбилей', emoji: '🏅', format: 'banket' },
-  { label: 'Конференция', emoji: '🎤', format: 'coffee-break' },
-  { label: 'Просто ужин', emoji: '🍽️', format: 'furshet' },
+  { label: 'Свадьба', emoji: '', format: 'banket' },
+  { label: 'Корпоратив', emoji: '', format: 'banket' },
+  { label: 'День рождения', emoji: '', format: 'furshet' },
+  { label: 'Детский праздник', emoji: '', format: 'detskoe' },
+  { label: 'Выпускной', emoji: '', format: 'banket' },
+  { label: 'Юбилей', emoji: '', format: 'banket' },
+  { label: 'Конференция', emoji: '', format: 'coffee-break' },
+  { label: 'Просто ужин', emoji: '', format: 'furshet' },
 ];
 
 const GUEST_RANGES = [
@@ -29,11 +29,11 @@ const GUEST_RANGES = [
 ];
 
 const LOCATIONS = [
-  { label: 'Дома', emoji: '🏠' },
-  { label: 'В офисе', emoji: '💼' },
-  { label: 'На площадке (лофт/ресторан)', emoji: '🏛️' },
-  { label: 'На природе', emoji: '🌳' },
-  { label: 'Пока не знаю', emoji: '🤔' },
+  { label: 'Дома', emoji: '' },
+  { label: 'В офисе', emoji: '' },
+  { label: 'На площадке (лофт/ресторан)', emoji: '' },
+  { label: 'На природе', emoji: '' },
+  { label: 'Пока не знаю', emoji: '' },
 ];
 
 const OCCASION_TO_PAGE: Record<string, string> = {
@@ -67,7 +67,7 @@ export default function PlanHelperPage({
           <Breadcrumbs />
 
           <div className="text-center mb-8">
-            <div className="text-5xl mb-4">🎉</div>
+            <div className="text-5xl mb-4"></div>
             <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">Готово</p>
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
               Вот что мы подобрали
@@ -92,25 +92,25 @@ export default function PlanHelperPage({
                 href={eventPage}
                 className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline text-center"
               >
-                📄 Открыть страницу события
+                 Открыть страницу события
               </Link>
               <Link
                 href={`/plan/constructor?format=${format}`}
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                ✨ Собрать меню в конструкторе
+                 Собрать меню в конструкторе
               </Link>
               <Link
                 href="/pricing"
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                💰 Смотреть все тарифы
+                 Смотреть все тарифы
               </Link>
               <Link
                 href="/contact"
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                ✍️ Оставить заявку
+                 Оставить заявку
               </Link>
             </div>
           </div>
@@ -120,13 +120,13 @@ export default function PlanHelperPage({
               href={`tel:${SITE.phoneTel}`}
               className="inline-block rounded-lg border-2 border-gold-text px-6 py-3 text-base font-semibold text-foreground hover:bg-gold-tint/10 transition-colors no-underline mr-3"
             >
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link
               href="/plan/helper"
               className="inline-block text-sm text-muted-foreground hover:text-foreground mt-2"
             >
-              ↺ Начать заново
+               Начать заново
             </Link>
           </div>
         </div>
@@ -202,13 +202,13 @@ export default function PlanHelperPage({
             href={step === 1 ? '/plan/helper' : step === 2 ? `/plan/helper?occasion=${encodeURIComponent(occasion!)}` : '/plan/helper'}
             className="inline-block mt-6 text-sm text-muted-foreground hover:text-foreground"
           >
-            ← Назад
+             Назад
           </Link>
         )}
 
         <div className="mt-12 p-4 rounded-lg bg-secondary/50 text-center text-sm text-muted-foreground">
           Не хотите проходить опрос?{' '}
-          <Link href="/pricing" className="text-gold-text hover:underline">Сразу к тарифам →</Link>
+          <Link href="/pricing" className="text-gold-text hover:underline">Сразу к тарифам </Link>
           {' '}или{' '}
           <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">позвоните {SITE.phone}</a>
         </div>

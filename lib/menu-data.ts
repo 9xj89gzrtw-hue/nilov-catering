@@ -1,6 +1,6 @@
 // Единый каталог блюд NiloV — 78 уникальных SKU
 // Источник: 23_MENU_STRATEGY.md, 04_BLOCKS.md
-// Все цены 🟡 pending-verification
+// Все цены pending-verification
 import type { Dish } from './types';
 
 // ═══════════════════════════════════════════
@@ -179,7 +179,7 @@ const HALAL: Dish[] = [
 
 // §10 — ПРЕМИУМ-БЛЮДА для свадебных/корпоративных тарифов (28 SKU)
 // Эти dishId используются в lib/tariff-offers.ts SVADBA/KORPORATIV/CHASTNOE/CHEF_AT_HOME
-// Ранее отсутствовали в ALL_DISHES → аллергены и цены не показывались
+// Ранее отсутствовали в ALL_DISHES аллергены и цены не показывались
 const PREMIUM_EXTRA: Dish[] = [
   { id: 'canape-red-fish', name: 'Канапе с красной рыбой', description: 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе. ХЕ=1.5, БЖУ: белки 5 г / жиры 8 г / углеводы 18 г.', image: '', station: 'cold', format: ['furshet', 'banket'], tier: ['economy', 'standard', 'premium', 'luxury'], pricePerGuest: 190, servingsPerGuest: 2, allergens: ['fish', 'milk', 'gluten'], dietBadges: [], childFriendly: true },
   { id: 'canape-cheese', name: 'Канапе с сыром', description: 'Сыр дор-блю, грецкий орех, медовые соты на крекере. ХЕ=1.5, БЖУ: белки 5 г / жиры 8 г / углеводы 18 г.', image: '', station: 'cold', format: ['furshet', 'banket'], tier: ['economy', 'standard', 'premium', 'luxury'], pricePerGuest: 170, servingsPerGuest: 2, allergens: ['milk', 'nuts', 'gluten'], dietBadges: [], childFriendly: true },
@@ -248,7 +248,7 @@ export const DIET_FILTERS: Record<string, string> = {
   'nut-free': 'Без орехов',
 };
 
-// Формат → список ID для быстрого поиска
+// Формат список ID для быстрого поиска
 export const FORMAT_DISHES: Record<string, string[]> = {
   'furshet': ALL_DISHES.filter(d => d.format.includes('furshet')).map(d => d.id),
   'banket': ALL_DISHES.filter(d => d.format.includes('banket')).map(d => d.id),

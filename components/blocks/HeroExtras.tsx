@@ -12,11 +12,11 @@ export default function HeroExtras() {
             href="/plan/helper"
             className="rounded-lg bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:bg-primary/90 transition-colors text-center touch-target"
           >
-            🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+             Не знаете что выбрать? Подберём за 3 вопроса
           </Link>
           <Link
-            href="/plan/calculator"
-            className="rounded-lg border border-gold-text text-gold-text px-5 py-3 text-sm font-semibold hover:bg-gold-tint transition-colors text-center touch-target"
+            href="/pricing"
+            className="rounded-lg border border-gold-text text-gold-text px-5 py-3 text-sm font-semibold hover:bg-gold-tint transition-colors text-center touch-target no-underline"
           >
             Узнать цены
           </Link>

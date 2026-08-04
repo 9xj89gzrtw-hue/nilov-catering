@@ -54,7 +54,7 @@ const FAQS_B2C = [
 const FAQS_B2B = [
   {
     q: 'Работаете с юридическими лицами?',
-    a: 'Да, B2B — наше основное направление. Договор юр.лицо ↔ юр.лицо с фиксированной сметой. Счёт на оплату (безналичный расчёт). Закрывающие документы: акт + счёт-фактура. ЭДО: Контур.Диадок, СБИС. ИП Нилов Д.И. применяет УСН (без НДС). Для плательщиков НДС (ОСН) — работаем с НДС (по запросу). Кассовый чек по 54-ФЗ.',
+    a: 'Да, B2B — наше основное направление. Договор юр.лицо юр.лицо с фиксированной сметой. Счёт на оплату (безналичный расчёт). Закрывающие документы: акт + счёт-фактура. ЭДО: Контур.Диадок, СБИС. ИП Нилов Д.И. применяет УСН (без НДС). Для плательщиков НДС (ОСН) — работаем с НДС (по запросу). Кассовый чек по 54-ФЗ.',
   },
   {
     q: 'Какие документы предоставляете для Роспотребнадзора?',
@@ -137,7 +137,7 @@ export default function FAQPage() {
           <input
             type="search"
             id="faq-search"
-            placeholder="🔍 Поиск по вопросам…"
+            placeholder=" Поиск по вопросам…"
             className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow"
           />
         </div>
@@ -154,7 +154,7 @@ export default function FAQPage() {
         <div id="faq-list">
         {/* B2C FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl">👥</span> Для частных клиентов
+          <span className="text-2xl"></span> Для частных клиентов
         </h2>
         <div className="space-y-3 mb-12">
           {FAQS_B2C.map((f, i) => (
@@ -172,7 +172,7 @@ export default function FAQPage() {
 
         {/* B2B FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl">💼</span> Для бизнеса (B2B)
+          <span className="text-2xl"></span> Для бизнеса (B2B)
         </h2>
         <div className="space-y-3 mb-12">
           {FAQS_B2B.map((f, i) => (
@@ -194,13 +194,13 @@ export default function FAQPage() {
           <p className="text-sm mb-4 opacity-90">Позвоните или оставьте заявку — ответим за 15 минут.</p>
           <div className="flex flex-wrap justify-center gap-3">
             <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              ✍️ Оставить заявку
+               Оставить заявку
             </Link>
             <Link href="/certificates" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              📋 Сертификаты
+               Сертификаты
             </Link>
           </div>
         </div>

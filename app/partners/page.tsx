@@ -23,7 +23,7 @@ export default function PartnersPage() {
         {/* Agent / Event-agency program */}
         <div className="mb-8 p-6 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-xl font-medium mb-3 flex items-center gap-2">
-            🤝 Агентствам и event-компаниям
+             Агентствам и event-компаниям
           </h2>
           <p className="text-sm text-foreground/90 mb-4">
             Если вы event-агентство, продюсерская компания или частный организатор — мы готовы
@@ -51,7 +51,7 @@ export default function PartnersPage() {
         {/* Venues */}
         <div className="mb-8 p-6 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-xl font-medium mb-3 flex items-center gap-2">
-            🏛 Площадкам
+             Площадкам
           </h2>
           <p className="text-sm text-foreground/90 mb-4">
             Если у вас ресторан, лофт, особняк, шатёр, яхт-клуб, ДК или иная площадка для
@@ -70,7 +70,7 @@ export default function PartnersPage() {
         {/* Suppliers */}
         <div className="mb-8 p-6 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-xl font-medium mb-3 flex items-center gap-2">
-            🌾 Поставщикам
+             Поставщикам
           </h2>
           <p className="text-sm text-foreground/90 mb-4">
             Мы работаем с фермерами ЛО, локальными производителями мяса, рыбы, овощей, сыров.
@@ -93,7 +93,7 @@ export default function PartnersPage() {
         {/* Subcontractor kitchens */}
         <div className="mb-8 p-6 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-xl font-medium mb-3 flex items-center gap-2">
-            🍳 Субподрядным кухням (для событий 500+ гостей)
+             Субподрядным кухням (для событий 500+ гостей)
           </h2>
           <p className="text-sm text-foreground/90 mb-4">
             Для событий на 500+ гостей мы работаем через сертифицированные кухонные мощности СПб. Если у вас
@@ -111,7 +111,7 @@ export default function PartnersPage() {
 
         {/* Partner network benefits */}
         <div className="mb-8 p-6 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-xl font-medium mb-3">📊 Что вы получаете как партнёр</h2>
+          <h2 className="font-heading text-xl font-medium mb-3"> Что вы получаете как партнёр</h2>
           <ul className="text-sm space-y-2 list-disc list-inside text-foreground/90">
             <li>Стабильный поток заказов (3000+ событий за историю, 200+ в год)</li>
             <li>Прозрачную агентскую комиссию без задержек</li>
@@ -130,13 +130,13 @@ export default function PartnersPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a href="mailto:b2b@odaeda.ru?subject=Партнёрство" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
-              ✉️ b2b@odaeda.ru
+               b2b@odaeda.ru
             </a>
             <a href="tel:+78129195911" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              📞 +7 (812) 919-59-11
+               +7 (812) 919-59-11
             </a>
             <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              ✍️ Форма заявки
+               Форма заявки
             </Link>
           </div>
         </div>

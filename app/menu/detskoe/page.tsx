@@ -21,10 +21,10 @@ export default function DetskoePage() {
 
         {/* Safety banner — ВВЕРХУ, перед тарифами и блюдами */}
         <div className="mb-8 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
-          <p className="text-base font-bold text-amber-900 mb-2">⚠ Аллергены в детском меню — безопасность детей</p>
+          <p className="text-base font-bold text-amber-900 mb-2"> Аллергены в детском меню — безопасность детей</p>
           <p className="text-sm text-amber-900 mb-3">
             <strong>В пакетах «Эконом» и базовом детском наборе НЕТ блюд с цельными орехами</strong> (арахис, лесной, кедровый, грецкий).
-            В пакетах «Стандарт» и «Расширенный» часть десертов (брауни, миндальная мука в БГ-выпечке) содержит орехи — они имеют значок ⚠ Орехи и промаркированы.
+            В пакетах «Стандарт» и «Расширенный» часть десертов (брауни, миндальная мука в БГ-выпечке) содержит орехи — они имеют значок Орехи и промаркированы.
             <strong> Если у ребёнка аллергия или анафилаксия — укажите это в заявке.</strong>
             Менеджер свяжется с вами для подтверждения протокола безопасности (отдельная зона кухни,
             отдельные доски/ножи, EpiPen на руках у ответственного сотрудника). Для 100% без-орехового меню отметьте фильтр «Без орехов» в каталоге или конструкторе.
@@ -35,7 +35,7 @@ export default function DetskoePage() {
             Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>💉 Сахарный диабет (СД1/СД2)?</strong> По умолчанию candy-bar / сладкий стол
+            <strong> Сахарный диабет (СД1/СД2)?</strong> По умолчанию candy-bar / сладкий стол
             включены в пакеты «Стандарт» и «Расширенный». Для ребёнка с СД1 мы заменяем их на
             сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Ищите в каталоге блюда со значком{' '}
@@ -44,24 +44,24 @@ export default function DetskoePage() {
             <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>🥛🥚 Анафилаксия на молоко и/или яйца?</strong> Те же протоколы безопасности:
+            <strong> Анафилаксия на молоко и/или яйца?</strong> Те же протоколы безопасности:
             отдельная смена, отдельные доски/ножи, EpiPen. Веган-меню = безопасный выбор
             (без молока, без яиц). В каталоге используйте фильтр «Без молока» и «Без яиц».
             Подробнее на{' '}
-            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>.
+            <Link href="/allergens" className="underline font-semibold">/allergens </Link>.
           </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-              Собрать детское меню в конструкторе →
+              Собрать детское меню в конструкторе
             </Link>
             <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
-              📋 Протокол безопасности
+               Протокол безопасности
             </Link>
             <Link href="/allergens" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
-              🥜 14 аллергенов
+               14 аллергенов
             </Link>
             <Link href="/events/vypusknoy" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
-              🎓 Школьный выпускной
+               Школьный выпускной
             </Link>
           </div>
         </div>
@@ -69,8 +69,8 @@ export default function DetskoePage() {
         {/* CTA: "Не нашли — составим" */}
         <div className="mb-8 p-4 rounded-xl border border-gold-text bg-gold-tint flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm font-medium">Не нашли подходящее меню? Составим индивидуально.</p>
-          <Link 
-            href="/plan/helper" 
+          <Link
+            href="/plan/helper"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             Составить меню
@@ -126,7 +126,7 @@ export default function DetskoePage() {
                       <span key={a} className={`text-[10px] px-1 py-0.5 rounded ${
                         isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                       }`}>
-                        {isHighRisk && '⚠ '}{ALLERGEN_LABEL[a]}
+                        {isHighRisk && ' '}{ALLERGEN_LABEL[a]}
                       </span>
                     );
                   })}

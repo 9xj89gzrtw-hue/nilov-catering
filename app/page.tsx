@@ -2,13 +2,12 @@ import type { Metadata } from 'next';
 import HeroBlock from '@/components/blocks/HeroBlock';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import MenuPreview from '@/components/blocks/MenuPreview';
+import WhyUs from '@/components/blocks/WhyUs';
 import TrustBar from '@/components/blocks/TrustBar';
 import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
 import WowCase from '@/components/blocks/WowCase';
-import Link from 'next/link';
-import { SITE } from '@/lib/data';
 import { getTrustProofs, getAllPageTexts, getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
@@ -43,19 +42,22 @@ export default async function HomePage() {
       {/* 3. MENU PREVIEW — фото блюд + быстрый переход в каталог */}
       <MenuPreview />
 
-      {/* 4. TRUST — кейсы и отзывы (социальное доказательство) */}
+      {/* 4. WHY US — 4 принципа + статы (наконец-то на главной) */}
+      <WhyUs />
+
+      {/* 5. TRUST — кейсы и отзывы (социальное доказательство) */}
       <TrustBar />
 
-      {/* 5. HOW WE WORK — простой процесс в 4 шага */}
+      {/* 6. HOW WE WORK — простой процесс в 4 шага */}
       <ProcessSteps />
 
-      {/* 6. RESPONSES — отзывы клиентов */}
+      {/* 7. RESPONSES — отзывы клиентов */}
       <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
 
-      {/* 7. WOW CASE — кейс месяца */}
+      {/* 8. WOW CASE — кейс месяца */}
       <WowCase />
 
-      {/* 8. CTA — одно главное действие */}
+      {/* 9. CTA — одно главное действие */}
       <CTASection />
     </main>
   );

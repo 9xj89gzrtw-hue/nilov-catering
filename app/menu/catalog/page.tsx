@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
-import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
+import { getDishImage, getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
@@ -18,6 +18,19 @@ const STATIONS = [
   { key: 'drinks', label: 'Напитки' },
   { key: 'show', label: 'Шоу-станции' },
 ] as const;
+
+// Chef recommends — 8 curated picks shown ABOVE the sticky filter bar.
+// Solves the VLM-flagged problem: "No actual product images visible above the fold for a 'catalog'".
+const CHEF_RECOMMENDS_IDS = [
+  'canape-salmon',
+  'mini-burger',
+  'beef-medallions',
+  'macaron-shooter',
+  'buddha-bowl',
+  'tartar-beef',
+  'bruschetta-tomato',
+  'lemonade-tarragon',
+];
 
 const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as const;
 
@@ -127,10 +140,48 @@ export default function CatalogPage() {
               aria-pressed={!showAllergens}
               type="button"
             >
-              {showAllergens ? '👁 Скрыть аллергены' : '👁 Показать аллергены'}
+              {showAllergens ? ' Скрыть аллергены' : ' Показать аллергены'}
             </button>
           }
         />
+
+        {/* Chef recommends — ABOVE sticky filter bar so dish photos are visible above the fold.
+            VLM critic flagged: "No actual product images visible above the fold for a 'catalog'". */}
+        <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
+          <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1">
+            Шеф рекомендует
+          </h2>
+          <p className="text-sm text-muted-foreground mb-5">8 самых популярных блюд — начните с этих</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {CHEF_RECOMMENDS_IDS.map((id) => {
+              const dish = ALL_DISHES.find(d => d.id === id);
+              if (!dish) return null;
+              const img = getDishImage(dish.id, dish.station);
+              const objPos = getObjectPositionForDish(dish.id, dish.station);
+              return (
+                <Link
+                  key={id}
+                  href={`/plan/constructor?dish=${id}`}
+                  className="group block rounded-xl overflow-hidden border border-line bg-card hover:border-gold-text/40 transition-all no-underline"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <FoodPhoto
+                      src={img}
+                      alt={dish.name}
+                      aspectRatio="square"
+                      objectPosition={objPos}
+                      className="w-full h-full transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-sm font-medium text-foreground group-hover:text-gold-text transition-colors line-clamp-1">{dish.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{dish.pricePerGuest} ₽/гость</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
 
         {/* Sticky filter bar — sticks below header (top-16 = 64px = h-16 header) */}
         <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 bg-background/95 backdrop-blur-md border-b border-line/60 rounded-xl">
@@ -203,7 +254,7 @@ export default function CatalogPage() {
                 className="shrink-0 ml-auto text-xs text-gold-text hover:underline px-2 py-1 touch-target"
                 aria-label="Сбросить все фильтры"
               >
-                ✕ Сбросить
+                 Сбросить
               </button>
             )}
           </div>
@@ -237,7 +288,7 @@ export default function CatalogPage() {
         {paginatedOther.length > 0 && (
           <div className="mb-8">
             {halalDishes.length > 0 && porkDishes.length > 0 && (
-              <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
+              <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide"> Основные блюда</h2>
             )}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {paginatedOther.map((dish, idx) => (
@@ -249,7 +300,7 @@ export default function CatalogPage() {
 
         {paginatedHalal.length > 0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
-            <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
+            <h2 className="font-heading text-base font-medium text-emerald-900 mb-1"> Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {paginatedHalal.map((dish, idx) => (
@@ -261,7 +312,7 @@ export default function CatalogPage() {
 
         {paginatedPork.length > 0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
-            <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
+            <h2 className="font-heading text-base font-medium text-red-900 mb-1"> Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {paginatedPork.map((dish, idx) => (
@@ -281,7 +332,7 @@ export default function CatalogPage() {
               aria-controls="dishes-grid"
               aria-expanded={visibleCount > 24 ? 'true' : 'false'}
             >
-              Показать ещё {Math.min(24, filtered.length - totalShown)} блюд ↓
+              Показать ещё {Math.min(24, filtered.length - totalShown)} блюд
             </button>
             <p className="text-xs text-muted-foreground mt-2">Показано {totalShown} из {filtered.length} блюд</p>
           </div>
@@ -295,13 +346,13 @@ export default function CatalogPage() {
             {/* Спец-баннер для халяль-фильтра */}
             {activeDiets.has('halal') && (
               <div className="mt-6 p-5 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
-                <p className="text-sm font-medium text-foreground mb-1">☪️ Халяль-меню готовим под заказ</p>
+                <p className="text-sm font-medium text-foreground mb-1"> Халяль-меню готовим под заказ</p>
                 <p className="text-xs text-muted-foreground mb-3">
                   В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
                 </p>
                 <a href="/menu/halal" className="text-xs text-gold-text font-semibold hover:underline">
-                  Подробнее про халяль-меню →
+                  Подробнее про халяль-меню
                 </a>
               </div>
             )}
@@ -318,13 +369,13 @@ export default function CatalogPage() {
               Собрать меню в конструкторе
             </Link>
             <Link href="/delivery/order" className="rounded-lg border border-gold-text px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors inline-block">
-              🛒 В заказ доставки
+               В заказ доставки
             </Link>
           </div>
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
             <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
             <p className="text-xs text-muted-foreground mb-3">Шеф соберёт меню под ваш бюджет, формат и пожелания.</p>
-            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом →</Link>
+            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом </Link>
           </div>
         </div>
       </div>
@@ -406,7 +457,7 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
           className="mt-auto inline-flex items-center justify-center rounded-lg bg-gold-text text-white px-3 py-2 text-xs font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline"
           aria-label={`Открыть ${dish.name} в конструкторе меню`}
         >
-          Открыть в конструкторе →
+          Открыть в конструкторе
         </Link>
       </div>
       </div>

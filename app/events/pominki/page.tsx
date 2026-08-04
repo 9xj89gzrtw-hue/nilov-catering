@@ -79,7 +79,7 @@ export default function PominkiPage() {
           <ShareButton
             title="Поминки — кейтеринг NiloV"
             text="Посмотри поминальное меню и цены — нужно согласовать"
-            label="📤 Отправить ссылку родным (WhatsApp / Telegram / Email)"
+            label=" Отправить ссылку родным (WhatsApp / Telegram / Email)"
           />
         </div>
 
@@ -167,7 +167,7 @@ export default function PominkiPage() {
               href="tel:+78129195911"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              📞 +7 (812) 919-59-11
+               +7 (812) 919-59-11
             </a>
             <a
               href="https://wa.me/78129195911"
@@ -175,13 +175,13 @@ export default function PominkiPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-3 text-sm font-semibold text-foreground hover:border-gold-text transition-colors"
             >
-              💬 WhatsApp
+               WhatsApp
             </a>
             <Link
               href="/contact?eventType=%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%BA%D0%B8&format=%D0%9F%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9+%D0%BE%D0%B1%D0%B5%D0%B4&guests=25"
               className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-3 text-sm font-semibold text-foreground hover:border-gold-text transition-colors"
             >
-              ✍️ Форма заявки
+               Форма заявки
             </Link>
           </div>
         </div>

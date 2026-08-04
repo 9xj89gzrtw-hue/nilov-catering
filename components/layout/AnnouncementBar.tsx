@@ -38,7 +38,7 @@ export default function AnnouncementBar({
     <div className="bg-gold-tint text-gold-text text-sm font-medium relative z-[60]" role="banner" aria-label="Важное объявление">
       <div className="container-site flex items-center justify-between py-2.5 gap-4">
         <div className="flex items-center gap-2 flex-1 min-w-0">
-          <span className="shrink-0">🎯</span>
+          <span className="shrink-0"></span>
           <p className="truncate">{message}</p>
         </div>
         <div className="flex items-center gap-3 shrink-0">

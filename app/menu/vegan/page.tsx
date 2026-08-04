@@ -23,7 +23,7 @@ export default function VeganPage() {
         </p>
 
         <div className="mb-8 p-5 rounded-xl border border-emerald-300 bg-emerald-50">
-          <h2 className="font-heading text-base font-medium mb-2">🌱 Что такое наше веган-меню</h2>
+          <h2 className="font-heading text-base font-medium mb-2"> Что такое наше веган-меню</h2>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
             <li>Авторская растительная кухня: цветная капуста, грибы, бобовые, орехи (если нет анафилаксии), кокос, авокадо</li>
             <li>Без имитаций мяса — никаких соевых сосисок, веган-колбас, сейтана</li>
@@ -94,22 +94,22 @@ export default function VeganPage() {
             трюфелем, лесными грибами, эдамаме, киноa, ферментированными овощами.
           </p>
           <p className="text-xs text-muted-foreground mb-3">
-            <strong>💡 Веган + всеядные в одной свадьбе?</strong> В тарифе «Per-group pricing»
+            <strong> Веган + всеядные в одной свадьбе?</strong> В тарифе «Per-group pricing»
             веган-группа платит 2 950 ₽/гость (Стандарт), всеядная — по тарифу свадебного банкета.
             Например, 50 веганов × 2 950 + 30 всеядных × 5 470 = 311 600 ₽ за 80 гостей.{' '}
-            <Link href="/events/svadba" className="underline text-gold-text">Подробнее →</Link>
+            <Link href="/events/svadba" className="underline text-gold-text">Подробнее </Link>
           </p>
           <Link
             href="/plan/constructor?diet=vegan"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            🛒 Собрать веган-меню в конструкторе →
+             Собрать веган-меню в конструкторе
           </Link>
         </div>
 
         <div className="mt-6 p-4 rounded-xl border border-line bg-card">
           <p className="text-xs text-muted-foreground">
-            📸 Все фотографии блюд в каталоге — иллюстрации. Реальные фото блюд с наших событий — в{' '}
+             Все фотографии блюд в каталоге — иллюстрации. Реальные фото блюд с наших событий — в{' '}
             <Link href="/gallery" className="underline">галерее</Link>. Бесплатная дегустация для
             заказа от 100 000 ₽ — убедитесь во вкусе до бронирования.
           </p>

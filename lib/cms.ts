@@ -2,10 +2,10 @@
  * cms.ts — унифицированный адаптер CMS-данных
  *
  * СЕРВЕР: читает data/*.json напрямую (ISR revalidate=3600)
- * КЛИЕНТ: fetch /api/cms/collection → кеширует в memory
+ * КЛИЕНТ: fetch /api/cms/collection кеширует в memory
  *
- * Приоритет: CMS-файл → хардкод-константа (fallback).
- * Заказчик правит /admin или data/*.json → git push → ISR подхватывает.
+ * Приоритет: CMS-файл хардкод-константа (fallback).
+ * Заказчик правит /admin или data/*.json git push ISR подхватывает.
  */
 
 import { cmsStore, type Dish, type Review, type Video, type TrustProofItem, type PricingConfig, type PageText } from './cms-store';

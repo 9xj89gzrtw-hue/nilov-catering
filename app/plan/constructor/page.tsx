@@ -24,7 +24,7 @@ function ConstructorServerFallback() {
     {
       name: 'Фуршет',
       slug: 'furshet',
-      emoji: '🥪',
+      emoji: '',
       price: 'от 2 450 ₽/гость',
       minGuests: 'мин. 20 гостей',
       desc: 'Гости едят стоя, лёгкие закуски, можно свободно ходить',
@@ -33,7 +33,7 @@ function ConstructorServerFallback() {
     {
       name: 'Банкет',
       slug: 'banket',
-      emoji: '🍽️',
+      emoji: '',
       price: 'от 3 950 ₽/гость',
       minGuests: 'мин. 15 гостей',
       desc: 'Посадка за стол, официанты, классическая подача',
@@ -42,7 +42,7 @@ function ConstructorServerFallback() {
     {
       name: 'Кофе-брейк',
       slug: 'coffee-break',
-      emoji: '☕',
+      emoji: '',
       price: 'от 390 ₽/гость',
       minGuests: 'мин. 10 гостей',
       desc: 'Кофе и десерты в перерыве мероприятия',
@@ -50,7 +50,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Детский праздник', slug: 'detskoe',
-      emoji: '🧒',
+      emoji: '',
       price: 'от 1 550 ₽/гость',
       minGuests: 'мин. 10 детей',
       desc: 'Специальное меню и развлечения для детей',
@@ -58,7 +58,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Выезд шефа', slug: 'chef-at-home',
-      emoji: '👨‍🍳',
+      emoji: '',
       price: 'от 5 000 ₽/гость',
       minGuests: 'мин. 6 гостей',
       desc: 'Шеф-повар и сомелье у вас дома',
@@ -66,7 +66,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Мобильный фуршет', slug: 'mobile-furshet',
-      emoji: '🚚',
+      emoji: '',
       price: 'от 1 500 ₽/гость',
       minGuests: 'мин. 30 гостей',
       desc: 'Выезд на площадку без кухни',
@@ -74,7 +74,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Поминки', slug: 'pominki',
-      emoji: '🕯️',
+      emoji: '',
       price: 'от 1 800 ₽/гость',
       minGuests: 'мин. 10 гостей',
       desc: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя.',
@@ -164,7 +164,7 @@ function ConstructorServerFallback() {
             <ShareButton
               title="Моё меню — NiloV Catering"
               text="Посмотри меню — нужно согласовать"
-              label="📤 Отправить ссылку родным/коллегам"
+              label=" Отправить ссылку родным/коллегам"
             />
           </div>
         </div>
@@ -247,7 +247,7 @@ function ConstructorServerFallback() {
               </label>
             </div>
             <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-              ✍️ Отправить заявку (no-JS)
+               Отправить заявку (no-JS)
             </button>
             <p className="text-xs text-muted-foreground text-center">Менеджер перезвонит ≤15 мин. Или позвоните: +7 (812) 919-59-11.</p>
           </form>
@@ -291,13 +291,13 @@ function ConstructorServerFallback() {
               href="/plan/calculator"
               className="rounded-lg bg-gold-text text-white px-5 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors no-underline"
             >
-              💰 Калькулятор бюджета →
+               Калькулятор бюджета
             </Link>
             <a
               href={`tel:${SITE.phoneTel}`}
               className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:border-gold-text transition-colors no-underline"
             >
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
             <a
               href={SITE.whatsapp}
@@ -305,13 +305,13 @@ function ConstructorServerFallback() {
               rel="noopener noreferrer"
               className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
             >
-              💬 WhatsApp
+               WhatsApp
             </a>
             <Link
               href="/contact"
               className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
             >
-              ✍️ Заполнить форму
+               Заполнить форму
             </Link>
           </div>
         </div>
@@ -350,7 +350,7 @@ function ConstructorServerFallback() {
                   card.setAttribute('aria-current', 'true');
                   // Add checkmark badge
                   var badge = document.createElement('div');
-                  badge.textContent = '✓ Выбрано';
+                  badge.textContent = ' Выбрано';
                   badge.style.cssText = 'position:absolute;top:8px;right:8px;background:var(--color-gold,#B08D57);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600';
                   card.style.position = 'relative';
                   card.appendChild(badge);

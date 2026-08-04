@@ -48,7 +48,7 @@ export default function GalleryTeaser() {
 
         <div className="mt-6 text-center">
           <Link href="/gallery" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98] transition-transform">
-            Вся галерея →
+            Вся галерея
           </Link>
         </div>
       </div>

@@ -87,7 +87,7 @@ export default async function BlogArticlePage({ params }: Props) {
     <main id="main" className="pt-24 pb-20">
       <article className="container-site max-w-2xl">
         <Link href="/blog" className="text-sm text-muted-foreground hover:text-gold-text transition-colors mb-4 inline-block">
-          ← Назад в блог
+           Назад в блог
         </Link>
         <p className="text-xs text-muted-foreground mb-2">{article.d}</p>
         <h1 className="text-2xl font-heading font-medium mb-6">{article.t}</h1>
@@ -99,7 +99,7 @@ export default async function BlogArticlePage({ params }: Props) {
         <div className="mt-10 p-5 rounded-xl border border-line bg-card">
           <p className="text-sm font-medium mb-2">Обсудить меню для вашего события</p>
           <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">
-            Собрать меню в конструкторе →
+            Собрать меню в конструкторе
           </Link>
         </div>
       </article>

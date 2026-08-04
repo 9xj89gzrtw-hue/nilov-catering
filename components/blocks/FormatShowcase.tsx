@@ -16,7 +16,7 @@ export default function FormatShowcase() {
         <div className="mb-8">
           <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Что вы задумали?</p>
           <h2 id="formats-heading">Три формата</h2>
-          <Link href="/help/formats" className="text-sm text-gold-text hover:underline mt-1 inline-block">Что такое формат? →</Link>
+          <Link href="/help/formats" className="text-sm text-gold-text hover:underline mt-1 inline-block">Что такое формат? </Link>
         </div>
 
         {/* Horizontal scroll mobile, grid desktop */}

@@ -11,7 +11,7 @@ const KEY_LINKS = [
   { href: '/', label: 'Главная' },
   { href: '/events', label: 'События' },
   { href: '/menu', label: 'Меню' },
-  { href: '/delivery/order', label: '🚚 Доставка' },
+  { href: '/delivery/order', label: 'Доставка' },
   { href: '/plan', label: 'Спланировать' },
 ];
 
@@ -44,7 +44,7 @@ export default function MobileMenu() {
       {/* Trigger — hamburger */}
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
+        className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
         aria-label="Открыть меню"
       >
         <svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -56,7 +56,7 @@ export default function MobileMenu() {
       {createPortal(
         <AnimatePresence>
           {open && (
-            <div className="fixed inset-0 z-[200] lg:hidden">
+            <div className="fixed inset-0 z-[200] md:hidden">
               {/* Backdrop */}
               <motion.button
                 className="absolute inset-0 bg-foreground/40"
@@ -122,16 +122,16 @@ export default function MobileMenu() {
                 <div className="p-5 border-t border-line space-y-3">
                   <a
                     href={`tel:${SITE.phoneTel}`}
-                    className="flex items-center justify-center gap-2 w-full rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors"
+                    className="flex items-center justify-center gap-2 w-full rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors no-underline"
                   >
-                    📞 {SITE.phone}
+                    {SITE.phone}
                   </a>
                   <Link
-                    href="/plan/constructor"
+                    href="/plan/helper"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform"
+                    className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform no-underline"
                   >
-                    Спланировать событие
+                    Рассчитать меню
                   </Link>
                 </div>
               </motion.div>

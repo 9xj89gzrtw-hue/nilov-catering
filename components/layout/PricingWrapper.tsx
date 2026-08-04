@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { PricingProvider, usePricing } from '@/lib/pricing-context';
 import { useConstructor } from '@/hooks/useConstructor';
 
-/** Синхронизирует PricingContext → Zustand useConstructor */
+/** Синхронизирует PricingContext Zustand useConstructor */
 function PricingSync() {
   const pricing = usePricing();
 

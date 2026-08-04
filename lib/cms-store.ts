@@ -1,4 +1,4 @@
-// Встроенная CMS: JSON-файлы → админка /admin
+// Встроенная CMS: JSON-файлы админка /admin
 // РФ-совместимо: без внешних API, без карт, без облаков
 // Спек: 04_BLOCKS.md §CMS-слой + 29_POSITIONING.md §РФ-стек
 // Заказчик правит контент через /admin, файлы коммитятся в git
@@ -93,8 +93,8 @@ export interface PricingConfig {
 }
 
 export interface PageText {
-  key: string;       // например 'hero-title', 'faq-1-answer'
-  value: string;     // текст
+  key: string; // например 'hero-title', 'faq-1-answer'
+  value: string; // текст
   updatedAt: string;
 }
 

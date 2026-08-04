@@ -13,8 +13,22 @@ export default function SvadbaPage() {
   return (
     <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-5xl">
+        {/* Hero photo — real wedding banquet */}
+        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
+          <picture>
+            <source srcSet="/images/real/wedding-banquet-480.avif 480w, /images/real/wedding-banquet-768.avif 768w, /images/real/wedding-banquet.avif 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/avif" />
+            <source srcSet="/images/real/wedding-banquet-480.webp 480w, /images/real/wedding-banquet-768.webp 768w, /images/real/wedding-banquet.webp 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/real/wedding-banquet.jpg" alt="Свадебный банкет — кейтеринг NiloV" className="w-full h-full object-cover" />
+          </picture>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
+          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Свадьбы под ключ</p>
+            <h1 className="font-heading text-2xl md:text-4xl text-white" style={{ fontWeight: 500 }}>Свадебный кейтеринг</h1>
+          </div>
+        </div>
+
         <div className="text-center mb-8">
-          <h1 className="mb-2">Свадебный кейтеринг</h1>
           <p className="text-muted-foreground mb-2 max-w-xl mx-auto">
             Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
           </p>
@@ -23,14 +37,14 @@ export default function SvadbaPage() {
             <ShareButton
               title="Свадебный кейтеринг — NiloV"
               text="Посмотри свадебные тарифы и меню — нужно согласовать"
-              label="📤 Отправить ссылку жениху/родным"
+              label=" Отправить ссылку жениху/родным"
             />
           </div>
         </div>
 
         {/* Multi-diet callout — для невест с разными диетами среди гостей */}
         <div className="mb-6 p-5 rounded-xl border-2 border-emerald-300 bg-emerald-50 text-center">
-          <h2 className="font-heading text-base font-medium mb-2">🥬 Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
+          <h2 className="font-heading text-base font-medium mb-2"> Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
           <p className="text-sm text-foreground/90 mb-3">
             Да! В конструкторе меню есть режим «Несколько групп гостей». Каждая группа получает
             своё под-меню с фильтром по диете. Например, свадьба на 80: 10 веганов + 8 халяль +
@@ -45,7 +59,7 @@ export default function SvadbaPage() {
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
           <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-            Собрать свадебное меню с разными диетами →
+            Собрать свадебное меню с разными диетами
           </Link>
         </div>
 
@@ -55,14 +69,14 @@ export default function SvadbaPage() {
             <span className="font-medium">Веганский свадебный торт?</span> Да — отдельная выпечка
             на миндальной/рисовой муке с кокосовыми сливками. Также: БГ-торт (&lt;20 ppm),
             без-сахара торт (для СД1, на стевии). Цены — от 1 200 ₽/кг.{' '}
-            <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню →</Link>
+            <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню </Link>
           </p>
         </div>
 
         {/* Remote/Moscow client note */}
         <div className="mb-6 p-4 rounded-xl border border-blue-200 bg-blue-50/50 text-center">
           <p className="text-sm text-foreground/90">
-            <span className="font-medium">📍 Невеста из Москвы или другого города?</span> Работаем
+            <span className="font-medium"> Невеста из Москвы или другого города?</span> Работаем
             удалённо: поможем найти площадку в СПб, организуем видеодегустацию по Zoom, согласуем
             меню через WhatsApp/Telegram. Связь — <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
             или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
@@ -84,12 +98,12 @@ export default function SvadbaPage() {
 
         {/* Аллергии — прямой мост в конструктор */}
         <div className="mb-10 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 text-center">
-          <p className="text-sm font-medium mb-1">🛡 Аллергии у гостей? Рыба, орехи, глютен?</p>
+          <p className="text-sm font-medium mb-1"> Аллергии у гостей? Рыба, орехи, глютен?</p>
           <p className="text-xs text-muted-foreground mb-3">
             В конструкторе меню можно исключить конкретные аллергены фильтром — 14 аллергенов ТР ТС 022/2011. Менеджер подтвердит по телефону.
           </p>
           <Link href="/plan/constructor?format=banket" className="text-xs text-gold-text font-semibold hover:underline">
-            Собрать свадебное меню с фильтром аллергенов →
+            Собрать свадебное меню с фильтром аллергенов
           </Link>
         </div>
 
@@ -106,53 +120,53 @@ export default function SvadbaPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2">🟢 Эконом (3 950 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2"> Эконом (3 950 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
-                <li>✓ Доставка в КАД</li>
-                <li>✓ Сервировка и базовый персонал</li>
-                <li>✓ Чай/кофе, морс</li>
-                <li>✗ Свадебный торт</li>
-                <li>✗ Винная карта</li>
-                <li>✗ Координатор события</li>
+                <li> Доставка в КАД</li>
+                <li> Сервировка и базовый персонал</li>
+                <li> Чай/кофе, морс</li>
+                <li> Свадебный торт</li>
+                <li> Винная карта</li>
+                <li> Координатор события</li>
               </ul>
             </div>
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2">🔵 Стандарт (5 470 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2"> Стандарт (5 470 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
-                <li>✓ Доставка в КАД</li>
-                <li>✓ Сервировка и персонал</li>
-                <li>✓ Барная станция (вкл. вино 2 бокала — опц. безалк. для халяль)</li>
-                <li>✓ Десертный стол</li>
-                <li>✗ Свадебный торт</li>
-                <li>✗ Координатор события</li>
+                <li> Доставка в КАД</li>
+                <li> Сервировка и персонал</li>
+                <li> Барная станция (вкл. вино 2 бокала — опц. безалк. для халяль)</li>
+                <li> Десертный стол</li>
+                <li> Свадебный торт</li>
+                <li> Координатор события</li>
               </ul>
             </div>
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2">🟡 Расширенный (7 350 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2"> Расширенный (7 350 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
-                <li>✓ Всё из Стандарта</li>
-                <li>✓ Welcome drink</li>
-                <li>✓ Барная станция (вкл. винная карта безлимит — опц. безалк. для халяль)</li>
-                <li>✓ Шампанское (2 бокала)</li>
-                <li>✓ Морепродукты</li>
-                <li>✗ Свадебный торт</li>
+                <li> Всё из Стандарта</li>
+                <li> Welcome drink</li>
+                <li> Барная станция (вкл. винная карта безлимит — опц. безалк. для халяль)</li>
+                <li> Шампанское (2 бокала)</li>
+                <li> Морепродукты</li>
+                <li> Свадебный торт</li>
               </ul>
             </div>
             <div className="rounded-lg border border-gold-text p-3 bg-gold-tint/30">
-              <h3 className="font-medium text-sm mb-2">👑 Максимальный (9 950 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2"> Максимальный (9 950 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
-                <li>✓ Всё из Расширенного</li>
-                <li>✓ Свадебный торт на заказ</li>
-                <li>✓ Координатор события</li>
-                <li>✓ Сомелье + 5 вин (опц. безалк. дегустация для халяль)</li>
-                <li>✓ Чёрная икра</li>
-                <li>✓ Эко-упаковка остатков</li>
+                <li> Всё из Расширенного</li>
+                <li> Свадебный торт на заказ</li>
+                <li> Координатор события</li>
+                <li> Сомелье + 5 вин (опц. безалк. дегустация для халяль)</li>
+                <li> Чёрная икра</li>
+                <li> Эко-упаковка остатков</li>
               </ul>
             </div>
           </div>
-          <p className="text-[11px] text-muted-foreground mt-3">💡 Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
-          <p className="text-[11px] text-muted-foreground mt-2">🕌 <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-[11px] text-muted-foreground mt-2">🥜 <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">/allergens</a>.</p>
+          <p className="text-[11px] text-muted-foreground mt-3"> Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
+          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">/allergens</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}

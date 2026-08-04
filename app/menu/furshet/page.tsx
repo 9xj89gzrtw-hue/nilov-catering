@@ -16,11 +16,11 @@ const GRADIENT_MAP: Record<string, string> = {
 };
 
 const STATION_LABELS: Record<string, string> = {
-  'cold': '🥗 Холодные закуски',
-  'hot': '🍳 Горячее',
-  'desserts': '🍰 Десерты',
-  'drinks': '🥤 Напитки',
-  'show': '🎪 Шоу-станции',
+  'cold': ' Холодные закуски',
+  'hot': ' Горячее',
+  'desserts': ' Десерты',
+  'drinks': ' Напитки',
+  'show': ' Шоу-станции',
 };
 
 export default function FurshetPage() {
@@ -43,7 +43,7 @@ export default function FurshetPage() {
       <div className="container-site">
         {/* Hero */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading mb-4">🥪 Фуршет</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-4"> Фуршет</h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Лёгкие закуски на стоячем приёме. Канапе, тарталетки, брускетты, мини-бургеры.
             Гости свободно перемещаются и общаются.
@@ -123,7 +123,7 @@ export default function FurshetPage() {
                 aria-controls="dishes"
                 aria-expanded={(visibleStations ?? 0) > 2 ? 'true' : 'false'}
               >
-                Показать ещё станции ↓
+                Показать ещё станции
               </button>
               <p className="text-xs text-muted-foreground mt-2" aria-live="polite">
                 Показано {visibleStations} из {Object.keys(grouped).length} категорий

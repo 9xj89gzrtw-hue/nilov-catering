@@ -8,7 +8,7 @@ const EVENTS = [
   { title: 'Частные события', href: '/events/chastnoe', desc: 'Дни рождения, юбилеи, семейные ужины. Дома, на веранде, на крыше.', price: 'от 2 450 ₽/гость' },
   { title: 'Юбилеи и годовщины', href: '/events/yubiley', desc: 'Золотая свадьба, юбилей для пожилых гостей. Банкет с посадкой от 15 чел.', price: 'от 50 000 ₽ за 15 чел' },
   { title: 'Детские праздники', href: '/events/detskoe', desc: 'Специальное меню, аниматоры, шоу-программа. Безопасно и весело.', price: 'от 1 550 ₽/гость' },
-  { title: '🕯 Поминки', href: '/events/pominki', desc: 'Поминальный обед: кутья, блины, кисель, постные блюда. Без алкоголя, без торта. Срочно — даже на день обращения.', price: 'от 1 800 ₽/гость' },
+  { title: ' Поминки', href: '/events/pominki', desc: 'Поминальный обед: кутья, блины, кисель, постные блюда. Без алкоголя, без торта. Срочно — даже на день обращения.', price: 'от 1 800 ₽/гость' },
   { title: 'Выезд шефа', href: '/events/chef-at-home', desc: 'Шеф-повар и сомелье у вас дома. Ужин на 2–12 персон.', price: 'от 2 500 ₽/час' },
 ];
 
@@ -30,7 +30,7 @@ export default function EventsPage() {
 
         <div className="mb-12 text-center">
           <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target">
-            🎯 Не знаете что выбрать? Подберём за 3 вопроса →
+             Не знаете что выбрать? Подберём за 3 вопроса
           </Link>
         </div>
 
@@ -55,7 +55,7 @@ export default function EventsPage() {
 
         <div className="mt-10 text-center">
           <Link href="/events/recap" className="text-sm text-gold-text hover:underline">
-            Видео-рекапы с прошедших событий →
+            Видео-рекапы с прошедших событий
           </Link>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function TastingPage() {
           Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) — обязательно от 1 гостя.
         </p>
         <p className="text-sm text-muted-foreground mb-8 p-3 rounded-lg bg-blue-50 border border-blue-200">
-          📍 <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}
+           <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}
           <strong>видеодегустацию по Zoom</strong> — шеф покажет готовые блюда, расскажет состав,
           ответит на вопросы. Для бронирования достаточно видеодегустации. Запись —{' '}
           <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
@@ -33,13 +33,13 @@ export default function TastingPage() {
 
         {/* Free/paid block */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-lg font-medium mb-3">💸 Стоимость дегустации</h2>
+          <h2 className="font-heading text-lg font-medium mb-3"> Стоимость дегустации</h2>
           <ul className="text-sm space-y-2">
-            <li>✓ <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
-            <li>✓ <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
-            <li>✓ <strong>1 500 ₽</strong> — для событий до 30 гостей (3 блюда на выбор)</li>
-            <li>✓ <strong>3 000 ₽</strong> — расширенная дегустация (6 блюд + вино pairing)</li>
-            <li>✓ <strong>От 5 000 ₽</strong> — выезд к вам (выездные расходы)</li>
+            <li> <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
+            <li> <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
+            <li> <strong>1 500 ₽</strong> — для событий до 30 гостей (3 блюда на выбор)</li>
+            <li> <strong>3 000 ₽</strong> — расширенная дегустация (6 блюд + вино pairing)</li>
+            <li> <strong>От 5 000 ₽</strong> — выезд к вам (выездные расходы)</li>
           </ul>
           <p className="text-xs text-muted-foreground mt-3">
             При бронировании события — стоимость дегустации вычитается из итогового счёта (для платных дегустаций).
@@ -50,19 +50,19 @@ export default function TastingPage() {
         <div className="grid gap-4 mb-8">
           {[
             {
-              title: '🍽️ Что входит',
+              title: ' Что входит',
               text: 'До 6 блюд на выбор из вашего тарифа. Аперитив (игристое/морс) и комплимент от шефа. Длительность — до 1.5 часов. Возможность адаптации блюд под диету (веган/БГ/халяль).',
             },
             {
-              title: '📍 Где проходит',
+              title: ' Где проходит',
               text: 'У нас на производстве (м. Василеостровская, В.О., 20-я линия, 11) или с выездом к вам (от 5 000 ₽ за выезд по СПб и ЛО).',
             },
             {
-              title: '🕐 Когда',
+              title: ' Когда',
               text: 'Будни 10:00–18:00, суббота по договорённости. Запись минимум за 5 дней. Для срочных — по запросу.',
             },
             {
-              title: '🥗 Диеты и аллергены',
+              title: ' Диеты и аллергены',
               text: 'Для целиакии, анафилаксии, халяль, веган — дегустация по отдельному протоколу. Можно попробовать безглютеновый торт, халяль-шашлык, веган-десерт, безореховое меню. Укажите диеты в форме ниже.',
             },
           ].map((item) => (
@@ -103,15 +103,15 @@ export default function TastingPage() {
 
             {/* Diets — multi-select */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">🥗 Диеты гостей на дегустации</label>
+              <label className="block text-sm font-medium text-foreground mb-2"> Диеты гостей на дегустации</label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                 {[
-                  { value: 'vegan', label: '🌱 Веган' },
-                  { value: 'gluten-free', label: '🌾 Без глютена' },
-                  { value: 'halal', label: '🕌 Халяль' },
-                  { value: 'nut-free', label: '🥜 Без орехов' },
-                  { value: 'dairy-free', label: '🥛 Без молока' },
-                  { value: 'allergy-other', label: '⚠️ Другая аллергия' },
+                  { value: 'vegan', label: ' Веган' },
+                  { value: 'gluten-free', label: ' Без глютена' },
+                  { value: 'halal', label: ' Халяль' },
+                  { value: 'nut-free', label: ' Без орехов' },
+                  { value: 'dairy-free', label: ' Без молока' },
+                  { value: 'allergy-other', label: ' Другая аллергия' },
                 ].map((d) => (
                   <label key={d.value} className="flex items-center gap-2 px-3 py-2 rounded-lg border border-line bg-background cursor-pointer hover:border-gold-text transition-colors">
                     <input type="checkbox" name="diets" value={d.value} />

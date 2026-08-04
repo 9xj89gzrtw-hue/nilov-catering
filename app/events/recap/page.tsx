@@ -38,7 +38,7 @@ const RECAPS: Recap[] = [
     g: '50 гостей',
     v: 'Лофт «Севкабель», СПб',
     ref: 'rev-003',
-    tags: ['B2B', 'ЭДО', 'УСН→ОСН'],
+    tags: ['B2B', 'ЭДО', 'УСНОСН'],
     hasVideo: true,
     videoSrc: '/videos/gallery/food.webm',
     posterSrc: '/images/gallery/corporate-furshet.jpg',
@@ -121,12 +121,12 @@ export default function RecapPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                   <span className="absolute top-2 right-2 text-sm bg-black/60 text-white px-2 py-1 rounded">
-                    ▶ видео
+                     видео
                   </span>
                 </div>
               ) : (
                 <div className="aspect-video bg-gradient-to-br from-secondary via-muted to-secondary flex items-center justify-center text-4xl group-hover:scale-105 transition-transform">
-                  <span aria-hidden="true">🎥</span>
+                  <span aria-hidden="true"></span>
                 </div>
               )}
               <div className="p-4">
@@ -149,7 +149,7 @@ export default function RecapPage() {
                   ))}
                 </div>
                 <p className="mt-2 text-sm text-gold-text font-semibold">
-                  Читать отзыв клиента →
+                  Читать отзыв клиента
                 </p>
               </div>
             </Link>
@@ -159,7 +159,7 @@ export default function RecapPage() {
         {/* Composite festival case */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-lg font-medium mb-2">
-            🏛 Festival-scale (800+ чел)
+             Festival-scale (800+ чел)
           </h2>
           <p className="text-sm text-foreground/90 mb-2">
             <strong>
@@ -175,14 +175,14 @@ export default function RecapPage() {
             Полные детали и контакты референсов — по запросу на b2b@odaeda.ru (после NDA).
             Для фестивалей 800+ гостей — расширяем производственные мощности.{' '}
             <Link href="/why-us" className="underline text-gold-text">
-              Подробнее →
+              Подробнее
             </Link>
           </p>
         </div>
 
         <div className="p-4 rounded-xl border border-line bg-secondary/30 mb-8">
           <p className="text-sm text-muted-foreground">
-            📹 <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
+             <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
             <a href="mailto:info@odaeda.ru" className="underline text-gold-text">
               info@odaeda.ru

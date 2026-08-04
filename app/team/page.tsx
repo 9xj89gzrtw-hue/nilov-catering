@@ -78,7 +78,7 @@ export default function TeamPage() {
         {/* Photo disclaimer — applies to ALL team members below */}
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
-            📷 <strong>Фото команды предоставляется по запросу после первого контакта</strong> — для верификации в LinkedIn, ОК, VK.
+             <strong>Фото команды предоставляется по запросу после первого контакта</strong> — для верификации в LinkedIn, ОК, VK.
             Мы не публикуем фото сотрудников публично по соображениям приватности. Все ФИО и роли — реальные, проверяются по ИНН {SITE.inn} (ИП Нилов Д.И.).
           </p>
         </div>
@@ -132,7 +132,7 @@ export default function TeamPage() {
 
         {/* Санминимум / медкнижки */}
         <div className="mt-12 p-6 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-lg font-medium mb-3">🩺 Санитарные требования</h2>
+          <h2 className="font-heading text-lg font-medium mb-3"> Санитарные требования</h2>
           <p className="text-sm text-muted-foreground mb-3">
             100% персонала имеют действующие медицинские книжки (ЛМК) с ежегодным медосмотром.
             Аттестация по санминимуму — раз в 2 года. Прививки от дифтерии и гепатита В — 100%.
@@ -140,7 +140,7 @@ export default function TeamPage() {
           </p>
           <p className="text-sm text-muted-foreground">
             Сканы медкнижек (с замазанными личными данными) предоставляются по запросу.
-            Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">/certificates →</Link>
+            Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">/certificates </Link>
           </p>
         </div>
 
@@ -150,10 +150,10 @@ export default function TeamPage() {
           <p className="text-sm mb-4 opacity-90">Закажите дегустацию — шеф-повар лично встретит вас.</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/tasting" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
-              🍽️ Записаться на дегустацию
+               Записаться на дегустацию
             </Link>
             <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
-              📞 {SITE.phone}
+               {SITE.phone}
             </a>
           </div>
         </div>

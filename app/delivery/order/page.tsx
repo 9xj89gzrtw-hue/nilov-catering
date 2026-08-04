@@ -10,9 +10,9 @@ import { ALL_DISHES } from '@/lib/menu-data';
 const STEPS = ['Меню', 'Доставка', 'Контакты', 'Готово'];
 
 const PAYMENT_METHODS = [
-  { id: 'card', label: 'Карта курьеру', icon: '💳' },
-  { id: 'cash', label: 'Наличные', icon: '💵' },
-  { id: 'transfer', label: 'Перевод по СБП', icon: '📱' },
+  { id: 'card', label: 'Карта курьеру', icon: '' },
+  { id: 'cash', label: 'Наличные', icon: '' },
+  { id: 'transfer', label: 'Перевод по СБП', icon: '' },
 ];
 
 export default function DeliveryOrderPage() {
@@ -51,7 +51,7 @@ export default function DeliveryOrderPage() {
       <div className="container-site max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="mb-2">🚚 Доставка кейтеринга</h1>
+          <h1 className="mb-2"> Доставка кейтеринга</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Соберите заказ из нашего меню — привезём готовые блюда на дом или в офис. Без персонала и посуды, только еда.
           </p>
@@ -74,7 +74,7 @@ export default function DeliveryOrderPage() {
             {step === 0 && (
               <div>
                 <div className="mb-6">
-                  <h3 className="font-heading text-lg font-medium mb-3">⚡ Быстрый старт</h3>
+                  <h3 className="font-heading text-lg font-medium mb-3"> Быстрый старт</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {DELIVERY_PRESETS.map(preset => (
                       <div key={preset.id} className="rounded-xl border border-line bg-card p-4">
@@ -102,8 +102,8 @@ export default function DeliveryOrderPage() {
                 {cart.items.length === 0 && (
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-heading text-lg font-medium">⚡ Быстрый старт</h3>
-                      <span className="text-xs text-muted-foreground">или соберите сами ↓</span>
+                      <h3 className="font-heading text-lg font-medium"> Быстрый старт</h3>
+                      <span className="text-xs text-muted-foreground">или соберите сами </span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
                       {DELIVERY_PRESETS.map(preset => (
@@ -123,7 +123,7 @@ export default function DeliveryOrderPage() {
                       ))}
                     </div>
                     <div className="text-center mb-4">
-                      <p className="text-xs text-muted-foreground">💡 1 порция = 1 гость. На 10 человек: 5-7 блюд × 10 порций = 50-70 порций.</p>
+                      <p className="text-xs text-muted-foreground"> 1 порция = 1 гость. На 10 человек: 5-7 блюд × 10 порций = 50-70 порций.</p>
                     </div>
                   </div>
                 )}
@@ -140,7 +140,7 @@ export default function DeliveryOrderPage() {
                       <p className="text-xs text-warning">Ещё {totals.remainingToMin.toLocaleString('ru-RU')} ₽ до минимума</p>
                     )}
                     {totals.meetsMinimum && (
-                      <p className="text-xs text-success">✓ Минимум достигнут</p>
+                      <p className="text-xs text-success"> Минимум достигнут</p>
                     )}
                   </div>
                 </div>
@@ -160,13 +160,13 @@ export default function DeliveryOrderPage() {
 
                 {cart.items.length === 0 && (
                   <div className="mt-6 p-4 rounded-xl border border-dashed border-line text-center">
-                    <p className="text-sm text-muted-foreground">💡 На 10 человек возьмите 5-7 разных блюд × по 10 порций = 50-70 порций всего. 1 порция рассчитана на 1 гостя.</p>
+                    <p className="text-sm text-muted-foreground"> На 10 человек возьмите 5-7 разных блюд × по 10 порций = 50-70 порций всего. 1 порция рассчитана на 1 гостя.</p>
                   </div>
                 )}
 
                 {cart.items.length > 0 && (
                   <div className="mt-4 p-3 rounded-lg bg-gold-tint/30 text-center text-xs text-muted-foreground">
-                    💡 1 порция = 1 гость. На N гостей берите по N порций каждого блюда. Пресет «Семейный ужин на 10» = 6 блюд × 10 порций = 60 порций на 10 человек.
+                     1 порция = 1 гость. На N гостей берите по N порций каждого блюда. Пресет «Семейный ужин на 10» = 6 блюд × 10 порций = 60 порций на 10 человек.
                   </div>
                 )}
               </div>
@@ -175,7 +175,7 @@ export default function DeliveryOrderPage() {
             {/* === Step 1: Delivery zone + time === */}
             {step === 1 && (
               <div className="max-w-3xl mx-auto">
-                <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2">⚠ выберите зону</span>}</h2>
+                <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2"> выберите зону</span>}</h2>
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                   {DELIVERY_ZONES.map(zone => (
                     <button
@@ -195,7 +195,7 @@ export default function DeliveryOrderPage() {
                       </div>
                       <p className="text-xs text-muted-foreground mb-2">{zone.distance} за КАД</p>
                       <div className="text-[10px] text-muted-foreground space-y-0.5">
-                        <p>❄️ Холодовая цепь: {zone.coldChain ? '✅' : '⚠ только термобоксы'}</p>
+                        <p> Холодовая цепь: {zone.coldChain ? '' : ' только термобоксы'}</p>
                         <p>⏱ Ответ: до {zone.slaHours}ч</p>
                       </div>
                     </button>
@@ -213,7 +213,7 @@ export default function DeliveryOrderPage() {
                         className="mt-1 accent-gold-text"
                       />
                       <div>
-                        <p className="text-sm font-medium">📦 Аренда термобокса (залог 1 500 ₽, возвращается при сдаче)</p>
+                        <p className="text-sm font-medium"> Аренда термобокса (залог 1 500 ₽, возвращается при сдаче)</p>
                         <p className="text-xs text-muted-foreground">В вашей зоне нет холодовой цепи — рекомендуем термобокс для сохранения свежести блюд.</p>
                       </div>
                     </label>
@@ -258,7 +258,7 @@ export default function DeliveryOrderPage() {
                       onChange={e => cart.setContact({ callAhead: e.target.checked })}
                       className="accent-gold-text"
                     />
-                    <span className="text-xs">📞 Позвонить за 30 минут до прибытия</span>
+                    <span className="text-xs"> Позвонить за 30 минут до прибытия</span>
                   </label>
                 </div>
 
@@ -313,7 +313,7 @@ export default function DeliveryOrderPage() {
                   {/* Для загородной доставки — поля код ворот/КП/участок */}
                   {cart.zoneId !== 'kad' && (
                     <div className="rounded-xl border border-gold-tint bg-gold-tint/20 p-3 space-y-2">
-                      <p className="text-xs text-muted-foreground">📍 Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
+                      <p className="text-xs text-muted-foreground"> Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
                           onChange={e => cart.setContact({ entrance: e.target.value })}
@@ -397,13 +397,13 @@ export default function DeliveryOrderPage() {
                 {/* Min order warning */}
                 {!totals.meetsMinimum && (
                   <div className="rounded-xl border border-warning/30 bg-warning/10 p-3 text-xs text-warning mb-4 text-center">
-                    ⚠ Минимальный заказ — {MIN_ORDER_AMOUNT.toLocaleString('ru-RU')} ₽. Добавьте ещё на {totals.remainingToMin.toLocaleString('ru-RU')} ₽.
+                     Минимальный заказ — {MIN_ORDER_AMOUNT.toLocaleString('ru-RU')} ₽. Добавьте ещё на {totals.remainingToMin.toLocaleString('ru-RU')} ₽.
                   </div>
                 )}
 
                 {/* Trust badges перед кнопкой отправки */}
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground mb-4 flex-wrap">
-                  <span>★ 4.8 Яндекс.Карты</span>
+                  <span>4.8 средняя оценка</span>
                   <span>·</span>
                   <span>С 2007 года</span>
                   <span>·</span>
@@ -417,7 +417,7 @@ export default function DeliveryOrderPage() {
             {/* === Step 3: Done === */}
             {step === 3 && submitted && (
               <div className="max-w-md mx-auto text-center py-8">
-                <span className="text-5xl block mb-4">🎉</span>
+                <span className="text-5xl block mb-4"></span>
                 <h2 className="text-xl font-heading font-medium mb-2">Заказ принят!</h2>
                 <p className="text-muted-foreground mb-2">
                   Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong> для подтверждения.
@@ -428,7 +428,7 @@ export default function DeliveryOrderPage() {
                   {!cart.contact.exactTime && <> · {TIME_SLOTS.find(s => s.id === cart.contact.timeSlot)?.label}</>}
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
+                  <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную </Link>
                   <button
                     onClick={() => { cart.reset(); setStep(0); setSubmitted(false); }}
                     className="text-xs text-muted-foreground hover:text-foreground transition-colors"
@@ -443,9 +443,9 @@ export default function DeliveryOrderPage() {
             {step < 3 && (
               <div className="flex justify-between mt-8 max-w-md mx-auto">
                 {step > 0 ? (
-                  <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground">← Назад</button>
+                  <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground"> Назад</button>
                 ) : (
-                  <Link href="/delivery" className="text-sm text-muted-foreground hover:text-foreground">← Зоны доставки</Link>
+                  <Link href="/delivery" className="text-sm text-muted-foreground hover:text-foreground"> Зоны доставки</Link>
                 )}
                 {step < 2 ? (
                   <button type="button" onClick={handleNext} disabled={!canNext}

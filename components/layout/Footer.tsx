@@ -79,7 +79,7 @@ export default function Footer() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
               title="Все 27 отзывов с расчётом среднего рейтинга"
             >
-              ★ 4.8 <span className="hidden sm:inline">из 27 отзывов →</span>
+               4.8 <span className="hidden sm:inline">из 27 отзывов </span>
             </Link>
           </div>
         </div>

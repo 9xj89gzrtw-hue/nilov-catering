@@ -20,7 +20,7 @@ interface TrustMarqueeProps {
  * Бесконечная бегущая строка через Framer Motion.
  * Mobile: ускоренный, меньше элементов.
  *
- * W20 fix: каждая карточка теперь кликабельна → ведёт на /reviews#case-N
+ * W20 fix: каждая карточка теперь кликабельна ведёт на /reviews#case-N
  * (если есть reviewId в ref). Venue/date видны под названием.
  */
 export function TrustMarquee({ clients }: TrustMarqueeProps) {
@@ -64,7 +64,7 @@ export function TrustMarquee({ clients }: TrustMarqueeProps) {
           </p>
         )}
         {client.status === 'verified' && (
-          <p className="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+          <p className="text-[9px] text-emerald-600 mt-1"> проверен</p>
         )}
       </>
     );

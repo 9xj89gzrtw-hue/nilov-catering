@@ -29,7 +29,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
           <h2 id="reviews-heading" className="mb-6">Отзывы</h2>
           <p className="text-muted-foreground mb-6">
             Скоро здесь появятся отзывы наших клиентов. А пока —{' '}
-            <Link href="/reviews" className="underline text-gold-text">посмотрите все 27 отзывов →</Link>
+            <Link href="/reviews" className="underline text-gold-text">посмотрите все 27 отзывов </Link>
           </p>
         </div>
       </section>
@@ -55,12 +55,12 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
         </AnimatePresence>
 
         <div className="flex items-center justify-center gap-4 mb-6">
-          <button onClick={() => setI((c) => (c - 1 + reviews.length) % reviews.length)} className="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Назад">←</button>
+          <button onClick={() => setI((c) => (c - 1 + reviews.length) % reviews.length)} className="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Назад"></button>
           <span className="text-xs text-muted-foreground">{i + 1}/{reviews.length}</span>
-          <button onClick={() => setI((c) => (c + 1) % reviews.length)} className="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Вперёд">→</button>
+          <button onClick={() => setI((c) => (c + 1) % reviews.length)} className="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Вперёд"></button>
         </div>
 
-        <Link href="/reviews" className="text-sm font-medium text-gold-text hover:underline">Все отзывы →</Link>
+        <Link href="/reviews" className="text-sm font-medium text-gold-text hover:underline">Все отзывы </Link>
       </div>
     </section>
   );

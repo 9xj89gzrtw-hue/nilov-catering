@@ -12,10 +12,17 @@ export const metadata: Metadata = {
   description: 'Прозрачные цены на кейтеринг в СПб. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Все тарифы с полным составом меню.',
 };
 
-// Force static rendering — removes cookie/searchParams dependency that prevents prerender
-export const dynamic = 'force-static';
+// Force dynamic rendering — searchParams drive which event's tariffs show first
+export const dynamic = 'force-dynamic';
 
-export default function PricingPage() {
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ event?: string }>;
+}) {
+  const { event } = await searchParams;
+  const activeEvent = event && ['svadba','korporativ','vypusknoy','coffee-break','detskoe','pominki','chastnoe','chef-at-home'].includes(event) ? event : undefined;
+
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-5xl">
@@ -64,19 +71,42 @@ export default function PricingPage() {
           }
         />
 
-        {/* Quick navigation to event types — visible in SSR, no JS needed */}
+        {/* Quick navigation to event types — active pill highlighted */}
         <nav className="mb-8 flex flex-wrap gap-2" aria-label="Быстрая навигация по типам событий">
-          <Link href="/pricing?event=svadba" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Свадьба</Link>
-          <Link href="/pricing?event=korporativ" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">💼 Корпоратив</Link>
-          <Link href="/pricing?event=vypusknoy" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🎓 Выпускной</Link>
-          <Link href="/pricing?event=coffee-break" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">☕ Кофе-брейк</Link>
-          <Link href="/pricing?event=detskoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Детское</Link>
-          <Link href="/pricing?event=pominki" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Поминки</Link>
-          <Link href="/pricing?event=chastnoe" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">🥂 Частное</Link>
-          <Link href="/pricing?event=chef-at-home" className="rounded-full border border-line px-3 py-1.5 text-xs hover:border-gold-text transition-colors no-underline">Шеф на дом</Link>
+          {[
+            { key: 'svadba',        label: 'Свадьба' },
+            { key: 'korporativ',    label: 'Корпоратив' },
+            { key: 'vypusknoy',     label: 'Выпускной' },
+            { key: 'coffee-break',  label: 'Кофе-брейк' },
+            { key: 'detskoe',       label: 'Детское' },
+            { key: 'pominki',       label: 'Поминки' },
+            { key: 'chastnoe',      label: 'Частное' },
+            { key: 'chef-at-home',  label: 'Шеф на дом' },
+          ].map((item) => (
+            <Link
+              key={item.key}
+              href={`/pricing?event=${item.key}`}
+              className={`rounded-full border px-3 py-1.5 text-xs transition-colors no-underline ${
+                activeEvent === item.key
+                  ? 'border-gold-text bg-gold-tint text-gold-text font-medium'
+                  : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          {activeEvent && (
+            <Link
+              href="/pricing"
+              className="rounded-full border border-line px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors no-underline"
+              aria-label="Показать все тарифы"
+            >
+              Все тарифы
+            </Link>
+          )}
         </nav>
 
-        <TariffOffersSection />
+        <TariffOffersSection eventId={activeEvent} eventName={activeEvent ? undefined : undefined} />
 
         {/* SSR price summary table — visible without JS, all event types at once */}
         <section className="mt-12">
