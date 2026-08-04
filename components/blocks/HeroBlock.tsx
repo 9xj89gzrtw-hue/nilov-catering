@@ -43,7 +43,7 @@ const SLIDES: HeroSlide[] = [
 const STATS = [
   { value: '19', label: 'лет в СПб' },
   { value: '3 000+', label: 'событий' },
-  { value: '4.8', label: 'рейтинг Я.Карты' },
+  { value: '4.8', label: 'средняя оценка' },
   { value: '124', label: 'блюда в каталоге' },
 ];
 
@@ -100,7 +100,15 @@ export default function HeroBlock() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.92) 100%)',
+              'linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.95) 100%)',
+          }}
+          aria-hidden="true"
+        />
+        {/* Left-side gradient for text legibility on wider screens */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background: 'linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%)',
           }}
           aria-hidden="true"
         />
@@ -160,7 +168,7 @@ export default function HeroBlock() {
             Без скрытых платежей. От 390 ₽ за гостя.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs — unified pill style, consistent sizing */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -169,7 +177,7 @@ export default function HeroBlock() {
           >
             <Link
               href="/plan/helper"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A66B] hover:bg-[#B8924F] text-[#1A1410] px-7 py-3.5 text-base font-semibold transition-all no-underline shadow-lg shadow-black/20"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A66B] hover:bg-[#B8924F] text-[#1A1410] px-7 py-4 text-base font-semibold transition-all no-underline shadow-lg shadow-black/30 min-w-[240px]"
             >
               Рассчитать меню — 3 вопроса
               <ChevronDown className="w-4 h-4 -rotate-90" aria-hidden="true" />
@@ -178,14 +186,14 @@ export default function HeroBlock() {
               href={SITE.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm text-white hover:bg-white/15 px-7 py-3.5 text-base font-medium transition-all no-underline"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/50 backdrop-blur-sm text-white px-7 py-4 text-base font-semibold transition-all no-underline min-w-[240px]"
             >
-              <MessageCircle className="w-4 h-4" aria-hidden="true" />
-              Написать в WhatsApp
+              <MessageCircle className="w-5 h-5" aria-hidden="true" />
+              WhatsApp
             </a>
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center justify-center text-white/85 hover:text-white text-base font-medium transition-colors no-underline px-2 py-3"
+              className="inline-flex items-center justify-center text-white/90 hover:text-white text-base font-medium transition-colors no-underline px-2 py-4"
             >
               или {SITE.phone}
             </a>
@@ -196,13 +204,13 @@ export default function HeroBlock() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 max-w-2xl pt-8 border-t border-white/15"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 max-w-2xl pt-8 border-t border-white/20"
           >
             {STATS.map((s) => (
               <div key={s.label}>
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-heading text-2xl md:text-3xl text-white font-semibold">{s.value}</dd>
-                <dd className="text-[11px] uppercase tracking-wider text-white/65 mt-1">{s.label}</dd>
+                <dd className="font-heading text-3xl md:text-4xl text-white font-semibold">{s.value}</dd>
+                <dd className="text-xs uppercase tracking-wider text-white/75 mt-1">{s.label}</dd>
               </div>
             ))}
           </motion.dl>
