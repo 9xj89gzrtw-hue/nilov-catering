@@ -21,7 +21,7 @@ export default function SvadbaPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/real/wedding-banquet.jpg" alt="Свадебный банкет — кейтеринг NiloV" className="w-full h-full object-cover" />
           </picture>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%)' }} aria-hidden="true" />
           <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
             <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Свадьбы под ключ</p>
             <h1 className="font-heading text-2xl md:text-4xl text-white" style={{ fontWeight: 500 }}>Свадебный кейтеринг</h1>

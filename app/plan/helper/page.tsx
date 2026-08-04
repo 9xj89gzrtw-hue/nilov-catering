@@ -188,7 +188,7 @@ export default async function PlanHelperPage({
         </div>
 
         <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-gold-text font-semibold mb-2">
+          <p className="text-sm md:text-base uppercase tracking-[0.2em] text-gold-text font-semibold mb-2">
             Шаг {step + 1} из 3 · 30 секунд
           </p>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 leading-tight" style={{ fontWeight: 500 }}>
