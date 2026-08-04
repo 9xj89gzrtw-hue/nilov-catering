@@ -34,7 +34,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-15',
     label: 'Кофе-брейк на 15 чел.',
-    emoji: '☕',
+    emoji: '',
     description: 'Кофе, выпечка, фрукты — для офисной планёрки',
     guests: 15,
     estimatedTotal: 6800,
@@ -49,7 +49,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-40',
     label: 'Кофе-брейк на 40 чел.',
-    emoji: '☕',
+    emoji: '',
     description: 'Для конференции или семинара — всё включено',
     guests: 40,
     estimatedTotal: 16800,
@@ -66,7 +66,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-premium-40',
     label: 'Премиум кофе-брейк на 40',
-    emoji: '✨',
+    emoji: '',
     description: 'Круассаны, эклеры, сэндвичи, фрукты, сырное плато, безалкогольные напитки',
     guests: 40,
     estimatedTotal: 32800,
@@ -85,7 +85,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'family-dinner-10',
     label: 'Семейный ужин на 10 чел.',
-    emoji: '🍽️',
+    emoji: '',
     description: '2 горячих + закуски + десерт + напитки',
     guests: 10,
     estimatedTotal: 9800,
@@ -101,7 +101,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'party-20',
     label: 'Фуршет-набор на 20 чел.',
-    emoji: '🥂',
+    emoji: '',
     description: 'Канапе, тарталетки, закуски — для вечеринки',
     guests: 20,
     estimatedTotal: 12400,
