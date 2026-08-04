@@ -16,6 +16,7 @@
     "@fontsource/cormorant": "^5.2.8",
     "@hookform/resolvers": "^5.4.0",
     "@react-pdf/renderer": "^4.5.1",
+    "axe-core": "^4.12.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.6.0",
@@ -41,6 +42,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "lighthouse": "^13.4.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

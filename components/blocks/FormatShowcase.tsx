@@ -2,11 +2,12 @@ import Link from 'next/link';
 import type { Format } from '@/lib/types';
 import { PRICE_PER_GUEST } from '@/lib/constants';
 import { KenBurnsCard } from '@/components/effects/PhotoAliveCard';
+import { FORMAT_HERO_IMAGES } from '@/lib/data';
 
-const FORMATS: { format: Format; href: string; tier: 'economy'; badge: string; explain: string; img: string }[] = [
-  { format: 'furshet', href: '/menu/furshet', tier: 'economy', badge: 'Хит', explain: 'Гости едят стоя, лёгкие закуски', img: '/images/formats/furshet-hero.svg' },
-  { format: 'banket', href: '/menu/banquet', tier: 'economy', badge: 'Свадьбы', explain: 'Посадка за стол, официанты', img: '/images/formats/banquet-hero.svg' },
-  { format: 'coffee-break', href: '/menu/coffee-break', tier: 'economy', badge: 'Офисы', explain: 'Кофе и десерты в перерыве (деловой завтрак тоже)', img: '/images/formats/coffee-break-hero.svg' },
+const FORMATS: { format: Format; href: string; tier: 'economy'; badge: string; explain: string }[] = [
+  { format: 'furshet', href: '/menu/furshet', tier: 'economy', badge: 'Хит', explain: 'Гости едят стоя, лёгкие закуски' },
+  { format: 'banket', href: '/menu/banquet', tier: 'economy', badge: 'Свадьбы', explain: 'Посадка за стол, официанты' },
+  { format: 'coffee-break', href: '/menu/coffee-break', tier: 'economy', badge: 'Офисы', explain: 'Кофе и десерты в перерыве (деловой завтрак тоже)' },
 ];
 
 export default function FormatShowcase() {
@@ -16,7 +17,7 @@ export default function FormatShowcase() {
         <div className="mb-8">
           <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Что вы задумали?</p>
           <h2 id="formats-heading">Три формата</h2>
-          <Link href="/help/formats" className="text-sm text-gold-text hover:underline mt-1 inline-block">Что такое формат? </Link>
+          <Link href="/help/formats" className="text-sm text-gold-text hover:underline mt-1 inline-block">Что такое формат? →</Link>
         </div>
 
         {/* Horizontal scroll mobile, grid desktop */}
@@ -32,7 +33,7 @@ export default function FormatShowcase() {
                 <div className="aspect-[16/10] bg-secondary overflow-hidden">
                   {/* KenBurnsCard with diamond frame for format heroes */}
                   <KenBurnsCard
-                    src={f.img}
+                    src={FORMAT_HERO_IMAGES[f.format]}
                     alt={getFormatName(f.format)}
                     aspectRatio="video"
                     frameShape="rounded-xl"

@@ -140,7 +140,7 @@ export default function TeamPage() {
           </p>
           <p className="text-sm text-muted-foreground">
             Сканы медкнижек (с замазанными личными данными) предоставляются по запросу.
-            Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">/certificates </Link>
+            Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">/certificates →</Link>
           </p>
         </div>
 

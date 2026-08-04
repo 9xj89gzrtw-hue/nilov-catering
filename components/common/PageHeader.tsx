@@ -20,7 +20,7 @@ interface PageHeaderProps {
  * Unified page header — used on all inner pages.
  * Replaces 5 different H1 styles with one consistent design.
  *
- * Layout: optional eyebrow H1 optional subtitle optional actions.
+ * Layout: optional eyebrow → H1 → optional subtitle → optional actions.
  * Centered by default, set centered={false} for left-align.
  */
 export default function PageHeader({

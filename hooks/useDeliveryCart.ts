@@ -10,13 +10,13 @@ export const MIN_ORDER_AMOUNT = 5000;
 
 // Слоты времени доставки (более узкие — 1.5 часа)
 export const TIME_SLOTS = [
-  { id: 'morning', label: 'Утро (09:00–11:00)', icon: '' },
-  { id: 'midday', label: 'День (11:00–13:00)', icon: '' },
-  { id: 'lunch', label: 'Обед (13:00–15:00)', icon: '' },
-  { id: 'afternoon', label: 'Полдень (15:00–17:00)', icon: '' },
-  { id: 'dinner', label: 'Ужин (17:00–19:00)', icon: '' },
-  { id: 'evening', label: 'Вечер (19:00–21:00)', icon: '' },
-  { id: 'late', label: 'Поздний вечер (21:00–23:00)', icon: '' },
+  { id: 'morning', label: 'Утро (09:00–11:00)', icon: '🌅' },
+  { id: 'midday', label: 'День (11:00–13:00)', icon: '🌤️' },
+  { id: 'lunch', label: 'Обед (13:00–15:00)', icon: '☀️' },
+  { id: 'afternoon', label: 'Полдень (15:00–17:00)', icon: '🌇' },
+  { id: 'dinner', label: 'Ужин (17:00–19:00)', icon: '🌆' },
+  { id: 'evening', label: 'Вечер (19:00–21:00)', icon: '🌃' },
+  { id: 'late', label: 'Поздний вечер (21:00–23:00)', icon: '🌙' },
 ] as const;
 
 // Пресеты для быстрого старта —一键填 корзину
@@ -34,7 +34,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-15',
     label: 'Кофе-брейк на 15 чел.',
-    emoji: '',
+    emoji: '☕',
     description: 'Кофе, выпечка, фрукты — для офисной планёрки',
     guests: 15,
     estimatedTotal: 6800,
@@ -49,7 +49,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-40',
     label: 'Кофе-брейк на 40 чел.',
-    emoji: '',
+    emoji: '☕',
     description: 'Для конференции или семинара — всё включено',
     guests: 40,
     estimatedTotal: 16800,
@@ -66,7 +66,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'coffee-break-premium-40',
     label: 'Премиум кофе-брейк на 40',
-    emoji: '',
+    emoji: '✨',
     description: 'Круассаны, эклеры, сэндвичи, фрукты, сырное плато, безалкогольные напитки',
     guests: 40,
     estimatedTotal: 32800,
@@ -85,7 +85,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'family-dinner-10',
     label: 'Семейный ужин на 10 чел.',
-    emoji: '',
+    emoji: '🍽️',
     description: '2 горячих + закуски + десерт + напитки',
     guests: 10,
     estimatedTotal: 9800,
@@ -101,7 +101,7 @@ export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
     id: 'party-20',
     label: 'Фуршет-набор на 20 чел.',
-    emoji: '',
+    emoji: '🥂',
     description: 'Канапе, тарталетки, закуски — для вечеринки',
     guests: 20,
     estimatedTotal: 12400,
@@ -134,13 +134,13 @@ export interface DeliveryCartState {
     phone: string;
     address: string;
     apartment: string;
-    entrance: string; // подъезд
-    floor: string; // этаж
-    intercom: string; // код домофона
-    date: string; // ISO date (YYYY-MM-DD)
-    timeSlot: string; // id из TIME_SLOTS
-    exactTime: string; // ЧЧ:ММ — точное время подачи (опционально)
-    callAhead: boolean; // позвонить за 30 мин до прибытия
+    entrance: string;     // подъезд
+    floor: string;        // этаж
+    intercom: string;     // код домофона
+    date: string;         // ISO date (YYYY-MM-DD)
+    timeSlot: string;     // id из TIME_SLOTS
+    exactTime: string;    // ЧЧ:ММ — точное время подачи (опционально)
+    callAhead: boolean;   // позвонить за 30 мин до прибытия
     paymentMethod: string; // card / cash / transfer
     comment: string;
   };
@@ -271,7 +271,7 @@ export const useDeliveryCart = create<DeliveryCartState>()(
         if (state) state.setHasHydrated();
       },
       migrate: (persistedState: unknown, version: number) => {
-        // v1 v2: сбросить zoneId в '' (раньше дефолт 'kad' приводил к молчаливой бесплатной доставке)
+        // v1 → v2: сбросить zoneId в '' (раньше дефолт 'kad' приводил к молчаливой бесплатной доставке)
         // и сбросить contact.entrance/floor/intercom (могли быть заполнены в city-формате)
         if (version < 2 && persistedState && typeof persistedState === 'object') {
           const s = persistedState as Partial<DeliveryCartState>;

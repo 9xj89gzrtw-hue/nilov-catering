@@ -8,6 +8,7 @@ import { DEFAULT_PRICING } from '@/lib/pricing-types';
 import { MIN_GUESTS, STAFF_RATE, STAFF_RATIO, COORDINATOR_FLAT, SETUP_RATE, SETUP_HOURS, SERVICE_STAFF_HOURS, GAMMA_MAX } from '@/lib/constants';
 import { calcTotal } from '@/lib/pricing';
 import { ALL_DISHES } from '@/lib/menu-data';
+import { ALL_TARIFF_OFFERS, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
 
 const DISH_MAP = new Map(ALL_DISHES.map(d => [d.id, d]));
 
@@ -170,7 +171,29 @@ export const useConstructor = create<ConstructorState>()(
       setDiet: (d) => set({ diet: d }),
 
       setTierMode: (m) => set({ tierMode: m }),
-      setTier: (t) => { set({ tier: t }); get().recalc(); },
+      setTier: (t) => {
+        const g = get();
+        if (g.tierMode === 'preset' && g.format && t) {
+          const eventId = FORMAT_TO_EVENT[g.format];
+          const offers = ALL_TARIFF_OFFERS[eventId] || [];
+          const offer = offers.find(o => o.tier === t);
+          if (offer) {
+            const newItems: SelectedItem[] = [];
+            for (const item of offer.composition) {
+              if (ALL_DISHES.find(d => d.id === item.dishId)) {
+                // item.qty in TariffDishItem is a string description (e.g. "2 шт/гость"),
+                // so we default the cart quantity to 1 (matches existing addDish behaviour).
+                newItems.push({ dishId: item.dishId, qty: 1 });
+              }
+            }
+            set({ tier: t, selectedItems: newItems });
+            get().recalc();
+            return;
+          }
+        }
+        set({ tier: t });
+        get().recalc();
+      },
 
       setStep: (s) => set({ currentStep: s }),
       nextStep: () => set(s => ({ currentStep: Math.min(s.currentStep + 1, 5) })),
@@ -311,11 +334,10 @@ export const useConstructor = create<ConstructorState>()(
           }
           const totalSum = Math.round(base - discount + addonsTotal);
           const perGuest = guestCount > 0 ? Math.round(totalSum / guestCount) : 0;
-          // Removed fake "savings vs luxury" anchor-pricing calculation.
-          // Savings was misleading — it compared actual total to a hypothetical luxury-tier price
-          // the user never selected. This is deceptive anchor pricing.
-          // Real discounts (early-bird, volume) are applied transparently in the pricing page.
-          const savings = 0;
+          // Savings vs luxury
+          const maxPrice = pricing.pricePerGuest[format]?.['luxury'] ?? base * 1.5;
+          const maxBase = format === 'chef-at-home' ? base * 1.5 : maxPrice * guestCount;
+          const savings = Math.max(0, Math.round(maxBase - totalSum));
           set({
             base: Math.round(base),
             addonsTotal: Math.round(addonsTotal),

@@ -13,7 +13,7 @@ interface Props {
 export default function EventsRecapHome({
   clips,
   heading = 'События в кадре',
-  ctaLabel = 'Смотреть все рекапы ',
+  ctaLabel = 'Смотреть все рекапы →',
 }: Props) {
   if (clips.length === 0) return null;
 

@@ -70,7 +70,7 @@ export default function InspireStrip({ shots = DEMO_SHOTS, ctaHref = '/gallery' 
             href={ctaHref}
             className="hidden md:inline-flex items-center gap-1.5 text-sm text-gold-text hover:underline"
           >
-            Вся галерея
+            Вся галерея →
           </Link>
         </div>
 
@@ -115,7 +115,7 @@ export default function InspireStrip({ shots = DEMO_SHOTS, ctaHref = '/gallery' 
 
         <div className="mt-6 text-center md:hidden">
           <Link href={ctaHref} className="text-sm text-gold-text underline underline-offset-4">
-            Вся галерея
+            Вся галерея →
           </Link>
         </div>
       </div>

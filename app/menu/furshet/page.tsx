@@ -5,6 +5,9 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import MenuCTABlock from '@/components/blocks/MenuCTABlock';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
+import B2BBanner from '@/components/common/B2BBanner';
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 import Link from 'next/link';
 
 const GRADIENT_MAP: Record<string, string> = {
@@ -43,7 +46,7 @@ export default function FurshetPage() {
       <div className="container-site">
         {/* Hero */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading mb-4"> Фуршет</h1>
+          <h1 className="text-4xl md:text-5xl font-heading mb-4">Фуршет</h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Лёгкие закуски на стоячем приёме. Канапе, тарталетки, брускетты, мини-бургеры.
             Гости свободно перемещаются и общаются.
@@ -64,6 +67,11 @@ export default function FurshetPage() {
           </Link>
         </div>
 
+        {/* B2B banner — НДС indicator for corporate clients */}
+        <div className="mb-10">
+          <B2BBanner />
+        </div>
+
         {/* Tariffs */}
         <div id="tariffs" className="scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Тарифы</h2>
@@ -71,7 +79,8 @@ export default function FurshetPage() {
         </div>
 
         {/* All dishes by station — with pagination */}
-        <div id="dishes" className="mt-16 scroll-mt-20">
+        <B2BBanner />
+        <div id="dishes" className="mt-8 scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Все блюда фуршета</h2>
 
           {Object.entries(grouped).slice(0, visibleStations === null ? undefined : visibleStations).map(([station, dishes]) => (
@@ -84,14 +93,16 @@ export default function FurshetPage() {
                   return (
                     <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:-translate-y-0.5 transition-all group">
                       <div className={`aspect-[4/3] ${color} flex items-center justify-center relative`}>
+                        <AllergenChips dish={dish} />
+                        <DishCartIndicator dishId={dish.id} />
                         <span className="text-3xl opacity-30 select-none">{dish.name.charAt(0)}</span>
                         <div className="absolute bottom-1.5 right-1.5">
                           <span className="text-[10px] bg-white/80 backdrop-blur-sm rounded-full px-1.5 py-0.5 font-semibold">{dish.pricePerGuest} ₽</span>
                         </div>
                         {dish.dietBadges.length > 0 && (
                           <div className="absolute top-1.5 left-1.5 flex gap-0.5">
-                            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
-                            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
+                            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-[#065F46] text-white px-1 py-0.5 rounded font-bold">VG</span>}
+                            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-[#B45309] text-white px-1 py-0.5 rounded font-bold">GF</span>}
                           </div>
                         )}
                       </div>
@@ -123,7 +134,7 @@ export default function FurshetPage() {
                 aria-controls="dishes"
                 aria-expanded={(visibleStations ?? 0) > 2 ? 'true' : 'false'}
               >
-                Показать ещё станции
+                Показать ещё станции ↓
               </button>
               <p className="text-xs text-muted-foreground mt-2" aria-live="polite">
                 Показано {visibleStations} из {Object.keys(grouped).length} категорий

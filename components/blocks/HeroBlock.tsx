@@ -1,168 +1,229 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ChevronDown, MessageCircle } from 'lucide-react';
+import { SITE } from '@/lib/data';
 
-const rIC = typeof requestIdleCallback !== 'undefined' ? requestIdleCallback : (cb: () => void) => window.setTimeout(cb, 1) as unknown as number;
-const cIC = typeof cancelIdleCallback !== 'undefined' ? cancelIdleCallback : (id: number) => window.clearTimeout(id);
-
-interface Props {
-  subtitle?: string;
-  disclaimer?: string;
+interface HeroSlide {
+  photo: string;
+  alt: string;
+  eyebrow: string;
+  headline: string;
 }
 
-export default function HeroBlock({ subtitle, disclaimer }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [shouldAutoplay, setShouldAutoplay] = useState(false);
+const SLIDES: HeroSlide[] = [
+  {
+    photo: 'wedding-banquet',
+    alt: 'Свадебный банкет — кейтеринг NiloV в Санкт-Петербурге',
+    eyebrow: 'Свадьбы под ключ',
+    headline: 'Ресторан, который приезжает к вам',
+  },
+  {
+    photo: 'canape-platter',
+    alt: 'Фуршетные канапе — кейтеринг NiloV',
+    eyebrow: 'Фуршет от 2 450 ₽/гость',
+    headline: '120 блюд. 14 аллергенов под контролем.',
+  },
+  {
+    photo: 'dessert-table',
+    alt: 'Десертный стол — кейтеринг NiloV',
+    eyebrow: 'Сезонные станции',
+    headline: 'Шоколадные фонтаны, сыроварня, блинная',
+  },
+  {
+    photo: 'beef-medallions',
+    alt: 'Банкет — горячее блюдо от шефа NiloV',
+    eyebrow: 'Банкет от 3 950 ₽/гость',
+    headline: 'Шеф Дмитрий Нилов. 19 лет на вашей кухне.',
+  },
+];
+
+const STATS = [
+  { value: '19', label: 'лет в СПб' },
+  { value: '3 000+', label: 'событий' },
+  { value: '4.8', label: 'рейтинг Я.Карты' },
+  { value: '124', label: 'блюда в каталоге' },
+];
+
+export default function HeroBlock() {
+  const [i, setI] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    const conn = (navigator as any).connection;
-    const isSlow = conn?.effectiveType && !['4g', '5g'].includes(conn.effectiveType);
-    const isDataSaver = conn?.saveData === true;
-    if (!isSlow && !isDataSaver) setShouldAutoplay(true);
-
-    const id = rIC(() => {
-      if (videoRef.current) videoRef.current.load();
-    });
-    return () => cIC(id);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0.3]);
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 60]);
+    if (reduce) return;
+    const t = setInterval(() => setI(c => (c + 1) % SLIDES.length), 5500);
+    return () => clearInterval(t);
+  }, [reduce]);
 
   return (
     <section
-      ref={containerRef}
-      className="relative min-h-[85vh] flex items-center overflow-hidden"
-      aria-label="Главный экран"
+      className="relative min-h-[92vh] flex items-end overflow-hidden bg-foreground"
+      aria-roledescription="carousel"
+      aria-label="Возможности кейтеринга NiloV"
     >
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={reducedMotion ? {} : { scale, opacity }}
-      >
-        <picture>
-          <source srcSet="/images/gallery/wedding-banquet-1920.avif" type="image/avif" media="(min-width: 768px)" />
-          <source srcSet="/images/gallery/wedding-banquet-768.avif" type="image/avif" media="(max-width: 767px)" />
-          <source srcSet="/images/gallery/wedding-banquet-1920.webp" type="image/webp" media="(min-width: 768px)" />
-          <source srcSet="/images/gallery/wedding-banquet-768.webp" type="image/webp" media="(max-width: 767px)" />
-          <img
-            src="/images/gallery/wedding-banquet.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            fetchPriority="high"
-            aria-hidden="true"
-          />
-        </picture>
-        <video
-          ref={videoRef}
-          suppressHydrationWarning
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-          muted
-          playsInline
-          loop
-          autoPlay={shouldAutoplay}
-          preload="none"
+      {/* Background photo carousel — crossfade */}
+      <div className="absolute inset-0">
+        {SLIDES.map((s, idx) => (
+          <motion.picture
+            key={s.photo}
+            initial={false}
+            animate={{ opacity: idx === i ? 1 : 0 }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            className="absolute inset-0"
+            aria-hidden={idx !== i}
+          >
+            <source srcSet={`/images/real/${s.photo}-480.avif 480w, /images/real/${s.photo}-768.avif 768w, /images/real/${s.photo}.avif 1920w`} sizes="100vw" type="image/avif" />
+            <source srcSet={`/images/real/${s.photo}-480.webp 480w, /images/real/${s.photo}-768.webp 768w, /images/real/${s.photo}.webp 1920w`} sizes="100vw" type="image/webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/images/real/${s.photo}.jpg`}
+              alt={idx === i ? s.alt : ''}
+              className="w-full h-full object-cover"
+              loading={idx === 0 ? 'eager' : 'lazy'}
+              fetchPriority={idx === 0 ? 'high' : 'auto'}
+            />
+          </motion.picture>
+        ))}
+        {/* Ken-Burns on the active slide — disabled if reduce-motion */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ scale: 1.0 }}
+          animate={{ scale: reduce ? 1.0 : 1.08 }}
+          transition={{ duration: 6, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
           aria-hidden="true"
-          onCanPlayThrough={() => setVideoReady(true)}
-        >
-          <source src="/videos/hero/banquet.mp4" type="video/mp4" />
-          <source src="/videos/hero/banquet.webm" type="video/webm" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/90" />
-      </motion.div>
+          style={{ boxShadow: 'inset 0 0 200px rgba(0,0,0,0.4)' }}
+        />
+        {/* Gradient overlay — heavier for text contrast (VLM: "Low contrast on secondary text") */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.92) 100%)',
+          }}
+          aria-hidden="true"
+        />
+      </div>
 
-      {/* Video pause button — WCAG 2.2.2 */}
-      <button
-        type="button"
-        onClick={() => {
-          if (videoRef.current) {
-            if (videoRef.current.paused) {
-              videoRef.current.play();
-            } else {
-              videoRef.current.pause();
-            }
-          }
-        }}
-        className="absolute top-20 right-4 z-20 rounded-full bg-background/80 backdrop-blur-sm border border-line p-2.5 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-        aria-label="Остановить или включить фоновое видео"
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <rect x="4" y="3" width="3" height="10" rx="1" />
-          <rect x="9" y="3" width="3" height="10" rx="1" />
-        </svg>
-      </button>
+      {/* Slide indicators — bottom-center, minimal pill style (VLM: "floating dots look like glitch") */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-md" role="tablist" aria-label="Слайды">
+        {SLIDES.map((s, idx) => (
+          <button
+            key={s.photo}
+            onClick={() => setI(idx)}
+            className="block rounded-full transition-all duration-300"
+            style={{
+              width: idx === i ? 28 : 8,
+              height: 8,
+              backgroundColor: idx === i ? '#E8C97E' : 'rgba(255,255,255,0.5)',
+            }}
+            aria-label={`Слайд ${idx + 1}: ${s.eyebrow}`}
+            aria-selected={idx === i}
+            role="tab"
+          />
+        ))}
+      </div>
 
-      <motion.div
-        className="relative z-10 container-site py-20 md:py-28"
-        style={reducedMotion ? {} : { y: textY }}
-      >
-        <div className="max-w-[680px]">
-          {/* Minimal brand tag */}
-          <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-6 animate-fade-up">
-            NiloV · Петербург · с 2007
-          </p>
+      {/* Content */}
+      <div className="relative z-10 w-full container-site pb-20 md:pb-28 pt-32">
+        <div className="max-w-3xl">
+          {/* Prestige anchor — Magnifique/Searcys pattern */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xs md:text-sm uppercase tracking-[0.22em] text-[#E8C97E] mb-4"
+          >
+            Выездной ресторан в Санкт-Петербурге · с 2007 года
+          </motion.p>
 
-          {/* Single powerful headline */}
-          <h1 className="mb-6 tracking-tight animate-fade-up" style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-            <span className="text-foreground">Кейтеринг, </span>
-            <span
-              className="relative"
-              style={{
-                fontWeight: 650,
-                background: 'linear-gradient(135deg, #B08D57 0%, #8A6D3B 60%, #6E5631 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              который чувствуешь заранее
-            </span>
-          </h1>
+          {/* Slide-aware headline */}
+          <motion.h1
+            key={`headline-${i}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-4 max-w-2xl"
+            style={{ fontWeight: 500 }}
+          >
+            {SLIDES[i].headline}
+          </motion.h1>
 
-          {/* Simple, clear subtitle — one sentence with prices */}
-          <p className="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-            {subtitle || 'Ресторанный кейтеринг и доставка фуршетов в СПб. От 2 450 ₽/гость — еда, персонал, посуда, доставка включены.'}
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-white/85 text-base md:text-xl mb-8 max-w-xl leading-relaxed"
+          >
+            Полный кейтеринг под ключ: меню, официанты, посуда, доставка, сервировка и уборка.
+            Без скрытых платежей. От 390 ₽ за гостя.
+          </motion.p>
 
-          {/* 2 ключевые ценовые точки — не 5 */}
-          <div className="flex flex-wrap gap-3 mb-8 animate-fade-up" style={{ animationDelay: '0.25s' }}>
-            <Link href="/menu/furshet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
-              Фуршет от 2 450 ₽/гость
-            </Link>
-            <Link href="/menu/banquet" className="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline">
-              Банкет от 3 950 ₽/гость
-            </Link>
-          </div>
-
-          {/* ONE primary CTA — единая точка конверсии */}
-          <div className="flex flex-wrap items-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center mb-12"
+          >
             <Link
               href="/plan/helper"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A66B] hover:bg-[#B8924F] text-[#1A1410] px-7 py-3.5 text-base font-semibold transition-all no-underline shadow-lg shadow-black/20"
             >
-              Рассчитать стоимость
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
+              Рассчитать меню — 3 вопроса
+              <ChevronDown className="w-4 h-4 -rotate-90" aria-hidden="true" />
             </Link>
-          </div>
+            <a
+              href={SITE.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 backdrop-blur-sm text-white hover:bg-white/15 px-7 py-3.5 text-base font-medium transition-all no-underline"
+            >
+              <MessageCircle className="w-4 h-4" aria-hidden="true" />
+              Написать в WhatsApp
+            </a>
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="inline-flex items-center justify-center text-white/85 hover:text-white text-base font-medium transition-colors no-underline px-2 py-3"
+            >
+              или {SITE.phone}
+            </a>
+          </motion.div>
 
-          {/* One-line trust signal */}
-          <p className="mt-6 text-xs text-muted-foreground animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            С 2007 года · 3000+ событий · Рейтинг 4.8 · Доставка по КАД включена
-          </p>
+          {/* Trust stats — strip below CTAs (Catery pattern) */}
+          <motion.dl
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 max-w-2xl pt-8 border-t border-white/15"
+          >
+            {STATS.map((s) => (
+              <div key={s.label}>
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="font-heading text-2xl md:text-3xl text-white font-semibold">{s.value}</dd>
+                <dd className="text-[11px] uppercase tracking-wider text-white/65 mt-1">{s.label}</dd>
+              </div>
+            ))}
+          </motion.dl>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60"
+        aria-hidden="true"
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em]">Листайте</span>
+        <motion.div
+          animate={reduce ? undefined : { y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity }}
+        >
+          <ChevronDown className="w-4 h-4" />
+        </motion.div>
       </motion.div>
     </section>
   );

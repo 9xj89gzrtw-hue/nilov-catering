@@ -57,7 +57,7 @@ export default function YubileyPage() {
           <div className="space-y-3">
             <div className="p-4 rounded-lg border-2 border-gold-tint bg-gold-tint/10">
               <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
-                <h3 className="font-semibold"> Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
+                <h3 className="font-semibold">⭐ Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
                 <span className="text-base font-bold text-gold-text">от 50 000 ₽ за 15 чел</span>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -143,11 +143,11 @@ export default function YubileyPage() {
             </div>
           </dl>
           <p className="text-sm text-muted-foreground mt-3">
-            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru </a>
+            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru →</a>
             {' · '}
-            <Link href="/certificates" className="text-gold-text hover:underline">все сертификаты </Link>
+            <Link href="/certificates" className="text-gold-text hover:underline">все сертификаты →</Link>
             {' · '}
-            <Link href="/reviews" className="text-gold-text hover:underline">отзывы </Link>
+            <Link href="/reviews" className="text-gold-text hover:underline">отзывы →</Link>
           </p>
         </div>
 

@@ -29,7 +29,8 @@ export default function GalleryPage() {
               key={i}
               type="button"
               onClick={() => setLightboxIndex(i)}
-              className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
+              className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
+              style={{ aspectRatio: '4 / 3' }}
               aria-label={`Открыть фото: ${p.alt}. ${p.caption || ''}`}
             >
               <FoodPhoto
@@ -37,7 +38,7 @@ export default function GalleryPage() {
                 alt={p.alt}
                 aspectRatio="wide"
                 objectPosition="center 40%"
-                className="w-full transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent p-2 md:p-3 z-10 flex items-end">
                 <p className="text-xs md:text-sm font-medium text-white line-clamp-2">{p.caption}</p>

@@ -12,6 +12,7 @@ export const STAFF_RATIO: Record<Format, { min: number; max: number }> = {
   'mobile-furshet': { min: 15, max: 20 },
   detskoe: { min: 8, max: 10 },
   'chef-at-home': { min: 8, max: 10 },
+  pominki: { min: 15, max: 20 },
 };
 
 export function getStaffCount(guests: number, format: Format): number {

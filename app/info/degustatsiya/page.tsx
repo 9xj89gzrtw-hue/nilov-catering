@@ -77,7 +77,7 @@ export default async function DegustatsiyaPage() {
                   id="format"
                   name="format"
                   required
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 >
                   <option value="">Выберите формат</option>
                   {FORMATS.map(f => (
@@ -95,7 +95,7 @@ export default async function DegustatsiyaPage() {
                   max="500"
                   required
                   placeholder="Напр. 80"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 />
               </div>
             </div>
@@ -109,7 +109,7 @@ export default async function DegustatsiyaPage() {
                   name="date"
                   required
                   min={new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0]}
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -118,7 +118,7 @@ export default async function DegustatsiyaPage() {
                   id="time"
                   name="time"
                   required
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 >
                   <option value="">Выберите время</option>
                   {TIME_SLOTS.map(t => (
@@ -137,7 +137,7 @@ export default async function DegustatsiyaPage() {
                   name="name"
                   required
                   placeholder="Иван Петров"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -148,7 +148,7 @@ export default async function DegustatsiyaPage() {
                   name="phone"
                   required
                   placeholder="+7 (___) ___-__-__"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 />
               </div>
             </div>
@@ -160,7 +160,7 @@ export default async function DegustatsiyaPage() {
                 name="comment"
                 rows={3}
                 placeholder="Например: нужна веганская опция, аллергия на орехи, хотим групповую дегустацию..."
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text resize-none"
+                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 resize-none"
               />
             </div>
 
@@ -230,7 +230,7 @@ export default async function DegustatsiyaPage() {
             href="/plan/calculator"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground"
           >
-            Открыть калькулятор
+            Открыть калькулятор →
           </Link>
         </section>
       </div>

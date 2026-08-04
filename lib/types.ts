@@ -7,7 +7,8 @@ export type Format =
   | 'coffee-break'
   | 'mobile-furshet'
   | 'detskoe'
-  | 'chef-at-home';
+  | 'chef-at-home'
+  | 'pominki';
 
 export type Tier = 'economy' | 'standard' | 'premium' | 'luxury';
 

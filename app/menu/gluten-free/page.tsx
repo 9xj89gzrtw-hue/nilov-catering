@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import { SITE } from '@/lib/data';
+import B2BBanner from '@/components/common/B2BBanner';
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 
 export default function GlutenFreePage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('gluten-free')), []);
@@ -33,6 +36,11 @@ export default function GlutenFreePage() {
           {dishes.length} блюд без глютена — от закусок до десертов. Отдельная линия кухни,
           отдельная посуда (синяя маркировка), тестирование &lt;20 ppm. Подходит для целиакии.
         </p>
+
+        {/* B2B banner — НДС indicator for corporate clients */}
+        <div className="mb-8">
+          <B2BBanner />
+        </div>
 
         {/* Целиакия-протокол */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-blue-200 bg-blue-50">
@@ -82,7 +90,8 @@ export default function GlutenFreePage() {
         </div>
 
         {/* Десерты — DEFAULT nut-free */}
-        <div className="mb-10">
+        <B2BBanner />
+        <div className="mb-10 mt-6">
           <h2 className="font-heading text-2xl font-medium mb-2"> БГ-десерты и выпечка (nut-free по умолчанию)</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong> (без орехов).
@@ -90,7 +99,9 @@ export default function GlutenFreePage() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {dessertsNutFree.map(dish => (
-              <div key={dish.id} className="rounded-xl border-2 border-blue-200 bg-blue-50/50 p-4 hover:border-gold-text transition-colors">
+              <div key={dish.id} className="relative rounded-xl border-2 border-blue-200 bg-blue-50/50 p-4 hover:border-gold-text transition-colors">
+                <AllergenChips dish={dish} />
+                <DishCartIndicator dishId={dish.id} />
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
                   <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
@@ -117,7 +128,9 @@ export default function GlutenFreePage() {
           <h2 className="font-heading text-2xl font-medium mb-2"> БГ-закуски и горячее (nut-free по умолчанию)</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {mainsNutFree.map(dish => (
-              <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+              <div key={dish.id} className="relative rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                <AllergenChips dish={dish} />
+                <DishCartIndicator dishId={dish.id} />
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
                   <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
@@ -144,7 +157,9 @@ export default function GlutenFreePage() {
             <h2 className="font-heading text-2xl font-medium mb-2"> БГ-напитки (nut-free по умолчанию)</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {drinksNutFree.map(dish => (
-                <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                <div key={dish.id} className="relative rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                  <AllergenChips dish={dish} />
+                  <DishCartIndicator dishId={dish.id} />
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
                     <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
@@ -170,7 +185,9 @@ export default function GlutenFreePage() {
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {allWithNuts.map(dish => (
-                <div key={dish.id} className="rounded-xl border border-amber-300 bg-white p-4">
+                <div key={dish.id} className="relative rounded-xl border border-amber-300 bg-white p-4">
+                  <AllergenChips dish={dish} />
+                  <DishCartIndicator dishId={dish.id} />
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
                     <span className="text-xs bg-amber-600 text-white px-2 py-0.5 rounded font-semibold shrink-0"> Орехи</span>

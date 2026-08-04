@@ -11,6 +11,7 @@ export const MIN_GUESTS: Record<Format, number> = {
   'mobile-furshet': 10,
   detskoe: 10,
   'chef-at-home': 10,
+  pominki: 10,
 };
 
 // Глобальный диапазон слайдера
@@ -38,12 +39,12 @@ export const CHEF_HOURLY_RATE_BASE = 2500;
 // Сервис-норма
 export const STAFF_RATE: Record<Format, number> = {
   furshet: 650, banket: 750, 'coffee-break': 500,
-  'mobile-furshet': 650, detskoe: 600, 'chef-at-home': 750,
+  'mobile-furshet': 650, detskoe: 600, 'chef-at-home': 750, pominki: 650,
 };
 /** Соотношение гостей к персоналу: FLOOR = больше персонала. ceil(g / ratio) */
 export const STAFF_RATIO: Record<Format, number> = {
   furshet: 15, banket: 12, 'coffee-break': 15,
-  'mobile-furshet': 15, detskoe: 10, 'chef-at-home': 8,
+  'mobile-furshet': 15, detskoe: 10, 'chef-at-home': 8, pominki: 15,
 };
 export const COORDINATOR_FLAT = 5000;
 export const SETUP_RATE = 650;
@@ -65,17 +66,19 @@ export const GUEST_QUICK_BUTTONS = [10, 20, 50, 100, 150, 200, 300, 500];
 // Эти значения ДОЛЖНЫ совпадать с lib/tariff-offers.ts (SVADBA, KORPORATIV, DETSKOE, CHEF_AT_HOME)
 // и COFFEE_BREAK_PRICES. Если правите тут — правьте и в tariff-offers.ts.
 export const PRICE_PER_GUEST: Record<Format, Partial<Record<Tier, number>>> = {
-  // furshet CHASTNOE (см. tariff-offers.ts: economy=2450, standard=3950, premium=5950, luxury=нет)
-  furshet: { economy: 2450, standard: 3950, premium: 5950 },
-  // banket SVADBA (economy=3950, standard=5470, premium=7350, luxury=9950)
-  banket: { economy: 3950, standard: 5470, premium: 7350, luxury: 9950 },
-  // coffee-break COFFEE_BREAK_PRICES (нет в tariff-offers, захардкожено)
-  'coffee-break': { economy: 390, standard: 1450, premium: 1950, luxury: 2450 },
+  // furshet ← CHASTNOE (см. tariff-offers.ts: economy=2450, standard=3950, premium=5950, luxury=нет)
+  furshet:          { economy: 2450, standard: 3950, premium: 5950 },
+  // banket ← SVADBA (economy=3950, standard=5470, premium=7350, luxury=9950)
+  banket:           { economy: 3950, standard: 5470, premium: 7350, luxury: 9950 },
+  // coffee-break ← COFFEE_BREAK_PRICES (нет в tariff-offers, захардкожено)
+  'coffee-break':   { economy: 390,  standard: 1450, premium: 1950, luxury: 2450 },
   'mobile-furshet': { economy: 2450, standard: 3950, premium: 5950 },
-  // detskoe DETSKOE (economy=1550, standard=2450, premium=3450, luxury=нет)
-  detskoe: { economy: 1550, standard: 2450, premium: 3450 },
-  // chef-at-home CHEF_AT_HOME (economy=4500, standard=7500 — hourly, не perGuest)
-  'chef-at-home': {},
+  // detskoe ← DETSKOE (economy=1550, standard=2450, premium=3450, luxury=нет)
+  detskoe:          { economy: 1550, standard: 2450, premium: 3450 },
+  // chef-at-home ← CHEF_AT_HOME (economy=4500, standard=7500 — hourly, не perGuest)
+  'chef-at-home':   {},
+  // pominki ← POMINKI (economy=1800, standard=2500)
+  pominki:          { economy: 1800, standard: 2500 },
 };
 
 export const ADDONS: AddOn[] = [

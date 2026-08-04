@@ -30,10 +30,8 @@ snapshots-js/
 snapshots-pretty/
 
 # Eval and screenshot artifacts (local-only)
-snapshots-v4/
-snapshots-v4-resized/
-snapshots-v3/
-snapshots-v3-resized/
+snapshots-v2/
+snapshots-v2-resized/
 vlm-eval-*.json
 research-data/
 

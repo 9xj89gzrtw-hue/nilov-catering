@@ -20,7 +20,7 @@ export default function DeliveryBanner() {
               href="/delivery/order"
               className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors text-center"
             >
-              Собрать заказ доставки
+              Собрать заказ доставки →
             </Link>
             <Link
               href="/delivery"

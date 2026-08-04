@@ -6,6 +6,9 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
+import B2BBanner from '@/components/common/B2BBanner';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
 
 export default function VeganPage() {
@@ -36,6 +39,8 @@ export default function VeganPage() {
 
         <MenuTariffs format="vegan" formatLabel="Веган" />
 
+        <B2BBanner />
+
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">
           Все веган-блюда ({dishes.length})
         </h2>
@@ -46,6 +51,8 @@ export default function VeganPage() {
               className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors"
             >
               <div className="relative">
+                <AllergenChips dish={dish} />
+                <DishCartIndicator dishId={dish.id} />
                 <FoodPhoto
                   src={getDishImageByIndex(dish.id, dish.station, idx)}
                   alt={dish.name}
@@ -97,13 +104,13 @@ export default function VeganPage() {
             <strong> Веган + всеядные в одной свадьбе?</strong> В тарифе «Per-group pricing»
             веган-группа платит 2 950 ₽/гость (Стандарт), всеядная — по тарифу свадебного банкета.
             Например, 50 веганов × 2 950 + 30 всеядных × 5 470 = 311 600 ₽ за 80 гостей.{' '}
-            <Link href="/events/svadba" className="underline text-gold-text">Подробнее </Link>
+            <Link href="/events/svadba" className="underline text-gold-text">Подробнее →</Link>
           </p>
           <Link
             href="/plan/constructor?diet=vegan"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-             Собрать веган-меню в конструкторе
+             Собрать веган-меню в конструкторе →
           </Link>
         </div>
 

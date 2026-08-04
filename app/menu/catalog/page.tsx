@@ -1,13 +1,17 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+// useEffect still used by StationSection below for per-station pagination reset.
 import Link from 'next/link';
 import { ALL_DISHES, DISH_CATEGORIES, DIET_FILTERS, FORMAT_DISHES } from '@/lib/menu-data';
-import { getDishImage, getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
+import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
-import type { Dish } from '@/lib/types';
+
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
+import type { Dish, Allergen } from '@/lib/types';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 const STATIONS = [
@@ -19,37 +23,71 @@ const STATIONS = [
   { key: 'show', label: 'Шоу-станции' },
 ] as const;
 
-// Chef recommends — 8 curated picks shown ABOVE the sticky filter bar.
-// Solves the VLM-flagged problem: "No actual product images visible above the fold for a 'catalog'".
-const CHEF_RECOMMENDS_IDS = [
-  'canape-salmon',
-  'mini-burger',
-  'beef-medallions',
-  'macaron-shooter',
-  'buddha-bowl',
-  'tartar-beef',
-  'bruschetta-tomato',
-  'lemonade-tarragon',
-];
+// C3 fix (UX Architect, 6.25): catalog hierarchy.
+// Section headers use full labels (e.g. «Холодные закуски» instead of «Холодные»)
+// so the catalog reads as a structured menu — not an endless Pinterest feed.
+const STATION_LABELS: Record<string, string> = {
+  cold: 'Холодные закуски',
+  hot: 'Горячие блюда',
+  desserts: 'Десерты',
+  drinks: 'Напитки',
+  show: 'Шоу-станции',
+};
+
+// Display order — appetizers first, then mains, sweets, drinks, show last.
+const STATION_ORDER = ['cold', 'hot', 'desserts', 'drinks', 'show'] as const;
 
 const DIETS = ['vegan', 'gluten-free', 'halal', 'sugar-free', 'nut-free'] as const;
 
-// Allergen exclusion filters — filter OUT dishes containing specific allergens
-const EXCLUDE_ALLERGENS: { key: string; label: string }[] = [
-  { key: 'milk', label: 'Без молока' },
-  { key: 'eggs', label: 'Без яиц' },
-  { key: 'nuts', label: 'Без орехов' },
-  { key: 'fish', label: 'Без рыбы' },
-  { key: 'soy', label: 'Без сои' },
-  { key: 'peanuts', label: 'Без арахиса' },
-  { key: 'sesame', label: 'Без кунжута' },
+// Allergen emoji map — unified with ConstructorWizard / MenuBuilder AllergenFilterBar
+// Same source of truth: ALLERGEN_LABEL (full words) + ALLERGEN_EMOJI (consistent visual)
+const ALLERGEN_EMOJI: Record<Allergen, string> = {
+  gluten: '',
+  crustaceans: '',
+  eggs: '',
+  fish: '',
+  peanuts: '',
+  soy: '',
+  milk: '',
+  nuts: '',
+  celery: '',
+  mustard: '',
+  sesame: '',
+  sulphites: '',
+  lupin: '',
+  molluscs: '',
+};
+
+// High-risk allergens (анфилаксия priority) — same set as ConstructorWizard DraggableDishCard
+const HIGH_RISK_ALLERGENS: Allergen[] = [
+  'nuts', 'peanuts', 'gluten', 'fish', 'crustaceans', 'molluscs',
 ];
+
+// Allergen exclusion filters — unified with constructor: emoji + ALLERGEN_LABEL (full words)
+// Previously used prefix-style "Без молока"; now matches constructor style " Молоко" for consistency.
+const EXCLUDE_ALLERGENS: Allergen[] = [
+  'milk', 'eggs', 'nuts', 'fish', 'soy', 'peanuts', 'sesame',
+];
+
+// Chef recommends — top picks to reduce cognitive load (C8 fix).
+// Instead of facing all 124 dishes, users see 8 popular, format-agnostic picks first.
+// Curated mix: canapé + hot + dessert + drink, balanced across price tiers.
+const CHEF_RECOMMENDS_IDS = [
+  'canape-salmon', // классическая закуска
+  'mini-burger', // хит фуршетов
+  'beef-medallions', // премиум-горячее
+  'macaron-shooter', // десерт-шутер
+  'borscht', // русская классика
+  'yakitori', // азиатская нота
+  'tartlet-chicken', // тарталетка
+  'cranberry-mors', // напиток
+] as const;
 
 export default function CatalogPage() {
   const [search, setSearch] = useState('');
   const [station, setStation] = useState<string>('all');
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
-  const [excludedAllergens, setExcludedAllergens] = useState<Set<string>>(new Set());
+  const [excludedAllergens, setExcludedAllergens] = useState<Set<Allergen>>(new Set());
 
   const toggleDiet = (d: string) => {
     const next = new Set(activeDiets);
@@ -57,7 +95,7 @@ export default function CatalogPage() {
     setActiveDiets(next);
   };
 
-  const toggleAllergen = (a: string) => {
+  const toggleAllergen = (a: Allergen) => {
     const next = new Set(excludedAllergens);
     if (next.has(a)) next.delete(a); else next.add(a);
     setExcludedAllergens(next);
@@ -70,7 +108,7 @@ export default function CatalogPage() {
       dishes = dishes.filter(d => [...activeDiets].every(diet => d.dietBadges.includes(diet as typeof DIETS[number])));
     }
     if (excludedAllergens.size > 0) {
-      dishes = dishes.filter(d => ![...excludedAllergens].some(a => d.allergens.includes(a as typeof d.allergens[number])));
+      dishes = dishes.filter(d => !d.allergens.some(a => excludedAllergens.has(a)));
     }
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -79,10 +117,17 @@ export default function CatalogPage() {
     return dishes;
   }, [station, activeDiets, excludedAllergens, search]);
 
-  // Split into halal / non-halal for visual separation
-  const halalDishes = useMemo(() => filtered.filter(d => d.dietBadges.includes('halal')), [filtered]);
-  const porkDishes = useMemo(() => filtered.filter(d => d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
-  const otherDishes = useMemo(() => filtered.filter(d => !d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
+  // C3 fix: group filtered dishes by station for clear visual hierarchy.
+  // Replaces previous halal/pork/other flat split that created an endless feed.
+  // Halal is still visible via diet filter + per-card Halal badge.
+  // Pork dishes keep a small inline «Свинин» badge on the card.
+  const groupedByStation = useMemo(() => {
+    const groups: Record<string, Dish[]> = {};
+    for (const s of STATION_ORDER) {
+      groups[s] = filtered.filter(d => d.station === s);
+    }
+    return groups;
+  }, [filtered]);
 
   const stationCounts = useMemo(() => {
     const counts: Record<string, number> = { all: ALL_DISHES.length };
@@ -99,31 +144,21 @@ export default function CatalogPage() {
     setStation('all');
     setActiveDiets(new Set());
     setExcludedAllergens(new Set());
-    setVisibleCount(24); // Reset pagination when filters reset
   };
 
-  // Reset pagination when filters change
-  useEffect(() => {
-    setVisibleCount(24);
-  }, [search, station, activeDiets, excludedAllergens]);
+  // Chef recommends — top 8 dishes shown ONLY when no filters are active,
+  // so users always start with a curated entry point. Once they filter/search,
+  // the section hides to avoid confusion with filtered results.
+  const chefRecommends = useMemo(() => {
+    if (hasActiveFilters) return [];
+    return CHEF_RECOMMENDS_IDS
+      .map(id => ALL_DISHES.find(d => d.id === id))
+      .filter((d): d is Dish => Boolean(d))
+      .slice(0, 8);
+  }, [hasActiveFilters]);
 
   // Allergen visibility toggle — show/hide allergen badges on cards
   const [showAllergens, setShowAllergens] = useState(true);
-  // Pagination — client-side progressive enhancement. SSR shows ALL dishes.
-  // JS pagination kicks in only after hydration to reduce initial DOM for slow devices.
-  const [visibleCount, setVisibleCount] = useState<number | null>(null); // null = show all (SSR default)
-
-  // After mount, switch to paginated mode
-  useEffect(() => {
-    setVisibleCount(24);
-  }, []);
-
-  const showAll = visibleCount === null;
-  const paginatedOther = showAll ? otherDishes : otherDishes.slice(0, visibleCount);
-  const paginatedHalal = showAll ? halalDishes : halalDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length));
-  const paginatedPork = showAll ? porkDishes : porkDishes.slice(0, Math.max(0, visibleCount - paginatedOther.length - paginatedHalal.length));
-  const totalShown = paginatedOther.length + paginatedHalal.length + paginatedPork.length;
-  const hasMore = !showAll && totalShown < filtered.length;
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -145,43 +180,21 @@ export default function CatalogPage() {
           }
         />
 
-        {/* Chef recommends — ABOVE sticky filter bar so dish photos are visible above the fold.
-            VLM critic flagged: "No actual product images visible above the fold for a 'catalog'". */}
-        <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
-          <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1">
-            Шеф рекомендует
-          </h2>
-          <p className="text-sm text-muted-foreground mb-5">8 самых популярных блюд — начните с этих</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {CHEF_RECOMMENDS_IDS.map((id) => {
-              const dish = ALL_DISHES.find(d => d.id === id);
-              if (!dish) return null;
-              const img = getDishImage(dish.id, dish.station);
-              const objPos = getObjectPositionForDish(dish.id, dish.station);
-              return (
-                <Link
-                  key={id}
-                  href={`/plan/constructor?dish=${id}`}
-                  className="group block rounded-xl overflow-hidden border border-line bg-card hover:border-gold-text/40 transition-all no-underline"
-                >
-                  <div className="aspect-square overflow-hidden">
-                    <FoodPhoto
-                      src={img}
-                      alt={dish.name}
-                      aspectRatio="square"
-                      objectPosition={objPos}
-                      className="w-full h-full transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <p className="text-sm font-medium text-foreground group-hover:text-gold-text transition-colors line-clamp-1">{dish.name}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{dish.pricePerGuest} ₽/гость</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
+        {/* Chef recommends — MOVED ABOVE filter bar so dish photos are visible above the fold.
+            VLM critic flagged "No actual product images visible above the fold for a 'catalog'". */}
+        {chefRecommends.length > 0 && (
+          <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
+            <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1 flex items-center gap-2">
+              Шеф рекомендует
+            </h2>
+            <p className="text-sm text-muted-foreground mb-5">8 самых популярных блюд — начните с этих</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {chefRecommends.map((dish, idx) => (
+                <DishCard key={`rec-${dish.id}`} dish={dish} index={idx} showAllergens={showAllergens} recommended />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Sticky filter bar — sticks below header (top-16 = 64px = h-16 header) */}
         <div className="sticky top-16 z-30 -mx-4 px-4 py-3 mb-6 bg-background/95 backdrop-blur-md border-b border-line/60 rounded-xl">
@@ -192,7 +205,7 @@ export default function CatalogPage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             aria-label="Поиск блюд"
-            className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-3 focus:outline-none focus:border-gold-text transition-colors"
+            className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-colors"
           />
 
           {/* Station filters — horizontally scrollable on mobile */}
@@ -231,23 +244,28 @@ export default function CatalogPage() {
             ))}
           </div>
 
-          {/* Allergen exclusion filters */}
+          {/* Allergen exclusion filters — unified with constructor: emoji + ALLERGEN_LABEL */}
           <div className="flex gap-2 items-center overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Исключить аллергены">
             <span className="shrink-0 text-xs text-muted-foreground self-center mr-1">Исключить:</span>
-            {EXCLUDE_ALLERGENS.map(a => (
-              <button
-                key={a.key}
-                onClick={() => toggleAllergen(a.key)}
-                aria-pressed={excludedAllergens.has(a.key)}
-                className={`shrink-0 rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
-                  excludedAllergens.has(a.key)
-                    ? 'border-destructive bg-destructive/10 text-destructive font-medium'
-                    : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
-                }`}
-              >
-                {a.label}
-              </button>
-            ))}
+            {EXCLUDE_ALLERGENS.map(a => {
+              const isOn = excludedAllergens.has(a);
+              const isHighRisk = HIGH_RISK_ALLERGENS.includes(a);
+              return (
+                <button
+                  key={a}
+                  onClick={() => toggleAllergen(a)}
+                  aria-pressed={isOn}
+                  title={`Исключить блюда с аллергеном «${ALLERGEN_LABEL[a]}»`}
+                  className={`shrink-0 rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
+                    isOn
+                      ? 'border-destructive bg-destructive/10 text-destructive font-medium'
+                      : 'border-line text-muted-foreground hover:border-destructive hover:text-destructive'
+                  }`}
+                >
+                  <span aria-hidden="true">{ALLERGEN_EMOJI[a]}</span>{' '}{ALLERGEN_LABEL[a]}{isHighRisk && <span className="ml-0.5" aria-hidden="true"></span>}
+                </button>
+              );
+            })}
             {hasActiveFilters && (
               <button
                 onClick={resetFilters}
@@ -268,6 +286,8 @@ export default function CatalogPage() {
         </div>
 
 
+        
+
         <noscript>
           <div className="mb-6 p-4 rounded-lg border border-amber-200 bg-amber-50 text-sm text-amber-900">
             <p className="font-medium mb-2">Фильтры требуют JavaScript. Без JS доступны ссылки по категориям:</p>
@@ -284,60 +304,39 @@ export default function CatalogPage() {
           </div>
         </noscript>
 
-        {/* Grid — visual separation: halal / other / pork — with pagination */}
-        {paginatedOther.length > 0 && (
-          <div className="mb-8">
-            {halalDishes.length > 0 && porkDishes.length > 0 && (
-              <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide"> Основные блюда</h2>
-            )}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedOther.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
-              ))}
-            </div>
-          </div>
-        )}
+        
+        
 
-        {paginatedHalal.length > 0 && (
-          <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
-            <h2 className="font-heading text-base font-medium text-emerald-900 mb-1"> Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
-            <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedHalal.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx + 100} showAllergens={showAllergens} />
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Allergen legend — ТР ТС 022/2011 (14 allergens) */}
+        <div className="mb-4 p-3 rounded-lg bg-secondary/40 flex flex-wrap items-center gap-1.5 text-xs">
+          <span className="font-medium text-foreground mr-1">Аллергены:</span>
+          {Object.entries(ALLERGEN_LABEL).map(([code, label]) => {
+            const isHighRisk = HIGH_RISK_ALLERGENS.includes(code as Allergen);
+            return (
+              <span
+                key={code}
+                className={`px-2 py-0.5 rounded-full text-[11px] font-medium border ${
+                  isHighRisk
+                    ? 'border-red-700/40 text-red-800 bg-red-50'
+                    : 'border-amber-700/30 text-amber-800 bg-amber-50'
+                }`}
+                title={`${label}${isHighRisk ? ' — высокий риск анафилаксии' : ''}`}
+              >
+                {label}
+              </span>
+            );
+          })}
+          <span className="text-[11px] text-muted-foreground ml-2 flex items-center gap-3">
+            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full bg-red-700" />высокий риск</span>
+            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full bg-amber-700" />прочие</span>
+          </span>
+        </div>
 
-        {paginatedPork.length > 0 && (
-          <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
-            <h2 className="font-heading text-base font-medium text-red-900 mb-1"> Блюда со свининой (НЕ халяль)</h2>
-            <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedPork.map((dish, idx) => (
-                <DishCard key={dish.id} dish={dish} index={idx + 200} showAllergens={showAllergens} />
-              ))}
-            </div>
-          </div>
-        )}
+        {/* (Chef recommends section moved to top of page, above the sticky filter bar.) */}
 
-        {/* "Показать ещё" pagination button */}
-        {hasMore && (
-          <div className="text-center py-8">
-            <button
-              onClick={() => setVisibleCount(c => (c ?? 24) + 24)}
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
-              type="button"
-              aria-controls="dishes-grid"
-              aria-expanded={visibleCount > 24 ? 'true' : 'false'}
-            >
-              Показать ещё {Math.min(24, filtered.length - totalShown)} блюд
-            </button>
-            <p className="text-xs text-muted-foreground mt-2">Показано {totalShown} из {filtered.length} блюд</p>
-          </div>
-        )}
-
+        {/* C3 fix: station-grouped sections with clear headers + per-section pagination.
+            Replaces previous flat «other / halal / pork» split that read as a Pinterest feed.
+            Each station section shows 24 dishes then a «Показать ещё N» button. */}
         {filtered.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">
             <p className="text-lg mb-2">Ничего не найдено</p>
@@ -352,12 +351,26 @@ export default function CatalogPage() {
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
                 </p>
                 <a href="/menu/halal" className="text-xs text-gold-text font-semibold hover:underline">
-                  Подробнее про халяль-меню
+                  Подробнее про халяль-меню →
                 </a>
               </div>
             )}
           </div>
         )}
+
+        {filtered.length > 0 && STATION_ORDER.map(stationKey => {
+          const dishes = groupedByStation[stationKey] || [];
+          if (dishes.length === 0) return null;
+          return (
+            <StationSection
+              key={stationKey}
+              stationKey={stationKey}
+              label={STATION_LABELS[stationKey] || stationKey}
+              dishes={dishes}
+              showAllergens={showAllergens}
+            />
+          );
+        })}
 
         <div className="mt-12 space-y-4">
           <div className="flex flex-wrap gap-3">
@@ -375,7 +388,7 @@ export default function CatalogPage() {
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
             <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
             <p className="text-xs text-muted-foreground mb-3">Шеф соберёт меню под ваш бюджет, формат и пожелания.</p>
-            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом </Link>
+            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом →</Link>
           </div>
         </div>
       </div>
@@ -383,16 +396,120 @@ export default function CatalogPage() {
   );
 }
 
-function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index?: number; showAllergens?: boolean }) {
+/**
+ * StationSection — C3 fix: per-station grouping + per-section pagination.
+ *
+ * Renders one station block (Холодные закуски / Горячие блюда / Десерты / Напитки /
+ * Шоу-станции) with a clear h2 header that includes a count badge, the dish grid,
+ * and a «Показать ещё N» button when there are more than STATION_PAGE_SIZE dishes.
+ *
+ * State is local to each section so opening «more» in one section does not blow up
+ * the others. When the parent filter set changes (dishes.length changes), pagination
+ * resets to the first page via the useEffect dependency.
+ */
+const STATION_PAGE_SIZE = 24;
+
+function StationSection({
+  stationKey,
+  label,
+  dishes,
+  showAllergens,
+}: {
+  stationKey: string;
+  label: string;
+  dishes: Dish[];
+  showAllergens: boolean;
+}) {
+  const [visibleCount, setVisibleCount] = useState(STATION_PAGE_SIZE);
+
+  // Reset pagination whenever the underlying dish list changes (filter / search applied).
+  useEffect(() => {
+    setVisibleCount(STATION_PAGE_SIZE);
+  }, [dishes]);
+
+  if (dishes.length === 0) return null;
+
+  // SSR + first paint: show full list (visibleCount defaults to STATION_PAGE_SIZE so this
+  // is identical to the paginated view — no hydration mismatch). After hydration the
+  // section collapses to the first 24 dishes, then expands on button click.
+  const visible = dishes.slice(0, visibleCount);
+  const remaining = dishes.length - visible.length;
+  const nextBatch = Math.min(STATION_PAGE_SIZE, remaining);
+  const hasMore = remaining > 0;
+
+  return (
+    <section className="mb-10" aria-labelledby={`station-${stationKey}-title`}>
+      <h2
+        id={`station-${stationKey}-title`}
+        className="font-heading text-xl font-medium mb-4 pb-2 border-b border-line flex items-baseline gap-2"
+      >
+        {label}
+        <span className="text-sm text-muted-foreground font-normal">({dishes.length})</span>
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        {visible.map((dish, idx) => (
+          <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
+        ))}
+      </div>
+      {hasMore && (
+        <div className="text-center mt-6">
+          <button
+            type="button"
+            onClick={() => setVisibleCount(c => c + STATION_PAGE_SIZE)}
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
+            aria-label={`Показать ещё ${nextBatch} блюд в разделе «${label}»`}
+          >
+            Показать ещё {nextBatch} ↓
+          </button>
+          <p className="text-xs text-muted-foreground mt-2">
+            Показано {visible.length} из {dishes.length}
+          </p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function DishCard({ dish, index = 0, showAllergens = true, recommended = false }: { dish: Dish; index?: number; showAllergens?: boolean; recommended?: boolean }) {
   const dishImg = getDishImageByIndex(dish.id, dish.station, index);
   // Pass dish ID via URL so constructor can pre-add it
   const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
 
+  // C3 fix: detect pork-containing dishes (previously broken out into a separate
+  // « Блюда со свининой» section). With station grouping we lose that section,
+  // so we add a small inline « свин» badge on the image to keep the halal
+  // safety signal visible at a glance.
+  const hasPork = /свинин|бекон|сало/i.test(dish.description);
+
   return (
-    <div className="drinqit-3d drinqit-shine rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-xl flex flex-col">
+    <article className="drinqit-3d drinqit-shine rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-xl flex flex-col" aria-label={`Блюдо: ${dish.name}, цена ${dish.pricePerGuest} рублей за гостя`}>
       <div className="drinqit-3d-inner">
       {/* Image area — FoodPhoto с анимацией Drinqit 3D */}
       <Link href={constructorHref} className="relative block drinqit-3d-img" aria-label={`${dish.name} — открыть в конструкторе меню`}>
+        <AllergenChips dish={dish} />
+        <DishCartIndicator dishId={dish.id} />
+        {/* Pork badge — small inline safety indicator (replaces the removed
+            dedicated pork section). Visible only on cards whose description
+            mentions свинин / бекон / сало. Helps halal-event planners avoid
+            accidentally selecting these dishes. */}
+        {hasPork && (
+          <span
+            className="absolute bottom-2 left-2 z-10 inline-flex items-center gap-1 rounded-full bg-rose-900/85 text-white text-[10px] font-semibold px-2 py-0.5 backdrop-blur-sm"
+            aria-label="Содержит свинину — не подходит для халяль-мероприятий"
+            title="Содержит свинину — не подходит для халяль-мероприятий"
+          >
+            свин
+          </span>
+        )}
+        {/* Recommended badge — top-right corner */}
+        {recommended && (
+          <span
+            className="absolute top-2 right-2 z-10 inline-flex items-center gap-1 rounded-full bg-gold-text text-white text-[10px] font-semibold px-2 py-0.5 shadow-md"
+            aria-label="Шеф рекомендует"
+          >
+            Хит
+          </span>
+        )}
         <FoodPhoto
           src={dishImg}
           alt={dish.name}
@@ -412,14 +529,20 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
             {dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span>
           </span>
 
-          <div className="flex gap-1 flex-wrap justify-end">
-            {/* Diet badges */}
-            {dish.dietBadges.includes('vegan') && <Badge label="VG" color="green" />}
+          {/* Diet badges — reduced to 2 most important (Halal, GF) per C8/C3.
+              Other badges (VG, SF, NF, Дети) available via title tooltip to
+              reduce visual noise while keeping info accessible. */}
+          <div className="flex gap-1 flex-wrap justify-end" title={`Диеты: ${[
+            dish.dietBadges.includes('vegan') && 'Веган',
+            dish.dietBadges.includes('gluten-free') && 'Без глютена',
+            dish.dietBadges.includes('halal') && 'Халяль',
+            dish.dietBadges.includes('sugar-free') && 'Без сахара',
+            dish.dietBadges.includes('nut-free') && 'Без орехов',
+            dish.childFriendly && 'Для детей',
+          ].filter(Boolean).join(', ') || 'нет'}`}>
+            {dish.dietBadges.includes('halal') && <Badge label="Халяль" color="green" />}
             {dish.dietBadges.includes('gluten-free') && <Badge label="GF" color="amber" />}
-            {dish.dietBadges.includes('halal') && <Badge label="H" color="blue" />}
-            {dish.dietBadges.includes('sugar-free') && <Badge label="SF" color="purple" />}
-            {dish.dietBadges.includes('nut-free') && <Badge label="NF" color="red" />}
-            {dish.childFriendly && <Badge label="Дети" color="purple" />}
+            {dish.dietBadges.includes('vegan') && !dish.dietBadges.includes('halal') && <Badge label="VG" color="green" />}
           </div>
         </div>
 
@@ -430,25 +553,19 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
           </p>
         )}
 
-        {/* Allergens — shown/hidden via toggle. High-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
+        {/* Allergen summary — single compact line per C8/C3/C4 cognitive load fix.
+            Full allergen chips on image show high-risk only ( badge).
+            Here: compact text line with count + expandable title. Reduces the
+            "wall of colored tags" that competed with dish name & price. */}
         {showAllergens && dish.allergens.length > 0 && (
-          <div className="mt-1 flex flex-wrap gap-1 mb-3">
-            {dish.allergens.slice(0, 4).map(a => {
-              const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
-              return (
-                <span key={a} className={`text-[10px] px-1.5 py-0.5 rounded ${
-                  isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
-                }`}>
-                  {ALLERGEN_LABEL[a]}
-                </span>
-              );
-            })}
-            {dish.allergens.length > 4 && (
-              <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
-                +{dish.allergens.length - 4}
-              </span>
-            )}
-          </div>
+          <p
+            className="mt-1 mb-3 text-[10px] text-muted-foreground leading-tight"
+            title={dish.allergens.map(a => ALLERGEN_LABEL[a]).join(', ')}
+          >
+            <span className="font-medium">Аллергены:</span>{' '}
+            {dish.allergens.slice(0, 3).map(a => ALLERGEN_LABEL[a]).join(', ')}
+            {dish.allergens.length > 3 && ` +${dish.allergens.length - 3}`}
+          </p>
         )}
 
         {/* CTA: Open in constructor with dish pre-added */}
@@ -457,11 +574,11 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
           className="mt-auto inline-flex items-center justify-center rounded-lg bg-gold-text text-white px-3 py-2 text-xs font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline"
           aria-label={`Открыть ${dish.name} в конструкторе меню`}
         >
-          Открыть в конструкторе
+          Открыть в конструкторе →
         </Link>
       </div>
       </div>
-    </div>
+    </article>
   );
 }
 

@@ -68,9 +68,9 @@ export default function Page() {
             <li> Отдельный фритюр — без панировочных сухарей</li>
           </ul>
           <p className="text-sm text-muted-foreground">
-            Подробнее: <Link href="/menu/gluten-free" className="text-gold-text hover:underline">/menu/gluten-free </Link>
+            Подробнее: <Link href="/menu/gluten-free" className="text-gold-text hover:underline">/menu/gluten-free →</Link>
             {' · '}
-            <Link href="/certificates" className="text-gold-text hover:underline">сертификаты </Link>
+            <Link href="/certificates" className="text-gold-text hover:underline">сертификаты →</Link>
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function Page() {
             <li> При заявленной анафилаксии менеджер звонит клиенту за 24 часа до события для подтверждения протокола</li>
           </ul>
           <p className="text-sm text-muted-foreground">
-            Укажите в заявке тип ореха и тяжесть аллергии. Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">сертификаты </Link>
+            Укажите в заявке тип ореха и тяжесть аллергии. Подробнее: <Link href="/certificates" className="text-gold-text hover:underline">сертификаты →</Link>
           </p>
         </div>
 
@@ -108,9 +108,9 @@ export default function Page() {
             <li> Отдельный транспорт для халяль-заказов</li>
           </ul>
           <p className="text-sm text-muted-foreground">
-            Подробнее: <Link href="/menu/halal" className="text-gold-text hover:underline">/menu/halal </Link>
+            Подробнее: <Link href="/menu/halal" className="text-gold-text hover:underline">/menu/halal →</Link>
             {' · '}
-            <Link href="/certificates" className="text-gold-text hover:underline">сертификаты </Link>
+            <Link href="/certificates" className="text-gold-text hover:underline">сертификаты →</Link>
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export default function Page() {
             <li> 30 веганских блюд в каталоге — от закусок до десертов</li>
           </ul>
           <p className="text-sm text-muted-foreground">
-            Подробнее: <Link href="/menu/vegan" className="text-gold-text hover:underline">/menu/vegan </Link>
+            Подробнее: <Link href="/menu/vegan" className="text-gold-text hover:underline">/menu/vegan →</Link>
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export default function Page() {
           <p className="text-sm text-muted-foreground">
             В заявке выберите тип «Другое» и в комментарии укажите: «СД1 (или СД2), считаем ХЕ,
             без добавленного сахара». Менеджер свяжется в течение 1 часа для согласования меню.{' '}
-            <Link href="/contact" className="text-gold-text hover:underline">Оставить заявку </Link>
+            <Link href="/contact" className="text-gold-text hover:underline">Оставить заявку →</Link>
           </p>
         </div>
 
@@ -180,7 +180,7 @@ export default function Page() {
             <li> Срочные заказы — даже на день обращения</li>
           </ul>
           <p className="text-sm text-muted-foreground">
-            Подробнее: <Link href="/events/pominki" className="text-gold-text hover:underline">/events/pominki </Link>
+            Подробнее: <Link href="/events/pominki" className="text-gold-text hover:underline">/events/pominki →</Link>
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export default function Page() {
           <p className="text-sm text-muted-foreground">
             Укажите «анафилаксия на молоко» и/или «анафилаксия на яйца» в заявке. В каталоге
             используйте фильтр «Без молока» и «Без яиц» для подбора безопасных блюд.{' '}
-            <Link href="/menu/vegan" className="text-gold-text hover:underline">Веган-меню </Link>
+            <Link href="/menu/vegan" className="text-gold-text hover:underline">Веган-меню →</Link>
           </p>
         </div>
 

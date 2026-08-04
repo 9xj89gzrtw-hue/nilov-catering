@@ -73,7 +73,7 @@ export default function ReviewsPage() {
             rel="noopener noreferrer"
             className="inline-block rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-            Найти нас на Яндекс.Картах
+            Найти нас на Яндекс.Картах →
           </a>
         </div>
 

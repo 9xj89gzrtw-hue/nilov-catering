@@ -520,7 +520,7 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
                 href={`/plan/constructor?format=${format}&tier=${tariff.tier}&guests=20`}
                 className="inline-flex items-center gap-2 rounded-lg bg-gold-text text-white px-4 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline w-full justify-center"
               >
-                 Отредактировать это меню
+                 Отредактировать это меню →
               </Link>
               <p className="text-xs text-muted-foreground mt-2 text-center">
                 Уберите ненужные блюда, замените, добавьте свои. Цена пересчитается автоматически.

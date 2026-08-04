@@ -55,7 +55,7 @@ export default function NewYearPage() {
           <div className="p-5 rounded-xl border border-dashed border-line bg-card/50">
             <p className="text-sm font-medium mb-1">Нужен особый формат? Составим индивидуально</p>
             <p className="text-xs text-muted-foreground mb-3">Шеф разработает новогоднее меню под ваш бюджет и площадку.</p>
-            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом </Link>
+            <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом →</Link>
           </div>
         </div>
       </div>

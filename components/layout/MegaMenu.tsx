@@ -22,12 +22,13 @@ const EVENTS: MegaGroup = {
   label: 'События',
   href: '/events',
   items: [
-    { label: 'Корпоратив', href: '/events/korporativ', desc: 'Бизнес-ланчи, банкеты, тимбилдинги', },
-    { label: 'Свадьба', href: '/events/svadba', desc: 'От камерной до банкета на 200', },
-    { label: 'Выпускной', href: '/events/vypusknoy', desc: 'Школьные и студенческие', },
-    { label: 'Детский праздник', href: '/events/detskoe', desc: 'Аниматоры, шоу, меню', },
-    { label: 'Частное', href: '/events/chastnoe', desc: 'Дни рождения, юбилеи, ужины', },
-    { label: 'Шеф на дом', href: '/events/chef-at-home', desc: 'от 2 500 ₽/час', },
+    { label: 'Корпоратив', href: '/events/korporativ', desc: 'Бизнес-ланчи, банкеты, тимбилдинги',  },
+    { label: 'Свадьба', href: '/events/svadba', desc: 'От камерной до банкета на 200',  },
+    { label: 'Выпускной', href: '/events/vypusknoy', desc: 'Школьные и студенческие',  },
+    { label: 'Детский праздник', href: '/events/detskoe', desc: 'Аниматоры, шоу, меню',  },
+    { label: 'Частное', href: '/events/chastnoe', desc: 'Дни рождения, юбилеи, ужины',  },
+    { label: 'Шеф на дом', href: '/events/chef-at-home', desc: 'от 2 500 ₽/час',  },
+    { label: 'Никах и ифтар', href: '/events/nikah', desc: 'Халяль-кейтеринг, сертификат СМР' },
   ],
 };
 
@@ -35,15 +36,15 @@ const MENU: MegaGroup = {
   label: 'Меню',
   href: '/menu',
   items: [
-    { label: 'Фуршет', href: '/menu/furshet', },
-    { label: 'Банкет', href: '/menu/banquet', },
-    { label: 'Кофе-брейк', href: '/menu/coffee-break', },
-    { label: 'Детское', href: '/menu/detskoe', },
-    { label: 'Веган', href: '/menu/vegan', },
-    { label: 'Без глютена', href: '/menu/gluten-free', },
-    { label: 'Халяль', href: '/menu/halal', },
-    { label: 'Show-cooking', href: '/menu/show-cooking', },
-    { label: 'Каталог блюд', href: '/menu/catalog', },
+    { label: 'Фуршет', href: '/menu/furshet',  },
+    { label: 'Банкет', href: '/menu/banquet',  },
+    { label: 'Кофе-брейк', href: '/menu/coffee-break',  },
+    { label: 'Детское', href: '/menu/detskoe',  },
+    { label: 'Веган', href: '/menu/vegan',  },
+    { label: 'Без глютена', href: '/menu/gluten-free',  },
+    { label: 'Халяль', href: '/menu/halal',  },
+    { label: 'Show-cooking', href: '/menu/show-cooking',  },
+    { label: 'Каталог блюд', href: '/menu/catalog',  },
   ],
 };
 
@@ -115,7 +116,7 @@ export default function MegaMenu() {
                 className="block mt-3 pt-3 border-t border-line text-xs text-gold-text hover:underline text-center"
                 onClick={() => setOpen(null)}
               >
-                Все {group.label.toLowerCase()}
+                Все {group.label.toLowerCase()} →
               </Link>
             </div>
           )}

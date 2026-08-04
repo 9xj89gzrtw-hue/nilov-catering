@@ -4,6 +4,9 @@ import { useMemo } from 'react';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
+import B2BBanner from '@/components/common/B2BBanner';
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 import Link from 'next/link';
 
 export default function CoffeeBreakPage() {
@@ -16,6 +19,11 @@ export default function CoffeeBreakPage() {
         <p className="text-muted-foreground mb-8">
           Кофе, чай, выпечка и десерты для перерывов. Идеально для конференций и деловых встреч. Минимум 10 гостей.
         </p>
+
+        {/* B2B banner — НДС indicator for corporate clients */}
+        <div className="mb-8">
+          <B2BBanner />
+        </div>
 
         {/* CTA: "Не нашли — составим" */}
         <div className="mb-8 p-4 rounded-xl border border-gold-text bg-gold-tint flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -58,7 +66,7 @@ export default function CoffeeBreakPage() {
             <p className="font-medium mb-2"> Подписка для офисов</p>
             <p className="text-xs text-muted-foreground mb-2">
               Для регулярных кофе-брейков (4+ раза в месяц): еженедельно 4 события × 50 чел × 390 ₽
-              = 78 000 ₽/мес со скидкой 15% = 66 300 ₽/мес. Годовой контракт: фикс-цена 60 000 ₽/мес
+              = 78 000 ₽/мес → со скидкой 15% = 66 300 ₽/мес. Годовой контракт: фикс-цена 60 000 ₽/мес
               (скидка 23%), ежемесячный ЭДО-инвойс, SLA в комплекте. Ротация меню: 8-недельный цикл
               без повторов, сезонные обновления.
             </p>
@@ -85,7 +93,7 @@ export default function CoffeeBreakPage() {
           </p>
           <ul className="text-sm space-y-1 mb-3 list-disc list-inside text-foreground/90">
             <li><strong>Стандарт:</strong> 1 430 ₽/делегат/день (кофе-брейк 390 + обед 650 + кофе-брейк 390)</li>
-            <li><strong>Скидка 20%</strong> для 2+ дневных конференций 1 144 ₽/делегат/день</li>
+            <li><strong>Скидка 20%</strong> для 2+ дневных конференций → 1 144 ₽/делегат/день</li>
             <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong> (включая доставку, посуду, официантов)</li>
             <li>Ротация: 3 разных кофе-брейк-сета + 2 разных обеда — без повторов</li>
             <li>Координатор конференции: <strong>Мария Кузнецова</strong>, прямой мобильный через <a href="/contact" className="underline text-gold-text">форму B2B-заявки</a></li>
@@ -94,14 +102,17 @@ export default function CoffeeBreakPage() {
             href="/contact?eventType=Конференция&format=Кофе-брейк&comment=Конференционный пакет"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
-             Заказать конференционный пакет
+             Заказать конференционный пакет →
           </Link>
         </div>
 
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все блюда кофе-брейка ({coffeeDishes.length})</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <B2BBanner />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6">
           {coffeeDishes.map(dish => (
-            <div key={dish.id} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+            <div key={dish.id} className="relative rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+              <AllergenChips dish={dish} />
+              <DishCartIndicator dishId={dish.id} />
               <h3 className="font-medium text-sm mb-1">{dish.name}</h3>
               <p className="text-[11px] text-muted-foreground mb-2 line-clamp-2">{dish.description}</p>
               <div className="flex items-center justify-between">

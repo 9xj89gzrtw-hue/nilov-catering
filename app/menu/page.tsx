@@ -44,8 +44,8 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
         </div>
         {dish.dietBadges.length > 0 && (
           <div className="absolute top-2 left-2 z-10 flex gap-1">
-            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
-            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
+            {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-[#065F46] text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
+            {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-[#B45309] text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
           </div>
         )}
       </div>
@@ -87,7 +87,7 @@ export default function MenuPage() {
           subtitle="Любой формат — от кофе-брейка до банкета. Все цены указаны за человека."
           actions={
             <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target no-underline">
-               Не знаете что выбрать? Подберём за 3 вопроса
+               Не знаете что выбрать? Подберём за 3 вопроса →
             </Link>
           }
         />
@@ -116,7 +116,7 @@ export default function MenuPage() {
                 <span className="text-sm font-bold text-gold-text">{f.price}</span>
               )}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-xs bg-gold-text text-white px-3 py-1 rounded-full"></span>
+                <span className="text-xs bg-gold-text text-white px-3 py-1 rounded-full">→</span>
               </div>
             </Link>
           ))}

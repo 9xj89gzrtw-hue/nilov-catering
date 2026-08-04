@@ -39,7 +39,7 @@ export default function MenuCTABlock({ format, formatLabel }: { format?: Format;
           href={constructorHref}
           className="text-sm text-gold-text font-semibold hover:underline"
         >
-          Составить меню с шефом
+          Составить меню с шефом →
         </Link>
       </div>
     </div>

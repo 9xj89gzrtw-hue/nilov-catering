@@ -50,6 +50,12 @@ export function OrganizationJsonLd() {
       streetAddress: LEGAL.legalAddress,
       postalCode: '199106',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 59.931038,
+      longitude: 30.276615,
+    },
+    hasMap: 'https://yandex.ru/maps/?text=59.931038,30.276615',
     priceRange: '₽₽₽',
     taxID: LEGAL.inn,
     foundingDate: '2007',
@@ -114,7 +120,7 @@ export function ServiceJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     'name': 'Кейтеринг под ключ',
-    'provider': { '@type': 'LocalBusiness', '@id': 'https://odaeda.ru/#organization' },
+    'provider': { '@type': 'LocalBusiness', '@id': `https://${SITE.domain}/#organization` },
     'areaServed': 'Санкт-Петербург и Ленинградская область',
     'serviceType': 'Кейтеринг, выездное ресторанное обслуживание',
     'offers': {

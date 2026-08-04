@@ -6,9 +6,9 @@ import { Phone, MessageCircle, Calendar, ShieldCheck, Truck, Users } from 'lucid
 import { SITE } from '@/lib/data';
 
 const GUARANTEES = [
-  { icon: Calendar,     title: 'Бронь за 24 ч',     desc: 'Фиксируем дату и цену в договоре на 24 часа вперёд' },
-  { icon: Truck,        title: 'Доставка вовремя',  desc: 'Опоздаем больше 15 минут — обслуживание бесплатно' },
-  { icon: ShieldCheck,  title: '14 аллергенов',     desc: 'Маркировка по ТР ТС 022/2011 на каждое блюдо' },
+  { icon: Calendar,     title: 'Бронь за 24 ч',  desc: 'Фиксируем дату и цену в договоре на 24 часа вперёд' },
+  { icon: Truck,        title: 'Доставка вовремя', desc: 'Опоздаем больше 15 минут — обслуживание бесплатно' },
+  { icon: ShieldCheck,  title: '14 аллергенов',  desc: 'Маркировка по ТР ТС 022/2011 на каждое блюдо' },
   { icon: Users,        title: 'Обученный персонал', desc: 'Официанты, повара, бармены — медкнижки и санминимум' },
 ];
 

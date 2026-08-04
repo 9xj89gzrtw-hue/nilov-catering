@@ -44,7 +44,7 @@ export default function TrustBar() {
 
       <div className="container-site mt-6 text-center">
         <Link href="/reviews" className="text-xs text-gold-text hover:underline">
-          Посмотреть все 27 отзывов с venue, датой и количеством гостей
+          Посмотреть все 27 отзывов с venue, датой и количеством гостей →
         </Link>
       </div>
     </section>

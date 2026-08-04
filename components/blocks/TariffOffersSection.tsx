@@ -27,7 +27,7 @@ const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; 
   pominki: { label: 'Поминки', desc: 'Поминальный обед. Кутья, блины, кисель, рыба. Без алкоголя. От 1 800 ₽/гость', gradient: 'from-stone-50 to-stone-100' },
 };
 
-// Маппинг событие формат (для ссылки в конструктор)
+// Маппинг событие → формат (для ссылки в конструктор)
 const EVENT_TO_FORMAT: Record<string, string> = {
   svadba: 'banket',
   korporativ: 'banket',
@@ -186,7 +186,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
             <div className="flex items-center justify-between mb-2">
               <h4 className="text-xs font-semibold">Ваш состав ({customItems.length})</h4>
               <button onClick={resetToOriginal} className="text-[10px] text-muted-foreground hover:text-gold-text transition-colors">
-                 Сбросить
+                ↺ Сбросить
               </button>
             </div>
             {customItems.length === 0 ? (
@@ -249,7 +249,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                 placeholder="Поиск…"
                 value={catalogSearch}
                 onChange={e => setCatalogSearch(e.target.value)}
-                className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text"
+                className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
               />
               <div className="flex flex-wrap gap-0.5 mb-1.5">
                 {[{k:'all',l:'Все'},{k:'cold',l:''},{k:'hot',l:''},{k:'desserts',l:''},{k:'drinks',l:''}].map(s => (
@@ -365,7 +365,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
             }
           }}
           className="block w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground text-center hover:bg-primary/90 transition-colors touch-target">
-          Выбрать этот тариф
+          Выбрать этот тариф →
         </Link>
         <a
           href="/menu/catalog"
@@ -440,7 +440,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           </div>
         )}
 
-        {/* Мост coffee-break доставка — ПЕРЕД тарифами (для coffee-break это релевантнее) */}
+        {/* Мост coffee-break → доставка — ПЕРЕД тарифами (для coffee-break это релевантнее) */}
         {selectedEvent === 'coffee-break' && (
           <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
             <p className="text-base font-medium mb-1"> Нужен кофе-брейк без официантов — просто доставка?</p>
@@ -452,7 +452,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/delivery/order"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-                 Собрать заказ доставки
+                 Собрать заказ доставки →
               </Link>
               <Link href="/delivery"
                 className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
@@ -480,7 +480,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/menu/furshet"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-                Смотреть фуршет-меню
+                Смотреть фуршет-меню →
               </Link>
               <Link href="/plan/constructor?format=furshet"
                 className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors">

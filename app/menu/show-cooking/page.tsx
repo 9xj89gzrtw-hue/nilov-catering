@@ -22,7 +22,7 @@ export default function ShowCookingPage() {
           <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>
           <p className="text-xs text-muted-foreground mb-3">Шеф соберёт меню под ваш бюджет, формат и пожелания.</p>
           <a href="/plan/constructor?format=show-cooking" className="text-sm text-gold-text font-semibold hover:underline">
-            Составить меню с шефом
+            Составить меню с шефом →
           </a>
         </div>
       </div>

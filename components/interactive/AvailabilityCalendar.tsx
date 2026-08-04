@@ -48,8 +48,21 @@ export default function AvailabilityCalendar({ slaHours = 2, slaBooking = 'O3', 
         <div className="grid grid-cols-7 gap-0.5 text-center">
           {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => <div key={d} className="text-[10px] text-muted-foreground py-0.5">{d}</div>)}
           {days.map((d, i) => (
-            <div key={i} className={`text-xs py-1 rounded ${d === null ? '' : isPast(d) ? 'text-muted-foreground/40' : isBusy(d) ? 'bg-destructive/10 text-destructive line-through' : 'hover:bg-gold-tint cursor-pointer'}`}
-              onClick={() => d && !isPast(d) && !isBusy(d) && setSelected(dateStr(d))}>
+            <div
+              key={i}
+              tabIndex={d === null || isPast(d) || isBusy(d) ? -1 : 0}
+              role={d === null ? undefined : 'button'}
+              aria-label={d ? `Выбрать дату ${dateStr(d)}` : undefined}
+              aria-disabled={d === null || isPast(d) || isBusy(d) ? 'true' : 'false'}
+              className={`text-xs py-1 rounded outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 ${d === null ? '' : isPast(d) ? 'text-muted-foreground/40' : isBusy(d) ? 'bg-destructive/10 text-destructive line-through' : 'hover:bg-gold-tint cursor-pointer'}`}
+              onClick={() => d && !isPast(d) && !isBusy(d) && setSelected(dateStr(d))}
+              onKeyDown={(e) => {
+                if (d && !isPast(d) && !isBusy(d) && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault();
+                  setSelected(dateStr(d));
+                }
+              }}
+            >
               {d}
             </div>
           ))}

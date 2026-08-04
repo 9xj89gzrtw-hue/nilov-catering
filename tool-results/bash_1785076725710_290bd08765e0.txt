@@ -1,0 +1,206 @@
+=== Catalog dish image sources ===
+srcSet="/images/dishes/bao-duck.png 480w, /images/dishes/bao-duck.png 768w, /images/dishes/bao-duck.png 1920w"
+srcSet="/images/dishes/bao-pork.png 480w, /images/dishes/bao-pork.png 768w, /images/dishes/bao-pork.png 1920w"
+srcSet="/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w"
+srcSet="/images/dishes/beet-carpaccio.png 480w, /images/dishes/beet-carpaccio.png 768w, /images/dishes/beet-carpaccio.png 1920w"
+srcSet="/images/dishes/brownie-shooter.png 480w, /images/dishes/brownie-shooter.png 768w, /images/dishes/brownie-shooter.png 1920w"
+
+=== Catalog picture source types ===
+<source srcSet="/images/dishes/bao-duck.png 480w, /images/dishes/bao-duck.png 768w, /images/dishes/bao-duck.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/bao-duck.png 480w, /images/dishes/bao-duck.png 768w, /images/dishes/bao-duck.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/bao-pork.png 480w, /images/dishes/bao-pork.png 768w, /images/dishes/bao-pork.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/bao-pork.png 480w, /images/dishes/bao-pork.png 768w, /images/dishes/bao-pork.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/beet-carpaccio.png 480w, /images/dishes/beet-carpaccio.png 768w, /images/dishes/beet-carpaccio.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/beet-carpaccio.png 480w, /images/dishes/beet-carpaccio.png 768w, /images/dishes/beet-carpaccio.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/brownie-shooter.png 480w, /images/dishes/brownie-shooter.png 768w, /images/dishes/brownie-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/brownie-shooter.png 480w, /images/dishes/brownie-shooter.png 768w, /images/dishes/brownie-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/buddha-bowl.png 480w, /images/dishes/buddha-bowl.png 768w, /images/dishes/buddha-bowl.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/buddha-bowl.png 480w, /images/dishes/buddha-bowl.png 768w, /images/dishes/buddha-bowl.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/burrata-tomatoes.png 480w, /images/dishes/burrata-tomatoes.png 768w, /images/dishes/burrata-tomatoes.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/burrata-tomatoes.png 480w, /images/dishes/burrata-tomatoes.png 768w, /images/dishes/burrata-tomatoes.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/cauli-steak.png 480w, /images/dishes/cauli-steak.png 768w, /images/dishes/cauli-steak.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/cauli-steak.png 480w, /images/dishes/cauli-steak.png 768w, /images/dishes/cauli-steak.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/cedar-raf.png 480w, /images/dishes/cedar-raf.png 768w, /images/dishes/cedar-raf.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/cedar-raf.png 480w, /images/dishes/cedar-raf.png 768w, /images/dishes/cedar-raf.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/cheese-platter.png 480w, /images/dishes/cheese-platter.png 768w, /images/dishes/cheese-platter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/cheese-platter.png 480w, /images/dishes/cheese-platter.png 768w, /images/dishes/cheese-platter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/chia-pudding.png 480w, /images/dishes/chia-pudding.png 768w, /images/dishes/chia-pudding.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/chia-pudding.png 480w, /images/dishes/chia-pudding.png 768w, /images/dishes/chia-pudding.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/choc-mousse.png 480w, /images/dishes/choc-mousse.png 768w, /images/dishes/choc-mousse.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/choc-mousse.png 480w, /images/dishes/choc-mousse.png 768w, /images/dishes/choc-mousse.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/cranberry-mors.png 480w, /images/dishes/cranberry-mors.png 768w, /images/dishes/cranberry-mors.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/cranberry-mors.png 480w, /images/dishes/cranberry-mors.png 768w, /images/dishes/cranberry-mors.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/gluten-free-cake.png 480w, /images/dishes/gluten-free-cake.png 768w, /images/dishes/gluten-free-cake.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/gluten-free-cake.png 480w, /images/dishes/gluten-free-cake.png 768w, /images/dishes/gluten-free-cake.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/jerk-chicken.png 480w, /images/dishes/jerk-chicken.png 768w, /images/dishes/jerk-chicken.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/jerk-chicken.png 480w, /images/dishes/jerk-chicken.png 768w, /images/dishes/jerk-chicken.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/lemonade-tarragon.png 480w, /images/dishes/lemonade-tarragon.png 768w, /images/dishes/lemonade-tarragon.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/lemonade-tarragon.png 480w, /images/dishes/lemonade-tarragon.png 768w, /images/dishes/lemonade-tarragon.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/macaron-shooter.png 480w, /images/dishes/macaron-shooter.png 768w, /images/dishes/macaron-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/macaron-shooter.png 480w, /images/dishes/macaron-shooter.png 768w, /images/dishes/macaron-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/meat-platter.png 480w, /images/dishes/meat-platter.png 768w, /images/dishes/meat-platter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/meat-platter.png 480w, /images/dishes/meat-platter.png 768w, /images/dishes/meat-platter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/mushroom-burger.png 480w, /images/dishes/mushroom-burger.png 768w, /images/dishes/mushroom-burger.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/mushroom-burger.png 480w, /images/dishes/mushroom-burger.png 768w, /images/dishes/mushroom-burger.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/poke-salmon.png 480w, /images/dishes/poke-salmon.png 768w, /images/dishes/poke-salmon.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/poke-salmon.png 480w, /images/dishes/poke-salmon.png 768w, /images/dishes/poke-salmon.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/seabuckthorn-tea.png 480w, /images/dishes/seabuckthorn-tea.png 768w, /images/dishes/seabuckthorn-tea.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/seabuckthorn-tea.png 480w, /images/dishes/seabuckthorn-tea.png 768w, /images/dishes/seabuckthorn-tea.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/taco-fish.png 480w, /images/dishes/taco-fish.png 768w, /images/dishes/taco-fish.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/taco-fish.png 480w, /images/dishes/taco-fish.png 768w, /images/dishes/taco-fish.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/dishes/trout.png 480w, /images/dishes/trout.png 768w, /images/dishes/trout.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/dishes/trout.png 480w, /images/dishes/trout.png 768w, /images/dishes/trout.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/bbq/b1-480.avif 480w, /images/menu/bbq/b1-768.avif 768w, /images/menu/bbq/b1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/bbq/b1-480.webp 480w, /images/menu/bbq/b1-768.webp 768w, /images/menu/bbq/b1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/bbq/b2-480.avif 480w, /images/menu/bbq/b2-768.avif 768w, /images/menu/bbq/b2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/bbq/b2-480.webp 480w, /images/menu/bbq/b2-768.webp 768w, /images/menu/bbq/b2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/bbq/b3-480.avif 480w, /images/menu/bbq/b3-768.avif 768w, /images/menu/bbq/b3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/bbq/b3-480.webp 480w, /images/menu/bbq/b3-768.webp 768w, /images/menu/bbq/b3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/bbq/b4-480.avif 480w, /images/menu/bbq/b4-768.avif 768w, /images/menu/bbq/b4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/bbq/b4-480.webp 480w, /images/menu/bbq/b4-768.webp 768w, /images/menu/bbq/b4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/bbq/b5-480.avif 480w, /images/menu/bbq/b5-768.avif 768w, /images/menu/bbq/b5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/bbq/b5-480.webp 480w, /images/menu/bbq/b5-768.webp 768w, /images/menu/bbq/b5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d2-480.avif 480w, /images/menu/deserty/d2-768.avif 768w, /images/menu/deserty/d2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d2-480.webp 480w, /images/menu/deserty/d2-768.webp 768w, /images/menu/deserty/d2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d3-480.avif 480w, /images/menu/deserty/d3-768.avif 768w, /images/menu/deserty/d3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d3-480.webp 480w, /images/menu/deserty/d3-768.webp 768w, /images/menu/deserty/d3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d4-480.avif 480w, /images/menu/deserty/d4-768.avif 768w, /images/menu/deserty/d4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d4-480.webp 480w, /images/menu/deserty/d4-768.webp 768w, /images/menu/deserty/d4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d5-480.avif 480w, /images/menu/deserty/d5-768.avif 768w, /images/menu/deserty/d5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d5-480.webp 480w, /images/menu/deserty/d5-768.webp 768w, /images/menu/deserty/d5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d6-480.avif 480w, /images/menu/deserty/d6-768.avif 768w, /images/menu/deserty/d6.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d6-480.webp 480w, /images/menu/deserty/d6-768.webp 768w, /images/menu/deserty/d6.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d7-480.avif 480w, /images/menu/deserty/d7-768.avif 768w, /images/menu/deserty/d7.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d7-480.webp 480w, /images/menu/deserty/d7-768.webp 768w, /images/menu/deserty/d7.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d8-480.avif 480w, /images/menu/deserty/d8-768.avif 768w, /images/menu/deserty/d8.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d8-480.webp 480w, /images/menu/deserty/d8-768.webp 768w, /images/menu/deserty/d8.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/deserty/d9-480.avif 480w, /images/menu/deserty/d9-768.avif 768w, /images/menu/deserty/d9.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/deserty/d9-480.webp 480w, /images/menu/deserty/d9-768.webp 768w, /images/menu/deserty/d9.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h1-480.avif 480w, /images/menu/goryachee/h1-768.avif 768w, /images/menu/goryachee/h1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h1-480.webp 480w, /images/menu/goryachee/h1-768.webp 768w, /images/menu/goryachee/h1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h2-480.avif 480w, /images/menu/goryachee/h2-768.avif 768w, /images/menu/goryachee/h2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h2-480.webp 480w, /images/menu/goryachee/h2-768.webp 768w, /images/menu/goryachee/h2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h3-480.avif 480w, /images/menu/goryachee/h3-768.avif 768w, /images/menu/goryachee/h3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h3-480.webp 480w, /images/menu/goryachee/h3-768.webp 768w, /images/menu/goryachee/h3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h4-480.avif 480w, /images/menu/goryachee/h4-768.avif 768w, /images/menu/goryachee/h4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h4-480.webp 480w, /images/menu/goryachee/h4-768.webp 768w, /images/menu/goryachee/h4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h5-480.avif 480w, /images/menu/goryachee/h5-768.avif 768w, /images/menu/goryachee/h5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h5-480.webp 480w, /images/menu/goryachee/h5-768.webp 768w, /images/menu/goryachee/h5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h6-480.avif 480w, /images/menu/goryachee/h6-768.avif 768w, /images/menu/goryachee/h6.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h6-480.webp 480w, /images/menu/goryachee/h6-768.webp 768w, /images/menu/goryachee/h6.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h7-480.avif 480w, /images/menu/goryachee/h7-768.avif 768w, /images/menu/goryachee/h7.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h7-480.webp 480w, /images/menu/goryachee/h7-768.webp 768w, /images/menu/goryachee/h7.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/goryachee/h8-480.avif 480w, /images/menu/goryachee/h8-768.avif 768w, /images/menu/goryachee/h8.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/goryachee/h8-480.webp 480w, /images/menu/goryachee/h8-768.webp 768w, /images/menu/goryachee/h8.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k1-480.avif 480w, /images/menu/kanape/k1-768.avif 768w, /images/menu/kanape/k1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k1-480.webp 480w, /images/menu/kanape/k1-768.webp 768w, /images/menu/kanape/k1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k2-480.avif 480w, /images/menu/kanape/k2-768.avif 768w, /images/menu/kanape/k2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k2-480.webp 480w, /images/menu/kanape/k2-768.webp 768w, /images/menu/kanape/k2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k3-480.avif 480w, /images/menu/kanape/k3-768.avif 768w, /images/menu/kanape/k3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k3-480.webp 480w, /images/menu/kanape/k3-768.webp 768w, /images/menu/kanape/k3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k4-480.avif 480w, /images/menu/kanape/k4-768.avif 768w, /images/menu/kanape/k4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k4-480.webp 480w, /images/menu/kanape/k4-768.webp 768w, /images/menu/kanape/k4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k5-480.avif 480w, /images/menu/kanape/k5-768.avif 768w, /images/menu/kanape/k5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k5-480.webp 480w, /images/menu/kanape/k5-768.webp 768w, /images/menu/kanape/k5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k6-480.avif 480w, /images/menu/kanape/k6-768.avif 768w, /images/menu/kanape/k6.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k6-480.webp 480w, /images/menu/kanape/k6-768.webp 768w, /images/menu/kanape/k6.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k7-480.avif 480w, /images/menu/kanape/k7-768.avif 768w, /images/menu/kanape/k7.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k7-480.webp 480w, /images/menu/kanape/k7-768.webp 768w, /images/menu/kanape/k7.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k8-480.avif 480w, /images/menu/kanape/k8-768.avif 768w, /images/menu/kanape/k8.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k8-480.webp 480w, /images/menu/kanape/k8-768.webp 768w, /images/menu/kanape/k8.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/kanape/k9-480.avif 480w, /images/menu/kanape/k9-768.avif 768w, /images/menu/kanape/k9.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/kanape/k9-480.webp 480w, /images/menu/kanape/k9-768.webp 768w, /images/menu/kanape/k9.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/napitki/n1-480.avif 480w, /images/menu/napitki/n1-768.avif 768w, /images/menu/napitki/n1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/napitki/n1-480.webp 480w, /images/menu/napitki/n1-768.webp 768w, /images/menu/napitki/n1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/napitki/n2-480.avif 480w, /images/menu/napitki/n2-768.avif 768w, /images/menu/napitki/n2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/napitki/n2-480.webp 480w, /images/menu/napitki/n2-768.webp 768w, /images/menu/napitki/n2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/napitki/n3-480.avif 480w, /images/menu/napitki/n3-768.avif 768w, /images/menu/napitki/n3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/napitki/n3-480.webp 480w, /images/menu/napitki/n3-768.webp 768w, /images/menu/napitki/n3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/napitki/n4-480.avif 480w, /images/menu/napitki/n4-768.avif 768w, /images/menu/napitki/n4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/napitki/n4-480.webp 480w, /images/menu/napitki/n4-768.webp 768w, /images/menu/napitki/n4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s4-480.avif 480w, /images/menu/salaty/s4-768.avif 768w, /images/menu/salaty/s4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s4-480.webp 480w, /images/menu/salaty/s4-768.webp 768w, /images/menu/salaty/s4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s5-480.avif 480w, /images/menu/salaty/s5-768.avif 768w, /images/menu/salaty/s5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s5-480.webp 480w, /images/menu/salaty/s5-768.webp 768w, /images/menu/salaty/s5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s6-480.avif 480w, /images/menu/salaty/s6-768.avif 768w, /images/menu/salaty/s6.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s6-480.webp 480w, /images/menu/salaty/s6-768.webp 768w, /images/menu/salaty/s6.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s7-480.avif 480w, /images/menu/salaty/s7-768.avif 768w, /images/menu/salaty/s7.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s7-480.webp 480w, /images/menu/salaty/s7-768.webp 768w, /images/menu/salaty/s7.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s8-480.avif 480w, /images/menu/salaty/s8-768.avif 768w, /images/menu/salaty/s8.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s8-480.webp 480w, /images/menu/salaty/s8-768.webp 768w, /images/menu/salaty/s8.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/salaty/s9-480.avif 480w, /images/menu/salaty/s9-768.avif 768w, /images/menu/salaty/s9.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/salaty/s9-480.webp 480w, /images/menu/salaty/s9-768.webp 768w, /images/menu/salaty/s9.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se1-480.avif 480w, /images/menu/sezonnye/se1-768.avif 768w, /images/menu/sezonnye/se1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se1-480.webp 480w, /images/menu/sezonnye/se1-768.webp 768w, /images/menu/sezonnye/se1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se2-480.avif 480w, /images/menu/sezonnye/se2-768.avif 768w, /images/menu/sezonnye/se2.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se2-480.webp 480w, /images/menu/sezonnye/se2-768.webp 768w, /images/menu/sezonnye/se2.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se3-480.avif 480w, /images/menu/sezonnye/se3-768.avif 768w, /images/menu/sezonnye/se3.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se3-480.webp 480w, /images/menu/sezonnye/se3-768.webp 768w, /images/menu/sezonnye/se3.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se4-480.avif 480w, /images/menu/sezonnye/se4-768.avif 768w, /images/menu/sezonnye/se4.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se4-480.webp 480w, /images/menu/sezonnye/se4-768.webp 768w, /images/menu/sezonnye/se4.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se5-480.avif 480w, /images/menu/sezonnye/se5-768.avif 768w, /images/menu/sezonnye/se5.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se5-480.webp 480w, /images/menu/sezonnye/se5-768.webp 768w, /images/menu/sezonnye/se5.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se6-480.avif 480w, /images/menu/sezonnye/se6-768.avif 768w, /images/menu/sezonnye/se6.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se6-480.webp 480w, /images/menu/sezonnye/se6-768.webp 768w, /images/menu/sezonnye/se6.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+<source srcSet="/images/menu/sezonnye/se7-480.avif 480w, /images/menu/sezonnye/se7-768.avif 768w, /images/menu/sezonnye/se7.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"
+<source srcSet="/images/menu/sezonnye/se7-480.webp 480w, /images/menu/sezonnye/se7-768.webp 768w, /images/menu/sezonnye/se7.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"
+
+=== All dish images on disk ===
+
+=== Heading order in catalog ===
+171:<h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">Каталог блюд</h1>
+222:<h2 class="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
+236:<h3 class="font-medium text-sm mb-1 leading-tight">Бао с уткой и хойсином</h3>
+266:<h3 class="font-medium text-sm mb-1 leading-tight">Мини-тако с рыбой</h3>
+295:<h3 class="font-medium text-sm mb-1 leading-tight">Мини-тако с цветной капустой</h3>
+323:<h3 class="font-medium text-sm mb-1 leading-tight">Поке с лососем и авокадо</h3>
+354:<h3 class="font-medium text-sm mb-1 leading-tight">Jerk-курица на плантане</h3>
+380:<h3 class="font-medium text-sm mb-1 leading-tight">Стейк из цветной капусты с тапенадой</h3>
+408:<h3 class="font-medium text-sm mb-1 leading-tight">Цуккини-пюре с кокосовым карри</h3>
+436:<h3 class="font-medium text-sm mb-1 leading-tight">Карпаччо из свёклы с дымком</h3>
+466:<h3 class="font-medium text-sm mb-1 leading-tight">Бургер из грибов и бобов</h3>
+497:<h3 class="font-medium text-sm mb-1 leading-tight">Овощное рагу</h3>
+526:<h3 class="font-medium text-sm mb-1 leading-tight">Будда-боул с тофу</h3>
+558:<h3 class="font-medium text-sm mb-1 leading-tight">Мясное плато</h3>
+588:<h3 class="font-medium text-sm mb-1 leading-tight">Сырная тарелка</h3>
+619:<h3 class="font-medium text-sm mb-1 leading-tight">Буррата + томаты</h3>
+649:<h3 class="font-medium text-sm mb-1 leading-tight">Антипасто-плато</h3>
+675:<h3 class="font-medium text-sm mb-1 leading-tight">Веган-граzing</h3>
+706:<h3 class="font-medium text-sm mb-1 leading-tight">Макаронс-шутер</h3>
+737:<h3 class="font-medium text-sm mb-1 leading-tight">Донат-стена</h3>
+
+=== Does the menu nav dropdown (События) have any SSR content? ===
+<ul class="hidden lg:flex items-center gap-1" role="menubar">
+<li class="relative" role="none">
+<button class="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" aria-expanded="false" aria-haspopup="true" role="menuitem">События<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200" aria-hidden="true">
+<path d="m6 9 6 6 6-6">
+</path>
+</svg>
+</button>
+</li>
+<li class="relative" role="none">
+<button class="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" aria-expanded="false" aria-haspopup="true" role="menuitem">Меню<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200" aria-hidden="true">
+<path d="m6 9 6 6 6-6">
+</path>
+</svg>
+</button>
+</li>
+</ul>
+<ul class="hidden md:flex items-center gap-1" role="list">
+<li>
+<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/gallery">Галерея</a>
+</li>
+<li>
+<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/pricing">Тарифы</a>
+</li>
+<li>
+<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/why-us">О нас</a>
+</li>
+
+=== Are dish images photos or graphics? ===
+/home/z/my-project/nilov-catering/public/images/dishes/bao-duck.png:  JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, Exif Standard: [TIFF image data, little-endian, direntries=1], baseline, precision 8, 1024x1024, components 3
+/home/z/my-project/nilov-catering/public/images/dishes/taco-fish.png: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, Exif Standard: [TIFF image data, little-endian, direntries=1], baseline, precision 8, 1024x1024, components 3
+
+=== Catalog dish picture source URL extensions ===

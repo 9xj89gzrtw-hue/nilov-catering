@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['127.0.0.1', 'localhost', 'preview-chat-ed285eb4-0d20-440e-b873-33e202def24d.space-z.ai'],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**" },

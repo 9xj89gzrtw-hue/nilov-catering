@@ -1,65 +1,174 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import type { Format } from '@/lib/types';
-import { FORMAT_DESCRIPTIONS, FORMAT_HERO_IMAGES } from '@/lib/data';
-import { KenBurnsCard } from '@/components/effects/PhotoAliveCard';
 
-const EVENTS: { format: Format; href: string; price: string; label: string; desc?: string }[] = [
-  // Частным клиентам
-  { format: 'banket', href: '/events/svadba', price: 'от 3 950 ₽', label: 'Свадьбы', desc: 'От камерной до банкета на 200 гостей' },
-  { format: 'furshet', href: '/events/chastnoe', price: 'от 2 450 ₽', label: 'Дни рождения', desc: 'Фуршет или банкет для близких' },
-  { format: 'furshet', href: '/events/vypusknoy', price: 'от 2 450 ₽', label: 'Выпускные', desc: 'Школьные и студенческие мероприятия' },
-  { format: 'detskoe', href: '/events/detskoe', price: 'от 1 550 ₽', label: 'Детские праздники', desc: 'Меню для детей, аниматоры, шоу' },
-  { format: 'banket', href: '/events/yubiley', price: 'от 3 950 ₽', label: 'Юбилеи', desc: 'Торжественный банкет для семьи и друзей' },
-  // Бизнесу
-  { format: 'banket', href: '/events/korporativ', price: 'от 2 450 ₽', label: 'Корпоративы', desc: 'Фуршет в офисе или банкет с посадкой' },
-  { format: 'coffee-break', href: '/pricing?event=coffee-break', price: 'от 390 ₽', label: 'Кофе-брейк', desc: 'Конференции, семинары, тренинги' },
+type EventCard = {
+  format: Format;
+  href: string;
+  price: string;
+  label: string;
+  desc: string;
+  photo: string;
+  features: string[];
+};
+
+const EVENTS: EventCard[] = [
+  {
+    format: 'banket',
+    href: '/events/svadba',
+    price: 'от 3 950 ₽',
+    label: 'Свадьба',
+    desc: 'От камерной на 20 гостей до банкета на 200 персон: выездная регистрация, приветственный фуршет, банкет с подачей, десертный стол.',
+    photo: 'wedding-banquet',
+    features: ['Координатор дня', 'Сервировка и текстиль', 'Торт в подарок'],
+  },
+  {
+    format: 'furshet',
+    href: '/events/korporativ',
+    price: 'от 2 450 ₽',
+    label: 'Корпоратив',
+    desc: 'Фуршет в офисе, банкет с посадкой, кофе-брейки для конференции, гала-ужин. Работаем по безналу с НДС, ЭДО Диадок/СБИС.',
+    photo: 'corporate-buffet',
+    features: ['Договор + УПД', 'ЭДО за 5 минут', 'От 10 гостей'],
+  },
+  {
+    format: 'furshet',
+    href: '/events/chastnoe',
+    price: 'от 2 450 ₽',
+    label: 'День рождения',
+    desc: 'Дни рождения, юбилеи, частные ужины. Камерные на 8 персон и крупные на 80. Выезд шефа и сомелье.',
+    photo: 'canape-platter',
+    features: ['Шеф на дом', 'Сомелье + винное сопровождение', 'Посуда и текстиль'],
+  },
+  {
+    format: 'coffee-break',
+    href: '/pricing?event=coffee-break',
+    price: 'от 390 ₽',
+    label: 'Кофе-брейк',
+    desc: 'Конференции, семинары, тренинги. Кофе-станция, выпечка, сэндвичи, фрукты. Подача в 2 тура.',
+    photo: 'coffee-drink',
+    features: ['Аренда кофе-машин', '2 тура подачи', 'От 10 гостей'],
+  },
 ];
 
 export default function EventTypeSelector() {
-  return (
-    <motion.section className="py-16 md:py-20 bg-background" aria-labelledby="events-heading"
-      initial="visible" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-      variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
-    >
-      <div className="container-site">
-        <motion.div className="mb-8 md:text-center" variants={{ visible: { y: 0, opacity: 1 } }}>
-          <h2 id="events-heading" className="mb-3">Какое у вас событие?</h2>
-          <p className="text-muted-foreground max-w-xl md:mx-auto text-balance">Подбираем меню под ваш повод и бюджет.</p>
-        </motion.div>
+  const reduce = useReducedMotion();
 
-        {/* Horizontal scroll on mobile, grid on desktop */}
-        <p className="md:hidden text-xs text-muted-foreground mb-2 text-center"> Листайте влево чтобы увидеть все варианты </p>
-        <div className="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none pb-2">
-          {EVENTS.map((e, i) => (
-            <motion.div key={e.href} className="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" variants={{ visible: { y: 0, opacity: 1, transition: { delay: i * 0.06, duration: 0.4 } } }}>
-              <Link href={e.href}
-                className="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200
-                  hover:border-gold-text active:scale-[0.98] h-full
-                  focus-visible:ring-2 focus-visible:ring-ring"
+  return (
+    <section className="py-20 md:py-28 bg-background" aria-labelledby="events-heading">
+      <div className="container-site">
+        <div className="mb-12 md:mb-16 max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.5 }}
+            className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
+          >
+            Форматы и поводы
+          </motion.p>
+          <motion.h2
+            id="events-heading"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="font-heading text-3xl md:text-5xl mb-4"
+            style={{ fontWeight: 500 }}
+          >
+            Какое у вас событие?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-muted-foreground text-base md:text-lg"
+          >
+            Подбираем формат, меню и тариф под повод и бюджет.
+            Прозрачные цены — без скрытых платежей за посуду, доставку и уборку.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+          {EVENTS.map((e, idx) => (
+            <motion.div
+              key={e.href}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Link
+                href={e.href}
+                className="group block h-full overflow-hidden rounded-2xl border border-line bg-card hover:border-gold-text/40 transition-all no-underline hover:shadow-lg"
               >
-                <div className="aspect-[3/2] bg-secondary overflow-hidden">
-                  {/* KenBurnsCard with diamond frame for event types */}
-                  <KenBurnsCard
-                    src={FORMAT_HERO_IMAGES[e.format]}
-                    alt={e.label}
-                    aspectRatio="video"
-                    frameShape="rounded-xl"
-                    className="group-hover:scale-105 transition-transform duration-500"
+                {/* Photo */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <picture>
+                    <source srcSet={`/images/real/${e.photo}-480.avif 480w, /images/real/${e.photo}-768.avif 768w, /images/real/${e.photo}.avif 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/avif" />
+                    <source srcSet={`/images/real/${e.photo}-480.webp 480w, /images/real/${e.photo}-768.webp 768w, /images/real/${e.photo}.webp 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/webp" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/images/real/${e.photo}.jpg`}
+                      alt={e.label}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </picture>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }}
+                    aria-hidden="true"
                   />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
+                    <h3 className="font-heading text-xl md:text-2xl text-white" style={{ fontWeight: 500 }}>{e.label}</h3>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#E8C97E]">
+                      {e.price}
+                    </span>
+                  </div>
                 </div>
-                <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-heading text-base font-medium text-foreground mb-1">{e.label}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">{e.desc || FORMAT_DESCRIPTIONS[e.format]}</p>
-                  <p className="mt-auto text-sm font-semibold text-gold-text">{e.price}</p>
+
+                {/* Body */}
+                <div className="p-5">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">{e.desc}</p>
+                  <ul className="space-y-1.5 mb-5">
+                    {e.features.map((f) => (
+                      <li key={f} className="text-xs text-foreground/80 flex items-start gap-2">
+                        <svg className="w-3.5 h-3.5 mt-0.5 shrink-0 text-gold-text" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center justify-between text-sm font-medium text-foreground group-hover:text-gold-text transition-colors">
+                    <span>Смотреть меню</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </div>
                 </div>
               </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* All events link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 text-center"
+        >
+          <Link href="/events" className="inline-flex items-center gap-2 text-sm font-medium text-gold-text hover:underline no-underline">
+            Все 9 типов событий
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

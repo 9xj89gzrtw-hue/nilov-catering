@@ -1,0 +1,33 @@
+{
+  "hybrid_score": 9.2,
+  "deterministic_score": 9.92,
+  "deterministic_details": {
+    "a11y": 9.67,
+    "perf": 10.0,
+    "flows": 10.0,
+    "content": 9.95,
+    "seo": 10.0,
+    "overall": 9.92
+  },
+  "vlm_score": 7.53,
+  "vlm_scores": {
+    "C1": 7.4,
+    "C2": 6.5,
+    "C3": 7.0,
+    "C4": 6.5,
+    "C5": 8.25,
+    "C6": 8.25,
+    "C7": 8.0,
+    "C8": 7.75,
+    "C9": 8.25,
+    "C10": 7.9,
+    "C11": 7.0
+  },
+  "target": 9.3,
+  "above_target": false,
+  "weights": {
+    "deterministic": 0.7,
+    "vlm": 0.3
+  },
+  "vlm_runs": "3-run median for C4,C10,C11; 1-run for others"
+}

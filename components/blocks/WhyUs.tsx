@@ -9,7 +9,7 @@ const PILLARS = [
   {
     icon: ChefHat,
     title: 'Шеф-команда из ресторанов СПб',
-    desc: 'Дмитрий Нилов и 4 су-шефа из топовых ресторанов Петербурга. Готовим на вашей площадке, не везём готовое.',
+    desc: 'Дмитрий Нилов и 4 су-шефа из Michelins-listed ресторанов. Готовят на вашей площадке, не везут готовое.',
   },
   {
     icon: Leaf,
@@ -32,7 +32,7 @@ const STATS = [
   { v: 19,   s: '',   l: 'лет в СПб' },
   { v: 3000, s: '+',  l: 'событий' },
   { v: 40,   s: '+',  l: 'в команде' },
-  { v: 4.8,  s: '',   l: 'рейтинг на картах', isFloat: true },
+  { v: 98,   s: '%',  l: 'повторных клиентов' },
 ];
 
 export default function WhyUs() {
@@ -66,7 +66,7 @@ export default function WhyUs() {
               {STATS.map((s) => (
                 <div key={s.l} className="text-center md:text-left">
                   <div className="font-heading text-2xl md:text-3xl font-semibold text-gold-text">
-                    {s.isFloat ? '4.8' : <AnimatedCounter value={s.v as number} suffix={s.s} />}
+                    <AnimatedCounter value={s.v} suffix={s.s} />
                   </div>
                   <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-0.5">{s.l}</div>
                 </div>

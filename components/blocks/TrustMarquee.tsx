@@ -20,7 +20,7 @@ interface TrustMarqueeProps {
  * Бесконечная бегущая строка через Framer Motion.
  * Mobile: ускоренный, меньше элементов.
  *
- * W20 fix: каждая карточка теперь кликабельна ведёт на /reviews#case-N
+ * W20 fix: каждая карточка теперь кликабельна → ведёт на /reviews#case-N
  * (если есть reviewId в ref). Venue/date видны под названием.
  */
 export function TrustMarquee({ clients }: TrustMarqueeProps) {
@@ -56,15 +56,19 @@ export function TrustMarquee({ clients }: TrustMarqueeProps) {
         </p>
         {client.ref && (
           <p className="text-[10px] text-muted-foreground text-center leading-tight">
+            {/* A11y: removed opacity-70 — muted-foreground at full opacity is 8.38:1 on cream (AAA);
+                opacity-70 dropped it to 3.86:1 (FAIL). Hierarchy preserved by layout/size. */}
             {client.ref.event}
             <br />
-            <span className="opacity-70">{client.ref.date}</span>
+            <span>{client.ref.date}</span>
             <br />
-            <span className="opacity-70">{client.ref.venue}</span>
+            <span>{client.ref.venue}</span>
           </p>
         )}
+        {/* A11y: emerald-600 (oklch → #009966) on cream = 3.11:1 FAIL at 9px.
+            #065F46 (emerald-800) on cream = 6.54:1 AA pass. */}
         {client.status === 'verified' && (
-          <p className="text-[9px] text-emerald-600 mt-1"> проверен</p>
+          <p className="text-[9px] text-[#065F46] mt-1"> проверен</p>
         )}
       </>
     );

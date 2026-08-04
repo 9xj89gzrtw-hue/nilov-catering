@@ -40,7 +40,7 @@ export default function VenuesPage() {
 
       <div className="mt-12 text-center">
         <p className="text-sm text-muted-foreground mb-4">Не нашли свою площадку? Обсудим.</p>
-        <Link href="/contact" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Связаться </Link>
+        <Link href="/contact" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Связаться →</Link>
       </div>
     </div></main>
   );

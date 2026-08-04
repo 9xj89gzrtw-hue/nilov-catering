@@ -13,22 +13,8 @@ export default function SvadbaPage() {
   return (
     <main id="main" className="pt-24 pb-20">
       <div className="container-site max-w-5xl">
-        {/* Hero photo — real wedding banquet */}
-        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-8">
-          <picture>
-            <source srcSet="/images/real/wedding-banquet-480.avif 480w, /images/real/wedding-banquet-768.avif 768w, /images/real/wedding-banquet.avif 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/avif" />
-            <source srcSet="/images/real/wedding-banquet-480.webp 480w, /images/real/wedding-banquet-768.webp 768w, /images/real/wedding-banquet.webp 1920w" sizes="(max-width: 768px) 100vw, 1024px" type="image/webp" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/real/wedding-banquet.jpg" alt="Свадебный банкет — кейтеринг NiloV" className="w-full h-full object-cover" />
-          </picture>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
-          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Свадьбы под ключ</p>
-            <h1 className="font-heading text-2xl md:text-4xl text-white" style={{ fontWeight: 500 }}>Свадебный кейтеринг</h1>
-          </div>
-        </div>
-
         <div className="text-center mb-8">
+          <h1 className="mb-2">Свадебный кейтеринг</h1>
           <p className="text-muted-foreground mb-2 max-w-xl mx-auto">
             Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
           </p>
@@ -40,6 +26,16 @@ export default function SvadbaPage() {
               label=" Отправить ссылку жениху/родным"
             />
           </div>
+        </div>
+
+        {/* Seasonal: White Nights */}
+        <div className="mb-6 p-4 rounded-xl border border-amber-300 bg-amber-50 text-center">
+          <p className="text-sm font-medium text-amber-900">
+             Сезон белых ночей (май-июль) — бронирование за 60+ дней
+          </p>
+          <p className="text-xs text-amber-700 mt-1">
+            Пиковый сезон свадеб в СПб. Забронируйте дату заранее — скидка 5% при бронировании за 90 дней.
+          </p>
         </div>
 
         {/* Multi-diet callout — для невест с разными диетами среди гостей */}
@@ -59,7 +55,7 @@ export default function SvadbaPage() {
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
           <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-            Собрать свадебное меню с разными диетами
+            Собрать свадебное меню с разными диетами →
           </Link>
         </div>
 
@@ -69,7 +65,7 @@ export default function SvadbaPage() {
             <span className="font-medium">Веганский свадебный торт?</span> Да — отдельная выпечка
             на миндальной/рисовой муке с кокосовыми сливками. Также: БГ-торт (&lt;20 ppm),
             без-сахара торт (для СД1, на стевии). Цены — от 1 200 ₽/кг.{' '}
-            <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню </Link>
+            <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню →</Link>
           </p>
         </div>
 
@@ -103,8 +99,25 @@ export default function SvadbaPage() {
             В конструкторе меню можно исключить конкретные аллергены фильтром — 14 аллергенов ТР ТС 022/2011. Менеджер подтвердит по телефону.
           </p>
           <Link href="/plan/constructor?format=banket" className="text-xs text-gold-text font-semibold hover:underline">
-            Собрать свадебное меню с фильтром аллергенов
+            Собрать свадебное меню с фильтром аллергенов →
           </Link>
+        </div>
+
+        {/* Chef quote — emotional storytelling */}
+        <div className="mt-12 mb-8 p-6 rounded-2xl bg-secondary/30 border-l-4 border-gold-text">
+          <p className="font-heading text-lg md:text-xl italic text-foreground/90 mb-3">
+            «Свадьба — это не банкет. Это день, когда каждая деталь говорит невесте:
+            "Ты важна". Мы готовим не еду — мы готовим спокойствие».
+          </p>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
+              <img src="/images/team/chef-nilov.jpg" alt="Дмитрий Нилов" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p className="text-sm font-medium">Дмитрий Нилов</p>
+              <p className="text-xs text-muted-foreground">Шеф-повар, 17 лет опыта</p>
+            </div>
+          </div>
         </div>
 
         <TariffOffersSection
@@ -238,6 +251,37 @@ export default function SvadbaPage() {
             </div>
           </div>
         </div>
+
+        {/* SPb Palace/Venue Matrix — venue partnerships */}
+        <section className="mt-12 mb-8">
+          <h2 className="font-heading text-2xl font-medium mb-4">Площадки Санкт-Петербурга</h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            Работаем на лучших площадках СПб. Знаем логистику, ограничения, кухонные мощности каждой.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { name: 'Особняк Бруноз', area: 'Петроградский', guests: 'до 120', feature: 'Исторический особняк, камерный зал' },
+              { name: 'Лофт «Севкабель»', area: 'Васильевский', guests: 'до 300', feature: 'Индустриальный лофт, панорама Невы' },
+              { name: 'Конгресс-холл «Экспофорум»', area: 'Пушкин', guests: 'до 800', feature: 'Конгресс-холл, 3 зала, парковка' },
+              { name: 'Константиновский дворец', area: 'Стрельна', guests: 'до 200', feature: 'Дворцовый комплекс, набережная' },
+              { name: 'Особняк Половцова', area: 'Адмиралтейский', guests: 'до 80', feature: 'Дворец XIX века, мраморный зал' },
+              { name: 'Лахта Центр', area: 'Приморский', guests: 'до 500', feature: 'Небоскрёб, панорамные залы' },
+              { name: 'Царская усадьба «Царское Село»', area: 'Пушкин', guests: 'до 150', feature: 'Исторический парк, павильоны' },
+              { name: 'Ресторан «Гостиный двор»', area: 'Васильевский', guests: 'до 100', feature: 'Собственная кухня, терраса' },
+              { name: 'Вилла Роза', area: 'Репино', guests: 'до 60', feature: 'Загородная вилла, Финский залив' },
+            ].map(v => (
+              <div key={v.name} className="p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
+                <h3 className="font-heading text-base font-medium mb-1">{v.name}</h3>
+                <p className="text-xs text-muted-foreground mb-2">{v.area} · {v.guests}</p>
+                <p className="text-xs text-foreground/80">{v.feature}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground mt-4 text-center">
+            Не нашли свою площадку? Работаем на любой — привезём всё необходимое.{' '}
+            <Link href="/contact?subject=Площадка-не-в-списке" className="text-gold-text hover:underline">Уточнить →</Link>
+          </p>
+        </section>
       </div>
     </main>
   );

@@ -54,7 +54,7 @@ export function calcTotal(
 ): CalcResult {
   const prices = opts.pricing?.pricePerGuest || DEFAULT_PRICING.pricePerGuest;
 
-  // Guard: null/NaN/<=0 guests zero result
+  // Guard: null/NaN/<=0 guests → zero result
   if (guests === null || isNaN(guests) || guests <= 0) {
     return {
       base: 0,
@@ -129,10 +129,10 @@ export function calcTotal(
   const total = base - discount + addonsTotal + delivery;
   const perGuest = g > 0 ? Math.round(total / g) : 0;
 
-  // Removed fake "savings vs luxury tier" anchor-pricing calculation.
-  // It compared actual total to a hypothetical luxury-tier price the user never selected.
-  // This is deceptive. Real discounts (volume gamma, early-bird) are shown transparently.
-  const savings = 0;
+  // 6. Savings vs Максимальный (luxury tier)
+  const maxPrice = prices[format]?.['luxury'] ?? base * 1.5;
+  const maxBase = format === 'chef-at-home' ? base * 1.5 : maxPrice * effectiveGuests;
+  const savings = Math.max(0, maxBase - total);
 
   const result: CalcResult = {
     base: Math.round(base),

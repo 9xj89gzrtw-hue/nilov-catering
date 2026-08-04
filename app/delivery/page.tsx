@@ -70,7 +70,7 @@ export default function DeliveryPage() {
             href="/delivery/order"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-             Начать сборку заказа
+             Начать сборку заказа →
           </Link>
         </div>
       </section>

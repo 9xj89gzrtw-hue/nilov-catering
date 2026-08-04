@@ -75,7 +75,7 @@ export default function VypusknoyPage() {
             <div>
               <h3 className="font-semibold mb-2"> B2B-условия</h3>
               <ul className="text-muted-foreground space-y-1">
-                <li> Договор юр.лицо юр.лицо</li>
+                <li> Договор юр.лицо ↔ юр.лицо</li>
                 <li> Счёт, акт, счёт-фактура (с НДС/без НДС)</li>
                 <li> ЭДО: Контур.Диадок, СБИС</li>
                 <li> Отсрочка платежа для постоянных клиентов</li>

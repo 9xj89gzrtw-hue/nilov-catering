@@ -7,7 +7,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Gate: reduced motion OR touch device OR tablet skip Lenis
+    // Gate: reduced motion OR touch device OR tablet → skip Lenis
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isTouch = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
 

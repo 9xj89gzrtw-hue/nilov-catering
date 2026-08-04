@@ -38,7 +38,7 @@ const RECAPS: Recap[] = [
     g: '50 гостей',
     v: 'Лофт «Севкабель», СПб',
     ref: 'rev-003',
-    tags: ['B2B', 'ЭДО', 'УСНОСН'],
+    tags: ['B2B', 'ЭДО', 'УСН→ОСН'],
     hasVideo: true,
     videoSrc: '/videos/gallery/food.webm',
     posterSrc: '/images/gallery/corporate-furshet.jpg',
@@ -149,7 +149,7 @@ export default function RecapPage() {
                   ))}
                 </div>
                 <p className="mt-2 text-sm text-gold-text font-semibold">
-                  Читать отзыв клиента
+                  Читать отзыв клиента →
                 </p>
               </div>
             </Link>
@@ -175,7 +175,7 @@ export default function RecapPage() {
             Полные детали и контакты референсов — по запросу на b2b@odaeda.ru (после NDA).
             Для фестивалей 800+ гостей — расширяем производственные мощности.{' '}
             <Link href="/why-us" className="underline text-gold-text">
-              Подробнее
+              Подробнее →
             </Link>
           </p>
         </div>

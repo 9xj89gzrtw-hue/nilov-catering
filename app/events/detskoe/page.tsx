@@ -39,9 +39,9 @@ export default function DetskoeEventPage() {
           </ul>
           <p className="text-sm text-red-900">
             Укажите тип ореха и тяжесть аллергии в заявке. Подробнее:{' '}
-            <Link href="/allergens" className="underline font-semibold">/allergens </Link>{' '}
+            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>{' '}
             {' '}
-            <Link href="/certificates" className="underline font-semibold">/certificates </Link>
+            <Link href="/certificates" className="underline font-semibold">/certificates →</Link>
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export default function DetskoeEventPage() {
           </ul>
           <p className="text-sm text-purple-900">
             Укажите «СД1» или «СД2» в заявке. Полный протокол — на странице{' '}
-            <Link href="/allergens" className="underline font-semibold">/allergens </Link>
+            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export default function DetskoeEventPage() {
             <strong>Безглютеновое детское меню</strong> на миндальной/рисовой муке — отдельная
             линия кухни, тестирование &lt;20 ppm (GFCO standard). БГ торт, БГ капкейки, БГ пицца,
             БГ панкейки без сахара (для СД1). {' '}
-            <Link href="/menu/gluten-free" className="underline font-semibold">БГ-меню </Link>
+            <Link href="/menu/gluten-free" className="underline font-semibold">БГ-меню →</Link>
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function DetskoeEventPage() {
             В конструкторе меню можно включить режим «Несколько групп гостей» — отдельно собрать детское меню и отдельно взрослое, с раздельным расчётом цены.
           </p>
           <Link href="/plan/constructor?format=detskoe" className="text-xs text-gold-text font-semibold hover:underline">
-            Собрать гибридное меню в конструкторе
+            Собрать гибридное меню в конструкторе →
           </Link>
         </div>
 

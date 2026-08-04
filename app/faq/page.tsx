@@ -54,7 +54,7 @@ const FAQS_B2C = [
 const FAQS_B2B = [
   {
     q: 'Работаете с юридическими лицами?',
-    a: 'Да, B2B — наше основное направление. Договор юр.лицо юр.лицо с фиксированной сметой. Счёт на оплату (безналичный расчёт). Закрывающие документы: акт + счёт-фактура. ЭДО: Контур.Диадок, СБИС. ИП Нилов Д.И. применяет УСН (без НДС). Для плательщиков НДС (ОСН) — работаем с НДС (по запросу). Кассовый чек по 54-ФЗ.',
+    a: 'Да, B2B — наше основное направление. Договор юр.лицо ↔ юр.лицо с фиксированной сметой. Счёт на оплату (безналичный расчёт). Закрывающие документы: акт + счёт-фактура. ЭДО: Контур.Диадок, СБИС. ИП Нилов Д.И. применяет УСН (без НДС). Для плательщиков НДС (ОСН) — работаем с НДС (по запросу). Кассовый чек по 54-ФЗ.',
   },
   {
     q: 'Какие документы предоставляете для Роспотребнадзора?',
@@ -138,7 +138,7 @@ export default function FAQPage() {
             type="search"
             id="faq-search"
             placeholder=" Поиск по вопросам…"
-            className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow"
+            className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow"
           />
         </div>
         <script dangerouslySetInnerHTML={{ __html: `

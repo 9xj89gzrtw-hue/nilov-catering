@@ -40,8 +40,8 @@ const STATION_IMAGES: Record<string, string[]> = {
 };
 
 // Per-station objectPosition map — different framing for different dish types
-// Canapés (top-down, dense) center; Soups (deep plates) center 35%;
-// Tall cakes/portraits center 60%; Drinks (glasses) center 30%
+// Canapés (top-down, dense) → center; Soups (deep plates) → center 35%;
+// Tall cakes/portraits → center 60%; Drinks (glasses) → center 30%
 export const STATION_OBJECT_POSITION: Record<string, string> = {
   cold: 'center 40%',
   hot: 'center 45%',

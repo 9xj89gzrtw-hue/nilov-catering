@@ -1,4 +1,4 @@
-/** Маппинг имён иконок (string) Lucide React компоненты */
+/** Маппинг имён иконок (string) → Lucide React компоненты */
 import {
   Calendar, Sparkles, Coffee, ShieldCheck, FileText, Truck, ChefHat, ScrollText, ClipboardCheck, Flag,
   Quote, GraduationCap, Users, Star, LucideIcon,

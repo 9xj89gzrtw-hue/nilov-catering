@@ -1,0 +1,272 @@
+{
+  "week": 78,
+  "critics": [
+    {
+      "critic_id": "C60",
+      "persona": "Елена, 29, невеста — свадьба 50 чел. Хочет: красивые фото еды, понятные цены, собрать меню, отправить ссылку жениху.",
+      "bias": -1,
+      "overall": 8.6,
+      "issues": [
+        {
+          "severity": "high",
+          "evidence": "rootevents__svadba.html: только 4 <img> на странице (по одной на тариф — wedding-banquet.jpg, furshet-menu.jpg, dessert-table.jpg, cocktail.jpg). Для невесты, которая хочет «красивые фото еды», этого мало — приходится идти в /gallery за 72 фото.",
+          "category": "визуал"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootevents__svadba.html: 0 mentions «Поделиться», 0 «Отправить ссылку», 0 navigator.share, 0 copy-link. Сценарий «отправить ссылку жениху» не реализован как кнопка — только вручную скопировать URL.",
+          "category": "простота"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootplan__constructor.html и plan__constructor__furshet_standard.html — byte-identical (len 109023 == 109023). URL ?format=furshet&tier=standard НЕ отражается в SSR: жених, открыв ссылку /plan/constructor?format=banket&tier=standard, увидит пустой конструктор (формат не выбран)."
+        },
+        {
+          "severity": "high",
+          "evidence": "rootmenu__catalog.html: «Свадебный торт Индивидуальный от кондитера, 3 яруса... 15000 ₽ /гость». Цена 15 000 ₽ за гостя за торт — явный баг (должна быть за торт или за кг). На свадьбе 50 чел. это даст 750 000 ₽ только за торт.",
+          "category": "понятные цены"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootpricing.html: кнопка «Печать тарифов» — type=\"button\" без onclick и без window.print в SSR. После гидратации React заработает, но в no-JS режиме мертвая.",
+          "category": "простота"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootevents__svadba.html: «Выбрать этот тариф» ведёт на /plan/constructor?format=banket&tier=standard (4 варианта), но SSR конструктора одинаковый для всех URL — состояние не предзаполняется.",
+          "category": "простота"
+        },
+        {
+          "severity": "low",
+          "evidence": "rootplan__constructor.html: форма заявки требует Имя + Телефон (звонок), нет опции «отправить расчёт на email» как альтернативы — для невесты, не желающей звонка, есть только mailto-info@odaeda.ru обходной путь.",
+          "category": "простота"
+        }
+      ],
+      "wins": [
+        "rootevents__svadba.html: 4 прозрачных тарифа (Эконом 3 950, Стандарт 5 470, Расширенный 7 350, Максимальный 9 950 ₽/гость) с фиксированными ценами и понятным составом — невеста сразу видит бюджет на 50 чел.",
+        "rootevents__svadba.html: «Несколько групп гостей» — веган + халяль + БГ + без орехов в одной свадьбе с per-group pricing и примером расчёта (50 веганов × 2 950 + 30 всеядных × 5 470 = 311 600 ₽ вместо 437 600 ₽).",
+        "rootevents__svadba.html: упоминание удалённой работы для невесты из Москвы — видеодегустация Zoom, согласование меню через WhatsApp/Telegram.",
+        "rootevents__svadba.html: JSON-LD BreadcrumbList + Service с AggregateOffer (lowPrice 390, highPrice 9950) — структура для SEO.",
+        "root.html: отзывы «Екатерина и Дмитрий Август 2024» с реальной историей про БГ-торт для тёти — эмоциональный триггер для невесты."
+      ],
+      "summary": "Свадебная страница /events/svadba закрывает базовые потребности: прозрачные тарифы, мульти-диета, эмоциональные отзывы. Но сценарий «красивые фото еды + отправить ссылку жениху» реализован слабо: 4 фото на странице, нет кнопки «Поделиться», а глубокие ссылки /plan/constructor?format=banket&tier=standard не предзаполняют конструктор в SSR (HTML одинаковый для всех URL). Баг с ценой свадебного торта 15 000 ₽/гость подрывает доверие к ценам."
+    },
+    {
+      "critic_id": "C61",
+      "persona": "Игорь, 35, офис-менеджер — корпоратив 80 чел. Хочет: PDF-смету, ЭДО, SLA, быстрый расчёт.",
+      "bias": -1,
+      "overall": 8.4,
+      "issues": [
+        {
+          "severity": "critical",
+          "evidence": "rootpricing.html «Сводная таблица цен»: в SSR видны только 💍 Свадьба, ☕ Кофе-брейк, 🕯️ Поминки, 🎈 Детское, 👨‍🍳 Шеф на дом. КОРПОРАТИВ отсутствует в сводной таблице — ключевое событие для Игоря не показано без JS-переключения вкладки.",
+          "category": "прозрачность"
+        },
+        {
+          "severity": "critical",
+          "evidence": "rootpricing.html: только Свадьба-вкладка отрендерена в SSR. Tabs «Корпоратив», «Выпускной», «Кофе-брейк» и т.д. требуют JS (0 role=tabpanel, 0 data-event атрибутов в SSR). B2B-клиент без JS или поисковик не видит корпоративных тарифов.",
+          "category": "B2B-функционал"
+        },
+        {
+          "severity": "high",
+          "evidence": "Нет генератора PDF-сметы на лету. /pricing даёт только статичные шаблоны: /api/templates/dogovor, /api/templates/nda, /api/templates/sla. Чтобы получить смету под корпоратив 80 чел., Игорь должен отправить заявку и ждать звонка менеджера — «быстрый расчёт» не реализован как PDF-экспорт.",
+          "category": "B2B-функционал"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootaccount__orders.html: «ℹ️ Примеры заказов. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на info@odaeda.ru... ЭДО-интеграция (Диадок/СБИС) — в разработке». Личный кабинет B2B — это мок, не рабочий продукт.",
+          "category": "B2B-функционал"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootaccount__orders.html: из 4 документов по заказу только «Договор Скачать PDF →» — прямая загрузка. «Счёт», «Акт», «Счёт-фактура» — все «Запросить →» через mailto:info@odaeda.ru. B2B-клиент не может скачать закрывающие документы саморучно.",
+          "category": "B2B-функционал"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootpricing.html: «Печать тарифов» — type=button без onclick в SSR. B2B-клиент без JS не сможет распечатать тарифы для согласования.",
+          "category": "B2B-функционал"
+        },
+        {
+          "severity": "low",
+          "evidence": "rootfaq.html: SLA описан («штраф 1% за каждую минуту опоздания, максимум 30%»), но шаблон SLA доступен только как PDF-шаблон на /certificates — нет примера заполненного SLA с реальными метриками прошлых корпоративов.",
+          "category": "прозрачность"
+        }
+      ],
+      "wins": [
+        "rootpricing.html: прямые ссылки на шаблоны PDF — /api/templates/dogovor, /api/templates/nda, /api/templates/sla (download=...). Без email-ожидания, без реггейтинга.",
+        "rootcertificates.html: полный пакет B2B-документов в SSR — Декларация ЕАЭС N RU Д-RU.АГ11.В.12345/24, ТР ТС 021/2011+HACCP, медкнижки 100%, ППК, журналы бракеража, полис страхования ГО 5-30 млн ₽.",
+        "rootfaq.html: детальный B2B-раздел — ЭДО (Диадок/СБИС), УСН/ОСН, 44-ФЗ/223-ФЗ, отсрочка 14 раб.дн. для постоянных клиентов, скидки за объём (5%/10%/15% от 50/100/200 гостей), страхование.",
+        "rootpartners.html: agent-схема 10-15%, NDA, SLA, white-label, ЭДО operator IDs (2AE, 2АК) — готовая B2B-инфраструктура для тендеров.",
+        "rootcontact.html: B2B-форма с полями ИНН организации, КПП, юр.адрес, ЭДО-система, налоговый режим, SLA-чекбокс, 44-ФЗ/223-ФЗ-чекбокс — covers Игорь's быстрый расчёт сценарий."
+      ],
+      "summary": "B2B-инфраструктура на бумаге мощная (FAQ, сертификаты, шаблоны PDF, partners-страница), но для Игоря как офис-менеджера на 80 чел. ключевые сценарии ломаются: в /pricing сводная таблица не содержит корпоративных тарифов (только свадьба/кофе-брейк/поминки/детское/шеф), корпоративная вкладка не отрендерена в SSR, /account/orders — это мок с примерами заказов и «ЭДО в разработке», а PDF-смета на лету вообще не генерируется. Закрывающие документы кроме договора требуют email-запроса."
+    },
+    {
+      "critic_id": "C62",
+      "persona": "Анна, 44, фуд-блогер. Оценивает: качество фото (реальные vs AI), читаемость меню, дизайн.",
+      "bias": -1,
+      "overall": 8.2,
+      "issues": [
+        {
+          "severity": "critical",
+          "evidence": "rootmenu__catalog.html: 133 <img>, но только 68 уникальных src. Топ повторов: /images/menu/goryachee/h7.jpg ×5, /images/menu/bbq/b2.jpg ×5, /images/menu/goryachee/h3.jpg ×4, /images/menu/salaty/s7.jpg ×4, /images/menu/goryachee/h1.jpg ×4 и т.д. ~50% блюд показывают фото другого блюда.",
+          "category": "качество фото"
+        },
+        {
+          "severity": "critical",
+          "evidence": "rootmenu__catalog.html: разные блюда имеют ИДЕНТИЧНЫЕ БЖУ. «Бао с уткой и хойсином» (380 ₽) и «Бургер из грибов и бобов» (290 ₽) — оба БЖУ 5г/8г/18г. «Jerk-курица на плантане», «Стейк из цветной капусты с тапенадой» (веган!), «Кюфта из баранины», «Кебаб-плато», «Фрикадельки» — все БЖУ 20г/12г/6г. Мясо и овощи не могут иметь одинаковые макросы — данные шаблонные/фейковые.",
+          "category": "читаемость меню"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootmenu__catalog.html: «Свадебный торт Индивидуальный от кондитера, 3 яруса... 15000 ₽ /гость» — цена за гостя за индивидуальный торт не имеет смысла. Фуд-блогер сразу заметит.",
+          "category": "читаемость меню"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootmenu__catalog.html: 0 из 133 <img> имеют width/height атрибуты (только loading=lazy + decoding=async). При 124 блюдах на странице это серьёзный риск CLS — фото будут «прыгать» при загрузке.",
+          "category": "дизайн"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootgallery.html: <h1>=1, <h2>=0, <h3>=1 — нарушение иерархии заголовков. После h1 сразу h3, без h2-секций.",
+          "category": "дизайн"
+        },
+        {
+          "severity": "medium",
+          "evidence": "root.html: hero <img src=/images/gallery/wedding-banquet.jpg alt=\"\" aria-hidden=true> — пустой alt на ключевой food-фотографии, упущенная SEO-возможность для фуд-блогера-поисковика.",
+          "category": "дизайн"
+        },
+        {
+          "severity": "low",
+          "evidence": "rootmenu__catalog.html: JSON-LD @type=Menu содержит только 6 hasMenuSection (имена секций), без hasMenuItem с ценами. 124 блюда не экспонируются в structured data — упущенный rich snippet для Google Recipes/Menu.",
+          "category": "читаемость меню"
+        }
+      ],
+      "wins": [
+        "Все изображения лежат в /images/real/, /images/menu/, /images/gallery/, /images/dishes/ — НЕТ маркеров AI/генерации, класс foodphoto-ssr-visible указывает на реальные food-фото в SSR.",
+        "rootgallery.html: 72 фото, каждое с alt-текстом (Свадебный банкет, Канапе плато, Десертный стол и т.д.), loading=lazy + decoding=async — читаемая галерея с подписями.",
+        "rootmenu__catalog.html: 124 блюда с описаниями (не только название), аллергенами (14 по ТР ТС 022/2011), ХЕ для СД1, БЖУ, ценой и кнопкой «Открыть в конструкторе».",
+        "rootmenu__halal.html: 14 халяль-блюд с пометкой «🗡️ забой: зибха», сертификат СМР-Халяль-2026-142, отдельное оборудование — credibility для food-блогера.",
+        "rootallergens.html: 14 аллергенов с эмодзи-иконками, протоколы для целиакии/анафилаксии/СД1 — глубина контента, ценная для food-обзора."
+      ],
+      "summary": "Контент меню глубокий (124 блюда с аллергенами, ХЕ, БЖУ), фотографии реальные (не AI) — но фуд-блогер быстро раскроет шаблонность данных: 50% блюд в каталоге показывают чужое фото, а макронутриенты БЖУ совпадают между совершенно разными блюдами (мясо и овощи с одинаковыми 20г/12г/6г). Цена свадебного торта 15 000 ₽/гость — явная ошибка. Галерея имеет 72 реальных фото, но нарушение иерархии h1→h3 и отсутствие width/height на img портят впечатление."
+    },
+    {
+      "critic_id": "C63",
+      "persona": "Виктор, 67, заказывает поминки на 30 чел, без алкоголя. Оценивает: понятность навигации, крупный текст, dignified tone.",
+      "bias": -1,
+      "overall": 9.0,
+      "issues": [
+        {
+          "severity": "high",
+          "evidence": "rootpricing.html: вкладка «Поминки» не отрендерена в SSR — только «Свадьба» видна. Виктор должен кликнуть вкладку «🕯️ Поминки» (требует JS), чтобы увидеть детали тарифа. Без JS доступны только 2 строки в сводной таблице (Базовый 1 800 ₽, Расширенный 2 500 ₽).",
+          "category": "понятность навигации"
+        },
+        {
+          "severity": "high",
+          "evidence": "Все страницы используют text-sm (150 упоминаний в root.html) и text-xs (44 упоминания) как основной размер шрифта. Для 67-летнего пользователя 14px/12px — мелко. Нет виджета увеличения шрифта, нет A+ / A- контролов. /accessibility страница существует как ссылка, но её содержимое не вошло в снимки.",
+          "category": "крупный текст"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootplan__constructor.html: формат «🕯️ Поминки Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя. от 1 800 ₽/гость мин. 10 гостей» — присутствует, но является 7-й позицией в списке после фуршета, банкета, кофе-брейка, детского, шефа, мобильного фуршета. Виктор должен пролистать.",
+          "category": "понятность навигации"
+        },
+        {
+          "severity": "low",
+          "evidence": "root.html: навигация «События → Поминки» доступна, но путь через dropdown-меню — для пожилого пользователя дропдаун может быть менее очевиден, чем прямая ссылка в основном меню.",
+          "category": "понятность навигации"
+        }
+      ],
+      "wins": [
+        "rootallergens.html: «🕯 Поминальный протокол (без алкоголя, без торта)» — dignified tone: «Полностью исключаем алкоголь, сладкие торты со свечками, шумные элементы сервировки», «Тихая сервировка, без музыки, без аниматоров», «Кутья (коливо), постные блины, кисель — по традиции». Тон выдержан уважительно.",
+        "rootallergens.html: конкретное поминальное меню — «борщ постный, уха, рыба запечённая, винегрет, пирожки с капустой», «доставка в кафе у дома или в храм (по согласованию)», «срочные заказы — даже на день обращения».",
+        "rootfaq.html: FAQ JSON-LD содержит вопрос «Можно ли заказать поминки?» с полным ответом — rich snippet в Google для пожилого пользователя, ищущего «кейтеринг поминки спб».",
+        "rootpricing.html: сводная таблица в SSR содержит поминки: «🕯️ Поминки Базовый 1 800 ₽ / 10 мин. гостей, Расширенный 2 500 ₽ / 10 мин. гостей» — Виктор сразу видит цену без переключения вкладок.",
+        "rootcontact.html: в форме заявки тип события включает «Поминки (поминальный обед)» как опция, а формат — «Поминальный обед (постное меню, без алкоголя)» — отдельный пункт.",
+        "Все страницы: skip-link «Перейти к содержимому» — пожилой пользователь с клавиатурой может пропустить меню.",
+        "Все страницы: lang=\"ru\" — скринридер правильно озвучит русский текст."
+      ],
+      "summary": "Для Виктора сайт в целом хорошо закрывает сценарий: dignified tone в поминальном протоколе, конкретное постное меню, цена в сводной таблице, FAQ с JSON-LD для поиска. Минус — основной body text мелкий (text-sm/text-xs), а вкладка «Поминки» на /pricing требует JS. /accessibility ссылка существует, но содержимое не оценено в снимках."
+    },
+    {
+      "critic_id": "C64",
+      "persona": "Сергей, 28, frontend-разработчик. Оценивает: техническое качество, SSR, structured data, performance, ARIA, semantic HTML.",
+      "bias": -1,
+      "overall": 8.7,
+      "issues": [
+        {
+          "severity": "high",
+          "evidence": "rootplan__constructor.html и plan__constructor__furshet_standard.html — byte-identical (109 023 байт). URL параметры ?format=furshet&tier=standard НЕ отражаются в SSR. useSearchParams, видимо, читается только на клиенте после гидратации. Bad for SEO, bad for share-links, bad for no-JS.",
+          "category": "SSR"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootpricing.html: только вкладка «Свадьба» отрендерена в SSR. 0 role=tabpanel, 0 data-event, 0 hidden= для других вкладок. Tabs Корпоратив/Выпускной/Кофе-брейк/Поминки/Детское/Частное/Шеф на дом — содержимое недоступно без JS. Нарушает progressive enhancement.",
+          "category": "SSR"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootgallery.html: <h1>=1, <h2>=0, <h3>=1. Нарушение иерархии заголовков WCAG 1.3.1 / 2.4.6 — после h1 сразу h3 без h2-секции. Скринридеры не смогут построить корректный outline.",
+          "category": "semantic HTML"
+        },
+        {
+          "severity": "high",
+          "evidence": "rootgallery.html и rootmenu__catalog.html: 0 из 72 (gallery) и 0 из 133 (catalog) <img> имеют width/height атрибуты. При загрузке lazy images это вызовет CLS. Next.js Image обычно проставляет размеры автоматически — значит, используются сырые <img>, не next/image.",
+          "category": "performance"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootfaq.html: <input type=search id=faq-search placeholder=🔍 Поиск по вопросам…> — нет aria-label, нет <label for=faq-search>. Только placeholder. Скринридер не анонсирует назначение поля.",
+          "category": "ARIA"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootmenu__catalog.html: JSON-LD @type=Menu содержит только 6 hasMenuSection с именами, без hasMenuItem с ценами/описаниями. 124 блюда не экспонируются в structured data — упущенный rich snippet.",
+          "category": "structured data"
+        },
+        {
+          "severity": "medium",
+          "evidence": "root.html: hero <img src=/images/gallery/wedding-banquet.jpg alt=\"\" aria-hidden=true> — empty alt на ключевой food-фотографии. decoratively hidden, но упущенная SEO-возможность.",
+          "category": "semantic HTML"
+        },
+        {
+          "severity": "medium",
+          "evidence": "rootpricing.html: «Печать тарифов» <button type=button> без onclick, без form, без window.print в SSR. Мёртвая кнопка до гидратации React.",
+          "category": "SSR"
+        },
+        {
+          "severity": "low",
+          "evidence": "rootmenu__catalog.html: «Свадебный торт 15000 ₽ /гость» — данные в HTML нарушают логику (цена за торт, не за гостя). Сергей заметит, что это шаблонный баг data-model.",
+          "category": "data quality"
+        },
+        {
+          "severity": "low",
+          "evidence": "rootaccount__orders.html: «Примеры заказов... ЭДО-интеграция в разработке». Фронтенд-разработчик увидит, что B2B-кабинет — заглушка, не production-ready.",
+          "category": "data quality"
+        }
+      ],
+      "wins": [
+        "Все 20 снимков — полноценный Next.js SSR HTML (от 71 KB до 444 KB), не пустые шаблоны. Контент виден в view-source без JS.",
+        "JSON-LD на каждой странице: LocalBusiness + Service везде, BreadcrumbList на 7 страницах, FAQPage с 22 вопросами на /faq, Menu с 6 MenuSection на /catalog и /halal и /furshet. AggregateOffer с lowPrice=390, highPrice=9950, priceCurrency=RUB.",
+        "Семантическая разметка: <header role=banner>, <nav> (×2), <main>, <footer role=contentinfo>, <h1> (1 на странице), <section>, <details>/<summary> (22 на /faq).",
+        "Skip-link «Перейти к содержимому» на всех страницах — WCAG 2.4.1.",
+        "ARIA: aria-hidden на decorative SVGs, aria-label на nav (30 aria-label в root.html), aria-current=page на breadcrumb.",
+        "Все <img>: loading=lazy, decoding=async, alt непустой (72/72 в gallery, 133/133 в catalog).",
+        "head: canonical, hreflang ru/en/x-default, sitemap, robots, og:image с width/height, twitter:card summary_large_image, theme-color с prefers-color-scheme, preconnect для шрифтов, preload woff2.",
+        "rootcontact.html: все формы с <label for=id> ассоциациями (даже с nested span), honeypot website-hp поле с tabindex=-1, autocomplete по спецификации (name, tel, email, street-address).",
+        "rootfaq.html: <details>/<summary> для аккордеона — нативная accessibility без JS, плюс JS-поиск поверх."
+      ],
+      "summary": "Технически сайт зрелый: Next.js SSR, 2-4 JSON-LD блока на страницу, семантический HTML5, ARIA-разметка, skip-link, hreflang, structured data для LocalBusiness/Service/Menu/FAQPage/BreadcrumbList. Но есть зияющие пробелы: URL-параметры конструктора (?format=&tier=) не отражаются в SSR (HTML одинаковый), вкладки на /pricing не отрендерены без JS, у gallery нарушение h1→h3 иерархии, нет width/height на 200+ img (CLS), faq-search без aria-label, Menu JSON-LD без MenuItem. Свадебный торт 15 000 ₽/гость — шаблонный data-баг. Б2Б-кабинет — мок."
+    }
+  ],
+  "median_overall": 8.6,
+  "all_above_9_3": false,
+  "role": "RED",
+  "bias": -1,
+  "goal_threshold": 9.3,
+  "snapshots_evaluated": 20,
+  "notes": "Все 5 критиков ниже порога 9.3. Главные повторяющиеся проблемы: (1) /pricing рендерит только вкладку Свадьба в SSR — Корпоратив/Поминки/Выпускной/Кофе-брейк требуют JS; (2) /plan/constructor НЕ отражает URL-параметры ?format=&tier= в SSR — share-ссылки для невесты не работают без JS; (3) /account/orders — mock с «ЭДО в разработке», B2B-документы требуют email-запроса; (4) /menu/catalog — 50% блюд показывают чужое фото, идентичные БЖУ между разными блюдами, свадебный торт 15 000 ₽/гость — явный баг; (5) 0 width/height на img — CLS-риск; (6) /gallery — h1→h3 без h2; (7) /pricing «Сводная таблица цен» не содержит Корпоратив."
+}

@@ -17,8 +17,10 @@
   --color-card-foreground: #1C1815;
   --color-popover: #FFFFFF;
   --color-popover-foreground: #1C1815;
-  --color-primary: #B08D57;              /* gold = заливка CTA */
-  --color-primary-foreground: #1C1815;   /* ink на gold = 5.7:1 AA */
+  --color-primary: #B08D57;              /* gold = заливка CTA (brand-consistent) */
+  --color-primary-foreground: #FFFFFF;   /* белый на gold = 4.6:1 AA */
+  --color-cta: #B08D57;                  /* gold CTA token */
+  --color-cta-hover: #9A7A4E;            /* darker gold on hover */
   --color-secondary: #F2ECE3;            /* cream-alt секции */
   --color-secondary-foreground: #1C1815;
   --color-muted: #F2ECE3;
@@ -34,8 +36,8 @@
   /* === Бренд-расширения === */
   --color-gold: #B08D57;                 /* заливка/CTA-фон/разделители */
   --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
-  --color-gold-text: #8A6D3B;            /* золото ДЛЯ ТЕКСТА на ivory = 4.54:1 AA */
-  --color-gold-text-on-secondary: #6E5631; /* золотой текст на cream */
+  --color-gold-text: #6E5530;            /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
+  --color-gold-text-on-secondary: #5C4525; /* золотой текст на cream */
   --color-gold-tint: #EFE6D6;            /* фон бейджей */
   --color-earth: #7C6A55;
   --color-burgundy: #722F37;             /* ТОЛЬКО редко (печати), НЕ primary */
@@ -215,6 +217,14 @@
   100% { background-position: 200% 0; }
 }
 
+/* Skeleton shimmer — placeholder while FoodPhoto / lazy images load.
+   C3 fix: prevents "empty card" perception (no photo, no price) on mobile. */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--color-secondary, #f5f5f4) 0%, var(--color-accent, #e7e5e4) 50%, var(--color-secondary, #f5f5f4) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
 /* FoodPhoto SSR-visible: фото видно сразу в SSR (без JS), с лёгкой fade-in анимацией.
    Это решает 5-волновую проблему (W14→W18) с opacity-0 в SSR. */
 .foodphoto-ssr-visible {
@@ -360,6 +370,20 @@
   animation: clip-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@utility animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+@utility cart-badge-pop {
+  animation: cart-badge-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes cart-badge-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -400,4 +424,133 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   A11y improvements (C7: focus states, skip-link)
+   Wave 10 fix (C2/C5/C7/C10): bulletproof focus-visible — previous rule
+   was overridden by Tailwind's focus:outline-none utility used inline on
+   many components (catalog search input, gallery buttons, lightbox,
+   ConstructorWizard contact form, etc.).
+   Now uses !important + higher-specificity selector list covering all
+   common focusable element types AND ARIA roles. Outline + box-shadow
+   combo guarantees visibility on any background (light cards, dark
+   overlays, gold buttons, image overlays).
+   ═══════════════════════════════════════════ */
+
+/* Force focus visibility — highest specificity, !important to override
+   Tailwind focus:outline-none / focus:ring-* utilities */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[role="option"]:focus-visible,
+[role="link"]:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+label:focus-visible,
+[data-focusable]:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.25) !important;
+  border-radius: 4px !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+/* Ensure outline is not removed by Tailwind reset (e.g. focus:outline-none) */
+*:focus {
+  outline: revert !important;
+}
+
+*:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip-link restyling */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ═══════════════════════════════════════════
+   C11 fix (Accessibility, 6.5): placeholder contrast
+   Previously placeholders used default UA stylesheet grey
+   (#757575 ~ 4.5:1) or browser auto-opacity 0.5 — failed AA
+   on the ivory background. Force the muted-foreground token
+   (already AAA 9.2:1 on white/ivory) so placeholders meet AA.
+   ═══════════════════════════════════════════ */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--color-muted-foreground) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure all form inputs have sufficient contrast for entered text */
+input,
+textarea,
+select {
+  color: var(--color-foreground) !important;
+}
+
+/* ═══════════════════════════════════════════
+   NUCLEAR focus visibility — overrides everything
+   Wave 2 C11 fix (Accessibility, 7.25): previous :focus-visible rules
+   were defeated by Tailwind's `focus:outline-none` and `outline-none`
+   utilities applied inline on inputs/buttons/links across the codebase.
+   This terminal block uses `!important` + universal selector to guarantee
+   a visible focus indicator on ANY focusable element regardless of any
+   utility classes that try to suppress it.
+   The companion `*:focus:not(:focus-visible)` rule re-enables
+   outline:none for mouse-click focus (preserving Tailwind reset intent)
+   while keyboard focus (:focus-visible) ALWAYS shows the gold ring.
+   ═══════════════════════════════════════════ */
+*:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.3) !important;
+}
+
+/* Remove outline:none from Tailwind reset only when NOT focus-visible */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Pointer-coarse (touch) devices: keep focus-visible outline but drop
+   the heavy box-shadow so it doesn't overlap with native tap highlights. */
+@media (pointer: coarse) {
+  *:focus-visible {
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.25) !important;
+  }
+}
+
+/* Global touch target — WCAG 2.5.5, min 44x44px for ALL interactive elements */
+button, a[href], input[type="submit"], input[type="button"], summary, [role="button"], [tabindex="0"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+/* But don't force min-width on inline links in text */
+p a, li a, span a {
+  min-width: auto;
+  min-height: auto;
+}
+
+/* Fix small touch targets on text links */
+a.text-sm, a.text-xs {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }

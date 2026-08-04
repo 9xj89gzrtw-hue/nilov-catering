@@ -291,7 +291,7 @@ function ConstructorServerFallback() {
               href="/plan/calculator"
               className="rounded-lg bg-gold-text text-white px-5 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors no-underline"
             >
-               Калькулятор бюджета
+               Калькулятор бюджета →
             </Link>
             <a
               href={`tel:${SITE.phoneTel}`}

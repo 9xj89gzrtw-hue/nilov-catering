@@ -103,7 +103,7 @@ export default function DeliveryOrderPage() {
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="font-heading text-lg font-medium"> Быстрый старт</h3>
-                      <span className="text-xs text-muted-foreground">или соберите сами </span>
+                      <span className="text-xs text-muted-foreground">или соберите сами ↓</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
                       {DELIVERY_PRESETS.map(preset => (
@@ -248,7 +248,7 @@ export default function DeliveryOrderPage() {
                       type="time"
                       value={cart.contact.exactTime}
                       onChange={e => cart.setContact({ exactTime: e.target.value })}
-                      className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text"
+                      className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                     />
                   </label>
                   <label className="flex items-center gap-2 mt-3 cursor-pointer">
@@ -286,27 +286,27 @@ export default function DeliveryOrderPage() {
                   <div className="grid grid-cols-2 gap-3">
                     <input type="text" placeholder="Имя *" value={cart.contact.name}
                       onChange={e => cart.setContact({ name: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                     <input type="tel" placeholder="+7 (___) ___-__-__ *" value={cart.contact.phone}
                       onChange={e => cart.setContact({ phone: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                   </div>
                   <input type="text" placeholder="Адрес доставки *" value={cart.contact.address}
                     onChange={e => cart.setContact({ address: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
 
                   {/* Для загородной доставки — поля подъезд/этаж/домофон */}
                   {cart.zoneId === 'kad' && (
                     <div className="grid grid-cols-3 gap-3">
                       <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
                         onChange={e => cart.setContact({ entrance: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Этаж" value={cart.contact.floor}
                         onChange={e => cart.setContact({ floor: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
                         onChange={e => cart.setContact({ intercom: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                     </div>
                   )}
 
@@ -317,14 +317,14 @@ export default function DeliveryOrderPage() {
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
                           onChange={e => cart.setContact({ entrance: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                         <input type="text" placeholder="№ участка / дома" value={cart.contact.floor}
                           onChange={e => cart.setContact({ floor: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                       </div>
                       <input type="text" placeholder="Код ворот / как проехать (необязательно)" value={cart.contact.intercom}
                         onChange={e => cart.setContact({ intercom: e.target.value })}
-                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text" />
+                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                     </div>
                   )}
 
@@ -332,14 +332,14 @@ export default function DeliveryOrderPage() {
                   {cart.zoneId === 'kad' && (
                     <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
                       onChange={e => cart.setContact({ apartment: e.target.value })}
-                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                   )}
 
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Дата доставки *</label>
                     <input type="date" min={minDate} value={cart.contact.date}
                       onChange={e => cart.setContact({ date: e.target.value })}
-                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text" />
+                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
                   </div>
 
                   {/* Способ оплаты */}
@@ -365,7 +365,7 @@ export default function DeliveryOrderPage() {
 
                   <textarea placeholder="Комментарий к заказу (особые пожелания, аллергии гостей, код ворот и т.д.)" value={cart.contact.comment}
                     onChange={e => cart.setContact({ comment: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text min-h-[80px] resize-none" />
+                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 min-h-[80px] resize-none" />
                 </div>
 
                 {/* Order summary */}
@@ -403,7 +403,7 @@ export default function DeliveryOrderPage() {
 
                 {/* Trust badges перед кнопкой отправки */}
                 <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground mb-4 flex-wrap">
-                  <span>4.8 средняя оценка</span>
+                  <span> 4.8 Яндекс.Карты</span>
                   <span>·</span>
                   <span>С 2007 года</span>
                   <span>·</span>
@@ -428,7 +428,7 @@ export default function DeliveryOrderPage() {
                   {!cart.contact.exactTime && <> · {TIME_SLOTS.find(s => s.id === cart.contact.timeSlot)?.label}</>}
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную </Link>
+                  <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
                   <button
                     onClick={() => { cart.reset(); setStep(0); setSubmitted(false); }}
                     className="text-xs text-muted-foreground hover:text-foreground transition-colors"
@@ -443,9 +443,9 @@ export default function DeliveryOrderPage() {
             {step < 3 && (
               <div className="flex justify-between mt-8 max-w-md mx-auto">
                 {step > 0 ? (
-                  <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground"> Назад</button>
+                  <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground">← Назад</button>
                 ) : (
-                  <Link href="/delivery" className="text-sm text-muted-foreground hover:text-foreground"> Зоны доставки</Link>
+                  <Link href="/delivery" className="text-sm text-muted-foreground hover:text-foreground">← Зоны доставки</Link>
                 )}
                 {step < 2 ? (
                   <button type="button" onClick={handleNext} disabled={!canNext}

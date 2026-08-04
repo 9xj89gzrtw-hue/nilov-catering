@@ -234,9 +234,9 @@ export default function CertificatesPage() {
             <dd><a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">{SITE.phone}</a></dd>
           </dl>
           <p className="text-xs text-muted-foreground mt-4">
-            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru </a>
+            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru →</a>
             {' · '}
-            <a href="https://www.nalog.gov.ru/" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">nalog.gov.ru </a>
+            <a href="https://www.nalog.gov.ru/" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">nalog.gov.ru →</a>
           </p>
         </div>
 
@@ -278,14 +278,14 @@ export default function CertificatesPage() {
             <p className="text-sm text-muted-foreground">
               Сертифицированные кухни для событий 500+ гостей. Аудит: медкнижки, ХАССП, страхование ГО.
             </p>
-            <p className="text-xs text-gold-text font-semibold mt-2">Смотреть партнёров </p>
+            <p className="text-xs text-gold-text font-semibold mt-2">Смотреть партнёров →</p>
           </Link>
           <Link href="/account/orders" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
             <h3 className="font-heading text-base font-medium mb-1"> Личный кабинет B2B</h3>
             <p className="text-sm text-muted-foreground">
               История заказов, закрывающие документы на скачивание, статусы событий. Для постоянных B2B-клиентов.
             </p>
-            <p className="text-xs text-gold-text font-semibold mt-2">Войти в ЛК </p>
+            <p className="text-xs text-gold-text font-semibold mt-2">Войти в ЛК →</p>
           </Link>
         </div>
 

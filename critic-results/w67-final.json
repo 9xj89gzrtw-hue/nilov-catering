@@ -1,0 +1,169 @@
+{
+  "iteration": "W67-final",
+  "role": "RED critic",
+  "bias": -1,
+  "goal": "all >= 9.3",
+  "critics": [
+    {
+      "critic_id": "C48",
+      "persona": "Visual Design (Awwwards)",
+      "previous_overall": 7.5,
+      "overall": 8.3,
+      "delta": 0.8,
+      "fixed": [
+        "MenuPreview component on root.html now renders real food photos via FoodPhoto + <picture> (avif/webp/jpg) — no more emoji placeholders in that block",
+        "Photo URLs use clean /images/dishes/<slug>.png path — no /dishes-real/ or AI/subset indicator anywhere in snapshot HTML",
+        "Header is visually cleaner with shadow-sm, gap-3, removed unused imports",
+        "Mobile snapshot (root.mobile.html) shows the same clean MenuPreview with real photos"
+      ],
+      "still_broken": [
+        "HeroBlock filter pills on root.html still contain decorative emojis: '🥬 Веган от 2 950 ₽/гость' and '🕌 Халяль от 2 450 ₽/гость' — mosque emoji as a religious symbol is particularly tone-deaf for a luxury brand",
+        "FormatShowcase card on root.html still uses ☕ emoji in BOTH aria-label ('☕ Кофе-брейк') AND h3 heading — visible noise on homepage",
+        "Emoji cleanup was scoped to MenuPreview only — other pages still heavily polluted: rootallergens.html has 164 emojis, rootevents__svadba.html has 81, rootpricing.html has 58, rootcertificates.html has 56, rootmenu__halal.html has 49 (incl. 🌙 crescent + 🍖🍲🍽)",
+        "Constructor SSR form legend still shows '🥗 Группы гостей по диетам' — same salad emoji family the W67 fix #4 explicitly removed from MenuPreview",
+        "Comments in lib/dish-images.ts still reference 'AI photos' / 'AI-generated photos' / 'W56 AI photos for exact match' — code-level AI indicator remains even though URLs were cleaned"
+      ],
+      "summary": "MenuPreview's visual upgrade to real food photography is a real win and the URL path is now clean. But the emoji purge was scoped to a single component — HeroBlock pills, FormatShowcase cards, the halal menu page (🌙), the allergens page (164 emojis), and even the new constructor form legend (🥗) still betray placeholder-grade visual choices. Awwwards-level sites do not mix photographic hero blocks with emoji chips on the same page; the visual language is still inconsistent."
+    },
+    {
+      "critic_id": "C49",
+      "persona": "UX/CRO (Baymard)",
+      "previous_overall": 7.5,
+      "overall": 8.3,
+      "delta": 0.8,
+      "fixed": [
+        "Catalog page (/menu/catalog) now has a <noscript> block with 8 anchor links to category pages (Все меню, Фуршет, Банкет, Кофе-брейк, Веган, Халяль, Без глютена, Детское) — no-JS users are not stranded on a blank filter page",
+        "Constructor SSR form POSTs to /api/quote with full field set: guests (required), date, 9 diet-group number inputs, name (required), phone (required, type=tel), email (required) — fully submittable without JS",
+        "12 popular-dish checkboxes (name='dishes', value=<id>) with visible dish name + ₽ price label give the manager a usable submission payload",
+        "Hidden source='constructor-ssr' field lets backend route the no-JS submission correctly",
+        "Header has clear nav: gallery, pricing, why-us, calculator CTA, tel link — top-level paths findable"
+      ],
+      "still_broken": [
+        "Catalog <noscript> only provides 8 links to category landing pages — users without JS still cannot browse or search actual dishes on /menu/catalog; they have to click through and hope each category page also has a no-JS fallback",
+        "Constructor SSR covers only 12 popular dishes out of ~70+ in menu-data — users without JS cannot request vegetarian/gluten-free/BBOQ dishes that aren't in the popular-12 set",
+        "HeroBlock 'Банкет от 3950 ₽/гость' / '🥬 Веган' / '🕌 Халяль' pills are non-clickable spans (not <a> or <button>) — users see price tiers with no path to act on them",
+        "MenuPreview mobile experience is a horizontal scroll carousel (carousel-horizontal flex gap-3 overflow-x-auto) with only a tiny '← Листайте влево →' hint — discoverability is weak on mobile",
+        "Calculator page (/plan/calculator) still appears to require JS — the no-JS path is uneven across the funnel"
+      ],
+      "summary": "The catalog <noscript> and constructor SSR form are genuinely useful no-JS conversions — a real Baymard-tier improvement. But the noscript is a link list, not a browsable catalog, and the SSR constructor covers only 12 of ~70 dishes. Combined with non-clickable HeroBlock price pills and a mobile menu carousel with poor discoverability, the conversion path still has too many dead-ends to score above 8.3."
+    },
+    {
+      "critic_id": "C50",
+      "persona": "Frontend/Perf",
+      "previous_overall": 7.1,
+      "overall": 8.2,
+      "delta": 1.1,
+      "fixed": [
+        "Header.tsx imports trimmed to only what is used (Link, Phone, Calculator, SITE, TextSizeToggle, MobileMenu, MegaMenu) — no dead imports",
+        "Header uses shadow-sm + gap-3 + backdrop-blur-lg in a single coherent className string",
+        "MenuPreview.tsx is now a clean 61-line component — no emoji constants, no inline SVG fallbacks, just FoodPhoto rendering with object-position",
+        "Photo URLs are stable: /images/dishes/<slug>.png — no client-side rewrite layer, no AI indicator in URL",
+        "Catalog <noscript> is server-rendered (no client hydration cost for fallback content)"
+      ],
+      "still_broken": [
+        "Responsive image sources are broken for /images/dishes/*.png — the <picture> element uses the SAME .png file at 480w, 768w, AND 1920w breakpoints ('/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w'). No real responsive variants exist for the renamed photo set — the browser still downloads the full-size PNG regardless of viewport. The /images/menu/kanape/* set has proper -480/-768 variants, but the /images/dishes/* set does not.",
+        "FormatShowcase uses inline style='background-image:url(/images/formats/coffee-break-hero.svg)' instead of a CSS class — Tailwind bg-[url(...)] would be cleaner",
+        "Constructor form legend '🥗 Группы гостей по диетам' still embeds an emoji — inconsistent with the W67 emoji cleanup mandate",
+        "dish-images.ts source comments still say 'AI photos' / 'AI-generated photos' / 'W56 AI photos for exact match' — code-level marker that the URL rename was cosmetic, not a true asset migration",
+        "Inline data-prefill='guests' / data-prefill='date' attributes on SSR inputs imply a client-side hydration script that may still try to take over the form"
+      ],
+      "summary": "Code-level cleanup is real: Header imports trimmed, MenuPreview simplified, URLs normalized. But the responsive image pipeline for the new /images/dishes/*.png assets is fake — three <source> entries all point to the same full-size PNG, so the 'responsive' markup delivers none of the byte savings it advertises. Combined with lingering AI-photo comments in source and an emoji in the new SSR form legend, this is solid mid-8s work, not portfolio-grade."
+    },
+    {
+      "critic_id": "C51",
+      "persona": "UX/CRO #2 (text-only)",
+      "previous_overall": 7.2,
+      "overall": 8.2,
+      "delta": 1.0,
+      "fixed": [
+        "Catalog <noscript> provides 8 anchor links to category pages — no-JS users have a navigable path off the catalog page",
+        "Constructor SSR form is a real <form action='/api/quote' method='POST'> with required fields (guests, name, phone, email) and 12 dish checkboxes — submission works without any client framework",
+        "9 diet-group number inputs (groupOmnivore, groupVegan, groupHalal, groupGlutenFree, groupNutFree, groupSugarFree, groupDairyFree, groupEggFree, groupOther) let users communicate dietary needs without JS",
+        "Source field 'constructor-ssr' lets the backend distinguish no-JS submissions from JS-wizard submissions",
+        "Header has visible tel: link and calculator CTA in the top-right — primary conversion actions are not buried"
+      ],
+      "still_broken": [
+        "Catalog noscript provides only 8 category links — users without JS cannot browse, filter, or search actual dishes on the catalog page itself; they must click into a category and hope that page is also no-JS navigable",
+        "SSR constructor covers only 12 popular dishes — the other ~58 dishes in the menu are invisible to no-JS users; the SSR form is a popular-dishes shortcut, not a true no-JS menu",
+        "Other interactive conversion paths (/plan/calculator, /plan/helper, /menu/furshet builder) appear to still require JS — the no-JS funnel is uneven",
+        "HeroBlock price pills ('Банкет от 3950 ₽/гость' etc.) are static spans, not links — users cannot act on the price-tier signal without scrolling to find a CTA",
+        "No 'add to cart' or 'add to constructor' action on individual dish cards in catalog — even with JS, the conversion path from dish discovery to constructor is multi-step"
+      ],
+      "summary": "The two no-JS paths added in W67 (catalog noscript + SSR constructor form) are real UX wins, but they are scoped demos rather than a complete no-JS funnel. A user who lands on /menu/catalog without JS gets 8 category links; if their desired dish is not in the constructor's popular-12, they have no way to add it. The fix improves the floor but does not raise the ceiling."
+    },
+    {
+      "critic_id": "C52",
+      "persona": "Visual #2 (text-only)",
+      "previous_overall": 6.8,
+      "overall": 7.8,
+      "delta": 1.0,
+      "fixed": [
+        "MenuPreview on root.html now uses real food photography via FoodPhoto (avif/webp/jpg <picture>) — no emoji placeholders in that block",
+        "Photo URLs are clean /images/dishes/<slug>.png — no /dishes-real/ or AI indicator visible to users or scrapers",
+        "Header visual hierarchy improved: shadow-sm + gap-3 + backdrop-blur-lg + gold-text logo hover — feels more cohesive",
+        "Removed unused imports keep the Header className string readable"
+      ],
+      "still_broken": [
+        "HeroBlock on root.html still has 🥬 (vegetarian) and 🕌 (mosque) emojis in the price-tier pills — a religious symbol emoji on a homepage hero is brand-damaging for a premium catering service",
+        "FormatShowcase on root.html still has ☕ emoji in BOTH aria-label and visible h3 of the 'Кофе-брейк' card — same homepage, same scroll session, inconsistent visual language",
+        "Other pages still carry heavy emoji load: rootallergens.html=164, rootevents__svadba.html=81, rootpricing.html=58, rootcertificates.html=56, rootmenu__halal.html=49 (incl. 🌙 crescent moon)",
+        "Constructor SSR form legend '🥗 Группы гостей по диетам' — the W67 fix explicitly removed 🥗 from MenuPreview but it reappears in the new SSR form added in the same iteration",
+        "dish-images.ts source comments still mention 'AI photos' / 'W56 AI photos for exact match' — the rename from /dishes-real/ to /dishes/ was cosmetic; the assets and code comments still telegraph AI origin"
+      ],
+      "summary": "Real food photos in MenuPreview and a cleaner header are genuine visual upgrades that justify the +1.0 delta from 6.8. But the same iteration that purged emoji from MenuPreview shipped a new SSR form with 🥗 in its legend and left 🥬 🕌 ☕ on the same homepage. A visual reviewer screenshotting the homepage will still see emoji within the first scroll — the cleanup is not coherent enough to break 8.0."
+    }
+  ],
+  "median_overall": 8.2,
+  "all_above_9_3": false,
+  "verification_notes": {
+    "snapshots_inspected": [
+      "root.html",
+      "root.mobile.html",
+      "rootmenu__catalog.html",
+      "rootmenu__catalog.mobile.html",
+      "rootmenu__furshet.html",
+      "rootmenu__halal.html",
+      "rootplan__constructor.html",
+      "rootplan__constructor.mobile.html",
+      "plan__constructor__furshet_standard.html",
+      "rootpricing.html",
+      "rootgallery.html",
+      "rootcontact.html",
+      "rootcertificates.html",
+      "rootevents__svadba.html",
+      "rootallergens.html",
+      "rootfaq.html",
+      "rootaccount__orders.html",
+      "rootpartners.html",
+      "rootplan__helper.html"
+    ],
+    "fix_1_photos_url_clean": {
+      "verified": true,
+      "evidence": "rg 'dishes-real' returns 0 matches across all snapshots; rg '/images/dishes/' returns matches in root.html, root.mobile.html, rootmenu__catalog.html, rootmenu__catalog.mobile.html — clean path with no AI/subset indicator",
+      "caveat": "lib/dish-images.ts source comments still say 'AI photos' / 'AI-generated photos' / 'W56 AI photos for exact match' — cosmetic rename only"
+    },
+    "fix_2_header_cleanup": {
+      "verified": true,
+      "evidence": "components/layout/Header.tsx line 13: className='fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-background/90 backdrop-blur-lg shadow-sm'; line 17: nav className='... gap-3'; imports limited to Link, Phone, Calculator, SITE, TextSizeToggle, MobileMenu, MegaMenu (no unused)"
+    },
+    "fix_3_catalog_noscript": {
+      "verified": true,
+      "evidence": "rootmenu__catalog.html contains <noscript> block with amber-50 styled box and 8 anchor links: /menu, /menu/furshet, /menu/banquet, /menu/coffee-break, /menu/vegan, /menu/halal, /menu/gluten-free, /menu/detskoe",
+      "caveat": "Noscript provides category-page links only, not actual dish browsing — users still cannot see dish cards without JS"
+    },
+    "fix_4_menupreview_emoji_removed": {
+      "verified": true,
+      "evidence": "MenuPreview.tsx (61 lines) contains zero emoji; root.html MenuPreview section (aria-labelledby='menu-heading') renders FoodPhoto components with real photos only — verified by extracting the menu-heading section and inspecting all 7 category cards",
+      "caveat": "Cleanup was scoped to MenuPreview only — root.html still has 🥬 and 🕌 in HeroBlock filter pills and ☕ in FormatShowcase card; constructor form legend still has 🥗; other pages still carry heavy emoji load (allergens=164, halal=49, pricing=58, certificates=56)"
+    },
+    "fix_5_constructor_ssr_checkboxes": {
+      "verified": true,
+      "evidence": "rootplan__constructor.html contains exactly 12 checkboxes, each with class='accent-gold-text' name='dishes' value=<dish-id>; each wrapped in <label> with dish name (e.g. 'Канапе с лососем') and price span (e.g. '190 ₽' with class 'text-xs text-gold-text font-semibold'); form also includes guests (required), date, 9 diet-group number inputs, name (required), phone (required type=tel), email (required); form action='/api/quote' method='POST'; hidden input source='constructor-ssr'",
+      "caveat": "Only 12 of ~70 dishes covered; popular-dishes shortcut, not full no-JS menu"
+    },
+    "responsive_image_regression": {
+      "verified": true,
+      "evidence": "root.html MenuPreview section: <source srcSet='/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w' — same .png file used for all three breakpoints; no real responsive variants exist for the /images/dishes/*.png asset set (only /images/menu/* has proper -480/-768 variants)"
+    }
+  }
+}

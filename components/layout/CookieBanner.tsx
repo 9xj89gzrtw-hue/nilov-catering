@@ -1,57 +1,44 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
-
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) setShow(true);
+    const shown = localStorage.getItem('cookie-consent-shown');
+    if (!shown) setShow(true);
   }, []);
-
-  const accept = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    setShow(false);
-  };
-
-  const decline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    setShow(false);
-  };
-
+  useEffect(() => {
+    if (!show) return;
+    const t = setTimeout(() => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      localStorage.setItem('cookie-consent-shown', 'true');
+      setShow(false);
+    }, 2000);
+    return () => clearTimeout(t);
+  }, [show]);
   if (!show) return null;
-
+  // Bottom-right pill — minimal footprint, doesn't obscure full-width content
   return (
     <div
-      className="fixed left-0 right-0 z-40 bg-card border-t border-line p-3 sm:p-4 shadow-lg bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:bottom-0"
+      className="fixed bottom-3 right-3 z-20 max-w-xs rounded-full bg-foreground/85 backdrop-blur-md px-4 py-1.5 shadow-md"
       role="dialog"
-      aria-label="Уведомление об использовании cookie"
+      aria-label="Использование cookie"
     >
-      <div className="container-site flex flex-col sm:flex-row items-start sm:items-center gap-3">
-        <p className="text-xs sm:text-sm text-muted-foreground flex-1">
-          Мы используем cookie для аналитики и улучшения работы сайта. Продолжая, вы соглашаетесь с{' '}
-          <Link href="/privacy" className="text-gold-text hover:underline">
-            политикой обработки персональных данных
-          </Link>
-          .
-        </p>
-        <div className="flex items-center gap-2 shrink-0">
-          <button
-            onClick={decline}
-            className="rounded-lg border border-line px-3 sm:px-4 py-2 text-xs sm:text-sm text-muted-foreground hover:bg-secondary transition-colors touch-target"
-          >
-            Отказаться
-          </button>
-          <button
-            onClick={accept}
-            className="rounded-lg bg-primary px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors touch-target"
-          >
-            Принять
-          </button>
-        </div>
-      </div>
+      <p className="text-[10px] text-background/80 inline">
+        Cookie · <Link href="/privacy" className="underline hover:text-background">Подробнее</Link>
+        <button
+          onClick={() => {
+            localStorage.setItem('cookie-consent', 'accepted');
+            localStorage.setItem('cookie-consent-shown', 'true');
+            setShow(false);
+          }}
+          className="ml-2 text-background hover:text-[#E8C97E] underline"
+          aria-label="Принять cookie"
+        >
+          OK
+        </button>
+      </p>
     </div>
   );
 }

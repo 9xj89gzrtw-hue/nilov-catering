@@ -630,7 +630,7 @@ export function getOffersForEvent(eventId: string): TariffOffer[] {
 // Используется в ConstructorWizard, pricing, menu — чтобы цены не расходились
 // ═══════════════════════════════════════════
 
-// Маппинг формат событие-источник тарифов (для цен и составов)
+// Маппинг формат → событие-источник тарифов (для цен и составов)
 export const FORMAT_TO_EVENT: Record<Format, string> = {
   banket: 'svadba',
   furshet: 'chastnoe',
@@ -638,6 +638,7 @@ export const FORMAT_TO_EVENT: Record<Format, string> = {
   'mobile-furshet': 'chastnoe',
   detskoe: 'detskoe',
   'chef-at-home': 'chef-at-home',
+  pominki: 'pominki',
 };
 
 // Базовые цены для формата coffee-break (нет в tariff-offers как отдельных)

@@ -127,14 +127,14 @@ export default function MenuBuilder({
     const activeId = active.id as string;
     const overId = over.id as string;
 
-    // Case 1: dragging catalog dish cart zone (add to cart)
+    // Case 1: dragging catalog dish → cart zone (add to cart)
     if (activeId.startsWith('dish-') && (overId === 'cart-dropzone' || overId === 'cart-empty')) {
       const dishId = activeId.replace('dish-', '');
       if (!selectedIds.has(dishId)) onAdd(dishId);
       return;
     }
 
-    // Case 2: dragging cart item reorder
+    // Case 2: dragging cart item → reorder
     if (activeId.startsWith('cart-item-') && overId.startsWith('cart-item-') && onReorder) {
       const fromIdx = parseInt(activeId.replace('cart-item-', ''));
       const toIdx = parseInt(overId.replace('cart-item-', ''));
@@ -239,7 +239,7 @@ export default function MenuBuilder({
           placeholder="Поиск блюда…"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-line bg-card px-4 py-2.5 text-sm mb-3 focus:outline-none focus:border-gold-text transition-colors"
+          className="w-full rounded-xl border border-line bg-card px-4 py-2.5 text-sm mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-colors"
         />
 
         {/* Station filters */}
@@ -315,25 +315,41 @@ export default function MenuBuilder({
               onClick={() => setShowExtraAllergens(!showExtraAllergens)}
               className="text-xs text-muted-foreground hover:text-foreground touch-target px-2 py-1 transition-colors"
             >
-              {showExtraAllergens ? ' основные' : 'ещё аллергены '}
+              {showExtraAllergens ? '← основные' : 'ещё аллергены →'}
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-1">
+          {/* Premium allergen filter — custom styled toggle buttons (1px gold border, hover, scale-105) */}
+          <div className="flex flex-wrap gap-2">
             {(showExtraAllergens ? [...TOP_ALLERGENS, ...EXTRA_ALLERGENS] : TOP_ALLERGENS).map(a => {
               const isOn = excludedAllergens.has(a);
+              const isHighRisk = ['nuts', 'peanuts', 'gluten', 'fish', 'crustaceans', 'molluscs'].includes(a);
               return (
                 <button
                   key={a}
+                  type="button"
                   onClick={() => toggleAllergen(a)}
-                  className={`text-xs px-2.5 py-1.5 rounded-full touch-target border transition-all ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 touch-target ${
                     isOn
-                      ? 'bg-destructive text-white border-destructive font-semibold'
-                      : 'bg-card text-muted-foreground border-line hover:border-destructive/50'
+                      ? isHighRisk
+                        ? 'bg-red-600 text-white shadow-md scale-105'
+                        : 'bg-[#B45309] text-white shadow-md scale-105'
+                      : 'bg-card text-foreground border border-[#C4A77D]/30 hover:border-[#C4A77D] hover:bg-[#C4A77D]/5'
                   }`}
                   title={ALLERGEN_LABEL[a]}
                   aria-pressed={isOn}
                 >
+                  <span className={`w-3 h-3 rounded-full border transition-all ${
+                    isOn
+                      ? 'border-transparent bg-white'
+                      : 'border-[#C4A77D]/40'
+                  }`}>
+                    {isOn && (
+                      <svg className="w-full h-full text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </span>
                   {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                 </button>
               );
@@ -400,7 +416,7 @@ export default function MenuBuilder({
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
                 </p>
                 <a href="/menu/halal" className="text-xs text-gold-text font-semibold hover:underline">
-                  Подробнее про халяль-меню
+                  Подробнее про халяль-меню →
                 </a>
               </div>
             )}
@@ -498,8 +514,8 @@ function DraggableDishCard({
         )}
         {/* Diet badges */}
         <div className="absolute top-1 left-1 z-10 flex gap-0.5">
-          {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-1 py-0.5 rounded font-bold">VG</span>}
-          {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-1 py-0.5 rounded font-bold">GF</span>}
+          {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-[#065F46] text-white px-1 py-0.5 rounded font-bold">VG</span>}
+          {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-[#B45309] text-white px-1 py-0.5 rounded font-bold">GF</span>}
           {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-500 text-white px-1 py-0.5 rounded font-bold">H</span>}
           {dish.dietBadges.includes('sugar-free') && <span className="text-[10px] bg-purple-600 text-white px-1 py-0.5 rounded font-bold" title="Без добавленного сахара — для СД1/СД2">SF</span>}
           {dish.dietBadges.includes('nut-free') && <span className="text-[10px] bg-red-500 text-white px-1 py-0.5 rounded font-bold" title="Без орехов — для анафилаксии">NF</span>}
@@ -693,7 +709,7 @@ function SortableCartItem({
       } ${excludedInDish.length > 0 ? 'border-destructive/40 bg-destructive/5' : ''}`}
     >
       <div className="flex gap-2.5">
-        {/* Drag handle (desktop + mobile via dnd-kit) + buttons */}
+        {/* Drag handle (desktop + mobile via dnd-kit) + ↑↓ buttons */}
         {enableReorder && (
           <div className="flex flex-col items-center gap-0.5">
             <button

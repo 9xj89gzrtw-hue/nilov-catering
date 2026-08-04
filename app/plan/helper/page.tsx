@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/helper', languages: { 'ru': '/plan/helper', 'en': '/en', 'x-default': '/plan/helper' } },
   title: 'Помощник выбора кейтеринга — 3 вопроса, 30 секунд',
@@ -10,30 +13,30 @@ export const metadata: Metadata = {
 };
 
 const OCCASIONS = [
-  { label: 'Свадьба', emoji: '', format: 'banket' },
-  { label: 'Корпоратив', emoji: '', format: 'banket' },
-  { label: 'День рождения', emoji: '', format: 'furshet' },
-  { label: 'Детский праздник', emoji: '', format: 'detskoe' },
-  { label: 'Выпускной', emoji: '', format: 'banket' },
-  { label: 'Юбилей', emoji: '', format: 'banket' },
-  { label: 'Конференция', emoji: '', format: 'coffee-break' },
-  { label: 'Просто ужин', emoji: '', format: 'furshet' },
+  { label: 'Свадьба',           format: 'banket',       photo: 'wedding-banquet' },
+  { label: 'Корпоратив',         format: 'banket',       photo: 'corporate-buffet' },
+  { label: 'День рождения',      format: 'furshet',      photo: 'canape-platter' },
+  { label: 'Детский праздник',   format: 'detskoe',      photo: 'dessert-table' },
+  { label: 'Выпускной',          format: 'banket',       photo: 'canape-platter' },
+  { label: 'Юбилей',             format: 'banket',       photo: 'beef-medallions' },
+  { label: 'Конференция',        format: 'coffee-break', photo: 'coffee-drink' },
+  { label: 'Шеф на дом',         format: 'chef-at-home', photo: 'salmon-dish' },
 ];
 
 const GUEST_RANGES = [
-  { label: 'до 20 гостей', value: '0-20' },
-  { label: '20–50 гостей', value: '20-50' },
-  { label: '50–100 гостей', value: '50-100' },
-  { label: '100–200 гостей', value: '100-200' },
-  { label: '200+ гостей', value: '200+' },
+  { label: 'до 20 гостей',  value: '0-20',   desc: 'камерный формат' },
+  { label: '20–50 гостей',  value: '20-50',  desc: 'среднее событие' },
+  { label: '50–100 гостей', value: '50-100', desc: 'большой праздник' },
+  { label: '100–200 гостей', value: '100-200', desc: 'крупное событие' },
+  { label: '200+ гостей',   value: '200+',   desc: 'гала-формат' },
 ];
 
 const LOCATIONS = [
-  { label: 'Дома', emoji: '' },
-  { label: 'В офисе', emoji: '' },
-  { label: 'На площадке (лофт/ресторан)', emoji: '' },
-  { label: 'На природе', emoji: '' },
-  { label: 'Пока не знаю', emoji: '' },
+  { label: 'Дома',                          desc: 'Шеф приедет к вам на кухню' },
+  { label: 'В офисе',                       desc: 'Привезём фуршет или банкет' },
+  { label: 'На площадке (лофт/ресторан)',   desc: 'Сервировка с нуля' },
+  { label: 'На природе',                    desc: 'Шатёр, мангал, фуршет-станции' },
+  { label: 'Пока не знаю',                  desc: 'Подскажем площадки под ваш бюджет' },
 ];
 
 const OCCASION_TO_PAGE: Record<string, string> = {
@@ -44,15 +47,26 @@ const OCCASION_TO_PAGE: Record<string, string> = {
   'Выпускной': '/events/vypusknoy',
   'Юбилей': '/events/chastnoe',
   'Конференция': '/events/korporativ',
-  'Просто ужин': '/events/chef-at-home',
+  'Шеф на дом': '/events/chef-at-home',
 };
 
-export default function PlanHelperPage({
+const OCCASION_PHOTO: Record<string, string> = {
+  'Свадьба': 'wedding-banquet',
+  'Корпоратив': 'corporate-buffet',
+  'День рождения': 'canape-platter',
+  'Детский праздник': 'dessert-table',
+  'Выпускной': 'canape-platter',
+  'Юбилей': 'beef-medallions',
+  'Конференция': 'coffee-drink',
+  'Шеф на дом': 'salmon-dish',
+};
+
+export default async function PlanHelperPage({
   searchParams,
 }: {
-  searchParams: { occasion?: string; guests?: string; location?: string };
+  searchParams: Promise<{ occasion?: string; guests?: string; location?: string }>;
 }) {
-  const { occasion, guests, location } = searchParams;
+  const { occasion, guests, location } = await searchParams;
   const step = !occasion ? 0 : !guests ? 1 : !location ? 2 : 3;
 
   // Финальный экран
@@ -60,57 +74,63 @@ export default function PlanHelperPage({
     const eventPage = OCCASION_TO_PAGE[occasion] || '/pricing';
     const formatMatch = OCCASIONS.find((o) => o.label === occasion);
     const format = formatMatch?.format || 'furshet';
+    const heroPhoto = OCCASION_PHOTO[occasion] || 'wedding-banquet';
 
     return (
       <main id="main" className="pt-24 pb-20">
-        <div className="container-site max-w-2xl mx-auto">
+        <div className="container-site max-w-3xl mx-auto">
           <Breadcrumbs />
 
-          <div className="text-center mb-8">
-            <div className="text-5xl mb-4"></div>
-            <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">Готово</p>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
-              Вот что мы подобрали
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              <strong className="text-foreground">{occasion}</strong>
-              {' · '}
-              <strong className="text-foreground">{guests}</strong>
-              {' · '}
-              <strong className="text-foreground">{location}</strong>
-            </p>
+          {/* Hero photo — visual anchor */}
+          <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden mb-8">
+            <picture>
+              <source srcSet={`/images/real/${heroPhoto}-480.avif 480w, /images/real/${heroPhoto}-768.avif 768w, /images/real/${heroPhoto}.avif 1920w`} sizes="768px" type="image/avif" />
+              <source srcSet={`/images/real/${heroPhoto}-480.webp 480w, /images/real/${heroPhoto}-768.webp 768w, /images/real/${heroPhoto}.webp 1920w`} sizes="768px" type="image/webp" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/images/real/${heroPhoto}.jpg`} alt={occasion} className="w-full h-full object-cover" />
+            </picture>
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)' }} aria-hidden="true" />
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Подобрали</p>
+              <h1 className="font-heading text-2xl md:text-3xl text-white" style={{ fontWeight: 500 }}>
+                {occasion} · {guests} · {location}
+              </h1>
+            </div>
           </div>
 
           <div className="p-6 rounded-xl border border-line bg-card mb-6">
-            <h2 className="font-heading text-xl font-medium mb-3">Рекомендуем</h2>
-            <p className="text-sm text-muted-foreground mb-4">
-              На основе ваших ответов рекомендуем формат <strong className="text-foreground">{format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа'}</strong>.
-              Перейдите на страницу события, чтобы увидеть тарифы и состав меню.
+            <h2 className="font-heading text-xl mb-3" style={{ fontWeight: 500 }}>Рекомендуемый формат</h2>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              На основе ваших ответов рекомендуем формат{' '}
+              <strong className="text-foreground">
+                {format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа'}
+              </strong>
+              . Перейдите на страницу события, чтобы увидеть тарифы и состав меню.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <Link
                 href={eventPage}
-                className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline text-center"
+                className="rounded-lg bg-foreground px-5 py-3 text-sm font-semibold text-background hover:bg-foreground/90 transition-colors no-underline text-center"
               >
-                 Открыть страницу события
+                Открыть страницу события →
               </Link>
               <Link
                 href={`/plan/constructor?format=${format}`}
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                 Собрать меню в конструкторе
+                Собрать меню в конструкторе
               </Link>
               <Link
                 href="/pricing"
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                 Смотреть все тарифы
+                Смотреть все тарифы
               </Link>
               <Link
-                href="/contact"
+                href={`/contact?subject=${encodeURIComponent(occasion)}&guests=${encodeURIComponent(guests)}&location=${encodeURIComponent(location)}&source=helper`}
                 className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
               >
-                 Оставить заявку
+                Оставить заявку
               </Link>
             </div>
           </div>
@@ -120,13 +140,13 @@ export default function PlanHelperPage({
               href={`tel:${SITE.phoneTel}`}
               className="inline-block rounded-lg border-2 border-gold-text px-6 py-3 text-base font-semibold text-foreground hover:bg-gold-tint/10 transition-colors no-underline mr-3"
             >
-               {SITE.phone}
+              {SITE.phone}
             </a>
             <Link
               href="/plan/helper"
               className="inline-block text-sm text-muted-foreground hover:text-foreground mt-2"
             >
-               Начать заново
+              ↺ Начать заново
             </Link>
           </div>
         </div>
@@ -135,10 +155,10 @@ export default function PlanHelperPage({
   }
 
   const current = step === 0
-    ? { q: 'Какой повод?', opts: OCCASIONS.map((o) => ({ label: o.label, emoji: o.emoji })), key: 'occasion' as const }
+    ? { q: 'Какой у вас повод?', sub: 'Подберём формат и примерный бюджет', opts: OCCASIONS.map((o) => ({ label: o.label, photo: o.photo })), key: 'occasion' as const }
     : step === 1
-    ? { q: 'Сколько гостей?', opts: GUEST_RANGES.map((g) => ({ label: g.label, emoji: '' })), key: 'guests' as const }
-    : { q: 'Где проходит?', opts: LOCATIONS.map((l) => ({ label: l.label, emoji: l.emoji })), key: 'location' as const };
+    ? { q: 'Сколько гостей ожидается?', sub: 'От этого зависит формат и тариф', opts: GUEST_RANGES.map((g) => ({ label: g.label, desc: g.desc })), key: 'guests' as const }
+    : { q: 'Где проходит событие?', sub: 'Это влияет на логистику и персонал', opts: LOCATIONS.map((l) => ({ label: l.label, desc: l.desc })), key: 'location' as const };
 
   const buildHref = (value: string) => {
     const params = new URLSearchParams();
@@ -156,61 +176,107 @@ export default function PlanHelperPage({
         <Breadcrumbs />
 
         {/* Progress bar */}
-        <div className="flex gap-1 mb-10" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>
+        <div className="flex gap-1.5 mb-10" role="progressbar" aria-valuenow={step + 1} aria-label={`Прогресс: шаг ${step + 1} из 3`} aria-valuemin={1} aria-valuemax={3}>
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className={`flex-1 h-1.5 rounded-full transition-colors ${
-                i < step ? 'bg-gold-text' : i === step ? 'bg-gold-text/50' : 'bg-muted'
+              className={`flex-1 h-2 rounded-full transition-colors ${
+                i < step ? 'bg-gold-text' : i === step ? 'bg-gold-text/70' : 'bg-muted'
               }`}
             />
           ))}
         </div>
 
         <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">
-            Шаг {step + 1} из 3
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-text font-semibold mb-2">
+            Шаг {step + 1} из 3 · 30 секунд
           </p>
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 leading-tight" style={{ fontWeight: 500 }}>
             {current.q}
           </h1>
+          <p className="text-base text-muted-foreground">{current.sub}</p>
         </div>
 
-        <div className="space-y-3">
-          {current.opts.map((opt) => (
-            <Link
-              key={opt.label}
-              href={buildHref(opt.label)}
-              className={`block w-full rounded-xl border p-5 text-left transition-all no-underline ${
-                step === 0 && occasion === opt.label
-                  ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text text-foreground'
-                  : step === 1 && guests === opt.label
-                  ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text text-foreground'
-                  : step === 2 && location === opt.label
-                  ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text text-foreground'
-                  : 'border-line bg-card hover:border-gold-text text-foreground'
-              }`}
-            >
-              {opt.emoji && <span className="text-2xl mr-3">{opt.emoji}</span>}
-              <span className="font-medium">{opt.label}</span>
-            </Link>
-          ))}
-        </div>
-
-        {step > 0 && (
-          <Link
-            href={step === 1 ? '/plan/helper' : step === 2 ? `/plan/helper?occasion=${encodeURIComponent(occasion!)}` : '/plan/helper'}
-            className="inline-block mt-6 text-sm text-muted-foreground hover:text-foreground"
-          >
-             Назад
-          </Link>
+        {/* Step 0: photo cards for occasions */}
+        {step === 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {current.opts.map((opt) => {
+              const photo = (opt as { photo: string }).photo;
+              const selected = occasion === opt.label;
+              return (
+                <a
+                  key={opt.label}
+                  href={buildHref(opt.label)}
+                  className={`group relative block aspect-[4/5] rounded-xl overflow-hidden no-underline transition-all ${
+                    selected ? 'ring-2 ring-gold-text ring-offset-2' : 'hover:ring-1 hover:ring-gold-text/40'
+                  }`}
+                >
+                  <picture>
+                    <source srcSet={`/images/real/${photo}-480.avif 480w, /images/real/${photo}-768.avif 768w`} sizes="200px" type="image/avif" />
+                    <source srcSet={`/images/real/${photo}-480.webp 480w, /images/real/${photo}-768.webp 768w`} sizes="200px" type="image/webp" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/images/real/${photo}.jpg`} alt={opt.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  </picture>
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} aria-hidden="true" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="text-white font-medium text-sm md:text-base">{opt.label}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        ) : (
+          /* Steps 1-2: text cards with descriptions */
+          <div className="space-y-3">
+            {current.opts.map((opt) => {
+              const desc = (opt as { desc?: string }).desc;
+              const selected =
+                (step === 1 && guests === opt.label) ||
+                (step === 2 && location === opt.label);
+              return (
+                <a
+                  key={opt.label}
+                  href={buildHref(opt.label)}
+                  className={`block w-full rounded-xl border p-5 text-left transition-all no-underline ${
+                    selected
+                      ? 'border-gold-text bg-gold-tint/30 ring-1 ring-gold-text text-foreground'
+                      : 'border-line bg-card hover:border-gold-text hover:bg-secondary/30 text-foreground'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-medium text-base">{opt.label}</p>
+                      {desc && <p className="text-xs text-muted-foreground mt-1">{desc}</p>}
+                    </div>
+                    <svg className="w-5 h-5 text-muted-foreground shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M7 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
         )}
 
-        <div className="mt-12 p-4 rounded-lg bg-secondary/50 text-center text-sm text-muted-foreground">
-          Не хотите проходить опрос?{' '}
-          <Link href="/pricing" className="text-gold-text hover:underline">Сразу к тарифам </Link>
-          {' '}или{' '}
-          <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">позвоните {SITE.phone}</a>
+        {step > 0 && (
+          <a
+            href={step === 1 ? '/plan/helper' : step === 2 ? `/plan/helper?occasion=${encodeURIComponent(occasion!)}` : '/plan/helper'}
+            className="inline-block mt-6 text-sm text-muted-foreground hover:text-foreground no-underline"
+          >
+            ← Назад
+          </a>
+        )}
+
+        <div className="mt-12 p-5 rounded-xl bg-card border border-line text-center">
+          <p className="text-sm text-foreground mb-3">Не хотите проходить опрос?</p>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
+            <Link href="/pricing" className="inline-flex items-center gap-1.5 rounded-lg bg-foreground px-4 py-2 text-background font-medium hover:bg-foreground/90 no-underline">
+              Сразу к тарифам →
+            </Link>
+            <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-background px-4 py-2 font-medium hover:border-gold-text no-underline">
+              {SITE.phone}
+            </a>
+          </div>
         </div>
       </div>
     </main>

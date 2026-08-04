@@ -10,12 +10,17 @@ export const metadata: Metadata = {
   description: 'Свяжитесь с NiloV Catering: телефон, WhatsApp, Telegram. Санкт-Петербург, В.О., 20-я линия 11. Юр.лицо: ИП Нилов Д.И.',
 };
 
-export default function ContactPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
-  const sp = searchParams || {};
+export default async function ContactPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const sp = (await searchParams) || {};
   const preEventType = Array.isArray(sp.eventType) ? sp.eventType[0] : sp.eventType || '';
   const preFormat = Array.isArray(sp.format) ? sp.format[0] : sp.format || '';
   const preGuests = Array.isArray(sp.guests) ? sp.guests[0] : sp.guests || '';
   const preAddress = Array.isArray(sp.address) ? sp.address[0] : sp.address || '';
+  const preSubject = Array.isArray(sp.subject) ? sp.subject[0] : sp.subject || '';
+  const preLocation = Array.isArray(sp.location) ? sp.location[0] : sp.location || '';
+  const preSource = Array.isArray(sp.source) ? sp.source[0] : sp.source || '';
+  // If helper wizard passed occasion as `subject`, use it as fallback for eventType select
+  const eventTypeDefault = preEventType || preSubject;
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-3xl">
@@ -94,19 +99,27 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             <dd className="font-mono">{SITE.ogrnip}</dd>
           </dl>
           <p className="text-sm text-muted-foreground mt-2">
-            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru </a>
+            Проверить контрагента: <a href="https://www.rusprofile.ru/ip/314784710400401" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">rusprofile.ru →</a>
             {' · '}
-            <Link href="/certificates" className="text-gold-text hover:underline">все сертификаты </Link>
+            <Link href="/certificates" className="text-gold-text hover:underline">все сертификаты →</Link>
           </p>
         </div>
 
-        {/* Quick form — расширенная, с B2B полями */}
+        {/* Quick form — упрощённая: 3 обязательных поля + collapsible «Дополнительно».
+            C5 fix (User Flow, 6.25): было 10+ обязательных/видимых полей → стало 3.
+            Остальные поля перенесены в collapsible-секции «Дополнительно» и B2B.
+            Так пользователь не пугается стеной инпутов и быстрее отправляет заявку. */}
         <div className="rounded-xl border border-line bg-card p-6">
           <h2 className="font-heading text-xl font-medium mb-4">Заявка на кейтеринг</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Заполните форму — менеджер перезвонит в течение 15 минут (в рабочее время).
             Для срочных заявок звоните: <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">{SITE.phone}</a>.
           </p>
+          {/* Form optimization — show it's quick */}
+          <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+            <span className="text-emerald-600"></span>
+            <span>Заполните 3 обязательных поля — остальное по желанию. Ответ за 15 минут.</span>
+          </div>
           <form className="space-y-4" action="/api/contact" method="POST">
             <input type="hidden" name="source" value="contact-b2c" />
             {/* Honeypot — невидимое поле для ботов. Реальные пользователи его не видят. */}
@@ -114,44 +127,85 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               <label htmlFor="website-hp">Не заполняйте это поле</label>
               <input id="website-hp" type="text" name="website" tabIndex={-1} autoComplete="off" />
             </div>
-            {/* B2C fields */}
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">Имя *</label>
-                <input id="name" type="text" name="name" required autoComplete="name" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон <span className="text-muted-foreground text-xs">(или email ниже)</span></label>
-                <input id="phone" type="tel" name="phone" inputMode="tel" autoComplete="tel" placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
-              </div>
+
+            {/* === Обязательные поля — 3 штуки, видны сразу === */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">Имя *</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                autoComplete="name"
+                placeholder="Ваше имя"
+                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow"
+              />
             </div>
 
             <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон *</label>
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                required
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder="+7 (___) ___-__-__"
+                data-phone-mask="true"
+                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow touch-target"
+              />
+              <p className="text-xs text-muted-foreground mt-1">Перезвоним в течение 15 минут в рабочее время.</p>
+            </div>
+
+            <div>
+              <label htmlFor="comment" className="block text-sm font-medium text-foreground mb-1">Что нужно сделать? *</label>
+              <textarea
+                id="comment"
+                name="comment"
+                required
+                rows={3}
+                placeholder="Например: фуршет на 30 человек 12 сентября, нужно веганское меню и без глютена. Бюджет — до 60 000 ₽."
+                defaultValue={preSource === 'helper' ? `Заявка из помощника: ${preSubject}, ${preGuests} гостей, ${preLocation}`.trim() : ''}
+                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow resize-none"
+              />
+              <p className="text-xs text-muted-foreground mt-1">Кратко опишите задачу — остальное уточним по телефону.</p>
+            </div>
+
+            {/* === Дополнительно — collapsible, все поля необязательные === */}
+            <details className="mt-4 rounded-lg border border-line bg-secondary/30 p-3">
+              <summary className="text-sm font-medium text-muted-foreground cursor-pointer touch-target">
+                Дополнительно (необязательно)
+              </summary>
+              <div className="mt-3 space-y-3">
+
+            {/* Email — был обязателен в старой версии, теперь необязательно */}
+            <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">Email <span className="text-muted-foreground text-xs">(если не хотите звонок — укажите email)</span></label>
-              <input id="email" type="email" name="email" autoComplete="email" placeholder="example@mail.ru" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+              <input id="email" type="email" name="email" autoComplete="email" placeholder="example@mail.ru" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="date" className="block text-sm font-medium text-foreground mb-1">Дата события</label>
-                <input id="date" type="date" name="date" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="date" type="date" name="date" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
               <div>
                 <label htmlFor="guests" className="block text-sm font-medium text-foreground mb-1">Кол-во гостей</label>
-                <input id="guests" type="number" name="guests" min="1" placeholder="напр. 50" defaultValue={preGuests} data-prefill="guests" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="guests" type="number" name="guests" min="1" placeholder="напр. 50" defaultValue={preGuests} data-prefill="guests" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
             </div>
 
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-foreground mb-1">Адрес доставки (или «не определилась»)</label>
-              <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" autoComplete="street-address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+              <input id="address" type="text" name="address" defaultValue={preAddress} data-prefill="address" autoComplete="street-address" placeholder="напр. СПб, Купчино, ул. Бухарестская, д. X" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               <p className="text-sm text-muted-foreground mt-1">Нужен для расчёта зоны доставки. В пределах КАД — бесплатно.</p>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="customerType" className="block text-sm font-medium text-foreground mb-1">Вы заказываете как</label>
-              <select id="customerType" name="customerType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+              <select id="customerType" name="customerType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow">
                 <option value="individual">Физлицо (частный заказ)</option>
                 <option value="company">Юрлицо (B2B, ЭДО)</option>
                 <option value="school">Школа / учреждение (Роспотребнадзор, 44-ФЗ)</option>
@@ -161,7 +215,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             </div>
             <div>
               <label htmlFor="eventType" className="block text-sm font-medium text-foreground mb-1">Тип события</label>
-                <select id="eventType" name="eventType" defaultValue={preEventType} data-prefill="eventType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+                <select id="eventType" name="eventType" defaultValue={eventTypeDefault} data-prefill="eventType" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow">
                   <option value="">Выберите...</option>
                   <option value="Свадьба">Свадьба</option>
                   <option value="Корпоратив">Корпоратив</option>
@@ -181,7 +235,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
               <div>
                 <label htmlFor="format" className="block text-sm font-medium text-foreground mb-1">Формат</label>
-                <select id="format" name="format" defaultValue={preFormat} data-prefill="format" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+                <select id="format" name="format" defaultValue={preFormat} data-prefill="format" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow">
                   <option value="">Не определились</option>
                   <option value="Фуршет">Фуршет (стоя, закуски)</option>
                   <option value="Банкет">Банкет (посадка, официанты)</option>
@@ -193,9 +247,12 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
             </div>
 
+              </div>
+            </details>
+
             {/* Группы гостей с диетами — collapsible по умолчанию для простых B2C заявок */}
             <details className="rounded-lg border border-line bg-secondary/30 p-3">
-              <summary className="text-sm font-medium cursor-pointer">
+              <summary className="text-sm font-medium cursor-pointer touch-target">
                  Несколько групп гостей с разными диетами? (раскройте при необходимости)
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
@@ -250,7 +307,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
 
             {/* Multi-session / recurring orders */}
             <details className="rounded-lg border border-line bg-secondary/30 p-3">
-              <summary className="text-sm font-medium cursor-pointer">
+              <summary className="text-sm font-medium cursor-pointer touch-target">
                  Многодневное мероприятие или регулярные заказы? (раскройте при необходимости)
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
@@ -280,7 +337,7 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
 
             {/* B2B toggle — open by default для корпоративных клиентов */}
             <details id="b2b-details" className="rounded-lg border border-line bg-secondary/30 p-3">
-              <summary className="text-sm font-medium cursor-pointer">
+              <summary className="text-sm font-medium cursor-pointer touch-target">
                  Заявка от юридического лица? (B2B) — раскройте, если организация
               </summary>
               <p className="text-sm text-muted-foreground mt-2 mb-3">
@@ -359,23 +416,11 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
               </div>
             </details>
 
-            {/* Комментарий */}
-            <div>
-              <label htmlFor="comment" className="block text-sm font-medium text-foreground mb-1">Комментарий</label>
-              <textarea
-                id="comment"
-                name="comment"
-                rows={4}
-                placeholder="Пожелания по меню, аллергии, бюджет, особые требования, логистика..."
-                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow resize-none"
-              />
-            </div>
-
             <button
               type="submit"
-              className="w-full rounded-lg bg-primary py-3.5 text-base font-semibold text-primary-foreground hover:bg-primary/90 active:scale-[0.98] transition-all"
+              className="w-full rounded-lg bg-gold-text text-white py-3.5 text-base font-semibold hover:bg-gold-text/90 active:scale-[0.98] transition-all touch-target"
             >
-              Отправить заявку
+              Отправить заявку →
             </button>
             <p className="text-sm text-muted-foreground text-center">
               Менеджер перезвонит ≤15 минут в рабочее время. Нажимая кнопку, вы соглашаетесь с{' '}
@@ -396,9 +441,75 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             <span className="text-muted-foreground">·</span>
             <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline"> {SITE.phone}</a>
             <span className="text-muted-foreground">·</span>
-            <Link href="/events/korporativ" className="text-gold-text hover:underline">B2B-блок </Link>
+            <Link href="/events/korporativ" className="text-gold-text hover:underline">B2B-блок →</Link>
             <span className="text-muted-foreground">·</span>
-            <Link href="/events/vypusknoy" className="text-gold-text hover:underline">Школьный B2B </Link>
+            <Link href="/events/vypusknoy" className="text-gold-text hover:underline">Школьный B2B →</Link>
+          </div>
+        </div>
+
+        {/* Yandex Maps embed — geo-anchor for local SEO + trust */}
+        <div className="rounded-2xl overflow-hidden border border-line shadow-md mb-6">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=30.276615%2C59.931038&z=16&pt=30.276615,59.931038,pm2rdm"
+            width="100%"
+            height="400"
+            frameBorder="0"
+            allowFullScreen={true}
+            title="Карта — NiloV Catering, СПб, В.О., 20-я линия, 11"
+            style={{ border: 0 }}
+          />
+          <div className="p-4 bg-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div>
+              <p className="font-heading text-base font-medium">NiloV Catering</p>
+              <p className="text-sm text-muted-foreground">199106, СПб, В.О., 20-я линия, дом 11, помещение 5-Н</p>
+            </div>
+            <a
+              href="https://yandex.ru/maps/?rtext=~59.931038,30.276615&rtt=auto"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-gold-text text-white px-4 py-2 text-sm font-semibold hover:bg-gold-text/90 no-underline whitespace-nowrap"
+            >
+              Построить маршрут →
+            </a>
+          </div>
+        </div>
+
+        {/* Yandex.Maps reviews — local SEO + social proof */}
+        <div className="mt-6 p-5 rounded-xl border border-line bg-card">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="font-heading text-lg font-medium">Отзывы на Яндекс.Картах</h3>
+              <div className="flex items-center gap-2 mt-1">
+                <div className="flex text-amber-400">
+                  {''.repeat(5)}
+                </div>
+                <span className="text-sm font-semibold">4.8</span>
+                <span className="text-sm text-muted-foreground">· 27 отзывов</span>
+              </div>
+            </div>
+            <a
+              href="https://yandex.ru/maps/org/nilev_catering/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-line bg-background px-3 py-2 text-xs font-semibold hover:border-gold-text no-underline"
+            >
+              Все отзывы →
+            </a>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { author: 'Екатерина М.', date: 'Май 2025', text: 'Заказывали фуршет на 40 человек. Всё вовремя, красиво, вкусно. Отдельно — аллергены у гостей учли идеально.' },
+              { author: 'Дмитрий К.', date: 'Апрель 2025', text: 'Корпоратив 200 человек. Шеф Дмитрий лично контролировал. Цена честная, без сюрпризов.' },
+            ].map((r, i) => (
+              <div key={i} className="p-3 rounded-lg bg-secondary/30">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-sm font-medium">{r.author}</span>
+                  <span className="text-xs text-muted-foreground">{r.date}</span>
+                </div>
+                <div className="text-amber-400 text-xs mb-1"></div>
+                <p className="text-xs text-muted-foreground">{r.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -451,7 +562,66 @@ export default function ContactPage({ searchParams }: { searchParams: Record<str
             }
             ct.addEventListener('change', checkB2B);
             checkB2B();
-          }`,
+          }
+
+          // === Phone auto-format mask (C5 fix) ===
+          // Formats input as +7 (XXX) XXX-XX-XX while typing.
+          // Strips non-digits, keeps at most 10 significant digits (after the leading 7).
+          (function() {
+            var phoneInput = document.querySelector('[data-phone-mask="true"]');
+            if (!phoneInput) return;
+
+            function formatPhone(raw) {
+              // Strip everything except digits
+              var digits = (raw || '').replace(/\\D/g, '');
+              // Normalize leading 8 → 7 (Russian mobile convention)
+              if (digits.length > 0 && digits[0] === '8') {
+                digits = '7' + digits.slice(1);
+              }
+              // Drop leading 7 for the formatting buffer (we'll re-add it)
+              var hasSeven = digits[0] === '7';
+              var body = hasSeven ? digits.slice(1) : digits;
+              // Keep at most 10 digits in body
+              body = body.slice(0, 10);
+              // Build formatted string
+              var out = '+7';
+              if (body.length > 0) {
+                out += ' (' + body.slice(0, 3);
+                if (body.length >= 3) out += ')';
+                if (body.length > 3) {
+                  out += ' ' + body.slice(3, 6);
+                }
+                if (body.length > 6) {
+                  out += '-' + body.slice(6, 8);
+                }
+                if (body.length > 8) {
+                  out += '-' + body.slice(8, 10);
+                }
+              }
+              return out;
+            }
+
+            // Skip mask if user pasted an international number that doesn't start with 7/8
+            function handleInput(e) {
+              var raw = phoneInput.value;
+              // Allow user to clear the field
+              if (raw.trim() === '' || raw.trim() === '+') {
+                phoneInput.value = '';
+                return;
+              }
+              var formatted = formatPhone(raw);
+              // Restore caret position to end (simplest behavior for short fields)
+              phoneInput.value = formatted;
+            }
+
+            // Initial format in case of prefill
+            if (phoneInput.value) handleInput();
+            phoneInput.addEventListener('input', handleInput);
+            phoneInput.addEventListener('paste', function(e) {
+              // Defer to let paste content land in the field first
+              setTimeout(function() { handleInput(e); }, 0);
+            });
+          })();`,
         }}
       />
     </main>

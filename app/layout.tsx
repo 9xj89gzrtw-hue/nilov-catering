@@ -34,13 +34,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="ru" className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
-      <link rel="preconnect" href="https://odaeda.ru" />
-      <link rel="preconnect" href="https://yandex.ru" />
-      <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+        <SkipLink />
+        <link rel="preconnect" href={`https://${SITE.domain}`} />
+        <link rel="preconnect" href="https://yandex.ru" />
+        <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
         <Analytics />
         <OrganizationJsonLd />
         <ServiceJsonLd />
-        <SkipLink />
         <PricingWrapper cmsPricing={cmsPricing}>
           <SmoothScrollProvider>
             <AnnouncementBar message={null} />
@@ -62,7 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 /** SkipLink — WCAG 2.2 (33_UXSIM_ANNA) */
 function SkipLink() {
   return (
-    <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">
+    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-gold-text focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
       Перейти к содержимому
     </a>
   );

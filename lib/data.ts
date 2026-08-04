@@ -45,7 +45,7 @@ export const LEGAL: {
 
 export const SITE: SiteConfig = {
   name: 'NiloV Catering',
-  domain: 'odaeda.ru',
+  domain: 'nilov-catering.vercel.app',
   phone: '+7 (812) 919-59-11',
   phoneTel: '+78129195911',
   phoneMobile: '+7 (911) 941-72-05',
@@ -72,6 +72,7 @@ export const NAV_ITEMS: NavItem[] = [
     { label: 'Выпускные', href: '/events/vypusknoy' },
     { label: 'Юбилеи и годовщины', href: '/events/yubiley' },
     { label: 'Поминки', href: '/events/pominki' },
+    { label: 'Никах и ифтар', href: '/events/nikah' },
     { label: 'Выезд шефа', href: '/events/chef-at-home' },
   ]},
   { label: 'Меню', href: '/menu', children: [
@@ -103,6 +104,7 @@ export const FORMAT_NAMES: Record<Format, string> = {
   'mobile-furshet': 'Мобильный фуршет',
   detskoe: 'Детский праздник',
   'chef-at-home': 'Выезд шефа',
+  pominki: 'Поминки',
 };
 
 export const FORMAT_DESCRIPTIONS: Record<Format, string> = {
@@ -112,15 +114,17 @@ export const FORMAT_DESCRIPTIONS: Record<Format, string> = {
   'mobile-furshet': 'Выезд на площадку без кухни',
   detskoe: 'Специальное меню и развлечения для детей',
   'chef-at-home': 'Шеф-повар и сомелье у вас дома',
+  pominki: 'Поминальный обед по православной традиции. Без алкоголя.',
 };
 
 export const FORMAT_HERO_IMAGES: Record<Format, string> = {
-  furshet: '/images/formats/furshet-hero.svg',
-  banket: '/images/formats/banquet-hero.svg',
-  'coffee-break': '/images/formats/coffee-break-hero.svg',
-  'mobile-furshet': '/images/formats/mobile-furshet-hero.svg',
-  detskoe: '/images/formats/detskoe-hero.svg',
-  'chef-at-home': '/images/formats/chef-at-home-hero.svg',
+  furshet: '/images/real/canape-platter.jpg',
+  banket: '/images/real/wedding-banquet.jpg',
+  'coffee-break': '/images/real/coffee-drink.jpg',
+  'mobile-furshet': '/images/real/canape-platter.jpg',
+  detskoe: '/images/real/dessert-table.jpg',
+  'chef-at-home': '/images/real/salmon-dish.jpg',
+  pominki: '/images/real/wedding-banquet.jpg',
 };
 
 // ДЕМО-клипы для HomeVideoShowcase и EventsRecapHome

@@ -82,22 +82,22 @@ export default function TastingPage() {
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">Имя *</label>
-                <input id="name" name="name" required className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="name" name="name" required className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">Телефон *</label>
-                <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="date" className="block text-sm font-medium text-foreground mb-1">Желаемая дата</label>
-                <input id="date" name="date" type="date" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="date" name="date" type="date" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
               <div>
                 <label htmlFor="guests" className="block text-sm font-medium text-foreground mb-1">Кол-во гостей на дегустацию</label>
-                <input id="guests" name="guests" type="number" min="1" max="12" defaultValue="2" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow" />
+                <input id="guests" name="guests" type="number" min="1" max="12" defaultValue="2" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow" />
               </div>
             </div>
 
@@ -124,7 +124,7 @@ export default function TastingPage() {
             {/* Format of event */}
             <div>
               <label htmlFor="eventFormat" className="block text-sm font-medium text-foreground mb-1">Формат планируемого события</label>
-              <select id="eventFormat" name="eventFormat" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow">
+              <select id="eventFormat" name="eventFormat" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow">
                 <option value="">Не определились</option>
                 <option value="Свадьба">Свадьба</option>
                 <option value="Корпоратив">Корпоратив</option>
@@ -142,7 +142,7 @@ export default function TastingPage() {
                 name="comment"
                 rows={3}
                 placeholder="Какие блюда хотите попробовать? Особые пожелания? Аллергии?"
-                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none transition-shadow resize-none"
+                className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow resize-none"
               />
             </div>
 

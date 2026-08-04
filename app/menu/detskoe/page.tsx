@@ -6,6 +6,7 @@ import { getDishImage } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
+import B2BBanner from '@/components/common/B2BBanner';
 import Link from 'next/link';
 
 export default function DetskoePage() {
@@ -18,6 +19,11 @@ export default function DetskoePage() {
         <p className="text-muted-foreground mb-4">
           Безопасное, вкусное и красивое меню для детских праздников. Все ингредиенты согласованы, аллергены промаркированы. Соответствие СанПиН 2.3/2.5.6.1079-01. Минимум 10 гостей (для медицинских диет — целиакия, анафилаксия — от 6 детей).
         </p>
+
+        {/* B2B banner — НДС indicator for corporate clients */}
+        <div className="mb-8">
+          <B2BBanner />
+        </div>
 
         {/* Safety banner — ВВЕРХУ, перед тарифами и блюдами */}
         <div className="mb-8 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
@@ -48,11 +54,11 @@ export default function DetskoePage() {
             отдельная смена, отдельные доски/ножи, EpiPen. Веган-меню = безопасный выбор
             (без молока, без яиц). В каталоге используйте фильтр «Без молока» и «Без яиц».
             Подробнее на{' '}
-            <Link href="/allergens" className="underline font-semibold">/allergens </Link>.
+            <Link href="/allergens" className="underline font-semibold">/allergens →</Link>.
           </p>
           <div className="flex flex-wrap gap-2">
             <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-              Собрать детское меню в конструкторе
+              Собрать детское меню в конструкторе →
             </Link>
             <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
                Протокол безопасности

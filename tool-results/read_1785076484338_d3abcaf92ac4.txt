@@ -1,0 +1,1237 @@
+     1→<!DOCTYPE html>
+     2→<html lang="ru" class="cormorant_garamond_dcfe491d-module__wqr3mG__variable inter_6a6f4972-module__b1Pora__variable jetbrains_mono_1c2eed3d-module__TIgtBa__variable">
+     3→<head>
+     4→<meta charSet="utf-8"/>
+     5→<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+     6→<link rel="preload" href="/_next/static/media/01e4147cff8141ee.p.3huc2loe0ie8a.woff2" as="font" crossorigin="" type="font/woff2"/>
+     7→<link rel="preload" href="/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2" as="font" crossorigin="" type="font/woff2"/>
+     8→<link rel="preload" href="/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2" as="font" crossorigin="" type="font/woff2"/>
+     9→<link rel="preload" href="/_next/static/media/9c72aa0f40e4eef8-s.p.1y4-pdgsjb-pw.woff2" as="font" crossorigin="" type="font/woff2"/>
+    10→<link rel="preload" href="/_next/static/media/b0947914c9718a1e.p.1xjn85gt7t6qs.woff2" as="font" crossorigin="" type="font/woff2"/>
+    11→<link rel="preload" href="/_next/static/media/cc545e633e20c56d-s.p.176arc174-8zp.woff2" as="font" crossorigin="" type="font/woff2"/>
+    12→<link rel="stylesheet" href="/_next/static/chunks/0df2rwz0oq95g.css" data-precedence="next"/>
+    13→<link rel="stylesheet" href="/_next/static/chunks/22rwl4puug54-.css" data-precedence="next"/>
+    14→<link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/1o-k3n6qtv4a6.js"/>
+    15→<script src="/_next/static/chunks/0t69ubdlbeh2j.js" async="">
+    16→</script>
+    17→<script src="/_next/static/chunks/01do_oszibntj.js" async="">
+    18→</script>
+    19→<script src="/_next/static/chunks/1_v1lznwdb8-y.js" async="">
+    20→</script>
+    21→<script src="/_next/static/chunks/turbopack-383sdg24qdjus.js" async="">
+    22→</script>
+    23→<script src="/_next/static/chunks/05-c3ty_6dwfk.js" async="">
+    24→</script>
+    25→<script src="/_next/static/chunks/0y486svqt_8yi.js" async="">
+    26→</script>
+    27→<script src="/_next/static/chunks/2ow20tiio7kee.js" async="">
+    28→</script>
+    29→<script src="/_next/static/chunks/1suyeclkidhg2.js" async="">
+    30→</script>
+    31→<script src="/_next/static/chunks/2ki95s4cn5kbi.js" async="">
+    32→</script>
+    33→<script src="/_next/static/chunks/10ykc6mep6neq.js" async="">
+    34→</script>
+    35→<script src="/_next/static/chunks/2y79dwdc6gepu.js" async="">
+    36→</script>
+    37→<meta name="next-size-adjust" content=""/>
+    38→<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)"/>
+    39→<meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)"/>
+    40→<title>Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering</title>
+    41→<meta name="description" content="Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге."/>
+    42→<meta name="keywords" content="кейтеринг,Санкт-Петербург,банкет,фуршет,кофе-брейк,свадьба,корпоратив"/>
+    43→<meta name="robots" content="index, follow"/>
+    44→<link rel="canonical" href="https://odaeda.ru"/>
+    45→<link rel="alternate" hrefLang="ru" href="https://odaeda.ru"/>
+    46→<link rel="alternate" hrefLang="en" href="https://odaeda.ru/en"/>
+    47→<link rel="alternate" hrefLang="x-default" href="https://odaeda.ru"/>
+    48→<meta property="og:title" content="Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering"/>
+    49→<meta property="og:description" content="Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге."/>
+    50→<meta property="og:image" content="https://odaeda.ru/og-image.png"/>
+    51→<meta property="og:image:width" content="1200"/>
+    52→<meta property="og:image:height" content="630"/>
+    53→<meta name="twitter:card" content="summary_large_image"/>
+    54→<meta name="twitter:title" content="Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering"/>
+    55→<meta name="twitter:description" content="Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге."/>
+    56→<meta name="twitter:image" content="https://odaeda.ru/og-image.png"/>
+    57→<meta name="twitter:image:width" content="1200"/>
+    58→<meta name="twitter:image:height" content="630"/>
+    59→<link rel="icon" href="/icon?bf490b14b3217082" type="image/png" sizes="32x32"/>
+    60→<link rel="preconnect" href="https://odaeda.ru"/>
+    61→<link rel="preconnect" href="https://yandex.ru"/>
+    62→<script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule="">
+    63→</script>
+    64→</head>
+    65→<body class="min-h-screen bg-background text-foreground antialiased">
+    66→<div hidden="">
+    67→<!--$-->
+    68→<!--/$-->
+    69→</div>
+    70→<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://odaeda.ru/#organization","name":"NiloV Catering","legalName":"Индивидуальный предприниматель Нилов Дмитрий Игоревич","url":"https://odaeda.ru","telephone":"+78129195911","email":"info@odaeda.ru","image":["https://odaeda.ru/og-image.png"],"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU","streetAddress":"199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11, помещение 5-Н","postalCode":"199106"},"priceRange":"₽₽₽","taxID":"781433059704","foundingDate":"2007","areaServed":"Санкт-Петербург и Ленинградская область","sameAs":["https://vk.com/nilovcatering","https://t.me/nilovcatering"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"21:00"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"17","bestRating":"5","worstRating":"1"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Екатерина и Дмитрий"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5","worstRating":"1"},"datePublished":"Август 2024","reviewBody":"Свадебный банкет с 3 диетами (веганы + БГ + всеядные). Шеф Дмитрий предложил торт с безглютеновым ярусом для тёти — целиакия. Гости не заметили разницы, торт прекрасный. Персонал вежливый, подача чёткая по таймингу.","name":"Свадьба"},{"@type":"Review","author":{"@type":"Person","name":"Мария А."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5","worstRating":"1"},"datePublished":"Май 2024","reviewBody":"У ребёнка аллергия на орехи. Прислали протокол безопасности: отдельные доски, EpiPen на руках у менеджера. В детском меню орехов не было вовсе — проще следить. Капкейки и пицца — детям зашло.","name":"День рождения"},{"@type":"Review","author":{"@type":"Person","name":"Сергей П."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5","worstRating":"1"},"datePublished":"Декабрь 2024","reviewBody":"Корпоратив на 50 человек с ЭДО (Диадок). ИП Нилов на УСН — без НДС, для нашей бухгалтерии на ОСН предложили партнёрское ООО. Счёт-фактура пришла на следующий день. Документы для бухгалтерии — без замечаний.","name":"Корпоратив"},{"@type":"Review","author":{"@type":"Person","name":"Ольга Николаевна"},"reviewRating":{"@type":"Rating","ratingValue":"4","bestRating":"5","worstRating":"1"},"datePublished":"Июнь 2024","reviewBody":"Выпускной 9 классов. Полный пакет документов для Роспотребнадзора: медкнижки, бракераж, ППК, декларация ЕАЭС. Согласование прошло без замечаний. Школьный пакет 1 800 ₽/гость — вписались в бюджет.","name":"Выпускной"},{"@type":"Review","author":{"@type":"Person","name":"Игорь М."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5","worstRating":"1"},"datePublished":"Сентябрь 2024","reviewBody":"Халяль-меню на юбилей. Сертификат Совета муфтиев России прислали заранее. Забой по зибха. Отдельная посуда, без алкоголя. Баранина и плов — как дома. Не хватает только вина в меню, но это плюс для халяль.","name":"Юбилей"}]}</script>
+    71→<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Перейти к содержимому</a>
+    72→<header class="fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-background/90 backdrop-blur-lg shadow-sm" role="banner">
+    73→<nav class="container-site flex h-16 items-center justify-between gap-3" aria-label="Главная навигация">
+    74→<a class="flex items-center gap-2 shrink-0 group" aria-label="NiloV Catering — на главную" href="/">
+    75→<svg class="w-8 h-8 group-hover:scale-105 transition-transform" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    76→<defs>
+    77→<linearGradient id="nilov-gold" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+    78→<stop stop-color="#C9A66B">
+    79→</stop>
+    80→<stop offset="1" stop-color="#8C7140">
+    81→</stop>
+    82→</linearGradient>
+    83→</defs>
+    84→<rect width="40" height="40" rx="8" fill="url(#nilov-gold)">
+    85→</rect>
+    86→<path d="M12 28 L12 12 L20 22 L28 12 L28 28" stroke="#FFFEF7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    87→</path>
+    88→</svg>
+    89→<span class="font-heading text-xl font-semibold tracking-tight text-foreground group-hover:text-gold-text transition-colors">NiloV</span>
+    90→</a>
+    91→<ul class="hidden lg:flex items-center gap-1" role="menubar">
+    92→<li class="relative" role="none">
+    93→<button class="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" aria-expanded="false" aria-haspopup="true" role="menuitem">События<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200" aria-hidden="true">
+    94→<path d="m6 9 6 6 6-6">
+    95→</path>
+    96→</svg>
+    97→</button>
+    98→</li>
+    99→<li class="relative" role="none">
+   100→<button class="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" aria-expanded="false" aria-haspopup="true" role="menuitem">Меню<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200" aria-hidden="true">
+   101→<path d="m6 9 6 6 6-6">
+   102→</path>
+   103→</svg>
+   104→</button>
+   105→</li>
+   106→</ul>
+   107→<ul class="hidden md:flex items-center gap-1" role="list">
+   108→<li>
+   109→<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/gallery">Галерея</a>
+   110→</li>
+   111→<li>
+   112→<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/pricing">Тарифы</a>
+   113→</li>
+   114→<li>
+   115→<a class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50" href="/why-us">О нас</a>
+   116→</li>
+   117→</ul>
+   118→<div class="hidden md:flex items-center gap-2 shrink-0">
+   119→<button class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-2 rounded-md hover:bg-secondary/50 transition-colors font-medium touch-target" aria-label="Размер текста: обычный. Нажмите чтобы изменить." title="Размер текста: 100%. Нажмите чтобы увеличить.">
+   120→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-type w-4 h-4" aria-hidden="true">
+   121→<path d="M12 4v16">
+   122→</path>
+   123→<path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2">
+   124→</path>
+   125→<path d="M9 20h6">
+   126→</path>
+   127→</svg>
+   128→<span class="hidden sm:inline">100%</span>
+   129→</button>
+   130→<a href="tel:+78129195911" class="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-gold-text transition-colors whitespace-nowrap" aria-label="Позвонить +7 (812) 919-59-11">
+   131→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-4 h-4" aria-hidden="true">
+   132→<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384">
+   133→</path>
+   134→</svg>
+   135→<span class="hidden lg:inline">+7 (812) 919-59-11</span>
+   136→<span class="lg:hidden">Позвонить</span>
+   137→</a>
+   138→<a class="hidden lg:inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm" href="/plan/calculator">
+   139→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator w-4 h-4" aria-hidden="true">
+   140→<rect width="16" height="20" x="4" y="2" rx="2">
+   141→</rect>
+   142→<line x1="8" x2="16" y1="6" y2="6">
+   143→</line>
+   144→<line x1="16" x2="16" y1="14" y2="18">
+   145→</line>
+   146→<path d="M16 10h.01">
+   147→</path>
+   148→<path d="M12 10h.01">
+   149→</path>
+   150→<path d="M8 10h.01">
+   151→</path>
+   152→<path d="M12 14h.01">
+   153→</path>
+   154→<path d="M8 14h.01">
+   155→</path>
+   156→<path d="M12 18h.01">
+   157→</path>
+   158→<path d="M8 18h.01">
+   159→</path>
+   160→</svg>Калькулятор</a>
+   161→</div>
+   162→<div class="flex md:hidden items-center gap-1 shrink-0">
+   163→<button class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-2 rounded-md hover:bg-secondary/50 transition-colors font-medium touch-target" aria-label="Размер текста: обычный. Нажмите чтобы изменить." title="Размер текста: 100%. Нажмите чтобы увеличить.">
+   164→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-type w-4 h-4" aria-hidden="true">
+   165→<path d="M12 4v16">
+   166→</path>
+   167→<path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2">
+   168→</path>
+   169→<path d="M9 20h6">
+   170→</path>
+   171→</svg>
+   172→<span class="hidden sm:inline">100%</span>
+   173→</button>
+   174→<a href="tel:+78129195911" class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors" aria-label="Позвонить +7 (812) 919-59-11">
+   175→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-4 h-4" aria-hidden="true">
+   176→<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384">
+   177→</path>
+   178→</svg>
+   179→</a>
+   180→</div>
+   181→</nav>
+   182→</header>
+   183→<div style="opacity:1">
+   184→<main id="main">
+   185→<section class="relative min-h-[85vh] flex items-center overflow-hidden" aria-label="Главный экран">
+   186→<div class="absolute inset-0 z-0" style="opacity:1;transform:none">
+   187→<picture>
+   188→<source srcSet="/images/gallery/wedding-banquet-1920.avif" type="image/avif" media="(min-width: 768px)"/>
+   189→<source srcSet="/images/gallery/wedding-banquet-768.avif" type="image/avif" media="(max-width: 767px)"/>
+   190→<source srcSet="/images/gallery/wedding-banquet-1920.webp" type="image/webp" media="(min-width: 768px)"/>
+   191→<source srcSet="/images/gallery/wedding-banquet-768.webp" type="image/webp" media="(max-width: 767px)"/>
+   192→<img src="/images/gallery/wedding-banquet.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" fetchPriority="high" aria-hidden="true"/>
+   193→</picture>
+   194→<video class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" muted="" playsInline="" loop="" preload="none" aria-hidden="true">
+   195→<source src="/videos/hero/banquet.mp4" type="video/mp4"/>
+   196→<source src="/videos/hero/banquet.webm" type="video/webm"/>
+   197→</video>
+   198→<div class="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/90">
+   199→</div>
+   200→</div>
+   201→<button type="button" class="absolute top-20 right-4 z-20 rounded-full bg-background/80 backdrop-blur-sm border border-line p-2.5 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Остановить или включить фоновое видео">
+   202→<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+   203→<rect x="4" y="3" width="3" height="10" rx="1">
+   204→</rect>
+   205→<rect x="9" y="3" width="3" height="10" rx="1">
+   206→</rect>
+   207→</svg>
+   208→</button>
+   209→<div class="relative z-10 container-site py-20 md:py-28" style="transform:none">
+   210→<div class="max-w-[680px]">
+   211→<p class="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-6 animate-fade-up">NiloV · Петербург · с 2007</p>
+   212→<h1 class="mb-6 tracking-tight animate-fade-up" style="line-height:1.05;letter-spacing:-0.02em">
+   213→<span class="text-foreground">Кейтеринг, </span>
+   214→<span class="relative" style="font-weight:650;background:linear-gradient(135deg, #B08D57 0%, #8A6D3B 60%, #6E5631 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">который чувствуешь заранее</span>
+   215→</h1>
+   216→<p class="text-base md:text-lg text-muted-foreground mb-4 animate-fade-up" style="animation-delay:0.15s">Более 3000 проведённых событий с 2007 года. От камерного ужина на 6 персон до фестиваля на 800+ гостей (через сеть партнёрских кухонь) — ресторанное качество там, где вы его не ждёте.</p>
+   217→<div class="flex flex-wrap gap-3 mb-8 animate-fade-up" style="animation-delay:0.25s">
+   218→<a class="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline" href="/menu/furshet">Фуршет от 2 450 ₽/гость</a>
+   219→<a class="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline" href="/menu/banquet">Банкет от 3 950 ₽/гость</a>
+   220→<a class="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline" href="/menu/vegan">Веган от 2 950 ₽/гость</a>
+   221→<a class="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline" href="/menu/halal">Халяль от 2 450 ₽/гость</a>
+   222→<a class="rounded-full bg-card/80 backdrop-blur-sm border border-gold-tint px-4 py-1.5 text-sm font-medium text-gold-text hover:bg-gold-tint/20 transition-colors no-underline" href="/menu/coffee-break">Кофе-брейк от 390 ₽/гость</a>
+   223→</div>
+   224→<div class="flex flex-wrap gap-x-4 gap-y-1 mb-6 animate-fade-up text-xs text-muted-foreground" style="animation-delay:0.28s">
+   225→<span>
+   226→<strong class="text-foreground/80">Фуршет</strong> — гости стоят, закуски руками</span>
+   227→<span>
+   228→<strong class="text-foreground/80">Банкет</strong> — посадка за стол, официанты</span>
+   229→<span>
+   230→<strong class="text-foreground/80">Кофе-брейк</strong> — перерыв на конференции</span>
+   231→</div>
+   232→<div class="flex flex-wrap items-center gap-4 animate-fade-up" style="animation-delay:0.3s">
+   233→<a class="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 transition-all hover:scale-[1.02] active:scale-[0.98]" href="/plan">Спланировать событие<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+   234→<path d="M3 8h10M9 4l4 4-4 4">
+   235→</path>
+   236→</svg>
+   237→</a>
+   238→<a class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2" href="/menu">Смотреть меню</a>
+   239→</div>
+   240→<p class="mt-8 text-xs text-muted-foreground animate-fade-up" style="animation-delay:0.45s">Доставка в КАД включена · Технология су-вид · Маркировка по 14 аллергенам</p>
+   241→</div>
+   242→</div>
+   243→</section>
+   244→<section class="py-8 md:py-10 bg-secondary" aria-label="Цены и возможности">
+   245→<div class="container-site max-w-4xl">
+   246→<div class="flex flex-col sm:flex-row justify-center gap-3">
+   247→<a class="rounded-lg bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:bg-primary/90 transition-colors text-center touch-target" href="/plan/helper">🎯 Не знаете что выбрать? Подберём за 3 вопроса →</a>
+   248→<a class="rounded-lg border border-gold-text text-gold-text px-5 py-3 text-sm font-semibold hover:bg-gold-tint transition-colors text-center touch-target" href="/plan/calculator">Узнать цены</a>
+   249→</div>
+   250→</div>
+   251→</section>
+   252→<section class="py-10" aria-label="Доставка еды">
+   253→<div class="container-site">
+   254→<div class="rounded-2xl bg-gradient-to-r from-gold-tint to-secondary border border-gold-tint p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+   255→<div class="text-center md:text-left flex-1">
+   256→<div class="flex items-center gap-2 justify-center md:justify-start mb-2">
+   257→<span class="text-3xl">🚚</span>
+   258→<h2 class="font-heading text-2xl font-medium">Нужна просто еда — без официантов?</h2>
+   259→</div>
+   260→<p class="text-sm text-muted-foreground max-w-xl mx-auto md:mx-0">Доставка готовых блюд домой или в офис — от <strong class="text-foreground">5 000 ₽</strong>, без минимума по гостям. Привезём от 1 порции. Бесплатно в пределах КАД.</p>
+   261→</div>
+   262→<div class="flex flex-col gap-2 shrink-0">
+   263→<a class="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors text-center" href="/delivery/order">Собрать заказ доставки →</a>
+   264→<a class="text-xs text-muted-foreground hover:text-foreground transition-colors text-center" href="/delivery">Зоны и стоимость доставки</a>
+   265→</div>
+   266→</div>
+   267→</div>
+   268→</section>
+   269→<section class="py-16 md:py-20 bg-background" aria-labelledby="events-heading">
+   270→<div class="container-site">
+   271→<div class="mb-8 md:text-center" style="opacity:1;transform:none">
+   272→<h2 id="events-heading" class="mb-3">Какое у вас событие?</h2>
+   273→<p class="text-muted-foreground max-w-xl md:mx-auto text-balance">Подбираем меню под ваш повод и бюджет.</p>
+   274→</div>
+   275→<p class="md:hidden text-xs text-muted-foreground mb-2 text-center">← Листайте влево чтобы увидеть все варианты →</p>
+   276→<div class="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none pb-2">
+   277→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   278→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/korporativ">
+   279→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   280→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   281→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/banquet-hero.svg);background-position:center 40%" role="img" aria-label="Корпоративы">
+   282→</div>
+   283→</div>
+   284→</div>
+   285→<div class="p-4 flex flex-col flex-1">
+   286→<h3 class="font-heading text-base font-medium text-foreground mb-1">Корпоративы</h3>
+   287→<p class="text-xs text-muted-foreground mb-3">Фуршет в офисе или банкет с посадкой</p>
+   288→<p class="mt-auto text-sm font-semibold text-gold-text">от 2 450 ₽ (фуршет)</p>
+   289→</div>
+   290→</a>
+   291→</div>
+   292→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   293→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/svadba">
+   294→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   295→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   296→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/banquet-hero.svg);background-position:center 40%" role="img" aria-label="Свадьбы">
+   297→</div>
+   298→</div>
+   299→</div>
+   300→<div class="p-4 flex flex-col flex-1">
+   301→<h3 class="font-heading text-base font-medium text-foreground mb-1">Свадьбы</h3>
+   302→<p class="text-xs text-muted-foreground mb-3">От камерной до банкета на 200 гостей</p>
+   303→<p class="mt-auto text-sm font-semibold text-gold-text">от 3 950 ₽</p>
+   304→</div>
+   305→</a>
+   306→</div>
+   307→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   308→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/vypusknoy">
+   309→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   310→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   311→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/furshet-hero.svg);background-position:center 40%" role="img" aria-label="Выпускные">
+   312→</div>
+   313→</div>
+   314→</div>
+   315→<div class="p-4 flex flex-col flex-1">
+   316→<h3 class="font-heading text-base font-medium text-foreground mb-1">Выпускные</h3>
+   317→<p class="text-xs text-muted-foreground mb-3">Школьные и студенческие мероприятия</p>
+   318→<p class="mt-auto text-sm font-semibold text-gold-text">от 2 450 ₽</p>
+   319→</div>
+   320→</a>
+   321→</div>
+   322→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   323→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/chastnoe">
+   324→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   325→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   326→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/furshet-hero.svg);background-position:center 40%" role="img" aria-label="Частное">
+   327→</div>
+   328→</div>
+   329→</div>
+   330→<div class="p-4 flex flex-col flex-1">
+   331→<h3 class="font-heading text-base font-medium text-foreground mb-1">Частное</h3>
+   332→<p class="text-xs text-muted-foreground mb-3">Дни рождения, юбилеи, семейные ужины</p>
+   333→<p class="mt-auto text-sm font-semibold text-gold-text">от 2 450 ₽</p>
+   334→</div>
+   335→</a>
+   336→</div>
+   337→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   338→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/yubiley">
+   339→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   340→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   341→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/banquet-hero.svg);background-position:center 40%" role="img" aria-label="Юбилеи">
+   342→</div>
+   343→</div>
+   344→</div>
+   345→<div class="p-4 flex flex-col flex-1">
+   346→<h3 class="font-heading text-base font-medium text-foreground mb-1">Юбилеи</h3>
+   347→<p class="text-xs text-muted-foreground mb-3">Золотая свадьба, годовщина — для пожилых гостей</p>
+   348→<p class="mt-auto text-sm font-semibold text-gold-text">от 50 000 ₽</p>
+   349→</div>
+   350→</a>
+   351→</div>
+   352→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   353→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/detskoe">
+   354→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   355→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   356→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/detskoe-hero.svg);background-position:center 40%" role="img" aria-label="Детское">
+   357→</div>
+   358→</div>
+   359→</div>
+   360→<div class="p-4 flex flex-col flex-1">
+   361→<h3 class="font-heading text-base font-medium text-foreground mb-1">Детское</h3>
+   362→<p class="text-xs text-muted-foreground mb-3">Меню для детей, аниматоры, шоу</p>
+   363→<p class="mt-auto text-sm font-semibold text-gold-text">от 1 550 ₽</p>
+   364→</div>
+   365→</a>
+   366→</div>
+   367→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   368→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/pominki">
+   369→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   370→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   371→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/banquet-hero.svg);background-position:center 40%" role="img" aria-label="Поминки">
+   372→</div>
+   373→</div>
+   374→</div>
+   375→<div class="p-4 flex flex-col flex-1">
+   376→<h3 class="font-heading text-base font-medium text-foreground mb-1">Поминки</h3>
+   377→<p class="text-xs text-muted-foreground mb-3">Поминальный обед: кутья, блины, кисель. Без алкоголя</p>
+   378→<p class="mt-auto text-sm font-semibold text-gold-text">от 1 800 ₽</p>
+   379→</div>
+   380→</a>
+   381→</div>
+   382→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   383→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/pricing?event=coffee-break">
+   384→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   385→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   386→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/coffee-break-hero.svg);background-position:center 40%" role="img" aria-label="Кофе-брейк">
+   387→</div>
+   388→</div>
+   389→</div>
+   390→<div class="p-4 flex flex-col flex-1">
+   391→<h3 class="font-heading text-base font-medium text-foreground mb-1">Кофе-брейк</h3>
+   392→<p class="text-xs text-muted-foreground mb-3">Конференции, семинары — или доставкой без официантов</p>
+   393→<p class="mt-auto text-sm font-semibold text-gold-text">от 390 ₽</p>
+   394→</div>
+   395→</a>
+   396→</div>
+   397→<div class="snap-start shrink-0 w-[70vw] max-w-[260px] md:w-auto md:max-w-none" style="opacity:1;transform:none">
+   398→<a class="group relative flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] h-full focus-visible:ring-2 focus-visible:ring-ring" href="/events/chef-at-home">
+   399→<div class="aspect-[3/2] bg-secondary overflow-hidden">
+   400→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   401→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/chef-at-home-hero.svg);background-position:center 40%" role="img" aria-label="Шеф дома">
+   402→</div>
+   403→</div>
+   404→</div>
+   405→<div class="p-4 flex flex-col flex-1">
+   406→<h3 class="font-heading text-base font-medium text-foreground mb-1">Шеф дома</h3>
+   407→<p class="text-xs text-muted-foreground mb-3">Шеф-повар готовит у вас дома</p>
+   408→<p class="mt-auto text-sm font-semibold text-gold-text">от 2 500 ₽/ч</p>
+   409→</div>
+   410→</a>
+   411→</div>
+   412→</div>
+   413→</div>
+   414→</section>
+   415→<section class="py-12 md:py-16 bg-secondary/40" aria-labelledby="b2b-heading">
+   416→<div class="container-site max-w-5xl">
+   417→<div class="rounded-2xl border-2 border-gold-tint bg-card p-6 md:p-8">
+   418→<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+   419→<div>
+   420→<p class="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Для бизнеса</p>
+   421→<h2 id="b2b-heading" class="font-heading text-2xl md:text-3xl font-medium mb-2">💼 B2B-кейтеринг: договор, ЭДО, НДС</h2>
+   422→<p class="text-base text-muted-foreground max-w-2xl">Работаем с корпоративными клиентами, школами, учреждениями, гос. заказчиками (44-ФЗ, 223-ФЗ). Полный пакет документов для Роспотребнадзора. SLA, страхование 5 млн ₽ (с расширением до 30 млн), план на случай ЧП.</p>
+   423→</div>
+   424→</div>
+   425→<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+   426→<div class="p-3 rounded-lg border border-line bg-background">
+   427→<p class="text-sm font-semibold mb-1">📋 Документы</p>
+   428→<p class="text-xs text-muted-foreground">Договор, счёт, акт, счёт-фактура, ЭДО (Диадок, СБИС)</p>
+   429→</div>
+   430→<div class="p-3 rounded-lg border border-line bg-background">
+   431→<p class="text-sm font-semibold mb-1">💰 НДС</p>
+   432→<p class="text-xs text-muted-foreground">ИП Нилов Д.И. — УСН (без НДС). Для плательщиков НДС — партнёрское ООО.</p>
+   433→</div>
+   434→<div class="p-3 rounded-lg border border-line bg-background">
+   435→<p class="text-sm font-semibold mb-1">🛡 Роспотребнадзор</p>
+   436→<p class="text-xs text-muted-foreground">Медкнижки, бракераж, ППК, HACCP, декларация ЕАЭС</p>
+   437→</div>
+   438→<div class="p-3 rounded-lg border border-line bg-background">
+   439→<p class="text-sm font-semibold mb-1">🎓 Школы</p>
+   440→<p class="text-xs text-muted-foreground">Спец. тариф от 1 800 ₽/гость. Пакет документов для тендера.</p>
+   441→</div>
+   442→</div>
+   443→<div class="flex flex-wrap gap-3">
+   444→<a class="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline" href="/events/korporativ">B2B-кейтеринг →</a>
+   445→<a class="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline" href="/events/vypusknoy">🎓 Школьный выпускной</a>
+   446→<a class="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline" href="/certificates">📋 Сертификаты</a>
+   447→<a class="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline" href="/partners">🌐 Партнёры (500+)</a>
+   448→<a class="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline" href="/account/orders">💼 Личный кабинет</a>
+   449→<a href="mailto:info@odaeda.ru?subject=B2B-запрос" class="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">✉️ <!-- -->info@odaeda.ru</a>
+   450→</div>
+   451→</div>
+   452→</div>
+   453→</section>
+   454→<section class="py-16 md:py-20 bg-background border-t border-line" aria-labelledby="formats-heading">
+   455→<div class="container-site">
+   456→<div class="mb-8">
+   457→<p class="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Что вы задумали?</p>
+   458→<h2 id="formats-heading">Три формата</h2>
+   459→<a class="text-sm text-gold-text hover:underline mt-1 inline-block" href="/help/formats">Что такое формат? →</a>
+   460→</div>
+   461→<div class="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none">
+   462→<a class="snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring" href="/menu/furshet">
+   463→<div class="aspect-[16/10] bg-secondary overflow-hidden">
+   464→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   465→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/furshet-hero.svg);background-position:center 40%" role="img" aria-label="Фуршет">
+   466→</div>
+   467→</div>
+   468→</div>
+   469→<div class="p-4 flex flex-col flex-1">
+   470→<div class="flex items-center justify-between mb-1">
+   471→<h3 class="font-heading text-base font-medium">Фуршет</h3>
+   472→<span class="text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full">Хит</span>
+   473→</div>
+   474→<p class="text-xs text-muted-foreground mb-3">Гости едят стоя, лёгкие закуски</p>
+   475→<p class="mt-auto font-mono text-sm font-semibold text-foreground">от <!-- -->2 450<!-- --> ₽ <span class="text-xs font-normal text-muted-foreground">/гость</span>
+   476→</p>
+   477→</div>
+   478→</a>
+   479→<a class="snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring" href="/menu/banquet">
+   480→<div class="aspect-[16/10] bg-secondary overflow-hidden">
+   481→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   482→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/banquet-hero.svg);background-position:center 40%" role="img" aria-label="Банкет">
+   483→</div>
+   484→</div>
+   485→</div>
+   486→<div class="p-4 flex flex-col flex-1">
+   487→<div class="flex items-center justify-between mb-1">
+   488→<h3 class="font-heading text-base font-medium">Банкет</h3>
+   489→<span class="text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full">Свадьбы</span>
+   490→</div>
+   491→<p class="text-xs text-muted-foreground mb-3">Посадка за стол, официанты</p>
+   492→<p class="mt-auto font-mono text-sm font-semibold text-foreground">от <!-- -->3 950<!-- --> ₽ <span class="text-xs font-normal text-muted-foreground">/гость</span>
+   493→</p>
+   494→</div>
+   495→</a>
+   496→<a class="snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring" href="/menu/coffee-break">
+   497→<div class="aspect-[16/10] bg-secondary overflow-hidden">
+   498→<div class="relative overflow-hidden bg-card border border-line group rounded-xl aspect-video group-hover:scale-105 transition-transform duration-500">
+   499→<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110" style="background-image:url(/images/formats/coffee-break-hero.svg);background-position:center 40%" role="img" aria-label="Кофе-брейк">
+   500→</div>
+   501→</div>
+   502→</div>
+   503→<div class="p-4 flex flex-col flex-1">
+   504→<div class="flex items-center justify-between mb-1">
+   505→<h3 class="font-heading text-base font-medium">Кофе-брейк</h3>
+   506→<span class="text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full">Офисы</span>
+   507→</div>
+   508→<p class="text-xs text-muted-foreground mb-3">Кофе и десерты в перерыве (деловой завтрак тоже)</p>
+   509→<p class="mt-auto font-mono text-sm font-semibold text-foreground">от <!-- -->390<!-- --> ₽ <span class="text-xs font-normal text-muted-foreground">/гость</span>
+   510→</p>
+   511→</div>
+   512→</a>
+   513→</div>
+   514→<p class="mt-4 text-center text-sm text-muted-foreground">
+   515→<a class="text-gold-text hover:underline" href="/menu/furshet">Мобильный фуршет</a> — выезд на площадку без кухни</p>
+   516→</div>
+   517→</section>
+   518→<section class="py-16 md:py-20 bg-background" aria-labelledby="menu-heading">
+   519→<div class="container-site">
+   520→<h2 id="menu-heading" class="mb-2 font-heading text-3xl md:text-4xl text-center">Меню</h2>
+   521→<p class="text-center text-muted-foreground mb-8">Нажмите на блюдо, чтобы открыть в конструкторе</p>
+   522→<div class="carousel-horizontal flex gap-3 overflow-x-auto pb-4 md:grid md:grid-cols-4 md:overflow-visible max-w-3xl mx-auto">
+   523→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=canape-salmon">
+   524→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   525→<div class="drinqit-3d-inner w-full h-full">
+   526→<div class="drinqit-3d-img w-full h-full">
+   527→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   528→<picture>
+   529→<source srcSet="/images/menu/kanape/k1-480.avif 480w, /images/menu/kanape/k1-768.avif 768w, /images/menu/kanape/k1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   530→<source srcSet="/images/menu/kanape/k1-480.webp 480w, /images/menu/kanape/k1-768.webp 768w, /images/menu/kanape/k1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   531→<img src="/images/menu/kanape/k1.jpg" alt="Фуршет" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 40%"/>
+   532→</picture>
+   533→</div>
+   534→</div>
+   535→</div>
+   536→</div>
+   537→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Фуршет</h3>
+   538→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Канапе, тарталетки, мини-бургеры</p>
+   539→</a>
+   540→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=banket&amp;guests=20&amp;dish=beef-medallions">
+   541→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   542→<div class="drinqit-3d-inner w-full h-full">
+   543→<div class="drinqit-3d-img w-full h-full">
+   544→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   545→<picture>
+   546→<source srcSet="/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   547→<source srcSet="/images/dishes/beef-medallions.png 480w, /images/dishes/beef-medallions.png 768w, /images/dishes/beef-medallions.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   548→<img src="/images/dishes/beef-medallions.png" alt="Банкет" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 45%"/>
+   549→</picture>
+   550→</div>
+   551→</div>
+   552→</div>
+   553→</div>
+   554→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Банкет</h3>
+   555→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Закуски, горячее, винная карта</p>
+   556→</a>
+   557→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=macaron-shooter">
+   558→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   559→<div class="drinqit-3d-inner w-full h-full">
+   560→<div class="drinqit-3d-img w-full h-full">
+   561→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   562→<picture>
+   563→<source srcSet="/images/dishes/macaron-shooter.png 480w, /images/dishes/macaron-shooter.png 768w, /images/dishes/macaron-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   564→<source srcSet="/images/dishes/macaron-shooter.png 480w, /images/dishes/macaron-shooter.png 768w, /images/dishes/macaron-shooter.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   565→<img src="/images/dishes/macaron-shooter.png" alt="Кофе-брейк" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 50%"/>
+   566→</picture>
+   567→</div>
+   568→</div>
+   569→</div>
+   570→</div>
+   571→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Кофе-брейк</h3>
+   572→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Выпечка, канапе, кофе, чай</p>
+   573→</a>
+   574→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=mini-burger">
+   575→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   576→<div class="drinqit-3d-inner w-full h-full">
+   577→<div class="drinqit-3d-img w-full h-full">
+   578→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   579→<picture>
+   580→<source srcSet="/images/menu/goryachee/h1-480.avif 480w, /images/menu/goryachee/h1-768.avif 768w, /images/menu/goryachee/h1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   581→<source srcSet="/images/menu/goryachee/h1-480.webp 480w, /images/menu/goryachee/h1-768.webp 768w, /images/menu/goryachee/h1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   582→<img src="/images/menu/goryachee/h1.jpg" alt="Детское" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 45%"/>
+   583→</picture>
+   584→</div>
+   585→</div>
+   586→</div>
+   587→</div>
+   588→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Детское</h3>
+   589→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Бутерброды, капкейки, соки</p>
+   590→</a>
+   591→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=buddha-bowl">
+   592→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   593→<div class="drinqit-3d-inner w-full h-full">
+   594→<div class="drinqit-3d-img w-full h-full">
+   595→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   596→<picture>
+   597→<source srcSet="/images/dishes/buddha-bowl.png 480w, /images/dishes/buddha-bowl.png 768w, /images/dishes/buddha-bowl.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   598→<source srcSet="/images/dishes/buddha-bowl.png 480w, /images/dishes/buddha-bowl.png 768w, /images/dishes/buddha-bowl.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   599→<img src="/images/dishes/buddha-bowl.png" alt="Веган" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 40%"/>
+   600→</picture>
+   601→</div>
+   602→</div>
+   603→</div>
+   604→</div>
+   605→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Веган</h3>
+   606→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Растительные блюда без мяса и молока</p>
+   607→</a>
+   608→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=gluten-free-cake">
+   609→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   610→<div class="drinqit-3d-inner w-full h-full">
+   611→<div class="drinqit-3d-img w-full h-full">
+   612→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   613→<picture>
+   614→<source srcSet="/images/dishes/gluten-free-cake.png 480w, /images/dishes/gluten-free-cake.png 768w, /images/dishes/gluten-free-cake.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   615→<source srcSet="/images/dishes/gluten-free-cake.png 480w, /images/dishes/gluten-free-cake.png 768w, /images/dishes/gluten-free-cake.png 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   616→<img src="/images/dishes/gluten-free-cake.png" alt="Без глютена" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 50%"/>
+   617→</picture>
+   618→</div>
+   619→</div>
+   620→</div>
+   621→</div>
+   622→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Без глютена</h3>
+   623→<p class="text-[11px] text-muted-foreground text-center mt-0.5">Блюда без глютена</p>
+   624→</a>
+   625→<a class="carousel-item group block shrink-0 w-40 md:w-auto" href="/plan/constructor?format=furshet&amp;guests=20&amp;dish=halal-chicken-shashlik">
+   626→<div class="drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+   627→<div class="drinqit-3d-inner w-full h-full">
+   628→<div class="drinqit-3d-img w-full h-full">
+   629→<div class="relative overflow-hidden bg-secondary aspect-square w-full h-full group">
+   630→<picture>
+   631→<source srcSet="/images/menu/bbq/b1-480.avif 480w, /images/menu/bbq/b1-768.avif 768w, /images/menu/bbq/b1.avif 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif"/>
+   632→<source srcSet="/images/menu/bbq/b1-480.webp 480w, /images/menu/bbq/b1-768.webp 768w, /images/menu/bbq/b1.webp 1920w" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/webp"/>
+   633→<img src="/images/menu/bbq/b1.jpg" alt="Халяль" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover foodphoto-ssr-visible group-hover:scale-110 transition-transform duration-700" style="object-position:center 45%"/>
+   634→</picture>
+   635→</div>
+   636→</div>
+   637→</div>
+   638→</div>
+   639→<h3 class="font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors">Халяль</h3>
+   640→<p class="text-[11px] text-muted-foreground text-center mt-0.5">14 блюд халяль на отдельной линии</p>
+   641→</a>
+   642→</div>
+   643→<p class="md:hidden text-center text-xs text-muted-foreground mt-2">← Листайте влево →</p>
+   644→<div class="mt-8 text-center">
+   645→<a class="text-sm font-medium text-gold-text hover:underline" href="/menu">Полное меню →</a>
+   646→</div>
+   647→</div>
+   648→</section>
+   649→<section class="py-10 md:py-14 bg-secondary overflow-hidden" aria-label="Клиенты и партнёры">
+   650→<div class="container-site">
+   651→<h2 class="text-center mb-4">Нам доверяют</h2>
+   652→<p class="text-center text-sm text-muted-foreground mb-8">8<!-- --> подтверждённых кейсов (из 17 отзывов на /reviews). Конкретные имена корпоративных заказчиков раскрываем только по их согласию — пишите на<!-- --> <a href="mailto:b2b@odaeda.ru" class="underline">b2b@odaeda.ru</a> для референсов.</p>
+   653→</div>
+   654→<div class="overflow-hidden py-1" style="opacity:1">
+   655→<div class="flex gap-3 md:gap-4">
+   656→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-003">
+   657→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">IT-стартап 50 чел</p>
+   658→<p class="text-[10px] text-muted-foreground text-center leading-tight">Корпоратив<br/>
+   659→<span class="opacity-70">Декабрь 2024</span>
+   660→<br/>
+   661→<span class="opacity-70">Лофт «Севкабель»</span>
+   662→</p>
+   663→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   664→</a>
+   665→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-004">
+   666→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Школа №355, 75 выпускников</p>
+   667→<p class="text-[10px] text-muted-foreground text-center leading-tight">Выпускной<br/>
+   668→<span class="opacity-70">Июнь 2024</span>
+   669→<br/>
+   670→<span class="opacity-70">ГБОУ школа №355</span>
+   671→</p>
+   672→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   673→</a>
+   674→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-006">
+   675→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Конференция Expoforum, 150 чел×2 дня</p>
+   676→<p class="text-[10px] text-muted-foreground text-center leading-tight">Конференция<br/>
+   677→<span class="opacity-70">Октябрь 2024</span>
+   678→<br/>
+   679→<span class="opacity-70">Конгресс-холл «Экспофорум»</span>
+   680→</p>
+   681→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   682→</a>
+   683→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-010">
+   684→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Свадьба 100 чел</p>
+   685→<p class="text-[10px] text-muted-foreground text-center leading-tight">Свадьба<br/>
+   686→<span class="opacity-70">Июль 2024</span>
+   687→<br/>
+   688→<span class="opacity-70">Загородный отель «Скандинавия»</span>
+   689→</p>
+   690→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   691→</a>
+   692→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-012">
+   693→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Гимназия №209, 65 выпускников</p>
+   694→<p class="text-[10px] text-muted-foreground text-center leading-tight">Выпускной<br/>
+   695→<span class="opacity-70">Май 2025</span>
+   696→<br/>
+   697→<span class="opacity-70">Гимназия №209</span>
+   698→</p>
+   699→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   700→</a>
+   701→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-015">
+   702→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Никях 60 чел (халяль)</p>
+   703→<p class="text-[10px] text-muted-foreground text-center leading-tight">Никях<br/>
+   704→<span class="opacity-70">Август 2025</span>
+   705→<br/>
+   706→<span class="opacity-70">Ресторан «Восток»</span>
+   707→</p>
+   708→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   709→</a>
+   710→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-011">
+   711→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Конференция 80 чел×2 дня</p>
+   712→<p class="text-[10px] text-muted-foreground text-center leading-tight">Конференция<br/>
+   713→<span class="opacity-70">Март 2025</span>
+   714→<br/>
+   715→<span class="opacity-70">Технополис Meta</span>
+   716→</p>
+   717→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   718→</a>
+   719→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-016">
+   720→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Корпоратив 120 чел</p>
+   721→<p class="text-[10px] text-muted-foreground text-center leading-tight">Корпоратив<br/>
+   722→<span class="opacity-70">Октябрь 2025</span>
+   723→<br/>
+   724→<span class="opacity-70">ККТ «Космос»</span>
+   725→</p>
+   726→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   727→</a>
+   728→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-003">
+   729→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">IT-стартап 50 чел</p>
+   730→<p class="text-[10px] text-muted-foreground text-center leading-tight">Корпоратив<br/>
+   731→<span class="opacity-70">Декабрь 2024</span>
+   732→<br/>
+   733→<span class="opacity-70">Лофт «Севкабель»</span>
+   734→</p>
+   735→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   736→</a>
+   737→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-004">
+   738→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Школа №355, 75 выпускников</p>
+   739→<p class="text-[10px] text-muted-foreground text-center leading-tight">Выпускной<br/>
+   740→<span class="opacity-70">Июнь 2024</span>
+   741→<br/>
+   742→<span class="opacity-70">ГБОУ школа №355</span>
+   743→</p>
+   744→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   745→</a>
+   746→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-006">
+   747→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Конференция Expoforum, 150 чел×2 дня</p>
+   748→<p class="text-[10px] text-muted-foreground text-center leading-tight">Конференция<br/>
+   749→<span class="opacity-70">Октябрь 2024</span>
+   750→<br/>
+   751→<span class="opacity-70">Конгресс-холл «Экспофорум»</span>
+   752→</p>
+   753→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   754→</a>
+   755→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-010">
+   756→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Свадьба 100 чел</p>
+   757→<p class="text-[10px] text-muted-foreground text-center leading-tight">Свадьба<br/>
+   758→<span class="opacity-70">Июль 2024</span>
+   759→<br/>
+   760→<span class="opacity-70">Загородный отель «Скандинавия»</span>
+   761→</p>
+   762→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   763→</a>
+   764→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-012">
+   765→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Гимназия №209, 65 выпускников</p>
+   766→<p class="text-[10px] text-muted-foreground text-center leading-tight">Выпускной<br/>
+   767→<span class="opacity-70">Май 2025</span>
+   768→<br/>
+   769→<span class="opacity-70">Гимназия №209</span>
+   770→</p>
+   771→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   772→</a>
+   773→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-015">
+   774→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Никях 60 чел (халяль)</p>
+   775→<p class="text-[10px] text-muted-foreground text-center leading-tight">Никях<br/>
+   776→<span class="opacity-70">Август 2025</span>
+   777→<br/>
+   778→<span class="opacity-70">Ресторан «Восток»</span>
+   779→</p>
+   780→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   781→</a>
+   782→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-011">
+   783→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Конференция 80 чел×2 дня</p>
+   784→<p class="text-[10px] text-muted-foreground text-center leading-tight">Конференция<br/>
+   785→<span class="opacity-70">Март 2025</span>
+   786→<br/>
+   787→<span class="opacity-70">Технополис Meta</span>
+   788→</p>
+   789→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   790→</a>
+   791→<a class="shrink-0 px-4 py-3 md:px-5 md:py-4 border border-gold-text/30 bg-secondary rounded-sm min-w-[170px] md:min-w-[220px] flex flex-col items-center justify-center hover:border-gold-text transition-colors" href="/reviews#rev-016">
+   792→<p class="text-xs md:text-sm tracking-wider font-medium text-foreground text-center mb-1">Корпоратив 120 чел</p>
+   793→<p class="text-[10px] text-muted-foreground text-center leading-tight">Корпоратив<br/>
+   794→<span class="opacity-70">Октябрь 2025</span>
+   795→<br/>
+   796→<span class="opacity-70">ККТ «Космос»</span>
+   797→</p>
+   798→<p class="text-[9px] text-emerald-600 mt-1">✓ проверен</p>
+   799→</a>
+   800→</div>
+   801→</div>
+   802→<div class="container-site mt-6 text-center">
+   803→<a class="text-xs text-gold-text hover:underline" href="/reviews">Посмотреть все 17 отзывов с venue, датой и количеством гостей →</a>
+   804→</div>
+   805→</section>
+   806→<section class="py-12 md:py-16 bg-secondary" aria-labelledby="process-heading">
+   807→<div class="container-site">
+   808→<h2 id="process-heading" class="text-center mb-8">Как мы работаем</h2>
+   809→<div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 max-w-2xl mx-auto">
+   810→<div class="flex items-center gap-4 md:flex-col md:text-center">
+   811→<span class="w-10 h-10 rounded-full bg-gold-tint text-gold-text font-mono text-sm font-semibold flex items-center justify-center shrink-0">1</span>
+   812→<div>
+   813→<p class="font-medium text-sm">Заявка</p>
+   814→<p class="text-xs text-muted-foreground mt-0.5">Выберите формат и меню</p>
+   815→</div>
+   816→</div>
+   817→<div class="flex items-center gap-4 md:flex-col md:text-center">
+   818→<span class="w-10 h-10 rounded-full bg-gold-tint text-gold-text font-mono text-sm font-semibold flex items-center justify-center shrink-0">2</span>
+   819→<div>
+   820→<p class="font-medium text-sm">Звонок</p>
+   821→<p class="text-xs text-muted-foreground mt-0.5">Менеджер подтвердит детали</p>
+   822→</div>
+   823→</div>
+   824→<div class="flex items-center gap-4 md:flex-col md:text-center">
+   825→<span class="w-10 h-10 rounded-full bg-gold-tint text-gold-text font-mono text-sm font-semibold flex items-center justify-center shrink-0">3</span>
+   826→<div>
+   827→<p class="font-medium text-sm">Событие</p>
+   828→<p class="text-xs text-muted-foreground mt-0.5">Мы всё подготовим и проведём</p>
+   829→</div>
+   830→</div>
+   831→</div>
+   832→<div class="mt-8 text-center">
+   833→<a class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98] transition-transform" href="/plan">Начать планирование</a>
+   834→</div>
+   835→</div>
+   836→</section>
+   837→<section class="py-16 md:py-20 bg-secondary" aria-labelledby="reviews-heading">
+   838→<div class="container-site max-w-lg mx-auto text-center">
+   839→<h2 id="reviews-heading" class="mb-6">Отзывы</h2>
+   840→<blockquote class="mb-6" style="opacity:0;transform:translateY(8px)">
+   841→<p class="text-foreground mb-3 leading-relaxed">“<!-- -->Свадебный банкет с 3 диетами (веганы + БГ + всеядные). Шеф Дмитрий предложил торт с безглютеновым ярусом для тёти — целиакия. Гости не заметили разницы, торт прекрасный. Персонал вежливый, подача чёткая по таймингу.<!-- -->”</p>
+   842→<cite class="not-italic text-sm font-semibold block">Екатерина и Дмитрий</cite>
+   843→<span class="text-xs text-muted-foreground">Август 2024</span>
+   844→</blockquote>
+   845→<div class="flex items-center justify-center gap-4 mb-6">
+   846→<button class="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Назад">←</button>
+   847→<span class="text-xs text-muted-foreground">1<!-- -->/<!-- -->17</span>
+   848→<button class="w-10 h-10 flex items-center justify-center rounded-full border border-line text-muted-foreground active:bg-secondary transition-colors" aria-label="Вперёд">→</button>
+   849→</div>
+   850→<a class="text-sm font-medium text-gold-text hover:underline" href="/reviews">Все отзывы →</a>
+   851→</div>
+   852→</section>
+   853→<section class="py-16 md:py-20 bg-secondary" aria-labelledby="cta-heading">
+   854→<div class="container-site text-center max-w-xl mx-auto">
+   855→<h2 id="cta-heading" class="mb-3">Готовы спланировать событие?</h2>
+   856→<p class="text-muted-foreground mb-8 text-balance">Оставьте заявку — мы подберём решение под ваш бюджет. Перезвоним за 15 минут.</p>
+   857→<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+   858→<a class="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300" href="/plan/constructor">Спланировать событие</a>
+   859→<a class="inline-flex items-center gap-2 rounded-lg border border-gold-text px-6 py-3.5 text-sm font-medium text-gold-text hover:bg-gold-tint transition-colors" href="/plan/calculator">Узнать цены</a>
+   860→</div>
+   861→<p class="text-sm text-muted-foreground">Или позвоните: <a href="tel:+78129195911" class="text-foreground font-medium hover:text-gold-text transition-colors">+7 (812) 919-59-11</a>
+   862→</p>
+   863→</div>
+   864→</section>
+   865→<section class="py-20 bg-background" aria-labelledby="faq-heading">
+   866→<div class="container-site max-w-2xl mx-auto">
+   867→<div class="text-center mb-12">
+   868→<h2 id="faq-heading" class="mb-4">Частые вопросы</h2>
+   869→<p class="text-muted-foreground">Коротко о главном. Не нашли ответ? — <a class="text-gold-text hover:underline" href="/faq">полный список вопросов</a>.</p>
+   870→</div>
+   871→<div class="space-y-3">
+   872→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   873→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   874→<span class="font-medium text-foreground pr-4">Какая минимальная сумма заказа?</span>
+   875→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   876→<path d="M8 3v10M3 8h10">
+   877→</path>
+   878→</svg>
+   879→</button>
+   880→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   881→<p class="text-sm text-muted-foreground">Минимум зависит от формата и тарифа. Кофе-брейк — от 10 гостей × 390 ₽ = 3 900 ₽ (Эконом). Фуршет — от 20 гостей × 2 450 ₽ = 49 000 ₽ (Эконом); Расширенный от 15 × 5 950 ₽ = 89 250 ₽. Банкет — от 30 × 3 950 ₽ = 118 500 ₽ (Эконом свадебный); Максимальный от 15 × 9 950 ₽ = 149 250 ₽. Точную сумму рассчитает менеджер — оставьте заявку на /contact.</p>
+   882→</div>
+   883→</div>
+   884→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   885→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   886→<span class="font-medium text-foreground pr-4">За сколько дней нужно бронировать?</span>
+   887→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   888→<path d="M8 3v10M3 8h10">
+   889→</path>
+   890→</svg>
+   891→</button>
+   892→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   893→<p class="text-sm text-muted-foreground">Минимальный срок бронирования — 3 полных дня. Но мы рекомендуем бронировать за 2–4 недели, особенно в высокий сезон (май–сентябрь, декабрь). При бронировании за 60+ дней действует скидка 10%, за 90+ дней — 15%.</p>
+   894→</div>
+   895→</div>
+   896→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   897→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   898→<span class="font-medium text-foreground pr-4">Выезжаете ли вы за КАД?</span>
+   899→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   900→<path d="M8 3v10M3 8h10">
+   901→</path>
+   902→</svg>
+   903→</button>
+   904→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   905→<p class="text-sm text-muted-foreground">Да, работаем по всему Санкт-Петербургу и Ленинградской области. Доставка в пределах КАД включена в стоимость. Выезд за КАД — с надбавкой, зависящей от расстояния. Точную надбавку сообщит менеджер — оставьте заявку на /contact.</p>
+   906→</div>
+   907→</div>
+   908→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   909→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   910→<span class="font-medium text-foreground pr-4">Можно ли заказать дегустацию?</span>
+   911→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   912→<path d="M8 3v10M3 8h10">
+   913→</path>
+   914→</svg>
+   915→</button>
+   916→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   917→<p class="text-sm text-muted-foreground">Да, для событий от 30 гостей — обязательная бесплатная дегустация (до 6 блюд из вашего тарифа). Для меньших событий — платная от 3 000 ₽/чел (сумма зачисляется в заказ). Для медицинских диет (целиакия, анафилаксия, СД1) — обязательная дегустация от 1 гостя, бесплатно. С выездом к вам — от 5 000 ₽ за выезд.</p>
+   918→</div>
+   919→</div>
+   920→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   921→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   922→<span class="font-medium text-foreground pr-4">Что делать, если у гостей аллергии или особые диеты?</span>
+   923→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   924→<path d="M8 3v10M3 8h10">
+   925→</path>
+   926→</svg>
+   927→</button>
+   928→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   929→<p class="text-sm text-muted-foreground">Мы маркируем все блюда по 14 аллергенам ТР ТС 022/2011. В конструкторе меню можно исключить конкретные аллергены. Для веган, безглютеновой, халяль и безореховой диет — отдельные линии меню. При анафилаксии — отдельная смена, отдельные доски/ножи, наличие EpiPen.</p>
+   930→</div>
+   931→</div>
+   932→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   933→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   934→<span class="font-medium text-foreground pr-4">Как работает депозит и можно ли его вернуть?</span>
+   935→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   936→<path d="M8 3v10M3 8h10">
+   937→</path>
+   938→</svg>
+   939→</button>
+   940→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   941→<p class="text-sm text-muted-foreground">Депозит — 30% от стоимости заказа. Он бронирует дату и закупает продукты. Если вы отменяете за 7+ дней до события — депозит возвращаем полностью (100%). За 3–7 дней — 50%. Менее 3 дней — невозврат (но перенос даты бесплатный). При форс-мажоре (пожар, авария, болезнь) — перенос без штрафов.</p>
+   942→</div>
+   943→</div>
+   944→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   945→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   946→<span class="font-medium text-foreground pr-4">Не знаю, что такое фуршет/банкет/кофе-брейк. В чём разница?</span>
+   947→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   948→<path d="M8 3v10M3 8h10">
+   949→</path>
+   950→</svg>
+   951→</button>
+   952→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   953→<p class="text-sm text-muted-foreground">
+   954→<strong>Фуршет</strong> — гости едят стоя, общаются свободно, едят руками (канапе, тарталетки). Нужен меньше персонала.<br/>
+   955→<strong>Банкет</strong> — гости сидят за столами, официанты подают смену блюд. Классика для свадеб/гала.<br/>
+   956→<strong>Кофе-брейк</strong> — лёгкий перерыв: кофе, чай, выпечка, десерты. Для конференций/тренингов.<br/>Не знаете, что выбрать? — <a href="/plan/helper" class="text-gold-text underline">Помогите подобрать за 3 вопроса →</a>
+   957→</p>
+   958→</div>
+   959→</div>
+   960→<div class="rounded-xl border border-line bg-card overflow-hidden">
+   961→<button class="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors" aria-expanded="false">
+   962→<span class="font-medium text-foreground pr-4">Сколько еды на человека? Боюсь, не наедят или закажу слишком много.</span>
+   963→<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-muted-foreground transition-transform duration-300 " aria-hidden="true">
+   964→<path d="M8 3v10M3 8h10">
+   965→</path>
+   966→</svg>
+   967→</button>
+   968→<div class="px-5 overflow-hidden transition-all duration-300 max-h-0">
+   969→<p class="text-sm text-muted-foreground">Мы считаем по профессиональным нормам: фуршет — 8–10 закусок на гостя, банкет — 1.2–1.5 кг еды с учётом горячего. Детские порции — ×0.7. Вы можете скорректировать в конструкторе. Остатки еды — ваши, мы упакуем.</p>
+   970→</div>
+   971→</div>
+   972→</div>
+   973→</div>
+   974→</section>
+   975→</main>
+   976→<!--$-->
+   977→<!--/$-->
+   978→</div>
+   979→<footer class="border-t border-line bg-secondary/50" role="contentinfo">
+   980→<div class="container-site py-16">
+   981→<div class="mb-12 p-6 rounded-xl border border-line bg-card text-center">
+   982→<h3 class="font-heading text-lg font-medium mb-2">Будьте в курсе</h3>
+   983→<p class="text-sm text-muted-foreground mb-4">Сезонные предложения и новые меню — раз в месяц, без спама.</p>
+   984→<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/api/newsletter" method="POST">
+   985→<input type="email" placeholder="Ваш email" required="" class="flex-1 rounded-lg border border-line bg-background px-4 py-2.5 text-sm" name="email"/>
+   986→<button type="submit" class="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">Подписаться</button>
+   987→</form>
+   988→<p class="mt-2 text-sm text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>
+   989→</div>
+   990→<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+   991→<div>
+   992→<h4 class="font-heading text-sm font-semibold text-foreground mb-3">События</h4>
+   993→<ul class="space-y-2">
+   994→<li>
+   995→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/korporativ">Корпоративы</a>
+   996→</li>
+   997→<li>
+   998→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/svadba">Свадьбы</a>
+   999→</li>
+  1000→<li>
+  1001→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/vypusknoy">Выпускные</a>
+  1002→</li>
+  1003→<li>
+  1004→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/yubiley">Юбилеи и годовщины</a>
+  1005→</li>
+  1006→<li>
+  1007→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/detskoe">Детские праздники</a>
+  1008→</li>
+  1009→<li>
+  1010→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/pominki">Поминки</a>
+  1011→</li>
+  1012→<li>
+  1013→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/events/chef-at-home">Выезд шефа</a>
+  1014→</li>
+  1015→</ul>
+  1016→</div>
+  1017→<div>
+  1018→<h4 class="font-heading text-sm font-semibold text-foreground mb-3">Меню</h4>
+  1019→<ul class="space-y-2">
+  1020→<li>
+  1021→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/menu/furshet">Фуршет</a>
+  1022→</li>
+  1023→<li>
+  1024→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/menu/banquet">Банкет</a>
+  1025→</li>
+  1026→<li>
+  1027→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/menu/coffee-break">Кофе-брейк</a>
+  1028→</li>
+  1029→<li>
+  1030→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/menu/catalog">Каталог блюд</a>
+  1031→</li>
+  1032→</ul>
+  1033→</div>
+  1034→<div>
+  1035→<h4 class="font-heading text-sm font-semibold text-foreground mb-3">Инструменты</h4>
+  1036→<ul class="space-y-2">
+  1037→<li>
+  1038→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/plan/calculator">Калькулятор</a>
+  1039→</li>
+  1040→<li>
+  1041→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/plan/constructor">Подбор меню</a>
+  1042→</li>
+  1043→<li>
+  1044→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/plan/helper">Помощник</a>
+  1045→</li>
+  1046→<li>
+  1047→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/subscribe">Подписка на обеды</a>
+  1048→</li>
+  1049→<li>
+  1050→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/faq">FAQ</a>
+  1051→</li>
+  1052→</ul>
+  1053→</div>
+  1054→<div>
+  1055→<h4 class="font-heading text-sm font-semibold text-foreground mb-3">Компания</h4>
+  1056→<ul class="space-y-2">
+  1057→<li>
+  1058→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/why-us">Почему мы</a>
+  1059→</li>
+  1060→<li>
+  1061→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/team">Команда</a>
+  1062→</li>
+  1063→<li>
+  1064→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/reviews">Отзывы</a>
+  1065→</li>
+  1066→<li>
+  1067→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/contact">Контакты</a>
+  1068→</li>
+  1069→<li>
+  1070→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/blog">Блог</a>
+  1071→</li>
+  1072→</ul>
+  1073→</div>
+  1074→<div>
+  1075→<h4 class="font-heading text-sm font-semibold text-foreground mb-3">Инфо</h4>
+  1076→<ul class="space-y-2">
+  1077→<li>
+  1078→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/delivery/order">Доставка кейтеринга</a>
+  1079→</li>
+  1080→<li>
+  1081→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/delivery">Зоны доставки</a>
+  1082→</li>
+  1083→<li>
+  1084→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/certificates">Сертификаты</a>
+  1085→</li>
+  1086→<li>
+  1087→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/allergens">Аллергены</a>
+  1088→</li>
+  1089→<li>
+  1090→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="/tasting">Дегустация</a>
+  1091→</li>
+  1092→</ul>
+  1093→</div>
+  1094→</div>
+  1095→<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
+  1096→<div class="flex items-center gap-4">
+  1097→<a href="https://vk.com/nilovcatering" target="_blank" rel="noopener noreferrer" class="text-sm text-muted-foreground hover:text-foreground transition-colors">ВКонтакте</a>
+  1098→<a href="https://t.me/nilovcatering" target="_blank" rel="noopener noreferrer" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Telegram</a>
+  1099→<a href="https://wa.me/78129195911" target="_blank" rel="noopener noreferrer" class="text-sm text-muted-foreground hover:text-foreground transition-colors">WhatsApp</a>
+  1100→<a href="https://rutube.ru/channel/nilovcatering" target="_blank" rel="noopener noreferrer" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Rutube</a>
+  1101→</div>
+  1102→<div class="flex items-center gap-4">
+  1103→<a class="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline" title="Все 17 отзывов с расчётом среднего рейтинга" href="/reviews">★ 4.8 <span class="hidden sm:inline">из 17 отзывов →</span>
+  1104→</a>
+  1105→</div>
+  1106→</div>
+  1107→<div class="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-muted-foreground">
+  1108→<a class="hover:text-foreground transition-colors" href="/privacy">Политика</a>
+  1109→<a class="hover:text-foreground transition-colors" href="/terms">Условия</a>
+  1110→<a class="hover:text-foreground transition-colors" href="/cookies">Cookies</a>
+  1111→<a class="hover:text-foreground transition-colors" href="/accessibility">Доступность</a>
+  1112→<span>© 2007–2026 <!-- -->NiloV Catering</span>
+  1113→<button class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-2 rounded-md hover:bg-secondary/50 transition-colors font-medium touch-target" aria-label="Размер текста: обычный. Нажмите чтобы изменить." title="Размер текста: 100%. Нажмите чтобы увеличить.">
+  1114→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-type w-4 h-4" aria-hidden="true">
+  1115→<path d="M12 4v16">
+  1116→</path>
+  1117→<path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2">
+  1118→</path>
+  1119→<path d="M9 20h6">
+  1120→</path>
+  1121→</svg>
+  1122→<span class="hidden sm:inline">100%</span>
+  1123→</button>
+  1124→</div>
+  1125→<div class="mt-6 pt-6 border-t border-line/50 text-center">
+  1126→<p class="text-sm text-foreground">
+  1127→<span class="font-semibold">ИП Нилов Дмитрий Игоревич</span> · <span>ИНН <!-- -->781433059704</span> · <span>ОГРНИП <!-- -->314784710400401</span>
+  1128→</p>
+  1129→<p class="text-sm text-muted-foreground mt-1">199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11</p>
+  1130→<p class="text-sm text-muted-foreground mt-2">Бренд <!-- -->NiloV Catering<!-- --> работает с 2007 года. ИП Нилов Д.И. зарегистрирован в 2014 (перерегистрация с ранее действовавшей формы). Документы и договор — по запросу<!-- --> <a href="mailto:info@odaeda.ru" class="underline hover:text-foreground">info@odaeda.ru</a> · <a href="tel:+78129195911" class="underline hover:text-foreground">+7 (812) 919-59-11</a>
+  1131→</p>
+  1132→</div>
+  1133→<p class="mt-4 text-center text-sm text-muted-foreground">Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции». Маркировка 14 аллергенов по ТР ТС 022/2011 Приложение 3.</p>
+  1134→</div>
+  1135→</footer>
+  1136→<nav class="fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-background/95 backdrop-blur-md lg:hidden safe-area-bottom" aria-label="Мобильная навигация">
+  1137→<ul class="flex items-center justify-evenly h-16 gap-1" role="list">
+  1138→<li class="flex-1">
+  1139→<a class="flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center text-foreground" href="/">
+  1140→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house w-5 h-5" aria-hidden="true">
+  1141→<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8">
+  1142→</path>
+  1143→<path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+  1144→</path>
+  1145→</svg>Главная</a>
+  1146→</li>
+  1147→<li class="flex-1">
+  1148→<a class="flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center text-muted-foreground" href="/events">
+  1149→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase w-5 h-5" aria-hidden="true">
+  1150→<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16">
+  1151→</path>
+  1152→<rect width="20" height="14" x="2" y="6" rx="2">
+  1153→</rect>
+  1154→</svg>События</a>
+  1155→</li>
+  1156→<li class="flex-1">
+  1157→<a class="flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center text-muted-foreground" href="/menu">
+  1158→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-utensils w-5 h-5" aria-hidden="true">
+  1159→<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2">
+  1160→</path>
+  1161→<path d="M7 2v20">
+  1162→</path>
+  1163→<path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7">
+  1164→</path>
+  1165→</svg>Меню</a>
+  1166→</li>
+  1167→<li class="flex-1">
+  1168→<a class="flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center text-muted-foreground" href="/gallery">
+  1169→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images w-5 h-5" aria-hidden="true">
+  1170→<path d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16">
+  1171→</path>
+  1172→<path d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2">
+  1173→</path>
+  1174→<circle cx="13" cy="7" r="1" fill="currentColor">
+  1175→</circle>
+  1176→<rect x="8" y="2" width="14" height="14" rx="2">
+  1177→</rect>
+  1178→</svg>Галерея</a>
+  1179→</li>
+  1180→<li class="flex-1">
+  1181→<a class="flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center text-muted-foreground" href="/plan">
+  1182→<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator w-5 h-5" aria-hidden="true">
+  1183→<rect width="16" height="20" x="4" y="2" rx="2">
+  1184→</rect>
+  1185→<line x1="8" x2="16" y1="6" y2="6">
+  1186→</line>
+  1187→<line x1="16" x2="16" y1="14" y2="18">
+  1188→</line>
+  1189→<path d="M16 10h.01">
+  1190→</path>
+  1191→<path d="M12 10h.01">
+  1192→</path>
+  1193→<path d="M8 10h.01">
+  1194→</path>
+  1195→<path d="M12 14h.01">
+  1196→</path>
+  1197→<path d="M8 14h.01">
+  1198→</path>
+  1199→<path d="M12 18h.01">
+  1200→</path>
+  1201→<path d="M8 18h.01">
+  1202→</path>
+  1203→</svg>Спланировать</a>
+  1204→</li>
+  1205→</ul>
+  1206→</nav>
+  1207→<div class="fixed top-0 left-0 z-50 h-[3px] bg-gold-text transition-[width] duration-150 ease-out" style="width:0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс прокрутки страницы">
+  1208→</div>
+  1209→<script src="/_next/static/chunks/1o-k3n6qtv4a6.js" id="_R_" async="">
+  1210→</script>
+  1211→<script>(self.__next_f=self.__next_f||[]).push([0])</script>
+  1212→<script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n4:I[97367,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"OutletBoundary\"]\n5:\"$Sreact.suspense\"\n7:I[97367,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"ViewportBoundary\"]\n9:I[97367,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"MetadataBoundary\"]\nb:I[68027,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/0df2rwz0oq95g.css\",\"style\"]\n:HL[\"/_next/static/chunks/22rwl4puug54-.css\",\"style\"]\n:HL[\"/_next/static/media/01e4147cff8141ee.p.3huc2loe0ie8a.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/9c72aa0f40e4eef8-s.p.1y4-pdgsjb-pw.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/b0947914c9718a1e.p.1xjn85gt7t6qs.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/cc545e633e20c56d-s.p.176arc174-8zp.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script>
+  1213→<script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/0df2rwz0oq95g.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/22rwl4puug54-.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/2ow20tiio7kee.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/1suyeclkidhg2.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L2\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L3\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/10ykc6mep6neq.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/2y79dwdc6gepu.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L4\",null,{\"children\":[\"$\",\"$5\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@6\"}]}]]}],{},null,false,null]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L7\",null,{\"children\":\"$L8\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$L9\",null,{\"children\":[\"$\",\"$5\",null,{\"name\":\"Next.Metadata\",\"children\":\"$La\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$b\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/0df2rwz0oq95g.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/22rwl4puug54-.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"sGodwSQsPN-yLL5bmVYE0\"}\n"])</script>
+  1214→<script>self.__next_f.push([1,"8:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1, viewport-fit=cover\"}],[\"$\",\"meta\",\"2\",{\"name\":\"theme-color\",\"content\":\"#0a0a0a\",\"media\":\"(prefers-color-scheme: dark)\"}],[\"$\",\"meta\",\"3\",{\"name\":\"theme-color\",\"content\":\"#faf8f3\",\"media\":\"(prefers-color-scheme: light)\"}]]\n"])</script>
+  1215→<script>self.__next_f.push([1,"c:I[27201,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"IconMark\"]\n6:null\n"])</script>
+  1216→<script>self.__next_f.push([1,"a:[[\"$\",\"title\",\"0\",{\"children\":\"Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"keywords\",\"content\":\"кейтеринг,Санкт-Петербург,банкет,фуршет,кофе-брейк,свадьба,корпоратив\"}],[\"$\",\"meta\",\"3\",{\"name\":\"robots\",\"content\":\"index, follow\"}],[\"$\",\"link\",\"4\",{\"rel\":\"canonical\",\"href\":\"https://odaeda.ru\"}],[\"$\",\"link\",\"5\",{\"rel\":\"alternate\",\"hrefLang\":\"ru\",\"href\":\"https://odaeda.ru\"}],[\"$\",\"link\",\"6\",{\"rel\":\"alternate\",\"hrefLang\":\"en\",\"href\":\"https://odaeda.ru/en\"}],[\"$\",\"link\",\"7\",{\"rel\":\"alternate\",\"hrefLang\":\"x-default\",\"href\":\"https://odaeda.ru\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:title\",\"content\":\"Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:description\",\"content\":\"Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:image\",\"content\":\"https://odaeda.ru/og-image.png\"}],[\"$\",\"meta\",\"11\",{\"property\":\"og:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"12\",{\"property\":\"og:image:height\",\"content\":\"630\"}],[\"$\",\"meta\",\"13\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"14\",{\"name\":\"twitter:title\",\"content\":\"Кейтеринг под ключ в Санкт-Петербурге — NiloV Catering\"}],[\"$\",\"meta\",\"15\",{\"name\":\"twitter:description\",\"content\":\"Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.\"}],[\"$\",\"meta\",\"16\",{\"name\":\"twitter:image\",\"content\":\"https://odaeda.ru/og-image.png\"}],[\"$\",\"meta\",\"17\",{\"name\":\"twitter:image:width\",\"content\":\"1200\"}],[\"$\",\"meta\",\"18\",{\"name\":\"twitter:image:height\",\"content\":\"630\"}],[\"$\",\"link\",\"19\",{\"rel\":\"icon\",\"href\":\"/icon?bf490b14b3217082\",\"alt\":\"$undefined\",\"type\":\"image/png\",\"sizes\":\"32x32\"}],[\"$\",\"$Lc\",\"20\",{}]]\n"])</script>
+  1217→<script>self.__next_f.push([1,"10:I[46756,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\n11:I[59675,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\n12:I[22016,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"\"]\n13:I[16595,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\nd:T1093,"])</script>
+  1218→<script>self.__next_f.push([1,"{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"https://odaeda.ru/#organization\",\"name\":\"NiloV Catering\",\"legalName\":\"Индивидуальный предприниматель Нилов Дмитрий Игоревич\",\"url\":\"https://odaeda.ru\",\"telephone\":\"+78129195911\",\"email\":\"info@odaeda.ru\",\"image\":[\"https://odaeda.ru/og-image.png\"],\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Санкт-Петербург\",\"addressCountry\":\"RU\",\"streetAddress\":\"199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11, помещение 5-Н\",\"postalCode\":\"199106\"},\"priceRange\":\"₽₽₽\",\"taxID\":\"781433059704\",\"foundingDate\":\"2007\",\"areaServed\":\"Санкт-Петербург и Ленинградская область\",\"sameAs\":[\"https://vk.com/nilovcatering\",\"https://t.me/nilovcatering\"],\"openingHoursSpecification\":{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\",\"Sunday\"],\"opens\":\"09:00\",\"closes\":\"21:00\"},\"aggregateRating\":{\"@type\":\"AggregateRating\",\"ratingValue\":\"4.8\",\"reviewCount\":\"17\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"review\":[{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Екатерина и Дмитрий\"},\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":\"5\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"datePublished\":\"Август 2024\",\"reviewBody\":\"Свадебный банкет с 3 диетами (веганы + БГ + всеядные). Шеф Дмитрий предложил торт с безглютеновым ярусом для тёти — целиакия. Гости не заметили разницы, торт прекрасный. Персонал вежливый, подача чёткая по таймингу.\",\"name\":\"Свадьба\"},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Мария А.\"},\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":\"5\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"datePublished\":\"Май 2024\",\"reviewBody\":\"У ребёнка аллергия на орехи. Прислали протокол безопасности: отдельные доски, EpiPen на руках у менеджера. В детском меню орехов не было вовсе — проще следить. Капкейки и пицца — детям зашло.\",\"name\":\"День рождения\"},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Сергей П.\"},\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":\"5\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"datePublished\":\"Декабрь 2024\",\"reviewBody\":\"Корпоратив на 50 человек с ЭДО (Диадок). ИП Нилов на УСН — без НДС, для нашей бухгалтерии на ОСН предложили партнёрское ООО. Счёт-фактура пришла на следующий день. Документы для бухгалтерии — без замечаний.\",\"name\":\"Корпоратив\"},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Ольга Николаевна\"},\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":\"4\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"datePublished\":\"Июнь 2024\",\"reviewBody\":\"Выпускной 9 классов. Полный пакет документов для Роспотребнадзора: медкнижки, бракераж, ППК, декларация ЕАЭС. Согласование прошло без замечаний. Школьный пакет 1 800 ₽/гость — вписались в бюджет.\",\"name\":\"Выпускной\"},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Игорь М.\"},\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":\"5\",\"bestRating\":\"5\",\"worstRating\":\"1\"},\"datePublished\":\"Сентябрь 2024\",\"reviewBody\":\"Халяль-меню на юбилей. Сертификат Совета муфтиев России прислали заранее. Забой по зибха. Отдельная посуда, без алкоголя. Баранина и плов — как дома. Не хватает только вина в меню, но это плюс для халяль.\",\"name\":\"Юбилей\"}]}"])</script>
+  1219→<script>self.__next_f.push([1,"2:[\"$\",\"html\",null,{\"lang\":\"ru\",\"className\":\"cormorant_garamond_dcfe491d-module__wqr3mG__variable inter_6a6f4972-module__b1Pora__variable jetbrains_mono_1c2eed3d-module__TIgtBa__variable\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-background text-foreground antialiased\",\"children\":[[\"$\",\"link\",null,{\"rel\":\"preconnect\",\"href\":\"https://odaeda.ru\"}],[\"$\",\"link\",null,{\"rel\":\"preconnect\",\"href\":\"https://yandex.ru\"}],[\"$undefined\",\"$undefined\"],[\"$\",\"script\",null,{\"type\":\"application/ld+json\",\"dangerouslySetInnerHTML\":{\"__html\":\"$d\"}}],\"$Le\",\"$Lf\"]}]}]\n"])</script>
+  1220→<script>self.__next_f.push([1,"3:[\"$\",\"main\",null,{\"id\":\"main\",\"children\":[[\"$\",\"$L10\",null,{\"subtitle\":\"Более 3000 проведённых событий с 2007 года. От камерного ужина на 6 персон до фестиваля на 800+ гостей (через сеть партнёрских кухонь) — ресторанное качество там, где вы его не ждёте.\",\"disclaimer\":\"Доставка в КАД включена · Технология су-вид · Маркировка по 14 аллергенам\"}],[\"$\",\"$L11\",null,{}],[\"$\",\"section\",null,{\"className\":\"py-10\",\"aria-label\":\"Доставка еды\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site\",\"children\":[\"$\",\"div\",null,{\"className\":\"rounded-2xl bg-gradient-to-r from-gold-tint to-secondary border border-gold-tint p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-center md:text-left flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 justify-center md:justify-start mb-2\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-3xl\",\"children\":\"🚚\"}],[\"$\",\"h2\",null,{\"className\":\"font-heading text-2xl font-medium\",\"children\":\"Нужна просто еда — без официантов?\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground max-w-xl mx-auto md:mx-0\",\"children\":[\"Доставка готовых блюд домой или в офис — от \",[\"$\",\"strong\",null,{\"className\":\"text-foreground\",\"children\":\"5 000 ₽\"}],\", без минимума по гостям. Привезём от 1 порции. Бесплатно в пределах КАД.\"]}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-col gap-2 shrink-0\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/delivery/order\",\"className\":\"rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors text-center\",\"children\":\"Собрать заказ доставки →\"}],[\"$\",\"$L12\",null,{\"href\":\"/delivery\",\"className\":\"text-xs text-muted-foreground hover:text-foreground transition-colors text-center\",\"children\":\"Зоны и стоимость доставки\"}]]}]]}]}]}],[\"$\",\"$L13\",null,{}],[\"$\",\"section\",null,{\"className\":\"py-12 md:py-16 bg-secondary/40\",\"aria-labelledby\":\"b2b-heading\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site max-w-5xl\",\"children\":[\"$\",\"div\",null,{\"className\":\"rounded-2xl border-2 border-gold-tint bg-card p-6 md:p-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2\",\"children\":\"Для бизнеса\"}],[\"$\",\"h2\",null,{\"id\":\"b2b-heading\",\"className\":\"font-heading text-2xl md:text-3xl font-medium mb-2\",\"children\":\"💼 B2B-кейтеринг: договор, ЭДО, НДС\"}],[\"$\",\"p\",null,{\"className\":\"text-base text-muted-foreground max-w-2xl\",\"children\":\"Работаем с корпоративными клиентами, школами, учреждениями, гос. заказчиками (44-ФЗ, 223-ФЗ). Полный пакет документов для Роспотребнадзора. SLA, страхование 5 млн ₽ (с расширением до 30 млн), план на случай ЧП.\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"p-3 rounded-lg border border-line bg-background\",\"children\":[[\"$\",\"p\",null,{\"className\":\"text-sm font-semibold mb-1\",\"children\":\"📋 Документы\"}],[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground\",\"children\":\"Договор, счёт, акт, счёт-фактура, ЭДО (Диадок, СБИС)\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-3 rounded-lg border border-line bg-background\",\"children\":[[\"$\",\"p\",null,{\"className\":\"text-sm font-semibold mb-1\",\"children\":\"💰 НДС\"}],[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground\",\"children\":\"ИП Нилов Д.И. — УСН (без НДС). Для плательщиков НДС — партнёрское ООО.\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-3 rounded-lg border border-line bg-background\",\"children\":[[\"$\",\"p\",null,{\"className\":\"text-sm font-semibold mb-1\",\"children\":\"🛡 Роспотребнадзор\"}],[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground\",\"children\":\"Медкнижки, бракераж, ППК, HACCP, декларация ЕАЭС\"}]]}],[\"$\",\"div\",null,{\"className\":\"p-3 rounded-lg border border-line bg-background\",\"children\":[[\"$\",\"p\",null,{\"className\":\"text-sm font-semibold mb-1\",\"children\":\"🎓 Школы\"}],\"$L14\"]}]]}],\"$L15\"]}]}]}],\"$L16\",\"$L17\",\"$L18\",\"$L19\",\"$L1a\",\"$L1b\",\"$L1c\"]}]\n"])</script>
+  1221→<script>self.__next_f.push([1,"1d:I[4079,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n1e:I[24232,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n1f:I[61838,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n20:I[93983,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n21:I[36502,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"ClientLayout\"]\n22:I[39756,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"default\"]\n23:I[37457,[\"/_next/static/chunks/05-c3ty_6dwfk.js\",\"/_next/static/chunks/0y486svqt_8yi.js\"],\"default\"]\n24:I[91965,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"NewsletterBlock\"]\n34:I[40600,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"KenBurnsCard\"]\n39:I[39162,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\n41:I[56698,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"TrustMarquee\"]\n42:I[98312,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\n43:I[3071,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\n44:I[89196,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\",\"/_next/static/chunks/10ykc6mep6neq.js\",\"/_next/static/chunks/2y79dwdc6gepu.js\"],\"default\"]\ne:[\"$\",\"a\",null,{\"href\":\"#main\",\"className\":\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground\",\"children\":\"Перейти к содержимому\"}]\n"])</script>
+  1222→<script>self.__next_f.push([1,"f:[\"$\",\"$L1d\",null,{\"cmsPricing\":{\"pricePerGuest\":{},\"addons\":[]},\"children\":[\"$\",\"$L1e\",null,{\"children\":[[\"$\",\"$L1f\",null,{\"message\":null}],[\"$\",\"$L20\",null,{}],[\"$\",\"$L21\",null,{\"children\":[\"$\",\"$L22\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L23\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"main\",null,{\"className\":\"min-h-screen flex items-center justify-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"text-center\",\"children\":[[\"$\",\"p\",null,{\"className\":\"font-mono text-6xl font-light text-gold-text/30 mb-4\",\"children\":\"404\"}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-heading mb-2\",\"children\":\"Страница не найдена\"}],[\"$\",\"p\",null,{\"className\":\"text-muted-foreground mb-6\",\"children\":\"Возможно, вы искали меню или события?\"}],[\"$\",\"div\",null,{\"className\":\"flex items-center justify-center gap-4\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/\",\"className\":\"rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground\",\"children\":\"На главную\"}],[\"$\",\"$L12\",null,{\"href\":\"/plan\",\"className\":\"text-sm text-gold-text hover:underline\",\"children\":\"Спланировать событие\"}]]}]]}]}],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}],[\"$\",\"footer\",null,{\"className\":\"border-t border-line bg-secondary/50\",\"role\":\"contentinfo\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site py-16\",\"children\":[[\"$\",\"$L24\",null,{}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-2 md:grid-cols-5 gap-8 mb-12\",\"children\":[[\"$\",\"div\",\"События\",{\"children\":[[\"$\",\"h4\",null,{\"className\":\"font-heading text-sm font-semibold text-foreground mb-3\",\"children\":\"События\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"li\",\"/events/korporativ\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/korporativ\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Корпоративы\"}]}],[\"$\",\"li\",\"/events/svadba\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/svadba\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Свадьбы\"}]}],[\"$\",\"li\",\"/events/vypusknoy\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/vypusknoy\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Выпускные\"}]}],[\"$\",\"li\",\"/events/yubiley\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/yubiley\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Юбилеи и годовщины\"}]}],[\"$\",\"li\",\"/events/detskoe\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/detskoe\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Детские праздники\"}]}],[\"$\",\"li\",\"/events/pominki\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/pominki\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Поминки\"}]}],[\"$\",\"li\",\"/events/chef-at-home\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/events/chef-at-home\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Выезд шефа\"}]}]]}]]}],[\"$\",\"div\",\"Меню\",{\"children\":[[\"$\",\"h4\",null,{\"className\":\"font-heading text-sm font-semibold text-foreground mb-3\",\"children\":\"Меню\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"li\",\"/menu/furshet\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/menu/furshet\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Фуршет\"}]}],[\"$\",\"li\",\"/menu/banquet\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/menu/banquet\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Банкет\"}]}],[\"$\",\"li\",\"/menu/coffee-break\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/menu/coffee-break\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Кофе-брейк\"}]}],[\"$\",\"li\",\"/menu/catalog\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/menu/catalog\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Каталог блюд\"}]}]]}]]}],[\"$\",\"div\",\"Инструменты\",{\"children\":[[\"$\",\"h4\",null,{\"className\":\"font-heading text-sm font-semibold text-foreground mb-3\",\"children\":\"Инструменты\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"li\",\"/plan/calculator\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/plan/calculator\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Калькулятор\"}]}],\"$L25\",\"$L26\",\"$L27\",\"$L28\"]}]]}],\"$L29\",\"$L2a\"]}],\"$L2b\",\"$L2c\",\"$L2d\",\"$L2e\"]}]}],\"$L2f\",\"$L30\",\"$L31\",\"$L32\",\"$L33\"]}]}]\n"])</script>
+  1223→<script>self.__next_f.push([1,"14:[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground\",\"children\":\"Спец. тариф от 1 800 ₽/гость. Пакет документов для тендера.\"}]\n"])</script>
+  1224→<script>self.__next_f.push([1,"15:[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-3\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/events/korporativ\",\"className\":\"rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline\",\"children\":\"B2B-кейтеринг →\"}],[\"$\",\"$L12\",null,{\"href\":\"/events/vypusknoy\",\"className\":\"rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline\",\"children\":\"🎓 Школьный выпускной\"}],[\"$\",\"$L12\",null,{\"href\":\"/certificates\",\"className\":\"rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline\",\"children\":\"📋 Сертификаты\"}],[\"$\",\"$L12\",null,{\"href\":\"/partners\",\"className\":\"rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline\",\"children\":\"🌐 Партнёры (500+)\"}],[\"$\",\"$L12\",null,{\"href\":\"/account/orders\",\"className\":\"rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline\",\"children\":\"💼 Личный кабинет\"}],[\"$\",\"a\",null,{\"href\":\"mailto:info@odaeda.ru?subject=B2B-запрос\",\"className\":\"rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline\",\"children\":[\"✉️ \",\"info@odaeda.ru\"]}]]}]\n"])</script>
+  1225→<script>self.__next_f.push([1,"16:[\"$\",\"section\",null,{\"className\":\"py-16 md:py-20 bg-background border-t border-line\",\"aria-labelledby\":\"formats-heading\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site\",\"children\":[[\"$\",\"div\",null,{\"className\":\"mb-8\",\"children\":[[\"$\",\"p\",null,{\"className\":\"font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2\",\"children\":\"Что вы задумали?\"}],[\"$\",\"h2\",null,{\"id\":\"formats-heading\",\"children\":\"Три формата\"}],[\"$\",\"$L12\",null,{\"href\":\"/help/formats\",\"className\":\"text-sm text-gold-text hover:underline mt-1 inline-block\",\"children\":\"Что такое формат? →\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none\",\"children\":[[\"$\",\"$L12\",\"furshet\",{\"href\":\"/menu/furshet\",\"className\":\"snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring\",\"children\":[[\"$\",\"div\",null,{\"className\":\"aspect-[16/10] bg-secondary overflow-hidden\",\"children\":[\"$\",\"$L34\",null,{\"src\":\"/images/formats/furshet-hero.svg\",\"alt\":\"Фуршет\",\"aspectRatio\":\"video\",\"frameShape\":\"rounded-xl\",\"className\":\"group-hover:scale-105 transition-transform duration-500\"}]}],[\"$\",\"div\",null,{\"className\":\"p-4 flex flex-col flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-1\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-heading text-base font-medium\",\"children\":\"Фуршет\"}],[\"$\",\"span\",null,{\"className\":\"text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full\",\"children\":\"Хит\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground mb-3\",\"children\":\"Гости едят стоя, лёгкие закуски\"}],[\"$\",\"p\",null,{\"className\":\"mt-auto font-mono text-sm font-semibold text-foreground\",\"children\":[\"от \",\"2 450\",\" ₽ \",[\"$\",\"span\",null,{\"className\":\"text-xs font-normal text-muted-foreground\",\"children\":\"/гость\"}]]}]]}]]}],[\"$\",\"$L12\",\"banket\",{\"href\":\"/menu/banquet\",\"className\":\"snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring\",\"children\":[[\"$\",\"div\",null,{\"className\":\"aspect-[16/10] bg-secondary overflow-hidden\",\"children\":[\"$\",\"$L34\",null,{\"src\":\"/images/formats/banquet-hero.svg\",\"alt\":\"Банкет\",\"aspectRatio\":\"video\",\"frameShape\":\"rounded-xl\",\"className\":\"group-hover:scale-105 transition-transform duration-500\"}]}],[\"$\",\"div\",null,{\"className\":\"p-4 flex flex-col flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-1\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-heading text-base font-medium\",\"children\":\"Банкет\"}],[\"$\",\"span\",null,{\"className\":\"text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full\",\"children\":\"Свадьбы\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground mb-3\",\"children\":\"Посадка за стол, официанты\"}],[\"$\",\"p\",null,{\"className\":\"mt-auto font-mono text-sm font-semibold text-foreground\",\"children\":[\"от \",\"3 950\",\" ₽ \",[\"$\",\"span\",null,{\"className\":\"text-xs font-normal text-muted-foreground\",\"children\":\"/гость\"}]]}]]}]]}],[\"$\",\"$L12\",\"coffee-break\",{\"href\":\"/menu/coffee-break\",\"className\":\"snap-start shrink-0 w-[75vw] max-w-[300px] md:w-auto md:max-w-none group flex flex-col rounded-xl border border-line bg-card overflow-hidden transition-all duration-200 hover:border-gold-text active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring\",\"children\":[[\"$\",\"div\",null,{\"className\":\"aspect-[16/10] bg-secondary overflow-hidden\",\"children\":[\"$\",\"$L34\",null,{\"src\":\"/images/formats/coffee-break-hero.svg\",\"alt\":\"Кофе-брейк\",\"aspectRatio\":\"video\",\"frameShape\":\"rounded-xl\",\"className\":\"group-hover:scale-105 transition-transform duration-500\"}]}],[\"$\",\"div\",null,{\"className\":\"p-4 flex flex-col flex-1\",\"children\":[\"$L35\",\"$L36\",\"$L37\"]}]]}]]}],\"$L38\"]}]}]\n"])</script>
+  1226→<script>self.__next_f.push([1,"17:[\"$\",\"section\",null,{\"className\":\"py-16 md:py-20 bg-background\",\"aria-labelledby\":\"menu-heading\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site\",\"children\":[[\"$\",\"h2\",null,{\"id\":\"menu-heading\",\"className\":\"mb-2 font-heading text-3xl md:text-4xl text-center\",\"children\":\"Меню\"}],[\"$\",\"p\",null,{\"className\":\"text-center text-muted-foreground mb-8\",\"children\":\"Нажмите на блюдо, чтобы открыть в конструкторе\"}],[\"$\",\"div\",null,{\"className\":\"carousel-horizontal flex gap-3 overflow-x-auto pb-4 md:grid md:grid-cols-4 md:overflow-visible max-w-3xl mx-auto\",\"children\":[[\"$\",\"$L12\",\"/menu/furshet\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=canape-salmon\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/menu/kanape/k1.jpg\",\"alt\":\"Фуршет\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 40%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Фуршет\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Канапе, тарталетки, мини-бургеры\"}]]}],[\"$\",\"$L12\",\"/menu/banquet\",{\"href\":\"/plan/constructor?format=banket\u0026guests=20\u0026dish=beef-medallions\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/dishes/beef-medallions.png\",\"alt\":\"Банкет\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 45%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Банкет\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Закуски, горячее, винная карта\"}]]}],[\"$\",\"$L12\",\"/menu/coffee-break\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=macaron-shooter\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/dishes/macaron-shooter.png\",\"alt\":\"Кофе-брейк\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 50%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Кофе-брейк\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Выпечка, канапе, кофе, чай\"}]]}],[\"$\",\"$L12\",\"/menu/detskoe\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=mini-burger\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/menu/goryachee/h1.jpg\",\"alt\":\"Детское\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 45%\",\"className\":\"w-full h-full\"}]}]}]}],\"$L3a\",\"$L3b\"]}],\"$L3c\",\"$L3d\",\"$L3e\"]}],\"$L3f\",\"$L40\"]}]}]\n"])</script>
+  1227→<script>self.__next_f.push([1,"18:[\"$\",\"section\",null,{\"className\":\"py-10 md:py-14 bg-secondary overflow-hidden\",\"aria-label\":\"Клиенты и партнёры\",\"children\":[[\"$\",\"div\",null,{\"className\":\"container-site\",\"children\":[[\"$\",\"h2\",null,{\"className\":\"text-center mb-4\",\"children\":\"Нам доверяют\"}],[\"$\",\"p\",null,{\"className\":\"text-center text-sm text-muted-foreground mb-8\",\"children\":[8,\" подтверждённых кейсов (из 17 отзывов на /reviews). Конкретные имена корпоративных заказчиков раскрываем только по их согласию — пишите на\",\" \",[\"$\",\"a\",null,{\"href\":\"mailto:b2b@odaeda.ru\",\"className\":\"underline\",\"children\":\"b2b@odaeda.ru\"}],\" для референсов.\"]}]]}],[\"$\",\"$L41\",null,{\"clients\":[{\"id\":\"c1\",\"name\":\"IT-стартап 50 чел\",\"status\":\"verified\",\"ref\":{\"event\":\"Корпоратив\",\"date\":\"Декабрь 2024\",\"venue\":\"Лофт «Севкабель»\",\"reviewId\":\"rev-003\"}},{\"id\":\"c2\",\"name\":\"Школа №355, 75 выпускников\",\"status\":\"verified\",\"ref\":{\"event\":\"Выпускной\",\"date\":\"Июнь 2024\",\"venue\":\"ГБОУ школа №355\",\"reviewId\":\"rev-004\"}},{\"id\":\"c3\",\"name\":\"Конференция Expoforum, 150 чел×2 дня\",\"status\":\"verified\",\"ref\":{\"event\":\"Конференция\",\"date\":\"Октябрь 2024\",\"venue\":\"Конгресс-холл «Экспофорум»\",\"reviewId\":\"rev-006\"}},{\"id\":\"c4\",\"name\":\"Свадьба 100 чел\",\"status\":\"verified\",\"ref\":{\"event\":\"Свадьба\",\"date\":\"Июль 2024\",\"venue\":\"Загородный отель «Скандинавия»\",\"reviewId\":\"rev-010\"}},{\"id\":\"c5\",\"name\":\"Гимназия №209, 65 выпускников\",\"status\":\"verified\",\"ref\":{\"event\":\"Выпускной\",\"date\":\"Май 2025\",\"venue\":\"Гимназия №209\",\"reviewId\":\"rev-012\"}},{\"id\":\"c6\",\"name\":\"Никях 60 чел (халяль)\",\"status\":\"verified\",\"ref\":{\"event\":\"Никях\",\"date\":\"Август 2025\",\"venue\":\"Ресторан «Восток»\",\"reviewId\":\"rev-015\"}},{\"id\":\"c7\",\"name\":\"Конференция 80 чел×2 дня\",\"status\":\"verified\",\"ref\":{\"event\":\"Конференция\",\"date\":\"Март 2025\",\"venue\":\"Технополис Meta\",\"reviewId\":\"rev-011\"}},{\"id\":\"c8\",\"name\":\"Корпоратив 120 чел\",\"status\":\"verified\",\"ref\":{\"event\":\"Корпоратив\",\"date\":\"Октябрь 2025\",\"venue\":\"ККТ «Космос»\",\"reviewId\":\"rev-016\"}}]}],[\"$\",\"div\",null,{\"className\":\"container-site mt-6 text-center\",\"children\":[\"$\",\"$L12\",null,{\"href\":\"/reviews\",\"className\":\"text-xs text-gold-text hover:underline\",\"children\":\"Посмотреть все 17 отзывов с venue, датой и количеством гостей →\"}]}]]}]\n"])</script>
+  1228→<script>self.__next_f.push([1,"19:[\"$\",\"$L42\",null,{}]\n"])</script>
+  1229→<script>self.__next_f.push([1,"1a:[\"$\",\"$L43\",null,{\"cmsReviews\":[{\"id\":\"rev-001\",\"clientName\":\"Екатерина и Дмитрий\",\"eventType\":\"Свадьба\",\"date\":\"Август 2024\",\"guests\":60,\"venue\":\"Особняк Бруноз, СПб\",\"quote\":\"Свадебный банкет с 3 диетами (веганы + БГ + всеядные). Шеф Дмитрий предложил торт с безглютеновым ярусом для тёти — целиакия. Гости не заметили разницы, торт прекрасный. Персонал вежливый, подача чёткая по таймингу.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-002\",\"clientName\":\"Мария А.\",\"eventType\":\"День рождения\",\"date\":\"Май 2024\",\"guests\":10,\"venue\":\"Лофт «Бочка», СПб\",\"quote\":\"У ребёнка аллергия на орехи. Прислали протокол безопасности: отдельные доски, EpiPen на руках у менеджера. В детском меню орехов не было вовсе — проще следить. Капкейки и пицца — детям зашло.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-003\",\"clientName\":\"Сергей П.\",\"eventType\":\"Корпоратив\",\"date\":\"Декабрь 2024\",\"guests\":50,\"venue\":\"Лофт «Севкабель», СПб\",\"quote\":\"Корпоратив на 50 человек с ЭДО (Диадок). ИП Нилов на УСН — без НДС, для нашей бухгалтерии на ОСН предложили партнёрское ООО. Счёт-фактура пришла на следующий день. Документы для бухгалтерии — без замечаний.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-004\",\"clientName\":\"Ольга Николаевна\",\"eventType\":\"Выпускной\",\"date\":\"Июнь 2024\",\"guests\":75,\"venue\":\"ГБОУ школа №355, СПб\",\"quote\":\"Выпускной 9 классов. Полный пакет документов для Роспотребнадзора: медкнижки, бракераж, ППК, декларация ЕАЭС. Согласование прошло без замечаний. Школьный пакет 1 800 ₽/гость — вписались в бюджет.\",\"rating\":4,\"status\":\"verified\"},{\"id\":\"rev-005\",\"clientName\":\"Игорь М.\",\"eventType\":\"Юбилей\",\"date\":\"Сентябрь 2024\",\"guests\":30,\"venue\":\"Дом клиента, СПб\",\"quote\":\"Халяль-меню на юбилей. Сертификат Совета муфтиев России прислали заранее. Забой по зибха. Отдельная посуда, без алкоголя. Баранина и плов — как дома. Не хватает только вина в меню, но это плюс для халяль.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-006\",\"clientName\":\"Анна С.\",\"eventType\":\"Конференция\",\"date\":\"Октябрь 2024\",\"guests\":150,\"venue\":\"Конгресс-холл «Экспофорум», СПб\",\"quote\":\"6 кофе-брейков × 150 чел = 900 порций за 2 дня. SLA в договоре, страхование 5 млн базовый (с расширением до 30 млн для крупных контрактов). Один день был форс-мажор (ДТП на ЗСД) — резервный транспорт пришёл вовремя. Профессиональная команда.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-007\",\"clientName\":\"Татьяна В.\",\"eventType\":\"Юбилей\",\"date\":\"Ноябрь 2024\",\"guests\":20,\"venue\":\"Дом клиента, СПб\",\"quote\":\"Позвонила — Дмитрий сам ответил. Камерный банкет на 20 пожилых гостей с диетическими опциями. Тёплые блюда, травяные чаи, неспешная подача. Родителям 80 лет — понравилось, что не торопили.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-008\",\"clientName\":\"Виктория Л.\",\"eventType\":\"День рождения\",\"date\":\"Апрель 2024\",\"guests\":12,\"venue\":\"Дом клиента, СПб\",\"quote\":\"У ребёнка целиакия. Безглютеновый торт, БГ капкейки, БГ пицца на миндальной муке. Протокол \u003c20 ppm, отдельная посуда. Сканы сертификатов прислали заранее. Чуть дороже обычного меню, но безопасность важнее.\",\"rating\":4,\"status\":\"verified\"},{\"id\":\"rev-009\",\"clientName\":\"Дмитрий К.\",\"eventType\":\"Корпоратив\",\"date\":\"Март 2024\",\"guests\":80,\"venue\":\"Лофт «Артплей», СПб\",\"quote\":\"Заказывали фуршет на 80 чел. Вкусно, всё в срок. Понравилось, что в счёте разбивка по группам гостей — было 10 веганов и 70 всеядных. Скидку 5% за объём получили без вопросов.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-010\",\"clientName\":\"Елена В.\",\"eventType\":\"Свадьба\",\"date\":\"Июль 2024\",\"guests\":100,\"venue\":\"Загородный отель «Скандинавия»\",\"quote\":\"Свадебный банкет на 100 человек. Тариф «Расширенный». Икорная станция была шикарной. Единственный минус — бармен перепутал 2 заказа коктейлей, но быстро исправили. В целом — рекомендую.\",\"rating\":4,\"status\":\"verified\"},{\"id\":\"rev-011\",\"clientName\":\"Павел Д.\",\"eventType\":\"Конференция\",\"date\":\"Март 2025\",\"guests\":80,\"venue\":\"Технополис Meta, СПб\",\"quote\":\"8 кофе-брейков × 80 чел + 2 обеда. SLA в договоре с доставкой в согласованное окно (≤15 мин) — выполнили на 100%. Скидку 10% за объём применили без вопросов. ИП на УСН, для нашей бухгалтерии на ОСН — предложили партнёрское ООО.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-012\",\"clientName\":\"Ирина Семёнова\",\"eventType\":\"Выпускной\",\"date\":\"Май 2025\",\"guests\":65,\"venue\":\"Гимназия №209, СПб\",\"quote\":\"Школьный пакет 1 800 ₽/гость на 65 человек = 117 000 ₽ — уложились в школьный бюджет 130к. Полный пакет для Роспот: медкнижки, бракеражный журнал, ППК. Согласование с Роспот прошло без замечаний.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-013\",\"clientName\":\"Алексей В.\",\"eventType\":\"Корпоратив\",\"date\":\"Июнь 2025\",\"guests\":70,\"venue\":\"Лофт «Taiga», СПб\",\"quote\":\"Корпоратив 70 чел с B2B-договором. SLA: доставка в согласованное окно (≤15 мин) — все блюда поданы вовремя. 4 диеты (веган, БГ, без орехов, всеядные) — каждая группа получила своё под-меню. Скидка 5% за объём.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-014\",\"clientName\":\"Марина Д.\",\"eventType\":\"День рождения\",\"date\":\"Сентябрь 2025\",\"guests\":25,\"venue\":\"Дом клиента, СПб\",\"quote\":\"Юбилей мамы 70 лет. Камерный банкет с диетическими опциями (диабет + без глютена). Шеф Дмитрий предложил безглютеновый торт на рисовой муке — мама в восторге. Персонал вежливый, подача неспешная.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-015\",\"clientName\":\"Фарид А.\",\"eventType\":\"Никях\",\"date\":\"Август 2025\",\"guests\":60,\"venue\":\"Ресторан «Восток», СПб\",\"quote\":\"Халяль-банкет на никях. Сертификат Совета муфтиев России проверил лично — рег. № СМР-Халяль-2026-142. Забой по зибха. Без алкоголя полностью, винный уксус исключён. Баранина и плов — как дома.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-016\",\"clientName\":\"Елена К.\",\"eventType\":\"Корпоратив\",\"date\":\"Октябрь 2025\",\"guests\":120,\"venue\":\"ККТ «Космос», СПб\",\"quote\":\"Корпоратив 120 чел с SLA в договоре. Доставка в согласованное окно (≤15 мин) — все блюда поданы вовремя. 3 диеты (веган, БГ, всеядные) — каждая группа получила своё под-меню. Скидку 10% за объём применили без вопросов.\",\"rating\":5,\"status\":\"verified\"},{\"id\":\"rev-017\",\"clientName\":\"Светлана Р.\",\"eventType\":\"День рождения\",\"date\":\"Ноябрь 2025\",\"guests\":8,\"venue\":\"Дом клиента, СПб\",\"quote\":\"У дочки целиакия + анафилаксия на орехи. БГ-меню по умолчанию nut-free (на рисовой муке) — впервые не пришлось отдельно просить! БГ торт, БГ капкейки, БГ пицца — всё без орехов. Протокол \u003c20 ppm.\",\"rating\":5,\"status\":\"verified\"}]}]\n"])</script>
+  1230→<script>self.__next_f.push([1,"1b:[\"$\",\"section\",null,{\"className\":\"py-16 md:py-20 bg-secondary\",\"aria-labelledby\":\"cta-heading\",\"children\":[\"$\",\"div\",null,{\"className\":\"container-site text-center max-w-xl mx-auto\",\"children\":[[\"$\",\"h2\",null,{\"id\":\"cta-heading\",\"className\":\"mb-3\",\"children\":\"Готовы спланировать событие?\"}],[\"$\",\"p\",null,{\"className\":\"text-muted-foreground mb-8 text-balance\",\"children\":\"Оставьте заявку — мы подберём решение под ваш бюджет. Перезвоним за 15 минут.\"}],[\"$\",\"div\",null,{\"className\":\"flex flex-col sm:flex-row items-center justify-center gap-3 mb-6\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/plan/constructor\",\"className\":\"inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300\",\"children\":\"Спланировать событие\"}],[\"$\",\"$L12\",null,{\"href\":\"/plan/calculator\",\"className\":\"inline-flex items-center gap-2 rounded-lg border border-gold-text px-6 py-3.5 text-sm font-medium text-gold-text hover:bg-gold-tint transition-colors\",\"children\":\"Узнать цены\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground\",\"children\":[\"Или позвоните: \",[\"$\",\"a\",null,{\"href\":\"tel:+78129195911\",\"className\":\"text-foreground font-medium hover:text-gold-text transition-colors\",\"children\":\"+7 (812) 919-59-11\"}]]}]]}]}]\n"])</script>
+  1231→<script>self.__next_f.push([1,"1c:[\"$\",\"$L44\",null,{}]\n"])</script>
+  1232→<script>self.__next_f.push([1,"45:I[83401,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n46:I[9257,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n47:I[55792,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n48:I[69693,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n49:I[98532,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n4a:I[78615,[\"/_next/static/chunks/2ow20tiio7kee.js\",\"/_next/static/chunks/1suyeclkidhg2.js\",\"/_next/static/chunks/2ki95s4cn5kbi.js\"],\"default\"]\n25:[\"$\",\"li\",\"/plan/constructor\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/plan/constructor\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Подбор меню\"}]}]\n26:[\"$\",\"li\",\"/plan/helper\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/plan/helper\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Помощник\"}]}]\n27:[\"$\",\"li\",\"/subscribe\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/subscribe\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Подписка на обеды\"}]}]\n28:[\"$\",\"li\",\"/faq\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/faq\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"FAQ\"}]}]\n29:[\"$\",\"div\",\"Компания\",{\"children\":[[\"$\",\"h4\",null,{\"className\":\"font-heading text-sm font-semibold text-foreground mb-3\",\"children\":\"Компания\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"li\",\"/why-us\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/why-us\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Почему мы\"}]}],[\"$\",\"li\",\"/team\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/team\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Команда\"}]}],[\"$\",\"li\",\"/reviews\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/reviews\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Отзывы\"}]}],[\"$\",\"li\",\"/contact\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/contact\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Контакты\"}]}],[\"$\",\"li\",\"/blog\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/blog\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Блог\"}]}]]}]]}]\n2a:[\"$\",\"div\",\"Инфо\",{\"children\":[[\"$\",\"h4\",null,{\"className\":\"font-heading text-sm font-semibold text-foreground mb-3\",\"children\":\"Инфо\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"li\",\"/delivery/order\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/delivery/order\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Доставка кейтеринга\"}]}],[\"$\",\"li\",\"/delivery\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/delivery\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Зоны доставки\"}]}],[\"$\",\"li\",\"/certificates\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/certificates\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Сертификаты\"}]}],[\"$\",\"li\",\"/allergens\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/allergens\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Аллергены\"}]}],[\"$\",\"li\",\"/tasting\",{\"children\":[\"$\",\"$L12\",null,{\"href\":\"/tasting\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Дегустация\"}]}]]}]]}]\n"])</script>
+  1233→<script>self.__next_f.push([1,"2b:[\"$\",\"div\",null,{\"className\":\"flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4\",\"children\":[[\"$\",\"a\",\"vk\",{\"href\":\"https://vk.com/nilovcatering\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"ВКонтакте\"}],[\"$\",\"a\",\"telegram\",{\"href\":\"https://t.me/nilovcatering\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Telegram\"}],[\"$\",\"a\",\"whatsapp\",{\"href\":\"https://wa.me/78129195911\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"WhatsApp\"}],[\"$\",\"a\",\"rutube\",{\"href\":\"https://rutube.ru/channel/nilovcatering\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors\",\"children\":\"Rutube\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4\",\"children\":[\"$\",\"$L12\",null,{\"href\":\"/reviews\",\"className\":\"text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline\",\"title\":\"Все 17 отзывов с расчётом среднего рейтинга\",\"children\":[\"★ 4.8 \",[\"$\",\"span\",null,{\"className\":\"hidden sm:inline\",\"children\":\"из 17 отзывов →\"}]]}]}]]}]\n"])</script>
+  1234→<script>self.__next_f.push([1,"2c:[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-muted-foreground\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/privacy\",\"className\":\"hover:text-foreground transition-colors\",\"children\":\"Политика\"}],[\"$\",\"$L12\",null,{\"href\":\"/terms\",\"className\":\"hover:text-foreground transition-colors\",\"children\":\"Условия\"}],[\"$\",\"$L12\",null,{\"href\":\"/cookies\",\"className\":\"hover:text-foreground transition-colors\",\"children\":\"Cookies\"}],[\"$\",\"$L12\",null,{\"href\":\"/accessibility\",\"className\":\"hover:text-foreground transition-colors\",\"children\":\"Доступность\"}],[\"$\",\"span\",null,{\"children\":[\"© 2007–2026 \",\"NiloV Catering\"]}],[\"$\",\"$L45\",null,{}]]}]\n2d:[\"$\",\"div\",null,{\"className\":\"mt-6 pt-6 border-t border-line/50 text-center\",\"children\":[[\"$\",\"p\",null,{\"className\":\"text-sm text-foreground\",\"children\":[[\"$\",\"span\",null,{\"className\":\"font-semibold\",\"children\":\"ИП Нилов Дмитрий Игоревич\"}],\" · \",[\"$\",\"span\",null,{\"children\":[\"ИНН \",\"781433059704\"]}],\" · \",[\"$\",\"span\",null,{\"children\":[\"ОГРНИП \",\"314784710400401\"]}]]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground mt-1\",\"children\":\"199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11\"}],[\"$\",\"p\",null,{\"className\":\"text-sm text-muted-foreground mt-2\",\"children\":[\"Бренд \",\"NiloV Catering\",\" работает с 2007 года. ИП Нилов Д.И. зарегистрирован в 2014 (перерегистрация с ранее действовавшей формы). Документы и договор — по запросу\",\" \",[\"$\",\"a\",null,{\"href\":\"mailto:info@odaeda.ru\",\"className\":\"underline hover:text-foreground\",\"children\":\"info@odaeda.ru\"}],\" · \",[\"$\",\"a\",null,{\"href\":\"tel:+78129195911\",\"className\":\"underline hover:text-foreground\",\"children\":\"+7 (812) 919-59-11\"}]]}]]}]\n2e:[\"$\",\"p\",null,{\"className\":\"mt-4 text-center text-sm text-muted-foreground\",\"children\":\"Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции». Маркировка 14 аллергенов по ТР ТС 022/2011 Приложение 3.\"}]\n2f:[\"$\",\"$L46\",null,{}]\n30:[\"$\",\"$L47\",null,{}]\n31:[\"$\",\"$L48\",null,{}]\n32:[\"$\",\"$L49\",null,{}]\n33:[\"$\",\"$L4a\",null,{}]\n35:[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-1\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-heading text-base font-medium\",\"children\":\"Кофе-брейк\"}],[\"$\",\"span\",null,{\"className\":\"text-xs text-gold-text bg-gold-tint px-2 py-0.5 rounded-full\",\"children\":\"Офисы\"}]]}]\n36:[\"$\",\"p\",null,{\"className\":\"text-xs text-muted-foreground mb-3\",\"children\":\"Кофе и десерты в перерыве (деловой завтрак тоже)\"}]\n37:[\"$\",\"p\",null,{\"className\":\"mt-auto font-mono text-sm font-semibold text-foreground\",\"children\":[\"от \",\"390\",\" ₽ \",[\"$\",\"span\",null,{\"className\":\"text-xs font-normal text-muted-foreground\",\"children\":\"/гость\"}]]}]\n38:[\"$\",\"p\",null,{\"className\":\"mt-4 text-center text-sm text-muted-foreground\",\"children\":[[\"$\",\"$L12\",null,{\"href\":\"/menu/furshet\",\"className\":\"text-gold-text hover:underline\",\"children\":\"Мобильный фуршет\"}],\" — выезд на площадку без кухни\"]}]\n3a:[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Детское\"}]\n3b:[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Бутерброды, капкейки, соки\"}]\n3c:[\"$\",\"$L12\",\"/menu/vegan\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=buddha-bowl\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w"])</script>
+  1235→<script>self.__next_f.push([1,"-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/dishes/buddha-bowl.png\",\"alt\":\"Веган\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 40%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Веган\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Растительные блюда без мяса и молока\"}]]}]\n3d:[\"$\",\"$L12\",\"/menu/gluten-free\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=gluten-free-cake\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/dishes/gluten-free-cake.png\",\"alt\":\"Без глютена\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 50%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Без глютена\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"Блюда без глютена\"}]]}]\n3e:[\"$\",\"$L12\",\"/menu/halal\",{\"href\":\"/plan/constructor?format=furshet\u0026guests=20\u0026dish=halal-chicken-shashlik\",\"className\":\"carousel-item group block shrink-0 w-40 md:w-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"drinqit-3d drinqit-shine aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-inner w-full h-full\",\"children\":[\"$\",\"div\",null,{\"className\":\"drinqit-3d-img w-full h-full\",\"children\":[\"$\",\"$L39\",null,{\"src\":\"/images/menu/bbq/b1.jpg\",\"alt\":\"Халяль\",\"aspectRatio\":\"square\",\"objectPosition\":\"center 45%\",\"className\":\"w-full h-full\"}]}]}]}],[\"$\",\"h3\",null,{\"className\":\"font-heading text-sm font-medium text-center group-hover:text-gold-text transition-colors\",\"children\":\"Халяль\"}],[\"$\",\"p\",null,{\"className\":\"text-[11px] text-muted-foreground text-center mt-0.5\",\"children\":\"14 блюд халяль на отдельной линии\"}]]}]\n3f:[\"$\",\"p\",null,{\"className\":\"md:hidden text-center text-xs text-muted-foreground mt-2\",\"children\":\"← Листайте влево →\"}]\n40:[\"$\",\"div\",null,{\"className\":\"mt-8 text-center\",\"children\":[\"$\",\"$L12\",null,{\"href\":\"/menu\",\"className\":\"text-sm font-medium text-gold-text hover:underline\",\"children\":\"Полное меню →\"}]}]\n"])</script>
+  1236→</body>
+  1237→</html>

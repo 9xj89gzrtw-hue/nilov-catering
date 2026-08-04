@@ -80,11 +80,11 @@ export default function Page() {
             </p>
             <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90 mb-3">
               <li>
-                Chrome: Настройки Конфиденциальность Файлы cookie
+                Chrome: Настройки → Конфиденциальность → Файлы cookie
               </li>
-              <li>Safari: Настройки Конфиденциальность Файлы cookie</li>
-              <li>Firefox: Настройки Приватность Куки</li>
-              <li>Edge: Настройки Cookies и разрешения сайтов</li>
+              <li>Safari: Настройки → Конфиденциальность → Файлы cookie</li>
+              <li>Firefox: Настройки → Приватность → Куки</li>
+              <li>Edge: Настройки → Cookies и разрешения сайтов</li>
             </ul>
             <p className="text-sm leading-relaxed">
               3.3. При отключении cookie часть функций сайта (корзина, конструктор меню,

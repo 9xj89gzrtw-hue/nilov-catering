@@ -143,11 +143,11 @@ export default function AccountOrdersPage() {
                       {doc.ready ? (
                         doc.url === '#' ? (
                           <a href={`mailto:${SITE.email}?subject=Запрос%20документа%3A%20${encodeURIComponent(doc.type)}%20(${order.id})`} className="text-gold-text font-semibold hover:underline">
-                            Запросить
+                            Запросить →
                           </a>
                         ) : (
                           <a href={doc.url} download className="text-gold-text font-semibold hover:underline">
-                            Скачать PDF
+                            Скачать PDF →
                           </a>
                         )
                       ) : (

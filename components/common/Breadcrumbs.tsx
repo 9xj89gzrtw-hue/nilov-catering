@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
+import { SITE } from '@/lib/data';
 
 interface Crumb {
   label: string;
@@ -98,7 +99,7 @@ export default function Breadcrumbs() {
       '@type': 'ListItem',
       position: i + 1,
       name: c.label,
-      ...(c.href ? { item: `https://odaeda.ru${c.href}` } : {}),
+      ...(c.href ? { item: `https://${SITE.domain}${c.href}` } : {}),
     })),
   };
 

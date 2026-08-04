@@ -6,6 +6,9 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import { SITE } from '@/lib/data';
 import FoodPhoto from '@/components/common/FoodPhoto';
+import B2BBanner from '@/components/common/B2BBanner';
+import { AllergenChips } from '@/components/common/AllergenChips';
+import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function HalalPage() {
@@ -30,11 +33,16 @@ export default function HalalPage() {
         <p className="text-sm text-muted-foreground mb-6">
            Проверить подлинность сертификата: {' '}
           <a href="https://halalrf.ru" target="_blank" rel="noopener noreferrer" className="text-gold-text font-semibold underline">
-            реестр МЦСС «Халяль» (halalrf.ru)
+            реестр МЦСС «Халяль» (halalrf.ru) →
           </a>
           {' · '}
-          <Link href="/certificates" className="text-gold-text font-semibold underline">скан PDF на странице сертификатов </Link>
+          <Link href="/certificates" className="text-gold-text font-semibold underline">скан PDF на странице сертификатов →</Link>
         </p>
+
+        {/* B2B banner — НДС indicator for corporate clients */}
+        <div className="mb-8">
+          <B2BBanner />
+        </div>
 
         {/* Ифтар / Рамадан блок */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-amber-300 bg-amber-50">
@@ -70,9 +78,9 @@ export default function HalalPage() {
             </div>
           </div>
           <p className="text-xs text-amber-800 mt-3">
-            <Link href="/contact?eventType=Ифтар+%2F+Рамадан&format=Ифтар&guests=30" className="font-semibold underline">Заказать ифтар </Link>
+            <Link href="/contact?eventType=Ифтар+%2F+Рамадан&format=Ифтар&guests=30" className="font-semibold underline">Заказать ифтар →</Link>
             {' · '}
-            <Link href="/plan/constructor?format=furshet&diet=halal" className="font-semibold underline">Собрать халяль-меню в конструкторе </Link>
+            <Link href="/plan/constructor?format=furshet&diet=halal" className="font-semibold underline">Собрать халяль-меню в конструкторе →</Link>
           </p>
         </div>
 
@@ -106,9 +114,9 @@ export default function HalalPage() {
             </div>
           </div>
           <p className="text-xs text-emerald-800 mt-3">
-            <Link href="/contact?eventType=Никах+%28халяль%29&format=Банкет&guests=50" className="font-semibold underline">Заказать никах </Link>
+            <Link href="/contact?eventType=Никах+%28халяль%29&format=Банкет&guests=50" className="font-semibold underline">Заказать никах →</Link>
             {' · '}
-            <Link href="/events/svadba" className="font-semibold underline">Свадебный кейтеринг (общая страница) </Link>
+            <Link href="/events/svadba" className="font-semibold underline">Свадебный кейтеринг (общая страница) →</Link>
           </p>
         </div>
 
@@ -166,10 +174,12 @@ export default function HalalPage() {
         </div>
 
         <h2 className="font-heading text-2xl font-medium mb-4">Халяль-блюда в каталоге ({dishes.length})</h2>
-        <p className="text-sm text-muted-foreground mb-6">
+        <p className="text-sm text-muted-foreground mb-4">
           Каждое мясное блюдо — из мяса халяль-забоя по обряду зибха. Веганские блюда (хумус, фаттуш, табуле)
           помечены «веган» — они не содержат мяса, забой не требуется. Без свинины, без алкоголя.
         </p>
+
+        <B2BBanner />
 
         {dishes.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
@@ -179,6 +189,8 @@ export default function HalalPage() {
               return (
                 <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors">
                   <div className="aspect-[4/3] relative overflow-hidden bg-secondary">
+                    <AllergenChips dish={dish} />
+                    <DishCartIndicator dishId={dish.id} />
                     <FoodPhoto
                       src={getDishImage(dish.id, dish.station)}
                       alt={dish.name}
@@ -187,7 +199,7 @@ export default function HalalPage() {
                       className="w-full h-full"
                     />
                     <div className="absolute top-2 left-2 flex gap-1">
-                      <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded font-bold">H Халяль</span>
+                      <span className="text-[10px] bg-[#065F46] text-white px-1.5 py-0.5 rounded font-bold">H Халяль</span>
                       {isVegan && <span className="text-[10px] bg-emerald-700 text-white px-1.5 py-0.5 rounded font-bold">VG Веган</span>}
                     </div>
                   </div>

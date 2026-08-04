@@ -7,59 +7,65 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 
-const CATS: { title: string; href: string; items: string; dishId: string; realPhoto?: string }[] = [
-  { title: 'Фуршет', href: '/menu/furshet', items: 'Канапе, тарталетки, мини-бургеры', dishId: 'canape-salmon', realPhoto: '/images/real/canape-platter.jpg' },
-  { title: 'Банкет', href: '/menu/banquet', items: 'Закуски, горячее, винная карта', dishId: 'beef-medallions', realPhoto: '/images/real/beef-medallions.jpg' },
-  { title: 'Кофе-брейк', href: '/menu/coffee-break', items: 'Выпечка, канапе, кофе, чай', dishId: 'macaron-shooter', realPhoto: '/images/real/macarons.jpg' },
-  { title: 'Детское', href: '/menu/detskoe', items: 'Бутерброды, капкейки, соки', dishId: 'mini-burger', realPhoto: '/images/real/burger.jpg' },
-  { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', dishId: 'buddha-bowl', realPhoto: '/images/real/vegetarian-bowl.jpg' },
-  { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', dishId: 'gluten-free-cake', realPhoto: '/images/real/cake-berry.jpg' },
-  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shastlik', realPhoto: '/images/real/grilled-chicken.jpg' },
+const CATS = [
+  { title: 'Фуршет',   href: '/menu/furshet',       photo: '/images/real/canape-platter.jpg',     dishId: 'canape-salmon',        priceFrom: 'от 2 450 ₽' },
+  { title: 'Банкет',    href: '/menu/banquet',       photo: '/images/real/beef-medallions.jpg',    dishId: 'beef-medallions',      priceFrom: 'от 3 950 ₽' },
+  { title: 'Кофе-брейк', href: '/menu/coffee-break',  photo: '/images/real/macarons.jpg',           dishId: 'macaron-shooter',      priceFrom: 'от 390 ₽' },
+  { title: 'Халяль',    href: '/menu/halal',         photo: '/images/real/grilled-chicken.jpg',    dishId: 'halal-chicken-shashlik', priceFrom: 'от 2 600 ₽' },
+  { title: 'Веган',     href: '/menu/vegan',         photo: '/images/real/vegetarian-bowl.jpg',    dishId: 'buddha-bowl',          priceFrom: 'от 2 300 ₽' },
+  { title: 'Без глютена', href: '/menu/gluten-free', photo: '/images/real/cake-berry.jpg',         dishId: 'gluten-free-cake',     priceFrom: 'от 2 700 ₽' },
+  { title: 'Детское',   href: '/menu/detskoe',       photo: '/images/real/burger.jpg',             dishId: 'mini-burger',          priceFrom: 'от 1 550 ₽' },
+  { title: 'Десерты',   href: '/menu/catalog?cat=deserty', photo: '/images/real/dessert-table.jpg', dishId: 'choc-mousse',        priceFrom: 'от 290 ₽' },
 ];
 
 export default function MenuPreview() {
   return (
-    <section className="py-20 md:py-28 bg-background" aria-labelledby="menu-heading">
+    <section className="py-20 md:py-28 bg-secondary/40" aria-labelledby="menu-heading">
       <div className="container-site">
-        <div className="mb-10 md:mb-14 max-w-2xl mx-auto text-center">
-          <motion.p
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5 }}
+              className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
+            >
+              Меню под любой повод
+            </motion.p>
+            <motion.h2
+              id="menu-heading"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="font-heading text-3xl md:text-5xl"
+              style={{ fontWeight: 500 }}
+            >
+              124 блюда. 8 категорий. 1 команда шефов.
+            </motion.h2>
+          </div>
+          <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5 }}
-            className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
-          >
-            Меню под любой повод
-          </motion.p>
-          <motion.h2
-            id="menu-heading"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-heading text-3xl md:text-5xl mb-3"
-            style={{ fontWeight: 500 }}
-          >
-            124 блюда. 7 категорий. 1 команда шефов.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-muted-foreground text-base md:text-lg"
           >
-            Нажмите на категорию, чтобы открыть блюда в конструкторе меню
-          </motion.p>
+            <Link
+              href="/menu/catalog"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
+            >
+              Открыть полный каталог
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </motion.div>
         </div>
 
-        {/* Horizontal scroll carousel on mobile, grid on desktop */}
-        <div className="carousel-horizontal flex gap-3 overflow-x-auto pb-4 md:grid md:grid-cols-4 md:overflow-visible max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           {CATS.map((cat, idx) => {
             const dish = ALL_DISHES.find(d => d.id === cat.dishId);
-            const img = cat.realPhoto || (dish ? getDishImage(dish.id, dish.station) : '/images/gallery/furshet-menu.jpg');
+            const img = cat.photo || (dish ? getDishImage(dish.id, dish.station) : '');
             const objPos = dish ? getObjectPositionForDish(dish.id, dish.station) : 'center 40%';
-            const href = dish ? `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}` : cat.href;
             return (
               <motion.div
                 key={cat.href}
@@ -68,8 +74,11 @@ export default function MenuPreview() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.45, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Link href={href} className="carousel-item group block shrink-0 w-40 md:w-auto no-underline">
-                  <div className="aspect-square rounded-2xl overflow-hidden mb-3 group-hover:shadow-lg transition-shadow border border-line">
+                <Link
+                  href={cat.href}
+                  className="group block h-full no-underline rounded-xl overflow-hidden bg-card border border-line hover:border-gold-text/40 transition-all"
+                >
+                  <div className="aspect-square overflow-hidden">
                     <FoodPhoto
                       src={img}
                       alt={cat.title}
@@ -78,32 +87,19 @@ export default function MenuPreview() {
                       className="w-full h-full transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
-                  <h3 className="font-heading text-sm md:text-base font-medium text-center group-hover:text-gold-text transition-colors">{cat.title}</h3>
-                  <p className="text-[11px] text-muted-foreground text-center mt-0.5">{cat.items}</p>
+                  <div className="p-3 md:p-4">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="font-heading text-base md:text-lg text-foreground group-hover:text-gold-text transition-colors" style={{ fontWeight: 500 }}>
+                        {cat.title}
+                      </h3>
+                      <span className="text-[11px] text-muted-foreground whitespace-nowrap">{cat.priceFrom}</span>
+                    </div>
+                  </div>
                 </Link>
               </motion.div>
             );
           })}
         </div>
-
-        {/* Scroll hint on mobile */}
-        <p className="md:hidden text-center text-xs text-muted-foreground mt-2">Листайте влево</p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 text-center"
-        >
-          <Link
-            href="/menu"
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
-          >
-            Полное меню
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

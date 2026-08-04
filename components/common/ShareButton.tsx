@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { SITE } from '@/lib/data';
 
 interface ShareButtonProps {
   title?: string;
@@ -21,7 +22,7 @@ export default function ShareButton({
   const [copied, setCopied] = useState(false);
   const [showFallback, setShowFallback] = useState(false);
 
-  const url = typeof window !== 'undefined' ? window.location.href : 'https://odaeda.ru';
+  const url = typeof window !== 'undefined' ? window.location.href : `https://${SITE.domain}`;
 
   const handleShare = async () => {
     if (typeof navigator !== 'undefined' && navigator.share) {
@@ -73,7 +74,7 @@ export default function ShareButton({
           <p className="text-sm font-medium mb-3">Выберите способ:</p>
           <div className="flex flex-wrap gap-2 mb-3">
             <a href={waUrl} target="_blank" rel="noopener noreferrer"
-               className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors touch-target no-underline">
+               className="inline-flex items-center gap-1.5 rounded-lg bg-[#065F46] text-white px-4 py-2 text-sm font-medium hover:bg-[#064E3B] transition-colors touch-target no-underline">
                WhatsApp
             </a>
             <a href={tgUrl} target="_blank" rel="noopener noreferrer"

@@ -28,7 +28,7 @@ export default function EnPage() {
 
       <p className="text-sm text-muted-foreground text-center">Full English version coming soon. For now, please use the calculator or contact us directly.</p>
       <div className="mt-6 text-center">
-        <Link href="/plan/calculator" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Calculator </Link>
+        <Link href="/plan/calculator" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Calculator →</Link>
       </div>
     </div></main>
   );

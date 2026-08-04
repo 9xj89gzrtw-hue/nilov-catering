@@ -1,5 +1,5 @@
 // PDF template generator for legal documents
-// /api/templates/[doc]/route.ts returns PDF for "dogovor" | "nda" | "sla"
+// /api/templates/[doc]/route.ts → returns PDF for "dogovor" | "nda" | "sla"
 import { NextRequest, NextResponse } from 'next/server';
 import React from 'react';
 import { renderToBuffer, Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer';
