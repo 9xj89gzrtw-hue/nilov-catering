@@ -160,7 +160,7 @@ export default function HeroBlock() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-4 max-w-2xl"
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-4 max-w-2xl drop-shadow-xl"
             style={{ fontWeight: 500 }}
           >
             {SLIDES[i].headline}
@@ -170,7 +170,7 @@ export default function HeroBlock() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-white/85 text-base md:text-xl mb-8 max-w-xl leading-relaxed"
+            className="text-white/95 text-base md:text-xl mb-8 max-w-xl leading-relaxed drop-shadow-lg"
           >
             Полный кейтеринг под ключ: меню, официанты, посуда, доставка, сервировка и уборка.
             Без скрытых платежей. От 390 ₽ за гостя.
@@ -217,8 +217,8 @@ export default function HeroBlock() {
             {STATS.map((s) => (
               <div key={s.label}>
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-heading text-3xl md:text-4xl text-white font-semibold">{s.value}</dd>
-                <dd className="text-xs uppercase tracking-wider text-white/75 mt-1">{s.label}</dd>
+                <dd className="font-heading text-3xl md:text-4xl text-white font-semibold drop-shadow-lg">{s.value}</dd>
+                <dd className="text-xs uppercase tracking-wider text-white/85 mt-1 drop-shadow">{s.label}</dd>
               </div>
             ))}
           </motion.dl>
