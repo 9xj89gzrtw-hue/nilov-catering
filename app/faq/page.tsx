@@ -133,12 +133,15 @@ export default function FAQPage() {
         </p>
 
         {/* Quick search */}
-        <div className="mb-8">
+        <div className="mb-8 relative">
+          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
           <input
             type="search"
             id="faq-search"
-            placeholder=" Поиск по вопросам…"
-            className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow"
+            placeholder="Поиск по вопросам…"
+            className="w-full rounded-xl border border-line bg-background pl-12 pr-4 py-3.5 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow"
           />
         </div>
         <script dangerouslySetInnerHTML={{ __html: `

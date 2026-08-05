@@ -28,14 +28,32 @@ export default function WhyUsPage() {
           </p>
 
           {/* Принципы */}
-          <h2 className="font-heading text-2xl text-foreground mt-12">Наши принципы</h2>
-          <ul className="space-y-3">
-            <li><strong className="text-foreground">Честные цены.</strong> Вы видите итоговую сумму до оформления заявки — без скрытых платежей. Прайс опубликован на сайте.</li>
-            <li><strong className="text-foreground">Прозрачность.</strong> 14 аллергенов ТР ТС 022/2011. Состав каждого блюда. Фото реальных событий. ХЕ для медицинских диет.</li>
-            <li><strong className="text-foreground">Персональный менеджер.</strong> Один человек ведёт ваше событие от заявки до фотоотчёта. Мобильный, WhatsApp, Telegram.</li>
-            <li><strong className="text-foreground">Гарантия перезвона.</strong> 15 минут в рабочее время (9:00–21:00). B2B-менеджер — отдельная линия.</li>
-            <li><strong className="text-foreground">Реальные документы.</strong> ИП Нилов Д.И. (ИНН 781433059704), ЭДО (Диадок, СБИС), страхование 5 млн ₽ (с расширением до 30 млн), NDA, 44-ФЗ/223-ФЗ.</li>
-            <li><strong className="text-foreground">Безопасность.</strong> ХАССП, медкнижки 100%, бракеражный журнал, EpiPen на руках у координатора при анафилаксии. Протоколы для целиакии (&lt;20 ppm), СД1 (расчёт ХЕ), халяль (СМР).</li>
+          <h2 className="font-heading text-2xl text-foreground mt-12 mb-4">Наши принципы</h2>
+          <ul className="space-y-4 not-prose">
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">1</div>
+              <div><strong className="text-foreground">Честные цены.</strong> Вы видите итоговую сумму до оформления заявки — без скрытых платежей. Прайс опубликован на сайте.</div>
+            </li>
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">2</div>
+              <div><strong className="text-foreground">Прозрачность.</strong> 14 аллергенов ТР ТС 022/2011. Состав каждого блюда. Фото реальных событий. ХЕ для медицинских диет.</div>
+            </li>
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">3</div>
+              <div><strong className="text-foreground">Персональный менеджер.</strong> Один человек ведёт ваше событие от заявки до фотоотчёта. Мобильный, WhatsApp, Telegram.</div>
+            </li>
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">4</div>
+              <div><strong className="text-foreground">Гарантия перезвона.</strong> 15 минут в рабочее время (9:00–21:00). B2B-менеджер — отдельная линия.</div>
+            </li>
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">5</div>
+              <div><strong className="text-foreground">Реальные документы.</strong> ИП Нилов Д.И. (ИНН 781433059704), ЭДО (Диадок, СБИС), страхование 5 млн ₽ (с расширением до 30 млн), NDA, 44-ФЗ/223-ФЗ.</div>
+            </li>
+            <li className="flex gap-3 p-4 rounded-xl border border-line bg-card">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-gold-tint flex items-center justify-center text-gold-text font-semibold text-sm">6</div>
+              <div><strong className="text-foreground">Безопасность.</strong> ХАССП, медкнижки 100%, бракеражный журнал, EpiPen на руках у координатора при анафилаксии. Протоколы для целиакии (&lt;20 ppm), СД1 (расчёт ХЕ), халяль (СМР).</div>
+            </li>
           </ul>
 
           {/* Команда */}

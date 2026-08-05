@@ -40,8 +40,8 @@ export default function GalleryPage() {
                 objectPosition="center 40%"
                 className="w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent p-2 md:p-3 z-10 flex items-end">
-                <p className="text-xs md:text-sm font-medium text-white line-clamp-2">{p.caption}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent p-3 md:p-4 z-10 flex items-end">
+                <p className="text-xs md:text-sm font-medium text-white line-clamp-2 drop-shadow-md">{p.caption}</p>
               </div>
               {/* Zoom icon overlay — visible on hover (desktop) AND on touch (active state) */}
               <div className="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:active:opacity-100 transition-opacity">

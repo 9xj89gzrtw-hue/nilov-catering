@@ -40,24 +40,66 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           }
         />
 
-        {/* Contact cards — large readable */}
+        {/* Contact cards — with SVG icons and hover effects */}
         <div className="grid grid-cols-2 gap-3 mb-6">
           {[
-            { label: 'Телефон', value: SITE.phone, href: `tel:${SITE.phoneTel}`, icon: '', sub: 'Перезвоним ≤15 мин' },
-            { label: 'WhatsApp', value: 'Написать в WhatsApp', href: SITE.whatsapp, icon: '', sub: 'Ответ за 5 мин' },
-            { label: 'Telegram', value: '@nilovcatering', href: 'https://t.me/nilovcatering', icon: '', sub: 'Канал + чат' },
-            { label: 'Email', value: SITE.email, href: `mailto:${SITE.email}`, icon: '', sub: 'Для документов и B2B' },
+            {
+              label: 'Телефон',
+              value: SITE.phone,
+              href: `tel:${SITE.phoneTel}`,
+              sub: 'Перезвоним ≤15 мин',
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              ),
+            },
+            {
+              label: 'WhatsApp',
+              value: 'Написать в WhatsApp',
+              href: SITE.whatsapp,
+              sub: 'Ответ за 5 мин',
+              icon: (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.6 6.31A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 4.1 11.94a7.84 7.84 0 0 0 1.07 3.97L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 7.94-7.94 7.85 7.85 0 0 0-2.4-5.65zM12.05 18.5h-.01a6.55 6.55 0 0 1-3.34-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.5 6.5 0 0 1 1-3.39 6.6 6.6 0 0 1 5.58-3.06 6.56 6.56 0 0 1 6.55 6.55 6.6 6.6 0 0 1-6.55 6.55z"/>
+                </svg>
+              ),
+            },
+            {
+              label: 'Telegram',
+              value: '@nilovcatering',
+              href: 'https://t.me/nilovcatering',
+              sub: 'Канал + чат',
+              icon: (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.173-.18 3.166-2.9 3.225-3.147.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.324-.437.89-.663 3.498-1.524 5.83-2.529 6.996-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+              ),
+            },
+            {
+              label: 'Email',
+              value: SITE.email,
+              href: `mailto:${SITE.email}`,
+              sub: 'Для документов и B2B',
+              icon: (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              ),
+            },
           ].map((c) => (
             <a
               key={c.label}
               href={c.href}
               target={c.href.startsWith('http') ? '_blank' : undefined}
               rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors no-underline"
+              className="group rounded-xl border border-line bg-card p-4 hover:border-gold-text hover:shadow-md transition-all no-underline"
             >
-              <span className="text-3xl block mb-1" aria-hidden="true">{c.icon}</span>
-              <p className="text-sm text-muted-foreground">{c.label}</p>
-              <p className="text-base font-semibold text-foreground">{c.value}</p>
+              <div className="w-10 h-10 rounded-lg bg-gold-tint flex items-center justify-center text-gold-text mb-3 group-hover:scale-110 transition-transform">
+                {c.icon}
+              </div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{c.label}</p>
+              <p className="text-base font-semibold text-foreground group-hover:text-gold-text transition-colors">{c.value}</p>
               <p className="text-sm text-muted-foreground mt-1">{c.sub}</p>
             </a>
           ))}

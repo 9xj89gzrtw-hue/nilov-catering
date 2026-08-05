@@ -104,22 +104,22 @@ export default function Breadcrumbs() {
   };
 
   return (
-    <nav aria-label="Хлебные крошки" className="text-sm text-muted-foreground mb-4">
+    <nav aria-label="Хлебные крошки" className="text-base text-foreground/80 mb-6">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <ol className="flex flex-wrap items-center gap-1">
+      <ol className="flex flex-wrap items-center gap-1.5">
         {crumbs.map((crumb) => (
-          <li key={crumb.href} className="flex items-center gap-1">
+          <li key={crumb.href} className="flex items-center gap-1.5">
             <Link
               href={crumb.href!}
-              className="hover:text-gold-text transition-colors"
+              className="text-foreground/70 hover:text-gold-text transition-colors no-underline"
             >
               {crumb.label}
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground/60" aria-hidden="true" />
           </li>
         ))}
         <li>
-          <span className="text-foreground font-medium" aria-current="page">
+          <span className="text-foreground font-semibold" aria-current="page">
             {last.label}
           </span>
         </li>

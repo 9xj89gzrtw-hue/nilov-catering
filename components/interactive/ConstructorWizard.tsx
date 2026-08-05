@@ -905,7 +905,7 @@ export default function ConstructorWizard() {
 
               {step < 2 ? (
                 <button type="button" onClick={handleNext} disabled={!canNext}
-                  className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-50 hover:bg-primary/90 transition-colors touch-target">
+                  className="rounded-lg px-8 py-3 text-sm font-semibold transition-colors touch-target disabled:bg-secondary disabled:text-muted-foreground disabled:cursor-not-allowed enabled:bg-primary enabled:text-primary-foreground enabled:hover:bg-primary/90 enabled:shadow-md">
                   Далее
                 </button>
               ) : step === 2 ? (
