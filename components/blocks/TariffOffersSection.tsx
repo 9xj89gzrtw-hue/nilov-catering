@@ -78,7 +78,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
   }, [editMode]);
 
   const isRec = offer.tier === 'standard';
-  const colors = ['bg-slate-100', 'bg-blue-50', 'bg-amber-100', 'bg-purple-100'];
+  const colors = ['bg-slate-100', 'bg-gold-tint/40', 'bg-amber-100', 'bg-rose-50'];
   const colorIdx = TIER_ORDER.indexOf(offer.tier);
   const color = colors[colorIdx >= 0 ? colorIdx : 1] || 'bg-amber-100';
 

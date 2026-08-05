@@ -78,7 +78,7 @@ export default function ShareButton({
                WhatsApp
             </a>
             <a href={tgUrl} target="_blank" rel="noopener noreferrer"
-               className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 text-white px-4 py-2 text-sm font-medium hover:bg-sky-700 transition-colors touch-target no-underline">
+               className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-foreground/90 transition-colors touch-target no-underline">
                Telegram
             </a>
             <a href={mailUrl}
