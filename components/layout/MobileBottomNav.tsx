@@ -18,7 +18,7 @@ export default function MobileBottomNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-background/95 backdrop-blur-md lg:hidden safe-area-bottom"
+      className="fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-background/95 backdrop-blur-md md:hidden safe-area-bottom"
       aria-label="Мобильная навигация"
     >
       <ul className="flex items-center justify-evenly h-16 gap-1" role="list">

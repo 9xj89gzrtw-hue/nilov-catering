@@ -100,7 +100,15 @@ export default function HeroBlock() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.95) 100%)',
+              'linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.95) 100%)',
+          }}
+          aria-hidden="true"
+        />
+        {/* Mobile: extra bottom gradient for text legibility on small screens */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.98) 100%)',
           }}
           aria-hidden="true"
         />
@@ -108,7 +116,7 @@ export default function HeroBlock() {
         <div
           className="absolute inset-0 hidden md:block"
           style={{
-            background: 'linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%)',
+            background: 'linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 40%, transparent 70%)',
           }}
           aria-hidden="true"
         />

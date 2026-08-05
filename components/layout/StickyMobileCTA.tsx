@@ -76,7 +76,7 @@ export default function StickyMobileCTA({
 
   return (
     <motion.div
-      className="fixed bottom-16 left-0 right-0 z-40 bg-card/95 backdrop-blur-md border-t border-line shadow-lg px-3 py-3 flex items-center gap-3 lg:hidden safe-area-bottom"
+      className="fixed bottom-16 left-0 right-0 z-40 bg-card/95 backdrop-blur-md border-t border-line shadow-lg px-3 py-3 flex items-center gap-3 md:hidden safe-area-bottom"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
