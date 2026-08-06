@@ -11,18 +11,18 @@ const KEY_LINKS = [
   { href: '/', label: 'Главная' },
   { href: '/events', label: 'События' },
   { href: '/menu', label: 'Меню' },
-  { href: '/delivery/order', label: ' Доставка' },
-  { href: '/plan', label: 'Спланировать' },
+  { href: '/pricing', label: 'Тарифы' },
+  { href: '/plan/helper', label: 'Рассчитать' },
 ];
 
 const EXTRA_LINKS = [
-  { href: '/pricing', label: 'Тарифы и цены' },
-  { href: '/plan/constructor', label: 'Конструктор меню' },
+  { href: '/menu/catalog', label: 'Каталог блюд' },
   { href: '/reviews', label: 'Отзывы' },
   { href: '/why-us', label: 'Почему мы' },
+  { href: '/gallery', label: 'Галерея' },
   { href: '/contact', label: 'Контакты' },
   { href: '/faq', label: 'Вопросы' },
-  { href: '/plan/calculator', label: 'Калькулятор' },
+  { href: '/delivery/order', label: 'Доставка' },
   { href: '/delivery', label: 'Зоны доставки' },
 ];
 
@@ -52,11 +52,16 @@ export default function MobileMenu() {
         </svg>
       </button>
 
-      {/* Portal panel */}
+      {/* Portal panel — proper dialog for a11y */}
       {createPortal(
         <AnimatePresence>
           {open && (
-            <div className="fixed inset-0 z-[200] lg:hidden">
+            <div
+              className="fixed inset-0 z-[200] md:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Мобильное меню навигации"
+            >
               {/* Backdrop */}
               <motion.button
                 className="absolute inset-0 bg-foreground/40"
@@ -65,6 +70,7 @@ export default function MobileMenu() {
                 exit={{ opacity: 0 }}
                 onClick={() => setOpen(false)}
                 aria-label="Закрыть меню"
+                tabIndex={-1}
               />
 
               {/* Panel */}
@@ -74,6 +80,9 @@ export default function MobileMenu() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setOpen(false);
+                }}
               >
                 {/* Header */}
                 <div className="flex items-center justify-between p-5 border-b border-line">
@@ -127,11 +136,11 @@ export default function MobileMenu() {
                      {SITE.phone}
                   </a>
                   <Link
-                    href="/plan/constructor"
+                    href="/plan/helper"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform"
+                    className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform no-underline"
                   >
-                    Спланировать событие
+                    Рассчитать меню — 3 вопроса
                   </Link>
                 </div>
               </motion.div>

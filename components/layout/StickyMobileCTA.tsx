@@ -38,7 +38,7 @@ export default function StickyMobileCTA({
   // Show after scrolling 300px down — gives hero CTA room to breathe
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      setVisible(window.scrollY > 100);
     };
     // Initial check (in case page loads scrolled, e.g. on back navigation)
     handleScroll();
@@ -46,26 +46,11 @@ export default function StickyMobileCTA({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hide sticky CTA on pages where it would compete with the page's own CTA
+  // Hide sticky CTA ONLY on pages where it would compete with a page-specific lead form
   if (
     !visible ||
-    pathname === '/' ||
-    pathname === '/menu' ||
-    pathname === '/menu/catalog' ||
-    pathname === '/menu/furshet' ||
-    pathname === '/menu/vegan' ||
-    pathname === '/menu/halal' ||
-    pathname === '/menu/gluten-free' ||
-    pathname === '/events' ||
-    pathname === '/pricing' ||
-    pathname === '/gallery' ||
     pathname === '/contact' ||
-    pathname === '/plan' ||
-    pathname === '/plan/constructor' ||
-    pathname === '/plan/calculator' ||
-    pathname === '/plan/helper' ||
-    pathname === '/faq' ||
-    pathname === '/tasting'
+    pathname.startsWith('/plan/')
   ) {
     return null;
   }

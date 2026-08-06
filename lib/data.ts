@@ -52,7 +52,7 @@ export const SITE: SiteConfig = {
   phoneMobileTel: '+79119417205',
   whatsapp: 'https://wa.me/78129195911',
   email: 'info@odaeda.ru',
-  b2bEmail: 'info@odaeda.ru',
+  b2bEmail: 'b2b@odaeda.ru',
   address: 'Санкт-Петербург, В.О., 20-я линия, 11',
   ogImage: '/og-image.png',
   legalName: 'ИП Нилов Дмитрий Игоревич',

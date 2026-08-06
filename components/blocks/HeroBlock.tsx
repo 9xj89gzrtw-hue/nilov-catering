@@ -9,42 +9,26 @@ import { SITE } from '@/lib/data';
 interface HeroSlide {
   photo: string;
   alt: string;
-  eyebrow: string;
-  headline: string;
 }
 
-const SLIDES: HeroSlide[] = [
-  {
-    photo: 'wedding-banquet',
-    alt: 'Свадебный банкет — кейтеринг NiloV в Санкт-Петербурге',
-    eyebrow: 'Свадьбы под ключ',
-    headline: 'Ресторан, который приезжает к вам',
-  },
-  {
-    photo: 'canape-platter',
-    alt: 'Фуршетные канапе — кейтеринг NiloV',
-    eyebrow: 'Фуршет от 2 450 ₽/гость',
-    headline: '120 блюд. 14 аллергенов под контролем.',
-  },
-  {
-    photo: 'dessert-table',
-    alt: 'Десертный стол — кейтеринг NiloV',
-    eyebrow: 'Сезонные станции',
-    headline: 'Шоколадные фонтаны, сыроварня, блинная',
-  },
-  {
-    photo: 'beef-medallions',
-    alt: 'Банкет — горячее блюдо от шефа NiloV',
-    eyebrow: 'Банкет от 3 950 ₽/гость',
-    headline: 'Шеф Дмитрий Нилов. 19 лет на вашей кухне.',
-  },
+// ONE static headline — rotating carousel was A/B-test-hostile (strongest headline shown only 25%)
+const STATIC_HEADLINE = 'Ресторан, который приезжает к вам';
+const STATIC_SUBTITLE = 'Кейтеринг под ключ в Санкт-Петербурге. Меню, официанты, посуда, доставка — от 390 ₽ за гостя. Без скрытых платежей.';
+const STATIC_EYEBROW = 'Выездной ресторан с 2007 года';
+
+// Background photos still rotate (visual variety), but headline stays
+const PHOTOS: HeroSlide[] = [
+  { photo: 'wedding-banquet',  alt: 'Свадебный банкет — кейтеринг NiloV' },
+  { photo: 'canape-platter',   alt: 'Фуршетные канапе — кейтеринг NiloV' },
+  { photo: 'beef-medallions',  alt: 'Банкет — горячее блюдо от шефа NiloV' },
+  { photo: 'dessert-table',    alt: 'Десертный стол — кейтеринг NiloV' },
 ];
 
 const STATS = [
   { value: '19', label: 'лет в СПб' },
-  { value: '3 000+', label: 'событий' },
-  { value: '4.8', label: 'средняя оценка' },
+  { value: '27', label: 'отзывов · 4.8★' },
   { value: '124', label: 'блюда в каталоге' },
+  { value: '40+', label: 'человек в штате' },
 ];
 
 export default function HeroBlock() {
@@ -53,7 +37,7 @@ export default function HeroBlock() {
 
   useEffect(() => {
     if (reduce) return;
-    const t = setInterval(() => setI(c => (c + 1) % SLIDES.length), 5500);
+    const t = setInterval(() => setI(c => (c + 1) % PHOTOS.length), 7000);
     return () => clearInterval(t);
   }, [reduce]);
 
@@ -65,7 +49,7 @@ export default function HeroBlock() {
     >
       {/* Background photo carousel — crossfade */}
       <div className="absolute inset-0">
-        {SLIDES.map((s, idx) => (
+        {PHOTOS.map((s, idx) => (
           <motion.picture
             key={s.photo}
             initial={false}
@@ -86,15 +70,7 @@ export default function HeroBlock() {
             />
           </motion.picture>
         ))}
-        {/* Ken-Burns on the active slide — disabled if reduce-motion */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          initial={{ scale: 1.0 }}
-          animate={{ scale: reduce ? 1.0 : 1.08 }}
-          transition={{ duration: 6, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
-          aria-hidden="true"
-          style={{ boxShadow: 'inset 0 0 200px rgba(0,0,0,0.4)' }}
-        />
+        {/* Removed Ken-Burns zoom — was 2015-era, distracting. Photos crossfade only. */}
         {/* Gradient overlay — heavier for text contrast (VLM: "Low contrast on secondary text") */}
         <div
           className="absolute inset-0"
@@ -122,9 +98,9 @@ export default function HeroBlock() {
         />
       </div>
 
-      {/* Slide indicators — bottom-center, minimal pill style (VLM: "floating dots look like glitch") */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-md" role="tablist" aria-label="Слайды">
-        {SLIDES.map((s, idx) => (
+      {/* Photo indicators — bottom-center (photos rotate, headline stays) */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-md" role="tablist" aria-label="Фотографии">
+        {PHOTOS.map((s, idx) => (
           <button
             key={s.photo}
             onClick={() => setI(idx)}
@@ -134,7 +110,7 @@ export default function HeroBlock() {
               height: 8,
               backgroundColor: idx === i ? '#E8C97E' : 'rgba(255,255,255,0.5)',
             }}
-            aria-label={`Слайд ${idx + 1}: ${s.eyebrow}`}
+            aria-label={`Фото ${idx + 1}`}
             aria-selected={idx === i}
             role="tab"
           />
@@ -151,19 +127,18 @@ export default function HeroBlock() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-xs md:text-sm uppercase tracking-[0.22em] text-[#E8C97E] mb-4"
           >
-            Выездной ресторан в Санкт-Петербурге · с 2007 года
+            {STATIC_EYEBROW}
           </motion.p>
 
-          {/* Slide-aware headline */}
+          {/* Static headline — ONE message, always visible (was rotating 4 headlines) */}
           <motion.h1
-            key={`headline-${i}`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-4 max-w-2xl drop-shadow-xl"
             style={{ fontWeight: 500 }}
           >
-            {SLIDES[i].headline}
+            {STATIC_HEADLINE}
           </motion.h1>
 
           <motion.p
@@ -172,8 +147,7 @@ export default function HeroBlock() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="text-white/95 text-base md:text-xl mb-8 max-w-xl leading-relaxed drop-shadow-lg"
           >
-            Полный кейтеринг под ключ: меню, официанты, посуда, доставка, сервировка и уборка.
-            Без скрытых платежей. От 390 ₽ за гостя.
+            {STATIC_SUBTITLE}
           </motion.p>
 
           {/* CTAs — unified pill style, consistent sizing */}
@@ -225,22 +199,7 @@ export default function HeroBlock() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60"
-        aria-hidden="true"
-      >
-        <span className="text-[10px] uppercase tracking-[0.2em]">Листайте</span>
-        <motion.div
-          animate={reduce ? undefined : { y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity }}
-        >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
+      {/* Removed scroll indicator — was clutter, photos already signal vertical content */}
     </section>
   );
 }

@@ -4,8 +4,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 import BudgetCalculator from '@/components/interactive/BudgetCalculator';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
-import PrintButton from '@/components/common/PrintButton';
-import { FileText, FileSignature, ShieldCheck, Calendar, Percent, Truck, Clock } from 'lucide-react';
+import { Calendar, Percent, Truck, Clock, Calculator, FileText, FileSignature, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
@@ -52,36 +51,13 @@ export default function PricingPage() {
             </>
           }
           actions={
-            <>
-              <Link
-                href="/api/templates/dogovor"
-                download="nilov-dogovor-template.pdf"
-                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
-                title="Шаблон договора на оказание кейтеринговых услуг"
-              >
-                <FileText className="w-4 h-4" aria-hidden="true" />
-                Договор PDF
-              </Link>
-              <Link
-                href="/api/templates/nda"
-                download="nilov-nda-template.pdf"
-                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
-                title="Шаблон соглашения о неразглашении (NDA)"
-              >
-                <FileSignature className="w-4 h-4" aria-hidden="true" />
-                NDA PDF
-              </Link>
-              <Link
-                href="/api/templates/sla"
-                download="nilov-sla-template.pdf"
-                className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
-                title="Шаблон SLA — уровень обслуживания для B2B"
-              >
-                <ShieldCheck className="w-4 h-4" aria-hidden="true" />
-                SLA PDF
-              </Link>
-              <PrintButton label="Печать тарифов" />
-            </>
+            <Link
+              href="/plan/helper"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:bg-primary/90 transition-colors shadow-md no-underline"
+            >
+              <Calculator className="w-4 h-4" aria-hidden="true" />
+              Рассчитать мой заказ →
+            </Link>
           }
         />
 
@@ -241,7 +217,7 @@ export default function PricingPage() {
                   { p: 'Страхование ГО 5–30 млн ₽',                n: true,  a: false, e: 'до 1М', c: false },
                   { p: '14 аллергенов (ТР ТС 022/2011)',           n: true,  a: false, e: false, c: false },
                   { p: 'Опыт (лет)',                               n: '19',  a: '12',  e: '18',  c: '8'  },
-                  { p: 'Событий проведено',                        n: '3 000+', a: '~1 500', e: '~2 000', c: '~800' },
+                  { p: 'Отзывов на картах',                        n: '27',     a: '~45',    e: '~60',    c: '~120'  },
                   { p: 'Блюд в каталоге',                          n: '124', a: '80',  e: '100', c: '60' },
                   { p: 'Онлайн-конструктор меню',                  n: true,  a: false, e: false, c: true  },
                   { p: 'Калькулятор бюджета с НДС',                n: true,  a: false, e: false, c: false },
@@ -270,6 +246,113 @@ export default function PricingPage() {
             Данные собраны из открытых источников (сайты и отзывы конкурентов). Май 2025.
             Если у конкурентов появились обновления — сообщите, обновим таблицу.
           </p>
+        </section>
+
+        {/* Risk reversal — guarantees block */}
+        <section className="mt-12 grid md:grid-cols-2 gap-4" aria-labelledby="guarantee-heading">
+          <h2 id="guarantee-heading" className="sr-only">Гарантии и условия</h2>
+          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
+              <Clock className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
+            </div>
+            <div>
+              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
+                Доставка точно ко времени
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Опоздаем больше 15 минут — обслуживание бесплатно. Это условие прописано в договоре.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
+              <Truck className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
+            </div>
+            <div>
+              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
+                Бесплатная доставка от 7 000 ₽
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                По СПб в пределах КАД. За КАД — от 3 000 ₽, рассчитывается по километражу.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
+            </div>
+            <div>
+              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
+                Гибкая отмена
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                За 14+ дней до события — 100% возврат предоплаты. За 7–13 дней — 50%. Менее 7 дней — перенос даты бесплатно.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
+              <ShieldCheck className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
+            </div>
+            <div>
+              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
+                Страхование 5–30 млн ₽
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Гражданская ответственность застрахована в СОГАЗ/РЕСО/Ингосстрах. Для B2B — расширение до 30 млн ₽.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Documents — moved from PageHeader to dedicated section */}
+        <section className="mt-12" aria-labelledby="docs-heading">
+          <h2 id="docs-heading" className="font-heading text-2xl md:text-3xl font-medium mb-4">Документы для скачивания</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <Link
+              href="/api/templates/dogovor"
+              download="nilov-dogovor-template.pdf"
+              className="flex items-center gap-3 p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors no-underline"
+            >
+              <FileText className="w-5 h-5 text-gold-text shrink-0" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">Договор</p>
+                <p className="text-xs text-muted-foreground">Шаблон на оказание услуг</p>
+              </div>
+            </Link>
+            <Link
+              href="/api/templates/nda"
+              download="nilov-nda-template.pdf"
+              className="flex items-center gap-3 p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors no-underline"
+            >
+              <FileSignature className="w-5 h-5 text-gold-text shrink-0" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">NDA</p>
+                <p className="text-xs text-muted-foreground">Соглашение о неразглашении</p>
+              </div>
+            </Link>
+            <Link
+              href="/api/templates/sla"
+              download="nilov-sla-template.pdf"
+              className="flex items-center gap-3 p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors no-underline"
+            >
+              <ShieldCheck className="w-5 h-5 text-gold-text shrink-0" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">SLA</p>
+                <p className="text-xs text-muted-foreground">Уровень обслуживания для B2B</p>
+              </div>
+            </Link>
+            <Link
+              href="/plan/helper"
+              className="flex items-center gap-3 p-4 rounded-xl border-2 border-primary bg-primary/5 hover:bg-primary/10 transition-colors no-underline"
+            >
+              <Calculator className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">Рассчитать</p>
+                <p className="text-xs text-muted-foreground">Получить смету за 15 мин</p>
+              </div>
+            </Link>
+          </div>
         </section>
       </div>
     </main>

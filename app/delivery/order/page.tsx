@@ -407,7 +407,7 @@ export default function DeliveryOrderPage() {
                   <span>·</span>
                   <span>С 2007 года</span>
                   <span>·</span>
-                  <span>3000+ событий</span>
+                  <span>27 отзывов · 4.8★</span>
                   <span>·</span>
                   <span>Курьер позвонит за 30 мин</span>
                 </div>

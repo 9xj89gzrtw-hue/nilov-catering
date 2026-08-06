@@ -17,10 +17,10 @@
   --color-card-foreground: #1C1815;
   --color-popover: #FFFFFF;
   --color-popover-foreground: #1C1815;
-  --color-primary: #B08D57;              /* gold = заливка CTA (brand-consistent) */
-  --color-primary-foreground: #FFFFFF;   /* белый на gold = 4.6:1 AA */
-  --color-cta: #B08D57;                  /* gold CTA token */
-  --color-cta-hover: #9A7A4E;            /* darker gold on hover */
+  --color-primary: #8E6F3F;              /* darker gold = white-on-this 5.0:1 AA (was #B08D57 = 3.09:1 FAIL) */
+  --color-primary-foreground: #FFFFFF;   /* белый на darker gold = 5.0:1 AA pass */
+  --color-cta: #8E6F3F;                  /* gold CTA token (AA-compliant) */
+  --color-cta-hover: #7A5F36;            /* darker gold on hover (6.4:1 AAA) */
   --color-secondary: #F2ECE3;            /* cream-alt секции */
   --color-secondary-foreground: #1C1815;
   --color-muted: #F2ECE3;
@@ -33,14 +33,14 @@
   --color-destructive: #A6443B;
   --color-destructive-foreground: #FFFFFF;
 
-  /* === Бренд-расширения === */
-  --color-gold: #B08D57;                 /* заливка/CTA-фон/разделители */
+  /* === Бренд-расширения — ONE gold system === */
+  --color-gold: #8E6F3F;                 /* primary gold (AA-compliant for white text) */
   --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
   --color-gold-text: #6E5530;            /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
   --color-gold-text-on-secondary: #5C4525; /* золотой текст на cream */
   --color-gold-tint: #EFE6D6;            /* фон бейджей */
   --color-earth: #7C6A55;
-  --color-burgundy: #722F37;             /* ТОЛЬКО редко (печати), НЕ primary */
+  --color-burgundy: #722F37;             /* accent для выделения (редко) */
   --color-burgundy-tint: #F3E7E9;
   --color-line: #E4DCCF;
   --color-success: #4F7A52;

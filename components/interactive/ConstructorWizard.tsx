@@ -788,15 +788,58 @@ export default function ConstructorWizard() {
             )}
 
             <div className="rounded-xl border border-line bg-card p-5 space-y-4 mb-6">
-              <h3 className="text-sm font-medium">Контакты для заявки</h3>
-              <input type="text" placeholder="Ваше имя *" value={store.contact.name} onChange={e => store.setContact({ name: e.target.value })}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
-              <input type="tel" placeholder="+7 (___) ___-__-__ *" value={store.contact.phone} onChange={e => store.setContact({ phone: e.target.value })}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
-              <input type="date" value={store.contact.date} onChange={e => store.setContact({ date: e.target.value })}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
-              <textarea placeholder="Аллергии гостей, особые пожелания, комментарий…" value={store.contact.comment} onChange={e => store.setContact({ comment: e.target.value })}
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 min-h-[80px] resize-none" />
+              <h3 className="text-sm font-semibold text-foreground">Контакты для заявки</h3>
+              <div>
+                <label htmlFor="cw-name" className="block text-sm font-medium text-foreground mb-1.5">Ваше имя <span className="text-destructive">*</span></label>
+                <input
+                  type="text"
+                  id="cw-name"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  placeholder="Анна"
+                  value={store.contact.name}
+                  onChange={e => store.setContact({ name: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                />
+              </div>
+              <div>
+                <label htmlFor="cw-phone" className="block text-sm font-medium text-foreground mb-1.5">Телефон <span className="text-destructive">*</span></label>
+                <input
+                  type="tel"
+                  id="cw-phone"
+                  name="phone"
+                  required
+                  autoComplete="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  value={store.contact.phone}
+                  onChange={e => store.setContact({ phone: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                />
+              </div>
+              <div>
+                <label htmlFor="cw-date" className="block text-sm font-medium text-foreground mb-1.5">Дата события</label>
+                <input
+                  type="date"
+                  id="cw-date"
+                  name="date"
+                  autoComplete="off"
+                  value={store.contact.date}
+                  onChange={e => store.setContact({ date: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                />
+              </div>
+              <div>
+                <label htmlFor="cw-comment" className="block text-sm font-medium text-foreground mb-1.5">Комментарий</label>
+                <textarea
+                  id="cw-comment"
+                  name="comment"
+                  placeholder="Аллергии гостей, особые пожелания…"
+                  value={store.contact.comment}
+                  onChange={e => store.setContact({ comment: e.target.value })}
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 min-h-[80px] resize-none"
+                />
+              </div>
             </div>
 
             {submitError && (

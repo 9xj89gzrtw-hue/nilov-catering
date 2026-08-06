@@ -17,7 +17,7 @@ export default function PartnersPage() {
         <p className="text-muted-foreground mb-8">
           Партнёрская программа NiloV Catering для event-агентств, площадок, организаторов
           и поставщиков. Прозрачные условия, агентская комиссия, NDA, SLA. Работаем с 2007 года,
-          3000+ событий.
+          27 отзывов · 4.8★.
         </p>
 
         {/* Agent / Event-agency program */}
@@ -113,7 +113,7 @@ export default function PartnersPage() {
         <div className="mb-8 p-6 rounded-xl border border-line bg-secondary/30">
           <h2 className="font-heading text-xl font-medium mb-3"> Что вы получаете как партнёр</h2>
           <ul className="text-sm space-y-2 list-disc list-inside text-foreground/90">
-            <li>Стабильный поток заказов (3000+ событий за историю, 200+ в год)</li>
+            <li>Стабильный поток заказов (27 отзывов · 4.8★ за историю, 200+ в год)</li>
             <li>Прозрачную агентскую комиссию без задержек</li>
             <li>Персонального менеджера и прямой канал связи</li>
             <li>Доступ к нашему бренду и репутации (4.8/5 из 27 отзывов)</li>

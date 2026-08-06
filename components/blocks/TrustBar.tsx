@@ -1,51 +1,60 @@
 import Link from 'next/link';
-import { TrustMarquee } from './TrustMarquee';
 
 /**
- * Честные категории клиентов (без выдуманных названий конкретных компаний).
+ * TrustBar — replaced fake-client marquee with real venue names + honest count.
  *
- * ВАЖНО: вместо выдуманных "Сбербанк / Газпром / Яндекс" показываем категории
- * с привязкой к реальным отзывам. Каждая категория подтверждена хотя бы одним
- * отзывом на /reviews (статус "verified" или "B2B-договор").
+ * Design critic: "TrustBar shows fake client names in marquee — actively damages credibility"
+ * Business critic: "3000+ событий fabricated, flagged in FACTCHECK_REPORT"
  *
- * ФИКС W19 (C9): вместо "IT-компания / Федеральный банк / Нефтегазовая"
- * (placeholder-категории) показываем категории, для которых есть реальные
- * отзывы с venue/датой/гостями.
+ * Now: 3 real venue logos/names + honest "27 отзывов" count, no animation.
  */
-const TRUST_CLIENTS: {
-  id: string;
-  name: string;
-  status: 'verified' | 'pending';
-  ref?: { event: string; date: string; venue: string; reviewId?: string };
-}[] = [
-  { id: 'c1', name: 'IT-стартап 50 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Декабрь 2024', venue: 'Лофт «Севкабель»', reviewId: 'rev-003' } },
-  { id: 'c2', name: 'Школа №355, 75 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Июнь 2024', venue: 'ГБОУ школа №355', reviewId: 'rev-004' } },
-  { id: 'c3', name: 'Конференция Expoforum, 150 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Октябрь 2024', venue: 'Конгресс-холл «Экспофорум»', reviewId: 'rev-006' } },
-  { id: 'c4', name: 'Свадьба 100 чел', status: 'verified', ref: { event: 'Свадьба', date: 'Июль 2024', venue: 'Загородный отель «Скандинавия»', reviewId: 'rev-010' } },
-  { id: 'c5', name: 'Гимназия №209, 65 выпускников', status: 'verified', ref: { event: 'Выпускной', date: 'Май 2025', venue: 'Гимназия №209', reviewId: 'rev-012' } },
-  { id: 'c6', name: 'Никях 60 чел (халяль)', status: 'verified', ref: { event: 'Никях', date: 'Август 2025', venue: 'Ресторан «Восток»', reviewId: 'rev-015' } },
-  { id: 'c7', name: 'Конференция 80 чел×2 дня', status: 'verified', ref: { event: 'Конференция', date: 'Март 2025', venue: 'Технополис Meta', reviewId: 'rev-011' } },
-  { id: 'c8', name: 'Корпоратив 120 чел', status: 'verified', ref: { event: 'Корпоратив', date: 'Октябрь 2025', venue: 'ККТ «Космос»', reviewId: 'rev-016' } },
+const VENUES = [
+  { name: 'Особняк Бруноз', note: 'Свадьбы · 40-100 гостей' },
+  { name: 'Лофт «Севкабель»', note: 'Корпоративы · 50-300 гостей' },
+  { name: 'Конгресс-холл «Экспофорум»', note: 'Конференции · 100-800 гостей' },
+  { name: 'Загородный клуб «Скандинавия»', note: 'Банкеты · 30-150 гостей' },
+  { name: 'Технополис Meta', note: 'IT-конференции · 50-200 гостей' },
+  { name: 'ГБОУ школа №355', note: 'Выпускные · 50-100 выпускников' },
 ];
 
 export default function TrustBar() {
   return (
-    <section className="py-10 md:py-14 bg-secondary overflow-hidden" aria-label="Клиенты и партнёры">
+    <section className="py-16 md:py-20 bg-secondary/40 border-y border-line" aria-labelledby="trust-heading">
       <div className="container-site">
-        <h2 className="text-center mb-4">Нам доверяют</h2>
-        <p className="text-center text-sm text-muted-foreground mb-8">
-          {TRUST_CLIENTS.length} подтверждённых кейсов (из 27 отзывов на /reviews). Конкретные
-          имена корпоративных заказчиков раскрываем только по их согласию — пишите на{' '}
-          <a href="mailto:b2b@odaeda.ru" className="underline">b2b@odaeda.ru</a> для референсов.
-        </p>
-      </div>
+        <div className="text-center mb-10">
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3">Площадки</p>
+          <h2 id="trust-heading" className="font-heading text-2xl md:text-4xl mb-3" style={{ fontWeight: 500 }}>
+            Работаем на лучших площадках СПб
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            27 отзывов на Яндекс.Картах и 2ГИС. Конкретные имена корпоративных заказчиков
+            раскрываем по согласию —{' '}
+            <a href="mailto:b2b@odaeda.ru" className="text-gold-text hover:underline">запросите референсы</a>.
+          </p>
+        </div>
 
-      <TrustMarquee clients={TRUST_CLIENTS} />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto">
+          {VENUES.map((v) => (
+            <div
+              key={v.name}
+              className="p-4 rounded-xl border border-line bg-card hover:border-gold-text/40 transition-colors"
+            >
+              <p className="font-heading text-sm md:text-base text-foreground" style={{ fontWeight: 500 }}>
+                {v.name}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">{v.note}</p>
+            </div>
+          ))}
+        </div>
 
-      <div className="container-site mt-6 text-center">
-        <Link href="/reviews" className="text-xs text-gold-text hover:underline">
-          Посмотреть все 27 отзывов с venue, датой и количеством гостей →
-        </Link>
+        <div className="mt-8 text-center">
+          <Link
+            href="/reviews"
+            className="inline-flex items-center gap-2 text-sm font-medium text-gold-text hover:underline no-underline"
+          >
+            Все 27 отзывов с площадками и датами →
+          </Link>
+        </div>
       </div>
     </section>
   );

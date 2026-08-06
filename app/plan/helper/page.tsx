@@ -98,39 +98,74 @@ export default async function PlanHelperPage({
             </div>
           </div>
 
-          <div className="p-6 rounded-xl border border-line bg-card mb-6">
-            <h2 className="font-heading text-xl mb-3" style={{ fontWeight: 500 }}>Рекомендуемый формат</h2>
-            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-              На основе ваших ответов рекомендуем формат{' '}
-              <strong className="text-foreground">
-                {format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа'}
-              </strong>
-              . Перейдите на страницу события, чтобы увидеть тарифы и состав меню.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <Link
-                href={eventPage}
-                className="rounded-lg bg-foreground px-5 py-3 text-sm font-semibold text-background hover:bg-foreground/90 transition-colors no-underline text-center"
+          {/* INLINE LEAD FORM — single conversion action at peak intent */}
+          <div className="p-6 md:p-8 rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-gold-tint/40 to-card mb-6">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-text font-semibold mb-3">Ваш расчёт</p>
+            <h2 className="font-heading text-2xl md:text-3xl mb-4" style={{ fontWeight: 500 }}>
+              {format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа'}
+              {' · '}
+              <span className="text-gold-text">{guests}</span>
+              {' · '}
+              {location}
+            </h2>
+
+            {/* Price estimate */}
+            <div className="bg-card rounded-xl p-4 mb-6 border border-line">
+              <p className="text-xs text-muted-foreground mb-1">Ориентировочная стоимость</p>
+              <p className="font-heading text-3xl md:text-4xl text-foreground" style={{ fontWeight: 600 }}>
+                {format === 'coffee-break' ? 'от 390 ₽/гость' : format === 'furshet' ? 'от 2 450 ₽/гость' : format === 'banket' ? 'от 3 950 ₽/гость' : format === 'detskoe' ? 'от 1 550 ₽/гость' : 'от 5 000 ₽/час'}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">Финальная смета — после уточнения меню и тарифа</p>
+            </div>
+
+            {/* Inline lead form — 2 fields only */}
+            <form action="/api/quote" method="POST" className="space-y-3">
+              <input type="hidden" name="source" value="helper" />
+              <input type="hidden" name="format" value={format} />
+              <input type="hidden" name="subject" value={`${occasion} · ${guests} · ${location}`} />
+              <div>
+                <label htmlFor="helper-name" className="block text-sm font-medium text-foreground mb-1.5">Ваше имя</label>
+                <input
+                  type="text"
+                  id="helper-name"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  placeholder="Анна"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
+                />
+              </div>
+              <div>
+                <label htmlFor="helper-phone" className="block text-sm font-medium text-foreground mb-1.5">Телефон</label>
+                <input
+                  type="tel"
+                  id="helper-phone"
+                  name="phone"
+                  required
+                  autoComplete="tel"
+                  placeholder="+7 (___) ___-__-__"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-primary text-primary-foreground px-6 py-4 text-base font-semibold hover:bg-primary/90 transition-colors no-underline shadow-md"
               >
-                Открыть страницу события →
-              </Link>
+                Получить расчёт →
+              </button>
+              <p className="text-xs text-muted-foreground text-center">
+                Перезвоним за 15 минут в рабочее время (9:00–21:00). Без спама.
+              </p>
+            </form>
+
+            {/* Secondary action — smaller, below */}
+            <div className="mt-6 pt-6 border-t border-line text-center">
+              <p className="text-sm text-muted-foreground mb-2">Хотите детальнее?</p>
               <Link
                 href={`/plan/constructor?format=${format}`}
-                className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-text hover:underline no-underline"
               >
-                Собрать меню в конструкторе
-              </Link>
-              <Link
-                href="/pricing"
-                className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
-              >
-                Смотреть все тарифы
-              </Link>
-              <Link
-                href={`/contact?subject=${encodeURIComponent(occasion)}&guests=${encodeURIComponent(guests)}&location=${encodeURIComponent(location)}&source=helper`}
-                className="rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline text-center"
-              >
-                Оставить заявку
+                Собрать меню в конструкторе →
               </Link>
             </div>
           </div>
