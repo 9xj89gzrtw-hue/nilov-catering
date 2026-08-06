@@ -5,6 +5,13 @@ import BudgetCalculator from '@/components/interactive/BudgetCalculator';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
 import { Calendar, Percent, Truck, Clock, Calculator, FileText, FileSignature, ShieldCheck } from 'lucide-react';
+import { EARLY_BIRD_DISCOUNTS } from '@/lib/data';
+
+const EARLY_BIRD = EARLY_BIRD_DISCOUNTS.map(d => ({
+  months: d.days === 30 ? '1 месяц' : d.days === 60 ? '2 месяца' : '3 месяца',
+  discount: d.label,
+  note: d.note,
+}));
 
 export const metadata: Metadata = {
   alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
@@ -28,12 +35,6 @@ function CheckIcon({ yes }: { yes: boolean }) {
     </svg>
   );
 }
-
-const EARLY_BIRD = [
-  { months: '1 месяц', discount: '5%',  note: 'при бронировании за 30 дней' },
-  { months: '2 месяца', discount: '10%', note: 'при бронировании за 60 дней' },
-  { months: '3 месяца', discount: '15%', note: 'при бронировании за 90 дней' },
-];
 
 export default function PricingPage() {
   return (

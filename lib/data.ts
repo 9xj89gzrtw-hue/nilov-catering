@@ -97,6 +97,32 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'rutube', url: 'https://rutube.ru/channel/nilovcatering', label: 'Rutube' },
 ];
 
+/**
+ * EARLY_BIRD_DISCOUNTS — single source of truth for early-booking discounts.
+ * Content critic found inconsistencies: pricing 5/10/15%, FAQ 10/15% (no 5%),
+ * свадьба page 5% at 90 days. All must reference THIS constant.
+ */
+export const EARLY_BIRD_DISCOUNTS = [
+  { days: 30, discount: 5,  label: '5%',  note: 'при бронировании за 30 дней' },
+  { days: 60, discount: 10, label: '10%', note: 'при бронировании за 60 дней' },
+  { days: 90, discount: 15, label: '15%', note: 'при бронировании за 90 дней' },
+] as const;
+
+/** Format early-bird discount for display: "10% за 60+ дней, 15% за 90+ дней" */
+export function formatEarlyBirdDiscounts(): string {
+  return EARLY_BIRD_DISCOUNTS
+    .slice(1) // skip 5% for short form (most pages show only 10/15)
+    .map(d => `${d.label} за ${d.days}+ дней`)
+    .join(', ');
+}
+
+/** Full early-bird text for FAQ: "5% за 30+ дней, 10% за 60+ дней, 15% за 90+ дней" */
+export function formatEarlyBirdDiscountsFull(): string {
+  return EARLY_BIRD_DISCOUNTS
+    .map(d => `${d.label} за ${d.days}+ дней`)
+    .join(', ');
+}
+
 export const FORMAT_NAMES: Record<Format, string> = {
   furshet: 'Фуршет',
   banket: 'Банкет',
