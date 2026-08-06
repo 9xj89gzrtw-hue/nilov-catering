@@ -26,7 +26,7 @@ const PHOTOS: HeroSlide[] = [
 
 const STATS = [
   { value: '19', label: 'лет в СПб' },
-  { value: '27', label: 'отзывов · 4.8★' },
+  { value: '27', label: 'отзывов · 4.8/5' },
   { value: '124', label: 'блюда в каталоге' },
   { value: '40+', label: 'человек в штате' },
 ];
