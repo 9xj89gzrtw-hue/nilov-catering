@@ -86,37 +86,26 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-muted-foreground">
-          <Link href="/privacy" className="hover:text-foreground transition-colors">Политика</Link>
-          <Link href="/terms" className="hover:text-foreground transition-colors">Условия</Link>
-          <Link href="/cookies" className="hover:text-foreground transition-colors">Cookies</Link>
-          <Link href="/accessibility" className="hover:text-foreground transition-colors">Доступность</Link>
+          <Link href="/privacy" className="hover:text-foreground transition-colors no-underline">Политика</Link>
+          <Link href="/terms" className="hover:text-foreground transition-colors no-underline">Условия</Link>
+          <Link href="/cookies" className="hover:text-foreground transition-colors no-underline">Cookies</Link>
+          <Link href="/accessibility" className="hover:text-foreground transition-colors no-underline">Доступность</Link>
           <span>© 2007–2026 {SITE.name}</span>
           <TextSizeToggle />
         </div>
 
-        {/* Юридические реквизиты (реальные данные — ИП Нилов Д.И.) */}
-        <div className="mt-6 pt-6 border-t border-line/50 text-center">
-          <p className="text-sm text-foreground">
-            <span className="font-semibold">{SITE.legalName}</span>
-            {' · '}
-            <span>ИНН {SITE.inn}</span>
-            {' · '}
-            <span>ОГРНИП {SITE.ogrnip}</span>
+        {/* Legal — compact, single line */}
+        <div className="mt-6 pt-6 border-t border-line/50 text-center text-xs text-muted-foreground">
+          <p>
+            {SITE.legalName} · ИНН {SITE.inn} · ОГРНИП {SITE.ogrnip}
           </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            {SITE.legalAddress}
-          </p>
-          <p className="text-sm text-muted-foreground mt-2">
-            Бренд {SITE.name} работает с 2007 года. ИП Нилов Д.И. зарегистрирован в 2014 (перерегистрация с ранее действовавшей формы). Документы и договор — по запросу{' '}
-            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground">{SITE.email}</a>
-            {' · '}
-            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground">{SITE.phone}</a>
+          <p className="mt-1">
+            {SITE.legalAddress} ·{' '}
+            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground no-underline">{SITE.phone}</a>{' '}
+            ·{' '}
+            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground no-underline">{SITE.email}</a>
           </p>
         </div>
-
-        <p className="mt-4 text-center text-sm text-muted-foreground">
-          Сайт соответствует 152-ФЗ «О персональных данных». ТР ТС 022/2011 «О безопасности пищевой продукции». Маркировка 14 аллергенов по ТР ТС 022/2011 Приложение 3.
-        </p>
       </div>
     </footer>
   );

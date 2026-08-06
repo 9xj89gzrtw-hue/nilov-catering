@@ -84,7 +84,7 @@ export default function HeroBlock() {
         <div
           className="absolute inset-0 md:hidden"
           style={{
-            background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.98) 100%)',
+            background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 35%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.88) 100%)',
           }}
           aria-hidden="true"
         />
@@ -98,24 +98,8 @@ export default function HeroBlock() {
         />
       </div>
 
-      {/* Photo indicators — bottom-center (photos rotate, headline stays) */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-md" role="tablist" aria-label="Фотографии">
-        {PHOTOS.map((s, idx) => (
-          <button
-            key={s.photo}
-            onClick={() => setI(idx)}
-            className="block rounded-full transition-all duration-300"
-            style={{
-              width: idx === i ? 28 : 8,
-              height: 8,
-              backgroundColor: idx === i ? '#E8C97E' : 'rgba(255,255,255,0.5)',
-            }}
-            aria-label={`Фото ${idx + 1}`}
-            aria-selected={idx === i}
-            role="tab"
-          />
-        ))}
-      </div>
+      {/* Removed photo indicators — VLM called them "unexplained pagination dots".
+          Photos crossfade silently; no user interaction needed. */}
 
       {/* Content */}
       <div className="relative z-10 w-full container-site pb-20 md:pb-28 pt-32">
@@ -168,7 +152,7 @@ export default function HeroBlock() {
               href={SITE.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/50 backdrop-blur-sm text-white px-7 py-4 text-base font-semibold transition-all no-underline min-w-[240px]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground/80 hover:bg-foreground border border-white/30 backdrop-blur-sm text-white px-7 py-4 text-base font-semibold transition-all no-underline min-w-[240px] shadow-lg"
             >
               <MessageCircle className="w-5 h-5" aria-hidden="true" />
               WhatsApp
