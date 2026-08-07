@@ -8,6 +8,7 @@ import { getDishImageByIndex, getObjectPositionForDish } from '@/lib/dish-images
 import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
+import { useConstructor } from '@/hooks/useConstructor';
 
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
@@ -568,14 +569,34 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
           </p>
         )}
 
-        {/* CTA: Open in constructor with dish pre-added */}
-        <Link
-          href={constructorHref}
-          className="mt-auto inline-flex items-center justify-center rounded-lg bg-gold-text text-white px-3 py-2 text-xs font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline"
-          aria-label={`Открыть ${dish.name} в конструкторе меню`}
-        >
-          Открыть в конструкторе →
-        </Link>
+        {/* CTA: Add to menu (in-place, no navigation) + link to constructor */}
+        <div className="mt-auto flex gap-2">
+          <button
+            onClick={() => {
+              const existing = useConstructor.getState?.()?.selectedItems || [];
+              const isInCart = existing.some((i: { dishId: string }) => i.dishId === dish.id);
+              const store = useConstructor.getState();
+              if (store) {
+                if (isInCart) {
+                  store.removeDish(dish.id);
+                } else {
+                  store.setTierMode('custom');
+                  store.addDish(dish.id);
+                }
+              }
+            }}
+            className="flex-1 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-3 py-2 text-xs font-semibold hover:bg-primary/90 transition-colors touch-target no-underline"
+          >
+            + В меню
+          </button>
+          <Link
+            href={constructorHref}
+            className="inline-flex items-center justify-center rounded-lg border border-line bg-card px-3 py-2 text-xs font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+            aria-label={`Открыть ${dish.name} в конструкторе меню`}
+          >
+            →
+          </Link>
+        </div>
       </div>
       </div>
     </article>
