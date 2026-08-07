@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE } from '@/lib/data';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
+import HelperLeadForm from '@/components/blocks/HelperLeadForm';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -115,54 +116,26 @@ export default async function PlanHelperPage({
               {location}
             </h2>
 
-            {/* Price estimate */}
+            {/* Price estimate — with personalized total */}
             <div className="bg-card rounded-xl p-4 mb-6 border border-line">
               <p className="text-xs text-muted-foreground mb-1">Ориентировочная стоимость</p>
               <p className="font-heading text-3xl md:text-4xl text-foreground" style={{ fontWeight: 600 }}>
-                {format === 'coffee-break' ? 'от 390 ₽/гость' : format === 'furshet' ? 'от 2 450 ₽/гость' : format === 'banket' ? 'от 3 950 ₽/гость' : format === 'detskoe' ? 'от 1 550 ₽/гость' : 'от 5 000 ₽/час'}
+                {format === 'coffee-break' ? 'от 390 ₽/гость' : format === 'furshet' ? 'от 2 450 ₽/гость' : format === 'banket' ? 'от 3 950 ₽/гость' : format === 'detskoe' ? 'от 1 550 ₽/гость' : format === 'pominki' ? 'от 1 800 ₽/гость' : 'от 5 000 ₽/час'}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">Финальная смета — после уточнения меню и тарифа</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {(() => {
+                  const PRICE_MAP: Record<string, number> = { 'coffee-break': 390, furshet: 2450, banket: 3950, detskoe: 1550, pominki: 1800, 'chef-at-home': 5000 };
+                  const GUEST_MAP: Record<string, number> = { '0-20': 15, '20-50': 35, '50-100': 75, '100-200': 150, '200+': 200 };
+                  const price = PRICE_MAP[format] ?? 2450;
+                  const guestNum = GUEST_MAP[guests] ?? 50;
+                  const total = price * guestNum;
+                  return `≈ ${total.toLocaleString('ru-RU')} ₽ за ${guestNum} гостей · финальная смета после уточнения меню`;
+                })()}
+              </p>
             </div>
 
-            {/* Inline lead form — 2 fields only */}
-            <form action="/api/quote" method="POST" className="space-y-3">
-              <input type="hidden" name="source" value="helper" />
-              <input type="hidden" name="format" value={format} />
-              <input type="hidden" name="subject" value={`${occasion} · ${guests} · ${location}`} />
-              <div>
-                <label htmlFor="helper-name" className="block text-sm font-medium text-foreground mb-1.5">Ваше имя</label>
-                <input
-                  type="text"
-                  id="helper-name"
-                  name="name"
-                  required
-                  autoComplete="name"
-                  placeholder="Анна"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="helper-phone" className="block text-sm font-medium text-foreground mb-1.5">Телефон</label>
-                <input
-                  type="tel"
-                  id="helper-phone"
-                  name="phone"
-                  required
-                  autoComplete="tel"
-                  placeholder="+7 (___) ___-__-__"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-primary text-primary-foreground px-6 py-4 text-base font-semibold hover:bg-primary/90 transition-colors no-underline shadow-md"
-              >
-                Получить расчёт →
-              </button>
-              <p className="text-xs text-muted-foreground text-center">
-                Перезвоним за 15 минут в рабочее время (9:00–21:00). Без спама.
-              </p>
-            </form>
+            {/* Inline lead form — client component with redirect to /thank-you */}
+            <HelperLeadForm format={format} occasion={occasion} guests={guests} location={location} />
 
             {/* Secondary action — smaller, below */}
             <div className="mt-6 pt-6 border-t border-line text-center">

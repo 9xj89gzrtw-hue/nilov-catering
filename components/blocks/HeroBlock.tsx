@@ -56,6 +56,27 @@ export default function HeroBlock() {
               </span>
             </div>
 
+            {/* Quick-route chips — every persona self-routes in 1 tap */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {[
+                { label: 'Свадьба', href: '/events/svadba' },
+                { label: 'Корпоратив', href: '/events/korporativ' },
+                { label: 'Детский', href: '/events/detskoe' },
+                { label: 'Кофе-брейк', href: '/menu/coffee-break' },
+                { label: 'Поминки', href: '/events/pominki' },
+                { label: 'Шеф на дом', href: '/events/chef-at-home' },
+                { label: 'B2B', href: '/contact?subject=B2B-запрос' },
+              ].map(chip => (
+                <Link
+                  key={chip.label}
+                  href={chip.href}
+                  className="inline-flex items-center rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
+                >
+                  {chip.label}
+                </Link>
+              ))}
+            </div>
+
             {/* Primary CTA — single action */}
             <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center mb-6">
               <Link

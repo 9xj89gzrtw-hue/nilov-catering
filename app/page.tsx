@@ -3,13 +3,12 @@ import HeroBlock from '@/components/blocks/HeroBlock';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import NamedPackageGrid from '@/components/blocks/NamedPackageGrid';
 import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
+import B2BSection from '@/components/blocks/B2BSection';
 import MenuPreview from '@/components/blocks/MenuPreview';
 import WhyUs from '@/components/blocks/WhyUs';
 import TrustBar from '@/components/blocks/TrustBar';
-import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
-import B2BSection from '@/components/blocks/B2BSection';
 import WowCase from '@/components/blocks/WowCase';
 import { getReviews } from '@/lib/cms';
 
@@ -25,7 +24,7 @@ export default async function HomePage() {
 
   return (
     <main id="main">
-      {/* 1. Hero — ONE static headline, photo carousel */}
+      {/* 1. Hero — headline + price ladder + quick-route chips */}
       <HeroBlock />
 
       {/* 2. EVENT TYPES — выбор повода */}
@@ -37,26 +36,23 @@ export default async function HomePage() {
       {/* 4. INLINE CALCULATOR — отвечает 'how much?' за 15 секунд */}
       <InlinePriceCalculator />
 
-      {/* 5. MENU PREVIEW — фото блюд */}
+      {/* 5. B2B — для корпоративных клиентов (moved up from position 10) */}
+      <B2BSection />
+
+      {/* 6. MENU PREVIEW — фото блюд */}
       <MenuPreview />
 
-      {/* 5. WHY US — 4 принципа + статы */}
+      {/* 7. WHY US — 4 принципа + статы */}
       <WhyUs />
 
-      {/* 6. TRUST — площадки СПб */}
+      {/* 8. TRUST — площадки СПб */}
       <TrustBar />
 
-      {/* 7. PROCESS — как мы работаем */}
-      <ProcessSteps />
-
-      {/* 8. TESTIMONIALS — из reviews.json */}
+      {/* 9. TESTIMONIALS — из reviews.json */}
       <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
 
-      {/* 9. WOW CASE — избранный кейс */}
+      {/* 10. WOW CASE — избранный кейс */}
       <WowCase />
-
-      {/* 10. B2B — для корпоративных клиентов и тендеров */}
-      <B2BSection />
 
       {/* 11. CTA — главное действие */}
       <CTASection />

@@ -175,9 +175,10 @@ export async function POST(request: Request) {
       ip,
     });
 
-    // Telegram notification — wired (was commented TODO, devtools critic flagged)
+    // Telegram notification — AWAITED (was fire-and-forget, causing fake success)
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
+    let telegramOk = false;
     if (botToken && chatId) {
       const sanitize = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       const tgText = [
@@ -190,11 +191,25 @@ export async function POST(request: Request) {
         payload.inn ? `ИНН: ${sanitize(String(payload.inn))}` : null,
         payload.comment ? `Комментарий: ${sanitize(String(payload.comment))}` : null,
       ].filter(Boolean).join('\n');
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: tgText }),
-      }).catch(() => {});
+      try {
+        const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: tgText }),
+        });
+        telegramOk = tgRes.ok;
+      } catch {
+        telegramOk = false;
+      }
+    }
+
+    // HONEST FAILURE — don't fake success when lead is lost
+    if (!telegramOk) {
+      console.error('[CONTACT] CRITICAL: Lead could not be delivered via Telegram');
+      return NextResponse.json({
+        success: false,
+        message: 'Не удалось отправить заявку. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp.',
+      }, { status: 500 });
     }
 
     return NextResponse.json(

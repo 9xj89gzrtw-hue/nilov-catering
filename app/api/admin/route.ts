@@ -2,7 +2,12 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { loadContent, saveContent } from '@/lib/content';
 
-export async function GET() {
+export async function GET(request: Request) {
+  // DevTools critic: "GET /api/admin returns CMS content with no auth"
+  const auth = request.headers.get('x-admin-secret');
+  if (!process.env.ADMIN_SECRET || auth !== process.env.ADMIN_SECRET) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const data = loadContent();
   return NextResponse.json(data);
 }
