@@ -2,50 +2,55 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Utensils, Images, Calculator } from 'lucide-react';
+import { Home, Utensils, Calculator, Tag, Phone } from 'lucide-react';
 
 /**
- * MobileBottomNav — 5 items with raised center pill.
+ * MobileBottomNav — 5 items with true center pill.
  *
- * Mobile critic: "Collapse two bottom bars into one — raised center 'Рассчитать' pill
- * in MobileBottomNav (1h, +2.5pts)"
- *
- * UX critic: "5 competing planning tools" — center pill goes to /plan/helper (canonical).
+ * Mobile critic: "7 items too crowded, center pill off-center, icons reused"
+ * Fix: 4 nav items + center pill = 5 cells, true center (position 3),
+ * distinct icons (Home, Utensils, Tag, Phone — no duplicates).
  */
-const MOBILE_LINKS = [
+const LEFT_LINKS = [
   { href: '/', label: 'Главная', Icon: Home },
-  { href: '/events', label: 'События', Icon: Briefcase },
   { href: '/menu', label: 'Меню', Icon: Utensils },
-  { href: '/gallery', label: 'Галерея', Icon: Images },
+];
+
+const RIGHT_LINKS = [
+  { href: '/pricing', label: 'Цены', Icon: Tag },
+  { href: '/contact', label: 'Контакты', Icon: Phone },
 ];
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
+
+  const renderLink = (link: typeof LEFT_LINKS[number]) => {
+    const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+    return (
+      <li key={link.href} className="flex-1">
+        <Link
+          href={link.href}
+          aria-current={isActive ? 'page' : undefined}
+          className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center no-underline ${
+            isActive ? 'text-foreground' : 'text-muted-foreground'
+          }`}
+        >
+          <link.Icon className="w-5 h-5" />
+          {link.label}
+        </Link>
+      </li>
+    );
+  };
 
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-background/95 backdrop-blur-md md:hidden safe-area-bottom"
       aria-label="Мобильная навигация"
     >
-      <ul className="flex items-center justify-evenly h-16 gap-1" role="list">
-        {MOBILE_LINKS.map((link) => {
-          const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-          return (
-            <li key={link.href} className="flex-1">
-              <Link
-                href={link.href}
-                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center no-underline ${
-                  isActive ? 'text-foreground' : 'text-muted-foreground'
-                }`}
-              >
-                <link.Icon className="w-5 h-5" />
-                {link.label}
-              </Link>
-            </li>
-          );
-        })}
+      <ul className="flex items-center justify-evenly h-16" role="list">
+        {LEFT_LINKS.map(renderLink)}
 
-        {/* Center — raised primary CTA pill */}
+        {/* Center — raised primary CTA pill (true center: position 3 of 5) */}
         <li className="flex-1 flex justify-center">
           <Link
             href="/plan/helper"
@@ -53,30 +58,11 @@ export default function MobileBottomNav() {
             aria-label="Рассчитать стоимость"
           >
             <Calculator className="w-6 h-6" />
-            <span className="text-[10px] font-semibold mt-0.5">Цена</span>
+            <span className="text-[11px] font-semibold mt-0.5">Цена</span>
           </Link>
         </li>
 
-        {/* Remaining links after center */}
-        {[
-          { href: '/pricing', label: 'Тарифы', Icon: Images },
-          { href: '/contact', label: 'Контакты', Icon: Briefcase },
-        ].map((link) => {
-          const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-          return (
-            <li key={link.href} className="flex-1">
-              <Link
-                href={link.href}
-                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center no-underline ${
-                  isActive ? 'text-foreground' : 'text-muted-foreground'
-                }`}
-              >
-                <link.Icon className="w-5 h-5" />
-                {link.label}
-              </Link>
-            </li>
-          );
-        })}
+        {RIGHT_LINKS.map(renderLink)}
       </ul>
     </nav>
   );

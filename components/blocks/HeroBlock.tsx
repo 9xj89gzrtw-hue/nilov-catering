@@ -17,7 +17,7 @@ import { SITE } from '@/lib/data';
  * UX audit: "Hero price 'от 390 ₽' is misleading bait-and-switch." Fixed: real price ladder.
  */
 
-const STATS_INLINE = '19 лет в СПб · 27 отзывов 4.8/5 · 124 блюда в каталоге';
+const STATS_INLINE = '19 лет в Санкт-Петербурге · 4.8/5 по 27 отзывам · 124 блюда в меню';
 
 export default function HeroBlock() {
   return (
@@ -35,12 +35,12 @@ export default function HeroBlock() {
               className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[1.05] mb-5"
               style={{ fontWeight: 500 }}
             >
-              Свадьба, корпоратив, день рождения — кейтеринг под ключ
+              Кейтеринг от шефа Дмитрия Нилова
             </h1>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed max-w-lg">
-              Фуршет от 2 450 ₽ · Банкет от 3 950 ₽ · Кофе-брейк от 390 ₽ — за гостя, всё включено.
-              Меню, официанты, посуда, доставка, сервировка и уборка.
+              Готовим на вашей площадке, не везём разогретое. Свадьбы, корпоративы, дни рождения в Петербурге —
+              с 2007 года. Фуршет от 2 450 ₽, банкет от 3 950 ₽ — за гостя, меню и официанты включены.
             </p>
 
             {/* Price ladder — answers "how much?" in 3 seconds */}

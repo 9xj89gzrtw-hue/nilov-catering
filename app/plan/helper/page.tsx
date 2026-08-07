@@ -21,7 +21,7 @@ const OCCASIONS = [
   { label: 'Юбилей',             format: 'banket',       photo: 'beef-medallions' },
   { label: 'Конференция',        format: 'coffee-break', photo: 'coffee-drink' },
   { label: 'Шеф на дом',         format: 'chef-at-home', photo: 'salmon-dish' },
-  { label: 'Поминки',            format: 'pominki',      photo: 'wedding-banquet' },
+  { label: 'Поминки',            format: 'pominki',      photo: 'salmon-dish' },
   { label: 'Никах',              format: 'banket',       photo: 'grilled-chicken' },
 ];
 
@@ -63,7 +63,7 @@ const OCCASION_PHOTO: Record<string, string> = {
   'Юбилей': 'beef-medallions',
   'Конференция': 'coffee-drink',
   'Шеф на дом': 'salmon-dish',
-  'Поминки': 'wedding-banquet',
+  'Поминки': 'salmon-dish',
   'Никах': 'grilled-chicken',
 };
 

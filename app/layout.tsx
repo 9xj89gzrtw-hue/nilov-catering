@@ -6,7 +6,6 @@ import TextSizeToggle from '@/components/effects/TextSizeToggle';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
-import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import CookieBanner from '@/components/layout/CookieBanner';
 import LiveChatWidget from '@/components/layout/LiveChatWidget';
@@ -49,7 +48,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <ClientLayout>{children}</ClientLayout>
             <Footer />
             <MobileBottomNav />
-            <StickyMobileCTA />
             <ScrollProgress />
             <CookieBanner />
             <LiveChatWidget />

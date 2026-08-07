@@ -18,35 +18,70 @@ interface QuoteBody {
   source?: string;
   subject?: string;
   location?: string;
+  urgency?: string;
+  budget?: number;
 }
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
-async function ensureDataFile() {
+/**
+ * Try to persist lead to file system.
+ * Works locally; silently fails on Vercel (read-only FS).
+ * Returns true if persisted, false if not.
+ */
+async function tryFilePersist(lead: Record<string, unknown>): Promise<boolean> {
   try {
-    await fs.access(LEADS_FILE);
-  } catch {
     await fs.mkdir(DATA_DIR, { recursive: true });
-    await fs.writeFile(LEADS_FILE, '[]', 'utf-8');
+    let arr: unknown[] = [];
+    try {
+      const raw = await fs.readFile(LEADS_FILE, 'utf-8');
+      arr = JSON.parse(raw);
+      if (!Array.isArray(arr)) arr = [];
+    } catch { /* file doesn't exist yet */ }
+    arr.push(lead);
+    await fs.writeFile(LEADS_FILE, JSON.stringify(arr, null, 2), 'utf-8');
+    return true;
+  } catch {
+    return false; // Read-only FS (Vercel) — expected in production
   }
 }
 
-async function appendLead(lead: Record<string, unknown>) {
-  await ensureDataFile();
+/**
+ * Send Telegram notification — this is the PRIMARY lead delivery channel in production.
+ * Returns true if sent, false if not.
+ */
+async function sendTelegramNotification(lead: Record<string, unknown>): Promise<boolean> {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!botToken || !chatId) return false;
+
+  // Sanitize user input to prevent Telegram HTML injection
+  const sanitize = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const text = [
+    `🔔 Новая заявка ${lead.orderId}`,
+    '',
+    `Имя: ${sanitize(String(lead.name || '—'))}`,
+    `Телефон: ${sanitize(String(lead.phone || '—'))}`,
+    lead.date ? `Дата: ${sanitize(String(lead.date))}` : null,
+    lead.guests ? `Гостей: ${lead.guests}` : null,
+    lead.format ? `Формат: ${sanitize(String(lead.format))}` : null,
+    lead.total ? `Бюджет: ${lead.total} ₽` : null,
+    lead.urgency ? `Срочность: ${sanitize(String(lead.urgency))}` : null,
+    lead.source ? `Источник: ${sanitize(String(lead.source))}` : null,
+    lead.comment ? `Комментарий: ${sanitize(String(lead.comment))}` : null,
+  ].filter(Boolean).join('\n');
+
   try {
-    const raw = await fs.readFile(LEADS_FILE, 'utf-8');
-    const arr = JSON.parse(raw);
-    if (!Array.isArray(arr)) {
-      throw new Error('leads.json is not an array');
-    }
-    arr.push(lead);
-    await fs.writeFile(LEADS_FILE, JSON.stringify(arr, null, 2), 'utf-8');
-  } catch (e) {
-    // If parse fails, back up and start fresh
-    const backup = `${LEADS_FILE}.bak.${Date.now()}`;
-    try { await fs.copyFile(LEADS_FILE, backup); } catch {}
-    await fs.writeFile(LEADS_FILE, JSON.stringify([lead], null, 2), 'utf-8');
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text }),
+    });
+    return response.ok;
+  } catch {
+    return false;
   }
 }
 
@@ -55,28 +90,20 @@ export async function POST(request: Request) {
     let body: QuoteBody;
     const contentType = request.headers.get('content-type') || '';
 
-    // Handle both JSON (client-side fetch) and form-data (no-JS fallback)
     if (contentType.includes('application/json')) {
       body = await request.json();
     } else if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
       const formData = await request.formData();
       body = Object.fromEntries(formData.entries()) as unknown as QuoteBody;
     } else {
-      try {
-        body = await request.json();
-      } catch {
-        return NextResponse.json(
-          { success: false, message: 'Неподдерживаемый формат запроса' },
-          { status: 400 },
-        );
+      try { body = await request.json(); }
+      catch {
+        return NextResponse.json({ success: false, message: 'Неподдерживаемый формат запроса' }, { status: 400 });
       }
     }
 
     if (!body.name || !body.phone) {
-      return NextResponse.json(
-        { success: false, message: 'Имя и телефон обязательны' },
-        { status: 400 },
-      );
+      return NextResponse.json({ success: false, message: 'Имя и телефон обязательны' }, { status: 400 });
     }
 
     const now = Date.now();
@@ -84,65 +111,52 @@ export async function POST(request: Request) {
     const timestamp = new Date().toISOString();
 
     const lead = {
-      orderId,
-      timestamp,
-      name: body.name,
-      phone: body.phone,
-      email: body.email || '',
-      date: body.date || '',
-      format: body.format || '',
-      tier: body.tier || '',
-      guests: body.guests ?? null,
-      total: body.total ?? null,
+      orderId, timestamp,
+      name: body.name, phone: body.phone,
+      email: body.email || '', date: body.date || '',
+      format: body.format || '', tier: body.tier || '',
+      guests: body.guests ?? null, total: body.total ?? null,
       comment: body.comment || '',
       excludedAllergens: body.excludedAllergens || [],
       guestGroups: body.guestGroups || null,
       selectedItems: body.selectedItems || null,
       source: body.source || 'unknown',
-      subject: body.subject || '',
-      location: body.location || '',
+      subject: body.subject || '', location: body.location || '',
+      urgency: body.urgency || '', budget: body.budget ?? null,
       status: 'new',
     };
 
-    // Persist to file (real storage, not just console.log)
-    try {
-      await appendLead(lead);
-    } catch (e) {
-      console.error('[QUOTE] Failed to persist lead:', e);
+    // PERSIST: try file first (local dev), then Telegram (production)
+    const fileOk = await tryFilePersist(lead);
+    const telegramOk = await sendTelegramNotification(lead);
+
+    if (!fileOk && !telegramOk) {
+      // HONEST FAILURE — don't fake success when lead is lost
+      console.error('[QUOTE] CRITICAL: Lead could not be persisted (file failed, Telegram not configured)');
+      return NextResponse.json({
+        success: false,
+        message: 'Не удалось отправить заявку. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp.',
+        orderId: '',
+      }, { status: 500 });
     }
 
-    console.log('[QUOTE] Новая заявка:', orderId, body.name, body.phone);
-
-    // Optional Telegram notification (non-blocking)
-    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
-    const telegramChatId = process.env.TELEGRAM_CHAT_ID;
-    if (telegramBotToken && telegramChatId) {
-      const text = `Новая заявка ${orderId}\n\nИмя: ${body.name}\nТелефон: ${body.phone}\nДата: ${body.date || '—'}\nГостей: ${body.guests ?? '—'}\nФормат: ${body.format || '—'}\nИсточник: ${body.source || '—'}\n\nКомментарий: ${body.comment || '—'}`;
-      fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: telegramChatId, text, parse_mode: 'HTML' }),
-      }).catch(() => {});
-    }
+    console.log(`[QUOTE] Lead ${orderId} persisted: file=${fileOk}, telegram=${telegramOk}`);
 
     return NextResponse.json({
       success: true,
-      message: 'Заявка принята. Мы свяжемся с вами в течение 15 минут в рабочее время (9:00–21:00 МСК).',
+      message: 'Заявка принята. Мы свяжемся с вами в течение 15 минут в рабочее время (9:00–21:00).',
       orderId,
       data: { name: body.name, phone: body.phone, date: body.date },
     });
   } catch (error) {
     console.error('[QUOTE] Error:', error);
-    return NextResponse.json(
-      { success: false, message: 'Внутренняя ошибка сервера. Позвоните +7 (812) 919-59-11.' },
-      { status: 500 },
-    );
+    return NextResponse.json({
+      success: false,
+      message: 'Внутренняя ошибка сервера. Позвоните +7 (812) 919-59-11.',
+    }, { status: 500 });
   }
 }
 
 export async function GET() {
-  return NextResponse.json({
-    success: false,
-    message: 'Используйте POST для отправки заявки',
-  });
+  return NextResponse.json({ success: false, message: 'Используйте POST для отправки заявки' });
 }

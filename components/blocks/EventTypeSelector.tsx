@@ -61,15 +61,9 @@ const EVENTS: EventCard[] = [
     photo: 'beef-medallions',
     features: ['Сомелье', 'Праздничный торт', 'Фуршет-станции'],
   },
-  {
-    format: 'banket',
-    href: '/events/pominki',
-    price: 'от 1 800 ₽',
-    label: 'Поминки',
-    desc: 'Поминальный обед по православной традиции. Без алкоголя. Кутья, блины, кисель, рыба.',
-    photo: 'wedding-banquet',
-    features: ['Без алкоголя', 'Тихая подача', 'От 10 гостей'],
-  },
+  // Поминки removed from homepage events grid — copy critic: "emotionally catastrophic
+  // to have funeral catering next to wedding/birthday". Kept in helper wizard OCCASIONS
+  // where user explicitly selects it. /events/pominki page still exists.
 ];
 
 export default function EventTypeSelector() {

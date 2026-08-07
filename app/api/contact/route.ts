@@ -175,10 +175,27 @@ export async function POST(request: Request) {
       ip,
     });
 
-    // TODO: enable when Telegram bot token is set
-    // if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
-    //   await sendTelegramNotification(payload);
-    // }
+    // Telegram notification — wired (was commented TODO, devtools critic flagged)
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+    if (botToken && chatId) {
+      const sanitize = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const tgText = [
+        `🔔 ${isB2B ? 'B2B заявка' : 'Заявка'} ${orderId}`,
+        `Имя: ${sanitize(name)}`,
+        `Телефон: ${sanitize(phone)}`,
+        payload.eventType ? `Событие: ${sanitize(String(payload.eventType))}` : null,
+        payload.guests ? `Гостей: ${payload.guests}` : null,
+        payload.company ? `Компания: ${sanitize(String(payload.company))}` : null,
+        payload.inn ? `ИНН: ${sanitize(String(payload.inn))}` : null,
+        payload.comment ? `Комментарий: ${sanitize(String(payload.comment))}` : null,
+      ].filter(Boolean).join('\n');
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: tgText }),
+      }).catch(() => {});
+    }
 
     return NextResponse.json(
       {
