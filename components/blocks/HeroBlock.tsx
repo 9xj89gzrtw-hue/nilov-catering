@@ -69,7 +69,7 @@ export default function HeroBlock() {
                 href={SITE.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-card text-foreground hover:border-gold-text hover:text-gold-text px-7 py-4 text-base font-semibold transition-colors no-underline min-w-[180px]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground text-background hover:bg-foreground/90 px-7 py-4 text-base font-semibold transition-colors no-underline min-w-[180px] shadow-sm"
               >
                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
                 WhatsApp

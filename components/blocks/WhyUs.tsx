@@ -69,8 +69,24 @@ export default function WhyUs() {
             </Link>
           </div>
 
-          {/* Right — pillars */}
+          {/* Right — pillars with photos */}
           <div className="md:col-span-7 space-y-4">
+            {/* Photo strip — breaks up text-heavy layout (VLM: "lack of visual imagery") */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              <div className="aspect-square rounded-xl overflow-hidden border border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/real-search/staff-champagne.jpg" alt="Официанты NiloV Catering" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="aspect-square rounded-xl overflow-hidden border border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/real-search/food-overhead.jpg" alt="Авторская подача блюд" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="aspect-square rounded-xl overflow-hidden border border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/real-search/venue-loft.jpg" alt="Площадки Санкт-Петербурга" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+
             {PILLARS.map((p) => (
               <div
                 key={p.title}
