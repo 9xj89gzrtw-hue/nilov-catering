@@ -1,7 +1,7 @@
-'use client';
+
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
 import { ArrowRight } from 'lucide-react';
 
 /**
@@ -79,32 +79,32 @@ export default function NamedPackageGrid() {
       <div className="container-site">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">
           <div className="max-w-2xl">
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5 }}
+            <p
+              
+              
+              
+              
               className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
             >
               Готовые пакеты
-            </motion.p>
-            <motion.h2
+            </p>
+            <h2
               id="packages-heading"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0.05 }}
+              
+              
+              
+              
               className="font-heading text-3xl md:text-5xl"
               style={{ fontWeight: 500 }}
             >
               6 пакетов с фиксированной ценой
-            </motion.h2>
+            </h2>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+          <div
+            
+            
+            
+            
           >
             <Link
               href="/pricing"
@@ -113,17 +113,17 @@ export default function NamedPackageGrid() {
               Все тарифы и сравнение
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {PACKAGES.map((pkg, idx) => (
-            <motion.div
+            <div
               key={pkg.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              
+              
+              
+              
             >
               <Link
                 href={pkg.href}
@@ -182,7 +182,7 @@ export default function NamedPackageGrid() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

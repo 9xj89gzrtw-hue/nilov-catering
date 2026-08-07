@@ -8,7 +8,6 @@ import Footer from '@/components/layout/Footer';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
-import CustomCursor from '@/components/effects/CustomCursor';
 import CookieBanner from '@/components/layout/CookieBanner';
 import ScrollProgress from '@/components/common/ScrollProgress';
 import { ClientLayout } from '@/components/layout/ClientLayout';
@@ -23,8 +22,9 @@ export const metadata: Metadata = {
   title: { default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`, template: `%s — ${SITE.name}` },
   description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.',
   keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
-  alternates: { languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { languages: { 'ru': '/', 'x-default': '/' } },
   openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name, images: [{ url: '/og-image.png', width: 1200, height: 630 }] },
+  twitter: { card: 'summary_large_image', title: `${SITE.name} — кейтеринг в СПб`, description: 'Фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽/гость. С 2007 года.', images: ['/og-image.png'] },
   robots: { index: true, follow: true },
 };
 
@@ -49,7 +49,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Footer />
             <MobileBottomNav />
             <StickyMobileCTA />
-            <CustomCursor />
             <ScrollProgress />
             <CookieBanner />
           </SmoothScrollProvider>

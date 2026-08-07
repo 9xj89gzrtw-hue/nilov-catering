@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+
 import { ArrowRight } from 'lucide-react';
 import type { Format } from '@/lib/types';
 
@@ -52,55 +52,56 @@ const EVENTS: EventCard[] = [
     photo: 'coffee-drink',
     features: ['Аренда кофе-машин', '2 тура подачи', 'От 10 гостей'],
   },
+  {
+    format: 'banket',
+    href: '/events/yubiley',
+    price: 'от 3 950 ₽',
+    label: 'Юбилей',
+    desc: 'Торжественный банкет для семьи и друзей. Камерный на 15 персон или крупный на 100.',
+    photo: 'beef-medallions',
+    features: ['Сомелье', 'Праздничный торт', 'Фуршет-станции'],
+  },
+  {
+    format: 'banket',
+    href: '/events/pominki',
+    price: 'от 1 800 ₽',
+    label: 'Поминки',
+    desc: 'Поминальный обед по православной традиции. Без алкоголя. Кутья, блины, кисель, рыба.',
+    photo: 'wedding-banquet',
+    features: ['Без алкоголя', 'Тихая подача', 'От 10 гостей'],
+  },
 ];
 
 export default function EventTypeSelector() {
-  const reduce = useReducedMotion();
 
   return (
     <section className="py-20 md:py-28 bg-background" aria-labelledby="events-heading">
       <div className="container-site">
         <div className="mb-12 md:mb-16 max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5 }}
+          <p
             className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
           >
             Форматы и поводы
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             id="events-heading"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.05 }}
             className="font-heading text-3xl md:text-5xl mb-4"
             style={{ fontWeight: 500 }}
           >
             Какое у вас событие?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+          </h2>
+          <p
             className="text-muted-foreground text-base md:text-lg"
           >
             Подбираем формат, меню и тариф под повод и бюджет.
             Прозрачные цены — без скрытых платежей за посуду, доставку и уборку.
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {EVENTS.map((e, idx) => (
-            <motion.div
+            <div
               key={e.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
                 href={e.href}
@@ -151,23 +152,19 @@ export default function EventTypeSelector() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* All events link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+        <div
           className="mt-10 text-center"
         >
           <Link href="/events" className="inline-flex items-center gap-2 text-sm font-medium text-gold-text hover:underline no-underline">
             Все 9 типов событий
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -205,7 +205,7 @@ export default function CatalogPage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             aria-label="Поиск блюд"
-            className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-colors"
+            className="w-full rounded-xl border border-line bg-card px-4 py-3 text-base mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-colors"
           />
 
           {/* Station filters — horizontally scrollable on mobile */}

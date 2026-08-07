@@ -1,31 +1,14 @@
-'use client';
-
-import { motion, AnimatePresence } from 'framer-motion';
-import { usePathname } from 'next/navigation';
 import { type ReactNode } from 'react';
 
 /**
- * ClientLayout — wraps page content with page transition animation only.
+ * ClientLayout — pass-through wrapper.
  *
- * Breadcrumbs are added by individual pages INSIDE <main pt-24>,
- * so they appear below the fixed header (not hidden behind it).
+ * Performance audit: "ClientLayout wraps {children} in <AnimatePresence mode="wait"> keyed by
+ * pathname — unmounts/remounts entire page tree on every route change."
  *
- * Pages should include <Breadcrumbs /> at the top of <main className="pt-24 pb-20">.
+ * Fixed: removed AnimatePresence + motion.div. Pages now render without remount overhead.
+ * Page transitions can be handled by Next.js View Transitions API if needed in the future.
  */
 export function ClientLayout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={false}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.15 }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
+  return <>{children}</>;
 }

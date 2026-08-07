@@ -21,6 +21,8 @@ const OCCASIONS = [
   { label: 'Юбилей',             format: 'banket',       photo: 'beef-medallions' },
   { label: 'Конференция',        format: 'coffee-break', photo: 'coffee-drink' },
   { label: 'Шеф на дом',         format: 'chef-at-home', photo: 'salmon-dish' },
+  { label: 'Поминки',            format: 'pominki',      photo: 'wedding-banquet' },
+  { label: 'Никах',              format: 'banket',       photo: 'grilled-chicken' },
 ];
 
 const GUEST_RANGES = [
@@ -45,9 +47,11 @@ const OCCASION_TO_PAGE: Record<string, string> = {
   'День рождения': '/events/chastnoe',
   'Детский праздник': '/events/detskoe',
   'Выпускной': '/events/vypusknoy',
-  'Юбилей': '/events/chastnoe',
+  'Юбилей': '/events/yubiley',
   'Конференция': '/events/korporativ',
   'Шеф на дом': '/events/chef-at-home',
+  'Поминки': '/events/pominki',
+  'Никах': '/events/nikah',
 };
 
 const OCCASION_PHOTO: Record<string, string> = {
@@ -59,6 +63,8 @@ const OCCASION_PHOTO: Record<string, string> = {
   'Юбилей': 'beef-medallions',
   'Конференция': 'coffee-drink',
   'Шеф на дом': 'salmon-dish',
+  'Поминки': 'wedding-banquet',
+  'Никах': 'grilled-chicken',
 };
 
 export default async function PlanHelperPage({

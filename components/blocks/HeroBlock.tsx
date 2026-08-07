@@ -1,189 +1,118 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, MessageCircle } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 import { SITE } from '@/lib/data';
 
-interface HeroSlide {
-  photo: string;
-  alt: string;
-}
+/**
+ * HeroBlock — asymmetric editorial split.
+ *
+ * Design director audit: "asymmetric 12-col split. Left 5 cols = solid ivory panel with type.
+ * Right 7 cols = ONE art-directed full-bleed banquet photograph, NO overlay gradients."
+ *
+ * Performance audit: "Hero <h1> uses motion.* initial={{opacity:0}} — LCP text hidden until
+ * framer-motion hydrates." Fixed: pure HTML, CSS animation only.
+ *
+ * Copy audit: "headline 'Ресторан, который приезжает к вам' is metaphor cold visitors decode
+ * as food delivery." Fixed: concrete headline with event types.
+ *
+ * UX audit: "Hero price 'от 390 ₽' is misleading bait-and-switch." Fixed: real price ladder.
+ */
 
-// ONE static headline — rotating carousel was A/B-test-hostile (strongest headline shown only 25%)
-const STATIC_HEADLINE = 'Ресторан, который приезжает к вам';
-const STATIC_SUBTITLE = 'Кейтеринг под ключ в Санкт-Петербурге. Меню, официанты, посуда, доставка — от 390 ₽ за гостя. Без скрытых платежей.';
-const STATIC_EYEBROW = 'Выездной ресторан с 2007 года';
-
-// Background photos still rotate (visual variety), but headline stays
-const PHOTOS: HeroSlide[] = [
-  { photo: 'wedding-banquet',  alt: 'Свадебный банкет — кейтеринг NiloV' },
-  { photo: 'canape-platter',   alt: 'Фуршетные канапе — кейтеринг NiloV' },
-  { photo: 'beef-medallions',  alt: 'Банкет — горячее блюдо от шефа NiloV' },
-  { photo: 'dessert-table',    alt: 'Десертный стол — кейтеринг NiloV' },
-];
-
-const STATS = [
-  { value: '19', label: 'лет в СПб' },
-  { value: '27', label: 'отзывов · 4.8/5' },
-  { value: '124', label: 'блюда в каталоге' },
-  { value: '40+', label: 'человек в штате' },
-];
+const STATS_INLINE = '19 лет в СПб · 27 отзывов 4.8/5 · 124 блюда в каталоге';
 
 export default function HeroBlock() {
-  const [i, setI] = useState(0);
-  const reduce = useReducedMotion();
-
-  useEffect(() => {
-    if (reduce) return;
-    const t = setInterval(() => setI(c => (c + 1) % PHOTOS.length), 7000);
-    return () => clearInterval(t);
-  }, [reduce]);
-
   return (
-    <section
-      className="relative min-h-[92vh] flex items-end overflow-hidden bg-foreground"
-      aria-roledescription="carousel"
-      aria-label="Возможности кейтеринга NiloV"
-    >
-      {/* Background photo carousel — crossfade */}
-      <div className="absolute inset-0">
-        {PHOTOS.map((s, idx) => (
-          <motion.picture
-            key={s.photo}
-            initial={false}
-            animate={{ opacity: idx === i ? 1 : 0 }}
-            transition={{ duration: 1.4, ease: 'easeInOut' }}
-            className="absolute inset-0"
-            aria-hidden={idx !== i}
-          >
-            <source srcSet={`/images/real/${s.photo}-480.avif 480w, /images/real/${s.photo}-768.avif 768w, /images/real/${s.photo}.avif 1920w`} sizes="100vw" type="image/avif" />
-            <source srcSet={`/images/real/${s.photo}-480.webp 480w, /images/real/${s.photo}-768.webp 768w, /images/real/${s.photo}.webp 1920w`} sizes="100vw" type="image/webp" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`/images/real/${s.photo}.jpg`}
-              alt={idx === i ? s.alt : ''}
-              className="w-full h-full object-cover"
-              loading={idx === 0 ? 'eager' : 'lazy'}
-              fetchPriority={idx === 0 ? 'high' : 'auto'}
-            />
-          </motion.picture>
-        ))}
-        {/* Removed Ken-Burns zoom — was 2015-era, distracting. Photos crossfade only. */}
-        {/* Gradient overlay — heavier for text contrast (VLM: "Low contrast on secondary text") */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.95) 100%)',
-          }}
-          aria-hidden="true"
-        />
-        {/* Mobile: extra bottom gradient for text legibility on small screens */}
-        <div
-          className="absolute inset-0 md:hidden"
-          style={{
-            background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 35%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.88) 100%)',
-          }}
-          aria-hidden="true"
-        />
-        {/* Left-side gradient for text legibility on wider screens */}
-        <div
-          className="absolute inset-0 hidden md:block"
-          style={{
-            background: 'linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 40%, transparent 70%)',
-          }}
-          aria-hidden="true"
-        />
-      </div>
+    <section className="relative bg-background" aria-labelledby="hero-heading">
+      <div className="container-site">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center min-h-[88vh] py-20 md:py-24">
+          {/* Left — type column (5 cols) */}
+          <div className="md:col-span-5 order-2 md:order-1">
+            <p className="text-xs uppercase tracking-[0.22em] text-gold-text font-semibold mb-4">
+              Кейтеринг в Санкт-Петербурге с 2007 года
+            </p>
 
-      {/* Removed photo indicators — VLM called them "unexplained pagination dots".
-          Photos crossfade silently; no user interaction needed. */}
-
-      {/* Content */}
-      <div className="relative z-10 w-full container-site pb-20 md:pb-28 pt-32">
-        <div className="max-w-3xl">
-          {/* Prestige anchor — Magnifique/Searcys pattern */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-xs md:text-sm uppercase tracking-[0.22em] text-[#E8C97E] mb-4"
-          >
-            {STATIC_EYEBROW}
-          </motion.p>
-
-          {/* Static headline — ONE message, always visible (was rotating 4 headlines) */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-4 max-w-2xl drop-shadow-xl"
-            style={{ fontWeight: 500 }}
-          >
-            {STATIC_HEADLINE}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-white/95 text-base md:text-xl mb-8 max-w-xl leading-relaxed drop-shadow-lg"
-          >
-            {STATIC_SUBTITLE}
-          </motion.p>
-
-          {/* CTAs — unified pill style, consistent sizing */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center mb-12"
-          >
-            <Link
-              href="/plan/helper"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A66B] hover:bg-[#B8924F] text-[#1A1410] px-7 py-4 text-base font-semibold transition-all no-underline shadow-lg shadow-black/30 min-w-[240px]"
+            <h1
+              id="hero-heading"
+              className="font-heading text-4xl sm:text-5xl md:text-6xl text-foreground leading-[1.05] mb-5"
+              style={{ fontWeight: 500 }}
             >
-              Рассчитать меню — 3 вопроса
-              <ChevronDown className="w-4 h-4 -rotate-90" aria-hidden="true" />
-            </Link>
-            <a
-              href={SITE.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground/80 hover:bg-foreground border border-white/30 backdrop-blur-sm text-white px-7 py-4 text-base font-semibold transition-all no-underline min-w-[240px] shadow-lg"
-            >
-              <MessageCircle className="w-5 h-5" aria-hidden="true" />
-              WhatsApp
-            </a>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center justify-center text-white/90 hover:text-white text-base font-medium transition-colors no-underline px-2 py-4"
-            >
-              или {SITE.phone}
-            </a>
-          </motion.div>
+              Свадьба, корпоратив, день рождения — кейтеринг под ключ
+            </h1>
 
-          {/* Trust stats — strip below CTAs (Catery pattern) */}
-          <motion.dl
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 max-w-2xl pt-8 border-t border-white/20"
-          >
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-heading text-3xl md:text-4xl text-white font-semibold drop-shadow-lg">{s.value}</dd>
-                <dd className="text-xs uppercase tracking-wider text-white/85 mt-1 drop-shadow">{s.label}</dd>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed max-w-lg">
+              Фуршет от 2 450 ₽ · Банкет от 3 950 ₽ · Кофе-брейк от 390 ₽ — за гостя, всё включено.
+              Меню, официанты, посуда, доставка, сервировка и уборка.
+            </p>
+
+            {/* Price ladder — answers "how much?" in 3 seconds */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              <span className="inline-flex items-center rounded-full bg-card border border-line px-3 py-1.5 text-xs font-medium text-foreground">
+                Фуршет <span className="text-gold-text ml-1.5">2 450 ₽/гость</span>
+              </span>
+              <span className="inline-flex items-center rounded-full bg-card border border-line px-3 py-1.5 text-xs font-medium text-foreground">
+                Банкет <span className="text-gold-text ml-1.5">3 950 ₽/гость</span>
+              </span>
+              <span className="inline-flex items-center rounded-full bg-card border border-line px-3 py-1.5 text-xs font-medium text-foreground">
+                Кофе-брейк <span className="text-gold-text ml-1.5">390 ₽/гость</span>
+              </span>
+            </div>
+
+            {/* Primary CTA — single action */}
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center mb-6">
+              <Link
+                href="/plan/helper"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-4 text-base font-semibold hover:bg-primary/90 transition-colors no-underline shadow-sm min-w-[240px]"
+              >
+                Узнать цену — 3 вопроса, 30 секунд
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-card text-foreground hover:border-gold-text hover:text-gold-text px-7 py-4 text-base font-semibold transition-colors no-underline min-w-[180px]"
+              >
+                <MessageCircle className="w-5 h-5" aria-hidden="true" />
+                WhatsApp
+              </a>
+            </div>
+
+            {/* Trust strip — single line, not 4-col grid */}
+            <p className="text-sm text-muted-foreground">
+              {STATS_INLINE}
+            </p>
+          </div>
+
+          {/* Right — photo column (7 cols) */}
+          <div className="md:col-span-7 order-1 md:order-2">
+            <div className="relative aspect-[4/5] md:aspect-[5/6] rounded-2xl overflow-hidden bg-secondary">
+              <picture>
+                <source srcSet="/images/real/wedding-banquet-480.avif 480w, /images/real/wedding-banquet-768.avif 768w, /images/real/wedding-banquet.avif 1920w" sizes="(max-width: 768px) 100vw, 58vw" type="image/avif" />
+                <source srcSet="/images/real/wedding-banquet-480.webp 480w, /images/real/wedding-banquet-768.webp 768w, /images/real/wedding-banquet.webp 1920w" sizes="(max-width: 768px) 100vw, 58vw" type="image/webp" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/real/wedding-banquet.jpg"
+                  alt="Свадебный банкет — кейтеринг NiloV в Санкт-Петербурге"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
+              {/* Photo caption — chef attribution */}
+              <div className="absolute bottom-4 left-4 right-4 bg-background/95 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gold-tint flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-gold-text" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                    <path d="M11 29 L11 11 L29 29 L29 11" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  </svg>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-foreground">Шеф Дмитрий Нилов</p>
+                  <p className="text-xs text-muted-foreground">19 лет на кухне Петербурга</p>
+                </div>
               </div>
-            ))}
-          </motion.dl>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Removed scroll indicator — was clutter, photos already signal vertical content */}
     </section>
   );
 }

@@ -1,7 +1,5 @@
-'use client';
-
 import Link from 'next/link';
-import { Phone, Calculator, Menu } from 'lucide-react';
+import { Phone, Calculator, MessageCircle } from 'lucide-react';
 import { SITE } from '@/lib/data';
 import MobileMenu from '@/components/layout/MobileMenu';
 import MegaMenu from '@/components/layout/MegaMenu';
