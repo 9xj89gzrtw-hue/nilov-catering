@@ -127,13 +127,12 @@ export default function ConstructorWizard() {
       }
     }
 
-    // NEW: Pre-add specific dish from catalog (?dish=...)
+    // Pre-add specific dish from catalog (?dish=...) — WITHOUT clearing existing items
     if (dishParam) {
       const dish = ALL_DISHES.find(d => d.id === dishParam);
       if (dish && !store.selectedItems.find(i => i.dishId === dishParam)) {
-        // Switch to custom mode and add the dish
         store.setTierMode('custom');
-        store.clearItems();
+        // DO NOT clearItems() — that was the bug wiping the cart on every catalog→constructor click
         store.addDish(dishParam);
       }
       if (guestsParam) {

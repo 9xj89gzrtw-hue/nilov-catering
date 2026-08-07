@@ -66,15 +66,29 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
 
         {/* Review card */}
         <div className="max-w-2xl mx-auto">
-          
+
             <figure
               key={r.id || i}
-              
-              
-              
-              
-              className="bg-card border border-line rounded-2xl p-6 md:p-10"
+
+              className="bg-card border border-line rounded-2xl overflow-hidden"
             >
+              {/* Event photo based on event type */}
+              <div className="relative h-40 md:h-48 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={(r.eventType || '').includes('Свадьб') ? '/images/real-search/wedding-candlelit.jpg'
+                    : (r.eventType || '').includes('Корпорат') ? '/images/real-search/corporate-buffet-people.jpg'
+                    : (r.eventType || '').includes('День рожд') ? '/images/real-search/canape-tiered.png'
+                    : (r.eventType || '').includes('Детск') ? '/images/real-search/dessert-cupcakes.jpg'
+                    : '/images/real-search/food-overhead.jpg'}
+                  alt={`${r.eventType || 'Событие'} — NiloV Catering`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)' }} aria-hidden="true" />
+              </div>
+
+              <div className="p-6 md:p-10">
               {/* Stars */}
               <div className="flex items-center gap-1 mb-4" aria-label={`Оценка ${r.rating} из 5`}>
                 {Array.from({ length: 5 }).map((_, idx) => (
@@ -95,6 +109,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
                 <div className="text-base font-semibold text-foreground">{r.clientName}</div>
                 <div className="text-xs text-muted-foreground mt-0.5">{eventLabel}</div>
               </figcaption>
+              </div>
             </figure>
           
 

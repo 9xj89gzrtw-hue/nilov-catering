@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
-import BudgetCalculator from '@/components/interactive/BudgetCalculator';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
 import { Calendar, Percent, Truck, Clock, Calculator, FileText, FileSignature, ShieldCheck } from 'lucide-react';
@@ -78,10 +77,10 @@ export default function PricingPage() {
         <section className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-3" aria-labelledby="quick-prices-heading">
           <h2 id="quick-prices-heading" className="sr-only">Цены по форматам</h2>
           {[
-            { label: 'Фуршет',     price: '2 450 ₽', unit: '/гость', note: 'от 20 гостей', href: '/menu/furshet' },
+            { label: 'Фуршет',     price: '2 450 ₽', unit: '/гость', note: 'от 15 гостей', href: '/menu/furshet' },
             { label: 'Банкет',     price: '3 950 ₽', unit: '/гость', note: 'от 30 гостей', href: '/menu/banquet' },
             { label: 'Кофе-брейк', price: '390 ₽',   unit: '/гость', note: 'от 10 гостей', href: '/menu/coffee-break' },
-            { label: 'Шеф на дом', price: '5 000 ₽', unit: '/час',   note: 'от 6 гостей',  href: '/events/chef-at-home' },
+            { label: 'Шеф на дом', price: '4 500 ₽', unit: '/гость',  note: 'от 4 гостей',  href: '/events/chef-at-home' },
           ].map((card) => (
             <Link
               key={card.label}
@@ -155,9 +154,34 @@ export default function PricingPage() {
           </div>
         </section>
 
-        <section className="mb-10 flex justify-center">
-          <div className="w-full max-w-2xl">
-            <BudgetCalculator variant="inline" defaultGuests={50} defaultTariff="furshet-standard" />
+        {/* What's included vs What's extra — explicit two-column card */}
+        <section className="mb-10 grid md:grid-cols-2 gap-4" aria-labelledby="included-heading">
+          <h2 id="included-heading" className="sr-only">Что включено и что за доплату</h2>
+          <div className="rounded-2xl border border-line bg-card p-6">
+            <h3 className="font-heading text-lg mb-3 text-foreground" style={{ fontWeight: 500 }}>Что включено в цену</h3>
+            <ul className="space-y-2">
+              {['Меню из 124 блюд', 'Официанты (1 на 15 гостей)', 'Посуда и текстиль', 'Сервировка и уборка', 'Координатор (от 50 гостей)', 'Доставка по КАД'].map(item => (
+                <li key={item} className="flex items-center gap-2 text-sm text-foreground">
+                  <svg className="w-4 h-4 text-success shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-line bg-card p-6">
+            <h3 className="font-heading text-lg mb-3 text-foreground" style={{ fontWeight: 500 }}>За доплату</h3>
+            <ul className="space-y-2">
+              {['Доставка за КАД — от 3 000 ₽', 'Аренда мебели и оборудования', 'Бармен и алкоголь отдельно', 'НДС 20% (для юр. лиц по запросу)', 'Декор и флористика'].map(item => (
+                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <svg className="w-4 h-4 text-muted-foreground/40 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -194,7 +218,7 @@ export default function PricingPage() {
           </div>
           <p className="text-xs text-muted-foreground mt-3">
             Все цены включают: еду, персонал, посуду, доставку по КАД. Доставка за КАД — от 3 000 ₽.
-            Минимум: банкет от 30 гостей, фуршет от 20 гостей, кофе-брейк от 10 гостей.
+            Минимум: банкет от 30 гостей, фуршет от 15 гостей, кофе-брейк от 10 гостей.
           </p>
         </section>
 
@@ -247,63 +271,6 @@ export default function PricingPage() {
             Данные собраны из открытых источников (сайты и отзывы конкурентов). Май 2025.
             Если у конкурентов появились обновления — сообщите, обновим таблицу.
           </p>
-        </section>
-
-        {/* Risk reversal — guarantees block */}
-        <section className="mt-12 grid md:grid-cols-2 gap-4" aria-labelledby="guarantee-heading">
-          <h2 id="guarantee-heading" className="sr-only">Гарантии и условия</h2>
-          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
-            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
-              <Clock className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
-                Доставка точно ко времени
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Опоздаем больше 15 минут — обслуживание бесплатно. Это условие прописано в договоре.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
-            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
-              <Truck className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
-                Бесплатная доставка от 7 000 ₽
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                По СПб в пределах КАД. За КАД — от 3 000 ₽, рассчитывается по километражу.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
-            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
-                Гибкая отмена
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                За 14+ дней до события — 100% возврат предоплаты. За 7–13 дней — 50%. Менее 7 дней — перенос даты бесплатно.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-line bg-card p-6 flex gap-4">
-            <div className="shrink-0 w-12 h-12 rounded-xl bg-foreground flex items-center justify-center">
-              <ShieldCheck className="w-6 h-6 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-heading text-lg mb-1" style={{ fontWeight: 500 }}>
-                Страхование 5–30 млн ₽
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Гражданская ответственность застрахована в СОГАЗ/РЕСО/Ингосстрах. Для B2B — расширение до 30 млн ₽.
-              </p>
-            </div>
-          </div>
         </section>
 
         {/* Documents — moved from PageHeader to dedicated section */}

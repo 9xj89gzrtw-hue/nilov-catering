@@ -10,6 +10,7 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import CookieBanner from '@/components/layout/CookieBanner';
 import LiveChatWidget from '@/components/layout/LiveChatWidget';
 import ScrollProgress from '@/components/common/ScrollProgress';
+import ScrollReveal from '@/components/effects/ScrollReveal';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
 import { OrganizationJsonLd, ServiceJsonLd } from './JsonLd';
@@ -49,6 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Footer />
             <MobileBottomNav />
             <ScrollProgress />
+            <ScrollReveal />
             <CookieBanner />
             <LiveChatWidget />
           </SmoothScrollProvider>

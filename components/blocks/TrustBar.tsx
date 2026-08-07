@@ -1,20 +1,12 @@
 import Link from 'next/link';
 
-/**
- * TrustBar — replaced fake-client marquee with real venue names + honest count.
- *
- * Design critic: "TrustBar shows fake client names in marquee — actively damages credibility"
- * Business critic: "3000+ событий fabricated, flagged in FACTCHECK_REPORT"
- *
- * Now: 3 real venue logos/names + honest "27 отзывов" count, no animation.
- */
 const VENUES = [
-  { name: 'Особняк Бруноз', note: 'Свадьбы · 40-100 гостей' },
-  { name: 'Лофт «Севкабель»', note: 'Корпоративы · 50-300 гостей' },
-  { name: 'Конгресс-холл «Экспофорум»', note: 'Конференции · 100-800 гостей' },
-  { name: 'Загородный клуб «Скандинавия»', note: 'Банкеты · 30-150 гостей' },
-  { name: 'Технополис Meta', note: 'IT-конференции · 50-200 гостей' },
-  { name: 'ГБОУ школа №355', note: 'Выпускные · 50-100 выпускников' },
+  { name: 'Особняк Бруноз', note: 'Свадьбы · 40-100 гостей', photo: '/images/real-search/venue-loft.jpg' },
+  { name: 'Лофт «Севкабель»', note: 'Корпоративы · 50-300 гостей', photo: '/images/real-search/venue-loft-spb.jpg' },
+  { name: 'Экспофорум', note: 'Конференции · 100-800 гостей', photo: '/images/real-search/corporate-buffet-people.jpg' },
+  { name: 'Клуб «Скандинавия»', note: 'Банкеты · 30-150 гостей', photo: '/images/real-search/wedding-candlelit.jpg' },
+  { name: 'Технополис Meta', note: 'IT-конференции · 50-200', photo: '/images/real-search/coffee-break-spread.jpg' },
+  { name: 'Школа №355', note: 'Выпускные · 50-100', photo: '/images/real-search/dessert-cupcakes.jpg' },
 ];
 
 export default function TrustBar() {
@@ -37,12 +29,24 @@ export default function TrustBar() {
           {VENUES.map((v) => (
             <div
               key={v.name}
-              className="p-4 rounded-xl border border-line bg-card hover:border-gold-text/40 transition-colors"
+              className="group relative overflow-hidden rounded-xl border border-line bg-card hover:border-gold-text/40 transition-colors"
             >
-              <p className="font-heading text-sm md:text-base text-foreground" style={{ fontWeight: 500 }}>
-                {v.name}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">{v.note}</p>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={v.photo}
+                  alt={v.name}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} aria-hidden="true" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="font-heading text-sm md:text-base text-white" style={{ fontWeight: 500 }}>
+                    {v.name}
+                  </p>
+                  <p className="text-xs text-white/75">{v.note}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

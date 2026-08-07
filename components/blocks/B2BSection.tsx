@@ -40,6 +40,18 @@ export default function B2BSection() {
   return (
     <section className="py-16 md:py-20 bg-foreground text-background" aria-labelledby="b2b-heading">
       <div className="container-site">
+        {/* B2B hero photo */}
+        <div className="relative h-40 md:h-56 rounded-2xl overflow-hidden mb-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/real-search/corporate-buffet-people.jpg"
+            alt="Корпоративный кейтеринг NiloV"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-foreground/40" aria-hidden="true" />
+        </div>
+
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.22em] text-[#E8C97E] mb-3">Для бизнеса</p>
           <h2 id="b2b-heading" className="font-heading text-2xl md:text-4xl mb-3" style={{ fontWeight: 500 }}>

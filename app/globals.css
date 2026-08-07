@@ -213,6 +213,73 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* WOW animations — scroll-triggered via IntersectionObserver */
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer-gold {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(176, 141, 87, 0); }
+}
+
+/* Scroll-reveal utility — triggered by .reveal class + IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Card hover effects — 3D tilt + shine */
+.card-tilt {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-tilt:hover {
+    transform: perspective(800px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
+  }
+}
+
+/* Gold shimmer text effect */
+.shimmer-text {
+  background: linear-gradient(90deg, #8E6F3F 0%, #C9A961 50%, #8E6F3F 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-gold 3s linear infinite;
+}
+
+/* Pulse animation for CTA buttons */
+.pulse-cta {
+  animation: pulse-gold 2s infinite;
+}
+
 @keyframes kenBurns {
   0%   { transform: scale(1) translate(0, 0); }
   100% { transform: scale(1.08) translate(-1%, -1%); }

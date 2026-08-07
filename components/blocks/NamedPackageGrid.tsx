@@ -63,9 +63,9 @@ const PACKAGES = [
   },
   {
     name: 'Шеф на дом',
-    price: '5 000 ₽',
-    unit: '/час',
-    min: 'от 6 гостей',
+    price: '4 500 ₽',
+    unit: '/гость',
+    min: 'от 4 гостей',
     photoUrl: '/images/real-search/chef-plating.jpeg',
     includes: ['Шеф-повар', '6 подач', 'Сомелье', 'Продукты', 'Уборка'],
     href: '/events/chef-at-home',
@@ -120,10 +120,7 @@ export default function NamedPackageGrid() {
           {PACKAGES.map((pkg, idx) => (
             <div
               key={pkg.name}
-              
-              
-              
-              
+              className={`reveal reveal-delay-${(idx % 4) + 1} card-tilt`}
             >
               <Link
                 href={pkg.href}
