@@ -12,6 +12,7 @@ type EventCard = {
   label: string;
   desc: string;
   photo: string;
+  photoUrl?: string; // Full path for new photos without AVIF/WebP variants
   features: string[];
 };
 
@@ -23,6 +24,7 @@ const EVENTS: EventCard[] = [
     label: 'Свадьба',
     desc: 'От камерной на 20 гостей до банкета на 200 персон: выездная регистрация, приветственный фуршет, банкет с подачей, десертный стол.',
     photo: 'wedding-banquet',
+    photoUrl: '/images/real-search/banquet-elegant.jpg',
     features: ['Координатор дня', 'Сервировка и текстиль', 'Торт в подарок'],
   },
   {
@@ -32,6 +34,7 @@ const EVENTS: EventCard[] = [
     label: 'Корпоратив',
     desc: 'Фуршет в офисе, банкет с посадкой, кофе-брейки для конференции, гала-ужин. Работаем по безналу с НДС.',
     photo: 'corporate-buffet',
+    photoUrl: '/images/real-search/corporate-buffet-people.jpg',
     features: ['Договор и счёт', 'Безнал с НДС', 'От 10 гостей'],
   },
   {
@@ -41,6 +44,7 @@ const EVENTS: EventCard[] = [
     label: 'День рождения',
     desc: 'Дни рождения, юбилеи, частные ужины. Камерные на 8 персон и крупные на 80. Выезд шефа и сомелье.',
     photo: 'canape-platter',
+    photoUrl: '/images/real-search/food-overhead.jpg',
     features: ['Шеф на дом', 'Сомелье + винное сопровождение', 'Посуда и текстиль'],
   },
   {
@@ -50,6 +54,7 @@ const EVENTS: EventCard[] = [
     label: 'Кофе-брейк',
     desc: 'Конференции, семинары, тренинги. Кофе-станция, выпечка, сэндвичи, фрукты. Подача в 2 тура.',
     photo: 'coffee-drink',
+    photoUrl: '/images/real-search/coffee-break-spread.jpg',
     features: ['Аренда кофе-машин', '2 тура подачи', 'От 10 гостей'],
   },
   {
@@ -59,6 +64,7 @@ const EVENTS: EventCard[] = [
     label: 'Юбилей',
     desc: 'Торжественный банкет для семьи и друзей. Камерный на 15 персон или крупный на 100.',
     photo: 'beef-medallions',
+    photoUrl: '/images/real-search/finedining-octopus.jpg',
     features: ['Сомелье', 'Праздничный торт', 'Фуршет-станции'],
   },
   // Поминки removed from homepage events grid — copy critic: "emotionally catastrophic
@@ -101,19 +107,29 @@ export default function EventTypeSelector() {
                 href={e.href}
                 className="group block h-full overflow-hidden rounded-2xl border border-line bg-card hover:border-gold-text/40 transition-all no-underline hover:shadow-lg"
               >
-                {/* Photo */}
+                {/* Photo — uses photoUrl (new photos) or picture/AVIF (old photos) */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <picture>
-                    <source srcSet={`/images/real/${e.photo}-480.avif 480w, /images/real/${e.photo}-768.avif 768w, /images/real/${e.photo}.avif 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/avif" />
-                    <source srcSet={`/images/real/${e.photo}-480.webp 480w, /images/real/${e.photo}-768.webp 768w, /images/real/${e.photo}.webp 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/webp" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {e.photoUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
-                      src={`/images/real/${e.photo}.jpg`}
+                      src={e.photoUrl}
                       alt={e.label}
                       loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                  </picture>
+                  ) : (
+                    <picture>
+                      <source srcSet={`/images/real/${e.photo}-480.avif 480w, /images/real/${e.photo}-768.avif 768w, /images/real/${e.photo}.avif 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/avif" />
+                      <source srcSet={`/images/real/${e.photo}-480.webp 480w, /images/real/${e.photo}-768.webp 768w, /images/real/${e.photo}.webp 1920w`} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" type="image/webp" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`/images/real/${e.photo}.jpg`}
+                        alt={e.label}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </picture>
+                  )}
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }}
