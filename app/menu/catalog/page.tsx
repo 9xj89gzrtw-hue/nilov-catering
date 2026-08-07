@@ -10,6 +10,7 @@ import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
 import { useConstructor } from '@/hooks/useConstructor';
 import CartRail from '@/components/interactive/CartRail';
+import PrebuiltMenuCards from '@/components/blocks/PrebuiltMenuCards';
 
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
@@ -184,8 +185,10 @@ export default function CatalogPage() {
           }
         />
 
-        {/* Chef recommends — MOVED ABOVE filter bar so dish photos are visible above the fold.
-            VLM critic flagged "No actual product images visible above the fold for a 'catalog'". */}
+        {/* Pre-built menu cards — ready-made sets with photos */}
+        <PrebuiltMenuCards />
+
+        {/* Chef recommends — MOVED ABOVE filter bar so dish photos are visible above the fold. */}
         {chefRecommends.length > 0 && (
           <section className="mb-10 p-6 rounded-2xl bg-gradient-to-br from-gold-tint/40 to-secondary/60 border border-gold-tint/60" aria-labelledby="chef-recommends-title">
             <h2 id="chef-recommends-title" className="font-heading text-2xl font-medium mb-1 flex items-center gap-2">
