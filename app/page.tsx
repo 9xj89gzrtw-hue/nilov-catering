@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import HeroBlock from '@/components/blocks/HeroBlock';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import NamedPackageGrid from '@/components/blocks/NamedPackageGrid';
+import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
 import MenuPreview from '@/components/blocks/MenuPreview';
 import WhyUs from '@/components/blocks/WhyUs';
 import TrustBar from '@/components/blocks/TrustBar';
@@ -29,10 +30,13 @@ export default async function HomePage() {
       {/* 2. EVENT TYPES — выбор повода */}
       <EventTypeSelector />
 
-      {/* 3. NAMED PACKAGES — 6 пакетов с фиксированной ценой (A-Catering pattern) */}
+      {/* 3. NAMED PACKAGES — 6 пакетов с фиксированной ценой */}
       <NamedPackageGrid />
 
-      {/* 4. MENU PREVIEW — фото блюд */}
+      {/* 4. INLINE CALCULATOR — отвечает 'how much?' за 15 секунд */}
+      <InlinePriceCalculator />
+
+      {/* 5. MENU PREVIEW — фото блюд */}
       <MenuPreview />
 
       {/* 5. WHY US — 4 принципа + статы */}

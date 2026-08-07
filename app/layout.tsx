@@ -9,6 +9,7 @@ import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import CookieBanner from '@/components/layout/CookieBanner';
+import LiveChatWidget from '@/components/layout/LiveChatWidget';
 import ScrollProgress from '@/components/common/ScrollProgress';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
@@ -51,6 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <StickyMobileCTA />
             <ScrollProgress />
             <CookieBanner />
+            <LiveChatWidget />
           </SmoothScrollProvider>
         </PricingWrapper>
       </body>
