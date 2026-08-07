@@ -4,13 +4,19 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Briefcase, Utensils, Images, Calculator } from 'lucide-react';
 
-// 43_NAV_SPEC: 5 пунктов (НЕ 2)
+/**
+ * MobileBottomNav — 5 items with raised center pill.
+ *
+ * Mobile critic: "Collapse two bottom bars into one — raised center 'Рассчитать' pill
+ * in MobileBottomNav (1h, +2.5pts)"
+ *
+ * UX critic: "5 competing planning tools" — center pill goes to /plan/helper (canonical).
+ */
 const MOBILE_LINKS = [
   { href: '/', label: 'Главная', Icon: Home },
   { href: '/events', label: 'События', Icon: Briefcase },
   { href: '/menu', label: 'Меню', Icon: Utensils },
   { href: '/gallery', label: 'Галерея', Icon: Images },
-  { href: '/plan', label: 'Спланировать', Icon: Calculator },
 ];
 
 export default function MobileBottomNav() {
@@ -24,15 +30,45 @@ export default function MobileBottomNav() {
       <ul className="flex items-center justify-evenly h-16 gap-1" role="list">
         {MOBILE_LINKS.map((link) => {
           const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-          const isPrimary = link.href === '/plan';
           return (
             <li key={link.href} className="flex-1">
               <Link
                 href={link.href}
-                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center ${
-                  isActive
-                    ? isPrimary ? 'text-gold-text' : 'text-foreground'
-                    : 'text-muted-foreground'
+                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center no-underline ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                <link.Icon className="w-5 h-5" />
+                {link.label}
+              </Link>
+            </li>
+          );
+        })}
+
+        {/* Center — raised primary CTA pill */}
+        <li className="flex-1 flex justify-center">
+          <Link
+            href="/plan/helper"
+            className="flex flex-col items-center justify-center -mt-6 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors no-underline"
+            aria-label="Рассчитать стоимость"
+          >
+            <Calculator className="w-6 h-6" />
+            <span className="text-[10px] font-semibold mt-0.5">Цена</span>
+          </Link>
+        </li>
+
+        {/* Remaining links after center */}
+        {[
+          { href: '/pricing', label: 'Тарифы', Icon: Images },
+          { href: '/contact', label: 'Контакты', Icon: Briefcase },
+        ].map((link) => {
+          const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+          return (
+            <li key={link.href} className="flex-1">
+              <Link
+                href={link.href}
+                className={`flex flex-col items-center gap-0.5 px-1 py-2 text-xs font-medium transition-colors touch-target min-h-[44px] justify-center no-underline ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
                 <link.Icon className="w-5 h-5" />
