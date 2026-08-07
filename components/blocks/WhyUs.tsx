@@ -35,6 +35,22 @@ export default function WhyUs() {
             <h2 id="why-us-heading" className="font-heading text-3xl md:text-5xl mb-5" style={{ fontWeight: 500 }}>
               19 лет на кухне Петербурга
             </h2>
+
+            {/* Chef photo — visual critic: '/why-us has ZERO photos' */}
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-line">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/real-search/chef-plating.jpeg"
+                alt="Шеф Дмитрий Нилов готовит блюдо"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-3 left-3 right-3 bg-background/95 backdrop-blur-sm rounded-lg p-3">
+                <p className="text-sm font-semibold text-foreground">Шеф Дмитрий Нилов</p>
+                <p className="text-xs text-muted-foreground">Собственное производство, В.О., 20-я линия, 11</p>
+              </div>
+            </div>
+
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
               Дмитрий Нилов открыл производство на Васильевском в 2007 году. Начали с кофе-брейков на 20 человек —
               сегодня проводим банкеты на 200 гостей и фестивали на 800+. Без франшизы, без аутсорса — вся команда в штате.

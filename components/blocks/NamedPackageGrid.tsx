@@ -16,17 +16,17 @@ const PACKAGES = [
     price: '2 450 ₽',
     unit: '/гость',
     min: 'от 20 гостей',
-    photo: 'canape-platter',
+    photoUrl: '/images/real-search/canape-tiered.png',
     includes: ['12 закусок', '2 горячего', '1 десерт', 'Официанты', 'Посуда'],
     href: '/menu/furshet',
-    badge: 'Хит',
+    badge: 'Популярное',
   },
   {
     name: 'Банкет «Гранд»',
     price: '3 950 ₽',
     unit: '/гость',
     min: 'от 30 гостей',
-    photo: 'beef-medallions',
+    photoUrl: '/images/real-search/finedining-octopus.jpg',
     includes: ['4 закуски', '2 горячего', 'Десерт', 'Винная карта', 'Координатор'],
     href: '/menu/banquet',
     badge: null,
@@ -36,8 +36,8 @@ const PACKAGES = [
     price: '390 ₽',
     unit: '/гость',
     min: 'от 10 гостей',
-    photo: 'coffee-drink',
-    includes: ['Кофе-станция', '3 выпечки', 'Сэндвичи', 'Фрукты', '2 тура'],
+    photoUrl: '/images/real-search/coffee-break-spread.jpg',
+    includes: ['Кофе-бар', '3 выпечки', 'Сэндвичи', 'Фрукты', '2 смены'],
     href: '/menu/coffee-break',
     badge: 'от 390₽',
   },
@@ -46,7 +46,7 @@ const PACKAGES = [
     price: '2 700 ₽',
     unit: '/гость',
     min: 'от 15 гостей',
-    photo: 'grilled-chicken',
+    photoUrl: '/images/real-search/bbq-chef-grilling.jpg',
     includes: ['Мангал', '3 вида мяса', 'Овощи-гриль', 'Соусы', 'Бармен'],
     href: '/seasonal/bbq',
     badge: null,
@@ -56,8 +56,8 @@ const PACKAGES = [
     price: '1 550 ₽',
     unit: '/гость',
     min: 'от 10 детей',
-    photo: 'dessert-table',
-    includes: ['Детское меню', 'Аниматор 2ч', 'Капкейки', 'Сок-бар', 'Шоу-программа'],
+    photoUrl: '/images/real-search/dessert-cupcakes.jpg',
+    includes: ['Детское меню', 'Аниматор 2 часа', 'Капкейки', 'Сок-бар', 'Шоу-программа'],
     href: '/events/detskoe',
     badge: null,
   },
@@ -66,7 +66,7 @@ const PACKAGES = [
     price: '5 000 ₽',
     unit: '/час',
     min: 'от 6 гостей',
-    photo: 'salmon-dish',
+    photoUrl: '/images/real-search/chef-plating.jpeg',
     includes: ['Шеф-повар', '6 подач', 'Сомелье', 'Продукты', 'Уборка'],
     href: '/events/chef-at-home',
     badge: 'Премиум',
@@ -131,17 +131,13 @@ export default function NamedPackageGrid() {
               >
                 {/* Photo with badge */}
                 <div className="relative aspect-[16/9] overflow-hidden">
-                  <picture>
-                    <source srcSet={`/images/real/${pkg.photo}-480.avif 480w, /images/real/${pkg.photo}-768.avif 768w`} sizes="(max-width: 768px) 100vw, 33vw" type="image/avif" />
-                    <source srcSet={`/images/real/${pkg.photo}-480.webp 480w, /images/real/${pkg.photo}-768.webp 768w`} sizes="(max-width: 768px) 100vw, 33vw" type="image/webp" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/images/real/${pkg.photo}.jpg`}
-                      alt={pkg.name}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </picture>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={pkg.photoUrl}
+                    alt={pkg.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   {pkg.badge && (
                     <span className="absolute top-3 right-3 inline-flex items-center rounded-full bg-foreground text-background px-3 py-1 text-xs font-semibold">
                       {pkg.badge}
