@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
 import type { Review } from '@/lib/cms-store';
 
@@ -66,13 +66,13 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
 
         {/* Review card */}
         <div className="max-w-2xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.figure
+          
+            <figure
               key={r.id || i}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -14 }}
-              transition={{ duration: 0.4 }}
+              
+              
+              
+              
               className="bg-card border border-line rounded-2xl p-6 md:p-10"
             >
               {/* Stars */}
@@ -95,8 +95,8 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
                 <div className="text-base font-semibold text-foreground">{r.clientName}</div>
                 <div className="text-xs text-muted-foreground mt-0.5">{eventLabel}</div>
               </figcaption>
-            </motion.figure>
-          </AnimatePresence>
+            </figure>
+          
 
           {/* Controls */}
           {reviews.length > 1 && (
