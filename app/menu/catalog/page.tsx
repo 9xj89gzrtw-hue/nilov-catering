@@ -9,6 +9,7 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import PageHeader from '@/components/common/PageHeader';
 import { useConstructor } from '@/hooks/useConstructor';
+import CartRail from '@/components/interactive/CartRail';
 
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
@@ -164,6 +165,8 @@ export default function CatalogPage() {
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site">
+        {/* Layout: catalog + persistent cart rail */}
+        <div className="flex flex-col md:flex-row gap-6">
         <Breadcrumbs />
         <PageHeader
           title="Каталог блюд"
@@ -391,6 +394,10 @@ export default function CatalogPage() {
             <p className="text-xs text-muted-foreground mb-3">Шеф соберёт меню под ваш бюджет, формат и пожелания.</p>
             <Link href="/plan/constructor" className="text-sm text-gold-text font-semibold hover:underline">Составить меню с шефом →</Link>
           </div>
+        </div>
+
+        {/* Persistent cart rail */}
+        <CartRail />
         </div>
       </div>
     </main>
