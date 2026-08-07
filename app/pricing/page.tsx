@@ -203,16 +203,16 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left" rowSpan={4}>Свадьба</th><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
-                <tr className="border-t border-line"><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">5 470 ₽</td><td className="p-3 text-right">30</td></tr>
-                <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">7 350 ₽</td><td className="p-3 text-right">30</td></tr>
-                <tr className="border-t border-line"><td className="p-3">Максимальный</td><td className="p-3 text-right font-semibold text-gold-text">9 950 ₽</td><td className="p-3 text-right">30</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">5 470 ₽</td><td className="p-3 text-right">25</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">7 350 ₽</td><td className="p-3 text-right">20</td></tr>
+                <tr className="border-t border-line"><td className="p-3">Максимальный</td><td className="p-3 text-right font-semibold text-gold-text">9 950 ₽</td><td className="p-3 text-right">15</td></tr>
                 <tr className="border-t border-line bg-secondary/30"><th scope="row" className="p-3 font-medium text-left">Кофе-брейк</th><td className="p-3">Эконом</td><td className="p-3 text-right font-semibold text-gold-text">390 ₽</td><td className="p-3 text-right">10</td></tr>
-                <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left">Корпоратив</th><td className="p-3">Фуршет</td><td className="p-3 text-right font-semibold text-gold-text">2 450 ₽</td><td className="p-3 text-right">20</td></tr>
+                <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left">Корпоратив</th><td className="p-3">Фуршет</td><td className="p-3 text-right font-semibold text-gold-text">2 450 ₽</td><td className="p-3 text-right">15</td></tr>
                 <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left">Корпоратив</th><td className="p-3">Банкет</td><td className="p-3 text-right font-semibold text-gold-text">3 950 ₽</td><td className="p-3 text-right">30</td></tr>
                 <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left" rowSpan={2}>Поминки</th><td className="p-3">Базовый</td><td className="p-3 text-right font-semibold text-gold-text">1 800 ₽</td><td className="p-3 text-right">10</td></tr>
                 <tr className="border-t border-line"><td className="p-3">Расширенный</td><td className="p-3 text-right font-semibold text-gold-text">2 500 ₽</td><td className="p-3 text-right">10</td></tr>
                 <tr className="border-t border-line bg-secondary/30"><th scope="row" className="p-3 font-medium text-left">Детское</th><td className="p-3">Стандарт</td><td className="p-3 text-right font-semibold text-gold-text">1 550 ₽</td><td className="p-3 text-right">10</td></tr>
-                <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left">Шеф на дом</th><td className="p-3">Премиум</td><td className="p-3 text-right font-semibold text-gold-text">5 000 ₽</td><td className="p-3 text-right">6</td></tr>
+                <tr className="border-t border-line"><th scope="row" className="p-3 font-medium text-left">Шеф на дом</th><td className="p-3">Премиум</td><td className="p-3 text-right font-semibold text-gold-text">4 500 ₽</td><td className="p-3 text-right">4</td></tr>
               </tbody>
             </table>
           </div>

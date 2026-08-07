@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const FORMATS = [
-  { id: 'furshet',      label: 'Фуршет',     pricePerGuest: 2450, minGuests: 20 },
+  { id: 'furshet',      label: 'Фуршет',     pricePerGuest: 2450, minGuests: 15 },
   { id: 'banket',       label: 'Банкет',     pricePerGuest: 3950, minGuests: 30 },
   { id: 'coffee-break', label: 'Кофе-брейк', pricePerGuest: 390,  minGuests: 10 },
   { id: 'detskoe',      label: 'Детское',    pricePerGuest: 1550, minGuests: 10 },
+  { id: 'pominki',      label: 'Поминки',    pricePerGuest: 1800, minGuests: 10 },
+  { id: 'chef-at-home', label: 'Шеф на дом', pricePerGuest: 4500, minGuests: 4 },
 ] as const;
 
 export default function InlinePriceCalculator() {

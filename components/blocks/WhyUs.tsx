@@ -40,7 +40,7 @@ export default function WhyUs() {
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-line">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/real-search/chef-plating.jpeg"
+                src="/images/catering/chef-02.jpg"
                 alt="Шеф Дмитрий Нилов готовит блюдо"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -75,15 +75,15 @@ export default function WhyUs() {
             <div className="grid grid-cols-3 gap-2 mb-4">
               <div className="aspect-square rounded-xl overflow-hidden border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/real-search/staff-champagne.jpg" alt="Официанты NiloV Catering" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/catering/staff-01.jpg" alt="Официанты NiloV Catering" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-xl overflow-hidden border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/real-search/food-overhead.jpg" alt="Авторская подача блюд" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/catering/finedining-03.jpg" alt="Авторская подача блюд" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-xl overflow-hidden border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/real-search/venue-loft.jpg" alt="Площадки Санкт-Петербурга" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/catering/spb-05.jpg" alt="Площадки Санкт-Петербурга" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </div>
 

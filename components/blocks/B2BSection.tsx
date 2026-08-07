@@ -44,7 +44,7 @@ export default function B2BSection() {
         <div className="relative h-40 md:h-56 rounded-2xl overflow-hidden mb-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/real-search/corporate-buffet-people.jpg"
+            src="/images/catering/corporate-02.jpg"
             alt="Корпоративный кейтеринг NiloV"
             className="w-full h-full object-cover"
             loading="lazy"

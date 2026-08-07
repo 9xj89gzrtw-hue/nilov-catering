@@ -103,17 +103,20 @@ export default function HeroBlock() {
             </p>
           </div>
 
-          {/* Right — photo column (7 cols) */}
+          {/* Right — video/photo column (7 cols) */}
           <div className="md:col-span-7 order-1 md:order-2">
             <div className="relative aspect-[4/5] md:aspect-[5/6] rounded-2xl overflow-hidden bg-secondary">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/real-search/wedding-candlelit.jpg"
-                alt="Свадебный банкет — кейтеринг NiloV в Санкт-Петербурге"
+              {/* Video hero — self-hosted MP4 from Mixkit (royalty-free) */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/images/catering/wedding-02.jpg"
                 className="w-full h-full object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
+              >
+                <source src="/videos/hero-catering.mp4" type="video/mp4" />
+              </video>
               {/* Photo caption — chef attribution */}
               <div className="absolute bottom-4 left-4 right-4 bg-background/95 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gold-tint flex items-center justify-center shrink-0">

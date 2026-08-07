@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 const VENUES = [
-  { name: 'Особняк Бруноз', note: 'Свадьбы · 40-100 гостей', photo: '/images/real-search/venue-loft.jpg' },
-  { name: 'Лофт «Севкабель»', note: 'Корпоративы · 50-300 гостей', photo: '/images/real-search/venue-loft-spb.jpg' },
-  { name: 'Экспофорум', note: 'Конференции · 100-800 гостей', photo: '/images/real-search/corporate-buffet-people.jpg' },
-  { name: 'Клуб «Скандинавия»', note: 'Банкеты · 30-150 гостей', photo: '/images/real-search/wedding-candlelit.jpg' },
-  { name: 'Технополис Meta', note: 'IT-конференции · 50-200', photo: '/images/real-search/coffee-break-spread.jpg' },
-  { name: 'Школа №355', note: 'Выпускные · 50-100', photo: '/images/real-search/dessert-cupcakes.jpg' },
+  { name: 'Особняк Бруноз', note: 'Свадьбы · 40-100 гостей', photo: '/images/catering/spb-01.jpg' },
+  { name: 'Лофт «Севкабель»', note: 'Корпоративы · 50-300 гостей', photo: '/images/catering/spb-02.jpg' },
+  { name: 'Экспофорум', note: 'Конференции · 100-800 гостей', photo: '/images/catering/spb-03.jpg' },
+  { name: 'Клуб «Скандинавия»', note: 'Банкеты · 30-150 гостей', photo: '/images/catering/wedding-03.jpg' },
+  { name: 'Технополис Meta', note: 'IT-конференции · 50-200', photo: '/images/catering/spb-04.jpg' },
+  { name: 'Школа №355', note: 'Выпускные · 50-100', photo: '/images/catering/spb-05.jpg' },
 ];
 
 export default function TrustBar() {

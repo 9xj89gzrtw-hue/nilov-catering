@@ -8,9 +8,9 @@ export default function WowCase() {
           {/* Photo */}
           <div className="aspect-[16/9] relative overflow-hidden bg-secondary">
             <picture>
-              <source srcSet="/images/real/wedding-banquet.jpg" type="image/jpeg" />
+              <source srcSet="/images/catering/corporate-04.jpg" type="image/jpeg" />
               <img
-                src="/images/real/wedding-banquet.jpg"
+                src="/images/catering/corporate-04.jpg"
                 alt="Корпоративный фестиваль 800 человек — 2 дня"
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"

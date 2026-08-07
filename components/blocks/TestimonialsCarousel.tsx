@@ -76,11 +76,11 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
               <div className="relative h-40 md:h-48 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={(r.eventType || '').includes('Свадьб') ? '/images/real-search/wedding-candlelit.jpg'
-                    : (r.eventType || '').includes('Корпорат') ? '/images/real-search/corporate-buffet-people.jpg'
-                    : (r.eventType || '').includes('День рожд') ? '/images/real-search/canape-tiered.png'
-                    : (r.eventType || '').includes('Детск') ? '/images/real-search/dessert-cupcakes.jpg'
-                    : '/images/real-search/food-overhead.jpg'}
+                  src={(r.eventType || '').includes('Свадьб') ? '/images/catering/wedding-04.jpg'
+                    : (r.eventType || '').includes('Корпорат') ? '/images/catering/corporate-03.jpg'
+                    : (r.eventType || '').includes('День рожд') ? '/images/catering/canape-03.jpg'
+                    : (r.eventType || '').includes('Детск') ? '/images/catering/dessert-02.jpg'
+                    : '/images/catering/finedining-04.jpg'}
                   alt={`${r.eventType || 'Событие'} — NiloV Catering`}
                   className="w-full h-full object-cover"
                   loading="lazy"

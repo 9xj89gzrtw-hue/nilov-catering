@@ -24,7 +24,7 @@ const EVENTS: EventCard[] = [
     label: 'Свадьба',
     desc: 'От камерной на 20 гостей до банкета на 200 персон: выездная регистрация, приветственный фуршет, банкет с подачей, десертный стол.',
     photo: 'wedding-banquet',
-    photoUrl: '/images/real-search/banquet-elegant.jpg',
+    photoUrl: '/images/catering/wedding-01.jpg',
     features: ['Координатор дня', 'Сервировка и текстиль', 'Торт в подарок'],
   },
   {
@@ -34,7 +34,7 @@ const EVENTS: EventCard[] = [
     label: 'Корпоратив',
     desc: 'Фуршет в офисе, банкет с посадкой, кофе-брейки для конференции, гала-ужин. Работаем по безналу с НДС.',
     photo: 'corporate-buffet',
-    photoUrl: '/images/real-search/corporate-buffet-people.jpg',
+    photoUrl: '/images/catering/corporate-01.jpg',
     features: ['Договор и счёт', 'Безнал с НДС', 'От 10 гостей'],
   },
   {
@@ -44,7 +44,7 @@ const EVENTS: EventCard[] = [
     label: 'День рождения',
     desc: 'Дни рождения, юбилеи, частные ужины. Камерные на 8 персон и крупные на 80. Выезд шефа и сомелье.',
     photo: 'canape-platter',
-    photoUrl: '/images/real-search/food-overhead.jpg',
+    photoUrl: '/images/catering/canape-02.jpg',
     features: ['Шеф на дом', 'Сомелье + винное сопровождение', 'Посуда и текстиль'],
   },
   {
@@ -54,7 +54,7 @@ const EVENTS: EventCard[] = [
     label: 'Кофе-брейк',
     desc: 'Конференции, семинары, тренинги. Кофе-станция, выпечка, сэндвичи, фрукты. Подача в 2 тура.',
     photo: 'coffee-drink',
-    photoUrl: '/images/real-search/coffee-break-spread.jpg',
+    photoUrl: '/images/catering/coffee-02.jpg',
     features: ['Аренда кофе-машин', '2 тура подачи', 'От 10 гостей'],
   },
   {
@@ -64,7 +64,7 @@ const EVENTS: EventCard[] = [
     label: 'Юбилей',
     desc: 'Торжественный банкет для семьи и друзей. Камерный на 15 персон или крупный на 100.',
     photo: 'beef-medallions',
-    photoUrl: '/images/real-search/finedining-octopus.jpg',
+    photoUrl: '/images/catering/finedining-02.jpg',
     features: ['Сомелье', 'Праздничный торт', 'Фуршет-станции'],
   },
   // Поминки removed from homepage events grid — copy critic: "emotionally catastrophic
