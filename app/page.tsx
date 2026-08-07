@@ -9,6 +9,7 @@ import TrustBar from '@/components/blocks/TrustBar';
 import ProcessSteps from '@/components/blocks/ProcessSteps';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
+import B2BSection from '@/components/blocks/B2BSection';
 import WowCase from '@/components/blocks/WowCase';
 import { getReviews } from '@/lib/cms';
 
@@ -54,7 +55,10 @@ export default async function HomePage() {
       {/* 9. WOW CASE — избранный кейс */}
       <WowCase />
 
-      {/* 10. CTA — главное действие */}
+      {/* 10. B2B — для корпоративных клиентов и тендеров */}
+      <B2BSection />
+
+      {/* 11. CTA — главное действие */}
       <CTASection />
     </main>
   );
