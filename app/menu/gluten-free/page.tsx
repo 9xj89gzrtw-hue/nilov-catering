@@ -8,6 +8,8 @@ import { SITE } from '@/lib/data';
 import B2BBanner from '@/components/common/B2BBanner';
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
+import FoodPhoto from '@/components/common/FoodPhoto';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function GlutenFreePage() {
   const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('gluten-free')), []);

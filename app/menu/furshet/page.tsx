@@ -8,6 +8,8 @@ import MenuTariffs from '@/components/blocks/MenuTariffs';
 import B2BBanner from '@/components/common/B2BBanner';
 import { AllergenChips } from '@/components/common/AllergenChips';
 import DishCartIndicator from '@/components/interactive/DishCartIndicator';
+import FoodPhoto from '@/components/common/FoodPhoto';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import Link from 'next/link';
 
 const GRADIENT_MAP: Record<string, string> = {
@@ -88,14 +90,18 @@ export default function FurshetPage() {
               <h3 className="text-lg font-heading font-medium mb-4">{STATION_LABELS[station] || station}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                 {dishes.map(dish => {
-                  const colors = ['bg-amber-100', 'bg-rose-100', 'bg-emerald-100', 'bg-sky-100', 'bg-violet-100', 'bg-orange-100', 'bg-pink-100', 'bg-lime-100'];
-                  const color = colors[dish.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % colors.length];
                   return (
                     <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:-translate-y-0.5 transition-all group">
-                      <div className={`aspect-[4/3] ${color} flex items-center justify-center relative`}>
+                      <div className="aspect-[4/3] relative bg-secondary">
+                        <FoodPhoto
+                          src={getDishImage(dish.id, dish.station)}
+                          alt={dish.name}
+                          aspectRatio="wide"
+                          objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                          className="w-full h-full"
+                        />
                         <AllergenChips dish={dish} />
                         <DishCartIndicator dishId={dish.id} />
-                        <span className="text-3xl opacity-30 select-none">{dish.name.charAt(0)}</span>
                         <div className="absolute bottom-1.5 right-1.5">
                           <span className="text-[10px] bg-white/80 backdrop-blur-sm rounded-full px-1.5 py-0.5 font-semibold">{dish.pricePerGuest} ₽</span>
                         </div>
