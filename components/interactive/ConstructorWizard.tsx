@@ -7,19 +7,20 @@ import { useConstructor } from '@/hooks/useConstructor';
 import type { GuestGroup } from '@/hooks/useConstructor';
 import MenuBuilder from '@/components/interactive/MenuBuilder';
 import ShareButton from '@/components/common/ShareButton';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import { ALL_DISHES } from '@/lib/menu-data';
 import { ALL_TARIFF_OFFERS, getPricesForFormat, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import type { Format, Tier, Allergen } from '@/lib/types';
 
-// Метаданные форматов — только UI (icon, label, desc). Цены берутся из getPricesForFormat.
-const TARIFF_META: { format: Format; label: string; icon: string; desc: string }[] = [
-  { format: 'furshet', label: 'Фуршет', icon: '', desc: 'Стоячий приём, лёгкие закуски' },
-  { format: 'banket', label: 'Банкет', icon: '', desc: 'Посадка за стол, официанты' },
-  { format: 'coffee-break', label: 'Кофе-брейк', icon: '', desc: 'Кофе, выпечка, десерты' },
-  { format: 'detskoe', label: 'Детский', icon: '', desc: 'Меню для детей, аниматор' },
-  { format: 'chef-at-home', label: 'Шеф на дом', icon: '', desc: 'Шеф готовит у вас' },
-  { format: 'pominki', label: 'Поминки', icon: '', desc: 'Поминальный обед, без алкоголя' },
+// Метаданные форматов — только UI (icon, label, desc, img). Цены берутся из getPricesForFormat.
+const TARIFF_META: { format: Format; label: string; icon: string; desc: string; img: string }[] = [
+  { format: 'furshet', label: 'Фуршет', icon: '', desc: 'Стоячий приём, лёгкие закуски', img: '/images/menu/kanape/k1.jpg' },
+  { format: 'banket', label: 'Банкет', icon: '', desc: 'Посадка за стол, официанты', img: '/images/real/beef-medallions.jpg' },
+  { format: 'coffee-break', label: 'Кофе-брейк', icon: '', desc: 'Кофе, выпечка, десерты', img: '/images/menu/deserty/d1.jpg' },
+  { format: 'detskoe', label: 'Детский', icon: '', desc: 'Меню для детей, аниматор', img: '/images/menu/goryachee/h1.jpg' },
+  { format: 'chef-at-home', label: 'Шеф на дом', icon: '', desc: 'Шеф готовит у вас', img: '/images/dishes-new/beef-steak.jpg' },
+  { format: 'pominki', label: 'Поминки', icon: '', desc: 'Поминальный обед, без алкоголя', img: '/images/real/salmon-dish.jpg' },
 ];
 
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
@@ -312,12 +313,23 @@ export default function ConstructorWizard() {
                     return (
                       <button key={t.format} type="button"
                         onClick={() => store.setFormat(t.format)}
-                        className={`rounded-xl border p-4 text-left transition-all touch-target ${store.format === t.format ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-card hover:border-gold-text'}`}>
-                        <span className="text-2xl mb-1 block">{t.icon}</span>
-                        <h3 className="font-heading text-base font-medium mb-0.5">{t.label}</h3>
-                        <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">{t.desc}</p>
-                        <span className="text-[11px] text-gold-text font-semibold block">от {minGuests} гостей</span>
-                        <span className="text-[11px] text-muted-foreground block">от {minPrice.toLocaleString('ru-RU')} ₽/гость</span>
+                        className={`group rounded-xl border overflow-hidden text-left transition-all touch-target ${store.format === t.format ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-card hover:border-gold-text'}`}>
+                        {/* W85: Photo on top */}
+                        <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                          <FoodPhoto
+                            src={t.img}
+                            alt={t.label}
+                            aspectRatio="wide"
+                            className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                          <h3 className="absolute bottom-1 left-2 right-2 font-heading text-sm font-medium text-white">{t.label}</h3>
+                        </div>
+                        <div className="p-2">
+                          <p className="text-[10px] text-muted-foreground mb-1 leading-snug">{t.desc}</p>
+                          <span className="text-[10px] text-gold-text font-semibold block">от {minGuests} гостей</span>
+                          <span className="text-[10px] text-muted-foreground block">от {minPrice.toLocaleString('ru-RU')} ₽/гость</span>
+                        </div>
                       </button>
                     );
                   })}
