@@ -1,306 +1,212 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
-import PrintButton from '@/components/common/PrintButton';
-import { FileText, FileSignature, ShieldCheck } from 'lucide-react';
 import FoodPhoto from '@/components/common/FoodPhoto';
+import { Check, ArrowRight, Calculator, Users } from 'lucide-react';
+import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
-  title: 'Тарифы и цены',
-  description: 'Прозрачные цены на кейтеринг в СПб. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Все тарифы с полным составом меню.',
+  title: 'Цены на кейтеринг в СПб — от 390 ₽/гость',
+  description: 'Прозрачные цены: фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽ за гостя. Всё включено. Без скрытых платежей.',
 };
 
 export const dynamic = 'force-static';
 
-// W83: фото-карточки тарифов — каждая с реальным фото, описанием, чек-листом
-const PRICING_CARDS = [
+// === 4 ОСНОВНЫХ ФОРМАТА — простая таблица ===
+const FORMATS = [
   {
-    event: 'Свадьба',
-    href: '/pricing?event=svadba',
-    img: '/images/real/beef-medallions.jpg',
-    price: 'от 3 950 ₽',
-    unit: '/ гость',
-    min: 'мин. 30 гостей',
-    desc: 'Банкет под ключ: закуски, горячее, десерт, торт. Официанты, координатор, доставка включены.',
-    features: ['Банкет с посадкой', 'Меню от 4 перемен', 'Официант на 10 чел', 'Координатор вечера'],
-    accent: true,
-    badge: 'Популярно',
-  },
-  {
-    event: 'Кофе-брейк',
-    href: '/pricing?event=coffee-break',
+    name: 'Кофе-брейк',
     img: '/images/menu/deserty/d1.jpg',
-    price: 'от 390 ₽',
-    unit: '/ гость',
-    min: 'мин. 10 гостей',
-    desc: 'Для конференций и тренингов. Выпечка, сэндвичи, кофе, чай. Без официантов — простая доставка.',
-    features: ['Сэндвичи и выпечка', 'Кофе / чай', 'Фрукты', 'Доставка включена'],
+    price: 390,
+    min: 10,
+    hours: '1–2 ч',
+    desc: 'Выпечка, сэндвичи, кофе. Для конференций и тренингов.',
+    includes: ['Сэндвичи и выпечка', 'Кофе и чай', 'Фрукты', 'Бумажная посуда', 'Доставка по КАД'],
   },
   {
-    event: 'Корпоратив',
-    href: '/pricing?event=korporativ',
+    name: 'Фуршет',
     img: '/images/menu/kanape/k1.jpg',
-    price: 'от 2 450 ₽',
-    unit: '/ гость',
-    min: 'мин. 20 гостей',
-    desc: 'Фуршет для офиса или гала-ужина. Канапе, тарталетки, мини-бургеры. Гости едят стоя.',
-    features: ['Канапе и тарталетки', 'Мини-бургеры', 'Напитки', 'Официант на 15 чел'],
+    price: 2450,
+    min: 15,
+    hours: '2–3 ч',
+    desc: 'Канапе, тарталетки, мини-бургеры. Гости едят стоя.',
+    includes: ['12+ закусок', 'Напитки', 'Официант 1/15', 'Фуршетная сервировка', 'Доставка по КАД'],
   },
   {
-    event: 'Детское',
-    href: '/pricing?event=detskoe',
-    img: '/images/menu/goryachee/h1.jpg',
-    price: 'от 1 550 ₽',
-    unit: '/ гость',
-    min: 'мин. 10 гостей',
-    desc: 'Безопасное детское меню: бургеры, наггетсы, фрукты, капкейки. Аниматор опционально.',
-    features: ['Мини-бургеры', 'Наггетсы', 'Фрукты', 'Капкейки'],
+    name: 'Банкет',
+    img: '/images/real/beef-medallions.jpg',
+    price: 3950,
+    min: 30,
+    hours: '4–6 ч',
+    desc: 'Полный ужин с посадкой. Для свадеб и торжеств.',
+    includes: ['4 перемены блюд', 'Торт включён', 'Официант 1/10', 'Банкетная сервировка', 'Координатор'],
+    popular: true,
   },
   {
-    event: 'Поминки',
-    href: '/pricing?event=pominki',
-    img: '/images/real/salmon-dish.jpg',
-    price: 'от 1 800 ₽',
-    unit: '/ гость',
-    min: 'мин. 10 гостей',
-    desc: 'Поминальный обед по православной традиции: кутья, блины, кисель, рыба. Без алкоголя.',
-    features: ['Кутья, блины', 'Кисель', 'Рыба', 'Без алкоголя'],
-  },
-  {
-    event: 'Шеф на дом',
-    href: '/pricing?event=chef-at-home',
+    name: 'Шеф на дом',
     img: '/images/dishes-new/beef-steak.jpg',
-    price: 'от 4 500 ₽',
-    unit: '/ гость',
-    min: 'мин. 6 гостей',
-    desc: 'Шеф-повар приезжает к вам. Авторское меню, сомелье опционально. Премиум-ингредиенты.',
-    features: ['Шеф дома', '5 перемен', 'Сервировка', 'Сомелье опц.'],
+    price: 4500,
+    min: 6,
+    hours: '3–4 ч',
+    desc: 'Шеф-повар приезжает к вам. Авторское меню.',
+    includes: ['5 перемен блюд', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты', 'Сомелье (опц.)'],
   },
 ];
 
-const COMPARISON_ROWS = [
-  { label: 'Меню включено', furshet: '12+ канапе/тарталеток', banket: '4 перемены блюд', coffee: '8+ позиций выпечки', detskoe: '5 позиций', chef: '5 перемен авторских' },
-  { label: 'Официанты', furshet: '1 на 15 чел', banket: '1 на 10 чел', coffee: '—', detskoe: '1 на 10 чел', chef: '1 на 6 чел' },
-  { label: 'Координатор', furshet: '+', banket: '+', coffee: '—', detskoe: '+', chef: '+' },
-  { label: 'Доставка по КАД', furshet: 'включена', banket: 'включена', coffee: 'включена', detskoe: 'включена', chef: 'включена' },
-  { label: 'Сервировка', furshet: 'фуршетная', banket: 'банкетная', coffee: 'бумажная', detskoe: 'детская', chef: 'премиум-фарфор' },
-  { label: 'Уборка', furshet: '+', banket: '+', coffee: '+', detskoe: '+', chef: '+' },
-  { label: 'Торт', furshet: 'опц.', banket: 'включён', coffee: '—', detskoe: 'включён', chef: 'опц.' },
-  { label: 'Алкоголь', furshet: 'опц.', banket: 'опц.', coffee: '—', detskoe: '—', chef: 'опц.' },
-];
-
-const TIERS = [
-  { event: 'Свадьба', tier: 'Эконом', price: '3 950 ₽', min: 30 },
-  { event: 'Свадьба', tier: 'Стандарт', price: '5 470 ₽', min: 30, recommended: true },
-  { event: 'Свадьба', tier: 'Расширенный', price: '7 350 ₽', min: 30 },
-  { event: 'Свадьба', tier: 'Максимальный', price: '9 950 ₽', min: 30 },
-  { event: 'Кофе-брейк', tier: 'Эконом', price: '390 ₽', min: 10 },
-  { event: 'Корпоратив', tier: 'Фуршет', price: '2 450 ₽', min: 20 },
-  { event: 'Корпоратив', tier: 'Банкет', price: '3 950 ₽', min: 30 },
-  { event: 'Поминки', tier: 'Базовый', price: '1 800 ₽', min: 10 },
-  { event: 'Поминки', tier: 'Расширенный', price: '2 500 ₽', min: 10 },
-  { event: 'Детское', tier: 'Стандарт', price: '1 550 ₽', min: 10 },
-  { event: 'Шеф на дом', tier: 'Премиум', price: '4 500 ₽', min: 6 },
+// === Примеры реальных счетов ===
+const EXAMPLES = [
+  { event: 'Свадьба 50 чел', format: 'Банкет', perGuest: 3950, guests: 50, total: 197500 },
+  { event: 'Корпоратив 30 чел', format: 'Фуршет', perGuest: 2450, guests: 30, total: 73500 },
+  { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 600, guests: 20, total: 12000 },
+  { event: 'День рождения 8 чел', format: 'Шеф на дом', perGuest: 4500, guests: 8, total: 36000 },
 ];
 
 export default function PricingPage() {
   return (
     <main className="pt-24 pb-20" id="main">
-      <div className="container-site max-w-6xl">
+      <div className="container-site max-w-5xl">
         <Breadcrumbs />
 
-        {/* Header */}
-        <div className="mb-12 max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3">Прозрачные цены</p>
-          <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">Тарифы и цены</h1>
-          <p className="text-lg text-muted-foreground mb-6">
-            Все тарифы включают: меню, официантов, координатора, доставку в пределах КАД,
-            сервировку и уборку. <strong className="text-foreground">Без скрытых платежей.</strong>
+        {/* HERO — простая, с одной цифрой */}
+        <div className="mb-12 text-center">
+          <h1 className="font-heading text-4xl md:text-6xl font-medium mb-4" style={{ letterSpacing: '-0.02em' }}>
+            Цены на кейтеринг
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
+            4 формата. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/api/templates/dogovor" download="nilov-dogovor-template.pdf" className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors">
-              <FileText className="w-4 h-4" aria-hidden="true" />
-              Договор PDF
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+              <Calculator className="w-4 h-4" />
+              Рассчитать за 2 минуты
             </Link>
-            <Link href="/api/templates/nda" download="nilov-nda-template.pdf" className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors">
-              <FileSignature className="w-4 h-4" aria-hidden="true" />
-              NDA PDF
-            </Link>
-            <Link href="/api/templates/sla" download="nilov-sla-template.pdf" className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors">
-              <ShieldCheck className="w-4 h-4" aria-hidden="true" />
-              SLA PDF
-            </Link>
-            <PrintButton label="Печать тарифов" />
+            <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-6 py-3 text-sm font-semibold hover:border-gold-text transition-colors">
+              {SITE.phone}
+            </a>
           </div>
         </div>
 
-        {/* Pricing cards grid — main attraction */}
-        <div className="mb-16">
-          <h2 className="font-heading text-2xl font-medium mb-2">Выберите формат события</h2>
-          <p className="text-muted-foreground mb-8">Нажмите на карточку — увидите состав меню и сможете изменить блюда под себя</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PRICING_CARDS.map((card) => (
-              <Link
-                key={card.event}
-                href={card.href}
-                className={`group rounded-2xl overflow-hidden border ${card.accent ? 'border-gold-text ring-2 ring-gold-text/30' : 'border-line'} bg-card hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-1 transition-all duration-300`}
-              >
-                {/* Photo */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+        {/* 4 ФОРМАТА — простые карточки с ценой */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {FORMATS.map((fmt) => (
+            <div
+              key={fmt.name}
+              className={`relative rounded-2xl overflow-hidden border-2 ${fmt.popular ? 'border-gold-text' : 'border-line'} bg-card`}
+            >
+              {fmt.popular && (
+                <div className="absolute top-3 right-3 z-10">
+                  <span className="text-xs bg-gold-text text-white px-2 py-1 rounded-full font-semibold">Популярно</span>
+                </div>
+              )}
+
+              <div className="flex">
+                {/* Фото */}
+                <div className="w-1/3 relative overflow-hidden bg-secondary">
                   <FoodPhoto
-                    src={card.img}
-                    alt={card.event}
-                    aspectRatio="wide"
-                    className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                    src={fmt.img}
+                    alt={fmt.name}
+                    aspectRatio="square"
+                    className="w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  {card.badge && (
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="text-xs bg-gold-text text-white px-3 py-1 rounded-full font-semibold shadow-md">{card.badge}</span>
-                    </div>
-                  )}
-                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
-                    <h3 className="font-heading text-xl font-medium mb-1">{card.event}</h3>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-2xl font-bold">{card.price}</span>
-                      <span className="text-xs opacity-90">{card.unit}</span>
-                    </div>
-                    <p className="text-[11px] opacity-90 mt-0.5">{card.min}</p>
-                  </div>
                 </div>
-                {/* Body */}
-                <div className="p-5">
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{card.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {card.features.map(f => (
-                      <span key={f} className="text-[11px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{f}</span>
+
+                {/* Контент */}
+                <div className="w-2/3 p-5">
+                  <h2 className="font-heading text-xl font-medium mb-1">{fmt.name}</h2>
+                  <p className="text-xs text-muted-foreground mb-3">{fmt.desc}</p>
+
+                  {/* Цена — КРУПНО */}
+                  <div className="flex items-baseline gap-1 mb-1">
+                    <span className="text-3xl font-bold text-gold-text">{fmt.price.toLocaleString('ru-RU')}</span>
+                    <span className="text-sm text-muted-foreground">₽/гость</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    мин. {fmt.min} гостей · {fmt.hours}
+                  </p>
+
+                  {/* Что входит — чек-лист */}
+                  <ul className="space-y-1">
+                    {fmt.includes.map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-xs">
+                        <Check className="w-3.5 h-3.5 text-gold-text shrink-0" />
+                        <span>{item}</span>
+                      </li>
                     ))}
+                  </ul>
+
+                  <Link
+                    href={`/menu/${fmt.name === 'Шеф на дом' ? 'chef-at-home' : fmt.name === 'Кофе-брейк' ? 'coffee-break' : fmt.name.toLowerCase()}`}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-text hover:underline"
+                  >
+                    Выбрать {fmt.name} <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ПРИМЕРЫ РЕАЛЬНЫХ СЧЕТОВ — конкретика */}
+        <div className="mb-16">
+          <h2 className="font-heading text-2xl font-medium mb-2 text-center">Примеры реальных заказов</h2>
+          <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {EXAMPLES.map((ex) => (
+              <div key={ex.event} className="p-5 rounded-xl border border-line bg-card">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 className="font-heading text-base font-medium">{ex.event}</h3>
+                    <p className="text-xs text-muted-foreground">{ex.format}</p>
                   </div>
-                  <div className="flex items-center justify-between text-sm font-semibold text-gold-text">
-                    Выбрать тариф
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  <Users className="w-5 h-5 text-muted-foreground" />
+                </div>
+                <div className="flex items-baseline justify-between pt-3 border-t border-line">
+                  <div className="text-sm text-muted-foreground">
+                    {ex.perGuest.toLocaleString('ru-RU')} ₽ × {ex.guests}
+                  </div>
+                  <div className="text-xl font-bold text-gold-text">
+                    {ex.total.toLocaleString('ru-RU')} ₽
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Comparison table — what's included */}
-        <div className="mb-16">
-          <h2 className="font-heading text-2xl font-medium mb-2">Что входит в тариф</h2>
-          <p className="text-muted-foreground mb-6">Сравните включённые услуги по форматам</p>
-          <div className="overflow-x-auto rounded-xl border border-line">
-            <table className="w-full text-sm">
-              <caption className="sr-only">Сравнение включённых услуг по форматам</caption>
-              <thead className="bg-secondary">
-                <tr>
-                  <th scope="col" className="text-left p-3 font-semibold">Услуга</th>
-                  <th scope="col" className="text-center p-3 font-semibold">Фуршет</th>
-                  <th scope="col" className="text-center p-3 font-semibold">Банкет</th>
-                  <th scope="col" className="text-center p-3 font-semibold">Кофе-брейк</th>
-                  <th scope="col" className="text-center p-3 font-semibold">Детское</th>
-                  <th scope="col" className="text-center p-3 font-semibold">Шеф на дом</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON_ROWS.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? 'bg-card' : 'bg-secondary/30'}>
-                    <th scope="row" className="text-left p-3 font-medium">{row.label}</th>
-                    <td className="text-center p-3 text-muted-foreground">{row.furshet}</td>
-                    <td className="text-center p-3 text-muted-foreground">{row.banket}</td>
-                    <td className="text-center p-3 text-muted-foreground">{row.coffee}</td>
-                    <td className="text-center p-3 text-muted-foreground">{row.detskoe}</td>
-                    <td className="text-center p-3 text-muted-foreground">{row.chef}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* ЧТО ВХОДИТ В ЛЮБУЮ ЦЕНУ */}
+        <div className="mb-16 p-6 rounded-2xl bg-secondary/50">
+          <h2 className="font-heading text-2xl font-medium mb-4 text-center">Что входит в любую цену</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              { icon: '🍽', t: 'Меню', d: 'Выбор из 124 блюд' },
+              { icon: '👨‍🍳', t: 'Официанты', d: 'Профессионалы' },
+              { icon: '🚚', t: 'Доставка', d: 'По КАД бесплатно' },
+              { icon: '🍽', t: 'Посуда', d: 'Сервировка' },
+              { icon: '📋', t: 'Координатор', d: 'Личный менеджер' },
+              { icon: '🧹', t: 'Уборка', d: 'После мероприятия' },
+            ].map((s) => (
+              <div key={s.t} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-line">
+                <span className="text-2xl">{s.icon}</span>
+                <div>
+                  <p className="text-sm font-medium">{s.t}</p>
+                  <p className="text-xs text-muted-foreground">{s.d}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Full tariff selector — TariffOffersSection */}
-        <div className="mb-16">
-          <h2 className="font-heading text-2xl font-medium mb-2">Все тарифы по событиям</h2>
-          <p className="text-muted-foreground mb-6">Выберите тип события — увидите 4 уровня тарифов с возможностью изменить состав</p>
-          <TariffOffersSection />
-        </div>
-
-        {/* Full price table */}
-        <div className="mb-16">
-          <h2 className="font-heading text-2xl font-medium mb-2">Полная таблица цен</h2>
-          <p className="text-muted-foreground mb-6">Все тарифы и их стоимость</p>
-          <div className="overflow-x-auto rounded-xl border border-line">
-            <table className="w-full text-sm">
-              <caption className="sr-only">Полная таблица цен на кейтеринг по типам событий</caption>
-              <thead className="bg-secondary">
-                <tr>
-                  <th scope="col" className="text-left p-3 font-semibold">Тип события</th>
-                  <th scope="col" className="text-left p-3 font-semibold">Тариф</th>
-                  <th scope="col" className="text-right p-3 font-semibold">Цена/гость</th>
-                  <th scope="col" className="text-right p-3 font-semibold">Мин. гостей</th>
-                </tr>
-              </thead>
-              <tbody>
-                {TIERS.map((tier, i) => (
-                  <tr key={i} className={`border-t border-line ${tier.recommended ? 'bg-gold-tint/20' : i % 2 === 0 ? 'bg-card' : 'bg-secondary/30'}`}>
-                    <td scope="row" className="p-3 font-medium">{tier.event}</td>
-                    <td className="p-3">
-                      {tier.tier}
-                      {tier.recommended && <span className="ml-2 text-[10px] bg-gold-text text-white px-2 py-0.5 rounded-full font-semibold">Рекомендуем</span>}
-                    </td>
-                    <td className="p-3 text-right font-semibold text-gold-text">{tier.price}</td>
-                    <td className="p-3 text-right text-muted-foreground">{tier.min}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-muted-foreground mt-3">Все цены включают: еду, персонал, посуду, доставку по КАД. Доставка за КАД — от 3 000 ₽.</p>
-        </div>
-
-        {/* Trust signals */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
-          <div className="p-6 rounded-2xl border border-line bg-card text-center">
-            <div className="text-3xl font-bold text-gold-text mb-1">3000+</div>
-            <p className="text-sm text-muted-foreground">событий с 2007 года</p>
-          </div>
-          <div className="p-6 rounded-2xl border border-line bg-card text-center">
-            <div className="text-3xl font-bold text-gold-text mb-1">4.8</div>
-            <p className="text-sm text-muted-foreground">средний рейтинг отзывов</p>
-          </div>
-          <div className="p-6 rounded-2xl border border-line bg-card text-center">
-            <div className="text-3xl font-bold text-gold-text mb-1">12 лет</div>
-            <p className="text-sm text-muted-foreground">гарантии качества</p>
-          </div>
-        </div>
-
-        {/* Final CTA */}
-        <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-gold-tint/40 to-transparent border border-gold-tint text-center">
-          <h2 className="font-heading text-3xl font-medium mb-3">Не нашли подходящий тариф?</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.
-            Можно включить «Несколько групп гостей» — каждая группа получит своё под-меню.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/plan/constructor"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30"
-            >
-              Собрать своё меню
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </Link>
-            <Link
-              href="/plan/helper"
-              className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-8 py-4 text-base font-semibold hover:border-gold-text transition-colors"
-            >
-              Помогите выбрать
-            </Link>
-          </div>
+        {/* CTA */}
+        <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-gold-tint/30 to-transparent border border-gold-tint">
+          <h2 className="font-heading text-2xl font-medium mb-3">Не нашли подходящий формат?</h2>
+          <p className="text-muted-foreground mb-6">Соберите меню под себя — выберите блюда поштучно</p>
+          <Link
+            href="/plan/constructor"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            Собрать своё меню <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
     </main>
