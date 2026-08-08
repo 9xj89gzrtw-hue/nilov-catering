@@ -418,7 +418,7 @@ export default function CatalogPage() {
  * the others. When the parent filter set changes (dishes.length changes), pagination
  * resets to the first page via the useEffect dependency.
  */
-const STATION_PAGE_SIZE = 24;
+const STATION_PAGE_SIZE = 8;
 
 function StationSection({
   stationKey,
@@ -457,7 +457,7 @@ function StationSection({
         {label}
         <span className="text-sm text-muted-foreground font-normal">({dishes.length})</span>
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {visible.map((dish, idx) => (
           <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
         ))}
