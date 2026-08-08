@@ -16,6 +16,7 @@ export const dynamic = 'force-static';
 const FORMATS = [
   {
     name: 'Кофе-брейк',
+    href: '/menu/coffee-break',
     img: '/images/menu/deserty/d1.jpg',
     price: 390,
     min: 10,
@@ -25,6 +26,7 @@ const FORMATS = [
   },
   {
     name: 'Фуршет',
+    href: '/menu/furshet',
     img: '/images/menu/kanape/k1.jpg',
     price: 2450,
     min: 15,
@@ -34,6 +36,7 @@ const FORMATS = [
   },
   {
     name: 'Банкет',
+    href: '/menu/banquet',
     img: '/images/real/beef-medallions.jpg',
     price: 3950,
     min: 30,
@@ -44,6 +47,7 @@ const FORMATS = [
   },
   {
     name: 'Шеф на дом',
+    href: '/events/chef-at-home',
     img: '/images/dishes-new/beef-steak.jpg',
     price: 4500,
     min: 6,
@@ -135,7 +139,7 @@ export default function PricingPage() {
                   </ul>
 
                   <Link
-                    href={`/menu/${fmt.name === 'Шеф на дом' ? 'chef-at-home' : fmt.name === 'Кофе-брейк' ? 'coffee-break' : fmt.name.toLowerCase()}`}
+                    href={fmt.href}
                     className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-text hover:underline"
                   >
                     Выбрать {fmt.name} <ArrowRight className="w-3.5 h-3.5" />
