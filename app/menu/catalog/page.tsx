@@ -166,8 +166,8 @@ export default function CatalogPage() {
   return (
     <main className="pt-24 pb-20" id="main">
       <div className="container-site">
-        {/* Layout: catalog + persistent cart rail */}
-        <div className="flex flex-col md:flex-row gap-6">
+        {/* Layout: catalog content (cart rail is separate fixed element) */}
+        <div className="flex flex-col gap-6">
         <Breadcrumbs />
         <PageHeader
           title="Каталог блюд"
