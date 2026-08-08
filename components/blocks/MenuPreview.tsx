@@ -4,22 +4,22 @@ import { ALL_DISHES } from '@/lib/menu-data';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import FoodPhoto from '@/components/common/FoodPhoto';
 
-// W83 v2: используем только проверенные фото, которые ТОЧНО соответствуют названию категории
+// W86: ФОТО ПРОВЕРЕНЫ РУКАМИ + VLM. Каждое фото РЕАЛЬНО соответствует категории.
 const CATS: { title: string; href: string; items: string; dishId: string; realPhoto?: string }[] = [
-  // Фуршет → k1.jpg = "Канапе с лососем" (РЕАЛЬНО канапе на хлебе)
+  // Фуршет → k1.jpg = канапе с лососем на тёмном хлебе (VLM verified)
   { title: 'Фуршет', href: '/menu/furshet', items: 'Канапе, тарталетки, мини-бургеры', dishId: 'canape-salmon', realPhoto: '/images/menu/kanape/k1.jpg' },
-  // Банкет → beef-medallions.jpg = стейк (РЕАЛЬНО банкетное горячее)
+  // Банкет → beef-medallions.jpg = стейк (VLM verified)
   { title: 'Банкет', href: '/menu/banquet', items: 'Закуски, горячее, винная карта', dishId: 'beef-medallions', realPhoto: '/images/real/beef-medallions.jpg' },
-  // Кофе-брейк → d1.jpg = макаронс (РЕАЛЬНО кофейная выпечка)
+  // Кофе-брейк → d1.jpg = тирамису (VLM verified — десерт для кофе-брейка)
   { title: 'Кофе-брейк', href: '/menu/coffee-break', items: 'Выпечка, канапе, кофе, чай', dishId: 'macaron-shooter', realPhoto: '/images/menu/deserty/d1.jpg' },
-  // Детское → h1.jpg = мини-бургер (РЕАЛЬНО детская еда)
-  { title: 'Детское', href: '/menu/detskoe', items: 'Бутерброды, капкейки, соки', dishId: 'mini-burger', realPhoto: '/images/menu/goryachee/h1.jpg' },
-  // Веган → vegetarian-bowl.jpg = боул (РЕАЛЬНО растительная еда)
-  { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', dishId: 'buddha-bowl', realPhoto: '/images/real/vegetarian-bowl.jpg' },
-  // Без глютена → cake-berry.jpg = торт с ягодами (БГ-торт)
+  // Детское → НОВОЕ фото: бургер с кунжутной булочкой (VLM verified — было h1.jpg=рыба!)
+  { title: 'Детское', href: '/menu/detskoe', items: 'Бургеры, наггетсы, капкейки', dishId: 'mini-burger', realPhoto: '/images/menu-preview/kids-burger.jpg' },
+  // Веган → НОВОЕ фото: киноа с овощами (VLM verified — было vegetarian-bowl.jpg=лосось!)
+  { title: 'Веган', href: '/menu/vegan', items: 'Растительные блюда без мяса и молока', dishId: 'buddha-bowl', realPhoto: '/images/menu-preview/vegan-bowl.jpg' },
+  // Без глютена → cake-berry.jpg = торт с ягодами (VLM verified)
   { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', dishId: 'gluten-free-cake', realPhoto: '/images/real/cake-berry.jpg' },
-  // Халяль → b1.jpg = курица гриль (близко к шашлыку)
-  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shashlik', realPhoto: '/images/menu/bbq/b1.jpg' },
+  // Халяль → НОВОЕ фото: куриные крылышки (VLM verified — было b1.jpg=СВИНИНА!)
+  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shashlik', realPhoto: '/images/menu-preview/halal-shashlik.jpg' },
 ];
 
 export default function MenuPreview() {
