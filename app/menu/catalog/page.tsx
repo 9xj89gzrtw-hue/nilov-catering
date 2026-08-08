@@ -528,6 +528,13 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
           objectPosition={getObjectPositionForDish(dish.id, dish.station)}
           className="w-full"
         />
+        {/* W85: Price overlay on photo — large, visible, e-commerce style */}
+        <div className="absolute top-2 left-2 z-10">
+          <span className="inline-flex items-baseline gap-0.5 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 text-sm font-bold text-foreground shadow-md">
+            {dish.pricePerGuest} ₽
+            <span className="text-[10px] text-muted-foreground font-normal">/гость</span>
+          </span>
+        </div>
       </Link>
 
       {/* Info */}
@@ -536,8 +543,9 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
         <p className="text-[11px] text-muted-foreground mb-2 line-clamp-2">{dish.description}</p>
 
         <div className="flex items-center justify-between gap-2 mb-2">
-          <span className="text-xs text-gold-text font-semibold whitespace-nowrap">
-            {dish.pricePerGuest} ₽<span className="text-muted-foreground font-normal">/гость</span>
+          {/* W85: price moved to photo overlay — here only diet badges */}
+          <span className="text-[11px] text-muted-foreground">
+            <span className="font-semibold text-gold-text">{dish.pricePerGuest} ₽</span> за гостя
           </span>
 
           {/* Diet badges — reduced to 2 most important (Halal, GF) per C8/C3.
@@ -595,13 +603,13 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
                 }
               }
             }}
-            className="flex-1 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-3 py-2 text-xs font-semibold hover:bg-primary/90 transition-colors touch-target no-underline"
+            className="flex-1 inline-flex items-center justify-center gap-1 rounded-lg bg-gold-text text-white px-3 py-2.5 text-sm font-bold hover:bg-gold-text/90 hover:shadow-md transition-all touch-target no-underline"
           >
-            + В меню
+            <span aria-hidden="true">+</span> В меню
           </button>
           <Link
             href={constructorHref}
-            className="inline-flex items-center justify-center rounded-lg border border-line bg-card px-3 py-2 text-xs font-semibold hover:border-gold-text transition-colors touch-target no-underline"
+            className="inline-flex items-center justify-center rounded-lg border border-line bg-card px-3 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors touch-target no-underline"
             aria-label={`Открыть ${dish.name} в конструкторе меню`}
           >
             →
