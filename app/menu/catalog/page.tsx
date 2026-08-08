@@ -493,10 +493,10 @@ function DishCard({ dish, index = 0, showAllergens = true, recommended = false }
   const hasPork = /свинин|бекон|сало/i.test(dish.description);
 
   return (
-    <article className="drinqit-3d drinqit-shine rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-xl flex flex-col" aria-label={`Блюдо: ${dish.name}, цена ${dish.pricePerGuest} рублей за гостя`}>
-      <div className="drinqit-3d-inner">
-      {/* Image area — FoodPhoto с анимацией Drinqit 3D */}
-      <Link href={constructorHref} className="relative block drinqit-3d-img" aria-label={`${dish.name} — открыть в конструкторе меню`}>
+    <article className="rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-all duration-300 hover:shadow-xl flex flex-col" aria-label={`Блюдо: ${dish.name}, цена ${dish.pricePerGuest} рублей за гостя`}>
+      <div>
+      {/* Image area — FoodPhoto */}
+      <Link href={constructorHref} className="relative block" aria-label={`${dish.name} — открыть в конструкторе меню`}>
         <AllergenChips dish={dish} />
         <DishCartIndicator dishId={dish.id} />
         {/* Pork badge — small inline safety indicator (replaces the removed
