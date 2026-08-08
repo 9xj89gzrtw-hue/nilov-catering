@@ -101,25 +101,36 @@ export default function GlutenFreePage() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {dessertsNutFree.map(dish => (
-              <div key={dish.id} className="relative rounded-xl border-2 border-emerald-200 bg-emerald-50/50 p-4 hover:border-gold-text transition-colors">
+              <div key={dish.id} className="relative rounded-xl border-2 border-emerald-200 bg-emerald-50/50 overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                 <AllergenChips dish={dish} />
                 <DishCartIndicator dishId={dish.id} />
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                  <span className="text-xs bg-emerald-700 text-white px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
-                  <span className="text-xs text-muted-foreground">&lt;20 ppm</span>
-                </div>
-                {dish.allergens.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {dish.allergens.map(a => (
-                      <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
-                    ))}
+                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                  <FoodPhoto
+                    src={getDishImage(dish.id, dish.station)}
+                    alt={dish.name}
+                    aspectRatio="wide"
+                    objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2 right-2 z-10">
+                    <span className="text-xs bg-emerald-700 text-white px-2 py-0.5 rounded font-semibold">GF ✓</span>
                   </div>
-                )}
+                </div>
+                <div className="p-4">
+                  <h3 className="font-heading text-base font-medium mb-1">{dish.name}</h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{dish.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                    <span className="text-xs text-muted-foreground">&lt;20 ppm</span>
+                  </div>
+                  {dish.allergens.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {dish.allergens.map(a => (
+                        <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -130,24 +141,35 @@ export default function GlutenFreePage() {
           <h2 className="font-heading text-2xl font-medium mb-2"> БГ-закуски и горячее (nut-free по умолчанию)</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {mainsNutFree.map(dish => (
-              <div key={dish.id} className="relative rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+              <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                 <AllergenChips dish={dish} />
                 <DishCartIndicator dishId={dish.id} />
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                  <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
-                </div>
-                {dish.allergens.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {dish.allergens.map(a => (
-                      <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
-                    ))}
+                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                  <FoodPhoto
+                    src={getDishImage(dish.id, dish.station)}
+                    alt={dish.name}
+                    aspectRatio="wide"
+                    objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2 right-2 z-10">
+                    <span className="text-xs bg-emerald-700 text-white px-2 py-0.5 rounded font-semibold">GF ✓</span>
                   </div>
-                )}
+                </div>
+                <div className="p-4">
+                  <h3 className="font-heading text-base font-medium mb-1">{dish.name}</h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{dish.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                  </div>
+                  {dish.allergens.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {dish.allergens.map(a => (
+                        <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -159,16 +181,27 @@ export default function GlutenFreePage() {
             <h2 className="font-heading text-2xl font-medium mb-2"> БГ-напитки (nut-free по умолчанию)</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {drinksNutFree.map(dish => (
-                <div key={dish.id} className="relative rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
+                <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                   <AllergenChips dish={dish} />
                   <DishCartIndicator dishId={dish.id} />
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                    <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold shrink-0">GF nut-free</span>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                    <FoodPhoto
+                      src={getDishImage(dish.id, dish.station)}
+                      alt={dish.name}
+                      aspectRatio="wide"
+                      objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                      className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-2 right-2 z-10">
+                      <span className="text-xs bg-emerald-700 text-white px-2 py-0.5 rounded font-semibold">GF ✓</span>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                  <div className="p-4">
+                    <h3 className="font-heading text-base font-medium mb-1">{dish.name}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{dish.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -187,25 +220,36 @@ export default function GlutenFreePage() {
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {allWithNuts.map(dish => (
-                <div key={dish.id} className="relative rounded-xl border border-amber-300 bg-white p-4">
+                <div key={dish.id} className="relative rounded-xl border border-amber-300 bg-white overflow-hidden hover:shadow-lg transition-all group">
                   <AllergenChips dish={dish} />
                   <DishCartIndicator dishId={dish.id} />
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-heading text-base font-medium pr-2">{dish.name}</h3>
-                    <span className="text-xs bg-amber-600 text-white px-2 py-0.5 rounded font-semibold shrink-0"> Орехи</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">{dish.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
-                    <span className="text-xs text-amber-700 font-medium">опция</span>
-                  </div>
-                  {dish.allergens.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-1">
-                      {dish.allergens.map(a => (
-                        <span key={a} className="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-800">{ALLERGEN_LABEL[a]}</span>
-                      ))}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                    <FoodPhoto
+                      src={getDishImage(dish.id, dish.station)}
+                      alt={dish.name}
+                      aspectRatio="wide"
+                      objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                      className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-2 right-2 z-10">
+                      <span className="text-xs bg-amber-600 text-white px-2 py-0.5 rounded font-semibold">Орехи</span>
                     </div>
-                  )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-base font-medium mb-1">{dish.name}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{dish.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
+                      <span className="text-xs text-amber-700 font-medium">опция</span>
+                    </div>
+                    {dish.allergens.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1">
+                        {dish.allergens.map(a => (
+                          <span key={a} className="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-800">{ALLERGEN_LABEL[a]}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
