@@ -110,6 +110,29 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* W85: Prevent iOS Safari auto-zoom on input focus (font-size < 16px triggers zoom) */
+  @media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
+
+  /* W85: Reserve space for mobile bottom nav + sticky CTA */
+  @media (max-width: 768px) {
+    main {
+      padding-bottom: 8rem !important;
+    }
   }
 
   /* Smooth scroll only for non-reduced-motion users (perf critic) */

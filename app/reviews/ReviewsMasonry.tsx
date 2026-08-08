@@ -166,7 +166,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
               <motion.article
                 key={r.id}
                 id={r.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 1, y: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{

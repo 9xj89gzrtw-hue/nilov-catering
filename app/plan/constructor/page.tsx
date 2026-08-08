@@ -5,7 +5,9 @@ import ConstructorWizard from '@/components/interactive/ConstructorWizard';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 import ShareButton from '@/components/common/ShareButton';
 import PageHeader from '@/components/common/PageHeader';
+import FoodPhoto from '@/components/common/FoodPhoto';
 import { SITE } from '@/lib/data';
+import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/plan/constructor', languages: { 'ru': '/plan/constructor', 'en': '/en', 'x-default': '/plan/constructor' } },
@@ -25,6 +27,7 @@ function ConstructorServerFallback() {
       name: 'Фуршет',
       slug: 'furshet',
       emoji: '',
+      img: '/images/menu/kanape/k1.jpg',
       price: 'от 2 450 ₽/гость',
       minGuests: 'мин. 20 гостей',
       desc: 'Гости едят стоя, лёгкие закуски, можно свободно ходить',
@@ -34,6 +37,7 @@ function ConstructorServerFallback() {
       name: 'Банкет',
       slug: 'banket',
       emoji: '',
+      img: '/images/real/beef-medallions.jpg',
       price: 'от 3 950 ₽/гость',
       minGuests: 'мин. 15 гостей',
       desc: 'Посадка за стол, официанты, классическая подача',
@@ -43,6 +47,7 @@ function ConstructorServerFallback() {
       name: 'Кофе-брейк',
       slug: 'coffee-break',
       emoji: '',
+      img: '/images/menu/deserty/d1.jpg',
       price: 'от 390 ₽/гость',
       minGuests: 'мин. 10 гостей',
       desc: 'Кофе и десерты в перерыве мероприятия',
@@ -51,6 +56,7 @@ function ConstructorServerFallback() {
     {
       name: 'Детский праздник', slug: 'detskoe',
       emoji: '',
+      img: '/images/menu/goryachee/h1.jpg',
       price: 'от 1 550 ₽/гость',
       minGuests: 'мин. 10 детей',
       desc: 'Специальное меню и развлечения для детей',
@@ -59,6 +65,7 @@ function ConstructorServerFallback() {
     {
       name: 'Выезд шефа', slug: 'chef-at-home',
       emoji: '',
+      img: '/images/dishes-new/beef-steak.jpg',
       price: 'от 5 000 ₽/гость',
       minGuests: 'мин. 6 гостей',
       desc: 'Шеф-повар и сомелье у вас дома',
@@ -67,6 +74,7 @@ function ConstructorServerFallback() {
     {
       name: 'Мобильный фуршет', slug: 'mobile-furshet',
       emoji: '',
+      img: '/images/real/canape-platter.jpg',
       price: 'от 1 500 ₽/гость',
       minGuests: 'мин. 30 гостей',
       desc: 'Выезд на площадку без кухни',
@@ -75,6 +83,7 @@ function ConstructorServerFallback() {
     {
       name: 'Поминки', slug: 'pominki',
       emoji: '',
+      img: '/images/real/salmon-dish.jpg',
       price: 'от 1 800 ₽/гость',
       minGuests: 'мин. 10 гостей',
       desc: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя.',
@@ -108,13 +117,26 @@ function ConstructorServerFallback() {
                 key={f.name}
                 href={f.href}
                 data-format-card={f.slug}
-                className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors no-underline"
+                className="group block rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all no-underline"
               >
-                <div className="text-3xl mb-2">{f.emoji}</div>
-                <div className="font-heading font-semibold text-lg text-foreground">{f.name}</div>
-                <div className="text-sm text-muted-foreground mt-1">{f.desc}</div>
-                <div className="mt-3 text-base font-semibold text-gold-text">{f.price}</div>
-                <div className="text-xs text-muted-foreground mt-1">{f.minGuests}</div>
+                {/* W85: Photo on top */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                  <FoodPhoto
+                    src={f.img}
+                    alt={f.name}
+                    aspectRatio="wide"
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-2 left-3 right-3 text-white">
+                    <div className="font-heading font-semibold text-lg">{f.name}</div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="text-sm text-muted-foreground mt-1">{f.desc}</div>
+                  <div className="mt-3 text-base font-semibold text-gold-text">{f.price}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{f.minGuests}</div>
+                </div>
               </a>
             ))}
           </div>
@@ -150,10 +172,21 @@ function ConstructorServerFallback() {
               { id: 'cranberry-mors', name: 'Клюквенный морс', price: '100 ₽' },
               { id: 'seabuckthorn-tea', name: 'Облепиховый чай', price: '120 ₽' },
             ].map(d => (
-              <label key={d.id} className="flex items-center gap-2 p-2 rounded border border-line hover:border-gold-text transition-colors cursor-pointer">
-                <input type="checkbox" name="dishes" value={d.id} className="accent-gold-text" />
-                <span className="text-sm flex-1">{d.name}</span>
-                <span className="text-xs text-gold-text font-semibold">{d.price}</span>
+              <label key={d.id} className="flex items-center gap-3 p-2 rounded border border-line hover:border-gold-text transition-colors cursor-pointer">
+                <input type="checkbox" name="dishes" value={d.id} className="accent-gold-text shrink-0" />
+                <div className="w-12 h-12 rounded overflow-hidden bg-secondary shrink-0">
+                  <FoodPhoto
+                    src={getDishImage(d.id, 'cold')}
+                    alt={d.name}
+                    aspectRatio="square"
+                    objectPosition={getObjectPositionForDish(d.id, 'cold')}
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="text-sm font-medium text-foreground block">{d.name}</span>
+                  <span className="text-xs text-gold-text font-semibold">{d.price}</span>
+                </div>
               </label>
             ))}
           </div>

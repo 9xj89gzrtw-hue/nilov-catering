@@ -36,12 +36,12 @@ const containerStagger: Variants = {
 };
 
 const itemUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE_OUT } },
 };
 
 const itemScale: Variants = {
-  hidden: { opacity: 0, scale: 0.94 },
+  hidden: { opacity: 1, scale: 1 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: EASE_OUT } },
 };
 
@@ -218,7 +218,7 @@ function Hero() {
           alt="Шеф-повар NiloV Catering за приготовлением блюда на собственном производстве в Санкт-Петербурге"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center 35%' }}
-          initial={reducedMotion ? false : { scale: 1.08, opacity: 0 }}
+          initial={reducedMotion ? false : { scale: 1.08, opacity: 1 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.4, ease: EASE_OUT }}
         />
@@ -229,7 +229,7 @@ function Hero() {
         />
         <div className="relative h-full container-site flex flex-col justify-end pb-12 md:pb-16">
           <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={reducedMotion ? false : { opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: EASE_OUT }}
             className="text-xs md:text-sm uppercase tracking-[0.22em] text-[#E8C97E] mb-3 font-semibold"
@@ -237,7 +237,7 @@ function Hero() {
             NiloV Catering · с 2007 года
           </motion.p>
           <motion.h1
-            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+            initial={reducedMotion ? false : { opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.42, duration: 0.7, ease: EASE_OUT }}
             className="font-heading text-4xl md:text-6xl lg:text-7xl text-white max-w-4xl leading-[1.05]"
@@ -246,7 +246,7 @@ function Hero() {
             Ресторанное качество<br />не обязано стоить<br />как ресторан
           </motion.h1>
           <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={reducedMotion ? false : { opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.65, ease: EASE_OUT }}
             className="text-base md:text-lg text-white/85 mt-5 max-w-xl"
@@ -255,7 +255,7 @@ function Hero() {
             Команда 40+ человек, 3 000+ событий, 4.8★ на Yandex.Maps.
           </motion.p>
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={reducedMotion ? false : { opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.78, duration: 0.6, ease: EASE_OUT }}
             className="mt-7 flex flex-wrap gap-3"
@@ -340,7 +340,7 @@ function BentoGrid() {
     <section className="py-16 md:py-24" aria-labelledby="bento-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -386,7 +386,7 @@ function Team() {
     <section className="py-16 md:py-24 bg-secondary/40" aria-labelledby="team-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -450,7 +450,7 @@ function Team() {
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -473,7 +473,7 @@ function Kitchen() {
     <section className="py-16 md:py-24" aria-labelledby="kitchen-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -532,7 +532,7 @@ function Kitchen() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -567,7 +567,7 @@ function Cases() {
     <section className="py-16 md:py-24 bg-secondary/40" aria-labelledby="cases-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -593,7 +593,7 @@ function Cases() {
           {CASES.map((c, i) => (
             <motion.article
               key={c.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.65, ease: EASE_OUT, delay: i * 0.05 }}
@@ -654,7 +654,7 @@ function TrustStats() {
     <section className="py-16 md:py-24" aria-labelledby="stats-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -708,7 +708,7 @@ function Certificates() {
     <section className="py-16 md:py-24 bg-secondary/40" aria-labelledby="certs-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -760,7 +760,7 @@ function Certificates() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE_OUT }}
@@ -799,7 +799,7 @@ function CTA() {
     <section className="py-16 md:py-24" aria-labelledby="cta-heading">
       <div className="container-site">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.7, ease: EASE_OUT }}
