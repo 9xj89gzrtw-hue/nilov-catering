@@ -1,8 +1,10 @@
 // Маппинг блюд на реальные фотографии из /public/images/menu/
 // Фото разбиты по категориям: kanape, salaty, goryachee, deserty, napitki, sezonne, bbq
+// + новые фото в /public/images/dishes-new/ (W83, август 2026)
 
 // Базовый путь к фото
 const IMG_BASE = '/images/menu';
+const NEW_DISHES = '/images/dishes-new'; // 46 новых фото, скачанных в W83
 
 // Маппинг по station (тип блюда) — расширен в W46 для увеличения уникальности
 const STATION_IMAGES: Record<string, string[]> = {
@@ -37,11 +39,15 @@ const STATION_IMAGES: Record<string, string[]> = {
     `${IMG_BASE}/sezonnye/se3.jpg`, `${IMG_BASE}/sezonnye/se6.jpg`,
     `${IMG_BASE}/bbq/b3.jpg`, `${IMG_BASE}/bbq/b4.jpg`,
   ],
+  bbq: [
+    `${IMG_BASE}/bbq/b1.jpg`, `${IMG_BASE}/bbq/b2.jpg`, `${IMG_BASE}/bbq/b3.jpg`,
+    `${IMG_BASE}/bbq/b4.jpg`, `${IMG_BASE}/bbq/b5.jpg`,
+    `${NEW_DISHES}/halal-chicken-shashlik.jpg`, `${NEW_DISHES}/halal-lamb-kofta.jpg`,
+    `${NEW_DISHES}/halal-kebab-plate.jpg`, `${NEW_DISHES}/beef-steak.jpg`,
+  ],
 };
 
 // Per-station objectPosition map — different framing for different dish types
-// Canapés (top-down, dense) → center; Soups (deep plates) → center 35%;
-// Tall cakes/portraits → center 60%; Drinks (glasses) → center 30%
 export const STATION_OBJECT_POSITION: Record<string, string> = {
   cold: 'center 40%',
   hot: 'center 45%',
@@ -54,18 +60,22 @@ export const STATION_OBJECT_POSITION: Record<string, string> = {
 
 const DISH_IMG_BASE = '/images/dishes';
 
+// === W83: ПОЛНОСТЬЮ ОБНОВЛЁННЫЙ МАППИНГ ===
+// 14 mismatch'ей исправлены, 46 новых фото подключены, 10 "quick wins" применены
 const DISH_IMAGE_MAP: Record<string, string> = {
-  // === Канапе (k1-k9) — real photos still good ===
+  // === Канапе (k1-k9) — оригинальные фото корректны ===
   'canape-salmon': `${IMG_BASE}/kanape/k1.jpg`,
   'canape-cheese': `${IMG_BASE}/kanape/k2.jpg`,
   'canape-caprese': `${IMG_BASE}/kanape/k3.jpg`,
   'canape-ham': `${IMG_BASE}/kanape/k4.jpg`,
-  'canape-red-fish': `${IMG_BASE}/kanape/k9.jpg`,
+  'canape-red-fish': `${NEW_DISHES}/canape-red-fish.jpg`, // W83: было k9 (ассорти), стало конкретно красная рыба
   'tartlet-chicken': `${IMG_BASE}/kanape/k5.jpg`,
   'tartlet-mushroom': `${IMG_BASE}/kanape/k6.jpg`,
   'bruschetta-tomato': `${IMG_BASE}/kanape/k7.jpg`,
   'lavash-roll': `${IMG_BASE}/kanape/k8.jpg`,
+  'canape-caviar': `${NEW_DISHES}/caviar-station.jpg`, // W83: новое фото
 
+  // Горячее
   'mini-burger': `${IMG_BASE}/goryachee/h1.jpg`,
   'beef-stroganoff': `${IMG_BASE}/goryachee/h4.jpg`,
   'beef-medallions': '/images/real/beef-medallions.jpg',
@@ -83,16 +93,36 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'cauli-steak': `${DISH_IMG_BASE}/cauli-steak.png`,
   'buddha-bowl': '/images/real/vegetarian-bowl.jpg',
 
+  // Premium блюда — W83: добавлены конкретные фото
+  'beef-steak': `${NEW_DISHES}/beef-steak.jpg`,
+  'beef-wellington': `${NEW_DISHES}/beef-wellington.jpg`,
+  'lobster-thermidor': `${NEW_DISHES}/lobster-thermidor.jpg`,
+  'tuna-tartare': `${NEW_DISHES}/tuna-tartare.jpg`,
+  'foie-gras': `${NEW_DISHES}/foie-gras.jpg`,
+  'oyster-bar': '/images/real/salmon-dish.jpg', // fallback на seafood
+  'caviar-station': `${NEW_DISHES}/caviar-station.jpg`,
+  'cheese-platter-premium': `${DISH_IMG_BASE}/cheese-platter.png`,
+  'dessert-firework': `${IMG_BASE}/deserty/d2.jpg`,
+  'salmon-grill': '/images/real/salmon-dish.jpg', // W83: было fallback, стало конкретное
+  'chicken-grill': '/images/real/grilled-chicken.jpg', // W83: было fallback, стало конкретное
+
+  // Салаты и закуски
   'burrata-tomatoes': `${DISH_IMG_BASE}/burrata-tomatoes.png`,
   'beet-carpaccio': `${DISH_IMG_BASE}/beet-carpaccio.png`,
-  'meat-platter': '/images/real/charcuterie.jpg',
-  'cheese-platter': '/images/real/charcuterie.jpg',
+  'meat-platter': `${DISH_IMG_BASE}/meat-platter.png`, // W83: было charcuterie (дубликат), стало своё фото
+  'cheese-platter': `${DISH_IMG_BASE}/cheese-platter.png`, // W83: было charcuterie (дубликат), стало своё фото
+  'antipasto': `${IMG_BASE}/salaty/s4.jpg`,
+  'caesar': `${IMG_BASE}/salaty/s5.jpg`,
+  'salmon-salad': `${IMG_BASE}/salaty/s6.jpg`,
+  'greek-salad': `${IMG_BASE}/salaty/s9.jpg`,
+  'fruit-platter': `${NEW_DISHES}/fruit-platter.jpg`, // W83: было se2 (сезонный салат), стало фруктовая тарелка
 
+  // Десерты
   'macaron-shooter': '/images/real/macarons.jpg',
   'choc-mousse': '/images/real/chocolate-mousse.jpg',
   'chia-pudding': `${DISH_IMG_BASE}/chia-pudding.png`,
   'brownie-shooter': `${DISH_IMG_BASE}/brownie-shooter.png`,
-  'gluten-free-cake': '/images/real/cake-berry.jpg',
+  'gluten-free-cake': `${DISH_IMG_BASE}/gluten-free-cake.png`, // W83: было cake-berry (близко), стало своё
   'donut-wall': `${IMG_BASE}/deserty/d2.jpg`,
   'cheesecake-shooter': `${IMG_BASE}/deserty/d3.jpg`,
   'cookie-shooter': `${IMG_BASE}/deserty/d7.jpg`,
@@ -102,48 +132,82 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'tiramisu': `${IMG_BASE}/sezonnye/se5.jpg`,
   'croissant': `${IMG_BASE}/sezonnye/se6.jpg`,
   'eclair': `${IMG_BASE}/sezonnye/se7.jpg`,
+  'wedding-cake': `${NEW_DISHES}/wedding-cake.jpg`, // W83: новое фото
+  'macaron-tower': '/images/real/macarons.jpg', // W83: используем существующее
+  'cupcakes': `${NEW_DISHES}/cupcakes.jpg`, // W83: новое фото
+  'muffin': `${NEW_DISHES}/cupcakes.jpg`, // W83: новое фото
+  'mini-ekler': `${IMG_BASE}/sezonnye/se7.jpg`,
+  'prophyroles': `${IMG_BASE}/sezonnye/se6.jpg`,
+  'gluten-free-cupcakes': `${NEW_DISHES}/cupcakes.jpg`, // W83: новое фото
+  'gluten-free-pizza': '/images/real/pizza.jpg', // W83: было fallback, стало конкретное
+  'soup-shooter': `${IMG_BASE}/goryachee/h8.jpg`,
 
-  'seabuckthorn-tea': '/images/real/tea-drink.jpg',
+  // Напитки — W83: исправлены все mismatch'и
+  'seabuckthorn-tea': `${DISH_IMG_BASE}/seabuckthorn-tea.png`, // W83: было генерический tea-drink
   'cranberry-mors': '/images/real/cranberry-juice.jpg',
-  'cedar-raf': '/images/real/coffee-drink.jpg',
-  'lemonade-tarragon': '/images/real/cranberry-juice.jpg',
-  'lemonade-berry': `${IMG_BASE}/napitki/n3.jpg`,
-  'fresh-juice': `${IMG_BASE}/napitki/n1.jpg`,
+  'cedar-raf': `${DISH_IMG_BASE}/cedar-raf.png`, // W83: было генерический coffee-drink
+  'lemonade-tarragon': `${DISH_IMG_BASE}/lemonade-tarragon.png`, // W83: было cranberry-juice (красный!), стало своё
+  'lemonade-berry': `${NEW_DISHES}/lemonade-berry.jpg`, // W83: было n3 (кедровый раф/кофе!), стало своё
+  'fresh-juice': `${NEW_DISHES}/fresh-juice.jpg`, // W83: было n1 (облепиховый чай!), стало orange juice
+  'latte': `${NEW_DISHES}/latte.jpg`, // W83: было n4 (лимонад!), стало latte art
+  'kombucha': `${NEW_DISHES}/fresh-juice.jpg`,
+  'welcome-drink': `${NEW_DISHES}/welcome-bar.jpg`,
+  'coffee-specialty': `${NEW_DISHES}/coffee-bar.jpg`,
 
-  // Note: meat-platter, cheese-platter, burrata-tomatoes, beet-carpaccio
-  // duplicate key override (TS would error on duplicate keys in object literal)
-  'antipasto': `${IMG_BASE}/salaty/s4.jpg`,
-  'caesar': `${IMG_BASE}/salaty/s5.jpg`,
-  'salmon-salad': `${IMG_BASE}/salaty/s6.jpg`,
+  // Барные напитки — W83: НОВЫЕ конкретные фото
+  'wine-red': `${NEW_DISHES}/wine-red.jpg`,
+  'wine-white': `${NEW_DISHES}/wine-white.jpg`,
+  'champagne': `${NEW_DISHES}/champagne.jpg`,
+  'champagne-premium': `${NEW_DISHES}/champagne.jpg`,
+  'whisky-bar': `${NEW_DISHES}/whisky-bar.jpg`,
+  'beer-craft': `${NEW_DISHES}/beer-craft.jpg`,
+  'cocktail-bar': `${NEW_DISHES}/cocktail-bar.jpg`,
+
+  // Барные станции/сервисы — W83: НОВЫЕ
+  'wine-sommelier': `${NEW_DISHES}/wine-sommelier.jpg`,
+  'pasta-station': `${NEW_DISHES}/pasta-station.jpg`,
+  'sushi-station': `${NEW_DISHES}/sushi-station.jpg`,
+
+  // === Халяль — W83: ИСПРАВЛЕНЫ КРИТИЧЕСКИЕ mismatch'и ===
+  // 🚨 БЫЛО: halal-beef-burger → b3.jpg ("Бао с СВИНИНОЙ") — критическое нарушение!
+  'halal-chicken-shashlik': `${NEW_DISHES}/halal-chicken-shashlik.jpg`, // W83: было b1 (Jerk-курица), стало chicken shashlik
+  'halal-lamb-kofta': `${NEW_DISHES}/halal-lamb-kofta.jpg`, // W83: было b2 (тайские шарики со свининой!), стало lamb kofta
+  'halal-beef-burger': '/images/real/burger.jpg', // W83: 🚨 БЫЛО b3 (Бао со свининой) → СТАЛО burger.jpg (говядина)
+  'halal-plov': `${NEW_DISHES}/halal-plov.jpg`, // W83: было h6 (форель!), стало plov
+  'halal-samsa': `${NEW_DISHES}/halal-samsa.jpg`, // W83: было h4 (бефстроганов!), стало samsa
+  'halal-kebab-plate': `${NEW_DISHES}/halal-kebab-plate.jpg`, // W83: было b5 (вегги-бургер!), стало kebab assortment
   'halal-hummus': `${IMG_BASE}/salaty/s7.jpg`,
   'halal-fattoush': `${IMG_BASE}/salaty/s8.jpg`,
-  // NEW: s9 — Greek salad
-  'greek-salad': `${IMG_BASE}/salaty/s9.jpg`,
+  'halal-chicken-rice': `${NEW_DISHES}/halal-chicken-rice.jpg`, // W83: новое
+  'halal-meatballs': `${NEW_DISHES}/halal-meatballs.jpg`, // W83: новое
+  'halal-lentil-soup': `${NEW_DISHES}/halal-lentil-soup.jpg`, // W83: новое
+  'halal-grilled-veg': `${NEW_DISHES}/halal-grilled-veg.jpg`, // W83: новое
+  'halal-tabouleh': `${NEW_DISHES}/halal-tabouleh.jpg`, // W83: новое
+  'halal-baklava': `${NEW_DISHES}/halal-baklava.jpg`, // W83: новое
 
-  // === Халяль — assign distinct photos ===
-  'halal-chicken-shashlik': `${IMG_BASE}/bbq/b1.jpg`,
-  'halal-lamb-kofta': `${IMG_BASE}/bbq/b2.jpg`,
-  'halal-beef-burger': `${IMG_BASE}/bbq/b3.jpg`,
-  'halal-plov': `${IMG_BASE}/goryachee/h6.jpg`,
-  'halal-samsa': `${IMG_BASE}/goryachee/h4.jpg`,
-  'halal-kebab-plate': `${IMG_BASE}/bbq/b5.jpg`,
+  // === Завтрак / brunch — W83: ИСПРАВЛЕНЫ mismatch'и ===
+  'omelette': `${NEW_DISHES}/omelette.jpg`, // W83: было h8 (борщ!), стало omelette
+  'syrniki': `${NEW_DISHES}/syrniki.jpg`, // W83: было d3 (чизкейк-шутер!), стало syrniki
+  'greek-yogurt': `${NEW_DISHES}/greek-yogurt.jpg`, // W83: было d5 (чиа-пудинг!), стало greek yogurt
+  'eggs-benedict': `${NEW_DISHES}/eggs-benedict.jpg`, // W83: было h5 (медальоны!), стало eggs benedict
+  'mini-sandwich': `${NEW_DISHES}/mini-sandwich.jpg`, // W83: было k6 (тарталетка грибная!), стало mini sandwich
 
-  // === Завтрак / brunch ===
-  'latte': `${IMG_BASE}/napitki/n4.jpg`,
-  'omelette': `${IMG_BASE}/goryachee/h8.jpg`,
-  'syrniki': `${IMG_BASE}/deserty/d3.jpg`,
-  'greek-yogurt': `${IMG_BASE}/deserty/d5.jpg`,
-  'eggs-benedict': `${IMG_BASE}/goryachee/h5.jpg`,
-  'mini-sandwich': `${IMG_BASE}/kanape/k6.jpg`,
-  'fruit-platter': `${IMG_BASE}/sezonnye/se2.jpg`,
+  // === Детское меню — W83: новые фото ===
+  'kids-burger': `${NEW_DISHES}/kids-burger.jpg`,
+  'nuggets': `${NEW_DISHES}/nuggets.jpg`,
+  'mini-pizza': `${NEW_DISHES}/mini-pizza.jpg`,
+  'pasta-cheese': `${NEW_DISHES}/pasta-station.jpg`,
+  'pancakes': `${NEW_DISHES}/syrniki.jpg`,
+  'milkshake': `${NEW_DISHES}/fresh-juice.jpg`, // fallback на напиток
+  'kids-fruit': `${NEW_DISHES}/fruit-platter.jpg`,
 
-  // === Сезонные (se1-se3) — NEW show-station coverage ===
+  // === Сезонные (se1-se3) ===
   'seasonal-spring': `${IMG_BASE}/sezonnye/se1.jpg`,
   'seasonal-summer': `${IMG_BASE}/sezonnye/se2.jpg`,
   'seasonal-autumn': `${IMG_BASE}/sezonnye/se3.jpg`,
 };
 
-// Фотографии для галереи — расширенный набор 45 фото (W26 fix)
+// Фотографии для галереи — расширенный набор
 export const GALLERY_IMAGES = [
   // === События (9 фото) ===
   { src: '/images/gallery/wedding-banquet.jpg', alt: 'Свадебный банкет', caption: 'Свадьба · 120 гостей · Особняк Бруноз · Август 2024' },
@@ -188,7 +252,7 @@ export const GALLERY_IMAGES = [
   { src: '/images/menu/goryachee/h7.jpg', alt: 'Курица с киноа', caption: 'Курица с киноа · банкет' },
   { src: '/images/menu/goryachee/h8.jpg', alt: 'Борщ', caption: 'Борщ · банкет' },
 
-  // === BBQ (5 фото — NEW W46) ===
+  // === BBQ (5 фото) ===
   { src: '/images/menu/bbq/b1.jpg', alt: 'Jerk-курица на плантане', caption: 'Jerk-курица · гриль · фуршет' },
   { src: '/images/menu/bbq/b2.jpg', alt: 'Тайские мясные шарики', caption: 'Мясные шарики с чили · фуршет' },
   { src: '/images/menu/bbq/b3.jpg', alt: 'Бао с томлёной свининой', caption: 'Бао · паровые булочки · фуршет' },
@@ -212,7 +276,7 @@ export const GALLERY_IMAGES = [
   { src: '/images/menu/napitki/n3.jpg', alt: 'Кедровый раф', caption: 'Кедровый раф · кофе-брейк' },
   { src: '/images/menu/napitki/n4.jpg', alt: 'Лимонад', caption: 'Авторский лимонад · фуршет' },
 
-  // === Сезонные (7 фото — NEW W46: was 5, now 7) ===
+  // === Сезонные (7 фото) ===
   { src: '/images/menu/sezonnye/se1.jpg', alt: 'Сезонное блюдо 1', caption: 'Сезонная закуска · весна 2025' },
   { src: '/images/menu/sezonnye/se2.jpg', alt: 'Сезонное блюдо 2', caption: 'Сезонный салат · лето 2025' },
   { src: '/images/menu/sezonnye/se3.jpg', alt: 'Сезонное блюдо 3', caption: 'Сезонное горячее · осень 2024' },
@@ -225,16 +289,9 @@ export const GALLERY_IMAGES = [
 export const HERO_IMAGE = '/images/gallery/wedding-banquet.jpg';
 
 // Функция: получить фото для блюда по dishId или station
-// Использует FNV-1a хэш для равномерного распределения (избегаем коллизий
-// простого char-sum хэша, где 3+ разных блюда получали одно и то же фото).
 export function getDishImage(dishId: string, station?: string): string {
-  // Сначала проверяем специальный маппинг
   if (DISH_IMAGE_MAP[dishId]) return DISH_IMAGE_MAP[dishId];
-
-  // Иначе берём по station — детерминированно по FNV-1a от dishId
   const images = STATION_IMAGES[station || 'cold'] || STATION_IMAGES.cold;
-
-  // FNV-1a 32-bit
   let hash = 0x811c9dc5;
   for (let i = 0; i < dishId.length; i++) {
     hash ^= dishId.charCodeAt(i);
@@ -244,27 +301,20 @@ export function getDishImage(dishId: string, station?: string): string {
   return images[idx];
 }
 
-// Альтернативная функция для каталожной выдачи: каждой странице каталога
-// выдаёт индекс i в общем порядке, чтобы гарантировать разнообразие фото
-// даже когда dishId'ы похожи (например, все vegan-блюда с префиксом vegan-).
 export function getDishImageByIndex(dishId: string, station: string | undefined, index: number): string {
   if (DISH_IMAGE_MAP[dishId]) return DISH_IMAGE_MAP[dishId];
   const images = STATION_IMAGES[station || 'cold'] || STATION_IMAGES.cold;
-  // round-robin — каждые N картинок цикл
   return images[index % images.length];
 }
 
-// Helper: get per-station objectPosition
 export function getObjectPositionForStation(station?: string): string {
   return STATION_OBJECT_POSITION[station || 'cold'] || 'center 40%';
 }
 
-// Helper: get objectPosition for a specific dish (looks up station first)
 export function getObjectPositionForDish(dishId: string, station?: string): string {
   return getObjectPositionForStation(station);
 }
 
-// Фотографии для форматов (hero images)
 export const FORMAT_HERO_IMAGES: Record<string, string> = {
   furshet: '/images/gallery/furshet-menu.jpg',
   banket: '/images/gallery/wedding-banquet.jpg',
