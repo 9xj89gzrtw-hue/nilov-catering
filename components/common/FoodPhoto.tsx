@@ -23,7 +23,10 @@ export default function FoodPhoto({
   src, alt, className = '', animate = true, aspectRatio = 'square',
   objectPosition = 'center 40%', overlay, eager = false,
 }: FoodPhotoProps) {
-  const [loaded, setLoaded] = useState(false);
+  // W85: Start with loaded=true so photo is visible immediately (no skeleton flash)
+  // Skeleton only shows if onError fires (photo failed to load)
+  const [loaded, setLoaded] = useState(true);
+  const [error, setError] = useState(false);
   const [mounted, setMounted] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -31,8 +34,13 @@ export default function FoodPhoto({
 
   // SSR race condition fix: check if img already loaded before React hydrated
   useEffect(() => {
-    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
-      setLoaded(true);
+    if (imgRef.current) {
+      if (imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+        setLoaded(true);
+        setError(false);
+      } else if (imgRef.current.naturalWidth === 0 && imgRef.current.complete) {
+        setError(true);
+      }
     }
   }, [src]);
 
@@ -40,6 +48,9 @@ export default function FoodPhoto({
   const isJpg = /\.jpe?g$/i.test(src);
   const avifSrc = isJpg ? src.replace(/\.jpe?g$/i, '.avif') : '';
   const webpSrc = isJpg ? src.replace(/\.jpe?g$/i, '.webp') : '';
+
+  const handleLoad = () => { setLoaded(true); setError(false); };
+  const handleError = () => { setError(true); setLoaded(true); };
 
   return (
     <div className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className} group`}>
@@ -55,10 +66,10 @@ export default function FoodPhoto({
             height={600}
             loading={eager ? 'eager' : 'lazy'}
             decoding={eager ? 'sync' : 'async'}
-            onLoad={() => setLoaded(true)}
-            onError={() => setLoaded(true)}
-            className={`absolute inset-0 w-full h-full object-cover ${loaded ? 'opacity-100 z-10' : 'skeleton-shimmer'} ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
-            style={{ objectPosition, animation: animate && loaded ? 'kenBurns 4s ease-out both' : undefined }}
+            onLoad={handleLoad}
+            onError={handleError}
+            className={`absolute inset-0 w-full h-full object-cover ${error ? 'opacity-0' : 'opacity-100 z-10'} ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
+            style={{ objectPosition, animation: animate && loaded && !error ? 'kenBurns 4s ease-out both' : undefined }}
           />
         </picture>
       ) : (
@@ -70,14 +81,14 @@ export default function FoodPhoto({
           height={600}
           loading={eager ? 'eager' : 'lazy'}
           decoding={eager ? 'sync' : 'async'}
-          onLoad={() => setLoaded(true)}
-          onError={() => setLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover ${loaded ? 'opacity-100 z-10' : 'skeleton-shimmer'} ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
+          onLoad={handleLoad}
+          onError={handleError}
+          className={`absolute inset-0 w-full h-full object-cover ${error ? 'opacity-0' : 'opacity-100 z-10'} ${animate ? 'group-hover:scale-110 transition-transform duration-700' : ''}`}
           style={{ objectPosition }}
         />
       )}
-      {mounted && !loaded && <div className="absolute inset-0 skeleton-shimmer pointer-events-none" />}
-      {overlay && loaded && <div className="absolute inset-0 pointer-events-none">{overlay}</div>}
+      {mounted && error && <div className="absolute inset-0 skeleton-shimmer pointer-events-none" />}
+      {overlay && loaded && !error && <div className="absolute inset-0 pointer-events-none">{overlay}</div>}
       {loaded && <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />}
     </div>
   );
