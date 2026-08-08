@@ -91,6 +91,12 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'taco-fish': '/images/real/fish-taco.jpg',
   'poke-salmon': '/images/real/poke-bowl.jpg',
   'cauli-steak': `${DISH_IMG_BASE}/cauli-steak.png`,
+  // W85 P0: VEGAN dishes — fixed from hash-fallback (was showing MEAT)
+  'taco-cauliflower': `${NEW_DISHES}/taco-cauliflower.jpg`, // W85: было bbq/b3.jpg (Бао со СВИНИНОЙ) → taco с цветной капустой
+  'zucchini-curry': `${NEW_DISHES}/zucchini-curry.jpg`, // W85: было bbq/b1.jpg (Jerk-курица) → цуккини-карри
+  'veggie-ragout': `${NEW_DISHES}/veggie-ragout.jpg`, // W85: было goryachee/h2.jpg (куриные якитори) → овощное рагу
+  'vegan-grazing': `${NEW_DISHES}/vegan-grazing.jpg`, // W85: было kanape/k8.jpg (рулет с курицей+сыром) → vegan grazing board
+  'fruit-canape': `${NEW_DISHES}/fruit-canape.jpg`, // W85: было kanape/k1.jpg (канапе с лососем) → фруктовые канапе
   'buddha-bowl': '/images/real/vegetarian-bowl.jpg',
 
   // Premium блюда — W83: добавлены конкретные фото
@@ -103,7 +109,14 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'caviar-station': `${NEW_DISHES}/caviar-station.jpg`,
   'cheese-platter-premium': `${DISH_IMG_BASE}/cheese-platter.png`,
   'dessert-firework': `${IMG_BASE}/deserty/d2.jpg`,
-  'salmon-grill': '/images/real/salmon-dish.jpg', // W83: было fallback, стало конкретное
+  // W85 P1: Other hash-fallback fixes
+  'thai-meatballs': `${NEW_DISHES}/thai-meatballs.jpg`, // W85: было goryachee/h8.jpg (борщ) → тайские мясные шарики
+  'tartaletka-olivier': `${NEW_DISHES}/tartaletka-olivier.jpg`, // W85: было kanape/k2.jpg (cheese canape) → тарталетка с оливье
+  'okroshka': `${NEW_DISHES}/okroshka.jpg`, // W85: было kanape/k2.jpg (cheese canape) → окрошка
+  'mushroom-soup': `${NEW_DISHES}/mushroom-soup.jpg`, // W85: было goryachee/h8.jpg (борщ) → крем-суп из грибов
+  'croissant-ham': `${NEW_DISHES}/croissant-ham.jpg`, // W85: было goryachee/h6.jpg (форель) → круассан с ветчиной
+  'volcanic-beef': `${NEW_DISHES}/volcanic-beef.jpg`, // W85: было goryachee/h2.jpg (куриные якитори) → телятина на камне
+  'salmon-grill': `${NEW_DISHES}/salmon-grill-better.jpg`, // W85: улучшено с salmon-dish.jpg
   'chicken-grill': '/images/real/grilled-chicken.jpg', // W83: было fallback, стало конкретное
 
   // Салаты и закуски
@@ -138,8 +151,9 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'muffin': `${NEW_DISHES}/cupcakes.jpg`, // W83: новое фото
   'mini-ekler': `${IMG_BASE}/sezonnye/se7.jpg`,
   'prophyroles': `${IMG_BASE}/sezonnye/se6.jpg`,
-  'gluten-free-cupcakes': `${NEW_DISHES}/cupcakes.jpg`, // W83: новое фото
-  'gluten-free-pizza': '/images/real/pizza.jpg', // W83: было fallback, стало конкретное
+  // W85 P0: GLUTEN-FREE dishes — fixed from wheat photos (celiac risk)
+  'gluten-free-cupcakes': `${NEW_DISHES}/gluten-free-cupcakes.jpg`, // W85: было cupcakes.jpg (обычные пшеничные) → БГ капкейки
+  'gluten-free-pizza': `${NEW_DISHES}/gluten-free-pizza.jpg`, // W85: было pizza.jpg (обычная пшеничная) → БГ мини-пицца
   'soup-shooter': `${IMG_BASE}/goryachee/h8.jpg`,
 
   // Напитки — W83: исправлены все mismatch'и
