@@ -293,7 +293,40 @@ export const useConstructor = create<ConstructorState>()(
 
       recalc: () => {
         const { format, guestCount, childGuests, tier, tierMode, selectedItems, addOns, pricing, guestGroups, groupsEnabled } = get();
-        if (!format || !tier) {
+        // W91 FIX: В custom mode (tierMode='custom') tier=null, но блюда уже выбраны.
+        // Не возвращаем 0 — считаем total из selectedItems.
+        if (!format) {
+          set({ base: 0, addonsTotal: 0, total: 0, perGuest: 0, savings: 0, service: 0 });
+          return;
+        }
+
+        // === Custom mode: считаем из selectedItems даже без tier ===
+        if (tierMode === 'custom' || (!tier && selectedItems.length > 0)) {
+          let base = 0;
+          for (const item of selectedItems) {
+            const dish = DISH_MAP.get(item.dishId);
+            if (!dish) continue;
+            base += dish.pricePerGuest * item.qty * guestCount;
+          }
+          const addonsTotal = addOns.reduce((sum, a) => {
+            if (a.priceType === 'perGuest') return sum + a.price * guestCount;
+            return sum + a.price;
+          }, 0);
+          const totalSum = Math.round(base + addonsTotal);
+          const perGuest = guestCount > 0 ? Math.round(totalSum / guestCount) : 0;
+          set({
+            base: Math.round(base),
+            addonsTotal: Math.round(addonsTotal),
+            total: totalSum,
+            perGuest,
+            savings: 0,
+            service: 0,
+          });
+          return;
+        }
+
+        // === Preset mode (tier выбран) — оригинальная логика ===
+        if (!tier) {
           set({ base: 0, addonsTotal: 0, total: 0, perGuest: 0, savings: 0, service: 0 });
           return;
         }
@@ -348,34 +381,7 @@ export const useConstructor = create<ConstructorState>()(
           return;
         }
 
-        // Custom mode (без групп): calculate from selected dishes
-        if (tierMode === 'custom' && selectedItems.length > 0) {
-          const itemsForCalc = selectedItems
-            .map(i => {
-              const dish = DISH_MAP.get(i.dishId);
-              return dish ? { pricePerGuest: dish.pricePerGuest, qty: i.qty } : null;
-            })
-            .filter((x): x is { pricePerGuest: number; qty: number } => x !== null);
-
-          const result = calcTotal(guestCount, format, 'custom', addOns, {
-            discounts: true,
-            childGuests,
-            serviceBreakdown: false,
-            pricing,
-            items: itemsForCalc,
-          });
-
-          set({
-            base: result.base,
-            addonsTotal: result.addonsTotal,
-            total: result.total,
-            perGuest: result.perGuest,
-            savings: result.savings,
-            service: result.service,
-          });
-          return;
-        }
-
+        // Preset mode with tier — original calculation
         const result = calcTotal(guestCount, format, tier as Tier, addOns, {
           discounts: true,
           childGuests,

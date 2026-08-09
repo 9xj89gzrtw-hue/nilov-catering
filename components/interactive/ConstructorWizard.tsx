@@ -15,11 +15,11 @@ import type { Format, Tier, Allergen } from '@/lib/types';
 
 // Метаданные форматов — только UI (icon, label, desc, img). Цены берутся из getPricesForFormat.
 const TARIFF_META: { format: Format; label: string; icon: string; desc: string; img: string }[] = [
-  { format: 'furshet', label: 'Фуршет', icon: '', desc: 'Стоячий приём, лёгкие закуски', img: '/images/menu/kanape/k1.jpg' },
-  { format: 'banket', label: 'Банкет', icon: '', desc: 'Посадка за стол, официанты', img: '/images/real/beef-medallions.jpg' },
-  { format: 'coffee-break', label: 'Кофе-брейк', icon: '', desc: 'Кофе, выпечка, десерты', img: '/images/menu/deserty/d1.jpg' },
-  { format: 'detskoe', label: 'Детский', icon: '', desc: 'Меню для детей, аниматор', img: '/images/menu/goryachee/h1.jpg' },
-  { format: 'chef-at-home', label: 'Шеф на дом', icon: '', desc: 'Шеф готовит у вас', img: '/images/dishes-new/beef-steak.jpg' },
+  { format: 'furshet', label: 'Фуршет', icon: '', desc: 'Стоячий приём, лёгкие закуски. Для дней рождения и корпоративов', img: '/images/menu/kanape/k1.jpg' },
+  { format: 'banket', label: 'Банкет', icon: '', desc: 'Посадка за стол, официанты. Для свадеб и юбилеев', img: '/images/real/beef-medallions.jpg' },
+  { format: 'coffee-break', label: 'Кофе-брейк', icon: '', desc: 'Кофе, выпечка, десерты. Для конференций', img: '/images/menu/deserty/d1.jpg' },
+  { format: 'detskoe', label: 'Детский', icon: '', desc: 'Меню для детей, аниматор. Для детских праздников', img: '/images/menu/goryachee/h1.jpg' },
+  { format: 'chef-at-home', label: 'Шеф на дом', icon: '', desc: 'Шеф готовит у вас. Для камерных ужинов', img: '/images/dishes-new/beef-steak.jpg' },
   { format: 'pominki', label: 'Поминки', icon: '', desc: 'Поминальный обед, без алкоголя', img: '/images/real/salmon-dish.jpg' },
 ];
 
