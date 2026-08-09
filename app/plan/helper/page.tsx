@@ -175,7 +175,7 @@ export default function PlanHelperPage({
             {current.q}
           </h1>
           <p className="text-base text-muted-foreground mb-3">
-            От 390 ₽/гость — всё включено. Без скрытых платежей.
+            От 390 ₽/гость — всё включено. Рассчитаем за 15 минут. Без скрытых платежей.
           </p>
         </div>
 
