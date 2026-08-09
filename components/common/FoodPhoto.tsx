@@ -53,7 +53,7 @@ export default function FoodPhoto({
   const handleError = () => { setError(true); setLoaded(true); };
 
   return (
-    <div className={`relative overflow-hidden bg-secondary ${RATIOS[aspectRatio]} ${className} group`}>
+    <div className={`relative overflow-hidden bg-card ${RATIOS[aspectRatio]} ${className} group`}>
       {isJpg ? (
         <picture>
           <source srcSet={`${avifSrc.replace(/\.avif$/, '-480.avif')} 480w, ${avifSrc.replace(/\.avif$/, '-768.avif')} 768w, ${avifSrc} 1920w`} sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" type="image/avif" />
