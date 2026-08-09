@@ -95,6 +95,13 @@ export default function PricingPage() {
               {SITE.phone}
             </a>
           </div>
+
+          {/* Документы для скачивания */}
+          <div className="flex flex-wrap gap-3 justify-center mt-4 text-xs">
+            <a href="/api/templates/dogovor" download className="text-muted-foreground hover:text-gold-text underline">Договор PDF</a>
+            <a href="/api/templates/nda" download className="text-muted-foreground hover:text-gold-text underline">NDA PDF</a>
+            <a href="/api/templates/sla" download className="text-muted-foreground hover:text-gold-text underline">SLA PDF</a>
+          </div>
         </div>
 
         {/* 4 ФОРМАТА — простые карточки с ценой */}
