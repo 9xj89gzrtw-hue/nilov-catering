@@ -95,7 +95,7 @@ export default function PricingPage() {
           {FORMATS.map((fmt) => (
             <div
               key={fmt.name}
-              className={`relative rounded-2xl overflow-hidden border-2 ${fmt.popular ? 'border-gold-text' : 'border-line'} bg-card`}
+              className={`relative rounded-2xl overflow-hidden border-2 ${fmt.popular ? 'border-gold-text shadow-lg shadow-gold/10' : 'border-line'} bg-card flex`}
             >
               {fmt.popular && (
                 <div className="absolute top-3 right-3 z-10">
@@ -103,20 +103,19 @@ export default function PricingPage() {
                 </div>
               )}
 
-              <div className="flex">
-                {/* Фото */}
-                <div className="w-1/3 relative overflow-hidden bg-secondary">
-                  <FoodPhoto
-                    src={fmt.img}
-                    alt={fmt.name}
-                    aspectRatio="square"
-                    className="w-full h-full"
-                  />
-                </div>
+              {/* Фото — фиксированная ширина, квадрат */}
+              <div className="w-36 md:w-40 shrink-0 relative overflow-hidden bg-secondary">
+                <FoodPhoto
+                  src={fmt.img}
+                  alt={fmt.name}
+                  aspectRatio="square"
+                  className="w-full h-full"
+                />
+              </div>
 
-                {/* Контент */}
-                <div className="w-2/3 p-5">
-                  <h2 className="font-heading text-xl font-medium mb-1">{fmt.name}</h2>
+              {/* Контент — занимает остаток */}
+              <div className="flex-1 p-5 flex flex-col">
+                <h2 className="font-heading text-xl font-medium mb-1">{fmt.name}</h2>
                   <p className="text-xs text-muted-foreground mb-3">{fmt.desc}</p>
 
                   {/* Цена — КРУПНО */}
@@ -140,12 +139,11 @@ export default function PricingPage() {
 
                   <Link
                     href={fmt.href}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-text hover:underline"
+                    className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-gold-text hover:underline pt-3"
                   >
                     Выбрать {fmt.name} <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
             </div>
           ))}
         </div>
