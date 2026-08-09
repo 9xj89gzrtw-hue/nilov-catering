@@ -241,18 +241,11 @@ export default function CatalogPage() {
           </div>
         )}
 
-        {/* PDF download + min order info */}
+        {/* Min order info */}
         <div className="mt-8 p-5 rounded-xl border border-line bg-card text-center">
-          <p className="text-sm text-muted-foreground mb-3">
+          <p className="text-sm text-muted-foreground">
             Минимальный заказ: от 10 гостей (кофе-брейк) / 15 (фуршет) / 30 (банкет)
           </p>
-          <a
-            href="/menu/catalog/pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-lg border border-line bg-background px-5 py-3 text-sm font-semibold hover:border-gold-text transition-colors"
-          >
-            📄 Скачать каталог (PDF)
-          </a>
         </div>
 
         {/* ════════ 5. КОРЗИНА — плавающая внизу ════════ */}

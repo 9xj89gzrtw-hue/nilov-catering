@@ -208,20 +208,8 @@ export default function BarPage() {
           </div>
         </div>
 
-        {/* PDF download */}
-        <div className="mt-8 pt-6 border-t border-background/10 flex flex-wrap items-center justify-between gap-4">
-          <a
-            href="/menu/bar/pdf"
-            download
-            className="inline-flex items-center gap-2 rounded-lg border border-background/20 text-background px-5 py-3 text-sm font-medium hover:border-gold-text hover:text-gold-text transition-all"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Скачать барную карту (PDF)
-          </a>
+        {/* Note */}
+        <div className="mt-8 pt-6 border-t border-background/10">
           <p className="text-xs text-background/40">Все цены ориентировочные. Финальный расчёт — после консультации с менеджером.</p>
         </div>
       </div>

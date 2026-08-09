@@ -28,6 +28,8 @@ export default function ContactPage() {
         </p>
 
         <form
+          method="POST"
+          action="/api/quote"
           onSubmit={async (e) => {
             e.preventDefault();
             setSubmitting(true);
