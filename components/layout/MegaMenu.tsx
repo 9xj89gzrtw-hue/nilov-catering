@@ -71,7 +71,6 @@ export default function MegaMenu() {
         <li key={group.href} className="relative" role="none">
           <button
             onClick={() => setOpen(open === group.label ? null : group.label)}
-            onMouseEnter={() => setOpen(group.label)}
             className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
             aria-expanded={open === group.label}
             aria-haspopup="true"
