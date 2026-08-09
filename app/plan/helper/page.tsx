@@ -208,7 +208,11 @@ export default async function PlanHelperPage({
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 leading-tight" style={{ fontWeight: 500 }}>
             {current.q}
           </h1>
-          <p className="text-base text-muted-foreground">{current.sub}</p>
+          <p className="text-base text-muted-foreground mb-3">{current.sub}</p>
+          {/* Trust bar */}
+          <p className="text-sm text-muted-foreground">
+            19 лет на кухне СПб · 3000+ событий · 4.8/5 по 27 отзывам · 📞 Перезвоним за 15 минут
+          </p>
         </div>
 
         {/* Step 0: photo cards for occasions */}

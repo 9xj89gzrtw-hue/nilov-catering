@@ -77,8 +77,12 @@ export default function CatalogPage() {
           <h1 className="font-heading text-4xl md:text-5xl font-medium tracking-tight mb-3">
             Каталог блюд
           </h1>
-          <p className="text-base text-muted-foreground max-w-2xl">
+          <p className="text-base text-muted-foreground max-w-2xl mb-4">
             {ALL_DISHES.length} блюд. Нажмите «В меню» на карточке, чтобы собрать свой заказ.
+          </p>
+          {/* Trust bar — compact, one line */}
+          <p className="text-sm text-muted-foreground">
+            19 лет на кухне СПб · 3000+ событий · 4.8/5 по 27 отзывам · ⏱ Перезвоним за 15 минут
           </p>
         </section>
 
