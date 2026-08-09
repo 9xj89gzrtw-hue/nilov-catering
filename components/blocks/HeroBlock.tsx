@@ -70,7 +70,7 @@ export default function HeroBlock() {
               href="/plan/helper"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-foreground px-8 py-4 text-base font-semibold hover:bg-white/90 transition-colors no-underline shadow-lg"
             >
-              Узнать цену за 30 секунд
+              Узнать цену — ответим за 15 минут
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
             <Link
@@ -83,7 +83,7 @@ export default function HeroBlock() {
 
           {/* Trust — одна строка внизу */}
           <p className="text-sm text-white/60 mt-8">
-            19 лет на кухне Петербурга · 4.8/5 по 27 отзывам · 124 блюда
+            19 лет на кухне Петербурга · 3000+ событий · 4.8/5 по 27 отзывам
           </p>
         </div>
       </div>

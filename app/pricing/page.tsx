@@ -76,13 +76,17 @@ export default function PricingPage() {
           <h1 className="font-heading text-4xl md:text-6xl font-medium mb-4" style={{ letterSpacing: '-0.02em' }}>
             Цены на кейтеринг
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
             4 формата. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
+          </p>
+          {/* Urgency + trust */}
+          <p className="text-sm text-muted-foreground mb-6">
+            ⏱ Бронь за 24 часа · 📞 Перезвоним за 15 минут · ✅ Без скрытых платежей
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
               <Calculator className="w-4 h-4" />
-              Рассчитать за 2 минуты
+              Рассчитать — ответим за 15 минут
             </Link>
             <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-6 py-3 text-sm font-semibold hover:border-gold-text transition-colors">
               {SITE.phone}

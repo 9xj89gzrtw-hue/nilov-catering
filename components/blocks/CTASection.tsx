@@ -39,26 +39,29 @@ export default function CTASection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center mb-6">
               <Link
                 href="/plan/helper"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-8 py-4 text-base font-semibold transition-colors no-underline shadow-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-8 py-4 text-base font-semibold transition-colors no-underline shadow-sm min-w-[280px]"
               >
                 Узнать цену — 3 вопроса
               </Link>
-              <a
-                href={SITE.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-background/30 text-background hover:bg-background/10 px-8 py-4 text-base font-medium transition-colors no-underline"
-              >
-                <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                WhatsApp
-              </a>
-              <a
-                href={`tel:${SITE.phoneTel}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-background/30 text-background hover:bg-background/10 px-8 py-4 text-base font-medium transition-colors no-underline"
-              >
-                <Phone className="w-5 h-5" aria-hidden="true" />
-                Позвонить
-              </a>
+              {/* Secondary CTAs — compact icon buttons, not competing with primary */}
+              <div className="flex gap-2 justify-center">
+                <a
+                  href={SITE.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-background/30 text-background hover:bg-background/10 transition-colors no-underline"
+                  aria-label="Написать в WhatsApp"
+                >
+                  <MessageCircle className="w-5 h-5" aria-hidden="true" />
+                </a>
+                <a
+                  href={`tel:${SITE.phoneTel}`}
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-background/30 text-background hover:bg-background/10 transition-colors no-underline"
+                  aria-label="Позвонить"
+                >
+                  <Phone className="w-5 h-5" aria-hidden="true" />
+                </a>
+              </div>
             </div>
 
             <p className="text-sm text-background/55">
