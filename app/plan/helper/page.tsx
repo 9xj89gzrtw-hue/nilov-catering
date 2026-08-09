@@ -47,12 +47,12 @@ const OCCASION_TO_PAGE: Record<string, string> = {
   'Просто ужин': '/events/chef-at-home',
 };
 
-export default function PlanHelperPage({
+export default async function PlanHelperPage({
   searchParams,
 }: {
-  searchParams: { occasion?: string; guests?: string; location?: string };
+  searchParams: Promise<{ occasion?: string; guests?: string; location?: string }>;
 }) {
-  const { occasion, guests, location } = searchParams;
+  const { occasion, guests, location } = await searchParams;
   const step = !occasion ? 0 : !guests ? 1 : !location ? 2 : 3;
 
   // Финальный экран
