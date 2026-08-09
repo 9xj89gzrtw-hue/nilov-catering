@@ -83,6 +83,9 @@ export default function PricingPage() {
           <p className="text-sm text-muted-foreground mb-6">
             ⏱ Бронь за 24 часа · 📞 Перезвоним за 15 минут · ✅ Без скрытых платежей
           </p>
+          <p className="text-xs text-muted-foreground mb-6 max-w-xl mx-auto">
+            Все цены включают: еду, официантов, посуду, сервировку, доставку по КАД и уборку.
+          </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
               <Calculator className="w-4 h-4" />
