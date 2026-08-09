@@ -82,9 +82,20 @@ export default function ContactPage() {
               autoComplete="tel"
               inputMode="tel"
               placeholder="+7 (___) ___-__-__"
+              onInvalid={(e) => {
+                e.preventDefault();
+                (e.target as HTMLInputElement).setCustomValidity('');
+                if (!(e.target as HTMLInputElement).value) {
+                  (e.target as HTMLInputElement).setCustomValidity('Введите номер телефона');
+                } else if ((e.target as HTMLInputElement).value.length < 10) {
+                  (e.target as HTMLInputElement).setCustomValidity('Слишком короткий номер — минимум 10 цифр');
+                }
+              }}
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
               className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+              aria-describedby="phone-hint"
             />
-            <p className="text-xs text-muted-foreground mt-1">Минимум 10 цифр</p>
+            <p id="phone-hint" className="text-xs text-muted-foreground mt-1">Минимум 10 цифр. Например: +7 (812) 919-59-11</p>
           </div>
 
           {/* 3. Комментарий — required */}

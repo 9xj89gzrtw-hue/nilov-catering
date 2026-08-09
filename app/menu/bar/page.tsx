@@ -76,6 +76,7 @@ export default function BarPage() {
       header a, header button { color: rgba(250,247,242,0.7) !important; }
       header a:hover, header button:hover { color: rgb(250,247,242) !important; }
       header svg { color: rgba(250,247,242,0.7) !important; }
+      body { background: rgb(28,24,21) !important; }
     `}} />
     <main id="main" className="pt-24 pb-20 bg-foreground text-background">
       <div className="container-site max-w-6xl">
