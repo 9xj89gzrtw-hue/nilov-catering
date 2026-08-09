@@ -70,6 +70,13 @@ const BAR_ITEMS = [
 
 export default function BarPage() {
   return (
+    <>
+    <style dangerouslySetInnerHTML={{__html: `
+      header { background: rgba(28,24,21,0.9) !important; border-color: rgba(250,247,242,0.1) !important; }
+      header a, header button { color: rgba(250,247,242,0.7) !important; }
+      header a:hover, header button:hover { color: rgb(250,247,242) !important; }
+      header svg { color: rgba(250,247,242,0.7) !important; }
+    `}} />
     <main id="main" className="pt-24 pb-20 bg-foreground text-background">
       <div className="container-site max-w-6xl">
         <nav aria-label="Хлебные крошки" className="text-sm text-background/60 mb-4">
@@ -214,5 +221,6 @@ export default function BarPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

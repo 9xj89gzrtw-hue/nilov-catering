@@ -78,11 +78,13 @@ export default function ContactPage() {
               type="tel"
               name="phone"
               required
+              pattern="[\d\s\+\-\(\)]{10,}"
               autoComplete="tel"
               inputMode="tel"
               placeholder="+7 (___) ___-__-__"
               className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
             />
+            <p className="text-xs text-muted-foreground mt-1">Минимум 10 цифр</p>
           </div>
 
           {/* 3. Комментарий — required */}
