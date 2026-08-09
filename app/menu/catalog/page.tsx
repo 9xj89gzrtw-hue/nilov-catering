@@ -62,24 +62,28 @@ export default function CatalogPage() {
 
   const visible = filtered.slice(0, visibleCount);
   const hasMore = filtered.length > visibleCount;
+  const totalCountLabel =
+    filtered.length === ALL_DISHES.length
+      ? `Всего ${ALL_DISHES.length} блюд`
+      : `Найдено ${filtered.length} из ${ALL_DISHES.length}`;
 
   return (
     <main className="pt-24 pb-32" id="main">
       <div className="container-site max-w-6xl">
         <Breadcrumbs />
 
-        {/* Заголовок */}
-        <div className="mb-8">
-          <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">
+        {/* ════════ 1. ЗАГОЛОВОК — главный фокус ════════ */}
+        <section className="mb-10 md:mb-12">
+          <h1 className="font-heading text-4xl md:text-5xl font-medium tracking-tight mb-3">
             Каталог блюд
           </h1>
-          <p className="text-muted-foreground">
-            {ALL_DISHES.length} блюд. Нажмите «+ В меню» чтобы собрать свой заказ.
+          <p className="text-base text-muted-foreground max-w-2xl">
+            {ALL_DISHES.length} блюд. Нажмите «В меню» на карточке, чтобы собрать свой заказ.
           </p>
-        </div>
+        </section>
 
-        {/* Поиск + фильтры — ОДНА простая панель */}
-        <div className="mb-8 space-y-3">
+        {/* ════════ 2. ФИЛЬТРЫ — второстепенная панель ════════ */}
+        <section className="mb-10 md:mb-12 space-y-3">
           {/* Поиск */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -101,7 +105,7 @@ export default function CatalogPage() {
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                   station === s.key
                     ? 'border-gold-text bg-gold-tint text-gold-text'
-                    : 'border-line text-muted-foreground hover:border-gold-text'
+                    : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
                 }`}
               >
                 <span className="mr-1">{s.emoji}</span>
@@ -110,100 +114,104 @@ export default function CatalogPage() {
             ))}
           </div>
 
-          {/* Диета */}
-          <div className="flex gap-2 flex-wrap items-center">
-            <span className="text-xs text-muted-foreground">Диета:</span>
-            {DIETS.map(d => (
-              <button
-                key={d.key}
-                onClick={() => toggleDiet(d.key)}
-                className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                  activeDiets.has(d.key)
-                    ? 'border-gold-text bg-gold-tint text-gold-text'
-                    : 'border-line text-muted-foreground hover:border-gold-text'
-                }`}
-              >
-                {d.label}
-              </button>
-            ))}
-            {hasActiveFilters && (
-              <button onClick={resetFilters} className="text-xs text-gold-text hover:underline ml-2">
-                ✕ Сбросить
-              </button>
-            )}
-          </div>
-
-          <p className="text-xs text-muted-foreground">
-            {filtered.length === ALL_DISHES.length
-              ? `Показаны все ${ALL_DISHES.length} блюд`
-              : `Найдено ${filtered.length} из ${ALL_DISHES.length}`}
-          </p>
-        </div>
-
-        {/* СЕТКА БЛЮД — простая, 3 колонки, крупные карточки */}
-        {visible.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {visible.map((dish) => {
-              const isInCart = selectedItems.some(i => i.dishId === dish.id);
-              const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
-              return (
-                <div
-                  key={dish.id}
-                  className="rounded-2xl border border-line bg-card overflow-hidden hover:shadow-lg hover:border-gold-text transition-all flex flex-col"
+          {/* Диета + счётчик на одной строке (убираем «висящую» строку) */}
+          <div className="flex gap-2 flex-wrap items-center justify-between">
+            <div className="flex gap-2 flex-wrap items-center">
+              <span className="text-xs text-muted-foreground">Диета:</span>
+              {DIETS.map(d => (
+                <button
+                  key={d.key}
+                  onClick={() => toggleDiet(d.key)}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    activeDiets.has(d.key)
+                      ? 'border-gold-text bg-gold-tint text-gold-text'
+                      : 'border-line text-muted-foreground hover:border-gold-text'
+                  }`}
                 >
-                  {/* Фото — крупное, квадратное */}
-                  <Link href={constructorHref} className="relative block aspect-[4/3] overflow-hidden bg-secondary">
-                    <FoodPhoto
-                      src={getDishImage(dish.id, dish.station)}
-                      alt={dish.name}
-                      aspectRatio="wide"
-                      objectPosition={getObjectPositionForDish(dish.id, dish.station)}
-                      className="w-full h-full"
-                    />
-                    {/* Цена на фото */}
-                    <div className="absolute top-2 right-2">
-                      <span className="inline-block bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-foreground shadow-md">
-                        {dish.pricePerGuest} ₽
-                      </span>
-                    </div>
-                    {/* Бейджи диет */}
-                    <div className="absolute top-2 left-2 flex gap-1">
-                      {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">VG</span>}
-                      {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold">GF</span>}
-                      {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold">H</span>}
-                    </div>
-                  </Link>
-
-                  {/* Инфо */}
-                  <div className="p-4 flex-1 flex flex-col">
-                    <h3 className="font-medium text-base mb-1">{dish.name}</h3>
-                    <p className="text-xs text-muted-foreground mb-3 line-clamp-2 flex-1">{dish.description}</p>
-
-                    {/* Цена + кнопка */}
-                    <div className="flex items-center justify-between gap-2 pt-3 border-t border-line">
-                      <span className="text-sm text-muted-foreground">
-                        <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span> ₽/гость
-                      </span>
-                      <button
-                        onClick={() => isInCart ? removeDish(dish.id) : addDish(dish.id)}
-                        className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-bold transition-all ${
-                          isInCart
-                            ? 'bg-emerald-100 text-emerald-700 border border-emerald-300'
-                            : 'bg-gold-text text-white hover:bg-gold-text/90'
-                        }`}
-                      >
-                        {isInCart ? (
-                          <><Check className="w-4 h-4" /> В меню</>
-                        ) : (
-                          <><Plus className="w-4 h-4" /> В меню</>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                  {d.label}
+                </button>
+              ))}
+              {hasActiveFilters && (
+                <button onClick={resetFilters} className="text-xs text-gold-text hover:underline ml-2">
+                  ✕ Сбросить
+                </button>
+              )}
+            </div>
+            <p className="text-xs text-muted-foreground whitespace-nowrap">{totalCountLabel}</p>
           </div>
+        </section>
+
+        {/* ════════ 3. СЕТКА БЛЮД — главный фокус ════════ */}
+        {visible.length > 0 ? (
+          <section>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+              {visible.map((dish) => {
+                const isInCart = selectedItems.some(i => i.dishId === dish.id);
+                const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
+                return (
+                  <article
+                    key={dish.id}
+                    className="group rounded-2xl border border-line bg-card overflow-hidden hover:shadow-lg hover:border-gold-text transition-all flex flex-col h-full"
+                  >
+                    {/* Фото — фиксированная высота для консистентности */}
+                    <Link
+                      href={constructorHref}
+                      className="relative block aspect-[4/3] overflow-hidden bg-secondary shrink-0"
+                      aria-label={dish.name}
+                    >
+                      <FoodPhoto
+                        src={getDishImage(dish.id, dish.station)}
+                        alt={dish.name}
+                        aspectRatio="wide"
+                        objectPosition={getObjectPositionForDish(dish.id, dish.station)}
+                        className="w-full h-full"
+                      />
+                      {/* Цена на фото */}
+                      <div className="absolute top-2 right-2">
+                        <span className="inline-block bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold text-foreground shadow-md">
+                          {dish.pricePerGuest} ₽
+                        </span>
+                      </div>
+                      {/* Бейджи диет */}
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">VG</span>}
+                        {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold">GF</span>}
+                        {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold">H</span>}
+                      </div>
+                    </Link>
+
+                    {/* Инфо — flex-col с mt-auto прижимает кнопку к низу для одинаковой высоты */}
+                    <div className="p-4 flex-1 flex flex-col">
+                      <h3 className="font-heading font-medium text-lg leading-snug mb-1">{dish.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2 min-h-[2.5rem]">{dish.description}</p>
+
+                      {/* Цена + кнопка — прижата к низу карточки */}
+                      <div className="mt-auto flex items-center justify-between gap-2 pt-3 border-t border-line">
+                        <span className="text-sm text-muted-foreground">
+                          <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span> ₽/гость
+                        </span>
+                        <button
+                          onClick={() => isInCart ? removeDish(dish.id) : addDish(dish.id)}
+                          aria-pressed={isInCart}
+                          className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-bold transition-all ${
+                            isInCart
+                              ? 'bg-emerald-100 text-emerald-700 border border-emerald-300'
+                              : 'bg-gold-text text-white hover:bg-gold-text/90 shadow-sm'
+                          }`}
+                        >
+                          {isInCart ? (
+                            <><Check className="w-4 h-4" /> В меню</>
+                          ) : (
+                            <><Plus className="w-4 h-4" /> В меню</>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
         ) : (
           <div className="text-center py-16">
             <p className="text-4xl mb-4">🍽</p>
@@ -214,9 +222,9 @@ export default function CatalogPage() {
           </div>
         )}
 
-        {/* Показать ещё */}
+        {/* ════════ 4. ПАГИНАЦИЯ ════════ */}
         {hasMore && (
-          <div className="text-center py-8">
+          <div className="text-center py-10">
             <button
               onClick={() => setVisibleCount(c => c + 12)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-8 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors"
@@ -229,7 +237,7 @@ export default function CatalogPage() {
           </div>
         )}
 
-        {/* Корзина — плавающая внизу */}
+        {/* ════════ 5. КОРЗИНА — плавающая внизу ════════ */}
         {selectedItems.length > 0 && (
           <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 rounded-2xl bg-background/95 backdrop-blur-xl border border-line shadow-2xl p-4">
             <div className="flex items-center justify-between gap-3">
