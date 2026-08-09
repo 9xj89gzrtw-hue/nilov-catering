@@ -17,7 +17,7 @@ export default function ContactPage() {
       <div className="container-site max-w-2xl">
         <Breadcrumbs />
 
-        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">Оставить заявку</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">Контакты</h1>
         <p className="text-muted-foreground mb-8">
           Заполните форму — перезвоним за 15 минут (9:00–21:00). Без спама.
         </p>
