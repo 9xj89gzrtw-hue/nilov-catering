@@ -46,6 +46,8 @@ export default function MobileMenu() {
         onClick={() => setOpen(true)}
         className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
         aria-label="Открыть меню"
+        aria-expanded={open}
+        aria-haspopup="true"
       >
         <svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <path d="M3 3h16M3 9h16M3 15h10" />

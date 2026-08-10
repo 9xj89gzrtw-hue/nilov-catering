@@ -69,7 +69,8 @@ export default function InlinePriceCalculator() {
               step="5"
               value={guests}
               onChange={e => setGuests(Number(e.target.value))}
-              className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+              aria-label="Количество гостей"
+              className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary min-h-[44px]"
             />
             <div className="flex justify-between text-xs text-muted-foreground mt-1">
               <span>10</span>
