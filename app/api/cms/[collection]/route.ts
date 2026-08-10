@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cmsStore } from '@/lib/cms-store';
 
+/** Check admin auth — same guard as /api/admin */
+function checkAuth(req: NextRequest): boolean {
+  const secret = process.env.ADMIN_SECRET;
+  if (!secret) return false;
+  const auth = req.headers.get('x-admin-secret') || req.headers.get('authorization')?.replace('Bearer ', '');
+  return auth === secret;
+}
+
 /** REST API для CMS-админки: GET/POST /api/cms/[collection] */
 export async function GET(
   _req: NextRequest,
@@ -28,6 +36,11 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ collection: string }> }
 ) {
+  // Auth guard — prevent unauthenticated CMS mutations
+  if (!checkAuth(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const { collection } = await params;
   const body = await req.json();
 

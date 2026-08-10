@@ -117,5 +117,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  return NextResponse.json({ success: false, message: 'Используйте POST для подписки' });
+  return NextResponse.json({ success: false, message: 'Используйте POST для подписки' }, { status: 405, headers: { Allow: 'POST' } });
 }

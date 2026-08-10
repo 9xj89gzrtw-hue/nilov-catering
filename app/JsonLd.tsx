@@ -128,7 +128,7 @@ export function ServiceJsonLd() {
       'priceCurrency': 'RUB',
       'lowPrice': '390',
       'highPrice': '9950',
-      'offerCount': '4',
+      'offerCount': '26',
     },
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;

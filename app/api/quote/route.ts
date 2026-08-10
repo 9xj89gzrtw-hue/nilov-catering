@@ -157,5 +157,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  return NextResponse.json({ success: false, message: 'Используйте POST для отправки заявки' });
+  return NextResponse.json({ success: false, message: 'Используйте POST для отправки заявки' }, { status: 405, headers: { Allow: 'POST' } });
 }

@@ -244,7 +244,7 @@ export default async function PlanHelperPage({
         <Breadcrumbs />
 
         {/* Progress bar */}
-        <div className="flex gap-1 mb-10" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>
+        <div className="flex gap-1 mb-10" role="progressbar" aria-label={`Шаг ${step + 1} из 3`} aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>
           {[0, 1, 2].map((i) => (
             <div
               key={i}

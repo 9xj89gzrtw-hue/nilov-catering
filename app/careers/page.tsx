@@ -22,7 +22,7 @@ export default function CareersPage() {
           <p className="text-sm text-muted-foreground">{v.d}</p>
         </div>
       ))}
-      <Link href="mailto:job@nilov-catering.ru" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground mt-4">Откликнуться</Link>
+      <a href="mailto:job@nilov-catering.ru" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground mt-4">Откликнуться</a>
     </div></main>
   );
 }

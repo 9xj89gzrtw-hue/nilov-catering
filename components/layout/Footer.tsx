@@ -101,9 +101,9 @@ export default function Footer() {
           </p>
           <p className="mt-1">
             {SITE.legalAddress} ·{' '}
-            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground no-underline inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.phone}</a>{' '}
+            <a href={`tel:${SITE.phoneTel}`} className="hover:text-foreground inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.phone}</a>{' '}
             ·{' '}
-            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground no-underline inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.email}</a>
+            <a href={`mailto:${SITE.email}`} className="hover:text-foreground inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.email}</a>
           </p>
         </div>
       </div>

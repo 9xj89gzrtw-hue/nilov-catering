@@ -32,7 +32,7 @@ const FACTS: TrustFact[] = [
   {
     id: 'years',
     icon: Calendar,
-    label: 'более 19 лет', // fact-checked 2026-07
+    label: '19 лет', // fact-checked 2026-07
     sublabel: 'с 2007',
     value: 19,
     suffix: '+',
