@@ -137,7 +137,7 @@ export default function BarPage() {
                     </span>
                   </div>
                   <div className="absolute bottom-3 left-3 z-10">
-                    <span className="text-[10px] uppercase tracking-wider bg-black/60 text-white px-2 py-1 rounded">
+                    <span className="text-xs uppercase tracking-wider bg-black/60 text-white px-2 py-1 rounded">
                       {s.duration}
                     </span>
                   </div>
@@ -147,7 +147,7 @@ export default function BarPage() {
                   <p className="text-sm text-background/60 mb-3 flex-1">{s.i}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {s.features.map(f => (
-                      <span key={f} className="text-[10px] bg-background/10 text-background/70 px-2 py-0.5 rounded-full">{f}</span>
+                      <span key={f} className="text-xs bg-background/10 text-background/70 px-2 py-0.5 rounded-full">{f}</span>
                     ))}
                   </div>
                   <Link
@@ -182,7 +182,7 @@ export default function BarPage() {
                 </div>
                 <div className="p-3">
                   <h3 className="text-sm font-medium mb-1 text-background group-hover:text-gold-text transition-colors">{item.name}</h3>
-                  <p className="text-[11px] text-background/50 line-clamp-2">{item.desc}</p>
+                  <p className="text-xs text-background/50 line-clamp-2">{item.desc}</p>
                 </div>
               </div>
             ))}
