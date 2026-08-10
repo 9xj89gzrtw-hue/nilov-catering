@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import EnLangFix from './EnLangFix';
 
 export const metadata: Metadata = {
   title: 'Catering in St. Petersburg — from 390 ₽/guest',
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function EnLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <EnLangFix />
+      {children}
+    </>
+  );
 }
