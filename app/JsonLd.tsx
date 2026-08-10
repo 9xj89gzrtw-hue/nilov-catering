@@ -42,7 +42,7 @@ export function OrganizationJsonLd() {
     url: `https://${SITE.domain}`,
     telephone: SITE.phoneTel,
     email: SITE.email,
-    image: [`https://${SITE.domain}/og-image.png`],
+    image: [`https://${SITE.domain}/images/catering/wedding-01.jpg`],
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Санкт-Петербург',
