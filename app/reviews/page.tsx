@@ -172,7 +172,7 @@ export default function ReviewsPage() {
                 </span>
               </div>
               <span className="text-white/80 text-xs md:text-sm">
-                {REVIEWS.length} отзывов · {verifiedCount} проверено · 3 000+ мероприятий
+                {REVIEWS.length} отзывов · {verifiedCount} проверено · 3 000+ событий
               </span>
             </div>
           </div>

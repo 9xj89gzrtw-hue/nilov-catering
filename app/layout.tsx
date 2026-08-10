@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { cormorant, inter, jetbrains } from '@/lib/fonts';
 import { SITE } from '@/lib/data';
+import { headers } from 'next/headers';
 import SmoothScrollProvider from '@/components/effects/SmoothScrollProvider';
 import TextSizeToggle from '@/components/effects/TextSizeToggle';
 import Header from '@/components/layout/Header';
@@ -31,9 +32,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cmsPricing = await getPricing();
+  // Read locale from middleware header (set for /en routes)
+  const headersList = await headers();
+  const contentLang = headersList.get('x-content-lang');
+  const htmlLang = contentLang || 'ru';
 
   return (
-    <html lang="ru" className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html lang={htmlLang} className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <SkipLink />
         <link rel="preconnect" href={`https://${SITE.domain}`} />

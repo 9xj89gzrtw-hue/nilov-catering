@@ -178,7 +178,7 @@ const CASES = [
     date: 'Сентябрь 2024',
     place: 'Лофт на Васильевском, СПб',
     title: 'Свадебный банкет 120 гостей',
-    desc: 'Банкет по тарифу «Стандарт» (5 470 ₽/гость). Свадебный торт на заказ, винная карта, координатор дня. Подача по таймингу ±5 мин. Отзыв: 5,0 на Yandex.Maps.',
+    desc: 'Банкет по тарифу «Стандарт» (5 470 ₽/гость). Свадебный торт на заказ, винная карта, координатор дня. Подача по таймингу ±5 мин. Отзыв: 5,0 на Яндекс.Картах.',
     photo: '/images/real/wedding-banquet.jpg',
     photoAlt: 'Свадебный банкет — сервировка и подача NiloV Catering',
     tags: ['Свадьба', '120 гостей', 'Банкет'],
@@ -268,7 +268,7 @@ function Hero() {
             className="text-base md:text-lg text-white/85 mt-5 max-w-xl"
           >
             19 лет готовим там, где нас не ждали: на крышах, в парках, в офисах, на съёмочных площадках.
-            Команда 40+ человек, 3 000+ событий, 4.8★ на Yandex.Maps.
+            Команда 40+ человек, 3 000+ событий, 4.8★ на Яндекс.Картах.
           </motion.p>
           <motion.div
             initial={reducedMotion ? false : { opacity: 1, y: 16 }}
@@ -831,7 +831,7 @@ function CTA() {
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] mb-5">
               <Star className="w-3.5 h-3.5" aria-hidden="true" />
-              4.8★ · 27 отзывов на Yandex.Maps
+              4.8★ · 27 отзывов на Яндекс.Картах
             </div>
             <h2
               id="cta-heading"

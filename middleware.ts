@@ -32,9 +32,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/events/${canonical}`, request.url), 301);
   }
 
+  // /en → set <html lang="en"> via response header (EnLangFix client component
+  // only patches after hydration; this ensures SSR HTML also gets lang="en")
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    const response = NextResponse.next();
+    response.headers.set('x-content-lang', 'en');
+    return response;
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/about', '/testimonials', '/services', '/services/:path*', '/quote', '/constructor'],
+  matcher: ['/about', '/testimonials', '/services', '/services/:path*', '/quote', '/constructor', '/en', '/en/:path*'],
 };

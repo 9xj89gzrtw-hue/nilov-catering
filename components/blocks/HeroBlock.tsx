@@ -21,9 +21,11 @@ export default function HeroBlock() {
         muted
         loop
         playsInline
+        preload="metadata"
         poster="/images/catering/wedding-02.jpg"
         className="absolute inset-0 w-full h-full object-cover"
       >
+        <source src="/videos/hero/banquet.webm" type="video/webm" />
         <source src="/videos/hero-catering.mp4" type="video/mp4" />
       </video>
 
