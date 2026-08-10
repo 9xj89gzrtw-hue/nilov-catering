@@ -3,7 +3,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 
 export const metadata: Metadata = {
   title: 'Выезд шефа',
-  description: 'Выезд шеф-повара NiloV на дом: персональный ужин на 2–12 персон. Шеф и сомелье у вас дома.',
+  description: 'Выезд шеф-повара NiloV на дом: персональный ужин на 6–12 гостей. Шеф и сомелье у вас дома.',
 };
 
 export default function ChefAtHomePage() {
@@ -12,10 +12,10 @@ export default function ChefAtHomePage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">Выезд шефа</h1>
         <p className="text-muted-foreground mb-2">
-          Шеф-повар и сомелье приезжают к вам домой. Персональный ужин ресторанного уровня на 2–12 персон.
+          Шеф-повар и сомелье приезжают к вам домой. Персональный ужин ресторанного уровня на 6–12 гостей.
         </p>
         <p className="text-xs text-muted-foreground mb-8">
-          от 2 500 ₽/час работы шефа + стоимость продуктов. Меню согласовывается индивидуально.
+          от 4 500 ₽/гость — всё включено: продукты, сервировка, уборка. Минимум 6 гостей. Меню согласовывается индивидуально.
         </p>
 
         <TariffOffersSection

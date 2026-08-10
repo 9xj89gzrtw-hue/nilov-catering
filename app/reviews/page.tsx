@@ -149,7 +149,7 @@ export default function ReviewsPage() {
               className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mb-4 max-w-3xl"
               style={{ fontWeight: 500 }}
             >
-              {avgRating} из 5 — оценка клиентов
+              Отзывы клиентов
             </h1>
             <p className="text-white/90 max-w-2xl mb-6 text-sm md:text-base lg:text-lg">
               {REVIEWS.length} опубликованных отзывов о свадьбах, корпоративах, юбилеях, детских
@@ -196,15 +196,15 @@ export default function ReviewsPage() {
           />
           <StatCard
             icon={Star}
-            value={`${avgRating}`}
-            label="Средний рейтинг"
-            sub={`из ${REVIEWS.length} верифицированных отзывов`}
-          />
-          <StatCard
-            icon={BadgeCheck}
             value="100%"
             label="Верифицировано"
             sub={`${verifiedCount} из ${REVIEWS.length} отзывов`}
+          />
+          <StatCard
+            icon={BadgeCheck}
+            value="19 лет"
+            label="На рынке СПб"
+            sub="с 2007 года"
           />
         </div>
       </section>

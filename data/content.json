@@ -141,18 +141,18 @@
       "photo": "/placeholders/team-1.webp"
     },
     {
-      "name": "Анна Смирнова",
-      "role": "Старший координатор",
+      "name": "Елена Соколова",
+      "role": "Шеф-кондитер",
       "photo": "/placeholders/team-2.webp"
     },
     {
-      "name": "Антон Ветров",
-      "role": "Шеф-повар горячего цеха",
+      "name": "Алексей Козлов",
+      "role": "Су-шеф, горячий цех",
       "photo": "/placeholders/team-3.webp"
     },
     {
-      "name": "Мария Игнатова",
-      "role": "Шеф-кондитер",
+      "name": "Мария Васильева",
+      "role": "Event-координатор",
       "photo": "/placeholders/team-4.webp"
     }
   ],

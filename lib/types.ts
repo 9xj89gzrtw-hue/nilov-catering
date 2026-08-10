@@ -173,7 +173,7 @@ export interface SiteConfig {
   domain: string;
   phone: string;
   phoneTel: string;
-  /** Дополнительный мобильный (interfood-catering.ru) */
+  /** Дополнительный мобильный формат */
   phoneMobile?: string;
   phoneMobileTel?: string;
   whatsapp: string;

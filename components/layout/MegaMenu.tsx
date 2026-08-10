@@ -27,7 +27,7 @@ const EVENTS: MegaGroup = {
     { label: 'Выпускной', href: '/events/vypusknoy', desc: 'Школьные и студенческие',  },
     { label: 'Детский праздник', href: '/events/detskoe', desc: 'Аниматоры, шоу, меню',  },
     { label: 'Частное', href: '/events/chastnoe', desc: 'Дни рождения, юбилеи, ужины',  },
-    { label: 'Шеф на дом', href: '/events/chef-at-home', desc: 'от 2 500 ₽/час',  },
+    { label: 'Шеф на дом', href: '/events/chef-at-home', desc: 'от 4 500 ₽/гость',  },
     { label: 'Никах и ифтар', href: '/events/nikah', desc: 'Халяль-кейтеринг, сертификат СМР' },
   ],
 };

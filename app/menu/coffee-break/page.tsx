@@ -49,15 +49,15 @@ export default function CoffeeBreakPage() {
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1">Пример: 200 чел × 3 дня × 6 кофе-брейков</p>
-              <p className="text-xs text-muted-foreground">690 ₽ × 200 × 6 × 3 = 2 484 000 ₽ (без скидок)</p>
-              <p className="text-xs text-muted-foreground">Со скидками 15% (объём) + 20% (многодневность) = <strong className="text-foreground">1 690 752 ₽</strong></p>
-              <p className="text-xs text-muted-foreground">Экономия: 793 248 ₽</p>
+              <p className="text-xs text-muted-foreground">1 450 ₽ × 200 × 6 × 3 = 5 220 000 ₽ (без скидок)</p>
+              <p className="text-xs text-muted-foreground">Со скидками 15% (объём) + 20% (многодневность) = <strong className="text-foreground">3 549 600 ₽</strong></p>
+              <p className="text-xs text-muted-foreground">Экономия: 1 670 400 ₽</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1">Пример: 100 чел × 2 дня × 4 кофе-брейка</p>
-              <p className="text-xs text-muted-foreground">690 ₽ × 100 × 4 × 2 = 552 000 ₽ (без скидок)</p>
-              <p className="text-xs text-muted-foreground">Со скидкой 10% (объём) = <strong className="text-foreground">496 800 ₽</strong></p>
-              <p className="text-xs text-muted-foreground">Экономия: 55 200 ₽</p>
+              <p className="text-xs text-muted-foreground">1 450 ₽ × 100 × 4 × 2 = 1 160 000 ₽ (без скидок)</p>
+              <p className="text-xs text-muted-foreground">Со скидкой 10% (объём) = <strong className="text-foreground">1 044 000 ₽</strong></p>
+              <p className="text-xs text-muted-foreground">Экономия: 116 000 ₽</p>
             </div>
           </div>
           <div className="text-sm text-muted-foreground mb-3">

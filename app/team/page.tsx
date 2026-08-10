@@ -104,7 +104,7 @@ export default function TeamPage() {
         </div>
 
         {/* Team grid */}
-        <h2 className="font-heading text-xl font-medium mb-6 text-center">Команда</h2>
+        <h2 className="font-heading text-xl font-medium mb-6 text-center">Шефы и координаторы</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {TEAM.slice(1).map((m) => (
             <div key={m.name} className="rounded-xl border border-line bg-card p-5">
