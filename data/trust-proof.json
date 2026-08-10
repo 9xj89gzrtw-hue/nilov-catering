@@ -2,7 +2,7 @@
   {
     "id": "years",
     "icon": "Calendar",
-    "label": "более 19 лет",
+    "label": "19 лет",
     "sublabel": "с 2007",
     "value": 19,
     "suffix": "+",

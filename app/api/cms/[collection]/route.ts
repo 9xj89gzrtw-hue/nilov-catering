@@ -9,14 +9,24 @@ function checkAuth(req: NextRequest): boolean {
   return auth === secret;
 }
 
-/** REST API для CMS-админки: GET/POST /api/cms/[collection] */
+/** REST API для CMS-админки: GET/POST /api/cms/[collection]
+ * GET: public for pricing/trust-proof (needed by site), auth required for reviews/page-texts/dishes/videos
+ * POST: always requires auth
+ */
+const PUBLIC_GET_COLLECTIONS = ['pricing', 'trust-proof'];
+
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ collection: string }> }
 ) {
   const { collection } = await params;
   const col = cmsStore.collections.find(c => c === collection);
   if (!col) return NextResponse.json({ error: 'Unknown collection' }, { status: 404 });
+
+  // Sensitive collections require auth
+  if (!PUBLIC_GET_COLLECTIONS.includes(collection) && !checkAuth(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   let data: any[];
   if (collection === 'pricing') {
