@@ -88,6 +88,12 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
     return counts;
   }, []);
 
+  // Pagination — client-side progressive enhancement. SSR shows ALL dishes.
+  // JS pagination kicks in only after hydration to reduce initial DOM for slow devices.
+  const [visibleCount, setVisibleCount] = useState<number | null>(null); // null = show all (SSR default)
+  // Allergen visibility toggle — show/hide allergen badges on cards
+  const [showAllergens, setShowAllergens] = useState(true);
+
   const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size > 0 || excludedAllergens.size > 0;
   const resetFilters = () => {
     setSearch('');
@@ -101,12 +107,6 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
   useEffect(() => {
     setVisibleCount(24);
   }, [search, station, activeDiets, excludedAllergens]);
-
-  // Allergen visibility toggle — show/hide allergen badges on cards
-  const [showAllergens, setShowAllergens] = useState(true);
-  // Pagination — client-side progressive enhancement. SSR shows ALL dishes.
-  // JS pagination kicks in only after hydration to reduce initial DOM for slow devices.
-  const [visibleCount, setVisibleCount] = useState<number | null>(null); // null = show all (SSR default)
 
   // After mount, switch to paginated mode
   useEffect(() => {

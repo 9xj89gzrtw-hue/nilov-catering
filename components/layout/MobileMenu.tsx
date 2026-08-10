@@ -22,6 +22,7 @@ const EXTRA_LINKS = [
   { href: '/gallery', label: 'Галерея' },
   { href: '/contact', label: 'Контакты' },
   { href: '/faq', label: 'Вопросы' },
+  { href: '/blog', label: 'Блог' },
   { href: '/delivery/order', label: 'Доставка' },
   { href: '/delivery', label: 'Зоны доставки' },
 ];
