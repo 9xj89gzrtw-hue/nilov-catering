@@ -133,7 +133,6 @@ export default function ContactPage() {
                 id="date"
                 type="date"
                 name="date"
-                aria-label="Дата события"
                 className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
               />
             </div>

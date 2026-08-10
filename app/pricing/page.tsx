@@ -88,7 +88,7 @@ export default function PricingPage() {
             Цены на кейтеринг
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-            4 формата. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
+            5 форматов. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
           </p>
           {/* Urgency + trust */}
           <p className="text-sm text-muted-foreground mb-6">
@@ -176,7 +176,7 @@ export default function PricingPage() {
         {/* ПРИМЕРЫ РЕАЛЬНЫХ СЧЕТОВ — конкретика */}
         <div className="mb-16">
           <h2 className="font-heading text-2xl font-medium mb-2 text-center">Примеры реальных заказов</h2>
-          <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике</p>
+          <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике (базовая цена без сервиса)</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {EXAMPLES.map((ex) => (
