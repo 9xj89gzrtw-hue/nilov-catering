@@ -29,7 +29,7 @@ const FORMATS = [
     href: '/menu/furshet',
     img: '/images/menu/kanape/k1.jpg',
     price: 2450,
-    min: 15,
+    min: 20,
     hours: '2–3 ч',
     desc: 'Канапе, тарталетки, мини-бургеры. Гости едят стоя.',
     includes: ['12+ закусок', 'Напитки', 'Официант 1/15', 'Фуршетная сервировка', 'Доставка по КАД'],
@@ -39,7 +39,7 @@ const FORMATS = [
     href: '/menu/banquet',
     img: '/images/real/beef-medallions.jpg',
     price: 3950,
-    min: 30,
+    min: 15,
     hours: '4–6 ч',
     desc: 'Полный ужин с посадкой. Для свадеб и торжеств.',
     includes: ['4 перемены блюд', 'Торт включён', 'Официант 1/10', 'Банкетная сервировка', 'Координатор'],
@@ -61,8 +61,8 @@ const FORMATS = [
 const EXAMPLES = [
   { event: 'Свадьба 50 чел', format: 'Банкет', perGuest: 3950, guests: 50, total: 197500 },
   { event: 'Корпоратив 30 чел', format: 'Фуршет', perGuest: 2450, guests: 30, total: 73500 },
-  { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 600, guests: 20, total: 12000 },
-  { event: 'День рождения 8 чел', format: 'Шеф на дом', perGuest: 4500, guests: 8, total: 36000 },
+  { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 390, guests: 20, total: 7800 },
+  { event: 'День рождения 4 чел', format: 'Шеф на дом', perGuest: 4500, guests: 4, total: 18000 },
 ];
 
 export default function PricingPage() {
@@ -195,7 +195,7 @@ export default function PricingPage() {
           <h2 className="font-heading text-2xl font-medium mb-4 text-center">Что входит в любую цену</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              { icon: '🍽', t: 'Меню', d: 'Выбор из 124 блюд' },
+              { icon: '🍽', t: 'Меню', d: 'Выбор из 114 блюд' },
               { icon: '👨‍🍳', t: 'Официанты', d: 'Профессионалы' },
               { icon: '🚚', t: 'Доставка', d: 'По КАД бесплатно' },
               { icon: '🍽', t: 'Посуда', d: 'Сервировка' },

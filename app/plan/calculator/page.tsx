@@ -30,9 +30,9 @@ function CalculatorServerFallback() {
     {
       format: 'banket', label: 'Банкет', emoji: '',
       tiers: [
-        { tier: 'Эконом', price: 3950, min: 30 },
-        { tier: 'Стандарт', price: 5470, min: 25 },
-        { tier: 'Расширенный', price: 7350, min: 20 },
+        { tier: 'Эконом', price: 3950, min: 15 },
+        { tier: 'Стандарт', price: 5470, min: 15 },
+        { tier: 'Расширенный', price: 7350, min: 15 },
         { tier: 'Максимальный', price: 9950, min: 15 },
       ],
     },

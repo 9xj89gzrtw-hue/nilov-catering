@@ -47,9 +47,9 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
   if (tariff.format === 'coffee-break' && effectiveGuests > 500) {
     feasibilityWarnings.push('Кофе-брейк на 500+ гостей — обсудите логистику с менеджером.');
   }
-  // Rule 3: Luxury banquet (9950₽) min 30 guests
-  if (tariffId === 'banket-luxury' && effectiveGuests < 30) {
-    feasibilityWarnings.push('Тариф "Максимальный" — минимум 30 гостей.');
+  // Rule 3: Luxury banquet (9950₽) min 15 guests (aligned with calculator and pricing page)
+  if (tariffId === 'banket-luxury' && effectiveGuests < 15) {
+    feasibilityWarnings.push('Тариф "Максимальный" — минимум 15 гостей.');
   }
   // Rule 4: Furshet min 20
   if (tariff.format === 'furshet' && effectiveGuests < 20) {

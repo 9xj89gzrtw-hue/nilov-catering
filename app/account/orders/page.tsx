@@ -6,9 +6,12 @@ export const metadata: Metadata = {
   title: 'Личный кабинет B2B — история заказов и документы',
   description: 'Личный кабинет для постоянных B2B-клиентов: история заказов, закрывающие документы на скачивание, статусы событий.',
   alternates: { canonical: '/account/orders', languages: { 'ru': '/account/orders', 'en': '/en', 'x-default': '/account/orders' } },
+  robots: { index: false, follow: false },
 };
 
 // Demo B2B order history — replaced by real backend in production
+// W93-v7: removed "ООО «ОдаЕда»" reference — operator is ИП Нилов Д.И. (УСН 6% без НДС).
+// Счёт-фактура с НДС выставляется через налогового агента по запросу (см. LEGAL.vatStatus в lib/data.ts).
 const ORDERS = [
   {
     id: 'NLV-2025-0421',
@@ -23,7 +26,7 @@ const ORDERS = [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт', url: '#', ready: true },
       { type: 'Акт выполненных работ', url: '#', ready: true },
-      { type: 'Счёт-фактура (через ООО «ОдаЕда»)', url: '#', ready: true },
+      { type: 'УПД (с НДС-агентом по запросу)', url: '#', ready: true },
       { type: 'Бракеражный журнал', url: '#', ready: false },
     ],
   },
@@ -40,7 +43,7 @@ const ORDERS = [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт', url: '#', ready: true },
       { type: 'Акт', url: '#', ready: true },
-      { type: 'Счёт-фактура', url: '#', ready: false },
+      { type: 'УПД', url: '#', ready: false },
     ],
   },
   {
@@ -50,13 +53,14 @@ const ORDERS = [
     format: 'Кофе-брейк',
     guests: 35,
     venue: 'Офис клиента (NDA)',
-    total: 28000,
+    // W93-v7: was 28000 (800₽/гость) — не сходилось ни с одним тарифом. Пересчитано по тарифу Стандарт (1450₽/гость)
+    total: 50750,
     status: 'Подтверждён',
     documents: [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт на оплату', url: '#', ready: true },
       { type: 'Акт', url: '#', ready: false },
-      { type: 'Счёт-фактура', url: '#', ready: false },
+      { type: 'УПД', url: '#', ready: false },
     ],
   },
 ];
@@ -84,10 +88,10 @@ export default function AccountOrdersPage() {
           </a>
         </div>
 
-        {/* Info notice */}
-        <div className="mb-8 p-4 rounded-xl border border-gold-tint bg-gold-tint/10 text-sm text-foreground">
-          <p className="font-semibold mb-1">ℹ Примеры заказов</p>
-          <p>Ниже показаны примеры заказов. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-gold-text underline font-semibold">{SITE.email}</a> с темой «B2B-запрос из личного кабинета». ЭДО-интеграция (Диадок/СБИС) — в разработке.</p>
+        {/* Info notice — W93-v7: clearer demo badge */}
+        <div className="mb-8 p-4 rounded-xl border-2 border-amber-300 bg-amber-50 text-amber-900 text-sm">
+          <p className="font-semibold mb-1">⚠ Демонстрационный раздел</p>
+          <p>Заказы ниже — примеры для презентации B2B-кабинета. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-amber-900 underline font-semibold">{SITE.email}</a> с темой «B2B-запрос». ЭДО-интеграция (Диадок/СБИС) — в активной разработке.</p>
         </div>
 
         {/* Summary stats */}

@@ -58,7 +58,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center py-2">{link.label}</Link>
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-1 -mx-1">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -70,14 +70,14 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map((link) => (
-              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center py-2">{link.label}</a>
+              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{link.label}</a>
             ))}
           </div>
           {/* Rating badge — рассчитан из /reviews (27 отзывов, среднее 4.8). Ссылка на отзывы для верификации. */}
           <div className="flex items-center gap-4">
             <Link
               href="/reviews"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline min-h-[44px] py-2 px-1 -mx-1"
               title="Все 27 отзывов с расчётом среднего рейтинга"
             >
                4.8 <span className="hidden sm:inline">из 27 отзывов →</span>
@@ -85,12 +85,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-muted-foreground">
-          <Link href="/privacy" className="hover:text-foreground transition-colors no-underline">Политика</Link>
-          <Link href="/terms" className="hover:text-foreground transition-colors no-underline">Условия</Link>
-          <Link href="/cookies" className="hover:text-foreground transition-colors no-underline">Cookies</Link>
-          <Link href="/accessibility" className="hover:text-foreground transition-colors no-underline">Доступность</Link>
-          <span>© 2007–2026 {SITE.name}</span>
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
+          <Link href="/privacy" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Политика</Link>
+          <Link href="/terms" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Условия</Link>
+          <Link href="/cookies" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Cookies</Link>
+          <Link href="/accessibility" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Доступность</Link>
+          <span className="inline-flex items-center py-2 px-2">© 2007–2026 {SITE.name}</span>
           <TextSizeToggle />
         </div>
 
@@ -101,9 +101,9 @@ export default function Footer() {
           </p>
           <p className="mt-1">
             {SITE.legalAddress} ·{' '}
-            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground no-underline">{SITE.phone}</a>{' '}
+            <a href={`tel:${SITE.phoneTel}`} className="underline hover:text-foreground no-underline inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.phone}</a>{' '}
             ·{' '}
-            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground no-underline">{SITE.email}</a>
+            <a href={`mailto:${SITE.email}`} className="underline hover:text-foreground no-underline inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{SITE.email}</a>
           </p>
         </div>
       </div>

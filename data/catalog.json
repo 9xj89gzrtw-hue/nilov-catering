@@ -333,7 +333,7 @@
     ],
     "pricePerGuest": 200,
     "servingsPerGuest": 1,
-    "allergen": [],
+    "allergens": [],
     "dietBadges": [
       "vegan",
       "gluten-free"

@@ -28,13 +28,37 @@ const GUEST_RANGES = [
   { label: '200+ гостей', value: '200+' },
 ];
 
-const LOCATIONS = [
+// All possible locations
+const ALL_LOCATIONS = [
   { label: 'Дома', emoji: '🏠' },
   { label: 'В офисе', emoji: '💼' },
   { label: 'На площадке (лофт/ресторан)', emoji: '🏛️' },
   { label: 'На природе', emoji: '🌳' },
   { label: 'Пока не знаю', emoji: '🤔' },
-];
+] as const;
+
+/**
+ * W93-v7 FIX: Filter locations by occasion.
+ * - Wedding/Юбилей/Выпускной/Детский → no "В офисе" (doesn't make sense)
+ * - Conference/Корпоратив → "В офисе" allowed
+ * - Просто ужин → no "На природе" (private dinner)
+ */
+function getLocationsForOccasion(occasion: string | undefined): readonly { label: string; emoji: string }[] {
+  if (!occasion) return ALL_LOCATIONS;
+  // Office-appropriate occasions
+  const officeOk = ['Корпоратив', 'Конференция'].includes(occasion);
+  // Outdoor-appropriate occasions (not private dinner)
+  const outdoorOk = !['Просто ужин', 'Детский праздник'].includes(occasion);
+  // Home-appropriate (small events only)
+  const homeOk = ['День рождения', 'Юбилей', 'Просто ужин', 'Детский праздник'].includes(occasion);
+
+  return ALL_LOCATIONS.filter((loc) => {
+    if (loc.label === 'В офисе') return officeOk;
+    if (loc.label === 'На природе') return outdoorOk;
+    if (loc.label === 'Дома') return homeOk;
+    return true; // На площадке, Пока не знаю — always OK
+  });
+}
 
 const OCCASION_TO_PAGE: Record<string, string> = {
   'Свадьба': '/events/svadba',
@@ -46,6 +70,41 @@ const OCCASION_TO_PAGE: Record<string, string> = {
   'Конференция': '/events/korporativ',
   'Просто ужин': '/events/chef-at-home',
 };
+
+// Recommended package per occasion+guests (W93-v7: real recommendation, not empty)
+function getRecommendation(occasion: string, guests: string): { name: string; price: number; minGuests: number; tier: string; format: string; whatIncluded: string[] } | null {
+  const small = guests === '0-20';
+  const med = guests === '20-50';
+  const large = guests === '50-100' || guests === '100-200' || guests === '200+';
+
+  switch (occasion) {
+    case 'Свадьба':
+      if (small) return { name: 'Свадьба «Стандарт»', price: 5470, minGuests: 15, tier: 'Стандарт', format: 'banket', whatIncluded: ['2 холодные закуски, салат, горячее, гарнир, десерт', 'Вино (1 бокал) + игристое на welcome', 'Официант 1/10', 'Свадебный торт включён', 'Координатор события'] };
+      if (med) return { name: 'Свадьба «Расширенный»', price: 7350, minGuests: 15, tier: 'Расширенный', format: 'banket', whatIncluded: ['3 холодные закуски, 2 салата, 2 горячих', 'Рыбное блюдо + сырная тарелка', 'Вино (2 бокала) + игристое', 'Свадебный торт + десерты', 'Координатор + сомелье (опц.)'] };
+      return { name: 'Свадьба «Максимальный»', price: 9950, minGuests: 15, tier: 'Максимальный', format: 'banket', whatIncluded: ['4 холодные закуски, 2 салата, 2 горячих', 'Рыбное блюдо + сырная тарелка + 3 десерта', 'Премиум-бар: шампанское, вина, дижестивы', 'Свадебный торт премиум', 'Координатор + сомелье + флорист (опц.)'] };
+    case 'Корпоратив':
+      if (small) return { name: 'Корпоратив «Фуршет Стандарт»', price: 2450, minGuests: 20, tier: 'Стандарт', format: 'furshet', whatIncluded: ['Канапе (6 видов), тарталетки, брускетты', 'Сырная тарелка, рыбное ассорти', 'Соки, морсы, лимонады', 'Официант 1/15', 'Фуршетная сервировка'] };
+      if (med) return { name: 'Корпоратив «Банкет Стандарт»', price: 5470, minGuests: 15, tier: 'Стандарт', format: 'banket', whatIncluded: ['2 холодные закуски, салат, горячее', 'Говядина/лосось на выбор', 'Вино (1 бокал), чай/кофе', 'Официант 1/10', 'Координатор'] };
+      return { name: 'Корпоратив «Фуршет Расширенный»', price: 5950, minGuests: 20, tier: 'Расширенный', format: 'furshet', whatIncluded: ['Канапе (8 видов), брускетты, тартар', 'Карпаччо, сыры, морепродукты', 'Игристое, вино, коктейли', 'Официант 1/12', 'Шоу-станция (опц.)'] };
+    case 'День рождения':
+      if (small) return { name: 'День рождения «Фуршет Эконом»', price: 2450, minGuests: 20, tier: 'Эконом', format: 'furshet', whatIncluded: ['Канапе (4 вида), тарталетки', 'Мини-бургеры, овощная нарезка', 'Безалкогольные напитки', 'Официант 1/15', 'Фуршетная сервировка'] };
+      return { name: 'День рождения «Фуршет Стандарт»', price: 3950, minGuests: 20, tier: 'Стандарт', format: 'furshet', whatIncluded: ['Канапе (6 видов), тарталетки, брускетты', 'Сырная тарелка, рыбное ассорти', 'Соки, морсы, лимонады', 'Официант 1/15', 'Торт включён'] };
+    case 'Детский праздник':
+      return { name: 'Детский праздник «Стандарт»', price: 1550, minGuests: 10, tier: 'Эконом', format: 'detskoe', whatIncluded: ['Мини-пицца, наггетсы, канапе без аллергенов', 'Фруктовая тарелка, соки', 'Капкейки, мармелад', 'Аниматор (опц.)', 'Посуда яркая, небьющаяся'] };
+    case 'Выпускной':
+      if (small) return { name: 'Выпускной «Банкет Эконом»', price: 3950, minGuests: 15, tier: 'Эконом', format: 'banket', whatIncluded: ['Холодная закуска, салат, горячее', 'Курица/рыба на выбор', 'Гарнир, хлебная корзина', 'Чай/кофе', 'Официант 1/10'] };
+      return { name: 'Выпускной «Банкет Стандарт»', price: 5470, minGuests: 15, tier: 'Стандарт', format: 'banket', whatIncluded: ['2 холодные закуски, салат, горячее', 'Говядина/лосось', 'Десерт, вино (1 бокал)', 'Чай/кофе', 'Координатор'] };
+    case 'Юбилей':
+      if (small) return { name: 'Юбилей «Банкет Эконом»', price: 3950, minGuests: 15, tier: 'Эконом', format: 'banket', whatIncluded: ['Холодная закуска, салат, горячее', 'Гарнир, хлебная корзина', 'Чай/кофе', 'Торт включён', 'Официант 1/10'] };
+      return { name: 'Юбилей «Банкет Стандарт»', price: 5470, minGuests: 15, tier: 'Стандарт', format: 'banket', whatIncluded: ['2 холодные закуски, салат, горячее', 'Говядина/лосось', 'Десерт, вино (1 бокал)', 'Чай/кофе', 'Координатор'] };
+    case 'Конференция':
+      return { name: 'Кофе-брейк «Стандарт»', price: 1450, minGuests: 10, tier: 'Стандарт', format: 'coffee-break', whatIncluded: ['Выпечка (5 видов)', 'Канапе, фрукты', 'Соки, чай, кофе', 'Бумажная посуда', 'Доставка по КАД'] };
+    case 'Просто ужин':
+      return { name: 'Шеф на дом', price: 4500, minGuests: 4, tier: 'Стандарт', format: 'chef-at-home', whatIncluded: ['5 перемен блюд от шеф-повара', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты включены', 'Сомелье (опц.)'] };
+    default:
+      return null;
+  }
+}
 
 export default async function PlanHelperPage({
   searchParams,
@@ -60,6 +119,8 @@ export default async function PlanHelperPage({
     const eventPage = OCCASION_TO_PAGE[occasion] || '/pricing';
     const formatMatch = OCCASIONS.find((o) => o.label === occasion);
     const format = formatMatch?.format || 'furshet';
+    const recommendation = getRecommendation(occasion, guests);
+    const formatLabel = format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа';
 
     return (
       <main id="main" className="pt-24 pb-20">
@@ -81,12 +142,36 @@ export default async function PlanHelperPage({
             </p>
           </div>
 
+          {/* W93-v7: Real recommendation card, not empty */}
+          {recommendation && (
+            <div className="p-6 rounded-xl border-2 border-gold-text bg-card mb-6 shadow-lg shadow-gold/10">
+              <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+                <h2 className="font-heading text-xl font-medium">{recommendation.name}</h2>
+                <span className="inline-block text-xs bg-gold-text text-white px-2 py-0.5 rounded-full font-semibold">{recommendation.tier}</span>
+              </div>
+              <div className="flex items-baseline gap-1 mb-4">
+                <span className="text-3xl font-bold text-gold-text">{recommendation.price.toLocaleString('ru-RU')}</span>
+                <span className="text-sm text-muted-foreground">₽/гость · мин. {recommendation.minGuests} гостей</span>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">
+                Формат: <strong className="text-foreground">{formatLabel}</strong>. Подобрали под ваш повод и количество гостей.
+              </p>
+              <ul className="space-y-1.5 mb-4">
+                {recommendation.whatIncluded.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className="text-gold-text mt-0.5">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-muted-foreground">
+                Цена предварительная. Финальная смета — после согласования меню и логистики.
+              </p>
+            </div>
+          )}
+
           <div className="p-6 rounded-xl border border-line bg-card mb-6">
-            <h2 className="font-heading text-xl font-medium mb-3">Рекомендуем</h2>
-            <p className="text-sm text-muted-foreground mb-4">
-              На основе ваших ответов рекомендуем формат <strong className="text-foreground">{format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа'}</strong>.
-              Перейдите на страницу события, чтобы увидеть тарифы и состав меню.
-            </p>
+            <h2 className="font-heading text-xl font-medium mb-3">Что дальше</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <Link
                 href={eventPage}
@@ -134,11 +219,14 @@ export default async function PlanHelperPage({
     );
   }
 
+  // W93-v7: Filter locations by occasion (no "В офисе" for weddings etc.)
+  const locations = step === 2 ? getLocationsForOccasion(occasion) : ALL_LOCATIONS;
+
   const current = step === 0
     ? { q: 'Какой повод?', opts: OCCASIONS.map((o) => ({ label: o.label, emoji: o.emoji })), key: 'occasion' as const }
     : step === 1
     ? { q: 'Сколько гостей?', opts: GUEST_RANGES.map((g) => ({ label: g.label, emoji: '' })), key: 'guests' as const }
-    : { q: 'Где проходит?', opts: LOCATIONS.map((l) => ({ label: l.label, emoji: l.emoji })), key: 'location' as const };
+    : { q: 'Где проходит?', opts: locations.map((l) => ({ label: l.label, emoji: l.emoji })), key: 'location' as const };
 
   const buildHref = (value: string) => {
     const params = new URLSearchParams();

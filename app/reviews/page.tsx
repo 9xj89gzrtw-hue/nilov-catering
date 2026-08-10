@@ -198,7 +198,7 @@ export default function ReviewsPage() {
             icon={PartyPopper}
             value="3 000+"
             label="Мероприятий"
-            sub={`${totalGuests.toLocaleString('ru-RU')}+ гостей обслужено`}
+            sub="с 2007 года в Петербурге"
           />
           <StatCard
             icon={BadgeCheck}

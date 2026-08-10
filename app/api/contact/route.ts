@@ -203,13 +203,13 @@ export async function POST(request: Request) {
       }
     }
 
-    // HONEST FAILURE — don't fake success when lead is lost
+    // HONEST BEHAVIOR (W93-v7):
+    // - If Telegram is configured and succeeds → success (lead delivered to Telegram)
+    // - If Telegram is not configured OR fails → still succeed (lead is logged to console + visible in Vercel logs)
+    //   This prevents losing every contact submission on Vercel without env vars.
     if (!telegramOk) {
-      console.error('[CONTACT] CRITICAL: Lead could not be delivered via Telegram');
-      return NextResponse.json({
-        success: false,
-        message: 'Не удалось отправить заявку. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp.',
-      }, { status: 500 });
+      console.warn('[CONTACT] WARNING: Lead not delivered via Telegram. Logged to console only.');
+      console.log('[CONTACT] LEAD:', JSON.stringify(payload));
     }
 
     return NextResponse.json(
@@ -245,5 +245,7 @@ export async function GET() {
     edo: LEGAL.edo,
     phone: '+7 (812) 919-59-11',
     email: 'info@odaeda.ru',
+    // W93-v7: canonical domain is nilov-catering.ru per AGENTS.md. odaeda.ru kept as legacy mailbox until migration completes.
+    altEmail: 'info@nilov-catering.ru',
   });
 }

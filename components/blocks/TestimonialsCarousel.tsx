@@ -9,7 +9,7 @@ import type { Review } from '@/lib/cms-store';
 const TRUST_METRICS = [
   { value: '27',     label: 'отзывов · 4.8/5' },
   { value: '19',     label: 'лет в СПб' },
-  { value: '124',    label: 'блюда в каталоге' },
+  { value: '114',    label: 'блюд в каталоге' },
   { value: '40+',    label: 'человек в штате' },
 ];
 
