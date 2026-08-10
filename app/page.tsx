@@ -30,7 +30,7 @@ export default async function HomePage() {
       {/* 2. EVENT TYPES — выбор повода */}
       <EventTypeSelector />
 
-      {/* 3. NAMED PACKAGES — 5 форматов с фиксированной ценой */}
+      {/* 3. NAMED PACKAGES — 6 пакетов с фиксированной ценой */}
       <NamedPackageGrid />
 
       {/* 4. INLINE CALCULATOR — отвечает 'how much?' за 15 секунд */}

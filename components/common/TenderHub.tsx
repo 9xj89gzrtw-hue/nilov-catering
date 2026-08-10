@@ -56,7 +56,7 @@ export default function TenderHub() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5"></span>
-                <span>Сертификат Халяль СМР №142 (при необходимости)</span>
+                <span>Сертификат Халяль СМР (скан по запросу) (при необходимости)</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5"></span>

@@ -5,7 +5,7 @@ const REDIRECTS: Record<string, string> = {
   '/about': '/why-us',
   '/testimonials': '/reviews',
   '/services': '/events',
-  '/quote': '/plan/calculator',
+  '/quote': '/plan/helper',
   '/constructor': '/plan/constructor',
 };
 

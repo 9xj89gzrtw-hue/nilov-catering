@@ -1,11 +1,28 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { NextResponse } from 'next/server';
 
 export const metadata: Metadata = {
   title: 'CMS — NiloV Catering',
   robots: { index: false, follow: false },
 };
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  // Server-side auth check — redirect if no admin secret in cookie or header
+  const headersList = await headers();
+  const adminSecret = headersList.get('x-admin-secret') || headersList.get('cookie')?.match(/admin-secret=([^;]+)/)?.[1];
+  
+  if (!adminSecret || adminSecret !== process.env.ADMIN_SECRET) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-gray-100">
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-bold mb-4">CMS — требуется авторизация</h1>
+          <p className="text-gray-400 mb-4">Доступ к CMS только для авторизованного персонала.</p>
+          <a href="/" className="text-sm text-blue-400 hover:underline">← На главную</a>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-sans">
       <header className="border-b border-gray-700 px-6 py-3 flex items-center justify-between">

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-static';
 
-// === 4 ОСНОВНЫХ ФОРМАТА — простая таблица ===
+// === 5 ОСНОВНЫХ ФОРМАТОВ — простая таблица ===
 const FORMATS = [
   {
     name: 'Кофе-брейк',

@@ -54,7 +54,7 @@ export const SITE: SiteConfig = {
   email: 'info@nilov-catering.ru',
   b2bEmail: 'b2b@nilov-catering.ru',
   address: 'Санкт-Петербург, В.О., 20-я линия, 11',
-  ogImage: '/og-image.png',
+  ogImage: '/og-image.svg',
   legalName: 'ИП Нилов Дмитрий Игоревич',
   legalShort: 'ИП Нилов Д. И.',
   inn: '781433059704',

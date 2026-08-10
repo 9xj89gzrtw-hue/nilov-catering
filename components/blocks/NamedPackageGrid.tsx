@@ -97,7 +97,7 @@ export default function NamedPackageGrid() {
               className="font-heading text-3xl md:text-5xl"
               style={{ fontWeight: 500 }}
             >
-              5 форматов с фиксированной ценой
+              6 пакетов с фиксированной ценой
             </h2>
           </div>
           <div
