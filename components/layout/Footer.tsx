@@ -58,7 +58,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</Link>
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center py-2">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map((link) => (
-              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
+              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center py-2">{link.label}</a>
             ))}
           </div>
           {/* Rating badge — рассчитан из /reviews (27 отзывов, среднее 4.8). Ссылка на отзывы для верификации. */}

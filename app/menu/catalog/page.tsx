@@ -178,9 +178,9 @@ export default function CatalogPage() {
                       </div>
                       {/* Бейджи диет */}
                       <div className="absolute top-2 left-2 flex gap-1">
-                        {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">VG</span>}
-                        {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold">GF</span>}
-                        {dish.dietBadges.includes('halal') && <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold">H</span>}
+                        {dish.dietBadges.includes('vegan') && <span className="text-xs bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">VG</span>}
+                        {dish.dietBadges.includes('gluten-free') && <span className="text-xs bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold">GF</span>}
+                        {dish.dietBadges.includes('halal') && <span className="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full font-bold">H</span>}
                       </div>
                     </Link>
 

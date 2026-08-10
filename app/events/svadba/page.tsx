@@ -23,7 +23,7 @@ export default function SvadbaPage() {
           </picture>
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%)' }} aria-hidden="true" />
           <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[#E8C97E] mb-1">Свадьбы под ключ</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-text mb-1">Свадьбы под ключ</p>
             <h1 className="font-heading text-2xl md:text-4xl text-white" style={{ fontWeight: 500 }}>Свадебный кейтеринг</h1>
           </div>
         </div>
@@ -195,9 +195,9 @@ export default function SvadbaPage() {
               </ul>
             </div>
           </div>
-          <p className="text-[11px] text-muted-foreground mt-3"> Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
-          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
+          <p className="text-xs text-muted-foreground mt-3"> Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
+          <p className="text-xs text-muted-foreground mt-2"> <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-xs text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}

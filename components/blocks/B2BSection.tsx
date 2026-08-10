@@ -53,7 +53,7 @@ export default function B2BSection() {
         </div>
 
         <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#E8C97E] mb-3">Для бизнеса</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3">Для бизнеса</p>
           <h2 id="b2b-heading" className="font-heading text-2xl md:text-4xl mb-3" style={{ fontWeight: 500 }}>
             Кейтеринг для корпоративных клиентов и тендеров
           </h2>
@@ -69,7 +69,7 @@ export default function B2BSection() {
               href={card.href}
               className="group p-4 rounded-xl bg-background/10 border border-background/20 hover:bg-background/15 transition-colors no-underline"
             >
-              <card.icon className="w-7 h-7 mb-3 text-[#E8C97E]" strokeWidth={1.5} aria-hidden="true" />
+              <card.icon className="w-7 h-7 mb-3 text-gold-text" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="font-heading text-sm md:text-base mb-1 text-background" style={{ fontWeight: 500 }}>
                 {card.title}
               </h3>

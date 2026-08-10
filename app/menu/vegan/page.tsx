@@ -65,7 +65,7 @@ export default function VeganPage() {
                 <div className="flex items-start justify-between">
                   <h3 className="font-medium text-sm mb-1 pr-2">{dish.name}</h3>
                   <span
-                    className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium shrink-0"
+                    className="text-xs bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-medium shrink-0"
                     title="Веган — без животных продуктов"
                   >
                     VG
@@ -82,7 +82,7 @@ export default function VeganPage() {
                     {dish.allergens.map((a) => (
                       <span
                         key={a}
-                        className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded"
+                        className="text-xs bg-muted text-muted-foreground px-1 py-0.5 rounded"
                       >
                         {ALLERGEN_LABEL[a]}
                       </span>

@@ -232,7 +232,7 @@ function Hero() {
             initial={reducedMotion ? false : { opacity: 1, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6, ease: EASE_OUT }}
-            className="text-xs md:text-sm uppercase tracking-[0.22em] text-[#E8C97E] mb-3 font-semibold"
+            className="text-xs md:text-sm uppercase tracking-[0.22em] text-gold-text mb-3 font-semibold"
           >
             NiloV Catering · с 2007 года
           </motion.p>
@@ -304,7 +304,7 @@ function BentoCard({ card }: { card: typeof BENTO[number] }) {
           aria-hidden="true"
         />
         <div className="relative h-full flex flex-col justify-end p-5 md:p-6 text-white">
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-[#E8C97E] mb-1.5 font-semibold">
+          <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-gold-text mb-1.5 font-semibold">
             {card.eyebrow}
           </p>
           <h3 className="font-heading text-xl md:text-2xl mb-1.5" style={{ fontWeight: 500 }}>

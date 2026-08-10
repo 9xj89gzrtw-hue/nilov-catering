@@ -267,7 +267,7 @@ export default function PominkiPage() {
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:text-base text-white">
               <span className="font-semibold">
-                от <span className="text-[#E8C97E]">1 800 ₽</span>/гость
+                от <span className="text-gold-text">1 800 ₽</span>/гость
               </span>
               <span className="text-white/40">·</span>
               <span>от 10 гостей</span>

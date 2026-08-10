@@ -137,7 +137,7 @@ export default function EventTypeSelector() {
                   />
                   <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                     <h3 className="font-heading text-xl md:text-2xl text-white" style={{ fontWeight: 500 }}>{e.label}</h3>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#E8C97E]">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold-text">
                       {e.price}
                     </span>
                   </div>
