@@ -20,7 +20,7 @@ export default function EnPage() {
           { title: 'Contact', text: 'Phone: +7 (812) 919-59-11. Email: info@nilov-catering.ru. We reply within 2 hours.' },
         ].map(item => (
           <div key={item.title} className="rounded-lg border border-line bg-card p-5">
-            <h3 className="font-heading text-base font-medium mb-1">{item.title}</h3>
+            <h2 className="font-heading text-base font-medium mb-1">{item.title}</h2>
             <p className="text-sm text-muted-foreground">{item.text}</p>
           </div>
         ))}

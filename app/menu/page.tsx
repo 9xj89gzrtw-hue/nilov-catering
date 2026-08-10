@@ -19,7 +19,7 @@ const FORMATS = [
   { slug: 'banket', label: 'Банкет', href: '/menu/banquet', price: 'от 3 950 ₽/гость', emoji: '', desc: 'Полноценный обед с посадкой. Салаты, суп, горячее. Для свадеб и торжеств.' },
   { slug: 'coffee-break', label: 'Кофе-брейк', href: '/menu/coffee-break', price: 'от 390 ₽/гость', emoji: '', desc: 'Выпечка, сэндвичи, десерты, кофе. Для конференций и тренингов.' },
   { slug: 'detskoe', label: 'Детское', href: '/menu/detskoe', price: 'от 1 550 ₽/гость', emoji: '', desc: 'Бургеры, наггетсы, смузи. Безопасное и вкусное меню для детей.' },
-  { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 1 500 ₽/гость', emoji: '', desc: 'Растительное меню без продуктов животного происхождения.' },
+  { slug: 'vegan', label: 'Веган', href: '/menu/vegan', price: 'от 2 950 ₽/гость', emoji: '', desc: 'Растительное меню без продуктов животного происхождения.' },
   { slug: 'show-cooking', label: 'Show-cooking', href: '/menu/show-cooking', price: '', emoji: '', desc: 'Живые станции: паста, суши, пицца. Еда как шоу для ваших гостей.' },
   { slug: 'pominki', label: 'Поминки', href: '/events/pominki', price: 'от 1 800 ₽/гость', emoji: '', desc: 'Поминальный обед по православной традиции: кутья, блины, кисель, рыба. Без алкоголя.' },
 ];

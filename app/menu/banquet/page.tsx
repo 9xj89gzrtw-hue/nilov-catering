@@ -19,9 +19,10 @@ export default function BanquetPage() {
     <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-4xl">
         <h1 className="mb-2">Банкет</h1>
-        <p className="text-muted-foreground mb-8">
-          Посадка за стол, официанты, смена блюд. Классический формат для свадеб и юбилеев. Минимум 15 гостей.
+        <p className="text-muted-foreground mb-2">
+          Посадка за стол, официанты, смена блюд. Классический формат для свадеб и юбилеев.
         </p>
+        <p className="text-sm text-gold-text font-semibold mt-1 mb-8">от 3 950 ₽/гость · мин. 15 гостей</p>
 
         {/* B2B banner — НДС indicator for corporate clients */}
         <div className="mb-8">

@@ -27,7 +27,7 @@ export default function InlinePriceCalculator() {
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3">Калькулятор цены</p>
           <h2 id="calc-heading" className="font-heading text-3xl md:text-5xl mb-3" style={{ fontWeight: 500 }}>
-            Узнайте цену за 15 секунд
+            Узнайте цену за 30 секунд
           </h2>
           <p className="text-muted-foreground text-base md:text-lg">
             Выберите формат и количество гостей — покажем ориентировочную стоимость

@@ -93,6 +93,7 @@ export default function CatalogPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
               type="search"
+              aria-label="Поиск блюда по названию"
               placeholder="Поиск блюда…"
               value={search}
               onChange={e => setSearch(e.target.value)}

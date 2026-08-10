@@ -18,9 +18,10 @@ export default function CoffeeBreakPage() {
     <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-4xl">
         <h1 className="mb-2">Кофе-брейк</h1>
-        <p className="text-muted-foreground mb-8">
-          Кофе, чай, выпечка и десерты для перерывов. Идеально для конференций и деловых встреч. Минимум 10 гостей.
+        <p className="text-muted-foreground mb-2">
+          Кофе, чай, выпечка и десерты для перерывов. Идеально для конференций и деловых встреч.
         </p>
+        <p className="text-sm text-gold-text font-semibold mt-1 mb-8">от 390 ₽/гость · мин. 10 гостей</p>
 
         {/* B2B banner — НДС indicator for corporate clients */}
         <div className="mb-8">

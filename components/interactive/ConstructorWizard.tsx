@@ -179,9 +179,9 @@ export default function ConstructorWizard() {
     const mins: Record<string, { guests: number; total: number; label: string }> = {
       banket: { guests: 15, total: 50000, label: 'Банкет — минимум 15 гостей или 50 000 ₽' },
       furshet: { guests: 20, total: 30000, label: 'Фуршет — минимум 20 гостей или 30 000 ₽' },
-      'coffee-break': { guests: 10, total: 5000, label: 'Кофе-брейк — минимум 10 гостей или 5 000 ₽' },
+      'coffee-break': { guests: 10, total: 3900, label: 'Кофе-брейк — минимум 10 гостей или 3 900 ₽' },
       detskoe: { guests: 10, total: 10000, label: 'Детское — минимум 10 гостей или 10 000 ₽' },
-      'chef-at-home': { guests: 6, total: 30000, label: 'Шеф на дом — минимум 6 гостей или 30 000 ₽' },
+      'chef-at-home': { guests: 6, total: 27000, label: 'Шеф на дом — минимум 6 гостей или 27 000 ₽' },
       pominki: { guests: 10, total: 15000, label: 'Поминки — минимум 10 гостей или 15 000 ₽' },
     };
     const min = mins[store.format];

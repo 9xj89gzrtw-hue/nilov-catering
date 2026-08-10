@@ -154,6 +154,16 @@
       "name": "Мария Васильева",
       "role": "Event-координатор",
       "photo": "/placeholders/team-4.webp"
+    },
+    {
+      "name": "Игорь Петров",
+      "role": "B2B-менеджер",
+      "photo": "/placeholders/team-5.webp"
+    },
+    {
+      "name": "Ольга Дмитриева",
+      "role": "Менеджер по безопасности",
+      "photo": "/placeholders/team-6.webp"
     }
   ],
   "contacts": {

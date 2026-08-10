@@ -10,7 +10,7 @@ export const MIN_GUESTS: Record<Format, number> = {
   'coffee-break': 10,
   'mobile-furshet': 10,
   detskoe: 10,
-  'chef-at-home': 10,
+  'chef-at-home': 6,
   pominki: 10,
 };
 
