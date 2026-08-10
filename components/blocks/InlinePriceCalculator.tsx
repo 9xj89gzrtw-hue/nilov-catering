@@ -50,7 +50,7 @@ export default function InlinePriceCalculator() {
                   }`}
                 >
                   {f.label}
-                  <span className="block text-xs mt-0.5 opacity-70">от {f.pricePerGuest.toLocaleString('ru-RU')} ₽</span>
+                  <span className="block text-xs mt-0.5 text-muted-foreground">от {f.pricePerGuest.toLocaleString('ru-RU')} ₽</span>
                 </button>
               ))}
             </div>

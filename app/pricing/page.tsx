@@ -63,7 +63,7 @@ const EXAMPLES = [
   { event: 'Свадьба 50 чел', format: 'Банкет', perGuest: 3950, guests: 50, total: 197500 },
   { event: 'Корпоратив 30 чел', format: 'Фуршет', perGuest: 2450, guests: 30, total: 73500 },
   { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 390, guests: 20, total: 7800 },
-  { event: 'День рождения 4 чел', format: 'Шеф на дом', perGuest: 4500, guests: 4, total: 18000 },
+  { event: 'День рождения 6 чел', format: 'Шеф на дом', perGuest: 4500, guests: 6, total: 27000 },
 ];
 
 export default function PricingPage() {

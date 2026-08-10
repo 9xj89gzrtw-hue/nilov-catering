@@ -35,7 +35,7 @@ export default function SvadbaPage() {
           <p className="text-xs text-muted-foreground">Цены фиксированы по тарифам (₽/гость). Доплата только за индивидуальные позиции (торт с декором, доп. персонал, выезд за КАД). Финальная смета фиксируется в договоре после согласования меню.</p>
           {/* Trust bar */}
           <p className="text-sm text-muted-foreground mt-3">
-            19 лет на кухне СПб · 3000+ событий · 4.8/5 по 27 отзывам · ⏱ Перезвоним за 15 минут
+            19 лет на кухне СПб · 3 000+ событий · 4.8/5 по 27 отзывам · ⏱ Перезвоним за 15 минут
           </p>
           <div className="mt-4">
             <ShareButton
@@ -133,7 +133,7 @@ export default function SvadbaPage() {
             </div>
             <div>
               <p className="text-sm font-medium">Дмитрий Нилов</p>
-              <p className="text-xs text-muted-foreground">Шеф-повар, 17 лет опыта</p>
+              <p className="text-xs text-muted-foreground">Шеф-повар, 19 лет опыта</p>
             </div>
           </div>
         </div>

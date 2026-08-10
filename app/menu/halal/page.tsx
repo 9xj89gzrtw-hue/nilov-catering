@@ -73,7 +73,7 @@ export default function HalalPage() {
               <p className="text-xs text-amber-800">Доставка с учётом точного времени заката. Менеджер уточнит время за день до ифтара.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
-              <p className="font-semibold text-amber-900 mb-1"> Минимум — 10 чел</p>
+              <p className="font-semibold text-amber-900 mb-1"> Минимум — 20 чел</p>
               <p className="text-xs text-amber-800">Ифтар-пакет от 1 800 ₽/гость. Для коллектива 30+ — скидка 10%.</p>
             </div>
           </div>

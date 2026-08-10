@@ -14,7 +14,7 @@ import { getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
-  openGraph: { images: [{ url: '/images/catering/wedding-01.jpg', width: 1200, height: 630 }] },
+  // og:image provided by app/opengraph-image.tsx (dynamic 1200×630 PNG)
 };
 
 export const revalidate = 3600;

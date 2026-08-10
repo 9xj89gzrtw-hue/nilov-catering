@@ -200,7 +200,7 @@ export default async function DegustatsiyaPage() {
             </div>
             <div className="rounded-xl border border-line bg-card p-5">
               <dt className="font-medium mb-1">Можно задегустировать конкретные позиции?</dt>
-              <dd className="text-sm text-muted-foreground">Да, укажите в комментарии — мы подготовим именно их. Иначе подадим repräsentтивный набор из тарифа.</dd>
+              <dd className="text-sm text-muted-foreground">Да, укажите в комментарии — мы подготовим именно их. Иначе подадим репрезентативный набор из тарифа.</dd>
             </div>
           </dl>
         </section>

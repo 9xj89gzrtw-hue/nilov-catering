@@ -24,9 +24,10 @@ export default function ContactPage() {
 
         {/* Trust bar */}
         <p className="text-sm text-muted-foreground mb-8">
-          19 лет на кухне СПб · 3000+ событий · 4.8/5 по 27 отзывам
+          19 лет на кухне СПб · 3 000+ событий · 4.8/5 по 27 отзывам
         </p>
 
+        <h2 className="font-heading text-xl font-medium mb-4">Заявка на кейтеринг</h2>
         <form
           method="POST"
           action="/api/quote"
@@ -132,6 +133,7 @@ export default function ContactPage() {
                 id="date"
                 type="date"
                 name="date"
+                aria-label="Дата события"
                 className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
               />
             </div>

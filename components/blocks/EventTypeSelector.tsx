@@ -171,7 +171,7 @@ export default function EventTypeSelector() {
           className="mt-10 text-center"
         >
           <Link href="/events" className="inline-flex items-center gap-2 text-sm font-medium text-gold-text hover:underline no-underline">
-            Все 9 типов событий
+            Все 8 типов событий
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>

@@ -82,7 +82,7 @@ export default function CatalogPage() {
           </p>
           {/* Trust bar — compact, one line */}
           <p className="text-sm text-muted-foreground">
-            19 лет на кухне СПб · 3000+ событий · 4.8/5 по 27 отзывам · ⏱ Перезвоним за 15 минут
+            19 лет на кухне СПб · 3 000+ событий · 4.8/5 по 27 отзывам · ⏱ Перезвоним за 15 минут
           </p>
         </section>
 
@@ -186,7 +186,7 @@ export default function CatalogPage() {
 
                     {/* Инфо — flex-col с mt-auto прижимает кнопку к низу для одинаковой высоты */}
                     <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="font-heading font-medium text-lg leading-snug mb-1">{dish.name}</h3>
+                      <div className="font-heading font-medium text-lg leading-snug mb-1">{dish.name}</div>
                       <p className="text-sm text-muted-foreground mb-4 line-clamp-2 min-h-[2.5rem]">{dish.description}</p>
 
                       {/* Цена + кнопка — прижата к низу карточки */}

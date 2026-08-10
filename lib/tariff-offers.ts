@@ -51,7 +51,7 @@ const SVADBA: TariffOffer[] = [
   },
   {
     eventId: 'svadba', eventName: 'Свадьба', tier: 'standard', tierLabel: 'Стандарт',
-    pricePerGuest: 5470, minGuests: 25,
+    pricePerGuest: 5470, minGuests: 15,
     description: 'Полноценный свадебный банкет с посадкой. Официанты, барная станция (опц. безалк. для халяль), горячее.',
     highlights: ['5 закусок', '2 горячих блюда', 'Барная станция (опц. безалк. для халяль)', 'Welcome drink'],
     imagePlaceholder: '',
@@ -77,7 +77,7 @@ const SVADBA: TariffOffer[] = [
   },
   {
     eventId: 'svadba', eventName: 'Свадьба', tier: 'premium', tierLabel: 'Расширенный',
-    pricePerGuest: 7350, minGuests: 20,
+    pricePerGuest: 7350, minGuests: 15,
     description: 'Свадьба ресторанного уровня: морепродукты, бармен-шоу, живая станция.',
     highlights: ['Икорная станция', 'Морепродукты', 'Бармен-шоу', 'Живая станция пасты', 'Шампанское безлимит'],
     imagePlaceholder: '',
@@ -136,7 +136,7 @@ const SVADBA: TariffOffer[] = [
 const KORPORATIV: TariffOffer[] = [
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'economy', tierLabel: 'Эконом',
-    pricePerGuest: 4470, minGuests: 15,
+    pricePerGuest: 3950, minGuests: 15,
     description: 'Банкет с посадкой. Сытные закуски, горячее, напитки.',
     highlights: ['Закуски + салаты', 'Горячее блюдо', 'Чай/кофе/вода', 'Доставка в КАД'],
     imagePlaceholder: '',
@@ -154,7 +154,7 @@ const KORPORATIV: TariffOffer[] = [
   },
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'standard', tierLabel: 'Стандарт',
-    pricePerGuest: 5470, minGuests: 20,
+    pricePerGuest: 5470, minGuests: 15,
     description: 'Банкет с посадкой. Мясное/рыбное горячее, барная станция (опц. безалк. для халяль), десерты.',
     highlights: ['7 закусок', '2 горячих', 'Вино/пиво', 'Десертный стол'],
     imagePlaceholder: '',
@@ -178,7 +178,7 @@ const KORPORATIV: TariffOffer[] = [
   },
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'premium', tierLabel: 'Расширенный',
-    pricePerGuest: 5950, minGuests: 20,
+    pricePerGuest: 7350, minGuests: 15,
     description: 'Ресторанный уровень. Морепродукты, бармен, живая станция.',
     highlights: ['Устрицы/креветки', 'Живая станция', 'Бармен-шоу', 'Фотозона'],
     imagePlaceholder: '',
@@ -201,7 +201,7 @@ const KORPORATIV: TariffOffer[] = [
   },
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'luxury', tierLabel: 'Максимальный',
-    pricePerGuest: 7950, minGuests: 15,
+    pricePerGuest: 9950, minGuests: 15,
     description: 'Полный бар, две живые станции, чёрная икра, сигары.',
     highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарный lounge 21+', 'Координатор'],
     imagePlaceholder: '',
@@ -316,7 +316,7 @@ const VYPUSKNOY: TariffOffer[] = [
 const CHASTNOE: TariffOffer[] = [
   {
     eventId: 'chastnoe', eventName: 'Частное событие', tier: 'economy', tierLabel: 'Эконом',
-    pricePerGuest: 2450, minGuests: 15,
+    pricePerGuest: 2450, minGuests: 20,
     description: 'Камерный фуршет. Закуски, горячее, напитки — без лишнего.',
     highlights: ['6 видов закусок', '1 горячее', 'Чай/кофе', 'Доставка'],
     imagePlaceholder: '',
@@ -333,7 +333,7 @@ const CHASTNOE: TariffOffer[] = [
   },
   {
     eventId: 'chastnoe', eventName: 'Частное событие', tier: 'standard', tierLabel: 'Стандарт',
-    pricePerGuest: 3950, minGuests: 10,
+    pricePerGuest: 3950, minGuests: 20,
     description: 'Уютный банкет. Закуски, 2 горячих, вино, десерты.',
     highlights: ['Закуски + плато', '2 горячих', 'Вино', 'Десерты'],
     imagePlaceholder: '',
@@ -352,7 +352,7 @@ const CHASTNOE: TariffOffer[] = [
   },
   {
     eventId: 'chastnoe', eventName: 'Частное событие', tier: 'premium', tierLabel: 'Расширенный',
-    pricePerGuest: 5950, minGuests: 8,
+    pricePerGuest: 5950, minGuests: 20,
     description: 'Гастрономический ужин. Морепродукты, рибай, сомелье.',
     highlights: ['Устрицы', 'Рибай', 'Сомелье', 'Гастро-десерт'],
     imagePlaceholder: '',
@@ -453,7 +453,7 @@ const CHEF_AT_HOME: TariffOffer[] = [
   },
   {
     eventId: 'chef-at-home', eventName: 'Шеф на дом', tier: 'premium', tierLabel: 'Расширенный',
-    pricePerGuest: 7500, minGuests: 2,
+    pricePerGuest: 7500, minGuests: 6,
     description: 'Гастрономический опыт. Шеф + сомелье, 6 курсов с wine pairing.',
     highlights: ['6 курсов', 'Wine pairing', 'Шеф + сомелье', '6 часов'],
     imagePlaceholder: '',
