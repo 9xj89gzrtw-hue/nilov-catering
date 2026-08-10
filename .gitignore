@@ -35,3 +35,5 @@ snapshots-v2-resized/
 vlm-eval-*.json
 research-data/
 
+data/subscribers.json
+logs/
