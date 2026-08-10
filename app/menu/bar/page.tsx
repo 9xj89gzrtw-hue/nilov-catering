@@ -89,6 +89,7 @@ export default function BarPage() {
         </nav>
 
         <div className="mb-12 max-w-3xl">
+          <span className="inline-block text-xs bg-red-600 text-white px-2 py-1 rounded font-bold mb-3">18+</span>
           <h1 className="font-heading text-4xl md:text-6xl font-medium mb-3" style={{ letterSpacing: '-0.02em' }}>
             Бар и mixology
           </h1>

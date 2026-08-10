@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/gallery', languages: { 'ru': '/gallery', 'en': '/en', 'x-default': '/gallery' } },
-  title: 'Галерея — фото мероприятий NiloV Catering',
+  title: 'Галерея — фото мероприятий',
   description: 'Фото с наших мероприятий: свадьбы, корпоративы, банкеты, фуршеты, детские праздники. Реальные события NiloV Catering.',
 };
 

@@ -66,7 +66,7 @@ export default function SvadbaPage() {
           </p>
           <p className="text-xs text-muted-foreground mb-3">
             <strong>Как считается цена:</strong> веган-группа — по тарифу «Веган Стандарт»
-            (2 950 ₽/гость, см. <Link href="/menu/vegan" className="underline">/menu/vegan</Link>).
+            (2 950 ₽/гость, см. <Link href="/menu/vegan" className="underline">веган-меню</Link>).
             Всеядная группа — по тарифу «Свадьба Стандарт» (5 470 ₽/гость, см. тарифы ниже).
             Итог = sum(per-group price × guests). Например: 50 веганов × 2 950 + 30 всеядных × 5 470
             = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong> за 80 гостей
@@ -197,7 +197,7 @@ export default function SvadbaPage() {
           </div>
           <p className="text-[11px] text-muted-foreground mt-3"> Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт, винная карта, координатор — доступны как опции в любом тарифе.</p>
           <p className="text-[11px] text-muted-foreground mt-2"> <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">/allergens</a>.</p>
+          <p className="text-[11px] text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}

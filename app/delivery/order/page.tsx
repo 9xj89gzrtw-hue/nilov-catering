@@ -196,7 +196,7 @@ export default function DeliveryOrderPage() {
                       <p className="text-xs text-muted-foreground mb-2">{zone.distance} за КАД</p>
                       <div className="text-[10px] text-muted-foreground space-y-0.5">
                         <p> Холодовая цепь: {zone.coldChain ? '' : ' только термобоксы'}</p>
-                        <p>⏱ Ответ: до {zone.slaHours}ч</p>
+                        <p>⏱ До {zone.slaHours}ч</p>
                       </div>
                     </button>
                   ))}

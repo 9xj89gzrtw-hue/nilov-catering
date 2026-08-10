@@ -204,7 +204,7 @@ export default function CatalogPage() {
                           }`}
                         >
                           {isInCart ? (
-                            <><Check className="w-4 h-4" /> В меню</>
+                            <><Check className="w-4 h-4" /> Добавлено</>
                           ) : (
                             <><Plus className="w-4 h-4" /> В меню</>
                           )}

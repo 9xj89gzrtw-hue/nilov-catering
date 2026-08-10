@@ -457,7 +457,7 @@ function Team() {
           className="text-xs text-muted-foreground italic mt-6 max-w-2xl"
         >
           Фото команды публикуем с согласия сотрудников. Полный список — на странице{' '}
-          <Link href="/team" className="underline text-gold-text">/team</Link>.
+          <Link href="/team" className="underline text-gold-text">команда</Link>.
         </motion.p>
       </div>
     </section>
@@ -547,7 +547,7 @@ function Kitchen() {
           </Link>
           <span className="text-muted-foreground">
             Больше фото — в{' '}
-            <Link href="/gallery" className="underline text-gold-text">/gallery</Link>
+            <Link href="/gallery" className="underline text-gold-text">галерея</Link>
             {' · '}
             видео с событий — в{' '}
             <Link href="/gallery#videos" className="underline text-gold-text">видеогалерее</Link>.
@@ -585,7 +585,7 @@ function Cases() {
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mt-3 max-w-xl">
             Реальные события 2024–2025. С отзывами, SLA и страховым покрытием.
-            Полный список — на <Link href="/reviews" className="underline text-gold-text">/reviews</Link>.
+            Полный список — на <Link href="/reviews" className="underline text-gold-text">отзывы</Link>.
           </p>
         </motion.div>
 
@@ -726,7 +726,7 @@ function Certificates() {
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mt-3 max-w-xl">
             Каждый сертификат проверяем и продлеваем. Сканы — на{' '}
-            <Link href="/certificates" className="underline text-gold-text">/certificates</Link>.
+            <Link href="/certificates" className="underline text-gold-text">сертификаты</Link>.
           </p>
         </motion.div>
 
