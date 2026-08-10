@@ -27,7 +27,7 @@ export default function NikahPage() {
             Сертификат Совета муфтиев России, отдельная линия производства, без свинины и алкоголя.
           </p>
           <p className="text-sm text-muted-foreground">
-            <span className="text-gold-text font-semibold">Никах от 3 950 ₽/гость</span> · мин. 30 гостей ·
+            <span className="text-gold-text font-semibold">Никах от 3 950 ₽/гость</span> · мин. 15 гостей ·
             <span className="text-gold-text font-semibold"> Ифтар от 1 800 ₽/гость</span> · мин. 20 гостей
           </p>
         </header>
@@ -62,7 +62,7 @@ export default function NikahPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-5 rounded-xl border-2 border-emerald-200 bg-emerald-50/30">
               <h3 className="font-heading text-xl font-medium mb-2 text-emerald-900"> Никах</h3>
-              <p className="text-sm text-muted-foreground mb-3">Мусульманская свадебная церемония. Банкет с посадкой, отдельно мужская и женская зоны по запросу. Меню от 3 950 ₽/гость, мин. 30 гостей.</p>
+              <p className="text-sm text-muted-foreground mb-3">Мусульманская свадебная церемония. Банкет с посадкой, отдельно мужская и женская зоны по запросу. Меню от 3 950 ₽/гость, мин. 15 гостей.</p>
               <ul className="text-sm space-y-1 text-foreground/90">
                 <li>• Банкет с посадкой, 4–6 перемен блюд</li>
                 <li>• Безалкогольные напитки: морсы, лимонады, чай</li>

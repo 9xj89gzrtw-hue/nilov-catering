@@ -59,12 +59,11 @@ export async function GET(
 </style></head>
 <body>
 <h1>Меню «${escapeHtml(label)}»</h1>
-<p class="subtitle">NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • odaeda.ru</p>
+<p class="subtitle">NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • nilov-catering.ru</p>
 
 ${format === 'furshet' ? `<div class="tier"><h3>Эконом <span class="price">2 450 ₽/гость</span></h3><p>5–7 видов канапе, 3 вида тарталеток, сезонные фрукты, соки, вода</p></div>
-<div class="tier"><h3>Стандарт <span class="price">3 450 ₽/гость</span></h3><p>8–10 видов закусок, рулеты, сырная тарелка, кофе, чай, морсы</p></div>
-<div class="tier"><h3>Расширенный <span class="price">4 350 ₽/гость</span></h3><p>12+ видов, горячие мини-блюда, десертный стол, вино, шампанское</p></div>
-<div class="tier"><h3>Максимальный <span class="price">5 350 ₽/гость</span></h3><p>Икра, морепродукты, бармен, шоу-станция, полное меню</p></div>` : ''}
+<div class="tier"><h3>Стандарт <span class="price">3 950 ₽/гость</span></h3><p>8–10 видов закусок, рулеты, сырная тарелка, кофе, чай, морсы</p></div>
+<div class="tier"><h3>Расширенный <span class="price">5 950 ₽/гость</span></h3><p>12+ видов, горячие мини-блюда, десертный стол, вино, шампанское</p></div>` : ''}
 
 <h2>Блюда (${dishes.length})</h2>
 <table>
@@ -80,7 +79,7 @@ ${dishes.map(d => `<tr>
 </tbody></table>
 
 <footer>
-  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • info@odaeda.ru • odaeda.ru<br>
+  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • info@nilov-catering.ru • nilov-catering.ru<br>
   Цены указаны на июль 2026 г. Для точной сметы свяжитесь с менеджером.<br>
   © NiloV Catering, 2026. Все права защищены.
 </footer>

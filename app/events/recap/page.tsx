@@ -172,7 +172,7 @@ export default function RecapPage() {
           </p>
           <p className="text-sm text-muted-foreground">
             Кейс composite — собран из нескольких аналогичных корпоративных событий 2024–2025.
-            Полные детали и контакты референсов — по запросу на b2b@odaeda.ru (после NDA).
+            Полные детали и контакты референсов — по запросу на b2b@nilov-catering.ru (после NDA).
             Для фестивалей 800+ гостей — расширяем производственные мощности.{' '}
             <Link href="/why-us" className="underline text-gold-text">
               Подробнее →
@@ -184,8 +184,8 @@ export default function RecapPage() {
           <p className="text-sm text-muted-foreground">
              <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
-            <a href="mailto:info@odaeda.ru" className="underline text-gold-text">
-              info@odaeda.ru
+            <a href="mailto:info@nilov-catering.ru" className="underline text-gold-text">
+              info@nilov-catering.ru
             </a>{' '}
             или{' '}
             <a href="tel:+78129195911" className="underline text-gold-text">

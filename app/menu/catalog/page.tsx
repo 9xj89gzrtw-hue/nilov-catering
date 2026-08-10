@@ -244,7 +244,7 @@ export default function CatalogPage() {
         {/* Min order info */}
         <div className="mt-8 p-5 rounded-xl border border-line bg-card text-center">
           <p className="text-sm text-muted-foreground">
-            Минимальный заказ: от 10 гостей (кофе-брейк) / 15 (фуршет) / 30 (банкет)
+            Минимальный заказ: от 10 гостей (кофе-брейк) / 20 (фуршет) / 15 (банкет)
           </p>
         </div>
 

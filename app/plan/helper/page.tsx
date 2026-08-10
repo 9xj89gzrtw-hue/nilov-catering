@@ -100,7 +100,7 @@ function getRecommendation(occasion: string, guests: string): { name: string; pr
     case 'Конференция':
       return { name: 'Кофе-брейк «Стандарт»', price: 1450, minGuests: 10, tier: 'Стандарт', format: 'coffee-break', whatIncluded: ['Выпечка (5 видов)', 'Канапе, фрукты', 'Соки, чай, кофе', 'Бумажная посуда', 'Доставка по КАД'] };
     case 'Просто ужин':
-      return { name: 'Шеф на дом', price: 4500, minGuests: 4, tier: 'Стандарт', format: 'chef-at-home', whatIncluded: ['5 перемен блюд от шеф-повара', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты включены', 'Сомелье (опц.)'] };
+      return { name: 'Шеф на дом', price: 4500, minGuests: 6, tier: 'Стандарт', format: 'chef-at-home', whatIncluded: ['5 перемен блюд от шеф-повара', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты включены', 'Сомелье (опц.)'] };
     default:
       return null;
   }

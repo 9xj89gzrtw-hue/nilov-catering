@@ -182,15 +182,15 @@ export default function Page() {
 БИК: ${LEGAL.bank.bik}
 р/с: ${LEGAL.bank.account}
 Телефон: +7 (812) 919-59-11
-Email: info@odaeda.ru / b2b@odaeda.ru`}
+Email: info@nilov-catering.ru / b2b@nilov-catering.ru`}
             </pre>
           </section>
         </div>
 
         <p className="mt-10 text-sm text-muted-foreground">
           Документ также доступен в формате PDF по запросу. Связь:{' '}
-          <a href="mailto:b2b@odaeda.ru" className="underline">
-            b2b@odaeda.ru
+          <a href="mailto:b2b@nilov-catering.ru" className="underline">
+            b2b@nilov-catering.ru
           </a>
         </p>
       </div>

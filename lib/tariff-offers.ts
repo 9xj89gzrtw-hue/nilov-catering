@@ -32,7 +32,7 @@ export interface TariffOffer {
 const SVADBA: TariffOffer[] = [
   {
     eventId: 'svadba', eventName: 'Свадьба', tier: 'economy', tierLabel: 'Эконом',
-    pricePerGuest: 3950, minGuests: 30,
+    pricePerGuest: 3950, minGuests: 15,
     description: 'Свадебный приём в фуршетном формате (без посадки). 5 видов канапе, горячее, welcome drink. Достойно, без излишеств.',
     highlights: ['5 видов канапе', 'Горячее блюдо', 'Welcome drink', 'Чай/кофе'],
     imagePlaceholder: '',
@@ -136,7 +136,7 @@ const SVADBA: TariffOffer[] = [
 const KORPORATIV: TariffOffer[] = [
   {
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'economy', tierLabel: 'Эконом',
-    pricePerGuest: 4470, minGuests: 30,
+    pricePerGuest: 4470, minGuests: 15,
     description: 'Банкет с посадкой. Сытные закуски, горячее, напитки.',
     highlights: ['Закуски + салаты', 'Горячее блюдо', 'Чай/кофе/вода', 'Доставка в КАД'],
     imagePlaceholder: '',
@@ -229,7 +229,7 @@ const KORPORATIV: TariffOffer[] = [
 const VYPUSKNOY: TariffOffer[] = [
   {
     eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'economy', tierLabel: 'Школьный пакет',
-    pricePerGuest: 1800, minGuests: 30,
+    pricePerGuest: 1800, minGuests: 15,
     description: 'Спец. тариф для школ и образовательных учреждений. Канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад. Бумажная посуда.',
     highlights: ['Школы / вузы / детсады', 'Документы для Роспот', 'Бумажная посуда', 'Станция напитков'],
     imagePlaceholder: '',
@@ -437,7 +437,7 @@ const DETSKOE: TariffOffer[] = [
 const CHEF_AT_HOME: TariffOffer[] = [
   {
     eventId: 'chef-at-home', eventName: 'Шеф на дом', tier: 'standard', tierLabel: 'Стандарт',
-    pricePerGuest: 4500, minGuests: 4,
+    pricePerGuest: 4500, minGuests: 6,
     description: 'Шеф готовит у вас. 4 блюда, сервировка, уборка кухни.',
     highlights: ['4 курса', 'Сервировка', 'Уборка кухни', '4 часа работы шефа'],
     imagePlaceholder: '',

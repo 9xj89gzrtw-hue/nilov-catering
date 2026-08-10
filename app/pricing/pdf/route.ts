@@ -62,10 +62,10 @@ export async function GET(_request: Request) {
 </style></head>
 <body>
 <h1>Тарифы и цены NiloV Catering</h1>
-<p class="subtitle">Санкт-Петербург • +7 (812) 919-59-11 • odaeda.ru • Цены за человека</p>
+<p class="subtitle">Санкт-Петербург • +7 (812) 919-59-11 • nilov-catering.ru • Цены за человека</p>
 ${rows.join('\n')}
 <footer>
-  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • info@odaeda.ru • odaeda.ru<br>
+  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • info@nilov-catering.ru • nilov-catering.ru<br>
   Цены указаны на июль 2026 г. Для точной сметы свяжитесь с менеджером.<br>
   © NiloV Catering, 2026. Все права защищены. • Информация носит ознакомительный характер.
 </footer>

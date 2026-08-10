@@ -85,7 +85,7 @@ export default function LiveSocialFeed({ posts }: { posts?: SocialPost[] }) {
             >
               <div className="aspect-square overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={post.image} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={post.image} alt={post.text.slice(0, 100)} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-3 md:p-4">
                 <p className="text-xs md:text-sm leading-relaxed text-foreground line-clamp-3">{post.text}</p>

@@ -51,8 +51,8 @@ export const SITE: SiteConfig = {
   phoneMobile: '+7 (911) 941-72-05',
   phoneMobileTel: '+79119417205',
   whatsapp: 'https://wa.me/78129195911',
-  email: 'info@odaeda.ru',
-  b2bEmail: 'b2b@odaeda.ru',
+  email: 'info@nilov-catering.ru',
+  b2bEmail: 'b2b@nilov-catering.ru',
   address: 'Санкт-Петербург, В.О., 20-я линия, 11',
   ogImage: '/og-image.png',
   legalName: 'ИП Нилов Дмитрий Игоревич',
@@ -60,7 +60,7 @@ export const SITE: SiteConfig = {
   inn: '781433059704',
   ogrnip: '314784710400401',
   legalAddress: '199106, г. Санкт-Петербург, Василеостровский район, 20-я линия, дом 11',
-  altDomain: 'interfood-catering.ru',
+  altDomain: '',
 };
 
 export const NAV_ITEMS: NavItem[] = [

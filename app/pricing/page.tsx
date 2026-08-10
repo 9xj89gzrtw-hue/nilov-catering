@@ -8,6 +8,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Цены на кейтеринг в СПб — от 390 ₽/гость',
   description: 'Прозрачные цены: фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽ за гостя. Всё включено. Без скрытых платежей.',
+  alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
 };
 
 export const dynamic = 'force-static';
@@ -195,7 +196,7 @@ export default function PricingPage() {
           <h2 className="font-heading text-2xl font-medium mb-4 text-center">Что входит в любую цену</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              { icon: '🍽', t: 'Меню', d: 'Выбор из 114 блюд' },
+              { icon: '🍽', t: 'Меню', d: 'Выбор из 124 блюд' },
               { icon: '👨‍🍳', t: 'Официанты', d: 'Профессионалы' },
               { icon: '🚚', t: 'Доставка', d: 'По КАД бесплатно' },
               { icon: '🍽', t: 'Посуда', d: 'Сервировка' },

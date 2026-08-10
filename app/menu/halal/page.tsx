@@ -102,7 +102,7 @@ export default function HalalPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1"> Цена никаха</p>
-              <p className="text-xs text-emerald-800">От <strong>4 500 ₽/гость</strong> (минимум 30 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
+              <p className="text-xs text-emerald-800">От <strong>3 950 ₽/гость</strong> (минимум 15 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1"> Раздельный зал</p>

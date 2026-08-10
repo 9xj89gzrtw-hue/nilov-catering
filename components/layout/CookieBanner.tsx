@@ -30,7 +30,7 @@ export default function CookieBanner() {
     >
       <p className="text-xs text-background/80 mb-2">
         Мы используем cookie для улучшения сайта.{' '}
-        <Link href="/privacy" className="underline hover:text-background">Подробнее</Link>
+        <Link href="/privacy" className="underline hover:text-background inline-flex items-center min-h-[44px] px-1">Подробнее</Link>
       </p>
       <div className="flex gap-2">
         <button

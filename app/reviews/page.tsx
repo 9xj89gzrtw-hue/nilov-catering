@@ -183,10 +183,10 @@ export default function ReviewsPage() {
       <section className="container-site max-w-7xl mb-10" aria-label="Статистика отзывов">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <StatCard
-            icon={Star}
-            value={`${avgRating} / 5`}
-            label="Средняя оценка"
-            sub={`из ${REVIEWS.length} отзывов`}
+            icon={PartyPopper}
+            value="3 000+"
+            label="Мероприятий"
+            sub="с 2007 года в Петербурге"
           />
           <StatCard
             icon={Quote}
@@ -195,10 +195,10 @@ export default function ReviewsPage() {
             sub="отзывов с 2007 года"
           />
           <StatCard
-            icon={PartyPopper}
-            value="3 000+"
-            label="Мероприятий"
-            sub="с 2007 года в Петербурге"
+            icon={Star}
+            value={`${avgRating}`}
+            label="Средний рейтинг"
+            sub={`из ${REVIEWS.length} верифицированных отзывов`}
           />
           <StatCard
             icon={BadgeCheck}

@@ -184,7 +184,7 @@ export default async function DegustatsiyaPage() {
           <dl className="space-y-4 max-w-2xl mx-auto text-left">
             <div className="rounded-xl border border-line bg-card p-5">
               <dt className="font-medium mb-1">Дегустация действительно бесплатная?</dt>
-              <dd className="text-sm text-muted-foreground">Да, для клиентов, планирующих событие от 20 гостей. Групповые дегустации (до 4 человек) — без оплаты.</dd>
+              <dd className="text-sm text-muted-foreground">Да, для клиентов, планирующих событие от 30 гостей. Групповые дегустации (до 4 человек) — без оплаты.</dd>
             </div>
             <div className="rounded-xl border border-line bg-card p-5">
               <dt className="font-medium mb-1">Можно прийти с детьми / супругом / коллегами?</dt>

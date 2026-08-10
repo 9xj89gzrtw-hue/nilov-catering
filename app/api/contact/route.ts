@@ -244,8 +244,8 @@ export async function GET() {
     legalAddress: LEGAL.legalAddress,
     edo: LEGAL.edo,
     phone: '+7 (812) 919-59-11',
-    email: 'info@odaeda.ru',
-    // W93-v7: canonical domain is nilov-catering.ru per AGENTS.md. odaeda.ru kept as legacy mailbox until migration completes.
+    email: 'info@nilov-catering.ru',
+    // W93-v7: canonical domain is nilov-catering.ru per AGENTS.md. nilov-catering.ru kept as legacy mailbox until migration completes.
     altEmail: 'info@nilov-catering.ru',
   });
 }
