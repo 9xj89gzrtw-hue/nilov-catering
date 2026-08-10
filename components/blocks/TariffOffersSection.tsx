@@ -155,7 +155,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
       <div className="relative">
         <FoodPhoto
           src={
-            offer.tier === 'economy' ? '/images/gallery/furshet-menu.jpg' :
+            offer.tier === 'economy' ? '/images/real/wedding-banquet.jpg' :
             offer.tier === 'standard' ? '/images/gallery/wedding-banquet.jpg' :
             offer.tier === 'premium' ? '/images/gallery/dessert-table.jpg' :
             offer.tier === 'luxury' ? '/images/gallery/cocktail.jpg' :
