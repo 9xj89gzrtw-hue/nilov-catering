@@ -146,11 +146,28 @@ export default function FAQPage() {
         </div>
         <script dangerouslySetInnerHTML={{ __html: `
           document.getElementById('faq-search').addEventListener('input', function(e) {
-            var q = e.target.value.toLowerCase();
+            var q = e.target.value.toLowerCase().trim();
+            var visibleCount = 0;
             document.querySelectorAll('#faq-list details').forEach(function(el) {
               var text = el.textContent.toLowerCase();
-              el.style.display = text.includes(q) ? '' : 'none';
+              var match = !q || text.includes(q);
+              el.style.display = match ? '' : 'none';
+              if (match) visibleCount++;
             });
+            // Show/hide section headers based on whether they have visible items
+            document.querySelectorAll('#faq-list > div').forEach(function(section) {
+              var hasVisible = section.querySelectorAll('details:not([style*="none"])').length > 0;
+              var header = section.previousElementSibling;
+              if (header && header.tagName === 'H2') {
+                header.style.display = hasVisible ? '' : 'none';
+                section.style.display = hasVisible ? '' : 'none';
+              }
+            });
+            // Empty state
+            var emptyMsg = document.getElementById('faq-empty');
+            if (emptyMsg) {
+              emptyMsg.style.display = visibleCount === 0 ? '' : 'none';
+            }
           });
         `}} />
 
@@ -189,6 +206,14 @@ export default function FAQPage() {
               <p className="px-4 pb-4 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
             </details>
           ))}
+        </div>
+
+        {/* Empty state for search */}
+        <div id="faq-empty" style={{ display: 'none' }} className="text-center py-12">
+          <p className="text-4xl mb-3">🔍</p>
+          <p className="text-lg font-medium mb-2">Ничего не найдено</p>
+          <p className="text-sm text-muted-foreground mb-4">Попробуйте изменить запрос или свяжитесь с нами напрямую.</p>
+          <a href={`tel:${SITE.phoneTel}`} className="text-gold-text font-semibold hover:underline">{SITE.phone}</a>
         </div>
 
         {/* CTA */}

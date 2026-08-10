@@ -62,7 +62,7 @@ export default function GlutenFreePage() {
             </div>
             <div>
               <h3 className="font-semibold mb-1">Поставщики</h3>
-              <p className="text-muted-foreground">Верифицированные БГ-производители: миндальная мука Bob's Red Mill, рисовая мука ТМ Гарнец, БГ овсянка.</p>
+              <p className="text-muted-foreground">Верифицированные БГ-производители: миндальная мука Bob&apos;s Red Mill, рисовая мука ТМ Гарнец, БГ овсянка.</p>
             </div>
             <div>
               <h3 className="font-semibold mb-1"> Перекрёстное загрязнение глютеном</h3>

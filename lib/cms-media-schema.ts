@@ -1,3 +1,12 @@
+// Type for CMS validation rule (replaces `any`)
+export interface CMSRule {
+  required(): CMSRule;
+  min(n: number): CMSRule;
+  max(n: number): CMSRule;
+  custom(fn: (value: unknown) => boolean, msg?: string): CMSRule;
+  warning(): CMSRule;
+}
+
 // Sanity imports for validation types (only available in Sanity Studio)
 // import type { Rule } from 'sanity';
 
@@ -32,14 +41,14 @@ export const baseMediaFields = `
   alt: { 
     type: 'string', 
     title: 'Alt text (required)',
-    validation: (Rule: any) => Rule.required().min(10).max(125)
+    validation: (Rule: CMSRule) => Rule.required().min(10).max(125)
   },
   // Fact-gate
   status: {
     type: 'string',
     options: { list: ['verified', 'pending'], layout: 'radio' },
     initialValue: 'pending',
-    validation: (Rule: any) => Rule.required()
+    validation: (Rule: CMSRule) => Rule.required()
   },
   disclaimer: {
     type: 'string',
@@ -62,7 +71,7 @@ export const dishMediaSchema = {
       title: 'Фото блюда (обязательно)',
       options: { hotspot: true, accept: 'image/*' },
       fields: [
-              { name: 'alt', type: 'string', title: 'Alt text', validation: (Rule: any) => Rule.required().min(10).max(125) },
+              { name: 'alt', type: 'string', title: 'Alt text', validation: (Rule: CMSRule) => Rule.required().min(10).max(125) },
               { name: 'blurDataURL', type: 'string', title: 'Blur Data URL (auto)', readOnly: true },
               { name: 'status', type: 'string', options: { list: ['verified', 'pending'] }, initialValue: 'pending' },
               { name: 'disclaimer', type: 'string', hidden: ({ parent }: { parent?: { status?: string } }) => parent?.status === 'verified' }
@@ -147,7 +156,7 @@ export const heroVideoSchema = {
       type: 'file',
       title: 'WebM (VP9, 10-15s, <5MB)',
       options: { accept: 'video/webm' },
-      validation: (Rule: any) => Rule.required()
+      validation: (Rule: CMSRule) => Rule.required()
     },
     {
       name: 'mp4',
@@ -161,14 +170,14 @@ export const heroVideoSchema = {
       title: 'Постер (первый кадр, 1920×1080 WebP)',
       options: { hotspot: true },
       fields: [/* baseMediaFields */],
-      validation: (Rule: any) => Rule.required()
+      validation: (Rule: CMSRule) => Rule.required()
     },
     {
       name: 'duration',
       type: 'number',
       title: 'Длительность (сек)',
       initialValue: 12,
-      validation: (Rule: any) => Rule.min(8).max(20)
+      validation: (Rule: CMSRule) => Rule.min(8).max(20)
     },
     {
       name: 'isSeamlessLoop',
@@ -187,7 +196,7 @@ export const clientLogoSchema = {
   title: 'Логотип клиента',
   type: 'object',
   fields: [
-    { name: 'name', type: 'string', title: 'Название', validation: (Rule: any) => Rule.required() },
+    { name: 'name', type: 'string', title: 'Название', validation: (Rule: CMSRule) => Rule.required() },
     { 
       name: 'logo', 
       type: 'image', 
@@ -214,7 +223,7 @@ export const teamMemberSchema = {
   title: 'Член команды',
   type: 'document',
   fields: [
-    { name: 'name', type: 'string', title: 'Имя', validation: (Rule: any) => Rule.required() },
+    { name: 'name', type: 'string', title: 'Имя', validation: (Rule: CMSRule) => Rule.required() },
     { name: 'role', type: 'string', title: 'Роль (Шеф, Менеджер, Парикмахер...)' },
     { 
       name: 'photo', 
@@ -256,7 +265,7 @@ export const videoTestimonialSchema = {
   title: 'Видео-отзыв',
   type: 'object',
   fields: [
-    { name: 'clientName', type: 'string', title: 'Имя клиента', validation: (Rule: any) => Rule.required() },
+    { name: 'clientName', type: 'string', title: 'Имя клиента', validation: (Rule: CMSRule) => Rule.required() },
     { name: 'eventType', type: 'string', title: 'Тип события' },
     { 
       name: 'video', 
@@ -270,7 +279,7 @@ export const videoTestimonialSchema = {
       title: 'Постер', 
       options: { hotspot: true }
     },
-    { name: 'transcript', type: 'text', title: 'Транскрипт (обязательно для a11y)', validation: (Rule: any) => Rule.required() },
+    { name: 'transcript', type: 'text', title: 'Транскрипт (обязательно для a11y)', validation: (Rule: CMSRule) => Rule.required() },
     { 
       name: 'status', 
       type: 'string', 

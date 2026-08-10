@@ -43,7 +43,7 @@ export default function CatalogPage() {
     let dishes = ALL_DISHES;
     if (station !== 'all') dishes = dishes.filter(d => d.station === station);
     if (activeDiets.size > 0) {
-      dishes = dishes.filter(d => [...activeDiets].every(diet => d.dietBadges.includes(diet as any)));
+      dishes = dishes.filter(d => [...activeDiets].every(diet => (d.dietBadges as string[]).includes(diet)));
     }
     if (search.trim()) {
       const q = search.toLowerCase();

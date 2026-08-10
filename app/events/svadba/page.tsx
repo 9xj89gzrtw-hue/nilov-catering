@@ -125,7 +125,7 @@ export default function SvadbaPage() {
         <div className="mt-12 mb-8 p-6 rounded-2xl bg-secondary/30 border-l-4 border-gold-text">
           <p className="font-heading text-lg md:text-xl italic text-foreground/90 mb-3">
             «Свадьба — это не банкет. Это день, когда каждая деталь говорит невесте:
-            "Ты важна". Мы готовим не еду — мы готовим спокойствие».
+            &quot;Ты важна&quot;. Мы готовим не еду — мы готовим спокойствие».
           </p>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden">

@@ -21,7 +21,7 @@ export default function PricingWrapper({
   cmsPricing,
 }: {
   children: React.ReactNode;
-  cmsPricing?: { pricePerGuest: any; addons?: any[] } | null;
+  cmsPricing?: { pricePerGuest: unknown; addons?: unknown[] } | null;
 }) {
   return (
     <PricingProvider cmsPricing={cmsPricing}>

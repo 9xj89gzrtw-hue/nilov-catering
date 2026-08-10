@@ -68,6 +68,7 @@ export default function TenderHub() {
               </li>
             </ul>
             <div className="flex gap-2">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
               <a href="/api/templates/dogovor" className="rounded-lg bg-gold-text text-white px-4 py-2 text-xs font-semibold hover:bg-gold-text/90 no-underline">
                 Скачать договор (PDF)
               </a>

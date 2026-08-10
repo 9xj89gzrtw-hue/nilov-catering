@@ -28,7 +28,7 @@ export async function GET(
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  let data: any[];
+  let data: unknown[];
   if (collection === 'pricing') {
     const p = await cmsStore.pricing.get();
     data = p ? [p] : [];

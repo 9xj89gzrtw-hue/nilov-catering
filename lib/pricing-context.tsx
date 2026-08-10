@@ -16,12 +16,13 @@ export function PricingProvider({
   cmsPricing,
 }: {
   children: React.ReactNode;
-  cmsPricing?: { pricePerGuest: any; addons?: any[] } | null;
+  cmsPricing?: { pricePerGuest: unknown; addons?: unknown[] } | null;
 }) {
-  const value: PricingData = cmsPricing?.pricePerGuest && Object.keys(cmsPricing.pricePerGuest).length > 0
+  const pricePerGuest = cmsPricing?.pricePerGuest as Record<string, number> | undefined;
+  const value: PricingData = pricePerGuest && typeof pricePerGuest === 'object' && Object.keys(pricePerGuest).length > 0
     ? {
-        pricePerGuest: cmsPricing.pricePerGuest,
-        addons: (cmsPricing.addons || DEFAULT_PRICING.addons),
+        pricePerGuest: pricePerGuest as PricingData['pricePerGuest'],
+        addons: (cmsPricing?.addons as PricingData['addons']) || DEFAULT_PRICING.addons,
       }
     : DEFAULT_PRICING;
 

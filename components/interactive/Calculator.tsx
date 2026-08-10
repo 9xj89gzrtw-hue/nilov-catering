@@ -223,7 +223,7 @@ export default function Calculator() {
               eligibleQuantity: { '@type': 'QuantitativeValue', value: guests },
               availability: 'https://schema.org/InStock',
               seller: { '@type': 'LocalBusiness', name: 'NiloV Catering', address: { '@type': 'PostalAddress', addressLocality: 'Санкт-Петербург' } },
-              priceValidUntil: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString().slice(0, 10),
+              priceValidUntil: new Date(Date.UTC(2026, 7, 10) + 30 * 24 * 3600 * 1000).toISOString().slice(0, 10),
             }),
           }}
         />

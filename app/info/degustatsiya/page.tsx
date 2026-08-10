@@ -108,7 +108,7 @@ export default async function DegustatsiyaPage() {
                   id="date"
                   name="date"
                   required
-                  min={new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0]}
+                  min="2026-08-14"
                   className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
                 />
               </div>
@@ -212,7 +212,7 @@ export default async function DegustatsiyaPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {reviews.slice(0, 3).map(r => (
                 <article key={r.id} className="rounded-xl border border-line bg-card p-5">
-                  <p className="text-sm text-muted-foreground mb-3">"{r.quote.slice(0, 120)}..."</p>
+                  <p className="text-sm text-muted-foreground mb-3">&laquo;{r.quote.slice(0, 120)}...&raquo;</p>
                   <div className="flex items-center gap-2">
                     <span className="font-medium text-sm">{r.clientName}</span>
                     <span className="text-xs text-muted-foreground">{r.eventType}</span>

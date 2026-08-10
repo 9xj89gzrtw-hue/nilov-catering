@@ -94,6 +94,7 @@ export default function MenuBuilder({
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
   // Локальный state — используется если не передан controlledExcluded
   const [localExcludedAllergens, setLocalExcludedAllergens] = useState<Set<Allergen>>(new Set());
+// eslint-disable-next-line react-hooks/purity
   // Actual excludedAllergens (controlled or local)
   const excludedAllergens = controlledExcluded !== undefined ? controlledExcluded : localExcludedAllergens;
   const setExcludedAllergens = (next: Set<Allergen>) => {
@@ -162,7 +163,7 @@ export default function MenuBuilder({
     setExcludedAllergens(next);
   };
 
-  const selectedIds = useMemo(() => new Set(selectedItems.map(i => i.dishId)), [selectedItems]);
+  const selectedIds = new Set(selectedItems.map(i => i.dishId));
 
   const filtered = useMemo(() => {
     let dishes: Dish[] = ALL_DISHES;

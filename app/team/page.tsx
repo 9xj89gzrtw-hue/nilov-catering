@@ -79,14 +79,23 @@ export default function TeamPage() {
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
              <strong>Фото команды предоставляется по запросу после первого контакта</strong> — для верификации в LinkedIn, ОК, VK.
-            Мы не публикуем фото сотрудников публично по соображениям приватности. Все ФИО и роли — реальные, проверяются по ИНН {SITE.inn} (ИП Нилов Д.И.).
+            Мы не публикуем фото сотрудников публично по соображениям приватности. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 
         {/* Founder highlight */}
         <div className="mb-12 p-8 rounded-2xl border-2 border-gold-tint bg-gold-tint/10 text-center max-w-2xl mx-auto">
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-tint to-gold-text flex items-center justify-center text-4xl font-bold text-white" title="Фото по запросу после первого контакта">
-            ДН
+          <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-tint to-gold-text flex items-center justify-center text-4xl font-bold text-white shadow-lg" title="Фото по запросу после первого контакта">
+            <svg viewBox="0 0 100 100" className="w-full h-full rounded-full" aria-hidden="true">
+              <defs>
+                <linearGradient id="chef-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#B08D57" />
+                  <stop offset="100%" stopColor="#8E6F3F" />
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="50" fill="url(#chef-grad)" />
+              <text x="50" y="58" textAnchor="middle" fontSize="36" fontWeight="700" fill="white" fontFamily="Georgia, serif">ДН</text>
+            </svg>
           </div>
           <h2 className="font-heading text-2xl font-medium mb-1">Дмитрий Нилов</h2>
           <p className="text-gold-text font-medium mb-3">Основатель, шеф-повар · с 2007 года</p>

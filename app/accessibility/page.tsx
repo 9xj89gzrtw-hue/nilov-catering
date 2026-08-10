@@ -38,7 +38,7 @@ export default function AccessibilityPage() {
               <li>Уважение prefers-reduced-motion — анимации отключаются для пользователей с настройкой</li>
               <li>aria-label на всех навигационных элементах</li>
               <li>Семантический HTML (nav, main, section, footer, h1-h3)</li>
-              <li>lang="ru" на корневом html</li>
+              <li>lang=&quot;ru&quot; на корневом html</li>
               <li>Контакты доступны по tel: и mailto: ссылкам (один клик для звонка/email)</li>
             </ul>
           </div>

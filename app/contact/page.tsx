@@ -33,9 +33,22 @@ export default function ContactPage() {
           action="/api/quote"
           onSubmit={async (e) => {
             e.preventDefault();
+            // Validate phone before submit
+            const form = e.currentTarget;
+            const phoneInput = form.querySelector('#phone') as HTMLInputElement;
+            const phone = phoneInput.value.replace(/[\s\-\(\)]/g, '');
+            if (phone.replace(/\D/g, '').length < 10) {
+              setError('Введите корректный номер телефона — минимум 10 цифр. Например: +7 (812) 919-59-11');
+              phoneInput.focus();
+              return;
+            }
+            if (!form.checkValidity()) {
+              form.reportValidity();
+              return;
+            }
             setSubmitting(true);
             setError('');
-            const formData = new FormData(e.currentTarget);
+            const formData = new FormData(form);
             try {
               const res = await fetch('/api/quote', { method: 'POST', body: formData });
               const json = await res.json();

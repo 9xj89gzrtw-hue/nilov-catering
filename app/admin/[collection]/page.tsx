@@ -17,7 +17,7 @@ const LABELS: Record<string, string> = {
 
 export default function CollectionEditor({ params }: Props) {
   const [collection, setCollection] = useState<string>('');
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<unknown[] | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -44,8 +44,8 @@ export default function CollectionEditor({ params }: Props) {
     setTimeout(() => setMessage(''), 2000);
   }, [data, collection]);
 
-  const updateRow = (idx: number, key: string, value: any) => {
-    setData(prev => prev ? prev.map((row, i) => i === idx ? { ...row, [key]: value } : row) : null);
+  const updateRow = (idx: number, key: string, value: unknown) => {
+    setData(prev => prev ? prev.map((row, i) => i === idx ? { ...(row as Record<string, unknown>), [key]: value } : row) : null);
   };
 
   const addRow = () => {
@@ -59,7 +59,7 @@ export default function CollectionEditor({ params }: Props) {
   if (!collection) return <div className="p-8 text-gray-400">Загрузка...</div>;
   if (!data) return <div className="p-8 text-gray-400">Загрузка данных...</div>;
 
-  const fields = data.length > 0 ? Object.keys(data[0]) : [];
+  const fields = data.length > 0 && data[0] && typeof data[0] === 'object' ? Object.keys(data[0] as Record<string, unknown>) : [];
 
   return (
     <div>
@@ -85,36 +85,42 @@ export default function CollectionEditor({ params }: Props) {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, idx) => (
+            {data.map((row, idx) => {
+              const r = row as Record<string, unknown>;
+              return (
               <tr key={idx} className="border-t border-gray-700 hover:bg-gray-800/50">
-                {fields.map(f => (
+                {fields.map(f => {
+                  const val = r[f];
+                  return (
                   <td key={f} className="px-3 py-1.5">
-                    {typeof row[f] === 'boolean' ? (
-                      <input type="checkbox" checked={row[f]} onChange={e => updateRow(idx, f, e.target.checked)} className="accent-emerald-500" />
-                    ) : typeof row[f] === 'object' ? (
+                    {typeof val === 'boolean' ? (
+                      <input type="checkbox" checked={val} onChange={e => updateRow(idx, f, e.target.checked)} className="accent-emerald-500" />
+                    ) : typeof val === 'object' ? (
                       <input
                         className="bg-transparent border border-gray-600 rounded px-2 py-0.5 w-full font-mono text-xs"
-                        value={JSON.stringify(row[f])}
+                        value={JSON.stringify(val)}
                         onChange={e => { try { updateRow(idx, f, JSON.parse(e.target.value)); } catch {} }}
                       />
                     ) : (
                       <input
                         className="bg-transparent border border-gray-600 rounded px-2 py-0.5 w-full"
-                        value={row[f] ?? ''}
+                        value={typeof val === 'string' ? val : typeof val === 'number' ? String(val) : ''}
                         onChange={e => {
                           const v = e.target.value;
                           const num = Number(v);
-                          updateRow(idx, f, typeof row[f] === 'number' && !isNaN(num) ? num : v);
+                          updateRow(idx, f, typeof val === 'number' && !isNaN(num) ? num : v);
                         }}
                       />
                     )}
                   </td>
-                ))}
+                  );
+                })}
                 <td className="px-2 py-1.5 text-center">
                   <button onClick={() => deleteRow(idx)} className="text-red-400 hover:text-red-300 text-xs"></button>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
       </div>
