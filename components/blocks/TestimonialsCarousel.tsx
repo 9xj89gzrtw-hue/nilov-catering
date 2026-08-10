@@ -50,7 +50,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3">Что говорят клиенты</p>
           <h2 id="reviews-heading" className="font-heading text-3xl md:text-5xl mb-4" style={{ fontWeight: 500 }}>
-            4.8 из 5 на Яндекс.Картах и 2ГИС
+            4.8 из 5 — 27 верифицированных отзывов
           </h2>
         </div>
 

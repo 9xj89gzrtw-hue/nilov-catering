@@ -82,7 +82,7 @@ export default function PricingPage() {
           </p>
           {/* Urgency + trust */}
           <p className="text-sm text-muted-foreground mb-6">
-            ⏱ Бронь за 24 часа · 📞 Перезвоним за 15 минут · ✅ Без скрытых платежей
+            ⏱ Бронь за 3 дня · 📞 Перезвоним за 15 минут · ✅ Без скрытых платежей
           </p>
           <p className="text-xs text-muted-foreground mb-6 max-w-xl mx-auto">
             Все цены включают: еду, официантов, посуду, сервировку, доставку по КАД и уборку.

@@ -129,14 +129,25 @@ export default function MobileMenu() {
                   </div>
                 </nav>
 
-                {/* Bottom actions — phone + CTA */}
+                {/* Bottom actions — phone + WhatsApp + CTA */}
                 <div className="p-5 border-t border-line space-y-3">
-                  <a
-                    href={`tel:${SITE.phoneTel}`}
-                    className="flex items-center justify-center gap-2 w-full rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors"
-                  >
-                     {SITE.phone}
-                  </a>
+                  <div className="flex gap-2">
+                    <a
+                      href={`tel:${SITE.phoneTel}`}
+                      className="flex items-center justify-center gap-2 flex-1 rounded-lg border-2 border-gold-text py-4 text-base font-semibold text-gold-text active:bg-gold-tint transition-colors"
+                    >
+                       {SITE.phone}
+                    </a>
+                    <a
+                      href={SITE.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Написать в WhatsApp"
+                      className="flex items-center justify-center w-14 rounded-lg border-2 border-emerald-500 text-emerald-600 active:bg-emerald-50 transition-colors"
+                    >
+                      💬
+                    </a>
+                  </div>
                   <Link
                     href="/plan/helper"
                     onClick={() => setOpen(false)}

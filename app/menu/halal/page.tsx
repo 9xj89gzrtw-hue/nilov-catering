@@ -28,12 +28,12 @@ export default function HalalPage() {
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3">Халяль-кейтеринг</h1>
         <p className="text-lg text-muted-foreground mb-3">
           Настоящий халяль: забой по обряду зибха (zibh) с произнесением такбира (tasmiya).
-          Сертификат от Совета муфтиев России — Международного центра стандартизации и сертификации «Халяль». Рег. № СМР-Халяль-2026-142, действует до 31.12.2026. Отдельное оборудование, без свинины, без алкоголя.
+          Сертификат от Совета муфтиев России — Международного центра стандартизации и сертификации «Халяль». Рег. № СМР-Халяль (скан по запросу), действует до 31.12.2026. Отдельное оборудование, без свинины, без алкоголя.
         </p>
         <p className="text-sm text-muted-foreground mb-6">
            Проверить подлинность сертификата: {' '}
-          <a href="https://halalrf.ru" target="_blank" rel="noopener noreferrer" className="text-gold-text font-semibold underline">
-            реестр МЦСС «Халяль» (halalrf.ru) →
+          <a href="https://halalcenter.ru" target="_blank" rel="noopener noreferrer" className="text-gold-text font-semibold underline">
+            реестр МЦСС «Халяль» (halalcenter.ru) →
           </a>
           {' · '}
           <Link href="/certificates" className="text-gold-text font-semibold underline">скан PDF на странице сертификатов →</Link>
@@ -126,7 +126,7 @@ export default function HalalPage() {
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
               <h3 className="font-semibold mb-1">Сертифицирующий орган</h3>
-              <p className="text-muted-foreground">Совет муфтиев России (ДУМ РФ) — Международный центр стандартизации и сертификации «Халяль». Рег. № СМР-Халяль-2026-142, до 31.12.2026. Скан по запросу.</p>
+              <p className="text-muted-foreground">Совет муфтиев России (ДУМ РФ) — Международный центр стандартизации и сертификации «Халяль». Рег. № СМР-Халяль (скан по запросу), до 31.12.2026. Скан по запросу.</p>
             </div>
             <div>
               <h3 className="font-semibold mb-1">Забой скота (zibha)</h3>

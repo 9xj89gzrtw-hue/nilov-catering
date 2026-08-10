@@ -128,7 +128,7 @@ export default function FAQPage() {
           Частые вопросы
         </h1>
         <p className="text-center text-muted-foreground mb-8">
-          21 ответ о кейтеринге — для частных клиентов и B2B. Не нашли ответ?{' '}
+          22 ответа о кейтеринге — для частных клиентов и B2B. Не нашли ответ?{' '}
           <a href={`tel:${SITE.phoneTel}`} className="text-gold-text hover:underline">Позвоните {SITE.phone}</a>.
         </p>
 
