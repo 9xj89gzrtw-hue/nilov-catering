@@ -5,18 +5,18 @@ import Link from 'next/link';
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const shown = localStorage.getItem('cookie-consent-shown');
+    const shown = localStorage.getItem('cookie-consent-shown-v2');
     if (!shown) setShow(true);
   }, []);
 
   const accept = () => {
     localStorage.setItem('cookie-consent', 'accepted');
-    localStorage.setItem('cookie-consent-shown', 'true');
+    localStorage.setItem('cookie-consent-shown-v2', 'true');
     setShow(false);
   };
   const reject = () => {
     localStorage.setItem('cookie-consent', 'rejected');
-    localStorage.setItem('cookie-consent-shown', 'true');
+    localStorage.setItem('cookie-consent-shown-v2', 'true');
     setShow(false);
   };
 
@@ -42,7 +42,7 @@ export default function CookieBanner() {
         </button>
         <button
           onClick={reject}
-          className="text-sm bg-background/15 text-background border border-background/30 px-4 py-2.5 min-h-[44px] rounded font-medium hover:border-background/50"
+          className="text-sm bg-background/30 text-background px-4 py-2.5 font-medium min-h-[44px] rounded font-medium hover:border-background/50"
           aria-label="Отклонить cookie"
         >
           Отклонить

@@ -45,7 +45,7 @@ export const LEGAL: {
 
 export const SITE: SiteConfig = {
   name: 'NiloV Catering',
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'nilov-catering.vercel.app',
+  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'nilov-catering.ru',
   phone: '+7 (812) 919-59-11',
   phoneTel: '+78129195911',
   phoneMobile: '+7 (911) 941-72-05',

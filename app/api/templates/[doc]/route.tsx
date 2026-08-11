@@ -57,7 +57,7 @@ function DocFooter() {
         {SITE.legalName} · ИНН {SITE.inn} · ОГРНИП {SITE.ogrnip} · {SITE.legalAddress}
       </Text>
       <Text>
-        {SITE.phone} · {SITE.email} · ${SITE.domain} · стр. {`$PAGE/$TOTAL_PAGES`}
+        {SITE.phone} · {SITE.email} · {SITE.domain} · стр. {`$PAGE/$TOTAL_PAGES`}
       </Text>
       <Text>© 2007–2026 NiloV Catering. Шаблон. Не является публичной офертой (ст. 437 ГК РФ).</Text>
     </View>
