@@ -35,14 +35,14 @@ export default function CookieBanner() {
       <div className="flex gap-2">
         <button
           onClick={accept}
-          className="text-xs bg-gold-text text-white px-3 py-1.5 rounded font-medium hover:bg-gold-text/90"
+          className="text-sm bg-gold-text text-white px-4 py-2.5 min-h-[44px] rounded font-medium hover:bg-gold-text/90"
           aria-label="Принять cookie"
         >
           Принять
         </button>
         <button
           onClick={reject}
-          className="text-xs border border-background/30 text-background/70 px-3 py-1.5 rounded font-medium hover:border-background/50"
+          className="text-sm border border-background/40 text-background/90 px-4 py-2.5 min-h-[44px] rounded font-medium hover:border-background/50"
           aria-label="Отклонить cookie"
         >
           Отклонить

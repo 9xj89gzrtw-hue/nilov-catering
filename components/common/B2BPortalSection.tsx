@@ -9,7 +9,7 @@ export default function B2BPortalSection() {
           <h2 className="font-heading text-3xl md:text-4xl font-medium mb-3">B2B-кейтеринг под ключ</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Регулярные кофе-брейки, корпоративные обеды, конференции, тренинги.
-            Работаем с НДС и без НДС, ЭДО, договоры, закрывающие документы.
+            Без НДС (УСН). НДС через партнёрское ООО, ЭДО, договоры, закрывающие документы.
           </p>
         </div>
 

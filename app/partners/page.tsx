@@ -146,7 +146,7 @@ export default function PartnersPage() {
           <p>{LEGAL.operatorFull}</p>
           <p>ИНН {LEGAL.inn} · ОГРНИП {LEGAL.ogrnip}</p>
           <p>ЭДО: {LEGAL.edo.diadoc} · {LEGAL.edo.sbis}</p>
-          <p>Работаем с НДС по запросу</p>
+          <p>НДС через партнёрское ООО (по запросу)</p>
         </div>
       </div>
     </main>

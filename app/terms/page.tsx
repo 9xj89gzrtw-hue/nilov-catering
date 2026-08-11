@@ -15,7 +15,7 @@ export default function Page() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-4">Условия оказания услуг</h1>
         <p className="text-sm text-muted-foreground mb-8">
-          Редакция от 24 июля 2026 г. Действует для всех заказов, размещённых после этой даты.
+          Редакция от 1 августа 2026 г. Действует для всех заказов, размещённых после этой даты.
           Оператор: {LEGAL.operatorFull}, ИНН {LEGAL.inn}, ОГРНИП {LEGAL.ogrnip}, адрес:{' '}
           {LEGAL.legalAddress}.
         </p>

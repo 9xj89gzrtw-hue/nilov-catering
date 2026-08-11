@@ -14,7 +14,7 @@ export default function Page() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-4">Политика конфиденциальности</h1>
         <p className="text-sm text-muted-foreground mb-8">
-          Редакция от 24 июля 2026 г. Соответствует Федеральному закону №152-ФЗ
+          Редакция от 1 августа 2026 г. Соответствует Федеральному закону №152-ФЗ
           «О персональных данных» от 27.07.2006 (с изм. 2026 г.).
         </p>
 

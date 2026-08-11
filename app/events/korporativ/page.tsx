@@ -55,7 +55,7 @@ export default function CorporatePage() {
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1"> НДС</p>
-              <p className="text-xs text-muted-foreground">ИП Нилов Д.И. на УСН — без НДС. Для плательщиков НДС работаем с НДС (по запросу).</p>
+              <p className="text-xs text-muted-foreground">ИП Нилов Д.И. на УСН — без НДС. Для плательщиков НДС (ОСН) оформляем через партнёрское ООО (по запросу).</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1"> Сроки</p>

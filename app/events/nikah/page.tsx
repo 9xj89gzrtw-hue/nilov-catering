@@ -86,7 +86,7 @@ export default function NikahPage() {
         </section>
         <section className="mb-10 p-6 rounded-xl border-2 border-gold-text bg-gold-tint/20">
           <h2 className="font-heading text-xl font-medium mb-3"> B2B и тендеры · НДС</h2>
-          <p className="text-sm text-foreground mb-2">Работаем с НДС 20% и без НДС. ЭДО: Контур.Диадок, СБИС. Договор: ИП Нилов Д.И., ИНН 781433059704, ОГРНИП 314784710400401.</p>
+          <p className="text-sm text-foreground mb-2">Без НДС (УСН). НДС через партнёрское ООО. ЭДО: Контур.Диадок, СБИС. Договор: ИП Нилов Д.И., ИНН 781433059704, ОГРНИП 314784710400401.</p>
           <Link href="/contact?subject=B2B-тендер" className="text-gold-text font-semibold hover:underline text-sm">Запросить КП и пакет документов →</Link>
         </section>
         <section className="p-6 rounded-xl border-2 border-gold-text bg-gold-tint/20">

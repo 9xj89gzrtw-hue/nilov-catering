@@ -14,7 +14,7 @@ export default function Page() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-4">Политика использования cookie</h1>
         <p className="text-sm text-muted-foreground mb-8">
-          Редакция от 24 июля 2026 г. Соответствует 152-ФЗ и ePrivacy Directive (для EU-посетителей).
+          Редакция от 1 августа 2026 г. Соответствует 152-ФЗ и ePrivacy Directive (для EU-посетителей).
         </p>
 
         <div className="space-y-8">
