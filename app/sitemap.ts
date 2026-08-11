@@ -52,7 +52,7 @@ const ROUTE_LASTMOD: Record<string, string> = {
   '/privacy': '2026-08-01',
   '/terms': '2026-08-01',
   '/cookies': '2026-08-01',
-  '/offer': '2026-08-01',
+  '/offer': '2026-08-11',
   '/en': '2026-06-01',
   '/media-kit': '2026-06-01',
   '/careers': '2026-06-01',

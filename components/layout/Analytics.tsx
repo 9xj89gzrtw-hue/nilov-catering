@@ -1,12 +1,33 @@
+'use client';
 import Script from 'next/script';
+import { useEffect, useState } from 'react';
 
 /** Яндекс.Метрика + Microsoft Clarity — аналитика (РФ-резидентство соблюдено)
- *  YM ID и Clarity ID — заглушки. Заказчик вставляет свои после регистрации.
- *  Шаблон: замените YM_ID и CLARITY_ID на реальные.
+ *  W93-v25: Analytics now gated by cookie consent (152-ФЗ compliance).
+ *  Scripts only load after user clicks "Принять" in CookieBanner.
  */
 export default function Analytics() {
+  const [consented, setConsented] = useState(false);
+
+  useEffect(() => {
+    const checkConsent = () => {
+      const consent = localStorage.getItem('cookie-consent');
+      setConsented(consent === 'accepted');
+    };
+    checkConsent();
+    // Listen for consent changes (when user clicks Принять in CookieBanner)
+    window.addEventListener('storage', checkConsent);
+    window.addEventListener('cookie-consent-changed', checkConsent);
+    return () => {
+      window.removeEventListener('storage', checkConsent);
+      window.removeEventListener('cookie-consent-changed', checkConsent);
+    };
+  }, []);
+
   const ymId = process.env.NEXT_PUBLIC_YM_ID;
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
+
+  if (!consented) return null;
 
   return (
     <>
