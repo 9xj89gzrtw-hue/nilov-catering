@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { SITE } from '@/lib/data';
 import { ALL_DISHES, DISH_CATEGORIES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import type { Format, Tier } from '@/lib/types';
@@ -59,7 +60,7 @@ export async function GET(
 </style></head>
 <body>
 <h1>Меню «${escapeHtml(label)}»</h1>
-<p class="subtitle">NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • nilov-catering.ru</p>
+<p class="subtitle">NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.domain}</p>
 
 ${format === 'furshet' ? `<div class="tier"><h3>Эконом <span class="price">2 450 ₽/гость</span></h3><p>5–7 видов канапе, 3 вида тарталеток, сезонные фрукты, соки, вода</p></div>
 <div class="tier"><h3>Стандарт <span class="price">3 950 ₽/гость</span></h3><p>8–10 видов закусок, рулеты, сырная тарелка, кофе, чай, морсы</p></div>
@@ -79,7 +80,7 @@ ${dishes.map(d => `<tr>
 </tbody></table>
 
 <footer>
-  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • info@nilov-catering.ru • nilov-catering.ru<br>
+  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
   Цены указаны на август 2026 г. Для точной сметы свяжитесь с менеджером.<br>
   © NiloV Catering, 2026. Все права защищены.
 </footer>

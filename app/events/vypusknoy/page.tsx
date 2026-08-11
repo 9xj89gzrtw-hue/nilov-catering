@@ -76,7 +76,7 @@ export default function VypusknoyPage() {
               <h3 className="font-semibold mb-2"> B2B-условия</h3>
               <ul className="text-muted-foreground space-y-1">
                 <li> Договор юр.лицо ↔ юр.лицо</li>
-                <li> Счёт, акт, счёт-фактура (с НДС/без НДС)</li>
+                <li> Счёт, акт, счёт-фактура (без НДС — УСН; с НДС — через партнёрское ООО)</li>
                 <li> ЭДО: Контур.Диадок, СБИС</li>
                 <li> Отсрочка платежа для постоянных клиентов</li>
                 <li> Скидки от 100 гостей</li>
