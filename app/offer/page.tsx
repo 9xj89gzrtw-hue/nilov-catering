@@ -142,8 +142,8 @@ export default function OfferPage() {
             </p>
             <p className="text-sm leading-relaxed">
               7.3. По всем вопросам обращаться:{' '}
-              <a href="mailto:info@nilov-catering.ru" className="underline">
-                info@nilov-catering.ru
+              <a href="mailto:info@odaeda.ru" className="underline">
+                info@odaeda.ru
               </a>
               , +7 (812) 919-59-11.
             </p>
@@ -161,7 +161,7 @@ export default function OfferPage() {
 Банк: ${LEGAL.bank.name} · БИК ${LEGAL.bank.bik}
 р/с: ${LEGAL.bank.account}
 Телефон: +7 (812) 919-59-11
-Email: info@nilov-catering.ru / b2b@nilov-catering.ru`}
+Email: info@odaeda.ru / b2b@odaeda.ru`}
             </pre>
           </section>
         </div>

@@ -95,8 +95,8 @@ export default function Page() {
             </ul>
             <p className="text-sm leading-relaxed">
               Запросы направлять на{' '}
-              <a href="mailto:info@nilov-catering.ru" className="underline">
-                info@nilov-catering.ru
+              <a href="mailto:info@odaeda.ru" className="underline">
+                info@odaeda.ru
               </a>{' '}
               с темой «Запрос по персональным данным». Ответ — в течение 30 дней.
             </p>
@@ -136,7 +136,7 @@ export default function Page() {
 ИНН: ${LEGAL.inn} · ОГРНИП: ${LEGAL.ogrnip}
 ${LEGAL.legalAddress}
 Телефон: +7 (812) 919-59-11
-Email: info@nilov-catering.ru (общий) / b2b@nilov-catering.ru (B2B)`}
+Email: info@odaeda.ru (общий) / b2b@odaeda.ru (B2B)`}
             </pre>
           </section>
         </div>

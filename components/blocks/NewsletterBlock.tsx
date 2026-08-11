@@ -18,7 +18,8 @@ export function NewsletterBlock() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const email = formData.get('email') as string;
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setStatus('error');
@@ -36,7 +37,7 @@ export function NewsletterBlock() {
       if (json.success) {
         setStatus('success');
         setMessage(json.message || 'Подписка оформлена!');
-        (e.currentTarget as HTMLFormElement).reset();
+        (form as HTMLFormElement).reset();
       } else {
         setStatus('error');
         setMessage(json.message || 'Ошибка. Попробуйте позже.');

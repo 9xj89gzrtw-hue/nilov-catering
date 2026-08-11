@@ -11,10 +11,10 @@ export default function MediaKitPage() {
 
         <div className="grid gap-4">
           {[
-            { file: 'Логотип NiloV (SVG + PNG)', size: 'По запросу', href: 'mailto:info@nilov-catering.ru?subject=Логотип' },
-            { file: 'Фото блюд (подборка)', size: 'По запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото блюд' },
-            { file: 'Фото команды', size: 'По запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото команды' },
-            { file: 'Пресс-релиз 2026', size: 'По запросу', href: 'mailto:info@nilov-catering.ru?subject=Пресс-релиз' },
+            { file: 'Логотип NiloV (SVG + PNG)', size: 'По запросу', href: 'mailto:info@odaeda.ru?subject=Логотип' },
+            { file: 'Фото блюд (подборка)', size: 'По запросу', href: 'mailto:info@odaeda.ru?subject=Фото блюд' },
+            { file: 'Фото команды', size: 'По запросу', href: 'mailto:info@odaeda.ru?subject=Фото команды' },
+            { file: 'Пресс-релиз 2026', size: 'По запросу', href: 'mailto:info@odaeda.ru?subject=Пресс-релиз' },
           ].map(f => (
             <a key={f.file} href={f.href} className="flex items-center justify-between rounded-lg border border-line bg-card p-4 hover:border-gold-text transition-colors">
               <span className="font-medium text-sm">{f.file}</span>

@@ -21,7 +21,7 @@ export default function TrustBar() {
           <p className="text-sm text-muted-foreground max-w-xl mx-auto">
             27 верифицированных отзывов на сайте. Конкретные имена корпоративных заказчиков
             раскрываем по согласию —{' '}
-            <a href="mailto:b2b@nilov-catering.ru" className="text-gold-text hover:underline underline inline-flex items-center min-h-[44px] px-1">запросите референсы</a>.
+            <a href="mailto:b2b@odaeda.ru" className="text-gold-text hover:underline underline inline-flex items-center min-h-[44px] px-1">запросите референсы</a>.
           </p>
         </div>
 

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.',
   keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
   alternates: { languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
-  openGraph: { type: 'website', locale: 'ru_RU', siteName: SITE.name },
+  openGraph: { type: "website", locale: "ru_RU", siteName: SITE.name, url: `https://${SITE.domain}` },
   twitter: { card: 'summary_large_image', title: `${SITE.name} — кейтеринг в СПб`, description: 'Фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽/гость. С 2007 года.' },
   robots: { index: true, follow: true },
 };

@@ -112,8 +112,8 @@ export default function Page() {
             <h2 className="font-heading text-xl font-medium mb-3">5. Контакты</h2>
             <p className="text-sm leading-relaxed">
               По вопросам cookie-политики:{' '}
-              <a href="mailto:info@nilov-catering.ru" className="underline">
-                info@nilov-catering.ru
+              <a href="mailto:info@odaeda.ru" className="underline">
+                info@odaeda.ru
               </a>
               . Оператор: {LEGAL.operatorFull}, ИНН {LEGAL.inn}, ОГРНИП {LEGAL.ogrnip}.
             </p>
