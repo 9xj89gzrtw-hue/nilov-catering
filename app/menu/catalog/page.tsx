@@ -137,8 +137,8 @@ export default function CatalogPage() {
                 </button>
               ))}
               {hasActiveFilters && (
-                <button onClick={resetFilters} className="text-xs text-gold-text hover:underline ml-2">
-                  ✕ Сбросить
+                <button onClick={resetFilters} className="text-xs text-gold-text hover:underline ml-2 min-h-[44px] inline-flex items-center">
+                  ✕ Сбросить фильтры
                 </button>
               )}
             </div>

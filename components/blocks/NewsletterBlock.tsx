@@ -2,14 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-/**
- * NewsletterBlock — subscription form in footer.
- * Hides itself on pages where promotional content is inappropriate
- * (поминки — bereavement context). Pages opt-out via data-hide-newsletter="true"
- * on <main>.
- */
 export function NewsletterBlock() {
   const [hidden, setHidden] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const main = document.querySelector('main');
@@ -20,17 +16,56 @@ export function NewsletterBlock() {
 
   if (hidden) return null;
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus('error');
+      setMessage('Введите корректный email');
+      return;
+    }
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus('success');
+        setMessage(json.message || 'Подписка оформлена!');
+        (e.currentTarget as HTMLFormElement).reset();
+      } else {
+        setStatus('error');
+        setMessage(json.message || 'Ошибка. Попробуйте позже.');
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Сеть недоступна. Попробуйте позже.');
+    }
+  };
+
   return (
     <div className="mb-12 p-6 rounded-xl border border-line bg-card text-center">
       <h3 className="font-heading text-lg font-medium mb-2">Будьте в курсе</h3>
       <p className="text-sm text-muted-foreground mb-4">Сезонные предложения и новые меню — раз в месяц, без спама.</p>
-      <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/api/newsletter" method="POST">
+      <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={handleSubmit}>
         <div className="flex-1">
           <label htmlFor="newsletter-email" className="block text-sm font-medium text-foreground mb-1">Email для подписки</label>
           <input id="newsletter-email" type="email" name="email" autoComplete="email" placeholder="Ваш email" required className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm min-h-[44px]" />
         </div>
-        <button type="submit" className="self-end rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors min-h-[44px]">Подписаться</button>
+        <button type="submit" disabled={status === 'loading'} className="self-end rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors min-h-[44px] disabled:opacity-50">
+          {status === 'loading' ? 'Отправляем...' : 'Подписаться'}
+        </button>
       </form>
+      {status === 'success' && (
+        <p className="mt-3 text-sm text-emerald-600 font-medium" role="status">{message}</p>
+      )}
+      {status === 'error' && (
+        <p className="mt-3 text-sm text-red-600 font-medium" role="alert">{message}</p>
+      )}
       <p className="mt-2 text-sm text-muted-foreground">Нажимая «Подписаться», вы соглашаетесь с политикой конфиденциальности (152-ФЗ).</p>
     </div>
   );

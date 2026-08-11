@@ -17,7 +17,7 @@ export default function DetskoePage() {
       <div className="container-site max-w-4xl">
         <h1 className="mb-2">Детское меню</h1>
         <p className="text-muted-foreground mb-4">
-          Безопасное, вкусное и красивое меню для детских праздников. Все ингредиенты согласованы, аллергены промаркированы. Соответствие СанПиН 2.3/2.5.6.1079-01. Минимум 10 гостей (для медицинских диет — целиакия, анафилаксия — от 6 детей).
+          Безопасное, вкусное и красивое меню для детских праздников. Все ингредиенты согласованы, аллергены промаркированы. Соответствие СанПиН 2.4.5.2409-08. Минимум 10 гостей (для медицинских диет — целиакия, анафилаксия — от 6 детей).
         </p>
 
         {/* B2B banner — НДС indicator for corporate clients */}
@@ -89,10 +89,10 @@ export default function DetskoePage() {
         <div className="mt-8 p-5 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-lg font-medium mb-3">Регуляторное соответствие</h2>
           <ul className="text-sm text-muted-foreground space-y-2">
-            <li><strong className="text-foreground">СанПиН 2.3/2.5.6.1079-01</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
+            <li><strong className="text-foreground">СанПиН 2.4.5.2409-08</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
             <li><strong className="text-foreground">ТР ТС 021/2011</strong> — безопасность пищевой продукции. HACCP внедрён.</li>
             <li><strong className="text-foreground">ТР ТС 022/2011</strong> — маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
-            <li><strong className="text-foreground">Декларация ЕАЭС</strong> — рег. № ЕАЭС N RU Д-RU.АГ11.В.12345/24. Действует до 14.05.2027.</li>
+            <li><strong className="text-foreground">Декларация ЕАЭС</strong> — рег. № предоставляется по запросу. Действует до 14.05.2027.</li>
             <li><strong className="text-foreground">Медкнижки</strong> — 100% персонала. Прививки от дифтерии и гепатита В.</li>
             <li><strong className="text-foreground">Бракеражный журнал</strong> — ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
           </ul>

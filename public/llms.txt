@@ -12,44 +12,44 @@
 - Работаем с юрлицами: счёт + акт + УПД. 44-ФЗ и 223-ФЗ. SLA-договор.
 
 ## Основное
-- Главная: https://nilov-catering.ru/
-- События: https://nilov-catering.ru/events (свадьбы, корпоративы, частные, детские, выпускные, выезд шефа)
-- Меню: https://nilov-catering.ru/menu (фуршет, банкет, кофе-брейк, каталог блюд, халяль, веган, БГ)
-- Галерея: https://nilov-catering.ru/gallery
-- Почему мы: https://nilov-catering.ru/why-us
-- Команда: https://nilov-catering.ru/team
-- Отзывы: https://nilov-catering.ru/reviews
-- Сезонное: https://nilov-catering.ru/seasonal
+- Главная: https://nilov-catering.vercel.app/
+- События: https://nilov-catering.vercel.app/events (свадьбы, корпоративы, частные, детские, выпускные, выезд шефа)
+- Меню: https://nilov-catering.vercel.app/menu (фуршет, банкет, кофе-брейк, каталог блюд, халяль, веган, БГ)
+- Галерея: https://nilov-catering.vercel.app/gallery
+- Почему мы: https://nilov-catering.vercel.app/why-us
+- Команда: https://nilov-catering.vercel.app/team
+- Отзывы: https://nilov-catering.vercel.app/reviews
+- Сезонное: https://nilov-catering.vercel.app/seasonal
 
 ## Планирование
-- Тарифы: https://nilov-catering.ru/plan/helper (таблица тарифов)
-- Конструктор: https://nilov-catering.ru/plan/constructor (пошаговая сборка меню с группами гостей)
-- Помощник: https://nilov-catering.ru/plan/helper (подбор формата за 3 вопроса)
+- Тарифы: https://nilov-catering.vercel.app/plan/helper (таблица тарифов)
+- Конструктор: https://nilov-catering.vercel.app/plan/constructor (пошаговая сборка меню с группами гостей)
+- Помощник: https://nilov-catering.vercel.app/plan/helper (подбор формата за 3 вопроса)
 
 ## Информация
-- FAQ: https://nilov-catering.ru/faq (22 вопроса: b2c, b2b, halal, диеты)
-- Доставка: https://nilov-catering.ru/delivery (зоны, условия, холодовая цепь)
-- Сертификаты: https://nilov-catering.ru/certificates (ИНН, ОГРНИП, ЭДО, ТР ТС 022/2011, халяль СМР-Халяль (скан по запросу))
-- Аллергены: https://nilov-catering.ru/allergens (14 аллергенов ТР ТС 022/2011)
-- Площадки: https://nilov-catering.ru/venues (рекомендованные)
-- Дегустация: https://nilov-catering.ru/tasting (запись)
-- Оферта: https://nilov-catering.ru/offer (публичная оферта)
-- Условия: https://nilov-catering.ru/terms (условия оказания услуг)
-- Политика: https://nilov-catering.ru/privacy (152-ФЗ)
-- Cookies: https://nilov-catering.ru/cookies
+- FAQ: https://nilov-catering.vercel.app/faq (22 вопроса: b2c, b2b, halal, диеты)
+- Доставка: https://nilov-catering.vercel.app/delivery (зоны, условия, холодовая цепь)
+- Сертификаты: https://nilov-catering.vercel.app/certificates (ИНН, ОГРНИП, ЭДО, ТР ТС 022/2011, халяль СМР-Халяль (скан по запросу))
+- Аллергены: https://nilov-catering.vercel.app/allergens (14 аллергенов ТР ТС 022/2011)
+- Площадки: https://nilov-catering.vercel.app/venues (рекомендованные)
+- Дегустация: https://nilov-catering.vercel.app/tasting (запись)
+- Оферта: https://nilov-catering.vercel.app/offer (публичная оферта)
+- Условия: https://nilov-catering.vercel.app/terms (условия оказания услуг)
+- Политика: https://nilov-catering.vercel.app/privacy (152-ФЗ)
+- Cookies: https://nilov-catering.vercel.app/cookies
 
 ## B2B (юридическим лицам)
-- Контакты B2B-менеджера: b2b@nilov-catering.ru, +7 (812) 919-59-11 (доб. 2)
-- Сертификаты и реквизиты: https://nilov-catering.ru/certificates
-- Халяль для юрлиц: halal@nilov-catering.ru
+- Контакты B2B-менеджера: b2b@nilov-catering.vercel.app, +7 (812) 919-59-11 (доб. 2)
+- Сертификаты и реквизиты: https://nilov-catering.vercel.app/certificates
+- Халяль для юрлиц: halal@nilov-catering.vercel.app
 - Тендерный пакет (44-ФЗ, 223-ФЗ) — 4 часа
 
 ## Контакты
 - Телефон: +7 (812) 919-59-11
 - B2B-менеджер: +7 (812) 919-59-11 (доб. 2)
-- Email (общий): info@nilov-catering.ru
-- Email (B2B/документы): b2b@nilov-catering.ru
-- Email (халяль): halal@nilov-catering.ru
+- Email (общий): info@nilov-catering.vercel.app
+- Email (B2B/документы): b2b@nilov-catering.vercel.app
+- Email (халяль): halal@nilov-catering.vercel.app
 - ВКонтакте: https://vk.com/nilovcatering
 - Telegram: https://t.me/nilovcatering
 - WhatsApp: https://wa.me/78129195911

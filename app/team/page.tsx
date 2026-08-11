@@ -79,7 +79,7 @@ export default function TeamPage() {
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
              <strong>Фото команды предоставляется по запросу после первого контакта</strong> — для верификации в LinkedIn, ОК, VK.
-            Мы не публикуем фото сотрудников публично по соображениям приватности. Все ФИО и роли — реальные сотрудники NiloV Catering.
+            Фото команды публикуются с согласия сотрудников; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 

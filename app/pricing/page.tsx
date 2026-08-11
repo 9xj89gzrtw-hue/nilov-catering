@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-static';
 
-// === 5 ОСНОВНЫХ ФОРМАТОВ — простая таблица ===
+// === 6 ОСНОВНЫХ ФОРМАТОВ — простая таблица ===
 const FORMATS = [
   {
     name: 'Кофе-брейк',
@@ -66,6 +66,16 @@ const FORMATS = [
     desc: 'Специальное меню + аниматор. Для дней рождения.',
     includes: ['Мини-бургеры и пицца', 'Капкейки и фрукты', 'Соки и морсы', 'Аниматор 2 часа', 'Праздничная посуда'],
   },
+  {
+    name: 'BBQ «Пикник»',
+    href: '/seasonal/bbq',
+    img: '/images/catering/bbq-01.jpg',
+    price: 2700,
+    min: 15,
+    hours: '3–4 ч',
+    desc: 'Гриль на природе. Мангал, шашлык, овощи гриль.',
+    includes: ['3 вида мяса на мангале', 'Овощи гриль', 'Соусы и маринады', 'Бармен', 'Пикниковая сервировка'],
+  },
 ];
 
 // === Примеры реальных счетов ===
@@ -88,7 +98,7 @@ export default function PricingPage() {
             Цены на кейтеринг
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-            5 форматов. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
+            6 форматов. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
           </p>
           {/* Urgency + trust */}
           <p className="text-sm text-muted-foreground mb-6">

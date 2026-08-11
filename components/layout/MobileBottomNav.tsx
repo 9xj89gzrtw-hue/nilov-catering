@@ -55,7 +55,7 @@ export default function MobileBottomNav() {
           <Link
             href="/plan/helper"
             className="flex flex-col items-center justify-center -mt-6 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors no-underline"
-            aria-label="Рассчитать стоимость"
+            aria-label="Подбор — рассчитать стоимость"
           >
             <Calculator className="w-6 h-6" />
             <span className="text-[11px] font-semibold mt-0.5">Подбор</span>

@@ -34,7 +34,7 @@
   --color-destructive-foreground: #FFFFFF;
 
   /* === Бренд-расширения — ONE gold system === */
-  --color-gold: #8E6F3F;                 /* primary gold (AA-compliant for white text) */
+  --color-gold: #6E5530;                 /* primary gold (AA-compliant for white text) */
   --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
   --color-gold-text: #6E5530;            /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
   --color-gold-text-on-secondary: #5C4525; /* золотой текст на cream */

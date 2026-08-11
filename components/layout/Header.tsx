@@ -18,7 +18,7 @@ export default function Header() {
         <Link
           href="/"
           className="flex items-center gap-2 shrink-0 group"
-          aria-label="NiloV Catering — на главную"
+          aria-label="NiloV Catering — на главную. CATERING · СПБ"
         >
           <svg
             className="w-9 h-9 group-hover:scale-105 transition-transform"

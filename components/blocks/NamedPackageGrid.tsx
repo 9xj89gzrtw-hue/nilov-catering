@@ -67,7 +67,7 @@ const PACKAGES = [
     unit: '/гость',
     min: 'от 6 гостей',
     photoUrl: '/images/catering/chef-01.jpg',
-    includes: ['Шеф-повар', '6 подач', 'Сомелье', 'Продукты', 'Уборка'],
+    includes: ['Шеф-повар', '6 подач', 'Сомелье (опц.)', 'Продукты', 'Уборка'],
     href: '/events/chef-at-home',
     badge: 'Премиум',
   },
