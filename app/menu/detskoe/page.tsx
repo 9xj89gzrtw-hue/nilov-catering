@@ -92,7 +92,6 @@ export default function DetskoePage() {
             <li><strong className="text-foreground">СанПиН 2.3/2.4.3590-20</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
             <li><strong className="text-foreground">ТР ТС 021/2011</strong> — безопасность пищевой продукции. HACCP внедрён.</li>
             <li><strong className="text-foreground">ТР ТС 022/2011</strong> — маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
-            <li><strong className="text-foreground">Декларация ЕАЭС</strong> — рег. № предоставляется по запросу. Действует до 14.05.2027.</li>
             <li><strong className="text-foreground">Медкнижки</strong> — 100% персонала. Прививки от дифтерии и гепатита В.</li>
             <li><strong className="text-foreground">Бракеражный журнал</strong> — ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
           </ul>

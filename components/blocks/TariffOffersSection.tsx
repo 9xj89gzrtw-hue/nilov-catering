@@ -249,7 +249,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                 placeholder="Поиск…"
                 value={catalogSearch}
                 onChange={e => setCatalogSearch(e.target.value)}
-                className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
               />
               <div className="flex flex-wrap gap-0.5 mb-1.5">
                 {[{k:'all',l:'Все'},{k:'cold',l:''},{k:'hot',l:''},{k:'desserts',l:''},{k:'drinks',l:''}].map(s => (

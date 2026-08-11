@@ -366,7 +366,7 @@ export default function ConstructorWizard() {
                         if (isNaN(v) || v < 6) store.setGuestCount(6);
                         if (v > 500) store.setGuestCount(500);
                       }}
-                      className="w-24 text-4xl md:text-5xl font-heading text-gold-text text-center bg-transparent border-b-2 border-line focus:border-gold-text focus:outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-colors"
+                      className="w-24 text-4xl md:text-5xl font-heading text-gold-text text-center bg-transparent border-b-2 border-line focus:border-gold-text focus:outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 transition-colors"
                       aria-label="Количество гостей"
                       inputMode="numeric"
                     />
@@ -811,7 +811,7 @@ export default function ConstructorWizard() {
                   placeholder="Анна"
                   value={store.contact.name}
                   onChange={e => store.setContact({ name: e.target.value })}
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -825,7 +825,7 @@ export default function ConstructorWizard() {
                   placeholder="+7 (___) ___-__-__"
                   value={store.contact.phone}
                   onChange={e => store.setContact({ phone: e.target.value })}
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -837,7 +837,7 @@ export default function ConstructorWizard() {
                   autoComplete="off"
                   value={store.contact.date}
                   onChange={e => store.setContact({ date: e.target.value })}
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -848,7 +848,7 @@ export default function ConstructorWizard() {
                   placeholder="Аллергии гостей, особые пожелания…"
                   value={store.contact.comment}
                   onChange={e => store.setContact({ comment: e.target.value })}
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 min-h-[80px] resize-none"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 min-h-[80px] resize-none"
                 />
               </div>
             </div>

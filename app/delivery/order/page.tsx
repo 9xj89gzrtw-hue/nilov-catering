@@ -248,7 +248,7 @@ export default function DeliveryOrderPage() {
                       type="time"
                       value={cart.contact.exactTime}
                       onChange={e => cart.setContact({ exactTime: e.target.value })}
-                      className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                      className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                     />
                   </label>
                   <label className="flex items-center gap-2 mt-3 cursor-pointer">
@@ -286,27 +286,27 @@ export default function DeliveryOrderPage() {
                   <div className="grid grid-cols-2 gap-3">
                     <input type="text" placeholder="Имя *" value={cart.contact.name}
                       onChange={e => cart.setContact({ name: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     <input type="tel" placeholder="+7 (___) ___-__-__ *" value={cart.contact.phone}
                       onChange={e => cart.setContact({ phone: e.target.value })}
-                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                      className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   </div>
                   <input type="text" placeholder="Адрес доставки *" value={cart.contact.address}
                     onChange={e => cart.setContact({ address: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
 
                   {/* Для загородной доставки — поля подъезд/этаж/домофон */}
                   {cart.zoneId === 'kad' && (
                     <div className="grid grid-cols-3 gap-3">
                       <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
                         onChange={e => cart.setContact({ entrance: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Этаж" value={cart.contact.floor}
                         onChange={e => cart.setContact({ floor: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
                         onChange={e => cart.setContact({ intercom: e.target.value })}
-                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                        className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     </div>
                   )}
 
@@ -317,14 +317,14 @@ export default function DeliveryOrderPage() {
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
                           onChange={e => cart.setContact({ entrance: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                         <input type="text" placeholder="№ участка / дома" value={cart.contact.floor}
                           onChange={e => cart.setContact({ floor: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       </div>
                       <input type="text" placeholder="Код ворот / как проехать (необязательно)" value={cart.contact.intercom}
                         onChange={e => cart.setContact({ intercom: e.target.value })}
-                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     </div>
                   )}
 
@@ -332,14 +332,14 @@ export default function DeliveryOrderPage() {
                   {cart.zoneId === 'kad' && (
                     <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
                       onChange={e => cart.setContact({ apartment: e.target.value })}
-                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   )}
 
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Дата доставки *</label>
                     <input type="date" min={minDate} value={cart.contact.date}
                       onChange={e => cart.setContact({ date: e.target.value })}
-                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2" />
+                      className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   </div>
 
                   {/* Способ оплаты */}
@@ -365,7 +365,7 @@ export default function DeliveryOrderPage() {
 
                   <textarea placeholder="Комментарий к заказу (особые пожелания, аллергии гостей, код ворот и т.д.)" value={cart.contact.comment}
                     onChange={e => cart.setContact({ comment: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 min-h-[80px] resize-none" />
+                    className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 min-h-[80px] resize-none" />
                 </div>
 
                 {/* Order summary */}

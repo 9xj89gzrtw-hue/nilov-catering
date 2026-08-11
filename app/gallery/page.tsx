@@ -29,7 +29,7 @@ export default function GalleryPage() {
               key={i}
               type="button"
               onClick={() => setLightboxIndex(i)}
-              className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
+              className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
               style={{ aspectRatio: '4 / 3' }}
               aria-label={`Открыть фото: ${p.alt}. ${p.caption || ''}`}
             >

@@ -69,7 +69,7 @@ export default async function DegustatsiyaPage() {
         <section className="rounded-xl border border-line bg-card p-6 md:p-8 mb-16" aria-labelledby="booking-heading">
           <h2 id="booking-heading" className="mb-6 text-center">Записаться на дегустацию</h2>
 
-          <form className="max-w-xl mx-auto space-y-4" id="degust-form">
+          <form className="max-w-xl mx-auto space-y-4" id="degust-form" action="/api/quote" method="POST">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="format" className="block text-sm font-medium mb-1">Формат события *</label>
@@ -77,7 +77,7 @@ export default async function DegustatsiyaPage() {
                   id="format"
                   name="format"
                   required
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 >
                   <option value="">Выберите формат</option>
                   {FORMATS.map(f => (
@@ -95,7 +95,7 @@ export default async function DegustatsiyaPage() {
                   max="500"
                   required
                   placeholder="Напр. 80"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
             </div>
@@ -109,7 +109,7 @@ export default async function DegustatsiyaPage() {
                   name="date"
                   required
                   min="2026-08-14"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -118,7 +118,7 @@ export default async function DegustatsiyaPage() {
                   id="time"
                   name="time"
                   required
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 >
                   <option value="">Выберите время</option>
                   {TIME_SLOTS.map(t => (
@@ -137,7 +137,7 @@ export default async function DegustatsiyaPage() {
                   name="name"
                   required
                   placeholder="Иван Петров"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
               <div>
@@ -148,7 +148,7 @@ export default async function DegustatsiyaPage() {
                   name="phone"
                   required
                   placeholder="+7 (___) ___-__-__"
-                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
+                  className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                 />
               </div>
             </div>
@@ -160,7 +160,7 @@ export default async function DegustatsiyaPage() {
                 name="comment"
                 rows={3}
                 placeholder="Например: нужна веганская опция, аллергия на орехи, хотим групповую дегустацию..."
-                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 resize-none"
+                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 resize-none"
               />
             </div>
 

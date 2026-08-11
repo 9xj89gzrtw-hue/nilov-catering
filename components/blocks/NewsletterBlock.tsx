@@ -62,7 +62,7 @@ export function NewsletterBlock() {
         </button>
       </form>
       {status === 'success' && (
-        <p className="mt-3 text-sm text-emerald-600 font-medium" role="status">{message}</p>
+        <p className="mt-3 text-sm text-emerald-700 font-medium" role="status">{message}</p>
       )}
       {status === 'error' && (
         <p className="mt-3 text-sm text-red-600 font-medium" role="alert">{message}</p>

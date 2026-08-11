@@ -141,7 +141,7 @@ export default function FAQPage() {
             type="search"
             id="faq-search"
             placeholder="Поиск по вопросам…" aria-label="Поиск по вопросам"
-            className="w-full rounded-xl border border-line bg-background pl-12 pr-4 py-3.5 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2 transition-shadow"
+            className="w-full rounded-xl border border-line bg-background pl-12 pr-4 py-3.5 text-base focus:ring-2 focus:ring-ring focus:border-gold-text outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 transition-shadow"
           />
         </div>
         <script dangerouslySetInnerHTML={{ __html: `
