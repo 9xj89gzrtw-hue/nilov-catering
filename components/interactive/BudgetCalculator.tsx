@@ -64,7 +64,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
         <h3 className="font-heading text-base font-medium">Калькулятор бюджета</h3>
         <label className="flex items-center gap-1.5 text-xs cursor-pointer">
           <input type="checkbox" checked={withNDS} onChange={(e) => setWithNDS(e.target.checked)} className="accent-gold-text" />
-          <span className="text-muted-foreground">с НДС 20%</span>
+          <span className="text-muted-foreground">с НДС (через партнёрское ООО)</span>
         </label>
       </div>
       <div className="mb-4">

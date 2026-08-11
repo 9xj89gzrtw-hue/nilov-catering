@@ -42,7 +42,7 @@ export default function CookieBanner() {
         </button>
         <button
           onClick={reject}
-          className="text-sm border border-background/40 text-background/90 px-4 py-2.5 min-h-[44px] rounded font-medium hover:border-background/50"
+          className="text-sm bg-background/20 text-background px-4 py-2.5 min-h-[44px] rounded font-medium hover:border-background/50"
           aria-label="Отклонить cookie"
         >
           Отклонить

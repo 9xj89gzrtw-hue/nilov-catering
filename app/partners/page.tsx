@@ -34,7 +34,7 @@ export default function PartnersPage() {
             <li><span className="font-medium">Агентская комиссия:</span> 10% от суммы заказа (для агентств с NDA), 15% — для эксклюзивных партнёров (3+ событий в месяц)</li>
             <li><span className="font-medium">NDA:</span> подписываем до начала работы. Шаблон NDA — по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня</li>
             <li><span className="font-medium">SLA:</span> доставка точно в согласованное окно, штраф 1% за минуту опоздания, максимум 30%</li>
-            <li><span className="font-medium">Договор:</span> либо напрямую с ИП Нилов Д.И. (УСН 6%), с НДС или без НДС — на выбор агентства</li>
+            <li><span className="font-medium">Договор:</span> либо напрямую с ИП Нилов Д.И. (УСН 6%), без НДС (УСН) или с НДС через партнёрское ООО — на выбор агентства</li>
             <li><span className="font-medium">ЭДО:</span> Контур.Диадок (operator ID 2AE), СБИС (operator ID 2АК)</li>
             <li><span className="font-medium">Лидогенерация:</span> передаём лиды на площадки/флористов/декораторов по запросу. Зеркально — принимаем лиды от партнёров</li>
             <li><span className="font-medium">White-label:</span> можем работать под брендом агентства (униформа без логотипов, без материалов с нашим брендом). Уточняйте</li>

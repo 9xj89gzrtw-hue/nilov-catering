@@ -44,7 +44,7 @@ function DocHeader({ docType }: { docType: string }) {
       <Text style={styles.h1}>{titles[docType] || 'Документ'}</Text>
       <Text style={styles.meta}>
         Шаблон от {SITE.legalName} (бренд {SITE.name}) · ИНН {SITE.inn} · ОГРНИП {SITE.ogrnip}
-        {'\n'}Редакция от 25.07.2026 · Документ действует как шаблон; финальная версия согласовывается сторонами
+        {'\n'}Редакция от 01.08.2026 · Документ действует как шаблон; финальная версия согласовывается сторонами
       </Text>
     </View>
   );
