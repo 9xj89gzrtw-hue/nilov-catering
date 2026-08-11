@@ -20,9 +20,9 @@ const EXTRA_LINKS = [
   { href: '/reviews', label: 'Отзывы' },
   { href: '/why-us', label: 'Почему мы' },
   { href: '/gallery', label: 'Галерея' },
+  { href: '/blog', label: 'Блог' },
   { href: '/contact', label: 'Контакты' },
   { href: '/faq', label: 'Вопросы' },
-  { href: '/blog', label: 'Блог' },
   { href: '/delivery/order', label: 'Доставка' },
   { href: '/delivery', label: 'Зоны доставки' },
 ];

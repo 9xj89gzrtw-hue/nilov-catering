@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 // Demo B2B order history — replaced by real backend in production
 // W93-v7: removed "ООО «ОдаЕда»" reference — operator is ИП Нилов Д.И. (УСН 6% без НДС).
-// Счёт-фактура с НДС выставляется через налогового агента по запросу (см. LEGAL.vatStatus в lib/data.ts).
+// Счёт-фактура с НДС выставляется через партнёрское ООО по запросу (см. LEGAL.vatStatus в lib/data.ts).
 const ORDERS = [
   {
     id: 'NLV-2025-0421',
@@ -26,7 +26,7 @@ const ORDERS = [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт', url: '#', ready: true },
       { type: 'Акт выполненных работ', url: '#', ready: true },
-      { type: 'УПД (с НДС-агентом по запросу)', url: '#', ready: true },
+      { type: 'УПД (через партнёрское ООО, по запросу)', url: '#', ready: true },
       { type: 'Бракеражный журнал', url: '#', ready: false },
     ],
   },
