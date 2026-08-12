@@ -55,7 +55,7 @@ export function OrganizationJsonLd() {
       latitude: 59.931038,
       longitude: 30.276615,
     },
-    hasMap: 'https://yandex.ru/map-object/?ll=30.276615,59.931038&z=17',
+    hasMap: 'https://yandex.ru/maps/?ll=30.276615,59.931038&z=17',
     priceRange: '₽₽₽',
     taxID: LEGAL.inn,
     foundingDate: '2007',

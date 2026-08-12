@@ -22,7 +22,7 @@
 - Сезонное: https://nilov-catering.vercel.app/seasonal
 
 ## Планирование
-- Тарифы: https://nilov-catering.vercel.app/plan/helper (таблица тарифов)
+- Тарифы: https://nilov-catering.vercel.app/pricing (таблица тарифов)
 - Конструктор: https://nilov-catering.vercel.app/plan/constructor (пошаговая сборка меню с группами гостей)
 - Помощник: https://nilov-catering.vercel.app/plan/helper (подбор формата за 3 вопроса)
 

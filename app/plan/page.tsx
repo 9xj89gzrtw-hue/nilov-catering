@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
 /**
  * /plan → redirect to /plan/helper
@@ -7,5 +7,5 @@ import { redirect } from 'next/navigation';
  * Fix: single canonical entry point at /plan/helper
  */
 export default function PlanPage() {
-  redirect('/plan/helper', 'replace');
+  permanentRedirect('/plan/helper');
 }
