@@ -86,7 +86,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 /** SkipLink — WCAG 2.2 (33_UXSIM_ANNA) */
 function SkipLink() {
   return (
-    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-gold-text focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
+    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-text focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
       Перейти к содержимому
     </a>
   );
