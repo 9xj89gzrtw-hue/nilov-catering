@@ -193,7 +193,7 @@ export default function CatalogPage() {
                       {/* Цена + кнопка — прижата к низу карточки */}
                       <div className="mt-auto flex items-center justify-between gap-2 pt-3 border-t border-line">
                         <span className="text-sm text-muted-foreground">
-                          <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span>₽/гость
+                          <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span> ₽/гость
                         </span>
                         <button
                           onClick={() =>isInCart ? removeDish(dish.id) : addDish(dish.id)}

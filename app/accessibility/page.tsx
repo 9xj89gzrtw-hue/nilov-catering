@@ -30,7 +30,7 @@ export default function AccessibilityPage() {
             <h2 className="font-heading text-xl font-medium text-foreground">Что реализовано</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Skip-link «Перейти к содержимому» в начале каждой страницы (виден при Tab)</li>
-              <li><strong>Переключатель размера шрифта A+ в шапке</strong>каждой страницы (100% / 125% / 150%)</li>
+              <li><strong>Переключатель размера шрифта A+ в шапке</strong> каждой страницы (100% / 125% / 150%)</li>
               <li>Все изображения имеют alt-текст</li>
               <li>Навигация возможна с клавиатуры (Tab, Enter, Escape)</li>
               <li>Focus-visible кольцо на всех интерактивных элементах (4.54:1 AA)</li>

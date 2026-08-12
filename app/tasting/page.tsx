@@ -24,8 +24,8 @@ export default function TastingPage() {
           Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) — обязательно от 1 гостя.
         </p>
         <p className="text-sm text-muted-foreground mb-8 p-3 rounded-lg bg-blue-50 border border-blue-200">
-           <strong>Иногородним клиентам (Москва и регионы):</strong>организуем{' '}
-          <strong>видеодегустацию по Zoom</strong>— шеф покажет готовые блюда, расскажет состав,
+           <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}
+          <strong>видеодегустацию по Zoom</strong> — шеф покажет готовые блюда, расскажет состав,
           ответит на вопросы. Для бронирования достаточно видеодегустации. Запись —{' '}
           <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
           или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
@@ -35,11 +35,11 @@ export default function TastingPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
           <h2 className="font-heading text-lg font-medium mb-3">Стоимость дегустации</h2>
           <ul className="text-sm space-y-2">
-            <li> <strong>Бесплатно</strong>— для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
-            <li> <strong>Бесплатно</strong>— для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
-            <li> <strong>3 000 ₽/чел</strong>— для событий до 30 гостей (3 блюда на выбор)</li>
-            <li> <strong>5 000 ₽/чел</strong>— расширенная дегустация (6 блюд + винное сопровождение)</li>
-            <li> <strong>От 5 000 ₽</strong>— выезд к вам (выездные расходы)</li>
+            <li> <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
+            <li> <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
+            <li> <strong>3 000 ₽/чел</strong> — для событий до 30 гостей (3 блюда на выбор)</li>
+            <li> <strong>5 000 ₽/чел</strong> — расширенная дегустация (6 блюд + винное сопровождение)</li>
+            <li> <strong>От 5 000 ₽</strong> — выезд к вам (выездные расходы)</li>
           </ul>
           <p className="text-xs text-muted-foreground mt-3">
             При бронировании события — стоимость дегустации вычитается из итогового счёта (для платных дегустаций).

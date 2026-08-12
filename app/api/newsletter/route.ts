@@ -96,12 +96,18 @@ export async function POST(request: Request) {
     const fileOk = await tryFilePersist(email);
     const telegramOk = await sendTelegramNotification(email);
 
-    if (!fileOk && !telegramOk) {
-      // No persistence available — log so it appears in Vercel function logs.
-      console.log('[NEWSLETTER] SUBSCRIBER (no persist available):', email);
-    }
-
     console.log('[NEWSLETTER] Subscribed:', email, 'file=', fileOk, 'telegram=', telegramOk);
+
+    // HONEST BEHAVIOR (W94-v40): if both delivery channels fail, subscription is LOST.
+    // Do NOT lie to the user. Return 503 with phone fallback.
+    if (!fileOk && !telegramOk) {
+      console.error('[NEWSLETTER] CRITICAL: Subscription lost — no delivery channel available:', email);
+      return NextResponse.json({
+        success: false,
+        message: 'Временная ошибка подписки. Пожалуйста, напишите на info@nilov-catering.ru — добавим вручную.',
+        phoneFallback: '+78129195911',
+      }, { status: 503 });
+    }
 
     return NextResponse.json({
       success: true,

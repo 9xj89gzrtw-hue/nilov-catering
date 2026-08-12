@@ -41,13 +41,98 @@ export async function GET(
 ) {
   const { format } = await params;
   const label = FORMAT_LABELS[format] || format;
-  // Filter dishes: match by format OR dietBadges (for vegan/gluten-free/halal)
-  // OR by format alias (banquet ↔ banket)
+
+  // Seasonal menus have inline dish lists (not in ALL_DISHES) — provide them directly
+  const SEASONAL_DISHES: Record<string, { name: string; description: string; pricePerGuest: number }[]> = {
+    bbq: [
+      { name: 'Шашлык из свинины', description: 'Свиная шея в луковом маринаде, 200 г', pricePerGuest: 480 },
+      { name: 'Шашлык из курицы', description: 'Куриное бедро в аджике, 200 г', pricePerGuest: 380 },
+      { name: 'Люля-кебаб из баранины', description: 'Рубленая баранина с зеленью, 150 г', pricePerGuest: 450 },
+      { name: 'Стейк из лосося', description: 'Лосось на гриле с лимоном, 180 г', pricePerGuest: 620 },
+      { name: 'Овощи гриль', description: 'Баклажан, перец, цуккини, шампиньоны', pricePerGuest: 250 },
+      { name: 'Картофель по-деревенски', description: 'С розмарином и чесноком', pricePerGuest: 180 },
+      { name: 'Кукуруза гриль', description: 'С маслом и паприкой', pricePerGuest: 160 },
+      { name: 'Салат «Греческий»', description: 'Помидоры, огурцы, фета, оливки', pricePerGuest: 220 },
+      { name: 'Лимонад домашний', description: 'Лимон, мята, содовая', pricePerGuest: 120 },
+      { name: 'Мохито 0%', description: 'Лайм, мята, сахарный сироп, содовая', pricePerGuest: 140 },
+    ],
+    maslenitsa: [
+      { name: 'Блины классические', description: 'Молочные, тонкие, 5 шт', pricePerGuest: 180 },
+      { name: 'Блины с икрой', description: 'С красной икрой, 3 шт', pricePerGuest: 380 },
+      { name: 'Блины с сёмгой', description: 'Со сёмгой слабой соли и сливочным сыром, 3 шт', pricePerGuest: 320 },
+      { name: 'Блины с мясом', description: 'С говяжьей начинкой, 3 шт', pricePerGuest: 220 },
+      { name: 'Блины с творогом', description: 'С творогом и изюмом, 3 шт', pricePerGuest: 200 },
+      { name: 'Самовар', description: 'Чёрный чай с травами, аренда самовара 2 часа', pricePerGuest: 150 },
+      { name: 'Медовуха', description: 'Традиционный медовый напиток, 0.5 л', pricePerGuest: 250 },
+      { name: 'Пирожки печёные', description: 'С капустой, яйцом, яблоком — ассорти', pricePerGuest: 120 },
+      { name: 'Ватрушки', description: 'С творогом, 2 шт', pricePerGuest: 140 },
+      { name: 'Горячий сбитень', description: 'Пряный медовый напиток, 0.3 л', pricePerGuest: 130 },
+    ],
+    'new-year': [
+      { name: 'Оливье премиум', description: 'С курицей, перепелиным яйцом, свежим огурцом', pricePerGuest: 220 },
+      { name: 'Селёдка под шубой', description: 'Слоёный салат с сельдью и свёклой', pricePerGuest: 200 },
+      { name: 'Мимоза', description: 'С консервированным лососем и сыром', pricePerGuest: 210 },
+      { name: 'Запечённая утка', description: 'С яблоками и черносливом, 200 г', pricePerGuest: 480 },
+      { name: 'Буженина', description: 'Запечённая свинина с пряностями, 150 г', pricePerGuest: 380 },
+      { name: 'Мандариновый десерт', description: 'Творожно-мандариновый торт, 1 кусок', pricePerGuest: 240 },
+      { name: 'Шампанское', description: 'Игристое вино, 0.75 л на 6 чел', pricePerGuest: 350 },
+      { name: 'Глинтвейн', description: 'Горячий пряный напиток, 0.3 л', pricePerGuest: 200 },
+    ],
+  };
+
+  // Seasonal menus: use inline dish list (rendered as simplified table)
+  if (SEASONAL_DISHES[format]) {
+    const seasonalDishes = SEASONAL_DISHES[format];
+    const seasonalHtml = `<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>Меню «${escapeHtml(label)}» — NiloV Catering</title>
+<style>
+  @page { margin: 2cm; size: A4; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1C1815; font-size: 11px; line-height: 1.4; }
+  h1 { font-size: 22px; margin-bottom: 4px; color: #8A6D3B; }
+  .subtitle { color: #6B625A; margin-bottom: 20px; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #B08D57; color: #8A6D3B; font-size: 10px; text-transform: uppercase; }
+  td { padding: 6px 8px; border-bottom: 1px solid #EFE6D6; vertical-align: top; }
+  .price { text-align: right; white-space: nowrap; color: #8A6D3B; font-weight: 600; }
+  footer { margin-top: 30px; padding-top: 12px; border-top: 1px solid #EFE6D6; font-size: 9px; color: #6B625A; }
+</style></head>
+<body>
+<h1>Меню «${escapeHtml(label)}»</h1>
+<p class="subtitle">NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.domain}</p>
+
+<h2>Блюда (${seasonalDishes.length})</h2>
+<table>
+<thead><tr><th>Название</th><th>Описание</th><th>Цена</th></tr></thead>
+<tbody>
+${seasonalDishes.map(d =>`<tr>
+  <td>${escapeHtml(d.name)}</td>
+  <td>${escapeHtml(d.description)}</td>
+  <td class="price">${d.pricePerGuest} ₽</td>
+</tr>`).join('\n')}
+</tbody></table>
+
+<footer>
+  NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
+  Цены указаны на ${new Date().toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' }).replace(' г.', '')}. Для точной сметы свяжитесь с менеджером.<br>
+  © NiloV Catering, 2026. Все права защищены.
+</footer>
+</body></html>`;
+
+    return new NextResponse(seasonalHtml, {
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': `inline; filename="nilov-${format}-menu.html"`,
+      },
+    });
+  }
+
   const formatAliases: Record<string, string[]>= {
     banquet: ['banket', 'banquet'],
     banket: ['banket', 'banquet'],
   };
   const aliases = formatAliases[format] || [format];
+
   const dishes = format === 'catalog'
     ? ALL_DISHES
     : ALL_DISHES.filter(d => {

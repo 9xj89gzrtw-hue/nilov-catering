@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Выпускные — кейтеринг для школ и вузов СПб',
-  description: 'Кейтеринг на выпускной: фуршеты и банкеты для школ и вузов. Бюджетные решения от 390 ₽/гость. B2B: договор, ЭДО, медкнижки, бракераж, согласование с Роспотребнадзором.',
+  description: 'Кейтеринг на выпускной: фуршеты и банкеты для школ и вузов. Школьный пакет от 1 800 ₽/гость, стандартный банкет от 3 950 ₽/гость. B2B: договор, ЭДО, медкнижки, бракераж, согласование с Роспотребнадзором.',
   alternates: { canonical: '/events/vypusknoy', languages: { 'ru': '/events/vypusknoy', 'x-default': '/events/vypusknoy' } },
 };
 
@@ -31,7 +31,7 @@ export default function VypusknoyPage() {
         <div className="mb-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
           <h2 className="font-heading text-lg font-medium mb-2">Ограниченный бюджет?</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Кофе-брейк от <strong className="text-foreground">390 ₽/гость</strong>— выпечка, сэндвичи, фрукты, напитки.
+            Кофе-брейк от <strong className="text-foreground">390 ₽/гость</strong> — выпечка, сэндвичи, фрукты, напитки.
             На 25 человек = ~9 750 ₽. На 60 детей = ~23 400 ₽.
             Или доставка без официантов от <strong className="text-foreground">5 000 ₽</strong>.
           </p>
@@ -88,14 +88,14 @@ export default function VypusknoyPage() {
           <div className="p-4 rounded-lg bg-white border border-emerald-200 mb-4">
             <h3 className="font-semibold text-sm mb-2">Спец. тариф для школ (от 30 детей + родителей)</h3>
             <p className="text-sm text-muted-foreground mb-2">
-              Школьный пакет: <strong className="text-foreground">от 1 800 ₽/гость</strong>— фуршет с детским меню + станция напитков + бумажная посуда.
+              Школьный пакет: <strong className="text-foreground">от 1 800 ₽/гость</strong> — фуршет с детским меню + станция напитков + бумажная посуда.
               Включает: канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад.
             </p>
             <p className="text-xs text-muted-foreground">
               Бюджет на 90 чел (60 детей + 30 родителей): ~162 000 ₽ — вписывается в типовой школьный бюджет 200 000 ₽.
             </p>
             <p className="text-xs text-muted-foreground mt-2 p-2 rounded bg-amber-50 border border-amber-200">
-              <strong>Ограниченный бюджет? Пример:</strong>85 детей × 1 800 ₽ = 153 000 ₽. Если бюджет
+              <strong>Ограниченный бюджет? Пример:</strong> 85 детей × 1 800 ₽ = 153 000 ₽. Если бюджет
               150 000 ₽ — сократите до 80 детей (144 000 ₽) или замените фуршет на кофе-брейк
               (85 × 390 ₽ = 33 150 ₽ + доставка 5 000 ₽ = 38 150 ₽). Также возможна рассрочка
               или спонсорская скидка — <Link href="/contact" className="underline">обсудите с менеджером</Link>.

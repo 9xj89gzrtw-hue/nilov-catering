@@ -183,7 +183,7 @@ export default function RecapPage() {
 
         <div className="p-4 rounded-xl border border-line bg-secondary/30 mb-8">
           <p className="text-sm text-muted-foreground">
-             <strong>Полные видео-рекапы:</strong>доступны по запросу — отправим ссылку на
+             <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
             <a href="mailto:info@nilov-catering.ru" className="underline text-gold-text">
               info@nilov-catering.ru

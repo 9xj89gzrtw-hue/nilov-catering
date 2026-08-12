@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Юбилей и годовщина — кейтеринг для пожилых',
-  description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 15 гостей, бюджетные решения от 59 250 ₽. Честные цены, реальные отзывы, большой шрифт.',
+  description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 15 гостей. Бюджетные решения от 36 750 ₽ за 15 чел (фуршет-Эконом) или от 59 250 ₽ (банкет-Эконом). Честные цены, реальные отзывы, большой шрифт.',
   alternates: { canonical: '/events/yubiley', languages: { 'ru': '/events/yubiley', 'x-default': '/events/yubiley' } },
 };
 
@@ -88,7 +88,7 @@ export default function YubileyPage() {
         <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
           <h3 className="font-heading text-base font-medium mb-2">Премиум-вариант (вне основного бюджета)</h3>
           <p className="text-sm text-muted-foreground">
-            Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong>— 5 закусок, 2 горячих, икорная станция,
+            Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
             сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.
           </p>
         </div>

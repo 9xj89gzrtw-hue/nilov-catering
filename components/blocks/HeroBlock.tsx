@@ -46,7 +46,7 @@ export default function HeroBlock() {
             className="font-heading text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] mb-5"
             style={{ fontWeight: 500, letterSpacing: '-0.02em' }}
           >
-            Кейтеринг от шефа
+            Кейтеринг от шефа{' '}
             <br />
             Дмитрия Нилова
           </h1>

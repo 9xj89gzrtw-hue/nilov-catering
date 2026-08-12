@@ -88,7 +88,7 @@ export default function DeliveryOrderPage() {
       <div className="container-site max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="mb-2">Доставка кейтеринга</h1>
+          <h1 className="mb-2">Заказ доставки кейтеринга</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Соберите заказ из нашего меню — привезём готовые блюда на дом или в офис. Без персонала и посуды, только еда.
           </p>
@@ -457,7 +457,7 @@ export default function DeliveryOrderPage() {
                 <span className="text-5xl block mb-4">✅</span>
                 <h2 className="text-xl font-heading font-medium mb-2">Заказ принят!</h2>
                 <p className="text-muted-foreground mb-2">
-                  Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong>для подтверждения.
+                  Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong> для подтверждения.
                 </p>
                 <p className="text-sm text-muted-foreground mb-6">
                   Доставка: <strong className="text-foreground">{cart.contact.date}</strong>

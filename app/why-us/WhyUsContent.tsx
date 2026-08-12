@@ -259,7 +259,7 @@ function Hero() {
             className="font-heading text-4xl md:text-6xl lg:text-7xl text-white max-w-4xl leading-[1.05]"
             style={{ fontWeight: 500 }}
           >
-            Ресторанное качество<br />не обязано стоить<br />как ресторан
+            Ресторанное качество{' '}<br />не обязано стоить{' '}<br />как ресторан
           </motion.h1>
           <motion.p
             initial={reducedMotion ? false : { opacity: 1, y: 16 }}

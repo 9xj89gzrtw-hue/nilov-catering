@@ -63,7 +63,7 @@ export default function InspireStrip({ shots = DEMO_SHOTS, ctaHref = '/gallery' 
           <div>
             <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Вдохновись</p>
             <h2 className="font-heading text-xl md:text-2xl font-medium text-foreground">
-              Так выглядят <span className="text-gold-text">реальные</span>события
+              Так выглядят <span className="text-gold-text">реальные</span> события
             </h2>
           </div>
           <Link

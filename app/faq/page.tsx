@@ -174,7 +174,7 @@ export default function FAQPage() {
         <div id="faq-list">
         {/* B2C FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl"></span>Для частных клиентов
+          <span className="text-2xl"></span> Для частных клиентов
         </h2>
         <div className="space-y-3 mb-12">
           {FAQS_B2C.map((f, i) =>(
@@ -192,7 +192,7 @@ export default function FAQPage() {
 
         {/* B2B FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl"></span>Для бизнеса (B2B)
+          <span className="text-2xl"></span> Для бизнеса (B2B)
         </h2>
         <div className="space-y-3 mb-12">
           {FAQS_B2B.map((f, i) =>(

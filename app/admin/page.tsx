@@ -36,7 +36,7 @@ export default async function AdminDashboard() {
         ))}
       </div>
       <div className="mt-8 p-4 bg-gray-800/50 rounded border border-gray-700 text-sm text-gray-400">
-        <strong className="text-gray-200">Совет:</strong>для простых правок (тексты, цены) откройте{' '}
+        <strong className="text-gray-200">Совет:</strong> для простых правок (тексты, цены) откройте{' '}
         <code className="bg-gray-700 px-1 rounded">data/page-texts.json</code>в редакторе. Для блюд и отзывов — используйте табличный редактор ниже.
       </div>
     </div>

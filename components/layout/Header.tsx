@@ -76,7 +76,7 @@ export default function Header() {
             href={SITE.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
+            className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
             aria-label="Написать в WhatsApp"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -104,7 +104,7 @@ export default function Header() {
         <div className="flex md:hidden items-center gap-1 shrink-0">
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
+            className="inline-flex items-center justify-center w-11 h-11 rounded-lg border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
             aria-label={`Позвонить ${SITE.phone}`}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />

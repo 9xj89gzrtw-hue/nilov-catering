@@ -351,7 +351,7 @@ function ConstructorServerFallback() {
 
         <noscript>
           <div className="mt-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm">
-            <strong>Внимание:</strong>полная интерактивная версия конструктора требует JavaScript. Выше — SSR-форма заявки, которая работает без JS..
+            <strong>Внимание:</strong> полная интерактивная версия конструктора требует JavaScript. Выше — SSR-форма заявки, которая работает без JS.
             Вы можете выбрать формат выше или связаться напрямую по телефону{' '}
             <a href={`tel:${SITE.phoneTel}`} className="underline">{SITE.phone}</a>.
           </div>

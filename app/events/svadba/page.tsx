@@ -61,11 +61,11 @@ export default function SvadbaPage() {
             4 БГ + 1 без орехов + 57 всеядных. Цена по группам — платите только за блюда своей группы.
           </p>
           <p className="text-xs text-muted-foreground mb-3">
-            <strong>Как считается цена:</strong>веган-группа — по тарифу «Веган Стандарт»
+            <strong>Как считается цена:</strong> веган-группа — по тарифу «Веган Стандарт»
             (2 950 ₽/гость, см. <Link href="/menu/vegan" className="underline">веган-меню</Link>).
             Всеядная группа — по тарифу «Свадьба Стандарт» (5 470 ₽/гость, см. тарифы ниже).
             Итог = sum(per-group price × guests). Например: 50 веганов × 2 950 + 30 всеядных × 5 470
-            = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong>за 80 гостей
+            = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong> за 80 гостей
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
           <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать свадебное меню с разными диетами →
@@ -75,7 +75,7 @@ export default function SvadbaPage() {
         {/* Vegan wedding cake callout */}
         <div className="mb-6 p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 text-center">
           <p className="text-sm text-foreground/90">
-            <span className="font-medium">Веганский свадебный торт?</span>Да — отдельная выпечка
+            <span className="font-medium">Веганский свадебный торт?</span> Да — отдельная выпечка
             на миндальной/рисовой муке с кокосовыми сливками. Также: БГ-торт (&lt;20 ppm),
             без-сахара торт (для СД1, на стевии). Цены — от 1 200 ₽/кг.{' '}
             <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню →</Link>
@@ -85,7 +85,7 @@ export default function SvadbaPage() {
         {/* Remote/Moscow client note */}
         <div className="mb-6 p-4 rounded-xl border border-blue-200 bg-blue-50/50 text-center">
           <p className="text-sm text-foreground/90">
-            <span className="font-medium">Невеста из Москвы или другого города?</span>Работаем
+            <span className="font-medium">Невеста из Москвы или другого города?</span> Работаем
             удалённо: поможем найти площадку в СПб, организуем видеодегустацию по Zoom, согласуем
             меню через WhatsApp/Telegram. Связь — <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
             или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
@@ -184,8 +184,8 @@ export default function SvadbaPage() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-3">Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт включён во все тарифы. Винная карта и координатор — включены в Стандарт и выше.</p>
-          <p className="text-xs text-muted-foreground mt-2"><strong>Халяль-вариант любого тарифа:</strong>винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/бар безалкогольных коктейлей). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-xs text-muted-foreground mt-2"><strong>Анафилаксия на орехи?</strong>В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/бар безалкогольных коктейлей). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}

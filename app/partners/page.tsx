@@ -31,15 +31,15 @@ export default function PartnersPage() {
             клиента, мы — заказ. Прозрачная агентская схема.
           </p>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90 mb-4">
-            <li><span className="font-medium">Агентская комиссия:</span>10% от суммы заказа (для агентств с NDA), 15% — для эксклюзивных партнёров (3+ событий в месяц)</li>
-            <li><span className="font-medium">NDA:</span>подписываем до начала работы. Шаблон NDA — по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня</li>
-            <li><span className="font-medium">SLA:</span>доставка в окно ±15 минут, штраф 1% за минуту опоздания, максимум 30%</li>
-            <li><span className="font-medium">Договор:</span>либо напрямую с ИП Нилов Д.И. (УСН 6%), без НДС (УСН) или с НДС через партнёрское ООО — на выбор агентства</li>
-            <li><span className="font-medium">ЭДО:</span>Контур.Диадок (operator ID 2AE), СБИС (operator ID 2АК)</li>
-            <li><span className="font-medium">Лидогенерация:</span>передаём лиды на площадки/флористов/декораторов по запросу. Зеркально — принимаем лиды от партнёров</li>
-            <li><span className="font-medium">White-label:</span>можем работать под брендом агентства (униформа без логотипов, без материалов с нашим брендом). Уточняйте</li>
-            <li><span className="font-medium">Страхование ГО:</span>базовый полис 5 000 000 ₽, расширение до 30 000 000 ₽ для контрактов от 5 млн ₽</li>
-            <li><span className="font-medium">Персональный менеджер:</span>выделенный B2B-менеджер для партнёров с NDA, прямой мобильный</li>
+            <li><span className="font-medium">Агентская комиссия:</span> 10% от суммы заказа (для агентств с NDA), 15% — для эксклюзивных партнёров (3+ событий в месяц)</li>
+            <li><span className="font-medium">NDA:</span> подписываем до начала работы. Шаблон NDA — по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня</li>
+            <li><span className="font-medium">SLA:</span> доставка в окно ±15 минут, штраф 1% за минуту опоздания, максимум 30%</li>
+            <li><span className="font-medium">Договор:</span> либо напрямую с ИП Нилов Д.И. (УСН 6%), без НДС (УСН) или с НДС через партнёрское ООО — на выбор агентства</li>
+            <li><span className="font-medium">ЭДО:</span> Контур.Диадок (operator ID 2AE), СБИС (operator ID 2АК)</li>
+            <li><span className="font-medium">Лидогенерация:</span> передаём лиды на площадки/флористов/декораторов по запросу. Зеркально — принимаем лиды от партнёров</li>
+            <li><span className="font-medium">White-label:</span> можем работать под брендом агентства (униформа без логотипов, без материалов с нашим брендом). Уточняйте</li>
+            <li><span className="font-medium">Страхование ГО:</span> базовый полис 5 000 000 ₽, расширение до 30 000 000 ₽ для контрактов от 5 млн ₽</li>
+            <li><span className="font-medium">Персональный менеджер:</span> выделенный B2B-менеджер для партнёров с NDA, прямой мобильный</li>
           </ul>
           <p className="text-xs text-muted-foreground">
             Запросить шаблон NDA, агентский договор и прайс-лист для партнёров:{' '}
@@ -59,11 +59,11 @@ export default function PartnersPage() {
             рекомендуете нас как кейтеринг-партнёра вашим клиентам.
           </p>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90 mb-4">
-            <li><span className="font-medium">Каталог:</span>размещение в разделе /venues с фото, адресом, ценой, метрополитеном</li>
-            <li><span className="font-medium">Реферальная комиссия:</span>5-10% от суммы кейтеринга при передаче лида (по договорённости)</li>
-            <li><span className="font-medium">Пробные мероприятия:</span>совместные дегустации для вашего клиента на вашей площадке — бесплатно</li>
-            <li><span className="font-medium">Технический райдер:</span>предоставляем заранее (электричество, вода, кухня, зона разгрузки)</li>
-            <li><span className="font-medium">Логистика:</span>согласование времени загрузки/разгрузки с администрацией площадки</li>
+            <li><span className="font-medium">Каталог:</span> размещение в разделе /venues с фото, адресом, ценой, метрополитеном</li>
+            <li><span className="font-medium">Реферальная комиссия:</span> 5-10% от суммы кейтеринга при передаче лида (по договорённости)</li>
+            <li><span className="font-medium">Пробные мероприятия:</span> совместные дегустации для вашего клиента на вашей площадке — бесплатно</li>
+            <li><span className="font-medium">Технический райдер:</span> предоставляем заранее (электричество, вода, кухня, зона разгрузки)</li>
+            <li><span className="font-medium">Логистика:</span> согласование времени загрузки/разгрузки с администрацией площадки</li>
           </ul>
         </div>
 

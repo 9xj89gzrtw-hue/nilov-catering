@@ -41,7 +41,7 @@ export default function DetskoePage() {
             Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>Сахарный диабет (СД1/СД2)?</strong>По умолчанию candy-bar / сладкий стол
+            <strong>Сахарный диабет (СД1/СД2)?</strong> По умолчанию candy-bar / сладкий стол
             включены в пакеты «Стандарт» и «Расширенный». Для ребёнка с СД1 мы заменяем их на
             сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Ищите в каталоге блюда со значком{' '}
@@ -50,7 +50,7 @@ export default function DetskoePage() {
             <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>Анафилаксия на молоко и/или яйца?</strong>Те же протоколы безопасности:
+            <strong>Анафилаксия на молоко и/или яйца?</strong> Те же протоколы безопасности:
             отдельная смена, отдельные доски/ножи, EpiPen. Веган-меню = безопасный выбор
             (без молока, без яиц). В каталоге используйте фильтр «Без молока» и «Без яиц».
             Подробнее на{' '}
@@ -89,11 +89,11 @@ export default function DetskoePage() {
         <div className="mt-8 p-5 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-lg font-medium mb-3">Регуляторное соответствие</h2>
           <ul className="text-sm text-muted-foreground space-y-2">
-            <li><strong className="text-foreground">СанПиН 2.3/2.4.3590-20</strong>— санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
-            <li><strong className="text-foreground">ТР ТС 021/2011</strong>— безопасность пищевой продукции. HACCP внедрён.</li>
-            <li><strong className="text-foreground">ТР ТС 022/2011</strong>— маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
-            <li><strong className="text-foreground">Медкнижки</strong>— 100% персонала. Прививки от дифтерии и гепатита В.</li>
-            <li><strong className="text-foreground">Бракеражный журнал</strong>— ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
+            <li><strong className="text-foreground">СанПиН 2.3/2.4.3590-20</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
+            <li><strong className="text-foreground">ТР ТС 021/2011</strong> — безопасность пищевой продукции. HACCP внедрён.</li>
+            <li><strong className="text-foreground">ТР ТС 022/2011</strong> — маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
+            <li><strong className="text-foreground">Медкнижки</strong> — 100% персонала. Прививки от дифтерии и гепатита В.</li>
+            <li><strong className="text-foreground">Бракеражный журнал</strong> — ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
           </ul>
         </div>
 

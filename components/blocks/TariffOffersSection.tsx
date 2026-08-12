@@ -445,9 +445,9 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
             <p className="text-base font-medium mb-1">Нужен кофе-брейк без официантов — просто доставка?</p>
             <p className="text-sm text-muted-foreground mb-4">
-              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong>— привезём выпечку, сэндвичи, фрукты, напитки.
+              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
               <br />
-              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong>или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong>(с сырным плато и кедровым рафом).
+              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong>(с сырным плато и кедровым рафом).
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/delivery/order"
@@ -474,7 +474,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
             <p className="text-base font-medium mb-1">Нужен корпоративный фуршет в офисе — без посадки?</p>
             <p className="text-sm text-muted-foreground mb-4">
-              У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong>— дешевле банкета.
+              У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong> — дешевле банкета.
               Гости едят стоя, лёгкие закуски, идеален для офисных мероприятий.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
