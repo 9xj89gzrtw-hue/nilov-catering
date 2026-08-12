@@ -316,7 +316,7 @@ export default function PominkiPage() {
               <ShareButton
                 title="Поминки — кейтеринг NiloV"
                 text="Посмотри поминальное меню и цены — нужно согласовать"
-                label=" Отправить ссылку родным (WhatsApp / Telegram / Email)"
+                label="Отправить ссылку родным (WhatsApp / Telegram / Email)"
               />
             </div>
           </div>

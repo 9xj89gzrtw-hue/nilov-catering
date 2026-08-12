@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Никах и ифтар — халяль-кейтеринг под ключ',
   description: 'Халяль-кейтеринг для никаха и ифтара. Сертификат Совета муфтиев России. Отдельное оборудование, без свинины, без алкоголя. Ифтар от 1 800 ₽/гость, никах от 3 950 ₽/гость.',
-  alternates: { canonical: '/events/nikah' },
+  alternates: { canonical: '/events/nikah', languages: { 'ru': '/events/nikah', 'x-default': '/events/nikah' } },
 };
 
 export default function NikahPage() {

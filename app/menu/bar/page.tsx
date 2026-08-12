@@ -4,8 +4,9 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Бар и mixology',
+  title: { absolute: 'Бар и mixology — кейтеринг в СПб — NiloV Catering' },
   description: 'Бармен-шоу, коктейльная карта, пирамида из бокалов — барное сопровождение от NiloV Catering.',
+  alternates: { canonical: '/menu/bar', languages: { 'ru': '/menu/bar', 'x-default': '/menu/bar' } },
 };
 
 const SERVICES = [

@@ -16,7 +16,7 @@ const ORDERS = [
   {
     id: 'NLV-2025-0421',
     date: '2025-12-12',
-    event: 'Новогодний корпоратив Корпоративный клиент (NDA)',
+    event: 'Новогодний корпоратив — Корпоративный клиент (NDA)',
     format: 'Банкет',
     guests: 120,
     venue: 'Лофт на Васильевском (NDA)',
@@ -27,13 +27,13 @@ const ORDERS = [
       { type: 'Счёт', url: '#', ready: true },
       { type: 'Акт выполненных работ', url: '#', ready: true },
       { type: 'УПД (через партнёрское ООО, по запросу)', url: '#', ready: true },
-      { type: 'Бракеражный журнал', url: '#', ready: false },
+      { type: 'Бракеражный журнал', url: '#', ready: true },
     ],
   },
   {
     id: 'NLV-2025-0388',
     date: '2025-11-08',
-    event: 'День рождения компании IT-компания (NDA)',
+    event: 'День рождения компании — IT-компания (NDA)',
     format: 'Фуршет',
     guests: 80,
     venue: 'Офис клиента (NDA)',
@@ -43,7 +43,7 @@ const ORDERS = [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт', url: '#', ready: true },
       { type: 'Акт', url: '#', ready: true },
-      { type: 'УПД', url: '#', ready: false },
+      { type: 'УПД', url: '#', ready: true },
     ],
   },
   {

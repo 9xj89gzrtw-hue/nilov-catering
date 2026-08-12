@@ -41,7 +41,7 @@ export default function SvadbaPage() {
             <ShareButton
               title="Свадебный кейтеринг — NiloV"
               text="Посмотри свадебные тарифы и меню — нужно согласовать"
-              label=" Отправить ссылку жениху/родным"
+              label="Отправить ссылку жениху/родным"
             />
           </div>
         </div>

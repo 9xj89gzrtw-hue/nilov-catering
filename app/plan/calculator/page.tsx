@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 function CalculatorServerFallback() {
   const formats: { format: Format; label: string; emoji: string; tiers: { tier: string; price: number; min: number }[] }[] = [
     {
-      format: 'furshet', label: 'Фуршет', emoji: '',
+      format: 'furshet', label: 'Фуршет', emoji: '🥂',
       tiers: [
         { tier: 'Эконом', price: 2450, min: 20 },
         { tier: 'Стандарт', price: 3950, min: 20 },
@@ -28,7 +28,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'banket', label: 'Банкет', emoji: '',
+      format: 'banket', label: 'Банкет', emoji: '🍽',
       tiers: [
         { tier: 'Эконом', price: 3950, min: 15 },
         { tier: 'Стандарт', price: 5470, min: 15 },
@@ -37,7 +37,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'coffee-break', label: 'Кофе-брейк', emoji: '',
+      format: 'coffee-break', label: 'Кофе-брейк', emoji: '☕',
       tiers: [
         { tier: 'Эконом', price: 390, min: 10 },
         { tier: 'Стандарт', price: 1450, min: 10 },
@@ -45,7 +45,7 @@ function CalculatorServerFallback() {
       ],
     },
     {
-      format: 'detskoe', label: 'Детский', emoji: '',
+      format: 'detskoe', label: 'Детский', emoji: '🧒',
       tiers: [
         { tier: 'Эконом', price: 1550, min: 10 },
         { tier: 'Стандарт', price: 2450, min: 10 },

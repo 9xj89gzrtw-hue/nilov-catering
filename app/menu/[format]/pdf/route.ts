@@ -86,7 +86,7 @@ ${dishes.map(d => `<tr>
 
 <footer>
   NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
-  Цены указаны на август 2026 г. Для точной сметы свяжитесь с менеджером.<br>
+  Цены указаны на ${new Date().toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}. Для точной сметы свяжитесь с менеджером.<br>
   © NiloV Catering, 2026. Все права защищены.
 </footer>
 </body></html>`;

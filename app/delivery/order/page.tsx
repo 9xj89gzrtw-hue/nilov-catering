@@ -230,10 +230,10 @@ export default function DeliveryOrderPage() {
                           {zone.surcharge === 0 ? 'Бесплатно' : `+${zone.surcharge.toLocaleString('ru-RU')} ₽`}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground mb-2">{zone.distance} за КАД</p>
+                      <p className="text-xs text-muted-foreground mb-2">{zone.surcharge === 0 ? `${zone.distance} — в черте города` : `${zone.distance} за КАД`}</p>
                       <div className="text-[10px] text-muted-foreground space-y-0.5">
-                        <p>Холодовая цепь: {zone.coldChain ? '' : ' только термобоксы'}</p>
-                        <p>⏱ До {zone.slaHours}ч</p>
+                        <p>Холодовая цепь: {zone.coldChain ? 'сумки-холодильники +2…+6 °C' : 'только термобоксы'}</p>
+                        <p>⏱ До {zone.slaHours} ч</p>
                       </div>
                     </button>
                   ))}
@@ -454,7 +454,7 @@ export default function DeliveryOrderPage() {
             {/* === Step 3: Done === */}
             {step === 3 && submitted && (
               <div className="max-w-md mx-auto text-center py-8">
-                <span className="text-5xl block mb-4"></span>
+                <span className="text-5xl block mb-4">✅</span>
                 <h2 className="text-xl font-heading font-medium mb-2">Заказ принят!</h2>
                 <p className="text-muted-foreground mb-2">
                   Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong> для подтверждения.

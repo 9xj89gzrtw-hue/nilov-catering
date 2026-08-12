@@ -40,7 +40,7 @@ export default function CollectionEditor({ params }: Props) {
       body: JSON.stringify(data),
     });
     setSaving(false);
-    setMessage(res.ok ? ' Сохранено' : ' Ошибка');
+    setMessage(res.ok ? 'Сохранено' : 'Ошибка');
     setTimeout(() => setMessage(''), 2000);
   }, [data, collection]);
 
@@ -68,7 +68,7 @@ export default function CollectionEditor({ params }: Props) {
         <div className="flex gap-2">
           <button onClick={addRow} className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded text-sm">+ Добавить</button>
           <button onClick={save} disabled={saving} className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 rounded text-sm font-medium">
-            {saving ? 'Сохранение...' : ' Сохранить'}
+            {saving ? 'Сохранение...' : 'Сохранить'}
           </button>
         </div>
       </div>

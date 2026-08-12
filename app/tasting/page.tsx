@@ -50,19 +50,19 @@ export default function TastingPage() {
         <div className="grid gap-4 mb-8">
           {[
             {
-              title: ' Что входит',
+              title: 'Что входит',
               text: 'До 6 блюд на выбор из вашего тарифа. Аперитив (игристое/морс) и комплимент от шефа. Длительность — до 1.5 часов. Возможность адаптации блюд под диету (веган/БГ/халяль).',
             },
             {
-              title: ' Где проходит',
+              title: 'Где проходит',
               text: 'У нас на производстве (м. Василеостровская, В.О., 20-я линия, 11) или с выездом к вам (от 5 000 ₽ за выезд по СПб и ЛО).',
             },
             {
-              title: ' Когда',
+              title: 'Когда',
               text: 'Будни 10:00–18:00, суббота по договорённости. Запись минимум за 5 дней. Для срочных — по запросу.',
             },
             {
-              title: ' Диеты и аллергены',
+              title: 'Диеты и аллергены',
               text: 'Для целиакии, анафилаксии, халяль, веган — дегустация по отдельному протоколу. Можно попробовать безглютеновый торт, халяль-шашлык, веган-десерт, безореховое меню. Укажите диеты в форме ниже.',
             },
           ].map((item) => (
@@ -106,12 +106,12 @@ export default function TastingPage() {
               <label className="block text-sm font-medium text-foreground mb-2"> Диеты гостей на дегустации</label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                 {[
-                  { value: 'vegan', label: ' Веган' },
-                  { value: 'gluten-free', label: ' Без глютена' },
-                  { value: 'halal', label: ' Халяль' },
-                  { value: 'nut-free', label: ' Без орехов' },
-                  { value: 'dairy-free', label: ' Без молока' },
-                  { value: 'allergy-other', label: ' Другая аллергия' },
+                  { value: 'vegan', label: 'Веган' },
+                  { value: 'gluten-free', label: 'Без глютена' },
+                  { value: 'halal', label: 'Халяль' },
+                  { value: 'nut-free', label: 'Без орехов' },
+                  { value: 'dairy-free', label: 'Без молока' },
+                  { value: 'allergy-other', label: 'Другая аллергия' },
                 ].map((d) => (
                   <label key={d.value} className="flex items-center gap-2 px-3 py-2 rounded-lg border border-line bg-background cursor-pointer hover:border-gold-text transition-colors">
                     <input type="checkbox" name="diets" value={d.value} />

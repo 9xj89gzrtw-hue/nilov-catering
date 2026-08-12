@@ -137,12 +137,12 @@ export default function MenuPage() {
           <p className="text-muted-foreground text-center mb-6">Для гостей с особыми предпочтениями</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { label: ' Веган', href: '/menu/vegan', desc: 'Без мяса, молока, яиц' },
-              { label: ' Без глютена', href: '/menu/gluten-free', desc: 'Для целиакии (отдельная линия <20 ppm)' },
-              { label: ' Халяль', href: '/menu/halal', desc: 'Сертифицированное халяль-меню' },
-              { label: ' Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
-              { label: ' Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
-              { label: ' Целиакия-протокол', href: '/allergens#celiakia', desc: 'Отдельная зона + синяя маркировка' },
+              { label: 'Веган', href: '/menu/vegan', desc: 'Без мяса, молока, яиц' },
+              { label: 'Без глютена', href: '/menu/gluten-free', desc: 'Для целиакии (отдельная линия <20 ppm)' },
+              { label: 'Халяль', href: '/menu/halal', desc: 'Сертифицированное халяль-меню' },
+              { label: 'Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
+              { label: 'Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
+              { label: 'Целиакия-протокол', href: '/allergens#celiakia', desc: 'Отдельная зона + синяя маркировка' },
             ].map(d => (
               <Link key={d.href} href={d.href} className="rounded-xl border border-line bg-card px-5 py-3 hover:border-gold-text hover:-translate-y-0.5 transition-all">
                 <div className="text-sm font-medium mb-0.5">{d.label}</div>

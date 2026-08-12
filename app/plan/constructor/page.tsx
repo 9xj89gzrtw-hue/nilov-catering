@@ -26,7 +26,7 @@ function ConstructorServerFallback() {
     {
       name: 'Фуршет',
       slug: 'furshet',
-      emoji: '',
+      emoji: '🥂',
       img: '/images/menu/kanape/k1.jpg',
       price: 'от 2 450 ₽/гость',
       minGuests: 'мин. 20 гостей',
@@ -36,7 +36,7 @@ function ConstructorServerFallback() {
     {
       name: 'Банкет',
       slug: 'banket',
-      emoji: '',
+      emoji: '🍽',
       img: '/images/real/beef-medallions.jpg',
       price: 'от 3 950 ₽/гость',
       minGuests: 'мин. 15 гостей',
@@ -46,7 +46,7 @@ function ConstructorServerFallback() {
     {
       name: 'Кофе-брейк',
       slug: 'coffee-break',
-      emoji: '',
+      emoji: '☕',
       img: '/images/menu/deserty/d1.jpg',
       price: 'от 390 ₽/гость',
       minGuests: 'мин. 10 гостей',
@@ -55,7 +55,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Детский праздник', slug: 'detskoe',
-      emoji: '',
+      emoji: '🧒',
       img: '/images/menu/goryachee/h1.jpg',
       price: 'от 1 550 ₽/гость',
       minGuests: 'мин. 10 детей',
@@ -64,7 +64,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Выезд шефа', slug: 'chef-at-home',
-      emoji: '',
+      emoji: '👨\u200d🍳',
       img: '/images/dishes-new/beef-steak.jpg',
       price: 'от 4 500 ₽/гость',
       minGuests: 'мин. 6 гостей',
@@ -73,7 +73,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Мобильный фуршет', slug: 'mobile-furshet',
-      emoji: '',
+      emoji: '🚚',
       img: '/images/real/canape-platter.jpg',
       price: 'от 2 450 ₽/гость',
       minGuests: 'мин. 10 гостей',
@@ -82,7 +82,7 @@ function ConstructorServerFallback() {
     },
     {
       name: 'Поминки', slug: 'pominki',
-      emoji: '',
+      emoji: '🕯',
       img: '/images/real/salmon-dish.jpg',
       price: 'от 1 800 ₽/гость',
       minGuests: 'мин. 10 гостей',
@@ -197,7 +197,7 @@ function ConstructorServerFallback() {
             <ShareButton
               title="Моё меню — NiloV Catering"
               text="Посмотри меню — нужно согласовать"
-              label=" Отправить ссылку родным/коллегам"
+              label="Отправить ссылку родным/коллегам"
             />
           </div>
         </div>
@@ -383,7 +383,7 @@ function ConstructorServerFallback() {
                   card.setAttribute('aria-current', 'true');
                   // Add checkmark badge
                   var badge = document.createElement('div');
-                  badge.textContent = ' Выбрано';
+                  badge.textContent = 'Выбрано';
                   badge.style.cssText = 'position:absolute;top:8px;right:8px;background:var(--color-gold,#B08D57);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600';
                   card.style.position = 'relative';
                   card.appendChild(badge);

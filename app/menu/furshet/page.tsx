@@ -21,11 +21,11 @@ const GRADIENT_MAP: Record<string, string> = {
 };
 
 const STATION_LABELS: Record<string, string> = {
-  'cold': ' Холодные закуски',
-  'hot': ' Горячее',
-  'desserts': ' Десерты',
-  'drinks': ' Напитки',
-  'show': ' Шоу-станции',
+  'cold': 'Холодные закуски',
+  'hot': 'Горячее',
+  'desserts': 'Десерты',
+  'drinks': 'Напитки',
+  'show': 'Шоу-станции',
 };
 
 export default function FurshetPage() {
