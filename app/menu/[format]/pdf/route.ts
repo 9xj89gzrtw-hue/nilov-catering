@@ -76,6 +76,7 @@ export async function GET(
   .tier .price { display: inline; float: right; font-size: 14px; }
   .tier p { margin: 0; font-size: 10px; color: #4A423B; }
   .allergens { font-size: 8px; color: #6B625A; }
+  .empty { padding: 40px 20px; text-align: center; color: #6B625A; font-style: italic; }
 </style></head>
 <body>
 <h1>Меню «${escapeHtml(label)}»</h1>
@@ -85,7 +86,7 @@ ${format === 'furshet' ? `<div class="tier"><h3>Эконом <span class="price"
 <div class="tier"><h3>Стандарт <span class="price">3 950 ₽/гость</span></h3><p>8–10 видов закусок, рулеты, сырная тарелка, кофе, чай, морсы</p></div>
 <div class="tier"><h3>Расширенный <span class="price">5 950 ₽/гость</span></h3><p>12+ видов, горячие мини-блюда, десертный стол, вино, шампанское</p></div>` : ''}
 
-<h2>Блюда (${dishes.length})</h2>
+${dishes.length > 0 ? `<h2>Блюда (${dishes.length})</h2>
 <table>
 <thead><tr><th>Название</th><th>Описание</th><th>Цена/гость</th><th>Диеты</th><th>Аллергены</th></tr></thead>
 <tbody>
@@ -93,10 +94,10 @@ ${dishes.map(d => `<tr>
   <td>${escapeHtml(d.name)}</td>
   <td>${escapeHtml(d.description)}</td>
   <td class="price">${d.pricePerGuest} ₽</td>
-  <td>${d.dietBadges.includes('vegan') ? '<span class="badge vg">VG</span>' : ''}${d.dietBadges.includes('gluten-free') ? '<span class="badge gf">GF</span>' : ''}${d.dietBadges.includes('halal') ? '<span class="badge halal">H</span>' : ''}</td>
+  <td>${d.dietBadges.includes('vegan' as never) ? '<span class="badge vg">VG</span>' : ''}${d.dietBadges.includes('gluten-free' as never) ? '<span class="badge gf">GF</span>' : ''}${d.dietBadges.includes('halal' as never) ? '<span class="badge halal">H</span>' : ''}</td>
   <td class="allergens">${d.allergens.map(a => ALLERGEN_LABEL[a] || a).join(', ')}</td>
 </tr>`).join('\n')}
-</tbody></table>
+</tbody></table>` : `<div class="empty">Сезонное меню «${escapeHtml(label)}» — блюда подбираются индивидуально.<br>Позвоните +7 (812) 919-59-11 для получения актуального меню.</div>`}
 
 <footer>
   NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
