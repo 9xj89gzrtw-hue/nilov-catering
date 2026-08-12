@@ -51,7 +51,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <link rel="stylesheet" href="/styles/print.css" media="print" />
         <meta name="theme-color" content="#8C7140" />
+        <meta name="color-scheme" content="light" />
         <Analytics />
         <OrganizationJsonLd />
         <ServiceJsonLd />
@@ -68,6 +70,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <LiveChatWidget />
           </SmoothScrollProvider>
         </PricingWrapper>
+        <noscript>
+          <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+            <h1>NiloV Catering — Кейтеринг в Санкт-Петербурге</h1>
+            <p>Для работы сайта необходимо включить JavaScript.</p>
+            <p><strong>📞 Позвоните:</strong> <a href="tel:+78129195911">+7 (812) 919-59-11</a></p>
+            <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/78129195911">Написать нам</a></p>
+          </div>
+        </noscript>
       </body>
     </html>
   );

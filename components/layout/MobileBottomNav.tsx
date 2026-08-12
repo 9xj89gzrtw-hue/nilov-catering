@@ -58,7 +58,7 @@ export default function MobileBottomNav() {
             aria-label="Подбор — рассчитать стоимость"
           >
             <Calculator className="w-6 h-6" />
-            <span className="text-[11px] font-semibold mt-0.5">Подбор</span>
+            <span className="text-xs font-semibold mt-0.5">Подбор</span>
           </Link>
         </li>
 

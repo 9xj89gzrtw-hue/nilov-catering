@@ -1,0 +1,62 @@
+/* Print styles for nilov-catering */
+@media print {
+  /* Hide non-essential elements */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Show only main content */
+  #main,
+  #main * {
+    visibility: visible;
+  }
+  
+  /* Hide navigation, footer, CTAs */
+  nav, footer, header,
+  .no-print, .sticky, .fixed,
+  [role="dialog"], [role="banner"],
+  .cookie-banner, .live-chat,
+  .MobileBottomNav, .AnnouncementBar {
+    display: none !important;
+  }
+  
+  /* Ensure content is full width */
+  .container-site {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Improve text readability */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  
+  /* Show link URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  /* Don't show anchor links */
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+  
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Avoid breaks inside cards/sections */
+  section, article, .rounded-xl, .border {
+    page-break-inside: avoid;
+  }
+}
