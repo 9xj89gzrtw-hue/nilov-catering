@@ -415,7 +415,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
                     key={id}
                     href={href}
                     prefetch={false}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors no-underline ${
+                    className={`rounded-full px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium transition-colors no-underline ${
                       isActive
                         ? 'bg-gold-text text-white'
                         : 'border border-line text-muted-foreground hover:border-gold-text'

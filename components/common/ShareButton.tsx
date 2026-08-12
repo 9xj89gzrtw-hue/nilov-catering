@@ -74,19 +74,19 @@ export default function ShareButton({
           <p className="text-sm font-medium mb-3">Выберите способ:</p>
           <div className="flex flex-wrap gap-2 mb-3">
             <a href={waUrl} target="_blank" rel="noopener noreferrer"
-               className="inline-flex items-center gap-1.5 rounded-lg bg-[#065F46] text-white px-4 py-2 text-sm font-medium hover:bg-[#064E3B] transition-colors touch-target no-underline">
+               className="inline-flex items-center gap-1.5 rounded-lg bg-[#065F46] text-white px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium hover:bg-[#064E3B] transition-colors touch-target no-underline">
                WhatsApp
             </a>
             <a href={tgUrl} target="_blank" rel="noopener noreferrer"
-               className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-foreground/90 transition-colors touch-target no-underline">
+               className="inline-flex items-center gap-1.5 rounded-lg bg-foreground text-background px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium hover:bg-foreground/90 transition-colors touch-target no-underline">
                Telegram
             </a>
             <a href={mailUrl}
-               className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors touch-target no-underline">
+               className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium hover:bg-primary/90 transition-colors touch-target no-underline">
                Email
             </a>
             <button onClick={handleCopy}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-background px-4 py-2 text-sm font-medium hover:border-gold-text transition-colors touch-target">
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-background px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium hover:border-gold-text transition-colors touch-target">
               {copied ? 'Скопировано' : 'Копировать ссылку'}
             </button>
           </div>

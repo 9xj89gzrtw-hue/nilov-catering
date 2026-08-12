@@ -83,7 +83,7 @@ export default function AccountOrdersPage() {
             <h1 className="font-heading text-3xl md:text-4xl font-medium mb-1">Личный кабинет B2B</h1>
             <p className="text-muted-foreground">История заказов, закрывающие документы на скачивание, статусы событий.</p>
           </div>
-          <a href={`mailto:${SITE.email}?subject=B2B-запрос%20из%20личного%20кабинета`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors">
+          <a href={`mailto:${SITE.email}?subject=B2B-запрос%20из%20личного%20кабинета`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors">
              Запросить доступ / поддержку
           </a>
         </div>

@@ -36,7 +36,7 @@ export default function SubscribePage() {
               </thead>
               <tbody>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium">Кофе-брейк weekly</td>
+                  <td className="py-2 pr-4 font-medium">Кофе-брейк еженедельно</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽ <span className="text-xs text-muted-foreground font-normal">(при 50 чел.)</span></td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
@@ -50,7 +50,7 @@ export default function SubscribePage() {
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium">Бизнес-ланч weekly</td>
+                  <td className="py-2 pr-4 font-medium">Бизнес-ланч еженедельно</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽ <span className="text-xs text-muted-foreground font-normal">(при 50 чел.)</span></td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>

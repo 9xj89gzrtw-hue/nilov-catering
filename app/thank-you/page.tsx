@@ -3,7 +3,14 @@ import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { SITE } from '@/lib/data';
 
-export const metadata: Metadata = { title: 'Заявка принята', robots: { index: false } };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ warning?: string }> }): Promise<Metadata> {
+  const { warning } = await searchParams;
+  const isFailed = warning === 'delivery-failed';
+  return {
+    title: isFailed ? 'Заявка не отправлена' : 'Заявка принята',
+    robots: { index: false },
+  };
+}
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ warning?: string; orderId?: string }> }) {
   const { warning, orderId } = await searchParams;

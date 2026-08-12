@@ -49,7 +49,7 @@ export default function DetskoeEventPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-purple-300 bg-purple-50">
           <h2 className="font-heading text-base font-bold text-purple-900 mb-2">Сахарный диабет (СД1/СД2)? Безопасно.</h2>
           <p className="text-sm text-purple-900 mb-3">
-            <strong>Для гостя с СД1 сладкий стол / сладкий стол исключаем по умолчанию</strong> и заменяем
+            <strong>Для гостя с СД1 сладкий стол исключаем по умолчанию</strong> и заменяем
             на сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Если в пакете «Стандарт» или
             «Расширенный» сладкий стол заявлен — для группы с СД1 он автоматически заменяется.
@@ -62,7 +62,7 @@ export default function DetskoeEventPage() {
             <li>Состав БЖУ + ХЕ указываем в карточке блюда и в меню-карте</li>
             <li>Шеф-кондитер Елена Соколова специализируется на диабетической выпечке</li>
             <li>Обязательная дегустация для гостя с СД1 — подтверждение состава и расчёта ХЕ</li>
-            <li>Ищите в каталоге блюда со значком <span className="inline-block bg-purple-200 text-purple-800 px-1.5 py-0.5 rounded text-[10px] font-medium">SF</span>(sugar-free)</li>
+            <li>Ищите в каталоге блюда со значком <span className="inline-block bg-purple-200 text-purple-800 px-1.5 py-0.5 rounded text-[10px] font-medium">SF</span> (без сахара)</li>
           </ul>
           <p className="text-sm text-purple-900">
             Укажите «СД1» или «СД2» в заявке. Полный протокол — на странице{' '}
@@ -75,7 +75,7 @@ export default function DetskoeEventPage() {
           <h2 className="font-heading text-base font-bold text-blue-900 mb-2">Целиакия? Безопасно.</h2>
           <p className="text-sm text-blue-900 mb-3">
             <strong>Безглютеновое детское меню</strong> на миндальной/рисовой муке — отдельная
-            линия кухни, тестирование &lt;20 ppm (GFCO standard). БГ торт, БГ капкейки, БГ пицца,
+            линия кухни, тестирование &lt;20 ppm (стандарт GFCO). БГ торт, БГ капкейки, БГ пицца,
             БГ панкейки без сахара (для СД1). {' '}
             <Link href="/menu/gluten-free" className="underline font-semibold">БГ-меню →</Link>
           </p>

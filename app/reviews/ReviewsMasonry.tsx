@@ -136,7 +136,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
               role="tab"
               aria-selected={active}
               onClick={() =>setFilter(f.key)}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors no-underline ${
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium transition-colors no-underline ${
                 active
                   ? 'border-gold-text bg-gold-text text-background shadow-sm'
                   : 'border-line bg-card text-foreground hover:border-gold-text hover:text-gold-text'

@@ -132,7 +132,7 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
           actions={
             <button
               onClick={() =>setShowAllergens(!showAllergens)}
-              className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors touch-target"
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors touch-target"
               aria-pressed={!showAllergens}
               type="button"
             >

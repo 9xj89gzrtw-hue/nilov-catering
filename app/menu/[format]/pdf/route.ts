@@ -14,7 +14,7 @@ const FORMAT_LABELS: Record<string, string>= {
   vegan: 'Веган',
   'gluten-free': 'Без глютена',
   halal: 'Халяль',
-  'show-cooking': 'Show-cooking',
+  'show-cooking': 'Шоу-кухня',
   bar: 'Бар',
   'mobile-furshet': 'Выездной фуршет',
   'chef-at-home': 'Выезд шефа',

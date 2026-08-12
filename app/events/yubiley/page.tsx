@@ -66,7 +66,7 @@ export default function YubileyPage() {
               </p>
               <a
                 href={`tel:${SITE.phoneTel}`}
-                className="inline-block mt-3 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+                className="inline-block mt-3 rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
               >
                  Обсудить пакет «Юбилейный»
               </a>

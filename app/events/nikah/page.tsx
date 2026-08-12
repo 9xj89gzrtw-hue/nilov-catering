@@ -33,9 +33,9 @@ export default function NikahPage() {
         <div className="mb-10 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm font-medium">Рассчитаем меню под ваш бюджет и количество гостей</p>
           <div className="flex gap-2 flex-wrap">
-            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать меню</Link>
-            <Link href="/menu/halal" className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Каталог халяль-блюд</Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> {SITE.phone}</a>
+            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать меню</Link>
+            <Link href="/menu/halal" className="rounded-lg border border-line bg-card px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">Каталог халяль-блюд</Link>
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline"> {SITE.phone}</a>
           </div>
         </div>
         <section className="mb-10">

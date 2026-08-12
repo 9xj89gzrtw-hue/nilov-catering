@@ -41,12 +41,12 @@ export default function DetskoePage() {
             Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>Сахарный диабет (СД1/СД2)?</strong> По умолчанию сладкий стол / сладкий стол
+            <strong>Сахарный диабет (СД1/СД2)?</strong> По умолчанию сладкий стол
             включены в пакеты «Стандарт» и «Расширенный». Для ребёнка с СД1 мы заменяем их на
             сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Ищите в каталоге блюда со значком{' '}
             <span className="inline-block bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded text-[10px] font-medium">SF</span>{' '}
-            (sugar-free). Полный протокол — на странице{' '}
+            (без сахара). Полный протокол — на странице{' '}
             <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
@@ -57,16 +57,16 @@ export default function DetskoePage() {
             <Link href="/allergens" className="underline font-semibold">/allergens →</Link>.
           </p>
           <div className="flex flex-wrap gap-2">
-            <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/plan/constructor?format=detskoe" className="rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
               Собрать детское меню в конструкторе →
             </Link>
-            <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+            <Link href="/certificates" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
                Протокол безопасности
             </Link>
-            <Link href="/allergens" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+            <Link href="/allergens" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
                14 аллергенов
             </Link>
-            <Link href="/events/vypusknoy" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
+            <Link href="/events/vypusknoy" className="rounded-lg border border-amber-700 bg-white px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-amber-900 hover:bg-amber-100 transition-colors no-underline">
                Школьный выпускной
             </Link>
           </div>
@@ -77,7 +77,7 @@ export default function DetskoePage() {
           <p className="text-sm font-medium">Не нашли подходящее меню? Составим индивидуально.</p>
           <Link
             href="/plan/helper"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             Составить меню
           </Link>

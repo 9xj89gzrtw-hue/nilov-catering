@@ -93,7 +93,7 @@ const DISH_IMAGE_MAP: Record<string, string> = {
   'cauli-steak': `${DISH_IMG_BASE}/cauli-steak.png`,
   // W85 P0: VEGAN dishes — fixed from hash-fallback (was showing MEAT)
   'taco-cauliflower': `${NEW_DISHES}/taco-cauliflower.jpg`, // W85: было bbq/b3.jpg (Бао со СВИНИНОЙ) → taco с цветной капустой
-  'zucchini-curry': `${NEW_DISHES}/zucchini-curry.jpg`, // W85: было bbq/b1.jpg (Jerk-курица) → цуккини-карри
+  'zucchini-curry': `${NEW_DISHES}/zucchini-curry.jpg`, // W85: было bbq/b1.jpg (Джерк-курица) → цуккини-карри
   'veggie-ragout': `${NEW_DISHES}/veggie-ragout.jpg`, // W85: было goryachee/h2.jpg (куриные якитори) → овощное рагу
   'vegan-grazing': `${NEW_DISHES}/vegan-grazing.jpg`, // W85: было kanape/k8.jpg (рулет с курицей+сыром) → vegan grazing board
   'fruit-canape': `${NEW_DISHES}/fruit-canape.jpg`, // W85: было kanape/k1.jpg (канапе с лососем) → фруктовые канапе
@@ -184,7 +184,7 @@ const DISH_IMAGE_MAP: Record<string, string> = {
 
   // === Халяль — W83: ИСПРАВЛЕНЫ КРИТИЧЕСКИЕ mismatch'и ===
   // 🚨 БЫЛО: halal-beef-burger → b3.jpg ("Бао с СВИНИНОЙ") — критическое нарушение!
-  'halal-chicken-shashlik': `${NEW_DISHES}/halal-chicken-shashlik.jpg`, // W83: было b1 (Jerk-курица), стало chicken shashlik
+  'halal-chicken-shashlik': `${NEW_DISHES}/halal-chicken-shashlik.jpg`, // W83: было b1 (Джерк-курица), стало chicken shashlik
   'halal-lamb-kofta': `${NEW_DISHES}/halal-lamb-kofta.jpg`, // W83: было b2 (тайские шарики со свининой!), стало lamb kofta
   'halal-beef-burger': '/images/real/burger.jpg', // W83: 🚨 БЫЛО b3 (Бао со свининой) → СТАЛО burger.jpg (говядина)
   'halal-plov': `${NEW_DISHES}/halal-plov.jpg`, // W83: было h6 (форель!), стало plov
@@ -267,7 +267,7 @@ export const GALLERY_IMAGES = [
   { src: '/images/menu/goryachee/h8.jpg', alt: 'Борщ', caption: 'Борщ · банкет' },
 
   // === BBQ (5 фото) ===
-  { src: '/images/menu/bbq/b1.jpg', alt: 'Jerk-курица на плантане', caption: 'Jerk-курица · гриль · фуршет' },
+  { src: '/images/menu/bbq/b1.jpg', alt: 'Джерк-курица на плантане', caption: 'Джерк-курица · гриль · фуршет' },
   { src: '/images/menu/bbq/b2.jpg', alt: 'Тайские мясные шарики', caption: 'Мясные шарики с чили · фуршет' },
   { src: '/images/menu/bbq/b3.jpg', alt: 'Бао с томлёной свининой', caption: 'Бао · паровые булочки · фуршет' },
   { src: '/images/menu/bbq/b4.jpg', alt: 'Бао с уткой', caption: 'Бао с уткой · премиум-фуршет' },

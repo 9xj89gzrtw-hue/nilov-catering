@@ -647,7 +647,7 @@ export default function ConstructorWizard() {
                         setTimeout(() =>setShowSaveDialog(false), 3000);
                       }
                     }}
-                    className="rounded-lg bg-gold-text text-white px-4 py-2 text-sm font-semibold hover:bg-gold-text/90 touch-target"
+                    className="rounded-lg bg-gold-text text-white px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-gold-text/90 touch-target"
                   >
                     Сохранить
                   </button>

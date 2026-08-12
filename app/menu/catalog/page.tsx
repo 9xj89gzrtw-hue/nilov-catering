@@ -107,7 +107,7 @@ export default function CatalogPage() {
               <button
                 key={s.key}
                 onClick={() =>setStation(s.key)}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-full border px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-medium transition-colors ${
                   station === s.key
                     ? 'border-gold-text bg-gold-tint text-gold-text'
                     : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
@@ -198,7 +198,7 @@ export default function CatalogPage() {
                         <button
                           onClick={() =>isInCart ? removeDish(dish.id) : addDish(dish.id)}
                           aria-pressed={isInCart}
-                          className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-bold transition-all ${
+                          className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-bold transition-all ${
                             isInCart
                               ? 'bg-emerald-100 text-emerald-700 border border-emerald-300'
                               : 'bg-gold-text text-white hover:bg-gold-text/90 shadow-sm'
@@ -266,7 +266,7 @@ export default function CatalogPage() {
               </div>
               <Link
                 href="/plan/constructor"
-                className="inline-flex items-center gap-1 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+                className="inline-flex items-center gap-1 rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90"
               >
                 Оформить <ArrowRight className="w-4 h-4" />
               </Link>

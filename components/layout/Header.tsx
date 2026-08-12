@@ -93,7 +93,7 @@ export default function Header() {
           </a>
           <Link
             href="/plan/helper"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm no-underline"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm no-underline"
           >
             <Calculator className="w-4 h-4" aria-hidden="true" />
             Рассчитать меню
