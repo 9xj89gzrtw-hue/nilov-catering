@@ -29,8 +29,7 @@ export default function SvadbaPage() {
         </div>
 
         <div className="text-center mb-8">
-          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">
-            Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
+          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">Меню, сервировка, торт, флористика — всё для вашей свадьбы. Работаем с лучшими площадками СПб.
           </p>
           <p className="text-xs text-muted-foreground">Цены фиксированы по тарифам (₽/гость). Доплата только за индивидуальные позиции (торт с декором, доп. персонал, выезд за КАД). Финальная смета фиксируется в договоре после согласования меню.</p>
           {/* Trust bar */}
@@ -48,21 +47,18 @@ export default function SvadbaPage() {
 
         {/* Seasonal: White Nights */}
         <div className="mb-6 p-4 rounded-xl border border-amber-300 bg-amber-50 text-center">
-          <p className="text-sm font-medium text-amber-900">
-             Сезон белых ночей (май-июль) — бронирование за 60+ дней
+          <p className="text-sm font-medium text-amber-900">Сезон белых ночей (май-июль) — бронирование за 60+ дней
           </p>
-          <p className="text-xs text-amber-700 mt-1">
-            Пиковый сезон свадеб в СПб. Забронируйте дату заранее — скидка 5% за 30 дней, 10% за 60 дней, 15% за 90 дней.
+          <p className="text-xs text-amber-700 mt-1">Пиковый сезон свадеб в СПб. Забронируйте дату заранее — скидка 5% за 30 дней, 10% за 60 дней, 15% за 90 дней.
           </p>
         </div>
 
         {/* Multi-diet callout — для невест с разными диетами среди гостей */}
         <div className="mb-6 p-5 rounded-xl border-2 border-emerald-300 bg-emerald-50 text-center">
           <h2 className="font-heading text-base font-medium mb-2">Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
-          <p className="text-sm text-foreground/90 mb-3">
-            Да! В конструкторе меню есть режим «Несколько групп гостей». Каждая группа получает
+          <p className="text-sm text-foreground/90 mb-3">Да! В конструкторе меню есть режим «Несколько групп гостей». Каждая группа получает
             своё под-меню с фильтром по диете. Например, свадьба на 80: 10 веганов + 8 халяль +
-            4 БГ + 1 без орехов + 57 всеядных. Per-group pricing — платите только за блюда своей группы.
+            4 БГ + 1 без орехов + 57 всеядных. Цена по группам — платите только за блюда своей группы.
           </p>
           <p className="text-xs text-muted-foreground mb-3">
             <strong>Как считается цена:</strong> веган-группа — по тарифу «Веган Стандарт»
@@ -72,15 +68,14 @@ export default function SvadbaPage() {
             = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong> за 80 гостей
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
-          <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-            Собрать свадебное меню с разными диетами →
+          <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать свадебное меню с разными диетами →
           </Link>
         </div>
 
         {/* Vegan wedding cake callout */}
         <div className="mb-6 p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 text-center">
           <p className="text-sm text-foreground/90">
-            <span className="font-medium">Веганский свадебный торт?</span> Да — отдельная выпечка
+            <span className="font-medium">Веганский свадебный торт?</span>Да — отдельная выпечка
             на миндальной/рисовой муке с кокосовыми сливками. Также: БГ-торт (&lt;20 ppm),
             без-сахара торт (для СД1, на стевии). Цены — от 1 200 ₽/кг.{' '}
             <Link href="/menu/vegan" className="underline text-gold-text">Веган-меню →</Link>
@@ -90,7 +85,7 @@ export default function SvadbaPage() {
         {/* Remote/Moscow client note */}
         <div className="mb-6 p-4 rounded-xl border border-blue-200 bg-blue-50/50 text-center">
           <p className="text-sm text-foreground/90">
-            <span className="font-medium">Невеста из Москвы или другого города?</span> Работаем
+            <span className="font-medium">Невеста из Москвы или другого города?</span>Работаем
             удалённо: поможем найти площадку в СПб, организуем видеодегустацию по Zoom, согласуем
             меню через WhatsApp/Telegram. Связь — <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
             или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
@@ -99,32 +94,26 @@ export default function SvadbaPage() {
 
         {/* Direct order CTAs */}
         <div className="flex flex-wrap justify-center gap-3 mb-6">
-          <Link href="/plan/constructor?event=svadba" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
-            Оставить заявку на свадьбу
+          <Link href="/plan/constructor?event=svadba" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">Оставить заявку на свадьбу
           </Link>
-          <Link href="/tasting" className="rounded-lg border border-line px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors">
-            Записаться на дегустацию
+          <Link href="/tasting" className="rounded-lg border border-line px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors">Записаться на дегустацию
           </Link>
-          <Link href="/pricing" className="rounded-lg border border-line px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors">
-            Все тарифы и цены
+          <Link href="/pricing" className="rounded-lg border border-line px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors">Все тарифы и цены
           </Link>
         </div>
 
         {/* Аллергии — прямой мост в конструктор */}
         <div className="mb-10 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 text-center">
           <p className="text-sm font-medium mb-1">Аллергии у гостей? Рыба, орехи, глютен?</p>
-          <p className="text-xs text-muted-foreground mb-3">
-            В конструкторе меню можно исключить конкретные аллергены фильтром — 14 аллергенов ТР ТС 022/2011. Менеджер подтвердит по телефону.
+          <p className="text-xs text-muted-foreground mb-3">В конструкторе меню можно исключить конкретные аллергены фильтром — 14 аллергенов ТР ТС 022/2011. Менеджер подтвердит по телефону.
           </p>
-          <Link href="/plan/constructor?format=banket" className="text-xs text-gold-text font-semibold hover:underline">
-            Собрать свадебное меню с фильтром аллергенов →
+          <Link href="/plan/constructor?format=banket" className="text-xs text-gold-text font-semibold hover:underline">Собрать свадебное меню с фильтром аллергенов →
           </Link>
         </div>
 
         {/* Chef quote — emotional storytelling */}
         <div className="mt-12 mb-8 p-6 rounded-2xl bg-secondary/30 border-l-4 border-gold-text">
-          <p className="font-heading text-lg md:text-xl italic text-foreground/90 mb-3">
-            «Свадьба — это не банкет. Это день, когда каждая деталь говорит невесте:
+          <p className="font-heading text-lg md:text-xl italic text-foreground/90 mb-3">«Свадьба — это не банкет. Это день, когда каждая деталь говорит невесте:
             &quot;Ты важна&quot;. Мы готовим не еду — мы готовим спокойствие».
           </p>
           <div className="flex items-center gap-3">
@@ -157,8 +146,7 @@ export default function SvadbaPage() {
                 <li>Сервировка и базовый персонал</li>
                 <li>Чай/кофе, морс</li>
                 <li>Свадебный торт</li>
-                <li>Винная карта</li>
-                <li>Координатор события</li>
+                <li>Винная карта и координатор — со Стандарта</li>
               </ul>
             </div>
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
@@ -176,7 +164,7 @@ export default function SvadbaPage() {
               <h3 className="font-medium text-sm mb-2">Расширенный (7 350 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li>Всё из Стандарта</li>
-                <li> Welcome drink</li>
+                <li>Welcome drink</li>
                 <li>Барная станция (вкл. винная карта безлимит — опц. безалк. для халяль)</li>
                 <li>Шампанское (2 бокала)</li>
                 <li>Морепродукты</li>
@@ -196,8 +184,8 @@ export default function SvadbaPage() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-3">Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт включён во все тарифы. Винная карта и координатор — включены в Стандарт и выше.</p>
-          <p className="text-xs text-muted-foreground mt-2"> <strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/mocktail-бар). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-xs text-muted-foreground mt-2"> <strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/бар безалкогольных коктейлей). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}
@@ -273,8 +261,7 @@ export default function SvadbaPage() {
         {/* SPb Palace/Venue Matrix — venue partnerships */}
         <section className="mt-12 mb-8">
           <h2 className="font-heading text-2xl font-medium mb-4">Площадки Санкт-Петербурга</h2>
-          <p className="text-sm text-muted-foreground mb-6">
-            Работаем на лучших площадках СПб. Знаем логистику, ограничения, кухонные мощности каждой.
+          <p className="text-sm text-muted-foreground mb-6">Работаем на лучших площадках СПб. Знаем логистику, ограничения, кухонные мощности каждой.
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
@@ -295,8 +282,7 @@ export default function SvadbaPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mt-4 text-center">
-            Не нашли свою площадку? Работаем на любой — привезём всё необходимое.{' '}
+          <p className="text-xs text-muted-foreground mt-4 text-center">Не нашли свою площадку? Работаем на любой — привезём всё необходимое.{' '}
             <Link href="/contact?subject=Площадка-не-в-списке" className="text-gold-text hover:underline">Уточнить →</Link>
           </p>
         </section>

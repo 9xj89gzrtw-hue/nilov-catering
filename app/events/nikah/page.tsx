@@ -22,8 +22,7 @@ export default function NikahPage() {
         <header className="mb-8">
           <p className="text-gold-text text-sm font-semibold uppercase tracking-wider mb-2">Халяль-кейтеринг</p>
           <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">Никах и ифтар</h1>
-          <p className="text-lg text-muted-foreground mb-4 max-w-2xl">
-            Полностью халяль-меню для никаха (мусульманской свадьбы) и ифтара (разговения в Рамадан).
+          <p className="text-lg text-muted-foreground mb-4 max-w-2xl">Полностью халяль-меню для никаха (мусульманской свадьбы) и ифтара (разговения в Рамадан).
             Сертификат Совета муфтиев России, отдельная линия производства, без свинины и алкоголя.
           </p>
           <p className="text-sm text-muted-foreground">
@@ -93,9 +92,9 @@ export default function NikahPage() {
           <h2 className="font-heading text-xl font-medium mb-3">Готовы обсудить детали?</h2>
           <p className="text-sm text-muted-foreground mb-4">Шеф-повар Дмитрий Нилов лично подберёт меню под ваш праздник. Перезвоним в течение 15 минут.</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"> Оставить заявку</Link>
-            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> Собрать меню</Link>
-            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"> WhatsApp</a>
+            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить заявку</Link>
+            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Собрать меню</Link>
+            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">WhatsApp</a>
           </div>
         </section>
       </div>

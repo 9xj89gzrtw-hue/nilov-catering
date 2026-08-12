@@ -40,7 +40,21 @@ export async function GET(
 ) {
   const { format } = await params;
   const label = FORMAT_LABELS[format] || format;
-  const dishes = ALL_DISHES.filter(d => d.format.includes(format as Format));
+  // Filter dishes: match by format OR dietBadges (for vegan/gluten-free/halal)
+  // OR by format alias (banquet ↔ banket)
+  const formatAliases: Record<string, string[]> = {
+    banquet: ['banket', 'banquet'],
+    banket: ['banket', 'banquet'],
+  };
+  const aliases = formatAliases[format] || [format];
+  const dishes = ALL_DISHES.filter(d => {
+    if (aliases.some(a => d.format.includes(a as Format))) return true;
+    // Diet-based fallback for vegan/gluten-free/halal
+    if (format === 'vegan' && d.dietBadges.includes('vegan' as never)) return true;
+    if (format === 'gluten-free' && d.dietBadges.includes('gluten-free' as never)) return true;
+    if (format === 'halal' && d.dietBadges.includes('halal' as never)) return true;
+    return false;
+  });
 
   const html = `<!DOCTYPE html>
 <html lang="ru">
@@ -86,7 +100,7 @@ ${dishes.map(d => `<tr>
 
 <footer>
   NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
-  Цены указаны на ${new Date().toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}. Для точной сметы свяжитесь с менеджером.<br>
+  Цены указаны на ${new Date().toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' }).replace(' г.', '')}. Для точной сметы свяжитесь с менеджером.<br>
   © NiloV Catering, 2026. Все права защищены.
 </footer>
 </body></html>`;

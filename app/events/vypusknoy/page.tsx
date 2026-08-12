@@ -48,7 +48,7 @@ export default function VypusknoyPage() {
         <TariffOffersSection
           eventId="vypusknoy"
           eventName="Выпускной"
-          description="Тарифы для выпускных: от бюджетного фуршета до праздника с DJ и mocktail-баром."
+          description="Тарифы для выпускных: от бюджетного фуршета до праздника с DJ и баром безалкогольных коктейлей."
         />
 
         {/* School B2B block — для Ларисы (директора школы) */}

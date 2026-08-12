@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 
 
 export const metadata: Metadata = {
-  title: 'CMS — NiloV Catering',
+  title: { absolute: 'CMS — NiloV Catering' },
   robots: { index: false, follow: false },
 };
 

@@ -90,7 +90,7 @@ export default function GalleryPage() {
               >
                 <source src="/videos/gallery/food.webm" type="video/webm" />
               </video>
-              <p className="p-3 text-sm text-muted-foreground">Приготовление блюд · live cooking</p>
+              <p className="p-3 text-sm text-muted-foreground">Приготовление блюд · живая готовка</p>
             </div>
             <div className="rounded-xl overflow-hidden border border-line">
               <video

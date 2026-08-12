@@ -47,7 +47,7 @@ export default function YubileyPage() {
           </p>
         </div>
 
-        {/* Бюджетные решения — для 15 чел на 50к */}
+        {/* Бюджетные решения — для 15 чел на 59 250 ₽ */}
         <div className="mb-8 p-6 rounded-2xl border border-line bg-card">
           <h2 className="font-heading text-xl font-medium mb-3">Что помещается в бюджет 59 250 ₽ на 15 гостей</h2>
           <p className="text-sm text-muted-foreground mb-4">
@@ -78,7 +78,7 @@ export default function YubileyPage() {
               </div>
               <p className="text-sm text-muted-foreground">
                 Лёгкие закуски, канапе, горячее, чай/кофе. Гости могут сидеть за столом, но без полноценной подачи.
-                Экономия ~13 000 ₽ от бюджета — можно добавить торт или расширить меню.
+                Экономия ~22 500 ₽ от бюджета — можно добавить торт или расширить меню.
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function YubileyPage() {
 
         {/* Premium (вне бюджета) — отдельный блок */}
         <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
-          <h3 className="font-heading text-base font-medium mb-2">Премиум-вариант (вне бюджета 50к)</h3>
+          <h3 className="font-heading text-base font-medium mb-2">Премиум-вариант (вне основного бюджета)</h3>
           <p className="text-sm text-muted-foreground">
             Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
             сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.

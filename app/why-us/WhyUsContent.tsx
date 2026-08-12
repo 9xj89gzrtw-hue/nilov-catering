@@ -156,7 +156,7 @@ const TEAM = [
 
 const KITCHEN = [
   { src: '/images/catering/chef-02.jpg', alt: 'Шеф-повар за работой на собственном производстве', caption: 'Шеф за работой' },
-  { src: '/images/catering/finedining-01.jpg', alt: 'Авторская подача блюд fine dining', caption: 'Авторская подача' },
+  { src: '/images/catering/finedining-01.jpg', alt: 'Авторская подача блюд ресторанного уровня', caption: 'Авторская подача' },
   { src: '/images/catering/canape-02.jpg', alt: 'Канапе авторской подачи на фуршете', caption: 'Канапе' },
   { src: '/images/catering/dessert-01.jpg', alt: 'Десерты ручной работы', caption: 'Десерты' },
   { src: '/images/catering/cake-03.jpg', alt: 'Свадебный торт ручной работы', caption: 'Свадебные торты' },

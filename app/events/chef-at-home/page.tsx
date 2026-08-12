@@ -22,7 +22,7 @@ export default function ChefAtHomePage() {
         <TariffOffersSection
           eventId="chef-at-home"
           eventName="Шеф на дом"
-          description="Тарифы для выезда шефа: от 4-курсного ужина до гастрономического опыта с wine pairing."
+          description="Тарифы для выезда шефа: от 4-курсного ужина до гастрономического опыта с винное сопровождение."
         />
 
         {/* Детали */}

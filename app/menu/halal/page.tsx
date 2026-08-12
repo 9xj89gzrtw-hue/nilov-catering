@@ -98,7 +98,7 @@ export default function HalalPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Без алкоголя и свинины</p>
-              <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, mocktails. Винный уксус, мирин, коньяк, <strong>ванильный экстракт (35% алк.)</strong>, ром в пропитке тортов — исключены. Заменяем на ванильный порошок/пасту.</p>
+              <p className="text-xs text-emerald-800">Полный бар — безалкогольный: морсы, лимонады, чай, безалкогольные коктейли. Винный уксус, мирин, коньяк, <strong>ванильный экстракт (35% алк.)</strong>, ром в пропитке тортов — исключены. Заменяем на ванильный порошок/пасту.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Цена никаха</p>

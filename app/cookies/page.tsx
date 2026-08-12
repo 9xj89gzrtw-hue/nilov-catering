@@ -73,7 +73,8 @@ export default function Page() {
             <h2 className="font-heading text-xl font-medium mb-3">3. Управление cookie</h2>
             <p className="text-sm leading-relaxed mb-3">
               3.1. При первом посещении сайта отображается баннер согласия. Пользователь может
-              принять все cookie или выбрать только необходимые.
+              принять все cookie или отклонить опциональные (Microsoft Clarity). Необходимые cookie
+              работают в любом случае.
             </p>
             <p className="text-sm leading-relaxed mb-3">
               3.2. Отключить cookie можно в настройках браузера:

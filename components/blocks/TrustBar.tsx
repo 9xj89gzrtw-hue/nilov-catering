@@ -16,9 +16,11 @@ export default function TrustBar() {
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3">Площадки</p>
           <h2 id="trust-heading" className="font-heading text-2xl md:text-4xl mb-3" style={{ fontWeight: 500 }}>
-            Работаем на лучших площадках СПб
+            Площадки, на которых мы работали
           </h2>
           <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+            Кейсы с реальных событий. Полный список рекомендуемых площадок с адресами — на странице{' '}
+            <Link href="/venues" className="text-gold-text hover:underline underline inline-flex items-center min-h-[44px] px-1">«Площадки» →</Link>.
             27 верифицированных отзывов на сайте. Конкретные имена корпоративных заказчиков
             раскрываем по согласию —{' '}
             <a href="mailto:b2b@nilov-catering.ru" className="text-gold-text hover:underline underline inline-flex items-center min-h-[44px] px-1">запросите референсы</a>.

@@ -38,21 +38,21 @@ const POMINKI_MENU: PominkiSection[] = [
         name: 'Кутья (коливо)',
         desc: 'Пшеница с мёдом, маком и изюмом. Символ вечной памяти и воскресения.',
         price: '150 ₽/порция',
-        dishId: 'buddha-bowl',
+        dishId: '',
         station: 'desserts',
       },
       {
         name: 'Блины постные',
         desc: 'С мёдом или без начинки. Подаются первыми, без масла и молока.',
         price: '120 ₽/порция',
-        dishId: 'syrniki',
+        dishId: '',
         station: 'desserts',
       },
       {
         name: 'Кисель овсяный или ягодный',
         desc: 'Традиционный поминальный напиток. Подаётся тёплым.',
         price: '90 ₽/порция',
-        dishId: 'lemonade-berry',
+        dishId: '',
         station: 'drinks',
       },
     ],
@@ -71,21 +71,21 @@ const POMINKI_MENU: PominkiSection[] = [
         name: 'Винегрет',
         desc: 'Свёкла, морковь, картофель, солёные огурцы, квашеная капуста.',
         price: '180 ₽/порция',
-        dishId: 'beet-carpaccio',
+        dishId: '',
         station: 'cold',
       },
       {
         name: 'Солёные огурцы и помидоры',
         desc: 'Домашние заготовки. Без уксуса, по-деревенски.',
         price: '120 ₽/порция',
-        dishId: 'greek-salad',
+        dishId: '',
         station: 'cold',
       },
       {
         name: 'Пирожки постные с капустой и грибами',
         desc: 'Домашние, из печи. Тесто на воде, без яиц и молока.',
         price: '90 ₽/шт',
-        dishId: 'mini-sandwich',
+        dishId: '',
         station: 'cold',
       },
     ],
@@ -267,7 +267,7 @@ export default function PominkiPage() {
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:text-base text-white">
               <span className="font-semibold">
-                от <span className="text-gold-text">1 800 ₽</span>/гость <span className="text-xs text-muted-foreground">(фиксированная цена)</span>
+                <span className="text-gold-text">1 800 ₽</span>/гость <span className="text-xs text-muted-foreground">(Эконом, фикс.) · 2 500 ₽/гость (Стандарт)</span>
               </span>
               <span className="text-white/40">·</span>
               <span>от 10 гостей</span>

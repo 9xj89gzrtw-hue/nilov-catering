@@ -32,8 +32,7 @@ export default function CorporatePage() {
           </div>
         </div>
 
-        <p className="text-muted-foreground mb-8">
-          Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (с расширением производственных мощностей и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
+        <p className="text-muted-foreground mb-8">Бизнес-ланчи, фуршеты и банкеты для компаний любого размера. От неформальной встречи на 10 человек до годового собрания на 800+ гостей (с расширением производственных мощностей и субподрядных бригад).{' '}<Link href="/events/recap" className="text-gold-text hover:underline">Пример кейса 800 чел × 2 дня →</Link>
         </p>
 
         <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
@@ -69,7 +68,7 @@ export default function CorporatePage() {
 
           <div className="grid sm:grid-cols-2 gap-4 text-sm mb-6">
             <div>
-              <p className="font-medium mb-1"> SLA в договоре (B2B, события от 30 гостей):</p>
+              <p className="font-medium mb-1">SLA в договоре (B2B, события от 30 гостей):</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
                 <li>Доставка: точно в согласованное окно — ±15 минут для всех форматов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа). Единая формула SLA.</li>
                 <li>Качество: жалобы ≤5% гостей</li>
@@ -105,17 +104,14 @@ export default function CorporatePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-line flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
-               Оставить B2B-заявку
+            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить B2B-заявку
             </Link>
             <a href="tel:+78129195911" className="rounded-lg border border-gold-text px-5 py-2.5 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors no-underline">
                +7 (812) 919-59-11
             </a>
-            <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-               Сертификаты и страхование
+            <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Сертификаты и страхование
             </Link>
-            <Link href="/events/vypusknoy" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-               Школьный B2B
+            <Link href="/events/vypusknoy" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Школьный B2B
             </Link>
           </div>
         </div>

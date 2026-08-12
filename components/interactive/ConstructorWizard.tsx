@@ -748,7 +748,7 @@ export default function ConstructorWizard() {
                     );
                   })}
                 </ul>
-                {/* Per-group subtotals */}
+                {/* Итоги по группам */}
                 {store.groupsEnabled && store.guestGroups.length > 0 && (
                   <div className="mt-3 pt-3 border-t border-line space-y-1">
                     <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">Подытоги по группам:</p>
