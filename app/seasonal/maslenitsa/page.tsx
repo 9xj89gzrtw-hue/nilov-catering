@@ -49,7 +49,7 @@ export default function MaslenitsaPage() {
 
         <div className="space-y-4">
           <a href="/menu/maslenitsa/pdf" download className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-3 text-sm font-medium hover:border-gold-text transition-all">
-            Скачать меню Масленицы (PDF)
+            Скачать меню Масленицы (печать)
           </a>
           <div className="flex flex-wrap gap-4">
             <Link href="/plan/calculator?format=furshet" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Рассчитать Масленицу</Link>

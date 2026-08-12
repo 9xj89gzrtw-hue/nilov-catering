@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 
 export const metadata: Metadata = {
   title: 'Частные события',
   description: 'Кейтеринг для частных событий в СПб: дни рождения, юбилеи, семейные ужины. Дома, на веранде, на крыше.',
+  alternates: { canonical: '/events/chastnoe', languages: { 'ru': '/events/chastnoe', 'x-default': '/events/chastnoe' } },
 };
 
 export default function ChastnoePage() {
@@ -14,7 +16,7 @@ export default function ChastnoePage() {
         <p className="text-muted-foreground mb-8">
           Дни рождения, юбилеи, семейные ужины. Дома, на веранде, на крыше — мы приедем куда скажете.
 
-      Праздник для ТСЖ / соседей? Кофе-брейк от 390 ₽/гость — на 100 человек = 39 000 ₽. Без официантов, доставка по ЖК. → /menu/coffee-break
+      Праздник для ТСЖ / соседей? Кофе-брейк от 390 ₽/гость — на 100 человек = 39 000 ₽. Без официантов, доставка по ЖК. <Link href="/menu/coffee-break" className="underline text-gold-text">кофе-брейк меню →</Link>
         </p>
 
         <TariffOffersSection

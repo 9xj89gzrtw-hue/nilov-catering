@@ -59,10 +59,10 @@ export default function Page() {
                     <td className="py-2">Требуется</td>
                   </tr>
                   <tr className="border-b border-line/60">
-                    <td className="py-2 pr-4 font-medium">Рекламные</td>
-                    <td className="py-2 pr-4">Яндекс.Директ (ретаргетинг)</td>
-                    <td className="py-2 pr-4">30 дней</td>
-                    <td className="py-2">Требуется</td>
+                    <td className="py-2 pr-4 font-medium">Аналитика</td>
+                    <td className="py-2 pr-4">Microsoft Clarity (тепловые карты, сессионные записи — данные передаются на серверы Microsoft, вне РФ)</td>
+                    <td className="py-2 pr-4">13 месяцев</td>
+                    <td className="py-2">Опционально</td>
                   </tr>
                 </tbody>
               </table>
@@ -96,11 +96,11 @@ export default function Page() {
             <h2 className="font-heading text-xl font-medium mb-3">4. Сторонние сервисы</h2>
             <p className="text-sm leading-relaxed mb-3">Сайт использует следующие сторонние сервисы, устанавливающие свои cookie:</p>
             <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
-              <li>Яндекс.Метрика (metrica.yandex.ru) — аналитика</li>
-              <li>Яндекс.Директ (direct.yandex.ru) — ретаргетинг</li>
-              <li>ВКонтакте (vk.com) — виджет сообщества</li>
-              <li>WhatsApp (wa.me) — кнопка связи</li>
-              <li>Telegram (t.me) — кнопка связи</li>
+              <li>Яндекс.Метрика (metrica.yandex.ru) — аналитика (данные в РФ)</li>
+              <li>Microsoft Clarity (clarity.ms) — тепловые карты и сессионные записи (данные передаются на серверы Microsoft, вне РФ — см. Политику конфиденциальности §3.2)</li>
+              <li>ВКонтакте (vk.com) — ссылка на сообщество (без cookie-виджета)</li>
+              <li>WhatsApp (wa.me) — кнопка-ссылка (без cookie)</li>
+              <li>Telegram (t.me) — кнопка-ссылка (без cookie)</li>
             </ul>
             <p className="text-sm leading-relaxed mt-3">
               Полные политики этих сервисов — на их сайтах. Исполнитель не контролирует их

@@ -105,7 +105,7 @@ export default function TenderHub() {
                   <span className="font-heading text-2xl font-bold text-gold-text">720 000 ₽/год</span>
                   <span className="text-sm text-muted-foreground">50 чел × 4/мес</span>
                 </div>
-                <p className="text-xs text-muted-foreground">Годовой контракт · Фикс-цена 60 000 ₽/мес · Ротация меню 8 недель</p>
+                <p className="text-xs text-muted-foreground">Долгосрочный контракт · Фикс-цена 60 000 ₽/мес · Ротация меню 8 недель</p>
               </div>
             </div>
           </div>

@@ -47,7 +47,7 @@ export default function NewYearPage() {
 
         <div className="space-y-4">
           <a href="/menu/new-year/pdf" download className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-3 text-sm font-medium hover:border-gold-text transition-all">
-            Скачать новогоднее меню (PDF)
+            Скачать новогоднее меню (печать)
           </a>
           <div className="flex flex-wrap gap-4">
             <Link href="/plan/calculator?format=banket" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">Рассчитать новый год</Link>

@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Детские праздники',
-  description: 'Детский кейтеринг NiloV: меню без орехов, аниматоры, шоу. Анафилаксия-протокол: EpiPen, отдельная смена. Мин. 10 (мед. диеты — от 6).',
+  description: 'Детский кейтеринг NiloV: Эконом — без орехов; Стандарт/Расширенный — с маркировкой. Анафилаксия-протокол: EpiPen, отдельная смена. Мин. 10 (мед. диеты — от 6).',
   alternates: { canonical: '/events/detskoe', languages: { 'ru': '/events/detskoe', 'x-default': '/events/detskoe' } },
 };
 

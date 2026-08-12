@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Дегустация меню',
@@ -9,6 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function DegustatsiyaPage() {
-  // 301 redirect to canonical /tasting page (W94-v33: deduplicate, was duplicate content)
-  redirect('/tasting');
+  // 308 permanent redirect to canonical /tasting page (W94-v34: deduplicate)
+  permanentRedirect('/tasting');
 }

@@ -51,7 +51,6 @@ const ROUTE_LASTMOD: Record<string, string> = {
   '/certificates': '2026-08-11',
   '/venues': '2026-06-01',
   '/tasting': '2026-07-15',
-  '/info/degustatsiya': '2026-06-01',
   '/accessibility': '2026-06-01',
   '/help/formats': '2026-06-01',
   '/allergens': '2026-08-10',

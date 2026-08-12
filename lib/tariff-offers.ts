@@ -33,7 +33,7 @@ const SVADBA: TariffOffer[] = [
   {
     eventId: 'svadba', eventName: 'Свадьба', tier: 'economy', tierLabel: 'Эконом',
     pricePerGuest: 3950, minGuests: 15,
-    description: 'Свадебный приём в фуршетном формате (без посадки). 5 видов канапе, горячее, welcome drink. Достойно, без излишеств.',
+    description: 'Камерный банкет с посадкой. 5 закусок, горячее, чай/кофе. Достойно, без излишеств. (Также доступен в фуршетном формате — без посадки, по запросу.)',
     highlights: ['5 видов канапе', 'Горячее блюдо', 'Welcome drink', 'Чай/кофе'],
     imagePlaceholder: '',
     composition: [

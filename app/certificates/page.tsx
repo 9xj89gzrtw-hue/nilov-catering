@@ -301,7 +301,7 @@ export default function CertificatesPage() {
               className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-3 mb-2">
-                <span className="text-3xl" aria-hidden="true"></span>
+                <span className="text-3xl" aria-hidden="true">📋</span>
                 <div>
                   <h3 className="font-heading text-base font-medium">Договор</h3>
                   <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>
@@ -317,7 +317,7 @@ export default function CertificatesPage() {
               className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-3 mb-2">
-                <span className="text-3xl" aria-hidden="true"></span>
+                <span className="text-3xl" aria-hidden="true">📃</span>
                 <div>
                   <h3 className="font-heading text-base font-medium">NDA</h3>
                   <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>
@@ -333,7 +333,7 @@ export default function CertificatesPage() {
               className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-3 mb-2">
-                <span className="text-3xl" aria-hidden="true"></span>
+                <span className="text-3xl" aria-hidden="true">✅</span>
                 <div>
                   <h3 className="font-heading text-base font-medium">SLA</h3>
                   <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>

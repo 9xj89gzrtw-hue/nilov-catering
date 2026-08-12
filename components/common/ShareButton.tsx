@@ -16,7 +16,7 @@ interface ShareButtonProps {
 export default function ShareButton({
   title = 'Кейтеринг NiloV',
   text = 'Посмотри меню и цены',
-  label = ' Поделиться ссылкой',
+  label = 'Поделиться ссылкой',
   className,
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);

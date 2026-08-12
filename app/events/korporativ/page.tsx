@@ -59,7 +59,7 @@ export default function CorporatePage() {
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1">Сроки</p>
-              <p className="text-xs text-muted-foreground">Срочные заказы — от 24 часов. Стандарт — 3+ дня. Готовим тендерную документацию за 1-2 дня.</p>
+              <p className="text-xs text-muted-foreground">Стандарт — 3+ дня. Готовим тендерную документацию за 1-2 дня. Срочные заказы (менее 3 дней) — по согласованию с шеф-поваром.</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
               <p className="text-sm font-semibold mb-1">Оплата</p>
@@ -99,7 +99,7 @@ export default function CorporatePage() {
               <li>Пропуска для транспорта и персонала — оформляем заранее.</li>
               <li>Холодовая цепь: сумки-холодильники +2…+6 °C на весь путь. Для дальних площадок (Expoforum в Шушарах) — 2 рейса с запасом времени 90 минут.</li>
               <li>Мармиты с подогревом для горячих блюд (часы +75 °C).</li>
-              <li>Зоны для официантов и точки сервировки — согласуем заранее (1 официант на 25 гостей для фуршета, 1 на 15 для банкета).</li>
+              <li>Зоны для официантов и точки сервировки — согласуем заранее (1 официант на 15 гостей для фуршета, 1 на 10 для банкета).</li>
               <li>Координатор на площадке с 60 минут до начала до конца события.</li>
             </ul>
           </div>
