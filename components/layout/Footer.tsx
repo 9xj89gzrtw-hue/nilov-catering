@@ -76,7 +76,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map((link) =>(
-              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{link.label}</a>
+              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer nofollow" aria-label={link.label} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{link.label}</a>
             ))}
           </div>
           {/* Rating badge — рассчитан из /reviews (27 отзывов, среднее 4.8). Ссылка на отзывы для верификации. */}
