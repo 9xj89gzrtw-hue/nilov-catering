@@ -29,7 +29,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
             {TRUST_METRICS.map((m) =>(
               <div key={m.label} className="text-center">
                 <p className="font-heading text-2xl md:text-3xl text-gold-text font-semibold">{m.value}</p>
-                <p className="text-[11px] uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
               </div>
             ))}
           </div>
@@ -59,7 +59,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
           {TRUST_METRICS.map((m) =>(
             <div key={m.label} className="text-center">
               <p className="font-heading text-2xl md:text-3xl text-gold-text font-semibold">{m.value}</p>
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
             </div>
           ))}
         </div>

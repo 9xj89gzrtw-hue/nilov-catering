@@ -21,6 +21,7 @@ const REDIRECTS: Record<string, string> = {
   // Menu legacy URLs
   '/menu/buffet': '/menu/furshet',
   '/menu/kids': '/menu/detskoe',
+  '/menu/banket': '/menu/banquet',
   
   // Events legacy URLs (English → Russian slugs)
   '/events/wedding': '/events/svadba',
@@ -72,7 +73,7 @@ export const config = {
     '/about', '/testimonials', '/services', '/services/:path*', '/quote', '/constructor', '/en', '/en/:path*',
     // Cycle 1 fix matchers
     '/prices', '/tariffs', '/contacts', '/career', '/account', '/delivery-zones', '/subscription',
-    '/menu/buffet', '/menu/kids', '/events/wedding', '/events/corporate',
+    '/menu/buffet', '/menu/kids', '/menu/banket', '/events/wedding', '/events/corporate',
     '/menu-picker', '/assistant', '/help',
   ],
 };

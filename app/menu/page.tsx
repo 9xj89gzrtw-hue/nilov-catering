@@ -51,14 +51,14 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
       </div>
       <div className="p-3">
         <h3 className="text-sm font-medium leading-tight mb-1 group-hover:text-gold-text transition-colors">{dish.name}</h3>
-        <p className="text-[11px] text-muted-foreground line-clamp-2 mb-2">{dish.description}</p>
+        <p className="text-xs text-muted-foreground line-clamp-2 mb-2">{dish.description}</p>
         {/* Allergen chips — visible на /menu */}
         {dish.allergens.length >0 && (
           <div className="flex flex-wrap gap-0.5">
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
               return (
-                <span key={a} className={`text-[10px] px-1 py-0.5 rounded leading-none ${
+                <span key={a} className={`text-xs px-1 py-0.5 rounded leading-none ${
                   isHighRisk ? 'bg-destructive/20 text-destructive font-semibold' : 'bg-muted text-muted-foreground'
                 }`} title={ALLERGEN_LABEL[a]}>
                   {ALLERGEN_LABEL[a]}
@@ -146,7 +146,7 @@ export default function MenuPage() {
             ].map(d =>(
               <Link key={d.href} href={d.href} className="rounded-xl border border-line bg-card px-5 py-3 hover:border-gold-text hover:-translate-y-0.5 transition-all">
                 <div className="text-sm font-medium mb-0.5">{d.label}</div>
-                <div className="text-[11px] text-muted-foreground">{d.desc}</div>
+                <div className="text-xs text-muted-foreground">{d.desc}</div>
               </Link>
             ))}
           </div>
