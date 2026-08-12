@@ -41,7 +41,7 @@ const DISH_DESC: Record<string, string>= {
   'Лимонад эстрагон': 'Эстрагон, лайм, содовая',
   'Облепиховый чай': 'Облепиха, имбирь, мёд, корица',
   'Кедровый раф': 'Эспрессо, кедровое молоко, сливки',
-  'Welcome drink': 'Просекко + канапе с лососем',
+  'Приветственный напиток': 'Просекко + канапе с лососем',
   // Бар
   'Вино красное': 'Кьянти/Риоха, 2 бокала',
   'Вино белое': 'Соаве/Шабли, 2 бокала',
@@ -162,7 +162,7 @@ const TARIFFS: Record<string, MenuTariff[]>= {
   banquet: [
     {
       name: 'Эконом', tier: 'economy', price: '3 950 ₽/гость', desc: 'Камерный банкет с посадкой. 5 закусок, горячее, чай/кофе. Минимум 15 гостей.',
-      highlights: ['5 видов канапе', 'Горячее блюдо', 'Welcome drink', 'Чай/кофе'],
+      highlights: ['5 видов канапе', 'Горячее блюдо', 'Приветственный напиток', 'Чай/кофе'],
       dishes: [
         { cat: 'Закуски', items: [
           { name: 'Мясное плато', desc: DISH_DESC['Мясное плато'], qty: '1 станция' },
@@ -226,7 +226,7 @@ const TARIFFS: Record<string, MenuTariff[]>= {
           { name: 'Донат-стена', desc: DISH_DESC['Донат-стена'], qty: '1 станция' },
         ]},
         { cat: 'Бар', items: [
-          { name: 'Welcome drink', desc: DISH_DESC['Welcome drink'], qty: '1 бокал' },
+          { name: 'Приветственный напиток', desc: DISH_DESC['Приветственный напиток'], qty: '1 бокал' },
           { name: 'Вино красное', desc: DISH_DESC['Вино красное'], qty: 'безлимит' },
           { name: 'Вино белое', desc: DISH_DESC['Вино белое'], qty: 'безлимит' },
           { name: 'Шампанское', desc: DISH_DESC['Шампанское'], qty: '2 бокала' },
@@ -239,7 +239,7 @@ const TARIFFS: Record<string, MenuTariff[]>= {
       dishes: [
         { cat: 'Премиум', items: [
           { name: 'Тарталетка с икрой', desc: DISH_DESC['Тарталетка с икрой'], qty: '2 шт/гость' },
-          { name: 'Welcome drink', desc: DISH_DESC['Welcome drink'], qty: '1 бокал' },
+          { name: 'Приветственный напиток', desc: DISH_DESC['Приветственный напиток'], qty: '1 бокал' },
         ]},
         { cat: 'Закуски', items: [
           { name: 'Антипасто', desc: DISH_DESC['Антипасто'], qty: '1 станция' },

@@ -17,7 +17,7 @@ export default function ShowCookingPage() {
         </p>
         <p className="text-xs text-muted-foreground mb-8">Минимум 15 гостей для любой станции. Финальная смета рассчитывается индивидуально.</p>
 
-        <MenuTariffs format="show-cooking" formatLabel="Show-cooking" />
+        <MenuTariffs format="show-cooking" formatLabel="Шоу-кухня" />
 
         <div className="mt-10 p-5 rounded-xl border border-dashed border-line bg-card/50">
           <p className="text-sm font-medium mb-1">Не нашли своё? Составим индивидуально</p>

@@ -105,7 +105,7 @@ function ConstructorServerFallback() {
         {/* Шаг 1 — формат (виден SSR) */}
         <div className="mb-8">
           <h2 className="font-heading text-2xl font-medium mb-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm mr-3">1</span>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm mr-3">1</span>{" "}
             Выберите формат
           </h2>
           <p className="text-sm text-muted-foreground mb-6 ml-0 md:ml-11">
@@ -145,7 +145,7 @@ function ConstructorServerFallback() {
         {/* Шаг 2-5 — preview (видны SSR как roadmap) */}
         <div className="mb-8 ml-0 md:ml-11 space-y-4">
           <h2 className="font-heading text-2xl font-medium mb-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">2</span>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">2</span>{" "}
             Гости и диеты
           </h2>
           <p className="text-sm text-muted-foreground ml-0 md:ml-11">
@@ -286,7 +286,7 @@ function ConstructorServerFallback() {
           </form>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">3</span>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">3</span>{" "}
             Тариф
           </h2>
           <p className="text-sm text-muted-foreground ml-0 md:ml-11">
@@ -294,7 +294,7 @@ function ConstructorServerFallback() {
           </p>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">4</span>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">4</span>{" "}
             Меню
           </h2>
           <p className="text-sm text-muted-foreground ml-0 md:ml-11">
@@ -304,7 +304,7 @@ function ConstructorServerFallback() {
           </p>
 
           <h2 className="font-heading text-2xl font-medium mb-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">5</span>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted text-foreground text-sm mr-3">5</span>{" "}
             Контакты и отправка
           </h2>
           <p className="text-sm text-muted-foreground ml-0 md:ml-11">

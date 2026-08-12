@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = { title: 'Сезонные предложения', alternates: { canonical: '/seasonal', languages: { 'ru': '/seasonal', 'x-default': '/seasonal' } } };
+export const metadata: Metadata = { title: 'Сезонные предложения', description: 'Сезонные форматы кейтеринга: BBQ-лето, Новый год, Масленица. Выезд в СПб и область. Гриль, блины, новогоднее меню.', alternates: { canonical: '/seasonal', languages: { 'ru': '/seasonal', 'x-default': '/seasonal' } } };
 
 export default function SeasonalPage() {
   return (

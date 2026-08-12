@@ -91,7 +91,7 @@ export default function AccountOrdersPage() {
         {/* Info notice — W93-v7: clearer demo badge */}
         <div className="mb-8 p-4 rounded-xl border-2 border-amber-300 bg-amber-50 text-amber-900 text-sm">
           <p className="font-semibold mb-1">⚠ Демонстрационный раздел</p>
-          <p>Заказы ниже — примеры для презентации B2B-кабинета. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-amber-900 underline font-semibold">{SITE.email}</a>с темой «B2B-запрос». ЭДО-интеграция (Диадок/СБИС) — в активной разработке.</p>
+          <p>Заказы ниже — примеры для презентации B2B-кабинета. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-amber-900 underline font-semibold">{SITE.email}</a> с темой «B2B-запрос». ЭДО-интеграция (Диадок/СБИС) — в активной разработке.</p>
         </div>
 
         {/* Summary stats */}

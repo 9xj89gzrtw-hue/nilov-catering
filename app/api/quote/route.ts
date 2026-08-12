@@ -88,8 +88,11 @@ async function sendTelegramNotification(lead: Record<string, unknown>): Promise<
 export async function POST(request: Request) {
   // Detect if this is a native form submit (HTML) or fetch (JSON)
   const acceptHeader = request.headers.get('accept') || '';
-  const wantsHtml = acceptHeader.includes('text/html') && !acceptHeader.includes('application/json');
   const contentType = request.headers.get('content-type') || '';
+  // Native HTML form submits send form-encoded data and Accept: text/html
+  // Also treat as HTML if no Accept header but form-encoded content (some clients)
+  const isFormData = contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data');
+  const wantsHtml = (acceptHeader.includes('text/html') && !acceptHeader.includes('application/json')) || (isFormData && !acceptHeader.includes('application/json'));
 
   try {
     let body: QuoteBody;

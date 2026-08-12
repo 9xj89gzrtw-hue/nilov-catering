@@ -164,7 +164,7 @@ export default function SvadbaPage() {
               <h3 className="font-medium text-sm mb-2">Расширенный (7 350 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li>Всё из Стандарта</li>
-                <li>Welcome drink</li>
+                <li>Приветственный напиток</li>
                 <li>Барная станция (вкл. винная карта безлимит — опц. безалк. для халяль)</li>
                 <li>Шампанское (2 бокала)</li>
                 <li>Морепродукты</li>

@@ -55,7 +55,7 @@ export default function FormatShowcase() {
           })}
         </div>
         <p className="mt-4 text-center text-sm text-muted-foreground">
-          <Link href="/menu/furshet" className="text-gold-text hover:underline">Мобильный фуршет</Link>— выезд на площадку без кухни
+          <Link href="/menu/furshet" className="text-gold-text hover:underline">Мобильный фуршет</Link> — выезд на площадку без кухни
         </p>
       </div>
     </section>

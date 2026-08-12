@@ -140,18 +140,18 @@ export default function PersistentCartRail() {
                     <div className="flex items-center gap-1 shrink-0">
                       <button
                         onClick={() =>setItemQty(item.dishId, Math.max(1, item.qty - 1))}
-                        className="w-6 h-6 rounded border border-line text-xs hover:border-gold-text"
+                        className="w-11 h-11 rounded border border-line text-xs hover:border-gold-text"
                         aria-label="Уменьшить"
                       >−</button>
                       <span className="text-xs font-semibold w-5 text-center">{item.qty}</span>
                       <button
                         onClick={() =>setItemQty(item.dishId, item.qty + 1)}
-                        className="w-6 h-6 rounded border border-line text-xs hover:border-gold-text"
+                        className="w-11 h-11 rounded border border-line text-xs hover:border-gold-text"
                         aria-label="Увеличить"
                       >+</button>
                       <button
                         onClick={() =>removeDish(item.dishId)}
-                        className="ml-1 w-6 h-6 rounded text-muted-foreground hover:text-destructive"
+                        className="ml-1 w-11 h-11 rounded text-muted-foreground hover:text-destructive"
                         aria-label="Удалить"
                       >✕</button>
                     </div>
