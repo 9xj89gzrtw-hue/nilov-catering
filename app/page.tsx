@@ -6,6 +6,8 @@ import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
 import B2BSection from '@/components/blocks/B2BSection';
 import MenuPreview from '@/components/blocks/MenuPreview';
 import WhyUs from '@/components/blocks/WhyUs';
+import ChefStory from '@/components/blocks/ChefStory';
+import TrustBlock from '@/components/blocks/TrustBlock';
 import TrustBar from '@/components/blocks/TrustBar';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
 import CTASection from '@/components/blocks/CTASection';
@@ -47,6 +49,12 @@ export default async function HomePage() {
 
       {/* 7. WHY US — 4 принципа + статы */}
       <WhyUs />
+
+      {/* 7.5. CHEF STORY — история шефа Дмитрия Нилова */}
+      <ChefStory />
+
+      {/* 7.6. TRUST BLOCK — страхование, гарантии, лицензии */}
+      <TrustBlock />
 
       {/* 8. TRUST — площадки СПб */}
       <TrustBar />
