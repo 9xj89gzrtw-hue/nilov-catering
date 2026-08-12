@@ -68,7 +68,7 @@ export function TrustMarquee({ clients }: TrustMarqueeProps) {
         {/* A11y: emerald-600 (oklch → #009966) on cream = 3.11:1 FAIL at 9px.
             #065F46 (emerald-800) on cream = 6.54:1 AA pass. */}
         {client.status === 'verified' && (
-          <p className="text-[9px] text-[#065F46] mt-1"> проверен</p>
+          <p className="text-[9px] text-[#065F46] mt-1">проверен</p>
         )}
       </>
     );

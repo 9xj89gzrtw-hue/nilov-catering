@@ -5,6 +5,7 @@ import SeasonalPackages from '@/components/blocks/SeasonalPackages';
 export const metadata: Metadata = {
   title: 'Масленица — кейтеринг',
   description: 'Масленица с NiloV: блины, самовар, народные гуляния. Выездной кейтеринг в СПб.',
+  alternates: { canonical: '/seasonal/maslenitsa', languages: { 'ru': '/seasonal/maslenitsa', 'x-default': '/seasonal/maslenitsa' } },
 };
 
 const DISHES = [

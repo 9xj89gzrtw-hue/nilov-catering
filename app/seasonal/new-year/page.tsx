@@ -5,6 +5,7 @@ import SeasonalPackages from '@/components/blocks/SeasonalPackages';
 export const metadata: Metadata = {
   title: 'Новый год — кейтеринг',
   description: 'Новогодний кейтеринг NiloV: корпоративы, частные вечеринки. Меню, бар, декор — под ключ в СПб.',
+  alternates: { canonical: '/seasonal/new-year', languages: { 'ru': '/seasonal/new-year', 'x-default': '/seasonal/new-year' } },
 };
 
 const DISHES = [

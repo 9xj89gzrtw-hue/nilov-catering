@@ -194,7 +194,7 @@ export default function Calculator() {
           {/* Service breakdown — сервис-норма (SERVICE_DELIVERY_SPEC §1-4) */}
           {result.serviceBreakdown && (
             <div className="mt-4 rounded-lg bg-secondary/50 p-3 text-left">
-              <p className="text-xs font-medium text-foreground mb-2"> Сервис-норма {result.service.toLocaleString('ru-RU')} ₽</p>
+              <p className="text-xs font-medium text-foreground mb-2">Сервис-норма {result.service.toLocaleString('ru-RU')} ₽</p>
               <div className="grid grid-cols-3 gap-2 text-xs text-muted-foreground">
                 <div>Персонал: {result.serviceBreakdown.staffCount} чел.</div>
                 <div>Норма: {result.serviceBreakdown.ratio}</div>

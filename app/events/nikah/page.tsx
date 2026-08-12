@@ -28,7 +28,7 @@ export default function NikahPage() {
           </p>
           <p className="text-sm text-muted-foreground">
             <span className="text-gold-text font-semibold">Никах от 3 950 ₽/гость</span> · мин. 15 гостей ·
-            <span className="text-gold-text font-semibold"> Ифтар от 1 800 ₽/гость</span> · мин. 20 гостей
+            <span className="text-gold-text font-semibold">Ифтар от 1 800 ₽/гость</span> · мин. 20 гостей
           </p>
         </header>
         <div className="mb-10 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10 flex flex-col sm:flex-row items-center justify-between gap-3">

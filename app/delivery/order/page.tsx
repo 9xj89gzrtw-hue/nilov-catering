@@ -32,10 +32,47 @@ export default function DeliveryOrderPage() {
   const handleNext = () => { if (canNext) setStep(Math.min(step + 1, 3)); };
   const handlePrev = () => setStep(Math.max(step - 1, 0));
 
-  const handleSubmit = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async () => {
     if (!totals.meetsMinimum) return;
-    setSubmitted(true);
-    setStep(3);
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'delivery-order',
+          name: cart.contact.name,
+          phone: cart.contact.phone,
+          email: '',
+          date: cart.contact.date,
+          time: cart.contact.timeSlot || cart.contact.exactTime || '',
+          location: cart.contact.address,
+          comment: `Зона: ${cart.zoneId || 'unknown'}. Позиций: ${cart.items.length}`,
+          items: cart.items,
+          total: totals.total,
+          format: 'delivery',
+        }),
+      });
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.message || 'Сеть недоступна');
+      }
+      const data = await response.json();
+      if (!data.success) {
+        throw new Error(data.message || 'Не удалось отправить заявку');
+      }
+      setSubmitted(true);
+      setStep(3);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Неизвестная ошибка';
+      setSubmitError(`Не удалось отправить: ${msg}. Позвоните +7 (812) 919-59-11.`);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const tomorrow = new Date();
@@ -51,7 +88,7 @@ export default function DeliveryOrderPage() {
       <div className="container-site max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="mb-2"> Доставка кейтеринга</h1>
+          <h1 className="mb-2">Доставка кейтеринга</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Соберите заказ из нашего меню — привезём готовые блюда на дом или в офис. Без персонала и посуды, только еда.
           </p>
@@ -140,7 +177,7 @@ export default function DeliveryOrderPage() {
                       <p className="text-xs text-warning">Ещё {totals.remainingToMin.toLocaleString('ru-RU')} ₽ до минимума</p>
                     )}
                     {totals.meetsMinimum && (
-                      <p className="text-xs text-success"> Минимум достигнут</p>
+                      <p className="text-xs text-success">Минимум достигнут</p>
                     )}
                   </div>
                 </div>
@@ -160,7 +197,7 @@ export default function DeliveryOrderPage() {
 
                 {cart.items.length === 0 && (
                   <div className="mt-6 p-4 rounded-xl border border-dashed border-line text-center">
-                    <p className="text-sm text-muted-foreground"> На 10 человек возьмите 5-7 разных блюд × по 10 порций = 50-70 порций всего. 1 порция рассчитана на 1 гостя.</p>
+                    <p className="text-sm text-muted-foreground">На 10 человек возьмите 5-7 разных блюд × по 10 порций = 50-70 порций всего. 1 порция рассчитана на 1 гостя.</p>
                   </div>
                 )}
 
@@ -175,7 +212,7 @@ export default function DeliveryOrderPage() {
             {/* === Step 1: Delivery zone + time === */}
             {step === 1 && (
               <div className="max-w-3xl mx-auto">
-                <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2"> выберите зону</span>}</h2>
+                <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2">выберите зону</span>}</h2>
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
                   {DELIVERY_ZONES.map(zone => (
                     <button
@@ -195,7 +232,7 @@ export default function DeliveryOrderPage() {
                       </div>
                       <p className="text-xs text-muted-foreground mb-2">{zone.distance} за КАД</p>
                       <div className="text-[10px] text-muted-foreground space-y-0.5">
-                        <p> Холодовая цепь: {zone.coldChain ? '' : ' только термобоксы'}</p>
+                        <p>Холодовая цепь: {zone.coldChain ? '' : ' только термобоксы'}</p>
                         <p>⏱ До {zone.slaHours}ч</p>
                       </div>
                     </button>
@@ -213,7 +250,7 @@ export default function DeliveryOrderPage() {
                         className="mt-1 accent-gold-text"
                       />
                       <div>
-                        <p className="text-sm font-medium"> Аренда термобокса (залог 1 500 ₽, возвращается при сдаче)</p>
+                        <p className="text-sm font-medium">Аренда термобокса (залог 1 500 ₽, возвращается при сдаче)</p>
                         <p className="text-xs text-muted-foreground">В вашей зоне нет холодовой цепи — рекомендуем термобокс для сохранения свежести блюд.</p>
                       </div>
                     </label>
@@ -258,7 +295,7 @@ export default function DeliveryOrderPage() {
                       onChange={e => cart.setContact({ callAhead: e.target.checked })}
                       className="accent-gold-text"
                     />
-                    <span className="text-xs"> Позвонить за 30 минут до прибытия</span>
+                    <span className="text-xs">Позвонить за 30 минут до прибытия</span>
                   </label>
                 </div>
 
@@ -313,7 +350,7 @@ export default function DeliveryOrderPage() {
                   {/* Для загородной доставки — поля код ворот/КП/участок */}
                   {cart.zoneId !== 'kad' && (
                     <div className="rounded-xl border border-gold-tint bg-gold-tint/20 p-3 space-y-2">
-                      <p className="text-xs text-muted-foreground"> Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
+                      <p className="text-xs text-muted-foreground">Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
                           onChange={e => cart.setContact({ entrance: e.target.value })}
@@ -453,10 +490,13 @@ export default function DeliveryOrderPage() {
                     Далее
                   </button>
                 ) : (
-                  <button type="button" onClick={handleSubmit} disabled={!canNext || !totals.meetsMinimum}
+                  <button type="button" onClick={handleSubmit} disabled={!canNext || !totals.meetsMinimum || submitting}
                     className="rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-50 hover:bg-primary/90 transition-colors">
-                    Оформить заказ
+                    {submitting ? 'Отправляем...' : 'Оформить заказ'}
                   </button>
+                )}
+                {submitError && (
+                  <p className="text-sm text-red-600 mt-2">{submitError}</p>
                 )}
               </div>
             )}

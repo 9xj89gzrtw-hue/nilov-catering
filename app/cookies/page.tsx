@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/cookies', languages: { 'ru': '/cookies', 'x-default': '/cookies' } },
   title: 'Политика использования cookie',
   description:
-    'Использование cookie на сайте nilov-catering.ru. Типы cookie, сроки хранения, отключение. 152-ФЗ.',
+    'Использование cookie на сайте nilov-catering.vercel.app. Типы cookie, сроки хранения, отключение. 152-ФЗ.',
 };
 
 export default function Page() {

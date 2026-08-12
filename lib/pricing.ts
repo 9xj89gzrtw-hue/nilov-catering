@@ -76,9 +76,6 @@ export function calcTotal(
   let base: number;
   if (tier === 'custom' && opts.items && opts.items.length > 0) {
     base = opts.items.reduce((sum, item) => sum + item.pricePerGuest * item.qty * g, 0);
-  } else if (format === 'chef-at-home') {
-    base = CHEF_HOURLY_RATE_BASE * SERVICE_STAFF_HOURS;
-    // Для chef-at-home база фиксированная почасовая
   } else {
     const t = tier === 'custom' ? 'standard' : tier;
     const price = prices[format]?.[t] ?? 0;

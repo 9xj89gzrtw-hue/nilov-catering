@@ -5,6 +5,7 @@ import SeasonalPackages from '@/components/blocks/SeasonalPackages';
 export const metadata: Metadata = {
   title: 'BBQ-лето — кейтеринг',
   description: 'Летний кейтеринг NiloV: гриль-меню на открытом воздухе. Шашлыки, стейки, овощи гриль — выезд в СПб и область.',
+  alternates: { canonical: '/seasonal/bbq', languages: { 'ru': '/seasonal/bbq', 'x-default': '/seasonal/bbq' } },
 };
 
 const DISHES = [

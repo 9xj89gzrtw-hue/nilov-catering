@@ -50,12 +50,12 @@ const FORMATS = [
     name: 'Шеф на дом',
     href: '/events/chef-at-home',
     img: '/images/dishes-new/beef-steak.jpg',
-    price: 20000,
-    priceUnit: '₽ за выезд',
+    price: 4500,
+    priceUnit: '₽/гость',
     min: 6,
-    hours: '3–4 ч',
+    hours: '3–6 ч',
     desc: 'Шеф-повар приезжает к вам. Авторское меню.',
-    includes: ['5 перемен блюд', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты', 'Сомелье (опц.)'],
+    includes: ['4–6 перемен блюд', 'Премиум-фарфор', 'Сервировка и уборка', 'Все продукты', 'Сомелье (опц.)'],
   },
   {
     name: 'Детский праздник',
@@ -84,7 +84,7 @@ const EXAMPLES = [
   { event: 'Свадьба 50 чел', format: 'Банкет', perGuest: 3950, guests: 50, total: 197500 },
   { event: 'Корпоратив 30 чел', format: 'Фуршет', perGuest: 2450, guests: 30, total: 73500 },
   { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 390, guests: 20, total: 7800 },
-  { event: 'День рождения 6 чел', format: 'Шеф на дом', perGuest: 20000, guests: 6, total: 20000, priceUnit: '₽ за выезд' },
+  { event: 'День рождения 6 чел', format: 'Шеф на дом', perGuest: 4500, guests: 6, total: 27000 },
 ];
 
 export default function PricingPage() {
@@ -187,7 +187,7 @@ export default function PricingPage() {
         {/* ПРИМЕРЫ РЕАЛЬНЫХ СЧЕТОВ — конкретика */}
         <div className="mb-16">
           <h2 className="font-heading text-2xl font-medium mb-2 text-center">Примеры реальных заказов</h2>
-          <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике (базовая цена без сервиса)</p>
+          <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике (всё включено, доставка по КАД бесплатно)</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {EXAMPLES.map((ex) => (
@@ -201,9 +201,7 @@ export default function PricingPage() {
                 </div>
                 <div className="flex items-baseline justify-between pt-3 border-t border-line">
                   <div className="text-sm text-muted-foreground">
-                    {ex.priceUnit
-                      ? `${ex.perGuest.toLocaleString('ru-RU')} ₽ за выезд`
-                      : `${ex.perGuest.toLocaleString('ru-RU')} ₽ × ${ex.guests}`}
+                    {ex.perGuest.toLocaleString('ru-RU')} ₽ × {ex.guests}
                   </div>
                   <div className="text-xl font-bold text-gold-text">
                     {ex.total.toLocaleString('ru-RU')} ₽

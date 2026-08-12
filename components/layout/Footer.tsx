@@ -33,6 +33,10 @@ const FOOTER_LINKS = {
     { label: 'Отзывы', href: '/reviews' },
     { label: 'Контакты', href: '/contact' },
     { label: 'Блог', href: '/blog' },
+    { label: 'Партнёрам', href: '/partners' },
+    { label: 'Карьера', href: '/careers' },
+    { label: 'Площадки', href: '/venues' },
+    { label: 'Медиа-кит', href: '/media-kit' },
   ],
   Инфо: [
     { label: 'Доставка кейтеринга', href: '/delivery/order' },
@@ -40,6 +44,8 @@ const FOOTER_LINKS = {
     { label: 'Сертификаты', href: '/certificates' },
     { label: 'Аллергены', href: '/allergens' },
     { label: 'Дегустация', href: '/tasting' },
+    { label: 'Сезонное', href: '/seasonal' },
+    { label: 'Личный кабинет', href: '/account/orders' },
   ],
 };
 

@@ -81,7 +81,7 @@ export default function GlutenFreePage() {
 
         {/* Nut-free DEFAULT banner */}
         <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50">
-          <p className="text-sm font-semibold text-emerald-900 mb-2"> БГ-меню по умолчанию — nut-free (без орехов)</p>
+          <p className="text-sm font-semibold text-emerald-900 mb-2">БГ-меню по умолчанию — nut-free (без орехов)</p>
           <p className="text-sm text-emerald-900 mb-2">
             Все блюда в основном БГ-меню ниже — на <strong>рисовой и овсяной муке</strong>, без миндальной муки и кедрового ореха.
             Безопасно для гостей с целиакией + анафилаксией на орехи.

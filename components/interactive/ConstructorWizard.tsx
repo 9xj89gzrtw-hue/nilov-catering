@@ -395,7 +395,7 @@ export default function ConstructorWizard() {
                       className="mt-1 accent-gold-text"
                     />
                     <div>
-                      <p className="text-sm font-medium"> Несколько групп гостей с разными диетами</p>
+                      <p className="text-sm font-medium">Несколько групп гостей с разными диетами</p>
                       <p className="text-xs text-muted-foreground">Например: 10 веганов + 8 халяль + 12 всеядных. Каждая группа получит своё под-меню.</p>
                     </div>
                   </label>
@@ -526,7 +526,7 @@ export default function ConstructorWizard() {
                   </div>
                 ) : (
                   <div className="rounded-xl border border-gold-tint bg-gold-tint/30 p-4 text-center">
-                    <p className="text-sm mb-1 font-medium"> Режим «Собрать самому»</p>
+                    <p className="text-sm mb-1 font-medium">Режим «Собрать самому»</p>
                     <p className="text-xs text-muted-foreground">
                       Выберите блюда из каталога ниже. Подходит для особых диет (веган, без глютена) и если стандартный тариф не подходит.
                       Цена = Σ(цена блюда × кол-во) × гости.
@@ -580,7 +580,7 @@ export default function ConstructorWizard() {
             {/* Переключатель активной группы — над каталогом внутри того же шага */}
             {store.groupsEnabled && store.guestGroups.length > 0 && (
               <div className="mb-4 p-3 rounded-xl border border-gold-tint bg-gold-tint/20">
-                <p className="text-xs font-medium mb-2"> Активная группа (каталог фильтруется по её диете):</p>
+                <p className="text-xs font-medium mb-2">Активная группа (каталог фильтруется по её диете):</p>
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setActiveGroupId(null)}
@@ -621,7 +621,7 @@ export default function ConstructorWizard() {
             {/* Mid-funnel email capture — Smart Save (3+ dishes) */}
             {store.selectedItems.length >= 3 && !savedEmail && (
               <div className="mt-6 p-4 rounded-xl border border-gold-text/30 bg-gold-tint/10 text-center max-w-2xl mx-auto">
-                <p className="text-sm font-medium mb-2"> Сохраните меню, чтобы не потерять</p>
+                <p className="text-sm font-medium mb-2">Сохраните меню, чтобы не потерять</p>
                 <p className="text-xs text-muted-foreground mb-3">
                   Введите email — пришлём ссылку на ваше меню. Так вы сможете вернуться к нему позже
                   и показать коллегам/родным.
@@ -876,7 +876,7 @@ export default function ConstructorWizard() {
 
             {/* Shareable URL — viral loop: send menu to spouse/colleague/boss for approval */}
             <div className="text-left rounded-xl border border-line bg-card p-4 mb-6 max-w-md mx-auto">
-              <p className="text-sm font-medium mb-2"> Поделитесь меню</p>
+              <p className="text-sm font-medium mb-2">Поделитесь меню</p>
               <p className="text-xs text-muted-foreground mb-3">
                 Отправьте ссылку жениху/коллегам/руководителю для согласования:
               </p>
@@ -924,7 +924,7 @@ export default function ConstructorWizard() {
 
             {/* Referral program — growth loop */}
             <div className="text-left rounded-xl border-2 border-dashed border-gold-text/30 bg-gold-tint/5 p-4 mb-6 max-w-md mx-auto">
-              <p className="text-sm font-medium mb-1"> Рекомендуйте нас — получайте бонусы</p>
+              <p className="text-sm font-medium mb-1">Рекомендуйте нас — получайте бонусы</p>
               <p className="text-xs text-muted-foreground">
                 Поделитесь ссылкой с друзьями. За каждый рекомендованный заказ — скидка 500 ₽ на следующее мероприятие.
               </p>

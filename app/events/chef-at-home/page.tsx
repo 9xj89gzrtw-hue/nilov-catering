@@ -4,6 +4,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 export const metadata: Metadata = {
   title: 'Выезд шефа',
   description: 'Выезд шеф-повара NiloV на дом: персональный ужин на 6–12 гостей. Шеф и сомелье у вас дома.',
+  alternates: { canonical: '/events/chef-at-home', languages: { 'ru': '/events/chef-at-home', 'x-default': '/events/chef-at-home' } },
 };
 
 export default function ChefAtHomePage() {

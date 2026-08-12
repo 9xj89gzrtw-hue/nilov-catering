@@ -66,7 +66,7 @@ export default function CoffeeBreakPage() {
             Многодневные конференции (2+ дня) — дополнительно -20%.
           </div>
           <div className="rounded-lg border border-line bg-secondary/30 p-4 mb-3">
-            <p className="font-medium mb-2"> Подписка для офисов</p>
+            <p className="font-medium mb-2">Подписка для офисов</p>
             <p className="text-xs text-muted-foreground mb-2">
               Для регулярных кофе-брейков (4+ раза в месяц): еженедельно 4 события × 50 чел × 390 ₽
               = 78 000 ₽/мес → со скидкой 15% = 66 300 ₽/мес. Годовой контракт: фикс-цена 60 000 ₽/мес

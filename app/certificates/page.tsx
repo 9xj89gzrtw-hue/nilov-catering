@@ -209,12 +209,12 @@ export default function CertificatesPage() {
         <p className="text-lg text-muted-foreground mb-8">
           Полный пакет документов для B2B-заказчиков, школ, учреждений, частных клиентов.
           Реквизиты юридического лица опубликованы — проверка контрагента доступна онлайн.
-          Остальные документы предоставляются по запросу в течение 30 минут в рабочее время.
+          Цифровые шаблоны (договор, NDA, SLA) доступны для прямого скачивания ниже. Сканы сертификатов и медкнижек — по запросу в течение 1 рабочего дня.
         </p>
 
         {/* Quick legal block */}
         <div className="mb-10 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-xl font-medium mb-3">Реквизиты юридического лица</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Реквизиты — резюме</h2>
           <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
             <dt className="text-muted-foreground">Юр.лицо:</dt>
             <dd className="font-medium">{SITE.legalName}</dd>
@@ -304,7 +304,7 @@ export default function CertificatesPage() {
                 <span className="text-3xl" aria-hidden="true"></span>
                 <div>
                   <h3 className="font-heading text-base font-medium">Договор</h3>
-                  <p className="text-xs text-gold-text font-semibold">PDF · ~25 КБ</p>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
@@ -320,7 +320,7 @@ export default function CertificatesPage() {
                 <span className="text-3xl" aria-hidden="true"></span>
                 <div>
                   <h3 className="font-heading text-base font-medium">NDA</h3>
-                  <p className="text-xs text-gold-text font-semibold">PDF · ~20 КБ</p>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
@@ -336,7 +336,7 @@ export default function CertificatesPage() {
                 <span className="text-3xl" aria-hidden="true"></span>
                 <div>
                   <h3 className="font-heading text-base font-medium">SLA</h3>
-                  <p className="text-xs text-gold-text font-semibold">PDF · ~22 КБ</p>
+                  <p className="text-xs text-gold-text font-semibold">PDF · ~7 КБ</p>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">

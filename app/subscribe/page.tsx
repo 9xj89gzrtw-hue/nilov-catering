@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/subscribe', languages: { 'ru': '/subscribe', 'x-default': '/subscribe' } },
   title: 'Подписка на кейтеринг — офисные обеды и кофе-брейки',
   description:
-    'Регулярный кейтеринг для офисов: кофе-брейки, бизнес-ланчи. Скидки до 23%. Годовой контракт с ЭДО и SLA. СПб.',
+    'Регулярный кейтеринг для офисов: кофе-брейки, бизнес-ланчи. Скидки до 23%. Долгосрочный контракт с ЭДО и SLA. СПб.',
 };
 
 export default function SubscribePage() {
@@ -15,7 +15,7 @@ export default function SubscribePage() {
         <h1 className="mb-4">Регулярный кейтеринг для офисов</h1>
         <p className="text-muted-foreground mb-8">
           Кофе-брейки, бизнес-ланчи, еженедельные обеды — на постоянной основе со скидкой.
-          Годовой контракт с фикс-ценой, ЭДО-инвойс ежемесячно, SLA в комплекте.
+          Долгосрочный контракт с фикс-ценой, ЭДО-инвойс ежемесячно, SLA в комплекте.
         </p>
 
         {/* Pricing tiers */}
@@ -43,7 +43,7 @@ export default function SubscribePage() {
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60 bg-gold-tint/5">
-                  <td className="py-2 pr-4 font-medium"> Годовой контракт</td>
+                  <td className="py-2 pr-4 font-medium"> Долгосрочный контракт</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽</td>
                   <td className="text-right py-2 px-2">23%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
@@ -116,14 +116,14 @@ export default function SubscribePage() {
         <div className="mb-8 p-5 rounded-xl border border-line bg-secondary/30">
           <h2 className="font-heading text-lg font-medium mb-3">Что входит в подписку</h2>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
-            <li> Фикс-цена на весь срок контракта (защита от инфляции)</li>
-            <li> ЭДО-инвойс ежемесячно (Диадок / СБИС)</li>
+            <li>Фикс-цена на весь срок контракта (защита от инфляции)</li>
+            <li>ЭДО-инвойс ежемесячно (Диадок / СБИС)</li>
             <li> SLA: доставка ±15 минут, штраф 1%/мин опоздания</li>
-            <li> Ротация меню — без повторов 8–12 недель</li>
-            <li> Персональный менеджер с прямым мобильным</li>
-            <li> Сезонные обновления меню (весна/лето/осень/зима)</li>
-            <li> Доставка в пределах КАД — бесплатно</li>
-            <li> Возможность паузы (отпуск, праздники) — без штрафа</li>
+            <li>Ротация меню — без повторов 8–12 недель</li>
+            <li>Персональный менеджер с прямым мобильным</li>
+            <li>Сезонные обновления меню (весна/лето/осень/зима)</li>
+            <li>Доставка в пределах КАД — бесплатно</li>
+            <li>Возможность паузы (отпуск, праздники) — без штрафа</li>
           </ul>
         </div>
 
@@ -155,7 +155,7 @@ export default function SubscribePage() {
                 <label htmlFor="tier" className="block text-sm font-medium mb-1">Тип подписки</label>
                 <select id="tier" name="tier" className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm">
                   <option value="coffee-weekly">Кофе-брейк еженедельно (66 300 ₽/мес)</option>
-                  <option value="coffee-yearly">Годовой контракт (60 000 ₽/мес)</option>
+                  <option value="coffee-yearly">Долгосрочный контракт (60 000 ₽/мес)</option>
                   <option value="lunch-weekly">Бизнес-ланч еженедельно (110 500 ₽/мес)</option>
                   <option value="combo">Комбо кофе+обед (166 400 ₽/мес)</option>
                   <option value="custom">Другой вариант</option>

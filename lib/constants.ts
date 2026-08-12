@@ -75,8 +75,8 @@ export const PRICE_PER_GUEST: Record<Format, Partial<Record<Tier, number>>> = {
   'mobile-furshet': { economy: 2450, standard: 3950, premium: 5950 },
   // detskoe ← DETSKOE (economy=1550, standard=2450, premium=3450, luxury=нет)
   detskoe:          { economy: 1550, standard: 2450, premium: 3450 },
-  // chef-at-home ← CHEF_AT_HOME (economy=4500, standard=7500 — hourly, не perGuest)
-  'chef-at-home':   {},
+  // chef-at-home ← CHEF_AT_HOME (standard=4500, premium=7500 — perGuest, соответствует тарифам)
+  'chef-at-home':   { economy: 4500, standard: 4500, premium: 7500 },
   // pominki ← POMINKI (economy=1800, standard=2500)
   pominki:          { economy: 1800, standard: 2500 },
 };

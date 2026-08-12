@@ -3,7 +3,7 @@ import { Phone, MessageCircle, Calendar, ShieldCheck, Truck, Users } from 'lucid
 import { SITE } from '@/lib/data';
 
 const GUARANTEES = [
-  { icon: Calendar,     title: 'Бронь за 24 часа',   desc: 'Фиксируем дату и цену в договоре' },
+  { icon: Calendar,     title: 'Бронь за 3 дня',     desc: 'Фиксируем дату и цену в договоре' },
   { icon: Truck,        title: 'Доставка вовремя',   desc: 'SLA ±15 минут. Опоздание — штраф 1% за минуту (макс. 30%)' },
   { icon: ShieldCheck,  title: '14 аллергенов',      desc: 'Маркируем каждое блюдо — глютен, орехи, молоко и др.' },
   { icon: Users,        title: 'Обученный персонал', desc: 'Официанты, повара, бармены — с медкнижками' },

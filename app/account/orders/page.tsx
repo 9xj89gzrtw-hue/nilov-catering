@@ -47,7 +47,7 @@ const ORDERS = [
     ],
   },
   {
-    id: 'NLV-2025-0456',
+    id: 'NLV-2026-0456',
     date: '2026-02-14',
     event: 'День Святого Валентина — корпоратив отдела',
     format: 'Кофе-брейк',
@@ -139,7 +139,7 @@ export default function AccountOrdersPage() {
                 </div>
               </summary>
               <div className="p-5 border-t border-line bg-secondary/30">
-                <p className="text-sm font-semibold mb-3"> Документы на скачивание</p>
+                <p className="text-sm font-semibold mb-3">Документы на скачивание</p>
                 <ul className="space-y-2">
                   {order.documents.map(doc => (
                     <li key={doc.type} className="flex items-center justify-between gap-3 text-sm">
@@ -168,15 +168,15 @@ export default function AccountOrdersPage() {
         {/* Quick links */}
         <div className="mt-10 grid sm:grid-cols-3 gap-3">
           <Link href="/certificates" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1"> Сертификаты</p>
+            <p className="font-heading font-medium mb-1">Сертификаты</p>
             <p className="text-xs text-muted-foreground">Программа производственного контроля (ППК), медкнижки, полис страхования</p>
           </Link>
           <Link href="/api/templates/sla" download="nilov-sla-template.pdf" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1"> Скачать SLA (PDF)</p>
+            <p className="font-heading font-medium mb-1">Скачать SLA (PDF)</p>
             <p className="text-xs text-muted-foreground">Шаблон SLA для нового контракта</p>
           </Link>
           <Link href="/api/templates/nda" download="nilov-nda-template.pdf" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <p className="font-heading font-medium mb-1"> Скачать NDA (PDF)</p>
+            <p className="font-heading font-medium mb-1">Скачать NDA (PDF)</p>
             <p className="text-xs text-muted-foreground">Для нового тендера / контрагента</p>
           </Link>
         </div>

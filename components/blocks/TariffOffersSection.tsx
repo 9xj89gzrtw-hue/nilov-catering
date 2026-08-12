@@ -443,7 +443,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Мост coffee-break → доставка — ПЕРЕД тарифами (для coffee-break это релевантнее) */}
         {selectedEvent === 'coffee-break' && (
           <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
-            <p className="text-base font-medium mb-1"> Нужен кофе-брейк без официантов — просто доставка?</p>
+            <p className="text-base font-medium mb-1">Нужен кофе-брейк без официантов — просто доставка?</p>
             <p className="text-sm text-muted-foreground mb-4">
               Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
               <br />
@@ -472,7 +472,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         {/* Format switcher для korporativ — показываем что есть ещё фуршет-вариант */}
         {selectedEvent === 'korporativ' && (
           <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
-            <p className="text-base font-medium mb-1"> Нужен корпоративный фуршет в офисе — без посадки?</p>
+            <p className="text-base font-medium mb-1">Нужен корпоративный фуршет в офисе — без посадки?</p>
             <p className="text-sm text-muted-foreground mb-4">
               У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong> — дешевле банкета.
               Гости едят стоя, лёгкие закуски, идеален для офисных мероприятий.
@@ -492,7 +492,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
 
         {/* Allergen safety banner */}
         <div className="mt-10 p-4 rounded-xl border border-success/30 bg-success/5 text-center">
-          <p className="text-sm font-medium mb-1"> Безопасность по аллергенам</p>
+          <p className="text-sm font-medium mb-1">Безопасность по аллергенам</p>
           <p className="text-xs text-muted-foreground">
             Все блюда маркируются по 14 аллергенам ТР ТС 022/2011. В составе тарифа аллергены видны. В конструкторе можно исключить конкретные аллергены фильтром. Финальную проверку делает менеджер по телефону.
           </p>
@@ -502,7 +502,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
         <div className="mt-16 text-center py-10 rounded-2xl border border-line bg-muted/30">
           <p className="text-xl font-heading font-medium mb-2">Не подходит ни один тариф?</p>
           <p className="text-muted-foreground mb-5">Соберите меню под себя — выберите блюда поштучно. Для особых диет или если ни один тариф не подходит.</p>
-          <p className="text-xs text-muted-foreground mb-5"> В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + без орехов + всеядные в одном заказе).</p>
+          <p className="text-xs text-muted-foreground mb-5">В конструкторе можно включить «Несколько групп гостей» — каждая группа получит своё под-меню с фильтром по диете (веганы + халяль + без глютена + без орехов + всеядные в одном заказе).</p>
           <Link href="/plan/constructor"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Собрать своё меню

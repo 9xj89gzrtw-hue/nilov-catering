@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
 
 export const metadata: Metadata = {
-  title: 'Show-cooking',
+  title: { absolute: 'Show-cooking — кейтеринг с шоу-станциями — NiloV Catering' },
   description: 'Интерактивные кулинарные станции NiloV: еда как шоу. Шеф-повар готовит при гостях.',
+  alternates: { canonical: '/menu/show-cooking', languages: { 'ru': '/menu/show-cooking', 'x-default': '/menu/show-cooking' } },
 };
 
 export default function ShowCookingPage() {
@@ -14,7 +15,7 @@ export default function ShowCookingPage() {
         <p className="text-muted-foreground mb-2">
           Еда как шоу. Шеф-повар готовит при гостях — от вок-станции до десертного бара. Идеально для фуршетов и вечеринок.
         </p>
-        <p className="text-xs text-muted-foreground mb-8">Цены демо. Минимум 15 гостей для любой станции.</p>
+        <p className="text-xs text-muted-foreground mb-8">Минимум 15 гостей для любой станции. Финальная смета рассчитывается индивидуально.</p>
 
         <MenuTariffs format="show-cooking" formatLabel="Show-cooking" />
 

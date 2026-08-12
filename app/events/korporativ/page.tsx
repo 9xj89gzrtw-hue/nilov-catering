@@ -50,19 +50,19 @@ export default function CorporatePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
             <div className="p-3 rounded-lg border border-line bg-background">
-              <p className="text-sm font-semibold mb-1"> Документы</p>
+              <p className="text-sm font-semibold mb-1">Документы</p>
               <p className="text-xs text-muted-foreground">Договор, счёт, акт, счёт-фактура, ЭДО (Диадок, СБИС), чек по 54-ФЗ</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
-              <p className="text-sm font-semibold mb-1"> НДС</p>
+              <p className="text-sm font-semibold mb-1">НДС</p>
               <p className="text-xs text-muted-foreground">ИП Нилов Д.И. на УСН — без НДС. Для плательщиков НДС (ОСН) оформляем через партнёрское ООО (по запросу).</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
-              <p className="text-sm font-semibold mb-1"> Сроки</p>
+              <p className="text-sm font-semibold mb-1">Сроки</p>
               <p className="text-xs text-muted-foreground">Срочные заказы — от 24 часов. Стандарт — 3+ дня. Готовим тендерную документацию за 1-2 дня.</p>
             </div>
             <div className="p-3 rounded-lg border border-line bg-background">
-              <p className="text-sm font-semibold mb-1"> Оплата</p>
+              <p className="text-sm font-semibold mb-1">Оплата</p>
               <p className="text-xs text-muted-foreground">50% предоплата, 50% постоплата в течение 5 рабочих дней. Для постоянных B2B (3+ событий) — отсрочка 14 рабочих дней (фиксированно).</p>
             </div>
           </div>
@@ -71,22 +71,22 @@ export default function CorporatePage() {
             <div>
               <p className="font-medium mb-1"> SLA в договоре (B2B, события от 30 гостей):</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
-                <li> Доставка: точно в согласованное окно — ±15 минут для всех форматов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа). Единая формула SLA.</li>
-                <li> Качество: жалобы ≤5% гостей</li>
-                <li> Компенсация: штраф 5-15% при нарушении</li>
-                <li> Страхование ГО: 5 000 000 ₽ базовый, до 30 000 000 ₽ для контрактов свыше 5 млн ₽ (ведущие страховые компании РФ)</li>
-                <li> План на случай ЧП: резервный шеф + транспорт в течение 4 часов</li>
+                <li>Доставка: точно в согласованное окно — ±15 минут для всех форматов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа). Единая формула SLA.</li>
+                <li>Качество: жалобы ≤5% гостей</li>
+                <li>Компенсация: штраф 5-15% при нарушении</li>
+                <li>Страхование ГО: 5 000 000 ₽ базовый, до 30 000 000 ₽ для контрактов свыше 5 млн ₽ (ведущие страховые компании РФ)</li>
+                <li>План на случай ЧП: резервный шеф + транспорт в течение 4 часов</li>
               </ul>
             </div>
             <div>
-              <p className="font-medium mb-1"> Закупки и учреждения:</p>
+              <p className="font-medium mb-1">Закупки и учреждения:</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
                 <li> 44-ФЗ и 223-ФЗ — тендерная документация</li>
-                <li> Школы, вузы, детсады, гос. учреждения</li>
-                <li> Школьный тариф от 1 800 ₽/гость</li>
-                <li> Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%</li>
-                <li> Многодневные конференции (2+ дня) — дополнительно -20%</li>
-                <li> Реквизиты: ИНН 781433059704, ОГРНИП 314784710400401</li>
+                <li>Школы, вузы, детсады, гос. учреждения</li>
+                <li>Школьный тариф от 1 800 ₽/гость</li>
+                <li>Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%</li>
+                <li>Многодневные конференции (2+ дня) — дополнительно -20%</li>
+                <li>Реквизиты: ИНН 781433059704, ОГРНИП 314784710400401</li>
               </ul>
             </div>
           </div>

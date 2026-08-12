@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { title: 'Медиа-кит', description: 'Пресс-релизы, логотипы и материалы для СМИ.' };
+export const metadata: Metadata = { title: 'Медиа-кит', description: 'Пресс-релизы, логотипы и материалы для СМИ.', alternates: { canonical: '/media-kit', languages: { 'ru': '/media-kit', 'x-default': '/media-kit' } } };
 
 export default function MediaKitPage() {
   return (

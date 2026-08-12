@@ -26,7 +26,7 @@ const TEAM = [
     experience: 'С 2012 года',
     credentials: ['Le Cordon Bleu', 'Санминимум', 'Медкнижка', 'Безглютеновая сертификация'],
     initials: 'ЕС',
-    photo: '/images/team/art-director.jpg',
+    photo: '/images/team/pastry-chef.svg',
   },
   {
     name: 'Алексей Козлов',
@@ -44,7 +44,7 @@ const TEAM = [
     experience: 'С 2016 года',
     credentials: ['Санминимум', 'Медкнижка', 'Event-менеджмент (RMA)'],
     initials: 'МВ',
-    photo: '/images/team/manager.jpg',
+    photo: '/images/team/coordinator.svg',
   },
   {
     name: 'Игорь Петров',
@@ -53,7 +53,7 @@ const TEAM = [
     experience: 'С 2018 года',
     credentials: ['Санминимум', 'Медкнижка', 'B2B-сертификация'],
     initials: 'ИП',
-    photo: '/images/team/manager.jpg',
+    photo: '/images/team/b2b-manager.svg',
   },
   {
     name: 'Ольга Дмитриева',
@@ -62,7 +62,7 @@ const TEAM = [
     experience: 'С 2019 года',
     credentials: ['Санминимум', 'Медкнижка', 'HACCP', 'First Aid (Red Cross)'],
     initials: 'ОД',
-    photo: '/images/team/art-director.jpg',
+    photo: '/images/team/safety-manager.svg',
   },
 ];
 
@@ -154,7 +154,7 @@ export default function TeamPage() {
           <p className="text-sm text-muted-foreground mb-3">
             100% персонала имеют действующие медицинские книжки (ЛМК) с ежегодным медосмотром.
             Аттестация по санминимуму — раз в 2 года. Прививки от дифтерии и гепатита В — 100%.
-            Шеф-повара — с профильным образованием и опытом от 5 лет.
+            Шеф-повара — с профильным образованием и опытом от 12 лет.
           </p>
           <p className="text-sm text-muted-foreground">
             Сканы медкнижек (с замазанными личными данными) предоставляются по запросу.

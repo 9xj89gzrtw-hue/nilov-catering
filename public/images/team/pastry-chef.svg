@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pastry chef">
+  <defs>
+    <linearGradient id="grad-pastry" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A574"/>
+      <stop offset="100%" stop-color="#A57B3F"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad-pastry)"/>
+  <text x="100" y="115" font-family="Georgia, serif" font-size="80" font-weight="700" fill="white" text-anchor="middle">ЕС</text>
+</svg>

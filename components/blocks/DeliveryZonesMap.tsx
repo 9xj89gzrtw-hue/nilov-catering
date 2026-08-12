@@ -32,11 +32,11 @@ export default function DeliveryZonesMap() {
               <div className="space-y-1.5 text-xs">
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <Thermometer className="w-3 h-3" />
-                  <span>Холодовая цепь: {zone.coldChain ? '' : ' (термобоксы)'}</span>
+                  <span>Холодовая цепь: {zone.coldChain ? 'сумки-холодильники +2…+6 °C' : 'термобоксы'}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <Clock className="w-3 h-3" />
-                  <span>Ответ: до {zone.slaHours}ч</span>
+                  <span>Срок доставки: до {zone.slaHours} ч</span>
                 </div>
                 <div className="flex items-center gap-1.5 font-semibold text-foreground mt-2">
                   {zone.surcharge === 0 ? (

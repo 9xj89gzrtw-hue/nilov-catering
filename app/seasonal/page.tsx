@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = { title: 'Сезонные предложения' };
+export const metadata: Metadata = { title: 'Сезонные предложения', alternates: { canonical: '/seasonal', languages: { 'ru': '/seasonal', 'x-default': '/seasonal' } } };
 
 export default function SeasonalPage() {
   return (

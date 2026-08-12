@@ -15,6 +15,7 @@ const EVENTS = [
 export const metadata: Metadata = {
   title: 'События',
   description: 'Кейтеринг для любого события: корпоративы, свадьбы, выпускные, детские праздники, частные ужины. Под ключ в СПб.',
+  alternates: { canonical: '/events', languages: { 'ru': '/events', 'x-default': '/events' } },
 };
 
 export default function EventsPage() {

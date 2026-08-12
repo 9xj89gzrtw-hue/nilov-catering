@@ -270,7 +270,7 @@ export default function MenuBuilder({
                 onChange={e => setShowAllFormats(e.target.checked)}
                 className="accent-gold-text"
               />
-              <span> Показать блюда других форматов (для гибрида «дети + взрослые» или смешанных диет)</span>
+              <span>Показать блюда других форматов (для гибрида «дети + взрослые» или смешанных диет)</span>
             </label>
           </div>
         )}
@@ -296,7 +296,7 @@ export default function MenuBuilder({
         <div className="rounded-xl border border-line bg-card p-3 mb-3">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-foreground"> Исключить аллергены</span>
+              <span className="text-xs font-semibold text-foreground">Исключить аллергены</span>
               <div className="flex bg-muted rounded-md p-0.5">
                 <button
                   onClick={() => setAllergenMode('highlight')}
@@ -411,7 +411,7 @@ export default function MenuBuilder({
             {/* Спец-баннер для халяль-фильтра */}
             {activeDiets.has('halal') && (
               <div className="mt-4 p-4 rounded-xl border border-gold-tint bg-gold-tint/30 max-w-md mx-auto text-left">
-                <p className="text-sm font-medium text-foreground mb-1"> Халяль-меню готовим под заказ</p>
+                <p className="text-sm font-medium text-foreground mb-1">Халяль-меню готовим под заказ</p>
                 <p className="text-xs text-muted-foreground mb-2">
                   В базовом каталоге нет сертифицированных халяль-блюд, но мы готовим их на отдельной линии
                   по запросу — от 3 рабочих дней. Курица, говядина, баранина без свинины и алкоголя.
@@ -629,7 +629,7 @@ function DroppableCart({
         <div className="text-center py-12">
           <div className="text-4xl mb-3 opacity-50"></div>
           <p className="text-sm text-muted-foreground px-4">{emptyCartText}</p>
-          <p className="text-[10px] text-muted-foreground/70 mt-2"> Нажмите «+ Добавить» на блюде или перетащите его сюда.</p>
+          <p className="text-[10px] text-muted-foreground/70 mt-2">Нажмите «+ Добавить» на блюде или перетащите его сюда.</p>
         </div>
       ) : (
         <SortableContext items={cartItemIds} strategy={verticalListSortingStrategy}>
