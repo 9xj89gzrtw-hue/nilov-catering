@@ -45,7 +45,7 @@ export default function MobileMenu() {
       {/* Trigger — hamburger */}
       <button
         onClick={() =>setOpen(true)}
-        className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
+        className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
         aria-label="Открыть меню"
         aria-expanded={open}
         aria-haspopup="true"
@@ -60,7 +60,7 @@ export default function MobileMenu() {
         <AnimatePresence>
           {open && (
             <div
-              className="fixed inset-0 z-[200] md:hidden"
+              className="fixed inset-0 z-[200] sm:hidden"
               role="dialog"
               aria-modal="true"
               aria-label="Мобильное меню навигации"

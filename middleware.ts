@@ -2,11 +2,34 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const REDIRECTS: Record<string, string> = {
+  // Existing redirects
   '/about': '/why-us',
   '/testimonials': '/reviews',
   '/services': '/events',
   '/quote': '/plan/helper',
   '/constructor': '/plan/constructor',
+  
+  // Cycle 1 fixes — common typos and legacy URLs
+  '/prices': '/pricing',
+  '/tariffs': '/pricing',
+  '/contacts': '/contact',
+  '/career': '/careers',
+  '/account': '/account/orders',
+  '/delivery-zones': '/delivery',
+  '/subscription': '/subscribe',
+  
+  // Menu legacy URLs
+  '/menu/buffet': '/menu/furshet',
+  '/menu/kids': '/menu/detskoe',
+  
+  // Events legacy URLs (English → Russian slugs)
+  '/events/wedding': '/events/svadba',
+  '/events/corporate': '/events/korporativ',
+  
+  // Other common misspellings
+  '/menu-picker': '/menu/catalog',
+  '/assistant': '/plan/helper',
+  '/help': '/faq',
 };
 
 // Legacy slug → каноничный slug
@@ -44,5 +67,12 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/about', '/testimonials', '/services', '/services/:path*', '/quote', '/constructor', '/en', '/en/:path*'],
+  matcher: [
+    // Original matchers
+    '/about', '/testimonials', '/services', '/services/:path*', '/quote', '/constructor', '/en', '/en/:path*',
+    // Cycle 1 fix matchers
+    '/prices', '/tariffs', '/contacts', '/career', '/account', '/delivery-zones', '/subscription',
+    '/menu/buffet', '/menu/kids', '/events/wedding', '/events/corporate',
+    '/menu-picker', '/assistant', '/help',
+  ],
 };

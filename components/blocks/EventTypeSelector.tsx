@@ -137,7 +137,7 @@ export default function EventTypeSelector() {
                   />
                   <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                     <h3 className="font-heading text-xl md:text-2xl text-white" style={{ fontWeight: 500 }}>{e.label}</h3>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-gold-text">
+                    <span className="text-sm font-semibold uppercase tracking-wider text-gold-text">
                       {e.price}
                     </span>
                   </div>
@@ -148,7 +148,7 @@ export default function EventTypeSelector() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">{e.desc}</p>
                   <ul className="space-y-1.5 mb-5">
                     {e.features.map((f) =>(
-                      <li key={f} className="text-xs text-foreground/80 flex items-start gap-2">
+                      <li key={f} className="text-sm text-foreground/80 flex items-start gap-2">
                         <svg className="w-3.5 h-3.5 mt-0.5 shrink-0 text-gold-text" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                           <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
