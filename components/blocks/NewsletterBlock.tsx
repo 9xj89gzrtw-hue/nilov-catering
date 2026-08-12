@@ -55,7 +55,7 @@ export function NewsletterBlock() {
       <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={handleSubmit}>
         <div className="flex-1">
           <label htmlFor="newsletter-email" className="block text-sm font-medium text-foreground mb-1">Email для подписки</label>
-          <input id="newsletter-email" type="email" name="email" autoComplete="email" placeholder="Ваш email" required className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm min-h-[44px] inline-flex items-center min-h-[44px]" />
+          <input id="newsletter-email" type="email" name="email" autoComplete="email" placeholder="Ваш email" required aria-label="Email для подписки на рассылку кейтеринга" className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm min-h-[44px] inline-flex items-center min-h-[44px]" />
         </div>
         <button type="submit" disabled={status === 'loading'} className="self-end rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors min-h-[44px] disabled:opacity-50">
           {status === 'loading' ? 'Отправляем...' : 'Подписаться'}

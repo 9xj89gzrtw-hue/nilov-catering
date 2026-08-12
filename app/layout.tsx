@@ -50,6 +50,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="preconnect" href="https://yandex.ru" />
         <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <meta name="theme-color" content="#8C7140" />
         <Analytics />
         <OrganizationJsonLd />
         <ServiceJsonLd />
