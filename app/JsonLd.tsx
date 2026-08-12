@@ -14,6 +14,21 @@ import type { Review } from '@/lib/cms-store';
 
 const REVIEWS: Review[] = reviews as Review[];
 
+/** Convert Russian month-year ("Август 2024") to ISO 8601 ("2024-08-01") for schema.org */
+function normalizeDate(s: string): string {
+  if (!s) return new Date().toISOString().split('T')[0];
+  const MONTHS: Record<string, number> = {
+    Январь: 1, Февраль: 2, Март: 3, Апрель: 4, Май: 5, Июнь: 6,
+    Июль: 7, Август: 8, Сентябрь: 9, Октябрь: 10, Ноябрь: 11, Декабрь: 12,
+  };
+  const m = s.match(/^([\u0400-\u04FF]+)\s+(\d{4})$/u);
+  if (m && MONTHS[m[1]]) {
+    return `${m[2]}-${String(MONTHS[m[1]]).padStart(2, '0')}-01`;
+  }
+  // Already ISO or unknown format — return as is
+  return s;
+}
+
 function calcAggregateRating() {
   if (!REVIEWS || REVIEWS.length === 0) {
     return null;
@@ -84,7 +99,7 @@ export function OrganizationJsonLd() {
         bestRating: '5',
         worstRating: '1',
       },
-      datePublished: r.date,
+      datePublished: normalizeDate(r.date),
       reviewBody: r.quote,
       name: r.eventType,
     }));

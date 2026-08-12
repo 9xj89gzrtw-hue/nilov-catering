@@ -15,7 +15,7 @@ export default function EnPage() {
       <div className="grid gap-4 mb-10">
         {[
           { title: 'What we do', text: 'Full-service catering for weddings, corporate events, private parties, and chef-at-home experiences. From coffee breaks to formal banquets.' },
-          { title: 'Why us', text: '19+ years in business. Own sous-vide kitchen. Local farmers from Leningrad Oblast. Honest pricing — no hidden fees.' },
+          { title: 'Why us', text: '19 years in business (since 2007). Own sous-vide kitchen. Local farmers from Leningrad Oblast. Honest pricing — no hidden fees.' },
           { title: 'Pricing', text: 'From 390 ₽/guest for coffee breaks. Banquet from 3 950 ₽/guest. All prices include staff, coordinator, and delivery within the Ring Road.' },
           { title: 'Contact', text: 'Phone: +7 (812) 919-59-11. Email: info@nilov-catering.ru. We reply within 15 minutes.' },
         ].map(item =>(

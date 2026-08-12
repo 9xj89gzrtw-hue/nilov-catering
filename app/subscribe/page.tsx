@@ -37,28 +37,28 @@ export default function SubscribePage() {
               <tbody>
                 <tr className="border-b border-line/60">
                   <td className="py-2 pr-4 font-medium">Кофе-брейк weekly</td>
-                  <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽ <span className="text-xs text-muted-foreground font-normal">(при 50 чел.)</span></td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60 bg-gold-tint/5">
                   <td className="py-2 pr-4 font-medium">Долгосрочный контракт</td>
-                  <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽ <span className="text-xs text-muted-foreground font-normal">(фикс.)</span></td>
                   <td className="text-right py-2 px-2">23%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60">
                   <td className="py-2 pr-4 font-medium">Бизнес-ланч weekly</td>
-                  <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽ <span className="text-xs text-muted-foreground font-normal">(при 50 чел.)</span></td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4 font-medium">Комбо (CB+обед)</td>
-                  <td className="text-right py-2 px-2 font-semibold text-gold-text">166 400 ₽</td>
+                  <td className="text-right py-2 px-2 font-semibold text-gold-text">166 400 ₽ <span className="text-xs text-muted-foreground font-normal">(при 50 чел.)</span></td>
                   <td className="text-right py-2 px-2">20%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>

@@ -45,7 +45,10 @@ export const LEGAL: {
 
 export const SITE: SiteConfig = {
   name: 'NiloV Catering',
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'nilov-catering.ru',
+  // Domain: nilov-catering.ru is the brand domain but DNS is not yet configured.
+  // Until DNS is live, use vercel.app as canonical to avoid broken og:image/sitemap/canonical.
+  // When nilov-catering.ru DNS is configured (A record → Vercel), flip this back.
+  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'nilov-catering.vercel.app',
   phone: '+7 (812) 919-59-11',
   phoneTel: '+78129195911',
   phoneMobile: '+7 (911) 941-72-05',
