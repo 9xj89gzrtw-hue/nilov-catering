@@ -71,7 +71,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </SmoothScrollProvider>
         </PricingWrapper>
         <noscript>
-          <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+          <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
             <h1>NiloV Catering — Кейтеринг в Санкт-Петербурге</h1>
             <p>Для работы сайта необходимо включить JavaScript.</p>
             <p><strong>📞 Позвоните:</strong> <a href="tel:+78129195911">+7 (812) 919-59-11</a></p>
