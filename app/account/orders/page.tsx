@@ -169,7 +169,7 @@ export default function AccountOrdersPage() {
         <div className="mt-10 grid sm:grid-cols-3 gap-3">
           <Link href="/certificates" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
             <p className="font-heading font-medium mb-1"> Сертификаты</p>
-            <p className="text-xs text-muted-foreground">Декларация ЕАЭС, медкнижки, ППК, полис страхования</p>
+            <p className="text-xs text-muted-foreground">Программа производственного контроля (ППК), медкнижки, полис страхования</p>
           </Link>
           <Link href="/api/templates/sla" download="nilov-sla-template.pdf" className="block p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
             <p className="font-heading font-medium mb-1"> Скачать SLA (PDF)</p>

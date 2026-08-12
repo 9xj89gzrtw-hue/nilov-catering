@@ -50,7 +50,7 @@ export default function Header() {
             <span className="font-heading text-xl font-semibold tracking-tight text-foreground group-hover:text-gold-text transition-colors">
               NiloV
             </span>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
+            <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
               Catering · СПб
             </span>
           </div>

@@ -21,7 +21,7 @@ const FOOTER_LINKS = {
     { label: 'Каталог блюд', href: '/menu/catalog' },
   ],
   Инструменты: [
-    { label: 'Тарифы', href: '/plan/calculator' },
+    { label: 'Тарифы', href: '/pricing' },
     { label: 'Подбор меню', href: '/plan/constructor' },
     { label: 'Помощник', href: '/plan/helper' },
     { label: 'Подписка на обеды', href: '/subscribe' },
