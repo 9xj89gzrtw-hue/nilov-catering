@@ -550,7 +550,7 @@ summary:focus-visible,
 [tabindex]:focus-visible,
 label:focus-visible,
 [data-focusable]:focus-visible {
-  outline: 3px solid #B8860B !important;
+  outline: 3px solid #6E5530 !important;
   outline-offset: 2px !important;
   box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.25) !important;
   border-radius: 4px !important;
@@ -564,7 +564,7 @@ label:focus-visible,
 }
 
 *:focus-visible {
-  outline: 3px solid #B8860B !important;
+  outline: 3px solid #6E5530 !important;
   outline-offset: 2px !important;
 }
 
@@ -615,7 +615,7 @@ select {
    while keyboard focus (:focus-visible) ALWAYS shows the gold ring.
    ═══════════════════════════════════════════ */
 *:focus-visible {
-  outline: 3px solid #B8860B !important;
+  outline: 3px solid #6E5530 !important;
   outline-offset: 2px !important;
   box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.3) !important;
 }

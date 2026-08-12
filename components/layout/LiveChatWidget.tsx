@@ -69,7 +69,7 @@ export default function LiveChatWidget() {
               </div>
               <div>
                 <p className="font-semibold text-sm">NiloV Catering</p>
-                <p className="text-xs text-background/90">Отвечаем за 115 минут</p>
+                <p className="text-xs text-background/90">Отвечаем за 15 минут</p>
               </div>
             </div>
             <button
@@ -99,7 +99,7 @@ export default function LiveChatWidget() {
               <MessageCircle className="w-5 h-5 text-gold-text shrink-0" aria-hidden="true" />
               <div>
                 <p className="text-sm font-medium text-foreground">Написать в WhatsApp</p>
-                <p className="text-xs text-muted-foreground">Быстрый ответ — 115 минут</p>
+                <p className="text-xs text-muted-foreground">Быстрый ответ — 15 минут</p>
               </div>
             </a>
             <a
