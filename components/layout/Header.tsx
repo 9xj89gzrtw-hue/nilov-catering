@@ -75,7 +75,7 @@ export default function Header() {
           <a
             href={SITE.whatsapp}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-line text-foreground hover:text-gold-text hover:border-gold-text transition-colors"
             aria-label="Написать в WhatsApp"
           >

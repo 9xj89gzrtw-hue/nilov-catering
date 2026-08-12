@@ -93,7 +93,7 @@ export default function LiveChatWidget() {
             <a
               href="https://wa.me/78129195911?text=Здравствуйте!%20Хочу%20рассчитать%20кейтеринг"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               className="flex items-center gap-3 p-3 rounded-xl border border-line hover:border-gold-text transition-colors no-underline"
             >
               <MessageCircle className="w-5 h-5 text-gold-text shrink-0" aria-hidden="true" />

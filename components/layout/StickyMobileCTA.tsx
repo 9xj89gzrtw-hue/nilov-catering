@@ -89,7 +89,7 @@ export default function StickyMobileCTA({
       <a
         href={waHref}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="p-3 rounded-lg text-muted-foreground hover:text-foreground border border-line bg-background touch-target"
         aria-label="WhatsApp"
       >

@@ -142,7 +142,7 @@ export default function MobileMenu() {
                     <a
                       href={SITE.whatsapp}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener noreferrer nofollow"
                       aria-label="Написать в WhatsApp"
                       className="flex items-center justify-center w-14 rounded-lg border-2 border-emerald-500 text-emerald-600 active:bg-emerald-50 transition-colors"
                     >
