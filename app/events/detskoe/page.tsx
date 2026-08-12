@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Детские праздники',
   description: 'Детский кейтеринг NiloV: меню без орехов, аниматоры, шоу. Анафилаксия-протокол: EpiPen, отдельная смена. Мин. 10 (мед. диеты — от 6).',
-  alternates: { canonical: '/events/detskoe', languages: { 'ru': '/events/detskoe', 'en': '/en', 'x-default': '/events/detskoe' } },
+  alternates: { canonical: '/events/detskoe', languages: { 'ru': '/events/detskoe', 'x-default': '/events/detskoe' } },
 };
 
 export default function DetskoeEventPage() {
@@ -23,7 +23,7 @@ export default function DetskoeEventPage() {
 
         {/* Анафилаксия-протокол — ВВЕРХУ */}
         <div className="mb-8 p-5 rounded-xl border-2 border-red-300 bg-red-50">
-          <h2 className="font-heading text-base font-bold text-red-900 mb-2"> Анафилаксия на орехи? Безопасно.</h2>
+          <h2 className="font-heading text-base font-bold text-red-900 mb-2">Анафилаксия на орехи? Безопасно.</h2>
           <p className="text-sm text-red-900 mb-3">
             <strong>В детском меню НЕТ блюд с цельными орехами</strong> (арахис, лесной, кедровый, грецкий) — по умолчанию.
             Несколько БГ-десертов используют миндальную муку — они имеют значок Орехи и НЕ рекомендуются при анафилаксии на миндаль.
@@ -47,7 +47,7 @@ export default function DetskoeEventPage() {
 
         {/* СД1/СД2-протокол */}
         <div className="mb-8 p-5 rounded-xl border-2 border-purple-300 bg-purple-50">
-          <h2 className="font-heading text-base font-bold text-purple-900 mb-2"> Сахарный диабет (СД1/СД2)? Безопасно.</h2>
+          <h2 className="font-heading text-base font-bold text-purple-900 mb-2">Сахарный диабет (СД1/СД2)? Безопасно.</h2>
           <p className="text-sm text-purple-900 mb-3">
             <strong>Для гостя с СД1 candy-bar / сладкий стол исключаем по умолчанию</strong> и заменяем
             на сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
@@ -72,7 +72,7 @@ export default function DetskoeEventPage() {
 
         {/* Целиакия-протокол */}
         <div className="mb-8 p-5 rounded-xl border-2 border-blue-300 bg-blue-50">
-          <h2 className="font-heading text-base font-bold text-blue-900 mb-2"> Целиакия? Безопасно.</h2>
+          <h2 className="font-heading text-base font-bold text-blue-900 mb-2">Целиакия? Безопасно.</h2>
           <p className="text-sm text-blue-900 mb-3">
             <strong>Безглютеновое детское меню</strong> на миндальной/рисовой муке — отдельная
             линия кухни, тестирование &lt;20 ppm (GFCO standard). БГ торт, БГ капкейки, БГ пицца,

@@ -8,7 +8,7 @@ import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 export const metadata: Metadata = {
   alternates: {
     canonical: '/events/pominki',
-    languages: { ru: '/events/pominki', en: '/en', 'x-default': '/events/pominki' },
+    languages: { ru: '/events/pominki', 'x-default': '/events/pominki' },
   },
   title: 'Поминки — кейтеринг в СПб, поминальное меню',
   description:

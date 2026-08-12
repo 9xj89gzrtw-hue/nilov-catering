@@ -8,7 +8,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Цены на кейтеринг в СПб — от 390 ₽/гость',
   description: 'Прозрачные цены: фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽ за гостя. Всё включено. Без скрытых платежей.',
-  alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'en': '/en', 'x-default': '/pricing' } },
+  alternates: { canonical: '/pricing', languages: { 'ru': '/pricing', 'x-default': '/pricing' } },
 };
 
 export const dynamic = 'force-static';
@@ -50,7 +50,8 @@ const FORMATS = [
     name: 'Шеф на дом',
     href: '/events/chef-at-home',
     img: '/images/dishes-new/beef-steak.jpg',
-    price: 4500,
+    price: 20000,
+    priceUnit: '₽ за выезд',
     min: 6,
     hours: '3–4 ч',
     desc: 'Шеф-повар приезжает к вам. Авторское меню.',
@@ -83,7 +84,7 @@ const EXAMPLES = [
   { event: 'Свадьба 50 чел', format: 'Банкет', perGuest: 3950, guests: 50, total: 197500 },
   { event: 'Корпоратив 30 чел', format: 'Фуршет', perGuest: 2450, guests: 30, total: 73500 },
   { event: 'Конференция 20 чел', format: 'Кофе-брейк', perGuest: 390, guests: 20, total: 7800 },
-  { event: 'День рождения 6 чел', format: 'Шеф на дом', perGuest: 4500, guests: 6, total: 27000 },
+  { event: 'День рождения 6 чел', format: 'Шеф на дом', perGuest: 20000, guests: 6, total: 20000, priceUnit: '₽ за выезд' },
 ];
 
 export default function PricingPage() {
@@ -156,7 +157,7 @@ export default function PricingPage() {
                   {/* Цена — КРУПНО */}
                   <div className="flex items-baseline gap-1 mb-1">
                     <span className="text-3xl font-bold text-gold-text">{fmt.price.toLocaleString('ru-RU')}</span>
-                    <span className="text-sm text-muted-foreground">₽/гость</span>
+                    <span className="text-sm text-muted-foreground">{fmt.priceUnit || '₽/гость'}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mb-3">
                     мин. {fmt.min} гостей · {fmt.hours}
@@ -200,7 +201,9 @@ export default function PricingPage() {
                 </div>
                 <div className="flex items-baseline justify-between pt-3 border-t border-line">
                   <div className="text-sm text-muted-foreground">
-                    {ex.perGuest.toLocaleString('ru-RU')} ₽ × {ex.guests}
+                    {ex.priceUnit
+                      ? `${ex.perGuest.toLocaleString('ru-RU')} ₽ за выезд`
+                      : `${ex.perGuest.toLocaleString('ru-RU')} ₽ × ${ex.guests}`}
                   </div>
                   <div className="text-xl font-bold text-gold-text">
                     {ex.total.toLocaleString('ru-RU')} ₽

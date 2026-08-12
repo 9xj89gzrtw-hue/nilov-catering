@@ -3,7 +3,7 @@ import Link from 'next/link';
 import DeliveryZonesMap from '@/components/blocks/DeliveryZonesMap';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/delivery', languages: { 'ru': '/delivery', 'en': '/en', 'x-default': '/delivery' } },
+  alternates: { canonical: '/delivery', languages: { 'ru': '/delivery', 'x-default': '/delivery' } },
   title: 'Доставка кейтеринга',
   description: 'Закажите доставку готовых блюд на дом или в офис. Бесплатно в пределах КАД. Минимальный заказ 5000 ₽. Соберите меню сами.',
 };
@@ -64,7 +64,7 @@ export default function DeliveryPage() {
         <div className="rounded-2xl border border-gold-tint bg-gold-tint/30 p-8 text-center">
           <h2 className="font-heading text-2xl font-medium mb-3">Готовы заказать доставку?</h2>
           <p className="text-muted-foreground mb-5 max-w-xl mx-auto">
-            Соберите меню из нашего каталога — от канапе до десертов. Привезём свежим и горячим.
+            Соберите меню из нашего каталога — от канапе до десертов. Привезём свежим: холодные блюда при +2…+6 °C, горячие — в термоконтейнерах с подогревом. SLA ±15 минут.
           </p>
           <Link
             href="/delivery/order"

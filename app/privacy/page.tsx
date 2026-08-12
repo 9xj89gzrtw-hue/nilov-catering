@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/privacy', languages: { 'ru': '/privacy', 'en': '/en', 'x-default': '/privacy' } },
+  alternates: { canonical: '/privacy', languages: { 'ru': '/privacy', 'x-default': '/privacy' } },
   title: 'Политика конфиденциальности',
   description:
     'Политика обработки персональных данных ИП Нилов Д.И. в соответствии с 152-ФЗ. Сбор, хранение, использование, передача. СПб.',
@@ -27,7 +27,7 @@ export default function Page() {
             </p>
             <p className="text-sm leading-relaxed mb-3">
               1.2. Политика определяет порядок обработки и защиты персональных данных
-              пользователей сайта nilov-catering.ru и клиентов Исполнителя.
+              пользователей сайта nilov-catering.vercel.app и клиентов Исполнителя.
             </p>
             <p className="text-sm leading-relaxed">
               1.3. Цели обработки: исполнение договора оказания услуг, информирование о статусе
@@ -95,8 +95,8 @@ export default function Page() {
             </ul>
             <p className="text-sm leading-relaxed">
               Запросы направлять на{' '}
-              <a href="mailto:info@odaeda.ru" className="underline">
-                info@odaeda.ru
+              <a href="mailto:info@nilov-catering.ru" className="underline">
+                info@nilov-catering.ru
               </a>{' '}
               с темой «Запрос по персональным данным». Ответ — в течение 30 дней.
             </p>
@@ -136,7 +136,7 @@ export default function Page() {
 ИНН: ${LEGAL.inn} · ОГРНИП: ${LEGAL.ogrnip}
 ${LEGAL.legalAddress}
 Телефон: +7 (812) 919-59-11
-Email: info@odaeda.ru (общий) / b2b@odaeda.ru (B2B)`}
+Email: info@nilov-catering.ru (общий) / b2b@nilov-catering.ru (B2B)`}
             </pre>
           </section>
         </div>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/tasting', languages: { 'ru': '/tasting', 'en': '/en', 'x-default': '/tasting' } },
+  alternates: { canonical: '/tasting', languages: { 'ru': '/tasting', 'x-default': '/tasting' } },
   title: 'Дегустация меню',
   description: 'Дегустация перед событием: бесплатно для событий от 30 гостей, от 1 гостя для медицинских диет. До 6 блюд, аперитив, комплимент от шефа.',
 };
@@ -33,7 +33,7 @@ export default function TastingPage() {
 
         {/* Free/paid block */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-lg font-medium mb-3"> Стоимость дегустации</h2>
+          <h2 className="font-heading text-lg font-medium mb-3">Стоимость дегустации</h2>
           <ul className="text-sm space-y-2">
             <li> <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
             <li> <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>

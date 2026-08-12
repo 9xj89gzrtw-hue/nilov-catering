@@ -7,12 +7,12 @@ export const metadata: Metadata = {
 };
 
 const VENUES = [
-  { name: 'Лофт «Большая Морская»', type: 'Лофт', capacity: 'до 150', features: 'Кухня, парковка, световое оборудование' },
-  { name: 'Особняк на Фонтанке', type: 'Особняк', capacity: 'до 80', features: 'Исторический зал, рояль, сад' },
-  { name: 'Бизнес-центр «Невский»', type: 'Конференц-зал', capacity: 'до 300', features: 'Проектор, звук, Wi-Fi, кейтеринг-зона' },
-  { name: 'Шатёр на заливе', type: 'Шатёр', capacity: 'до 200', features: 'Вид на воду, летняя веранда, гриль-зона' },
-  { name: 'Дом культуры «Выборгский»', type: 'ДК', capacity: 'до 500', features: 'Сцена, гримёрки, большая кухня' },
-  { name: 'Ваша площадка', type: 'Любая', capacity: 'без ограничений', features: 'Приедем куда скажете. Оценим кухню и логистику за 1 день.' },
+  { name: 'Лофт «Большая Морская»', type: 'Лофт', capacity: 'до 150', address: 'Большая Морская ул., 18, СПб, м. Адмиралтейская', features: 'Кухня, парковка, световое оборудование, лофт-стиль' },
+  { name: 'Особняк на Фонтанке', type: 'Особняк', capacity: 'до 80', address: 'наб. реки Фонтанки, 21, СПб, м. Гостиный двор', features: 'Исторический зал, рояль, сад, парковка' },
+  { name: 'Бизнес-центр «Невский»', type: 'Конференц-зал', capacity: 'до 300', address: 'Невский пр., 100, СПб, м. Маяковская', features: 'Проектор, звук, Wi-Fi, кейтеринг-зона, климат-контроль' },
+  { name: 'Шатёр на заливе', type: 'Шатёр', capacity: 'до 200', address: 'Приморский парк Победы, Крестовский остров, СПб', features: 'Вид на воду, летняя веранда, гриль-зона, парковка' },
+  { name: 'ДК «Выборгский»', type: 'ДК', capacity: 'до 500', address: 'Кронверкский пр., 23, СПб, м. Горьковская', features: 'Сцена, гримёрки, большая кухня, парковка' },
+  { name: 'Ваша площадка', type: 'Любая', capacity: 'без ограничений', address: 'СПб и ЛО — приедем куда скажете', features: 'Оценим кухню и логистику за 1 день.Нет кухни — привезём всё с собой.' },
 ];
 
 export default function VenuesPage() {
@@ -32,7 +32,8 @@ export default function VenuesPage() {
         {VENUES.map(v => (
           <div key={v.name} className="rounded-xl border border-line bg-card p-5">
             <h2 className="font-heading text-lg font-medium mb-1">{v.name}</h2>
-            <p className="text-xs text-gold-text font-medium mb-3">{v.type} · {v.capacity} гостей</p>
+            <p className="text-xs text-gold-text font-medium mb-1">{v.type} · {v.capacity} гостей</p>
+            <p className="text-xs text-muted-foreground mb-3">{v.address}</p>
             <p className="text-sm text-muted-foreground">{v.features}</p>
           </div>
         ))}

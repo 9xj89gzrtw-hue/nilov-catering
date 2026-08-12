@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = ARTICLES[slug];
   if (!article) return { title: 'Статья не найдена', robots: { index: false, follow: false } };
-  return { title: `${article.t} — Блог NiloV Catering`, description: article.desc, alternates: { canonical: `/blog/${slug}` } };
+  return { title: article.t, description: article.desc, alternates: { canonical: `/blog/${slug}` } };
 }
 
 export default async function BlogArticlePage({ params }: Props) {

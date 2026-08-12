@@ -36,7 +36,7 @@ export default function HalalPage() {
             реестр МЦСС «Халяль» (halalcenter.ru) →
           </a>
           {' · '}
-          <Link href="/certificates" className="text-gold-text font-semibold underline">скан PDF на странице сертификатов →</Link>
+          <Link href="/certificates" className="text-gold-text font-semibold underline">запросить скан PDF на странице сертификатов →</Link>
         </p>
 
         {/* B2B banner — НДС indicator for corporate clients */}
@@ -46,7 +46,7 @@ export default function HalalPage() {
 
         {/* Ифтар / Рамадан блок */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-amber-300 bg-amber-50">
-          <h2 className="font-heading text-xl font-medium mb-3"> Рамадан и ифтар — меню разговения</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Рамадан и ифтар — меню разговения</h2>
           <p className="text-sm text-amber-900 mb-3">
             В месяц Рамадан организуем ифтары (разговение после заката солнца) для коллективов и семей.
             Подача синхронизирована с временем магриба — готовое меню доставляем за 30 минут до захода.
@@ -86,7 +86,7 @@ export default function HalalPage() {
 
         {/* Никах блок */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-300 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-3"> Никах — исламская свадебная церемония</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Никах — исламская свадебная церемония</h2>
           <p className="text-sm text-emerald-900 mb-3">
             Организуем помолвку и никах с учётом исламских традиций: без алкоголя, без свинины,
             раздельные станции для мужчин и женщин (по запросу), традиционные блюда.
@@ -122,7 +122,7 @@ export default function HalalPage() {
 
         {/* Халяль-протокол — детально */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-4"> Протокол халяль-приготовления</h2>
+          <h2 className="font-heading text-xl font-medium mb-4">Протокол халяль-приготовления</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
               <h3 className="font-semibold mb-1">Сертифицирующий орган</h3>

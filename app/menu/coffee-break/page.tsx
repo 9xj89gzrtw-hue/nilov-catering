@@ -43,7 +43,7 @@ export default function CoffeeBreakPage() {
 
         {/* Multi-day conference pricing */}
         <div className="mt-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-xl font-medium mb-3"> Многодневные конференции (2+ дня)</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Многодневные конференции (2+ дня)</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Для конференций 2+ дня — пакетная цена со скидкой 20% + объёмные скидки.
           </p>
@@ -89,7 +89,7 @@ export default function CoffeeBreakPage() {
 
         {/* Conference Day Package */}
         <div className="mt-6 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
-          <h2 className="font-heading text-lg font-medium mb-2"> Конференционный пакет (на делегата/день)</h2>
+          <h2 className="font-heading text-lg font-medium mb-2">Конференционный пакет (на делегата/день)</h2>
           <p className="text-sm text-foreground/90 mb-3">
             Комплексная цена: утренний кофе-брейк + обед + дневной кофе-брейк.
             Один счёт, одна доставка, одна смета — без раздельных заказов.

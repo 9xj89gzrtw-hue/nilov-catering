@@ -4,7 +4,7 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 import ShareButton from '@/components/common/ShareButton';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/events/svadba', languages: { 'ru': '/events/svadba', 'en': '/en', 'x-default': '/events/svadba' } },
+  alternates: { canonical: '/events/svadba', languages: { 'ru': '/events/svadba', 'x-default': '/events/svadba' } },
   title: 'Свадебный кейтеринг',
   description: 'Свадебный кейтеринг NiloV в СПб: банкет, фуршет, торт, флористика. Полный цикл подготовки свадьбы под ключ.',
 };
@@ -58,7 +58,7 @@ export default function SvadbaPage() {
 
         {/* Multi-diet callout — для невест с разными диетами среди гостей */}
         <div className="mb-6 p-5 rounded-xl border-2 border-emerald-300 bg-emerald-50 text-center">
-          <h2 className="font-heading text-base font-medium mb-2"> Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
+          <h2 className="font-heading text-base font-medium mb-2">Веган + халяль + БГ + без орехов в одной свадьбе?</h2>
           <p className="text-sm text-foreground/90 mb-3">
             Да! В конструкторе меню есть режим «Несколько групп гостей». Каждая группа получает
             своё под-меню с фильтром по диете. Например, свадьба на 80: 10 веганов + 8 халяль +
@@ -151,7 +151,7 @@ export default function SvadbaPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2"> Эконом (3 950 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2">Эконом (3 950 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li> Доставка в КАД</li>
                 <li> Сервировка и базовый персонал</li>
@@ -162,7 +162,7 @@ export default function SvadbaPage() {
               </ul>
             </div>
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2"> Стандарт (5 470 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2">Стандарт (5 470 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li> Доставка в КАД</li>
                 <li> Сервировка и персонал</li>
@@ -173,7 +173,7 @@ export default function SvadbaPage() {
               </ul>
             </div>
             <div className="rounded-lg border border-line p-3 bg-secondary/30">
-              <h3 className="font-medium text-sm mb-2"> Расширенный (7 350 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2">Расширенный (7 350 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li> Всё из Стандарта</li>
                 <li> Welcome drink</li>
@@ -184,7 +184,7 @@ export default function SvadbaPage() {
               </ul>
             </div>
             <div className="rounded-lg border border-gold-text p-3 bg-gold-tint/30">
-              <h3 className="font-medium text-sm mb-2"> Максимальный (9 950 ₽)</h3>
+              <h3 className="font-medium text-sm mb-2">Максимальный (9 950 ₽)</h3>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li> Всё из Расширенного</li>
                 <li> Свадебный торт на заказ</li>

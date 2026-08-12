@@ -61,7 +61,7 @@ export default function NikahPage() {
           <h2 className="font-heading text-2xl font-medium mb-4">Никах или ифтар?</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-5 rounded-xl border-2 border-emerald-200 bg-emerald-50/30">
-              <h3 className="font-heading text-xl font-medium mb-2 text-emerald-900"> Никах</h3>
+              <h3 className="font-heading text-xl font-medium mb-2 text-emerald-900">Никах</h3>
               <p className="text-sm text-muted-foreground mb-3">Мусульманская свадебная церемония. Банкет с посадкой, отдельно мужская и женская зоны по запросу. Меню от 3 950 ₽/гость, мин. 15 гостей.</p>
               <ul className="text-sm space-y-1 text-foreground/90">
                 <li>• Банкет с посадкой, 4–6 перемен блюд</li>
@@ -72,7 +72,7 @@ export default function NikahPage() {
               </ul>
             </div>
             <div className="p-5 rounded-xl border-2 border-amber-200 bg-amber-50/30">
-              <h3 className="font-heading text-xl font-medium mb-2 text-amber-900"> Ифтар</h3>
+              <h3 className="font-heading text-xl font-medium mb-2 text-amber-900">Ифтар</h3>
               <p className="text-sm text-muted-foreground mb-3">Разговение после заката в месяц Рамадан. Фуршетный формат с датами, водой и лёгкими закусками. Меню от 1 800 ₽/гость, мин. 20 гостей.</p>
               <ul className="text-sm space-y-1 text-foreground/90">
                 <li>• Финики и вода — традиционное начало</li>
@@ -85,7 +85,7 @@ export default function NikahPage() {
           </div>
         </section>
         <section className="mb-10 p-6 rounded-xl border-2 border-gold-text bg-gold-tint/20">
-          <h2 className="font-heading text-xl font-medium mb-3"> B2B и тендеры · НДС</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">B2B и тендеры · НДС</h2>
           <p className="text-sm text-foreground mb-2">Без НДС (УСН). НДС через партнёрское ООО. ЭДО: Контур.Диадок, СБИС. Договор: ИП Нилов Д.И., ИНН 781433059704, ОГРНИП 314784710400401.</p>
           <Link href="/contact?subject=B2B-тендер" className="text-gold-text font-semibold hover:underline text-sm">Запросить КП и пакет документов →</Link>
         </section>

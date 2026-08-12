@@ -203,13 +203,24 @@ export async function POST(request: Request) {
       }
     }
 
-    // HONEST BEHAVIOR (W93-v7):
-    // - If Telegram is configured and succeeds → success (lead delivered to Telegram)
-    // - If Telegram is not configured OR fails → still succeed (lead is logged to console + visible in Vercel logs)
-    //   This prevents losing every contact submission on Vercel without env vars.
+    // HONEST BEHAVIOR (W93-v32):
+    // - If Telegram succeeds → success (lead delivered)
+    // - If Telegram not configured OR fails AND file persist failed → return 503 with phone fallback
+    //   DO NOT lie to client. Lead is lost, ask them to call.
     if (!telegramOk) {
-      console.warn('[CONTACT] WARNING: Lead not delivered via Telegram. Logged to console only.');
+      console.warn('[CONTACT] WARNING: Lead not delivered via Telegram.');
       console.log('[CONTACT] LEAD:', JSON.stringify(payload));
+      // Check if file persist also failed
+      const logsDir = join(process.cwd(), 'logs');
+      if (!existsSync(logsDir)) {
+        console.error('[CONTACT] CRITICAL: Both Telegram and file persist failed. Lead LOST.');
+        return NextResponse.json({
+          success: false,
+          message: 'Временная ошибка отправки. Пожалуйста, позвоните +7 (812) 919-59-11 — мы примем заказ.',
+          orderId,
+          phoneFallback: '+78129195911',
+        }, { status: 503 });
+      }
     }
 
     return NextResponse.json(
@@ -244,8 +255,7 @@ export async function GET() {
     legalAddress: LEGAL.legalAddress,
     edo: LEGAL.edo,
     phone: '+7 (812) 919-59-11',
-    email: 'info@odaeda.ru',
-    // W93-v7: canonical domain is nilov-catering.ru per AGENTS.md. nilov-catering.ru kept as legacy mailbox until migration completes.
-    altEmail: 'info@odaeda.ru',
+    email: 'info@nilov-catering.ru',
+    altEmail: 'b2b@nilov-catering.ru',
   });
 }

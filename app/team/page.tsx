@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/team', languages: { 'ru': '/team', 'en': '/en', 'x-default': '/team' } },
+  alternates: { canonical: '/team', languages: { 'ru': '/team', 'x-default': '/team' } },
   title: 'Команда',
   description: 'Команда NiloV Catering: шеф-повар Дмитрий Нилов (19 лет опыта), шеф-кондитер, су-шеф, event-координаторы. 40+ профессионалов с медкнижками и санминимумом.',
 };
@@ -16,6 +17,7 @@ const TEAM = [
     experience: 'С 2007 года',
     credentials: ['Санминимум', 'Медкнижка', 'HACCP', 'Шеф-повар высшей категории'],
     initials: 'ДН',
+    photo: '/images/team/chef-nilov.jpg',
   },
   {
     name: 'Елена Соколова',
@@ -24,6 +26,7 @@ const TEAM = [
     experience: 'С 2012 года',
     credentials: ['Le Cordon Bleu', 'Санминимум', 'Медкнижка', 'Безглютеновая сертификация'],
     initials: 'ЕС',
+    photo: '/images/team/art-director.jpg',
   },
   {
     name: 'Алексей Козлов',
@@ -32,6 +35,7 @@ const TEAM = [
     experience: 'С 2014 года',
     credentials: ['Санминимум', 'Медкнижка', 'Халяль-сертификация', 'HACCP'],
     initials: 'АК',
+    photo: '/images/team/sommelier.jpg',
   },
   {
     name: 'Мария Васильева',
@@ -40,14 +44,16 @@ const TEAM = [
     experience: 'С 2016 года',
     credentials: ['Санминимум', 'Медкнижка', 'Event-менеджмент (RMA)'],
     initials: 'МВ',
+    photo: '/images/team/manager.jpg',
   },
   {
     name: 'Игорь Петров',
     role: 'B2B-менеджер',
-    bio: 'Отвечает за корпоративных клиентов, школы, гос. учреждения. Договоры, ЭДО, НДС, тендеры по 44-ФЗ/223-ФЗ. Контакт: info@odaeda.ru.',
+    bio: 'Отвечает за корпоративных клиентов, школы, гос. учреждения. Договоры, ЭДО, НДС, тендеры по 44-ФЗ/223-ФЗ. Контакт: info@nilov-catering.ru.',
     experience: 'С 2018 года',
     credentials: ['Санминимум', 'Медкнижка', 'B2B-сертификация'],
     initials: 'ИП',
+    photo: '/images/team/manager.jpg',
   },
   {
     name: 'Ольга Дмитриева',
@@ -56,6 +62,7 @@ const TEAM = [
     experience: 'С 2019 года',
     credentials: ['Санминимум', 'Медкнижка', 'HACCP', 'First Aid (Red Cross)'],
     initials: 'ОД',
+    photo: '/images/team/art-director.jpg',
   },
 ];
 
@@ -78,24 +85,20 @@ export default function TeamPage() {
         {/* Photo disclaimer — applies to ALL team members below */}
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
-             <strong>Фото команды предоставляется по запросу после первого контакта</strong> — для верификации в LinkedIn, ОК, VK.
-            Фото команды публикуются с согласия сотрудников; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
+            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> — реальное фото. Фото других членов команды — иллюстративные; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 
         {/* Founder highlight */}
         <div className="mb-12 p-8 rounded-2xl border-2 border-gold-tint bg-gold-tint/10 text-center max-w-2xl mx-auto">
-          <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-tint to-gold-text flex items-center justify-center text-4xl font-bold text-white shadow-lg" title="Фото по запросу после первого контакта">
-            <svg viewBox="0 0 100 100" className="w-full h-full rounded-full" aria-hidden="true">
-              <defs>
-                <linearGradient id="chef-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#B08D57" />
-                  <stop offset="100%" stopColor="#8E6F3F" />
-                </linearGradient>
-              </defs>
-              <circle cx="50" cy="50" r="50" fill="url(#chef-grad)" />
-              <text x="50" y="58" textAnchor="middle" fontSize="36" fontWeight="700" fill="white" fontFamily="Georgia, serif">ДН</text>
-            </svg>
+          <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden shadow-lg border-2 border-gold-text" title="Дмитрий Нилов, основатель и шеф-повар">
+            <Image
+              src="/images/team/chef-nilov.jpg"
+              alt="Дмитрий Нилов, основатель и шеф-повар NiloV Catering"
+              width={112}
+              height={112}
+              className="w-full h-full object-cover"
+            />
           </div>
           <h2 className="font-heading text-2xl font-medium mb-1">Дмитрий Нилов</h2>
           <p className="text-gold-text font-medium mb-3">Основатель, шеф-повар · с 2007 года</p>
@@ -118,8 +121,14 @@ export default function TeamPage() {
           {TEAM.slice(1).map((m) => (
             <div key={m.name} className="rounded-xl border border-line bg-card p-5">
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center text-xl font-bold text-foreground shrink-0" title="Фото по запросу после первого контакта">
-                  {m.initials}
+                <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border border-line" title={`${m.name}, ${m.role}`}>
+                  <Image
+                    src={m.photo!}
+                    alt={`${m.name}, ${m.role}`}
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-heading text-base font-medium text-foreground truncate">{m.name}</h3>
@@ -141,7 +150,7 @@ export default function TeamPage() {
 
         {/* Санминимум / медкнижки */}
         <div className="mt-12 p-6 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-lg font-medium mb-3"> Санитарные требования</h2>
+          <h2 className="font-heading text-lg font-medium mb-3">Санитарные требования</h2>
           <p className="text-sm text-muted-foreground mb-3">
             100% персонала имеют действующие медицинские книжки (ЛМК) с ежегодным медосмотром.
             Аттестация по санминимуму — раз в 2 года. Прививки от дифтерии и гепатита В — 100%.

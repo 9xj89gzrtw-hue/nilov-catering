@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/certificates', languages: { 'ru': '/certificates', 'en': '/en', 'x-default': '/certificates' } },
+  alternates: { canonical: '/certificates', languages: { 'ru': '/certificates', 'x-default': '/certificates' } },
   title: 'Сертификаты, безопасность и документы',
   description: 'Полный пакет документов: ИНН/ОГРНИП, ТР ТС 022/2011, HACCP, медицинские книжки, журнал бракеража, программа производственного контроля, страхование ответственности.',
 };
@@ -39,7 +39,7 @@ const CERTIFICATES = [
       'Журнал бракеража ведётся на каждом событии.',
       'Соответствие СанПиН 2.3/2.4.3590-20.',
     ],
-    note: 'Скан ППК предоставляется по запросу на b2b@odaeda.ru в течение 1 рабочего дня.',
+    note: 'Скан ППК предоставляется по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня.',
   },
   {
     icon: '🏷️',
@@ -112,7 +112,7 @@ const CERTIFICATES = [
       'Без алкоголя: халяль-заказы готовятся в окне без алкогольных ингредиентов. Винный уксус, мирин, коньяк — исключены.',
       'Соусы: томатный на халяль-базе, без загустителей с алкоголем.',
     ],
-    note: 'Сертификат Совета муфтиев России — рег. № СМР-Халяль (скан по запросу), действует до 31.12.2026. Скан PDF (1.2 МБ) предоставляется по запросу на b2b@odaeda.ru в течение 1 рабочего дня. Сертификация обновляется ежегодно.',
+    note: 'Сертификат Совета муфтиев России — рег. № СМР-Халяль (скан по запросу), действует до 31.12.2026. Скан PDF (1.2 МБ) предоставляется по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня. Сертификация обновляется ежегодно.',
   },
   {
     icon: '🛡️',
@@ -144,7 +144,7 @@ const CERTIFICATES = [
       'Кассовый чек — выдаётся по 54-ФЗ.',
       'Депозит 30% бронирует дату (входит в предоплату). Предоплата 50% по счёту, постоплата 50% — в течение 5 рабочих дней после события. Для постоянных B2B-клиентов (3+ событий) — отсрочка 14 рабочих дней (фиксированно).',
     ],
-    note: 'B2B-реквизиты и шаблон договора — на странице /events/korporativ или по запросу на info@odaeda.ru.',
+    note: 'B2B-реквизиты и шаблоны договора, NDA и SLA доступны для прямого скачивания ниже в разделе «Шаблоны документов». Также — на странице /events/korporativ.',
   },
   {
     icon: '🔒',
@@ -174,7 +174,7 @@ const CERTIFICATES = [
       'Фотосъёмка на мероприятиях: только с согласия заказчика. Без согласия — только общие планы без лиц.',
       'Список гостей, меню, бюджет, логистика — конфиденциальная информация. Не передаётся третьим лицам.',
     ],
-    note: 'Скачать шаблон NDA напрямую: см. раздел «Шаблоны документов» ниже. Подпись — ЭДО (Диадок/СБИС) или оригинал с печатью. Также работаем по вашему шаблону — пришлите на b2b@odaeda.ru.',
+    note: 'Скачать шаблон NDA напрямую: см. раздел «Шаблоны документов» ниже. Подпись — ЭДО (Диадок/СБИС) или оригинал с печатью. Также работаем по вашему шаблону — пришлите на b2b@nilov-catering.ru.',
   },
   {
     icon: '📊',
@@ -189,7 +189,7 @@ const CERTIFICATES = [
       'Страхование распространяется на всех субподрядчиков в рамках контракта.',
       'Сертификация халяль/БГ — действуют через всех партнёров (передаём протокол).',
     ],
-    note: 'Запросить список сертифицированных кухонь и их ИНН/сертификаты — b2b@odaeda.ru (после подписания NDA). Пример festival-scale кейса на 800 чел × 2 дня — /why-us (composite case).',
+    note: 'Запросить список сертифицированных кухонь и их ИНН/сертификаты — b2b@nilov-catering.ru (после подписания NDA). Пример festival-scale кейса на 800 чел × 2 дня — /why-us (composite case).',
   },
 ];
 
@@ -214,7 +214,7 @@ export default function CertificatesPage() {
 
         {/* Quick legal block */}
         <div className="mb-10 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-xl font-medium mb-3"> Реквизиты юридического лица</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Реквизиты юридического лица</h2>
           <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
             <dt className="text-muted-foreground">Юр.лицо:</dt>
             <dd className="font-medium">{SITE.legalName}</dd>
@@ -272,14 +272,14 @@ export default function CertificatesPage() {
         {/* Quick links to related pages */}
         <div className="mt-10 mb-4 grid sm:grid-cols-2 gap-4">
           <Link href="/partners" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <h3 className="font-heading text-base font-medium mb-1"> Партнёрская сеть</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Партнёрская сеть</h3>
             <p className="text-sm text-muted-foreground">
               Сертифицированные кухни для событий 500+ гостей. Аудит: медкнижки, ХАССП, страхование ГО.
             </p>
             <p className="text-xs text-gold-text font-semibold mt-2">Смотреть партнёров →</p>
           </Link>
           <Link href="/account/orders" className="block p-5 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
-            <h3 className="font-heading text-base font-medium mb-1"> Личный кабинет B2B</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Личный кабинет B2B</h3>
             <p className="text-sm text-muted-foreground">
               История заказов, закрывающие документы на скачивание, статусы событий. Для постоянных B2B-клиентов.
             </p>
@@ -289,7 +289,7 @@ export default function CertificatesPage() {
 
         {/* Downloadable templates */}
         <div className="mt-4 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-2xl font-medium mb-2"> Шаблоны документов для скачивания</h2>
+          <h2 className="font-heading text-2xl font-medium mb-2">Шаблоны документов для скачивания</h2>
           <p className="text-sm text-muted-foreground mb-5">
             Скачайте шаблоны прямо сейчас — без email-ожидания. Все шаблоны согласуются индивидуально
             под ваш контракт. Подпись — ЭДО (Диадок/СБИС) или оригинал с печатью.

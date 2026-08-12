@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/offer', languages: { 'ru': '/offer', 'en': '/en', 'x-default': '/offer' } },
+  alternates: { canonical: '/offer', languages: { 'ru': '/offer', 'x-default': '/offer' } },
   title: 'Публичная оферта',
   description:
     'Публичная оферта ИП Нилов Д.И. на оказание услуг кейтеринга. Акцепт осуществляется путём размещения заказа. СПб.',
@@ -15,7 +15,7 @@ export default function OfferPage() {
         <h1 className="mb-4">Публичная оферта</h1>
         <p className="text-sm text-muted-foreground mb-8">
           Редакция от 1 августа 2026 г. Настоящий документ является публичной офертой в смысле
-          ст. 437 ГК РФ. Размещение заказа через сайт nilov-catering.ru, по телефону +7 (812) 919-59-11
+          ст. 437 ГК РФ. Размещение заказа через сайт nilov-catering.vercel.app, по телефону +7 (812) 919-59-11
           или через форму заявки означает полный акцепт настоящей оферты (ст. 438 ГК РФ).
         </p>
 
@@ -43,7 +43,7 @@ export default function OfferPage() {
               2.1. Акцепт оферты осуществляется одним из следующих способов:
             </p>
             <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90 mb-3">
-              <li>Размещение заказа через сайт nilov-catering.ru</li>
+              <li>Размещение заказа через сайт nilov-catering.vercel.app</li>
               <li>Подача заявки по телефону +7 (812) 919-59-11</li>
               <li>Подача заявки через WhatsApp/Telegram</li>
               <li>Подписание счёта-договора (для юрлиц)</li>
@@ -69,8 +69,10 @@ export default function OfferPage() {
               .
             </p>
             <p className="text-sm leading-relaxed mb-3">
-              3.2. Оплата: предоплата 50% при бронировании, остаток 50% — в день мероприятия
-              (для физлиц) или в течение 5 рабочих дней после мероприятия по акту (для юрлиц).
+              3.2. Оплата: депозит 30% бронирует дату (входит в предоплату). Предоплата 50% по счёту при бронировании.
+              Остаток 50% — для физлиц в день мероприятия, для юрлиц в течение 5 рабочих дней после мероприятия по акту.
+              Для постоянных B2B-клиентов (3+ событий) — отсрочка 14 рабочих дней. Для гос. заказчиков 44-ФЗ — оплата по факту приёмки.
+              Единые условия для всех каналов: /certificates, /faq.
             </p>
             <p className="text-sm leading-relaxed">
               3.3. Исполнитель работает на системе налогообложения {LEGAL.taxSystem}. Для Заказчиков на ОСН, требующих счёт-фактуру с НДС, документы оформляются через партнёрское ООО (по запросу). Документы для юрлиц: счёт, акт, УПД. ЭДО — Контур.Диадок и СБИС.
@@ -135,15 +137,15 @@ export default function OfferPage() {
             <h2 className="font-heading text-xl font-medium mb-3">7. Заключительные положения</h2>
             <p className="text-sm leading-relaxed mb-3">
               7.1. Исполнитель оставляет за собой право изменять условия оферты. Новая редакция
-              вступает в силу с момента публикации на сайте nilov-catering.ru.
+              вступает в силу с момента публикации на сайте nilov-catering.vercel.app.
             </p>
             <p className="text-sm leading-relaxed mb-3">
               7.2. Все споры разрешаются в соответствии с законодательством РФ.
             </p>
             <p className="text-sm leading-relaxed">
               7.3. По всем вопросам обращаться:{' '}
-              <a href="mailto:info@odaeda.ru" className="underline">
-                info@odaeda.ru
+              <a href="mailto:info@nilov-catering.ru" className="underline">
+                info@nilov-catering.ru
               </a>
               , +7 (812) 919-59-11.
             </p>
@@ -161,7 +163,7 @@ export default function OfferPage() {
 Банк: ${LEGAL.bank.name} · БИК ${LEGAL.bank.bik}
 р/с: ${LEGAL.bank.account}
 Телефон: +7 (812) 919-59-11
-Email: info@odaeda.ru / b2b@odaeda.ru`}
+Email: info@nilov-catering.ru / b2b@nilov-catering.ru`}
             </pre>
           </section>
         </div>

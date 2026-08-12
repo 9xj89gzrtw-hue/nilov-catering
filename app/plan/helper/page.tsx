@@ -4,7 +4,7 @@ import { SITE } from '@/lib/data';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/plan/helper', languages: { 'ru': '/plan/helper', 'en': '/en', 'x-default': '/plan/helper' } },
+  alternates: { canonical: '/plan/helper', languages: { 'ru': '/plan/helper', 'x-default': '/plan/helper' } },
   title: 'Помощник выбора кейтеринга — 3 вопроса, 30 секунд',
   description: 'Ответьте на 3 простых вопроса — подберём идеальный формат кейтеринга: повод, гостей, место. Без регистрации, без телефона.',
 };

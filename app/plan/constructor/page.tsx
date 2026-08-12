@@ -10,7 +10,7 @@ import { SITE } from '@/lib/data';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/plan/constructor', languages: { 'ru': '/plan/constructor', 'en': '/en', 'x-default': '/plan/constructor' } },
+  alternates: { canonical: '/plan/constructor', languages: { 'ru': '/plan/constructor', 'x-default': '/plan/constructor' } },
   title: 'Заявка на подбор меню — соберите кейтеринг под ваше событие',
   description: 'Соберите меню под ваше событие за 2 минуты. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Multi-диета: веган + халяль + без глютена + без орехов + всеядные в одном заказе.',
 };

@@ -30,11 +30,11 @@ interface FilterDef {
 }
 
 const FILTERS: FilterDef[] = [
-  { key: 'all',       label: 'Все',           icon: Sparkles,  match: () => true },
-  { key: 'weddings',  label: 'Свадьбы',       icon: Heart,     match: (r) => /Свадьб|Никях|Ифтар/.test(r.eventType) },
-  { key: 'corporate', label: 'Корпоративы',   icon: Building2, match: (r) => /Корпорат|Доставк/.test(r.eventType) },
-  { key: 'birthdays', label: 'Дни рождения',  icon: Cake,      match: (r) => /День рожд|Детск|Юбилей|Выпускн/.test(r.eventType) },
-  { key: 'coffee',    label: 'Кофе-брейки',   icon: Coffee,    match: (r) => /Конференц/.test(r.eventType) },
+  { key: 'all',       label: 'Все',                  icon: Sparkles,  match: () => true },
+  { key: 'weddings',  label: 'Свадьбы и никах',      icon: Heart,     match: (r) => /Свадьб|Никях|Ифтар/.test(r.eventType) },
+  { key: 'corporate', label: 'Корпоративы',          icon: Building2, match: (r) => /Корпорат|Доставк/.test(r.eventType) },
+  { key: 'birthdays', label: 'Дни рождения, юбилеи', icon: Cake,      match: (r) => /День рожд|Детск|Юбилей|Выпускн/.test(r.eventType) },
+  { key: 'coffee',    label: 'Конференции',          icon: Coffee,    match: (r) => /Конференц/.test(r.eventType) },
 ];
 
 // === Подбор фото под тип события ===

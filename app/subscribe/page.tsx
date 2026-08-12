@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/subscribe', languages: { 'ru': '/subscribe', 'en': '/en', 'x-default': '/subscribe' } },
+  alternates: { canonical: '/subscribe', languages: { 'ru': '/subscribe', 'x-default': '/subscribe' } },
   title: 'Подписка на кейтеринг — офисные обеды и кофе-брейки',
   description:
     'Регулярный кейтеринг для офисов: кофе-брейки, бизнес-ланчи. Скидки до 23%. Годовой контракт с ЭДО и SLA. СПб.',
@@ -71,7 +71,7 @@ export default function SubscribePage() {
           <div className="space-y-4">
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1"> Кофе-брейк — еженедельно</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Кофе-брейк — еженедельно</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 события × 50 чел × 390 ₽ = 78 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">66 300 ₽/мес</strong>
             </p>
@@ -79,7 +79,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border-2 border-gold-text/40 bg-gold-tint/5">
-            <h3 className="font-heading text-base font-medium mb-1"> Годовой контракт (кофе-брейк)</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Долгосрочный контракт (кофе-брейк)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong> (скидка 23%).
               Ежемесячный ЭДО-инвойс. SLA ±15 минут включён.
@@ -90,7 +90,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1"> Бизнес-ланч — еженедельно</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Бизнес-ланч — еженедельно</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 обеда × 50 чел × 650 ₽ = 130 000 ₽/мес → со скидкой 15% = <strong className="text-foreground">110 500 ₽/мес</strong>
             </p>
@@ -100,7 +100,7 @@ export default function SubscribePage() {
           </div>
 
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h3 className="font-heading text-base font-medium mb-1"> Комбо (кофе-брейк + обед)</h3>
+            <h3 className="font-heading text-base font-medium mb-1">Комбо (кофе-брейк + обед)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               4 дня × (кофе-брейк 390 ₽ + обед 650 ₽) × 50 чел = 208 000 ₽/мес →
               со скидкой 20% = <strong className="text-foreground">166 400 ₽/мес</strong>

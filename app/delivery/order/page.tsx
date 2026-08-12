@@ -74,7 +74,7 @@ export default function DeliveryOrderPage() {
             {step === 0 && (
               <div>
                 <div className="mb-6">
-                  <h3 className="font-heading text-lg font-medium mb-3"> Быстрый старт</h3>
+                  <h3 className="font-heading text-lg font-medium mb-3">Быстрый старт</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {DELIVERY_PRESETS.map(preset => (
                       <div key={preset.id} className="rounded-xl border border-line bg-card p-4">
@@ -102,7 +102,7 @@ export default function DeliveryOrderPage() {
                 {cart.items.length === 0 && (
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-heading text-lg font-medium"> Быстрый старт</h3>
+                      <h3 className="font-heading text-lg font-medium">Быстрый старт</h3>
                       <span className="text-xs text-muted-foreground">или соберите сами ↓</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">

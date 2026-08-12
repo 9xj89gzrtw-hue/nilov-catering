@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/allergens', languages: { 'ru': '/allergens', 'en': '/en', 'x-default': '/allergens' } },
+  alternates: { canonical: '/allergens', languages: { 'ru': '/allergens', 'x-default': '/allergens' } },
   title: 'Аллергены, медицинские диеты и поминальный протокол',
   description: '14 аллергенов ТР ТС 022/2011, протоколы для целиакии (<20 ppm), анафилаксии (nut-free), халяль, веган, сахарный диабет (расчёт ХЕ), поминки (без алкоголя). Раздельное оборудование, маркировка блюд, EpiPen.',
 };
@@ -57,7 +57,7 @@ export default function Page() {
 
         {/* Целиакия-протокол */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-blue-200 bg-blue-50">
-          <h2 id="celiakia" className="font-heading text-xl font-medium mb-3 scroll-mt-20"> Протокол для целиакии (без глютена)</h2>
+          <h2 id="celiakia" className="font-heading text-xl font-medium mb-3 scroll-mt-20">Протокол для целиакии (без глютена)</h2>
           <ul className="text-sm text-foreground space-y-1.5 mb-3">
             <li> Отдельная зона кухни — без пересечения с пшеничной мукой</li>
             <li> Отдельные разделочные столы, плиты, духовки</li>
@@ -76,7 +76,7 @@ export default function Page() {
 
         {/* Анафилаксия-протокол (nut-free) */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-red-200 bg-red-50">
-          <h2 id="anafilaksiya" className="font-heading text-xl font-medium mb-3 scroll-mt-20"> Протокол для анафилаксии на орехи (nut-free)</h2>
+          <h2 id="anafilaksiya" className="font-heading text-xl font-medium mb-3 scroll-mt-20">Протокол для анафилаксии на орехи (nut-free)</h2>
           <p className="text-sm text-foreground mb-3">
             Если у гостя анафилаксия на арахис, лесной, кедровый, грецкий или любой другой орех:
           </p>
@@ -97,7 +97,7 @@ export default function Page() {
 
         {/* Халяль-протокол */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-3"> Халяль-протокол (раздельное оборудование)</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Халяль-протокол (раздельное оборудование)</h2>
           <ul className="text-sm text-foreground space-y-1.5 mb-3">
             <li> Забой по обряду зибха (zibh) с произнесением такбира (tasmiya)</li>
             <li> Сертификат Совета муфтиев России (ДУМ РФ)</li>
@@ -116,7 +116,7 @@ export default function Page() {
 
         {/* Веган-протокол */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-green-200 bg-green-50">
-          <h2 className="font-heading text-xl font-medium mb-3"> Веган-протокол (без животных продуктов)</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Веган-протокол (без животных продуктов)</h2>
           <ul className="text-sm text-foreground space-y-1.5 mb-3">
             <li> Без мяса, рыбы, морепродуктов, яиц, молока, мёда, желатина</li>
             <li> Отдельная зона кухни для веган-блюд (по умолчанию)</li>
@@ -151,7 +151,7 @@ export default function Page() {
             <li> Безалкогольное меню — алкоголь влияет на уровень глюкозы непредсказуемо</li>
             <li> БГ + без-сахара торт: отдельная выпечка с стевией/эритритом и миндальной мукой (если нет анафилаксии на орехи)</li>
             <li> Обязательная дегустация для гостя с СД1 — подтверждение состава и расчёта ХЕ перед заказом</li>
-            <li> Шеф-кондитер Елена Соколова специализируется на диабетической выпечке (стаж 8 лет)</li>
+            <li> Шеф-кондитер Елена Соколова специализируется на диабетической выпечке (с 2012 года, выпускница Le Cordon Bleu)</li>
           </ul>
           <p className="text-sm text-muted-foreground">
             В заявке выберите тип «Другое» и в комментарии укажите: «СД1 (или СД2), считаем ХЕ,

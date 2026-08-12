@@ -13,7 +13,7 @@ import WowCase from '@/components/blocks/WowCase';
 import { getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/', languages: { 'ru': '/', 'en': '/en', 'x-default': '/' } },
+  alternates: { canonical: '/', languages: { 'ru': '/', 'x-default': '/' } },
   // og:image provided by app/opengraph-image.tsx (dynamic 1200×630 PNG)
 };
 

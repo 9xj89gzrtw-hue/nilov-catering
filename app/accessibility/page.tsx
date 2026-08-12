@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/accessibility', languages: { 'ru': '/accessibility', 'en': '/en', 'x-default': '/accessibility' } },
+  alternates: { canonical: '/accessibility', languages: { 'ru': '/accessibility', 'x-default': '/accessibility' } },
   title: 'Доступность (WCAG 2.2 AA)',
   description: 'Заявление о доступности сайта NiloV Catering. WCAG 2.2 AA. Skip-link, A−/A/A+ переключатель шрифта, prefers-reduced-motion, контраст AA.',
 };
@@ -27,7 +27,7 @@ export default function AccessibilityPage() {
           </p>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-xl font-medium text-foreground"> Что реализовано</h2>
+            <h2 className="font-heading text-xl font-medium text-foreground">Что реализовано</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Skip-link «Перейти к содержимому» в начале каждой страницы (виден при Tab)</li>
               <li><strong>Переключатель размера шрифта A+ в шапке</strong> каждой страницы (100% / 125% / 150%)</li>
@@ -44,7 +44,7 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-xl font-medium text-foreground"> Для пожилых пользователей</h2>
+            <h2 className="font-heading text-xl font-medium text-foreground">Для пожилых пользователей</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Телефон <a href={`tel:${SITE.phoneTel}`} className="text-gold-text underline">{SITE.phone}</a> — кликабелен в шапке на всех страницах (text-base 16px)</li>
               <li>Переключатель A+ в шапке — увеличивает шрифт до 150% (3 уровня: 100% / 125% / 150%)</li>
@@ -56,7 +56,7 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-xl font-medium text-foreground"> Для аллергиков</h2>
+            <h2 className="font-heading text-xl font-medium text-foreground">Для аллергиков</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>14 аллергенов ТР ТС 022/2011 — на странице <Link href="/allergens" className="text-gold-text underline">/allergens</Link></li>
               <li>Протоколы для целиакии, анафилаксии, халяль — на <Link href="/certificates" className="text-gold-text underline">/certificates</Link></li>
@@ -67,7 +67,7 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading text-xl font-medium text-foreground"> Известные ограничения</h2>
+            <h2 className="font-heading text-xl font-medium text-foreground">Известные ограничения</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-muted-foreground">
               <li>Видео-контент — субтитры в процессе внедрения (план — Q3 2026)</li>
               <li>Конструктор меню — интерактивный режим требует JavaScript (есть SSR fallback с формой)</li>

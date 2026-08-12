@@ -37,7 +37,7 @@ export default function TenderHub() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Document package */}
           <div className="p-6 rounded-2xl border border-line bg-card">
-            <h3 className="font-heading text-lg font-medium mb-3"> Пакет документов для тендера</h3>
+            <h3 className="font-heading text-lg font-medium mb-3">Пакет документов для тендера</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Готовый пакет для загрузки на ЭТП (электронные торговые площадки):
             </p>
@@ -81,7 +81,7 @@ export default function TenderHub() {
 
           {/* Case studies — premium display typography */}
           <div className="p-6 rounded-2xl border border-line bg-card">
-            <h3 className="font-heading text-lg font-medium mb-3"> Опыт работы с тендерами</h3>
+            <h3 className="font-heading text-lg font-medium mb-3">Опыт работы с тендерами</h3>
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-secondary/30 border-l-4 border-gold-text">
                 <p className="font-heading text-base font-medium mb-1">Конференция «Экспофорум»</p>

@@ -7,6 +7,7 @@ import type { Format, Tier } from '@/lib/types';
 const FORMAT_LABELS: Record<string, string> = {
   furshet: 'Фуршет',
   banket: 'Банкет',
+  banquet: 'Банкет',
   'coffee-break': 'Кофе-брейк',
   detskoe: 'Детское меню',
   vegan: 'Веган',
@@ -16,6 +17,10 @@ const FORMAT_LABELS: Record<string, string> = {
   bar: 'Бар',
   'mobile-furshet': 'Выездной фуршет',
   'chef-at-home': 'Выезд шефа',
+  bbq: 'BBQ-меню',
+  maslenitsa: 'Масленица',
+  'new-year': 'Новогоднее меню',
+  pominki: 'Поминальное меню',
 };
 
 const TIER_INFO: Record<Tier, { label: string; desc: string }> = {
@@ -88,8 +93,9 @@ ${dishes.map(d => `<tr>
 
   return new NextResponse(html, {
     headers: {
+      // Return as printable HTML (not PDF) — filename reflects actual content.
       'Content-Type': 'text/html; charset=utf-8',
-      'Content-Disposition': `attachment; filename="nilov-${format}-menu.html"`,
+      'Content-Disposition': `inline; filename="nilov-${format}-menu.html"`,
     },
   });
 }

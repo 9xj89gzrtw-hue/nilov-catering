@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/events/recap', languages: { 'ru': '/events/recap', 'en': '/en', 'x-default': '/events/recap' } },
+  alternates: { canonical: '/events/recap', languages: { 'ru': '/events/recap', 'x-default': '/events/recap' } },
   title: 'Кейсы и видео-рекапы событий',
   description:
     'Кейсы и видео-рекапы событий NiloV Catering: свадьбы, корпоративы, халяль-банкеты, детские праздники с медицинскими диетами. Реальные отзывы клиентов.',
@@ -159,20 +159,19 @@ export default function RecapPage() {
         {/* Composite festival case */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-lg font-medium mb-2">
-             Festival-scale (800+ чел)
+            Festival-scale: 800+ чел
           </h2>
           <p className="text-sm text-foreground/90 mb-2">
             <strong>
               Корпоративный фестиваль 800 чел × 2 дня (с расширением производственных мощностей).
             </strong>{' '}
             4 кофе-брейка + 2 обеда + 1 гала-фуршет = 5 600 порций за 2 дня. Основной подрядчик —
-            ИП Нилов (управление, координация, сервировка). Субподряд — 3 сертифицированные
-            сертифицированной кухни. SLA в договоре (±15 минут, штраф 1%/мин). Страхование 30 млн ₽.
+            ИП Нилов (управление, координация, сервировка). Субподряд — 3 сертифицированные кухни. SLA в договоре (±15 минут, штраф 1%/мин). Страхование 30 млн ₽.
             3 диеты: веган, БГ, всеядные.
           </p>
           <p className="text-sm text-muted-foreground">
             Кейс composite — собран из нескольких аналогичных корпоративных событий 2024–2025.
-            Полные детали и контакты референсов — по запросу на b2b@odaeda.ru (после NDA).
+            Полные детали и контакты референсов — по запросу на b2b@nilov-catering.ru (после NDA).
             Для фестивалей 800+ гостей — расширяем производственные мощности.{' '}
             <Link href="/why-us" className="underline text-gold-text">
               Подробнее →
@@ -184,8 +183,8 @@ export default function RecapPage() {
           <p className="text-sm text-muted-foreground">
              <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
-            <a href="mailto:info@odaeda.ru" className="underline text-gold-text">
-              info@odaeda.ru
+            <a href="mailto:info@nilov-catering.ru" className="underline text-gold-text">
+              info@nilov-catering.ru
             </a>{' '}
             или{' '}
             <a href="tel:+78129195911" className="underline text-gold-text">

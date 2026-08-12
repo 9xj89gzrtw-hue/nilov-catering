@@ -7,7 +7,7 @@ import { getPricesForFormat } from '@/lib/tariff-offers';
 import type { Format } from '@/lib/types';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/plan/calculator', languages: { 'ru': '/plan/calculator', 'en': '/en', 'x-default': '/plan/calculator' } },
+  alternates: { canonical: '/plan/calculator', languages: { 'ru': '/plan/calculator', 'x-default': '/plan/calculator' } },
   title: 'Тарифы и таблицы — кейтеринг СПб',
   description: 'Тарифы и таблицы: стоимость кейтеринга. Фуршет от 2 450 ₽/гость, банкет от 3 950 ₽/гость, кофе-брейк от 390 ₽/гость. Всё включено: еда, персонал, посуда, доставка по КАД.',
 };
@@ -108,7 +108,7 @@ function CalculatorServerFallback() {
         {/* Что включено */}
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h2 className="font-heading text-lg font-medium mb-3"> Что включено в цену</h2>
+            <h2 className="font-heading text-lg font-medium mb-3">Что включено в цену</h2>
             <ul className="text-sm space-y-1.5 text-muted-foreground">
               <li>• Еда и напитки по тарифу</li>
               <li>• Официанты (1 на 10 гостей)</li>
@@ -120,7 +120,7 @@ function CalculatorServerFallback() {
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-line bg-card">
-            <h2 className="font-heading text-lg font-medium mb-3"> Дополнительно (опционально)</h2>
+            <h2 className="font-heading text-lg font-medium mb-3">Дополнительно (опционально)</h2>
             <ul className="text-sm space-y-1.5 text-muted-foreground">
               <li>• Доставка за КАД — от 3 000 ₽</li>
               <li>• Аренда оборудования — от 5 000 ₽</li>
@@ -135,7 +135,7 @@ function CalculatorServerFallback() {
 
         {/* Скидки */}
         <div className="mt-6 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-lg font-medium mb-2"> Скидки</h2>
+          <h2 className="font-heading text-lg font-medium mb-2">Скидки</h2>
           <ul className="text-sm space-y-1.5">
             <li>• <strong>Раннее бронирование:</strong> 10% за 60+ дней, 15% за 90+ дней</li>
             <li>• <strong>Объём:</strong> от 100 гостей — индивидуальная скидка</li>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/partners', languages: { 'ru': '/partners', 'en': '/en', 'x-default': '/partners' } },
+  alternates: { canonical: '/partners', languages: { 'ru': '/partners', 'x-default': '/partners' } },
   title: 'Партнёрам — агентствам, площадкам, поставщикам',
   description:
     'Партнёрская программа NiloV Catering: комиссия 10-15% агентствам, обмен лидами, SLA, NDA, шаблон договора. ЭДО. СПб и ЛО.',
@@ -32,7 +32,7 @@ export default function PartnersPage() {
           </p>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90 mb-4">
             <li><span className="font-medium">Агентская комиссия:</span> 10% от суммы заказа (для агентств с NDA), 15% — для эксклюзивных партнёров (3+ событий в месяц)</li>
-            <li><span className="font-medium">NDA:</span> подписываем до начала работы. Шаблон NDA — по запросу на b2b@odaeda.ru в течение 1 рабочего дня</li>
+            <li><span className="font-medium">NDA:</span> подписываем до начала работы. Шаблон NDA — по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня</li>
             <li><span className="font-medium">SLA:</span> доставка точно в согласованное окно, штраф 1% за минуту опоздания, максимум 30%</li>
             <li><span className="font-medium">Договор:</span> либо напрямую с ИП Нилов Д.И. (УСН 6%), без НДС (УСН) или с НДС через партнёрское ООО — на выбор агентства</li>
             <li><span className="font-medium">ЭДО:</span> Контур.Диадок (operator ID 2AE), СБИС (operator ID 2АК)</li>
@@ -43,7 +43,7 @@ export default function PartnersPage() {
           </ul>
           <p className="text-xs text-muted-foreground">
             Запросить шаблон NDA, агентский договор и прайс-лист для партнёров:{' '}
-            <a href="mailto:b2b@odaeda.ru" className="underline text-gold-text">b2b@odaeda.ru</a>{' '}
+            <a href="mailto:b2b@nilov-catering.ru" className="underline text-gold-text">b2b@nilov-catering.ru</a>{' '}
             или <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>.
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function PartnersPage() {
             <li>Алкоголь: через лицензированных поставщиков (для бар-меню)</li>
           </ul>
           <p className="text-xs text-muted-foreground">
-            Контакты для поставщиков: <a href="mailto:info@odaeda.ru" className="underline">info@odaeda.ru</a>{' '}
+            Контакты для поставщиков: <a href="mailto:info@nilov-catering.ru" className="underline">info@nilov-catering.ru</a>{' '}
             с темой «Поставщик».
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function PartnersPage() {
 
         {/* Partner network benefits */}
         <div className="mb-8 p-6 rounded-xl border border-line bg-secondary/30">
-          <h2 className="font-heading text-xl font-medium mb-3"> Что вы получаете как партнёр</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Что вы получаете как партнёр</h2>
           <ul className="text-sm space-y-2 list-disc list-inside text-foreground/90">
             <li>Стабильный поток заказов (27 отзывов · 4.8/5 за историю, 200+ в год)</li>
             <li>Прозрачную агентскую комиссию без задержек</li>
@@ -129,8 +129,8 @@ export default function PartnersPage() {
             Опишите ваш бизнес и предложение — B2B-менеджер свяжется в течение 1 рабочего дня.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a href="mailto:b2b@odaeda.ru?subject=Партнёрство" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
-               b2b@odaeda.ru
+            <a href="mailto:b2b@nilov-catering.ru?subject=Партнёрство" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+               b2b@nilov-catering.ru
             </a>
             <a href="tel:+78129195911" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
                +7 (812) 919-59-11

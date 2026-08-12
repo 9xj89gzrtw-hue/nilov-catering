@@ -666,7 +666,7 @@ export default function ConstructorWizard() {
             <div className="flex items-start gap-3">
               <span className="text-2xl"></span>
               <div>
-                <h3 className="font-semibold text-amber-900 mb-1"> Дополните меню до идеала</h3>
+                <h3 className="font-semibold text-amber-900 mb-1">Дополните меню до идеала</h3>
                 <p className="text-sm text-amber-800 mb-2">
                   Для формата «{formatMeta?.label}» рекомендуем минимум {minOrderCheck.min} {minOrderCheck.type === 'guests' ? 'гостей' : '₽'} — это обеспечит полный кейтеринг-опыт для каждого гостя.
                 </p>
@@ -784,7 +784,7 @@ export default function ConstructorWizard() {
             {/* Excluded allergens — передаются в заявку менеджеру */}
             {store.excludedAllergens.length > 0 && (
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4 mb-6">
-                <h3 className="text-sm font-medium mb-2"> Исключённые аллергены (передаётся менеджеру):</h3>
+                <h3 className="text-sm font-medium mb-2">Исключённые аллергены (передаётся менеджеру):</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {store.excludedAllergens.map(a => (
                     <span key={a} className="text-xs bg-destructive text-white px-2 py-0.5 rounded-full font-semibold">

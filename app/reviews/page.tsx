@@ -17,7 +17,7 @@ import ReviewsMasonry from './ReviewsMasonry';
 export const metadata: Metadata = {
   alternates: {
     canonical: '/reviews',
-    languages: { ru: '/reviews', en: '/en', 'x-default': '/reviews' },
+    languages: { ru: '/reviews', 'x-default': '/reviews' },
   },
   title: 'Отзывы клиентов',
   description:

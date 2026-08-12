@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Юбилей и годовщина — кейтеринг для пожилых',
   description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 15 гостей, бюджетные решения от 50 000 ₽. Честные цены, реальные отзывы, большой шрифт.',
-  alternates: { canonical: '/events/yubiley', languages: { 'ru': '/events/yubiley', 'en': '/en', 'x-default': '/events/yubiley' } },
+  alternates: { canonical: '/events/yubiley', languages: { 'ru': '/events/yubiley', 'x-default': '/events/yubiley' } },
 };
 
 export default function YubileyPage() {
@@ -31,7 +31,7 @@ export default function YubileyPage() {
 
         {/* Phone CTA — large for elderly */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-xl font-medium mb-2"> Позвоните — поможем выбрать</h2>
+          <h2 className="font-heading text-xl font-medium mb-2">Позвоните — поможем выбрать</h2>
           <p className="text-base text-muted-foreground mb-4">
             Не любите заполнять формы? Позвоните — шеф-повар Дмитрий Нилов лично подберёт меню
             под ваш бюджет и повод. Перезвоним в течение 15 минут.
@@ -49,7 +49,7 @@ export default function YubileyPage() {
 
         {/* Бюджетные решения — для 15 чел на 50к */}
         <div className="mb-8 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3"> Что помещается в бюджет 50 000 ₽ на 15 гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Что помещается в бюджет 50 000 ₽ на 15 гостей</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Золотая свадьба или юбилей на 15 пожилых гостей — нужен банкет с посадкой.
             Вот реальные варианты под бюджет 50 000 ₽:
@@ -86,7 +86,7 @@ export default function YubileyPage() {
 
         {/* Premium (вне бюджета) — отдельный блок */}
         <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
-          <h3 className="font-heading text-base font-medium mb-2"> Премиум-вариант (вне бюджета 50к)</h3>
+          <h3 className="font-heading text-base font-medium mb-2">Премиум-вариант (вне бюджета 50к)</h3>
           <p className="text-sm text-muted-foreground">
             Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
             сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.
@@ -101,7 +101,7 @@ export default function YubileyPage() {
 
         {/* Что важно для пожилых гостей */}
         <div className="mt-12 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3"> Что важно для пожилых гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Что важно для пожилых гостей</h2>
           <ul className="text-base text-muted-foreground space-y-2">
             <li> Банкет с посадкой (не фуршет стоя) — пожилым тяжело стоять 2+ часа</li>
             <li> Меню с диетическими опциями (без острого, без жареного, без сырой рыбы)</li>
@@ -115,7 +115,7 @@ export default function YubileyPage() {
 
         {/* Юридическая прозрачность */}
         <div className="mt-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
-          <h2 className="font-heading text-lg font-medium mb-2"> Юридическая прозрачность</h2>
+          <h2 className="font-heading text-lg font-medium mb-2">Юридическая прозрачность</h2>
           <dl className="text-base space-y-1">
             <div className="flex gap-2">
               <dt className="text-muted-foreground shrink-0">Юр.лицо:</dt>

@@ -86,9 +86,13 @@ async function sendTelegramNotification(lead: Record<string, unknown>): Promise<
 }
 
 export async function POST(request: Request) {
+  // Detect if this is a native form submit (HTML) or fetch (JSON)
+  const acceptHeader = request.headers.get('accept') || '';
+  const wantsHtml = acceptHeader.includes('text/html') && !acceptHeader.includes('application/json');
+  const contentType = request.headers.get('content-type') || '';
+
   try {
     let body: QuoteBody;
-    const contentType = request.headers.get('content-type') || '';
 
     if (contentType.includes('application/json')) {
       body = await request.json();
@@ -130,16 +134,30 @@ export async function POST(request: Request) {
     const fileOk = await tryFilePersist(lead);
     const telegramOk = await sendTelegramNotification(lead);
 
-    // W90 FIX: On Vercel, file system is read-only and Telegram may not be configured.
-    // Instead of failing, we log the lead to console (Vercel logs) and return success.
-    // The lead is NOT lost — it appears in Vercel function logs.
+    console.log(`[QUOTE] Lead ${orderId} persisted: file=${fileOk}, telegram=${telegramOk}`);
+
+    // HONEST BEHAVIOR: if both delivery channels fail, lead is LOST.
+    // Return success:false with phone number — DO NOT lie to the client.
     if (!fileOk && !telegramOk) {
-      console.log('[QUOTE] LEAD (no persist available):', JSON.stringify(lead));
-      // Return success anyway — lead is logged, client gets confirmation
-      // This is better than showing error and losing the client
+      console.error('[QUOTE] CRITICAL: Lead lost — no delivery channel available. Lead data:', JSON.stringify(lead));
+      if (wantsHtml) {
+        // Redirect HTML clients to a thank-you page with a warning
+        const url = new URL('/thank-you?warning=delivery-failed', request.url);
+        return NextResponse.redirect(url, { status: 303 });
+      }
+      return NextResponse.json({
+        success: false,
+        message: 'Временная ошибка отправки заявки. Пожалуйста, позвоните +7 (812) 919-59-11 — мы сразу примем заказ.',
+        orderId,
+        phoneFallback: '+78129195911',
+      }, { status: 503 });
     }
 
-    console.log(`[QUOTE] Lead ${orderId} persisted: file=${fileOk}, telegram=${telegramOk}`);
+    // HTML clients (native form submit) → redirect to /thank-you
+    if (wantsHtml) {
+      const url = new URL(`/thank-you?orderId=${orderId}`, request.url);
+      return NextResponse.redirect(url, { status: 303 });
+    }
 
     return NextResponse.json({
       success: true,

@@ -8,7 +8,7 @@ import PageHeader from '@/components/common/PageHeader';
 import { ALLERGEN_LABEL } from '@/lib/types';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/menu', languages: { 'ru': '/menu', 'en': '/en', 'x-default': '/menu' } },
+  alternates: { canonical: '/menu', languages: { 'ru': '/menu', 'x-default': '/menu' } },
   title: 'Меню и цены',
   description: 'Фуршет, банкет, кофе-брейк — меню и цены на кейтеринг в СПб. От 390 ₽/гость. Все блюда с ценами и составом.',
 };

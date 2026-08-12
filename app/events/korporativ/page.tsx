@@ -9,7 +9,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Корпоративы',
     description: 'Кейтеринг для корпоративных мероприятий в СПб. Бизнес-ланчи, фуршеты, банкеты. От 10 до 800+ человек (с расширением производственных мощностей).',
-    alternates: { canonical: '/events/korporativ', languages: { 'ru': '/events/korporativ', 'en': '/en', 'x-default': '/events/korporativ' } },
+    alternates: { canonical: '/events/korporativ', languages: { 'ru': '/events/korporativ', 'x-default': '/events/korporativ' } },
   };
 }
 
@@ -46,7 +46,7 @@ export default function CorporatePage() {
 
         {/* B2B-блок — для юридических лиц */}
         <div className="mt-12 p-6 rounded-2xl border-2 border-gold-tint bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3"> Работаем с юридическими лицами</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Работаем с юридическими лицами</h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
             <div className="p-3 rounded-lg border border-line bg-background">
@@ -71,7 +71,7 @@ export default function CorporatePage() {
             <div>
               <p className="font-medium mb-1"> SLA в договоре (B2B, события от 30 гостей):</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
-                <li> Доставка: точно в согласованное окно — ±15 минут для кофе-брейков и конференций, ±30 минут для банкетов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа)</li>
+                <li> Доставка: точно в согласованное окно — ±15 минут для всех форматов (штраф 1% за каждую минуту опоздания, начиная с 1-й; максимум 30% от суммы заказа). Единая формула SLA.</li>
                 <li> Качество: жалобы ≤5% гостей</li>
                 <li> Компенсация: штраф 5-15% при нарушении</li>
                 <li> Страхование ГО: 5 000 000 ₽ базовый, до 30 000 000 ₽ для контрактов свыше 5 млн ₽ (ведущие страховые компании РФ)</li>
@@ -93,7 +93,7 @@ export default function CorporatePage() {
 
           {/* Expoforum / large-venue logistics */}
           <div className="mt-8 p-5 rounded-xl border border-line bg-secondary/30">
-            <h3 className="font-heading text-base font-medium mb-2"> Логистика для Expoforum, ККТ «Космос», конгресс-холлов</h3>
+            <h3 className="font-heading text-base font-medium mb-2">Логистика для Expoforum, ККТ «Космос», конгресс-холлов</h3>
             <ul className="text-sm text-muted-foreground space-y-1.5 list-disc list-inside">
               <li>Координация с администрацией площадки: согласование времени загрузки/разгрузки, павильон №, ворота.</li>
               <li>Пропуска для транспорта и персонала — оформляем заранее.</li>

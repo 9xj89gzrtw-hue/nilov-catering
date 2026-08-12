@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Выпускные — кейтеринг для школ и вузов СПб',
   description: 'Кейтеринг на выпускной: фуршеты и банкеты для школ и вузов. Бюджетные решения от 390 ₽/гость. B2B: договор, ЭДО, медкнижки, бракераж, согласование с Роспотребнадзором.',
-  alternates: { canonical: '/events/vypusknoy', languages: { 'ru': '/events/vypusknoy', 'en': '/en', 'x-default': '/events/vypusknoy' } },
+  alternates: { canonical: '/events/vypusknoy', languages: { 'ru': '/events/vypusknoy', 'x-default': '/events/vypusknoy' } },
 };
 
 export default function VypusknoyPage() {
@@ -29,7 +29,7 @@ export default function VypusknoyPage() {
 
         {/* Бюджетный мост — для тех, кому фуршет дорого */}
         <div className="mb-8 p-6 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
-          <h2 className="font-heading text-lg font-medium mb-2"> Ограниченный бюджет?</h2>
+          <h2 className="font-heading text-lg font-medium mb-2">Ограниченный бюджет?</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Кофе-брейк от <strong className="text-foreground">390 ₽/гость</strong> — выпечка, сэндвичи, фрукты, напитки.
             На 25 человек = ~9 750 ₽. На 60 детей = ~23 400 ₽.
@@ -53,7 +53,7 @@ export default function VypusknoyPage() {
 
         {/* School B2B block — для Ларисы (директора школы) */}
         <div className="mt-12 p-6 rounded-2xl border-2 border-emerald-200 bg-emerald-50">
-          <h2 className="font-heading text-xl font-medium mb-3"> Для школ и образовательных учреждений</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Для школ и образовательных учреждений</h2>
           <p className="text-sm text-muted-foreground mb-4">
             Работаем со школами, вузами, детскими садами, гос. учреждениями. Полное согласование с Роспотребнадзором.
             Закупки по 44-ФЗ и 223-ФЗ — поддерживаем.
@@ -61,7 +61,7 @@ export default function VypusknoyPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 text-sm mb-4">
             <div>
-              <h3 className="font-semibold mb-2"> Документы для Роспотребнадзора</h3>
+              <h3 className="font-semibold mb-2">Документы для Роспотребнадзора</h3>
               <ul className="text-muted-foreground space-y-1">
                 <li> Медицинские книжки 100% персонала</li>
                 <li> Журнал бракеража на каждое событие</li>
@@ -72,7 +72,7 @@ export default function VypusknoyPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2"> B2B-условия</h3>
+              <h3 className="font-semibold mb-2">B2B-условия</h3>
               <ul className="text-muted-foreground space-y-1">
                 <li> Договор юр.лицо ↔ юр.лицо</li>
                 <li> Счёт, акт, счёт-фактура (без НДС — УСН; с НДС — через партнёрское ООО)</li>
@@ -86,7 +86,7 @@ export default function VypusknoyPage() {
           </div>
 
           <div className="p-4 rounded-lg bg-white border border-emerald-200 mb-4">
-            <h3 className="font-semibold text-sm mb-2"> Спец. тариф для школ (от 30 детей + родителей)</h3>
+            <h3 className="font-semibold text-sm mb-2">Спец. тариф для школ (от 30 детей + родителей)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Школьный пакет: <strong className="text-foreground">от 1 800 ₽/гость</strong> — фуршет с детским меню + станция напитков + бумажная посуда.
               Включает: канапе, мини-сэндвичи, фрукты, пицца, капкейки, морс/лимонад.
@@ -117,7 +117,7 @@ export default function VypusknoyPage() {
 
         {/* Безопасность для детей */}
         <div className="mt-8 p-5 rounded-xl border border-line bg-card">
-          <h2 className="font-heading text-lg font-medium mb-2"> Безопасность детей</h2>
+          <h2 className="font-heading text-lg font-medium mb-2">Безопасность детей</h2>
           <ul className="text-sm text-muted-foreground space-y-1.5">
             <li>• Все блюда готовятся на сертифицированном производстве (ТР ТС 021/2011, HACCP)</li>
             <li>• 14 аллергенов маркируются по ТР ТС 022/2011 (Приложение 3)</li>

@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Личный кабинет B2B — история заказов и документы',
   description: 'Личный кабинет для постоянных B2B-клиентов: история заказов, закрывающие документы на скачивание, статусы событий.',
-  alternates: { canonical: '/account/orders', languages: { 'ru': '/account/orders', 'en': '/en', 'x-default': '/account/orders' } },
+  alternates: { canonical: '/account/orders', languages: { 'ru': '/account/orders', 'x-default': '/account/orders' } },
   robots: { index: false, follow: false },
 };
 
@@ -55,12 +55,12 @@ const ORDERS = [
     venue: 'Офис клиента (NDA)',
     // W93-v7: was 28000 (800₽/гость) — не сходилось ни с одним тарифом. Пересчитано по тарифу Стандарт (1450₽/гость)
     total: 50750,
-    status: 'Подтверждён',
+    status: 'Завершён',
     documents: [
       { type: 'Договор', url: '/api/templates/dogovor', ready: true },
       { type: 'Счёт на оплату', url: '#', ready: true },
-      { type: 'Акт', url: '#', ready: false },
-      { type: 'УПД', url: '#', ready: false },
+      { type: 'Акт', url: '#', ready: true },
+      { type: 'УПД', url: '#', ready: true },
     ],
   },
 ];

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { LEGAL } from '@/lib/data';
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/cookies', languages: { 'ru': '/cookies', 'en': '/en', 'x-default': '/cookies' } },
+  alternates: { canonical: '/cookies', languages: { 'ru': '/cookies', 'x-default': '/cookies' } },
   title: 'Политика использования cookie',
   description:
     'Использование cookie на сайте nilov-catering.ru. Типы cookie, сроки хранения, отключение. 152-ФЗ.',
@@ -112,8 +112,8 @@ export default function Page() {
             <h2 className="font-heading text-xl font-medium mb-3">5. Контакты</h2>
             <p className="text-sm leading-relaxed">
               По вопросам cookie-политики:{' '}
-              <a href="mailto:info@odaeda.ru" className="underline">
-                info@odaeda.ru
+              <a href="mailto:info@nilov-catering.ru" className="underline">
+                info@nilov-catering.ru
               </a>
               . Оператор: {LEGAL.operatorFull}, ИНН {LEGAL.inn}, ОГРНИП {LEGAL.ogrnip}.
             </p>

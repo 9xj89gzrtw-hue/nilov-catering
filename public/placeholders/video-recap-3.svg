@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Юбилей на 50 гостей">
+  <defs>
+    <linearGradient id="bg-r3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F2"/>
+      <stop offset="100%" stop-color="#EFE6D6"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg-r3)"/>
+  <rect x="20" y="20" width="760" height="410" fill="none" stroke="#B08D57" stroke-width="2" rx="8"/>
+  <text x="400" y="180" font-family="Georgia, serif" font-size="42" font-weight="500" fill="#8A6D3B" text-anchor="middle">Юбилей</text>
+  <text x="400" y="230" font-family="Georgia, serif" font-size="28" fill="#4A423B" text-anchor="middle">Частное · 50 гостей</text>
+  <text x="400" y="290" font-family="system-ui, sans-serif" font-size="16" fill="#6B625A" text-anchor="middle">Лофт · 30 сек · ▶</text>
+</svg>

@@ -26,7 +26,7 @@ export default function VeganPage() {
         </p>
 
         <div className="mb-8 p-5 rounded-xl border border-emerald-300 bg-emerald-50">
-          <h2 className="font-heading text-base font-medium mb-2"> Что такое наше веган-меню</h2>
+          <h2 className="font-heading text-base font-medium mb-2">Что такое наше веган-меню</h2>
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
             <li>Авторская растительная кухня: цветная капуста, грибы, бобовые, орехи (если нет анафилаксии), кокос, авокадо</li>
             <li>Без имитаций мяса — никаких соевых сосисок, веган-колбас, сейтана</li>
