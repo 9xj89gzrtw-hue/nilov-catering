@@ -19,6 +19,9 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
+// Nilov Catering - Кейтеринг под ключ в Санкт-Петербурге (с 2007 года)
+// Deploy fix Cycle 6 - ensuring correct build on Vercel
+
 export default async function HomePage() {
   const cmsReviews = await getReviews();
 
