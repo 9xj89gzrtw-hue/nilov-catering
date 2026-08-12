@@ -15,7 +15,7 @@ export default function PartnersPage() {
       <div className="container-site max-w-3xl">
         <h1 className="mb-4">Партнёрам</h1>
         <p className="text-muted-foreground mb-8">
-          Партнёрская программа NiloV Catering для event-агентств, площадок, организаторов
+          Партнёрская программа NiloV Catering для агентств мероприятий, площадок, организаторов
           и поставщиков. Прозрачные условия, агентская комиссия, NDA, SLA. Работаем с 2007 года,
           27 отзывов · 4.8/5.
         </p>
@@ -23,10 +23,10 @@ export default function PartnersPage() {
         {/* Agent / Event-agency program */}
         <div className="mb-8 p-6 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-xl font-medium mb-3 flex items-center gap-2">
-             Агентствам и event-компаниям
+             Агентствам и компаниям мероприятий
           </h2>
           <p className="text-sm text-foreground/90 mb-4">
-            Если вы event-агентство, продюсерская компания или частный организатор — мы готовы
+            Если вы агентств мероприятийо, продюсерская компания или частный организатор — мы готовы
             стать вашим кейтеринг-партнёром в СПб и ЛО. Вы получаете готовое предложение для
             клиента, мы — заказ. Прозрачная агентская схема.
           </p>
@@ -35,7 +35,7 @@ export default function PartnersPage() {
             <li><span className="font-medium">NDA:</span> подписываем до начала работы. Шаблон NDA — по запросу на b2b@nilov-catering.ru в течение 1 рабочего дня</li>
             <li><span className="font-medium">SLA:</span> доставка в окно ±15 минут, штраф 1% за минуту опоздания, максимум 30%</li>
             <li><span className="font-medium">Договор:</span> либо напрямую с ИП Нилов Д.И. (УСН 6%), без НДС (УСН) или с НДС через партнёрское ООО — на выбор агентства</li>
-            <li><span className="font-medium">ЭДО:</span> Контур.Диадок (operator ID 2AE), СБИС (operator ID 2АК)</li>
+            <li><span className="font-medium">ЭДО:</span> Контур.Диадок (код оператора 2AE), СБИС (код оператора 2АК)</li>
             <li><span className="font-medium">Лидогенерация:</span> передаём лиды на площадки/флористов/декораторов по запросу. Зеркально — принимаем лиды от партнёров</li>
             <li><span className="font-medium">Под вашим брендом:</span> можем работать под брендом агентства (униформа без логотипов, без материалов с нашим брендом). Уточняйте</li>
             <li><span className="font-medium">Страхование ГО:</span> базовый полис 5 000 000 ₽, расширение до 30 000 000 ₽ для контрактов от 5 млн ₽</li>

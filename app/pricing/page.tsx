@@ -217,7 +217,7 @@ export default function PricingPage() {
           <h2 className="font-heading text-2xl font-medium mb-4 text-center">Что входит в любую цену</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              { icon: '🍽', t: 'Меню', d: 'Выбор из 124 блюда' },
+              { icon: '🍽', t: 'Меню', d: 'Выбор из 124 блюд' },
               { icon: '👨‍🍳', t: 'Официанты', d: 'Профессионалы' },
               { icon: '🚚', t: 'Доставка', d: 'По КАД бесплатно' },
               { icon: '🍽', t: 'Посуда', d: 'Сервировка' },

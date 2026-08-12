@@ -6,7 +6,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   alternates: { canonical: '/team', languages: { 'ru': '/team', 'x-default': '/team' } },
   title: 'Команда',
-  description: 'Команда NiloV Catering: шеф-повар Дмитрий Нилов (19 лет опыта), шеф-кондитер, су-шеф, event-координаторы. 40+ профессионалов с медкнижками и санминимумом.',
+  description: 'Команда NiloV Catering: шеф-повар Дмитрий Нилов (19 лет опыта), шеф-кондитер, су-шеф, координаторы мероприятий. 40+ профессионалов с медкнижками и санминимумом.',
 };
 
 const TEAM = [
@@ -39,10 +39,10 @@ const TEAM = [
   },
   {
     name: 'Мария Васильева',
-    role: 'Event-координатор',
+    role: 'Координатор мероприятий',
     bio: 'Ведёт свадьбы и корпоративы. 120+ событий в год. Отвечает за логистику, тайминг дня, координацию с площадками и подрядчиками.',
     experience: 'С 2016 года',
-    credentials: ['Санминимум', 'Медкнижка', 'Event-менеджмент (RMA)'],
+    credentials: ['Санминимум', 'Медкнижка', 'Менеджмент мероприятий (RMA)'],
     initials: 'МВ',
     photo: '/images/team/coordinator.svg',
   },
@@ -60,7 +60,7 @@ const TEAM = [
     role: 'Менеджер по безопасности',
     bio: 'Отвечает за пищевые протоколы: аллергены, целиакия, халяль. Обучает персонал первой помощи при анафилаксии. Ведёт журнал бракеража.',
     experience: 'С 2019 года',
-    credentials: ['Санминимум', 'Медкнижка', 'HACCP', 'First Aid (Red Cross)'],
+    credentials: ['Санминимум', 'Медкнижка', 'HACCP', 'Первая помощь (Красный Крест)'],
     initials: 'ОД',
     photo: '/images/team/safety-manager.svg',
   },
@@ -79,13 +79,13 @@ export default function TeamPage() {
         <h1 className="font-heading text-3xl md:text-4xl font-medium mb-3 text-center">Команда</h1>
         <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto mb-12 text-balance">
           40+ профессионалов с медкнижками, санминимумом и профильным образованием.
-          Шеф-повара, кондитеры, event-координаторы, B2B-менеджеры — каждый на своём месте.
+          Шеф-повара, кондитеры, координаторы мероприятий, B2B-менеджеры — каждый на своём месте.
         </p>
 
         {/* Photo disclaimer — applies to ALL team members below */}
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
-            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> и <strong>су-шеф Алексей Козлов</strong> — реальные фото. Фото других членов команды — иллюстративные SVG-плейсхолдеры; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
+            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> и <strong>су-шеф Алексей Козлов</strong> — реальные фото. Фото других членов команды — иллюстративные SVG-иллюстрации; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 

@@ -26,7 +26,7 @@ export default function EnPage() {
         ))}
       </div>
 
-      <p className="text-sm text-muted-foreground text-center">Full English version coming soon. For now, please use the calculator or contact us directly.</p>
+      <p className="text-sm text-muted-foreground text-center">More detailed English content is on the way. For now, please choose a format or contact us directly.</p>
       <div className="mt-6 text-center">
         <Link href="/plan/helper" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 min-h-[44px] text-sm font-semibold text-primary-foreground">Choose format →</Link>
       </div>
