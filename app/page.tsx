@@ -49,7 +49,7 @@ export default async function HomePage() {
       <TrustBar />
 
       {/* 9. TESTIMONIALS — из reviews.json */}
-      <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
+      <TestimonialsCarousel cmsReviews={cmsReviews.length >0 ? cmsReviews : undefined} />
 
       {/* 10. WOW CASE — избранный кейс */}
       <WowCase />

@@ -15,7 +15,7 @@ interface Props {
   description?: string;
 }
 
-const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; gradient: string }> = {
+const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; gradient: string }>= {
   svadba: { label: 'Свадьба', desc: 'От камерной росписи до банкета на 200 гостей', gradient: 'from-rose-50 to-rose-100' },
   korporativ: { label: 'Корпоратив', desc: 'Бизнес-ланчи, гала-ужины, тимбилдинги', gradient: 'from-sky-50 to-sky-100' },
   vypusknoy: { label: 'Выпускной', desc: 'Школьные и студенческие выпускные', gradient: 'from-amber-50 to-amber-100' },
@@ -28,7 +28,7 @@ const EVENT_META: Record<string, { label: string; emoji?: string; desc: string; 
 };
 
 // Маппинг событие → формат (для ссылки в конструктор)
-const EVENT_TO_FORMAT: Record<string, string> = {
+const EVENT_TO_FORMAT: Record<string, string>= {
   svadba: 'banket',
   korporativ: 'banket',
   vypusknoy: 'banket',
@@ -42,11 +42,11 @@ const EVENT_TO_FORMAT: Record<string, string> = {
 
 const TIER_ORDER: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
 
-const STATION_EMOJI: Record<string, string> = {
+const STATION_EMOJI: Record<string, string>= {
   cold: '', hot: '', desserts: '', drinks: '', show: '',
 };
 
-const ALLERGEN_EMOJI: Record<string, string> = {
+const ALLERGEN_EMOJI: Record<string, string>= {
   nuts: '', peanuts: '', fish: '', milk: '', eggs: '', soy: '',
   gluten: '', crustaceans: '', celery: '', mustard: '', sesame: '',
   sulphites: '', lupin: '', molluscs: '',
@@ -54,7 +54,7 @@ const ALLERGEN_EMOJI: Record<string, string> = {
 
 // Поиск блюда в каталоге по dishId (для аллергенов и цены)
 function findDishById(dishId: string) {
-  return ALL_DISHES.find(d => d.id === dishId);
+  return ALL_DISHES.find(d =>d.id === dishId);
 }
 
 // Полноценная карточка тарифа с edit-режимом
@@ -70,7 +70,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
 
   useEffect(() => {
     if (editMode && customItems.length === 0) {
-      setCustomItems(offer.composition.map(c => ({
+      setCustomItems(offer.composition.map(c =>({
         dishId: c.dishId, qty: 1, name: c.name, desc: c.desc, category: c.category,
       })));
     }
@@ -85,22 +85,22 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
   const CAT_ORDER = ['Канапе', 'Тарталетки', 'Закуски', 'Закуска', 'Премиум', 'Амюз-буш', 'Выпечка', 'Горячее', 'Завтрак', 'Шоу', 'Основное', 'Десерты', 'Десерт', 'Фрукты', 'Бар', 'Кофе', 'Напитки', 'Сыр', 'Брускетты'];
 
   // === Edit mode logic ===
-  const removeDish = (dishId: string) => setCustomItems(items => items.filter(i => i.dishId !== dishId));
+  const removeDish = (dishId: string) =>setCustomItems(items =>items.filter(i =>i.dishId !== dishId));
   const setQty = (dishId: string, qty: number) => {
     const next = Math.max(1, Math.min(20, qty));
-    setCustomItems(items => items.map(i => i.dishId === dishId ? { ...i, qty: next } : i));
+    setCustomItems(items =>items.map(i =>i.dishId === dishId ? { ...i, qty: next } : i));
   };
   const addDish = (dishId: string) => {
-    if (customItems.some(i => i.dishId === dishId)) return;
+    if (customItems.some(i =>i.dishId === dishId)) return;
     const dish = findDishById(dishId);
     if (!dish) return;
-    setCustomItems(items => [...items, {
+    setCustomItems(items =>[...items, {
       dishId, qty: 1, name: dish.name, desc: dish.description,
       category: DISH_CATEGORIES[dish.station] || dish.station,
     }]);
   };
   const resetToOriginal = () => {
-    setCustomItems(offer.composition.map(c => ({
+    setCustomItems(offer.composition.map(c =>({
       dishId: c.dishId, qty: 1, name: c.name, desc: c.desc, category: c.category,
     })));
   };
@@ -116,14 +116,14 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
   // Каталог для picker'а
   const filteredCatalog = (() => {
     let dishes = ALL_DISHES;
-    if (catalogStation !== 'all') dishes = dishes.filter(d => d.station === catalogStation);
+    if (catalogStation !== 'all') dishes = dishes.filter(d =>d.station === catalogStation);
     if (catalogSearch.trim()) {
       const q = catalogSearch.toLowerCase();
-      dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
+      dishes = dishes.filter(d =>d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
   })();
-  const customItemIds = new Set(customItems.map(i => i.dishId));
+  const customItemIds = new Set(customItems.map(i =>i.dishId));
   const customCategories = new Map<string, typeof customItems>();
   for (const item of customItems) {
     if (!customCategories.has(item.category)) customCategories.set(item.category, []);
@@ -143,8 +143,8 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           <div className="text-right">
             <div className="text-2xl font-bold text-gold-text tabular-nums">{displayPrice.toLocaleString('ru-RU')} ₽</div>
             {editMode && priceDiff !== 0 && (
-              <div className={`text-[10px] font-medium ${priceDiff > 0 ? 'text-warning' : 'text-success'}`}>
-                {priceDiff > 0 ? '+' : ''}{priceDiff.toLocaleString('ru-RU')} ₽
+              <div className={`text-[10px] font-medium ${priceDiff >0 ? 'text-warning' : 'text-success'}`}>
+                {priceDiff >0 ? '+' : ''}{priceDiff.toLocaleString('ru-RU')} ₽
               </div>
             )}
           </div>
@@ -173,7 +173,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
       <div className="px-5 py-4 space-y-2 flex-1">
         <p className="text-sm font-medium leading-snug">{offer.description}</p>
         <div className="flex flex-wrap gap-1.5">
-          {offer.highlights.map(h => (
+          {offer.highlights.map(h =>(
             <span key={h} className="text-[11px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{h}</span>
           ))}
         </div>
@@ -193,7 +193,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
               <p className="text-[10px] text-muted-foreground text-center py-2">Пусто. Добавьте блюда из каталога ниже.</p>
             ) : (
               <ul className="space-y-1 max-h-56 overflow-y-auto">
-                {Array.from(customCategories.entries()).map(([cat, dishes]) => (
+                {Array.from(customCategories.entries()).map(([cat, dishes]) =>(
                   <li key={cat}>
                     <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-0.5">{cat}</div>
                     <ul className="space-y-1">
@@ -206,9 +206,9 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                             <div className="flex-1 min-w-0">
                               <div className="text-[11px] font-medium text-foreground">{d.name}</div>
                               {/* Аллергены в edit-режиме */}
-                              {dish && dish.allergens.length > 0 && (
+                              {dish && dish.allergens.length >0 && (
                                 <div className="flex flex-wrap gap-0.5 mt-0.5">
-                                  {dish.allergens.slice(0, 4).map(a => (
+                                  {dish.allergens.slice(0, 4).map(a =>(
                                     <span key={a} className="text-[10px] bg-destructive/10 text-destructive px-1 rounded leading-none">
                                       {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                                     </span>
@@ -218,10 +218,10 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                               <div className="text-[10px] text-gold-text font-semibold mt-0.5">{price} ₽ × {d.qty} = {price * d.qty} ₽</div>
                             </div>
                             <div className="flex items-center gap-0.5">
-                              <button onClick={() => setQty(d.dishId, d.qty - 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">−</button>
+                              <button onClick={() =>setQty(d.dishId, d.qty - 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">−</button>
                               <span className="text-[10px] font-semibold w-3 text-center">{d.qty}</span>
-                              <button onClick={() => setQty(d.dishId, d.qty + 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">+</button>
-                              <button onClick={() => removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5"></button>
+                              <button onClick={() =>setQty(d.dishId, d.qty + 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">+</button>
+                              <button onClick={() =>removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5"></button>
                             </div>
                           </li>
                         );
@@ -235,7 +235,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
 
           {/* Add dish picker */}
           <button
-            onClick={() => setShowCatalog(!showCatalog)}
+            onClick={() =>setShowCatalog(!showCatalog)}
             className="w-full flex items-center justify-between py-2 px-3 rounded-lg bg-gold-tint/50 hover:bg-gold-tint text-xs font-medium transition-colors mb-2"
           >
             <span>{showCatalog ? 'Скрыть каталог' : '+ Добавить блюдо'}</span>
@@ -248,12 +248,12 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                 type="search"
                 placeholder="Поиск…"
                 value={catalogSearch}
-                onChange={e => setCatalogSearch(e.target.value)}
+                onChange={e =>setCatalogSearch(e.target.value)}
                 className="w-full rounded border border-line bg-card px-2 py-1.5 text-xs mb-1.5 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
               />
               <div className="flex flex-wrap gap-0.5 mb-1.5">
-                {[{k:'all',l:'Все'},{k:'cold',l:''},{k:'hot',l:''},{k:'desserts',l:''},{k:'drinks',l:''}].map(s => (
-                  <button key={s.k} onClick={() => setCatalogStation(s.k)}
+                {[{k:'all',l:'Все'},{k:'cold',l:''},{k:'hot',l:''},{k:'desserts',l:''},{k:'drinks',l:''}].map(s =>(
+                  <button key={s.k} onClick={() =>setCatalogStation(s.k)}
                     className={`rounded-full px-1.5 py-0.5 text-[10px] border transition-colors ${
                       catalogStation === s.k ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text'
                     }`}>{s.l}</button>
@@ -269,7 +269,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                       <div className="flex items-center justify-between gap-1">
                         <span className="text-[10px] text-gold-text font-semibold">{dish.pricePerGuest} ₽</span>
                         <button
-                          onClick={() => isSelected ? null : addDish(dish.id)}
+                          onClick={() =>isSelected ? null : addDish(dish.id)}
                           disabled={isSelected}
                           className={`text-[10px] px-1 py-0.5 rounded font-medium ${
                             isSelected ? 'bg-muted text-muted-foreground cursor-not-allowed' : 'bg-gold-text text-white hover:bg-gold-text/90'
@@ -287,7 +287,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
 
           <div className="flex gap-1.5">
             <button
-              onClick={() => setEditMode(false)}
+              onClick={() =>setEditMode(false)}
               className="flex-1 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
             >
                Готово
@@ -305,13 +305,13 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
       {/* Composition (read-only) — collapsed/expanded — only in non-edit mode */}
       {!editMode && (
         <div className="px-5 pb-3">
-          <button onClick={() => setExpanded(!expanded)} className="text-xs text-gold-text hover:underline font-medium">
+          <button onClick={() =>setExpanded(!expanded)} className="text-xs text-gold-text hover:underline font-medium">
             {expanded ? 'Скрыть состав' : `Показать состав (${offer.composition.length} позиций)`}
           </button>
           {expanded && (
             <div className="mt-2 space-y-2 border-t border-line pt-2">
               {CAT_ORDER.map(cat => {
-                const items = offer.composition.filter(i => i.category === cat);
+                const items = offer.composition.filter(i =>i.category === cat);
                 if (!items.length) return null;
                 return (
                   <div key={cat}>
@@ -325,15 +325,15 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                             <p className="text-xs font-medium">{item.name}</p>
                             <p className="text-[10px] text-muted-foreground line-clamp-1">{item.desc}</p>
                             {/* Аллергены в составе тарифа */}
-                            {allergens.length > 0 && (
+                            {allergens.length >0 && (
                               <div className="flex flex-wrap gap-0.5 mt-0.5">
-                                {allergens.slice(0, 4).map(a => (
+                                {allergens.slice(0, 4).map(a =>(
                                   <span key={a} className="text-[10px] bg-destructive/10 text-destructive px-1 rounded leading-none"
                                         title={ALLERGEN_LABEL[a]}>
                                     {ALLERGEN_EMOJI[a]} {ALLERGEN_LABEL[a]}
                                   </span>
                                 ))}
-                                {allergens.length > 4 && (
+                                {allergens.length >4 && (
                                   <span className="text-[10px] bg-muted text-muted-foreground px-1 rounded leading-none">+{allergens.length - 4}</span>
                                 )}
                               </div>
@@ -356,7 +356,7 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
           href={`/plan/constructor?format=${offer.formatOverride || EVENT_TO_FORMAT[offer.eventId] || 'furshet'}&tier=${offer.tier}`}
           onClick={() => {
             // Если пользователь редактировал состав — сохраняем в sessionStorage
-            if (editMode && customItems.length > 0) {
+            if (editMode && customItems.length >0) {
               try {
                 sessionStorage.setItem('tariffCustomItems', JSON.stringify(customItems));
               } catch {
@@ -398,7 +398,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
   const events = Object.entries(EVENT_META);
   const offers = ALL_TARIFF_OFFERS[selectedEvent] || [];
   const meta = EVENT_META[selectedEvent];
-  const sorted = [...offers].sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
+  const sorted = [...offers].sort((a, b) =>TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
 
   return (
     <section>
@@ -445,9 +445,9 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           <div className="mb-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
             <p className="text-base font-medium mb-1">Нужен кофе-брейк без официантов — просто доставка?</p>
             <p className="text-sm text-muted-foreground mb-4">
-              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
+              Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong>— привезём выпечку, сэндвичи, фрукты, напитки.
               <br />
-              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong> (с сырным плато и кедровым рафом).
+              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong>или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong>(с сырным плато и кедровым рафом).
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/delivery/order"
@@ -464,7 +464,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
 
         {/* Tariff grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {sorted.map(offer => (
+          {sorted.map(offer =>(
             <TariffCard key={`${offer.eventId}-${offer.tier}`} offer={offer} />
           ))}
         </div>
@@ -474,7 +474,7 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
           <div className="mt-8 p-6 rounded-2xl border border-gold-tint bg-gold-tint/30 text-center">
             <p className="text-base font-medium mb-1">Нужен корпоративный фуршет в офисе — без посадки?</p>
             <p className="text-sm text-muted-foreground mb-4">
-              У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong> — дешевле банкета.
+              У нас есть фуршет-тарифы от <strong className="text-foreground">2 450 ₽/гость</strong>— дешевле банкета.
               Гости едят стоя, лёгкие закуски, идеален для офисных мероприятий.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">

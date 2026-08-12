@@ -12,7 +12,7 @@ import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import Link from 'next/link';
 
 export default function CoffeeBreakPage() {
-  const coffeeDishes = useMemo(() => ALL_DISHES.filter(d => d.format.includes('coffee-break')), []);
+  const coffeeDishes = useMemo(() =>ALL_DISHES.filter(d =>d.format.includes('coffee-break')), []);
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -74,7 +74,7 @@ export default function CoffeeBreakPage() {
               без повторов, сезонные обновления.
             </p>
             <p className="text-xs text-muted-foreground">
-              <strong>Для многодневных конференций (2+ дня):</strong> ротация меню между днями —
+              <strong>Для многодневных конференций (2+ дня):</strong>ротация меню между днями —
               разные сеты канапе/выпечки/напитков каждый день, чтобы делегаты не устали от
               однообразия. 3-дневная конференция = 3 разных кофе-брейк-сета без повторов.
             </p>
@@ -95,9 +95,9 @@ export default function CoffeeBreakPage() {
             Один счёт, одна доставка, одна смета — без раздельных заказов.
           </p>
           <ul className="text-sm space-y-1 mb-3 list-disc list-inside text-foreground/90">
-            <li><strong>Стандарт:</strong> 1 430 ₽/делегат/день (кофе-брейк 390 + обед 650 + кофе-брейк 390)</li>
-            <li><strong>Скидка 20%</strong> для 2+ дневных конференций → 1 144 ₽/делегат/день</li>
-            <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong> (включая доставку, посуду, официантов)</li>
+            <li><strong>Стандарт:</strong>1 430 ₽/делегат/день (кофе-брейк 390 + обед 650 + кофе-брейк 390)</li>
+            <li><strong>Скидка 20%</strong>для 2+ дневных конференций → 1 144 ₽/делегат/день</li>
+            <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong>(включая доставку, посуду, официантов)</li>
             <li>Ротация: 3 разных кофе-брейк-сета + 2 разных обеда — без повторов</li>
             <li>Координатор конференции: <strong>Мария Васильева</strong>, прямой мобильный через <a href="/contact" className="underline text-gold-text">форму B2B-заявки</a></li>
           </ul>
@@ -112,7 +112,7 @@ export default function CoffeeBreakPage() {
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все блюда кофе-брейка ({coffeeDishes.length})</h2>
         <B2BBanner />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6">
-          {coffeeDishes.map(dish => (
+          {coffeeDishes.map(dish =>(
             <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors">
               <div className="aspect-[4/3] relative bg-secondary">
                 <FoodPhoto

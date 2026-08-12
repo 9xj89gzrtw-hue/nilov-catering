@@ -13,7 +13,7 @@ export default function SeasonalPage() {
           { title: 'BBQ-лето', desc: 'Гриль-меню на открытом воздухе', href: '/seasonal/bbq' },
           { title: 'Новый год', desc: 'Корпоративы и частные вечеринки', href: '/seasonal/new-year' },
           { title: 'Масленица', desc: 'Блины, самовар, народные гуляния', href: '/seasonal/maslenitsa' },
-        ].map((s) => (
+        ].map((s) =>(
           <Link key={s.title} href={s.href} className="rounded-xl border border-line bg-card p-6 text-center hover:border-gold-text transition-colors">
             <h2 className="font-heading text-xl font-medium mb-2">{s.title}</h2>
             <p className="text-sm text-muted-foreground">{s.desc}</p>

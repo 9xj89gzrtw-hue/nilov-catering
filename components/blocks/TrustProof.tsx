@@ -132,7 +132,7 @@ const cardVariants: Variants = {
 };
 
 function cmsToFacts(cms: TrustProofItem[]): TrustFact[] {
-  return cms.map(f => ({
+  return cms.map(f =>({
     id: f.id,
     icon: getIcon(f.icon),
     label: f.label,
@@ -145,7 +145,7 @@ function cmsToFacts(cms: TrustProofItem[]): TrustFact[] {
 }
 
 export default function TrustProof({ cmsFacts }: { cmsFacts?: TrustProofItem[] }) {
-  const items: TrustFact[] = cmsFacts && cmsFacts.length > 0 ? cmsToFacts(cmsFacts) : FACTS;
+  const items: TrustFact[] = cmsFacts && cmsFacts.length >0 ? cmsToFacts(cmsFacts) : FACTS;
 
   return (
     <section className="py-20 bg-background" aria-labelledby="trustproof-heading">
@@ -166,7 +166,7 @@ export default function TrustProof({ cmsFacts }: { cmsFacts?: TrustProofItem[] }
           viewport={{ once: true, margin: '-60px' }}
           transition={{ staggerChildren: 0.15 }}
         >
-          {items.map((fact) => (
+          {items.map((fact) =>(
             <motion.div
               key={fact.id}
               variants={cardVariants}

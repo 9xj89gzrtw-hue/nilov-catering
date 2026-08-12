@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const { format, guests, tier, addonIds, childGuests, bookingDays } = parsed.data;
 
     const selectedAddons: AddOn[] = addonIds
-      ? ADDONS.filter(a => addonIds.includes(a.id))
+      ? ADDONS.filter(a =>addonIds.includes(a.id))
       : [];
 
     const result = calcTotal(guests, format, tier === 'custom' ? 'standard' : tier, selectedAddons, {

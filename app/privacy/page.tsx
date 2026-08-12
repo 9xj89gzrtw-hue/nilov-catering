@@ -27,7 +27,7 @@ export default function Page() {
             </p>
             <p className="text-sm leading-relaxed mb-3">
               1.2. Политика определяет порядок обработки и защиты персональных данных
-              пользователей сайта nilov-catering.vercel.app и клиентов Исполнителя.
+              пользователей сайта nilov-catering.ru и клиентов Исполнителя.
             </p>
             <p className="text-sm leading-relaxed">
               1.3. Цели обработки: исполнение договора оказания услуг, информирование о статусе

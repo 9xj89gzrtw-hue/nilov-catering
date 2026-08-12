@@ -27,11 +27,11 @@ export default function StickyCTA({ minScroll = 800, href = '/plan/helper', labe
 
   useEffect(() => {
     const unsub = scrollY.on('change', (v) => {
-      setShow(v > minScroll);
+      setShow(v >minScroll);
       const max = document.body.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min(1, v / max) : 0);
+      setProgress(max >0 ? Math.min(1, v / max) : 0);
     });
-    return () => unsub();
+    return () =>unsub();
   }, [scrollY, minScroll]);
 
   const progressScale = useSpring(progress, { stiffness: 200, damping: 30 });

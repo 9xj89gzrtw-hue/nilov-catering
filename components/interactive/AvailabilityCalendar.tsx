@@ -30,12 +30,12 @@ export default function AvailabilityCalendar({ slaHours = 2, slaBooking = 'O3', 
   for (let i = 0; i < offset; i++) days.push(null);
   for (let d = 1; d <= daysInMonth; d++) days.push(d);
 
-  const dateStr = (d: number) => `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-  const isPast = (d: number) => new Date(year, month, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  const isBusy = (d: number) => BUSY_DATES.has(dateStr(d));
+  const dateStr = (d: number) =>`${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  const isPast = (d: number) =>new Date(year, month, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const isBusy = (d: number) =>BUSY_DATES.has(dateStr(d));
 
-  const prevMonth = () => { if (month === 0) { setYear(y => y - 1); setMonth(11); } else { setMonth(m => m - 1); } };
-  const nextMonth = () => { if (month === 11) { setYear(y => y + 1); setMonth(0); } else { setMonth(m => m + 1); } };
+  const prevMonth = () => { if (month === 0) { setYear(y =>y - 1); setMonth(11); } else { setMonth(m =>m - 1); } };
+  const nextMonth = () => { if (month === 11) { setYear(y =>y + 1); setMonth(0); } else { setMonth(m =>m + 1); } };
 
   if (variant === 'mini') {
     return (
@@ -47,7 +47,7 @@ export default function AvailabilityCalendar({ slaHours = 2, slaBooking = 'O3', 
         </div>
         <div className="grid grid-cols-7 gap-0.5 text-center">
           {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => <div key={d} className="text-[10px] text-muted-foreground py-0.5">{d}</div>)}
-          {days.map((d, i) => (
+          {days.map((d, i) =>(
             <div
               key={i}
               tabIndex={d === null || isPast(d) || isBusy(d) ? -1 : 0}
@@ -55,7 +55,7 @@ export default function AvailabilityCalendar({ slaHours = 2, slaBooking = 'O3', 
               aria-label={d ? `Выбрать дату ${dateStr(d)}` : undefined}
               aria-disabled={d === null || isPast(d) || isBusy(d) ? 'true' : 'false'}
               className={`text-xs py-1 rounded outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 ${d === null ? '' : isPast(d) ? 'text-muted-foreground/40' : isBusy(d) ? 'bg-destructive/10 text-destructive line-through' : 'hover:bg-gold-tint cursor-pointer'}`}
-              onClick={() => d && !isPast(d) && !isBusy(d) && setSelected(dateStr(d))}
+              onClick={() =>d && !isPast(d) && !isBusy(d) && setSelected(dateStr(d))}
               onKeyDown={(e) => {
                 if (d && !isPast(d) && !isBusy(d) && (e.key === 'Enter' || e.key === ' ')) {
                   e.preventDefault();
@@ -82,11 +82,11 @@ export default function AvailabilityCalendar({ slaHours = 2, slaBooking = 'O3', 
       </div>
       <div className="grid grid-cols-7 gap-1 text-center mb-6">
         {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => <div key={d} className="text-xs font-medium text-muted-foreground py-1">{d}</div>)}
-        {days.map((d, i) => (
+        {days.map((d, i) =>(
           <button
             key={i}
             disabled={d === null || isPast(d!) || isBusy(d!)}
-            onClick={() => d && setSelected(dateStr(d))}
+            onClick={() =>d && setSelected(dateStr(d))}
             className={`text-sm py-2.5 rounded-lg touch-target transition-colors ${d === null ? '' :
               isPast(d!) ? 'text-muted-foreground/30 cursor-not-allowed' :
               isBusy(d!) ? 'bg-destructive/10 text-destructive line-through cursor-not-allowed' :

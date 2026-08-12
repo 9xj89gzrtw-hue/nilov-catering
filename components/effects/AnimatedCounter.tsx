@@ -30,10 +30,10 @@ export default function AnimatedCounter({
     const controls = animate(0, value, {
       duration,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate: (latest) => setDisplayed(Math.round(latest)),
+      onUpdate: (latest) =>setDisplayed(Math.round(latest)),
     });
 
-    return () => controls.stop();
+    return () =>controls.stop();
   }, [inView, value, duration]);
 
   return (

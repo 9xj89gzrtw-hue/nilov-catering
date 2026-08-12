@@ -26,7 +26,7 @@ export default function ProcessSteps() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
-          {STEPS.map((step, idx) => (
+          {STEPS.map((step, idx) =>(
             <div
               key={step.num}
               className="relative p-5 md:p-6 rounded-xl bg-card border border-line"

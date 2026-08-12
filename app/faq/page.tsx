@@ -115,7 +115,7 @@ export default function FAQPage() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-              mainEntity: allFaqs.map((f) => ({
+              mainEntity: allFaqs.map((f) =>({
                 '@type': 'Question',
                 name: f.q,
                 acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -155,8 +155,8 @@ export default function FAQPage() {
               if (match) visibleCount++;
             });
             // Show/hide section headers based on whether they have visible items
-            document.querySelectorAll('#faq-list > div').forEach(function(section) {
-              var hasVisible = section.querySelectorAll('details:not([style*="none"])').length > 0;
+            document.querySelectorAll('#faq-list >div').forEach(function(section) {
+              var hasVisible = section.querySelectorAll('details:not([style*="none"])').length >0;
               var header = section.previousElementSibling;
               if (header && header.tagName === 'H2') {
                 header.style.display = hasVisible ? '' : 'none';
@@ -174,10 +174,10 @@ export default function FAQPage() {
         <div id="faq-list">
         {/* B2C FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl"></span> Для частных клиентов
+          <span className="text-2xl"></span>Для частных клиентов
         </h2>
         <div className="space-y-3 mb-12">
-          {FAQS_B2C.map((f, i) => (
+          {FAQS_B2C.map((f, i) =>(
             <details key={`b2c-${i}`} className="group rounded-xl border border-line bg-card">
               <summary className="p-4 cursor-pointer font-medium text-foreground list-none flex items-center justify-between gap-2">
                 <span>{f.q}</span>
@@ -192,10 +192,10 @@ export default function FAQPage() {
 
         {/* B2B FAQ */}
         <h2 className="font-heading text-xl font-medium mb-4 flex items-center gap-2">
-          <span className="text-2xl"></span> Для бизнеса (B2B)
+          <span className="text-2xl"></span>Для бизнеса (B2B)
         </h2>
         <div className="space-y-3 mb-12">
-          {FAQS_B2B.map((f, i) => (
+          {FAQS_B2B.map((f, i) =>(
             <details key={`b2b-${i}`} className="group rounded-xl border border-line bg-card">
               <summary className="p-4 cursor-pointer font-medium text-foreground list-none flex items-center justify-between gap-2">
                 <span>{f.q}</span>

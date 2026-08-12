@@ -24,11 +24,11 @@ export default function GalleryPage() {
 
         {/* Mobile: 2-col compact, Desktop: 3-col */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
-          {photos.map((p, i) => (
+          {photos.map((p, i) =>(
             <button
               key={i}
               type="button"
-              onClick={() => setLightboxIndex(i)}
+              onClick={() =>setLightboxIndex(i)}
               className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
               style={{ aspectRatio: '4 / 3' }}
               aria-label={`Открыть фото: ${p.alt}. ${p.caption || ''}`}
@@ -56,14 +56,14 @@ export default function GalleryPage() {
 
       {lightboxIndex !== null && (
         <Lightbox
-          images={photos.map(p => ({ src: p.src, alt: p.alt, caption: p.caption }))}
+          images={photos.map(p =>({ src: p.src, alt: p.alt, caption: p.caption }))}
           initialIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
+          onClose={() =>setLightboxIndex(null)}
         />
       )}
 
         {/* Video section */}
-        <div className="mt-12">
+        <div className="mt-12 container-site">
           <h2 className="font-heading text-2xl font-medium mb-6">Видео-иллюстрации форматов</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="rounded-xl overflow-hidden border border-line">

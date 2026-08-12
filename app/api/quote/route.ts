@@ -57,7 +57,7 @@ async function sendTelegramNotification(lead: Record<string, unknown>): Promise<
   if (!botToken || !chatId) return false;
 
   // Sanitize user input to prevent Telegram HTML injection
-  const sanitize = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const sanitize = (s: string) =>s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   const text = [
     `🔔 Новая заявка ${lead.orderId}`,

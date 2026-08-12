@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 /**
- * Sets <html lang="en"> on mount, restores to "ru" on unmount.
+ * Sets <html lang="en">on mount, restores to "ru" on unmount.
  * Workaround for Next.js App Router: only root layout can render <html>,
  * so nested routes can't override lang attribute. This client component
  * fixes it for the /en route (which is noindex anyway — preview only).

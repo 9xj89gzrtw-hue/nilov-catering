@@ -16,7 +16,7 @@ interface Props {
 /**
  * Sticky mobile CTA bar — appears after the user scrolls 300px down.
  *
- * C10 fix (Mobile UX, 5.5 → 7+): adds a persistent "Рассчитать стоимость" CTA
+ * C10 fix (Mobile UX, 5.5 → 7+): adds a persistent "Рассчитать стоимость"CTA
  * so mobile users always have a one-tap path to the planning flow without
  * scrolling back to the top.
  *
@@ -38,12 +38,12 @@ export default function StickyMobileCTA({
   // Show after scrolling 300px down — gives hero CTA room to breathe
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 100);
+      setVisible(window.scrollY >100);
     };
     // Initial check (in case page loads scrolled, e.g. on back navigation)
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () =>window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Hide sticky CTA ONLY on pages where it would compete with a page-specific lead form

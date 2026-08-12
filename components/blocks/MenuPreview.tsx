@@ -19,7 +19,7 @@ const CATS: { title: string; href: string; items: string; dishId: string; realPh
   // Без глютена → cake-berry.jpg = торт с ягодами (VLM verified)
   { title: 'Без глютена', href: '/menu/gluten-free', items: 'Блюда без глютена', dishId: 'gluten-free-cake', realPhoto: '/images/real/cake-berry.jpg' },
   // Халяль → НОВОЕ фото: куриные крылышки (VLM verified — было b1.jpg=СВИНИНА!)
-  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d => d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shashlik', realPhoto: '/images/menu-preview/halal-shashlik.jpg' },
+  { title: 'Халяль', href: '/menu/halal', items: `${ALL_DISHES.filter(d =>d.dietBadges.includes('halal')).length} блюд халяль на отдельной линии`, dishId: 'halal-chicken-shashlik', realPhoto: '/images/menu-preview/halal-shashlik.jpg' },
 ];
 
 export default function MenuPreview() {
@@ -47,7 +47,7 @@ export default function MenuPreview() {
 
         <div className="carousel-horizontal flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-4 md:overflow-visible max-w-5xl mx-auto">
           {CATS.map((cat) => {
-            const dish = ALL_DISHES.find(d => d.id === cat.dishId);
+            const dish = ALL_DISHES.find(d =>d.id === cat.dishId);
             const img = cat.realPhoto || (dish ? getDishImage(dish.id, dish.station) : '/images/gallery/furshet-menu.jpg');
             const objPos = dish ? getObjectPositionForDish(dish.id, dish.station) : 'center 40%';
             const href = dish ? `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}` : cat.href;

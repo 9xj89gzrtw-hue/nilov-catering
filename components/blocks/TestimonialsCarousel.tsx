@@ -14,7 +14,7 @@ const TRUST_METRICS = [
 ];
 
 export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Review[] }) {
-  const reviews = cmsReviews && cmsReviews.length > 0 ? cmsReviews : [];
+  const reviews = cmsReviews && cmsReviews.length >0 ? cmsReviews : [];
   const [i, setI] = useState(0);
 
   if (reviews.length === 0) {
@@ -26,7 +26,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
             Отзывы скоро появятся
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-2xl mx-auto">
-            {TRUST_METRICS.map((m) => (
+            {TRUST_METRICS.map((m) =>(
               <div key={m.label} className="text-center">
                 <p className="font-heading text-2xl md:text-3xl text-gold-text font-semibold">{m.value}</p>
                 <p className="text-[11px] uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
@@ -56,7 +56,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
 
         {/* Trust strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-2xl mx-auto">
-          {TRUST_METRICS.map((m) => (
+          {TRUST_METRICS.map((m) =>(
             <div key={m.label} className="text-center">
               <p className="font-heading text-2xl md:text-3xl text-gold-text font-semibold">{m.value}</p>
               <p className="text-[11px] uppercase tracking-wider text-muted-foreground mt-1">{m.label}</p>
@@ -91,7 +91,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
               <div className="p-6 md:p-10">
               {/* Stars */}
               <div className="flex items-center gap-1 mb-4" aria-label={`Оценка ${r.rating} из 5`}>
-                {Array.from({ length: 5 }).map((_, idx) => (
+                {Array.from({ length: 5 }).map((_, idx) =>(
                   <Star
                     key={idx}
                     className={`w-5 h-5 ${idx < (r.rating || 5) ? 'text-gold-text fill-gold-text' : 'text-muted-foreground/30'}`}
@@ -114,10 +114,10 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
           
 
           {/* Controls */}
-          {reviews.length > 1 && (
+          {reviews.length >1 && (
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
-                onClick={() => setI((c) => (c - 1 + reviews.length) % reviews.length)}
+                onClick={() =>setI((c) =>(c - 1 + reviews.length) % reviews.length)}
                 className="w-11 h-11 flex items-center justify-center rounded-full border border-line text-muted-foreground hover:border-gold-text hover:text-gold-text transition-colors"
                 aria-label="Предыдущий отзыв"
               >
@@ -127,7 +127,7 @@ export default function TestimonialsCarousel({ cmsReviews }: { cmsReviews?: Revi
                 {i + 1} / {reviews.length}
               </span>
               <button
-                onClick={() => setI((c) => (c + 1) % reviews.length)}
+                onClick={() =>setI((c) =>(c + 1) % reviews.length)}
                 className="w-11 h-11 flex items-center justify-center rounded-full border border-line text-muted-foreground hover:border-gold-text hover:text-gold-text transition-colors"
                 aria-label="Следующий отзыв"
               >

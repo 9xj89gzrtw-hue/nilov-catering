@@ -22,7 +22,7 @@ export default function HomeVideoShowcase({ clips, heading = 'Живые мом�
   // Автозапуск по IntersectionObserver (не autoplay-атрибут)
   useEffect(() => {
     if (reduced || manualPause) return;
-    if (inView && clips.length > 0) {
+    if (inView && clips.length >0) {
       setPlaying(0); // первый клип по умолчанию
     } else if (!inView) {
       setPlaying(null);
@@ -90,12 +90,12 @@ export default function HomeVideoShowcase({ clips, heading = 'Живые мом�
 
                   {/* Play/Pause button */}
                   <button
-                    onClick={() => toggle(idx)}
+                    onClick={() =>toggle(idx)}
                     className={`absolute inset-0 flex items-center justify-center transition-colors ${isActive ? 'bg-black/20 opacity-0 hover:opacity-100' : 'bg-black/30 hover:bg-black/40'}`}
                     aria-label={`${isActive ? 'Пауза' : 'Воспроизвести видео'}: ${clip.title}, ${clip.durationSec} секунд`}
                   >
                     <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gold/90 flex items-center justify-center shadow-lg transition-transform hover:scale-105">
-                      {isActive ? <Pause className="w-5 h-5 text-ink" /> : <Play className="w-5 h-5 text-ink ml-0.5" />}
+                      {isActive ? <Pause className="w-5 h-5 text-ink" />: <Play className="w-5 h-5 text-ink ml-0.5" />}
                     </div>
                   </button>
                 </div>
@@ -119,9 +119,9 @@ function usePrefersReducedMotion() {
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReduced(mq.matches);
-    const cb = (e: MediaQueryListEvent) => setReduced(e.matches);
+    const cb = (e: MediaQueryListEvent) =>setReduced(e.matches);
     mq.addEventListener('change', cb);
-    return () => mq.removeEventListener('change', cb);
+    return () =>mq.removeEventListener('change', cb);
   }, []);
   return reduced;
 }

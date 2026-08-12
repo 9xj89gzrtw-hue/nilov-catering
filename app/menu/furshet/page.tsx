@@ -12,7 +12,7 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import Link from 'next/link';
 
-const GRADIENT_MAP: Record<string, string> = {
+const GRADIENT_MAP: Record<string, string>= {
   'cold': 'from-blue-100 via-blue-50 to-cyan-50',
   'hot': 'from-orange-100 via-orange-50 to-amber-50',
   'desserts': 'from-pink-100 via-pink-50 to-rose-50',
@@ -20,7 +20,7 @@ const GRADIENT_MAP: Record<string, string> = {
   'show': 'from-purple-100 via-purple-50 to-fuchsia-50',
 };
 
-const STATION_LABELS: Record<string, string> = {
+const STATION_LABELS: Record<string, string>= {
   'cold': 'Холодные закуски',
   'hot': 'Горячее',
   'desserts': 'Десерты',
@@ -29,12 +29,12 @@ const STATION_LABELS: Record<string, string> = {
 };
 
 export default function FurshetPage() {
-  const furshetDishes = useMemo(() => ALL_DISHES.filter(d => d.format.includes('furshet')), []);
+  const furshetDishes = useMemo(() =>ALL_DISHES.filter(d =>d.format.includes('furshet')), []);
   const [visibleStations, setVisibleStations] = useState<number | null>(null);
   useEffect(() => { setVisibleStations(2); }, []);
 
   const grouped = useMemo(() => {
-    const map: Record<string, typeof ALL_DISHES> = {};
+    const map: Record<string, typeof ALL_DISHES>= {};
     furshetDishes.forEach(d => {
       const station = d.station || 'cold';
       if (!map[station]) map[station] = [];
@@ -85,7 +85,7 @@ export default function FurshetPage() {
         <div id="dishes" className="mt-8 scroll-mt-20">
           <h2 className="text-2xl font-heading font-medium mb-6">Все блюда фуршета</h2>
 
-          {Object.entries(grouped).slice(0, visibleStations === null ? undefined : visibleStations).map(([station, dishes]) => (
+          {Object.entries(grouped).slice(0, visibleStations === null ? undefined : visibleStations).map(([station, dishes]) =>(
             <div key={station} className="mb-10">
               <h3 className="text-lg font-heading font-medium mb-4">{STATION_LABELS[station] || station}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
@@ -105,7 +105,7 @@ export default function FurshetPage() {
                         <div className="absolute bottom-1.5 right-1.5">
                           <span className="text-[10px] bg-white/80 backdrop-blur-sm rounded-full px-1.5 py-0.5 font-semibold">{dish.pricePerGuest} ₽</span>
                         </div>
-                        {dish.dietBadges.length > 0 && (
+                        {dish.dietBadges.length >0 && (
                           <div className="absolute top-1.5 left-1.5 flex gap-0.5">
                             {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-[#065F46] text-white px-1 py-0.5 rounded font-bold">VG</span>}
                             {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-[#B45309] text-white px-1 py-0.5 rounded font-bold">GF</span>}
@@ -115,9 +115,9 @@ export default function FurshetPage() {
                       <div className="p-2.5">
                         <h4 className="text-xs font-medium leading-tight mb-0.5 group-hover:text-gold-text transition-colors line-clamp-1">{dish.name}</h4>
                         <p className="text-[10px] text-muted-foreground line-clamp-2">{dish.description}</p>
-                        {dish.allergens.length > 0 && (
+                        {dish.allergens.length >0 && (
                           <div className="mt-1 flex flex-wrap gap-0.5">
-                            {dish.allergens.slice(0, 2).map(a => (
+                            {dish.allergens.slice(0, 2).map(a =>(
                               <span key={a} className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">{ALLERGEN_LABEL[a]}</span>
                             ))}
                           </div>
@@ -134,11 +134,11 @@ export default function FurshetPage() {
           {visibleStations !== null && visibleStations < Object.keys(grouped).length && (
             <div className="text-center py-8">
               <button
-                onClick={() => setVisibleStations(s => (s ?? 0) + 2)}
+                onClick={() =>setVisibleStations(s =>(s ?? 0) + 2)}
                 className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
                 type="button"
                 aria-controls="dishes"
-                aria-expanded={(visibleStations ?? 0) > 2 ? 'true' : 'false'}
+                aria-expanded={(visibleStations ?? 0) >2 ? 'true' : 'false'}
               >
                 Показать ещё станции ↓
               </button>

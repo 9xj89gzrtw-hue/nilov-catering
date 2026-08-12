@@ -17,7 +17,7 @@ export default function CareersPage() {
         { t: 'Менеджер событий', d: 'Опыт в event-сфере. Коммуникабельность, ответственность, авто.' },
         { t: 'Кондитер', d: 'Опыт от 3 лет. Торты, десерты, капкейки. Портфолио обязательно.' },
         { t: 'Официант (выезд)', d: 'Опыт от 1 года. Аккуратность, знание сервировки, английский — плюс.' },
-      ].map(v => (
+      ].map(v =>(
         <div key={v.t} className="mb-4 p-5 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-lg font-medium mb-1">{v.t}</h2>
           <p className="text-sm text-muted-foreground">{v.d}</p>

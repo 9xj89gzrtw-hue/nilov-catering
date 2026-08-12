@@ -3,7 +3,7 @@ import { SITE } from '@/lib/data';
 
 // W93-v8: per-route lastmod so crawlers get a real freshness signal.
 // Update these dates when a page's content materially changes.
-const ROUTE_LASTMOD: Record<string, string> = {
+const ROUTE_LASTMOD: Record<string, string>= {
   '': '2026-08-10',
   '/events': '2026-07-15',
   '/events/korporativ': '2026-07-15',
@@ -69,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = Object.keys(ROUTE_LASTMOD);
 
-  return routes.map((route) => ({
+  return routes.map((route) =>({
     url: `${base}${route}`,
     lastModified: new Date(ROUTE_LASTMOD[route]),
     changeFrequency: route === '' ? 'weekly' : route.startsWith('/events') || route.startsWith('/plan') ? 'monthly' : 'yearly',

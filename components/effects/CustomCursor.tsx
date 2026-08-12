@@ -21,7 +21,7 @@ export default function CustomCursor() {
       y.set(e.clientY);
       if (!visible) setVisible(true);
     };
-    const onLeave = () => setVisible(false);
+    const onLeave = () =>setVisible(false);
 
     window.addEventListener('mousemove', onMove);
     document.addEventListener('mouseleave', onLeave);

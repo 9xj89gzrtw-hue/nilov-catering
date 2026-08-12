@@ -4,7 +4,7 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Бар и mixology — кейтеринг в СПб — NiloV Catering' },
+  title: { absolute: 'Бар и миксология — кейтеринг в СПб — NiloV Catering' },
   description: 'Бармен-шоу, коктейльная карта, пирамида из бокалов — барное сопровождение от NiloV Catering.',
   alternates: { canonical: '/menu/bar', languages: { 'ru': '/menu/bar', 'x-default': '/menu/bar' } },
 };
@@ -39,7 +39,7 @@ const SERVICES = [
     p: '7 000 ₽',
     i: 'Эффектная подача игристого. 60 бокалов, сборка на месте, фотогенично.',
     img: '/images/dishes-new/pyramid-champagne.jpg',
-    features: ['60 бокалов', 'Сборка на месте', 'Игристое cascade', 'Фотозона'],
+    features: ['60 бокалов', 'Сборка на месте', 'Игристое каскадом', 'Фотозона'],
     duration: '15–20 минут шоу',
   },
   {
@@ -47,7 +47,7 @@ const SERVICES = [
     p: 'от 700 ₽/гость',
     i: 'Смузи, лимонады, мохито 0%, свежевыжатые соки. Для ЗОЖ-мероприятий.',
     img: '/images/dishes-new/non-alcohol-bar.jpg',
-    features: ['Смузи', 'Лимонады', 'Mocktails', 'Fresh juices', 'ЗОЖ-опции'],
+    features: ['Смузи', 'Лимонады', 'Моктейли', 'Свежевыжатые соки', 'ЗОЖ-опции'],
     duration: '2–3 часа',
   },
   {
@@ -55,7 +55,7 @@ const SERVICES = [
     p: 'от 450 ₽/гость',
     i: 'Бариста с профессиональной кофемашиной. Капучино, латте, альтернатива.',
     img: '/images/dishes-new/coffee-bar.jpg',
-    features: ['Бариста', 'Проф. машина', 'Капучино / латте', 'V60 / AeroPress', 'Зёрна specialty'],
+    features: ['Бариста', 'Проф. машина', 'Капучино / латте', 'V60 / AeroPress', 'Спешелти-зёрна'],
     duration: 'Весь вечер',
   },
 ];
@@ -64,8 +64,8 @@ const BAR_ITEMS = [
   { name: 'Красное вино', price: 'от 2 500 ₽/бутылка', img: '/images/dishes-new/wine-red.jpg', desc: 'Каберне, Мерло, Пино Нуар' },
   { name: 'Белое вино', price: 'от 2 500 ₽/бутылка', img: '/images/dishes-new/wine-white.jpg', desc: 'Шардоне, Совиньон Блан, Рислинг' },
   { name: 'Шампанское', price: 'от 3 500 ₽/бутылка', img: '/images/dishes-new/champagne.jpg', desc: 'Игристое брют/полусухое для тоста' },
-  { name: 'Виски-бар', price: 'от 4 500 ₽/гость', img: '/images/dishes-new/whisky-bar.jpg', desc: 'Single malt, blended, rocks' },
-  { name: 'Крафтовое пиво', price: 'от 450 ₽/бутылка', img: '/images/dishes-new/beer-craft.jpg', desc: 'Lager, IPA, Stout — локальные пивоварни' },
+  { name: 'Виски-бар', price: 'от 4 500 ₽/гость', img: '/images/dishes-new/whisky-bar.jpg', desc: 'Односолодовый, купажированный, на льду' },
+  { name: 'Крафтовое пиво', price: 'от 450 ₽/бутылка', img: '/images/dishes-new/beer-craft.jpg', desc: 'Лагер, IPA, стаут — локальные пивоварни' },
   { name: 'Авторские коктейли', price: 'от 600 ₽/коктейль', img: '/images/dishes-new/cocktail-bar.jpg', desc: 'Сигнатурные коктейли от шеф-бармена' },
 ];
 
@@ -86,13 +86,13 @@ export default function BarPage() {
           {' / '}
           <Link href="/menu" className="hover:text-background">Меню</Link>
           {' / '}
-          <span className="text-background">Бар и mixology</span>
+          <span className="text-background">Бар и миксология</span>
         </nav>
 
         <div className="mb-12 max-w-3xl">
           <span className="inline-block text-xs bg-red-600 text-white px-2 py-1 rounded font-bold mb-3">18+</span>
           <h1 className="font-heading text-4xl md:text-6xl font-medium mb-3" style={{ letterSpacing: '-0.02em' }}>
-            Бар и mixology
+            Бар и миксология
           </h1>
           <p className="text-lg md:text-xl text-background/70 mb-6">
             Бармен-шоу, коктейльная карта, винное сопровождение — добавим стиля вашему событию.
@@ -110,7 +110,7 @@ export default function BarPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
-            <p className="text-xs uppercase tracking-[0.22em] mb-2 opacity-90">Premium bar service</p>
+            <p className="text-xs uppercase tracking-[0.22em] mb-2 opacity-90">Премиальное барное обслуживание</p>
             <h2 className="font-heading text-2xl md:text-3xl font-medium mb-2">Профессиональный бар на ваше событие</h2>
             <p className="text-sm md:text-base opacity-90 max-w-2xl">
               От welcome-бара до пирамиды из бокалов. Полная мобильная барная станция с подсветкой, барменами и авторскими коктейлями.
@@ -123,7 +123,7 @@ export default function BarPage() {
           <h2 className="font-heading text-3xl font-medium mb-2">Барные сервисы</h2>
           <p className="text-background/60 mb-8">Выберите формат под ваше мероприятие</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES.map((s) => (
+            {SERVICES.map((s) =>(
               <div key={s.t} className="rounded-2xl border border-background/15 bg-background/5 overflow-hidden hover:border-gold-text hover:shadow-xl transition-all group flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-background/10">
                   <FoodPhoto
@@ -147,7 +147,7 @@ export default function BarPage() {
                   <h3 className="font-heading text-lg font-medium mb-2 text-background">{s.t}</h3>
                   <p className="text-sm text-background/60 mb-3 flex-1">{s.i}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {s.features.map(f => (
+                    {s.features.map(f =>(
                       <span key={f} className="text-xs bg-background/10 text-background/70 px-2 py-0.5 rounded-full">{f}</span>
                     ))}
                   </div>
@@ -168,7 +168,7 @@ export default function BarPage() {
           <h2 className="font-heading text-3xl font-medium mb-2">Барная карта</h2>
           <p className="text-background/60 mb-8">Напитки, которые можно включить в любой барный сервис</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
-            {BAR_ITEMS.map((item) => (
+            {BAR_ITEMS.map((item) =>(
               <div key={item.name} className="rounded-xl border border-background/15 bg-background/5 overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                 <div className="relative aspect-square overflow-hidden bg-background/10">
                   <FoodPhoto

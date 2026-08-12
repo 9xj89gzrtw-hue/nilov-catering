@@ -35,7 +35,7 @@ const TEAM = [
     experience: 'С 2014 года',
     credentials: ['Санминимум', 'Медкнижка', 'Халяль-сертификация', 'HACCP'],
     initials: 'АК',
-    photo: '/images/team/sommelier.jpg',
+    photo: '/images/team/sous-chef.jpg',
   },
   {
     name: 'Мария Васильева',
@@ -85,7 +85,7 @@ export default function TeamPage() {
         {/* Photo disclaimer — applies to ALL team members below */}
         <div className="mb-6 p-3 rounded-lg border border-line bg-secondary/30 text-center max-w-2xl mx-auto">
           <p className="text-xs text-muted-foreground italic">
-            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> — реальное фото. Фото других членов команды — иллюстративные; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
+            <strong>Основатель и шеф-повар Дмитрий Нилов</strong>— реальное фото. Фото других членов команды — иллюстративные; индивидуальные портреты предоставляются по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function TeamPage() {
             Лично курирует свадьбы и крупные B2B-события. Отвечает на звонок по телефону {SITE.phone}.
           </p>
           <div className="flex flex-wrap justify-center gap-2 text-xs">
-            {TEAM[0].credentials.map((c) => (
+            {TEAM[0].credentials.map((c) =>(
               <span key={c} className="px-2 py-1 rounded-full bg-white border border-line text-foreground">
                 {c}
               </span>
@@ -118,7 +118,7 @@ export default function TeamPage() {
         {/* Team grid */}
         <h2 className="font-heading text-xl font-medium mb-6 text-center">Шефы и координаторы</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {TEAM.slice(1).map((m) => (
+          {TEAM.slice(1).map((m) =>(
             <div key={m.name} className="rounded-xl border border-line bg-card p-5">
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border border-line" title={`${m.name}, ${m.role}`}>
@@ -138,7 +138,7 @@ export default function TeamPage() {
               </div>
               <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{m.bio}</p>
               <div className="flex flex-wrap gap-1.5">
-                {m.credentials.map((c) => (
+                {m.credentials.map((c) =>(
                   <span key={c} className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
                     {c}
                   </span>

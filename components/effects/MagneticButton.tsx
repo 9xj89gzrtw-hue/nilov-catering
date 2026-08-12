@@ -6,7 +6,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 interface Props {
   children: ReactNode;
   href?: string;
-  onClick?: () => void;
+  onClick?: () =>void;
   className?: string;
   intensity?: number; // 0.1..0.8, default 0.4
 }

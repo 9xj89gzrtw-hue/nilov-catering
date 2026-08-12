@@ -30,7 +30,7 @@ const REVIEWS: Review[] = reviewsData as Review[];
 // === Сортировка: новые сверху (по дате в формате "Месяц Год") ===
 // ВАЖНО: \w в JavaScript regex без флага /u не поддерживает кириллицу —
 // используем явный Unicode-класс.
-const MONTHS: Record<string, number> = {
+const MONTHS: Record<string, number>= {
   Январь: 0, Февраль: 1, Март: 2, Апрель: 3, Май: 4, Июнь: 5,
   Июль: 6, Август: 7, Сентябрь: 8, Октябрь: 9, Ноябрь: 10, Декабрь: 11,
 };
@@ -41,19 +41,19 @@ function parseDate(s: string): number {
   return Number(m[2]) * 100 + (MONTHS[m[1]] ?? 0);
 }
 
-const SORTED_REVIEWS = [...REVIEWS].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+const SORTED_REVIEWS = [...REVIEWS].sort((a, b) =>parseDate(b.date) - parseDate(a.date));
 
 // === Статистика (считается из реальных отзывов) ===
-const avgRating = (REVIEWS.reduce((acc, r) => acc + (r.rating || 0), 0) / REVIEWS.length).toFixed(1);
+const avgRating = (REVIEWS.reduce((acc, r) =>acc + (r.rating || 0), 0) / REVIEWS.length).toFixed(1);
 const roundedAvg = Math.round(Number(avgRating));
-const rating5 = REVIEWS.filter((r) => r.rating === 5).length;
-const rating4 = REVIEWS.filter((r) => r.rating === 4).length;
-const rating3 = REVIEWS.filter((r) => r.rating === 3).length;
-const rating2 = REVIEWS.filter((r) => r.rating === 2).length;
-const rating1 = REVIEWS.filter((r) => r.rating === 1).length;
+const rating5 = REVIEWS.filter((r) =>r.rating === 5).length;
+const rating4 = REVIEWS.filter((r) =>r.rating === 4).length;
+const rating3 = REVIEWS.filter((r) =>r.rating === 3).length;
+const rating2 = REVIEWS.filter((r) =>r.rating === 2).length;
+const rating1 = REVIEWS.filter((r) =>r.rating === 1).length;
 const below5 = rating4 + rating3 + rating2 + rating1;
-const verifiedCount = REVIEWS.filter((r) => r.status === 'verified').length;
-const totalGuests = REVIEWS.reduce((acc, r) => acc + (r.guests || 0), 0);
+const verifiedCount = REVIEWS.filter((r) =>r.status === 'verified').length;
+const totalGuests = REVIEWS.reduce((acc, r) =>acc + (r.guests || 0), 0);
 
 // === Hero background (банкетный зал, свадебная сервировка) ===
 const HERO_IMAGE = '/images/catering/wedding-01.jpg';
@@ -89,7 +89,7 @@ function StatCard({
 
 // === Rating distribution bar ===
 function RatingBar({ stars, count, total }: { stars: string; count: number; total: number }) {
-  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+  const pct = total >0 ? Math.round((count / total) * 100) : 0;
   return (
     <div className="flex items-center gap-3">
       <span className="w-4 text-sm text-muted-foreground tabular-nums">{stars}</span>
@@ -158,7 +158,7 @@ export default function ReviewsPage() {
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur px-4 py-2 ring-1 ring-white/20">
                 <div className="flex gap-0.5" aria-hidden="true">
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_, i) =>(
                     <Star
                       key={i}
                       className={`w-4 h-4 md:w-5 md:h-5 ${

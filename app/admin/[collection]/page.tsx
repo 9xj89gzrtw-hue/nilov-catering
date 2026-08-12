@@ -6,7 +6,7 @@ interface Props {
   params: Promise<{ collection: string }>;
 }
 
-const LABELS: Record<string, string> = {
+const LABELS: Record<string, string>= {
   dishes: 'Блюда',
   pricing: 'Цены',
   'trust-proof': 'Доверие',
@@ -25,9 +25,9 @@ export default function CollectionEditor({ params }: Props) {
     params.then(p => {
       setCollection(p.collection);
       fetch(`/api/cms/${p.collection}`)
-        .then(r => r.json())
+        .then(r =>r.json())
         .then(setData)
-        .catch(() => setMessage('Ошибка загрузки'));
+        .catch(() =>setMessage('Ошибка загрузки'));
     });
   }, [params]);
 
@@ -41,25 +41,25 @@ export default function CollectionEditor({ params }: Props) {
     });
     setSaving(false);
     setMessage(res.ok ? 'Сохранено' : 'Ошибка');
-    setTimeout(() => setMessage(''), 2000);
+    setTimeout(() =>setMessage(''), 2000);
   }, [data, collection]);
 
   const updateRow = (idx: number, key: string, value: unknown) => {
-    setData(prev => prev ? prev.map((row, i) => i === idx ? { ...(row as Record<string, unknown>), [key]: value } : row) : null);
+    setData(prev =>prev ? prev.map((row, i) =>i === idx ? { ...(row as Record<string, unknown>), [key]: value } : row) : null);
   };
 
   const addRow = () => {
-    setData(prev => [...(prev || []), {}]);
+    setData(prev =>[...(prev || []), {}]);
   };
 
   const deleteRow = (idx: number) => {
-    setData(prev => prev ? prev.filter((_, i) => i !== idx) : null);
+    setData(prev =>prev ? prev.filter((_, i) =>i !== idx) : null);
   };
 
   if (!collection) return <div className="p-8 text-gray-400">Загрузка...</div>;
   if (!data) return <div className="p-8 text-gray-400">Загрузка данных...</div>;
 
-  const fields = data.length > 0 && data[0] && typeof data[0] === 'object' ? Object.keys(data[0] as Record<string, unknown>) : [];
+  const fields = data.length >0 && data[0] && typeof data[0] === 'object' ? Object.keys(data[0] as Record<string, unknown>) : [];
 
   return (
     <div>
@@ -78,7 +78,7 @@ export default function CollectionEditor({ params }: Props) {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gray-800">
-              {fields.map(f => (
+              {fields.map(f =>(
                 <th key={f} className="text-left px-3 py-2 text-gray-400 font-medium">{f}</th>
               ))}
               <th className="w-16 px-2 py-2" />
@@ -94,7 +94,7 @@ export default function CollectionEditor({ params }: Props) {
                   return (
                   <td key={f} className="px-3 py-1.5">
                     {typeof val === 'boolean' ? (
-                      <input type="checkbox" checked={val} onChange={e => updateRow(idx, f, e.target.checked)} className="accent-emerald-500" />
+                      <input type="checkbox" checked={val} onChange={e =>updateRow(idx, f, e.target.checked)} className="accent-emerald-500" />
                     ) : typeof val === 'object' ? (
                       <input
                         className="bg-transparent border border-gray-600 rounded px-2 py-0.5 w-full font-mono text-xs"
@@ -116,7 +116,7 @@ export default function CollectionEditor({ params }: Props) {
                   );
                 })}
                 <td className="px-2 py-1.5 text-center">
-                  <button onClick={() => deleteRow(idx)} className="text-red-400 hover:text-red-300 text-xs"></button>
+                  <button onClick={() =>deleteRow(idx)} className="text-red-400 hover:text-red-300 text-xs"></button>
                 </td>
               </tr>
               );

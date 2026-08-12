@@ -10,12 +10,12 @@ export default function ScrollProgress() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+      setProgress(docHeight >0 ? (scrollTop / docHeight) * 100 : 0);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () =>window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (

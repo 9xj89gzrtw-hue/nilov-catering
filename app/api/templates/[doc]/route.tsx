@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 function DocHeader({ docType }: { docType: string }) {
-  const titles: Record<string, string> = {
+  const titles: Record<string, string>= {
     dogovor: 'Договор на оказание кейтеринговых услуг',
     nda: 'Соглашение о неразглашении конфиденциальной информации (NDA)',
     sla: 'Соглашение об уровне обслуживания (SLA) для корпоративных клиентов',
@@ -318,10 +318,10 @@ function SlaTemplate(): ReactElement {
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ doc: string }> }
+  { params }: { params: Promise<{ doc: string }>}
 ) {
   const { doc } = await params;
-  const valid: Record<string, () => ReactElement> = {
+  const valid: Record<string, () =>ReactElement>= {
     dogovor: DogovorTemplate,
     nda: NdaTemplate,
     sla: SlaTemplate,

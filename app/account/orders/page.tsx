@@ -67,7 +67,7 @@ const ORDERS = [
 
 export default function AccountOrdersPage() {
   const totalOrders = ORDERS.length;
-  const totalRevenue = ORDERS.reduce((acc, o) => acc + o.total, 0);
+  const totalRevenue = ORDERS.reduce((acc, o) =>acc + o.total, 0);
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -91,7 +91,7 @@ export default function AccountOrdersPage() {
         {/* Info notice — W93-v7: clearer demo badge */}
         <div className="mb-8 p-4 rounded-xl border-2 border-amber-300 bg-amber-50 text-amber-900 text-sm">
           <p className="font-semibold mb-1">⚠ Демонстрационный раздел</p>
-          <p>Заказы ниже — примеры для презентации B2B-кабинета. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-amber-900 underline font-semibold">{SITE.email}</a> с темой «B2B-запрос». ЭДО-интеграция (Диадок/СБИС) — в активной разработке.</p>
+          <p>Заказы ниже — примеры для презентации B2B-кабинета. Для доступа к вашей реальной истории заказов и закрывающим документам напишите на <a href={`mailto:${SITE.email}`} className="text-amber-900 underline font-semibold">{SITE.email}</a>с темой «B2B-запрос». ЭДО-интеграция (Диадок/СБИС) — в активной разработке.</p>
         </div>
 
         {/* Summary stats */}
@@ -116,7 +116,7 @@ export default function AccountOrdersPage() {
 
         {/* Order list */}
         <div className="space-y-4">
-          {ORDERS.map(order => (
+          {ORDERS.map(order =>(
             <details key={order.id} className="rounded-xl border border-line bg-card overflow-hidden">
               <summary className="p-5 cursor-pointer flex flex-wrap items-center justify-between gap-3 hover:bg-muted/30 transition-colors">
                 <div>
@@ -139,9 +139,9 @@ export default function AccountOrdersPage() {
                 </div>
               </summary>
               <div className="p-5 border-t border-line bg-secondary/30">
-                <p className="text-sm font-semibold mb-3">Документы на скачивание</p>
+                <p className="text-sm font-semibold mb-3">Закрывающие документы (скачивание / запрос)</p>
                 <ul className="space-y-2">
-                  {order.documents.map(doc => (
+                  {order.documents.map(doc =>(
                     <li key={doc.type} className="flex items-center justify-between gap-3 text-sm">
                       <span>{doc.type}</span>
                       {doc.ready ? (

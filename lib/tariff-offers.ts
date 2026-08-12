@@ -267,7 +267,7 @@ const VYPUSKNOY: TariffOffer[] = [
     eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 3450, minGuests: 15,
     description: 'Праздничный банкет. Горячее, десерты, безалкогольный бар.',
-    highlights: ['2 горячих', 'Десертный стол', 'Mocktail-бар', 'DJ + свет'],
+    highlights: ['2 горячих', 'Десертный стол', 'Безалкогольный бар', 'DJ + свет'],
     imagePlaceholder: '',
     formatOverride: 'banket',
     composition: [
@@ -281,7 +281,7 @@ const VYPUSKNOY: TariffOffer[] = [
       { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс (фисташка/малина/шоколад) в дегустационном стакане', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'brownie-shooter', name: 'Брауни-шутер', desc: 'Шоколадный брауни в стакане, солёная карамель, орех пекан', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'fruit-platter', name: 'Фруктовое плато', desc: 'Сезонные фрукты: ананас, манго, виноград, клубника, киви', category: 'Десерты', qty: '1 станция' },
-      { dishId: 'mocktail-bar', name: 'Mocktail-бар', desc: 'Безалкогольные коктейли: Вирджин Мохито, Пина Колада, Малиновый спритц', category: 'Бар', qty: '1 бармен' },
+      { dishId: 'mocktail-bar', name: 'Безалкогольный бар', desc: 'Безалкогольные коктейли: Вирджин Мохито, Пина Колада, Малиновый спритц', category: 'Бар', qty: '1 бармен' },
       { dishId: 'lemonade-berry', name: 'Ягодный лимонад', desc: 'Микс лесных ягод, лимон, свежая мята, содовая', category: 'Напитки', qty: 'безлимит' },
     ],
   },
@@ -289,7 +289,7 @@ const VYPUSKNOY: TariffOffer[] = [
     eventId: 'vypusknoy', eventName: 'Выпускной', tier: 'premium', tierLabel: 'Расширенный',
     pricePerGuest: 4950, minGuests: 15,
     description: 'Выпускной с размахом. Шоу-станции, бар, сладкий стол.',
-    highlights: ['3 шоу-станции', 'Mocktail-бар', 'Конфетти-пушка', 'Фотограф'],
+    highlights: ['3 шоу-станции', 'Безалкогольный бар', 'Конфетти-пушка', 'Фотограф'],
     imagePlaceholder: '',
     formatOverride: 'banket',
     composition: [
@@ -304,7 +304,7 @@ const VYPUSKNOY: TariffOffer[] = [
       { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс (фисташка/малина/шоколад) в дегустационном стакане', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'cheesecake-shooter', name: 'Чизкейк-шутер', desc: 'Классический чизкейк нью-йорк в стакане, ягодное кули', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'choc-mousse', name: 'Шоколадный мусс', desc: 'Мусс из бельгийского шоколада 70%, морская соль, какао', category: 'Десерты', qty: '1 стакан' },
-      { dishId: 'mocktail-bar', name: 'Mocktail-бар', desc: 'Безалкогольные коктейли: Вирджин Мохито, Пина Колада, Малиновый спритц', category: 'Бар', qty: '1 бармен' },
+      { dishId: 'mocktail-bar', name: 'Безалкогольный бар', desc: 'Безалкогольные коктейли: Вирджин Мохито, Пина Колада, Малиновый спритц', category: 'Бар', qty: '1 бармен' },
       { dishId: 'smoothie-bar', name: 'Смузи-бар', desc: 'Смузи на выбор: манго-маракуйя, клубника-банан, шпинат-яблоко', category: 'Бар', qty: '1 станция' },
     ],
   },
@@ -561,7 +561,7 @@ const COFFEE_BREAK: TariffOffer[] = [
 // ═══════════════════════════════════════════
 const POMINKI: TariffOffer[] = [
   {
-    eventId: 'pominki', eventName: 'Поминки', tier: 'economy', tierLabel: 'Базовый',
+    eventId: 'pominki', eventName: 'Поминки', tier: 'economy', tierLabel: 'Эконом',
     pricePerGuest: 1800, minGuests: 10,
     description: 'Поминальный обед по православной традиции. Кутья, блины, кисель, рыба. Без алкоголя. Тихо, достойно.',
     highlights: ['Кутья + блины', 'Борщ постный', 'Рыба запечённая', 'Кисель + морс'],
@@ -580,7 +580,7 @@ const POMINKI: TariffOffer[] = [
     ],
   },
   {
-    eventId: 'pominki', eventName: 'Поминки', tier: 'standard', tierLabel: 'Расширенный',
+    eventId: 'pominki', eventName: 'Поминки', tier: 'standard', tierLabel: 'Стандарт',
     pricePerGuest: 2500, minGuests: 10,
     description: 'Расширенное поминальное меню: уха, грибы, котлеты рыбные, компот. Без алкоголя.',
     highlights: ['Кутья + блины', 'Уха рыбацкая', 'Грибы жареные', 'Компот + морс'],

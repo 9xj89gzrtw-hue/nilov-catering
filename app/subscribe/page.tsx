@@ -36,28 +36,28 @@ export default function SubscribePage() {
               </thead>
               <tbody>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium"> Кофе-брейк weekly</td>
+                  <td className="py-2 pr-4 font-medium">Кофе-брейк weekly</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">66 300 ₽</td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60 bg-gold-tint/5">
-                  <td className="py-2 pr-4 font-medium"> Долгосрочный контракт</td>
+                  <td className="py-2 pr-4 font-medium">Долгосрочный контракт</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">60 000 ₽</td>
                   <td className="text-right py-2 px-2">23%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-medium"> Бизнес-ланч weekly</td>
+                  <td className="py-2 pr-4 font-medium">Бизнес-ланч weekly</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">110 500 ₽</td>
                   <td className="text-right py-2 px-2">15%</td>
                   <td className="text-right py-2 px-2">20 сотр.</td>
                   <td className="text-right py-2 pl-2">1 нед.</td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium"> Комбо (CB+обед)</td>
+                  <td className="py-2 pr-4 font-medium">Комбо (CB+обед)</td>
                   <td className="text-right py-2 px-2 font-semibold text-gold-text">166 400 ₽</td>
                   <td className="text-right py-2 px-2">20%</td>
                   <td className="text-right py-2 px-2">30 сотр.</td>
@@ -81,7 +81,7 @@ export default function SubscribePage() {
           <div className="p-5 rounded-xl border-2 border-gold-text/40 bg-gold-tint/5">
             <h3 className="font-heading text-base font-medium mb-1">Долгосрочный контракт (кофе-брейк)</h3>
             <p className="text-sm text-muted-foreground mb-2">
-              Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong> (скидка 23%).
+              Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong>(скидка 23%).
               Ежемесячный ЭДО-инвойс. SLA ±15 минут включён.
             </p>
             <p className="text-xs text-muted-foreground">
@@ -118,7 +118,7 @@ export default function SubscribePage() {
           <ul className="text-sm space-y-1.5 list-disc list-inside text-foreground/90">
             <li>Фикс-цена на весь срок контракта (защита от инфляции)</li>
             <li>ЭДО-инвойс ежемесячно (Диадок / СБИС)</li>
-            <li> SLA: доставка ±15 минут, штраф 1%/мин опоздания</li>
+            <li>SLA: доставка ±15 минут, штраф 1%/мин опоздания</li>
             <li>Ротация меню — без повторов 8–12 недель</li>
             <li>Персональный менеджер с прямым мобильным</li>
             <li>Сезонные обновления меню (весна/лето/осень/зима)</li>
@@ -135,25 +135,25 @@ export default function SubscribePage() {
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-1">Имя *</label>
-                <input id="name" name="name" required className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
+                <input id="name" name="name" required className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm" />
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium mb-1">Телефон *</label>
-                <input id="phone" name="phone" type="tel" required className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
+                <input id="phone" name="phone" type="tel" required className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm" />
               </div>
             </div>
             <div>
               <label htmlFor="company" className="block text-sm font-medium mb-1">Компания</label>
-              <input id="company" name="company" placeholder='ООО «Ромашка»' className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
+              <input id="company" name="company" placeholder='ООО «Ромашка»' className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm" />
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="employees" className="block text-sm font-medium mb-1">Сотрудников</label>
-                <input id="employees" name="guests" type="number" min="1" placeholder="напр. 50" className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm" />
+                <input id="employees" name="guests" type="number" min="1" placeholder="напр. 50" className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm" />
               </div>
               <div>
                 <label htmlFor="tier" className="block text-sm font-medium mb-1">Тип подписки</label>
-                <select id="tier" name="tier" className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm">
+                <select id="tier" name="tier" className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm">
                   <option value="coffee-weekly">Кофе-брейк еженедельно (66 300 ₽/мес)</option>
                   <option value="coffee-yearly">Долгосрочный контракт (60 000 ₽/мес)</option>
                   <option value="lunch-weekly">Бизнес-ланч еженедельно (110 500 ₽/мес)</option>
@@ -164,7 +164,7 @@ export default function SubscribePage() {
             </div>
             <div>
               <label htmlFor="comment" className="block text-sm font-medium mb-1">Комментарий</label>
-              <textarea id="comment" name="comment" rows={2} placeholder="Особые пожелания, диеты, адрес доставки..." className="w-full rounded-lg border border-line bg-background px-4 py-2.5 text-sm resize-none" />
+              <textarea id="comment" name="comment" rows={2} placeholder="Особые пожелания, диеты, адрес доставки..." className="w-full rounded-lg border border-line bg-background px-4 py-3 min-h-[44px] text-sm resize-none" />
             </div>
             <button type="submit" className="w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
               Отправить заявку

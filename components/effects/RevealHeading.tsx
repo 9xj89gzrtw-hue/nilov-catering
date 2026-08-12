@@ -51,7 +51,7 @@ export default function RevealHeading({
       viewport={{ once: true, amount: 0.4 }}
       className={className}
     >
-      {words.map((w, i) => (
+      {words.map((w, i) =>(
         <span key={i} className="inline-block overflow-hidden pb-2 mr-[0.25em] align-bottom">
           <motion.span variants={word} className="inline-block">
             {w}

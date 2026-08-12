@@ -86,7 +86,7 @@ function CalculatorServerFallback() {
             </thead>
             <tbody>
               {formats.map((f) =>
-                f.tiers.map((t, idx) => (
+                f.tiers.map((t, idx) =>(
                   <tr key={`${f.format}-${t.tier}`} className={idx === 0 ? 'border-t-2 border-line/30' : 'border-t border-line/30'}>
                     {idx === 0 ? (
                       <td className="p-4 font-semibold align-top" rowSpan={f.tiers.length}>
@@ -137,9 +137,9 @@ function CalculatorServerFallback() {
         <div className="mt-6 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/5">
           <h2 className="font-heading text-lg font-medium mb-2">Скидки</h2>
           <ul className="text-sm space-y-1.5">
-            <li>• <strong>Раннее бронирование:</strong> 10% за 60+ дней, 15% за 90+ дней</li>
-            <li>• <strong>Объём:</strong> от 100 гостей — индивидуальная скидка</li>
-            <li>• <strong>B2B:</strong> от 50 гостей — отсрочка платежа для постоянных клиентов</li>
+            <li>• <strong>Раннее бронирование:</strong>10% за 60+ дней, 15% за 90+ дней</li>
+            <li>• <strong>Объём:</strong>от 100 гостей — индивидуальная скидка</li>
+            <li>• <strong>B2B:</strong>от 50 гостей — отсрочка платежа для постоянных клиентов</li>
           </ul>
         </div>
 
@@ -174,7 +174,7 @@ function CalculatorServerFallback() {
 
         <noscript>
           <div className="mt-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm">
-            <strong>Внимание:</strong> интерактивный калькулятор требует JavaScript.
+            <strong>Внимание:</strong>интерактивный калькулятор требует JavaScript.
             Выше — статичная таблица тарифов. Для точного расчёта позвоните{' '}
             <a href={`tel:${SITE.phoneTel}`} className="underline">{SITE.phone}</a>.
           </div>

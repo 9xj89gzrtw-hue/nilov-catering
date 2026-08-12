@@ -57,7 +57,7 @@ export default function YubileyPage() {
           <div className="space-y-3">
             <div className="p-4 rounded-lg border-2 border-gold-tint bg-gold-tint/10">
               <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
-                <h3 className="font-semibold">⭐ Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
+                <h3 className="font-semibold">Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
                 <span className="text-base font-bold text-gold-text">от 59 250 ₽ за 15 чел</span>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -88,7 +88,7 @@ export default function YubileyPage() {
         <div className="mb-8 p-4 rounded-xl border border-line bg-secondary/30">
           <h3 className="font-heading text-base font-medium mb-2">Премиум-вариант (вне основного бюджета)</h3>
           <p className="text-sm text-muted-foreground">
-            Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong> — 5 закусок, 2 горячих, икорная станция,
+            Банкет-Максимальный: <strong>15 × 9 950 ₽ = 149 250 ₽</strong>— 5 закусок, 2 горячих, икорная станция,
             сомелье, торт, координатор. Премиум-формат для особого повода. Возможна рассрочка или уменьшение количества блюд.
           </p>
         </div>

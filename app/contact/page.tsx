@@ -105,7 +105,7 @@ export default function ContactPage() {
                   (e.target as HTMLInputElement).setCustomValidity('Слишком короткий номер — минимум 10 цифр');
                 }
               }}
-              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+              onInput={(e) =>(e.target as HTMLInputElement).setCustomValidity('')}
               className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
               aria-describedby="phone-hint"
             />
@@ -165,7 +165,7 @@ export default function ContactPage() {
           {/* B2B toggle */}
           <button
             type="button"
-            onClick={() => setShowB2B(!showB2B)}
+            onClick={() =>setShowB2B(!showB2B)}
             className="text-sm text-gold-text font-medium hover:underline"
           >
             {showB2B ? '− Скрыть корпоративные детали' : '+ Для корпоративных клиентов (ИНН, ЭДО, тендеры)'}

@@ -26,8 +26,8 @@ export default function NikahPage() {
             Сертификат Совета муфтиев России, отдельная линия производства, без свинины и алкоголя.
           </p>
           <p className="text-sm text-muted-foreground">
-            <span className="text-gold-text font-semibold">Никах от 3 950 ₽/гость</span> · мин. 15 гостей ·
-            <span className="text-gold-text font-semibold">Ифтар от 1 800 ₽/гость</span> · мин. 20 гостей
+            <span className="text-gold-text font-semibold">Никах от 3 950 ₽/гость</span>· мин. 15 гостей ·
+            <span className="text-gold-text font-semibold">Ифтар от 1 800 ₽/гость</span>· мин. 20 гостей
           </p>
         </header>
         <div className="mb-10 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -48,7 +48,7 @@ export default function NikahPage() {
               { t: 'Без свинины и алкоголя', d: 'Полное отсутствие в меню. Без вина в соусах, без рома в десертах.' },
               { t: 'Меню по канонам', d: 'Кутья, халва, чак-чак, плов, манты, самса, долма, хумус, фаттуш, баклажаны.' },
               { t: 'Время ифтара', d: 'Доставка с учётом точного времени заката. Менеджер уточняет за день до мероприятия.' },
-            ].map(item => (
+            ].map(item =>(
               <div key={item.t} className="p-4 rounded-xl border border-line bg-card">
                 <h3 className="font-heading text-base font-medium mb-1">{item.t}</h3>
                 <p className="text-sm text-muted-foreground">{item.d}</p>

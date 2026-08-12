@@ -26,7 +26,7 @@ const RATIOS = {
   portrait: 'aspect-[3/4]',
 };
 
-const FRAME_CLASSES: Record<FrameShape, string> = {
+const FRAME_CLASSES: Record<FrameShape, string>= {
   'rounded-xl': 'rounded-xl',
   circle: 'rounded-full',
   diamond: 'rounded-none', // clip-path handles shape
@@ -116,7 +116,7 @@ export default function PhotoAliveCard({
           playsInline
           preload="none"
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-350"
-          onLoadedData={() => setVideoLoaded(true)}
+          onLoadedData={() =>setVideoLoaded(true)}
           style={{
             ...mediaStyle,
             opacity: showVideo && videoLoaded ? 1 : 0,

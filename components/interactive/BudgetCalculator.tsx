@@ -22,11 +22,11 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
   const [tariffId, setTariffId] = useState(defaultTariff);
   const [withNDS, setWithNDS] = useState(false);
 
-  const tariff = TARIFFS.find(t => t.id === tariffId) || TARIFFS[0];
+  const tariff = TARIFFS.find(t =>t.id === tariffId) || TARIFFS[0];
   const minGuests = tariff.minGuests;
   const effectiveGuests = Math.max(minGuests, guests);
-  const subtotal = useMemo(() => tariff.price * effectiveGuests, [tariff, effectiveGuests]);
-  const nds = useMemo(() => withNDS ? Math.round(subtotal * 0.20) : 0, [subtotal, withNDS]);
+  const subtotal = useMemo(() =>tariff.price * effectiveGuests, [tariff, effectiveGuests]);
+  const nds = useMemo(() =>withNDS ? Math.round(subtotal * 0.20) : 0, [subtotal, withNDS]);
   const total = subtotal + nds;
   const perGuest = tariff.price + (withNDS ? Math.round(tariff.price * 0.20) : 0);
 
@@ -40,11 +40,11 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
   // Feasibility validation — warn on operationally impossible format×guests combinations
   const feasibilityWarnings: string[] = [];
   // Rule 1: Chef-at-home max 30 guests
-  if (tariff.format === 'chef-at-home' && effectiveGuests > 30) {
+  if (tariff.format === 'chef-at-home' && effectiveGuests >30) {
     feasibilityWarnings.push('Шеф на дом — максимум 30 гостей. Для большего количества выберите банкет или фуршет.');
   }
   // Rule 2: Coffee-break min 10, max 500
-  if (tariff.format === 'coffee-break' && effectiveGuests > 500) {
+  if (tariff.format === 'coffee-break' && effectiveGuests >500) {
     feasibilityWarnings.push('Кофе-брейк на 500+ гостей — обсудите логистику с менеджером.');
   }
   // Rule 3: Luxury banquet (9950₽) min 15 guests (aligned with calculator and pricing page)
@@ -63,7 +63,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-heading text-base font-medium">Калькулятор бюджета</h3>
         <label className="flex items-center gap-1.5 text-xs cursor-pointer">
-          <input type="checkbox" checked={withNDS} onChange={(e) => setWithNDS(e.target.checked)} className="accent-gold-text" />
+          <input type="checkbox" checked={withNDS} onChange={(e) =>setWithNDS(e.target.checked)} className="accent-gold-text" />
           <span className="text-muted-foreground">с НДС (через партнёрское ООО)</span>
         </label>
       </div>
@@ -72,7 +72,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
           <label className="text-xs text-muted-foreground">Гостей</label>
           <span className="text-sm font-semibold">{effectiveGuests} чел</span>
         </div>
-        <input type="range" min={minGuests} max={500} step={5} value={effectiveGuests} onChange={(e) => setGuests(Number(e.target.value))} className="w-full accent-gold-text" aria-label="Количество гостей" />
+        <input type="range" min={minGuests} max={500} step={5} value={effectiveGuests} onChange={(e) =>setGuests(Number(e.target.value))} className="w-full accent-gold-text" aria-label="Количество гостей" />
         <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
           <span>{minGuests}</span><span>250</span><span>500</span>
         </div>
@@ -80,8 +80,8 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
       <div className="mb-4">
         <label className="text-xs text-muted-foreground block mb-1.5">Тариф</label>
         <div className="grid grid-cols-2 gap-1.5">
-          {TARIFFS.map(t => (
-            <button key={t.id} type="button" onClick={() => setTariffId(t.id)} className={`text-left p-2 rounded-lg border text-xs transition-all ${tariffId === t.id ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-background hover:border-gold-text'}`}>
+          {TARIFFS.map(t =>(
+            <button key={t.id} type="button" onClick={() =>setTariffId(t.id)} className={`text-left p-2 rounded-lg border text-xs transition-all ${tariffId === t.id ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text' : 'border-line bg-background hover:border-gold-text'}`}>
               <div className="font-medium">{t.label}</div>
               <div className="text-[10px] text-muted-foreground">{t.tier} · {t.price.toLocaleString('ru-RU')} ₽</div>
             </button>
@@ -99,13 +99,13 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
         </div>
       </div>
       {/* Dynamic pricing indicators — early-bird + volume discounts */}
-      {totalDiscount > 0 && (
+      {totalDiscount >0 && (
         <div className="mb-3 p-3 rounded-lg bg-emerald-50 border border-emerald-200">
           <p className="text-xs text-emerald-800 font-medium mb-1">
              Скидка {Math.round(totalDiscount * 100)}% ({savings.toLocaleString('ru-RU')} ₽)
           </p>
           <p className="text-[10px] text-emerald-700">
-            {volumeDiscount > earlyBirdDiscount
+            {volumeDiscount >earlyBirdDiscount
               ? `Объёмная скидка для ${effectiveGuests}+ гостей`
               : `Скидка за раннее бронирование`}
           </p>
@@ -114,9 +114,9 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
           </p>
         </div>
       )}
-      {feasibilityWarnings.length > 0 && (
+      {feasibilityWarnings.length >0 && (
         <div className="mb-3 p-3 rounded-lg bg-amber-50 border border-amber-200">
-          {feasibilityWarnings.map((w, i) => (
+          {feasibilityWarnings.map((w, i) =>(
             <p key={i} className="text-xs text-amber-800 mb-1 last:mb-0">
                {w}
             </p>
@@ -124,16 +124,16 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
         </div>
       )}
       <Link
-        href={feasibilityWarnings.length > 0
+        href={feasibilityWarnings.length >0
           ? `/contact?subject=Консультация&guests=${effectiveGuests}&format=${tariff.format}`
           : `/plan/constructor?format=${tariff.format}&guests=${effectiveGuests}`}
         className={`block w-full rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors text-center no-underline ${
-          feasibilityWarnings.length > 0
+          feasibilityWarnings.length >0
             ? 'bg-amber-600 text-white hover:bg-amber-700'
             : 'bg-gold-text text-white hover:bg-gold-text/90'
         }`}
       >
-        {feasibilityWarnings.length > 0 ? 'Обсудить с менеджером →' : `Собрать меню ${totalDiscount > 0 ? `(${discountedTotal.toLocaleString('ru-RU')} ₽)` : '→'}`}
+        {feasibilityWarnings.length >0 ? 'Обсудить с менеджером →' : `Собрать меню ${totalDiscount >0 ? `(${discountedTotal.toLocaleString('ru-RU')} ₽)` : '→'}`}
       </Link>
       <p className="text-[10px] text-muted-foreground text-center mt-2">Расчёт предварительный. Финальная цена — после согласования меню.</p>
     </div>

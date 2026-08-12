@@ -12,7 +12,7 @@ interface MorphingTextProps {
 function WordReveal({ word, isEntering }: { word: string; isEntering: boolean }) {
   return (
     <span className="inline-flex" aria-hidden="true">
-      {word.split('').map((char, i) => (
+      {word.split('').map((char, i) =>(
         <motion.span
           key={`${word}-${i}`}
           initial={isEntering ? { opacity: 0, y: 12, rotateX: -90 } : { opacity: 1, y: 0, rotateX: 0 }}
@@ -45,11 +45,11 @@ export default function MorphingText({ words, interval = 3500, className = '' }:
     const timer = setInterval(() => {
       setIsEntering(false);
       setTimeout(() => {
-        setIndex((i) => (i + 1) % words.length);
+        setIndex((i) =>(i + 1) % words.length);
         setIsEntering(true);
       }, words[index].length * 30 + 200);
     }, interval);
-    return () => clearInterval(timer);
+    return () =>clearInterval(timer);
   }, [index, interval, words]);
 
   return (

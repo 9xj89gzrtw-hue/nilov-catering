@@ -52,7 +52,7 @@ export default function ShareButton({
         document.body.removeChild(ta);
       }
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() =>setCopied(false), 2000);
     } catch (e) {
       console.warn('ShareButton: copy failed', e);
     }
@@ -87,7 +87,7 @@ export default function ShareButton({
             </a>
             <button onClick={handleCopy}
                     className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-background px-4 py-2 text-sm font-medium hover:border-gold-text transition-colors touch-target">
-              {copied ? ' Скопировано' : ' Копировать ссылку'}
+              {copied ? 'Скопировано' : 'Копировать ссылку'}
             </button>
           </div>
           <p className="text-xs text-muted-foreground break-all">

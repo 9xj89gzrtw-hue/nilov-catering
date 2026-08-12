@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: 'Не знаю, что такое фуршет/банкет/кофе-брейк. В чём разница?',
-    a: '<strong>Фуршет</strong> — гости едят стоя, общаются свободно, едят руками (канапе, тарталетки). Нужен меньше персонала.<br/><strong>Банкет</strong> — гости сидят за столами, официанты подают смену блюд. Классика для свадеб/гала.<br/><strong>Кофе-брейк</strong> — лёгкий перерыв: кофе, чай, выпечка, десерты. Для конференций/тренингов.<br/>Не знаете, что выбрать? — <a href="/plan/helper" class="text-gold-text underline">Помогите подобрать за 3 вопроса →</a>',
+    a: '<strong>Фуршет</strong>— гости едят стоя, общаются свободно, едят руками (канапе, тарталетки). Нужен меньше персонала.<br/><strong>Банкет</strong>— гости сидят за столами, официанты подают смену блюд. Классика для свадеб/гала.<br/><strong>Кофе-брейк</strong>— лёгкий перерыв: кофе, чай, выпечка, десерты. Для конференций/тренингов.<br/>Не знаете, что выбрать? — <a href="/plan/helper" class="text-gold-text underline">Помогите подобрать за 3 вопроса →</a>',
   },
   {
     q: 'Сколько еды на человека? Боюсь, не наедят или закажу слишком много.',
@@ -52,10 +52,10 @@ export default function FAQTeaser() {
         </div>
 
         <div className="space-y-3">
-          {FAQS.map((faq, i) => (
+          {FAQS.map((faq, i) =>(
             <div key={i} className="rounded-xl border border-line bg-card overflow-hidden">
               <button
-                onClick={() => setOpen(open === i ? null : i)}
+                onClick={() =>setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-secondary/50 transition-colors"
                 aria-expanded={open === i}
               >

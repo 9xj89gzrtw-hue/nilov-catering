@@ -60,7 +60,7 @@ function getLocationsForOccasion(occasion: string | undefined): readonly { label
   });
 }
 
-const OCCASION_TO_PAGE: Record<string, string> = {
+const OCCASION_TO_PAGE: Record<string, string>= {
   'Свадьба': '/events/svadba',
   'Корпоратив': '/events/korporativ',
   'День рождения': '/events/chastnoe',
@@ -117,7 +117,7 @@ export default async function PlanHelperPage({
   // Финальный экран
   if (step === 3 && occasion && guests && location) {
     const eventPage = OCCASION_TO_PAGE[occasion] || '/pricing';
-    const formatMatch = OCCASIONS.find((o) => o.label === occasion);
+    const formatMatch = OCCASIONS.find((o) =>o.label === occasion);
     const format = formatMatch?.format || 'furshet';
     const recommendation = getRecommendation(occasion, guests);
     const formatLabel = format === 'banket' ? 'Банкет' : format === 'furshet' ? 'Фуршет' : format === 'coffee-break' ? 'Кофе-брейк' : format === 'detskoe' ? 'Детский кейтеринг' : 'Выезд шефа';
@@ -157,7 +157,7 @@ export default async function PlanHelperPage({
                 Формат: <strong className="text-foreground">{formatLabel}</strong>. Подобрали под ваш повод и количество гостей.
               </p>
               <ul className="space-y-1.5 mb-4">
-                {recommendation.whatIncluded.map((item, i) => (
+                {recommendation.whatIncluded.map((item, i) =>(
                   <li key={i} className="flex items-start gap-2 text-sm">
                     <span className="text-gold-text mt-0.5">✓</span>
                     <span>{item}</span>
@@ -223,10 +223,10 @@ export default async function PlanHelperPage({
   const locations = step === 2 ? getLocationsForOccasion(occasion) : ALL_LOCATIONS;
 
   const current = step === 0
-    ? { q: 'Какой повод?', opts: OCCASIONS.map((o) => ({ label: o.label, emoji: o.emoji })), key: 'occasion' as const }
+    ? { q: 'Какой повод?', opts: OCCASIONS.map((o) =>({ label: o.label, emoji: o.emoji })), key: 'occasion' as const }
     : step === 1
-    ? { q: 'Сколько гостей?', opts: GUEST_RANGES.map((g) => ({ label: g.label, emoji: '' })), key: 'guests' as const }
-    : { q: 'Где проходит?', opts: locations.map((l) => ({ label: l.label, emoji: l.emoji })), key: 'location' as const };
+    ? { q: 'Сколько гостей?', opts: GUEST_RANGES.map((g) =>({ label: g.label, emoji: '' })), key: 'guests' as const }
+    : { q: 'Где проходит?', opts: locations.map((l) =>({ label: l.label, emoji: l.emoji })), key: 'location' as const };
 
   const buildHref = (value: string) => {
     const params = new URLSearchParams();
@@ -245,7 +245,7 @@ export default async function PlanHelperPage({
 
         {/* Progress bar */}
         <div className="flex gap-1 mb-10" role="progressbar" aria-label={`Шаг ${step + 1} из 3`} aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={3}>
-          {[0, 1, 2].map((i) => (
+          {[0, 1, 2].map((i) =>(
             <div
               key={i}
               className={`flex-1 h-1.5 rounded-full transition-colors ${
@@ -268,7 +268,7 @@ export default async function PlanHelperPage({
         </div>
 
         <div className="space-y-3">
-          {current.opts.map((opt) => (
+          {current.opts.map((opt) =>(
             <Link
               key={opt.label}
               href={buildHref(opt.label)}
@@ -288,7 +288,7 @@ export default async function PlanHelperPage({
           ))}
         </div>
 
-        {step > 0 && (
+        {step >0 && (
           <Link
             href={step === 1 ? '/plan/helper' : step === 2 ? `/plan/helper?occasion=${encodeURIComponent(occasion!)}` : '/plan/helper'}
             className="inline-block mt-6 text-sm text-muted-foreground hover:text-foreground"

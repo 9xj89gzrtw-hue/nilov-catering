@@ -61,11 +61,11 @@ export default function SvadbaPage() {
             4 БГ + 1 без орехов + 57 всеядных. Цена по группам — платите только за блюда своей группы.
           </p>
           <p className="text-xs text-muted-foreground mb-3">
-            <strong>Как считается цена:</strong> веган-группа — по тарифу «Веган Стандарт»
+            <strong>Как считается цена:</strong>веган-группа — по тарифу «Веган Стандарт»
             (2 950 ₽/гость, см. <Link href="/menu/vegan" className="underline">веган-меню</Link>).
             Всеядная группа — по тарифу «Свадьба Стандарт» (5 470 ₽/гость, см. тарифы ниже).
             Итог = sum(per-group price × guests). Например: 50 веганов × 2 950 + 30 всеядных × 5 470
-            = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong> за 80 гостей
+            = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong>за 80 гостей
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
           <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать свадебное меню с разными диетами →
@@ -184,8 +184,8 @@ export default function SvadbaPage() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-3">Флористика — отдельно, бесплатно при бронировании за 60+ дней. Свадебный торт включён во все тарифы. Винная карта и координатор — включены в Стандарт и выше.</p>
-          <p className="text-xs text-muted-foreground mt-2"><strong>Халяль-вариант любого тарифа:</strong> винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/бар безалкогольных коктейлей). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
-          <p className="text-xs text-muted-foreground mt-2"><strong>Анафилаксия на орехи?</strong> В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Халяль-вариант любого тарифа:</strong>винная карта заменяется на безалкогольную (морс/лимонад/мята-вода/бар безалкогольных коктейлей). Скидка 200 ₽/гость. Укажите «халяль» в заявке.</p>
+          <p className="text-xs text-muted-foreground mt-2"><strong>Анафилаксия на орехи?</strong>В меню по умолчанию нет цельных орехов. При анафилаксии — отдельная смена, EpiPen у ответственного сотрудника. См. <a href="/allergens" className="underline">аллергены</a>.</p>
         </div>
 
         {/* Production rider — тайминги, оборудование, штат */}
@@ -274,7 +274,7 @@ export default function SvadbaPage() {
               { name: 'Царская усадьба «Царское Село»', area: 'Пушкин', guests: 'до 150', feature: 'Исторический парк, павильоны' },
               { name: 'Ресторан «Гостиный двор»', area: 'Васильевский', guests: 'до 100', feature: 'Собственная кухня, терраса' },
               { name: 'Вилла Роза', area: 'Репино', guests: 'до 60', feature: 'Загородная вилла, Финский залив' },
-            ].map(v => (
+            ].map(v =>(
               <div key={v.name} className="p-4 rounded-xl border border-line bg-card hover:border-gold-text transition-colors">
                 <h3 className="font-heading text-base font-medium mb-1">{v.name}</h3>
                 <p className="text-xs text-muted-foreground mb-2">{v.area} · {v.guests}</p>

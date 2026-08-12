@@ -60,30 +60,30 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
 
   const filtered = useMemo(() => {
     let dishes = ALL_DISHES;
-    if (station !== 'all') dishes = dishes.filter(d => d.station === station);
-    if (activeDiets.size > 0) {
-      dishes = dishes.filter(d => [...activeDiets].every(diet => d.dietBadges.includes(diet as typeof DIETS[number])));
+    if (station !== 'all') dishes = dishes.filter(d =>d.station === station);
+    if (activeDiets.size >0) {
+      dishes = dishes.filter(d =>[...activeDiets].every(diet =>d.dietBadges.includes(diet as typeof DIETS[number])));
     }
-    if (excludedAllergens.size > 0) {
-      dishes = dishes.filter(d => ![...excludedAllergens].some(a => d.allergens.includes(a as typeof d.allergens[number])));
+    if (excludedAllergens.size >0) {
+      dishes = dishes.filter(d =>![...excludedAllergens].some(a =>d.allergens.includes(a as typeof d.allergens[number])));
     }
     if (search.trim()) {
       const q = search.toLowerCase();
-      dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
+      dishes = dishes.filter(d =>d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
   }, [station, activeDiets, excludedAllergens, search]);
 
   // Split into halal / non-halal for visual separation
-  const halalDishes = useMemo(() => filtered.filter(d => d.dietBadges.includes('halal')), [filtered]);
-  const porkDishes = useMemo(() => filtered.filter(d => d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
-  const otherDishes = useMemo(() => filtered.filter(d => !d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
+  const halalDishes = useMemo(() =>filtered.filter(d =>d.dietBadges.includes('halal')), [filtered]);
+  const porkDishes = useMemo(() =>filtered.filter(d =>d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
+  const otherDishes = useMemo(() =>filtered.filter(d =>!d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
 
   const stationCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: ALL_DISHES.length };
+    const counts: Record<string, number>= { all: ALL_DISHES.length };
     for (const s of STATIONS) {
       if (s.key === 'all') continue;
-      counts[s.key] = ALL_DISHES.filter(d => d.station === s.key).length;
+      counts[s.key] = ALL_DISHES.filter(d =>d.station === s.key).length;
     }
     return counts;
   }, []);
@@ -94,7 +94,7 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
   // Allergen visibility toggle — show/hide allergen badges on cards
   const [showAllergens, setShowAllergens] = useState(true);
 
-  const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size > 0 || excludedAllergens.size > 0;
+  const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size >0 || excludedAllergens.size >0;
   const resetFilters = () => {
     setSearch('');
     setStation('all');
@@ -131,7 +131,7 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
           subtitle="Все блюда с фото и составом. КБЖУ предоставляется по запросу для блюд с медицинскими диетами (СД1, целиакия, анафилаксия)."
           actions={
             <button
-              onClick={() => setShowAllergens(!showAllergens)}
+              onClick={() =>setShowAllergens(!showAllergens)}
               className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold hover:border-gold-text transition-colors touch-target"
               aria-pressed={!showAllergens}
               type="button"
@@ -148,17 +148,17 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
             type="search"
             placeholder="Поиск по названию или описанию…"
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={e =>setSearch(e.target.value)}
             aria-label="Поиск блюд"
             className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm mb-3 focus:outline-none focus:border-gold-text transition-colors"
           />
 
           {/* Station filters — horizontally scrollable on mobile */}
           <div className="flex gap-2 mb-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Фильтр по типу станции">
-            {STATIONS.map(s => (
+            {STATIONS.map(s =>(
               <button
                 key={s.key}
-                onClick={() => setStation(s.key)}
+                onClick={() =>setStation(s.key)}
                 aria-pressed={station === s.key}
                 className={`shrink-0 rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
                   station === s.key
@@ -173,10 +173,10 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
 
           {/* Diet filters */}
           <div className="flex gap-2 mb-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Фильтр по диете">
-            {DIETS.map(d => (
+            {DIETS.map(d =>(
               <button
                 key={d}
-                onClick={() => toggleDiet(d)}
+                onClick={() =>toggleDiet(d)}
                 aria-pressed={activeDiets.has(d)}
                 className={`shrink-0 rounded-full border px-4 py-2 text-xs touch-target transition-colors ${
                   activeDiets.has(d)
@@ -192,10 +192,10 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
           {/* Allergen exclusion filters */}
           <div className="flex gap-2 items-center overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="Исключить аллергены">
             <span className="shrink-0 text-xs text-muted-foreground self-center mr-1">Исключить:</span>
-            {EXCLUDE_ALLERGENS.map(a => (
+            {EXCLUDE_ALLERGENS.map(a =>(
               <button
                 key={a.key}
-                onClick={() => toggleAllergen(a.key)}
+                onClick={() =>toggleAllergen(a.key)}
                 aria-pressed={excludedAllergens.has(a.key)}
                 className={`shrink-0 rounded-full border px-3 py-2 text-xs touch-target transition-colors ${
                   excludedAllergens.has(a.key)
@@ -243,37 +243,37 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
         </noscript>
 
         {/* Grid — visual separation: halal / other / pork — with pagination */}
-        {paginatedOther.length > 0 && (
+        {paginatedOther.length >0 && (
           <div className="mb-8">
-            {halalDishes.length > 0 && porkDishes.length > 0 && (
+            {halalDishes.length >0 && porkDishes.length >0 && (
               <h2 className="font-heading text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">📌 Основные блюда</h2>
             )}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedOther.map((dish, idx) => (
+              {paginatedOther.map((dish, idx) =>(
                 <DishCard key={dish.id} dish={dish} index={idx} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
         )}
 
-        {paginatedHalal.length > 0 && (
+        {paginatedHalal.length >0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50/50">
             <h2 className="font-heading text-base font-medium text-emerald-900 mb-1">🕌 Халяль-блюда (забой по зибха, без свинины, без алкоголя)</h2>
             <p className="text-xs text-emerald-800 mb-4">Сертификат Совета муфтиев России. Отдельное оборудование — без пересечения со свининой.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedHalal.map((dish, idx) => (
+              {paginatedHalal.map((dish, idx) =>(
                 <DishCard key={dish.id} dish={dish} index={idx + 100} showAllergens={showAllergens} />
               ))}
             </div>
           </div>
         )}
 
-        {paginatedPork.length > 0 && (
+        {paginatedPork.length >0 && (
           <div className="mb-8 p-4 rounded-xl border-2 border-red-300 bg-red-50/50">
             <h2 className="font-heading text-base font-medium text-red-900 mb-1">🚫 Блюда со свининой (НЕ халяль)</h2>
             <p className="text-xs text-red-800 mb-4">Эти блюда содержат свинину или бекон. Не заказывайте для халяль-мероприятий. Готовятся на отдельной линии от халяль-блюд.</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {paginatedPork.map((dish, idx) => (
+              {paginatedPork.map((dish, idx) =>(
                 <DishCard key={dish.id} dish={dish} index={idx + 200} showAllergens={showAllergens} />
               ))}
             </div>
@@ -284,11 +284,11 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
         {hasMore && (
           <div className="text-center py-8">
             <button
-              onClick={() => setVisibleCount(c => (c ?? 24) + 24)}
+              onClick={() =>setVisibleCount(c =>(c ?? 24) + 24)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-6 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors touch-target"
               type="button"
               aria-controls="dishes-grid"
-              aria-expanded={visibleCount > 24 ? 'true' : 'false'}
+              aria-expanded={visibleCount >24 ? 'true' : 'false'}
             >
               Показать ещё {Math.min(24, filtered.length - totalShown)} блюд ↓
             </button>
@@ -321,7 +321,7 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
           <div className="flex flex-wrap gap-3">
             <a href="/menu/catalog/pdf" download className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-3 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-all active:scale-[0.98]">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Скачать каталог (PDF)
+              Скачать каталог (печать)
             </a>
             <Link href="/plan/constructor" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98] transition-transform inline-block">
               Собрать меню в конструкторе
@@ -349,9 +349,9 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
   const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
 
   // W83: in-page add to cart
-  const addDish = useConstructor(s => s.addDish);
-  const selectedItems = useConstructor(s => s.selectedItems);
-  const isInCart = selectedItems.some(i => i.dishId === dish.id);
+  const addDish = useConstructor(s =>s.addDish);
+  const selectedItems = useConstructor(s =>s.selectedItems);
+  const isInCart = selectedItems.some(i =>i.dishId === dish.id);
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -422,7 +422,7 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
         )}
 
         {/* Allergens — shown/hidden via toggle. High-risk подсветка для nuts/peanuts/gluten/fish/crustaceans/molluscs */}
-        {showAllergens && dish.allergens.length > 0 && (
+        {showAllergens && dish.allergens.length >0 && (
           <div className="mt-1 flex flex-wrap gap-1 mb-3">
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
@@ -434,7 +434,7 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
                 </span>
               );
             })}
-            {dish.allergens.length > 4 && (
+            {dish.allergens.length >4 && (
               <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
                 +{dish.allergens.length - 4}
               </span>
@@ -471,7 +471,7 @@ function DishCard({ dish, index = 0, showAllergens = true }: { dish: Dish; index
 }
 
 function Badge({ label, color }: { label: string; color: string }) {
-  const colors: Record<string, string> = {
+  const colors: Record<string, string>= {
     green: 'bg-emerald-100 text-emerald-700',
     amber: 'bg-amber-100 text-amber-700',
     blue: 'bg-blue-100 text-blue-700',

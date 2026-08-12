@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 // Описания блюд для тарифов форматов меню
-const DISH_DESC: Record<string, string> = {
+const DISH_DESC: Record<string, string>= {
   // Канапе
   'Канапе с красной рыбой': 'Лосось слабой соли, сливочный сыр, укроп на бородинском хлебе',
   'Канапе с сыром': 'Сыр дор-блю, грецкий орех, медовые соты на крекере',
@@ -46,7 +46,7 @@ const DISH_DESC: Record<string, string> = {
   'Вино красное': 'Кьянти/Риоха, 2 бокала',
   'Вино белое': 'Соаве/Шабли, 2 бокала',
   'Шампанское': 'Брют/просекко',
-  'Mocktail-бар': 'Вирджин Мохито, Пина Колада, Малиновый спритц',
+  'Безалкогольный бар': 'Вирджин Мохито, Пина Колада, Малиновый спритц',
   'Кофе specialty': 'Бариста + эспрессо, капучино, флэт уайт',
   // Детское
   'Мини-хот-дог': 'Колбаска гриль, карамелизированный лук, горчица',
@@ -72,7 +72,7 @@ interface MenuTariff {
 
 // ═══════════════ ТАРИФЫ ПО ФОРМАТАМ ═══════════════
 
-const TARIFFS: Record<string, MenuTariff[]> = {
+const TARIFFS: Record<string, MenuTariff[]>= {
   furshet: [
     {
       name: 'Эконом', tier: 'economy', price: '2 450 ₽/гость', desc: 'Лёгкий фуршет. Канапе, закуски, напитки.',
@@ -455,7 +455,7 @@ export default function MenuTariffs({ format, formatLabel }: Props) {
       </p>
 
       <div className="space-y-6">
-        {tariffs.map((t, i) => (
+        {tariffs.map((t, i) =>(
           <TariffBlock key={i} tariff={t} format={format} />
         ))}
       </div>
@@ -476,7 +476,7 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
         <p className="text-sm text-muted-foreground mb-3">{tariff.desc}</p>
 
         <div className="flex flex-wrap gap-1.5 mb-3">
-          {tariff.highlights.map((h, j) => (
+          {tariff.highlights.map((h, j) =>(
             <span key={j} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary text-xs font-medium">
               <span className="text-gold-text"></span> {h}
             </span>
@@ -484,10 +484,10 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
         </div>
 
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() =>setOpen(!open)}
           className="w-full flex items-center justify-between py-2 px-3 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors text-sm"
         >
-          <span>{open ? 'Скрыть состав' : 'Показать состав меню'} ({tariff.dishes.reduce((s, c) => s + c.items.length, 0)} позиций)</span>
+          <span>{open ? 'Скрыть состав' : 'Показать состав меню'} ({tariff.dishes.reduce((s, c) =>s + c.items.length, 0)} позиций)</span>
           <svg className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path d="M6 9l6 6 6-6" />
           </svg>
@@ -495,11 +495,11 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
 
         {open && (
           <div className="mt-4 space-y-3">
-            {tariff.dishes.map((cat, j) => (
+            {tariff.dishes.map((cat, j) =>(
               <div key={j}>
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">{cat.cat}</h4>
                 <ul className="space-y-1.5">
-                  {cat.items.map((item, k) => (
+                  {cat.items.map((item, k) =>(
                     <li key={k} className="py-1 border-b border-line/20 last:border-0">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">

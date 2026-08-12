@@ -18,7 +18,7 @@ export default function EnPage() {
           { title: 'Why us', text: '19+ years in business. Own sous-vide kitchen. Local farmers from Leningrad Oblast. Honest pricing — no hidden fees.' },
           { title: 'Pricing', text: 'From 390 ₽/guest for coffee breaks. Banquet from 3 950 ₽/guest. All prices include staff, coordinator, and delivery within the Ring Road.' },
           { title: 'Contact', text: 'Phone: +7 (812) 919-59-11. Email: info@nilov-catering.ru. We reply within 15 minutes.' },
-        ].map(item => (
+        ].map(item =>(
           <div key={item.title} className="rounded-lg border border-line bg-card p-5">
             <h2 className="font-heading text-base font-medium mb-1">{item.title}</h2>
             <p className="text-sm text-muted-foreground">{item.text}</p>

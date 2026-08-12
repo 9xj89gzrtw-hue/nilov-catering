@@ -63,7 +63,7 @@ export default function InspireStrip({ shots = DEMO_SHOTS, ctaHref = '/gallery' 
           <div>
             <p className="font-mono text-xs tracking-[0.2em] text-gold-text uppercase mb-2">Вдохновись</p>
             <h2 className="font-heading text-xl md:text-2xl font-medium text-foreground">
-              Так выглядят <span className="text-gold-text">реальные</span> события
+              Так выглядят <span className="text-gold-text">реальные</span>события
             </h2>
           </div>
           <Link
@@ -76,7 +76,7 @@ export default function InspireStrip({ shots = DEMO_SHOTS, ctaHref = '/gallery' 
 
         {/* Desktop: 4 в ряд, tablet: 2, mobile: горизонтальный свайп */}
         <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none">
-          {shots.map((shot, i) => (
+          {shots.map((shot, i) =>(
             <motion.a
               key={i}
               href={shot.href}

@@ -16,7 +16,7 @@ export default function MediaKitPage() {
             { file: 'Фото блюд (подборка)', size: 'ZIP · по запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото блюд' },
             { file: 'Фото команды', size: 'по запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото команды' },
             { file: 'Пресс-релиз 2026', size: 'HTML · 4 КБ', href: '/press-kit/press-release-2026.html', download: true },
-          ].map(f => (
+          ].map(f =>(
             <a key={f.file} href={f.href} download={f.download || undefined} className="flex items-center justify-between rounded-lg border border-line bg-card p-4 hover:border-gold-text transition-colors">
               <span className="font-medium text-sm">{f.file}</span>
               <span className="text-xs text-muted-foreground">{f.size}</span>

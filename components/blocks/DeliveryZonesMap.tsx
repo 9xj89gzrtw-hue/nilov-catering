@@ -13,7 +13,7 @@ export default function DeliveryZonesMap() {
         <p className="text-muted-foreground mb-10 max-w-xl">Бесплатная доставка в пределах КАД. Надбавки вне КАД — честные и предсказуемые.</p>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {DELIVERY_ZONES.map((zone, i) => (
+          {DELIVERY_ZONES.map((zone, i) =>(
             <motion.div
               key={zone.id}
               className="rounded-xl border border-line bg-card p-5"
@@ -40,7 +40,7 @@ export default function DeliveryZonesMap() {
                 </div>
                 <div className="flex items-center gap-1.5 font-semibold text-foreground mt-2">
                   {zone.surcharge === 0 ? (
-                    <><ShieldCheck className="w-3 h-3 text-success" /> Бесплатно</>
+                    <><ShieldCheck className="w-3 h-3 text-success" />Бесплатно</>
                   ) : (
                     <>+{zone.surcharge.toLocaleString()} ₽</>
                   )}

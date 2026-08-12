@@ -29,9 +29,9 @@ export default function CatalogPage() {
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
   const [visibleCount, setVisibleCount] = useState(12);
 
-  const addDish = useConstructor(s => s.addDish);
-  const removeDish = useConstructor(s => s.removeDish);
-  const selectedItems = useConstructor(s => s.selectedItems);
+  const addDish = useConstructor(s =>s.addDish);
+  const removeDish = useConstructor(s =>s.removeDish);
+  const selectedItems = useConstructor(s =>s.selectedItems);
 
   const toggleDiet = (d: string) => {
     const next = new Set(activeDiets);
@@ -41,18 +41,18 @@ export default function CatalogPage() {
 
   const filtered = useMemo(() => {
     let dishes = ALL_DISHES;
-    if (station !== 'all') dishes = dishes.filter(d => d.station === station);
-    if (activeDiets.size > 0) {
-      dishes = dishes.filter(d => [...activeDiets].every(diet => (d.dietBadges as string[]).includes(diet)));
+    if (station !== 'all') dishes = dishes.filter(d =>d.station === station);
+    if (activeDiets.size >0) {
+      dishes = dishes.filter(d =>[...activeDiets].every(diet =>(d.dietBadges as string[]).includes(diet)));
     }
     if (search.trim()) {
       const q = search.toLowerCase();
-      dishes = dishes.filter(d => d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
+      dishes = dishes.filter(d =>d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
   }, [station, activeDiets, search]);
 
-  const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size > 0;
+  const hasActiveFilters = search.trim() !== '' || station !== 'all' || activeDiets.size >0;
   const resetFilters = () => {
     setSearch('');
     setStation('all');
@@ -61,7 +61,7 @@ export default function CatalogPage() {
   };
 
   const visible = filtered.slice(0, visibleCount);
-  const hasMore = filtered.length > visibleCount;
+  const hasMore = filtered.length >visibleCount;
   const totalCountLabel =
     filtered.length === ALL_DISHES.length
       ? `Всего ${ALL_DISHES.length} блюд`
@@ -96,17 +96,17 @@ export default function CatalogPage() {
               aria-label="Поиск блюда по названию"
               placeholder="Поиск блюда…"
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={e =>setSearch(e.target.value)}
               className="w-full rounded-xl border border-line bg-card pl-10 pr-4 py-3 text-sm focus:outline-none focus:border-gold-text"
             />
           </div>
 
           {/* Тип блюда */}
           <div className="flex gap-2 flex-wrap">
-            {STATIONS.map(s => (
+            {STATIONS.map(s =>(
               <button
                 key={s.key}
-                onClick={() => setStation(s.key)}
+                onClick={() =>setStation(s.key)}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                   station === s.key
                     ? 'border-gold-text bg-gold-tint text-gold-text'
@@ -123,10 +123,10 @@ export default function CatalogPage() {
           <div className="flex gap-2 flex-wrap items-center justify-between">
             <div className="flex gap-2 flex-wrap items-center">
               <span className="text-xs text-muted-foreground">Диета:</span>
-              {DIETS.map(d => (
+              {DIETS.map(d =>(
                 <button
                   key={d.key}
-                  onClick={() => toggleDiet(d.key)}
+                  onClick={() =>toggleDiet(d.key)}
                   className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                     activeDiets.has(d.key)
                       ? 'border-gold-text bg-gold-tint text-gold-text'
@@ -147,11 +147,11 @@ export default function CatalogPage() {
         </section>
 
         {/* ════════ 3. СЕТКА БЛЮД — главный фокус ════════ */}
-        {visible.length > 0 ? (
+        {visible.length >0 ? (
           <section>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {visible.map((dish) => {
-                const isInCart = selectedItems.some(i => i.dishId === dish.id);
+                const isInCart = selectedItems.some(i =>i.dishId === dish.id);
                 const constructorHref = `/plan/constructor?format=${dish.format[0] || 'furshet'}&guests=20&dish=${dish.id}`;
                 return (
                   <article
@@ -193,10 +193,10 @@ export default function CatalogPage() {
                       {/* Цена + кнопка — прижата к низу карточки */}
                       <div className="mt-auto flex items-center justify-between gap-2 pt-3 border-t border-line">
                         <span className="text-sm text-muted-foreground">
-                          <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span> ₽/гость
+                          <span className="font-bold text-foreground text-lg">{dish.pricePerGuest}</span>₽/гость
                         </span>
                         <button
-                          onClick={() => isInCart ? removeDish(dish.id) : addDish(dish.id)}
+                          onClick={() =>isInCart ? removeDish(dish.id) : addDish(dish.id)}
                           aria-pressed={isInCart}
                           className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-bold transition-all ${
                             isInCart
@@ -205,9 +205,9 @@ export default function CatalogPage() {
                           }`}
                         >
                           {isInCart ? (
-                            <><Check className="w-4 h-4" /> Добавлено</>
+                            <><Check className="w-4 h-4" />Добавлено</>
                           ) : (
-                            <><Plus className="w-4 h-4" /> В меню</>
+                            <><Plus className="w-4 h-4" />В меню</>
                           )}
                         </button>
                       </div>
@@ -231,7 +231,7 @@ export default function CatalogPage() {
         {hasMore && (
           <div className="text-center py-10">
             <button
-              onClick={() => setVisibleCount(c => c + 12)}
+              onClick={() =>setVisibleCount(c =>c + 12)}
               className="inline-flex items-center gap-2 rounded-lg border-2 border-gold-text bg-card px-8 py-3 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors"
             >
               Показать ещё {Math.min(12, filtered.length - visibleCount)} блюд
@@ -250,16 +250,16 @@ export default function CatalogPage() {
         </div>
 
         {/* ════════ 5. КОРЗИНА — плавающая внизу ════════ */}
-        {selectedItems.length > 0 && (
+        {selectedItems.length >0 && (
           <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 rounded-2xl bg-background/95 backdrop-blur-xl border border-line shadow-2xl p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold">
-                  {selectedItems.reduce((s, i) => s + i.qty, 0)} блюд в меню
+                  {selectedItems.reduce((s, i) =>s + i.qty, 0)} блюд в меню
                 </p>
                 <p className="text-xs text-muted-foreground">
                   ≈ {selectedItems.reduce((sum, i) => {
-                    const d = ALL_DISHES.find(x => x.id === i.dishId);
+                    const d = ALL_DISHES.find(x =>x.id === i.dishId);
                     return sum + (d?.pricePerGuest || 0) * i.qty * 20;
                   }, 0).toLocaleString('ru-RU')} ₽ на 20 гостей
                 </p>

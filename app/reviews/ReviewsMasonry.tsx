@@ -26,11 +26,11 @@ interface FilterDef {
   key: FilterKey;
   label: string;
   icon: LucideIcon;
-  match: (r: Review) => boolean;
+  match: (r: Review) =>boolean;
 }
 
 const FILTERS: FilterDef[] = [
-  { key: 'all',       label: 'Все',                  icon: Sparkles,  match: () => true },
+  { key: 'all',       label: 'Все',                  icon: Sparkles,  match: () =>true },
   { key: 'weddings',  label: 'Свадьбы и никах',      icon: Heart,     match: (r) => /Свадьб|Никях|Ифтар/.test(r.eventType) },
   { key: 'corporate', label: 'Корпоративы',          icon: Building2, match: (r) => /Корпорат|Доставк/.test(r.eventType) },
   { key: 'birthdays', label: 'Дни рождения, юбилеи', icon: Cake,      match: (r) => /День рожд|Детск|Юбилей|Выпускн/.test(r.eventType) },
@@ -40,7 +40,7 @@ const FILTERS: FilterDef[] = [
 // === Подбор фото под тип события ===
 // Фото с мероприятий уже лежат в /public/images/catering/ — используем их по типу события.
 // Выбор детерминирован (по id ревью), чтобы при ре-рендерах фото «не прыгало».
-const POOLS: Record<string, string[]> = {
+const POOLS: Record<string, string[]>= {
   'Свадьба':          ['wedding-01.jpg', 'wedding-02.jpg', 'wedding-03.jpg', 'wedding-04.jpg', 'wedding-05.jpg'],
   'Никях':            ['bbq-01.jpg',     'bbq-02.jpg',     'bbq-03.jpg',     'bbq-04.jpg',     'bbq-05.jpg'],
   'Ифтар':            ['russian-01.jpg', 'russian-02.jpg', 'russian-03.jpg', 'russian-04.jpg', 'russian-05.jpg'],
@@ -65,7 +65,7 @@ function pickImage(r: Review): string {
 function getInitials(name: string): string {
   const cleaned = (name || '').replace(/[().,]/g, '').trim();
   if (!cleaned) return '?';
-  const tokens = cleaned.split(/\s+/).filter((t) => t && t.toLowerCase() !== 'и');
+  const tokens = cleaned.split(/\s+/).filter((t) =>t && t.toLowerCase() !== 'и');
   if (tokens.length === 0) return cleaned[0].toUpperCase();
   if (tokens.length === 1) return tokens[0][0].toUpperCase();
   return (tokens[0][0] + tokens[1][0]).toUpperCase();
@@ -85,7 +85,7 @@ const AVATAR_COLORS = [
 
 function pickColor(s: string): string {
   let h = 0;
-  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>>0;
   return AVATAR_COLORS[h % AVATAR_COLORS.length];
 }
 
@@ -97,7 +97,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
   const [filter, setFilter] = useState<FilterKey>('all');
 
   const counts = useMemo(() => {
-    const map: Record<FilterKey, number> = {
+    const map: Record<FilterKey, number>= {
       all: reviews.length,
       weddings: 0,
       corporate: 0,
@@ -113,7 +113,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
   }, [reviews]);
 
   const filtered = useMemo(() => {
-    const f = FILTERS.find((x) => x.key === filter);
+    const f = FILTERS.find((x) =>x.key === filter);
     if (!f) return reviews;
     return reviews.filter(f.match);
   }, [filter, reviews]);
@@ -135,7 +135,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
               key={f.key}
               role="tab"
               aria-selected={active}
-              onClick={() => setFilter(f.key)}
+              onClick={() =>setFilter(f.key)}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors no-underline ${
                 active
                   ? 'border-gold-text bg-gold-text text-background shadow-sm'
@@ -195,12 +195,12 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
                     {r.eventType}
                   </span>
                   {/* Звёзды рейтинга */}
-                  {rating > 0 && (
+                  {rating >0 && (
                     <div
                       className="absolute bottom-3 right-3 inline-flex items-center gap-0.5 rounded-full bg-black/65 backdrop-blur px-2.5 py-1"
                       aria-label={`Оценка ${rating} из 5`}
                     >
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) =>(
                         <Star
                           key={i}
                           className={`w-3.5 h-3.5 ${

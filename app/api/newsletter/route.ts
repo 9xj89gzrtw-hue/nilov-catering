@@ -24,7 +24,7 @@ async function tryFilePersist(email: string): Promise<boolean> {
       if (!Array.isArray(arr)) arr = [];
     } catch { /* file doesn't exist yet */ }
     const existing = arr.find(
-      (e) => typeof e === 'object' && e !== null && (e as { email?: string }).email === email
+      (e) =>typeof e === 'object' && e !== null && (e as { email?: string }).email === email
     );
     if (existing) return true;
     arr.push({ email, subscribedAt: new Date().toISOString() });

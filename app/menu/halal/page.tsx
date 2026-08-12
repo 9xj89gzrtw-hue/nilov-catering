@@ -12,7 +12,7 @@ import DishCartIndicator from '@/components/interactive/DishCartIndicator';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function HalalPage() {
-  const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('halal')), []);
+  const dishes = useMemo(() =>ALL_DISHES.filter(d =>d.dietBadges.includes('halal')), []);
 
   return (
     <main id="main" className="pt-24 pb-20">
@@ -102,7 +102,7 @@ export default function HalalPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Цена никаха</p>
-              <p className="text-xs text-emerald-800">От <strong>3 950 ₽/гость</strong> (минимум 15 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
+              <p className="text-xs text-emerald-800">От <strong>3 950 ₽/гость</strong>(минимум 15 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Раздельный зал</p>
@@ -181,7 +181,7 @@ export default function HalalPage() {
 
         <B2BBanner />
 
-        {dishes.length > 0 && (
+        {dishes.length >0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {dishes.map(dish => {
               const isVegan = dish.dietBadges.includes('vegan');
@@ -214,7 +214,7 @@ export default function HalalPage() {
                         {isMeat ? ' забой: зибха' : ' веган'}
                       </span>
                     </div>
-                    {dish.allergens.length > 0 && (
+                    {dish.allergens.length >0 && (
                       <div className="mt-3 flex flex-wrap gap-1">
                         {dish.allergens.map(a => {
                           const isNut = a === 'nuts' || a === 'peanuts';

@@ -4,7 +4,8 @@ import { ALL_DISHES, DISH_CATEGORIES } from '@/lib/menu-data';
 import { ALLERGEN_LABEL } from '@/lib/types';
 import type { Format, Tier } from '@/lib/types';
 
-const FORMAT_LABELS: Record<string, string> = {
+const FORMAT_LABELS: Record<string, string>= {
+  catalog: 'Каталог блюд',
   furshet: 'Фуршет',
   banket: 'Банкет',
   banquet: 'Банкет',
@@ -23,7 +24,7 @@ const FORMAT_LABELS: Record<string, string> = {
   pominki: 'Поминальное меню',
 };
 
-const TIER_INFO: Record<Tier, { label: string; desc: string }> = {
+const TIER_INFO: Record<Tier, { label: string; desc: string }>= {
   economy: { label: 'Эконом', desc: 'Базовый набор блюд' },
   standard: { label: 'Стандарт', desc: 'Расширенное меню' },
   premium: { label: 'Расширенный', desc: 'Премиум-подборка' },
@@ -36,25 +37,26 @@ function escapeHtml(text: string): string {
 
 export async function GET(
   _request: Request,
-  { params }: { params: Promise<{ format: string }> }
+  { params }: { params: Promise<{ format: string }>}
 ) {
   const { format } = await params;
   const label = FORMAT_LABELS[format] || format;
   // Filter dishes: match by format OR dietBadges (for vegan/gluten-free/halal)
   // OR by format alias (banquet ↔ banket)
-  const formatAliases: Record<string, string[]> = {
+  const formatAliases: Record<string, string[]>= {
     banquet: ['banket', 'banquet'],
     banket: ['banket', 'banquet'],
   };
   const aliases = formatAliases[format] || [format];
-  const dishes = ALL_DISHES.filter(d => {
-    if (aliases.some(a => d.format.includes(a as Format))) return true;
-    // Diet-based fallback for vegan/gluten-free/halal
-    if (format === 'vegan' && d.dietBadges.includes('vegan' as never)) return true;
-    if (format === 'gluten-free' && d.dietBadges.includes('gluten-free' as never)) return true;
-    if (format === 'halal' && d.dietBadges.includes('halal' as never)) return true;
-    return false;
-  });
+  const dishes = format === 'catalog'
+    ? ALL_DISHES
+    : ALL_DISHES.filter(d => {
+        if (aliases.some(a =>d.format.includes(a as Format))) return true;
+        if (format === 'vegan' && d.dietBadges.includes('vegan' as never)) return true;
+        if (format === 'gluten-free' && d.dietBadges.includes('gluten-free' as never)) return true;
+        if (format === 'halal' && d.dietBadges.includes('halal' as never)) return true;
+        return false;
+      });
 
   const html = `<!DOCTYPE html>
 <html lang="ru">
@@ -86,16 +88,16 @@ ${format === 'furshet' ? `<div class="tier"><h3>Эконом <span class="price"
 <div class="tier"><h3>Стандарт <span class="price">3 950 ₽/гость</span></h3><p>8–10 видов закусок, рулеты, сырная тарелка, кофе, чай, морсы</p></div>
 <div class="tier"><h3>Расширенный <span class="price">5 950 ₽/гость</span></h3><p>12+ видов, горячие мини-блюда, десертный стол, вино, шампанское</p></div>` : ''}
 
-${dishes.length > 0 ? `<h2>Блюда (${dishes.length})</h2>
+${dishes.length >0 ? `<h2>Блюда (${dishes.length})</h2>
 <table>
 <thead><tr><th>Название</th><th>Описание</th><th>Цена/гость</th><th>Диеты</th><th>Аллергены</th></tr></thead>
 <tbody>
-${dishes.map(d => `<tr>
+${dishes.map(d =>`<tr>
   <td>${escapeHtml(d.name)}</td>
   <td>${escapeHtml(d.description)}</td>
   <td class="price">${d.pricePerGuest} ₽</td>
   <td>${d.dietBadges.includes('vegan' as never) ? '<span class="badge vg">VG</span>' : ''}${d.dietBadges.includes('gluten-free' as never) ? '<span class="badge gf">GF</span>' : ''}${d.dietBadges.includes('halal' as never) ? '<span class="badge halal">H</span>' : ''}</td>
-  <td class="allergens">${d.allergens.map(a => ALLERGEN_LABEL[a] || a).join(', ')}</td>
+  <td class="allergens">${d.allergens.map(a =>ALLERGEN_LABEL[a] || a).join(', ')}</td>
 </tr>`).join('\n')}
 </tbody></table>` : `<div class="empty">Сезонное меню «${escapeHtml(label)}» — блюда подбираются индивидуально.<br>Позвоните +7 (812) 919-59-11 для получения актуального меню.</div>`}
 

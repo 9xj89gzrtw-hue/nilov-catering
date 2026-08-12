@@ -23,9 +23,9 @@ export default function ScrollReveal() {
 
     // Observe all .reveal elements
     const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach((el) => observer.observe(el));
+    reveals.forEach((el) =>observer.observe(el));
 
-    return () => observer.disconnect();
+    return () =>observer.disconnect();
   }, []);
 
   return null;

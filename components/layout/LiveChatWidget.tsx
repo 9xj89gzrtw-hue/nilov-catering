@@ -19,9 +19,9 @@ export default function LiveChatWidget() {
   const fabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 30000);
+    const timer = setTimeout(() =>setVisible(true), 30000);
     const onScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.5) {
+      if (window.scrollY >window.innerHeight * 0.5) {
         setVisible(true);
         window.removeEventListener('scroll', onScroll);
       }
@@ -43,7 +43,7 @@ export default function LiveChatWidget() {
     // Focus first link in panel
     const firstLink = panelRef.current?.querySelector('a, button') as HTMLElement | null;
     firstLink?.focus();
-    return () => document.removeEventListener('keydown', onKey);
+    return () =>document.removeEventListener('keydown', onKey);
   }, [open]);
 
   if (!visible) return null;
@@ -129,12 +129,12 @@ export default function LiveChatWidget() {
       {/* Floating button — above bottom nav (bottom-24 on mobile, bottom-4 on desktop) */}
       <button
         ref={fabRef}
-        onClick={() => setOpen(!open)}
+        onClick={() =>setOpen(!open)}
         className="fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors flex items-center justify-center md:bottom-4"
         aria-label={open ? 'Закрыть чат' : 'Открыть чат'}
         aria-expanded={open}
       >
-        {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+        {open ? <X className="w-6 h-6" />: <MessageCircle className="w-6 h-6" />}
       </button>
     </>
   );

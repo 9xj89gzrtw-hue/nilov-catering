@@ -24,8 +24,8 @@ export default function TastingPage() {
           Для событий от 30 гостей — бесплатно. Для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) — обязательно от 1 гостя.
         </p>
         <p className="text-sm text-muted-foreground mb-8 p-3 rounded-lg bg-blue-50 border border-blue-200">
-           <strong>Иногородним клиентам (Москва и регионы):</strong> организуем{' '}
-          <strong>видеодегустацию по Zoom</strong> — шеф покажет готовые блюда, расскажет состав,
+           <strong>Иногородним клиентам (Москва и регионы):</strong>организуем{' '}
+          <strong>видеодегустацию по Zoom</strong>— шеф покажет готовые блюда, расскажет состав,
           ответит на вопросы. Для бронирования достаточно видеодегустации. Запись —{' '}
           <a href="tel:+78129195911" className="underline text-gold-text">+7 (812) 919-59-11</a>{' '}
           или <a href="https://wa.me/78129195911" className="underline text-gold-text">WhatsApp</a>.
@@ -35,11 +35,11 @@ export default function TastingPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-tint bg-gold-tint/10">
           <h2 className="font-heading text-lg font-medium mb-3">Стоимость дегустации</h2>
           <ul className="text-sm space-y-2">
-            <li> <strong>Бесплатно</strong> — для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
-            <li> <strong>Бесплатно</strong> — для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
-            <li> <strong>3 000 ₽/чел</strong> — для событий до 30 гостей (3 блюда на выбор)</li>
-            <li> <strong>5 000 ₽/чел</strong> — расширенная дегустация (6 блюд + винное сопровождение)</li>
-            <li> <strong>От 5 000 ₽</strong> — выезд к вам (выездные расходы)</li>
+            <li> <strong>Бесплатно</strong>— для событий от 30 гостей (до 6 блюд из вашего тарифа)</li>
+            <li> <strong>Бесплатно</strong>— для медицинских диет (целиакия, анафилаксия, сахарный диабет СД1/СД2) от 1 гостя</li>
+            <li> <strong>3 000 ₽/чел</strong>— для событий до 30 гостей (3 блюда на выбор)</li>
+            <li> <strong>5 000 ₽/чел</strong>— расширенная дегустация (6 блюд + винное сопровождение)</li>
+            <li> <strong>От 5 000 ₽</strong>— выезд к вам (выездные расходы)</li>
           </ul>
           <p className="text-xs text-muted-foreground mt-3">
             При бронировании события — стоимость дегустации вычитается из итогового счёта (для платных дегустаций).
@@ -65,7 +65,7 @@ export default function TastingPage() {
               title: 'Диеты и аллергены',
               text: 'Для целиакии, анафилаксии, халяль, веган — дегустация по отдельному протоколу. Можно попробовать безглютеновый торт, халяль-шашлык, веган-десерт, безореховое меню. Укажите диеты в форме ниже.',
             },
-          ].map((item) => (
+          ].map((item) =>(
             <div key={item.title} className="rounded-lg border border-line bg-card p-4">
               <h2 className="font-heading text-base font-medium mb-1">{item.title}</h2>
               <p className="text-sm text-muted-foreground">{item.text}</p>
@@ -103,7 +103,7 @@ export default function TastingPage() {
 
             {/* Diets — multi-select */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2"> Диеты гостей на дегустации</label>
+              <label className="block text-sm font-medium text-foreground mb-2">Диеты гостей на дегустации</label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                 {[
                   { value: 'vegan', label: 'Веган' },
@@ -112,7 +112,7 @@ export default function TastingPage() {
                   { value: 'nut-free', label: 'Без орехов' },
                   { value: 'dairy-free', label: 'Без молока' },
                   { value: 'allergy-other', label: 'Другая аллергия' },
-                ].map((d) => (
+                ].map((d) =>(
                   <label key={d.value} className="flex items-center gap-2 px-3 py-2 rounded-lg border border-line bg-background cursor-pointer hover:border-gold-text transition-colors">
                     <input type="checkbox" name="diets" value={d.value} />
                     <span>{d.label}</span>

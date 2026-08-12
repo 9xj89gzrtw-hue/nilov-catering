@@ -11,7 +11,7 @@ interface Crumb {
 }
 
 /** Маппинг путей на человеческие названия */
-const LABELS: Record<string, string> = {
+const LABELS: Record<string, string>= {
   events: 'События',
   korporativ: 'Корпоратив',
   wedding: 'Свадьба',
@@ -95,7 +95,7 @@ export default function Breadcrumbs() {
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: allCrumbs.map((c, i) => ({
+    itemListElement: allCrumbs.map((c, i) =>({
       '@type': 'ListItem',
       position: i + 1,
       name: c.label,
@@ -107,7 +107,7 @@ export default function Breadcrumbs() {
     <nav aria-label="Хлебные крошки" className="text-base text-foreground/80 mb-6">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <ol className="flex flex-wrap items-center gap-1.5">
-        {crumbs.map((crumb) => (
+        {crumbs.map((crumb) =>(
           <li key={crumb.href} className="flex items-center gap-1.5">
             <Link
               href={crumb.href!}

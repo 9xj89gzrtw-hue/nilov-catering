@@ -59,7 +59,7 @@ export default function B2BPortalSection() {
           {/* B2B Portal teaser — coming soon */}
           <div className="p-5 rounded-xl border-2 border-dashed border-gold-text/40 bg-gold-tint/5 text-center">
             <p className="text-xs font-semibold text-gold-text uppercase tracking-wider mb-2">Скоро</p>
-            <h3 className="font-heading text-base font-medium mb-2">B2B Self-Service Portal</h3>
+            <h3 className="font-heading text-base font-medium mb-2">B2B-портал самообслуживания</h3>
             <p className="text-xs text-muted-foreground mb-3">
               Личный кабинет для корпоративных клиентов: история заказов, 1-click reorder,
               счета-фактуры, ЭДО, календарь регулярных кофе-брейков.

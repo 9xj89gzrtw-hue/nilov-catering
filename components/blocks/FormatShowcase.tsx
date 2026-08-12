@@ -55,7 +55,7 @@ export default function FormatShowcase() {
           })}
         </div>
         <p className="mt-4 text-center text-sm text-muted-foreground">
-          <Link href="/menu/furshet" className="text-gold-text hover:underline">Мобильный фуршет</Link> — выезд на площадку без кухни
+          <Link href="/menu/furshet" className="text-gold-text hover:underline">Мобильный фуршет</Link>— выезд на площадку без кухни
         </p>
       </div>
     </section>
@@ -63,6 +63,6 @@ export default function FormatShowcase() {
 }
 
 function getFormatName(f: Format): string {
-  const m: Record<string, string> = { furshet: 'Фуршет', banket: 'Банкет', 'coffee-break': 'Кофе-брейк', detskoe: 'Детский', 'chef-at-home': 'Выезд шефа' };
+  const m: Record<string, string>= { furshet: 'Фуршет', banket: 'Банкет', 'coffee-break': 'Кофе-брейк', detskoe: 'Детский', 'chef-at-home': 'Выезд шефа' };
   return m[f] ?? f;
 }

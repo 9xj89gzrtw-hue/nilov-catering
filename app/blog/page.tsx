@@ -25,7 +25,7 @@ export default function BlogPage() {
       <h1 className="mb-2 font-heading text-3xl md:text-4xl font-medium">Блог</h1>
       <p className="text-muted-foreground mb-8">Советы, кейсы и сезонные идеи от шеф-повара NiloV Catering. Практический опыт с 2007 года.</p>
       <div className="space-y-4">
-        {ARTICLES.map((a) => (
+        {ARTICLES.map((a) =>(
           <Link key={a.slug} href={`/blog/${a.slug}`} className="block rounded-xl border border-line bg-card p-5 hover:border-gold-text transition-colors no-underline">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-semibold text-gold-text uppercase tracking-wider">{a.category}</span>

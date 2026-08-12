@@ -20,17 +20,17 @@ export default function PersistentCartRail() {
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  const selectedItems = useConstructor(s => s.selectedItems);
-  const guestCount = useConstructor(s => s.guestCount);
-  const removeDish = useConstructor(s => s.removeDish);
-  const setItemQty = useConstructor(s => s.setItemQty);
+  const selectedItems = useConstructor(s =>s.selectedItems);
+  const guestCount = useConstructor(s =>s.guestCount);
+  const removeDish = useConstructor(s =>s.removeDish);
+  const setItemQty = useConstructor(s =>s.setItemQty);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() =>setMounted(true), []);
 
   if (!mounted || selectedItems.length === 0) return null;
 
   // Calculate totals
-  const dishMap = new Map(ALL_DISHES.map(d => [d.id, d]));
+  const dishMap = new Map(ALL_DISHES.map(d =>[d.id, d]));
   const items = selectedItems.map(item => {
     const dish = dishMap.get(item.dishId);
     return {
@@ -39,8 +39,8 @@ export default function PersistentCartRail() {
       total: dish ? dish.pricePerGuest * item.qty * (guestCount || 1) : 0,
     };
   });
-  const grandTotal = items.reduce((sum, i) => sum + i.total, 0);
-  const totalQty = items.reduce((sum, i) => sum + i.qty, 0);
+  const grandTotal = items.reduce((sum, i) =>sum + i.total, 0);
+  const totalQty = items.reduce((sum, i) =>sum + i.qty, 0);
 
   return (
     <>
@@ -51,7 +51,7 @@ export default function PersistentCartRail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setExpanded(false)}
+            onClick={() =>setExpanded(false)}
             className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
             aria-hidden="true"
           />
@@ -66,7 +66,7 @@ export default function PersistentCartRail() {
       >
         {/* Compact bar — always visible */}
         <button
-          onClick={() => setExpanded(!expanded)}
+          onClick={() =>setExpanded(!expanded)}
           className="w-full flex items-center justify-between gap-3 p-4 md:rounded-2xl hover:bg-muted/30 transition-colors touch-target"
           aria-expanded={expanded}
           aria-label={`Корзина: ${totalQty} позиций, ${grandTotal.toLocaleString('ru-RU')} ₽. ${expanded ? 'Свернуть' : 'Развернуть'}`}
@@ -112,7 +112,7 @@ export default function PersistentCartRail() {
               className="overflow-hidden border-t border-line"
             >
               <div className="max-h-[60vh] overflow-y-auto p-3 space-y-2">
-                {items.map((item, i) => (
+                {items.map((item, i) =>(
                   <motion.div
                     key={`${item.dishId}-${item.groupId || 'default'}-${i}`}
                     layout
@@ -139,18 +139,18 @@ export default function PersistentCartRail() {
                     </div>
                     <div className="flex items-center gap-1 shrink-0">
                       <button
-                        onClick={() => setItemQty(item.dishId, Math.max(1, item.qty - 1))}
+                        onClick={() =>setItemQty(item.dishId, Math.max(1, item.qty - 1))}
                         className="w-6 h-6 rounded border border-line text-xs hover:border-gold-text"
                         aria-label="Уменьшить"
                       >−</button>
                       <span className="text-xs font-semibold w-5 text-center">{item.qty}</span>
                       <button
-                        onClick={() => setItemQty(item.dishId, item.qty + 1)}
+                        onClick={() =>setItemQty(item.dishId, item.qty + 1)}
                         className="w-6 h-6 rounded border border-line text-xs hover:border-gold-text"
                         aria-label="Увеличить"
                       >+</button>
                       <button
-                        onClick={() => removeDish(item.dishId)}
+                        onClick={() =>removeDish(item.dishId)}
                         className="ml-1 w-6 h-6 rounded text-muted-foreground hover:text-destructive"
                         aria-label="Удалить"
                       >✕</button>

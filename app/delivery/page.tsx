@@ -46,7 +46,7 @@ export default function DeliveryPage() {
             { icon: '⏱', title: 'Слоты + точное время', text: '7 слотов по 2 часа (09:00–23:00). Для B2B-событий (конференции, кофе-брейки) — доставка в окно ±15 минут от согласованного времени. SLA: штраф 1% за минуту опоздания.' },
             { icon: '⏰', title: 'На следующий день', text: 'Доставка оформляется на следующий день. Срочная доставка в день заказа (при заказе до 13:00) — +30% надбавка, звоните +7 (812) 919-59-11.' },
             { icon: '📞', title: 'Курьер позвонит', text: 'За 30 минут до прибытия курьер позвонит — будете готовы встретить.' },
-          ].map(f => (
+          ].map(f =>(
             <div key={f.title} className="rounded-xl border border-line bg-card p-5">
               <span className="text-3xl mb-2 block">{f.icon}</span>
               <h3 className="font-heading font-medium text-sm mb-1">{f.title}</h3>

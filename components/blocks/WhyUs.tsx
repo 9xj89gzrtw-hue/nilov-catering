@@ -87,7 +87,7 @@ export default function WhyUs() {
               </div>
             </div>
 
-            {PILLARS.map((p) => (
+            {PILLARS.map((p) =>(
               <div
                 key={p.title}
                 className="flex gap-5 p-5 md:p-6 rounded-xl border border-line bg-card hover:border-gold-text/40 transition-colors"

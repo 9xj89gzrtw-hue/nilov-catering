@@ -32,7 +32,7 @@ export default function Calculator() {
     const g = searchParams.get('guests');
     const t = searchParams.get('tier') as Tier | null;
 
-    if (fmt && FORMATS.some(f => f.format === fmt)) setFormat(fmt);
+    if (fmt && FORMATS.some(f =>f.format === fmt)) setFormat(fmt);
     if (g) {
       const num = Number(g);
       if (!isNaN(num) && num >= GUESTS_MIN && num <= GUESTS_MAX) setGuests(num);
@@ -41,15 +41,15 @@ export default function Calculator() {
   }, [searchParams]);
 
   const result = useMemo(
-    () => calcTotal(guests, format, tier, selectedAddons, { discounts: true }),
+    () =>calcTotal(guests, format, tier, selectedAddons, { discounts: true }),
     [format, guests, tier, selectedAddons],
   );
 
-  const availableAddons = ADDONS.filter((a) => a.formats.includes(format));
+  const availableAddons = ADDONS.filter((a) =>a.formats.includes(format));
 
   const toggleAddon = (a: AddOn) => {
     setSelectedAddons((prev) =>
-      prev.find((x) => x.id === a.id) ? prev.filter((x) => x.id !== a.id) : [...prev, a],
+      prev.find((x) =>x.id === a.id) ? prev.filter((x) =>x.id !== a.id) : [...prev, a],
     );
   };
 
@@ -63,10 +63,10 @@ export default function Calculator() {
         <div className="mb-8">
           <label className="block text-sm font-medium text-muted-foreground mb-3">Формат</label>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {FORMATS.map((f) => (
+            {FORMATS.map((f) =>(
               <button
                 key={f.format}
-                onClick={() => setFormat(f.format)}
+                onClick={() =>setFormat(f.format)}
                 className={`rounded-lg border p-3 text-sm font-medium transition-all ${
                   format === f.format
                     ? 'border-gold-text bg-gold-tint text-gold-text'
@@ -90,15 +90,15 @@ export default function Calculator() {
             max={GUESTS_MAX}
             step={GUESTS_STEP}
             value={guests}
-            onChange={(e) => setGuests(Number(e.target.value))}
+            onChange={(e) =>setGuests(Number(e.target.value))}
             className="w-full accent-gold-text"
             aria-label="Количество гостей"
           />
           <div className="flex flex-wrap gap-2 mt-2">
-            {GUEST_QUICK_BUTTONS.map((n) => (
+            {GUEST_QUICK_BUTTONS.map((n) =>(
               <button
                 key={n}
-                onClick={() => setGuests(n)}
+                onClick={() =>setGuests(n)}
                 className={`text-xs px-3 py-1 rounded-full border transition-colors ${
                   guests === n ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text/50'
                 }`}
@@ -119,7 +119,7 @@ export default function Calculator() {
               return (
                 <button
                   key={t}
-                  onClick={() => setTier(t)}
+                  onClick={() =>setTier(t)}
                   className={`rounded-lg border p-3 text-center transition-all ${
                     tier === t
                       ? 'border-gold-text bg-gold-tint'
@@ -135,16 +135,16 @@ export default function Calculator() {
         </div>
 
         {/* Add-ons */}
-        {availableAddons.length > 0 && (
+        {availableAddons.length >0 && (
           <div className="mb-8">
             <label className="block text-sm font-medium text-muted-foreground mb-3">Дополнительные услуги</label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {availableAddons.map((a) => {
-                const isSelected = selectedAddons.find((x) => x.id === a.id);
+                const isSelected = selectedAddons.find((x) =>x.id === a.id);
                 return (
                   <button
                     key={a.id}
-                    onClick={() => toggleAddon(a)}
+                    onClick={() =>toggleAddon(a)}
                     className={`rounded-lg border p-3 text-left transition-all ${
                       isSelected ? 'border-gold-text bg-gold-tint' : 'border-line bg-card hover:border-gold-text/50'
                     }`}
@@ -155,7 +155,7 @@ export default function Calculator() {
                         {a.priceType === 'fixed' ? `${a.price.toLocaleString('ru-RU')} ₽` : `+${a.price} ₽/гость`}
                       </span>
                     </div>
-                    {isSelected && <div className="text-xs text-success mt-1"> Добавлено</div>}
+                    {isSelected && <div className="text-xs text-success mt-1">Добавлено</div>}
                   </button>
                 );
               })}
@@ -179,7 +179,7 @@ export default function Calculator() {
             <AnimatedCounter value={result.perGuest} suffix=" ₽/гость" />
           </div>
 
-          {result.savings > 0 && (
+          {result.savings >0 && (
             <div className="inline-block rounded-full bg-success/10 text-success text-xs font-medium px-3 py-1 mb-4">
               Экономия {result.savings.toLocaleString('ru-RU')} ₽ vs Максимальный
             </div>
@@ -210,7 +210,7 @@ export default function Calculator() {
         </motion.div>
       </div>
       {/* Schema.org Offer (07_CALCULATOR_SPEC §SEO) */}
-      {result.total > 0 && (
+      {result.total >0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

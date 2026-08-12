@@ -12,14 +12,14 @@ interface LightboxImage {
 interface LightboxProps {
   images: LightboxImage[];
   initialIndex?: number;
-  onClose: () => void;
+  onClose: () =>void;
 }
 
 export default function Lightbox({ images, initialIndex = 0, onClose }: LightboxProps) {
   const [index, setIndex] = useState(initialIndex);
 
-  const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length]);
-  const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length]);
+  const next = useCallback(() =>setIndex(i =>(i + 1) % images.length), [images.length]);
+  const prev = useCallback(() =>setIndex(i =>(i - 1 + images.length) % images.length), [images.length]);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -56,7 +56,7 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
       </button>
 
       {/* Previous button — only if more than 1 image */}
-      {images.length > 1 && (
+      {images.length >1 && (
         <button
           onClick={(e) => { e.stopPropagation(); prev(); }}
           className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"
@@ -69,7 +69,7 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
       {/* Image + caption */}
       <figure
         className="relative max-w-5xl max-h-[85vh] flex flex-col items-center"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) =>e.stopPropagation()}
       >
         <img
           src={current.src}
@@ -80,10 +80,10 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
         {current.caption && (
           <figcaption className="mt-4 text-center text-sm text-muted-foreground max-w-2xl">
             {current.caption}
-            {images.length > 1 && (
+            {images.length >1 && (
               <span className="ml-3 text-xs">·</span>
             )}
-            {images.length > 1 && (
+            {images.length >1 && (
               <span className="ml-3 text-xs">{index + 1} / {images.length}</span>
             )}
           </figcaption>
@@ -91,7 +91,7 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
       </figure>
 
       {/* Next button */}
-      {images.length > 1 && (
+      {images.length >1 && (
         <button
           onClick={(e) => { e.stopPropagation(); next(); }}
           className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"

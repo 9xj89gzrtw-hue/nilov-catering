@@ -23,7 +23,7 @@ export default function GalleryTeaser() {
         </div>
 
         <div className="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none">
-          {PHOTOS.map((p, i) => (
+          {PHOTOS.map((p, i) =>(
             <motion.div
               key={i}
               className="snap-start shrink-0 w-[60vw] max-w-[220px] md:w-auto md:max-w-none"

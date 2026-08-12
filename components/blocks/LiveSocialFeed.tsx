@@ -54,7 +54,7 @@ const HARDCODED_POSTS: SocialPost[] = [
 ];
 
 export default function LiveSocialFeed({ posts }: { posts?: SocialPost[] }) {
-  const items = posts && posts.length > 0 ? posts : HARDCODED_POSTS;
+  const items = posts && posts.length >0 ? posts : HARDCODED_POSTS;
   return (
     <section aria-label="Мы в соцсетях" className="py-20 md:py-28 bg-secondary">
       <div className="container-site">
@@ -71,7 +71,7 @@ export default function LiveSocialFeed({ posts }: { posts?: SocialPost[] }) {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {items.map((post, i) => (
+          {items.map((post, i) =>(
             <motion.a
               key={post.id}
               href={post.link}

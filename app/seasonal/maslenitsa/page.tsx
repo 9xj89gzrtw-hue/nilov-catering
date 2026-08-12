@@ -34,7 +34,7 @@ export default function MaslenitsaPage() {
 
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все масленичные блюда</h2>
         <div className="space-y-3 mb-10">
-          {DISHES.map(d => (
+          {DISHES.map(d =>(
             <div key={d.name} className="rounded-xl border border-line bg-card p-4 hover:border-gold-text transition-colors">
               <div className="flex items-center justify-between">
                 <div>

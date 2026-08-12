@@ -15,7 +15,7 @@ export default function CTASection() {
       <div className="container-site max-w-5xl mx-auto">
         {/* Guarantees strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 md:mb-16">
-          {GUARANTEES.map((g) => (
+          {GUARANTEES.map((g) =>(
             <div key={g.title} className="text-center md:text-left p-4 rounded-xl border border-line bg-card">
               <g.icon className="w-7 h-7 mx-auto md:mx-0 mb-3 text-gold-text" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="font-heading text-base mb-1" style={{ fontWeight: 500 }}>{g.title}</h3>
@@ -66,7 +66,7 @@ export default function CTASection() {
 
             <p className="text-sm text-background/55">
               Или напишите на почту{' '}
-              <a href={`mailto:${SITE.email}`} className="text-background/80 hover:text-gold-text underline underline-offset-2">{SITE.email}</a>
+              <a href={`mailto:${SITE.email}`} className="text-background/80 hover:text-gold-text underline underline-offset-2 inline-flex items-center min-h-[44px] py-2">{SITE.email}</a>
             </p>
           </div>
         </div>

@@ -211,7 +211,7 @@ const QUICK_FACTS = [
 ];
 
 export default function PominkiPage() {
-  const totalMin = POMINKI_MENU.reduce((acc, s) => acc + s.items.length, 0);
+  const totalMin = POMINKI_MENU.reduce((acc, s) =>acc + s.items.length, 0);
 
   return (
     <main id="main" className="pb-20" data-hide-newsletter="true">
@@ -284,7 +284,7 @@ export default function PominkiPage() {
       <section className="border-b border-line bg-card">
         <div className="container-site max-w-5xl">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-line">
-            {QUICK_FACTS.map((f) => (
+            {QUICK_FACTS.map((f) =>(
               <div key={f.label} className="px-4 py-5 text-center">
                 <div className="font-heading text-xl md:text-2xl font-medium text-foreground">
                   {f.value}
@@ -325,7 +325,7 @@ export default function PominkiPage() {
         {/* ───────────────── ЧТО ВХОДИТ — 3 фото-карточки ───────────────── */}
         <RevealBlock className="mb-14 md:mb-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {WHATS_INCLUDED.map((item) => (
+            {WHATS_INCLUDED.map((item) =>(
               <article
                 key={item.title}
                 className="rounded-xl overflow-hidden border border-line bg-card hover:border-foreground/30 transition-colors"
@@ -360,7 +360,7 @@ export default function PominkiPage() {
                   <div
                     key={item.name}
                     className={`relative ${
-                      idx > 0 ? 'md:border-l border-line' : ''
+                      idx >0 ? 'md:border-l border-line' : ''
                     }`}
                   >
                     <FoodPhoto
@@ -398,7 +398,7 @@ export default function PominkiPage() {
         </RevealBlock>
 
         <div className="space-y-10 md:space-y-12 mb-14 md:mb-20">
-          {POMINKI_MENU.slice(1).map((sec, secIdx) => (
+          {POMINKI_MENU.slice(1).map((sec, secIdx) =>(
             <RevealBlock key={sec.section} delay={secIdx * 0.05}>
               <section>
                 <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4 md:mb-5">
@@ -456,7 +456,7 @@ export default function PominkiPage() {
               Пример расчёта
             </h2>
             <p className="text-sm md:text-base text-foreground/85 mb-5 leading-relaxed">
-              <strong>1 800 ₽/гость — фиксированная цена.</strong> Включает: еда,
+              <strong>1 800 ₽/гость — фиксированная цена.</strong>Включает: еда,
               посуда, доставка по СПб (в пределах КАД), салфетки, столовые приборы.
               Доплаты: выезд за КАД (+30 ₽/км), дополнительный персонал на площадке
               (+1 500 ₽/час). Минимум — 10 человек.
@@ -499,7 +499,7 @@ export default function PominkiPage() {
                 Что входит
               </h3>
               <ul className="space-y-2.5 text-sm text-foreground/90">
-                {PROTOCOL_DO.map((line) => (
+                {PROTOCOL_DO.map((line) =>(
                   <li key={line} className="flex gap-2.5">
                     <span
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/60"
@@ -516,7 +516,7 @@ export default function PominkiPage() {
                 Чего не делаем
               </h3>
               <ul className="space-y-2.5 text-sm text-foreground/90">
-                {PROTOCOL_DONT.map((line) => (
+                {PROTOCOL_DONT.map((line) =>(
                   <li key={line} className="flex gap-2.5">
                     <span
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-destructive/70"

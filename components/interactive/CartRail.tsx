@@ -23,8 +23,8 @@ export default function CartRail() {
   const total = store.total;
   const guests = store.guestCount;
 
-  const dishName = (id: string) => ALL_DISHES.find(d => d.id === id)?.name || id;
-  const dishPrice = (id: string) => ALL_DISHES.find(d => d.id === id)?.pricePerGuest || 0;
+  const dishName = (id: string) =>ALL_DISHES.find(d =>d.id === id)?.name || id;
+  const dishPrice = (id: string) =>ALL_DISHES.find(d =>d.id === id)?.pricePerGuest || 0;
 
   // Desktop: always visible sidebar
   // Mobile: toggle button + slide-up sheet
@@ -32,12 +32,12 @@ export default function CartRail() {
     <>
       {/* Mobile toggle button */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() =>setOpen(!open)}
         className="fixed bottom-20 right-4 z-40 md:hidden flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-semibold shadow-lg"
         aria-label="Открыть корзину"
       >
         <ShoppingBag className="w-5 h-5" />
-        {items.length > 0 && (
+        {items.length >0 && (
           <span className="bg-white text-primary rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
             {items.length}
           </span>
@@ -46,15 +46,15 @@ export default function CartRail() {
 
       {/* Mobile bottom sheet */}
       {open && (
-        <div className="fixed inset-0 z-40 md:hidden" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-40 md:hidden" onClick={() =>setOpen(false)}>
           <div className="absolute inset-0 bg-black/40" />
           <div
             className="absolute bottom-0 left-0 right-0 bg-card rounded-t-2xl border-t border-line max-h-[70vh] overflow-y-auto p-4"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-heading text-lg font-medium">Ваше меню ({items.length})</h3>
-              <button onClick={() => setOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-secondary">
+              <button onClick={() =>setOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-secondary">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -75,7 +75,7 @@ export default function CartRail() {
           <div className="flex items-center gap-2 mb-4">
             <ShoppingBag className="w-5 h-5 text-gold-text" />
             <h3 className="font-heading text-lg font-medium">Ваше меню</h3>
-            {items.length > 0 && (
+            {items.length >0 && (
               <span className="ml-auto text-xs bg-gold-tint text-gold-text px-2 py-0.5 rounded-full font-semibold">
                 {items.length} блюд
               </span>
@@ -102,11 +102,11 @@ export default function CartRail() {
 
 function CartContent({ items, dishName, dishPrice, total, guests, store }: {
   items: { dishId: string; qty: number }[];
-  dishName: (id: string) => string;
-  dishPrice: (id: string) => number;
+  dishName: (id: string) =>string;
+  dishPrice: (id: string) =>number;
   total: number;
   guests: number;
-  store: { setGuestCount: (n: number) => void; removeDish: (id: string) => void; clearItems: () => void };
+  store: { setGuestCount: (n: number) =>void; removeDish: (id: string) =>void; clearItems: () =>void };
 }) {
   return (
     <>
@@ -115,18 +115,18 @@ function CartContent({ items, dishName, dishPrice, total, guests, store }: {
         <label className="text-xs text-muted-foreground block mb-1">Гостей</label>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => store.setGuestCount(Math.max(4, guests - 5))}
+            onClick={() =>store.setGuestCount(Math.max(4, guests - 5))}
             className="w-8 h-8 rounded-lg border border-line flex items-center justify-center hover:border-gold-text"
           >−</button>
           <input
             type="number"
             value={guests}
-            onChange={(e) => store.setGuestCount(Math.max(4, parseInt(e.target.value) || 4))}
+            onChange={(e) =>store.setGuestCount(Math.max(4, parseInt(e.target.value) || 4))}
             className="flex-1 text-center text-lg font-semibold bg-transparent border-none outline-none"
             min={4}
           />
           <button
-            onClick={() => store.setGuestCount(guests + 5)}
+            onClick={() =>store.setGuestCount(guests + 5)}
             className="w-8 h-8 rounded-lg border border-line flex items-center justify-center hover:border-gold-text"
           >+</button>
         </div>
@@ -134,14 +134,14 @@ function CartContent({ items, dishName, dishPrice, total, guests, store }: {
 
       {/* Items list */}
       <div className="space-y-2 mb-4 max-h-[40vh] overflow-y-auto">
-        {items.map((item) => (
+        {items.map((item) =>(
           <div key={item.dishId} className="flex items-center gap-2 p-2 rounded-lg bg-secondary/30">
             <div className="flex-1 min-w-0">
               <p className="text-xs font-medium text-foreground line-clamp-1">{dishName(item.dishId)}</p>
               <p className="text-[10px] text-muted-foreground">{dishPrice(item.dishId)} ₽ × {item.qty}</p>
             </div>
             <button
-              onClick={() => store.removeDish(item.dishId)}
+              onClick={() =>store.removeDish(item.dishId)}
               className="w-6 h-6 flex items-center justify-center rounded text-muted-foreground hover:text-destructive"
               aria-label="Удалить"
             >
@@ -160,7 +160,7 @@ function CartContent({ items, dishName, dishPrice, total, guests, store }: {
           </span>
         </div>
         <p className="text-xs text-muted-foreground">
-          {guests} гостей · ≈ {guests > 0 ? Math.round(total / guests).toLocaleString('ru-RU') : 0} ₽/гость
+          {guests} гостей · ≈ {guests >0 ? Math.round(total / guests).toLocaleString('ru-RU') : 0} ₽/гость
         </p>
       </div>
 
@@ -173,7 +173,7 @@ function CartContent({ items, dishName, dishPrice, total, guests, store }: {
         <ArrowRight className="w-4 h-4" />
       </Link>
       <button
-        onClick={() => store.clearItems()}
+        onClick={() =>store.clearItems()}
         className="w-full text-xs text-muted-foreground hover:text-foreground mt-2"
       >
         Очистить меню

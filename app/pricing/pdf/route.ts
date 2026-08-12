@@ -11,7 +11,7 @@ export async function GET(_request: Request) {
   const rows: string[] = [];
 
   for (const [eventId, offers] of Object.entries(ALL_TARIFF_OFFERS)) {
-    const eventLabel: Record<string, string> = {
+    const eventLabel: Record<string, string>= {
       svadba: 'Свадьба', korporativ: 'Корпоратив', vypusknoy: 'Выпускной',
       chastnoe: 'Частное событие', detskoe: 'Детский праздник', 'chef-at-home': 'Шеф на дом',
     };
@@ -25,11 +25,11 @@ export async function GET(_request: Request) {
         </div>
         <p>${escapeHtml(offer.description)}</p>
         <p class="meta">Мин. ${offer.minGuests} гостей</p>
-        <p class="highlights">${offer.highlights.map(h => `<span class="hl">${escapeHtml(h)}</span>`).join(' ')}</p>
+        <p class="highlights">${offer.highlights.map(h =>`<span class="hl">${escapeHtml(h)}</span>`).join(' ')}</p>
         <table>
           <thead><tr><th style="width:40%;">Блюдо</th><th>Состав</th><th style="width:80px;">Кол-во</th></tr></thead>
           <tbody>
-            ${offer.composition.map(item => `<tr>
+            ${offer.composition.map(item =>`<tr>
               <td><strong>${escapeHtml(item.name)}</strong></td>
               <td>${escapeHtml(item.desc)}</td>
               <td class="qty">${item.qty}</td>

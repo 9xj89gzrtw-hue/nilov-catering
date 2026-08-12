@@ -58,11 +58,11 @@ export default function Footer() {
 
         {/* Link columns */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-          {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+          {Object.entries(FOOTER_LINKS).map(([title, links]) =>(
             <div key={title}>
               <h4 className="font-heading text-sm font-semibold text-foreground mb-3">{title}</h4>
               <ul className="space-y-2">
-                {links.map((link) => (
+                {links.map((link) =>(
                   <li key={link.href}>
                     <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-1 -mx-1">{link.label}</Link>
                   </li>
@@ -75,7 +75,7 @@ export default function Footer() {
         {/* Bottom: social + rating + legal */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
           <div className="flex items-center gap-4">
-            {SOCIAL_LINKS.map((link) => (
+            {SOCIAL_LINKS.map((link) =>(
               <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{link.label}</a>
             ))}
           </div>

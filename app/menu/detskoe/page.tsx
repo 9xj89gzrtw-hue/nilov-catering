@@ -10,7 +10,7 @@ import B2BBanner from '@/components/common/B2BBanner';
 import Link from 'next/link';
 
 export default function DetskoePage() {
-  const kidsDishes = useMemo(() => ALL_DISHES.filter(d => d.format.includes('detskoe')), []);
+  const kidsDishes = useMemo(() =>ALL_DISHES.filter(d =>d.format.includes('detskoe')), []);
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -29,7 +29,7 @@ export default function DetskoePage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
           <p className="text-base font-bold text-amber-900 mb-2">Аллергены в детском меню — безопасность детей</p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>В пакетах «Эконом» и базовом детском наборе НЕТ блюд с цельными орехами</strong> (арахис, лесной, кедровый, грецкий).
+            <strong>В пакетах «Эконом» и базовом детском наборе НЕТ блюд с цельными орехами</strong>(арахис, лесной, кедровый, грецкий).
             В пакетах «Стандарт» и «Расширенный» часть десертов (брауни, миндальная мука в БГ-выпечке) содержит орехи — они имеют значок Орехи и промаркированы.
             <strong>Если у ребёнка аллергия или анафилаксия — укажите это в заявке.</strong>
             Менеджер свяжется с вами для подтверждения протокола безопасности (отдельная зона кухни,
@@ -41,7 +41,7 @@ export default function DetskoePage() {
             Халяльное детское меню — на <Link href="/menu/halal" className="underline font-semibold">/menu/halal</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>Сахарный диабет (СД1/СД2)?</strong> По умолчанию candy-bar / сладкий стол
+            <strong>Сахарный диабет (СД1/СД2)?</strong>По умолчанию candy-bar / сладкий стол
             включены в пакеты «Стандарт» и «Расширенный». Для ребёнка с СД1 мы заменяем их на
             сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Ищите в каталоге блюда со значком{' '}
@@ -50,7 +50,7 @@ export default function DetskoePage() {
             <Link href="/allergens" className="underline font-semibold">/allergens</Link>.
           </p>
           <p className="text-sm text-amber-900 mb-3">
-            <strong>Анафилаксия на молоко и/или яйца?</strong> Те же протоколы безопасности:
+            <strong>Анафилаксия на молоко и/или яйца?</strong>Те же протоколы безопасности:
             отдельная смена, отдельные доски/ножи, EpiPen. Веган-меню = безопасный выбор
             (без молока, без яиц). В каталоге используйте фильтр «Без молока» и «Без яиц».
             Подробнее на{' '}
@@ -89,17 +89,17 @@ export default function DetskoePage() {
         <div className="mt-8 p-5 rounded-xl border border-line bg-card">
           <h2 className="font-heading text-lg font-medium mb-3">Регуляторное соответствие</h2>
           <ul className="text-sm text-muted-foreground space-y-2">
-            <li><strong className="text-foreground">СанПиН 2.3/2.4.3590-20</strong> — санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
-            <li><strong className="text-foreground">ТР ТС 021/2011</strong> — безопасность пищевой продукции. HACCP внедрён.</li>
-            <li><strong className="text-foreground">ТР ТС 022/2011</strong> — маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
-            <li><strong className="text-foreground">Медкнижки</strong> — 100% персонала. Прививки от дифтерии и гепатита В.</li>
-            <li><strong className="text-foreground">Бракеражный журнал</strong> — ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
+            <li><strong className="text-foreground">СанПиН 2.3/2.4.3590-20</strong>— санитарно-эпидемиологические требования к организации питания детей. Соблюдается полностью: температурный режим, сроки хранения, обработка.</li>
+            <li><strong className="text-foreground">ТР ТС 021/2011</strong>— безопасность пищевой продукции. HACCP внедрён.</li>
+            <li><strong className="text-foreground">ТР ТС 022/2011</strong>— маркировка 14 аллергенов (Приложение 3). Каждое блюдо промаркировано.</li>
+            <li><strong className="text-foreground">Медкнижки</strong>— 100% персонала. Прививки от дифтерии и гепатита В.</li>
+            <li><strong className="text-foreground">Бракеражный журнал</strong>— ведётся на каждое событие. Доступен по запросу для Роспотребнадзора.</li>
           </ul>
         </div>
 
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все детские блюда ({kidsDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {kidsDishes.map(dish => (
+          {kidsDishes.map(dish =>(
             <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors group">
               <FoodPhoto
                 src={getDishImage(dish.id, dish.station)}
@@ -123,7 +123,7 @@ export default function DetskoePage() {
                   </div>
                 </div>
               </div>
-              {dish.allergens.length > 0 && (
+              {dish.allergens.length >0 && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {dish.allergens.slice(0, 4).map(a => {
                     const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
@@ -135,7 +135,7 @@ export default function DetskoePage() {
                       </span>
                     );
                   })}
-                  {dish.allergens.length > 4 && (
+                  {dish.allergens.length >4 && (
                     <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded">+{dish.allergens.length - 4}</span>
                   )}
                 </div>

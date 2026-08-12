@@ -18,9 +18,9 @@ function calcAggregateRating() {
   if (!REVIEWS || REVIEWS.length === 0) {
     return null;
   }
-  const rated = REVIEWS.filter((r) => typeof r.rating === 'number');
+  const rated = REVIEWS.filter((r) =>typeof r.rating === 'number');
   if (rated.length === 0) return null;
-  const sum = rated.reduce((acc, r) => acc + (r.rating || 0), 0);
+  const sum = rated.reduce((acc, r) =>acc + (r.rating || 0), 0);
   const avg = sum / rated.length;
   return {
     '@type': 'AggregateRating',
@@ -33,7 +33,7 @@ function calcAggregateRating() {
 
 export function OrganizationJsonLd() {
   const rating = calcAggregateRating();
-  const data: Record<string, unknown> = {
+  const data: Record<string, unknown>= {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `https://${SITE.domain}/#organization`,
@@ -75,7 +75,7 @@ export function OrganizationJsonLd() {
   if (rating) {
     data.aggregateRating = rating;
     // Добавляем до 5 свежих отзывов как Review entities
-    data.review = REVIEWS.slice(0, 5).map((r) => ({
+    data.review = REVIEWS.slice(0, 5).map((r) =>({
       '@type': 'Review',
       author: { '@type': 'Person', name: r.clientName },
       reviewRating: {

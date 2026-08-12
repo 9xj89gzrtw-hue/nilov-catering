@@ -101,10 +101,9 @@ export default function RecapPage() {
         </p>
 
         <div className="space-y-4 mb-12">
-          {RECAPS.map((r) => (
-            <Link
+          {RECAPS.map((r) =>(
+            <article
               key={r.t}
-              href={r.ref ? `/reviews#${r.ref}` : '/reviews'}
               className="block rounded-xl border border-line bg-card overflow-hidden group hover:border-gold-text transition-colors"
             >
               {r.hasVideo && r.videoSrc ? (
@@ -139,7 +138,7 @@ export default function RecapPage() {
                   <span>{r.v}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {r.tags.map((tag) => (
+                  {r.tags.map((tag) =>(
                     <span
                       key={tag}
                       className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded"
@@ -148,18 +147,21 @@ export default function RecapPage() {
                     </span>
                   ))}
                 </div>
-                <p className="mt-2 text-sm text-gold-text font-semibold">
+                <Link
+                  href={r.ref ? `/reviews#${r.ref}` : '/reviews'}
+                  className="mt-2 inline-flex items-center gap-1 text-sm text-gold-text font-semibold hover:underline min-h-[44px] py-2"
+                >
                   Читать отзыв клиента →
-                </p>
+                </Link>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
 
         {/* Composite festival case */}
         <div className="mb-8 p-5 rounded-xl border-2 border-gold-text/40 bg-gold-text/5">
           <h2 className="font-heading text-lg font-medium mb-2">
-            Festival-scale: 800+ чел
+            Фестивальный масштаб: 800+ чел
           </h2>
           <p className="text-sm text-foreground/90 mb-2">
             <strong>
@@ -181,7 +183,7 @@ export default function RecapPage() {
 
         <div className="p-4 rounded-xl border border-line bg-secondary/30 mb-8">
           <p className="text-sm text-muted-foreground">
-             <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на
+             <strong>Полные видео-рекапы:</strong>доступны по запросу — отправим ссылку на
             закрытый альбом в течение 1 рабочего дня. Запрос:{' '}
             <a href="mailto:info@nilov-catering.ru" className="underline text-gold-text">
               info@nilov-catering.ru

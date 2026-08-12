@@ -44,7 +44,7 @@ export default function MobileMenu() {
     <>
       {/* Trigger — hamburger */}
       <button
-        onClick={() => setOpen(true)}
+        onClick={() =>setOpen(true)}
         className="lg:hidden flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
         aria-label="Открыть меню"
         aria-expanded={open}
@@ -71,7 +71,7 @@ export default function MobileMenu() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={() => setOpen(false)}
+                onClick={() =>setOpen(false)}
                 aria-label="Закрыть меню"
                 tabIndex={-1}
               />
@@ -91,7 +91,7 @@ export default function MobileMenu() {
                 <div className="flex items-center justify-between p-5 border-b border-line">
                   <span className="font-heading text-lg font-semibold">Меню</span>
                   <button
-                    onClick={() => setOpen(false)}
+                    onClick={() =>setOpen(false)}
                     className="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-secondary transition-colors"
                     aria-label="Закрыть меню"
                   >
@@ -103,11 +103,11 @@ export default function MobileMenu() {
 
                 {/* Key links */}
                 <nav className="flex-1 overflow-y-auto overscroll-contain py-2" aria-label="Мобильное меню">
-                  {KEY_LINKS.map((link) => (
+                  {KEY_LINKS.map((link) =>(
                     <Link
                       key={link.href}
                       href={link.href}
-                      onClick={() => setOpen(false)}
+                      onClick={() =>setOpen(false)}
                       className="flex items-center px-6 py-4 text-base font-medium text-foreground hover:bg-secondary active:bg-secondary transition-colors"
                     >
                       {link.label}
@@ -117,11 +117,11 @@ export default function MobileMenu() {
                   {/* Extra links section */}
                   <div className="mt-4 px-6 pt-4 border-t border-line">
                     <p className="text-xs text-muted-foreground mb-3">Ещё</p>
-                    {EXTRA_LINKS.map((link) => (
+                    {EXTRA_LINKS.map((link) =>(
                       <Link
                         key={link.href}
                         href={link.href}
-                        onClick={() => setOpen(false)}
+                        onClick={() =>setOpen(false)}
                         className="flex items-center px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary transition-colors rounded-lg"
                       >
                         {link.label}
@@ -151,7 +151,7 @@ export default function MobileMenu() {
                   </div>
                   <Link
                     href="/plan/helper"
-                    onClick={() => setOpen(false)}
+                    onClick={() =>setOpen(false)}
                     className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary py-4 text-base font-semibold text-primary-foreground active:scale-[0.98] transition-transform no-underline"
                   >
                     Рассчитать меню — 3 вопроса

@@ -27,7 +27,7 @@ export default function EventsRecapHome({
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {clips.slice(0, 8).map((clip, i) => (
+          {clips.slice(0, 8).map((clip, i) =>(
             <motion.a
               key={i}
               href={`/events/recap#clip-${i}`}

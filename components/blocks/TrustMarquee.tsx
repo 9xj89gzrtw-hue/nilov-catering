@@ -30,19 +30,19 @@ export function TrustMarquee({ clients }: TrustMarqueeProps) {
     const mq = window.matchMedia('(max-width: 767px)');
     setIsMobile(mq.matches);
 
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    const handler = (e: MediaQueryListEvent) =>setIsMobile(e.matches);
     mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    return () =>mq.removeEventListener('change', handler);
   }, []);
 
   const visibleClients = useMemo(
-    () => (isMobile ? clients.slice(0, 8) : clients),
+    () =>(isMobile ? clients.slice(0, 8) : clients),
     [isMobile, clients],
   );
 
   // Дублируем для бесшовного цикла
   const doubled = useMemo(
-    () => [...visibleClients, ...visibleClients],
+    () =>[...visibleClients, ...visibleClients],
     [visibleClients],
   );
 
@@ -114,7 +114,7 @@ export function TrustMarquee({ clients }: TrustMarqueeProps) {
           },
         }}
       >
-        {doubled.map((client, i) => renderCard(client, i))}
+        {doubled.map((client, i) =>renderCard(client, i))}
       </motion.div>
     </motion.div>
   );

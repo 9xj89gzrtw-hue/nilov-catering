@@ -10,7 +10,7 @@ interface TextRevealProps {
 
 const wordVariants: Variants = {
   hidden: { y: '0.5em', opacity: 0, rotateX: -4 },
-  visible: (i: number) => ({
+  visible: (i: number) =>({
     y: '0em', opacity: 1, rotateX: 0,
     transition: { duration: 0.6, delay: i * 0.03, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
@@ -21,7 +21,7 @@ export default function TextReveal({ children, className = '', delay = 0 }: Text
 
   return (
     <p className={className} style={{ perspective: '800px' }}>
-      {words.map((word, i) => (
+      {words.map((word, i) =>(
         <motion.span
           key={i}
           custom={i}

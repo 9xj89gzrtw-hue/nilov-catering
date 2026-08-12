@@ -63,7 +63,7 @@ export default function B2BSection() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-          {B2B_CARDS.map((card) => (
+          {B2B_CARDS.map((card) =>(
             <Link
               key={card.title}
               href={card.href}

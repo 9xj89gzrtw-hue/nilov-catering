@@ -24,13 +24,13 @@ export default function DeliveryOrderPage() {
 
   const totals = calcCartTotal(cart);
   const canNext =
-    step === 0 ? cart.items.length > 0 :
+    step === 0 ? cart.items.length >0 :
     step === 1 ? !!cart.zoneId :
     step === 2 ? !!cart.contact.name && !!cart.contact.phone && !!cart.contact.address && !!cart.contact.date :
     true;
 
   const handleNext = () => { if (canNext) setStep(Math.min(step + 1, 3)); };
-  const handlePrev = () => setStep(Math.max(step - 1, 0));
+  const handlePrev = () =>setStep(Math.max(step - 1, 0));
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -58,7 +58,7 @@ export default function DeliveryOrderPage() {
         }),
       });
       if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
+        const err = await response.json().catch(() =>({}));
         throw new Error(err.message || 'Сеть недоступна');
       }
       const data = await response.json();
@@ -80,7 +80,7 @@ export default function DeliveryOrderPage() {
   const minDate = tomorrow.toISOString().split('T')[0];
 
   // Текущая зона (для скрытия термобокса)
-  const currentZone = DELIVERY_ZONES.find(z => z.id === cart.zoneId);
+  const currentZone = DELIVERY_ZONES.find(z =>z.id === cart.zoneId);
   const showThermobox = currentZone ? !currentZone.coldChain : false;
 
   return (
@@ -96,7 +96,7 @@ export default function DeliveryOrderPage() {
 
         {/* Progress */}
         <div className="flex gap-1 mb-8 max-w-2xl mx-auto" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={STEPS.length}>
-          {STEPS.map((label, i) => (
+          {STEPS.map((label, i) =>(
             <div key={label} className="flex-1 flex flex-col items-center gap-1">
               <div className={`w-full h-1.5 rounded-full transition-colors ${i <= step ? 'bg-gold-text' : 'bg-muted'}`} />
               <span className={`text-[10px] ${i === step ? 'text-gold-text font-semibold' : 'text-muted-foreground'}`}>{label}</span>
@@ -113,7 +113,7 @@ export default function DeliveryOrderPage() {
                 <div className="mb-6">
                   <h3 className="font-heading text-lg font-medium mb-3">Быстрый старт</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                    {DELIVERY_PRESETS.map(preset => (
+                    {DELIVERY_PRESETS.map(preset =>(
                       <div key={preset.id} className="rounded-xl border border-line bg-card p-4">
                         <span className="text-2xl mb-1 block">{preset.emoji}</span>
                         <h4 className="text-sm font-semibold mb-0.5">{preset.label}</h4>
@@ -126,7 +126,7 @@ export default function DeliveryOrderPage() {
                 <p className="text-center text-sm text-muted-foreground py-8">Загрузка каталога блюд…</p>
               </div>
             )}
-            {step > 0 && (
+            {step >0 && (
               <div className="text-center py-12 text-sm text-muted-foreground">Загрузка формы…</div>
             )}
           </div>
@@ -143,10 +143,10 @@ export default function DeliveryOrderPage() {
                       <span className="text-xs text-muted-foreground">или соберите сами ↓</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-                      {DELIVERY_PRESETS.map(preset => (
+                      {DELIVERY_PRESETS.map(preset =>(
                         <button
                           key={preset.id}
-                          onClick={() => cart.applyPreset(preset.id)}
+                          onClick={() =>cart.applyPreset(preset.id)}
                           className="rounded-xl border border-line bg-card p-4 text-left hover:border-gold-text hover:shadow-sm transition-all"
                         >
                           <span className="text-2xl mb-1 block">{preset.emoji}</span>
@@ -160,7 +160,7 @@ export default function DeliveryOrderPage() {
                       ))}
                     </div>
                     <div className="text-center mb-4">
-                      <p className="text-xs text-muted-foreground"> 1 порция = 1 гость. На 10 человек: 5-7 блюд × 10 порций = 50-70 порций.</p>
+                      <p className="text-xs text-muted-foreground">1 порция = 1 гость. На 10 человек: 5-7 блюд × 10 порций = 50-70 порций.</p>
                     </div>
                   </div>
                 )}
@@ -173,7 +173,7 @@ export default function DeliveryOrderPage() {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl font-heading font-bold text-gold-text tabular-nums">{totals.subtotal.toLocaleString('ru-RU')} ₽</p>
-                    {!totals.meetsMinimum && cart.items.length > 0 && (
+                    {!totals.meetsMinimum && cart.items.length >0 && (
                       <p className="text-xs text-warning">Ещё {totals.remainingToMin.toLocaleString('ru-RU')} ₽ до минимума</p>
                     )}
                     {totals.meetsMinimum && (
@@ -201,7 +201,7 @@ export default function DeliveryOrderPage() {
                   </div>
                 )}
 
-                {cart.items.length > 0 && (
+                {cart.items.length >0 && (
                   <div className="mt-4 p-3 rounded-lg bg-gold-tint/30 text-center text-xs text-muted-foreground">
                      1 порция = 1 гость. На N гостей берите по N порций каждого блюда. Пресет «Семейный ужин на 10» = 6 блюд × 10 порций = 60 порций на 10 человек.
                   </div>
@@ -214,10 +214,10 @@ export default function DeliveryOrderPage() {
               <div className="max-w-3xl mx-auto">
                 <h2 className="font-heading text-xl mb-4">Зона доставки {!cart.zoneId && <span className="text-xs text-warning ml-2">выберите зону</span>}</h2>
                 <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                  {DELIVERY_ZONES.map(zone => (
+                  {DELIVERY_ZONES.map(zone =>(
                     <button
                       key={zone.id}
-                      onClick={() => cart.setZone(zone.id)}
+                      onClick={() =>cart.setZone(zone.id)}
                       className={`rounded-xl border p-4 text-left transition-all ${
                         cart.zoneId === zone.id
                           ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text'
@@ -246,7 +246,7 @@ export default function DeliveryOrderPage() {
                       <input
                         type="checkbox"
                         checked={cart.needThermobox}
-                        onChange={e => cart.setThermobox(e.target.checked)}
+                        onChange={e =>cart.setThermobox(e.target.checked)}
                         className="mt-1 accent-gold-text"
                       />
                       <div>
@@ -260,10 +260,10 @@ export default function DeliveryOrderPage() {
                 {/* Time slot — узкие 2-часовые окна */}
                 <h2 className="font-heading text-xl mb-4">Время доставки</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 mb-4">
-                  {TIME_SLOTS.map(slot => (
+                  {TIME_SLOTS.map(slot =>(
                     <button
                       key={slot.id}
-                      onClick={() => cart.setContact({ timeSlot: slot.id })}
+                      onClick={() =>cart.setContact({ timeSlot: slot.id })}
                       className={`rounded-xl border p-3 text-left transition-all ${
                         cart.contact.timeSlot === slot.id
                           ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text'
@@ -284,7 +284,7 @@ export default function DeliveryOrderPage() {
                     <input
                       type="time"
                       value={cart.contact.exactTime}
-                      onChange={e => cart.setContact({ exactTime: e.target.value })}
+                      onChange={e =>cart.setContact({ exactTime: e.target.value })}
                       className="rounded-lg border border-line bg-background px-3 py-2 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2"
                     />
                   </label>
@@ -292,7 +292,7 @@ export default function DeliveryOrderPage() {
                     <input
                       type="checkbox"
                       checked={cart.contact.callAhead}
-                      onChange={e => cart.setContact({ callAhead: e.target.checked })}
+                      onChange={e =>cart.setContact({ callAhead: e.target.checked })}
                       className="accent-gold-text"
                     />
                     <span className="text-xs">Позвонить за 30 минут до прибытия</span>
@@ -303,7 +303,7 @@ export default function DeliveryOrderPage() {
                 <div className="rounded-xl border border-line bg-card p-4 space-y-2 text-sm">
                   <div className="flex justify-between"><span className="text-muted-foreground">Стоимость блюд</span><span>{totals.subtotal.toLocaleString('ru-RU')} ₽</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Доставка</span><span>{totals.delivery === 0 ? 'Бесплатно' : `${totals.delivery.toLocaleString('ru-RU')} ₽`}</span></div>
-                  {totals.thermobox > 0 && (
+                  {totals.thermobox >0 && (
                     <div className="flex justify-between"><span className="text-muted-foreground">Термобокс (залог)</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
                   )}
                   <div className="flex justify-between font-semibold pt-2 border-t border-line">
@@ -322,27 +322,27 @@ export default function DeliveryOrderPage() {
                 <div className="space-y-3 mb-4">
                   <div className="grid grid-cols-2 gap-3">
                     <input type="text" placeholder="Имя *" value={cart.contact.name}
-                      onChange={e => cart.setContact({ name: e.target.value })}
+                      onChange={e =>cart.setContact({ name: e.target.value })}
                       className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     <input type="tel" placeholder="+7 (___) ___-__-__ *" value={cart.contact.phone}
-                      onChange={e => cart.setContact({ phone: e.target.value })}
+                      onChange={e =>cart.setContact({ phone: e.target.value })}
                       className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   </div>
                   <input type="text" placeholder="Адрес доставки *" value={cart.contact.address}
-                    onChange={e => cart.setContact({ address: e.target.value })}
+                    onChange={e =>cart.setContact({ address: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
 
                   {/* Для загородной доставки — поля подъезд/этаж/домофон */}
                   {cart.zoneId === 'kad' && (
                     <div className="grid grid-cols-3 gap-3">
                       <input type="text" placeholder="Подъезд" value={cart.contact.entrance}
-                        onChange={e => cart.setContact({ entrance: e.target.value })}
+                        onChange={e =>cart.setContact({ entrance: e.target.value })}
                         className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Этаж" value={cart.contact.floor}
-                        onChange={e => cart.setContact({ floor: e.target.value })}
+                        onChange={e =>cart.setContact({ floor: e.target.value })}
                         className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       <input type="text" placeholder="Код домофона" value={cart.contact.intercom}
-                        onChange={e => cart.setContact({ intercom: e.target.value })}
+                        onChange={e =>cart.setContact({ intercom: e.target.value })}
                         className="rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     </div>
                   )}
@@ -353,14 +353,14 @@ export default function DeliveryOrderPage() {
                       <p className="text-xs text-muted-foreground">Загородная доставка — заполните, чтобы курьер нашёл вас:</p>
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
-                          onChange={e => cart.setContact({ entrance: e.target.value })}
+                          onChange={e =>cart.setContact({ entrance: e.target.value })}
                           className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                         <input type="text" placeholder="№ участка / дома" value={cart.contact.floor}
-                          onChange={e => cart.setContact({ floor: e.target.value })}
+                          onChange={e =>cart.setContact({ floor: e.target.value })}
                           className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       </div>
                       <input type="text" placeholder="Код ворот / как проехать (необязательно)" value={cart.contact.intercom}
-                        onChange={e => cart.setContact({ intercom: e.target.value })}
+                        onChange={e =>cart.setContact({ intercom: e.target.value })}
                         className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     </div>
                   )}
@@ -368,14 +368,14 @@ export default function DeliveryOrderPage() {
                   {/* Квартира/офис — только для зоны kad */}
                   {cart.zoneId === 'kad' && (
                     <input type="text" placeholder="Квартира / офис (необязательно)" value={cart.contact.apartment}
-                      onChange={e => cart.setContact({ apartment: e.target.value })}
+                      onChange={e =>cart.setContact({ apartment: e.target.value })}
                       className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   )}
 
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Дата доставки *</label>
                     <input type="date" min={minDate} value={cart.contact.date}
-                      onChange={e => cart.setContact({ date: e.target.value })}
+                      onChange={e =>cart.setContact({ date: e.target.value })}
                       className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                   </div>
 
@@ -383,10 +383,10 @@ export default function DeliveryOrderPage() {
                   <div>
                     <label className="text-xs text-muted-foreground block mb-1">Способ оплаты</label>
                     <div className="grid grid-cols-3 gap-2">
-                      {PAYMENT_METHODS.map(m => (
+                      {PAYMENT_METHODS.map(m =>(
                         <button
                           key={m.id}
-                          onClick={() => cart.setContact({ paymentMethod: m.id })}
+                          onClick={() =>cart.setContact({ paymentMethod: m.id })}
                           className={`rounded-xl border p-2.5 text-center transition-all ${
                             cart.contact.paymentMethod === m.id
                               ? 'border-gold-text bg-gold-tint ring-1 ring-gold-text'
@@ -401,7 +401,7 @@ export default function DeliveryOrderPage() {
                   </div>
 
                   <textarea placeholder="Комментарий к заказу (особые пожелания, аллергии гостей, код ворот и т.д.)" value={cart.contact.comment}
-                    onChange={e => cart.setContact({ comment: e.target.value })}
+                    onChange={e =>cart.setContact({ comment: e.target.value })}
                     className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 min-h-[80px] resize-none" />
                 </div>
 
@@ -410,7 +410,7 @@ export default function DeliveryOrderPage() {
                   <h3 className="font-medium mb-2">Ваш заказ:</h3>
                   <ul className="space-y-1 max-h-40 overflow-y-auto text-xs text-muted-foreground">
                     {cart.items.map(item => {
-                      const dish = ALL_DISHES.find(d => d.id === item.dishId);
+                      const dish = ALL_DISHES.find(d =>d.id === item.dishId);
                       if (!dish) return null;
                       return (
                         <li key={item.dishId} className="flex justify-between">
@@ -423,7 +423,7 @@ export default function DeliveryOrderPage() {
                   <hr className="border-line" />
                   <div className="flex justify-between"><span className="text-muted-foreground">Блюда</span><span>{totals.subtotal.toLocaleString('ru-RU')} ₽</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Доставка</span><span>{totals.delivery === 0 ? 'Бесплатно' : `${totals.delivery.toLocaleString('ru-RU')} ₽`}</span></div>
-                  {totals.thermobox > 0 && (
+                  {totals.thermobox >0 && (
                     <div className="flex justify-between"><span className="text-muted-foreground">Термобокс (залог)</span><span>{totals.thermobox.toLocaleString('ru-RU')} ₽</span></div>
                   )}
                   <div className="flex justify-between font-semibold pt-2 border-t border-line">
@@ -457,12 +457,12 @@ export default function DeliveryOrderPage() {
                 <span className="text-5xl block mb-4">✅</span>
                 <h2 className="text-xl font-heading font-medium mb-2">Заказ принят!</h2>
                 <p className="text-muted-foreground mb-2">
-                  Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong> для подтверждения.
+                  Мы свяжемся с вами по телефону <strong className="text-foreground">{cart.contact.phone}</strong>для подтверждения.
                 </p>
                 <p className="text-sm text-muted-foreground mb-6">
                   Доставка: <strong className="text-foreground">{cart.contact.date}</strong>
-                  {cart.contact.exactTime && <> к <strong className="text-foreground">{cart.contact.exactTime}</strong></>}
-                  {!cart.contact.exactTime && <> · {TIME_SLOTS.find(s => s.id === cart.contact.timeSlot)?.label}</>}
+                  {cart.contact.exactTime && <>к <strong className="text-foreground">{cart.contact.exactTime}</strong></>}
+                  {!cart.contact.exactTime && <>· {TIME_SLOTS.find(s =>s.id === cart.contact.timeSlot)?.label}</>}
                 </p>
                 <div className="flex flex-col gap-2">
                   <Link href="/" className="text-gold-text font-semibold hover:underline text-sm">На главную →</Link>
@@ -479,7 +479,7 @@ export default function DeliveryOrderPage() {
             {/* Navigation */}
             {step < 3 && (
               <div className="flex justify-between mt-8 max-w-md mx-auto">
-                {step > 0 ? (
+                {step >0 ? (
                   <button type="button" onClick={handlePrev} className="text-sm text-muted-foreground hover:text-foreground">← Назад</button>
                 ) : (
                   <Link href="/delivery" className="text-sm text-muted-foreground hover:text-foreground">← Зоны доставки</Link>

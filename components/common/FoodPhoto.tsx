@@ -12,7 +12,7 @@ interface FoodPhotoProps {
   eager?: boolean;
 }
 
-const RATIOS: Record<string, string> = {
+const RATIOS: Record<string, string>= {
   square: 'aspect-square',
   video: 'aspect-video',
   portrait: 'aspect-[3/4]',
@@ -35,7 +35,7 @@ export default function FoodPhoto({
   // SSR race condition fix: check if img already loaded before React hydrated
   useEffect(() => {
     if (imgRef.current) {
-      if (imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+      if (imgRef.current.complete && imgRef.current.naturalWidth >0) {
         setLoaded(true);
         setError(false);
       } else if (imgRef.current.naturalWidth === 0 && imgRef.current.complete) {

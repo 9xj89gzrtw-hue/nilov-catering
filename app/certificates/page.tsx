@@ -240,7 +240,7 @@ export default function CertificatesPage() {
 
         {/* Certificates grid */}
         <div className="grid md:grid-cols-2 gap-5">
-          {CERTIFICATES.map((cert) => (
+          {CERTIFICATES.map((cert) =>(
             <div key={cert.title} className="rounded-xl border border-line bg-card p-5">
               <div className="flex items-start gap-3 mb-3">
                 <span className="text-3xl" aria-hidden="true">{cert.icon}</span>
@@ -256,7 +256,7 @@ export default function CertificatesPage() {
                 </div>
               </div>
               <ul className="text-sm text-muted-foreground space-y-1.5 mb-3">
-                {cert.details.map((d, i) => (
+                {cert.details.map((d, i) =>(
                   <li key={i}>{d}</li>
                 ))}
               </ul>

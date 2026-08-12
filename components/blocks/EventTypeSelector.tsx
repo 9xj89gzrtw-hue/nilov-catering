@@ -99,7 +99,7 @@ export default function EventTypeSelector() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-          {EVENTS.map((e, idx) => (
+          {EVENTS.map((e, idx) =>(
             <div
               key={e.href}
             >
@@ -147,7 +147,7 @@ export default function EventTypeSelector() {
                 <div className="p-5">
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">{e.desc}</p>
                   <ul className="space-y-1.5 mb-5">
-                    {e.features.map((f) => (
+                    {e.features.map((f) =>(
                       <li key={f} className="text-xs text-foreground/80 flex items-start gap-2">
                         <svg className="w-3.5 h-3.5 mt-0.5 shrink-0 text-gold-text" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                           <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />

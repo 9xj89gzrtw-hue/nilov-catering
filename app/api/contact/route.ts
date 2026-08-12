@@ -29,13 +29,13 @@ function checkRateLimit(ip: string): { ok: boolean; remaining: number; resetInMs
   const now = Date.now();
   const entry = ipHits.get(ip);
 
-  if (!entry || now - entry.firstHit > RATE_LIMIT_WINDOW_MS) {
+  if (!entry || now - entry.firstHit >RATE_LIMIT_WINDOW_MS) {
     ipHits.set(ip, { count: 1, firstHit: now });
     return { ok: true, remaining: RATE_LIMIT_MAX - 1, resetInMs: RATE_LIMIT_WINDOW_MS };
   }
 
   entry.count += 1;
-  if (entry.count > RATE_LIMIT_MAX) {
+  if (entry.count >RATE_LIMIT_MAX) {
     return { ok: false, remaining: 0, resetInMs: RATE_LIMIT_WINDOW_MS - (now - entry.firstHit) };
   }
 
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
     let telegramOk = false;
     if (botToken && chatId) {
-      const sanitize = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const sanitize = (s: string) =>s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       const tgText = [
         `🔔 ${isB2B ? 'B2B заявка' : 'Заявка'} ${orderId}`,
         `Имя: ${sanitize(name)}`,

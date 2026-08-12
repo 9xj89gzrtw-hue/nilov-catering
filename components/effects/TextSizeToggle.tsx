@@ -18,7 +18,7 @@ export default function TextSizeToggle() {
   }, [size]);
 
   const cycle = () => {
-    setSize(s => s === 'normal' ? 'large' : s === 'large' ? 'xlarge' : 'normal');
+    setSize(s =>s === 'normal' ? 'large' : s === 'large' ? 'xlarge' : 'normal');
   };
 
   const label = size === 'normal' ? '100%' : size === 'large' ? '125%' : '150%';

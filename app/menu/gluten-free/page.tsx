@@ -12,14 +12,14 @@ import FoodPhoto from '@/components/common/FoodPhoto';
 import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function GlutenFreePage() {
-  const dishes = useMemo(() => ALL_DISHES.filter(d => d.dietBadges.includes('gluten-free')), []);
+  const dishes = useMemo(() =>ALL_DISHES.filter(d =>d.dietBadges.includes('gluten-free')), []);
   // Split desserts: nut-free DEFAULT vs nut-containing OPTION
-  const dessertsNutFree = dishes.filter(d => d.station === 'desserts' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
-  const dessertsWithNuts = dishes.filter(d => d.station === 'desserts' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
-  const mainsNutFree = dishes.filter(d => (d.station === 'hot' || d.station === 'cold') && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
-  const mainsWithNuts = dishes.filter(d => (d.station === 'hot' || d.station === 'cold') && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
-  const drinksNutFree = dishes.filter(d => d.station === 'drinks' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
-  const drinksWithNuts = dishes.filter(d => d.station === 'drinks' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const dessertsNutFree = dishes.filter(d =>d.station === 'desserts' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const dessertsWithNuts = dishes.filter(d =>d.station === 'desserts' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const mainsNutFree = dishes.filter(d =>(d.station === 'hot' || d.station === 'cold') && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const mainsWithNuts = dishes.filter(d =>(d.station === 'hot' || d.station === 'cold') && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
+  const drinksNutFree = dishes.filter(d =>d.station === 'drinks' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
+  const drinksWithNuts = dishes.filter(d =>d.station === 'drinks' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
   const allWithNuts = [...dessertsWithNuts, ...mainsWithNuts, ...drinksWithNuts];
 
   return (
@@ -87,7 +87,7 @@ export default function GlutenFreePage() {
             Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
           <p className="text-sm text-emerald-900">
-            БГ-блюда с орехами (Сырная тарелка, Канапе капрезе, Куриное филе с песто, Кедровый раф) вынесены в отдельный блок <strong>«Опция (содержит орехи)»</strong> внизу страницы — доступны только по явному запросу.
+            БГ-блюда с орехами (Сырная тарелка, Канапе капрезе, Куриное филе с песто, Кедровый раф) вынесены в отдельный блок <strong>«Опция (содержит орехи)»</strong>внизу страницы — доступны только по явному запросу.
           </p>
         </div>
 
@@ -96,11 +96,11 @@ export default function GlutenFreePage() {
         <div className="mb-10 mt-6">
           <h2 className="font-heading text-2xl font-medium mb-2">БГ-десерты и выпечка (nut-free по умолчанию)</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong> (без орехов).
+            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong>(без орехов).
             Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-            {dessertsNutFree.map(dish => (
+            {dessertsNutFree.map(dish =>(
               <div key={dish.id} className="relative rounded-xl border-2 border-emerald-200 bg-emerald-50/50 overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                 <AllergenChips dish={dish} />
                 <DishCartIndicator dishId={dish.id} />
@@ -123,9 +123,9 @@ export default function GlutenFreePage() {
                     <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                     <span className="text-xs text-muted-foreground">&lt;20 ppm</span>
                   </div>
-                  {dish.allergens.length > 0 && (
+                  {dish.allergens.length >0 && (
                     <div className="mt-3 flex flex-wrap gap-1">
-                      {dish.allergens.map(a => (
+                      {dish.allergens.map(a =>(
                         <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
                       ))}
                     </div>
@@ -140,7 +140,7 @@ export default function GlutenFreePage() {
         <div className="mb-10">
           <h2 className="font-heading text-2xl font-medium mb-2">БГ-закуски и горячее (nut-free по умолчанию)</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-            {mainsNutFree.map(dish => (
+            {mainsNutFree.map(dish =>(
               <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                 <AllergenChips dish={dish} />
                 <DishCartIndicator dishId={dish.id} />
@@ -162,9 +162,9 @@ export default function GlutenFreePage() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                   </div>
-                  {dish.allergens.length > 0 && (
+                  {dish.allergens.length >0 && (
                     <div className="mt-3 flex flex-wrap gap-1">
-                      {dish.allergens.map(a => (
+                      {dish.allergens.map(a =>(
                         <span key={a} className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">{ALLERGEN_LABEL[a]}</span>
                       ))}
                     </div>
@@ -176,11 +176,11 @@ export default function GlutenFreePage() {
         </div>
 
         {/* Напитки — DEFAULT nut-free */}
-        {drinksNutFree.length > 0 && (
+        {drinksNutFree.length >0 && (
           <div className="mb-10">
             <h2 className="font-heading text-2xl font-medium mb-2">БГ-напитки (nut-free по умолчанию)</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-              {drinksNutFree.map(dish => (
+              {drinksNutFree.map(dish =>(
                 <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
                   <AllergenChips dish={dish} />
                   <DishCartIndicator dishId={dish.id} />
@@ -210,16 +210,16 @@ export default function GlutenFreePage() {
         )}
 
         {/* Опция — блюда с миндальной мукой / кедровым орехом (НЕ для анафилаксии на орехи) */}
-        {allWithNuts.length > 0 && (
+        {allWithNuts.length >0 && (
           <div className="mb-10 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
             <h2 className="font-heading text-xl font-medium mb-2 text-amber-900">Опция: БГ-блюда с орехами (НЕ по умолчанию)</h2>
             <p className="text-sm text-amber-900 mb-4">
-              Эти блюда <strong>безопасны для целиакии</strong> (&lt;20 ppm), но <strong>содержат миндальную муку или кедровый орех</strong>.
+              Эти блюда <strong>безопасны для целиакии</strong>(&lt;20 ppm), но <strong>содержат миндальную муку или кедровый орех</strong>.
               Не заказывайте их при анафилаксии на орехи. По умолчанию БГ-меню состоит только из nut-free блюд выше.
               Эти блюда доступны только по явному запросу.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-              {allWithNuts.map(dish => (
+              {allWithNuts.map(dish =>(
                 <div key={dish.id} className="relative rounded-xl border border-amber-300 bg-white overflow-hidden hover:shadow-lg transition-all group">
                   <AllergenChips dish={dish} />
                   <DishCartIndicator dishId={dish.id} />
@@ -242,9 +242,9 @@ export default function GlutenFreePage() {
                       <span className="text-sm font-semibold text-gold-text">{dish.pricePerGuest.toLocaleString('ru-RU')} ₽/гость</span>
                       <span className="text-xs text-amber-700 font-medium">опция</span>
                     </div>
-                    {dish.allergens.length > 0 && (
+                    {dish.allergens.length >0 && (
                       <div className="mt-3 flex flex-wrap gap-1">
-                        {dish.allergens.map(a => (
+                        {dish.allergens.map(a =>(
                           <span key={a} className="text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-800">{ALLERGEN_LABEL[a]}</span>
                         ))}
                       </div>

@@ -15,7 +15,7 @@ interface Pkg {
   items: PkgItem[];
 }
 
-const PKGS: Record<string, Pkg[]> = {
+const PKGS: Record<string, Pkg[]>= {
   'new-year': [
     {
       name: 'Эконом', price: '3 450 ₽/гость',
@@ -153,7 +153,7 @@ export default function SeasonalPackages({ season, label, ctaFormat }: Props) {
       </p>
 
       <div className="space-y-6">
-        {pkgs.map((pkg, i) => (
+        {pkgs.map((pkg, i) =>(
           <PkgBlock key={i} pkg={pkg} />
         ))}
       </div>
@@ -174,7 +174,7 @@ function PkgBlock({ pkg }: { pkg: Pkg }) {
         <p className="text-sm text-muted-foreground mb-3">{pkg.desc}</p>
 
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() =>setOpen(!open)}
           className="w-full flex items-center justify-between py-2 px-3 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors text-sm"
         >
           <span>{open ? 'Скрыть состав' : 'Показать состав'} ({pkg.items.length} позиций)</span>
@@ -185,7 +185,7 @@ function PkgBlock({ pkg }: { pkg: Pkg }) {
 
         {open && (
           <div className="mt-4 space-y-1.5">
-            {pkg.items.map((item, j) => (
+            {pkg.items.map((item, j) =>(
               <div key={j} className="py-1.5 border-b border-line/20 last:border-0">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">

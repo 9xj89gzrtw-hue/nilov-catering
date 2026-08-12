@@ -17,7 +17,7 @@ export default function InlinePriceCalculator() {
   const [format, setFormat] = useState<typeof FORMATS[number]['id']>('furshet');
   const [guests, setGuests] = useState(50);
 
-  const selected = FORMATS.find(f => f.id === format)!;
+  const selected = FORMATS.find(f =>f.id === format)!;
   const total = selected.pricePerGuest * guests;
   const meets = guests >= selected.minGuests;
 
@@ -39,10 +39,10 @@ export default function InlinePriceCalculator() {
           <div className="mb-6">
             <label className="block text-sm font-medium text-foreground mb-3">Формат</label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              {FORMATS.map(f => (
+              {FORMATS.map(f =>(
                 <button
                   key={f.id}
-                  onClick={() => setFormat(f.id)}
+                  onClick={() =>setFormat(f.id)}
                   className={`p-3 rounded-xl border text-sm font-medium transition-colors ${
                     format === f.id
                       ? 'border-primary bg-primary/5 text-primary'
@@ -68,7 +68,7 @@ export default function InlinePriceCalculator() {
               max="200"
               step="5"
               value={guests}
-              onChange={e => setGuests(Number(e.target.value))}
+              onChange={e =>setGuests(Number(e.target.value))}
               aria-label="Количество гостей"
               className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary min-h-[44px]"
             />

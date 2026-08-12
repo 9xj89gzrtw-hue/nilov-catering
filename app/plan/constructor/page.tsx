@@ -112,7 +112,7 @@ function ConstructorServerFallback() {
             Цены указаны за гостя. Всё включено: еда, персонал, посуда, доставка по КАД.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ml-0 md:ml-11">
-            {formats.map((f) => (
+            {formats.map((f) =>(
               <a
                 key={f.name}
                 href={f.href}
@@ -171,7 +171,7 @@ function ConstructorServerFallback() {
               { id: 'brownie-shooter', name: 'Брауни-шутер', price: '190 ₽' },
               { id: 'cranberry-mors', name: 'Клюквенный морс', price: '100 ₽' },
               { id: 'seabuckthorn-tea', name: 'Облепиховый чай', price: '120 ₽' },
-            ].map(d => (
+            ].map(d =>(
               <label key={d.id} className="flex items-center gap-3 p-2 rounded border border-line hover:border-gold-text transition-colors cursor-pointer">
                 <input type="checkbox" name="dishes" value={d.id} className="accent-gold-text shrink-0" />
                 <div className="w-12 h-12 rounded overflow-hidden bg-secondary shrink-0">
@@ -267,7 +267,7 @@ function ConstructorServerFallback() {
                 <option value="premium">Расширенный</option>
                 <option value="luxury">Максимальный</option>
               </select>
-              <p className="text-xs text-muted-foreground mt-1">Цены: Эконом от 390 ₽/гость (кофе-брейк) до 3 950 ₽ (банкет). Максимальный — от 5 950 до 9 950 ₽/гость.</p>
+              <p className="text-xs text-muted-foreground mt-1">Цены: Эконом от 390 ₽/гость (кофе-брейк) до 3 950 ₽ (банкет). Максимальный — от 2 450 (кофе-брейк) до 9 950 ₽/гость (свадебный люкс).</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="block">
@@ -351,7 +351,7 @@ function ConstructorServerFallback() {
 
         <noscript>
           <div className="mt-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm">
-            <strong>Внимание:</strong> полная интерактивная версия конструктора требует JavaScript. Выше — SSR-форма заявки, которая работает без JS..
+            <strong>Внимание:</strong>полная интерактивная версия конструктора требует JavaScript. Выше — SSR-форма заявки, которая работает без JS..
             Вы можете выбрать формат выше или связаться напрямую по телефону{' '}
             <a href={`tel:${SITE.phoneTel}`} className="underline">{SITE.phone}</a>.
           </div>

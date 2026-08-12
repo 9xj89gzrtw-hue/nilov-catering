@@ -17,10 +17,10 @@ const PUBLIC_GET_COLLECTIONS = ['pricing', 'trust-proof'];
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ collection: string }> }
+  { params }: { params: Promise<{ collection: string }>}
 ) {
   const { collection } = await params;
-  const col = cmsStore.collections.find(c => c === collection);
+  const col = cmsStore.collections.find(c =>c === collection);
   if (!col) return NextResponse.json({ error: 'Unknown collection' }, { status: 404 });
 
   // Sensitive collections require auth
@@ -44,7 +44,7 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ collection: string }> }
+  { params }: { params: Promise<{ collection: string }>}
 ) {
   // Auth guard — prevent unauthenticated CMS mutations
   if (!checkAuth(req)) {

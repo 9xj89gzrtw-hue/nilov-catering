@@ -27,18 +27,18 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-sans">
       <header className="border-b border-gray-700 px-6 py-3 flex items-center justify-between">
-        <Link href="/admin" className="font-bold text-lg"> NiloV CMS</Link>
+        <Link href="/admin" className="font-bold text-lg">NiloV CMS</Link>
         <Link href="/" className="text-sm text-gray-400 hover:text-white" target="_blank">→ сайт</Link>
       </header>
       <div className="flex">
         <nav className="w-56 border-r border-gray-700 min-h-[calc(100vh-49px)] p-4 space-y-1">
-          <NavLink href="/admin"> Дашборд</NavLink>
-          <NavLink href="/admin/dishes"> Блюда</NavLink>
-          <NavLink href="/admin/pricing"> Цены</NavLink>
-          <NavLink href="/admin/trust-proof"> Доверие</NavLink>
-          <NavLink href="/admin/page-texts"> Тексты</NavLink>
+          <NavLink href="/admin">Дашборд</NavLink>
+          <NavLink href="/admin/dishes">Блюда</NavLink>
+          <NavLink href="/admin/pricing">Цены</NavLink>
+          <NavLink href="/admin/trust-proof">Доверие</NavLink>
+          <NavLink href="/admin/page-texts">Тексты</NavLink>
           <NavLink href="/admin/reviews">⭐ Отзывы</NavLink>
-          <NavLink href="/admin/videos"> Видео</NavLink>
+          <NavLink href="/admin/videos">Видео</NavLink>
         </nav>
         <main id="main" className="flex-1 p-6">{children}</main>
       </div>

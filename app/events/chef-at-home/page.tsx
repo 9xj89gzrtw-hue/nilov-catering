@@ -22,7 +22,7 @@ export default function ChefAtHomePage() {
         <TariffOffersSection
           eventId="chef-at-home"
           eventName="Шеф на дом"
-          description="Тарифы для выезда шефа: от 4-курсного ужина до гастрономического опыта с винное сопровождение."
+          description="Тарифы для выезда шефа: от 4-курсного ужина до гастрономического опыта с винным сопровождением."
         />
 
         {/* Детали */}
@@ -32,7 +32,7 @@ export default function ChefAtHomePage() {
             { n: 'Длительность', items: '3–6 часов. Приезд за 2 часа до подачи.' },
             { n: 'Меню', items: 'Индивидуальная разработка: от 3 до 6 курсов. Французская, итальянская, паназиатская, русская кухня.' },
             { n: 'Винное сопровождение', items: 'Сомелье подбирает вино к каждому блюду. Карта от 3 500 ₽/бутылку.' },
-          ].map((s) => (
+          ].map((s) =>(
             <div key={s.n} className="rounded-xl border border-line bg-card p-5">
               <h2 className="font-heading text-lg font-medium mb-1">{s.n}</h2>
               <p className="text-sm text-muted-foreground">{s.items}</p>

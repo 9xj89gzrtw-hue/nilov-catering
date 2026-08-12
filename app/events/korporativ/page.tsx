@@ -80,7 +80,7 @@ export default function CorporatePage() {
             <div>
               <p className="font-medium mb-1">Закупки и учреждения:</p>
               <ul className="text-muted-foreground space-y-1 text-xs">
-                <li> 44-ФЗ и 223-ФЗ — тендерная документация</li>
+                <li>44-ФЗ и 223-ФЗ — тендерная документация</li>
                 <li>Школы, вузы, детсады, гос. учреждения</li>
                 <li>Школьный тариф от 1 800 ₽/гость</li>
                 <li>Скидки: от 50 гостей — 5%, от 100 — 10%, от 200 — 15%</li>

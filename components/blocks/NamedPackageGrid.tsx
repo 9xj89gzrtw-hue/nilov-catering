@@ -117,7 +117,7 @@ export default function NamedPackageGrid() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {PACKAGES.map((pkg, idx) => (
+          {PACKAGES.map((pkg, idx) =>(
             <div
               key={pkg.name}
               className={`reveal reveal-delay-${(idx % 4) + 1} card-tilt`}
@@ -159,7 +159,7 @@ export default function NamedPackageGrid() {
 
                   {/* Includes */}
                   <ul className="space-y-1.5 mb-5">
-                    {pkg.includes.map((item) => (
+                    {pkg.includes.map((item) =>(
                       <li key={item} className="text-xs text-foreground/80 flex items-center gap-2">
                         <svg className="w-3.5 h-3.5 shrink-0 text-gold-text" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                           <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />

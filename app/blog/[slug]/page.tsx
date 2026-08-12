@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-const ARTICLES: Record<string, { t: string; d: string; desc: string; body: string[] }> = {
+const ARTICLES: Record<string, { t: string; d: string; desc: string; body: string[] }>= {
   'furshet-vs-banket': {
     t: 'Как выбрать формат кейтеринга: фуршет или банкет?',
     d: '10.07.2026',
@@ -64,7 +64,7 @@ const ARTICLES: Record<string, { t: string; d: string; desc: string; body: strin
   },
 };
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string }>};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -87,7 +87,7 @@ export default async function BlogArticlePage({ params }: Props) {
         <p className="text-xs text-muted-foreground mb-2">{article.d}</p>
         <h1 className="text-2xl font-heading font-medium mb-6">{article.t}</h1>
         <div className="prose prose-sm max-w-none space-y-4">
-          {article.body.map((p, i) => (
+          {article.body.map((p, i) =>(
             <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
           ))}
         </div>

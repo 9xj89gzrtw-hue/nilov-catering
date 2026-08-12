@@ -22,13 +22,13 @@ const HIGH_RISK_ALLERGENS = ['nuts', 'peanuts', 'gluten', 'fish', 'crustaceans',
 export function AllergenChips({ dish, className = '' }: { dish: Dish; className?: string }) {
   if (!dish.allergens || dish.allergens.length === 0) return null;
 
-  const highRisk = dish.allergens.filter(a => HIGH_RISK_ALLERGENS.includes(a));
+  const highRisk = dish.allergens.filter(a =>HIGH_RISK_ALLERGENS.includes(a));
 
   // No high-risk allergens → no on-image badge. Reduces visual noise.
   // Low-risk allergens (milk, eggs, soy, etc.) are shown in the card body.
   if (highRisk.length === 0) return null;
 
-  const labels = highRisk.map(a => ALLERGEN_LABEL[a]).join(', ');
+  const labels = highRisk.map(a =>ALLERGEN_LABEL[a]).join(', ');
 
   return (
     <div

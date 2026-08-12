@@ -25,7 +25,7 @@ const FORMATS = [
 ];
 
 // Популярные блюда со всех меню (для витрины)
-const POPULAR = ALL_DISHES.filter(d => d.id.startsWith('canape-') || d.id.startsWith('tartaletka-')).slice(0, 8);
+const POPULAR = ALL_DISHES.filter(d =>d.id.startsWith('canape-') || d.id.startsWith('tartaletka-')).slice(0, 8);
 
 function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
   const dishImg = getDishImage(dish.id, dish.station);
@@ -42,7 +42,7 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
         <div className="absolute bottom-2 right-2 z-10">
           <span className="text-xs bg-white/80 backdrop-blur-sm rounded-full px-2 py-0.5 font-semibold">{dish.pricePerGuest} ₽/гость</span>
         </div>
-        {dish.dietBadges.length > 0 && (
+        {dish.dietBadges.length >0 && (
           <div className="absolute top-2 left-2 z-10 flex gap-1">
             {dish.dietBadges.includes('vegan') && <span className="text-[10px] bg-[#065F46] text-white px-1.5 py-0.5 rounded font-bold">VEGAN</span>}
             {dish.dietBadges.includes('gluten-free') && <span className="text-[10px] bg-[#B45309] text-white px-1.5 py-0.5 rounded font-bold">GF</span>}
@@ -53,7 +53,7 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
         <h3 className="text-sm font-medium leading-tight mb-1 group-hover:text-gold-text transition-colors">{dish.name}</h3>
         <p className="text-[11px] text-muted-foreground line-clamp-2 mb-2">{dish.description}</p>
         {/* Allergen chips — visible на /menu */}
-        {dish.allergens.length > 0 && (
+        {dish.allergens.length >0 && (
           <div className="flex flex-wrap gap-0.5">
             {dish.allergens.slice(0, 4).map(a => {
               const isHighRisk = a === 'nuts' || a === 'peanuts' || a === 'gluten' || a === 'fish' || a === 'crustaceans' || a === 'molluscs';
@@ -65,7 +65,7 @@ function DishCard({ dish }: { dish: typeof ALL_DISHES[number] }) {
                 </span>
               );
             })}
-            {dish.allergens.length > 4 && (
+            {dish.allergens.length >4 && (
               <span className="text-[10px] bg-muted text-muted-foreground px-1 py-0.5 rounded leading-none">+{dish.allergens.length - 4}</span>
             )}
           </div>
@@ -94,7 +94,7 @@ export default function MenuPage() {
 
         {/* Quick price anchors */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {FORMATS.filter(f => f.price).map(f => (
+          {FORMATS.filter(f =>f.price).map(f =>(
             <Link key={f.slug} href={f.href} className="rounded-full border border-line px-5 py-2 text-sm hover:border-gold-text hover:bg-gold-tint transition-colors">
               {f.emoji} {f.label} — <span className="font-semibold text-gold-text">{f.price}</span>
             </Link>
@@ -103,7 +103,7 @@ export default function MenuPage() {
 
         {/* Format grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
-          {FORMATS.map(f => (
+          {FORMATS.map(f =>(
             <Link
               key={f.slug}
               href={f.href}
@@ -143,7 +143,7 @@ export default function MenuPage() {
               { label: 'Без сахара (СД1/СД2)', href: '/allergens#sd1', desc: 'Стевия/эритрит, ХЕ на каждом блюде' },
               { label: 'Без орехов', href: '/allergens#anafilaksiya', desc: 'Анафилаксия: EpiPen-протокол' },
               { label: 'Целиакия-протокол', href: '/allergens#celiakia', desc: 'Отдельная зона + синяя маркировка' },
-            ].map(d => (
+            ].map(d =>(
               <Link key={d.href} href={d.href} className="rounded-xl border border-line bg-card px-5 py-3 hover:border-gold-text hover:-translate-y-0.5 transition-all">
                 <div className="text-sm font-medium mb-0.5">{d.label}</div>
                 <div className="text-[11px] text-muted-foreground">{d.desc}</div>

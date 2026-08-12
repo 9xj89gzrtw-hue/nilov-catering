@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 /**
  * ClientLayout — pass-through wrapper.
  *
- * Performance audit: "ClientLayout wraps {children} in <AnimatePresence mode="wait"> keyed by
+ * Performance audit: "ClientLayout wraps {children} in <AnimatePresence mode="wait">keyed by
  * pathname — unmounts/remounts entire page tree on every route change."
  *
  * Fixed: removed AnimatePresence + motion.div. Pages now render without remount overhead.

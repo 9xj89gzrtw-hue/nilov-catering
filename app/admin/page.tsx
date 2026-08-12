@@ -24,7 +24,7 @@ export default async function AdminDashboard() {
       <h1 className="text-2xl font-bold mb-1">Дашборд</h1>
       <p className="text-gray-400 text-sm mb-6">Данные хранятся в <code className="bg-gray-800 px-1 rounded">data/*.json</code>. После правки — git push.</p>
       <div className="grid grid-cols-3 gap-4">
-        {cards.map(c => (
+        {cards.map(c =>(
           <a key={c.title} href={c.href} className="block p-5 bg-gray-800 rounded-lg border border-gray-700 hover:border-gray-500 transition-colors">
             <div className="flex items-center gap-3 mb-2">
               <div className={`w-3 h-3 rounded-full ${c.color}`} />
@@ -36,8 +36,8 @@ export default async function AdminDashboard() {
         ))}
       </div>
       <div className="mt-8 p-4 bg-gray-800/50 rounded border border-gray-700 text-sm text-gray-400">
-        <strong className="text-gray-200">Совет:</strong> для простых правок (тексты, цены) откройте{' '}
-        <code className="bg-gray-700 px-1 rounded">data/page-texts.json</code> в редакторе. Для блюд и отзывов — используйте табличный редактор ниже.
+        <strong className="text-gray-200">Совет:</strong>для простых правок (тексты, цены) откройте{' '}
+        <code className="bg-gray-700 px-1 rounded">data/page-texts.json</code>в редакторе. Для блюд и отзывов — используйте табличный редактор ниже.
       </div>
     </div>
   );

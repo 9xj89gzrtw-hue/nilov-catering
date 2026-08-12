@@ -28,7 +28,7 @@ export default function TrustBar() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto">
-          {VENUES.map((v) => (
+          {VENUES.map((v) =>(
             <div
               key={v.name}
               className="group relative overflow-hidden rounded-xl border border-line bg-card hover:border-gold-text/40 transition-colors"

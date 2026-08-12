@@ -12,7 +12,7 @@ import B2BBanner from '@/components/common/B2BBanner';
 import MenuTariffs from '@/components/blocks/MenuTariffs';
 
 export default function VeganPage() {
-  const dishes = useMemo(() => ALL_DISHES.filter((d) => d.dietBadges.includes('vegan')), []);
+  const dishes = useMemo(() =>ALL_DISHES.filter((d) =>d.dietBadges.includes('vegan')), []);
 
   return (
     <main id="main" className="pt-24 pb-20">
@@ -45,7 +45,7 @@ export default function VeganPage() {
           Все веган-блюда ({dishes.length})
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
-          {dishes.map((dish, idx) => (
+          {dishes.map((dish, idx) =>(
             <div
               key={dish.id}
               className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors"
@@ -77,9 +77,9 @@ export default function VeganPage() {
                     {dish.pricePerGuest} ₽/гость
                   </span>
                 </div>
-                {dish.allergens.length > 0 && (
+                {dish.allergens.length >0 && (
                   <div className="mt-2 flex flex-wrap gap-1">
-                    {dish.allergens.map((a) => (
+                    {dish.allergens.map((a) =>(
                       <span
                         key={a}
                         className="text-xs bg-muted text-muted-foreground px-1 py-0.5 rounded"
@@ -101,7 +101,7 @@ export default function VeganPage() {
             трюфелем, лесными грибами, эдамаме, киноa, ферментированными овощами.
           </p>
           <p className="text-xs text-muted-foreground mb-3">
-            <strong>Веган + всеядные в одной свадьбе?</strong> В тарифе «Цена по группам»
+            <strong>Веган + всеядные в одной свадьбе?</strong>В тарифе «Цена по группам»
             веган-группа платит 2 950 ₽/гость (Стандарт), всеядная — по тарифу свадебного банкета.
             Например, 50 веганов × 2 950 + 30 всеядных × 5 470 = 311 600 ₽ за 80 гостей.{' '}
             <Link href="/events/svadba" className="underline text-gold-text">Подробнее →</Link>

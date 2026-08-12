@@ -128,7 +128,7 @@ export default function PricingPage() {
 
         {/* 4 ФОРМАТА — простые карточки с ценой */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {FORMATS.map((fmt) => (
+          {FORMATS.map((fmt) =>(
             <div
               key={fmt.name}
               className={`relative rounded-2xl overflow-hidden border-2 ${fmt.popular ? 'border-gold-text shadow-lg shadow-gold/10' : 'border-line'} bg-card flex`}
@@ -165,7 +165,7 @@ export default function PricingPage() {
 
                   {/* Что входит — чек-лист */}
                   <ul className="space-y-1">
-                    {fmt.includes.map((item) => (
+                    {fmt.includes.map((item) =>(
                       <li key={item} className="flex items-center gap-2 text-xs">
                         <Check className="w-3.5 h-3.5 text-gold-text shrink-0" />
                         <span>{item}</span>
@@ -190,7 +190,7 @@ export default function PricingPage() {
           <p className="text-muted-foreground mb-6 text-center">Сколько это стоит на практике (всё включено, доставка по КАД бесплатно)</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {EXAMPLES.map((ex) => (
+            {EXAMPLES.map((ex) =>(
               <div key={ex.event} className="p-5 rounded-xl border border-line bg-card">
                 <div className="flex items-center justify-between mb-3">
                   <div>
@@ -223,7 +223,7 @@ export default function PricingPage() {
               { icon: '🍽', t: 'Посуда', d: 'Сервировка' },
               { icon: '📋', t: 'Координатор', d: 'Личный менеджер' },
               { icon: '🧹', t: 'Уборка', d: 'После мероприятия' },
-            ].map((s) => (
+            ].map((s) =>(
               <div key={s.t} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-line">
                 <span className="text-2xl">{s.icon}</span>
                 <div>

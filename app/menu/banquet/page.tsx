@@ -13,7 +13,7 @@ import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 import Link from 'next/link';
 
 export default function BanquetPage() {
-  const banquetDishes = useMemo(() => ALL_DISHES.filter(d => d.format.includes('banket')), []);
+  const banquetDishes = useMemo(() =>ALL_DISHES.filter(d =>d.format.includes('banket')), []);
 
   return (
     <main className="pt-24 pb-20" id="main">
@@ -46,7 +46,7 @@ export default function BanquetPage() {
 
         <h2 className="text-xl font-heading font-medium mt-12 mb-4">Все блюда банкета ({banquetDishes.length})</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {banquetDishes.map(dish => (
+          {banquetDishes.map(dish =>(
             <div key={dish.id} className="rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text transition-colors">
               <div className="aspect-[4/3] relative bg-secondary">
                 <FoodPhoto

@@ -53,7 +53,7 @@ const GROUPS = [EVENTS, MENU];
 export default function MegaMenu() {
   const [open, setOpen] = useState<string | null>(null);
   const ref = useRef<HTMLUListElement>(null);
-  const trapRef = useFocusTrap(open !== null, () => setOpen(null));
+  const trapRef = useFocusTrap(open !== null, () =>setOpen(null));
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -62,15 +62,15 @@ export default function MegaMenu() {
       }
     };
     document.addEventListener('click', handler);
-    return () => document.removeEventListener('click', handler);
+    return () =>document.removeEventListener('click', handler);
   }, []);
 
   return (
     <ul className="hidden md:flex items-center gap-1" role="menubar" ref={ref}>
-      {GROUPS.map((group) => (
+      {GROUPS.map((group) =>(
         <li key={group.href} className="relative" role="none">
           <button
-            onClick={() => setOpen(open === group.label ? null : group.label)}
+            onClick={() =>setOpen(open === group.label ? null : group.label)}
             className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
             aria-expanded={open === group.label}
             aria-haspopup="true"
@@ -88,13 +88,13 @@ export default function MegaMenu() {
               aria-label={`Подменю ${group.label}`}
             >
               <div className="grid grid-cols-2 gap-1">
-                {group.items.map((item) => (
+                {group.items.map((item) =>(
                   <Link
                     key={item.href}
                     href={item.href}
                     className="flex items-start gap-2 p-2 rounded-lg hover:bg-secondary/50 transition-colors group"
                     role="menuitem"
-                    onClick={() => setOpen(null)}
+                    onClick={() =>setOpen(null)}
                   >
                     {item.icon && <span className="text-lg shrink-0 mt-0.5"></span>}
                     <div className="min-w-0">
@@ -113,7 +113,7 @@ export default function MegaMenu() {
               <Link
                 href={group.href}
                 className="block mt-3 pt-3 border-t border-line text-xs text-gold-text hover:underline text-center"
-                onClick={() => setOpen(null)}
+                onClick={() =>setOpen(null)}
               >
                 Все {group.label.toLowerCase()} →
               </Link>

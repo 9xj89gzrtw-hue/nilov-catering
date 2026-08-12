@@ -384,7 +384,7 @@ function BentoGrid() {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5 auto-rows-[minmax(200px,1fr)]"
         >
-          {BENTO.map((card) => (
+          {BENTO.map((card) =>(
             <BentoCard key={card.title} card={card} />
           ))}
         </motion.div>
@@ -431,7 +431,7 @@ function Team() {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
         >
-          {TEAM.map((m) => (
+          {TEAM.map((m) =>(
             <motion.article
               key={m.name}
               variants={itemUp}
@@ -518,7 +518,7 @@ function Kitchen() {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4"
         >
-          {KITCHEN.map((k, i) => (
+          {KITCHEN.map((k, i) =>(
             <motion.figure
               key={i}
               variants={itemScale}
@@ -606,7 +606,7 @@ function Cases() {
         </motion.div>
 
         <div className="space-y-5 md:space-y-6">
-          {CASES.map((c, i) => (
+          {CASES.map((c, i) =>(
             <motion.article
               key={c.title}
               initial={{ opacity: 1, y: 0 }}
@@ -643,7 +643,7 @@ function Cases() {
                   {c.desc}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
-                  {c.tags.map((t) => (
+                  {c.tags.map((t) =>(
                     <span
                       key={t}
                       className="text-xs px-2.5 py-1 rounded-full bg-gold-tint text-accent-foreground font-medium"
@@ -686,7 +686,7 @@ function TrustStats() {
             viewport={{ once: true, margin: '-60px' }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           >
-            {STATS.map((s) => (
+            {STATS.map((s) =>(
               <motion.div key={s.label} variants={itemUp} className="text-center">
                 <div
                   className="font-heading text-4xl md:text-5xl lg:text-6xl text-gold-text mb-2 flex items-baseline justify-center gap-0.5"
