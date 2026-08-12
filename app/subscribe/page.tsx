@@ -81,7 +81,7 @@ export default function SubscribePage() {
           <div className="p-5 rounded-xl border-2 border-gold-text/40 bg-gold-tint/5">
             <h3 className="font-heading text-base font-medium mb-1">Долгосрочный контракт (кофе-брейк)</h3>
             <p className="text-sm text-muted-foreground mb-2">
-              Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong>(скидка 23%).
+              Фикс-цена <strong className="text-foreground">60 000 ₽/мес</strong> (скидка 23%).
               Ежемесячный ЭДО-инвойс. SLA ±15 минут включён.
             </p>
             <p className="text-xs text-muted-foreground">

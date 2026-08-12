@@ -86,7 +86,7 @@ const CERTIFICATES = [
   },
   {
     icon: '🕌',
-    title: 'Протокол работы с аллергенами (nut-free, celiac-safe)',
+    title: 'Протокол работы с аллергенами (без орехов, безопасно для целиакии)',
     status: 'Внедрён',
     statusColor: 'success',
     details: [
@@ -363,19 +363,19 @@ export default function CertificatesPage() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href={`mailto:${SITE.email}?subject=Запрос пакета документов`}
-              className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline"
+              className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline"
             >
                Запросить полный пакет
             </a>
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
+              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline"
             >
                {SITE.phone}
             </a>
             <Link
               href="/contact"
-              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
+              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline"
             >
                Оставить заявку
             </Link>

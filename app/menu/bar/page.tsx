@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const SERVICES = [
   {
-    t: 'Welcome-бар',
+    t: 'Приветственный бар',
     p: 'от 1 200 ₽/гость',
     i: 'Аперитив, игристое, лёгкие коктейли. 2 бармена на 50 гостей.',
     img: '/images/dishes-new/welcome-bar.jpg',
@@ -96,7 +96,7 @@ export default function BarPage() {
           </h1>
           <p className="text-lg md:text-xl text-background/70 mb-6">
             Бармен-шоу, коктейльная карта, винное сопровождение — добавим стиля вашему событию.
-            Профессиональные бармены, premium-ингредиенты, фотогеничная подача.
+            Профессиональные бармены, премиальные ингредиенты, фотогеничная подача.
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export default function BarPage() {
             <p className="text-xs uppercase tracking-[0.22em] mb-2 opacity-90">Премиальное барное обслуживание</p>
             <h2 className="font-heading text-2xl md:text-3xl font-medium mb-2">Профессиональный бар на ваше событие</h2>
             <p className="text-sm md:text-base opacity-90 max-w-2xl">
-              От welcome-бара до пирамиды из бокалов. Полная мобильная барная станция с подсветкой, барменами и авторскими коктейлями.
+              От приветственный бара до пирамиды из бокалов. Полная мобильная барная станция с подсветкой, барменами и авторскими коктейлями.
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function BarPage() {
                   </div>
                   <Link
                     href="/plan/calculator"
-                    className="block w-full rounded-lg bg-gold-text text-white py-2.5 text-sm font-semibold text-center hover:bg-gold-text/90 transition-colors"
+                    className="block w-full rounded-lg bg-gold-text text-white py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-center hover:bg-gold-text/90 transition-colors"
                   >
                     Заказать
                   </Link>

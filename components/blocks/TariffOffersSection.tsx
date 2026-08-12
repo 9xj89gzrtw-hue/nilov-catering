@@ -217,11 +217,11 @@ function TariffCard({ offer }: { offer: TariffOffer }) {
                               )}
                               <div className="text-[10px] text-gold-text font-semibold mt-0.5">{price} ₽ × {d.qty} = {price * d.qty} ₽</div>
                             </div>
-                            <div className="flex items-center gap-0.5">
-                              <button onClick={() =>setQty(d.dishId, d.qty - 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">−</button>
-                              <span className="text-[10px] font-semibold w-3 text-center">{d.qty}</span>
-                              <button onClick={() =>setQty(d.dishId, d.qty + 1)} className="w-4 h-4 rounded border border-line text-[10px] hover:border-gold-text">+</button>
-                              <button onClick={() =>removeDish(d.dishId)} className="text-[10px] text-muted-foreground hover:text-destructive ml-0.5"></button>
+                            <div className="flex items-center gap-1">
+                              <button onClick={() =>setQty(d.dishId, d.qty - 1)} aria-label="Уменьшить количество" className="w-11 h-11 rounded border border-line text-sm hover:border-gold-text inline-flex items-center justify-center">−</button>
+                              <span className="text-sm font-semibold w-6 text-center">{d.qty}</span>
+                              <button onClick={() =>setQty(d.dishId, d.qty + 1)} aria-label="Увеличить количество" className="w-11 h-11 rounded border border-line text-sm hover:border-gold-text inline-flex items-center justify-center">+</button>
+                              <button onClick={() =>removeDish(d.dishId)} aria-label="Удалить блюдо" className="w-11 h-11 rounded text-muted-foreground hover:text-destructive border border-line inline-flex items-center justify-center" title="Удалить блюдо">✕</button>
                             </div>
                           </li>
                         );
@@ -447,15 +447,15 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             <p className="text-sm text-muted-foreground mb-4">
               Можно заказать доставкой от <strong className="text-foreground">5 000 ₽</strong> — привезём выпечку, сэндвичи, фрукты, напитки.
               <br />
-              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong>(с сырным плато и кедровым рафом).
+              Готовые пресеты на 40 чел.: <strong className="text-foreground">базовый ≈ 16 800 ₽</strong> или <strong className="text-foreground">премиум ≈ 32 800 ₽</strong> (с сырным плато и кедровым рафом).
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/delivery/order"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
                  Собрать заказ доставки →
               </Link>
               <Link href="/delivery"
-                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium hover:bg-muted transition-colors">
+                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-medium hover:bg-muted transition-colors">
                 Зоны доставки
               </Link>
             </div>
@@ -479,11 +479,11 @@ export default function TariffOffersSection({ eventId: propEventId, eventName, d
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/menu/furshet"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
                 Смотреть фуршет-меню →
               </Link>
               <Link href="/plan/constructor?format=furshet"
-                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors">
+                className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-medium text-foreground hover:bg-muted transition-colors">
                 Собрать фуршет в конструкторе
               </Link>
             </div>

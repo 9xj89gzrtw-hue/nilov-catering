@@ -129,13 +129,13 @@ export default function PartnersPage() {
             Опишите ваш бизнес и предложение — B2B-менеджер свяжется в течение 1 рабочего дня.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a href="mailto:b2b@nilov-catering.ru?subject=Партнёрство" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+            <a href="mailto:b2b@nilov-catering.ru?subject=Партнёрство" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline">
                b2b@nilov-catering.ru
             </a>
-            <a href="tel:+78129195911" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <a href="tel:+78129195911" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                +7 (812) 919-59-11
             </a>
-            <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                Форма заявки
             </Link>
           </div>

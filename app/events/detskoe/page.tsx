@@ -25,7 +25,7 @@ export default function DetskoeEventPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-red-300 bg-red-50">
           <h2 className="font-heading text-base font-bold text-red-900 mb-2">Анафилаксия на орехи? Безопасно.</h2>
           <p className="text-sm text-red-900 mb-3">
-            <strong>В пакетах «Эконом» и базовом наборе НЕТ блюд с цельными орехами</strong>(арахис, лесной, кедровый, грецкий) — по умолчанию.
+            <strong>В пакетах «Эконом» и базовом наборе НЕТ блюд с цельными орехами</strong> (арахис, лесной, кедровый, грецкий) — по умолчанию.
             В пакетах «Стандарт» и «Расширенный» часть десертов (брауни, миндальная мука в БГ-выпечке) содержит орехи — они промаркированы значком «Орехи» (см. <a href="/menu/detskoe" className="underline">/menu/detskoe</a>).
             При заявленной анафилаксии на любой орех (включая миндаль) — выбираем только Эконом/базовый набор:
           </p>
@@ -49,10 +49,10 @@ export default function DetskoeEventPage() {
         <div className="mb-8 p-5 rounded-xl border-2 border-purple-300 bg-purple-50">
           <h2 className="font-heading text-base font-bold text-purple-900 mb-2">Сахарный диабет (СД1/СД2)? Безопасно.</h2>
           <p className="text-sm text-purple-900 mb-3">
-            <strong>Для гостя с СД1 candy-bar / сладкий стол исключаем по умолчанию</strong> и заменяем
+            <strong>Для гостя с СД1 сладкий стол / сладкий стол исключаем по умолчанию</strong> и заменяем
             на сырно-фруктовую тарелку (брусника, черника, киви, твёрдые сыры — низкий ГИ) или
             десерты без добавленного сахара (стевия/эритрит). Если в пакете «Стандарт» или
-            «Расширенный» candy-bar заявлен — для группы с СД1 он автоматически заменяется.
+            «Расширенный» сладкий стол заявлен — для группы с СД1 он автоматически заменяется.
           </p>
           <ul className="text-sm text-purple-900 space-y-1 mb-3 ml-4 list-disc">
             <li>Расчёт хлебных единиц (ХЕ) на каждое блюдо — 1 ХЕ = 10–12 г углеводов</li>
@@ -95,7 +95,7 @@ export default function DetskoeEventPage() {
         <TariffOffersSection
           eventId="detskoe"
           eventName="Детский праздник"
-          description="Тарифы для детских праздников: от базового фуршета до шоу-программы с candy-bar."
+          description="Тарифы для детских праздников: от базового фуршета до шоу-программы с сладкий стол."
         />
 
         {/* CTA — контакты */}
@@ -105,13 +105,13 @@ export default function DetskoeEventPage() {
             Позвоните или оставьте заявку — менеджер свяжется для подтверждения протокола безопасности.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline">
                {SITE.phone}
             </a>
-            <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                Заявка с аллергией
             </Link>
-            <Link href="/menu/detskoe" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <Link href="/menu/detskoe" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                Детское меню
             </Link>
           </div>

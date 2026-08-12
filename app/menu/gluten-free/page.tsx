@@ -13,7 +13,7 @@ import { getDishImage, getObjectPositionForDish } from '@/lib/dish-images';
 
 export default function GlutenFreePage() {
   const dishes = useMemo(() =>ALL_DISHES.filter(d =>d.dietBadges.includes('gluten-free')), []);
-  // Split desserts: nut-free DEFAULT vs nut-containing OPTION
+  // Split desserts: без орехов DEFAULT vs nut-containing OPTION
   const dessertsNutFree = dishes.filter(d =>d.station === 'desserts' && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
   const dessertsWithNuts = dishes.filter(d =>d.station === 'desserts' && (d.allergens.includes('nuts') || d.allergens.includes('peanuts')));
   const mainsNutFree = dishes.filter(d =>(d.station === 'hot' || d.station === 'cold') && !d.allergens.includes('nuts') && !d.allergens.includes('peanuts'));
@@ -70,18 +70,18 @@ export default function GlutenFreePage() {
             </div>
             <div>
               <h3 className="font-semibold mb-1">Перекрёстное загрязнение орехами</h3>
-              <p className="text-muted-foreground">Несколько БГ-блюд содержат орехи (Сырная тарелка с орехами, Канапе капрезе с песто, Куриное филе с песто, Кедровый раф с кедровым орехом) — они вынесены в отдельный блок «Опция (содержит орехи)» внизу страницы. Для гостей с combined целиакия + анафилаксия на орехи — выбирайте только блюда из основного nut-free блока.</p>
+              <p className="text-muted-foreground">Несколько БГ-блюд содержат орехи (Сырная тарелка с орехами, Канапе капрезе с песто, Куриное филе с песто, Кедровый раф с кедровым орехом) — они вынесены в отдельный блок «Опция (содержит орехи)» внизу страницы. Для гостей с combined целиакия + анафилаксия на орехи — выбирайте только блюда из основного без орехов блока.</p>
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 italic">
             При заказе для целиакии: укажите в заявке — менеджер подтвердит протокол и пришлёт спецификацию БГ-блюд.
-            Для combined целиакия + анафилаксия на орехи — укажите обе диеты, шеф подберёт nut-free БГ-меню.
+            Для combined целиакия + анафилаксия на орехи — укажите обе диеты, шеф подберёт без орехов БГ-меню.
           </p>
         </div>
 
         {/* Nut-free DEFAULT banner */}
         <div className="mb-8 p-4 rounded-xl border-2 border-emerald-300 bg-emerald-50">
-          <p className="text-sm font-semibold text-emerald-900 mb-2">БГ-меню по умолчанию — nut-free (без орехов)</p>
+          <p className="text-sm font-semibold text-emerald-900 mb-2">БГ-меню по умолчанию — без орехов (без орехов)</p>
           <p className="text-sm text-emerald-900 mb-2">
             Все блюда в основном БГ-меню ниже — на <strong>рисовой и овсяной муке</strong>, без миндальной муки и кедрового ореха.
             Безопасно для гостей с целиакией + анафилаксией на орехи.
@@ -91,12 +91,12 @@ export default function GlutenFreePage() {
           </p>
         </div>
 
-        {/* Десерты — DEFAULT nut-free */}
+        {/* Десерты — DEFAULT без орехов */}
         <B2BBanner />
         <div className="mb-10 mt-6">
-          <h2 className="font-heading text-2xl font-medium mb-2">БГ-десерты и выпечка (nut-free по умолчанию)</h2>
+          <h2 className="font-heading text-2xl font-medium mb-2">БГ-десерты и выпечка (без орехов по умолчанию)</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong>(без орехов).
+            Безглютеновый торт на день рождения, БГ капкейки, БГ хлеб — на <strong>рисовой и овсяной муке</strong> (без орехов).
             Безопасно для гостей с целиакией + анафилаксией на орехи.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -136,9 +136,9 @@ export default function GlutenFreePage() {
           </div>
         </div>
 
-        {/* Основные блюда — DEFAULT nut-free */}
+        {/* Основные блюда — DEFAULT без орехов */}
         <div className="mb-10">
-          <h2 className="font-heading text-2xl font-medium mb-2">БГ-закуски и горячее (nut-free по умолчанию)</h2>
+          <h2 className="font-heading text-2xl font-medium mb-2">БГ-закуски и горячее (без орехов по умолчанию)</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {mainsNutFree.map(dish =>(
               <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
@@ -175,10 +175,10 @@ export default function GlutenFreePage() {
           </div>
         </div>
 
-        {/* Напитки — DEFAULT nut-free */}
+        {/* Напитки — DEFAULT без орехов */}
         {drinksNutFree.length >0 && (
           <div className="mb-10">
-            <h2 className="font-heading text-2xl font-medium mb-2">БГ-напитки (nut-free по умолчанию)</h2>
+            <h2 className="font-heading text-2xl font-medium mb-2">БГ-напитки (без орехов по умолчанию)</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
               {drinksNutFree.map(dish =>(
                 <div key={dish.id} className="relative rounded-xl border border-line bg-card overflow-hidden hover:border-gold-text hover:shadow-lg transition-all group">
@@ -214,8 +214,8 @@ export default function GlutenFreePage() {
           <div className="mb-10 p-5 rounded-xl border-2 border-amber-400 bg-amber-50">
             <h2 className="font-heading text-xl font-medium mb-2 text-amber-900">Опция: БГ-блюда с орехами (НЕ по умолчанию)</h2>
             <p className="text-sm text-amber-900 mb-4">
-              Эти блюда <strong>безопасны для целиакии</strong>(&lt;20 ppm), но <strong>содержат миндальную муку или кедровый орех</strong>.
-              Не заказывайте их при анафилаксии на орехи. По умолчанию БГ-меню состоит только из nut-free блюд выше.
+              Эти блюда <strong>безопасны для целиакии</strong> (&lt;20 ppm), но <strong>содержат миндальную муку или кедровый орех</strong>.
+              Не заказывайте их при анафилаксии на орехи. По умолчанию БГ-меню состоит только из без орехов блюд выше.
               Эти блюда доступны только по явному запросу.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -264,13 +264,13 @@ export default function GlutenFreePage() {
             Для целиакии — обязательное подтверждение протокола перед бронированием.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/plan/constructor?diet=gluten-free" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/plan/constructor?diet=gluten-free" className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                Собрать БГ-меню
             </Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                {SITE.phone}
             </a>
-            <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Заявка
             </Link>
           </div>

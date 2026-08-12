@@ -354,14 +354,14 @@ export default function DeliveryOrderPage() {
                       <div className="grid grid-cols-2 gap-3">
                         <input type="text" placeholder="Название КП / СНТ / посёлка" value={cart.contact.entrance}
                           onChange={e =>cart.setContact({ entrance: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm min-h-[44px] inline-flex items-center focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                         <input type="text" placeholder="№ участка / дома" value={cart.contact.floor}
                           onChange={e =>cart.setContact({ floor: e.target.value })}
-                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
+                          className="rounded-lg border border-line bg-card px-3 py-2.5 text-sm min-h-[44px] inline-flex items-center focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                       </div>
                       <input type="text" placeholder="Код ворот / как проехать (необязательно)" value={cart.contact.intercom}
                         onChange={e =>cart.setContact({ intercom: e.target.value })}
-                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
+                        className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-sm min-h-[44px] inline-flex items-center focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2" />
                     </div>
                   )}
 

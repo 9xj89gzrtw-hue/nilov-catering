@@ -51,7 +51,7 @@ const DISH_DESC: Record<string, string>= {
   // Детское
   'Мини-хот-дог': 'Колбаска гриль, карамелизированный лук, горчица',
   'Наггетсы куриные': 'Куриная грудка в хрустящей панировке',
-  'Candy-bar': 'Леденцы, маршмэллоу, шоколадные конфеты',
+  'Сладкий стол': 'Леденцы, маршмэллоу, шоколадные конфеты',
   'Смузи-бар': 'Манго-маракуйя, клубника-банан, шпинат-яблоко',
 };
 
@@ -359,7 +359,7 @@ const TARIFFS: Record<string, MenuTariff[]>= {
         ]},
         { cat: 'Десерты', items: [
           { name: 'Донат-стена', desc: DISH_DESC['Донат-стена'], qty: '1 станция' },
-          { name: 'Candy-bar', desc: DISH_DESC['Candy-bar'], qty: '1 станция' },
+          { name: 'Сладкий стол', desc: DISH_DESC['Сладкий стол'], qty: '1 станция' },
         ]},
         { cat: 'Напитки', items: [
           { name: 'Ягодный лимонад', desc: DISH_DESC['Ягодный лимонад'], qty: 'безлимит' },
@@ -367,8 +367,8 @@ const TARIFFS: Record<string, MenuTariff[]>= {
       ],
     },
     {
-      name: 'Расширенный', tier: 'premium', price: '3 450 ₽/гость', desc: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф, пиньята.',
-      highlights: ['Шоу-программа', 'Candy-bar', 'Фотограф', 'Пиньята + квест'],
+      name: 'Расширенный', tier: 'premium', price: '3 450 ₽/гость', desc: 'Мечта ребёнка. Шоу-программа, сладкий стол, фотограф, пиньята.',
+      highlights: ['Шоу-программа', 'Сладкий стол', 'Фотограф', 'Пиньята + квест'],
       dishes: [
         { cat: 'Горячее', items: [
           { name: 'Мини-бургер', desc: DISH_DESC['Мини-бургер'], qty: '2 шт/гость' },
@@ -376,7 +376,7 @@ const TARIFFS: Record<string, MenuTariff[]>= {
           { name: 'Пицца-станция', desc: DISH_DESC['Пицца-станция'], qty: '1 станция' },
         ]},
         { cat: 'Десерты', items: [
-          { name: 'Candy-bar', desc: DISH_DESC['Candy-bar'], qty: '1 станция' },
+          { name: 'Сладкий стол', desc: DISH_DESC['Сладкий стол'], qty: '1 станция' },
           { name: 'Донат-стена', desc: DISH_DESC['Донат-стена'], qty: '1 станция' },
           { name: 'Макаронс-шутер', desc: DISH_DESC['Макаронс-шутер'], qty: '1 стакан' },
         ]},
@@ -518,7 +518,7 @@ function TariffBlock({ tariff, format }: { tariff: MenuTariff; format: string })
             <div className="pt-3 mt-3 border-t border-line">
               <Link
                 href={`/plan/constructor?format=${format}&tier=${tariff.tier}&guests=20`}
-                className="inline-flex items-center gap-2 rounded-lg bg-gold-text text-white px-4 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline w-full justify-center"
+                className="inline-flex items-center gap-2 rounded-lg bg-gold-text text-white px-4 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-gold-text/90 transition-colors touch-target no-underline w-full justify-center"
               >
                  Отредактировать это меню →
               </Link>

@@ -36,10 +36,10 @@ export default function VypusknoyPage() {
             Или доставка без официантов от <strong className="text-foreground">5 000 ₽</strong>.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/pricing?event=coffee-break" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/pricing?event=coffee-break" className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                Смотреть кофе-брейк тарифы
             </Link>
-            <Link href="/delivery/order" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <Link href="/delivery/order" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Заказать доставкой
             </Link>
           </div>
@@ -103,13 +103,13 @@ export default function VypusknoyPage() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                Запросить пакет документов
             </Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                {SITE.phone}
             </a>
-            <Link href="/certificates" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <Link href="/certificates" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Все сертификаты
             </Link>
           </div>

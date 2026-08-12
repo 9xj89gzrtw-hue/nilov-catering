@@ -61,11 +61,11 @@ export default function B2BPortalSection() {
             <p className="text-xs font-semibold text-gold-text uppercase tracking-wider mb-2">Скоро</p>
             <h3 className="font-heading text-base font-medium mb-2">B2B-портал самообслуживания</h3>
             <p className="text-xs text-muted-foreground mb-3">
-              Личный кабинет для корпоративных клиентов: история заказов, 1-click reorder,
+              Личный кабинет для корпоративных клиентов: история заказов, повтор заказа в один клик,
               счета-фактуры, ЭДО, календарь регулярных кофе-брейков.
             </p>
             <ul className="text-xs space-y-1 text-muted-foreground text-left max-w-xs mx-auto">
-              <li>• 1-click повтор заказа</li>
+              <li>• повтор заказа в один клик</li>
               <li>• Авто-счета и закрывающие документы</li>
               <li>• Интеграция с 1C, Bitrix24</li>
               <li>• Календарь и SLA-мониторинг</li>

@@ -203,7 +203,7 @@ const KORPORATIV: TariffOffer[] = [
     eventId: 'korporativ', eventName: 'Корпоратив', tier: 'luxury', tierLabel: 'Максимальный',
     pricePerGuest: 9950, minGuests: 15,
     description: 'Полный бар, две живые станции, чёрная икра, сигары.',
-    highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарный lounge 21+', 'Координатор'],
+    highlights: ['Чёрная икра', '2 шоу-станции', 'Полный бар', 'Сигарная комната 21+', 'Координатор'],
     imagePlaceholder: '',
     composition: [
       { dishId: 'caviar-station', name: 'Икорная станция', desc: 'Красная икра, чёрная икра, бриошь, сливочное масло, лимон', category: 'Премиум', qty: '1 станция' },
@@ -218,7 +218,7 @@ const KORPORATIV: TariffOffer[] = [
       { dishId: 'champagne-premium', name: 'Шампанское премиум', desc: 'Шампанское AOC, брют/розе', category: 'Бар', qty: 'безлимит' },
       { dishId: 'cocktail-bar', name: 'Коктейльный бар', desc: 'Бармен + 5 коктейлей: Апероль Шприц, Мохито, Космополитен, Негрони, Маргарита', category: 'Бар', qty: '2 бармена' },
       { dishId: 'whisky-bar', name: 'Виски-бар', desc: 'Коллекция виски: бурбон, скотч, ирландский, японский', category: 'Бар', qty: '1 станция' },
-      { dishId: 'cigar-service', name: 'Сигарный lounge (21+)', desc: 'Сигарный lounge по запросу, хьюмидор, гильотина. Только для совершеннолетних', category: 'Бар', qty: 'по запросу' },
+      { dishId: 'cigar-service', name: 'Сигарная комната (21+)', desc: 'Сигарная комната по запросу, хьюмидор, гильотина. Только для совершеннолетних', category: 'Бар', qty: 'по запросу' },
     ],
   },
 ];
@@ -412,15 +412,15 @@ const DETSKOE: TariffOffer[] = [
   {
     eventId: 'detskoe', eventName: 'Детский праздник', tier: 'premium', tierLabel: 'Расширенный',
     pricePerGuest: 3450, minGuests: 10,
-    description: 'Мечта ребёнка. Шоу-программа, candy-bar, фотограф.',
-    highlights: ['Шоу-программа', 'Candy-bar', 'Фотограф', 'Пиньята + квест'],
+    description: 'Мечта ребёнка. Шоу-программа, сладкий стол, фотограф.',
+    highlights: ['Шоу-программа', 'Сладкий стол', 'Фотограф', 'Пиньята + квест'],
     imagePlaceholder: '',
     composition: [
       { dishId: 'mini-burger', name: 'Мини-бургер', desc: 'Говяжья котлета, чеддер, карамелизированный лук, булочка бриошь', category: 'Горячее', qty: '2 шт/гость' },
       { dishId: 'mini-hotdog', name: 'Мини-хот-дог', desc: 'Колбаска гриль, карамелизированный лук, горчица, булочка', category: 'Горячее', qty: '2 шт/гость' },
       { dishId: 'nuggets', name: 'Куриные наггетсы', desc: 'Куриная грудка в хрустящей панировке, томатный соус', category: 'Горячее', qty: '3 шт/гость' },
       { dishId: 'pizza-station', name: 'Пицца-станция', desc: 'Пицца из дровяной печи: маргарита, пепперони, 4 сыра', category: 'Шоу', qty: '1 станция' },
-      { dishId: 'candy-bar', name: 'Candy-bar', desc: 'Леденцы, маршмэллоу, шоколадные конфеты, желейные фигурки', category: 'Десерты', qty: '1 станция' },
+      { dishId: 'сладкий стол', name: 'Сладкий стол', desc: 'Леденцы, маршмэллоу, шоколадные конфеты, желейные фигурки', category: 'Десерты', qty: '1 станция' },
       { dishId: 'donut-wall', name: 'Донат-стена', desc: 'Мини-донаты с глазурью (ваниль/шоколад/карамель), оформление стеной', category: 'Десерты', qty: '1 станция' },
       { dishId: 'macaron-shooter', name: 'Макаронс-шутер', desc: '3 мини-макаронс (фисташка/малина/шоколад) в дегустационном стакане', category: 'Десерты', qty: '1 стакан' },
       { dishId: 'cake-custom', name: 'Именной торт', desc: 'Именной торт: бисквит/мусс, индивидуальный декор, надпись', category: 'Десерты', qty: 'индив. дизайн' },
@@ -454,8 +454,8 @@ const CHEF_AT_HOME: TariffOffer[] = [
   {
     eventId: 'chef-at-home', eventName: 'Шеф на дом', tier: 'premium', tierLabel: 'Расширенный',
     pricePerGuest: 7500, minGuests: 6,
-    description: 'Гастрономический опыт. Шеф + сомелье, 6 курсов с wine pairing.',
-    highlights: ['6 курсов', 'Wine pairing', 'Шеф + сомелье', '6 часов'],
+    description: 'Гастрономический опыт. Шеф + сомелье, 6 курсов с винное сопровождение.',
+    highlights: ['6 курсов', 'Винное сопровождение', 'Шеф + сомелье', '6 часов'],
     imagePlaceholder: '',
     composition: [
       { dishId: 'oyster-bar', name: 'Устрицы', desc: 'Устрицы фин де клер, лимон, соус миньонет', category: 'Амюз-буш', qty: '3 шт/гость' },
@@ -465,7 +465,7 @@ const CHEF_AT_HOME: TariffOffer[] = [
       { dishId: 'beef-wellington', name: 'Говядина Веллингтон', desc: 'Говяжья вырезка в слоёном тесте с грибным дюкселем', category: 'Основное', qty: '1 порция' },
       { dishId: 'cheese-platter-premium', name: 'Сырная тарелка премиум', desc: 'Бри де мо, горгонзола, манчего, трюфельный мёд, инжир', category: 'Сыр', qty: 'дегустация' },
       { dishId: 'dessert-firework', name: 'Фейерверк-десерт', desc: 'Шоколадная сфера, которая тает от горячей карамели, открывая мусс', category: 'Десерт', qty: 'шоу-подача' },
-      { dishId: 'wine-sommelier', name: 'Wine pairing (5 вин)', desc: 'Сомелье + 5 вин с рассказом о каждом, подобранных под меню', category: 'Бар', qty: '1 сомелье' },
+      { dishId: 'wine-sommelier', name: 'Винное сопровождение (5 вин)', desc: 'Сомелье + 5 вин с рассказом о каждом, подобранных под меню', category: 'Бар', qty: '1 сомелье' },
       { dishId: 'champagne-premium', name: 'Шампанское премиум', desc: 'Шампанское AOC, брют/розе', category: 'Бар', qty: 'безлимит' },
     ],
   },

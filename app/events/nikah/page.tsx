@@ -92,9 +92,9 @@ export default function NikahPage() {
           <h2 className="font-heading text-xl font-medium mb-3">Готовы обсудить детали?</h2>
           <p className="text-sm text-muted-foreground mb-4">Шеф-повар Дмитрий Нилов лично подберёт меню под ваш праздник. Перезвоним в течение 15 минут.</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить заявку</Link>
-            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Собрать меню</Link>
-            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">WhatsApp</a>
+            <Link href="/contact?subject=Никах-или-ифтар" className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить заявку</Link>
+            <Link href="/plan/constructor?format=banket&diet=halal" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">Собрать меню</Link>
+            <a href={`https://wa.me/${SITE.phoneTel.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">WhatsApp</a>
           </div>
         </section>
       </div>

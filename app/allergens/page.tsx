@@ -5,7 +5,7 @@ import { SITE } from '@/lib/data';
 export const metadata: Metadata = {
   alternates: { canonical: '/allergens', languages: { 'ru': '/allergens', 'x-default': '/allergens' } },
   title: 'Аллергены, медицинские диеты и поминальный протокол',
-  description: '14 аллергенов ТР ТС 022/2011, протоколы для целиакии (<20 ppm), анафилаксии (nut-free), халяль, веган, сахарный диабет (расчёт ХЕ), поминки (без алкоголя). Раздельное оборудование, маркировка блюд, EpiPen.',
+  description: '14 аллергенов ТР ТС 022/2011, протоколы для целиакии (<20 ppm), анафилаксии (без орехов), халяль, веган, сахарный диабет (расчёт ХЕ), поминки (без алкоголя). Раздельное оборудование, маркировка блюд, EpiPen.',
 };
 
 const ALLERGENS_14 = [
@@ -74,9 +74,9 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Анафилаксия-протокол (nut-free) */}
+        {/* Анафилаксия-протокол (без орехов) */}
         <div className="mb-8 p-6 rounded-2xl border-2 border-red-200 bg-red-50">
-          <h2 id="anafilaksiya" className="font-heading text-xl font-medium mb-3 scroll-mt-20">Протокол для анафилаксии на орехи (nut-free)</h2>
+          <h2 id="anafilaksiya" className="font-heading text-xl font-medium mb-3 scroll-mt-20">Протокол для анафилаксии на орехи (без орехов)</h2>
           <p className="text-sm text-foreground mb-3">
             Если у гостя анафилаксия на арахис, лесной, кедровый, грецкий или любой другой орех:
           </p>
@@ -147,7 +147,7 @@ export default function Page() {
             <li> <span className="font-medium">Фрукты с низким ГИ</span> — ягоды (клубника, малина, черника), киви, грейпфрут. Банан, виноград, дыня, манго — исключаем</li>
             <li>Расчёт ХЕ на порцию — указываем в карточке блюда для блюд с медицинскими диетами (СД1, целиакия, анафилаксия). Для остальных блюд — по запросу</li>
             <li>Состав БЖУ: белки / жиры / углеводы (г) — указываем на блюде</li>
-            <li> <span className="font-medium">Без candy-bar / сладкого стола по умолчанию</span> — заменяем на сырно-фруктовую тарелку (брусника, черника, твёрдые сыры, орехи — если нет анафилаксии)</li>
+            <li> <span className="font-medium">Без сладкий стол / сладкого стола по умолчанию</span> — заменяем на сырно-фруктовую тарелку (брусника, черника, твёрдые сыры, орехи — если нет анафилаксии)</li>
             <li>Безалкогольное меню — алкоголь влияет на уровень глюкозы непредсказуемо</li>
             <li>БГ + без-сахара торт: отдельная выпечка с стевией/эритритом и миндальной мукой (если нет анафилаксии на орехи)</li>
             <li>Обязательная дегустация для гостя с СД1 — подтверждение состава и расчёта ХЕ перед заказом</li>
@@ -219,13 +219,13 @@ export default function Page() {
             Для медицинских диет (целиакия, анафилаксия) — обязательная дегустация от 1 гостя.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline">
                Оставить заявку
             </Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                {SITE.phone}
             </a>
-            <Link href="/certificates" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <Link href="/certificates" className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                Сертификаты
             </Link>
           </div>

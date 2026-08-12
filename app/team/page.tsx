@@ -35,7 +35,7 @@ const TEAM = [
     experience: 'С 2014 года',
     credentials: ['Санминимум', 'Медкнижка', 'Халяль-сертификация', 'HACCP'],
     initials: 'АК',
-    photo: '/images/team/sous-chef.jpg',
+    photo: '/images/team/sous-chef.svg',
   },
   {
     name: 'Мария Васильева',
@@ -167,10 +167,10 @@ export default function TeamPage() {
           <h2 className="font-heading text-xl font-medium mb-2">Хотите познакомиться лично?</h2>
           <p className="text-sm mb-4 opacity-90">Закажите дегустацию — шеф-повар лично встретит вас.</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/tasting" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline">
+            <Link href="/tasting" className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline">
                Записаться на дегустацию
             </Link>
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline">
                {SITE.phone}
             </a>
           </div>

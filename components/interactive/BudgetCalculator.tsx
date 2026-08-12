@@ -127,7 +127,7 @@ export default function BudgetCalculator({ defaultGuests = 50, defaultTariff = '
         href={feasibilityWarnings.length >0
           ? `/contact?subject=Консультация&guests=${effectiveGuests}&format=${tariff.format}`
           : `/plan/constructor?format=${tariff.format}&guests=${effectiveGuests}`}
-        className={`block w-full rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors text-center no-underline ${
+        className={`block w-full rounded-lg px-4 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold transition-colors text-center no-underline ${
           feasibilityWarnings.length >0
             ? 'bg-amber-600 text-white hover:bg-amber-700'
             : 'bg-gold-text text-white hover:bg-gold-text/90'

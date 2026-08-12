@@ -68,7 +68,7 @@ export default function SvadbaPage() {
             = 147 500 + 164 100 = <strong className="text-gold-text">311 600 ₽</strong> за 80 гостей
             (вместо 437 600 ₽ при единой цене 5 470 ₽/гость).
           </p>
-          <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать свадебное меню с разными диетами →
+          <Link href="/plan/constructor?event=svadba" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Собрать свадебное меню с разными диетами →
           </Link>
         </div>
 
@@ -215,7 +215,7 @@ export default function SvadbaPage() {
             <div>
               <h3 className="font-semibold mb-2 text-gold-text">Оборудование (включено)</h3>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>Столы раздаточные, chafing-dishes, мармиты</li>
+                <li>Столы раздаточные, мармиты</li>
                 <li>Посуда, столовые приборы, бокалы (бокалы Riedel — тариф Премиум+)</li>
                 <li>Скатерти, салфетки, текстиль (цвет — по запросу)</li>
                 <li>Освещение раздаточных столов (LED-споты)</li>

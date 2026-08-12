@@ -12,7 +12,7 @@ export default function MediaKitPage() {
         <div className="grid gap-4">
           {[
             { file: 'Логотип NiloV (SVG)', size: 'SVG · 0.6 КБ', href: '/press-kit/nilov-logo.svg', download: true },
-            { file: 'OG-изображение (SVG)', size: 'SVG · 0.9 КБ', href: '/og-image.svg', download: true },
+            { file: 'OG-изображение (PNG 1200×630)', size: 'PNG', href: '/opengraph-image', download: true },
             { file: 'Фото блюд (подборка)', size: 'ZIP · по запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото блюд' },
             { file: 'Фото команды', size: 'по запросу', href: 'mailto:info@nilov-catering.ru?subject=Фото команды' },
             { file: 'Пресс-релиз 2026', size: 'HTML · 4 КБ', href: '/press-kit/press-release-2026.html', download: true },

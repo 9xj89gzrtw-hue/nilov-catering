@@ -108,7 +108,7 @@ export default function NamedPackageGrid() {
           >
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
             >
               Все тарифы и сравнение
               <ArrowRight className="w-4 h-4" aria-hidden="true" />

@@ -104,14 +104,14 @@ export default function CorporatePage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-line flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить B2B-заявку
+            <Link href="/contact" className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">Оставить B2B-заявку
             </Link>
-            <a href="tel:+78129195911" className="rounded-lg border border-gold-text px-5 py-2.5 text-sm font-semibold text-gold-text hover:bg-gold-tint transition-colors no-underline">
+            <a href="tel:+78129195911" className="rounded-lg border border-gold-text px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-gold-text hover:bg-gold-tint transition-colors no-underline">
                +7 (812) 919-59-11
             </a>
-            <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Сертификаты и страхование
+            <Link href="/certificates" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">Сертификаты и страхование
             </Link>
-            <Link href="/events/vypusknoy" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">Школьный B2B
+            <Link href="/events/vypusknoy" className="rounded-lg border border-line bg-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">Школьный B2B
             </Link>
           </div>
         </div>

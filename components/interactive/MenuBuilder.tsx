@@ -240,7 +240,7 @@ export default function MenuBuilder({
           placeholder="Поиск блюда…"
           value={search}
           onChange={e =>setSearch(e.target.value)}
-          className="w-full rounded-xl border border-line bg-card px-4 py-2.5 text-sm mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 transition-colors"
+          className="w-full rounded-xl border border-line bg-card px-4 py-2.5 text-sm min-h-[44px] inline-flex items-center mb-3 focus:outline-none focus:border-gold-text focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 transition-colors"
         />
 
         {/* Station filters */}

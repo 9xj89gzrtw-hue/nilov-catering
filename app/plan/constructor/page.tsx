@@ -279,7 +279,7 @@ function ConstructorServerFallback() {
                 <input type="tel" name="phone" required inputMode="tel" autoComplete="tel" placeholder="+7" className="w-full rounded border border-line bg-background px-3 py-2 text-sm" />
               </label>
             </div>
-            <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+            <button type="submit" className="w-full rounded-lg bg-primary py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
                Отправить заявку (no-JS)
             </button>
             <p className="text-xs text-muted-foreground text-center">Менеджер перезвонит ≤15 мин. Или позвоните: +7 (812) 919-59-11.</p>
@@ -298,7 +298,7 @@ function ConstructorServerFallback() {
             Меню
           </h2>
           <p className="text-sm text-muted-foreground ml-0 md:ml-11">
-            124 блюда в каталоге с фото, аллергенами и составом. Менеджер подберёт блюда под
+            130 блюд в каталоге с фото, аллергенами и составом. Менеджер подберёт блюда под
             ваш тариф и диетические требования. Фильтр по 14 аллергенам ТР ТС 022/2011
             доступен в <a href="/menu/catalog" className="underline">каталоге блюд</a>.
           </p>
@@ -322,13 +322,13 @@ function ConstructorServerFallback() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/plan/calculator"
-              className="rounded-lg bg-gold-text text-white px-5 py-2.5 text-sm font-semibold hover:bg-gold-text/90 transition-colors no-underline"
+              className="rounded-lg bg-gold-text text-white px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-gold-text/90 transition-colors no-underline"
             >
                Калькулятор бюджета →
             </Link>
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:border-gold-text transition-colors no-underline"
+              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-foreground hover:border-gold-text transition-colors no-underline"
             >
                {SITE.phone}
             </a>
@@ -336,13 +336,13 @@ function ConstructorServerFallback() {
               href={SITE.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
+              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline"
             >
                WhatsApp
             </a>
             <Link
               href="/contact"
-              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline"
+              className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline"
             >
                Заполнить форму
             </Link>

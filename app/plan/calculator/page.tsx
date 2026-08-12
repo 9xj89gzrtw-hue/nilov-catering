@@ -153,19 +153,19 @@ function CalculatorServerFallback() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm font-semibold hover:bg-background/90 transition-colors no-underline"
+              className="rounded-lg bg-background text-foreground px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/90 transition-colors no-underline"
             >
                {SITE.phone}
             </a>
             <Link
               href="/plan/constructor"
-              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
+              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline"
             >
                Открыть конструктор
             </Link>
             <Link
               href="/contact"
-              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm font-semibold hover:bg-background/10 transition-colors no-underline"
+              className="rounded-lg border-2 border-background px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:bg-background/10 transition-colors no-underline"
             >
                Оставить заявку
             </Link>

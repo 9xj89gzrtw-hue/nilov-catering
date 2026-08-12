@@ -102,7 +102,7 @@ export default function HalalPage() {
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Цена никаха</p>
-              <p className="text-xs text-emerald-800">От <strong>3 950 ₽/гость</strong>(минимум 15 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
+              <p className="text-xs text-emerald-800">От <strong>3 950 ₽/гость</strong> (минимум 15 гостей). Включает: меню из 8 блюд, безалкогольный бар, сервировка, официанты. Подробности и индивидуальный расчёт — у менеджера.</p>
             </div>
             <div className="p-3 rounded-lg bg-white/60">
               <p className="font-semibold text-emerald-900 mb-1">Раздельный зал</p>
@@ -161,13 +161,13 @@ export default function HalalPage() {
             <p className="text-sm text-muted-foreground">В конструкторе выберите формат — фуршет или банкет — с фильтром «Халяль».</p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Link href="/plan/constructor?format=furshet&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/plan/constructor?format=furshet&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                Халяль-фуршет
             </Link>
-            <Link href="/plan/constructor?format=banket&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <Link href="/plan/constructor?format=banket&diet=halal" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                Халяль-банкет
             </Link>
-            <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Позвонить
             </a>
           </div>
@@ -241,13 +241,13 @@ export default function HalalPage() {
             Учитываем традиции: раздельные станции для мужчин/женщин (по запросу), отдельная посуда, безалкогольные напитки.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+            <a href={`tel:${SITE.phoneTel}`} className="rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
                {SITE.phone}
             </a>
-            <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <Link href="/contact" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Оставить заявку
             </Link>
-            <Link href="/certificates" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
+            <Link href="/certificates" className="rounded-lg border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold hover:border-gold-text transition-colors no-underline">
                Сертификаты
             </Link>
           </div>

@@ -113,7 +113,7 @@ export default function CatalogPage() {
                     : 'border-line text-muted-foreground hover:border-gold-text hover:text-foreground'
                 }`}
               >
-                <span className="mr-1">{s.emoji}</span>
+                <span className="mr-1">{s.emoji}</span>{' '}
                 {s.label}
               </button>
             ))}

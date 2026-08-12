@@ -71,7 +71,7 @@ const RECAPS: Recap[] = [
     g: '8 детей',
     v: 'Дом клиента, СПб',
     ref: 'rev-017',
-    tags: ['БГ', '<20 ppm', 'nut-free', 'EpiPen'],
+    tags: ['БГ', '<20 ppm', 'без орехов', 'EpiPen'],
     hasVideo: true,
     videoSrc: '/videos/hero/banquet.webm',
     posterSrc: '/images/gallery/kids.jpg',

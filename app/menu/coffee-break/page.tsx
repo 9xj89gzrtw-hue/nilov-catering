@@ -81,7 +81,7 @@ export default function CoffeeBreakPage() {
           </div>
           <Link
             href="/contact?subject=Многодневная-конференция"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
              Запросить точную смету для конференции
           </Link>
@@ -97,13 +97,13 @@ export default function CoffeeBreakPage() {
           <ul className="text-sm space-y-1 mb-3 list-disc list-inside text-foreground/90">
             <li><strong>Стандарт:</strong> 1 430 ₽/делегат/день (кофе-брейк 390 + обед 650 + кофе-брейк 390)</li>
             <li><strong>Скидка 20%</strong> для 2+ дневных конференций → 1 144 ₽/делегат/день</li>
-            <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong>(включая доставку, посуду, официантов)</li>
+            <li>Пример: 200 делегатов × 2 дня × 1 144 = <strong className="text-gold-text">457 600 ₽</strong> (включая доставку, посуду, официантов)</li>
             <li>Ротация: 3 разных кофе-брейк-сета + 2 разных обеда — без повторов</li>
             <li>Координатор конференции: <strong>Мария Васильева</strong>, прямой мобильный через <a href="/contact" className="underline text-gold-text">форму B2B-заявки</a></li>
           </ul>
           <Link
             href="/contact?eventType=Конференция&format=Кофе-брейк&comment=Конференционный пакет"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline"
           >
              Заказать конференционный пакет →
           </Link>
