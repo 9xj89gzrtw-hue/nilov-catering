@@ -72,21 +72,21 @@ export default function CatalogClient({ initialDishes }: CatalogClientProps) {
       dishes = dishes.filter(d =>d.name.toLowerCase().includes(q) || d.description.toLowerCase().includes(q));
     }
     return dishes;
-  }, [station, activeDiets, excludedAllergens, search]);
+  }, [station, activeDiets, excludedAllergens, search, ALL_DISHES]);
 
   // Split into halal / non-halal for visual separation
-  const halalDishes = useMemo(() =>filtered.filter(d =>d.dietBadges.includes('halal')), [filtered]);
-  const porkDishes = useMemo(() =>filtered.filter(d =>d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
-  const otherDishes = useMemo(() =>filtered.filter(d =>!d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
+  const halalDishes = useMemo(() => filtered.filter(d => d.dietBadges.includes('halal')), [filtered]);
+  const porkDishes = useMemo(() => filtered.filter(d => d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало')), [filtered]);
+  const otherDishes = useMemo(() => filtered.filter(d => !d.dietBadges.includes('halal') && !(d.description.toLowerCase().includes('свинин') || d.description.toLowerCase().includes('бекон') || d.description.toLowerCase().includes('сало'))), [filtered]);
 
   const stationCounts = useMemo(() => {
-    const counts: Record<string, number>= { all: ALL_DISHES.length };
+    const counts: Record<string, number> = { all: ALL_DISHES.length };
     for (const s of STATIONS) {
       if (s.key === 'all') continue;
-      counts[s.key] = ALL_DISHES.filter(d =>d.station === s.key).length;
+      counts[s.key] = ALL_DISHES.filter(d => d.station === s.key).length;
     }
     return counts;
-  }, []);
+  }, [ALL_DISHES]);
 
   // Pagination — client-side progressive enhancement. SSR shows ALL dishes.
   // JS pagination kicks in only after hydration to reduce initial DOM for slow devices.

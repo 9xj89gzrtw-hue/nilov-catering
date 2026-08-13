@@ -450,8 +450,8 @@ export default function PortfolioGallery() {
                   bg-card border border-line
                   transition-shadow duration-300
                   hover:shadow-xl hover:shadow-gold/10 hover:border-gold-text/30
-                  ${item.aspectRatio === 'tall' ? 'row-span-2' : ''}
-                  ${item.aspectRatio === 'wide' ? 'col-span-2' : ''}
+                  ${item.aspectRatio === 'tall' ? 'md:row-span-2' : ''}
+                  ${item.aspectRatio === 'wide' ? 'md:col-span-2 col-span-2' : ''}
                 `}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}

@@ -9,6 +9,7 @@ import Lightbox from '@/components/common/Lightbox';
 
 export default function GalleryPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  
   const photos = [...REAL_GALLERY_IMAGES, ...GALLERY_IMAGES];
 
   return (
@@ -24,41 +25,41 @@ export default function GalleryPage() {
 
         {/* Mobile: 2-col compact, Desktop: 3-col */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
-          {photos.map((p, i) =>(
-            <button
-              key={i}
-              type="button"
-              onClick={() =>setLightboxIndex(i)}
-              className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
-              style={{ aspectRatio: '4 / 3' }}
-              aria-label={`Открыть фото: ${p.alt}. ${p.caption || ''}`}
-            >
-              <FoodPhoto
-                src={p.src}
-                alt={p.alt}
-                aspectRatio="wide"
-                objectPosition="center 40%"
-                className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent p-3 md:p-4 z-10 flex items-end">
-                <p className="text-xs md:text-sm font-medium text-white line-clamp-2 drop-shadow-md">{p.caption}</p>
-              </div>
-              {/* Zoom icon overlay — visible on hover (desktop) AND on touch (active state) */}
-              <div className="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:active:opacity-100 transition-opacity">
-                <svg className="w-4 h-4 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </button>
+          {photos.map((p, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setLightboxIndex(i)}
+                className="relative rounded-lg md:rounded-xl overflow-hidden border border-line bg-secondary group focus:outline-none focus-visible:outline-2 focus-visible:outline-[#6E5530] focus-visible:outline-offset-2 focus:ring-2 focus:ring-gold-text focus:ring-offset-2 cursor-zoom-in transition-all hover:border-gold-text hover:shadow-lg"
+                style={{ aspectRatio: '4 / 3' }}
+                aria-label={`Открыть фото: ${p.alt}. ${p.caption || ''}`}
+              >
+                <FoodPhoto
+                  src={p.src}
+                  alt={p.alt}
+                  aspectRatio="wide"
+                  objectPosition="center 40%"
+                  className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent p-3 md:p-4 z-10 flex items-end">
+                  <p className="text-xs md:text-sm font-medium text-white line-clamp-2 drop-shadow-md">{p.caption}</p>
+                </div>
+                {/* Zoom icon overlay — visible on hover (desktop) AND on touch (active state) */}
+                <div className="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:active:opacity-100 transition-opacity">
+                  <svg className="w-4 h-4 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </button>
           ))}
         </div>
       </div>
 
       {lightboxIndex !== null && (
         <Lightbox
-          images={photos.map(p =>({ src: p.src, alt: p.alt, caption: p.caption }))}
+          images={photos.map(p => ({ src: p.src, alt: p.alt, caption: p.caption }))}
           initialIndex={lightboxIndex}
-          onClose={() =>setLightboxIndex(null)}
+          onClose={() => setLightboxIndex(null)}
         />
       )}
 

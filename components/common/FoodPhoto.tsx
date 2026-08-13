@@ -12,12 +12,51 @@ interface FoodPhotoProps {
   eager?: boolean;
 }
 
-const RATIOS: Record<string, string>= {
+const RATIOS: Record<string, string> = {
   square: 'aspect-square',
   video: 'aspect-video',
   portrait: 'aspect-[3/4]',
   wide: 'aspect-[4/3]',
 };
+
+// Beautiful gradient combinations for fallback placeholders
+const GRADIENTS = [
+  'from-amber-900 via-yellow-800 to-orange-900',
+  'from-emerald-900 via-teal-800 to-green-900',
+  'from-rose-900 via-pink-800 to-red-900',
+  'from-violet-900 via-purple-800 to-indigo-900',
+  'from-blue-900 via-cyan-800 to-teal-900',
+  'from-stone-900 via-neutral-800 to-zinc-900',
+];
+
+// Get consistent gradient based on alt text
+function getGradientClass(alt: string): string {
+  let hash = 0;
+  for (let i = 0; i < alt.length; i++) {
+    hash = ((hash << 5) - hash) + alt.charCodeAt(i);
+    hash |= 0;
+  }
+  return GRADIENTS[Math.abs(hash) % GRADIENTS.length];
+}
+
+// Camera/Image icon SVG component
+function ImagePlaceholderIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+      <circle cx="12" cy="13" r="4" />
+    </svg>
+  );
+}
 
 export default function FoodPhoto({
   src, alt, className = '', animate = true, aspectRatio = 'square',
@@ -35,7 +74,7 @@ export default function FoodPhoto({
   // SSR race condition fix: check if img already loaded before React hydrated
   useEffect(() => {
     if (imgRef.current) {
-      if (imgRef.current.complete && imgRef.current.naturalWidth >0) {
+      if (imgRef.current.complete && imgRef.current.naturalWidth > 0) {
         setLoaded(true);
         setError(false);
       } else if (imgRef.current.naturalWidth === 0 && imgRef.current.complete) {
@@ -51,6 +90,8 @@ export default function FoodPhoto({
 
   const handleLoad = () => { setLoaded(true); setError(false); };
   const handleError = () => { setError(true); setLoaded(true); };
+
+  const gradientClass = getGradientClass(alt);
 
   return (
     <div className={`relative overflow-hidden bg-card ${RATIOS[aspectRatio]} ${className} group`}>
@@ -87,9 +128,24 @@ export default function FoodPhoto({
           style={{ objectPosition }}
         />
       )}
-      {mounted && error && <div className="absolute inset-0 skeleton-shimmer pointer-events-none" />}
+      
+      {/* Beautiful gradient placeholder with icon when image fails to load */}
+      {mounted && error && (
+        <div className={`absolute inset-0 bg-gradient-to-br ${gradientClass} flex flex-col items-center justify-center pointer-events-none z-20`}>
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mb-3">
+            <ImagePlaceholderIcon className="w-7 h-7 md:w-8 md:h-8 text-white/70" />
+          </div>
+          <span className="text-xs md:text-sm font-medium text-white/60 text-center px-4 max-w-[200px] line-clamp-2 drop-shadow-lg">
+            {alt || 'Изображение'}
+          </span>
+          {/* Decorative elements */}
+          <div className="absolute top-3 right-3 w-16 h-16 rounded-full bg-white/5 blur-xl" />
+          <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full bg-white/5 blur-2xl" />
+        </div>
+      )}
+      
       {overlay && loaded && !error && <div className="absolute inset-0 pointer-events-none">{overlay}</div>}
-      {loaded && <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />}
+      {loaded && !error && <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />}
     </div>
   );
 }

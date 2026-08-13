@@ -86,7 +86,7 @@ export default function HeroBlock() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[100vh] flex items-end overflow-hidden bg-foreground"
+      className="relative min-h-[100vh] min-h-[100dvh] flex items-end overflow-hidden bg-foreground"
       aria-labelledby="hero-heading"
     >
       {/* Full-bleed video background with parallax */}
@@ -101,10 +101,27 @@ export default function HeroBlock() {
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
         style={{ y: videoY }}
         aria-label="Видеофон кейтеринга — банкетный зал"
+        onError={() => {
+          // Video fallback: hide video if it fails to load
+          if (videoRef.current) {
+            videoRef.current.style.display = 'none';
+          }
+        }}
       >
         <source src="/videos/hero/banquet.webm" type="video/webm" />
         <source src="/videos/hero-catering.mp4" type="video/mp4" />
       </motion.video>
+      
+      {/* Fallback background image for mobile/data-saving mode */}
+      <div
+        className="absolute inset-0 w-full h-full object-cover md:hidden"
+        style={{
+          backgroundImage: 'url(/images/catering/wedding-02.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+        aria-hidden="true"
+      />
 
       {/* Video Controls — WCAG 2.1.1: User must be able to control video */}
       <div className="absolute bottom-4 right-4 z-30 flex items-center gap-2">
@@ -203,7 +220,7 @@ export default function HeroBlock() {
 
       {/* Контент — внизу с parallax */}
       <motion.div 
-        className="relative z-10 container-site pb-16 md:pb-24 pt-32 md:pt-40"
+        className="relative z-10 container-site pb-20 md:pb-24 pt-28 md:pt-40 sm:pt-32"
         style={{ y: textY, opacity, scale }}
       >
         <div className="max-w-3xl">
@@ -222,8 +239,8 @@ export default function HeroBlock() {
           {/* Главный заголовок — word-by-word анимация */}
           <h1
             id="hero-heading"
-            className="font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] mb-6"
-            style={{ fontWeight: 500, letterSpacing: '-0.02em' }}
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.1] md:leading-[1.05] mb-5 md:mb-6"
+            style={{ fontWeight: 500, letterSpacing: '-0.01em' }}
           >
             <span className="sr-only">Кейтеринг от шефа Дмитрия Нилова</span>
             <span aria-hidden="true" className="inline">
@@ -247,7 +264,7 @@ export default function HeroBlock() {
 
           {/* Подзаголовок — enhanced typography */}
           <motion.p
-            className="text-lg md:text-xl text-white/85 mb-8 max-w-xl leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/85 mb-6 md:mb-8 max-w-xl leading-relaxed"
             variants={fadeUpVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
@@ -287,7 +304,7 @@ export default function HeroBlock() {
 
           {/* CTA кнопки — premium styling */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center"
             variants={fadeUpVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
@@ -295,7 +312,7 @@ export default function HeroBlock() {
           >
             <Link
               href="/plan/helper"
-              className="group relative inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4.5 text-base font-semibold overflow-hidden no-underline transition-all duration-300 hover:-translate-y-0.5"
+              className="group relative inline-flex items-center justify-center gap-2 sm:gap-2.5 rounded-full px-6 py-4 sm:px-8 sm:py-4.5 text-sm sm:text-base font-semibold overflow-hidden no-underline transition-all duration-300 hover:-translate-y-0.5 min-h-[52px] sm:min-h-0"
               style={{
                 background: 'linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #AA771C 100%)',
                 boxShadow: '0 4px 16px rgba(184,134,11,0.35), 0 0 0 1px rgba(212,175,55,0.2) inset',

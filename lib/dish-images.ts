@@ -338,8 +338,9 @@ export const FORMAT_HERO_IMAGES: Record<string, string> = {
   'mobile-furshet': '/images/gallery/corporate-furshet.jpg',
 };
 
-// Real photos from Unsplash
+// Real photos from Unsplash + AI-generated premium images
 export const REAL_GALLERY_IMAGES = [
+  // Original real photos
   { src: '/images/real/wedding-banquet.jpg', alt: 'Свадебный банкет', caption: 'Свадебный банкет · 100 гостей · Загородный отель' },
   { src: '/images/real/corporate-buffet.jpg', alt: 'Корпоративный буфет', caption: 'Корпоратив · 150 гостей · Бизнес-центр' },
   { src: '/images/real/canape-platter.jpg', alt: 'Канапе плато', caption: 'Канапе-плато · 8 видов · фуршет' },
@@ -352,4 +353,18 @@ export const REAL_GALLERY_IMAGES = [
   { src: '/images/real/vegetarian-bowl.jpg', alt: 'Вегетарианский боул', caption: 'Будда-боул · веган · фуршет' },
   { src: '/images/real/cranberry-juice.jpg', alt: 'Клюквенный морс', caption: 'Авторские напитки · кофе-брейк' },
   { src: '/images/real/coffee-drink.jpg', alt: 'Кофе', caption: 'Кофейная станция · конференция' },
+  
+  // AI-generated premium gallery images (2026)
+  { src: '/images/gallery/wedding-banquet-luxury.jpg', alt: 'Роскошный свадебный банкет', caption: 'Свадьба премиум-класса · белоснежный текстиль · хрусталь и золото' },
+  { src: '/images/gallery/corporate-event-modern.jpg', alt: 'Современный корпоративный ивент', caption: 'Корпоратив в лофт-пространстве · современный дизайн · 200+ гостей' },
+  { src: '/images/gallery/dessert-table-elegant.jpg', alt: 'Элегантный десертный стол', caption: 'Десертная станция · торт-каскад · макаронная башня · шоколадный фонтан' },
+  { src: '/images/gallery/cocktail-reception.jpg', alt: 'Коктейльная рецепция', caption: 'Бармен-шоу · авторские коктели · элегантная подача' },
+  { src: '/images/gallery/chef-show-cooking.jpg', alt: 'Шоу-станция шеф-повара', caption: 'Живая готовка · огненное шоу · интерактивная станция' },
+  { src: '/images/gallery/canape-platter-artistic.jpg', alt: 'Художественная подача канапе', caption: 'Канапе-ассорти премиум · слатовая доска · авторское оформление' },
+  { src: '/images/gallery/outdoor-garden-party.jpg', alt: 'Садовая вечеринка', caption: 'Гarden party · рустик-элегантность · золотой час · свежие цветы' },
+  { src: '/images/gallery/banquet-round-tables.jpg', alt: 'Банкетный зал', caption: 'Банкетный зал · круглые столы · люстры · роскошная сервировка' },
+  { src: '/images/gallery/food-station-variety.jpg', alt: 'Гастрономическая станция', caption: 'Карвинг-станция · гриль-бар · разнообразие блюд · гурме' },
+  { src: '/images/gallery/coffee-break-business.jpg', alt: 'Кофе-брейк для бизнеса', caption: 'Кофейная станция · эспрессо-бар · выпечка · деловой завтрак' },
+  { src: '/images/gallery/kids-party-colorful.jpg', alt: 'Детский праздник', caption: 'Детское меню · яркие оформления · фруктовые фигурки · веселье' },
+  { src: '/images/gallery/table-setting-details.jpg', alt: 'Детали сервировки', caption: 'Авторская сервировка · детали имеют значение · люкс-сопровождение' },
 ];

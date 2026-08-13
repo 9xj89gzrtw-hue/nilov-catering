@@ -299,7 +299,7 @@ export default function MenuPreview() {
           ← Листайте для всех категорий →
         </p>
 
-        /* Кнопка полного меню */
+        {/* Кнопка полного меню */}
         <div className="mt-10 text-center">
           <Link
             href="/menu"
@@ -310,7 +310,7 @@ export default function MenuPreview() {
           </Link>
         </div>
 
-        /* Дополнительная информация о конструкторе */
+        {/* Дополнительная информация о конструкторе */}
         <div className="mt-8 max-w-2xl mx-auto text-center">
           <p className="text-xs text-muted-foreground">
             💡 В конструкторе можно комбинировать блюда из разных категорий, менять количество гостей и видеть итоговую стоимость

@@ -798,12 +798,8 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  /* Reduce Ken Burns on mobile (save GPU) */
-    @media (pointer: coarse) {
-      [class*="group-hover"] {
-        transform: none !important;
-      }
-    }
+  /* Reduce Ken Burns on mobile (save GPU) — only for actual animations, not hover states */
+  /* Note: Don't disable group-hover transforms as they're needed for visual feedback */
 }
 
 /* Hide scrollbar for horizontal scroll */
