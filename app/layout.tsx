@@ -18,6 +18,8 @@ import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
 import { OrganizationJsonLd, ServiceJsonLd, MenuJsonLd } from './JsonLd';
 import Analytics from '@/components/layout/Analytics';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { getPricing } from '@/lib/cms';
 import './globals.css';
 
@@ -77,6 +79,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <StickyMobileCTA />
           </SmoothScrollProvider>
         </PricingWrapper>
+        <VercelAnalytics />
+        <SpeedInsights />
         <noscript>
           <style>{`[style*="opacity:0"], [style*="opacity: 0"] { opacity: 1 !important; filter: none !important; transform: none !important; }`}</style>
           <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>

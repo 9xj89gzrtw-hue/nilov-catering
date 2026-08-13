@@ -3,6 +3,7 @@ import { LEGAL } from '@/lib/data';
 import { appendFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
+import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 
 /**
  * POST /api/contact
@@ -110,13 +111,26 @@ export async function POST(request: Request) {
       );
     }
 
-    // Basic phone validation (RU formats)
-    const phoneClean = phone.replace(/[\s\-\(\)\+]/g, '');
-    if (!/^\d{10,15}$/.test(phoneClean)) {
-      return NextResponse.json(
-        { success: false, message: 'Некорректный номер телефона' },
-        { status: 400 },
-      );
+    // Enhanced phone validation using libphonenumber-js (RU locale)
+    let phoneClean: string;
+    try {
+      const parsed = parsePhoneNumber(phone, 'RU');
+      if (!parsed.isValid()) {
+        return NextResponse.json(
+          { success: false, message: 'Некорректный номер телефона. Проверьте формат.' },
+          { status: 400 },
+        );
+      }
+      phoneClean = parsed.format('E.164').replace('+', '');
+    } catch {
+      // Fallback to basic validation
+      phoneClean = phone.replace(/[\s\-\(\)\+]/g, '');
+      if (!/^\d{10,15}$/.test(phoneClean)) {
+        return NextResponse.json(
+          { success: false, message: 'Некорректный номер телефона' },
+          { status: 400 },
+        );
+      }
     }
 
     const isB2B = Boolean(body.company || body.inn || body.kpp);
