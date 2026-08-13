@@ -72,7 +72,7 @@ export default function LeadCaptureForm() {
         setExpanded(false);
       } else {
         setStatus('error');
-        setMessage(json.message или 'Ошибка. Позвоните нам.');
+        setMessage(json.message || 'Ошибка. Позвоните нам.');
       }
     } catch {
       setStatus('error');
