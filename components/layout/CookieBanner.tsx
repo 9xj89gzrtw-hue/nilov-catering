@@ -28,8 +28,8 @@ export default function CookieBanner() {
   return (
     <div
       className="fixed bottom-[80px] right-3 z-[210] max-w-sm rounded-xl bg-foreground/95 backdrop-blur-md px-4 py-3 shadow-lg md:bottom-3"
-      role="dialog"
-      aria-modal="true"
+      role="region"
+      aria-label="Использование cookie"
       aria-label="Использование cookie"
     >
       <p className="text-xs text-background/80 mb-2">

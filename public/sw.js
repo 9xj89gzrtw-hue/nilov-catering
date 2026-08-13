@@ -2,7 +2,7 @@ const CACHE='nilov-v2';
 const SHELL=['/','/menu','/offline'];
 
 self.addEventListener('install',e=>{
-  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));
+  e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).then(()=>caches.open(CACHE).then(c=>c.addAll(SHELL))).then(()=>self.skipWaiting()));
 });
 
 self.addEventListener('activate',e=>{

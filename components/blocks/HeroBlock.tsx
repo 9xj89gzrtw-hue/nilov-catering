@@ -244,7 +244,7 @@ export default function HeroBlock() {
             <span className="w-px h-4 bg-white/30 hidden sm:block" aria-hidden="true" />
             <span className="flex items-baseline gap-1.5 hidden sm:flex">
               Кофе-брейк 
-              <strong className="text-gold-soft font-medium">от 390 ₽</strong>
+              <strong className="text-white font-medium">от 390 ₽</strong>
             </span>
           </motion.div>
 
