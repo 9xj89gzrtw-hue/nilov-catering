@@ -183,7 +183,7 @@ export default function CareersClient() {
                     )}
                   </div>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                    <span className={`px-2 py-0.5 rounded-full font-medium ${departmentColors[v.department] || 'bg-muted text-muted-foreground'}`}>
+                    <span className={`px-2 py-0.5 rounded-full font-medium ${departmentColors[v.department ?? ''] || 'bg-muted text-muted-foreground'}`}>
                       {v.department}
                     </span>
                     <span>{v.type}</span>
