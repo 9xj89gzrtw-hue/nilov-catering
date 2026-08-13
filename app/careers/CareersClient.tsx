@@ -10,6 +10,7 @@ const VACANCIES = [
     type: 'Полная занятость',
     salary: 'от 120 000 ₽',
     experience: 'От 5 лет',
+    emoji: '👨‍🍳',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -31,8 +32,9 @@ const VACANCIES = [
     title: 'Менеджер событий',
     department: 'Продажи',
     type: 'Полная занятость',
-    salary: 'от 80 000 ₽ + %',
+    salary: 'от 80 000 ₽ + % с заказа',
     experience: 'От 2 лет',
+    emoji: '💼',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -56,6 +58,7 @@ const VACANCIES = [
     type: 'Полная / Частичная',
     salary: 'от 60 000 ₽',
     experience: 'От 3 лет',
+    emoji: '🧁',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
@@ -78,6 +81,7 @@ const VACANCIES = [
     type: 'По сменам',
     salary: 'от 3 500 ₽/смена + чаевые',
     experience: 'От 1 года',
+    emoji: '🍽️',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
@@ -159,11 +163,14 @@ export default function CareersClient() {
             {/* Header */}
             <div className="p-5 border-b border-line bg-card">
               <div className="flex items-start gap-4">
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+                {/* Icon with Emoji */}
+                <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
                   selectedVacancy === v.id ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'
                 }`}>
                   {v.icon}
+                  {v.emoji && (
+                    <span className="absolute -top-1 -right-1 text-lg">{v.emoji}</span>
+                  )}
                 </div>
                 
                 <div className="flex-1 min-w-0">

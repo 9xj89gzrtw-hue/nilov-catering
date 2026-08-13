@@ -88,6 +88,28 @@ const ARTICLES = [
     image: '/images/dishes/buddha-bowl-01.jpg',
     featured: false,
   },
+  {
+    t: 'Тренды кейтеринга 2025: что модно this season',
+    d: '15 мая 2026',
+    iso: '2026-05-15',
+    slug: 'trendy-katering-2025',
+    desc: 'Съедобные цветы, локальные ингредиенты, интерактивные станции и другие тренды сезона. Что заказывают в 2025 году.',
+    words: 280,
+    category: 'Тренды',
+    image: '/images/real/charcuterie.jpg',
+    featured: false,
+  },
+  {
+    t: 'Как организовать детский праздник под ключ: чек-лист родителей',
+    d: '20 апреля 2026',
+    iso: '2026-04-20',
+    slug: 'detskiy-prazdnik-chek-list',
+    desc: 'От выбора тематики до безопасного меню. Полный чек-лист для родителей: как устроить незабываемый праздник без стресса.',
+    words: 320,
+    category: 'Дети',
+    image: '/images/real/dessert-table.jpg',
+    featured: false,
+  },
 ];
 
 function readTime(words: number): string {

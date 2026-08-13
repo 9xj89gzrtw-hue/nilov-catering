@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Площадки для мероприятий в СПб',
+  title: 'Площадки для кейтеринга в СПб — 10 локаций — NiloV Catering',
   description: 'Рекомендованные площадки для кейтеринга в Санкт-Петербурге: лофты, дворцы, шатёры, бизнес-центры. Работаем на вашей площадке.',
   alternates: { canonical: '/venues', languages: { 'ru': '/venues', 'x-default': '/venues' } },
 };
@@ -86,8 +86,44 @@ const VENUES = [
     type: 'Лофт',
     capacity: 'до 120',
     address: 'Пикалёв ул., 32, СПб, м. Нарвская',
-    features: 'Индустриальный стиль, гибрая планировка, неограниченное время',
+    features: 'Индустриальный стиль, гибкая планировка, неограниченное время',
     image: '/images/real/grilled-chicken.jpg',
+    highlight: false,
+  },
+  {
+    name: 'Арма',
+    type: 'Арт-пространство',
+    capacity: 'до 200',
+    address: 'наб. реки Невы, 60, СПб, м. Нарвская',
+    features: 'Арт-пространство на набережной, панорамные окна, вид на реку, современная кухня',
+    image: '/images/catering/wedding-01.jpg',
+    highlight: false,
+  },
+  {
+    name: 'Ботик Петра I',
+    type: 'Ресторан',
+    capacity: 'до 80',
+    address: 'Ботическая ул., 5, СПб, м. Гостиный двор',
+    features: 'Ресторан в парке, историческая атмосфера, летняя терраса, уютные залы',
+    image: '/images/catering/finedining-01.jpg',
+    highlight: false,
+  },
+  {
+    name: 'Катакомбы',
+    type: 'Уникальное',
+    capacity: 'до 100',
+    address: 'Кронверкский пр., 5, СПб, м. Горьковская',
+    features: 'Уникальное подпространство, атмосферное освещение, необычный интерьер, фотозоны',
+    image: '/images/catering/spb-04.jpg',
+    highlight: false,
+  },
+  {
+    name: 'Ньюскал',
+    type: 'Лофт',
+    capacity: 'до 150',
+    address: 'Невский пр., 140, СПб, м. Площадь Александра Невского',
+    features: 'Loft с видом на город, высокие потолки, гибкая планировка, парковка',
+    image: '/images/catering/corporate-02.webp',
     highlight: false,
   },
   {
@@ -111,6 +147,9 @@ const typeIcons: Record<string, string> = {
   'Шатёр': '⛺',
   'Конференц-зал': '🏢',
   'ДК': '🎭',
+  'Арт-пространство': '🎭',
+  'Ресторан': '🍽️',
+  'Уникальное': '✨',
   'Любая': '📍',
 };
 
