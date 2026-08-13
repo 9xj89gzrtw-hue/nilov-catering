@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/reviews',
     languages: { ru: '/reviews', 'x-default': '/reviews' },
+  openGraph: { url: 'https://nilov-catering.vercel.app/reviews' },
   },
   title: 'Отзывы клиентов',
   description:

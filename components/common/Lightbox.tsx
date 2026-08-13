@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface LightboxImage {
@@ -17,6 +17,8 @@ interface LightboxProps {
 
 export default function Lightbox({ images, initialIndex = 0, onClose }: LightboxProps) {
   const [index, setIndex] = useState(initialIndex);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const next = useCallback(() =>setIndex(i =>(i + 1) % images.length), [images.length]);
   const prev = useCallback(() =>setIndex(i =>(i - 1 + images.length) % images.length), [images.length]);
@@ -30,24 +32,47 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
     document.addEventListener('keydown', handleKey);
     // Lock scroll
     document.body.style.overflow = 'hidden';
+    // Move focus into dialog
+    setTimeout(() => closeBtnRef.current?.focus(), 50);
     return () => {
       document.removeEventListener('keydown', handleKey);
       document.body.style.overflow = '';
     };
   }, [onClose, next, prev]);
 
+  // Focus trap
+  const handleTab = useCallback((e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab') return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const focusable = dialog.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }, []);
+
   const current = images[index];
 
   return (
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-label="Просмотр фотографии"
       onClick={onClose}
+      onKeyDown={handleTab}
     >
       {/* Close button */}
       <button
+        ref={closeBtnRef}
         onClick={onClose}
         className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"
         aria-label="Закрыть"

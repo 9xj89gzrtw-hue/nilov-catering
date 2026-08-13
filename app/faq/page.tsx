@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -108,6 +109,7 @@ export default function FAQPage() {
 
   return (
     <main id="main" className="pt-24 pb-20">
+      <Breadcrumbs />
       <div className="container-site max-w-3xl">
         <script
           type="application/ld+json"

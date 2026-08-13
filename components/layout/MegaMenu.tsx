@@ -74,8 +74,7 @@ export default function MegaMenu() {
             className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
             aria-expanded={open === group.label}
             aria-haspopup="true"
-            role="menuitem"
-          >
+                      >
             {group.label}
             <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${open === group.label ? 'rotate-180' : ''}`} />
           </button>
@@ -93,8 +92,7 @@ export default function MegaMenu() {
                     key={item.href}
                     href={item.href}
                     className="flex items-start gap-2 p-2 rounded-lg hover:bg-secondary/50 transition-colors group"
-                    role="menuitem"
-                    onClick={() =>setOpen(null)}
+                                        onClick={() =>setOpen(null)}
                   >
                     {item.icon && <span className="text-lg shrink-0 mt-0.5"></span>}
                     <div className="min-w-0">
