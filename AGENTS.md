@@ -1,34 +1,252 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# 🤖 AGENTS.md - Инструкции для AI агентов
 
-# This is NOT the Next.js you know
+> **ВНИМАНИЕ:** Прочитай это ПЕРЕД началом работы. Это сэкономит время и предотвратит ошибки.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+---
 
-# NiloV Catering — project context
+## 📋 ПРАВИЛА РАБОТЫ С ЭТИМ ПРОЕКТОМ
 
-Hermes Project. Premium catering site. Operator: ИП Нилов Дмитрий Игоревич (brand NiloV Catering / nilov-catering.ru). Do NOT use legacy "ООО Интерфуд" / "Интерфуд Кейтеринг" strings — they are WRONG.
+### 1. ПЕРЕД ЛЮБЫМИ ИЗМЕНЕНИЯМИ
 
-## Verified stack
+```bash
+# 1. Запусти pre-deploy проверку (обязательно!)
+npm run pre-deploy:quick
 
-- Next.js 16.2.10 + React 19.2.4 + TypeScript
-- Tailwind CSS 4
-- framer-motion ^12.42.2, lenis ^1.3.25 (smooth scroll)
-- zod ^4.4.3 (validation)
-- @react-pdf/renderer (PDF generation)
-- shadcn/ui ^4.13.0 (components)
-- pnpm (package manager)
-- framer-motion ^12 (animations) + lenis ^1.3 (smooth-scroll, gated by prefers-reduced-motion)
+# 2. Если проверка прошла - работай
+# 3. После изменений - запусти снова
+```
 
-## Build / dev
+### 2. НИКОГДА НЕ ДЕЛАЙТЕ
 
-- `pnpm i` then `pnpm dev` to run.
-- `node_modules/` (≈599M) and `.next/` (≈318M) are safe to delete and rebuild — do not treat as precious.
-- Run `pnpm build` / typecheck before declaring a change done.
+- ❌ Не коммитьте без `npm run pre-deploy:quick`
+- ❌ Не используйте хардкодные цвета (`#fff` → `bg-white`)
+- ❌ Не забывайте metadata на страницах
+- ❌ Не игнорируйте подстраницы (они так же важны как главная!)
 
-## Agent behavior rules (user corrections — apply in every session)
+---
 
-- FIX errors before moving on. Never claim a visual/quality verdict ("premium", "looks good") without actually seeing output — show file/screenshot via MEDIA or verify code.
-- ALWAYS web-search FIRST for how others solved a problem (config, bug, optimization, model choice) before improvising.
-- On "каждый / все / каждый блок" requests: cover EVERY item in the enumerated set with real work. Enumerate the full list from the source doc first (e.g. 04_BLOCKS.md), then web_search+extract per item. Do NOT cherry-pick only headline blocks.
-- User distrusts agent self-assessment — prefer honest low verdicts; enforce separate critic (diff model, no self-scoring) + objective metrics (Lighthouse/CWV/axe) + fixed-weight rubric.
+## 🎯 СТРУКТУРА САЙТА (ОБЯЗАТЕЛЬНО ЗНАТЬ)
+
+```
+/                          ← Главная (landing)
+├── /menu                  ← Меню (корневая)
+│   ├── /furshet           ← Фуршет
+│   ├── /banquet           ← Банкет
+│   ├── /coffee-break      ← Кофе-брейк
+│   ├── /catalog           ← Каталог блюд
+│   ├── /halal             ← Халяль
+│   ├── /vegan             ← Веган
+│   ├── /gluten-free       ← Без глютена
+│   └── /detskoe           ← Детское
+├── /events                ← Мероприятия (корневая)
+│   ├── /svadba            ← Свадьба
+│   ├── /korporativ        ← Корпоратив
+│   ├── /detskoe           ← Детский праздник
+│   ├── /yubiley           ← Юбилей
+│   ├── /nikah             ← Никах
+│   └── ... (другие события)
+├── /contact               ← Контакты
+├── /gallery               ← Галерея
+├── /reviews               ← Отзывы
+├── /pricing               ← Цены
+├── /plan                  ← Планировщик
+│   └── /helper            ← Помощник расчёта
+└── /blog                  ← Блог
+```
+
+---
+
+## 📄 ШАБЛОН ПОДСТРАНИЦЫ (ИСПОЛЬЗУЙТЕ ВСЕГДА)
+
+Смотри полный шаблон: `templates/PAGE_TEMPLATE.tsx`
+
+### Минимальные требования для страницы:
+
+```tsx
+import type { Metadata } from "next";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+// 1. Metadata ОБЯЗАТЕЛЬНО
+export const metadata: Metadata = {
+  title: "Название | Нилов Кейтеринг",
+  description: "Описание 150-300 символов",
+};
+
+// 2. ErrorBoundary ОБЯЗАТЕЛЬНО
+export default function Page() {
+  return (
+    <ErrorBoundary>
+      <main className="min-h-screen">
+        {/* Hero */}
+        <section>
+          <h1>Уникальный H1</h1>
+          <p>Описание страницы</p>
+        </section>
+
+        {/* Контент */}
+        <section>...</section>
+
+        {/* CTA - всегда в конце! */}
+        <section className="bg-primary text-primary-foreground">
+          <a href="/contact">Связаться с нами</a>
+        </section>
+      </main>
+    </ErrorBoundary>
+  );
+}
+```
+
+---
+
+## 🔍 CHECKLIST ПЕРЕД КОММИТОМ
+
+- [ ] `npm run pre-deploy:quick` прошёл без ошибок
+- [ ] Все страницы имеют metadata (title, description)
+- [ ] ErrorBoundary обёртка на каждой странице
+- [ ] CTA секция в конце страницы
+- [ ] Адаптивная вёрстка (проверить mobile)
+- [ ] Нет console.log для production
+- [ ] Коммит следует conventional commits:
+  - `feat: добавил новое...`
+  - `fix: исправил баг...`
+  - `page: обновил страницу /events/svadba`
+  - `design: изменил цвета навигации`
+  - `style: форматирование кода`
+
+---
+
+## 🚨 ЧАСТЫЕ ОШИБКИ И КАК ИХ ИЗБЕЖАТЬ
+
+### Ошибка 1: "TypeScript error in build"
+
+**Причина:** Использование `||` вместо `??`, отсутствующие проверки на null
+**Решение:** Всегда используйте `?.` и `??` для optional values
+
+```tsx
+// Плохо
+data.items[0].name;
+
+// Хорошо
+data?.items?.[0]?.name ?? "Значение по умолчанию";
+```
+
+### Ошибка 2: "Cyrillic characters error"
+
+**Причина:** Русские слова в коде (например, "или" вместо "||")
+**Решение:** Только английские ключевые слова в коде!
+
+```tsx
+// Плохо
+setMessage(error или 'Ошибка')
+
+// Хорошо
+ setMessage(error || 'Ошибка')
+```
+
+### Ошибка 3: Build успешен, но страница белая
+
+**Причина:** Ошибка рендеринга, не пойманная ErrorBoundary
+**Решение:** ВСЕГДА оборачивайте страницы в ErrorBoundary
+
+### Ошибка 4: Навигация не работает на мобильных
+
+**Причина:** Забыли мобильное меню или touch events
+**Решение:** Тестируйте на мобильном размере (375px)
+
+---
+
+## 🛠️ ДОСТУПНЫЕ КОМАНДЫ
+
+| Команда                    | Когда использовать        |
+| -------------------------- | ------------------------- |
+| `npm run dev`              | Разработка                |
+| `npm run build`            | Проверка билда            |
+| `npm run format`           | Форматирование кода       |
+| `npm run pre-deploy:quick` | **ПЕРЕД КАЖДЫМ КОММИТОМ** |
+| `npm run pre-deploy`       | Полная проверка (с E2E)   |
+| `npm run e2e`              | Тестировать все страницы  |
+
+---
+
+## 🎨 DESIGN SYSTEM (ЦВЕТА И КОМПОНЕНТЫ)
+
+Используйте ТОЛЬКО эти классы:
+
+### Цвета
+
+- `bg-primary`, `text-primary` - Основной цвет бренда
+- `bg-background`, `text-background` - Фон/текст фона
+- `text-muted-foreground` - Вторичный текст
+- `bg-card` - Карточки
+- `border-border` - Границы
+- `destructive` - Ошибки
+
+### Типографика
+
+- `prose prose-lg dark:prose-invert` - Для текстового контента
+- `@tailwindcss/typography` уже установлен
+
+### Компоненты (из @headlessui/react)
+
+- `<Dialog>` - Модальные окна
+- `<Disclosure>` - Аккордеоны
+- `<Menu>` - Выпадающие меню
+- `<NavigationMenu>` - Навигация
+
+---
+
+## 📝 КОГДА ВЫ РАБОТАЕТЕ НАД СТРАНИЦЕЙ
+
+### Если это ГЛАВНАЯ страница (/):
+
+- Проверьте hero section
+- Проверьте все CTA кнопки
+- Убедитесь что навигация работает
+
+### Если это ПОДСТРАНИЦА:
+
+1. ✅ Скопируйте шаблон из `templates/PAGE_TEMPLATE.tsx`
+2. ✅ Заполните metadata
+3. ✅ Добавьте контент
+4. ✅ Добавьте CTA секцию
+5. ✅ Проверьте что ссылки ведут на правильные страницы
+6. ✅ Запустите `npm run pre-deploy:quick`
+
+### Если вы меняете НАВИГАЦИЮ:
+
+1. ✅ Проверьте на desktop (1024px+)
+2. ✅ Проверьте на tablet (768px)
+3. ✅ Проверьте на mobile (375px)
+4. ✅ Убедитесь что ВСЕ страницы доступны из меню
+
+---
+
+## ⚡ БЫСТРЫЙ СТАРТ
+
+```bash
+# 1. Установите зависимости (если нужно)
+npm install
+
+# 2. Запустите dev сервер
+npm run dev
+
+# 3. Перед коммитом - ОБЯЗАТЕЛЬНО
+npm run pre-deploy:quick
+
+# 4. Коммитьте
+git add . && git commit -m "type: описание изменений"
+git push
+```
+
+---
+
+## 🔗 ПОЛЕЗНЫЕ ССЫЛКИ
+
+- Шаблон страницы: `/templates/PAGE_TEMPLATE.tsx`
+- ErrorBoundary: `/components/ErrorBoundary.tsx`
+- Pre-deploy скрипт: `/scripts/pre-deploy.mjs`
+- E2E тесты: `/e2e/all-pages.spec.ts`
+
+---
+
+**Помните:** Главная страница важна, но подстраницы - это где клиенты принимают решение о заказе!
