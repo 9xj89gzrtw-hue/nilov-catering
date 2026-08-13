@@ -1,0 +1,71 @@
+name: 🐛 Bug Report
+description: Сообщить о проблеме в работе сайта
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание проблемы
+      description: Чётко и кратко опишите проблему
+      placeholder: При переходе на страницу /pricing сайт показывает ошибку 404...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Как воспроизвести проблему
+      placeholder: |
+        1. Перейдите на '...'
+        2. Нажмите на '....'
+        3. Прокрутите до '...'
+        4. Увидите ошибку
+    validations:
+      required: true
+
+  - type: input
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+      placeholder: Страница должна загрузиться корректно
+    validations:
+      required: true
+
+  - type: input
+    id: actual
+    attributes:
+      label: Фактическое поведение
+      placeholder: Показывается ошибка 500
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Браузер
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Mobile Safari
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Скриншоты
+      description: Добавьте скриншоты если применимо
+      placeholder: Перетащите скриншоты сюда...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Подтверждение
+      options:
+        - label: Я проверил что проблема не была сообщена ранее
+          required: true
