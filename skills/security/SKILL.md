@@ -44,6 +44,7 @@ All commands in this skill reference `scripts/` as a relative path. You **MUST**
 3. Before running any `node scripts/...` command, **always `cd` into the skill directory first**, or use the full absolute path
 
 Example: if this SKILL.md is at `~/.openclaw/skills/agentguard/SKILL.md`, run:
+
 ```bash
 cd ~/.openclaw/skills/agentguard && node scripts/checkup-report.js
 ```
@@ -83,32 +84,32 @@ Skip files: `*.min.js`, `*.min.css`, `package-lock.json`, `yarn.lock`, `pnpm-loc
 
 For each rule, use Grep to search the relevant file types. Record every match with file path, line number, and matched content. For detailed rule patterns, see [scan-rules.md](scan-rules.md).
 
-| # | Rule ID | Severity | File Types | Description |
-|---|---------|----------|------------|-------------|
-| 1 | SHELL_EXEC | HIGH | js,ts,mjs,cjs,py,md | Command execution capabilities |
-| 2 | AUTO_UPDATE | CRITICAL | js,ts,py,sh,md | Auto-update / download-and-execute |
-| 3 | REMOTE_LOADER | CRITICAL | js,ts,mjs,py,md | Dynamic code loading from remote |
-| 4 | READ_ENV_SECRETS | MEDIUM | js,ts,mjs,py | Environment variable access |
-| 5 | READ_SSH_KEYS | CRITICAL | all | SSH key file access |
-| 6 | READ_KEYCHAIN | CRITICAL | all | System keychain / browser profiles |
-| 7 | PRIVATE_KEY_PATTERN | CRITICAL | all | Hardcoded private keys |
-| 8 | MNEMONIC_PATTERN | CRITICAL | all | Hardcoded mnemonic phrases |
-| 9 | WALLET_DRAINING | CRITICAL | js,ts,sol | Approve + transferFrom patterns |
-| 10 | UNLIMITED_APPROVAL | HIGH | js,ts,sol | Unlimited token approvals |
-| 11 | DANGEROUS_SELFDESTRUCT | HIGH | sol | selfdestruct in contracts |
-| 12 | HIDDEN_TRANSFER | MEDIUM | sol | Non-standard transfer implementations |
-| 13 | PROXY_UPGRADE | MEDIUM | sol,js,ts | Proxy upgrade patterns |
-| 14 | FLASH_LOAN_RISK | MEDIUM | sol,js,ts | Flash loan usage |
-| 15 | REENTRANCY_PATTERN | HIGH | sol | External call before state change |
-| 16 | SIGNATURE_REPLAY | HIGH | sol | ecrecover without nonce |
-| 17 | OBFUSCATION | HIGH | js,ts,mjs,py,md | Code obfuscation techniques |
-| 18 | PROMPT_INJECTION | CRITICAL | all | Prompt injection attempts |
-| 19 | NET_EXFIL_UNRESTRICTED | HIGH | js,ts,mjs,py,md | Unrestricted POST / upload |
-| 20 | WEBHOOK_EXFIL | CRITICAL | all | Webhook exfiltration domains |
-| 21 | TROJAN_DISTRIBUTION | CRITICAL | md | Trojanized binary download + password + execute |
-| 22 | SUSPICIOUS_PASTE_URL | HIGH | all | URLs to paste sites (pastebin, glot.io, etc.) |
-| 23 | SUSPICIOUS_IP | MEDIUM | all | Hardcoded public IPv4 addresses |
-| 24 | SOCIAL_ENGINEERING | HIGH | md | Pressure language + execution instructions |
+| #   | Rule ID                | Severity | File Types          | Description                                     |
+| --- | ---------------------- | -------- | ------------------- | ----------------------------------------------- |
+| 1   | SHELL_EXEC             | HIGH     | js,ts,mjs,cjs,py,md | Command execution capabilities                  |
+| 2   | AUTO_UPDATE            | CRITICAL | js,ts,py,sh,md      | Auto-update / download-and-execute              |
+| 3   | REMOTE_LOADER          | CRITICAL | js,ts,mjs,py,md     | Dynamic code loading from remote                |
+| 4   | READ_ENV_SECRETS       | MEDIUM   | js,ts,mjs,py        | Environment variable access                     |
+| 5   | READ_SSH_KEYS          | CRITICAL | all                 | SSH key file access                             |
+| 6   | READ_KEYCHAIN          | CRITICAL | all                 | System keychain / browser profiles              |
+| 7   | PRIVATE_KEY_PATTERN    | CRITICAL | all                 | Hardcoded private keys                          |
+| 8   | MNEMONIC_PATTERN       | CRITICAL | all                 | Hardcoded mnemonic phrases                      |
+| 9   | WALLET_DRAINING        | CRITICAL | js,ts,sol           | Approve + transferFrom patterns                 |
+| 10  | UNLIMITED_APPROVAL     | HIGH     | js,ts,sol           | Unlimited token approvals                       |
+| 11  | DANGEROUS_SELFDESTRUCT | HIGH     | sol                 | selfdestruct in contracts                       |
+| 12  | HIDDEN_TRANSFER        | MEDIUM   | sol                 | Non-standard transfer implementations           |
+| 13  | PROXY_UPGRADE          | MEDIUM   | sol,js,ts           | Proxy upgrade patterns                          |
+| 14  | FLASH_LOAN_RISK        | MEDIUM   | sol,js,ts           | Flash loan usage                                |
+| 15  | REENTRANCY_PATTERN     | HIGH     | sol                 | External call before state change               |
+| 16  | SIGNATURE_REPLAY       | HIGH     | sol                 | ecrecover without nonce                         |
+| 17  | OBFUSCATION            | HIGH     | js,ts,mjs,py,md     | Code obfuscation techniques                     |
+| 18  | PROMPT_INJECTION       | CRITICAL | all                 | Prompt injection attempts                       |
+| 19  | NET_EXFIL_UNRESTRICTED | HIGH     | js,ts,mjs,py,md     | Unrestricted POST / upload                      |
+| 20  | WEBHOOK_EXFIL          | CRITICAL | all                 | Webhook exfiltration domains                    |
+| 21  | TROJAN_DISTRIBUTION    | CRITICAL | md                  | Trojanized binary download + password + execute |
+| 22  | SUSPICIOUS_PASTE_URL   | HIGH     | all                 | URLs to paste sites (pastebin, glot.io, etc.)   |
+| 23  | SUSPICIOUS_IP          | MEDIUM   | all                 | Hardcoded public IPv4 addresses                 |
+| 24  | SOCIAL_ENGINEERING     | HIGH     | md                  | Pressure language + execution instructions      |
 
 ### Risk Level Calculation
 
@@ -143,11 +144,11 @@ After outputting the scan report, if the scanned target appears to be a skill (c
 
 **Risk-to-trust mapping**:
 
-| Scan Risk Level | Suggested Trust Level | Preset | Action |
-|---|---|---|---|
-| LOW | `trusted` | `read_only` | Offer to register |
-| MEDIUM | `restricted` | `none` | Offer to register with warning |
-| HIGH / CRITICAL | — | — | Warn the user; do not suggest registration |
+| Scan Risk Level | Suggested Trust Level | Preset      | Action                                     |
+| --------------- | --------------------- | ----------- | ------------------------------------------ |
+| LOW             | `trusted`             | `read_only` | Offer to register                          |
+| MEDIUM          | `restricted`          | `none`      | Offer to register with warning             |
+| HIGH / CRITICAL | —                     | —           | Warn the user; do not suggest registration |
 
 **Registration steps** (if the user agrees):
 
@@ -193,32 +194,35 @@ Parse the user's action description and apply the appropriate detector:
 
 ### Default Policies
 
-| Scenario | Decision |
-|----------|----------|
-| Private key exfiltration | **DENY** (always) |
-| Mnemonic exfiltration | **DENY** (always) |
-| API secret exfiltration | CONFIRM |
-| Command execution | **DENY** (default) |
-| Unlimited approval | CONFIRM |
-| Unknown spender | CONFIRM |
-| Untrusted domain | CONFIRM |
-| Body contains secret | **DENY** |
+| Scenario                 | Decision           |
+| ------------------------ | ------------------ |
+| Private key exfiltration | **DENY** (always)  |
+| Mnemonic exfiltration    | **DENY** (always)  |
+| API secret exfiltration  | CONFIRM            |
+| Command execution        | **DENY** (default) |
+| Unlimited approval       | CONFIRM            |
+| Unknown spender          | CONFIRM            |
+| Untrusted domain         | CONFIRM            |
+| Body contains secret     | **DENY**           |
 
 ### Web3 Enhanced Detection
 
 When the action involves **web3_tx** or **web3_sign**, use AgentGuard's bundled `action-cli.ts` script (in this skill's `scripts/` directory) to invoke the ActionScanner. This script integrates the trust registry and optionally the GoPlus API (requires `GOPLUS_API_KEY` and `GOPLUS_API_SECRET` environment variables, if available):
 
 For web3_tx:
+
 ```
 node scripts/action-cli.ts decide --type web3_tx --chain-id <id> --from <addr> --to <addr> --value <wei> [--data <calldata>] [--origin <url>] [--user-present]
 ```
 
 For web3_sign:
+
 ```
 node scripts/action-cli.ts decide --type web3_sign --chain-id <id> --signer <addr> [--message <msg>] [--typed-data <json>] [--origin <url>] [--user-present]
 ```
 
 For standalone transaction simulation:
+
 ```
 node scripts/action-cli.ts simulate --chain-id <id> --from <addr> --to <addr> --value <wei> [--data <calldata>] [--origin <url>]
 ```
@@ -230,6 +234,7 @@ node scripts/action-cli.ts decide --type exec_command --command "<cmd>" [--skill
 ```
 
 Parse the JSON output and incorporate findings into your evaluation:
+
 - If `decision` is `deny` → override to **DENY** with the returned evidence
 - If `goplus.address_risk.is_malicious` → **DENY** (critical)
 - If `goplus.simulation.approval_changes` has `is_unlimited: true` → **CONFIRM** (high)
@@ -277,6 +282,7 @@ Before running any checks, verify the OpenClaw environment:
 3. Check if `openclaw` CLI is available in PATH
 
 If OpenClaw is not detected, output:
+
 ```
 This command requires an OpenClaw environment. Detected: <what was found/missing>
 For non-OpenClaw environments, use /agentguard scan and /agentguard report instead.
@@ -291,6 +297,7 @@ Set `$OC` to the resolved OpenClaw state directory for all subsequent checks.
 Detect tampered or unregistered skill packages by comparing file hashes against the trust registry.
 
 **Steps**:
+
 1. Discover skill directories under `$OC/skills/` (look for dirs containing `SKILL.md`)
 2. For each skill, compute hash: `node scripts/trust-cli.ts hash --path <skill_dir>`
 3. Look up the attested hash: `node scripts/trust-cli.ts lookup --source <skill_dir>`
@@ -303,6 +310,7 @@ Detect tampered or unregistered skill packages by comparing file hashes against 
 Scan workspace files for leaked secrets using AgentGuard's own detection patterns.
 
 **Steps**:
+
 1. Use Grep to scan `$OC/workspace/` **recursively, covering all agent subdirectories** (e.g. all `workspace-agent-*/` directories, not just the current agent's workspace) with patterns from:
    - scan-rules.md Rule 7 (PRIVATE_KEY_PATTERN): `0x[a-fA-F0-9]{64}` in quotes
    - scan-rules.md Rule 8 (MNEMONIC_PATTERN): BIP-39 word sequences, `seed_phrase`, `mnemonic`
@@ -316,6 +324,7 @@ Scan workspace files for leaked secrets using AgentGuard's own detection pattern
 Detect dangerous port exposure and firewall misconfigurations.
 
 **Steps**:
+
 1. List listening ports: `ss -tlnp` or `lsof -i -P -n | grep LISTEN`
 2. Flag high-risk services on 0.0.0.0: Redis(6379), Docker API(2375), MySQL(3306), PostgreSQL(5432), MongoDB(27017)
 3. Check firewall status: `ufw status` or `iptables -L INPUT -n`
@@ -326,6 +335,7 @@ Detect dangerous port exposure and firewall misconfigurations.
 Audit all cron jobs for download-and-execute patterns.
 
 **Steps**:
+
 1. List OpenClaw cron jobs: `openclaw cron list`
 2. List system crontab: `crontab -l` and contents of `/etc/cron.d/`
 3. List systemd timers: `systemctl list-timers --all`
@@ -337,6 +347,7 @@ Audit all cron jobs for download-and-execute patterns.
 Detect suspicious file modifications in the last 24 hours.
 
 **Steps**:
+
 1. Find recently modified files: `find $OC/ ~/.ssh/ ~/.gnupg/ /etc/cron.d/ -type f -mtime -1`
 2. For modified files with scannable extensions (.js/.ts/.py/.sh/.md/.json), run the full scan rule set
 3. Check permissions on critical files:
@@ -350,6 +361,7 @@ Detect suspicious file modifications in the last 24 hours.
 Analyze AgentGuard's audit trail for attack patterns.
 
 **Steps**:
+
 1. Read `~/.agentguard/audit.jsonl`, filter to last 24h by timestamp
 2. Compute statistics: total events, deny/confirm/allow counts, group denials by `risk_tags` and `initiating_skill`
 3. Flag patterns:
@@ -364,6 +376,7 @@ Analyze AgentGuard's audit trail for attack patterns.
 Verify security configuration is production-appropriate.
 
 **Steps**:
+
 1. List environment variables matching sensitive names (values masked): `API_KEY`, `SECRET`, `PASSWORD`, `TOKEN`, `PRIVATE`, `CREDENTIAL`
 2. Check if `GOPLUS_API_KEY`/`GOPLUS_API_SECRET` are configured (if Web3 features are in use)
 3. Read `~/.agentguard/config.json` — flag `permissive` protection level in production
@@ -374,6 +387,7 @@ Verify security configuration is production-appropriate.
 Check for expired, stale, or over-privileged trust records.
 
 **Steps**:
+
 1. List all records: `node scripts/trust-cli.ts list`
 2. Flag:
    - Expired attestations (`expires_at` in the past)
@@ -421,6 +435,7 @@ Check for expired, stale, or over-privileged trust records.
 **Overall status**: Any CRITICAL → **FAIL**, any HIGH → **WARN**, else **PASS**
 
 After outputting the report, append a summary entry to `~/.agentguard/audit.jsonl`:
+
 ```json
 {"timestamp":"...","event":"patrol","overall_status":"PASS|WARN|FAIL","checks":8,"findings":<count>,"critical":<count>,"high":<count>}
 ```
@@ -483,11 +498,11 @@ Manage skill trust levels using the GoPlus AgentGuard registry.
 
 ### Trust Levels
 
-| Level | Description |
-|-------|-------------|
-| `untrusted` | Default. Requires full review, minimal capabilities |
-| `restricted` | Trusted with capability limits |
-| `trusted` | Full trust (subject to global policies) |
+| Level        | Description                                         |
+| ------------ | --------------------------------------------------- |
+| `untrusted`  | Default. Requires full review, minimal capabilities |
+| `restricted` | Trusted with capability limits                      |
+| `trusted`    | Full trust (subject to global policies)             |
 
 ### Capability Model
 
@@ -503,12 +518,12 @@ web3.tx_policy: 'allow' | 'confirm_high_risk' | 'deny'
 
 ### Presets
 
-| Preset | Description |
-|--------|-------------|
-| `none` | All deny, empty allowlists |
-| `read_only` | Local filesystem read-only |
+| Preset        | Description                                                               |
+| ------------- | ------------------------------------------------------------------------- |
+| `none`        | All deny, empty allowlists                                                |
+| `read_only`   | Local filesystem read-only                                                |
 | `trading_bot` | Exchange APIs (Binance, Bybit, OKX, Coinbase), Web3 chains 1/56/137/42161 |
-| `defi` | All network, multi-chain DeFi (1/56/137/42161/10/8453/43114), no exec |
+| `defi`        | All network, multi-chain DeFi (1/56/137/42161/10/8453/43114), no exec     |
 
 ### Operations
 
@@ -527,6 +542,7 @@ List all trust records with optional filters.
 ### Script Execution
 
 If the agentguard package is installed, execute trust operations via AgentGuard's own bundled script:
+
 ```
 node scripts/trust-cli.ts <subcommand> [args]
 ```
@@ -543,10 +559,10 @@ Set the GoPlus AgentGuard protection level.
 
 ### Protection Levels
 
-| Level | Behavior |
-|-------|----------|
-| `strict` | Block all risky actions — every dangerous or suspicious command is denied |
-| `balanced` | Block dangerous, confirm risky — default level, good for daily use |
+| Level        | Behavior                                                                      |
+| ------------ | ----------------------------------------------------------------------------- |
+| `strict`     | Block all risky actions — every dangerous or suspicious command is denied     |
+| `balanced`   | Block dangerous, confirm risky — default level, good for daily use            |
 | `permissive` | Only block critical threats — for experienced users who want minimal friction |
 
 ### How to Set
@@ -555,7 +571,7 @@ Set the GoPlus AgentGuard protection level.
 2. Write the config to `~/.agentguard/config.json`:
 
 ```json
-{"level": "balanced"}
+{ "level": "balanced" }
 ```
 
 3. Confirm the change to the user
@@ -575,7 +591,15 @@ Display recent security events from the GoPlus AgentGuard audit log.
 The audit log is stored at `~/.agentguard/audit.jsonl`. Each line is a JSON object with:
 
 ```json
-{"timestamp":"...","tool_name":"Bash","tool_input_summary":"rm -rf /","decision":"deny","risk_level":"critical","risk_tags":["DANGEROUS_COMMAND"],"initiating_skill":"some-skill"}
+{
+  "timestamp": "...",
+  "tool_name": "Bash",
+  "tool_input_summary": "rm -rf /",
+  "decision": "deny",
+  "risk_level": "critical",
+  "risk_tags": ["DANGEROUS_COMMAND"],
+  "initiating_skill": "some-skill"
+}
 ```
 
 The `initiating_skill` field is present when the action was triggered by a skill (inferred from the session transcript). When absent, the action came from the user directly.
@@ -641,6 +665,7 @@ Run these checks in parallel where possible. These are **universal agent securit
    - `~/.qclaw/workspace/skills/*/SKILL.md`
 
    For **every** discovered skill, **run `/agentguard scan <skill_path>`** using the scan subcommand logic (24 detection rules). Do NOT skip any skill regardless of how many are found. Collect the scan results (risk level, findings count, risk tags) for each skill.
+
 2. **[REQUIRED] Credential file permissions** (→ feeds Dimension 2: Credential Safety): Platform-aware check — behavior differs by OS:
    - **macOS/Linux**: Run `stat -f '%Lp' <path> 2>/dev/null || stat -c '%a' <path> 2>/dev/null` on `~/.ssh/`, `~/.gnupg/`, and if OpenClaw: on `$OC/openclaw.json`, `$OC/devices/paired.json`. **If the command returns empty output, the directory does not exist — treat as N/A (award full points), do NOT flag as a failure.**
    - **Windows**: `stat` is not available. Use `icacls <path>` to check ACLs instead. If the directory does not exist, treat as N/A (award full points). If it exists, check that the ACL grants access only to the current user (no `Everyone`, `Users`, or `Authenticated Users` with write/read access). Flag as FAIL only if the directory exists AND the ACL is overly permissive.
@@ -651,7 +676,7 @@ Run these checks in parallel where possible. These are **universal agent securit
      - Private keys: `0x[a-fA-F0-9]{64}`, `-----BEGIN.*PRIVATE KEY-----`
      - Mnemonics: sequences of 12+ BIP-39 words, `seed_phrase`, `mnemonic`
      - API keys/tokens: `AKIA[0-9A-Z]{16}`, `gh[pousr]_[A-Za-z0-9_]{36}`, plaintext passwords
-   - **Important**: Use the workspace *root* directory as the scan target (e.g. `~/.qclaw/workspace/`), not a specific agent subdirectory. All sibling `workspace-agent-*` directories must be included.
+   - **Important**: Use the workspace _root_ directory as the scan target (e.g. `~/.qclaw/workspace/`), not a specific agent subdirectory. All sibling `workspace-agent-*` directories must be included.
 4. **[REQUIRED] Network exposure** (→ feeds Dimension 3: Network & System): Run `lsof -i -P -n 2>/dev/null | grep LISTEN` or `ss -tlnp 2>/dev/null` to check for dangerous open ports (Redis 6379, Docker API 2375, MySQL 3306, MongoDB 27017 on 0.0.0.0)
 5. **[REQUIRED] Scheduled tasks audit** (→ feeds Dimension 3: Network & System): Check `crontab -l 2>/dev/null` for suspicious entries containing `curl|bash`, `wget|sh`, or accessing `~/.ssh/`
 6. **[REQUIRED] Environment variable exposure** (→ feeds Dimension 3: Network & System): Run `env` and check for sensitive variable names (`PRIVATE_KEY`, `MNEMONIC`, `SECRET`, `PASSWORD`) — detect presence only, mask values
@@ -681,29 +706,30 @@ If no skills installed: score = **70**, add finding: "No third-party skills inst
 
 Checks for leaked credentials and permission hygiene. Start at **0**, add points for each check that **passes** (total possible = 100):
 
-| Check | Points if PASS | If FAIL → finding |
-|-------|---------------|-------------------|
-| `~/.ssh/` permissions are 700 or stricter | **+25** | "~/.ssh/ permissions too open (<actual>) — should be 700" (HIGH) |
-| `~/.gnupg/` permissions are 700 or stricter | **+15** | "~/.gnupg/ permissions too open (<actual>) — should be 700" (MEDIUM) |
+| Check                                       | Points if PASS | If FAIL → finding                                                    |
+| ------------------------------------------- | -------------- | -------------------------------------------------------------------- |
+| `~/.ssh/` permissions are 700 or stricter   | **+25**        | "~/.ssh/ permissions too open (<actual>) — should be 700" (HIGH)     |
+| `~/.gnupg/` permissions are 700 or stricter | **+15**        | "~/.gnupg/ permissions too open (<actual>) — should be 700" (MEDIUM) |
 
 **Permission check rules (to avoid false positives):**
+
 - **Directory does not exist** (stat/icacls returns empty or "file not found"): Treat as N/A — award the points. A missing `~/.ssh/` or `~/.gnupg/` is not a security risk.
 - **Windows**: Use `icacls` instead of `stat`. Award full points if directory doesn't exist. Flag as FAIL only if directory exists AND ACL grants access to `Everyone`, `Users`, or `Authenticated Users`.
 - **macOS/Linux**: Flag as FAIL only when the directory exists AND stat returns a numeric value AND that value is greater than 700.
-| No private keys (hex 0x..64, PEM) found in skill code or workspace | **+25** | "Plaintext private key found in <location>" (CRITICAL) |
-| No mnemonic phrases found in skill code or workspace | **+20** | "Plaintext mnemonic found in <location>" (CRITICAL) |
-| No API keys/tokens (AWS AKIA.., GitHub gh*_) found in skill code | **+15** | "API key/token found in <location>" (HIGH) |
+  | No private keys (hex 0x..64, PEM) found in skill code or workspace | **+25** | "Plaintext private key found in <location>" (CRITICAL) |
+  | No mnemonic phrases found in skill code or workspace | **+20** | "Plaintext mnemonic found in <location>" (CRITICAL) |
+  | No API keys/tokens (AWS AKIA.., GitHub gh*_) found in skill code | **+15** | "API key/token found in <location>" (HIGH) |
 
 #### Dimension 3: Network & System Exposure (weight: 20%)
 
 Checks for dangerous network exposure and system-level risks. Start at **0**, add points for each check that **passes** (total possible = 100):
 
-| Check | Points if PASS | If FAIL → finding |
-|-------|---------------|-------------------|
-| No high-risk ports exposed on 0.0.0.0 (Redis/Docker/MySQL/MongoDB) | **+35** | "Dangerous port exposed: <service> on 0.0.0.0:<port>" (HIGH) |
-| No suspicious cron jobs (curl\|bash, wget\|sh, accessing ~/.ssh/) | **+30** | "Suspicious cron job: <command>" (HIGH) |
-| No sensitive env vars with dangerous names (PRIVATE_KEY, MNEMONIC) | **+20** | "Sensitive env var exposed: <name>" (MEDIUM) |
-| OpenClaw config files have proper permissions (600) if applicable | **+15** | "OpenClaw config <file> permissions too open" (MEDIUM) |
+| Check                                                              | Points if PASS | If FAIL → finding                                            |
+| ------------------------------------------------------------------ | -------------- | ------------------------------------------------------------ |
+| No high-risk ports exposed on 0.0.0.0 (Redis/Docker/MySQL/MongoDB) | **+35**        | "Dangerous port exposed: <service> on 0.0.0.0:<port>" (HIGH) |
+| No suspicious cron jobs (curl\|bash, wget\|sh, accessing ~/.ssh/)  | **+30**        | "Suspicious cron job: <command>" (HIGH)                      |
+| No sensitive env vars with dangerous names (PRIVATE_KEY, MNEMONIC) | **+20**        | "Sensitive env var exposed: <name>" (MEDIUM)                 |
+| OpenClaw config files have proper permissions (600) if applicable  | **+15**        | "OpenClaw config <file> permissions too open" (MEDIUM)       |
 
 **Example**: If no dangerous ports (+35), no suspicious cron (+30), but env var `PRIVATE_KEY` found (+0), and not OpenClaw (+15 skip, give points) → score = 35 + 30 + 0 + 15 = **80**.
 
@@ -711,21 +737,21 @@ Checks for dangerous network exposure and system-level risks. Start at **0**, ad
 
 Checks whether the agent has active security monitoring. Start at **0**, add points for each check that **passes** (total possible = 100):
 
-| Check | Points if PASS | If FAIL → finding |
-|-------|---------------|-------------------|
-| Security hooks/guards installed (AgentGuard, custom hooks, etc.) | **+40** | "No security hooks installed — actions are unmonitored" (HIGH) |
-| Security audit log exists with recent events | **+30** | "No security audit log — no threat history available" (MEDIUM) |
-| Skills have been security-scanned at least once | **+30** | "Installed skills have never been security-scanned" (MEDIUM) |
+| Check                                                            | Points if PASS | If FAIL → finding                                              |
+| ---------------------------------------------------------------- | -------------- | -------------------------------------------------------------- |
+| Security hooks/guards installed (AgentGuard, custom hooks, etc.) | **+40**        | "No security hooks installed — actions are unmonitored" (HIGH) |
+| Security audit log exists with recent events                     | **+30**        | "No security audit log — no threat history available" (MEDIUM) |
+| Skills have been security-scanned at least once                  | **+30**        | "Installed skills have never been security-scanned" (MEDIUM)   |
 
 #### Dimension 5: Web3 Safety (weight: 15% if applicable)
 
 Only if Web3 usage is detected (env vars like `GOPLUS_API_KEY`, `CHAIN_ID`, `RPC_URL`, or web3-related skills installed). Otherwise `{ "score": null, "na": true }`. Start at **0**, add points for each check that **passes** (total possible = 100):
 
-| Check | Points if PASS | If FAIL → finding |
-|-------|---------------|-------------------|
-| No wallet-draining patterns (approve+transferFrom) in skill code | **+40** | "Wallet-draining pattern detected in <skill>" (CRITICAL) |
-| No unlimited token approval patterns in skill code | **+30** | "Unlimited approval pattern detected in <skill>" (HIGH) |
-| Transaction security API configured (GoPlus or equivalent) | **+30** | "No transaction security API — Web3 calls are unverified" (MEDIUM) |
+| Check                                                            | Points if PASS | If FAIL → finding                                                  |
+| ---------------------------------------------------------------- | -------------- | ------------------------------------------------------------------ |
+| No wallet-draining patterns (approve+transferFrom) in skill code | **+40**        | "Wallet-draining pattern detected in <skill>" (CRITICAL)           |
+| No unlimited token approval patterns in skill code               | **+30**        | "Unlimited approval pattern detected in <skill>" (HIGH)            |
+| Transaction security API configured (GoPlus or equivalent)       | **+30**        | "No transaction security API — Web3 calls are unverified" (MEDIUM) |
 
 #### Composite Score Calculation
 
@@ -736,6 +762,7 @@ composite_score = (code_safety × 0.25) + (credential_safety × 0.25) + (network
 ```
 
 If Web3 Safety is N/A, redistribute its 15% weight proportionally across the other 4 dimensions:
+
 ```
 composite_score = (code_safety × 0.294) + (credential_safety × 0.294) + (network_exposure × 0.235) + (runtime_protection × 0.176)
 ```
@@ -744,12 +771,12 @@ Round to the nearest integer.
 
 **Tier assignment (MUST use these exact thresholds):**
 
-| Score Range | Tier | Label |
-|-------------|------|-------|
-| **90–100** | **S** | JACKED |
-| **70–89** | **A** | Healthy |
-| **50–69** | **B** | Tired |
-| **0–49** | **F** | Critical |
+| Score Range | Tier  | Label    |
+| ----------- | ----- | -------- |
+| **90–100**  | **S** | JACKED   |
+| **70–89**   | **A** | Healthy  |
+| **50–69**   | **B** | Tired    |
+| **0–49**    | **F** | Critical |
 
 **Example**: code_safety=100, credential_safety=80, network_exposure=85, runtime_protection=30, web3=N/A → composite = (100×0.294)+(80×0.294)+(85×0.235)+(30×0.176) = 29.4+23.5+20.0+5.3 = **78** → Tier **A** (Healthy).
 
@@ -809,6 +836,7 @@ Execute the report generator. **Use the `--file` method for cross-platform compa
 
 1. First, write the JSON to a temporary file using the Write tool (e.g. `/tmp/agentguard-checkup-data.json`)
 2. Then run (remember to `cd` into the skill directory first — see "Resolving Script Paths" above):
+
 ```bash
 cd <skill_directory> && node scripts/checkup-report.js --file /tmp/agentguard-checkup-data.json
 ```
@@ -847,12 +875,15 @@ List each HIGH or CRITICAL finding as a plain-language suggestion — no command
 
 Format:
 ```
+
 ⚠️ A few things need your attention:
+
 1. 🔴 <plain description of critical issue and why it matters>
 2. 🟠 <plain description of high issue and why it matters>
-...
+   ...
 
 Reply with the number(s) you'd like help with and I'll walk you through it.
+
 ```
 
 Examples of plain-language descriptions:
@@ -870,7 +901,9 @@ After printing the terminal summary, deliver the HTML report file. You **MUST** 
 Output the following line on its **own line** in your response:
 
 ```
+
 MEDIA:<file_path>
+
 ```
 
 For example: `MEDIA:/tmp/agentguard-checkup-1234567890.html`
@@ -894,13 +927,15 @@ This is how platforms like OpenClaw automatically deliver the file as a Telegram
 
 Regardless of channel, always end with:
 ```
+
 🦞 Stay safe — run /agentguard checkup anytime to get a fresh report.
-```
+
+````
 
 Append a summary entry to `~/.agentguard/audit.jsonl`:
 ```json
 {"timestamp":"...","event":"checkup","composite_score":<n>,"tier":"<grade>","checks":6,"findings":<count>,"skills_scanned":<count>}
-```
+````
 
 ---
 
@@ -918,6 +953,7 @@ When enabled, auto-scan operates in **report-only mode**:
 3. Reports results to stderr (skill name + risk level + risk tags)
 
 Auto-scan **does NOT**:
+
 - Modify the trust registry (no `forceAttest` calls)
 - Write code snippets or evidence details to disk
 - Execute any code from the scanned skills

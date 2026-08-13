@@ -1,6 +1,6 @@
 /**
  * Date Utilities - форматирование дат для кейтеринг-сайта
- * 
+ *
  * Использует date-fns для локализованного отображения дат
  */
 
@@ -18,15 +18,15 @@ import {
   isPast,
   startOfDay,
   endOfDay,
-} from 'date-fns';
-import { ru } from 'date-fns/locale';
+} from "date-fns";
+import { ru } from "date-fns/locale";
 
 /**
  * Форматировать дату в русском формате
  */
-export function formatDate(date: string | Date, pattern: string = 'd MMMM yyyy'): string {
-  const d = typeof date === 'string' ? parseISO(date) : date;
-  if (!isValid(d)) return '';
+export function formatDate(date: string | Date, pattern: string = "d MMMM yyyy"): string {
+  const d = typeof date === "string" ? parseISO(date) : date;
+  if (!isValid(d)) return "";
   return format(d, pattern, { locale: ru });
 }
 
@@ -34,10 +34,10 @@ export function formatDate(date: string | Date, pattern: string = 'd MMMM yyyy')
  * Короткий формат даты (для карточек)
  */
 export function formatDateShort(date: string | Date): string {
-  return formatDate(date, 'dd.MM.yyyy');
+  return formatDate(date, "dd.MM.yyyy");
 }
 
-/** 
+/**
  * Полный формат даты (для статей блога)
  */
 export function formatDateFull(date: string | Date): string {
@@ -48,7 +48,7 @@ export function formatDateFull(date: string | Date): string {
  * Относительная дата ("2 часа назад", "3 дня назад")
  */
 export function timeAgo(date: string | Date): string {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return formatDistanceToNow(d, { addSuffix: true, locale: ru });
 }
 
@@ -56,7 +56,7 @@ export function timeAgo(date: string | Date): string {
  * Проверить что дата в будущем
  */
 export function isUpcoming(date: string | Date): boolean {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return isFuture(d);
 }
 
@@ -64,7 +64,7 @@ export function isUpcoming(date: string | Date): boolean {
  * Проверить что дата в прошлом
  */
 export function hasPassed(date: string | Date): boolean {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return isPast(d) && !isToday(d);
 }
 
@@ -72,7 +72,7 @@ export function hasPassed(date: string | Date): boolean {
  * Дней до события
  */
 export function daysUntil(date: string | Date): number {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return Math.max(0, differenceInDays(d, new Date()));
 }
 
@@ -80,7 +80,7 @@ export function daysUntil(date: string | Date): number {
  * Месяцев до события
  */
 export function monthsUntil(date: string | Date): number {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return differenceInMonths(d, new Date());
 }
 
@@ -88,15 +88,15 @@ export function monthsUntil(date: string | Date): number {
  * Сегодняшняя дата?
  */
 export function isToday(date: string | Date): boolean {
-  const d = typeof date === 'string' ? parseISO(date) : date;
-  return format(new Date(), 'yyyy-MM-dd') === format(d, 'yyyy-MM-dd');
+  const d = typeof date === "string" ? parseISO(date) : date;
+  return format(new Date(), "yyyy-MM-dd") === format(d, "yyyy-MM-dd");
 }
 
 /**
  * Выходной день? (суббота/воскресенье)
  */
 export function isWeekendDay(date: string | Date): boolean {
-  const d = typeof date === 'string' ? parseISO(date) : date;
+  const d = typeof date === "string" ? parseISO(date) : date;
   return isWeekend(d);
 }
 
@@ -132,20 +132,43 @@ export function dayEnd(date: Date): Date {
  * Русские месяцы (для заголовков)
  */
 export const RUSSIAN_MONTHS = [
-  'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-  'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+  "января",
+  "февраля",
+  "марта",
+  "апреля",
+  "мая",
+  "июня",
+  "июля",
+  "августа",
+  "сентября",
+  "октября",
+  "ноября",
+  "декабря",
 ];
 
 export const RUSSIAN_MONTHS_GENITIVE = [
-  'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-  'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+  "января",
+  "февраля",
+  "марта",
+  "апреля",
+  "мая",
+  "июня",
+  "июля",
+  "августа",
+  "сентября",
+  "октября",
+  "ноября",
+  "декабря",
 ];
 
 export const RUSSIAN_WEEKDAYS = [
-  'воскресенье', 'понедельник', 'вторник', 'среда',
-  'четверг', 'пятница', 'суббота'
+  "воскресенье",
+  "понедельник",
+  "вторник",
+  "среда",
+  "четверг",
+  "пятница",
+  "суббота",
 ];
 
-export const RUSSIAN_WEEKDAYS_SHORT = [
-  'вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'
-];
+export const RUSSIAN_WEEKDAYS_SHORT = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];

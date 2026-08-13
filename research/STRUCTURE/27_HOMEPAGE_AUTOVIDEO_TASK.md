@@ -8,6 +8,7 @@ hero — может быть чуть ниже, при скролле вниз. 
 §8) + `04` блок 27 `EventsRecap` (архив Rutube/self-host видео) + блок 14 `EventHero` (video-recap).
 
 **ВЕБ-ОБОСНОВАНИЕ (2026, подтверждено поиском) — выбранный паттерн:**
+
 - **IntersectionObserver** (MDN 2025, zencopa 2025, Ray Silvers 2026): play когда секция
   в зоне видимости (`threshold` ~0.5), **pause когда вышла** — экономит CPU/батарею, не шумит.
 - **Scroll-triggered video storytelling** (renealmanza, Awwwards scrolling): секция-«история»

@@ -1,6 +1,6 @@
-import { SITE, LEGAL } from '@/lib/data';
-import reviews from '@/data/reviews.json';
-import type { Review } from '@/lib/cms-store';
+import { SITE, LEGAL } from "@/lib/data";
+import reviews from "@/data/reviews.json";
+import type { Review } from "@/lib/cms-store";
 
 /**
  * JSON-LD структуры для SEO.
@@ -16,14 +16,24 @@ const REVIEWS: Review[] = reviews as Review[];
 
 /** Convert Russian month-year ("Август 2024") to ISO 8601 ("2024-08-01") for schema.org */
 function normalizeDate(s: string): string {
-  if (!s) return new Date().toISOString().split('T')[0];
+  if (!s) return new Date().toISOString().split("T")[0];
   const MONTHS: Record<string, number> = {
-    Январь: 1, Февраль: 2, Март: 3, Апрель: 4, Май: 5, Июнь: 6,
-    Июль: 7, Август: 8, Сентябрь: 9, Октябрь: 10, Ноябрь: 11, Декабрь: 12,
+    Январь: 1,
+    Февраль: 2,
+    Март: 3,
+    Апрель: 4,
+    Май: 5,
+    Июнь: 6,
+    Июль: 7,
+    Август: 8,
+    Сентябрь: 9,
+    Октябрь: 10,
+    Ноябрь: 11,
+    Декабрь: 12,
   };
   const m = s.match(/^([\u0400-\u04FF]+)\s+(\d{4})$/u);
   if (m && MONTHS[m[1]]) {
-    return `${m[2]}-${String(MONTHS[m[1]]).padStart(2, '0')}-01`;
+    return `${m[2]}-${String(MONTHS[m[1]]).padStart(2, "0")}-01`;
   }
   // Already ISO or unknown format — return as is
   return s;
@@ -33,25 +43,25 @@ function calcAggregateRating() {
   if (!REVIEWS || REVIEWS.length === 0) {
     return null;
   }
-  const rated = REVIEWS.filter((r) =>typeof r.rating === 'number');
+  const rated = REVIEWS.filter((r) => typeof r.rating === "number");
   if (rated.length === 0) return null;
-  const sum = rated.reduce((acc, r) =>acc + (r.rating || 0), 0);
+  const sum = rated.reduce((acc, r) => acc + (r.rating || 0), 0);
   const avg = sum / rated.length;
   return {
-    '@type': 'AggregateRating',
+    "@type": "AggregateRating",
     ratingValue: avg.toFixed(1),
     reviewCount: String(rated.length),
-    bestRating: '5',
-    worstRating: '1',
+    bestRating: "5",
+    worstRating: "1",
   };
 }
 
 export function OrganizationJsonLd() {
   const rating = calcAggregateRating();
-  const data: Record<string, unknown>= {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `https://${SITE.domain}/#organization`,
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `https://${SITE.domain}/#organization`,
     name: SITE.name,
     legalName: LEGAL.operatorFull,
     url: `https://${SITE.domain}`,
@@ -59,45 +69,42 @@ export function OrganizationJsonLd() {
     email: SITE.email,
     image: [`https://${SITE.domain}/images/catering/wedding-01.jpg`],
     address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Санкт-Петербург',
-      addressCountry: 'RU',
+      "@type": "PostalAddress",
+      addressLocality: "Санкт-Петербург",
+      addressCountry: "RU",
       streetAddress: LEGAL.legalAddress,
-      postalCode: '199106',
+      postalCode: "199106",
     },
     geo: {
-      '@type': 'GeoCoordinates',
+      "@type": "GeoCoordinates",
       latitude: 59.931038,
       longitude: 30.276615,
     },
-    hasMap: 'https://yandex.ru/maps/?ll=30.276615,59.931038&z=17',
-    priceRange: '₽₽₽',
+    hasMap: "https://yandex.ru/maps/?ll=30.276615,59.931038&z=17",
+    priceRange: "₽₽₽",
     taxID: LEGAL.inn,
-    foundingDate: '2007',
-    areaServed: 'Санкт-Петербург и Ленинградская область',
-    sameAs: [
-      'https://vk.com/nilovcatering',
-      'https://t.me/nilovcatering',
-    ],
+    foundingDate: "2007",
+    areaServed: "Санкт-Петербург и Ленинградская область",
+    sameAs: ["https://vk.com/nilovcatering", "https://t.me/nilovcatering"],
     openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '09:00',
-      closes: '21:00',
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "09:00",
+      closes: "21:00",
     },
   };
 
   if (rating) {
     data.aggregateRating = rating;
     // Добавляем до 5 свежих отзывов как Review entities
-    data.review = REVIEWS.slice(0, 5).map((r) =>({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: r.clientName },
+    data.review = REVIEWS.slice(0, 5).map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.clientName },
       reviewRating: {
-        '@type': 'Rating',
+        "@type": "Rating",
         ratingValue: String(r.rating || 5),
-        bestRating: '5',
-        worstRating: '1',
+        bestRating: "5",
+        worstRating: "1",
       },
       datePublished: normalizeDate(r.date),
       reviewBody: r.quote,
@@ -105,26 +112,38 @@ export function OrganizationJsonLd() {
     }));
   }
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  );
 }
 
 export function MenuJsonLd() {
   const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Menu',
-    name: 'Меню кейтеринга NiloV',
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: "Меню кейтеринга NiloV",
     url: `https://${SITE.domain}/menu`,
     hasMenuSection: [
-      { '@type': 'MenuSection', name: 'Фуршет', url: `https://${SITE.domain}/menu/furshet` },
-      { '@type': 'MenuSection', name: 'Банкет', url: `https://${SITE.domain}/menu/banquet` },
-      { '@type': 'MenuSection', name: 'Кофе-брейк', url: `https://${SITE.domain}/menu/coffee-break` },
-      { '@type': 'MenuSection', name: 'Халяль', url: `https://${SITE.domain}/menu/halal` },
-      { '@type': 'MenuSection', name: 'Веган', url: `https://${SITE.domain}/menu/vegan` },
-      { '@type': 'MenuSection', name: 'Без глютена', url: `https://${SITE.domain}/menu/gluten-free` },
+      { "@type": "MenuSection", name: "Фуршет", url: `https://${SITE.domain}/menu/furshet` },
+      { "@type": "MenuSection", name: "Банкет", url: `https://${SITE.domain}/menu/banquet` },
+      {
+        "@type": "MenuSection",
+        name: "Кофе-брейк",
+        url: `https://${SITE.domain}/menu/coffee-break`,
+      },
+      { "@type": "MenuSection", name: "Халяль", url: `https://${SITE.domain}/menu/halal` },
+      { "@type": "MenuSection", name: "Веган", url: `https://${SITE.domain}/menu/vegan` },
+      {
+        "@type": "MenuSection",
+        name: "Без глютена",
+        url: `https://${SITE.domain}/menu/gluten-free`,
+      },
     ],
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  );
 }
 
 // FAQPageJsonLd удалён — дублировал JSON-LD, который генерируется на странице /faq напрямую.
@@ -132,19 +151,21 @@ export function MenuJsonLd() {
 
 export function ServiceJsonLd() {
   const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': 'Кейтеринг под ключ',
-    'provider': { '@type': 'LocalBusiness', '@id': `https://${SITE.domain}/#organization` },
-    'areaServed': 'Санкт-Петербург и Ленинградская область',
-    'serviceType': 'Кейтеринг, выездное ресторанное обслуживание',
-    'offers': {
-      '@type': 'AggregateOffer',
-      'priceCurrency': 'RUB',
-      'lowPrice': '390',
-      'highPrice': '9950',
-      'offerCount': '26',
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Кейтеринг под ключ",
+    provider: { "@type": "LocalBusiness", "@id": `https://${SITE.domain}/#organization` },
+    areaServed: "Санкт-Петербург и Ленинградская область",
+    serviceType: "Кейтеринг, выездное ресторанное обслуживание",
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "RUB",
+      lowPrice: "390",
+      highPrice: "9950",
+      offerCount: "26",
     },
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  );
 }

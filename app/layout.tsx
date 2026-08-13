@@ -1,41 +1,57 @@
-import type { Metadata } from 'next';
-import { cormorant, inter, jetbrains } from '@/lib/fonts';
-import { SITE } from '@/lib/data';
-import { headers } from 'next/headers';
-import SmoothScrollProvider from '@/components/effects/SmoothScrollProvider';
-import TextSizeToggle from '@/components/effects/TextSizeToggle';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import MobileBottomNav from '@/components/layout/MobileBottomNav';
-import AnnouncementBar from '@/components/layout/AnnouncementBar';
-import CookieBanner from '@/components/layout/CookieBanner';
-import LiveChatWidget from '@/components/layout/LiveChatWidget';
-import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
-import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
-import ScrollProgress from '@/components/common/ScrollProgress';
-import ScrollReveal from '@/components/effects/ScrollReveal';
-import { ClientLayout } from '@/components/layout/ClientLayout';
-import PricingWrapper from '@/components/layout/PricingWrapper';
-import { OrganizationJsonLd, ServiceJsonLd, MenuJsonLd } from './JsonLd';
-import Analytics from '@/components/layout/Analytics';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
-import { getPricing } from '@/lib/cms';
-import './globals.css';
+import type { Metadata } from "next";
+import { cormorant, inter, jetbrains } from "@/lib/fonts";
+import { SITE } from "@/lib/data";
+import { headers } from "next/headers";
+import SmoothScrollProvider from "@/components/effects/SmoothScrollProvider";
+import TextSizeToggle from "@/components/effects/TextSizeToggle";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import CookieBanner from "@/components/layout/CookieBanner";
+import LiveChatWidget from "@/components/layout/LiveChatWidget";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
+import ScrollProgress from "@/components/common/ScrollProgress";
+import ScrollReveal from "@/components/effects/ScrollReveal";
+import { ClientLayout } from "@/components/layout/ClientLayout";
+import PricingWrapper from "@/components/layout/PricingWrapper";
+import { OrganizationJsonLd, ServiceJsonLd, MenuJsonLd } from "./JsonLd";
+import Analytics from "@/components/layout/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { getPricing } from "@/lib/cms";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
-  title: { default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`, template: `%s — ${SITE.name}` },
-  description: 'Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.',
-  keywords: ['кейтеринг', 'Санкт-Петербург', 'банкет', 'фуршет', 'кофе-брейк', 'свадьба', 'корпоратив'],
-  alternates: { languages: { 'ru': '/', 'x-default': '/' } },
+  title: {
+    default: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`,
+    template: `%s — ${SITE.name}`,
+  },
+  description:
+    "Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.",
+  keywords: [
+    "кейтеринг",
+    "Санкт-Петербург",
+    "банкет",
+    "фуршет",
+    "кофе-брейк",
+    "свадьба",
+    "корпоратив",
+  ],
+  alternates: { languages: { ru: "/", "x-default": "/" } },
   openGraph: {
     type: "website",
     locale: "ru_RU",
     siteName: SITE.name,
     url: `https://${SITE.domain}`,
   },
-  twitter: { card: 'summary_large_image', title: `${SITE.name} — кейтеринг в СПб`, description: 'Фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽/гость. С 2007 года.' },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — кейтеринг в СПб`,
+    description: "Фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽/гость. С 2007 года.",
+  },
   robots: { index: true, follow: true },
 };
 
@@ -43,12 +59,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const cmsPricing = await getPricing();
   // Read locale from middleware header (set for /en routes)
   const headersList = await headers();
-  const contentLang = headersList.get('x-content-lang');
-  const htmlLang = contentLang || 'ru';
+  const contentLang = headersList.get("x-content-lang");
+  const htmlLang = contentLang || "ru";
 
   return (
-    <html lang={htmlLang} className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
-      <body className="min-h-screen bg-background text-foreground antialiased">
+    <html
+      lang={htmlLang}
+      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
+      <body className="bg-background text-foreground min-h-screen antialiased">
         <SkipLink />
         <link rel="preconnect" href={`https://${SITE.domain}`} />
         <link rel="preconnect" href="https://yandex.ru" />
@@ -83,11 +102,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SpeedInsights />
         <noscript>
           <style>{`[style*="opacity:0"], [style*="opacity: 0"] { opacity: 1 !important; filter: none !important; transform: none !important; }`}</style>
-          <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
+          <div
+            style={{ padding: "2rem", textAlign: "center", fontFamily: "system-ui, sans-serif" }}
+          >
             <h1>NiloV Catering — Кейтеринг в Санкт-Петербурге</h1>
             <p>Для работы сайта необходимо включить JavaScript.</p>
-            <p><strong>📞 Позвоните:</strong> <a href="tel:+78129195911">+7 (812) 919-59-11</a></p>
-            <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/78129195911">Написать нам</a></p>
+            <p>
+              <strong>📞 Позвоните:</strong> <a href="tel:+78129195911">+7 (812) 919-59-11</a>
+            </p>
+            <p>
+              <strong>💬 WhatsApp:</strong> <a href="https://wa.me/78129195911">Написать нам</a>
+            </p>
           </div>
         </noscript>
       </body>
@@ -98,18 +123,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 /** SkipLink — WCAG 2.2 (33_UXSIM_ANNA) */
 function SkipLink() {
   return (
-    <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-gold-text focus:text-white focus:px-4 focus:py-3 focus:rounded-lg focus:shadow-lg no-underline">
+    <a
+      href="#main"
+      className="focus:bg-gold-text sr-only no-underline focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-lg focus:px-4 focus:py-3 focus:text-white focus:shadow-lg"
+    >
       Перейти к содержимому
     </a>
   );
 }
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  viewportFit: 'cover',
+  viewportFit: "cover",
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
-    { media: '(prefers-color-scheme: light)', color: '#faf8f3' },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#faf8f3" },
   ],
 };

@@ -7,6 +7,7 @@
 ---
 
 ## Что было в начале сессии
+
 - 3 «кашевых» файла в `research/`:
   - `CATERING_WEBSITE_RESEARCH_V3.md` (5307 строк, 38 разделов) — исследование рынка/UX/Awwwards/tech.
   - `PRODUCT_BLUEPRINT_V3 (2).md` (3061 строка, 24 главы) — продукт-блупринт, страницы, калькулятор, стек, фазы.
@@ -14,6 +15,7 @@
 - В репозитории УЖЕ 22 реальные страницы (`app/`: `/`, `/menu`, `/services/*`, `/gallery`, `/constructor`, `/quote`, `/contact`, `/pricing`, `/about`, `/team`, `/testimonials`, `/faq`, `/blog`, `/offer`, `/privacy`, `/terms`, `/cookies` …). То есть «каша» не в архитектуре страниц, а в отсутствии ЕДИНОЙ визуальной системы и единой библиотеки блоков.
 
 ## Решения, зафиксированные в сессии (ДО меня)
+
 1. **Визуальное направление — СВЕТЛОЕ, воздушное (override blueprint §1.8 «тёмный»).**
    - Blueprint §1.8 заложил тёмный фон `#0A0A0A` + gold + burgundy. Заказчик хочет светлый.
    - Это FOUNDATION-конфликт — решён ДО детализации. См. `01_VISUAL_DNA.md`.
@@ -22,6 +24,7 @@
 4. **Делаем структуру, потом блоки по одному** (разбивка на изолированные контексты — чтобы не деградировать как в прошлых попытках «сделать всё за раз»).
 
 ## Почему НЕ создаём отдельный skill `web-structure-architect`
+
 В процессе сессии встал вопрос «сохранить методологию как skill». Решено: НЕ плодить дубликат.
 Глобальный `website-structure-planner` (~/.hermes/skills/web-development/) УЖЕ покрывает эту задачу
 («messy research → coherent structure», benchmark-driven, block library, executor-шаблон). Используем его.
@@ -29,17 +32,18 @@
 
 ## Что KEEP из исходников / что CHANGE / что ADD
 
-| Аспект | KEEP (из файлов) | CHANGE / OVERRIDE | ADD (из бенчмарка) |
-|---|---|---|---|
-| Стек | Next.js 16 + React 19 + Tailwind v4 + Framer Motion + Lenis + shadcn (gsap НЕТ в deps — reveal/parallax на Framer) | — | ничего (актуально) |
-| Типографика | **Cormorant** + Inter + JetBrains Mono, шкала 1.333 | — | — |
-| Цвет | gold `#C9A961` / burgundy `#722F37` как АКЦЕНТЫ | фон `#0A0A0A` → **отменён**, светлый ivory `#FAF7F2` | earthy `#7C6A55`, контрастный ink `#1C1815` |
-| Меню/цены | все тарифы NILOV_UNIFIED_MENU | — | ingredient-storytelling на hover (5s video+КБЖУ+origin) |
-| Страницы | 22 роута | — | AwardsStrip, LiveInstagram, StickyMobileCTA, AvailabilityCalendar |
-| Motion | Framer Motion reveals (whileInView), magnetic CTA (MagneticButton УЖЕ есть) | — | Ken Burns, marquee trust-bar, parallax masonry, count-up price |
-| Конверсия | 5 шагов (blueprint §1.4) | — | «Thirsty Click» sticky CTA, urgency через календарь |
+| Аспект      | KEEP (из файлов)                                                                                                   | CHANGE / OVERRIDE                                    | ADD (из бенчмарка)                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| Стек        | Next.js 16 + React 19 + Tailwind v4 + Framer Motion + Lenis + shadcn (gsap НЕТ в deps — reveal/parallax на Framer) | —                                                    | ничего (актуально)                                                |
+| Типографика | **Cormorant** + Inter + JetBrains Mono, шкала 1.333                                                                | —                                                    | —                                                                 |
+| Цвет        | gold `#C9A961` / burgundy `#722F37` как АКЦЕНТЫ                                                                    | фон `#0A0A0A` → **отменён**, светлый ivory `#FAF7F2` | earthy `#7C6A55`, контрастный ink `#1C1815`                       |
+| Меню/цены   | все тарифы NILOV_UNIFIED_MENU                                                                                      | —                                                    | ingredient-storytelling на hover (5s video+КБЖУ+origin)           |
+| Страницы    | 22 роута                                                                                                           | —                                                    | AwardsStrip, LiveInstagram, StickyMobileCTA, AvailabilityCalendar |
+| Motion      | Framer Motion reveals (whileInView), magnetic CTA (MagneticButton УЖЕ есть)                                        | —                                                    | Ken Burns, marquee trust-bar, parallax masonry, count-up price    |
+| Конверсия   | 5 шагов (blueprint §1.4)                                                                                           | —                                                    | «Thirsty Click» sticky CTA, urgency через календарь               |
 
 ## Карта документов (этой папки)
+
 - `01_VISUAL_DNA.md` — светлая Visual Bible (палитра/типо/движение), override §1.8.
 - `02_IA.md` — sitemap: 22 существующих роута, свёрнутые в КЛИЕНТСКУЮ логику (не департаментскую). **Типографика: Cormorant + Inter + JetBrains Mono** (НЕ Playfair — см. `01` §3, `06` §2, `44`).
 - `03_JOURNEYS.md` — 5 персон, 4–5 сценариев, конверсионная логика по блокам.
@@ -79,4 +83,5 @@
 > См. связанный skill `self-critic-system` (software-development/) — переиспользуемая система независимой критики.
 
 ## Следующий шаг (после выдачи структуры)
+
 ОСТАНОВИТЬСЯ и спросить пользователя, прежде чем собирать. Сборка = пофазно, блок за блоком, через executor-субагентов.

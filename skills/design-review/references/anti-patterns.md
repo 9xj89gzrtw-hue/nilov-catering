@@ -1,12 +1,14 @@
 # Anti-Patterns Reference
 
 ## Strategic Mistakes
+
 - Centrifugal design: choices made to feel different or branded rather than clearer or better.
 - Decoration used to compensate for weak structure.
 - New patterns invented when the product already has a good one.
 - Polishing a bad foundation instead of rebuilding the layout.
 
 ## Typography Mistakes
+
 - Inter, Roboto, Arial, or system font defaults as unexamined autopilot. agents reach for these every time. pick a distinctive font that matches the product's personality. there are thousands of fonts — using the default is a non-decision.
 - Same font on every project. if two different products use the same typeface, one of them chose wrong.
 - Mushy scales with too many neighboring sizes.
@@ -15,6 +17,7 @@
 - Too many font families fighting for attention (but two is usually right: one display + one body).
 
 ## Color Mistakes
+
 - Purple gradients, cyan glows, and generic AI-saas palettes.
 - Blue everywhere as the default accent.
 - Gray text on colored backgrounds.
@@ -23,6 +26,7 @@
 - Color doing the job typography and spacing should be doing.
 
 ## Layout Mistakes
+
 - Bootstrap cards as a default answer.
 - Card nesting.
 - Identical card grids repeated across the screen.
@@ -39,11 +43,13 @@
 - zinc/slate as the only background palette — agents default to this every time.
 
 ## Demo/Meta-Navigation Mistakes
+
 - State toggles (happy/loading/empty/error) rendered inline as part of the UI — they must be floating overlays, clearly separate from the actual product surface.
 - Context briefs or design notes leaking into the rendered page (e.g. "This should feel like..." appearing as UI text).
 - Debug controls styled to match the product UI — they should look like developer tools, not product features.
 
 ## Interaction Mistakes
+
 - Missing hover, focus, or active states.
 - Bounce or elastic easing.
 - Hover-only affordances on touch-first surfaces.
@@ -52,6 +58,7 @@
 - Generic confirmation dialogs where undo would be better.
 
 ## Craft Mistakes
+
 - Colored icon circles that weren't in the brief.
 - Placeholder copy left in place.
 - Random shadows, glows, and blur used as "polish."
@@ -60,6 +67,7 @@
 - New CSS tokens invented instead of using the system that's already there.
 
 ## Context Mistakes
+
 - Using Stripe/Linear/Vercel as default visual references when the prompt names a different company.
 - Treating a named company as mere theming (slap a logo on a generic layout) instead of a visual source.
 - Screens that could swap company names and still "work" — no visual specificity to the premise.
@@ -73,6 +81,7 @@
 - Borrowing visual language from a product unrelated to the one named in the prompt.
 
 ## Responsive Mistakes
+
 - Desktop table simply squeezed onto mobile with tiny text.
 - Sidebar still occupying width on small screens instead of collapsing to hamburger/bottom nav.
 - Chips, tags, or badges overflowing their containers on narrow widths.
@@ -82,6 +91,7 @@
 - Nav that disappears on mobile with no replacement (hamburger, bottom tabs, etc.).
 
 ## Aaron-Specific Red Flags
+
 - Anything that feels like AI slop.
 - Anything crowded.
 - Anything loud without being sharp.

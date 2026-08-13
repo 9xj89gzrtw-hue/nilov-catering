@@ -78,6 +78,7 @@ description: Use before any creative work - creating features, building componen
 ## 设计之后
 
 **文档：**
+
 - 将经验证的设计（规格）写到 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
 - Commit 设计文档到 git
 
@@ -99,6 +100,7 @@ description: Use before any creative work - creating features, building componen
 等主人回复。如果请求变更，做修改并重新运行规格审查循环。只有在主人批准后才能继续。
 
 **实现：**
+
 - 调用 `superpowers-writing-plans` 技能创建详细实现计划
 - 不要调用其他技能。writing-plans 是下一步。
 

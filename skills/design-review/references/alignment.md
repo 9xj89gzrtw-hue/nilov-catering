@@ -9,6 +9,7 @@ alignment is what separates "an agent built this" from "a designer built this." 
 ## Alignment Principles
 
 ### everything aligns to something
+
 every element on the page should share an edge or center with at least one other element. nothing floats randomly.
 
 - text blocks in different sections should share the same left edge
@@ -17,12 +18,15 @@ every element on the page should share an edge or center with at least one other
 - icons in a list should align to a consistent vertical axis
 
 ### fewer alignment points = cleaner layout
+
 a page with 3 alignment points (left margin, content center, right margin) looks composed. a page with 12 different left edges looks chaotic.
 
 count your alignment rails. if you have more than 4-5 on a page, something is wrong.
 
 ### the grid is the skeleton
+
 pick a grid and commit to it. common choices:
+
 - 12-column grid with consistent gutters (most flexible)
 - 4-column at mobile, 8 at tablet, 12 at desktop
 - simple max-width container with consistent padding
@@ -32,25 +36,32 @@ don't: mix a 3-column section with a 4-column section with a full-bleed section 
 ## Symmetry
 
 ### symmetry = stability
+
 symmetrical layouts feel balanced, trustworthy, professional. use for:
+
 - dashboards and data-heavy pages
 - forms and settings
 - admin tools and internal products
 - anywhere stability matters more than personality
 
 ### asymmetry = energy
+
 asymmetrical layouts feel dynamic, editorial, opinionated. use for:
+
 - landing pages and marketing
 - portfolios and case studies
 - anywhere you want the layout itself to communicate
 
 ### don't accidentally mix them
+
 a page that's 90% symmetrical with one randomly asymmetrical section looks broken, not intentional. either commit to the grid or break it with purpose.
 
 ## Spacing Consistency
 
 ### the 4px/8px base unit
+
 pick a base unit (4px or 8px) and derive ALL spacing from it:
+
 - 4px: tight, detail-level (icon to label gap)
 - 8px: small component spacing
 - 12px: compact internal padding
@@ -62,6 +73,7 @@ pick a base unit (4px or 8px) and derive ALL spacing from it:
 - 80-96px: major page divisions
 
 ### spacing communicates grouping
+
 items that are closer together are perceived as related. items with more space between them are perceived as separate groups. this is Gestalt proximity — the most powerful layout tool.
 
 - related items: 8-16px apart
@@ -72,6 +84,7 @@ items that are closer together are perceived as related. items with more space b
 don't: use the same spacing everywhere. if everything is 16px apart, nothing groups.
 
 ### vertical rhythm
+
 body text should sit on a baseline grid. line-height should be a multiple of your base unit. this creates a subtle rhythm that makes the page feel "right" even if nobody can articulate why.
 
 - body text: 16px font, 24px line-height (1.5)
@@ -94,6 +107,7 @@ body text should sit on a baseline grid. line-height should be a multiple of you
 squint at the page. if you can see clean vertical and horizontal lines running through the layout, alignment is good. if elements look scattered or wobbly, something is off.
 
 draw invisible lines:
+
 - does the left edge of the main heading align with the left edge of the body text below it?
 - do card borders align with each other in a grid?
 - do section titles all start at the same x-position?
@@ -136,17 +150,28 @@ mismatched radii on nested elements is one of the most common "feels off" tells.
 
 ```css
 /* wrong — same radius on both */
-.outer { border-radius: 12px; padding: 16px; }
-.inner { border-radius: 12px; }
+.outer {
+  border-radius: 12px;
+  padding: 16px;
+}
+.inner {
+  border-radius: 12px;
+}
 
 /* right — concentric */
-.outer { border-radius: 28px; padding: 16px; }
-.inner { border-radius: 12px; }
+.outer {
+  border-radius: 28px;
+  padding: 16px;
+}
+.inner {
+  border-radius: 12px;
+}
 ```
 
 ## Optical vs Geometric Alignment
 
 geometric centering (equal pixels on all sides) sometimes LOOKS wrong, even though it's mathematically correct. this happens with:
+
 - play buttons / triangles inside circles (the triangle's visual weight is off-center)
 - icons next to text (icon's visual mass doesn't match text baseline)
 - asymmetric shapes in symmetric containers
@@ -178,7 +203,9 @@ use layered transparent box-shadows instead of solid borders for depth between s
 border: 1px solid #e5e7eb;
 
 /* use */
-box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 1px 1px rgba(0,0,0,0.02);
+box-shadow:
+  0 1px 2px rgba(0, 0, 0, 0.04),
+  0 1px 1px rgba(0, 0, 0, 0.02);
 ```
 
 layer 2-3 shadows at different offsets and opacities for natural depth. reserve solid borders for interactive states (focus rings, selected items) where the hard edge communicates state, not decoration.

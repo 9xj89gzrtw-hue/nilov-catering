@@ -3,21 +3,23 @@
 ## HTTP Methods at a Glance
 
 | Method | Safe | Idempotent | Request Body | Response Body |
-|--------|------|------------|--------------|---------------|
-| GET | Yes | Yes | No | Yes |
-| POST | No | No | Yes | Yes |
-| PUT | No | Yes | Yes | Yes |
-| PATCH | No | No | Yes | Yes |
-| DELETE | No | Yes | No | No |
+| ------ | ---- | ---------- | ------------ | ------------- |
+| GET    | Yes  | Yes        | No           | Yes           |
+| POST   | No   | No         | Yes          | Yes           |
+| PUT    | No   | Yes        | Yes          | Yes           |
+| PATCH  | No   | No         | Yes          | Yes           |
+| DELETE | No   | Yes        | No           | No            |
 
 ## Status Codes Cheat Sheet
 
 ### 2xx Success
+
 - **200 OK** - GET, PUT, PATCH success
 - **201 Created** - POST success (include Location header)
 - **204 No Content** - DELETE success
 
 ### 4xx Client Error
+
 - **400 Bad Request** - Malformed request syntax
 - **401 Unauthorized** - Missing or invalid authentication
 - **403 Forbidden** - Authenticated but not authorized
@@ -27,6 +29,7 @@
 - **429 Too Many Requests** - Rate limited
 
 ### 5xx Server Error
+
 - **500 Internal Server Error** - Unexpected error
 - **503 Service Unavailable** - Temporarily down
 
@@ -77,6 +80,7 @@ POST   /api/orders/{id}/cancel → Action on resource
 ## Standard Headers
 
 ### Request
+
 ```
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -85,6 +89,7 @@ Idempotency-Key: <unique-id>
 ```
 
 ### Response
+
 ```
 Content-Type: application/json
 Location: /api/resources/123       (after 201)
@@ -134,6 +139,7 @@ ETag: "33a64df551"
 ## GraphQL Quick Reference
 
 ### Query
+
 ```graphql
 query GetUser($id: ID!) {
   user(id: $id) {
@@ -155,6 +161,7 @@ query GetUser($id: ID!) {
 ```
 
 ### Mutation
+
 ```graphql
 mutation CreateUser($input: CreateUserInput!) {
   createUser(input: $input) {
@@ -172,12 +179,12 @@ mutation CreateUser($input: CreateUserInput!) {
 
 ## Common Mistakes to Avoid
 
-| Wrong | Right |
-|-------|-------|
-| `POST /getUsers` | `GET /users` |
-| `GET /createUser` | `POST /users` |
-| `POST /users/delete/123` | `DELETE /users/123` |
-| `/user/123` | `/users/123` (plural) |
-| `/api/users/123/orders/456/items` | Max 2 levels |
-| 200 for everything | Correct status codes |
-| Different error formats | Consistent structure |
+| Wrong                             | Right                 |
+| --------------------------------- | --------------------- |
+| `POST /getUsers`                  | `GET /users`          |
+| `GET /createUser`                 | `POST /users`         |
+| `POST /users/delete/123`          | `DELETE /users/123`   |
+| `/user/123`                       | `/users/123` (plural) |
+| `/api/users/123/orders/456/items` | Max 2 levels          |
+| 200 for everything                | Correct status codes  |
+| Different error formats           | Consistent structure  |

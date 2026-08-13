@@ -1,55 +1,55 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function WowCase() {
   return (
-    <section className="py-16 md:py-20 bg-secondary/40">
+    <section className="bg-secondary/40 py-16 md:py-20">
       <div className="container-site max-w-4xl">
-        <div className="rounded-2xl overflow-hidden border border-line bg-card shadow-lg">
+        <div className="border-line bg-card overflow-hidden rounded-2xl border shadow-lg">
           {/* Photo */}
-          <div className="aspect-[16/9] relative overflow-hidden bg-secondary">
+          <div className="bg-secondary relative aspect-[16/9] overflow-hidden">
             <picture>
               <source srcSet="/images/catering/corporate-04.jpg" type="image/jpeg" />
               <img
                 src="/images/catering/corporate-04.jpg"
                 alt="Корпоративный фестиваль 800 человек — 2 дня"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
             </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
             <div className="absolute bottom-4 left-6 text-white">
-              <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Кейс месяца</p>
-              <h2 className="font-heading text-2xl md:text-3xl font-medium">800 гостей × 2 дня</h2>
+              <p className="mb-1 text-xs tracking-wider uppercase opacity-80">Кейс месяца</p>
+              <h2 className="font-heading text-2xl font-medium md:text-3xl">800 гостей × 2 дня</h2>
               <p className="text-sm opacity-90">Корпоративный фестиваль в «Экспофоруме»</p>
             </div>
           </div>
 
           {/* Content */}
           <div className="p-6 md:p-8">
-            <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            <div className="mb-6 grid gap-4 sm:grid-cols-3">
               <div>
-                <p className="text-3xl font-heading font-medium text-gold-text">800</p>
-                <p className="text-xs text-muted-foreground">гостей в день</p>
+                <p className="font-heading text-gold-text text-3xl font-medium">800</p>
+                <p className="text-muted-foreground text-xs">гостей в день</p>
               </div>
               <div>
-                <p className="text-3xl font-heading font-medium text-gold-text">2</p>
-                <p className="text-xs text-muted-foreground">дня фестиваля</p>
+                <p className="font-heading text-gold-text text-3xl font-medium">2</p>
+                <p className="text-muted-foreground text-xs">дня фестиваля</p>
               </div>
               <div>
-                <p className="text-3xl font-heading font-medium text-gold-text">12</p>
-                <p className="text-xs text-muted-foreground">шоу-станций</p>
+                <p className="font-heading text-gold-text text-3xl font-medium">12</p>
+                <p className="text-muted-foreground text-xs">шоу-станций</p>
               </div>
             </div>
 
-            <p className="text-sm text-muted-foreground mb-4">
-              Май 2025. Конгресс-холл «Экспофорум», СПб. Полный банкет-сервис: 3 кухни, 40 официантов,
-              4 бармена, 2 сомелье. Меню из 124 блюда: от канапе до авторских десертов.
+            <p className="text-muted-foreground mb-4 text-sm">
+              Май 2025. Конгресс-холл «Экспофорум», СПб. Полный банкет-сервис: 3 кухни, 40
+              официантов, 4 бармена, 2 сомелье. Меню из 124 блюда: от канапе до авторских десертов.
               SLA ±15 минут, страхование 30 млн ₽.
             </p>
 
             <Link
               href="/events/recap"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-gold-text hover:underline"
+              className="text-gold-text inline-flex items-center gap-2 text-sm font-semibold hover:underline"
             >
               Смотреть все кейсы и видео →
             </Link>

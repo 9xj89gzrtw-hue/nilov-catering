@@ -23,8 +23,9 @@
 Заменён на «AI-слой (внутренняя спецификация, не публично)» + явная помета «внутренний, НЕ публичный».
 
 ## Результат
+
 Гейты `41` ШАГ 5.9 (175 per-format ratio, 179/183 SLA в шаге 6) стали валидны. Закрыты R1/R2/R4 + дубли MIN_GUESTS + рассинхрон имён. **НЕ тронуты** (вне scope задания): R3 (COLD_CHAIN вне КАД), R5 (line-item vs расшифровка), R6/R7/R8/R9 — требуют правок `04`/`41`, не входили в 6 пунктов.
 
 **Оценка оси SERVICE:** ~8.5/10 (ядро персонала исправлено, SLA-гейт валиден; остатки R3/R5-R9 — в других файлах).
 
-*Связано: `07_CALCULATOR_SPEC.md`, `08_CONSTRUCTOR_SPEC.md`, `41_BUILD_CHECKLIST.md`, `ITER4_RECHECK_SERVICE.md`.*
+_Связано: `07_CALCULATOR_SPEC.md`, `08_CONSTRUCTOR_SPEC.md`, `41_BUILD_CHECKLIST.md`, `ITER4_RECHECK_SERVICE.md`._

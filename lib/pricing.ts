@@ -1,8 +1,8 @@
 // Единая функция расчёта стоимости — используется калькулятором И конструктором
 // Источник: 07_CALCULATOR_SPEC (канон цен NILOV_UNIFIED_MENU)
-import type { Format, Tier, AddOn } from './types';
-import type { PricingData } from './pricing-types';
-import { DEFAULT_PRICING } from './pricing-types';
+import type { Format, Tier, AddOn } from "./types";
+import type { PricingData } from "./pricing-types";
+import { DEFAULT_PRICING } from "./pricing-types";
 import {
   STAFF_RATE,
   STAFF_RATIO,
@@ -16,7 +16,7 @@ import {
   EARLY_BOOKING_90,
   GAMMA_MAX,
   CHEF_HOURLY_RATE_BASE,
-} from './constants';
+} from "./constants";
 
 export interface CalcOpts {
   discounts?: boolean;
@@ -48,9 +48,9 @@ export interface CalcResult {
 export function calcTotal(
   guests: number | null,
   format: Format,
-  tier: Tier | 'custom',
+  tier: Tier | "custom",
   addons: AddOn[] = [],
-  opts: CalcOpts = {},
+  opts: CalcOpts = {}
 ): CalcResult {
   const prices = opts.pricing?.pricePerGuest || DEFAULT_PRICING.pricePerGuest;
 
@@ -74,27 +74,30 @@ export function calcTotal(
 
   // 1. База
   let base: number;
-  if (tier === 'custom' && opts.items && opts.items.length > 0) {
+  if (tier === "custom" && opts.items && opts.items.length > 0) {
     base = opts.items.reduce((sum, item) => sum + item.pricePerGuest * item.qty * g, 0);
   } else {
-    const t = tier === 'custom' ? 'standard' : tier;
+    const t = tier === "custom" ? "standard" : tier;
     const price = prices[format]?.[t] ?? 0;
     base = price * effectiveGuests;
   }
 
   // 2. Сервис-норма (заложена в базу, здесь для прозрачности)
   const ratio = STAFF_RATIO[format] ?? 20;
-    const staffCount = Math.ceil(g / ratio);
-    const service = format === 'chef-at-home'
-    ? 0
-    : (STAFF_RATE[format] * SERVICE_STAFF_HOURS * staffCount + COORDINATOR_FLAT + SETUP_RATE * SETUP_HOURS);
+  const staffCount = Math.ceil(g / ratio);
+  const service =
+    format === "chef-at-home"
+      ? 0
+      : STAFF_RATE[format] * SERVICE_STAFF_HOURS * staffCount +
+        COORDINATOR_FLAT +
+        SETUP_RATE * SETUP_HOURS;
 
   // 3. Скидки (combined: gamma + early - gamma*early)
   let discount = 0;
   if (opts.discounts !== false) {
     // Gamma-скидка: 0.15*(N-10)/(150+(N-10)), max 15%
     if (g > 10) {
-      const gamma = Math.min(GAMMA_MAX, 0.15 * (g - 10) / (150 + (g - 10)));
+      const gamma = Math.min(GAMMA_MAX, (0.15 * (g - 10)) / (150 + (g - 10)));
       discount += base * gamma;
     }
     // Early-booking (комбинируется: gamma + early - gamma*early)
@@ -108,14 +111,14 @@ export function calcTotal(
     }
     if (earlyRate > 0) {
       // combined: gamma + early - gamma*early (через discount уже содержит gamma*base)
-      const gammaRate = g > 10 ? Math.min(GAMMA_MAX, 0.15 * (g - 10) / (150 + (g - 10))) : 0;
+      const gammaRate = g > 10 ? Math.min(GAMMA_MAX, (0.15 * (g - 10)) / (150 + (g - 10))) : 0;
       discount = base * (gammaRate + earlyRate - gammaRate * earlyRate);
     }
   }
 
   // 4. Аддоны
   const addonsTotal = addons.reduce((sum, a) => {
-    if (a.priceType === 'perGuest') return sum + a.price * g;
+    if (a.priceType === "perGuest") return sum + a.price * g;
     return sum + a.price;
   }, 0);
 

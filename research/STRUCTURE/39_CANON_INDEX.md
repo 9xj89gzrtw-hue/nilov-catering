@@ -6,21 +6,22 @@
 **Код сайта:** `/Users/evgenijdanilov/Documents/hermes/catering-site/` (`app/`, `components/`, `lib/`)
 
 > **📌 B11 — номенклатура канонов этого файла.** Название «39 канонов» / «39 канон» — неточное: файл `39_CANON_INDEX.md` содержит ровно **4 канона**, каждый со своим номером. При ссылках из других файлов используйте точную формулировку:
+>
 > - **канон №0** (Домен) — `04_BLOCKS.md:1378` `url: https://odaeda.ru`;
 > - **канон №1** (Тема: светлая);
 > - **канон №2** (Шрифты: Cormorant / Inter / JetBrains Mono);
 > - **канон №3** (Навигация).
-> Любое упоминание «39 канонов» следует читать как «канон №0 файла 39_CANON_INDEX.md» (единый прод-домен) либо как ссылку на конкретный номер канона выше.
+>   Любое упоминание «39 канонов» следует читать как «канон №0 файла 39_CANON_INDEX.md» (единый прод-домен) либо как ссылку на конкретный номер канона выше.
 
 ---
 
 ## ⚠️ КАНОН №0 — ДОМЕН (единый прод-домен, обязателен для cross-check)
 
-| Что | Значение | Источник |
-|---|---|---|
-| **Прод-домен (канон)** | `https://odaeda.ru` (и только он) | `04_BLOCKS.md:1378` (JSON-LD `url` / `url: https://odaeda.ru`), `02_IA.md:119` (базовый домен sitemap), `02_IA.md:125` (`<urlset>`), `04_BLOCKS.md` — `metadataBase` НЕ определён (отсутствует в файле) |
-| **Бренд-алиас (НЕ канон)** | `nilov-catering.ru` — только как текстовое имя бренда ИП Нилов | `04_BLOCKS.md:2201,2327` (бренд-текст, без канонической роли) |
-| **Запрещено в каноне** | любые `*.vercel.app` / `localhost` / `nilov-catering.ru` в `canonical`/`@id`/JSON-LD `url`/`metadataBase` | `02_IA.md:120` |
+| Что                        | Значение                                                                                                  | Источник                                                                                                                                                                                                |
+| -------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Прод-домен (канон)**     | `https://odaeda.ru` (и только он)                                                                         | `04_BLOCKS.md:1378` (JSON-LD `url` / `url: https://odaeda.ru`), `02_IA.md:119` (базовый домен sitemap), `02_IA.md:125` (`<urlset>`), `04_BLOCKS.md` — `metadataBase` НЕ определён (отсутствует в файле) |
+| **Бренд-алиас (НЕ канон)** | `nilov-catering.ru` — только как текстовое имя бренда ИП Нилов                                            | `04_BLOCKS.md:2201,2327` (бренд-текст, без канонической роли)                                                                                                                                           |
+| **Запрещено в каноне**     | любые `*.vercel.app` / `localhost` / `nilov-catering.ru` в `canonical`/`@id`/JSON-LD `url`/`metadataBase` | `02_IA.md:120`                                                                                                                                                                                          |
 
 > **ИТОГО (грейп-гейт, обязателен перед сборкой):** во ВСЕХ `canonical` / `@id` / JSON-LD `url` / `metadataBase` — единственный домен **`odaeda.ru`**. `nilov-catering.ru` — только как бренд-текст («NiloV Catering / ИП Нилов»), НИКОГДА как канонический хост. Проверка: `grep -rn "nilov-catering.ru" app/ components/ lib/ | grep -iE "canonical|metadataBase|@id|url" ` → **0 совпадений** (бренд-текст без канонической роли допустим). Сайт разворачивается на `odaeda.ru`; старый домен `nilov-catering.ru` ставится на 301 → `odaeda.ru`.
 
@@ -28,13 +29,13 @@
 
 ## ⚠️ КАНОН №1 — ТЕМА: СВЕТЛАЯ (это ИСТИНА, несмотря на противоречия в тексте спецы)
 
-| Документ | Что говорит | Вердикт |
-|---|---|---|
-| `01_VISUAL_DNA.md` §1 | «OVERRIDE blueprint §1.8. Решено (по заказчику): **светлый, воздушный** сайт» | ✅ КАНОН = светлая |
-| `06_TOKENS.md` строка 1 | «Design Tokens — **светлая система**» (ivory `#FAF7F2` / ink `#1C1815` / gold `#B08D57`) | ✅ КАНОН = светлая |
-| `04_BLOCKS.md` §Фаза 0 (B1) | «переписать `globals.css` под `06_TOKENS` (ivory/ink)» | ✅ КАНОН = светлая |
-| `app/globals.css` (код, сейчас) | `#0A0A0A` / `#F5F0EB` / burgundy `#722F37` / gold `#C9A96E` — **тёмная** | 🔴 РАССИНХРОН: код тёмный, канон светлый *(legacy v1, см. `41` Шаг 0 дисклеймер)* |
-| ~~`04_BLOCKS.md` (другие места)~~ | ~~«dark theme as default», «Cinematic Dark»~~ | ❌ **НЕТ в `04`** — поиск 0 совпадений; тёмные упоминания только про legacy-код globals.css, никогда как цель *(CoherenceChecker C9: ложная атрибуция удалена)* |
+| Документ                          | Что говорит                                                                              | Вердикт                                                                                                                                                         |
+| --------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01_VISUAL_DNA.md` §1             | «OVERRIDE blueprint §1.8. Решено (по заказчику): **светлый, воздушный** сайт»            | ✅ КАНОН = светлая                                                                                                                                              |
+| `06_TOKENS.md` строка 1           | «Design Tokens — **светлая система**» (ivory `#FAF7F2` / ink `#1C1815` / gold `#B08D57`) | ✅ КАНОН = светлая                                                                                                                                              |
+| `04_BLOCKS.md` §Фаза 0 (B1)       | «переписать `globals.css` под `06_TOKENS` (ivory/ink)»                                   | ✅ КАНОН = светлая                                                                                                                                              |
+| `app/globals.css` (код, сейчас)   | `#0A0A0A` / `#F5F0EB` / burgundy `#722F37` / gold `#C9A96E` — **тёмная**                 | 🔴 РАССИНХРОН: код тёмный, канон светлый _(legacy v1, см. `41` Шаг 0 дисклеймер)_                                                                               |
+| ~~`04_BLOCKS.md` (другие места)~~ | ~~«dark theme as default», «Cinematic Dark»~~                                            | ❌ **НЕТ в `04`** — поиск 0 совпадений; тёмные упоминания только про legacy-код globals.css, никогда как цель _(CoherenceChecker C9: ложная атрибуция удалена)_ |
 
 > **ИТОГО:** перед сборкой сайта `app/globals.css` ОБЯЗАН быть переписан под светлую ДНК (`06_TOKENS`). Gate: `grep -rn "0A0A0A|F5F0EB|722F37|C9A96E" app/ components/` → **0 совпадений**. Сейчас совпадения ЕСТЬ → блокирующий баг B1 не закрыт.
 
@@ -42,11 +43,11 @@
 
 ## ⚠️ КАНОН №2 — ШРИФТЫ
 
-| Роль | Спека (`09`/`36_RUBRIC`) | Код (`lib/fonts.ts` + `globals.css`) | Статус |
-|---|---|---|---|
+| Роль    | Спека (`09`/`36_RUBRIC`)                          | Код (`lib/fonts.ts` + `globals.css`)                  | Статус                                                                                                                                                 |
+| ------- | ------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Heading | Cormorant (OFL, самохост `@fontsource`, Волна 15) | **Cormorant** (OFL, самохост `@fontsource`, Волна 15) | ✅ Канон: Cormorant (НЕ Playfair — Playfair удалён из `06` §2, см. `44` CodeRealityChecker ось 3). Ceiling-ход C1 («кастом RU-шрифт») закрыт частично. |
-| Body | Inter | Inter (next/font) | ✅ |
-| Mono | JetBrains Mono | JetBrains Mono (next/font) | ✅ |
+| Body    | Inter                                             | Inter (next/font)                                     | ✅                                                                                                                                                     |
+| Mono    | JetBrains Mono                                    | JetBrains Mono (next/font)                            | ✅                                                                                                                                                     |
 
 ---
 
@@ -66,29 +67,29 @@
 
 `app/page.tsx` рендерит ровно 9 секций + глобальные провайдеры. Маппинг:
 
-| № | Блок в `04_BLOCKS.md` | Реальный файл в коде | Статус |
-|---|---|---|---|
-| 1 | `HeroSection` (вариант В, живое фото) | `components/sections/HeroSection.tsx` | ✅ ЕСТЬ (но НЕ соответствует сториборду `09`: не та H1, не та CTA, slide-up ≠ wipe, нет цены/пресетов) |
-| 2 | `TrustBar` (marquee логотипов) | **нет отдельного файла** | ⚠️ Влит в `SocialProofBar` ниже |
-| 3 | `AwardsStrip` → `TrustProof` | **нет отдельного файла** | ⚠️ Влит в `SocialProofBar` ниже |
-| — | **`SocialProofBar`** (статы 19 лет/3000+/98% + AnimatedCounter) | `components/sections/SocialProofBar.tsx` | ✅ ЕСТЬ (это и есть TrustBar+Awards+WhyUs-аналог) |
+| №   | Блок в `04_BLOCKS.md`                                           | Реальный файл в коде                     | Статус                                                                                                 |
+| --- | --------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 1   | `HeroSection` (вариант В, живое фото)                           | `components/sections/HeroSection.tsx`    | ✅ ЕСТЬ (но НЕ соответствует сториборду `09`: не та H1, не та CTA, slide-up ≠ wipe, нет цены/пресетов) |
+| 2   | `TrustBar` (marquee логотипов)                                  | **нет отдельного файла**                 | ⚠️ Влит в `SocialProofBar` ниже                                                                        |
+| 3   | `AwardsStrip` → `TrustProof`                                    | **нет отдельного файла**                 | ⚠️ Влит в `SocialProofBar` ниже                                                                        |
+| —   | **`SocialProofBar`** (статы 19 лет/3000+/98% + AnimatedCounter) | `components/sections/SocialProofBar.tsx` | ✅ ЕСТЬ (это и есть TrustBar+Awards+WhyUs-аналог)                                                      |
 
 > **КАНОН ИМЁН TRUST-БЛОКА (C8, единый источник — устраняет 4-имённый разнобой):**
 > целевых блока ДВА: **`TrustBar`** (marquee логотипов клиентов, 🟡-flagged) и **`TrustProof`** (proof-ряд фактов/наград/комплаенс, поглотил бывший `AwardsStrip`). **`AwardsStrip` — DEPRECATED** (объединён в `TrustProof`, отдельным блоком НЕ собирать). **`SocialProofBar`** — имя LEGACY-кода (`components/sections/SocialProofBar.tsx`), при сборке **РАЗБИТЬ** на `TrustBar` + `TrustProof` (см. `04` БЛОК 2/57). Нигде не вводить пятое имя.
-| 4 | `EventTypeSelector` (6 карточек → `/events/*`) | **нет** (карточки ведут в `/constructor`, не `/events/*`) | ⚠️ Частично в `ServicesSection` |
-| 5 | `FormatShowcase` (3 формата, цена/гость) | **нет отдельного файла** | ⚠️ Влит в `ServicesSection` |
-| — | **`ServicesSection`** (bento форматов → `/constructor`) | `components/sections/ServicesSection.tsx` | ✅ ЕСТЬ (аналог бл.4+5) |
-| 6 | `MenuPreview` (подборки меню) | `components/sections/MenuPreviewSection.tsx` | ✅ ЕСТЬ |
-| 7 | `GalleryTeaser` (masonry по событиям) | `components/sections/GallerySection.tsx` | ✅ ЕСТЬ (lightbox есть, focus-trap — НЕТ) |
-| 1-bis | `InspireStrip` | **нет** | ❌ Отсутствует |
-| 6-bis | `HomeVideoShowcase` | **нет** | ❌ Отсутствует |
-| 7-bis | `EventsRecapHome` | **нет** | ❌ Отсутствует |
-| 8 | `WhyUs` (count-up + история бренда) | **ЧАСТИЧНО:** есть `components/sections/PhilosophySection.tsx` (5678 байт, экспорт `PhilosophySection`), НО он НЕ импортирован в `app/page.tsx` (не рендерится на главной). Роль «статы/бренд» частично закрыта анонимными числами в `SocialProofBar`. → Сборщик: либо дописать `PhilosophySection` до `WhyUs` (история Дмитрий Нилов + count-up) и заимпортить в page, либо влить в `SocialProofBar`. Файл НЕ удалять. | ⚠️ Частично |
-| 9 | `TestimonialsCarousel` | `components/sections/TestimonialsSection.tsx` | ✅ ЕСТЬ (нет aria-live, нет Review JSON-LD) |
-| 10 | `ProcessSteps` (5 шагов) | `components/sections/ProcessTimeline.tsx` | ✅ ЕСТЬ (4 шага вместо 5; фоновое autoplay-видео бьёт Perf) |
-| 11 | `LiveInstagramFeed` (VK/IG UGC) | **нет** | ❌ Отсутствует |
-| 12 | `CTASection` | `components/sections/CTASection.tsx` | ✅ ЕСТЬ |
-| 13 | `FAQTeaser` | `components/sections/FAQSection.tsx` | ✅ ЕСТЬ |
+> | 4 | `EventTypeSelector` (6 карточек → `/events/*`) | **нет** (карточки ведут в `/constructor`, не `/events/*`) | ⚠️ Частично в `ServicesSection` |
+> | 5 | `FormatShowcase` (3 формата, цена/гость) | **нет отдельного файла** | ⚠️ Влит в `ServicesSection` |
+> | — | **`ServicesSection`** (bento форматов → `/constructor`) | `components/sections/ServicesSection.tsx` | ✅ ЕСТЬ (аналог бл.4+5) |
+> | 6 | `MenuPreview` (подборки меню) | `components/sections/MenuPreviewSection.tsx` | ✅ ЕСТЬ |
+> | 7 | `GalleryTeaser` (masonry по событиям) | `components/sections/GallerySection.tsx` | ✅ ЕСТЬ (lightbox есть, focus-trap — НЕТ) |
+> | 1-bis | `InspireStrip` | **нет** | ❌ Отсутствует |
+> | 6-bis | `HomeVideoShowcase` | **нет** | ❌ Отсутствует |
+> | 7-bis | `EventsRecapHome` | **нет** | ❌ Отсутствует |
+> | 8 | `WhyUs` (count-up + история бренда) | **ЧАСТИЧНО:** есть `components/sections/PhilosophySection.tsx` (5678 байт, экспорт `PhilosophySection`), НО он НЕ импортирован в `app/page.tsx` (не рендерится на главной). Роль «статы/бренд» частично закрыта анонимными числами в `SocialProofBar`. → Сборщик: либо дописать `PhilosophySection` до `WhyUs` (история Дмитрий Нилов + count-up) и заимпортить в page, либо влить в `SocialProofBar`. Файл НЕ удалять. | ⚠️ Частично |
+> | 9 | `TestimonialsCarousel` | `components/sections/TestimonialsSection.tsx` | ✅ ЕСТЬ (нет aria-live, нет Review JSON-LD) |
+> | 10 | `ProcessSteps` (5 шагов) | `components/sections/ProcessTimeline.tsx` | ✅ ЕСТЬ (4 шага вместо 5; фоновое autoplay-видео бьёт Perf) |
+> | 11 | `LiveInstagramFeed` (VK/IG UGC) | **нет** | ❌ Отсутствует |
+> | 12 | `CTASection` | `components/sections/CTASection.tsx` | ✅ ЕСТЬ |
+> | 13 | `FAQTeaser` | `components/sections/FAQSection.tsx` | ✅ ЕСТЬ |
 
 **Глобальные (в `app/layout.tsx`):** `Header`, `Footer`, `MobileBottomNav`, `Preloader`, `SmoothScrollProvider`, `CustomCursor`, `NoiseOverlay`, `Консьерж` (FAB, optional-обёртка над `/plan/helper`; AI-слой в резерве), JSON-LD (LocalBusiness+Organization).
 

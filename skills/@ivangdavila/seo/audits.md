@@ -6,13 +6,13 @@ An audit is a decision document, not an inventory of everything imperfect. The d
 
 Ask what the audit must answer, then pick the shape:
 
-| Trigger | Shape | Time |
-|---|---|---|
-| "Traffic dropped" | Diagnostic — run the triage order in SKILL.md, stop at the confirmed cause | Hours |
-| "We're about to redesign" | Risk audit — inventory, redirect plan, template review | 1-2 days |
-| "We want more traffic" | Opportunity audit — striking distance, gaps, page-type economics | 2-4 days |
-| "Health check before a quarter" | Full audit — all five layers, template-level | 3-5 days |
-| Anything else | Diagnostic first; a full audit on an unknown site buries the one issue that matters | — |
+| Trigger                         | Shape                                                                               | Time     |
+| ------------------------------- | ----------------------------------------------------------------------------------- | -------- |
+| "Traffic dropped"               | Diagnostic — run the triage order in SKILL.md, stop at the confirmed cause          | Hours    |
+| "We're about to redesign"       | Risk audit — inventory, redirect plan, template review                              | 1-2 days |
+| "We want more traffic"          | Opportunity audit — striking distance, gaps, page-type economics                    | 2-4 days |
+| "Health check before a quarter" | Full audit — all five layers, template-level                                        | 3-5 days |
+| Anything else                   | Diagnostic first; a full audit on an unknown site buries the one issue that matters | —        |
 
 ## Data You Need Before Opinions
 
@@ -77,10 +77,10 @@ Write the exact change, never the category: "add `<link rel=canonical>` self-ref
 
 ## Audit Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Reporting crawler warnings verbatim | Tools flag non-signals; credibility dies at the first "meta keywords missing" | Filter every finding through "what traffic does this cost?" |
-| Auditing without Search Console access | You are guessing at what already ranks and at what Google chose to index | Make access a precondition; a read-only user takes minutes to add |
-| Ranking findings by severity label | Tool severity is generic, not site-specific | Score with the priority formula |
-| One giant fix list, no owner | Nothing ships | Five items, named owners, named effort |
-| Auditing a staging or CDN-cached copy | You review a site nobody sees | Verify with a live fetch and compare against a fresh crawl |
+| Trap                                   | Why it fails                                                                  | Do instead                                                        |
+| -------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Reporting crawler warnings verbatim    | Tools flag non-signals; credibility dies at the first "meta keywords missing" | Filter every finding through "what traffic does this cost?"       |
+| Auditing without Search Console access | You are guessing at what already ranks and at what Google chose to index      | Make access a precondition; a read-only user takes minutes to add |
+| Ranking findings by severity label     | Tool severity is generic, not site-specific                                   | Score with the priority formula                                   |
+| One giant fix list, no owner           | Nothing ships                                                                 | Five items, named owners, named effort                            |
+| Auditing a staging or CDN-cached copy  | You review a site nobody sees                                                 | Verify with a live fetch and compare against a fresh crawl        |

@@ -8,12 +8,12 @@
 //
 // Приоритет: dish из dishes.json (если есть) → иначе dish из ALL_DISHES
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import { ALL_DISHES } from './menu-data';
-import type { Dish } from './types';
+import { promises as fs } from "fs";
+import path from "path";
+import { ALL_DISHES } from "./menu-data";
+import type { Dish } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+const DATA_DIR = path.join(process.cwd(), "data");
 
 // Admin Dish interface (from lib/cms-store.ts)
 interface AdminDish {
@@ -28,7 +28,7 @@ interface AdminDish {
   allergens?: number[] | string[];
   crossContact?: boolean;
   servingsPerGuest?: number;
-  status?: 'verified' | 'pending';
+  status?: "verified" | "pending";
   description?: string;
   format?: string[];
 }
@@ -39,8 +39,8 @@ const CACHE_TTL = 60_000; // 1 minute
 
 async function readAdminDishes(): Promise<AdminDish[]> {
   try {
-    const file = path.join(DATA_DIR, 'dishes.json');
-    const raw = await fs.readFile(file, 'utf-8');
+    const file = path.join(DATA_DIR, "dishes.json");
+    const raw = await fs.readFile(file, "utf-8");
     const data = JSON.parse(raw);
     return Array.isArray(data) ? data : [];
   } catch {
@@ -53,22 +53,22 @@ function adminToDish(ad: AdminDish): Dish | null {
   if (!ad.id || !ad.name) return null;
   // allergens может быть number[] или string[]
   const allergens: string[] = Array.isArray(ad.allergens)
-    ? ad.allergens.map(a => typeof a === 'number' ? String(a) : String(a))
+    ? ad.allergens.map((a) => (typeof a === "number" ? String(a) : String(a)))
     : [];
   // tier может быть string или string[]
-  const tier = Array.isArray(ad.tier) ? ad.tier : ad.tier ? [ad.tier] : ['standard'];
+  const tier = Array.isArray(ad.tier) ? ad.tier : ad.tier ? [ad.tier] : ["standard"];
   return {
     id: ad.id,
     name: ad.name,
-    description: ad.description || '',
-    image: ad.photo || ad.image || '',
-    station: (ad.station || 'cold') as Dish['station'],
-    format: (ad.format || ['furshet']) as Dish['format'],
-    tier: tier as Dish['tier'],
+    description: ad.description || "",
+    image: ad.photo || ad.image || "",
+    station: (ad.station || "cold") as Dish["station"],
+    format: (ad.format || ["furshet"]) as Dish["format"],
+    tier: tier as Dish["tier"],
     pricePerGuest: ad.pricePerGuest || 0,
     servingsPerGuest: ad.servingsPerGuest || 1,
-    allergens: allergens as Dish['allergens'],
-    dietBadges: (ad.dietBadges || []) as Dish['dietBadges'],
+    allergens: allergens as Dish["allergens"],
+    dietBadges: (ad.dietBadges || []) as Dish["dietBadges"],
     childFriendly: false,
   };
 }

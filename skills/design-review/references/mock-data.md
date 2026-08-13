@@ -7,6 +7,7 @@ agents fill UIs with placeholder content that screams "nobody thought about this
 ## Quality Bar
 
 mock data must be:
+
 - **specific** — real names, real products, real agencies, not "Item 1" or "User A"
 - **current** — use today's model names, today's companies, today's events. GPT-3.5 is old news. Claude 1 doesn't exist anymore.
 - **premise-aware** — if the prompt is about government surveillance, the data should reference real agencies and plausible scenarios, not generic "departments"
@@ -26,6 +27,7 @@ mock data must be:
 ## Where Humor Lives
 
 for satirical or playful premises, embed humor in:
+
 - **row/item names** — "The Overthinking Committee," "Reply Guys United," agent named "Definitely-Not-Skynet"
 - **status labels** — "suspiciously cooperative," "existential crisis," "quietly expanded scope"
 - **internal notes/tags** — "press-sensitive," "Hill-demo pending," "CEO saw this on Twitter"
@@ -34,6 +36,7 @@ for satirical or playful premises, embed humor in:
 - **alert messages** — "Model scored 99% helpfulness. Investigate."
 
 do NOT put humor in:
+
 - page titles or main headlines (these should read as real product UI)
 - button labels or navigation (functional elements stay functional)
 - chart axis labels (data viz should be legible)
@@ -43,6 +46,7 @@ the UI should look completely real. the content should make you smile when you r
 ## Anti-Examples
 
 bad:
+
 - "Agency 1," "Agency 2," "Agency 3"
 - "Model A," "Model B," "Model C"
 - "High risk," "Medium risk," "Low risk" (with no specifics)
@@ -51,6 +55,7 @@ bad:
 - "2024-01-01" (outdated, too clean)
 
 good:
+
 - "Department of Defense — Project Maven successor," "GSA — procurement automation," "IRS — fraud detection (paused after audit)"
 - "Claude 4 Opus," "GPT-5.4," "Gemini 3 Pro," "Llama 4 405B"
 - "HIGH — NYT investigation pending," "WATCH — congressional inquiry Q2," "CLEAR — passed GAO review"

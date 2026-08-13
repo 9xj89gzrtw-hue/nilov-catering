@@ -13,13 +13,13 @@
 ```ts
 // lib/data.ts — ЗАМЕНИТЬ navItems (строка 1771) на этот массив
 export const navItems: NavItem[] = [
-  { label: 'События',        href: '/events' },      // канон: хаб типов (свадьба/корпоратив/детский…)
-  { label: 'Меню',           href: '/menu' },        // канон
-  { label: 'Галерея',        href: '/gallery' },     // канон
-  { label: 'Почему мы',      href: '/why-us' },      // было /about
-  { label: 'Команда',        href: '/team' },        // лица = доверие
-  { label: 'Отзывы',         href: '/reviews' },     // было /testimonials
-  { label: 'Сезонное',       href: '/seasonal' },    // канон (ББQ/НГ/Масленица)
+  { label: "События", href: "/events" }, // канон: хаб типов (свадьба/корпоратив/детский…)
+  { label: "Меню", href: "/menu" }, // канон
+  { label: "Галерея", href: "/gallery" }, // канон
+  { label: "Почему мы", href: "/why-us" }, // было /about
+  { label: "Команда", href: "/team" }, // лица = доверие
+  { label: "Отзывы", href: "/reviews" }, // было /testimonials
+  { label: "Сезонное", href: "/seasonal" }, // канон (ББQ/НГ/Масленица)
 ];
 // Справа в Header (вне navItems): телефон + WhatsApp + Telegram (первичные каналы, 02_IA §118)
 // CTA-кнопка справа: «Спланировать» → /plan  (золотая, крупная)
@@ -32,7 +32,7 @@ export const navItems: NavItem[] = [
 
 ## 2. ТОЧКА ВХОДА ДЛЯ НОВИЧКА (Григорий G1/G5/G7)
 
-На главной Hero CTA = **«Спланировать событие»** → `/plan` *(первичная, золотая — единый CTA-глагол C9, см. `04:371`/`05:40,42`)*. ВТОРИЧНАЯ (для новичка): **«Я не знаю, что мне нужно — помогите»** → `/plan/helper` (wizard Григорий G1/G5/G7, рядом с первичной, text-вариант). *[CoherenceChecker R4: унифицировано — первичная = «Спланировать событие»→`/plan`, wizard = вторичная→`/plan/helper`; убрано расхождение `04:168`→`/plan/calculator`]*
+На главной Hero CTA = **«Спланировать событие»** → `/plan` _(первичная, золотая — единый CTA-глагол C9, см. `04:371`/`05:40,42`)_. ВТОРИЧНАЯ (для новичка): **«Я не знаю, что мне нужно — помогите»** → `/plan/helper` (wizard Григорий G1/G5/G7, рядом с первичной, text-вариант). _[CoherenceChecker R4: унифицировано — первичная = «Спланировать событие»→`/plan`, wizard = вторичная→`/plan/helper`; убрано расхождение `04:168`→`/plan/calculator`]_
 (а НЕ «Конструктор» сразу). Wizard `PlanHelper` (`/plan/helper`): 3 вопроса →
 рекомендует тип события + формат + ведёт в `/plan/calculator` или `/plan/constructor`.
 Также дублируется как кнопка в Header рядом с «Спланировать» (вторичная, text-вариант).
@@ -52,11 +52,11 @@ export const navItems: NavItem[] = [
 
 ```ts
 export const mobileNavItems: NavItem[] = [
-  { label: 'Главная',    href: '/' },
-  { label: 'События',    href: '/events' },
-  { label: 'Меню',       href: '/menu' },
-  { label: 'Галерея',    href: '/gallery' },
-  { label: 'Спланировать', href: '/plan' },   // + иконка, золотая
+  { label: "Главная", href: "/" },
+  { label: "События", href: "/events" },
+  { label: "Меню", href: "/menu" },
+  { label: "Галерея", href: "/gallery" },
+  { label: "Спланировать", href: "/plan" }, // + иконка, золотая
 ];
 ```
 
@@ -69,40 +69,40 @@ export const mobileNavItems: NavItem[] = [
 ```ts
 // Footer.tsx — отдельный массив footerNav (НЕ navItems!)
 const footerColumns = {
-  'Навигация': [
-    { label: 'События', href: '/events' },
-    { label: 'Меню', href: '/menu' },
-    { label: 'Галерея', href: '/gallery' },
-    { label: 'Почему мы', href: '/why-us' },
-    { label: 'Команда', href: '/team' },
-    { label: 'Отзывы', href: '/reviews' },
-    { label: 'Сезонное', href: '/seasonal' },
+  Навигация: [
+    { label: "События", href: "/events" },
+    { label: "Меню", href: "/menu" },
+    { label: "Галерея", href: "/gallery" },
+    { label: "Почему мы", href: "/why-us" },
+    { label: "Команда", href: "/team" },
+    { label: "Отзывы", href: "/reviews" },
+    { label: "Сезонное", href: "/seasonal" },
   ],
-  'Помощь': [
-    { label: 'Я не знаю, что нужно — помощник', href: '/plan/helper' },   // G1/G5/G7
-    { label: 'Какой формат мне подходит', href: '/help/formats' },          // G2
-    { label: 'Аллергены и состав', href: '/allergens' },                   // NINA
-    { label: 'Частые вопросы', href: '/faq' },                             // G6
+  Помощь: [
+    { label: "Я не знаю, что нужно — помощник", href: "/plan/helper" }, // G1/G5/G7
+    { label: "Какой формат мне подходит", href: "/help/formats" }, // G2
+    { label: "Аллергены и состав", href: "/allergens" }, // NINA
+    { label: "Частые вопросы", href: "/faq" }, // G6
   ],
-  'Информация': [
-    { label: 'Зоны доставки', href: '/delivery' },       // Волна 2А
-    { label: 'Сертификаты и безопасность', href: '/certificates' }, // 152-ФЗ, A2
-    { label: 'Площадки', href: '/venues' },               // GapHunter F — блок VenueList (устраняет orphan, C9-2/C3)
-    { label: 'Дегустация', href: '/tasting' },            // GapHunter F — блок TastingBooking (C9-1)
-    { label: 'Доступность (WCAG)', href: '/accessibility' }, // GapHunter F — заявление A11y (C9-3)
-    { label: 'Блог', href: '/blog' },                     // C3 — устраняет orphan /blog
-    { label: 'Контакты', href: '/contact' },
-    { label: 'Политика', href: '/privacy' },
-    { label: 'Условия', href: '/terms' },
-    { label: 'Cookies', href: '/cookies' },
-    ],
+  Информация: [
+    { label: "Зоны доставки", href: "/delivery" }, // Волна 2А
+    { label: "Сертификаты и безопасность", href: "/certificates" }, // 152-ФЗ, A2
+    { label: "Площадки", href: "/venues" }, // GapHunter F — блок VenueList (устраняет orphan, C9-2/C3)
+    { label: "Дегустация", href: "/tasting" }, // GapHunter F — блок TastingBooking (C9-1)
+    { label: "Доступность (WCAG)", href: "/accessibility" }, // GapHunter F — заявление A11y (C9-3)
+    { label: "Блог", href: "/blog" }, // C3 — устраняет orphan /blog
+    { label: "Контакты", href: "/contact" },
+    { label: "Политика", href: "/privacy" },
+    { label: "Условия", href: "/terms" },
+    { label: "Cookies", href: "/cookies" },
+  ],
   // B2B / служебные (в футер-подвал «мелким», НЕ в основную навигацию — устраняет orphan из 41:96 / 02_IA):
-  'Партнёрам': [
-    { label: 'B2B / партнёрам', href: '/partners' },      // Волна 11 (Профи/Сергей/агентства)
-    { label: 'Регулярные заказы', href: '/subscribe' },   // Сергей (офис-подписка)
-    { label: 'Пресс-кит', href: '/media-kit' },           // Юлия (пресса)
-    { label: 'Мои заказы', href: '/account/orders' },     // Петя P1/P2 (личный кабинет)
-    { label: 'Вакансии', href: '/careers' },              // опц.
+  Партнёрам: [
+    { label: "B2B / партнёрам", href: "/partners" }, // Волна 11 (Профи/Сергей/агентства)
+    { label: "Регулярные заказы", href: "/subscribe" }, // Сергей (офис-подписка)
+    { label: "Пресс-кит", href: "/media-kit" }, // Юлия (пресса)
+    { label: "Мои заказы", href: "/account/orders" }, // Петя P1/P2 (личный кабинет)
+    { label: "Вакансии", href: "/careers" }, // опц.
   ],
 };
 // Расширенный канон роутов из 41:96 полностью экспонирован здесь (C8 #5/#6 закрыт: 0 orphan-страниц).
@@ -130,16 +130,19 @@ const footerColumns = {
 Сборщик размещает элементы строго по этой схеме (светлая ДНК `01`/`06`, золото `#B08D57`/тёмный ink для CTA):
 
 ### Desktop (Header, sticky, светлый фон, тонкая нижняя граница)
+
 ```
 [Лого NiloV]        События  Меню  Галерея  Почему мы  Команда  Отзывы  Сезонное   [☎ 8(812)...] [WA] [TG]   [ Спланировать → ]
                                                                                                     (золотая CTA, справа)
 ```
+
 - Лево: лого (ведёт на `/`).
 - Центр: основные 7 пунктов (`navItems` §1).
-- Право: телефон + WhatsApp + Telegram (первичные каналы, `02_IA` §118) + золотая CTA **«Спланировать»→`/plan`** *(первичная)*.
+- Право: телефон + WhatsApp + Telegram (первичные каналы, `02_IA` §118) + золотая CTA **«Спланировать»→`/plan`** _(первичная)_.
 - Вторичная текст-кнопка **«Я не знаю, что нужно — помогите»→`/plan/helper`** — либо в Header рядом с CTA, либо только на Hero (см. §2). Не дублировать обе одновременно в Header (перегруз).
 
 ### Hero (главная, ниже фолда — первая точка конверсии)
+
 ```
         Заголовок (Cormorant, крупный)
         Подзаголовок (plain-язык, БЕЗ жаргона — Григорий G4)
@@ -148,12 +151,14 @@ const footerColumns = {
 ```
 
 ### Mobile (bottom, fixed)
+
 ```
 [ Главная ] [ События ] [ Меню ] [ Галерея ] [ Спланировать● ]
    (ровно 5, icon+label, «Спланировать» золотая)          + StickyMobileCTA (отдельная, ровно 1 прилипающая кнопка снизу; OR-контракт: не дублировать с bottom-nav)
 ```
 
 ### Footer (глубокая навигация, 3 колонки + соцряд)
+
 ```
 ПОМОЩЬ                  НАВИГАЦИЯ                ИНФОРМАЦИЯ
 Я не знаю — помощник   События                  Зоны доставки
@@ -169,9 +174,9 @@ const footerColumns = {
 ---
 
 ## 7. ПОКРЫТИЕ РОУТОВ (сверка с каноном 41)
+
 Все роуты, на которые ведёт эта спеца, учтены в каноне `41_BUILD_CHECKLIST` Шаг 4:
 `/events`,`/menu`,`/gallery`,`/why-us`,`/team`,`/reviews`,`/seasonal`,`/plan` (хаб),
 `/plan/helper`🆕, `/help/formats`🆕, `/allergens`🆕 — все помечены создать/оставить, нет ведущих на 404.
 (Таблица «оценка 9.2/10» намеренно убрана: финальный балл структуры выставляет независимый
 критик-субагент, см. `18_CRITIC_SYSTEM` §5 и SOUL «INDEPENDENT SELF-ASSESSMENT RULE».)
-

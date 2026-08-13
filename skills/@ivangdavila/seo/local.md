@@ -74,12 +74,12 @@ Three factors, per Google: **proximity** (the searcher's location — outside yo
 
 ## Local Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Keywords in the business name | Guideline violation, competitor reports, suspension | Real name; put keywords in categories and content |
-| Promising pack rankings citywide | Proximity caps the radius | Show a grid, set expectations by distance |
-| Buying or gating reviews | Removal or suspension, and the legitimate reviews go too | Ask everyone, respond to all |
-| Fifty citations before fixing the profile | The profile is most of the ranking; directories are the tail | Profile, then core citations, then local links |
-| City pages for cities you do not serve | Doorway pages | Only real service areas, with real local content |
-| Changing name, address, and category in one session | Triggers reverification and suspensions | One change at a time |
-| Homepage as the profile's website link on multi-location | Sends every location to the same generic page | Link the matching location page |
+| Trap                                                     | Why it fails                                                 | Do instead                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| Keywords in the business name                            | Guideline violation, competitor reports, suspension          | Real name; put keywords in categories and content |
+| Promising pack rankings citywide                         | Proximity caps the radius                                    | Show a grid, set expectations by distance         |
+| Buying or gating reviews                                 | Removal or suspension, and the legitimate reviews go too     | Ask everyone, respond to all                      |
+| Fifty citations before fixing the profile                | The profile is most of the ranking; directories are the tail | Profile, then core citations, then local links    |
+| City pages for cities you do not serve                   | Doorway pages                                                | Only real service areas, with real local content  |
+| Changing name, address, and category in one session      | Triggers reverification and suspensions                      | One change at a time                              |
+| Homepage as the profile's website link on multi-location | Sends every location to the same generic page                | Link the matching location page                   |

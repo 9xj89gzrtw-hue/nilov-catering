@@ -13,17 +13,21 @@ Detailed commands, patterns, and thresholds for the 8 patrol checks. This docume
 ### Steps
 
 1. Discover skill directories:
+
    ```bash
    ls -d $OC/skills/*/ ~/.openclaw/skills/*/ 2>/dev/null
    ```
+
    Each directory containing a `SKILL.md` is a skill.
 
 2. For each skill, compute hash:
+
    ```bash
    node scripts/trust-cli.ts hash --path <skill_dir>
    ```
 
 3. Look up attested hash in trust registry:
+
    ```bash
    node scripts/trust-cli.ts lookup --source <skill_dir> --version <version>
    ```
@@ -35,11 +39,11 @@ Detailed commands, patterns, and thresholds for the 8 patrol checks. This docume
 
 ### Findings
 
-| Tag | Severity | Condition |
-|-----|----------|-----------|
-| `INTEGRITY_DRIFT` | HIGH | Computed hash differs from attested hash |
-| `UNREGISTERED_SKILL` | MEDIUM | Skill directory exists but has no trust record |
-| `NEWLY_CRITICAL` | CRITICAL | Re-scan of drifted skill finds CRITICAL findings |
+| Tag                  | Severity | Condition                                        |
+| -------------------- | -------- | ------------------------------------------------ |
+| `INTEGRITY_DRIFT`    | HIGH     | Computed hash differs from attested hash         |
+| `UNREGISTERED_SKILL` | MEDIUM   | Skill directory exists but has no trust record   |
+| `NEWLY_CRITICAL`     | CRITICAL | Re-scan of drifted skill finds CRITICAL findings |
 
 ---
 
@@ -49,33 +53,34 @@ Detailed commands, patterns, and thresholds for the 8 patrol checks. This docume
 
 ### Scan Targets
 
-| Path | Scope |
-|------|-------|
+| Path             | Scope                                          |
+| ---------------- | ---------------------------------------------- |
 | `$OC/workspace/` | Full recursive (especially `memory/`, `logs/`) |
-| `$OC/.env*` | Any dotenv files in OC root |
-| `~/.ssh/` | Permission check only |
-| `~/.gnupg/` | Permission check only |
+| `$OC/.env*`      | Any dotenv files in OC root                    |
+| `~/.ssh/`        | Permission check only                          |
+| `~/.gnupg/`      | Permission check only                          |
 
 ### Patterns (cross-ref scan-rules.md)
 
-| Rule ID | Tag | Pattern Summary |
-|---------|-----|-----------------|
-| Rule 7 | PRIVATE_KEY_PATTERN | `['"\x60]0x[a-fA-F0-9]{64}['"\x60]`, `private[_\s]?key\s*[:=]` |
-| Rule 8 | MNEMONIC_PATTERN | 12/24 BIP-39 words, `seed[_\s]?phrase`, `mnemonic\s*[:=]` |
-| Rule 5 | READ_SSH_KEYS | `\.ssh/id_rsa`, `\.ssh/id_ed25519` in workspace files |
+| Rule ID | Tag                 | Pattern Summary                                                |
+| ------- | ------------------- | -------------------------------------------------------------- |
+| Rule 7  | PRIVATE_KEY_PATTERN | `['"\x60]0x[a-fA-F0-9]{64}['"\x60]`, `private[_\s]?key\s*[:=]` |
+| Rule 8  | MNEMONIC_PATTERN    | 12/24 BIP-39 words, `seed[_\s]?phrase`, `mnemonic\s*[:=]`      |
+| Rule 5  | READ_SSH_KEYS       | `\.ssh/id_rsa`, `\.ssh/id_ed25519` in workspace files          |
 
 ### Additional Patterns (cross-ref action-policies.md)
 
-| Type | Pattern | Severity |
-|------|---------|----------|
-| AWS Secret Key | `[A-Za-z0-9/+=]{40}` near AWS context | HIGH |
-| AWS Access Key | `AKIA[0-9A-Z]{16}` | HIGH |
-| GitHub Token | `gh[pousr]_[A-Za-z0-9_]{36,}` | HIGH |
-| DB Connection String | `(postgres\|mysql\|mongodb)://` | MEDIUM |
+| Type                 | Pattern                               | Severity |
+| -------------------- | ------------------------------------- | -------- |
+| AWS Secret Key       | `[A-Za-z0-9/+=]{40}` near AWS context | HIGH     |
+| AWS Access Key       | `AKIA[0-9A-Z]{16}`                    | HIGH     |
+| GitHub Token         | `gh[pousr]_[A-Za-z0-9_]{36,}`         | HIGH     |
+| DB Connection String | `(postgres\|mysql\|mongodb)://`       | MEDIUM   |
 
 ### Permission Checks
 
 **macOS/Linux:**
+
 ```bash
 # SSH directory — should be 700
 stat -f "%Lp" ~/.ssh/ 2>/dev/null || stat -c "%a" ~/.ssh/ 2>/dev/null
@@ -84,18 +89,19 @@ stat -f "%Lp" ~/.gnupg/ 2>/dev/null || stat -c "%a" ~/.gnupg/ 2>/dev/null
 ```
 
 **Windows (use icacls instead of stat):**
+
 ```powershell
 icacls $env:USERPROFILE\.ssh 2>$null
 icacls $env:USERPROFILE\.gnupg 2>$null
 ```
 
-| Condition | Severity |
-|-----------|----------|
-| macOS/Linux: `~/.ssh/` exists AND permissions > 700 | HIGH |
-| macOS/Linux: `~/.gnupg/` exists AND permissions > 700 | MEDIUM |
-| Windows: `~/.ssh/` exists AND ACL grants access to Everyone/Users/Authenticated Users | HIGH |
-| Windows: `~/.gnupg/` exists AND ACL grants access to Everyone/Users/Authenticated Users | MEDIUM |
-| Directory does not exist (stat/icacls returns empty) | N/A — not a finding |
+| Condition                                                                               | Severity            |
+| --------------------------------------------------------------------------------------- | ------------------- |
+| macOS/Linux: `~/.ssh/` exists AND permissions > 700                                     | HIGH                |
+| macOS/Linux: `~/.gnupg/` exists AND permissions > 700                                   | MEDIUM              |
+| Windows: `~/.ssh/` exists AND ACL grants access to Everyone/Users/Authenticated Users   | HIGH                |
+| Windows: `~/.gnupg/` exists AND ACL grants access to Everyone/Users/Authenticated Users | MEDIUM              |
+| Directory does not exist (stat/icacls returns empty)                                    | N/A — not a finding |
 
 ---
 
@@ -116,16 +122,16 @@ lsof -i -P -n | grep LISTEN 2>/dev/null
 
 Flag if bound to `0.0.0.0` or `*` (not `127.0.0.1`):
 
-| Port | Service | Severity |
-|------|---------|----------|
-| 22 | SSH (default port) | MEDIUM |
-| 3306 | MySQL | HIGH |
-| 5432 | PostgreSQL | HIGH |
-| 6379 | Redis | CRITICAL |
-| 27017 | MongoDB | HIGH |
-| 9200 | Elasticsearch | HIGH |
-| 2375/2376 | Docker API | CRITICAL |
-| 8080 | Generic HTTP | LOW |
+| Port      | Service            | Severity |
+| --------- | ------------------ | -------- |
+| 22        | SSH (default port) | MEDIUM   |
+| 3306      | MySQL              | HIGH     |
+| 5432      | PostgreSQL         | HIGH     |
+| 6379      | Redis              | CRITICAL |
+| 27017     | MongoDB            | HIGH     |
+| 9200      | Elasticsearch      | HIGH     |
+| 2375/2376 | Docker API         | CRITICAL |
+| 8080      | Generic HTTP       | LOW      |
 
 ### Firewall Status
 
@@ -138,12 +144,12 @@ iptables -L INPUT -n 2>/dev/null | head -20
 /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate 2>/dev/null
 ```
 
-| Condition | Severity |
-|-----------|----------|
-| Firewall disabled / inactive | HIGH |
-| Redis/Docker API on 0.0.0.0 | CRITICAL |
-| Database on 0.0.0.0 without auth | HIGH |
-| SSH on default port 22 | MEDIUM (informational) |
+| Condition                        | Severity               |
+| -------------------------------- | ---------------------- |
+| Firewall disabled / inactive     | HIGH                   |
+| Redis/Docker API on 0.0.0.0      | CRITICAL               |
+| Database on 0.0.0.0 without auth | HIGH                   |
+| SSH on default port 22           | MEDIUM (informational) |
 
 ### Outbound Connection Check
 
@@ -153,6 +159,7 @@ ss -tnp state established 2>/dev/null || netstat -tnp 2>/dev/null | grep ESTABLI
 ```
 
 Cross-reference remote IPs/domains against:
+
 - action-policies.md webhook/exfil domain list (Discord, Telegram, ngrok, webhook.site, etc.)
 - scan-rules.md Rule 23 SUSPICIOUS_IP validation (exclude private ranges)
 - action-policies.md high-risk TLDs (`.xyz`, `.top`, `.tk`, `.ml`, `.ga`, `.cf`, `.gq`)
@@ -186,22 +193,22 @@ ls -la ~/.config/systemd/user/ 2>/dev/null
 
 Scan cron command bodies for:
 
-| Pattern | Description | Severity |
-|---------|-------------|----------|
-| `curl.*\|\s*(bash\|sh)` | curl pipe to shell | CRITICAL |
-| `wget.*\|\s*(bash\|sh)` | wget pipe to shell | CRITICAL |
-| `fetch.*then.*eval` | Fetch and eval | CRITICAL |
-| `download.*execute` (i) | Download-and-execute | HIGH |
-| `base64 -d \| bash` | Decode and execute | CRITICAL |
-| `eval "$(curl`  | eval curl output | CRITICAL |
+| Pattern                 | Description          | Severity |
+| ----------------------- | -------------------- | -------- |
+| `curl.*\|\s*(bash\|sh)` | curl pipe to shell   | CRITICAL |
+| `wget.*\|\s*(bash\|sh)` | wget pipe to shell   | CRITICAL |
+| `fetch.*then.*eval`     | Fetch and eval       | CRITICAL |
+| `download.*execute` (i) | Download-and-execute | HIGH     |
+| `base64 -d \| bash`     | Decode and execute   | CRITICAL |
+| `eval "$(curl`          | eval curl output     | CRITICAL |
 
 ### Additional Checks
 
-| Condition | Severity |
-|-----------|----------|
-| Unknown cron job touching `$OC/` as root | HIGH |
-| Cron job downloading from external URL | HIGH |
-| Cron job not present in `openclaw cron list` but touches `$OC/` | MEDIUM |
+| Condition                                                       | Severity |
+| --------------------------------------------------------------- | -------- |
+| Unknown cron job touching `$OC/` as root                        | HIGH     |
+| Cron job downloading from external URL                          | HIGH     |
+| Cron job not present in `openclaw cron list` but touches `$OC/` | MEDIUM   |
 
 ---
 
@@ -227,12 +234,12 @@ find /etc/cron.d/ -type f -mtime -1 2>/dev/null
    - Report any findings with the relevant rule IDs
 3. **Permission check** on critical files:
 
-| File | Expected Permission |
-|------|-------------------|
-| `$OC/openclaw.json` | 600 |
-| `$OC/devices/paired.json` | 600 |
-| `~/.ssh/authorized_keys` | 600 |
-| `/etc/ssh/sshd_config` | 644 |
+| File                      | Expected Permission |
+| ------------------------- | ------------------- |
+| `$OC/openclaw.json`       | 600                 |
+| `$OC/devices/paired.json` | 600                 |
+| `~/.ssh/authorized_keys`  | 600                 |
+| `/etc/ssh/sshd_config`    | 644                 |
 
 4. **New executable detection**:
    ```bash
@@ -262,13 +269,13 @@ Each line: `{"timestamp":"...","tool_name":"...","decision":"...","risk_level":"
 
 2. **Pattern detection**:
 
-| Pattern | Condition | Severity |
-|---------|-----------|----------|
-| Repeated denial | Same skill denied 3+ times | HIGH |
-| Critical event | Any event with `risk_level: critical` | CRITICAL |
-| Exfiltration attempt | `WEBHOOK_EXFIL` or `NET_EXFIL_UNRESTRICTED` tag | HIGH |
-| Prompt injection | `PROMPT_INJECTION` tag in events | CRITICAL |
-| Unrevoked violator | Skill with 5+ denials still not revoked in registry | MEDIUM |
+| Pattern              | Condition                                           | Severity |
+| -------------------- | --------------------------------------------------- | -------- |
+| Repeated denial      | Same skill denied 3+ times                          | HIGH     |
+| Critical event       | Any event with `risk_level: critical`               | CRITICAL |
+| Exfiltration attempt | `WEBHOOK_EXFIL` or `NET_EXFIL_UNRESTRICTED` tag     | HIGH     |
+| Prompt injection     | `PROMPT_INJECTION` tag in events                    | CRITICAL |
+| Unrevoked violator   | Skill with 5+ denials still not revoked in registry | MEDIUM   |
 
 3. **Recommendation generation**:
    - For skills with high deny rates: suggest `/agentguard trust revoke`
@@ -289,20 +296,20 @@ env | grep -iE 'API_KEY|SECRET|PASSWORD|TOKEN|PRIVATE|CREDENTIAL' | awk -F= '{pr
 
 ### Configuration Checks
 
-| Check | Command | Expected |
-|-------|---------|----------|
-| AgentGuard protection level | Read `~/.agentguard/config.json` | Not `permissive` for production |
-| GoPlus API configured | Check `GOPLUS_API_KEY` exists | Set if Web3 features used |
-| Config baseline hash | `sha256sum -c $OC/.config-baseline.sha256` | All OK (if baseline exists) |
+| Check                       | Command                                    | Expected                        |
+| --------------------------- | ------------------------------------------ | ------------------------------- |
+| AgentGuard protection level | Read `~/.agentguard/config.json`           | Not `permissive` for production |
+| GoPlus API configured       | Check `GOPLUS_API_KEY` exists              | Set if Web3 features used       |
+| Config baseline hash        | `sha256sum -c $OC/.config-baseline.sha256` | All OK (if baseline exists)     |
 
 ### Severity
 
-| Condition | Severity |
-|-----------|----------|
-| Protection level = `permissive` | MEDIUM |
-| Sensitive env var with `PRIVATE_KEY` or `MNEMONIC` in name | HIGH |
-| Config baseline hash mismatch | HIGH |
-| Config baseline missing | LOW (informational) |
+| Condition                                                  | Severity            |
+| ---------------------------------------------------------- | ------------------- |
+| Protection level = `permissive`                            | MEDIUM              |
+| Sensitive env var with `PRIVATE_KEY` or `MNEMONIC` in name | HIGH                |
+| Config baseline hash mismatch                              | HIGH                |
+| Config baseline missing                                    | LOW (informational) |
 
 ---
 
@@ -318,13 +325,13 @@ node scripts/trust-cli.ts list
 
 ### Analysis
 
-| Check | Condition | Severity |
-|-------|-----------|----------|
-| Expired attestation | `expires_at` < now | MEDIUM |
-| Stale trusted skill | `trust_level: trusted` + `updated_at` > 30 days ago | LOW |
-| Installed but untrusted | Skill directory exists + `trust_level: untrusted` | MEDIUM |
-| Over-privileged | `exec: allow` AND `network_allowlist: ["*"]` | HIGH |
-| Empty registry | No records at all despite installed skills | MEDIUM |
+| Check                   | Condition                                           | Severity |
+| ----------------------- | --------------------------------------------------- | -------- |
+| Expired attestation     | `expires_at` < now                                  | MEDIUM   |
+| Stale trusted skill     | `trust_level: trusted` + `updated_at` > 30 days ago | LOW      |
+| Installed but untrusted | Skill directory exists + `trust_level: untrusted`   | MEDIUM   |
+| Over-privileged         | `exec: allow` AND `network_allowlist: ["*"]`        | HIGH     |
+| Empty registry          | No records at all despite installed skills          | MEDIUM   |
 
 ### Statistics Output
 
@@ -336,9 +343,9 @@ node scripts/trust-cli.ts list
 
 ## Overall Status Calculation
 
-| Condition | Status |
-|-----------|--------|
-| Any check has CRITICAL findings | **FAIL** |
-| Any check has HIGH findings | **WARN** |
-| Only MEDIUM/LOW findings | **PASS** (with notes) |
-| No findings | **PASS** |
+| Condition                       | Status                |
+| ------------------------------- | --------------------- |
+| Any check has CRITICAL findings | **FAIL**              |
+| Any check has HIGH findings     | **WARN**              |
+| Only MEDIUM/LOW findings        | **PASS** (with notes) |
+| No findings                     | **PASS**              |

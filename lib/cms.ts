@@ -8,7 +8,15 @@
  * Заказчик правит /admin или data/*.json → git push → ISR подхватывает.
  */
 
-import { cmsStore, type Dish, type Review, type Video, type TrustProofItem, type PricingConfig, type PageText } from './cms-store';
+import {
+  cmsStore,
+  type Dish,
+  type Review,
+  type Video,
+  type TrustProofItem,
+  type PricingConfig,
+  type PageText,
+} from "./cms-store";
 
 // === Server API ===
 
@@ -40,7 +48,7 @@ export async function getPricing(): Promise<PricingConfig | null> {
 
 export async function getPageText(key: string): Promise<string | null> {
   const texts = await cmsStore.pageTexts.getAll();
-  const match = texts.find(t => t.key === key);
+  const match = texts.find((t) => t.key === key);
   return match?.value || null;
 }
 

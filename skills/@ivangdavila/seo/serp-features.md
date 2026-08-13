@@ -6,19 +6,19 @@ Rank is a coordinate; visibility is a pixel measurement. On a modern results pag
 
 For a target query, record: which features appear, in what order, how far down the first organic result starts, and who owns each feature. That layout is the ceiling on what any ranking is worth (SKILL.md rule 9 turns it into a click estimate).
 
-| Feature | Who wins it | Practical lever |
-|---|---|---|
-| Featured snippet | Usually a page already in the top 10 with a directly extractable answer | Format the answer to match the snippet type |
-| People Also Ask | Pages answering the exact question phrasing | Question-shaped H2 plus a 40-60 word answer beneath it |
-| Sitelinks | Chosen algorithmically from site structure | Clear architecture, unambiguous titles, real navigation |
-| Image pack | Image search relevance, page context | Descriptive file names and alt text, image sitemap, context around the image |
-| Video results / key moments | Video-primary pages and YouTube | VideoObject markup, chapters, transcript on the page |
-| Top Stories | News-eligible publishers | Publisher-side eligibility, freshness, entity coverage |
-| Local pack | Proximity, relevance, prominence | Google Business Profile work; organic changes do not move it |
-| Shopping / merchant listings | Feed plus product markup | Feed accuracy and identifiers |
-| Reviews stars | Eligible review markup on non-self-serving content | Real third-party review data |
-| AI Overview | Grounded selection across the index | Answer-first, extractable, current pages |
-| Anything else | — | Check whether the feature is even available in the target market |
+| Feature                      | Who wins it                                                             | Practical lever                                                              |
+| ---------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Featured snippet             | Usually a page already in the top 10 with a directly extractable answer | Format the answer to match the snippet type                                  |
+| People Also Ask              | Pages answering the exact question phrasing                             | Question-shaped H2 plus a 40-60 word answer beneath it                       |
+| Sitelinks                    | Chosen algorithmically from site structure                              | Clear architecture, unambiguous titles, real navigation                      |
+| Image pack                   | Image search relevance, page context                                    | Descriptive file names and alt text, image sitemap, context around the image |
+| Video results / key moments  | Video-primary pages and YouTube                                         | VideoObject markup, chapters, transcript on the page                         |
+| Top Stories                  | News-eligible publishers                                                | Publisher-side eligibility, freshness, entity coverage                       |
+| Local pack                   | Proximity, relevance, prominence                                        | Google Business Profile work; organic changes do not move it                 |
+| Shopping / merchant listings | Feed plus product markup                                                | Feed accuracy and identifiers                                                |
+| Reviews stars                | Eligible review markup on non-self-serving content                      | Real third-party review data                                                 |
+| AI Overview                  | Grounded selection across the index                                     | Answer-first, extractable, current pages                                     |
+| Anything else                | —                                                                       | Check whether the feature is even available in the target market             |
 
 ## Featured Snippets
 
@@ -68,11 +68,11 @@ Some queries are structurally closed: page 1 is review media, forums, and market
 
 ## SERP Feature Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Reporting rank without the layout | #1 below a summary and four ads is not what the client hears | Report pixel position and CTR |
-| Building FAQ markup to win PAA | PAA selection is not driven by markup, and the FAQ rich result is gone for most sites | Answer the questions in the content |
-| Chasing every snippet | Some snippets end the journey and cost you the click | Take snippets that advertise depth |
-| One thin page per PAA question | Cannibalization plus thin content | Cluster into the intent's page |
-| Ignoring brand SERPs | Competitors bid and rank on your name while you optimize category terms | Audit the brand SERP first |
-| Assuming feature parity across markets | Availability differs by country and language | Check the SERP in the target market |
+| Trap                                   | Why it fails                                                                          | Do instead                          |
+| -------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------- |
+| Reporting rank without the layout      | #1 below a summary and four ads is not what the client hears                          | Report pixel position and CTR       |
+| Building FAQ markup to win PAA         | PAA selection is not driven by markup, and the FAQ rich result is gone for most sites | Answer the questions in the content |
+| Chasing every snippet                  | Some snippets end the journey and cost you the click                                  | Take snippets that advertise depth  |
+| One thin page per PAA question         | Cannibalization plus thin content                                                     | Cluster into the intent's page      |
+| Ignoring brand SERPs                   | Competitors bid and rank on your name while you optimize category terms               | Audit the brand SERP first          |
+| Assuming feature parity across markets | Availability differs by country and language                                          | Check the SERP in the target market |

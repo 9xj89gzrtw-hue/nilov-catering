@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useRef, type ReactNode } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useRef, type ReactNode } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface Props {
   children: ReactNode;
   href?: string;
-  onClick?: () =>void;
+  onClick?: () => void;
   className?: string;
   intensity?: number; // 0.1..0.8, default 0.4
 }
@@ -19,7 +19,13 @@ interface Props {
  *   <MagneticButton href="/plan/helper">Рассчитать</MagneticButton>
  *   <MagneticButton onClick={handleClick}>Click</MagneticButton>
  */
-export default function MagneticButton({ children, href, onClick, className = '', intensity = 0.4 }: Props) {
+export default function MagneticButton({
+  children,
+  href,
+  onClick,
+  className = "",
+  intensity = 0.4,
+}: Props) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -33,7 +39,10 @@ export default function MagneticButton({ children, href, onClick, className = ''
     y.set((e.clientY - rect.top - rect.height / 2) * intensity);
   };
 
-  const handleLeave = () => { x.set(0); y.set(0); };
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   const motionStyle = { x: sx, y: sy } as const;
 

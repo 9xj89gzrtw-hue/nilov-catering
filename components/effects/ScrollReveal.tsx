@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 /**
  * ScrollReveal — adds .revealed class to .reveal elements when they enter viewport.
@@ -13,19 +13,19 @@ export default function ScrollReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
+            entry.target.classList.add("revealed");
             observer.unobserve(entry.target); // Reveal once
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     // Observe all .reveal elements
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach((el) =>observer.observe(el));
+    const reveals = document.querySelectorAll(".reveal");
+    reveals.forEach((el) => observer.observe(el));
 
-    return () =>observer.disconnect();
+    return () => observer.disconnect();
   }, []);
 
   return null;

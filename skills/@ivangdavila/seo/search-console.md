@@ -21,13 +21,13 @@ Every other SEO number is modeled. Search Console is measured. Knowing its quirk
 
 ## The Five Reports Worth Reading
 
-| Report | Question it answers | Trap |
-|---|---|---|
+| Report                       | Question it answers                       | Trap                                                                                 |
+| ---------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------ |
 | Performance → Search results | What already earns impressions and clicks | Comparing periods of different lengths, or including branded queries in "SEO growth" |
-| Page indexing | What Google chose to index and why not | Treating "Discovered — currently not indexed" as a bug rather than a demand signal |
-| URL Inspection (live test) | What Google fetches and renders right now | Reading the indexed version and thinking it is the current page |
-| Crawl stats (Settings) | Whether the host is healthy under crawl | Ignoring a rising 5xx or a collapsing crawl rate |
-| Links | Internal and external link counts | Using it as a full backlink index; it undercounts and does not score |
+| Page indexing                | What Google chose to index and why not    | Treating "Discovered — currently not indexed" as a bug rather than a demand signal   |
+| URL Inspection (live test)   | What Google fetches and renders right now | Reading the indexed version and thinking it is the current page                      |
+| Crawl stats (Settings)       | Whether the host is healthy under crawl   | Ignoring a rising 5xx or a collapsing crawl rate                                     |
+| Links                        | Internal and external link counts         | Using it as a full backlink index; it undercounts and does not score                 |
 
 ## Workflows That Produce Decisions
 
@@ -71,11 +71,11 @@ SEO has no built-in control group, so causality has to be constructed:
 
 ## Search Console Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Reporting average position gains | Query mix moves it independently of performance | Report clicks and per-query positions |
-| Comparing to yesterday | Data is incomplete for the last few days | Use 28-day windows |
-| Using `site:` instead of the indexing report | The operator is an unreliable estimate | Page indexing + URL Inspection |
-| Trusting the 1,000-row table | Truncation hides the long tail that is most of the traffic | API, BigQuery export, or Looker Studio |
-| Mixing branded and non-branded | Hides whether SEO is working | Regex-exclude the brand |
-| Deleting the property after a migration | You lose the old URL history you will need | Keep both properties; keep exporting |
+| Trap                                         | Why it fails                                               | Do instead                             |
+| -------------------------------------------- | ---------------------------------------------------------- | -------------------------------------- |
+| Reporting average position gains             | Query mix moves it independently of performance            | Report clicks and per-query positions  |
+| Comparing to yesterday                       | Data is incomplete for the last few days                   | Use 28-day windows                     |
+| Using `site:` instead of the indexing report | The operator is an unreliable estimate                     | Page indexing + URL Inspection         |
+| Trusting the 1,000-row table                 | Truncation hides the long tail that is most of the traffic | API, BigQuery export, or Looker Studio |
+| Mixing branded and non-branded               | Hides whether SEO is working                               | Regex-exclude the brand                |
+| Deleting the property after a migration      | You lose the old URL history you will need                 | Keep both properties; keep exporting   |

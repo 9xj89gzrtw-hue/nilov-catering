@@ -88,26 +88,26 @@ Sitewide quality reassessments judge the whole domain: dead weight drags your wi
 
 Once a site passes a few hundred URLs, decide with a table, not with opinions. Per URL: clicks and impressions (last 12 months), position, backlinks, conversions, last updated, and target intent. Then:
 
-| Segment | Disposition |
-|---|---|
-| Traffic and conversions | Protect: scheduled refresh, keep links pointing in |
-| Impressions, few clicks, position 4-15 | Highest ROI: snippet rewrite plus gap fill |
-| Traffic, no conversions, informational | Keep, but add the path to a commercial page |
-| No impressions, has links | Repurpose the URL for a topic with demand, or consolidate carefully to preserve the links |
-| No impressions, no links, no strategic role | Consolidate or delete |
-| Duplicated intent with a stronger page | 301 into the survivor, merge unique content |
-| Anything else | Leave it and revisit next inventory; churn without a reason is its own risk |
+| Segment                                     | Disposition                                                                               |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Traffic and conversions                     | Protect: scheduled refresh, keep links pointing in                                        |
+| Impressions, few clicks, position 4-15      | Highest ROI: snippet rewrite plus gap fill                                                |
+| Traffic, no conversions, informational      | Keep, but add the path to a commercial page                                               |
+| No impressions, has links                   | Repurpose the URL for a topic with demand, or consolidate carefully to preserve the links |
+| No impressions, no links, no strategic role | Consolidate or delete                                                                     |
+| Duplicated intent with a stronger page      | 301 into the survivor, merge unique content                                               |
+| Anything else                               | Leave it and revisit next inventory; churn without a reason is its own risk               |
 
 Run this yearly on a stable site, quarterly on one that publishes heavily.
 
 ## Content Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Writing to a word count | Length is a correlation, not a cause; padding is a negative signal to readers | Cover the intent, then stop |
-| Publishing without an information-gain answer | You ship the eleventh identical page | Answer the go/no-go question first |
-| Refreshing by changing the date | Deceptive and detectable | Change the content, then the date |
-| Deleting content in bulk after a quality hit | You remove pages that still earn and lose their links | Consolidate deliberately, page by page, with the data in front of you |
-| One page per keyword variant | Cannibalization by design | One page per intent |
-| Treating the FAQ as SEO furniture | Nobody reads it and it no longer earns markup | Answer questions readers actually ask, in the body |
-| A library with no owner | Facts rot; the site's quality average falls silently | Inventory on a schedule, with dispositions assigned |
+| Trap                                          | Why it fails                                                                  | Do instead                                                            |
+| --------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Writing to a word count                       | Length is a correlation, not a cause; padding is a negative signal to readers | Cover the intent, then stop                                           |
+| Publishing without an information-gain answer | You ship the eleventh identical page                                          | Answer the go/no-go question first                                    |
+| Refreshing by changing the date               | Deceptive and detectable                                                      | Change the content, then the date                                     |
+| Deleting content in bulk after a quality hit  | You remove pages that still earn and lose their links                         | Consolidate deliberately, page by page, with the data in front of you |
+| One page per keyword variant                  | Cannibalization by design                                                     | One page per intent                                                   |
+| Treating the FAQ as SEO furniture             | Nobody reads it and it no longer earns markup                                 | Answer questions readers actually ask, in the body                    |
+| A library with no owner                       | Facts rot; the site's quality average falls silently                          | Inventory on a schedule, with dispositions assigned                   |

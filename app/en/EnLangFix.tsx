@@ -1,5 +1,5 @@
-'use client';
-import { useEffect } from 'react';
+"use client";
+import { useEffect } from "react";
 
 /**
  * Sets <html lang="en">on mount, restores to "ru" on unmount.
@@ -11,8 +11,10 @@ export default function EnLangFix() {
   useEffect(() => {
     const html = document.documentElement;
     const prev = html.lang;
-    html.lang = 'en';
-    return () => { html.lang = prev; };
+    html.lang = "en";
+    return () => {
+      html.lang = prev;
+    };
   }, []);
   return null;
 }

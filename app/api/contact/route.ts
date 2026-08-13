@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
-import { LEGAL } from '@/lib/data';
-import { appendFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
-import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
+import { NextResponse } from "next/server";
+import { LEGAL } from "@/lib/data";
+import { appendFile, mkdir } from "fs/promises";
+import { join } from "path";
+import { existsSync } from "fs";
+import { isValidPhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 
 /**
  * POST /api/contact
@@ -30,13 +30,13 @@ function checkRateLimit(ip: string): { ok: boolean; remaining: number; resetInMs
   const now = Date.now();
   const entry = ipHits.get(ip);
 
-  if (!entry || now - entry.firstHit >RATE_LIMIT_WINDOW_MS) {
+  if (!entry || now - entry.firstHit > RATE_LIMIT_WINDOW_MS) {
     ipHits.set(ip, { count: 1, firstHit: now });
     return { ok: true, remaining: RATE_LIMIT_MAX - 1, resetInMs: RATE_LIMIT_WINDOW_MS };
   }
 
   entry.count += 1;
-  if (entry.count >RATE_LIMIT_MAX) {
+  if (entry.count > RATE_LIMIT_MAX) {
     return { ok: false, remaining: 0, resetInMs: RATE_LIMIT_WINDOW_MS - (now - entry.firstHit) };
   }
 
@@ -50,23 +50,23 @@ function checkRateLimit(ip: string): { ok: boolean; remaining: number; resetInMs
 function getClientIp(request: Request): string {
   const headers = request.headers;
   return (
-    headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    headers.get('x-real-ip') ||
-    headers.get('cf-connecting-ip') ||
-    'unknown'
+    headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    headers.get("x-real-ip") ||
+    headers.get("cf-connecting-ip") ||
+    "unknown"
   );
 }
 
 async function persistLead(payload: Record<string, unknown>) {
   try {
-    const logsDir = join(process.cwd(), 'logs');
+    const logsDir = join(process.cwd(), "logs");
     if (!existsSync(logsDir)) {
       await mkdir(logsDir, { recursive: true });
     }
-    const line = JSON.stringify({ ...payload, _loggedAt: new Date().toISOString() }) + '\n';
-    await appendFile(join(logsDir, 'contacts.jsonl'), line, 'utf-8');
+    const line = JSON.stringify({ ...payload, _loggedAt: new Date().toISOString() }) + "\n";
+    await appendFile(join(logsDir, "contacts.jsonl"), line, "utf-8");
   } catch (err) {
-    console.error('[CONTACT] persistLead error:', err);
+    console.error("[CONTACT] persistLead error:", err);
   }
 }
 
@@ -80,14 +80,14 @@ export async function POST(request: Request) {
           success: false,
           message: `Слишком много заявок. Попробуйте через ${Math.ceil(rate.resetInMs / 60000)} минут.`,
         },
-        { status: 429 },
+        { status: 429 }
       );
     }
 
-    const contentType = request.headers.get('content-type') || '';
+    const contentType = request.headers.get("content-type") || "";
     let body: Record<string, unknown>;
 
-    if (contentType.includes('application/json')) {
+    if (contentType.includes("application/json")) {
       body = await request.json();
     } else {
       const form = await request.formData();
@@ -95,40 +95,40 @@ export async function POST(request: Request) {
     }
 
     // Honeypot: bots fill this field, real users don't see it
-    const honeypot = String(body.website || body.url || '').trim();
+    const honeypot = String(body.website || body.url || "").trim();
     if (honeypot) {
       // Silent OK — bot doesn't know it was rejected
-      return NextResponse.json({ success: true, message: 'Спасибо!', orderId: 'NV-FAKE' });
+      return NextResponse.json({ success: true, message: "Спасибо!", orderId: "NV-FAKE" });
     }
 
-    const name = String(body.name || '').trim();
-    const phone = String(body.phone || '').trim();
+    const name = String(body.name || "").trim();
+    const phone = String(body.phone || "").trim();
 
     if (!name || !phone) {
       return NextResponse.json(
-        { success: false, message: 'Имя и телефон обязательны' },
-        { status: 400 },
+        { success: false, message: "Имя и телефон обязательны" },
+        { status: 400 }
       );
     }
 
     // Enhanced phone validation using libphonenumber-js (RU locale)
     let phoneClean: string;
     try {
-      const parsed = parsePhoneNumber(phone, 'RU');
+      const parsed = parsePhoneNumber(phone, "RU");
       if (!parsed.isValid()) {
         return NextResponse.json(
-          { success: false, message: 'Некорректный номер телефона. Проверьте формат.' },
-          { status: 400 },
+          { success: false, message: "Некорректный номер телефона. Проверьте формат." },
+          { status: 400 }
         );
       }
-      phoneClean = parsed.format('E.164').replace('+', '');
+      phoneClean = parsed.format("E.164").replace("+", "");
     } catch {
       // Fallback to basic validation
-      phoneClean = phone.replace(/[\s\-\(\)\+]/g, '');
+      phoneClean = phone.replace(/[\s\-\(\)\+]/g, "");
       if (!/^\d{10,15}$/.test(phoneClean)) {
         return NextResponse.json(
-          { success: false, message: 'Некорректный номер телефона' },
-          { status: 400 },
+          { success: false, message: "Некорректный номер телефона" },
+          { status: 400 }
         );
       }
     }
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
 
     const payload = {
       orderId,
-      type: isB2B ? 'B2B' : 'consumer',
+      type: isB2B ? "B2B" : "consumer",
       name,
       phone,
       phoneClean,
@@ -157,7 +157,7 @@ export async function POST(request: Request) {
       groupGF: body.groupGF ? Number(body.groupGF) : 0,
       groupNutFree: body.groupNutFree ? Number(body.groupNutFree) : 0,
       groupOther: body.groupOther ? Number(body.groupOther) : 0,
-      medicalDiet: body.medicalDiet === 'on' || body.medicalDiet === 'true',
+      medicalDiet: body.medicalDiet === "on" || body.medicalDiet === "true",
       // B2B fields
       company: body.company || null,
       inn: body.inn || null,
@@ -165,15 +165,15 @@ export async function POST(request: Request) {
       legalAddress: body.legalAddress || null,
       edoSystem: body.edoSystem || null,
       docEmail: body.docEmail || null,
-      vatRequired: body.vatRequired === 'on' || body.vatRequired === 'true',
-      slaRequired: body.slaRequired === 'on' || body.slaRequired === 'true',
+      vatRequired: body.vatRequired === "on" || body.vatRequired === "true",
+      slaRequired: body.slaRequired === "on" || body.slaRequired === "true",
       procurement: body.procurement || null, // 44-ФЗ / 223-ФЗ / коммерция
-      needContract: body.needContract === 'on' || body.needContract === 'true',
+      needContract: body.needContract === "on" || body.needContract === "true",
       // Diagnostics
-      source: body.source || 'contact-form',
+      source: body.source || "contact-form",
       submittedAt: new Date().toISOString(),
       ip,
-      userAgent: request.headers.get('user-agent') || null,
+      userAgent: request.headers.get("user-agent") || null,
       rateRemaining: rate.remaining,
     };
 
@@ -181,7 +181,7 @@ export async function POST(request: Request) {
     await persistLead(payload);
 
     // Console log (visible in hosting logs / Vercel)
-    console.log(`[CONTACT ${isB2B ? 'B2B' : 'consumer'}]`, orderId, {
+    console.log(`[CONTACT ${isB2B ? "B2B" : "consumer"}]`, orderId, {
       name,
       phone,
       eventType: payload.eventType,
@@ -194,9 +194,10 @@ export async function POST(request: Request) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
     let telegramOk = false;
     if (botToken && chatId) {
-      const sanitize = (s: string) =>s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const sanitize = (s: string) =>
+        s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       const tgText = [
-        `🔔 ${isB2B ? 'B2B заявка' : 'Заявка'} ${orderId}`,
+        `🔔 ${isB2B ? "B2B заявка" : "Заявка"} ${orderId}`,
         `Имя: ${sanitize(name)}`,
         `Телефон: ${sanitize(phone)}`,
         payload.eventType ? `Событие: ${sanitize(String(payload.eventType))}` : null,
@@ -204,11 +205,13 @@ export async function POST(request: Request) {
         payload.company ? `Компания: ${sanitize(String(payload.company))}` : null,
         payload.inn ? `ИНН: ${sanitize(String(payload.inn))}` : null,
         payload.comment ? `Комментарий: ${sanitize(String(payload.comment))}` : null,
-      ].filter(Boolean).join('\n');
+      ]
+        .filter(Boolean)
+        .join("\n");
       try {
         const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ chat_id: chatId, text: tgText }),
         });
         telegramOk = tgRes.ok;
@@ -222,18 +225,22 @@ export async function POST(request: Request) {
     // - If Telegram not configured OR fails AND file persist failed → return 503 with phone fallback
     //   DO NOT lie to client. Lead is lost, ask them to call.
     if (!telegramOk) {
-      console.warn('[CONTACT] WARNING: Lead not delivered via Telegram.');
-      console.log('[CONTACT] LEAD:', JSON.stringify(payload));
+      console.warn("[CONTACT] WARNING: Lead not delivered via Telegram.");
+      console.log("[CONTACT] LEAD:", JSON.stringify(payload));
       // Check if file persist also failed
-      const logsDir = join(process.cwd(), 'logs');
+      const logsDir = join(process.cwd(), "logs");
       if (!existsSync(logsDir)) {
-        console.error('[CONTACT] CRITICAL: Both Telegram and file persist failed. Lead LOST.');
-        return NextResponse.json({
-          success: false,
-          message: 'Временная ошибка отправки. Пожалуйста, позвоните +7 (812) 919-59-11 — мы примем заказ.',
-          orderId,
-          phoneFallback: '+78129195911',
-        }, { status: 503 });
+        console.error("[CONTACT] CRITICAL: Both Telegram and file persist failed. Lead LOST.");
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "Временная ошибка отправки. Пожалуйста, позвоните +7 (812) 919-59-11 — мы примем заказ.",
+            orderId,
+            phoneFallback: "+78129195911",
+          },
+          { status: 503 }
+        );
       }
     }
 
@@ -241,20 +248,20 @@ export async function POST(request: Request) {
       {
         success: true,
         message: isB2B
-          ? 'Заявка принята. B2B-менеджер свяжется в течение 1 рабочего часа с пакетом документов (договор, счёт, ЭДО).'
-          : 'Заявка принята. Менеджер перезвонит в течение 15 минут (в рабочее время 9:00–21:00).',
+          ? "Заявка принята. B2B-менеджер свяжется в течение 1 рабочего часа с пакетом документов (договор, счёт, ЭДО)."
+          : "Заявка принята. Менеджер перезвонит в течение 15 минут (в рабочее время 9:00–21:00).",
         orderId,
         operator: LEGAL.operatorFull,
         inn: LEGAL.inn,
         edo: LEGAL.edo,
       },
-      { status: 201 },
+      { status: 201 }
     );
   } catch (error) {
-    console.error('[CONTACT] Error:', error);
+    console.error("[CONTACT] Error:", error);
     return NextResponse.json(
-      { success: false, message: 'Внутренняя ошибка сервера. Позвоните +7 (812) 919-59-11.' },
-      { status: 500 },
+      { success: false, message: "Внутренняя ошибка сервера. Позвоните +7 (812) 919-59-11." },
+      { status: 500 }
     );
   }
 }
@@ -268,8 +275,8 @@ export async function GET() {
     taxSystem: LEGAL.taxSystem,
     legalAddress: LEGAL.legalAddress,
     edo: LEGAL.edo,
-    phone: '+7 (812) 919-59-11',
-    email: 'info@nilov-catering.ru',
-    altEmail: 'b2b@nilov-catering.ru',
+    phone: "+7 (812) 919-59-11",
+    email: "info@nilov-catering.ru",
+    altEmail: "b2b@nilov-catering.ru",
   });
 }

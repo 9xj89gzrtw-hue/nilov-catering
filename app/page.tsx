@@ -1,24 +1,24 @@
-import type { Metadata } from 'next';
-import HeroBlock from '@/components/blocks/HeroBlock';
-import EventTypeSelector from '@/components/blocks/EventTypeSelector';
-import NamedPackageGrid from '@/components/blocks/NamedPackageGrid';
-import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
-import LeadCaptureForm from '@/components/blocks/LeadCaptureForm';
-import B2BSection from '@/components/blocks/B2BSection';
-import MenuPreview from '@/components/blocks/MenuPreview';
-import PortfolioGallery from '@/components/blocks/PortfolioGallery';
-import WhyUs from '@/components/blocks/WhyUs';
-import ChefStory from '@/components/blocks/ChefStory';
-import TrustBlock from '@/components/blocks/TrustBlock';
-import TrustBar from '@/components/blocks/TrustBar';
-import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
-import WowCase from '@/components/blocks/WowCase';
-import FAQSection from '@/components/blocks/FAQSection';
-import CTASection from '@/components/blocks/CTASection';
-import { getReviews } from '@/lib/cms';
+import type { Metadata } from "next";
+import HeroBlock from "@/components/blocks/HeroBlock";
+import EventTypeSelector from "@/components/blocks/EventTypeSelector";
+import NamedPackageGrid from "@/components/blocks/NamedPackageGrid";
+import InlinePriceCalculator from "@/components/blocks/InlinePriceCalculator";
+import LeadCaptureForm from "@/components/blocks/LeadCaptureForm";
+import B2BSection from "@/components/blocks/B2BSection";
+import MenuPreview from "@/components/blocks/MenuPreview";
+import PortfolioGallery from "@/components/blocks/PortfolioGallery";
+import WhyUs from "@/components/blocks/WhyUs";
+import ChefStory from "@/components/blocks/ChefStory";
+import TrustBlock from "@/components/blocks/TrustBlock";
+import TrustBar from "@/components/blocks/TrustBar";
+import TestimonialsCarousel from "@/components/blocks/TestimonialsCarousel";
+import WowCase from "@/components/blocks/WowCase";
+import FAQSection from "@/components/blocks/FAQSection";
+import CTASection from "@/components/blocks/CTASection";
+import { getReviews } from "@/lib/cms";
 
 export const metadata: Metadata = {
-  alternates: { canonical: '/', languages: { 'ru': '/', 'x-default': '/' } },
+  alternates: { canonical: "/", languages: { ru: "/", "x-default": "/" } },
   // og:image provided by app/opengraph-image.tsx (dynamic 1200×630 PNG)
 };
 
@@ -45,11 +45,17 @@ export default async function HomePage() {
       <InlinePriceCalculator />
 
       {/* 4.5. LEAD CAPTURE FORM — форма захвата лидов */}
-      <section className="py-20 md:py-28 bg-background" aria-labelledby="lead-form-heading">
-        <div className="container-site max-w-xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium">Быстрая заявка</p>
-            <h2 id="lead-form-heading" className="font-heading text-3xl md:text-5xl mb-3" style={{ fontWeight: 500 }}>
+      <section className="bg-background py-20 md:py-28" aria-labelledby="lead-form-heading">
+        <div className="container-site mx-auto max-w-xl">
+          <div className="mb-10 text-center">
+            <p className="text-gold-text mb-3 text-xs font-medium tracking-[0.22em] uppercase">
+              Быстрая заявка
+            </p>
+            <h2
+              id="lead-form-heading"
+              className="font-heading mb-3 text-3xl md:text-5xl"
+              style={{ fontWeight: 500 }}
+            >
               Получите персональное <span className="text-gold-text">предложение</span>
             </h2>
             <p className="text-muted-foreground text-base md:text-lg">
@@ -82,7 +88,7 @@ export default async function HomePage() {
       <TrustBar />
 
       {/* 9. TESTIMONIALS — из reviews.json */}
-      <TestimonialsCarousel cmsReviews={cmsReviews.length >0 ? cmsReviews : undefined} />
+      <TestimonialsCarousel cmsReviews={cmsReviews.length > 0 ? cmsReviews : undefined} />
 
       {/* 10. WOW CASE — избранный кейс */}
       <WowCase />

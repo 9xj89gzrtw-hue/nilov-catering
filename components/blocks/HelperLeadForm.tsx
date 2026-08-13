@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 /**
  * HelperLeadForm — client-side form that POSTs to /api/quote
@@ -24,29 +24,29 @@ export default function HelperLeadForm({
 }) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
         setSubmitting(true);
-        setError('');
+        setError("");
         const formData = new FormData(e.currentTarget);
         try {
-          const res = await fetch('/api/quote', {
-            method: 'POST',
+          const res = await fetch("/api/quote", {
+            method: "POST",
             body: formData,
           });
           const json = await res.json();
           if (json.success) {
-            router.push(`/thank-you?orderId=${json.orderId || ''}`);
+            router.push(`/thank-you?orderId=${json.orderId || ""}`);
           } else {
-            setError(json.message || 'Не удалось отправить заявку. Позвоните +7 (812) 919-59-11.');
+            setError(json.message || "Не удалось отправить заявку. Позвоните +7 (812) 919-59-11.");
             setSubmitting(false);
           }
         } catch {
-          setError('Сеть недоступна. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp.');
+          setError("Сеть недоступна. Позвоните +7 (812) 919-59-11 или напишите в WhatsApp.");
           setSubmitting(false);
         }
       }}
@@ -56,7 +56,9 @@ export default function HelperLeadForm({
       <input type="hidden" name="format" value={format} />
       <input type="hidden" name="subject" value={`${occasion} · ${guests} · ${location}`} />
       <div>
-        <label htmlFor="helper-name" className="block text-sm font-medium text-foreground mb-1.5">Ваше имя</label>
+        <label htmlFor="helper-name" className="text-foreground mb-1.5 block text-sm font-medium">
+          Ваше имя
+        </label>
         <input
           type="text"
           id="helper-name"
@@ -64,11 +66,13 @@ export default function HelperLeadForm({
           required
           autoComplete="name"
           placeholder="Анна"
-          className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
+          className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base transition-colors focus:ring-2 focus:outline-none"
         />
       </div>
       <div>
-        <label htmlFor="helper-phone" className="block text-sm font-medium text-foreground mb-1.5">Телефон</label>
+        <label htmlFor="helper-phone" className="text-foreground mb-1.5 block text-sm font-medium">
+          Телефон
+        </label>
         <input
           type="tel"
           id="helper-phone"
@@ -76,22 +80,25 @@ export default function HelperLeadForm({
           required
           autoComplete="tel"
           placeholder="+7 (___) ___-__-__"
-          className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 transition-colors"
+          className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base transition-colors focus:ring-2 focus:outline-none"
         />
       </div>
       {error && (
-        <div className="p-3 rounded-xl border border-red-300 bg-red-50 text-red-900 text-sm" role="alert">
+        <div
+          className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-900"
+          role="alert"
+        >
           {error}
         </div>
       )}
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-xl bg-primary text-primary-foreground px-6 py-4 text-base font-semibold hover:bg-primary/90 transition-colors no-underline shadow-md disabled:opacity-50"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-xl px-6 py-4 text-base font-semibold no-underline shadow-md transition-colors disabled:opacity-50"
       >
-        {submitting ? 'Отправляем...' : 'Получить расчёт →'}
+        {submitting ? "Отправляем..." : "Получить расчёт →"}
       </button>
-      <p className="text-xs text-muted-foreground text-center">
+      <p className="text-muted-foreground text-center text-xs">
         Перезвоним за 15 минут в рабочее время (9:00–21:00). Без спама.
       </p>
     </form>

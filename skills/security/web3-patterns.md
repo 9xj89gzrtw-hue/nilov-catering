@@ -24,11 +24,13 @@ function withdraw(uint amount) public {
 ### 2. Wallet Draining (CRITICAL)
 
 **Patterns**:
+
 - `approve()` with max uint256 value followed by `transferFrom()`
 - `permit()` with far-future deadline enabling gasless approvals
 - Approval granted to attacker-controlled address
 
 **Detection**:
+
 - `approve(address, type(uint256).max)` or `MaxUint256` or `2**256-1`
 - `transferFrom` in same contract/flow as `approve`
 - `permit(` with `deadline` parameter
@@ -68,6 +70,7 @@ function execute(bytes memory signature, uint amount) public {
 ### 6. Flash Loan Attacks (MEDIUM)
 
 **Patterns**:
+
 - `flashLoan()`, `IFlashLoan`, `executeOperation()`
 - AAVE/dYdX/Uniswap flash loan interfaces
 
@@ -78,11 +81,13 @@ function execute(bytes memory signature, uint amount) public {
 ### 7. Proxy Upgrade Risks (MEDIUM)
 
 **Patterns**:
+
 - `upgradeTo(address)`, `upgradeToAndCall(address, bytes)`
 - `_setImplementation()`, `IMPLEMENTATION_SLOT`
 - Transparent proxy / UUPS patterns
 
 **Check**:
+
 - Is upgrade function access-controlled?
 - Is there a timelock on upgrades?
 - Can the proxy be upgraded to a malicious implementation?
@@ -103,6 +108,7 @@ function updateConfig(address _new) public {
 ### 9. Price Oracle Manipulation
 
 **Patterns**:
+
 - Single-block spot price from DEX (e.g., `getReserves()` used directly for pricing)
 - No TWAP (Time-Weighted Average Price) implementation
 - Price feed without staleness check
@@ -112,11 +118,13 @@ function updateConfig(address _new) public {
 ### 10. Access Control Issues
 
 **Patterns**:
+
 - Public/external functions that modify critical state without access modifiers
 - Missing `onlyOwner`, `onlyRole`, or similar guards
 - `tx.origin` used for authentication (vulnerable to phishing)
 
 **Check**:
+
 - All state-changing functions should have appropriate access control
 - `tx.origin` should never be used for authorization (use `msg.sender`)
 - Owner/admin functions should be behind multisig or timelock
@@ -150,12 +158,12 @@ function updateConfig(address _new) public {
 
 If GoPlus API is available, these additional checks can be performed:
 
-| Check | API | Description |
-|-------|-----|-------------|
-| Token Security | `tokenSecurity(chainId, address)` | Honeypot, tax, owner control |
-| Address Security | `addressSecurity(chainId, address)` | Blacklisted, phishing, mixer |
-| Approval Risk | `approvalSecurity(chainId, address)` | Risky approvals |
-| Phishing Site | `phishingSite(url)` | Known phishing URL |
-| Transaction Simulation | `simulateTransaction(...)` | Pre-execution risk analysis |
+| Check                  | API                                  | Description                  |
+| ---------------------- | ------------------------------------ | ---------------------------- |
+| Token Security         | `tokenSecurity(chainId, address)`    | Honeypot, tax, owner control |
+| Address Security       | `addressSecurity(chainId, address)`  | Blacklisted, phishing, mixer |
+| Approval Risk          | `approvalSecurity(chainId, address)` | Risky approvals              |
+| Phishing Site          | `phishingSite(url)`                  | Known phishing URL           |
+| Transaction Simulation | `simulateTransaction(...)`           | Pre-execution risk analysis  |
 
 Requires `GOPLUS_API_KEY` and `GOPLUS_API_SECRET` environment variables.

@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { ALL_DISHES } from '@/lib/menu-data';
-import { DELIVERY_ZONES } from '@/lib/service-spec';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { ALL_DISHES } from "@/lib/menu-data";
+import { DELIVERY_ZONES } from "@/lib/service-spec";
 
 // Минимальная сумма заказа для доставки
 export const MIN_ORDER_AMOUNT = 5000;
 
 // Слоты времени доставки (более узкие — 1.5 часа)
 export const TIME_SLOTS = [
-  { id: 'morning', label: 'Утро (09:00–11:00)', icon: '🌅' },
-  { id: 'midday', label: 'День (11:00–13:00)', icon: '🌤️' },
-  { id: 'lunch', label: 'Обед (13:00–15:00)', icon: '☀️' },
-  { id: 'afternoon', label: 'Полдень (15:00–17:00)', icon: '🌇' },
-  { id: 'dinner', label: 'Ужин (17:00–19:00)', icon: '🌆' },
-  { id: 'evening', label: 'Вечер (19:00–21:00)', icon: '🌃' },
-  { id: 'late', label: 'Поздний вечер (21:00–23:00)', icon: '🌙' },
+  { id: "morning", label: "Утро (09:00–11:00)", icon: "🌅" },
+  { id: "midday", label: "День (11:00–13:00)", icon: "🌤️" },
+  { id: "lunch", label: "Обед (13:00–15:00)", icon: "☀️" },
+  { id: "afternoon", label: "Полдень (15:00–17:00)", icon: "🌇" },
+  { id: "dinner", label: "Ужин (17:00–19:00)", icon: "🌆" },
+  { id: "evening", label: "Вечер (19:00–21:00)", icon: "🌃" },
+  { id: "late", label: "Поздний вечер (21:00–23:00)", icon: "🌙" },
 ] as const;
 
 // Пресеты для быстрого старта —一键填 корзину
@@ -32,87 +32,87 @@ export interface DeliveryPreset {
 
 export const DELIVERY_PRESETS: DeliveryPreset[] = [
   {
-    id: 'coffee-break-15',
-    label: 'Кофе-брейк на 15 чел.',
-    emoji: '',
-    description: 'Кофе, выпечка, фрукты — для офисной планёрки',
+    id: "coffee-break-15",
+    label: "Кофе-брейк на 15 чел.",
+    emoji: "",
+    description: "Кофе, выпечка, фрукты — для офисной планёрки",
     guests: 15,
     estimatedTotal: 6800,
     items: [
-      { dishId: 'croissant', qty: 15 },
-      { dishId: 'muffin', qty: 15 },
-      { dishId: 'mini-sandwich', qty: 15 },
-      { dishId: 'fruit-platter', qty: 8 },
-      { dishId: 'lemonade-tarragon', qty: 15 },
+      { dishId: "croissant", qty: 15 },
+      { dishId: "muffin", qty: 15 },
+      { dishId: "mini-sandwich", qty: 15 },
+      { dishId: "fruit-platter", qty: 8 },
+      { dishId: "lemonade-tarragon", qty: 15 },
     ],
   },
   {
-    id: 'coffee-break-40',
-    label: 'Кофе-брейк на 40 чел.',
-    emoji: '',
-    description: 'Для конференции или семинара — всё включено',
+    id: "coffee-break-40",
+    label: "Кофе-брейк на 40 чел.",
+    emoji: "",
+    description: "Для конференции или семинара — всё включено",
     guests: 40,
     estimatedTotal: 16800,
     items: [
-      { dishId: 'croissant', qty: 40 },
-      { dishId: 'eclair', qty: 40 },
-      { dishId: 'muffin', qty: 40 },
-      { dishId: 'mini-sandwich', qty: 40 },
-      { dishId: 'fruit-platter', qty: 15 },
-      { dishId: 'lemonade-berry', qty: 40 },
-      { dishId: 'seabuckthorn-tea', qty: 40 },
+      { dishId: "croissant", qty: 40 },
+      { dishId: "eclair", qty: 40 },
+      { dishId: "muffin", qty: 40 },
+      { dishId: "mini-sandwich", qty: 40 },
+      { dishId: "fruit-platter", qty: 15 },
+      { dishId: "lemonade-berry", qty: 40 },
+      { dishId: "seabuckthorn-tea", qty: 40 },
     ],
   },
   {
-    id: 'coffee-break-premium-40',
-    label: 'Премиум кофе-брейк на 40',
-    emoji: '',
-    description: 'Круассаны, эклеры, сэндвичи, фрукты, сырное плато, безалкогольные напитки',
+    id: "coffee-break-premium-40",
+    label: "Премиум кофе-брейк на 40",
+    emoji: "",
+    description: "Круассаны, эклеры, сэндвичи, фрукты, сырное плато, безалкогольные напитки",
     guests: 40,
     estimatedTotal: 32800,
     items: [
-      { dishId: 'croissant-ham', qty: 40 },
-      { dishId: 'eclair', qty: 40 },
-      { dishId: 'mini-sandwich', qty: 40 },
-      { dishId: 'fruit-platter', qty: 15 },
-      { dishId: 'cheese-platter', qty: 40 },
-      { dishId: 'macaron-shooter', qty: 40 },
-      { dishId: 'lemonade-berry', qty: 40 },
-      { dishId: 'seabuckthorn-tea', qty: 40 },
-      { dishId: 'cedar-raf', qty: 40 },
+      { dishId: "croissant-ham", qty: 40 },
+      { dishId: "eclair", qty: 40 },
+      { dishId: "mini-sandwich", qty: 40 },
+      { dishId: "fruit-platter", qty: 15 },
+      { dishId: "cheese-platter", qty: 40 },
+      { dishId: "macaron-shooter", qty: 40 },
+      { dishId: "lemonade-berry", qty: 40 },
+      { dishId: "seabuckthorn-tea", qty: 40 },
+      { dishId: "cedar-raf", qty: 40 },
     ],
   },
   {
-    id: 'family-dinner-10',
-    label: 'Семейный ужин на 10 чел.',
-    emoji: '',
-    description: '2 горячих + закуски + десерт + напитки',
+    id: "family-dinner-10",
+    label: "Семейный ужин на 10 чел.",
+    emoji: "",
+    description: "2 горячих + закуски + десерт + напитки",
     guests: 10,
     estimatedTotal: 9800,
     items: [
-      { dishId: 'beef-stroganoff', qty: 10 },
-      { dishId: 'caesar', qty: 10 },
-      { dishId: 'meat-platter', qty: 10 },
-      { dishId: 'cheese-platter', qty: 10 },
-      { dishId: 'choc-mousse', qty: 10 },
-      { dishId: 'cranberry-mors', qty: 10 },
+      { dishId: "beef-stroganoff", qty: 10 },
+      { dishId: "caesar", qty: 10 },
+      { dishId: "meat-platter", qty: 10 },
+      { dishId: "cheese-platter", qty: 10 },
+      { dishId: "choc-mousse", qty: 10 },
+      { dishId: "cranberry-mors", qty: 10 },
     ],
   },
   {
-    id: 'party-20',
-    label: 'Фуршет-набор на 20 чел.',
-    emoji: '',
-    description: 'Канапе, тарталетки, закуски — для вечеринки',
+    id: "party-20",
+    label: "Фуршет-набор на 20 чел.",
+    emoji: "",
+    description: "Канапе, тарталетки, закуски — для вечеринки",
     guests: 20,
     estimatedTotal: 12400,
     items: [
-      { dishId: 'canape-salmon', qty: 20 },
-      { dishId: 'canape-caprese', qty: 20 },
-      { dishId: 'tartaletka-olivier', qty: 20 },
-      { dishId: 'bruschetta-tomato', qty: 20 },
-      { dishId: 'mini-burger', qty: 20 },
-      { dishId: 'macaron-shooter', qty: 20 },
-      { dishId: 'lemonade-berry', qty: 20 },
+      { dishId: "canape-salmon", qty: 20 },
+      { dishId: "canape-caprese", qty: 20 },
+      { dishId: "tartaletka-olivier", qty: 20 },
+      { dishId: "bruschetta-tomato", qty: 20 },
+      { dishId: "mini-burger", qty: 20 },
+      { dishId: "macaron-shooter", qty: 20 },
+      { dishId: "lemonade-berry", qty: 20 },
     ],
   },
 ];
@@ -134,13 +134,13 @@ export interface DeliveryCartState {
     phone: string;
     address: string;
     apartment: string;
-    entrance: string;     // подъезд
-    floor: string;        // этаж
-    intercom: string;     // код домофона
-    date: string;         // ISO date (YYYY-MM-DD)
-    timeSlot: string;     // id из TIME_SLOTS
-    exactTime: string;    // ЧЧ:ММ — точное время подачи (опционально)
-    callAhead: boolean;   // позвонить за 30 мин до прибытия
+    entrance: string; // подъезд
+    floor: string; // этаж
+    intercom: string; // код домофона
+    date: string; // ISO date (YYYY-MM-DD)
+    timeSlot: string; // id из TIME_SLOTS
+    exactTime: string; // ЧЧ:ММ — точное время подачи (опционально)
+    callAhead: boolean; // позвонить за 30 мин до прибытия
     paymentMethod: string; // card / cash / transfer
     comment: string;
   };
@@ -159,7 +159,7 @@ export interface DeliveryCartState {
   clearItems: () => void;
   applyPreset: (presetId: string) => void;
 
-  setContact: (c: Partial<DeliveryCartState['contact']>) => void;
+  setContact: (c: Partial<DeliveryCartState["contact"]>) => void;
   setZone: (zoneId: string) => void;
   setThermobox: (need: boolean) => void;
 
@@ -168,22 +168,22 @@ export interface DeliveryCartState {
 
 const THERMOBOX_PRICE = 1500; // залог за термобокс
 
-const DISH_MAP = new Map(ALL_DISHES.map(d => [d.id, d]));
+const DISH_MAP = new Map(ALL_DISHES.map((d) => [d.id, d]));
 
 const INITIAL_CONTACT = {
-  name: '',
-  phone: '',
-  address: '',
-  apartment: '',
-  entrance: '',
-  floor: '',
-  intercom: '',
-  date: '',
-  timeSlot: 'lunch',
-  exactTime: '',
+  name: "",
+  phone: "",
+  address: "",
+  apartment: "",
+  entrance: "",
+  floor: "",
+  intercom: "",
+  date: "",
+  timeSlot: "lunch",
+  exactTime: "",
   callAhead: true,
-  paymentMethod: 'card',
-  comment: '',
+  paymentMethod: "card",
+  comment: "",
 };
 
 export const useDeliveryCart = create<DeliveryCartState>()(
@@ -194,32 +194,30 @@ export const useDeliveryCart = create<DeliveryCartState>()(
 
       items: [],
       contact: { ...INITIAL_CONTACT },
-      zoneId: '', // пустая зона — пользователь должен явно выбрать
+      zoneId: "", // пустая зона — пользователь должен явно выбрать
       needThermobox: false,
 
       addDish: (dishId) => {
         const items = get().items;
-        const existing = items.find(i => i.dishId === dishId);
+        const existing = items.find((i) => i.dishId === dishId);
         if (existing) {
-          set({ items: items.map(i => i.dishId === dishId ? { ...i, qty: i.qty + 1 } : i) });
+          set({ items: items.map((i) => (i.dishId === dishId ? { ...i, qty: i.qty + 1 } : i)) });
         } else {
           set({ items: [...items, { dishId, qty: 1 }] });
         }
       },
 
       removeDish: (dishId) => {
-        set({ items: get().items.filter(i => i.dishId !== dishId) });
+        set({ items: get().items.filter((i) => i.dishId !== dishId) });
       },
 
       setQty: (dishId, qty) => {
         const next = Math.max(0, Math.min(999, qty));
         if (next === 0) {
-          set({ items: get().items.filter(i => i.dishId !== dishId) });
+          set({ items: get().items.filter((i) => i.dishId !== dishId) });
         } else {
           set({
-            items: get().items.map(i =>
-              i.dishId === dishId ? { ...i, qty: next } : i
-            ),
+            items: get().items.map((i) => (i.dishId === dishId ? { ...i, qty: next } : i)),
           });
         }
       },
@@ -235,37 +233,38 @@ export const useDeliveryCart = create<DeliveryCartState>()(
       clearItems: () => set({ items: [] }),
 
       applyPreset: (presetId) => {
-        const preset = DELIVERY_PRESETS.find(p => p.id === presetId);
+        const preset = DELIVERY_PRESETS.find((p) => p.id === presetId);
         if (!preset) return;
         // Загружаем элементы пресета в корзину
         const items = preset.items
-          .filter(pi => DISH_MAP.has(pi.dishId))
-          .map(pi => ({ dishId: pi.dishId, qty: pi.qty }));
+          .filter((pi) => DISH_MAP.has(pi.dishId))
+          .map((pi) => ({ dishId: pi.dishId, qty: pi.qty }));
         set({ items });
       },
 
-      setContact: (c) => set(s => ({ contact: { ...s.contact, ...c } })),
+      setContact: (c) => set((s) => ({ contact: { ...s.contact, ...c } })),
       setZone: (zoneId) => {
         // Если выбрана зона без холодовой цепи — автоматически включаем термобокс
-        const zone = DELIVERY_ZONES.find(z => z.id === zoneId);
+        const zone = DELIVERY_ZONES.find((z) => z.id === zoneId);
         // Сбросить контактные поля подъезд/этаж/домофон при смене зоны (т.к. они переиспользуются для city/country)
-        set(s => ({
+        set((s) => ({
           zoneId,
           needThermobox: zone ? !zone.coldChain : get().needThermobox,
-          contact: { ...s.contact, entrance: '', floor: '', intercom: '', apartment: '' },
+          contact: { ...s.contact, entrance: "", floor: "", intercom: "", apartment: "" },
         }));
       },
       setThermobox: (need) => set({ needThermobox: need }),
 
-      reset: () => set({
-        items: [],
-        contact: { ...INITIAL_CONTACT },
-        zoneId: '',
-        needThermobox: false,
-      }),
+      reset: () =>
+        set({
+          items: [],
+          contact: { ...INITIAL_CONTACT },
+          zoneId: "",
+          needThermobox: false,
+        }),
     }),
     {
-      name: 'nilov-delivery-cart',
+      name: "nilov-delivery-cart",
       version: 2,
       onRehydrateStorage: () => (state) => {
         if (state) state.setHasHydrated();
@@ -273,13 +272,17 @@ export const useDeliveryCart = create<DeliveryCartState>()(
       migrate: (persistedState: unknown, version: number) => {
         // v1 → v2: сбросить zoneId в '' (раньше дефолт 'kad' приводил к молчаливой бесплатной доставке)
         // и сбросить contact.entrance/floor/intercom (могли быть заполнены в city-формате)
-        if (version < 2 && persistedState && typeof persistedState === 'object') {
+        if (version < 2 && persistedState && typeof persistedState === "object") {
           const s = persistedState as Partial<DeliveryCartState>;
           return {
             ...s,
-            zoneId: '',
+            zoneId: "",
             needThermobox: false,
-            contact: { ...INITIAL_CONTACT, name: s.contact?.name || '', phone: s.contact?.phone || '' },
+            contact: {
+              ...INITIAL_CONTACT,
+              name: s.contact?.name || "",
+              phone: s.contact?.phone || "",
+            },
           };
         }
         return persistedState as DeliveryCartState;
@@ -309,7 +312,7 @@ export function calcCartSubtotal(items: DeliveryCartItem[]): number {
 }
 
 export function calcDeliverySurcharge(zoneId: string): number {
-  const zone = DELIVERY_ZONES.find(z => z.id === zoneId);
+  const zone = DELIVERY_ZONES.find((z) => z.id === zoneId);
   return zone?.surcharge ?? 0;
 }
 

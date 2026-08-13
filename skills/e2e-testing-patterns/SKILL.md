@@ -4,13 +4,23 @@ model: standard
 category: testing
 description: Build reliable, fast E2E test suites with Playwright and Cypress. Critical user journey coverage, flaky test elimination, CI/CD integration.
 version: 1.0
-keywords: [e2e, end-to-end, playwright, cypress, browser testing, integration tests, test automation, flaky tests, visual regression]
+keywords:
+  [
+    e2e,
+    end-to-end,
+    playwright,
+    cypress,
+    browser testing,
+    integration tests,
+    test automation,
+    flaky tests,
+    visual regression,
+  ]
 ---
 
 # E2E Testing Patterns
 
 > Test what users do, not how code works. E2E tests prove the system works as a whole — they're your confidence to ship.
-
 
 ## Installation
 
@@ -20,12 +30,12 @@ keywords: [e2e, end-to-end, playwright, cypress, browser testing, integration te
 npx clawhub@latest install e2e-testing-patterns
 ```
 
-
 ---
 
 ## WHAT This Skill Does
 
 Provides patterns for building end-to-end test suites that:
+
 - Catch regressions before users do
 - Run fast enough for CI/CD
 - Remain stable (no flaky failures)
@@ -55,13 +65,13 @@ Provides patterns for building end-to-end test suites that:
 
 ### What E2E Tests Are For
 
-| E2E Tests ✓ | NOT E2E Tests ✗ |
-|-------------|-----------------|
-| Critical user journeys (login → dashboard → action → logout) | Unit-level logic (use unit tests) |
-| Multi-step flows (checkout, onboarding wizard) | API contracts (use integration tests) |
-| Cross-browser compatibility | Edge cases (too slow, use unit tests) |
-| Real API integration | Internal implementation details |
-| Authentication flows | Component visual states (use Storybook) |
+| E2E Tests ✓                                                  | NOT E2E Tests ✗                         |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Critical user journeys (login → dashboard → action → logout) | Unit-level logic (use unit tests)       |
+| Multi-step flows (checkout, onboarding wizard)               | API contracts (use integration tests)   |
+| Cross-browser compatibility                                  | Edge cases (too slow, use unit tests)   |
+| Real API integration                                         | Internal implementation details         |
+| Authentication flows                                         | Component visual states (use Storybook) |
 
 **Rule of thumb:** If it would devastate your business to break, E2E test it. If it's just inconvenient, test it faster with unit/integration tests.
 
@@ -69,13 +79,13 @@ Provides patterns for building end-to-end test suites that:
 
 ## Core Principles
 
-| Principle | Why | How |
-|-----------|-----|-----|
-| **Test behavior, not implementation** | Survives refactors | Assert on user-visible outcomes, not DOM structure |
-| **Independent tests** | Parallelizable, debuggable | Each test creates its own data, cleans up after |
-| **Deterministic waits** | No flakiness | Wait for conditions, not fixed timeouts |
-| **Stable selectors** | Survives UI changes | Use `data-testid`, roles, labels — never CSS classes |
-| **Fast feedback** | Developers run them | Mock external services, parallelize, shard |
+| Principle                             | Why                        | How                                                  |
+| ------------------------------------- | -------------------------- | ---------------------------------------------------- |
+| **Test behavior, not implementation** | Survives refactors         | Assert on user-visible outcomes, not DOM structure   |
+| **Independent tests**                 | Parallelizable, debuggable | Each test creates its own data, cleans up after      |
+| **Deterministic waits**               | No flakiness               | Wait for conditions, not fixed timeouts              |
+| **Stable selectors**                  | Survives UI changes        | Use `data-testid`, roles, labels — never CSS classes |
+| **Fast feedback**                     | Developers run them        | Mock external services, parallelize, shard           |
 
 ---
 
@@ -295,14 +305,14 @@ cy.get('[data-testid="user-list"]').children().should("have.length", 1);
 
 ## Selector Strategy
 
-| Priority | Selector Type | Example | Why |
-|----------|--------------|---------|-----|
-| 1 | **Role + name** | `getByRole("button", { name: "Submit" })` | Accessible, user-facing |
-| 2 | **Label** | `getByLabel("Email address")` | Accessible, semantic |
-| 3 | **data-testid** | `getByTestId("checkout-form")` | Stable, explicit for testing |
-| 4 | **Text content** | `getByText("Welcome back")` | User-facing |
-| ❌ | CSS classes | `.btn-primary` | Breaks on styling changes |
-| ❌ | DOM structure | `div > form > input:nth-child(2)` | Breaks on any restructure |
+| Priority | Selector Type    | Example                                   | Why                          |
+| -------- | ---------------- | ----------------------------------------- | ---------------------------- |
+| 1        | **Role + name**  | `getByRole("button", { name: "Submit" })` | Accessible, user-facing      |
+| 2        | **Label**        | `getByLabel("Email address")`             | Accessible, semantic         |
+| 3        | **data-testid**  | `getByTestId("checkout-form")`            | Stable, explicit for testing |
+| 4        | **Text content** | `getByText("Welcome back")`               | User-facing                  |
+| ❌       | CSS classes      | `.btn-primary`                            | Breaks on styling changes    |
+| ❌       | DOM structure    | `div > form > input:nth-child(2)`         | Breaks on any restructure    |
 
 ```typescript
 // ❌ BAD: Brittle selectors
@@ -351,7 +361,7 @@ test("page has no accessibility violations", async ({ page }) => {
   await page.goto("/");
 
   const results = await new AxeBuilder({ page })
-    .exclude("#third-party-widget")  // Exclude things you can't control
+    .exclude("#third-party-widget") // Exclude things you can't control
     .analyze();
 
   expect(results.violations).toEqual([]);
@@ -397,15 +407,15 @@ await page.pause();
 
 When a test fails intermittently, check:
 
-| Issue | Fix |
-|-------|-----|
+| Issue                          | Fix                                                   |
+| ------------------------------ | ----------------------------------------------------- |
 | Fixed `waitForTimeout()` calls | Replace with `waitForSelector()` or expect assertions |
-| Race conditions on page load | Wait for `networkidle` or specific elements |
-| Test data pollution | Ensure tests create/clean their own data |
-| Animation timing | Wait for animations to complete or disable them |
-| Viewport inconsistency | Set explicit viewport in config |
-| Random test order issues | Tests must be independent |
-| Third-party service flakiness | Mock external APIs |
+| Race conditions on page load   | Wait for `networkidle` or specific elements           |
+| Test data pollution            | Ensure tests create/clean their own data              |
+| Animation timing               | Wait for animations to complete or disable them       |
+| Viewport inconsistency         | Set explicit viewport in config                       |
+| Random test order issues       | Tests must be independent                             |
+| Third-party service flakiness  | Mock external APIs                                    |
 
 ---
 
@@ -462,7 +472,7 @@ await page.reload();
 // Interactions
 await page.click("selector");
 await page.fill("selector", "text");
-await page.type("selector", "text");  // Types character by character
+await page.type("selector", "text"); // Types character by character
 await page.selectOption("select", "value");
 await page.check("checkbox");
 

@@ -16,19 +16,20 @@ Guides **short-form marketing copy**—ads, landing pages, email, CTAs. Copywrit
 **Check for project context first:** If `.claude/project-context.md` or `.cursor/project-context.md` exists, read Sections 2 (Positioning), 3 (Value Proposition), 8 (Brand & Voice).
 
 Identify:
+
 1. **Context**: Ad, landing page, email, CTA, or general
 2. **Goal**: Awareness, consideration, conversion, retention
 3. **Audience**: ICP, stage, pain points
 
 ## Copywriting Frameworks
 
-| Framework | Structure | Best For |
-|-----------|-----------|----------|
-| **PAS** | Problem → Agitation → Solution | Direct-response; sales pages; landing pages |
-| **AIDA** | Attention → Interest → Desire → Action | Story-driven; ads; emails; editorials |
-| **BAB** | Before (problem) → After (outcome) → Bridge (how) | Transformation; testimonials; case studies |
-| **FAB** | Features → Advantages → Benefits | Product pages; feature lists |
-| **4 U's** | Useful, Urgent, Unique, Ultra-specific | Headlines; subject lines |
+| Framework | Structure                                         | Best For                                    |
+| --------- | ------------------------------------------------- | ------------------------------------------- |
+| **PAS**   | Problem → Agitation → Solution                    | Direct-response; sales pages; landing pages |
+| **AIDA**  | Attention → Interest → Desire → Action            | Story-driven; ads; emails; editorials       |
+| **BAB**   | Before (problem) → After (outcome) → Bridge (how) | Transformation; testimonials; case studies  |
+| **FAB**   | Features → Advantages → Benefits                  | Product pages; feature lists                |
+| **4 U's** | Useful, Urgent, Unique, Ultra-specific            | Headlines; subject lines                    |
 
 ### PAS (Problem, Agitation, Solution)
 
@@ -51,14 +52,14 @@ Identify:
 
 ## Headline Formulas
 
-| Formula | Example |
-|---------|---------|
-| **How to [outcome]** | "How to Double Your Conversions in 30 Days" |
-| **[Number] Ways to [benefit]** | "7 Ways to Reduce Churn Without Hiring" |
-| **[Who] + [benefit]** | "For Marketers Who Want to Ship Faster" |
-| **[Problem]? Here's [solution]** | "Struggling with SEO? Here's the Fix" |
-| **[Before] → [After]** | "From 0 to 10K Users in 90 Days" |
-| **The [adjective] [noun] for [audience]** | "The Ultimate Guide for SaaS Founders" |
+| Formula                                   | Example                                     |
+| ----------------------------------------- | ------------------------------------------- |
+| **How to [outcome]**                      | "How to Double Your Conversions in 30 Days" |
+| **[Number] Ways to [benefit]**            | "7 Ways to Reduce Churn Without Hiring"     |
+| **[Who] + [benefit]**                     | "For Marketers Who Want to Ship Faster"     |
+| **[Problem]? Here's [solution]**          | "Struggling with SEO? Here's the Fix"       |
+| **[Before] → [After]**                    | "From 0 to 10K Users in 90 Days"            |
+| **The [adjective] [noun] for [audience]** | "The Ultimate Guide for SaaS Founders"      |
 
 **Rules**: Front-load keywords; keep under 60 chars for SERP; avoid clickbait; match ad-to-page alignment.
 
@@ -66,21 +67,21 @@ Identify:
 
 ## Copy by Context
 
-| Context | Focus | Skills |
-|---------|-------|--------|
-| **Ad copy** | Hook, benefit, CTA; platform limits | paid-ads-strategy, google-ads, meta-ads |
-| **Landing page** | Headline, value prop, CTA; above fold | landing-page-generator, hero-generator |
-| **Email** | Subject line, preview, body, CTA | email-marketing |
-| **CTA** | Value-focused; action verb; avoid "Submit" | cta-generator |
+| Context            | Focus                                                   | Skills                                  |
+| ------------------ | ------------------------------------------------------- | --------------------------------------- |
+| **Ad copy**        | Hook, benefit, CTA; platform limits                     | paid-ads-strategy, google-ads, meta-ads |
+| **Landing page**   | Headline, value prop, CTA; above fold                   | landing-page-generator, hero-generator  |
+| **Email**          | Subject line, preview, body, CTA                        | email-marketing                         |
+| **CTA**            | Value-focused; action verb; avoid "Submit"              | cta-generator                           |
 | **Article / blog** | Headline formulas, CTA copy; body → **article-content** | article-content, article-page-generator |
 
 ## Ad copy vs Landing page copy
 
-| Element | Ad | Landing Page |
-|---------|-----|--------------|
-| **Promise** | Must match page headline | Same promise; expand on it |
-| **Length** | Concise; platform limits | Enough to explain value |
-| **CTA** | Click-through; "Learn More" | Conversion; "Start Free Trial" |
+| Element     | Ad                          | Landing Page                   |
+| ----------- | --------------------------- | ------------------------------ |
+| **Promise** | Must match page headline    | Same promise; expand on it     |
+| **Length**  | Concise; platform limits    | Enough to explain value        |
+| **CTA**     | Click-through; "Learn More" | Conversion; "Start Free Trial" |
 
 **Avoid**: Ad promise not visible on page; mismatch increases bounce.
 

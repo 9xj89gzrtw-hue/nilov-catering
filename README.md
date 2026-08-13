@@ -21,42 +21,47 @@
 
 ## ✨ Ключевые возможности
 
-| Модуль | Описание |
-|--------|----------|
-| **Hero Block** | Параллакс-герой с ценовой лестницей |
+| Модуль              | Описание                                      |
+| ------------------- | --------------------------------------------- |
+| **Hero Block**      | Параллакс-герой с ценовой лестницей           |
 | **Каталог пакетов** | 6 именованных пакетов с фиксированными ценами |
-| **Калькулятор** | Мгновенный расчёт стоимости за 15 секунд |
-| **B2B раздел** | Корпоративные предложения |
-| **Меню** | Превью блюд с фото |
-| **Галерея** | Портфолио с фильтрами по типам мероприятий |
-| **Отзывы** | Карусель отзывов клиентов |
-| **Шеф-повар** | История Дмитрия Нилова |
+| **Калькулятор**     | Мгновенный расчёт стоимости за 15 секунд      |
+| **B2B раздел**      | Корпоративные предложения                     |
+| **Меню**            | Превью блюд с фото                            |
+| **Галерея**         | Портфолио с фильтрами по типам мероприятий    |
+| **Отзывы**          | Карусель отзывов клиентов                     |
+| **Шеф-повар**       | История Дмитрия Нилова                        |
 
 ## Технологии
 
 ### Core Stack
+
 - **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript 5](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **Components:** [shadcn/ui](https://ui.shadcn.com/)
 
 ### UI/UX
+
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
 - **Smooth Scroll:** [Lenis](https://lenis.studiofreight.com/)
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Carousel:** [Embla Carousel](https://www.embla-carousel.com/)
 
 ### Forms & Validation
+
 - **Forms:** [React Hook Form](https://react-hook-form.com/)
 - **Validation:** [Zod](https://zod.dev/)
 
 ### Deployment
+
 - **Host:** [Vercel](https://vercel.com/)
 - **CI/CD:** GitHub Actions
 
 ## 🚀 Быстрый старт
 
 ### Требования
+
 ```bash
 Node.js >= 22
 pnpm >= 9 (рекомендуется) или npm/yarn
@@ -84,13 +89,13 @@ pnpm dev
 
 ### Скрипты
 
-| Команда | Описание |
-|---------|----------|
-| `pnpm dev` | Запуск development сервера |
-| `pnpm build` | Production сборка |
-| `pnpm start` | Запуск production сборки |
-| `pnpm lint` | Проверка кода ESLint |
-| `pnpm factgate` | Запуск fact-gate проверки |
+| Команда         | Описание                   |
+| --------------- | -------------------------- |
+| `pnpm dev`      | Запуск development сервера |
+| `pnpm build`    | Production сборка          |
+| `pnpm start`    | Запуск production сборки   |
+| `pnpm lint`     | Проверка кода ESLint       |
+| `pnpm factgate` | Запуск fact-gate проверки  |
 
 ## 📁 Структура проекта
 

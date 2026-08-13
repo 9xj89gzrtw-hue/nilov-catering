@@ -36,15 +36,15 @@ The working version of "topical authority", stripped of mysticism:
 
 Every indexable URL should have a reason to exist. Common bloat, and the disposition each deserves:
 
-| URL type | Default disposition |
-|---|---|
-| Tag and author archives with one or two items | Noindex, or delete the taxonomy |
-| Paginated archive pages beyond page 1 | Indexable but self-canonical; never canonical to page 1 (Google dropped support for `rel=next/prev` as an indexing signal, and canonicalizing hides deep items) |
-| Search results pages of your own site | Noindex; they are the textbook low-value URL |
-| Filter and sort combinations | Canonical to the clean URL; block combinatorial explosions from crawling |
-| Print, AMP-legacy, and duplicate mobile URLs | Consolidate to one canonical URL |
-| Thin location or template pages with no unique content | Consolidate or write real content |
-| Utility pages (cart, thank-you, account) | Noindex |
+| URL type                                               | Default disposition                                                                                                                                             |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tag and author archives with one or two items          | Noindex, or delete the taxonomy                                                                                                                                 |
+| Paginated archive pages beyond page 1                  | Indexable but self-canonical; never canonical to page 1 (Google dropped support for `rel=next/prev` as an indexing signal, and canonicalizing hides deep items) |
+| Search results pages of your own site                  | Noindex; they are the textbook low-value URL                                                                                                                    |
+| Filter and sort combinations                           | Canonical to the clean URL; block combinatorial explosions from crawling                                                                                        |
+| Print, AMP-legacy, and duplicate mobile URLs           | Consolidate to one canonical URL                                                                                                                                |
+| Thin location or template pages with no unique content | Consolidate or write real content                                                                                                                               |
+| Utility pages (cart, thank-you, account)               | Noindex                                                                                                                                                         |
 
 The test for any bloat question: "if this URL got a visitor from Google, would it be a good landing page?" No means it should not be indexable.
 
@@ -74,11 +74,11 @@ The test for any bloat question: "if this URL got a visitor from Google, would i
 
 ## Architecture Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Building the cluster diagram before checking the SERPs | Google may answer four of your "sub-intents" on one page | Let the SERP decide the split |
-| Publishing spokes with no hub | Nothing consolidates the topic; the pages compete | Ship the hub first, or at the same time |
-| Reorganizing URLs for tidiness | Every move risks ranking for a cosmetic gain | Restructure only when depth or duplication actually costs traffic |
-| Noindexing pagination | Deep items lose their discovery path | Self-canonical paginated pages, indexable |
-| One page per keyword variant | Cannibalization by design | One page per intent |
-| Treating internal links as decoration | It is the only authority lever you fully control | Plan link placement with the page, not after |
+| Trap                                                   | Why it fails                                             | Do instead                                                        |
+| ------------------------------------------------------ | -------------------------------------------------------- | ----------------------------------------------------------------- |
+| Building the cluster diagram before checking the SERPs | Google may answer four of your "sub-intents" on one page | Let the SERP decide the split                                     |
+| Publishing spokes with no hub                          | Nothing consolidates the topic; the pages compete        | Ship the hub first, or at the same time                           |
+| Reorganizing URLs for tidiness                         | Every move risks ranking for a cosmetic gain             | Restructure only when depth or duplication actually costs traffic |
+| Noindexing pagination                                  | Deep items lose their discovery path                     | Self-canonical paginated pages, indexable                         |
+| One page per keyword variant                           | Cannibalization by design                                | One page per intent                                               |
+| Treating internal links as decoration                  | It is the only authority lever you fully control         | Plan link placement with the page, not after                      |

@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import type { FactStatus } from '@/lib/types';
+import type { ReactNode } from "react";
+import type { FactStatus } from "@/lib/types";
 
 export interface FactGatedItem {
   status: FactStatus;
@@ -15,20 +15,20 @@ export interface FactGatedItem {
  * Сигнатура: renderFactItem({ status, claim, disclaimer })
  */
 export function renderFactItem({ status, claim, disclaimer }: FactGatedItem) {
-  if (status === 'pending') {
+  if (status === "pending") {
     return (
       <span
         className="inline-flex flex-col items-center gap-0.5 text-center"
-        title={disclaimer ?? 'На проверке'}
+        title={disclaimer ?? "На проверке"}
       >
-        <span className="text-xs md:text-sm tracking-wider uppercase font-medium text-foreground">
+        <span className="text-foreground text-xs font-medium tracking-wider uppercase md:text-sm">
           {claim}
         </span>
         <span
-          className="text-xs text-muted-foreground flex items-center gap-1 select-none"
+          className="text-muted-foreground flex items-center gap-1 text-xs select-none"
           aria-hidden="true"
         >
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-gold-text" />
+          <span className="bg-gold-text inline-block h-1.5 w-1.5 rounded-full" />
           проверка
         </span>
       </span>
@@ -36,7 +36,7 @@ export function renderFactItem({ status, claim, disclaimer }: FactGatedItem) {
   }
 
   return (
-    <span className="text-xs md:text-sm tracking-wider uppercase font-medium text-foreground">
+    <span className="text-foreground text-xs font-medium tracking-wider uppercase md:text-sm">
       {claim}
     </span>
   );

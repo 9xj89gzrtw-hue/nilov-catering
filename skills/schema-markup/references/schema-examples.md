@@ -572,7 +572,12 @@ Combine multiple schema types on a single page using `@graph`. Common for pages 
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.example.com/blog" },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.example.com/blog"
+        },
         { "@type": "ListItem", "position": 3, "name": "Schema Markup Guide" }
       ]
     },
@@ -594,6 +599,7 @@ Combine multiple schema types on a single page using `@graph`. Common for pages 
 ```
 
 **Key concepts:**
+
 - Use `@id` to create referenceable entities (organization defined once, referenced by article and website)
 - Use `@graph` to combine multiple schema types in a single `<script>` tag
 - Link entities with `{ "@id": "..." }` references instead of duplicating data
@@ -602,16 +608,16 @@ Combine multiple schema types on a single page using `@graph`. Common for pages 
 
 ## Common Validation Errors
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| Missing required field | Required property not included | Add the missing property (check type docs) |
-| Invalid URL | Relative URL or malformed URL | Use fully qualified URLs (`https://...`) |
-| Invalid date format | Date not in ISO 8601 | Use `YYYY-MM-DDTHH:MM:SS+00:00` format |
-| Invalid enum value | Wrong value for enumerated types | Use exact schema.org URLs (e.g., `https://schema.org/InStock`) |
-| Content mismatch | Schema doesn't match visible page content | Ensure schema data reflects actual page content |
-| Invalid price | Price with currency symbol or commas | Use numeric value only (`"149.99"`, not `"$149.99"`) |
-| Missing image | No image property on types that require it | Add at least one image URL |
-| Self-referencing errors | Circular `@id` references | Ensure `@id` chains don't form loops |
+| Error                   | Cause                                      | Fix                                                            |
+| ----------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| Missing required field  | Required property not included             | Add the missing property (check type docs)                     |
+| Invalid URL             | Relative URL or malformed URL              | Use fully qualified URLs (`https://...`)                       |
+| Invalid date format     | Date not in ISO 8601                       | Use `YYYY-MM-DDTHH:MM:SS+00:00` format                         |
+| Invalid enum value      | Wrong value for enumerated types           | Use exact schema.org URLs (e.g., `https://schema.org/InStock`) |
+| Content mismatch        | Schema doesn't match visible page content  | Ensure schema data reflects actual page content                |
+| Invalid price           | Price with currency symbol or commas       | Use numeric value only (`"149.99"`, not `"$149.99"`)           |
+| Missing image           | No image property on types that require it | Add at least one image URL                                     |
+| Self-referencing errors | Circular `@id` references                  | Ensure `@id` chains don't form loops                           |
 
 ---
 
@@ -623,15 +629,12 @@ Combine multiple schema types on a single page using `@graph`. Common for pages 
 // components/JsonLd.tsx
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
   );
 }
 
 // app/page.tsx
-import { JsonLd } from '@/components/JsonLd';
+import { JsonLd } from "@/components/JsonLd";
 
 export default function HomePage() {
   const schema = {
@@ -654,8 +657,8 @@ export default function HomePage() {
 
 ```tsx
 // app/products/[slug]/page.tsx
-import { JsonLd } from '@/components/JsonLd';
-import { getProduct } from '@/lib/products';
+import { JsonLd } from "@/components/JsonLd";
+import { getProduct } from "@/lib/products";
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
   const product = await getProduct(params.slug);
@@ -691,16 +694,16 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
 ## Quick Reference
 
-| Schema Type | Primary Use | Rich Result |
-|-------------|------------|-------------|
-| Organization | Company homepage/about | Knowledge Panel |
-| WebSite | Homepage with search | Sitelinks Search Box |
-| Article | Blog posts, news | Article carousel, headline + date |
-| Product | Product pages | Price, availability, ratings |
-| SoftwareApplication | SaaS / app pages | App info, ratings |
-| FAQPage | FAQ content | Expandable Q&A in search |
-| HowTo | Tutorials, guides | Step-by-step instructions |
-| BreadcrumbList | Any page with breadcrumbs | Breadcrumb trail in search |
-| LocalBusiness | Local stores, restaurants | Maps, hours, contact info |
-| Event | Events, webinars | Date, location, ticket info |
-| VideoObject | Video content pages | Video thumbnail, duration |
+| Schema Type         | Primary Use               | Rich Result                       |
+| ------------------- | ------------------------- | --------------------------------- |
+| Organization        | Company homepage/about    | Knowledge Panel                   |
+| WebSite             | Homepage with search      | Sitelinks Search Box              |
+| Article             | Blog posts, news          | Article carousel, headline + date |
+| Product             | Product pages             | Price, availability, ratings      |
+| SoftwareApplication | SaaS / app pages          | App info, ratings                 |
+| FAQPage             | FAQ content               | Expandable Q&A in search          |
+| HowTo               | Tutorials, guides         | Step-by-step instructions         |
+| BreadcrumbList      | Any page with breadcrumbs | Breadcrumb trail in search        |
+| LocalBusiness       | Local stores, restaurants | Maps, hours, contact info         |
+| Event               | Events, webinars          | Date, location, ticket info       |
+| VideoObject         | Video content pages       | Video thumbnail, duration         |

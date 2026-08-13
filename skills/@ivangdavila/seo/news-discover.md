@@ -4,12 +4,12 @@ Publisher SEO runs on different clocks. Evergreen SEO compounds over months; new
 
 ## The Three Surfaces
 
-| Surface | Selection | Traffic shape | What moves it |
-|---|---|---|---|
-| Top Stories | Freshness, entity relevance, publisher authority for the story | Minutes-long spikes on breaking stories | Speed of publication, indexing latency, being an authoritative source on that entity |
-| Google News (tab and app) | Publisher-level interest and topic following | Steady, topic-driven | Consistent coverage of a beat, clean structure, publisher entity signals |
-| Discover | Interest-based feed, no query at all | Enormous, volatile, unpredictable spikes | Topic interest, images, headline appeal, entity coverage, freshness |
-| Classic search | Query intent | Compounding | Everything in the rest of this skill |
+| Surface                   | Selection                                                      | Traffic shape                            | What moves it                                                                        |
+| ------------------------- | -------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------ |
+| Top Stories               | Freshness, entity relevance, publisher authority for the story | Minutes-long spikes on breaking stories  | Speed of publication, indexing latency, being an authoritative source on that entity |
+| Google News (tab and app) | Publisher-level interest and topic following                   | Steady, topic-driven                     | Consistent coverage of a beat, clean structure, publisher entity signals             |
+| Discover                  | Interest-based feed, no query at all                           | Enormous, volatile, unpredictable spikes | Topic interest, images, headline appeal, entity coverage, freshness                  |
+| Classic search            | Query intent                                                   | Compounding                              | Everything in the rest of this skill                                                 |
 
 Inclusion in Google News no longer requires an application — eligible sites are considered automatically; there is a Publisher Center for managing publication details and organization data, not a gate to entry. AMP has not been required for Top Stories since the 2021 page experience update; speed still matters, the format does not.
 
@@ -55,12 +55,12 @@ Inclusion in Google News no longer requires an application — eligible sites ar
 
 ## Publisher Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Rewriting URLs after publish | Breaks early links and restarts discovery | Fix the slug before the first publish |
-| Republishing old articles with today's date | Deceptive freshness; detectable | Update content substantively or leave the date |
-| Chasing Discover with clickbait headlines | Named as an exclusion reason in Google's own guidance | Accurate headlines with a genuine hook |
-| Treating Discover traffic as forecastable | It disappears without notice | Base plans on search, count Discover as upside |
-| Publishing a new page per update to a live story | Splits signals across the same event | Update in place, timestamp the change |
-| Letting the archive rot | Sitewide quality reassessments read the whole domain | Scheduled pruning and consolidation |
-| Blocking crawlers to protect content while wanting Top Stories | You cannot be selected from content that is not readable | Use paywall structured data instead |
+| Trap                                                           | Why it fails                                             | Do instead                                     |
+| -------------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------------- |
+| Rewriting URLs after publish                                   | Breaks early links and restarts discovery                | Fix the slug before the first publish          |
+| Republishing old articles with today's date                    | Deceptive freshness; detectable                          | Update content substantively or leave the date |
+| Chasing Discover with clickbait headlines                      | Named as an exclusion reason in Google's own guidance    | Accurate headlines with a genuine hook         |
+| Treating Discover traffic as forecastable                      | It disappears without notice                             | Base plans on search, count Discover as upside |
+| Publishing a new page per update to a live story               | Splits signals across the same event                     | Update in place, timestamp the change          |
+| Letting the archive rot                                        | Sitewide quality reassessments read the whole domain     | Scheduled pruning and consolidation            |
+| Blocking crawlers to protect content while wanting Top Stories | You cannot be selected from content that is not readable | Use paywall structured data instead            |

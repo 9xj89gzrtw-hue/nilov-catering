@@ -84,11 +84,11 @@ Rules: every keyword belongs to exactly one URL; queries whose SERPs are near-id
 
 ## Keyword Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Sorting the list by volume | The top rows are usually unwinnable or worthless | Sort by value × winnability |
-| Trusting a difficulty score | It mostly measures backlinks of current results | Read page 1 yourself |
-| One page per variant | Google clusters variants; you built competitors for yourself | Cluster onto one intent |
-| Ignoring zero-volume long-tail | Tools miss the tail where conversion lives | Harvest autocomplete and GSC |
-| Researching once at project start | Demand, SERPs, and competitors move | Re-check the target queries at every refresh |
-| Targeting queries the business cannot serve | Traffic that cannot convert costs the same to earn | Score business value first |
+| Trap                                        | Why it fails                                                 | Do instead                                   |
+| ------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------- |
+| Sorting the list by volume                  | The top rows are usually unwinnable or worthless             | Sort by value × winnability                  |
+| Trusting a difficulty score                 | It mostly measures backlinks of current results              | Read page 1 yourself                         |
+| One page per variant                        | Google clusters variants; you built competitors for yourself | Cluster onto one intent                      |
+| Ignoring zero-volume long-tail              | Tools miss the tail where conversion lives                   | Harvest autocomplete and GSC                 |
+| Researching once at project start           | Demand, SERPs, and competitors move                          | Re-check the target queries at every refresh |
+| Targeting queries the business cannot serve | Traffic that cannot convert costs the same to earn           | Score business value first                   |

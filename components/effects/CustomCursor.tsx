@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
@@ -12,7 +12,7 @@ export default function CustomCursor() {
   const springY = useSpring(y, { stiffness: 500, damping: 30 });
 
   useEffect(() => {
-    const hasCoarse = window.matchMedia('(pointer: coarse)').matches;
+    const hasCoarse = window.matchMedia("(pointer: coarse)").matches;
     setIsTouch(hasCoarse);
     if (hasCoarse) return;
 
@@ -21,13 +21,13 @@ export default function CustomCursor() {
       y.set(e.clientY);
       if (!visible) setVisible(true);
     };
-    const onLeave = () =>setVisible(false);
+    const onLeave = () => setVisible(false);
 
-    window.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseleave', onLeave);
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
     return () => {
-      window.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
     };
   }, [x, y, visible]);
 
@@ -35,8 +35,14 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-gold-text pointer-events-none z-[9999] mix-blend-difference"
-      style={{ x: springX, y: springY, translateX: '-50%', translateY: '-50%', opacity: visible ? 1 : 0 }}
+      className="border-gold-text pointer-events-none fixed top-0 left-0 z-[9999] h-6 w-6 rounded-full border-2 mix-blend-difference"
+      style={{
+        x: springX,
+        y: springY,
+        translateX: "-50%",
+        translateY: "-50%",
+        opacity: visible ? 1 : 0,
+      }}
       aria-hidden="true"
     />
   );

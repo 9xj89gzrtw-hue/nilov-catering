@@ -2,20 +2,22 @@
 
 ## Поддерживаемые версии
 
-| Версия | Поддержка |
-|--------|-----------|
-| 2.x.x   | ✅ Текущая (bugfix & security) |
+| Версия | Поддержка                      |
+| ------ | ------------------------------ |
+| 2.x.x  | ✅ Текущая (bugfix & security) |
 
 ## Сообщение об уязвимости
 
 Мы ценим усилия исследователей безопасности по ответственному раскрытию уязвимостей.
 
 **НЕ:**
+
 - Публикуйте публично об уязвимости до её исправления
 - Используйте уязвимость для доступа к данным
 - Делайте злоупотребления системой
 
 **СДЕЛАЙТЕ:**
+
 - Сообщите конфиденциальly через [GitHub Security Advisories](https://github.com/9xj89gzrtw-hue/nilov-catering/security/advisories/new)
 - Включите детали:
   - Тип уязвимости
@@ -33,6 +35,7 @@
 ## Best Practices
 
 Этот проект следует рекомендациям:
+
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [GitHub Security Best Practices](https://docs.github.com/code-security/getting-started/github-security-best-practices)
 

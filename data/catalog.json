@@ -5,21 +5,11 @@
     "description": "Хрустящий чиабатта, сливочные томаты, свежий базилик, оливковое масло",
     "image": "/placeholders/dish-1.webp",
     "station": "cold",
-    "format": [
-      "furshet",
-      "banket",
-      "coffee-break"
-    ],
-    "tier": [
-      "economy",
-      "standard"
-    ],
+    "format": ["furshet", "banket", "coffee-break"],
+    "tier": ["economy", "standard"],
     "pricePerGuest": 180,
     "servingsPerGuest": 1,
-    "allergens": [
-      "gluten",
-      "milk"
-    ],
+    "allergens": ["gluten", "milk"],
     "dietBadges": [],
     "childFriendly": true,
     "kcal": 210
@@ -30,20 +20,11 @@
     "description": "Норвежский лосось, спелое авокадо, соус понзу, кунжут",
     "image": "/placeholders/dish-2.webp",
     "station": "cold",
-    "format": [
-      "furshet",
-      "banket"
-    ],
-    "tier": [
-      "premium",
-      "luxury"
-    ],
+    "format": ["furshet", "banket"],
+    "tier": ["premium", "luxury"],
     "pricePerGuest": 420,
     "servingsPerGuest": 1,
-    "allergens": [
-      "fish",
-      "sesame"
-    ],
+    "allergens": ["fish", "sesame"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 290
@@ -54,18 +35,11 @@
     "description": "Тонкие слайсы говядины, руккола, пармезан, трюфельное масло",
     "image": "/placeholders/dish-3.webp",
     "station": "cold",
-    "format": [
-      "banket"
-    ],
-    "tier": [
-      "premium",
-      "luxury"
-    ],
+    "format": ["banket"],
+    "tier": ["premium", "luxury"],
     "pricePerGuest": 380,
     "servingsPerGuest": 1,
-    "allergens": [
-      "milk"
-    ],
+    "allergens": ["milk"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 245
@@ -76,19 +50,11 @@
     "description": "Креветки, лайм, красный лук, кинза, перец чили",
     "image": "/placeholders/dish-4.webp",
     "station": "cold",
-    "format": [
-      "furshet",
-      "banket"
-    ],
-    "tier": [
-      "standard",
-      "premium"
-    ],
+    "format": ["furshet", "banket"],
+    "tier": ["standard", "premium"],
     "pricePerGuest": 320,
     "servingsPerGuest": 1,
-    "allergens": [
-      "crustaceans"
-    ],
+    "allergens": ["crustaceans"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 180
@@ -99,23 +65,12 @@
     "description": "Классический хумус, оливковое масло, паприка, тёплая пита",
     "image": "/placeholders/dish-5.webp",
     "station": "cold",
-    "format": [
-      "furshet",
-      "coffee-break"
-    ],
-    "tier": [
-      "economy",
-      "standard"
-    ],
+    "format": ["furshet", "coffee-break"],
+    "tier": ["economy", "standard"],
     "pricePerGuest": 140,
     "servingsPerGuest": 1,
-    "allergens": [
-      "gluten",
-      "sesame"
-    ],
-    "dietBadges": [
-      "vegan"
-    ],
+    "allergens": ["gluten", "sesame"],
+    "dietBadges": ["vegan"],
     "childFriendly": true,
     "kcal": 310
   },
@@ -125,18 +80,11 @@
     "description": "Медальоны говядины, сливочно-перечный соус, запечённый картофель",
     "image": "/placeholders/dish-h1.webp",
     "station": "hot",
-    "format": [
-      "banket"
-    ],
-    "tier": [
-      "standard",
-      "premium"
-    ],
+    "format": ["banket"],
+    "tier": ["standard", "premium"],
     "pricePerGuest": 550,
     "servingsPerGuest": 1,
-    "allergens": [
-      "milk"
-    ],
+    "allergens": ["milk"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 480
@@ -147,20 +95,11 @@
     "description": "Куриная грудка су-вид, пюре из сельдерея, соус демиглас",
     "image": "/placeholders/dish-h2.webp",
     "station": "hot",
-    "format": [
-      "banket",
-      "furshet"
-    ],
-    "tier": [
-      "economy",
-      "standard"
-    ],
+    "format": ["banket", "furshet"],
+    "tier": ["economy", "standard"],
     "pricePerGuest": 340,
     "servingsPerGuest": 1,
-    "allergens": [
-      "milk",
-      "celery"
-    ],
+    "allergens": ["milk", "celery"],
     "dietBadges": [],
     "childFriendly": true,
     "kcal": 380
@@ -171,19 +110,11 @@
     "description": "Филе лосося, соус терияки, киноа с овощами",
     "image": "/placeholders/dish-h3.webp",
     "station": "hot",
-    "format": [
-      "banket"
-    ],
-    "tier": [
-      "premium",
-      "luxury"
-    ],
+    "format": ["banket"],
+    "tier": ["premium", "luxury"],
     "pricePerGuest": 520,
     "servingsPerGuest": 1,
-    "allergens": [
-      "fish",
-      "soy"
-    ],
+    "allergens": ["fish", "soy"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 420
@@ -194,21 +125,12 @@
     "description": "Арборио, белые грибы, пармезан, трюфельное масло",
     "image": "/placeholders/dish-h4.webp",
     "station": "hot",
-    "format": [
-      "banket"
-    ],
-    "tier": [
-      "premium",
-      "luxury"
-    ],
+    "format": ["banket"],
+    "tier": ["premium", "luxury"],
     "pricePerGuest": 460,
     "servingsPerGuest": 1,
-    "allergens": [
-      "milk"
-    ],
-    "dietBadges": [
-      "vegan"
-    ],
+    "allergens": ["milk"],
+    "dietBadges": ["vegan"],
     "childFriendly": true,
     "kcal": 510
   },
@@ -218,24 +140,11 @@
     "description": "Маскарпоне, савоярди, эспрессо, какао — порционный формат",
     "image": "/placeholders/dish-s1.webp",
     "station": "desserts",
-    "format": [
-      "banket",
-      "furshet",
-      "coffee-break"
-    ],
-    "tier": [
-      "economy",
-      "standard",
-      "premium",
-      "luxury"
-    ],
+    "format": ["banket", "furshet", "coffee-break"],
+    "tier": ["economy", "standard", "premium", "luxury"],
     "pricePerGuest": 220,
     "servingsPerGuest": 1,
-    "allergens": [
-      "gluten",
-      "eggs",
-      "milk"
-    ],
+    "allergens": ["gluten", "eggs", "milk"],
     "dietBadges": [],
     "childFriendly": false,
     "kcal": 340
@@ -246,19 +155,11 @@
     "description": "Сливочная панна-котта, сезонные ягоды, мятный сироп",
     "image": "/placeholders/dish-s2.webp",
     "station": "desserts",
-    "format": [
-      "banket",
-      "furshet"
-    ],
-    "tier": [
-      "standard",
-      "premium"
-    ],
+    "format": ["banket", "furshet"],
+    "tier": ["standard", "premium"],
     "pricePerGuest": 260,
     "servingsPerGuest": 1,
-    "allergens": [
-      "milk"
-    ],
+    "allergens": ["milk"],
     "dietBadges": [],
     "childFriendly": true,
     "kcal": 290
@@ -269,24 +170,12 @@
     "description": "Французское миндальное печенье: фисташка, малина, шоколад",
     "image": "/placeholders/dish-s3.webp",
     "station": "desserts",
-    "format": [
-      "furshet",
-      "coffee-break"
-    ],
-    "tier": [
-      "premium",
-      "luxury"
-    ],
+    "format": ["furshet", "coffee-break"],
+    "tier": ["premium", "luxury"],
     "pricePerGuest": 180,
     "servingsPerGuest": 2,
-    "allergens": [
-      "nuts",
-      "eggs",
-      "milk"
-    ],
-    "dietBadges": [
-      "gluten-free"
-    ],
+    "allergens": ["nuts", "eggs", "milk"],
+    "dietBadges": ["gluten-free"],
     "childFriendly": true,
     "kcal": 160
   },
@@ -296,24 +185,12 @@
     "description": "Лимон, мята, имбирь, газированная вода",
     "image": "/placeholders/dish-b1.webp",
     "station": "drinks",
-    "format": [
-      "furshet",
-      "banket",
-      "coffee-break"
-    ],
-    "tier": [
-      "economy",
-      "standard",
-      "premium",
-      "luxury"
-    ],
+    "format": ["furshet", "banket", "coffee-break"],
+    "tier": ["economy", "standard", "premium", "luxury"],
     "pricePerGuest": 120,
     "servingsPerGuest": 2,
     "allergens": [],
-    "dietBadges": [
-      "vegan",
-      "gluten-free"
-    ],
+    "dietBadges": ["vegan", "gluten-free"],
     "childFriendly": true,
     "kcal": 60
   },
@@ -323,21 +200,12 @@
     "description": "3 вида смузи на выбор: манго-маракуйя, клубника-банан, шпинат-яблоко",
     "image": "/placeholders/dish-b2.webp",
     "station": "drinks",
-    "format": [
-      "coffee-break",
-      "detskoe"
-    ],
-    "tier": [
-      "standard",
-      "premium"
-    ],
+    "format": ["coffee-break", "detskoe"],
+    "tier": ["standard", "premium"],
     "pricePerGuest": 200,
     "servingsPerGuest": 1,
     "allergens": [],
-    "dietBadges": [
-      "vegan",
-      "gluten-free"
-    ],
+    "dietBadges": ["vegan", "gluten-free"],
     "childFriendly": true,
     "kcal": 150
   }

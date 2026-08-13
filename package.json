@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "factgate": "node scripts/fact-gate.mjs"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,css,md,json}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "factgate": "node scripts/fact-gate.mjs",
+    "prepare": "husky"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -48,13 +54,29 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^16.3.1",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.20",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
     "eslint": "^10.8.1",
     "eslint-config-next": "^16.3.1",
+    "husky": "^9.1.7",
+    "jsdom": "^30.0.1",
     "lighthouse": "^13.4.1",
+    "lint-staged": "^17.3.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "react-error-boundary": "^6.1.2",
     "tailwindcss": "^4",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,css,md,json}": [
+      "prettier --write"
+    ]
   }
 }

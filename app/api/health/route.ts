@@ -1,12 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   return NextResponse.json({
-    status: 'ok',
+    status: "ok",
     timestamp: Date.now(),
     uptime: process.uptime ? Math.round(process.uptime()) : null,
-    env: process.env.NODE_ENV || 'unknown',
+    env: process.env.NODE_ENV || "unknown",
   });
 }

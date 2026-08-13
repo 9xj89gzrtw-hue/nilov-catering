@@ -6,16 +6,16 @@ Pipeline model: **discover → crawl → render → index → serve**. Every tec
 
 ## Which Control Does What
 
-| Control | Stops crawling | Stops indexing | Passes signals | Use for |
-|---|---|---|---|---|
-| `robots.txt Disallow` | Yes | No | No | Saving crawl budget on infinite or worthless URL spaces |
-| `<meta name="robots" content="noindex">` | No | Yes | Links followed until the page is dropped | Pages that must exist for users but not in search |
-| `X-Robots-Tag` HTTP header | No | Yes | Same as meta | Non-HTML files: PDFs, images, JSON |
-| `rel=canonical` | No | No (a hint) | Yes, consolidates | Duplicate or near-duplicate URLs of the same content |
-| 301 redirect | No | Removes the old URL | Yes | Permanent moves and consolidation |
-| 404 / 410 | No | Yes, eventually | No | Pages that should cease to exist (410 is faster) |
-| `nofollow` on a link | No | No | No (a hint since 2020) | Untrusted or paid links |
-| Password / auth | Yes | Yes | No | Staging and private areas |
+| Control                                  | Stops crawling | Stops indexing      | Passes signals                           | Use for                                                 |
+| ---------------------------------------- | -------------- | ------------------- | ---------------------------------------- | ------------------------------------------------------- |
+| `robots.txt Disallow`                    | Yes            | No                  | No                                       | Saving crawl budget on infinite or worthless URL spaces |
+| `<meta name="robots" content="noindex">` | No             | Yes                 | Links followed until the page is dropped | Pages that must exist for users but not in search       |
+| `X-Robots-Tag` HTTP header               | No             | Yes                 | Same as meta                             | Non-HTML files: PDFs, images, JSON                      |
+| `rel=canonical`                          | No             | No (a hint)         | Yes, consolidates                        | Duplicate or near-duplicate URLs of the same content    |
+| 301 redirect                             | No             | Removes the old URL | Yes                                      | Permanent moves and consolidation                       |
+| 404 / 410                                | No             | Yes, eventually     | No                                       | Pages that should cease to exist (410 is faster)        |
+| `nofollow` on a link                     | No             | No                  | No (a hint since 2020)                   | Untrusted or paid links                                 |
+| Password / auth                          | Yes            | Yes                 | No                                       | Staging and private areas                               |
 
 The combination that breaks sites: `Disallow` plus `noindex`. Blocked from crawling, Google never reads the noindex, and the URL can stay indexed as a title-only result. Allow the crawl until the page drops out, then block.
 
@@ -32,20 +32,20 @@ The combination that breaks sites: `Disallow` plus `noindex`. Blocked from crawl
 
 Read the Page indexing status, then act:
 
-| Status | What it means | Action |
-|---|---|---|
-| Discovered — currently not indexed | Google knows the URL, has not chosen to crawl it | Crawl-demand problem: internal links, sitemap, better content — resubmitting changes nothing |
-| Crawled — currently not indexed | Crawled, judged not worth indexing | Thin, duplicate, or no demand; improve or consolidate |
-| Duplicate, Google chose different canonical | Your canonical was overridden | Align the signals: internal links, sitemap entry, hreflang, redirects, and content similarity |
-| Alternate page with proper canonical tag | Working as intended | Nothing |
-| Soft 404 | Thin, empty, or an error page returning 200 | Return a real 404, or add real content |
-| Excluded by noindex | A tag or header says so | Find which layer emits it: CMS setting, plugin, CDN, framework metadata |
-| Blocked by robots.txt | A Disallow rule matched | Decide: crawlable or truly excluded, never both |
-| Page with redirect | Not a problem; the target is what matters | Verify the target returns 200 and is canonical |
-| Not found (404) | The URL 404'd when crawled | Deliberate deletion: leave it, or 410 to speed it up. Accident: restore the page or 301 it to the closest equivalent, then fix the links and sitemap entries still pointing there |
-| Server error (5xx) | The host failed under crawl, not an indexing setting | Crawl stats and server logs; sustained 5xx shrinks crawl rate for weeks |
-| Blocked due to unauthorized request (401) / Blocked due to access forbidden (403) | Auth, geoblock, WAF, or bot protection answered Googlebot | Reproduce with the live test, verify Googlebot by reverse DNS in the logs, then allowlist it — staging protection leaking onto production is the usual cause |
-| Anything else | A status this table does not list | Run URL Inspection's live test on one affected URL: the fetch result names which stage broke — discover, crawl, render, or index — and the fix follows that stage's control above |
+| Status                                                                            | What it means                                             | Action                                                                                                                                                                            |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Discovered — currently not indexed                                                | Google knows the URL, has not chosen to crawl it          | Crawl-demand problem: internal links, sitemap, better content — resubmitting changes nothing                                                                                      |
+| Crawled — currently not indexed                                                   | Crawled, judged not worth indexing                        | Thin, duplicate, or no demand; improve or consolidate                                                                                                                             |
+| Duplicate, Google chose different canonical                                       | Your canonical was overridden                             | Align the signals: internal links, sitemap entry, hreflang, redirects, and content similarity                                                                                     |
+| Alternate page with proper canonical tag                                          | Working as intended                                       | Nothing                                                                                                                                                                           |
+| Soft 404                                                                          | Thin, empty, or an error page returning 200               | Return a real 404, or add real content                                                                                                                                            |
+| Excluded by noindex                                                               | A tag or header says so                                   | Find which layer emits it: CMS setting, plugin, CDN, framework metadata                                                                                                           |
+| Blocked by robots.txt                                                             | A Disallow rule matched                                   | Decide: crawlable or truly excluded, never both                                                                                                                                   |
+| Page with redirect                                                                | Not a problem; the target is what matters                 | Verify the target returns 200 and is canonical                                                                                                                                    |
+| Not found (404)                                                                   | The URL 404'd when crawled                                | Deliberate deletion: leave it, or 410 to speed it up. Accident: restore the page or 301 it to the closest equivalent, then fix the links and sitemap entries still pointing there |
+| Server error (5xx)                                                                | The host failed under crawl, not an indexing setting      | Crawl stats and server logs; sustained 5xx shrinks crawl rate for weeks                                                                                                           |
+| Blocked due to unauthorized request (401) / Blocked due to access forbidden (403) | Auth, geoblock, WAF, or bot protection answered Googlebot | Reproduce with the live test, verify Googlebot by reverse DNS in the logs, then allowlist it — staging protection leaking onto production is the usual cause                      |
+| Anything else                                                                     | A status this table does not list                         | Run URL Inspection's live test on one affected URL: the fetch result names which stage broke — discover, crawl, render, or index — and the fix follows that stage's control above |
 
 Verify with URL Inspection's **live test** and read the rendered HTML — not browser view-source, which is the pre-render document.
 
@@ -68,16 +68,16 @@ Verify with URL Inspection's **live test** and read the rendered HTML — not br
 
 ## Status Codes That Matter
 
-| Code | Effect on search | Notes |
-|---|---|---|
-| 200 | Indexable | Also what soft-404 error pages return — the trap |
-| 301 / 308 | Permanent move, signals transfer | Preferred for consolidation |
-| 302 / 307 | Temporary; the old URL can stay indexed | Long-lived 302s get reinterpreted unpredictably |
-| 304 | Not modified | Legitimate; helps crawl efficiency |
-| 404 | Dropped over time | Fine for genuinely gone pages |
-| 410 | Dropped faster than 404 | For deliberate deletions at scale |
-| 429 / 503 | Crawl backs off | The correct answer to overload; sustained 5xx shrinks crawl rate for weeks |
-| 500 | Crawl backs off, index decays | Any 5xx pattern in Crawl stats is a P0 |
+| Code      | Effect on search                        | Notes                                                                      |
+| --------- | --------------------------------------- | -------------------------------------------------------------------------- |
+| 200       | Indexable                               | Also what soft-404 error pages return — the trap                           |
+| 301 / 308 | Permanent move, signals transfer        | Preferred for consolidation                                                |
+| 302 / 307 | Temporary; the old URL can stay indexed | Long-lived 302s get reinterpreted unpredictably                            |
+| 304       | Not modified                            | Legitimate; helps crawl efficiency                                         |
+| 404       | Dropped over time                       | Fine for genuinely gone pages                                              |
+| 410       | Dropped faster than 404                 | For deliberate deletions at scale                                          |
+| 429 / 503 | Crawl backs off                         | The correct answer to overload; sustained 5xx shrinks crawl rate for weeks |
+| 500       | Crawl backs off, index decays           | Any 5xx pattern in Crawl stats is a P0                                     |
 
 ## Crawl Budget
 

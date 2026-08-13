@@ -9,6 +9,7 @@
 ## PART 1: AWWWARDS WINNERS 2025–2026 — RESTAURANT / FOOD & DRINK / HOSPITALITY
 
 ### 1.1 Crav Burgers — **Site of the Day (SOTD), June 13, 2026**
+
 - **URL:** https://www.awwwards.com/sites/crav-burgers
 - **Agency:** Anyflow
 - **What makes it award-winning:** A playful burger-ordering concept crafted with immersive visuals, smooth interactions, and dynamic motion design to make ordering fast and delightful. Uses scroll-driven storytelling where scrolling literally opens up a burger. Two-tone palette, immersive GSAP-based animations.
@@ -23,6 +24,7 @@
 - **Unique interactive features:** Scroll-to-assemble burger mechanic. The burger physically opens as user scrolls down.
 
 ### 1.2 Quay Restaurant — **Site of the Day (SOTD), 2025**
+
 - **URL:** https://www.awwwards.com/sites/quay-restaurant (site now sunset — farewell from Quay)
 - **What makes it award-winning:** Website for one of Australia's most awarded restaurants by chef Peter Gilmore, situated in Sydney Harbour. Editorial restraint, stunning food photography, elegant minimalism.
 - **Navigation pattern:** Clean horizontal top nav, minimal links. Reservation/booking CTA prominently placed.
@@ -36,6 +38,7 @@
 - **Unique interactive features:** Food menu cards with hover reveals. Subtle cursor interactions on desktop.
 
 ### 1.3 Amrit Palace — **Site of the Day (SOTD), November 15, 2025**
+
 - **URL:** https://www.awwwards.com/sites/amrit-palace
 - **Agency:** ArtLebedev UI (studio by Artemy Lebedev)
 - **What makes it award-winning:** Family-owned Indian restaurant in Ocala, Florida, serving authentic cuisine and warm hospitality since 1996. Complete restaurant branding and social media campaign crafted to turn cravings into customers. GSAP + Webflow build.
@@ -50,6 +53,7 @@
 - **Unique interactive features:** GSAP scroll-driven menu animation. Restaurant menu scroll interaction pattern.
 
 ### 1.4 Ballena | Fine Dining — **Awwwards Nominee**
+
 - **URL:** https://www.awwwards.com/sites/ballena-fine-dining
 - **What makes it award-winning:** "Ballena articulates hospitality, territory, and culture from Mexico. A visual and digital system that elevates gastronomy as cultural expression." Authenticity-driven design, storytelling focus.
 - **Navigation pattern:** Cultural narrative navigation — sections flow like chapters of a story.
@@ -63,6 +67,7 @@
 - **Unique interactive features:** Territory-to-table narrative flow. Cultural immersion before conversion.
 
 ### 1.5 Mugaritz — **Honorable Mention**
+
 - **URL:** https://www.awwwards.com/sites/mugaritz | Live site: https://www.mugaritz.com/en
 - **What makes it award-winning:** "Mugaritz, one of the world's top restaurants, invites guests to explore new sensory experiences. Its website reflects this disruptive essence and prepares visitors for the unexpected." Experimental, avant-garde design matching the restaurant's philosophy.
 - **Navigation pattern:** Non-conventional navigation. Discovery-driven — users explore rather than navigate. Sections reveal themselves.
@@ -76,6 +81,7 @@
 - **Unique interactive features:** Sensory-driven interactions. Experimental scroll behaviors. Disruptive UX that mirrors the restaurant's culinary philosophy.
 
 ### 1.6 Restaurant GEM — **Nominee**
+
 - **URL:** https://www.awwwards.com/sites/restaurant-gem
 - **What makes it award-winning:** "A warm, refined site for Restaurant GEM that mirrors its fine dining experience: elegant visuals, subtle motion and a seamless booking flow."
 - **Navigation pattern:** Clean, minimal navigation. Seamless booking integration.
@@ -89,6 +95,7 @@
 - **Unique interactive features:** Integrated booking widget that feels native, not third-party.
 
 ### 1.7 TMG | Mexican Restaurant — **Honorable Mention**
+
 - **URL:** https://www.awwwards.com/sites/tmg-mexican-restaurant
 - **What makes it award-winning:** "Born from Mexico's streets, built with heart. A digital home that tastes like good vibes, real flavor, and pure joy." Vibrant, culturally authentic, playful.
 - **Navigation pattern:** Casual, approachable navigation. Clear category separation.
@@ -102,6 +109,7 @@
 - **Unique interactive features:** Personality-driven interactions that match the brand's street-food roots.
 
 ### 1.8 Nidaba Spirit — **Honorable Mention**
+
 - **URL:** https://www.awwwards.com/sites/nidaba-spirit
 - **What makes it award-winning:** Awarded Italian restaurant in the Trevigian Hills, merging cuisine and craft beer. "Dove le idee prosperano, dove cucina e birra si fondono per diventare vivi."
 - **Navigation pattern:** Dual-focus navigation (restaurant + brewery). Clear section separation.
@@ -114,6 +122,7 @@
 - **CRO elements:** Reservation CTA, event booking. Trust through "awarded restaurant" status.
 
 ### 1.9 Explora Journeys — **Honorable Mention (Luxury Hospitality)**
+
 - **URL:** https://www.awwwards.com/sites/explora-journeys | Live: https://explorajourneys.com/us/en
 - **What makes it award-winning:** "A digital expression of modern ocean luxury — ExploraJourneys.com immerses users in the brand's Ocean State of Mind through elegant design." Category-breaking funnel redesign for cruise booking.
 - **Navigation pattern:** Elegant mega-nav with journey/ship categories. Booking funnel integrated into navigation.
@@ -128,18 +137,18 @@
 
 ### 1.10 More Notable Awwwards Food & Drink Sites (2025–2026)
 
-| Site | Award | Category | Key Feature |
-|------|-------|----------|-------------|
-| **Son Daven** | SOTD/HM May 2026 | Hotel/Restaurant | Minimalist luxury |
-| **Done Drinks** | HM | Beverages | Bold motion, vibrant design, playful storytelling |
-| **Tastavents Restaurant** | HM | Fine Dining (Barcelona) | Minimalist digital experience, gastronomic enclave |
-| **Pretty Patty** | HM | Casual Dining | Thank-you note to burger legends, playful branding |
-| **Noma** (noma.dk) | Not Awwwards but iconic | Fine Dining (Copenhagen/LA) | WordPress-built, editorial restraint, deeply Danish |
-| **Imperiale Bolgheri** | Listed | Wine/Luxury | Italian wine estate, premium presentation |
-| **Scottish Malt Whisky Society** | Listed | Spirits | Rich storytelling, heritage design |
-| **Ruinart Digital Fresco** | Listed | Champagne/Luxury | LVMH brand, digital art experience |
-| **La Colombe** | Listed | Coffee | Clean, modern coffee brand |
-| **Aupale Vodka** | Listed | Spirits | Premium vodka, lifestyle branding |
+| Site                             | Award                   | Category                    | Key Feature                                         |
+| -------------------------------- | ----------------------- | --------------------------- | --------------------------------------------------- |
+| **Son Daven**                    | SOTD/HM May 2026        | Hotel/Restaurant            | Minimalist luxury                                   |
+| **Done Drinks**                  | HM                      | Beverages                   | Bold motion, vibrant design, playful storytelling   |
+| **Tastavents Restaurant**        | HM                      | Fine Dining (Barcelona)     | Minimalist digital experience, gastronomic enclave  |
+| **Pretty Patty**                 | HM                      | Casual Dining               | Thank-you note to burger legends, playful branding  |
+| **Noma** (noma.dk)               | Not Awwwards but iconic | Fine Dining (Copenhagen/LA) | WordPress-built, editorial restraint, deeply Danish |
+| **Imperiale Bolgheri**           | Listed                  | Wine/Luxury                 | Italian wine estate, premium presentation           |
+| **Scottish Malt Whisky Society** | Listed                  | Spirits                     | Rich storytelling, heritage design                  |
+| **Ruinart Digital Fresco**       | Listed                  | Champagne/Luxury            | LVMH brand, digital art experience                  |
+| **La Colombe**                   | Listed                  | Coffee                      | Clean, modern coffee brand                          |
+| **Aupale Vodka**                 | Listed                  | Spirits                     | Premium vodka, lifestyle branding                   |
 
 ---
 
@@ -151,24 +160,24 @@ Based on research from Colorlib (30 Best Catering Websites 2026), SiteBuilderRep
 
 **Key patterns observed in award-worthy catering sites:**
 
-| Element | Best Practice (2026) |
-|---------|---------------------|
-| **Hero Section** | Full-bleed food photography or video background. Event imagery showing scale and elegance. Above-fold "Get a Quote" or "View Menu" CTA. |
-| **Menu Presentation** | Filterable by event type (corporate, wedding, social). Pricing tiers visible. Dietary accommodation clearly shown. HTML format for SEO. |
-| **Trust Signals** | Client logo wall (Fortune 500 companies), testimonial videos, Instagram feed integration, "Events Served" counter, award badges. |
-| **Booking Flow** | Multi-step form with progress indicator. Event date picker with availability calendar. Budget estimator tool. Instant quote calculator. |
-| **Social Proof** | Embedded Google/Yelp reviews, case study pages for past events, before/after gallery, "As seen in" media mentions. |
-| **Color Palette** | Cream/white backgrounds (cleanliness, luxury), gold/champagne accents (premium), deep green or navy (sophistication), food photography provides color pop. |
-| **Typography** | Serif headings (elegance/tradition), sans-serif body (readability). Large type for event types. Premium font choices. |
+| Element               | Best Practice (2026)                                                                                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hero Section**      | Full-bleed food photography or video background. Event imagery showing scale and elegance. Above-fold "Get a Quote" or "View Menu" CTA.                    |
+| **Menu Presentation** | Filterable by event type (corporate, wedding, social). Pricing tiers visible. Dietary accommodation clearly shown. HTML format for SEO.                    |
+| **Trust Signals**     | Client logo wall (Fortune 500 companies), testimonial videos, Instagram feed integration, "Events Served" counter, award badges.                           |
+| **Booking Flow**      | Multi-step form with progress indicator. Event date picker with availability calendar. Budget estimator tool. Instant quote calculator.                    |
+| **Social Proof**      | Embedded Google/Yelp reviews, case study pages for past events, before/after gallery, "As seen in" media mentions.                                         |
+| **Color Palette**     | Cream/white backgrounds (cleanliness, luxury), gold/champagne accents (premium), deep green or navy (sophistication), food photography provides color pop. |
+| **Typography**        | Serif headings (elegance/tradition), sans-serif body (readability). Large type for event types. Premium font choices.                                      |
 
 ### 2.2 Notable Catering Brands with Strong Web Presence
 
-| Brand | URL | Market | Notable Feature |
-|-------|-----|--------|-----------------|
-| **Final Course** | finalcourse.co.uk | UK | Custom sites for caterers, booking automation, local SEO |
-| **V-Catering** | v-catering.ru | Russia (Moscow) | VIP catering, concept development, event styling |
-| **Mr. Catering** | mistercatering.ru | Russia (Moscow) | Market leader, buffet/banquet organization |
-| **AMCateringServices** | (various) | US | Warm gold & cream palette, elegant typography |
+| Brand                  | URL               | Market          | Notable Feature                                          |
+| ---------------------- | ----------------- | --------------- | -------------------------------------------------------- |
+| **Final Course**       | finalcourse.co.uk | UK              | Custom sites for caterers, booking automation, local SEO |
+| **V-Catering**         | v-catering.ru     | Russia (Moscow) | VIP catering, concept development, event styling         |
+| **Mr. Catering**       | mistercatering.ru | Russia (Moscow) | Market leader, buffet/banquet organization               |
+| **AMCateringServices** | (various)         | US              | Warm gold & cream palette, elegant typography            |
 
 ---
 
@@ -183,11 +192,11 @@ The Russian premium catering market has several notable players:
 
 ### 3.2 Key Russian Catering/Restaurant Sites
 
-| Brand/Company | URL | Notes |
-|--------------|-----|-------|
-| **V-Catering** | v-catering.ru | VIP catering Moscow, concept-to-execution service |
-| **Mr. Catering** | mistercatering.ru | Moscow market leader, buffet/banquet specialist |
-| **BurovMoscow** | (various) | High-end restaurant group, modern Russian cuisine |
+| Brand/Company            | URL                       | Notes                                                  |
+| ------------------------ | ------------------------- | ------------------------------------------------------ |
+| **V-Catering**           | v-catering.ru             | VIP catering Moscow, concept-to-execution service      |
+| **Mr. Catering**         | mistercatering.ru         | Moscow market leader, buffet/banquet specialist        |
+| **BurovMoscow**          | (various)                 | High-end restaurant group, modern Russian cuisine      |
 | **Kompaniya Restaurant** | (via DA bureau/ArchDaily) | St. Petersburg, designed by DA bureau, modern interior |
 
 ### 3.3 Russian Market Design Trends (from Sostav.ru research)
@@ -232,6 +241,7 @@ Key concept: **"Sensory-First UX"** — The best food/beverage websites in 2026 
 ### 4.3 Hospitality 2026 (LinkedIn/EHL Insights)
 
 Key trends shaping restaurants, bars & hotels:
+
 - **Experiential & Immersive Hospitality** — The website must preview the physical experience
 - **Guest-Centered Menu Value & Comfort Foods** — Digital menus that communicate value
 - **Technology as a Service Standard** — Seamless booking, AI concierge, instant communication
@@ -246,18 +256,18 @@ Key trends shaping restaurants, bars & hotels:
 
 From Figma, ReallyGoodDesigns, Behance, and Awwwards trend analysis:
 
-| Trend | Description | Application to Catering/Food |
-|-------|-------------|------------------------------|
-| **3D & Immersive Elements** | WebGL, Three.js, 3D food rendering | Photorealistic 3D food models on landing pages |
-| **Experimental Navigation** | Non-linear, story-driven navigation | Menu exploration as a journey, not a list |
-| **Vibrant Color Palettes** | Bold, saturated colors making a comeback | Food brands using brand-color-bold palettes (Crav Burgers #FABC0F) |
-| **Bold Typography** | Animated letters, kinetic type, type as hero | Restaurant names as large-scale animated type |
-| **AI-Powered Personalization** | Adaptive content, AI recommendations | Menu suggestions based on time of day, season, preferences |
-| **Motion Narrative** | Story-driven scroll animations | Food preparation story told through scroll (farm → kitchen → plate) |
-| **Tactile Brutalism** | Raw, textured, imperfect aesthetics | Artisanal food brands embracing imperfect, handmade aesthetic |
-| **Invisible Architecture** | Performance-first CSS, minimal JS | Fast-loading restaurant sites that feel premium without heavy frameworks |
-| **Organic Layouts** | Anti-grid movement, flowing compositions | Menu items in organic, magazine-like layouts |
-| **Spatial Interfaces** | VR/AR-ready, 3D spatial web | Virtual restaurant tours, AR menu viewing |
+| Trend                          | Description                                  | Application to Catering/Food                                             |
+| ------------------------------ | -------------------------------------------- | ------------------------------------------------------------------------ |
+| **3D & Immersive Elements**    | WebGL, Three.js, 3D food rendering           | Photorealistic 3D food models on landing pages                           |
+| **Experimental Navigation**    | Non-linear, story-driven navigation          | Menu exploration as a journey, not a list                                |
+| **Vibrant Color Palettes**     | Bold, saturated colors making a comeback     | Food brands using brand-color-bold palettes (Crav Burgers #FABC0F)       |
+| **Bold Typography**            | Animated letters, kinetic type, type as hero | Restaurant names as large-scale animated type                            |
+| **AI-Powered Personalization** | Adaptive content, AI recommendations         | Menu suggestions based on time of day, season, preferences               |
+| **Motion Narrative**           | Story-driven scroll animations               | Food preparation story told through scroll (farm → kitchen → plate)      |
+| **Tactile Brutalism**          | Raw, textured, imperfect aesthetics          | Artisanal food brands embracing imperfect, handmade aesthetic            |
+| **Invisible Architecture**     | Performance-first CSS, minimal JS            | Fast-loading restaurant sites that feel premium without heavy frameworks |
+| **Organic Layouts**            | Anti-grid movement, flowing compositions     | Menu items in organic, magazine-like layouts                             |
+| **Spatial Interfaces**         | VR/AR-ready, 3D spatial web                  | Virtual restaurant tours, AR menu viewing                                |
 
 ### 5.2 Nielsen Norman Group: State of UX 2026 — "Design Deeper to Differentiate"
 
@@ -290,6 +300,7 @@ Five micro-interaction patterns defining 2026:
 5. **Craft-Led Motion** — Hand-crafted, bespoke animation that feels unique to the brand
 
 Key principles:
+
 - **Minimalist, purposeful animation** — Moving away from flashy, gratuitous animations
 - **Motion as brand language** — How things move is as important as how they look
 - **Performance-first motion** — CSS animations preferred over JS; will-change, GPU acceleration
@@ -302,6 +313,7 @@ Key principles:
 From Chowly (published January 28, 2026):
 
 **Key statistics:**
+
 - Average website converts just **2.35%** of visitors in 2026
 - **70%+** of restaurant website traffic comes from mobile devices
 - **82%** of guests prefer ordering directly from a restaurant's website
@@ -364,6 +376,7 @@ From Chowly (published January 28, 2026):
 Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 
 **Visual Layer (What juries see):**
+
 - Cinematic food photography/videography as hero content
 - Bold or refined color palette (no default templates)
 - Custom typography with strong hierarchy
@@ -371,6 +384,7 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 - 3D/immersive elements where appropriate
 
 **UX Layer (What converts):**
+
 - Mobile-first performance (< 2s load)
 - HTML-based menus (not PDF)
 - Immediate ordering/reservation access
@@ -378,6 +392,7 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 - Clean, frictionless layouts
 
 **Strategic Layer (What differentiates):**
+
 - Brand storytelling through scroll/click
 - Sensory-first design (visual, motion, potentially audio)
 - Cultural authenticity (territory, tradition, craft)
@@ -386,22 +401,22 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 
 ### 6.2 Navigation Patterns by Category
 
-| Category | Dominant Pattern | Examples |
-|----------|-----------------|----------|
-| Fine Dining | Story-driven scroll, minimal nav | Mugaritz, Quay, Ballena, GEM |
-| Casual/Fast Food | Bold, energetic, fun | Crav Burgers, TMG, Pretty Patty |
-| Luxury Hospitality | Cinematic hero, elegant mega-nav | Explora Journeys |
-| Catering | Service-first, portfolio-driven | Final Course, V-Catering |
-| Wine/Spirits | Heritage storytelling | Imperiale Bolgheri, Ruinart, SMWS |
+| Category           | Dominant Pattern                 | Examples                          |
+| ------------------ | -------------------------------- | --------------------------------- |
+| Fine Dining        | Story-driven scroll, minimal nav | Mugaritz, Quay, Ballena, GEM      |
+| Casual/Fast Food   | Bold, energetic, fun             | Crav Burgers, TMG, Pretty Patty   |
+| Luxury Hospitality | Cinematic hero, elegant mega-nav | Explora Journeys                  |
+| Catering           | Service-first, portfolio-driven  | Final Course, V-Catering          |
+| Wine/Spirits       | Heritage storytelling            | Imperiale Bolgheri, Ruinart, SMWS |
 
 ### 6.3 Hero Section Approaches by Tier
 
-| Tier | Approach | Example |
-|------|----------|---------|
-| **Ultra-Premium** | Full-viewport cinematic video/3D, minimal text, brand atmosphere | Explora Journeys, Mugaritz |
-| **Premium** | Full-bleed photography, elegant typography overlay, single CTA | Quay, Ballena, GEM |
-| **Mid-Premium** | Split hero (image + text), clear value proposition, dual CTA | Amrit Palace, Nidaba Spirit |
-| **Casual-Premium** | Bold colors, playful type, animated elements | Crav Burgers, TMG, Done Drinks |
+| Tier               | Approach                                                         | Example                        |
+| ------------------ | ---------------------------------------------------------------- | ------------------------------ |
+| **Ultra-Premium**  | Full-viewport cinematic video/3D, minimal text, brand atmosphere | Explora Journeys, Mugaritz     |
+| **Premium**        | Full-bleed photography, elegant typography overlay, single CTA   | Quay, Ballena, GEM             |
+| **Mid-Premium**    | Split hero (image + text), clear value proposition, dual CTA     | Amrit Palace, Nidaba Spirit    |
+| **Casual-Premium** | Bold colors, playful type, animated elements                     | Crav Burgers, TMG, Done Drinks |
 
 ### 6.4 Menu/Food Presentation Techniques (2026)
 
@@ -415,14 +430,14 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 
 ### 6.5 Color Palettes Trending in 2026
 
-| Palette Name | Colors | Best For |
-|-------------|--------|----------|
-| **Noir & Gold** | #000000, #1a1a1a, #D4AF37, #F5F5F0 | Luxury catering, fine dining |
-| **Terra Caliente** | #C75B39, #E8C07A, #2D4A3E, #FFF8F0 | Mexican/Mediterranean, cultural restaurants |
-| **Ocean Luxe** | #0A2342, #FFFFFF, #C9A96E, #1B4965 | Seafood, coastal hospitality |
-| **Bold Mono** | #000000, #FABC0F, #FFFFFF | Casual-premium, fast-casual |
-| **Organic Earth** | #F5F0EB, #2C3E2D, #8B7355, #D4C5B2 | Farm-to-table, artisanal |
-| **Editorial Neutral** | #FAFAFA, #1A1A1A, #666666 | Fine dining, wine, minimal luxury |
+| Palette Name          | Colors                             | Best For                                    |
+| --------------------- | ---------------------------------- | ------------------------------------------- |
+| **Noir & Gold**       | #000000, #1a1a1a, #D4AF37, #F5F5F0 | Luxury catering, fine dining                |
+| **Terra Caliente**    | #C75B39, #E8C07A, #2D4A3E, #FFF8F0 | Mexican/Mediterranean, cultural restaurants |
+| **Ocean Luxe**        | #0A2342, #FFFFFF, #C9A96E, #1B4965 | Seafood, coastal hospitality                |
+| **Bold Mono**         | #000000, #FABC0F, #FFFFFF          | Casual-premium, fast-casual                 |
+| **Organic Earth**     | #F5F0EB, #2C3E2D, #8B7355, #D4C5B2 | Farm-to-table, artisanal                    |
+| **Editorial Neutral** | #FAFAFA, #1A1A1A, #666666          | Fine dining, wine, minimal luxury           |
 
 ### 6.6 Typography Trends 2026
 
@@ -446,29 +461,29 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 
 ### 6.8 CRO Best Practices Specific to Catering/Restaurant Sites
 
-| Element | Best Practice |
-|---------|---------------|
-| **Primary CTA** | "Book Now" / "Order Online" / "Get a Quote" — above fold, high contrast |
-| **Secondary CTA** | "View Menu" / "See Our Work" — lower in the funnel |
-| **Trust Signals** | Client logos, review scores, years in business, awards, "As featured in" |
-| **Social Proof** | Embedded Google reviews, Instagram feed, testimonial videos, case studies |
-| **Friction Reduction** | Auto-fill forms, date picker, budget slider, instant quote calculator |
-| **Urgency** | "Limited availability" for popular dates, seasonal menu countdown |
-| **Remarketing** | Abandoned booking/cart email sequences, retargeting ads |
+| Element                | Best Practice                                                             |
+| ---------------------- | ------------------------------------------------------------------------- |
+| **Primary CTA**        | "Book Now" / "Order Online" / "Get a Quote" — above fold, high contrast   |
+| **Secondary CTA**      | "View Menu" / "See Our Work" — lower in the funnel                        |
+| **Trust Signals**      | Client logos, review scores, years in business, awards, "As featured in"  |
+| **Social Proof**       | Embedded Google reviews, Instagram feed, testimonial videos, case studies |
+| **Friction Reduction** | Auto-fill forms, date picker, budget slider, instant quote calculator     |
+| **Urgency**            | "Limited availability" for popular dates, seasonal menu countdown         |
+| **Remarketing**        | Abandoned booking/cart email sequences, retargeting ads                   |
 
 ---
 
 ## PART 7: KEY AWARD-WINNING HOSPITALITY SITES BEYOND AWWWARDS
 
-| Award | Winner | Year | Significance |
-|-------|--------|------|-------------|
-| **Awwwards Site of the Year 2025** | Offbrand.studio (made in Webflow) | 2025 | Shows Webflow is production-ready for award-level work |
-| **World Travel Tech Awards** | Atlantis The Royal, UAE | 2025 | World's Best Hotel Website |
-| **LIV Hospitality Design Awards** | Various | 2025 | Architecture + interior + guest experience |
-| **London Design Awards** | Explora Journeys | 2025 | UI category winner — luxury cruise digital experience |
-| **AHEAD Awards** | Orient Express La Minerva | 2025 | Ultimate hospitality experience & design accolade |
-| **World's Best Hotel Website** | Atlantis The Royal, Sofitel Sydney, The Chedi El Gouna | 2025 | World Travel Tech Awards winners |
-| **Catering Awards Russia** | Various Russian companies | Annual | Independent Russian catering industry awards |
+| Award                              | Winner                                                 | Year   | Significance                                           |
+| ---------------------------------- | ------------------------------------------------------ | ------ | ------------------------------------------------------ |
+| **Awwwards Site of the Year 2025** | Offbrand.studio (made in Webflow)                      | 2025   | Shows Webflow is production-ready for award-level work |
+| **World Travel Tech Awards**       | Atlantis The Royal, UAE                                | 2025   | World's Best Hotel Website                             |
+| **LIV Hospitality Design Awards**  | Various                                                | 2025   | Architecture + interior + guest experience             |
+| **London Design Awards**           | Explora Journeys                                       | 2025   | UI category winner — luxury cruise digital experience  |
+| **AHEAD Awards**                   | Orient Express La Minerva                              | 2025   | Ultimate hospitality experience & design accolade      |
+| **World's Best Hotel Website**     | Atlantis The Royal, Sofitel Sydney, The Chedi El Gouna | 2025   | World Travel Tech Awards winners                       |
+| **Catering Awards Russia**         | Various Russian companies                              | Annual | Independent Russian catering industry awards           |
 
 ---
 
@@ -515,6 +530,7 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 ## APPENDIX: RESEARCH SOURCES
 
 ### Primary Sources (Directly Accessed)
+
 - Awwwards Food & Drink category page
 - Awwwards Hotel & Restaurant category page
 - Awwwards Luxury category page
@@ -522,6 +538,7 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 - Individual Awwwards site pages (Ballena, Mugaritz, Crav Burgers, Amrit Palace, Quay, Explora Journeys, Restaurant GEM)
 
 ### Trend Reports (Directly Accessed)
+
 - ReallyGoodDesigns: "Web Design Trends 2026: The Next Level of Digital Creativity" (Nov 2025, updated May 2026)
 - Chowly: "Restaurant Website Design: 7 Elements of a High-Converting Restaurant Website" (Jan 2026)
 - Primotech: "UI/UX Evolution 2026: Why Micro-Interactions and Motion Matter More Than Ever" (Nov 2025, updated Jun 2026)
@@ -538,6 +555,7 @@ Based on cross-referencing Awwwards winners, trend reports, and CRO data:
 - Envato Elements: "11 Motion Design Trends for 2026"
 
 ### Additional Sources
+
 - Sostav.ru: "Лучшие сайты ресторанного бизнеса" (Russian restaurant site review)
 - Cateringawards.ru: Премия «Кейтеринг года»
 - I-DESIGN AWARDS 25/26 (i-design.pro)

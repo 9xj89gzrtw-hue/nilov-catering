@@ -405,7 +405,7 @@ interface TokenValidation {
 function validateContrast(
   foreground: string,
   background: string,
-  level: "AA" | "AAA" = "AA",
+  level: "AA" | "AAA" = "AA"
 ): boolean {
   const ratio = getContrastRatio(foreground, background);
   return level === "AA" ? ratio >= 4.5 : ratio >= 7;

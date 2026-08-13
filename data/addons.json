@@ -6,9 +6,7 @@
     "priceType": "fixed",
     "price": 8000,
     "category": "service",
-    "formats": [
-      "banket"
-    ],
+    "formats": ["banket"],
     "image": ""
   },
   {
@@ -18,11 +16,7 @@
     "priceType": "perGuest",
     "price": 250,
     "category": "entertainment",
-    "formats": [
-      "furshet",
-      "banket",
-      "detskoe"
-    ],
+    "formats": ["furshet", "banket", "detskoe"],
     "image": ""
   },
   {
@@ -32,12 +26,7 @@
     "priceType": "fixed",
     "price": 15000,
     "category": "entertainment",
-    "formats": [
-      "furshet",
-      "banket",
-      "coffee-break",
-      "detskoe"
-    ],
+    "formats": ["furshet", "banket", "coffee-break", "detskoe"],
     "image": ""
   },
   {
@@ -47,10 +36,7 @@
     "priceType": "fixed",
     "price": 25000,
     "category": "entertainment",
-    "formats": [
-      "banket",
-      "furshet"
-    ],
+    "formats": ["banket", "furshet"],
     "image": ""
   },
   {
@@ -60,10 +46,7 @@
     "priceType": "fixed",
     "price": 35000,
     "category": "entertainment",
-    "formats": [
-      "banket",
-      "furshet"
-    ],
+    "formats": ["banket", "furshet"],
     "image": ""
   },
   {
@@ -73,9 +56,7 @@
     "priceType": "fixed",
     "price": 12000,
     "category": "decoration",
-    "formats": [
-      "banket"
-    ],
+    "formats": ["banket"],
     "image": ""
   },
   {
@@ -85,10 +66,7 @@
     "priceType": "perGuest",
     "price": 180,
     "category": "decoration",
-    "formats": [
-      "banket",
-      "furshet"
-    ],
+    "formats": ["banket", "furshet"],
     "image": ""
   },
   {
@@ -98,11 +76,7 @@
     "priceType": "fixed",
     "price": 8000,
     "category": "tech",
-    "formats": [
-      "banket",
-      "furshet",
-      "coffee-break"
-    ],
+    "formats": ["banket", "furshet", "coffee-break"],
     "image": ""
   },
   {
@@ -112,10 +86,7 @@
     "priceType": "fixed",
     "price": 10000,
     "category": "tech",
-    "formats": [
-      "banket",
-      "furshet"
-    ],
+    "formats": ["banket", "furshet"],
     "image": ""
   },
   {
@@ -125,10 +96,7 @@
     "priceType": "perGuest",
     "price": 400,
     "category": "entertainment",
-    "formats": [
-      "furshet",
-      "banket"
-    ],
+    "formats": ["furshet", "banket"],
     "image": ""
   },
   {
@@ -138,9 +106,7 @@
     "priceType": "fixed",
     "price": 8000,
     "category": "entertainment",
-    "formats": [
-      "detskoe"
-    ],
+    "formats": ["detskoe"],
     "image": ""
   },
   {
@@ -150,11 +116,7 @@
     "priceType": "fixed",
     "price": 7000,
     "category": "decoration",
-    "formats": [
-      "furshet",
-      "banket",
-      "detskoe"
-    ],
+    "formats": ["furshet", "banket", "detskoe"],
     "image": ""
   },
   {
@@ -164,13 +126,7 @@
     "priceType": "fixed",
     "price": 5000,
     "category": "service",
-    "formats": [
-      "furshet",
-      "banket",
-      "coffee-break",
-      "detskoe",
-      "chef-at-home"
-    ],
+    "formats": ["furshet", "banket", "coffee-break", "detskoe", "chef-at-home"],
     "image": ""
   },
   {
@@ -180,10 +136,7 @@
     "priceType": "fixed",
     "price": 3000,
     "category": "service",
-    "formats": [
-      "furshet",
-      "banket"
-    ],
+    "formats": ["furshet", "banket"],
     "image": ""
   }
 ]

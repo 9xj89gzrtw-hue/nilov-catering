@@ -39,14 +39,14 @@ Two link economies exist. Internal links you control completely and can change t
 
 Better than domain rating alone: **does the linking page itself rank and receive traffic?** A link from a page with search traffic beats a link from a high-authority site's orphaned post. Then check:
 
-| Signal | Good | Bad |
-|---|---|---|
-| Topical relevance | Same or adjacent subject | A general "business blog" that covers everything |
-| Page traffic | The page ranks for something | Zero impressions, orphaned |
-| Outbound link pattern | A handful of editorial links | Dozens of unrelated commercial links per post |
-| Audience | Real readers, real comments, real social presence | Content published only for link buyers |
-| Placement | In-body, in context | Author bio, footer, sidebar, "partners" page |
-| Price list exists | — | Any site with a rate card is selling links, whatever it calls the arrangement |
+| Signal                | Good                                              | Bad                                                                           |
+| --------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Topical relevance     | Same or adjacent subject                          | A general "business blog" that covers everything                              |
+| Page traffic          | The page ranks for something                      | Zero impressions, orphaned                                                    |
+| Outbound link pattern | A handful of editorial links                      | Dozens of unrelated commercial links per post                                 |
+| Audience              | Real readers, real comments, real social presence | Content published only for link buyers                                        |
+| Placement             | In-body, in context                               | Author bio, footer, sidebar, "partners" page                                  |
+| Price list exists     | —                                                 | Any site with a rate card is selling links, whatever it calls the arrangement |
 
 ## Earning Links
 
@@ -78,12 +78,12 @@ Outreach reality: response rates on cold link outreach are low single digits for
 
 ## Link Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Buying links from a rate card | Payment footprints are the pattern spam systems look for | Earn or do not have the link |
-| Chasing domain rating | The metric is a third-party estimate, not a Google signal | Judge the page, its traffic, and its relevance |
-| Outreach before the asset exists | There is nothing worth linking to | Build the asset first |
-| Ignoring internal links | The one lever you fully control, free and immediate | Audit and repoint quarterly |
-| Disavowing on suspicion | Cuts real equity, no upside without a manual action | Disavow only on evidence |
-| Counting links as the KPI | Links are an input; rankings and revenue are the outcome | Report links alongside the pages they lifted |
-| Redirecting old link targets to the homepage | Treated as a soft 404, passes nothing | Redirect to the closest topical match |
+| Trap                                         | Why it fails                                              | Do instead                                     |
+| -------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------- |
+| Buying links from a rate card                | Payment footprints are the pattern spam systems look for  | Earn or do not have the link                   |
+| Chasing domain rating                        | The metric is a third-party estimate, not a Google signal | Judge the page, its traffic, and its relevance |
+| Outreach before the asset exists             | There is nothing worth linking to                         | Build the asset first                          |
+| Ignoring internal links                      | The one lever you fully control, free and immediate       | Audit and repoint quarterly                    |
+| Disavowing on suspicion                      | Cuts real equity, no upside without a manual action       | Disavow only on evidence                       |
+| Counting links as the KPI                    | Links are an input; rankings and revenue are the outcome  | Report links alongside the pages they lifted   |
+| Redirecting old link targets to the homepage | Treated as a soft 404, passes nothing                     | Redirect to the closest topical match          |

@@ -9,24 +9,28 @@ good UI copy is invisible when it works and helpful when things go wrong. it's a
 ## Principles
 
 ### say what it does, not what it is
+
 - ❌ "Submit"
 - ✅ "Send message"
 - ❌ "Confirmation"
 - ✅ "Your order is on its way"
 
 ### be specific over generic
+
 - ❌ "An error occurred"
 - ✅ "We couldn't save your changes. Check your connection and try again."
 - ❌ "No results"
 - ✅ "No projects match that filter. Try a broader search or create a new project."
 
 ### use the user's language
+
 - ❌ "Invalid input detected in field"
 - ✅ "That doesn't look like an email address"
 - ❌ "Resource not found (404)"
 - ✅ "We can't find that page. It might have been moved or deleted."
 
 ### front-load the important word
+
 - ❌ "Click here to download the report"
 - ✅ "Download report"
 - ❌ "Are you sure you want to delete this?"
@@ -36,18 +40,20 @@ good UI copy is invisible when it works and helpful when things go wrong. it's a
 
 buttons should describe the action, not the process.
 
-| instead of | use |
-|-----------|-----|
-| Submit | Send message / Save changes / Create project |
-| Cancel | Go back / Never mind / Keep editing |
-| OK | Got it / Continue / Understood |
-| Delete | Delete project / Remove member |
-| Yes / No | Use the action as the label: "Delete" / "Keep" |
-| Click here | [just make the relevant text the link] |
-| Learn more | See pricing / Read the docs / View examples |
+| instead of | use                                            |
+| ---------- | ---------------------------------------------- |
+| Submit     | Send message / Save changes / Create project   |
+| Cancel     | Go back / Never mind / Keep editing            |
+| OK         | Got it / Continue / Understood                 |
+| Delete     | Delete project / Remove member                 |
+| Yes / No   | Use the action as the label: "Delete" / "Keep" |
+| Click here | [just make the relevant text the link]         |
+| Learn more | See pricing / Read the docs / View examples    |
 
 ### button pairs (confirm/deny)
+
 the primary action should be specific. the secondary should be soft.
+
 - ✅ "Delete project" / "Keep project"
 - ✅ "Send invite" / "Cancel"
 - ✅ "Save and publish" / "Save as draft"
@@ -55,7 +61,9 @@ the primary action should be specific. the secondary should be soft.
 - ❌ "OK" / "Cancel"
 
 ### destructive actions
+
 make the consequence clear. use red/danger styling.
+
 - ✅ "Delete project — this can't be undone"
 - ✅ "Remove from team — they'll lose access immediately"
 - ❌ "Are you sure?" (sure about what?)
@@ -65,6 +73,7 @@ make the consequence clear. use red/danger styling.
 empty states are the first impression for new users. they should guide, not dead-end.
 
 ### structure
+
 1. **what this area is for** (one line)
 2. **why it's empty** (context)
 3. **what to do next** (primary action)
@@ -72,21 +81,26 @@ empty states are the first impression for new users. they should guide, not dead
 ### examples
 
 **good:**
+
 > **No projects yet**
 > Projects you create will appear here. Start with a template or build from scratch.
 > [Create project] [Browse templates]
 
 **bad:**
+
 > No data found.
 
 **good:**
+
 > **Your inbox is empty**
 > When teammates mention you or assign tasks, you'll see them here.
 
 **bad:**
+
 > 0 results
 
 **good (with personality):**
+
 > **Nothing to see here... yet**
 > This dashboard fills up once your agents start running. Launch your first agent to see the magic.
 > [Launch an agent →]
@@ -94,6 +108,7 @@ empty states are the first impression for new users. they should guide, not dead
 ## Error Messages
 
 ### structure
+
 1. **what happened** (clear, specific)
 2. **why it happened** (if knowable)
 3. **what to do** (actionable next step)
@@ -101,22 +116,27 @@ empty states are the first impression for new users. they should guide, not dead
 ### examples
 
 **good:**
+
 > **Couldn't save your changes**
 > The server didn't respond. Check your internet connection and try again.
 > [Try again]
 
 **bad:**
+
 > Error 500: Internal Server Error
 
 **good:**
+
 > **That email is already registered**
 > Try signing in instead, or use a different email.
 > [Sign in] [Use different email]
 
 **bad:**
+
 > Error: Duplicate entry
 
 **good (with personality):**
+
 > **Well, that didn't work**
 > We tried to send your message but the server is being uncooperative. Give it a moment and try again.
 > [Retry]
@@ -124,27 +144,32 @@ empty states are the first impression for new users. they should guide, not dead
 ## Loading States
 
 ### what to say
+
 - if < 2 seconds: just show a spinner or skeleton, no text needed
 - if 2-5 seconds: "Loading..." or context-specific: "Fetching your data..."
 - if > 5 seconds: "This is taking longer than usual. Hang tight."
 - if potentially minutes: "Processing your upload — this might take a minute. You can leave this page."
 
 ### skeleton screens > spinners
+
 show the shape of the content that's coming. users perceive skeleton screens as faster than spinners.
 
 ## Microcopy
 
 ### form labels
+
 - use sentence case: "Email address" not "Email Address"
 - be specific: "Work email" not just "Email" (if it matters)
 - placeholder text is NOT a label — it disappears on focus
 
 ### helper text
+
 - put it below the field, not as placeholder
 - explain format requirements upfront: "Must be at least 8 characters"
 - don't: "Please enter a valid email address" (they haven't entered anything yet)
 
 ### success messages
+
 - brief, warm, specific
 - ✅ "Changes saved"
 - ✅ "Invitation sent to alex@example.com"
@@ -152,6 +177,7 @@ show the shape of the content that's coming. users perceive skeleton screens as 
 - auto-dismiss after 3-5 seconds (don't make users close it)
 
 ### tooltips
+
 - one sentence max
 - explain WHY, not WHAT (the label already says what)
 - ✅ tooltip on "Priority": "Higher priority items appear first in your team's queue"
@@ -161,15 +187,15 @@ show the shape of the content that's coming. users perceive skeleton screens as 
 
 match tone to context. not everything needs to be funny.
 
-| context | tone | example |
-|---------|------|---------|
-| error (blocking) | calm, helpful | "We couldn't process your payment. Check your card details and try again." |
-| error (minor) | light, reassuring | "Hmm, that link seems broken. Here's the homepage instead." |
-| success | warm, brief | "You're all set!" |
-| empty state | encouraging | "Nothing here yet — create your first project to get started." |
-| destructive | serious, clear | "Delete this workspace? All projects and data will be permanently removed." |
-| onboarding | friendly, guiding | "Welcome! Let's set up your first project. It'll take about 2 minutes." |
-| loading (long) | patient, transparent | "Still working on it. Large files take a bit longer." |
+| context          | tone                 | example                                                                     |
+| ---------------- | -------------------- | --------------------------------------------------------------------------- |
+| error (blocking) | calm, helpful        | "We couldn't process your payment. Check your card details and try again."  |
+| error (minor)    | light, reassuring    | "Hmm, that link seems broken. Here's the homepage instead."                 |
+| success          | warm, brief          | "You're all set!"                                                           |
+| empty state      | encouraging          | "Nothing here yet — create your first project to get started."              |
+| destructive      | serious, clear       | "Delete this workspace? All projects and data will be permanently removed." |
+| onboarding       | friendly, guiding    | "Welcome! Let's set up your first project. It'll take about 2 minutes."     |
+| loading (long)   | patient, transparent | "Still working on it. Large files take a bit longer."                       |
 
 ## Common Failures
 
@@ -187,6 +213,7 @@ match tone to context. not everything needs to be funny.
 when the prompt establishes a world (a specific company, a satirical tool, an internal product), the copy must live in that world.
 
 ### rules
+
 - internal tools should sound internal — abbreviated labels, insider jargon, casual status messages
 - consumer products should sound consumer — friendly, clear, no jargon
 - enterprise tools should sound enterprise — precise, formal where needed, never cute
@@ -194,6 +221,7 @@ when the prompt establishes a world (a specific company, a satirical tool, an in
 - if referencing a real company, match their communication style (OpenAI is measured and corporate, Anthropic is precise and understated, Meta is direct and utilitarian)
 
 ### where humor goes (for satirical premises)
+
 - data labels and row names (the things you read IN the table)
 - status messages and alerts
 - internal tags and annotations
@@ -202,11 +230,13 @@ when the prompt establishes a world (a specific company, a satirical tool, an in
 - NOT in button labels, nav items, page titles, or chart axes
 
 ### the test
+
 read just the text content with no visual design. does it sound like it came from the world the prompt describes? if you stripped the layout and just read the words, would you know what product/company this belongs to?
 
 ## Writing Checklist
 
 before shipping any UI:
+
 - [ ] every button says what it does (not "Submit" / "OK" / "Click here")
 - [ ] every empty state guides to the next action
 - [ ] every error says what happened and what to do

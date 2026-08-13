@@ -30,7 +30,7 @@ clawhub install schemaorg-site-enhancer
 ### 2. Import in your agent code or scripts
 
 ```javascript
-const { generateFAQPage, injectJSONLD } = require('schemaorg-site-enhancer');
+const { generateFAQPage, injectJSONLD } = require("schemaorg-site-enhancer");
 ```
 
 ### 3. Example: Create an FAQPage
@@ -39,24 +39,24 @@ const { generateFAQPage, injectJSONLD } = require('schemaorg-site-enhancer');
 const faqData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
+  mainEntity: [
     {
       "@type": "Question",
-      "name": "What is Schema.org?",
-      "acceptedAnswer": {
+      name: "What is Schema.org?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet."
-      }
+        text: "Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet.",
+      },
     },
     {
       "@type": "Question",
-      "name": "Why use JSON-LD?",
-      "acceptedAnswer": {
+      name: "Why use JSON-LD?",
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": "JSON-LD is the recommended format for Schema.org because it’s easy to read, doesn’t interfere with HTML, and is supported by all major search engines."
-      }
-    }
-  ]
+        text: "JSON-LD is the recommended format for Schema.org because it’s easy to read, doesn’t interfere with HTML, and is supported by all major search engines.",
+      },
+    },
+  ],
 };
 
 const jsonLD = generateFAQPage(faqData);

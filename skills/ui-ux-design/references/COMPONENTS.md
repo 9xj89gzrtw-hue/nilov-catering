@@ -22,15 +22,15 @@ Common UI component patterns with Tailwind CSS + Shadcn/ui examples.
 ## Buttons
 
 ### Primary Button
-```jsx
-import { Button } from "@/components/ui/button"
 
-<Button className="bg-blue-600 hover:bg-blue-700">
-  Click Me
-</Button>
+```jsx
+import { Button } from "@/components/ui/button";
+
+<Button className="bg-blue-600 hover:bg-blue-700">Click Me</Button>;
 ```
 
 ### Button Sizes
+
 ```jsx
 <Button size="sm">Small</Button>
 <Button size="default">Default</Button>
@@ -38,6 +38,7 @@ import { Button } from "@/components/ui/button"
 ```
 
 ### Button Variants
+
 ```jsx
 <Button variant="default">Primary</Button>
 <Button variant="secondary">Secondary</Button>
@@ -47,6 +48,7 @@ import { Button } from "@/components/ui/button"
 ```
 
 ### Loading Button
+
 ```jsx
 <Button disabled>
   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -59,8 +61,9 @@ import { Button } from "@/components/ui/button"
 ## Cards
 
 ### Basic Card
+
 ```jsx
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 <Card>
   <CardHeader>
@@ -70,10 +73,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
   <CardContent>
     <p>Card content</p>
   </CardContent>
-</Card>
+</Card>;
 ```
 
 ### Card with Footer
+
 ```jsx
 <Card>
   <CardHeader>
@@ -90,8 +94,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 ```
 
 ### Hover Card (Interactive)
+
 ```jsx
-<Card className="transition-all hover:shadow-lg hover:scale-105">
+<Card className="transition-all hover:scale-105 hover:shadow-lg">
   <CardHeader>
     <CardTitle>Hover Me</CardTitle>
   </CardHeader>
@@ -106,37 +111,38 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 ## Forms
 
 ### Input Field
+
 ```jsx
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 <div className="space-y-2">
   <Label htmlFor="email">Email</Label>
-  <Input 
-    id="email" 
-    type="email" 
-    placeholder="you@example.com"
-  />
-</div>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>;
 ```
 
 ### Textarea
+
 ```jsx
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea";
 
 <div className="space-y-2">
   <Label htmlFor="message">Message</Label>
-  <Textarea 
-    id="message" 
-    placeholder="Type your message here" 
-    rows={4}
-  />
-</div>
+  <Textarea id="message" placeholder="Type your message here" rows={4} />
+</div>;
 ```
 
 ### Select Dropdown
+
 ```jsx
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 <Select>
   <SelectTrigger className="w-[180px]">
@@ -147,22 +153,24 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
     <SelectItem value="option2">Option 2</SelectItem>
     <SelectItem value="option3">Option 3</SelectItem>
   </SelectContent>
-</Select>
+</Select>;
 ```
 
 ### Checkbox
+
 ```jsx
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from "@/components/ui/checkbox";
 
 <div className="flex items-center space-x-2">
   <Checkbox id="terms" />
   <Label htmlFor="terms">Accept terms and conditions</Label>
-</div>
+</div>;
 ```
 
 ### Radio Group
+
 ```jsx
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 <RadioGroup defaultValue="option1">
   <div className="flex items-center space-x-2">
@@ -173,7 +181,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
     <RadioGroupItem value="option2" id="option2" />
     <Label htmlFor="option2">Option 2</Label>
   </div>
-</RadioGroup>
+</RadioGroup>;
 ```
 
 ---
@@ -181,29 +189,37 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 ## Navigation
 
 ### Horizontal Nav
+
 ```jsx
-<nav className="flex items-center justify-between px-6 py-4 border-b">
+<nav className="flex items-center justify-between border-b px-6 py-4">
   <div className="text-2xl font-bold">Logo</div>
   <div className="flex gap-6">
-    <a href="/home" className="hover:text-blue-600 transition-colors">Home</a>
-    <a href="/about" className="hover:text-blue-600 transition-colors">About</a>
-    <a href="/contact" className="hover:text-blue-600 transition-colors">Contact</a>
+    <a href="/home" className="transition-colors hover:text-blue-600">
+      Home
+    </a>
+    <a href="/about" className="transition-colors hover:text-blue-600">
+      About
+    </a>
+    <a href="/contact" className="transition-colors hover:text-blue-600">
+      Contact
+    </a>
   </div>
   <Button>Sign In</Button>
 </nav>
 ```
 
 ### Sidebar Navigation
+
 ```jsx
-<aside className="w-64 h-screen border-r p-6">
-  <div className="text-xl font-bold mb-8">Dashboard</div>
+<aside className="h-screen w-64 border-r p-6">
+  <div className="mb-8 text-xl font-bold">Dashboard</div>
   <nav className="space-y-2">
-    <a href="#" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100">
-      <HomeIcon className="w-5 h-5" />
+    <a href="#" className="flex items-center gap-3 rounded-lg px-4 py-2 hover:bg-gray-100">
+      <HomeIcon className="h-5 w-5" />
       <span>Home</span>
     </a>
-    <a href="#" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100">
-      <SettingsIcon className="w-5 h-5" />
+    <a href="#" className="flex items-center gap-3 rounded-lg px-4 py-2 hover:bg-gray-100">
+      <SettingsIcon className="h-5 w-5" />
       <span>Settings</span>
     </a>
   </nav>
@@ -211,8 +227,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 ```
 
 ### Tabs
+
 ```jsx
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 <Tabs defaultValue="tab1">
   <TabsList>
@@ -223,7 +240,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
   <TabsContent value="tab1">Tab 1 content</TabsContent>
   <TabsContent value="tab2">Tab 2 content</TabsContent>
   <TabsContent value="tab3">Tab 3 content</TabsContent>
-</Tabs>
+</Tabs>;
 ```
 
 ---
@@ -231,8 +248,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 ## Modals & Dialogs
 
 ### Basic Dialog
+
 ```jsx
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 <Dialog>
   <DialogTrigger asChild>
@@ -241,21 +266,30 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Are you sure?</DialogTitle>
-      <DialogDescription>
-        This action cannot be undone.
-      </DialogDescription>
+      <DialogDescription>This action cannot be undone.</DialogDescription>
     </DialogHeader>
-    <div className="flex justify-end gap-2 mt-4">
+    <div className="mt-4 flex justify-end gap-2">
       <Button variant="ghost">Cancel</Button>
       <Button variant="destructive">Confirm</Button>
     </div>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 ### Alert Dialog (Confirmation)
+
 ```jsx
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 <AlertDialog>
   <AlertDialogTrigger asChild>
@@ -273,7 +307,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
       <AlertDialogAction>Continue</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
-</AlertDialog>
+</AlertDialog>;
 ```
 
 ---
@@ -281,8 +315,16 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 ## Data Display
 
 ### Table
+
 ```jsx
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 <Table>
   <TableHeader>
@@ -299,10 +341,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
       <TableCell>Active</TableCell>
     </TableRow>
   </TableBody>
-</Table>
+</Table>;
 ```
 
 ### Badge
+
 ```jsx
 import { Badge } from "@/components/ui/badge"
 
@@ -313,13 +356,14 @@ import { Badge } from "@/components/ui/badge"
 ```
 
 ### Avatar
+
 ```jsx
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 <Avatar>
   <AvatarImage src="https://github.com/shadcn.png" />
   <AvatarFallback>CN</AvatarFallback>
-</Avatar>
+</Avatar>;
 ```
 
 ---
@@ -327,38 +371,35 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 ## File Upload
 
 ### Drag & Drop Zone
-```jsx
-"use client"
 
-import { useState } from "react"
-import { Upload } from "lucide-react"
+```jsx
+"use client";
+
+import { useState } from "react";
+import { Upload } from "lucide-react";
 
 export function FileUpload() {
-  const [isDragging, setIsDragging] = useState(false)
-  
+  const [isDragging, setIsDragging] = useState(false);
+
   return (
     <div
       onDragOver={(e) => {
-        e.preventDefault()
-        setIsDragging(true)
+        e.preventDefault();
+        setIsDragging(true);
       }}
       onDragLeave={() => setIsDragging(false)}
       onDrop={(e) => {
-        e.preventDefault()
-        setIsDragging(false)
+        e.preventDefault();
+        setIsDragging(false);
         // Handle file drop
       }}
-      className={`
-        border-2 border-dashed rounded-lg p-12 text-center
-        transition-colors cursor-pointer
-        ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}
-      `}
+      className={`cursor-pointer rounded-lg border-2 border-dashed p-12 text-center transition-colors ${isDragging ? "border-blue-500 bg-blue-50" : "border-gray-300"} `}
     >
-      <Upload className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+      <Upload className="mx-auto mb-4 h-12 w-12 text-gray-400" />
       <p className="text-lg font-medium">Drop files here or click to upload</p>
-      <p className="text-sm text-gray-500 mt-2">PNG, JPG, GIF up to 10MB</p>
+      <p className="mt-2 text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -367,6 +408,7 @@ export function FileUpload() {
 ## Calendar & Date Pickers
 
 ### Calendar
+
 ```jsx
 import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
@@ -382,11 +424,12 @@ const [date, setDate] = useState<Date | undefined>(new Date())
 ```
 
 ### Date Picker with Popover
+
 ```jsx
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Calendar } from "@/components/ui/calendar"
-import { CalendarIcon } from "lucide-react"
-import { format } from "date-fns"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
 
 <Popover>
   <PopoverTrigger asChild>
@@ -396,13 +439,9 @@ import { format } from "date-fns"
     </Button>
   </PopoverTrigger>
   <PopoverContent className="w-auto p-0">
-    <Calendar
-      mode="single"
-      selected={date}
-      onSelect={setDate}
-    />
+    <Calendar mode="single" selected={date} onSelect={setDate} />
   </PopoverContent>
-</Popover>
+</Popover>;
 ```
 
 ---
@@ -410,6 +449,7 @@ import { format } from "date-fns"
 ## Notifications & Toasts
 
 ### Toast Notification
+
 ```jsx
 import { useToast } from "@/components/ui/use-toast"
 
@@ -428,26 +468,27 @@ const { toast } = useToast()
 ```
 
 ### Toast Variants
+
 ```jsx
 // Success
 toast({
   title: "Success",
   description: "Operation completed successfully",
-})
+});
 
 // Error
 toast({
   variant: "destructive",
   title: "Error",
   description: "Something went wrong",
-})
+});
 
 // With Action
 toast({
   title: "Email sent",
   description: "Check your inbox",
   action: <Button size="sm">Undo</Button>,
-})
+});
 ```
 
 ---
@@ -455,30 +496,33 @@ toast({
 ## Loading States
 
 ### Skeleton Loader
+
 ```jsx
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
 
 <div className="space-y-4">
   <Skeleton className="h-12 w-full" />
   <Skeleton className="h-4 w-3/4" />
   <Skeleton className="h-4 w-1/2" />
-</div>
+</div>;
 ```
 
 ### Spinner
-```jsx
-import { Loader2 } from "lucide-react"
 
-<div className="flex items-center justify-center h-screen">
-  <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-</div>
+```jsx
+import { Loader2 } from "lucide-react";
+
+<div className="flex h-screen items-center justify-center">
+  <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+</div>;
 ```
 
 ### Progress Bar
-```jsx
-import { Progress } from "@/components/ui/progress"
 
-<Progress value={60} className="w-full" />
+```jsx
+import { Progress } from "@/components/ui/progress";
+
+<Progress value={60} className="w-full" />;
 ```
 
 ---
@@ -486,23 +530,24 @@ import { Progress } from "@/components/ui/progress"
 ## Responsive Patterns
 
 ### Mobile Menu Toggle
-```jsx
-"use client"
 
-import { Menu, X } from "lucide-react"
-import { useState } from "react"
+```jsx
+"use client";
+
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false)
-  
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
         {isOpen ? <X /> : <Menu />}
       </button>
-      
+
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b p-4">
+        <div className="absolute top-16 right-0 left-0 border-b bg-white p-4 md:hidden">
           <nav className="flex flex-col gap-4">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -511,13 +556,14 @@ export function MobileNav() {
         </div>
       )}
     </>
-  )
+  );
 }
 ```
 
 ### Responsive Grid
+
 ```jsx
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
   <Card>Item 1</Card>
   <Card>Item 2</Card>
   <Card>Item 3</Card>

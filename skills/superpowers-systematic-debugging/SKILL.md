@@ -24,6 +24,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 ## 何时使用
 
 用于任何技术问题：
+
 - 测试失败
 - 生产 bug
 - 意外行为
@@ -32,6 +33,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 - 集成问题
 
 **特别要用于：**
+
 - 时间压力大时（紧急情况容易猜）
 - "就一个快速修复"看起来很明显时
 - 已经尝试了多个修复时
@@ -163,6 +165,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 ## 红旗
 
 如果发现自己想：
+
 - "先快速修复，以后再调查"
 - "就试试改 X 看看行不行"
 - "加多个变更，一起跑测试"
@@ -187,12 +190,12 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 
 ## 快速参考
 
-| 阶段 | 关键活动 | 成功标准 |
-|------|---------|---------|
+| 阶段            | 关键活动                         | 成功标准           |
+| --------------- | -------------------------------- | ------------------ |
 | **1. 根本原因** | 读错误，复现，检查变更，收集证据 | 理解了什么和为什么 |
-| **2. 模式** | 找工作例子，对比 | 识别差异 |
-| **3. 假设** | 形成理论，最小测试 | 确认或新假设 |
-| **4. 实现** | 创建测试，修复，验证 | Bug 解决，测试通过 |
+| **2. 模式**     | 找工作例子，对比                 | 识别差异           |
+| **3. 假设**     | 形成理论，最小测试               | 确认或新假设       |
+| **4. 实现**     | 创建测试，修复，验证             | Bug 解决，测试通过 |
 
 ## 当过程显示"没有根本原因"时
 

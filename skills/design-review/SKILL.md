@@ -9,9 +9,11 @@ description: >
 # Design Review Skill
 
 ## Core Pack — Always Active
+
 This is a core skill. Apply it on ALL visual and frontend work, no exceptions. You do not need permission or a specific trigger to use this.
 
 ## When to Use
+
 - Before presenting ANY visual or UX work.
 - Treat this as a quality gate, not optional polish.
 - Sub-agents doing design/frontend work MUST run this before announcing completion.
@@ -19,11 +21,13 @@ This is a core skill. Apply it on ALL visual and frontend work, no exceptions. Y
 ## Pre-Work: Read Before Building
 
 ### 1. Read the project's guidelines
+
 - Read `guidelines.md` or equivalent design system doc first if it exists.
 - Follow the project's existing components, tokens, and patterns before inventing anything.
 - If no formal guidelines exist, inspect the existing product and match its logic.
 
 ### 2. Research before designing
+
 - Check how similar tools solve the same problem before inventing a pattern.
 - Use proven references when they exist.
 - Quality bar references:
@@ -33,11 +37,13 @@ This is a core skill. Apply it on ALL visual and frontend work, no exceptions. Y
   - Vercel dashboard — spacing, typography, dark mode discipline
 
 ### 3. Check design memory
+
 - Read `memory/channels/{channel-name}.md` for prior design decisions.
 - If memory says Aaron rejected a pattern, don't repeat it.
 - If a project brain file is linked from channel memory, read that too.
 
 ## Aaron's Core Principles
+
 - Restraint IS the design.
 - Spacing is the #1 tell.
 - Typography hierarchy > color for information architecture.
@@ -48,6 +54,7 @@ This is a core skill. Apply it on ALL visual and frontend work, no exceptions. Y
 - Good design is centripetal, not centrifugal.
 
 ## Reference Files
+
 Read only what the task needs. Keep this SKILL lean, load detail on demand:
 
 - `references/typography.md` — hierarchy, scale, pairing, measure
@@ -57,6 +64,7 @@ Read only what the task needs. Keep this SKILL lean, load detail on demand:
 - `references/anti-patterns.md` — patterns Aaron will clock instantly and reject
 
 ### For sub-agents
+
 - Read the relevant reference files based on what you're building.
 - New layout or dashboard? Read spacing + anti-patterns.
 - Type-heavy screen? Read typography + spacing.
@@ -65,14 +73,17 @@ Read only what the task needs. Keep this SKILL lean, load detail on demand:
 - If in doubt, at minimum read spacing + anti-patterns.
 
 ## Pre-Flight Checklist
+
 Run this EVERY TIME before presenting work to Aaron.
 
 ### Step 1: Visual verification
+
 - [ ] Take a screenshot of the rendered result.
 - [ ] Compare side-by-side with the reference if one exists.
 - [ ] Check the target viewport, not an arbitrary devtools width.
 
 ### Step 2: Design audit
+
 - [ ] Spacing check — enough breathing room? Default to more.
 - [ ] Color check — did you add color that wasn't necessary?
 - [ ] Typography check — is hierarchy clear without leaning on color?
@@ -81,11 +92,13 @@ Run this EVERY TIME before presenting work to Aaron.
 - [ ] Integrity check — no placeholders, dead states, broken assets, or missing data handling.
 
 ### Step 3: Honesty check
+
 - [ ] Is it actually done?
 - [ ] Does it meet the brief, not an adjacent brief?
 - [ ] Would you be proud to show this to Aaron cold?
 
 ### Step 4: Run verification scripts
+
 if you have access to the scripts directory, run these before presenting:
 
 ```bash
@@ -104,12 +117,14 @@ fix any warnings before presenting. these are the cheapest quality checks — th
 for CI integration, copy `ci/design-eval.py` and `ci/design-eval.yml` into your project to run all three checks on every PR.
 
 ### Step 5: Present with evidence
+
 - Screenshot of the result
 - What you referenced
 - Known gaps or uncertainties
 - Link to live/deployed version if applicable
 
 ## Updating This Skill
+
 - After Aaron gives design feedback, capture it.
 - Add redirects to `references/anti-patterns.md` or the relevant reference file.
 - Add project-specific decisions to channel memory.

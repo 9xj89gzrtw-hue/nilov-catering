@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/components/common/Breadcrumbs';
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 
 export default function EventsLayout({ children }: { children: React.ReactNode }) {
   return (

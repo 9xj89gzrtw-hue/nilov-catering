@@ -47,12 +47,12 @@ Google's scaled content abuse policy is about purpose and value, not about autom
 
 ## Programmatic Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Generating the full dataset on day one | The bad rows outnumber the good and define the site's average | Waves, ordered by demand |
-| One template, one paragraph, one variable | Near-duplicates; Google indexes a fraction and trusts none | Data-driven unique blocks |
-| Skipping the manual prototype | You scale a page type nobody proved can rank | One page ranking first |
-| City pages for cities you do not serve | Doorway pages, an explicit policy violation | Only real service areas, with real local content |
-| Sitemap-only discovery | Leaves with no internal links get crawled late and dropped early | Hub pages and neighbor links |
-| Never pruning | Dead rows accumulate into a sitewide quality problem | Scheduled review; delete or consolidate what earns nothing |
-| Measuring by pages published | Publishing is not the outcome | Measure indexed rate, impressions per row, and conversions |
+| Trap                                      | Why it fails                                                     | Do instead                                                 |
+| ----------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------- |
+| Generating the full dataset on day one    | The bad rows outnumber the good and define the site's average    | Waves, ordered by demand                                   |
+| One template, one paragraph, one variable | Near-duplicates; Google indexes a fraction and trusts none       | Data-driven unique blocks                                  |
+| Skipping the manual prototype             | You scale a page type nobody proved can rank                     | One page ranking first                                     |
+| City pages for cities you do not serve    | Doorway pages, an explicit policy violation                      | Only real service areas, with real local content           |
+| Sitemap-only discovery                    | Leaves with no internal links get crawled late and dropped early | Hub pages and neighbor links                               |
+| Never pruning                             | Dead rows accumulate into a sitewide quality problem             | Scheduled review; delete or consolidate what earns nothing |
+| Measuring by pages published              | Publishing is not the outcome                                    | Measure indexed rate, impressions per row, and conversions |

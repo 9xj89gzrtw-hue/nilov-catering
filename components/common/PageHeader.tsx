@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode } from "react";
 
 interface PageHeaderProps {
   /** Main title */
@@ -30,26 +30,32 @@ export default function PageHeader({
   centered = true,
   icon,
   actions,
-  className = '',
+  className = "",
 }: PageHeaderProps) {
   return (
-    <header className={`mb-8 ${centered ? 'text-center' : 'text-left'} ${className}`}>
+    <header className={`mb-8 ${centered ? "text-center" : "text-left"} ${className}`}>
       {eyebrow && (
-        <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-semibold mb-2">
+        <p className="text-gold-text mb-2 text-xs font-semibold tracking-[0.18em] uppercase">
           {eyebrow}
         </p>
       )}
-      <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-3 leading-tight">
-        {icon && <span className="mr-2" aria-hidden="true">{icon}</span>}
+      <h1 className="font-heading text-foreground mb-3 text-3xl leading-tight font-medium md:text-4xl lg:text-5xl">
+        {icon && (
+          <span className="mr-2" aria-hidden="true">
+            {icon}
+          </span>
+        )}
         {title}
       </h1>
       {subtitle && (
-        <div className={`text-base md:text-lg text-muted-foreground ${centered ? 'max-w-2xl mx-auto' : 'max-w-2xl'}`}>
+        <div
+          className={`text-muted-foreground text-base md:text-lg ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}
+        >
           {subtitle}
         </div>
       )}
       {actions && (
-        <div className={`mt-5 flex flex-wrap gap-3 ${centered ? 'justify-center' : ''}`}>
+        <div className={`mt-5 flex flex-wrap gap-3 ${centered ? "justify-center" : ""}`}>
           {actions}
         </div>
       )}

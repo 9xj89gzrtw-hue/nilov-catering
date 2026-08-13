@@ -10,6 +10,7 @@
 > **Статус:** критический рассинхрон «код vs спека». Закрыть ДО любой сборки (см. `15_REPO_AUDIT` §«Фаза 0 = переписать globals.css», `05_BUILD` Фаза 0).
 
 **Что нашёл `29_DEVICECRITIC` (B1):**
+
 > «`globals.css` — тёмная, вся ДНК (`01`/`06`) — светлая. Привести токены к `06_TOKENS` (ivory `#FAF7F2` / ink `#1C1815` / gold `#B08D57`). Без этого весь responsive-контракт (`01` §7 «мягкий градиент, НЕ чёрная плашка») нарушен. Затрагивает Header/Hero/BottomNav (все используют `text-cream`/`text-cream-muted`).»
 
 **Факт в коде (`app/globals.css`, строки 5–56):** живёт тёмная кинематографичная система —
@@ -23,47 +24,47 @@
    ```css
    @theme {
      /* === shadcn-база (имена совпадают с components/ui/*) === */
-     --color-background:       #FAF7F2;  /* ivory base (было #0A0A0A) */
-     --color-foreground:       #1C1815;  /* ink, текст (было #F5F0EB) */
-     --color-card:             #FFFFFF;  /* карточки на ivory (было #121212) */
-     --color-card-foreground:  #1C1815;
-     --color-popover:          #FFFFFF;
-     --color-popover-foreground:#1C1815;
-     --color-primary:          #B08D57;  /* gold = основная кнопка/CTA (было #722F37 burgundy) */
-     --color-primary-foreground:#1C1815;  /* [SSOT 06_TOKENS:29 — КРИТ a11y] ink на золоте = 5.7:1 ✓ AA (белый #FFFFFF = 3.09:1 FAIL для 14–16px). НЕ белый! */
-     --color-secondary:        #F2ECE3;  /* cream-alt секции */
-     --color-secondary-foreground:#1C1815;
-     --color-muted:           #F2ECE3;
-     --color-muted-foreground: #4A423B;  /* warm grey (синхрон с 06:34, AAA 9.210:1 на ivory) */
-     --color-accent:          #EFE6D6;
-     --color-accent-foreground:#6E5631;  /* (синхрон с 06:36, 5.582:1 AAA на gold-tint #EFE6D6) */
-     --color-border:           #E4DCCF;  /* hairline (было #262626) */
-     --color-input:           #E4DCCF;
-     --color-ring:            #8A6D3B;  /* focus-visible 2px gold-text (WCAG 1.4.11: 4.537:1 ≥3:1 на ivory; было #B08D57) */
-     --color-destructive:     #A6443B;
-     --color-destructive-foreground:#FFFFFF;
+     --color-background: #faf7f2; /* ivory base (было #0A0A0A) */
+     --color-foreground: #1c1815; /* ink, текст (было #F5F0EB) */
+     --color-card: #ffffff; /* карточки на ivory (было #121212) */
+     --color-card-foreground: #1c1815;
+     --color-popover: #ffffff;
+     --color-popover-foreground: #1c1815;
+     --color-primary: #b08d57; /* gold = основная кнопка/CTA (было #722F37 burgundy) */
+     --color-primary-foreground: #1c1815; /* [SSOT 06_TOKENS:29 — КРИТ a11y] ink на золоте = 5.7:1 ✓ AA (белый #FFFFFF = 3.09:1 FAIL для 14–16px). НЕ белый! */
+     --color-secondary: #f2ece3; /* cream-alt секции */
+     --color-secondary-foreground: #1c1815;
+     --color-muted: #f2ece3;
+     --color-muted-foreground: #4a423b; /* warm grey (синхрон с 06:34, AAA 9.210:1 на ivory) */
+     --color-accent: #efe6d6;
+     --color-accent-foreground: #6e5631; /* (синхрон с 06:36, 5.582:1 AAA на gold-tint #EFE6D6) */
+     --color-border: #e4dccf; /* hairline (было #262626) */
+     --color-input: #e4dccf;
+     --color-ring: #8a6d3b; /* focus-visible 2px gold-text (WCAG 1.4.11: 4.537:1 ≥3:1 на ivory; было #B08D57) */
+     --color-destructive: #a6443b;
+     --color-destructive-foreground: #ffffff;
 
      /* === бренд-расширения === */
-     --color-gold:       #B08D57;  /* акценты, CTA, разделители (было #C9A96E) */
-     --color-gold-soft:  #C9A961;
-     --color-gold-text: #8A6D3B;  /* золотой ТЕКСТ (синхрон с 06_TOKENS:44) */
-     --color-gold-text-on-secondary: #6E5631;  /* золотой текст на cream (синхрон с 06_TOKENS:45) */
-     --color-gold-tint:  #EFE6D6;
+     --color-gold: #b08d57; /* акценты, CTA, разделители (было #C9A96E) */
+     --color-gold-soft: #c9a961;
+     --color-gold-text: #8a6d3b; /* золотой ТЕКСТ (синхрон с 06_TOKENS:44) */
+     --color-gold-text-on-secondary: #6e5631; /* золотой текст на cream (синхрон с 06_TOKENS:45) */
+     --color-gold-tint: #efe6d6;
      /* [ITER4-FIX] сниппет globals.css синхронизирован с 06: ring=#8A6D3B, gold-text #8A6D3B, gold-text-on-secondary #6E5631, muted-foreground #4A423B (AAA), accent-foreground #6E5631 (AAA на gold-tint). Последние два добавлены в ITER8. */
-     --color-earth:      #7C6A55;
-     --color-burgundy:   #722F37;  /* доверие/печати (ТОЛЬКО редко, НЕ primary) */
-     --color-burgundy-tint:#F3E7E9;
-     --color-line:       #E4DCCF;
-     --color-success:    #4F7A52;
-     --color-warning:    #B5803A;
-     --color-sage:       #7E8B6B;
+     --color-earth: #7c6a55;
+     --color-burgundy: #722f37; /* доверие/печати (ТОЛЬКО редко, НЕ primary) */
+     --color-burgundy-tint: #f3e7e9;
+     --color-line: #e4dccf;
+     --color-success: #4f7a52;
+     --color-warning: #b5803a;
+     --color-sage: #7e8b6b;
    }
    ```
 2. **Семантические алиасы старого языка ДНК** (`01_VISUAL_DNA`): `--color-bg:#FAF7F2`,
    `--color-bg-alt:#F2ECE3`, `--color-ink:#1C1815`, `--color-ink-soft:#4A423B`, `--color-surface:#FFFFFF`.
 3. **`body` (строки 59–68):** сменить `background-color: var(--color-background)` (ivory) и
    перекрасить ambient-градиенты с тёмных `rgba(0,0,0,…)` на светлые `rgba(201,169,110,…)` /
-   `rgba(28,24,21,0.03)`. *Ambient-градиент — ТОЛЬКО декор, НЕ scrim под текст, `aria-hidden`, non-essential (gold-soft #C9A961 на ivory = 2.106:1 FAIL, НЕ использовать под текст).* Диалоги/модалки — `rgba(28,24,21,0.06)` blur, НЕ чёрный (`06` §1 правила).
+   `rgba(28,24,21,0.03)`. _Ambient-градиент — ТОЛЬКО декор, НЕ scrim под текст, `aria-hidden`, non-essential (gold-soft #C9A961 на ivory = 2.106:1 FAIL, НЕ использовать под текст)._ Диалоги/модалки — `rgba(28,24,21,0.06)` blur, НЕ чёрный (`06` §1 правила).
 4. **`.btn-primary` (строки 207–232):** цвет текста `color: #1C1815` (ink на gold = 5.7:1 ✓ AA per SSOT `06:29`; было `#0A0A0A`, а белый/ivory на gold = 3.09:1 FAIL — НЕ использовать).
    Gold-градиент `#B08D57→#8A6D3B` (цвета из `06`; светлый конец #8A6D3B для чёткости края), НЕ `#C9A96E`.
 5. **Тени (строки 43–46):** заменить `rgba(0,0,0,0.4..0.7)` на светлые `rgba(28,24,21,0.08..0.16)`
@@ -71,7 +72,7 @@
 6. **Устаревшие токены компонентов:** все shadcn-примитивы (`components/ui/button`, `card`, `badge`,
    `input`) и секции, использующие `text-cream`/`text-cream-muted`/`bg-background`/`bg-card`,
    автоматически «переедут» на ivory/ink при смене значений (имена совпадают — `06` §1 ключевое правило:
-   *«меняем ЗНАЧЕНИЯ, не имена»*). НЕ оставлять хардкод `#0A0A0A`/`#F5F0EB` нигде в компонентах.
+   _«меняем ЗНАЧЕНИЯ, не имена»_). НЕ оставлять хардкод `#0A0A0A`/`#F5F0EB` нигде в компонентах.
 7. **Steam/ken-burns/hover** — NEUTRAL: на светлом фоне `img-zoom`, `.card-hover`, steam-пар
    остаются уместны (пар — над фото блюд, НЕ над тёмным). Оставить, но проверить контраст на ivory.
 
@@ -91,9 +92,11 @@
 > **🔴 ПРАВИЛО FACT-GATE (обязательно для всех моделей данных: `Testimonial`/`Review`/`TrustProofItem`/`AwardsStrip`/`Dish`/`Event`/`ClientLogo`).**
 > Каждая модель выше несёт обязательное поле **`status: 'verified' | 'pending'`** (значение ПО УМОЛЧАНИЮ — **`'pending'`**; отсутствие/пустой статус трактуется как `'pending'`, fail-closed, НЕ fail-open).
 > **Правило рендера (СТРОГИЙ ГЕЙТ, не только проза — обязателен псевдокод-контракт ниже):** элементы со `status:'pending'` **НЕ рендерятся как голый факт в проде**. Они показываются ТОЛЬКО при одном из двух условий:
-> 1) `status === 'verified'` (факт подтверждён источником/договором заказчика), ЛИБО
-> 2) сопровождаются явным видимым дисклеймером (текст «на проверке» / «пример из архива» / «подтверждается перед релизом» — ВИДИМЫЙ пользователю, НЕ только редакторская пометка 🟡; 🟡 ДОПУСТИМА только в паре с видимой фразой-контекстом «пример площадки / ДЕМО-данные / не клиент / на проверке») и НЕ заявляются как утверждение.
-> **ОБЯЗАТЕЛЬНЫЙ render-guard (псевдокод — каждый компонент ДОЛЖЕН реализовать, иначе гейт НЕ считается закрытым):**
+>
+> 1. `status === 'verified'` (факт подтверждён источником/договором заказчика), ЛИБО
+> 2. сопровождаются явным видимым дисклеймером (текст «на проверке» / «пример из архива» / «подтверждается перед релизом» — ВИДИМЫЙ пользователю, НЕ только редакторская пометка 🟡; 🟡 ДОПУСТИМА только в паре с видимой фразой-контекстом «пример площадки / ДЕМО-данные / не клиент / на проверке») и НЕ заявляются как утверждение.
+>    **ОБЯЗАТЕЛЬНЫЙ render-guard (псевдокод — каждый компонент ДОЛЖЕН реализовать, иначе гейт НЕ считается закрытым):**
+>
 > ```ts
 > function renderFactItem(item: { status?: 'verified' | 'pending'; disclaimer?: string; claim: string }) {
 >   const status = item.status ?? 'pending';          // default fail-closed
@@ -102,6 +105,7 @@
 >   return null;                                       // pending БЕЗ дисклеймера — НЕ рендерить
 > }
 > ```
+>
 > **CI-assert (добавить в проверку сборки):** ни один prod-снапшот `TrustProof`/`Hero`/`WhyUs` НЕ содержит строку с числовым/годовым claim без соответствующего видимого поля `disclaimer` ИЛИ `status:'verified'`. Grep-gate `app/ components/ lib/` (НЕ мёртвый `content/`) ищет **0 голых УТВЕРЖДЕНИЙ-клиентов без 🟡**: статусные бренды допустимы ТОЛЬКО как «статусные бренды (по запросу, 🟡)» в disclaimer-контексте (рядом 🟡 ИЛИ фраза «НЕ называем / пример-площадка / ДЕМО-данные / не подтверждено»), где они НЕ заявляются как факт-клиент (см. 40 §3.2); гейт блокирует НЕ само вхождение имени, а голое утверждение-клиент без 🟡. Внутренние `tier`-идентификаторы в коде (`tier:'premium'|'luxury'`) НЕ входят в grep-gate.
 > Нарушение = публикация непроверенного claim как факта (риск репутации/санкций, см. `18_CRITIC_SYSTEM`/bug 2). Год основания и неподтверждённые клиенты помечаются `status:'pending'` + дисклеймер; цены кофе-брейка «950» — 🟡 pending с пометкой сверки.
 
@@ -110,12 +114,14 @@
 > Выше — контракт и псевдокод `renderFactItem`. Ниже — описание, КАК он исполняется в реальной сборке, чтобы гейт перестал быть прозой-инструкцией и стал работающим механизмом (закрывает баг из ITER4_RECHECK_TRUST баг #1: «спроектирован, но не закреплён исполнением»).
 >
 > **Где применяется `renderFactItem` (точки внедрения):** псевдокод-гвард из `04:96-103` внедряется в каждый компонент, который рендерит сущность с факт-полем, при СБОРКЕ страниц из блоков:
+>
 > - `ReviewCard` (читает модель `Review`/`Testimonial`) — каждый отзыв/видео-слово рендерится через `renderFactItem` по своему `status`/`disclaimer`.
 > - `TrustBar` (читает `ClientLogo` + `TrustProofItem`) — лого клиента и proof-факт (годы/события/премии) рендерятся исключительно через `renderFactItem`; анонимные плейсхолдеры «нам доверяют» идут с `status:'pending'` + дисклеймер «на проверке».
 > - `TrustProof` (блок 57, `variant:'facts'`) — пункты 7–10 (годы/события/премии/клиенты) — каждый `TrustProofItem` прогоняется через `renderFactItem`; `pending` БЕЗ `disclaimer` → `null` (не попадает в DOM).
 > - `WhyUs` (блок 8) и `HeroSection` (блок 1, Sub) — числовые claim'ы (3 500+ 🟡 / более 19 лет 🟡 / кофе-брейк 390 ₽ 🟡, канон 950 — вторичное) обёрнуты в `renderFactItem` с соответствующим статусом.
 >
 > **Контракт (единый для всех точек внедрения):**
+>
 > - Поле `status` ОБЯЗАТЕЛЬНО на модели данных (`Review`/`TrustProofItem`/`Dish`/`Event`/`Testimonial`/`AwardsStrip`/`ClientLogo`), значение ПО УМОЛЧАНИЮ = `'pending'` (fail-closed: отсутствие/пустой статус = `'pending'`, НЕ `'verified'`).
 > - `status === 'verified'` → рендер `claim` как факта (без дисклеймера).
 > - `status === 'pending' && disclaimer` (видимый пользователю текст «на проверке»/«подтверждается при расчёте»/«пример из архива» + 🟡) → рендер `claim` рядом с дисклеймером, НЕ как утверждение.
@@ -123,6 +129,7 @@
 > - `disclaimer` и `status` — обязательные аргументы/поля; компонент НЕ рендерит факт, если не может подтвердить ни `verified`, ни наличие видимого `disclaimer`.
 >
 > **CI-шаг `scripts/fact-gate` (закрепляет гейт в пайплайне, НЕ только в коде):**
+>
 > - Файл `scripts/fact-gate.mjs` (или `.ts`) — grep/lint-хук, запускаемый (а) локально на `pre-commit` (husky/lint-staged) и (б) как шаг в `.github/workflows/` (например `fact-gate.yml` или шаг в `vercel-deploy.yml`).
 > - Что проверяет: (1) ни один prod-снапшот/строка `TrustProof`/`Hero`/`WhyUs`/`TrustBar` НЕ содержит числовой/годовой claim без `status:'verified'` ИЛИ видимого `disclaimer` (проверка по источнику данных `lib/data.ts`/CMS-выводу); (2) grep-гейт `app/ components/ lib/` (НЕ мёртвый `content/`; синхрон с `40:87`) ищет **0 голых УТВЕРЖДЕНИЙ-клиентов без 🟡**: статусные бренды (Эрмитаж/Armani/Газпром/Forbes) допустимы ТОЛЬКО как «статусные бренды (по запросу, 🟡)» в disclaimer-контексте — гейт блокирует голое утверждение-клиент без 🟡, а не само вхождение имени; (3) любой `status:'pending'` claim, попадающий в рендер, ОБЯЗАН иметь непустой `disclaimer`.
 > - При провале — CI падает (non-zero exit), деплой блокируется. Гейт считается закрытым ТОЛЬКО когда этот шаг реально присутствует в репо и зелёный в CI (иначе — статус «спроектирован, не исполнен», как в ITER4_RECHECK_TRUST).
@@ -130,12 +137,16 @@
 > **Приёмка (definition of done) исполнения:** `renderFactItem` реализован минимум в `ReviewCard`/`TrustBar`/`TrustProof`/`WhyUs`/`HeroSection`; `scripts/fact-gate.mjs` существует и повешен на `pre-commit` + CI-шаг; тест/снапшот подтверждает, что `pending`-элемент без `disclaimer` НЕ рендерится.
 
 - **`Dish`** (CMS-collection, вместо `catalog.json`; 78 SKU, B-CMS-3). Поля: `name` (string, req), `photo` (image, req), `pricePerGuest` (number, req), `tier` (`'economy'|'standard'|'premium'|'luxury'` — внутренний), `station` (reference → `Station`, req), `dietBadges` (`'vegan'|'gluten-free'|'halal'[]`), `allergens` (Allergen[14], req — может быть пустым, НО не отсутствовать), `crossContact` (boolean), `servingsPerGuest` (number), `season` (`'summer'|'autumn'|'winter'|'spring'[]`), **`status: 'verified' | 'pending'` (обязательное поле fact-гейта — см. ПРАВИЛО FACT-GATE выше; блюдо со `status:'pending'` НЕ публикуется как готовый факт до верификации)**. **Bulk-импорт** карточек заказчика (R-E `23` R1) — для заполнения 14 аллергенов до прода. Читает `DishCard`/`MenuCatalog`.
- > **[Волна 4, закрывает S1 (Света, B-SVETA-1, КРИТИЧНЫЙ)]** Поле `allergens[]` (14 ТР ТС 021/2011) и `crossContact` для всех 78 блюд импортируются ИЗ карточек заказчика ДО релиза через **bulk-импорт** (`29_CMS_CRITIC` B-CMS-3): статус каждого значения = **`pending-verification`** (ждёт сверки с карточками блюд заказчика, `23` §0). Правило жёсткое: пока импорт НЕ завершён — карточки блюд и маркировка «14 аллергенов» (Hero/TrustProof) НЕ публикуются как заполненные (R1 `25_MENUCRITIC_FINAL` БЛОКИРУЮЩИЙ). «Маркировка по 14 аллергенам» из Hero = пустая декларация, пока данные `pending`; на детском меню это критично для мамы-аллергика. Закрыть на Фазе данных ДО прода.
+
+> **[Волна 4, закрывает S1 (Света, B-SVETA-1, КРИТИЧНЫЙ)]** Поле `allergens[]` (14 ТР ТС 021/2011) и `crossContact` для всех 78 блюд импортируются ИЗ карточек заказчика ДО релиза через **bulk-импорт** (`29_CMS_CRITIC` B-CMS-3): статус каждого значения = **`pending-verification`** (ждёт сверки с карточками блюд заказчика, `23` §0). Правило жёсткое: пока импорт НЕ завершён — карточки блюд и маркировка «14 аллергенов» (Hero/TrustProof) НЕ публикуются как заполненные (R1 `25_MENUCRITIC_FINAL` БЛОКИРУЮЩИЙ). «Маркировка по 14 аллергенам» из Hero = пустая декларация, пока данные `pending`; на детском меню это критично для мамы-аллергика. Закрыть на Фазе данных ДО прода.
+
 - **`Station`** (reference-цель для `Dish.station`): `name`, `type` (холодные/горячее/десерты/напитки/шоу-станции).
 - **`VideoClip`** (CMS-collection, вместо ручного массива `clips`; B-CMS-4). Поля: **`videoUrl` (string, req — ВСТАВКА URL, НЕ id**; Rutube-ссылка ИЛИ self-host MP4), `poster` (image, req), `eventType` (`'wedding'|'corporate'|'private'|'chef-at-home'`), `title` (req), `durationSec` (number). **Парсер вытаскивает id из `videoUrl`** (R-C: заказчик НЕ копирует id из URL). Источник видео — **Rutube / self-host** (Vimeo ЗАПРЕЩЁН бюджетным стеком). `EventsRecap` / `HomeVideoShowcase` / `TestimonialsCarousel.videoTestimonial` читают из этой коллекции.
 - **`Review`** (CMS-collection; B-CMS-5). Поля: `clientName`, `clientPhoto?`, `venue?`, `venuePhoto?`, `eventType`, `date` (date, req), `guests` (number), `tier` (`'economy'|'standard'|'premium'|'luxury'` — внутренний, НЕ видимый премиум-лейбл, T7), `quote` (text, req, ровно 1 ёмкое предложение), `rating?` (number, только если реально измерено), **`status: 'verified' | 'pending'` (обязательное поле fact-гейта — отзыв со `status:'pending'` НЕ рендерится как голый факт в проде, см. ПРАВИЛО FACT-GATE)**, **`approved` (boolean, req — галочка публикации в админке, НЕ правка кода)**. Модерация = галочка. Связь с `RatingBadge`/`AggregateRating` (реальная ссылка Google, НЕ фейк). ⚠️ `approved` и `priceValidUntil` в JSON-LD — только для роли с правами (B-CMS-9).
 - **`PricingConfig`** (CMS-document; B-CMS-2, РЕШАЕТ R-A). Поля: `format` (`'furshet'|'banquet'|'coffee-break'|'mobile-furshet'`), `tier`, `pricePerGuest` (number, req), `addons[]` (`{ name, price }`). **`calcTotal` читает цены из CMS** с фолбэком на константу `PRICE_PER_GUEST` при недоступности. Заказчик меняет цену в админке → сайт обновляется без деплоя. Формула остаётся в коде (R-B).
- > **[Волна 4, закрывает E9 (Елена, B-E9) — сверка цен ДО релиза]** Значения `pricePerGuest`/`addons` в `PricingConfig` помечаются **`pending-verification`** (BUG-F2) и ОБЯЗАНЫ сверяться с актуальным прайсом заказчика перед прод-релизом: живой сайт NiloV даёт Фуршет/Кофе-брейк «от 390 ₽», Корпоратив «от 2 450 ₽», Банкет/Свадьба «от 4 470 ₽» — канон `07` может расходиться. КП с неверной (вымышленной) ценой = потеря доверия босса Елены. Правило: финальный `priceValidUntil` фиксируется ТОЛЬКО после сверки (как у аллергенов S1). До сверки в `04`/`07` цены несут пометку `pending-verification`.
+
+> **[Волна 4, закрывает E9 (Елена, B-E9) — сверка цен ДО релиза]** Значения `pricePerGuest`/`addons` в `PricingConfig` помечаются **`pending-verification`** (BUG-F2) и ОБЯЗАНЫ сверяться с актуальным прайсом заказчика перед прод-релизом: живой сайт NiloV даёт Фуршет/Кофе-брейк «от 390 ₽», Корпоратив «от 2 450 ₽», Банкет/Свадьба «от 4 470 ₽» — канон `07` может расходиться. КП с неверной (вымышленной) ценой = потеря доверия босса Елены. Правило: финальный `priceValidUntil` фиксируется ТОЛЬКО после сверки (как у аллергенов S1). До сверки в `04`/`07` цены несут пометку `pending-verification`.
+
 - **`PageText`** (CMS-document per страница/секция; B-CMS-6). Поля: `page` (slug), `blocks[]` (каждый блок = editable-поля копирайта `HeroSection`/`TrustBar`/…, НЕ пропсы). Закрывает обещание «из CMS/i18n, не хардкод» в `04`.
 - **`SeasonalConfig`** (CMS-document; B-CMS-7). Поля: `season`, `announcement` (string), `activePackages[]` (reference → `Dish`/`Package`), `rotationNotes`. Читает `AnnouncementBar` + `SeasonalModule` + `SeasonalRotation` (`23` §4).
 - **`TeamMember`** (CMS-collection; B-CMS-7): `name`, `role`, `photo`, `bio`.
@@ -147,6 +158,7 @@
 - **`AwardsStrip`** (ОБЪЕДИНЁН в `TrustProof`, см. блок 57; отдельный proof-ряд убран). Данные несут тот же **`status: 'verified' | 'pending'`** (обязательное поле fact-гейта: отраслевые премии/награды НЕ рендерятся как подтверждённый факт без `status:'verified'` + года, см. ПРАВИЛО FACT-GATE).
 
 ### Роли (RBAC, B-CMS-8,9)
+
 - **«Редактор-контент»** — доступ к `Dish`, `VideoClip`, `Review`, `PageText`, `TeamMember`, `BlogPost`, `SeasonalConfig`, `Package`, `TrustProofItem`, `FAQItem`, `FooterColumn`. НЕ трогает формулу.
 - **«Менеджер-цены»** — ТОЛЬКО `PricingConfig` (цены + ADDONS). `approved` у отзывов и `priceValidUntil` в JSON-LD — только для роли с правами (защита от случайного «5.0 без данных»).
 
@@ -155,27 +167,33 @@
 > **СТАТУС (Итерация 4, 2026-07-20): CMS-слой НЕ построен. Весь контент — хардкод в `lib/data.ts`; `catalog.json`/`lib/pricing.ts` являются фактическим SSOT. Auth/RBAC для `/account/orders`, `/partners`, `/subscribe` — **специфицирован в ШАГ 5.6 (`41_BUILD_CHECKLIST`, раздел CMS-слоя: роли «Редактор-контент» + «Менеджер-цены», RBAC по `04:148-150`) и НЕ исключается из IA**. Роут `/account/orders` — **ИСКЛЮЧЁН из sitemap** (noindex, приватный кабинет); роуты `/partners` (приватный B2B-кабинет) и `/subscribe` — в sitemap, пока не закрыт Auth (после закрытия `/partners` тоже уйдёт в noindex+вне sitemap, как `/account/orders`). Страница `/account/orders` помечена `noindex` (`04:1371`) и **исключена из sitemap** (`02_IA.md`).
 
 ## Глобальные (на всех страницах)
+
 - `AnnouncementBar` — тонкая строка сверху (сезонное предложение / акция). Детали — ниже (баг 31, ч.1).
 
   **Назначение:** сезонный анонс, связанный с `SeasonalModule` (читает тот же `seasonalConfig`). Пример: «🔥 Новогодний корпоратив — бронируйте до 15 дек.» со ссылкой на `/seasonal` или нужный пакет.
   **Пропсы:** `message: string`, `href?: string`, `dismissible?: boolean` (по умол. да).
   **Поведение:** тонкая строка резервирует высоту → CLS = 0; кнопка закрытия сохраняет состояние в `localStorage` (не прыгает при reload). `role="region"` + `aria-label="Анонс"`.
+
   > **[Волна 8, закрывает ZH1 (Жанна, сезонный НГ — критично)] Сезонный дедлайн НЕ закрывается навсегда.** Когда `AnnouncementBar` несёт high-season дедлайн (читает `seasonalConfig.season ∈ {newyear,maslenitsa}` ИЛИ `seasonalConfig.deadline` в будущем), правило dismiss меняется: (а) либо `dismissible:false` до `seasonalConfig.deadline`; (б) либо dismiss-состояние хранится **per-визит** (`sessionStorage`, НЕ `localStorage`) и ре-показывается каждый новый визит, пока `now < deadline`. Обычные (не-дедлайновые) анонсы — прежнее поведение (`localStorage`, закрыл навсегда). Так напоминание о брони НГ не теряется после первого закрытия. Реализация: `dismissScope: 'permanent'|'per-visit'|'locked'` в `SeasonalConfig`.
-  **a11y / Perf / Responsive:** close-кнопка с `aria-label`; не блокирует LCP; mobile — текст сжимается/скроллится, CTA остаётся.
+  > **a11y / Perf / Responsive:** close-кнопка с `aria-label`; не блокирует LCP; mobile — текст сжимается/скроллится, CTA остаётся.
+
 - `SiteHeader` — nav (desktop top / mobile bottom), лого, CTA «Спланировать». Поведение скролла и навигация — ниже (баг 31, ч.2).
 
   **Поведение (sticky):** header **НЕ прячется при скролле вниз** (всегда доступен — +навигация по logosh/NN-G). Золотая тень (`box-shadow` gold) появляется **ТОЛЬКО после `scrollY > 40px`** (класс `.scrolled`, CSS-переключатель, без layout-shift → CLS<0.1). `prefers-reduced-motion` — без плавного перехода тени.
-  **Навигация (5+ CTA + тел/WA/ТГ):** `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Почему мы(/why-us)` · `Команда(/team)` · `Отзывы(/reviews)` · `Сезонное(/seasonal)` · `Спланировать(/plan)` + справа **телефон**, **WhatsApp** и **Telegram** (иконки+ссылки — **первичные каналы связи**, круглосуточный отклик, по `29_POSITIONING` §«Соц-ленты»). Состав ОБЯЗАН совпадать с `02_IA.md` (раздел «Навигация») — единый источник истины. *Волна 2А:* доп. служебные страницы `/delivery` и `/certificates` вынесены в футер (колонка «Помощь») и бургер-меню, а НЕ в основную строку (чтобы не перегружать 8+ CTA); `/thank-you` и `/404` — служебные, в навигации НЕТ.
+  **Навигация (5+ CTA + тел/WA/ТГ):** `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Почему мы(/why-us)` · `Команда(/team)` · `Отзывы(/reviews)` · `Сезонное(/seasonal)` · `Спланировать(/plan)` + справа **телефон**, **WhatsApp** и **Telegram** (иконки+ссылки — **первичные каналы связи**, круглосуточный отклик, по `29_POSITIONING` §«Соц-ленты»). Состав ОБЯЗАН совпадать с `02_IA.md` (раздел «Навигация») — единый источник истины. _Волна 2А:_ доп. служебные страницы `/delivery` и `/certificates` вынесены в футер (колонка «Помощь») и бургер-меню, а НЕ в основную строку (чтобы не перегружать 8+ CTA); `/thank-you` и `/404` — служебные, в навигации НЕТ.
+
   > **[Волна 9, закрывает BB1 (Борис, desktop mega-menu — КРИТИЧНО)] Навигация плоская (8 пунктов) — под-страницы событий (`/events/svadba`·`/korporativ`·`/chastnoe`·`/vypusknoy`·`/detskoe`·`/chef-at-home`) и форматов меню (`/menu/furshet`·`/banquet`·`/coffee-break`·`/vegan`·`/gluten-free`·`/halal`·`/detskoe`·`/bar`·`/catalog`·`/show-cooking`) НЕДОСТУЖИМЫ за 1 клик. → Добавить **mega-menu** на пункты «События» и «Меню» (desktop, `hover` И `click`/`Enter`/`focus` открытие, `Escape` закрывает, focus-trap внутри): раскрывает под-структуру прямо в шапке (карточки-ссылки 6 типов событий + 10 форматов меню, с иконками и 1-строчным описанием). Под-роуты `/delivery`·`/certificates`·`/allergens`·`/help/formats`·`/tasting`·`/venues`·`/accessibility`·`/en`·`/careers`·`/partners`·`/subscribe`·`/media-kit` (BB4/B11) — либо в mega-menu «Ещё», либо в бургер-like «Ещё»-дроп desktop-шапки. Закрывает главный gap Бориса: IA раскрыта за 1 клик на wide-screen. `aria-expanded` на триггере, `role="menu"`/`menuitem`, навигация с клавиатуры (Arrow/Tab).
   > **[Волна 9, закрывает BB2/BB3 (Борис, wide-screen — КРИТИЧНО)] (1) Мёртвые поля на ultra-wide (≥1920px): контент в capped container (~1280–1440px) → на 27″ 2560px ~560px пустых полей с каждой стороны. → **fluid-брейкпоинты**: `max-w` контента ~1440–1600px + опц. **full-bleed** секции (Hero/галерея/VideoShowcase) на всю ширину (`w-full` с внутренним `max-w` только для текста). (2) Grid каталога/карточек (`MenuCatalog`/`PackageGrid`/`GalleryMasonry`) без потолка колонок → при растягивании до 1600px+ карточки аномальной ширины. → `grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))` с **верхним пределом колонок** (напр. `max-width` контейнера grid 1600px) ИЛИ cap контейнера (связано с BB2). На ≥1600px либо cap контейнера, либо сблизить колонки split-конструктора (BB9), чтобы `liveSummary` «прилипал» к контенту (не разносился на огромный зазор).
-  **[Волна 3, закрывает V2 (Виктор, крупная кнопка звонка)] Крупная видимая кнопка звонка:** справа в `SiteHeader` (desktop И mobile) — **НЕ только иконка**, а кнопка **«📞 Позвонить 8 (812) 919-59-11»** с самим номером **крупным шрифтом** (`text-base`/`text-lg`, жирный, цвет `var(--color-gold-text)` — золотой ТЕКСТ, 4.537:1 на ivory ≥ AA; НЕ чистый `--color-gold` #B08D57 как текст, 2.89:1 FAIL) + `href="tel:+78129195911"`. Иконка телефона (если золотая) — цвет `var(--color-gold-text)` #8A6D3B (на ivory 4.537:1 ≥3:1 по 1.4.11), НЕ `#B08D57` (2.89:1 FAIL); либо иконка внутри gold-заливки кнопки (контекст-независимо). Иконка телефона остаётся как дублирующая подсказка, НО первичный визуал — номер крупно, чтобы пенсионер сразу видел и мог позвонить без догадок. На mobile та же кнопка с крупным номером; `StickyMobileCTA` тоже несёт крупный `tel:`-вариант «Позвонить» (рядом с «Спланировать») — см. блок `StickyMobileCTA`.
-  **Пропсы:** `navItems: NavItem[]`, `phone: string`, `waUrl: string`, `tgUrl: string`, `ctaHref: string`.
-  **Mobile:** верхний header — лого + бургер/CTA; нижняя `MobileBottomNav` (из репо) — ровно **5** ключевых ссылок, синхрон с header: `Главная(/)` · `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Спланировать(/plan)` + CTA «Спланировать» (дублирует header). *(канон B3 — единый состав с `04:246`, 5-й пункт = Главная, НЕ «Почему мы»)*. Разделы `/team`, `/why-us` и `/seasonal` достижимы через бургер-меню (раскрывает полный состав шапки). ВСЕ разделы достижимы на mobile — риск бага G (недостижимость) закрыт.
+  > **[Волна 3, закрывает V2 (Виктор, крупная кнопка звонка)] Крупная видимая кнопка звонка:** справа в `SiteHeader` (desktop И mobile) — **НЕ только иконка**, а кнопка **«📞 Позвонить 8 (812) 919-59-11»** с самим номером **крупным шрифтом** (`text-base`/`text-lg`, жирный, цвет `var(--color-gold-text)` — золотой ТЕКСТ, 4.537:1 на ivory ≥ AA; НЕ чистый `--color-gold` #B08D57 как текст, 2.89:1 FAIL) + `href="tel:+78129195911"`. Иконка телефона (если золотая) — цвет `var(--color-gold-text)` #8A6D3B (на ivory 4.537:1 ≥3:1 по 1.4.11), НЕ `#B08D57` (2.89:1 FAIL); либо иконка внутри gold-заливки кнопки (контекст-независимо). Иконка телефона остаётся как дублирующая подсказка, НО первичный визуал — номер крупно, чтобы пенсионер сразу видел и мог позвонить без догадок. На mobile та же кнопка с крупным номером; `StickyMobileCTA` тоже несёт крупный `tel:`-вариант «Позвонить» (рядом с «Спланировать») — см. блок `StickyMobileCTA`.
+  > **Пропсы:** `navItems: NavItem[]`, `phone: string`, `waUrl: string`, `tgUrl: string`, `ctaHref: string`.
+  > **Mobile:** верхний header — лого + бургер/CTA; нижняя `MobileBottomNav` (из репо) — ровно **5** ключевых ссылок, синхрон с header: `Главная(/)` · `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Спланировать(/plan)` + CTA «Спланировать» (дублирует header). _(канон B3 — единый состав с `04:246`, 5-й пункт = Главная, НЕ «Почему мы»)_. Разделы `/team`, `/why-us` и `/seasonal` достижимы через бургер-меню (раскрывает полный состав шапки). ВСЕ разделы достижимы на mobile — риск бага G (недостижимость) закрыт.
   > **[Волна 4, закрывает R4 (Роман, B-R4) — /reviews в mobile]** 5-пунктовый `MobileBottomNav` НЕ расширяется (контракт B3: ровно 5), НО **`/reviews` выносится как приоритетный чип** в верх бургер-меню (сразу после 5 пунктов bottom-nav, до `/team`/`/seasonal`), с иконкой ★ и подписью «Отзывы». Так скептик Роман достигает отзывов за 1 тап из бургера, минуя лишние экраны. Дублируется ссылкой «Отзывы» в `SiteFooter` (колонка «Компания») и якорем на главной (см. `InspireStrip`/блок 9).
- > **[Волна 8, закрывает ZH2 (Жанна, сезонный НГ)] `/seasonal` — приоритетный чип в бургере + high-season StickyMobileCTA.** По аналогии с `/reviews` (R4): в high-season (`seasonalConfig.season ∈ {newyear,maslenitsa}` ИЛИ активен `deadline`) ссылка **«Сезонное»** поднимается **первым приоритетным чипом** в верх бургер-меню (с иконкой 🎄/🔥 и подписью «Новогодний корпоратив» для `newyear`), выше `/reviews`-чипа, чтобы Жанна достигала НГ-оффера за 1 тап, а не искала в конце меню. Дополнительно: в high-season `StickyMobileCTA` рендерит вариант-ссылку **«🎄 Новогодний корпоратив →»** (`/plan/calculator?event=korporativ&tier=premium`) рядом с основной CTA (см. блок `StickyMobileCTA`, правило high-season). Вне сезона чип «Сезонное» остаётся в бургере на обычной позиции (после `/team`). НЕ прячем сезонное только в 5-пунктовый bottom-nav (контракт B3 не расширяется).
-  **Breadcrumbs (хлебные крошки):** примитив `Breadcrumbs` (из репо, `components/common/*`) задействован на ВСЕХ глубоких роутах — `/events/*` (События › {Тип}), `/menu/*` (Меню › {Формат/Каталог/Станции}), `/plan/*` (Спланировать › {Инструмент}), `/blog/*` (Блог › {Заголовок}). На `/`, `/why-us`, `/contact` — НЕ показываются (корень/main-страница). Рендер: `<nav aria-label="Хлебные крошки">` + упорядоченный список ссылок; последний элемент = текущая страница без ссылки с `aria-current="page"`. Закрывает баг F (breadcrumbs ранее не задействованы).
-  **a11y:** `<nav aria-label="Основная навигация">`; `SkipLink` на контент; focus-visible; иконки тел/WA/ТГ с `aria-label`.
-  **Perf / Responsive:** header в layout, фикс. высота (CLS<0.1); INP<200ms; desktop top-bar, mobile top + bottom-nav.
+
+> **[Волна 8, закрывает ZH2 (Жанна, сезонный НГ)] `/seasonal` — приоритетный чип в бургере + high-season StickyMobileCTA.** По аналогии с `/reviews` (R4): в high-season (`seasonalConfig.season ∈ {newyear,maslenitsa}` ИЛИ активен `deadline`) ссылка **«Сезонное»** поднимается **первым приоритетным чипом** в верх бургер-меню (с иконкой 🎄/🔥 и подписью «Новогодний корпоратив» для `newyear`), выше `/reviews`-чипа, чтобы Жанна достигала НГ-оффера за 1 тап, а не искала в конце меню. Дополнительно: в high-season `StickyMobileCTA` рендерит вариант-ссылку **«🎄 Новогодний корпоратив →»** (`/plan/calculator?event=korporativ&tier=premium`) рядом с основной CTA (см. блок `StickyMobileCTA`, правило high-season). Вне сезона чип «Сезонное» остаётся в бургере на обычной позиции (после `/team`). НЕ прячем сезонное только в 5-пунктовый bottom-nav (контракт B3 не расширяется).
+> **Breadcrumbs (хлебные крошки):** примитив `Breadcrumbs` (из репо, `components/common/*`) задействован на ВСЕХ глубоких роутах — `/events/*` (События › {Тип}), `/menu/*` (Меню › {Формат/Каталог/Станции}), `/plan/*` (Спланировать › {Инструмент}), `/blog/*` (Блог › {Заголовок}). На `/`, `/why-us`, `/contact` — НЕ показываются (корень/main-страница). Рендер: `<nav aria-label="Хлебные крошки">` + упорядоченный список ссылок; последний элемент = текущая страница без ссылки с `aria-current="page"`. Закрывает баг F (breadcrumbs ранее не задействованы).
+> **a11y:** `<nav aria-label="Основная навигация">`; `SkipLink` на контент; focus-visible; иконки тел/WA/ТГ с `aria-label`.
+> **Perf / Responsive:** header в layout, фикс. высота (CLS<0.1); INP<200ms; desktop top-bar, mobile top + bottom-nav.
+
 - `SiteFooter` — контакты, навигация, 152-ФЗ бейдж, соцсети. ГЛУБОКАЯ навигация + 152-ФЗ — ниже (баг 31, ч.3; закрывает ❌ «нет 152-ФЗ в footer»).
 
   **ГЛУБОКАЯ навигация (НЕ дубль меню):** футер — отдельная инфо-архитектура.
@@ -185,11 +203,12 @@
   - **Подписка (Волна 2А):** `NewsletterSignup` — email + чекбокс 152-ФЗ → `POST /api/newsletter` (блок описан ниже; ранее `/api/newsletter` был мёртвой ссылкой).
   - **Контакты:** телефон, WhatsApp, Telegram (оба — **первичные каналы связи**, круглосуточный отклик), адрес (СПб), ссылка на карту.
   - **Соцсети (по `29_POSITIONING` §«Соц-ленты»):** **VK @nilov_catering — ПЕРВИЧНЫЙ видимый эмбед в РФ** (всегда доступен, fail-soft → не пустой); Instagram @nilov_catering — **ВТОРИЧНЫЙ, ссылка** (аудитория через VPN, в РФ заблокирован судом → НЕ грузить эмбед). WhatsApp / Telegram — **первичные каналы связи** (круглосуточный отклик). Решение Волны 5А «Instagram→VK» ВОЗВРАЩЕНО (РФ-реальность: VK первичен, IG — ссылка).
-  **152-ФЗ (явно, ОБЯЗАТЕЛЬНО):** блок «Обработка перс. данных по 152-ФЗ РФ» со ссылкой на `/privacy`; + упоминание **ТР ТС 021/2011** и Роспотребнадзор (единый язык с `TrustProof`). Закрывает FAIL-условие `19`#31 «нет 152-ФЗ в footer».
-  **Связь с `/certificates` (Волна 2А):** 152-ФЗ-бейдж в футере и блок `CertBlock` на `/certificates` ссылаются на ОДИН набор юр. фактов (152-ФЗ, ТР ТС 021/2011, Декларация соответствия, Роспотребнадзор, аккредитация кухни) — единый язык с `TrustProof`/SiteFooter.
-  **Пропсы:** `columns: FooterColumn[]`, `contacts: Contacts`, `legalHref: { privacy; terms; cookies }`.
-  **a11y:** `<footer>` с заголовками колонок (`<h2>`/`<h3>`); ссылки с понятным текстом (не «тут»); контраст AA.
-  **Perf / Responsive:** статичный; CLS<0.1; desktop — 4 колонки + контакты, tablet 2, mobile — аккордеон/стек колонок.
+    **152-ФЗ (явно, ОБЯЗАТЕЛЬНО):** блок «Обработка перс. данных по 152-ФЗ РФ» со ссылкой на `/privacy`; + упоминание **ТР ТС 021/2011** и Роспотребнадзор (единый язык с `TrustProof`). Закрывает FAIL-условие `19`#31 «нет 152-ФЗ в footer».
+    **Связь с `/certificates` (Волна 2А):** 152-ФЗ-бейдж в футере и блок `CertBlock` на `/certificates` ссылаются на ОДИН набор юр. фактов (152-ФЗ, ТР ТС 021/2011, Декларация соответствия, Роспотребнадзор, аккредитация кухни) — единый язык с `TrustProof`/SiteFooter.
+    **Пропсы:** `columns: FooterColumn[]`, `contacts: Contacts`, `legalHref: { privacy; terms; cookies }`.
+    **a11y:** `<footer>` с заголовками колонок (`<h2>`/`<h3>`); ссылки с понятным текстом (не «тут»); контраст AA.
+    **Perf / Responsive:** статичный; CLS<0.1; desktop — 4 колонки + контакты, tablet 2, mobile — аккордеон/стек колонок.
+
 - `TextSizeToggle` — **[Волна 3, закрывает V1 (Виктор, крупный шрифт)]** глобальный переключатель размера текста
   для слабого зрения. UI: компактный блок **«A− A A+»** (3 состояния: меньше / норма / больше) ИЛИ чекбокс/кнопка
   **«Облегчённый режим»** (переключает увеличенный базовый шрифт + повышенный контраст разом).
@@ -203,8 +222,8 @@
   - **a11y:** `role="group"` + `aria-label="Размер текста"`; каждая кнопка-состояние — `aria-pressed`; фокус-видимый gold.
     Увеличение шрифта НЕ ломает layout (все размеры — относительные `rem`/`clamp`, НЕ хардкод px).
   - **Пропсы:** `storageKey?: string`, `steps: {label,scale}[]` (по умол. `['A−','A','A+']`), `onChange?: (size)=>void`.
-- `ScrollProgress` *(глобальный примитив, НЕ секция)* — тонкая золотая полоса прогресса скролла. Пропсы: `color?: string` (def `var(--color-ring)` — gold-text #8A6D3B, 4.537:1 ≥3:1 по WCAG 1.4.11; НЕ чистый `--color-gold` #B08D57, который на ivory даёт 2.893:1 < 3:1), `height?: number` (def 3px), `position?: 'top'|'bottom'` (def 'top').
-- `SmoothScroll(Lenis)` *(глобальный примитив-обёртка, НЕ секция)* — обёртка всего сайта. Пропсы: `touchMultiplier?: number` (def 2, ВЫКЛ при `prefers-reduced-motion`), `lerp?: number` (def 0.1). Отключает Lenis при `prefers-reduced-motion: reduce`.
+- `ScrollProgress` _(глобальный примитив, НЕ секция)_ — тонкая золотая полоса прогресса скролла. Пропсы: `color?: string` (def `var(--color-ring)` — gold-text #8A6D3B, 4.537:1 ≥3:1 по WCAG 1.4.11; НЕ чистый `--color-gold` #B08D57, который на ivory даёт 2.893:1 < 3:1), `height?: number` (def 3px), `position?: 'top'|'bottom'` (def 'top').
+- `SmoothScroll(Lenis)` _(глобальный примитив-обёртка, НЕ секция)_ — обёртка всего сайта. Пропсы: `touchMultiplier?: number` (def 2, ВЫКЛ при `prefers-reduced-motion`), `lerp?: number` (def 0.1). Отключает Lenis при `prefers-reduced-motion: reduce`.
 - `StickyMobileCTA` — **[benchmark: pxlpeak «Thirsty Click»]** глобальная sticky-кнопка
   снизу экрана на mobile (всегда видима, не теряется лишний шаг). Содержит **первичные каналы связи**
   рядом с заявкой — `Спланировать` (→ `/plan`) + **WhatsApp** и **Telegram** (иконки-кнопки, круглосуточный
@@ -243,12 +262,12 @@
     контент: `main { padding-bottom }` на mobile резервирует высоту под активный нижний элемент
     (`StickyMobileCTA` ИЛИ `MobileBottomNav`, НЕ оба — см. OR-правило выше). Правило: если внизу виден sticky —
     `main` получает `padding-bottom: calc(64px + env(safe-area-inset-bottom))`; иначе — без лишнего отступа (CLS=0).
-  - **B3 · MobileBottomNav = ровно 5 пунктов** (фиксируем): `Главная(/)` · `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Спланировать(/plan)`. Плюс CTA «Спланировать» дублирует header (единый CTA-глагол C9). *[CoherenceChecker C13: унифицировано с `43_NAV_SPEC` §3 — 5-й пункт = Главная, не Почему мы]*
-  `/team` и `/seasonal` — только в бургер-меню. Не 3, не 4, ровно 5.
+  - **B3 · MobileBottomNav = ровно 5 пунктов** (фиксируем): `Главная(/)` · `События(/events)` · `Меню(/menu)` · `Галерея(/gallery)` · `Спланировать(/plan)`. Плюс CTA «Спланировать» дублирует header (единый CTA-глагол C9). _[CoherenceChecker C13: унифицировано с `43_NAV_SPEC` §3 — 5-й пункт = Главная, не Почему мы]_
+    `/team` и `/seasonal` — только в бургер-меню. Не 3, не 4, ровно 5.
   - **B4 · Нет перекрытия fixed-элементов.** Единая z-иерархия (см. выше): header `z-[100]`, bottom `z-[90]`,
     announcement `z-[110]`, cookie/скриммер `z-[120]`, overlay/модалки `z-[200]`. В нижней зоне ≤1 sticky одновременно.
     `Консьерж` (FAB) — тот же `z-[90]` что bottom-nav, НЕ `z-[50]`, и прячется, когда активен `StickyMobileCTA`
-    (иначе FAB висит поверх nav и перекрывает клик — баг из `29`). **[Волна 5–6, закрывает G5 (Григорий, B-GRIG-5)]** Вместо бездействующего FAB — на видном месте (Hero / `/plan` хаб) размещается **реальный помощник новичка**: (а) кнопка «Я не знаю, что нужно — помогите →» (`/plan/helper`, wizard-помощник) на Hero + `/plan`; (б) либо честный FAQ-гид «С чего начать» — блок `FAQTeaser`/#5 «Какой формат мне подходит» (G6) вынесен ссылкой в Hero/навигацию, а не только в футер. FAB `Консьерж` оставляется в `z-[90]` ТОЛЬКО как optional-обёртка над `/plan/helper` (plain-language сценарий), НЕ «молчит в резерве», и видима клиенту. *Публичная оговорка: подбор по 3 вопросам работает по понятным правилам — **без ИИ**, это не искусственный интеллект.* *Внутренняя спека: **AI-слой — в резерве, модель не подключена**; публично НЕ называть «AI-консьерж» — использовать «Консьерж»/«Помощник» (детерминированный wizard, if/else, НЕ генеративный AI).*
+    (иначе FAB висит поверх nav и перекрывает клик — баг из `29`). **[Волна 5–6, закрывает G5 (Григорий, B-GRIG-5)]** Вместо бездействующего FAB — на видном месте (Hero / `/plan` хаб) размещается **реальный помощник новичка**: (а) кнопка «Я не знаю, что нужно — помогите →» (`/plan/helper`, wizard-помощник) на Hero + `/plan`; (б) либо честный FAQ-гид «С чего начать» — блок `FAQTeaser`/#5 «Какой формат мне подходит» (G6) вынесен ссылкой в Hero/навигацию, а не только в футер. FAB `Консьерж` оставляется в `z-[90]` ТОЛЬКО как optional-обёртка над `/plan/helper` (plain-language сценарий), НЕ «молчит в резерве», и видима клиенту. _Публичная оговорка: подбор по 3 вопросам работает по понятным правилам — **без ИИ**, это не искусственный интеллект._ _Внутренняя спека: **AI-слой — в резерве, модель не подключена**; публично НЕ называть «AI-консьерж» — использовать «Консьерж»/«Помощник» (детерминированный wizard, if/else, НЕ генеративный AI)._
   - **B5 · Preloader НЕ блокирует LCP/INP.** `Preloader` держит `z-[100]` ~1.4–1.9s (+ exit) **без учёта
     `prefers-reduced-motion`** — это БЛОКИРУЮЩИЙ баг (спец требует LCP <1.2s, а один прелоадер уже >1.4s и не даёт
     взаимодействовать → INP страдает). Исправить в Фазе 0: (а) либо **убрать** блокирующий прелоадер;
@@ -361,7 +380,7 @@
       `slaResponseHours` (по умолч. **2**) и `slaBookingConfirm='O3'` — биндинг к `SERVICE_DELIVERY_SPEC` §6: SLA ответа ≤2 ч в рабочее время и подтверждение брони по O3 (статус «подтверждено» показывается в UI календаря/формы).
     - a11y: выбранная дата = `<button aria-label="Забронировать <дата>">`; занятые = `aria-disabled`.
 
-## ВИДЕО-СЛОЙ (РФ-стек, Волна 5А) — `VideoProvider` абстракт *(HostingCritic #1/#2, 29 §Бюджетный стек)*
+## ВИДЕО-СЛОЙ (РФ-стек, Волна 5А) — `VideoProvider` абстракт _(HostingCritic #1/#2, 29 §Бюджетный стек)_
 
 > **ЗАПРЕТ в структуре:** ❌ Vimeo (платно $20–70/мес + заблокирован/нестабилен в РФ, поддержка на RU прекращена) → ✅ **Rutube / self-host**.
 > Весь видео-слой сайта держится НЕ на хардкоде Vimeo, а на одной точке свопа — `VideoProvider`.
@@ -370,14 +389,14 @@
 ```ts
 // lib/video.ts — ЕДИНАЯ точка свопа видео-провайдера (РФ-стек)
 // Vimeo ЗАПРЕЩЁН в РФ (платно + нестабилен/заблокирован) — НЕ входит в union (см. 30_HOSTING_CRITIC, 04_BLOCKS:317)
-export type VideoProvider = 'rutube' | 'selfhost';
-export const VIDEO_PROVIDER_DEFAULT: VideoProvider = 'rutube';
+export type VideoProvider = "rutube" | "selfhost";
+export const VIDEO_PROVIDER_DEFAULT: VideoProvider = "rutube";
 
 export interface VideoRef {
-  provider: VideoProvider;   // 'rutube' | 'selfhost'
-  id?: string;               // id на Rutube (для facade-эмбеда)
-  src?: string;              // self-host путь (наш домен, <2МБ loop / полный recap)
-  posterSrc: string;         // постер (LQIP ≤10КБ → full ≤120КБ), ВСЕГДА локальный
+  provider: VideoProvider; // 'rutube' | 'selfhost'
+  id?: string; // id на Rutube (для facade-эмбеда)
+  src?: string; // self-host путь (наш домен, <2МБ loop / полный recap)
+  posterSrc: string; // постер (LQIP ≤10КБ → full ≤120КБ), ВСЕГДА локальный
   durationSec?: number;
 }
 
@@ -385,13 +404,16 @@ export interface VideoRef {
 // Для Rutube: https://rutube.ru/play/embed/{id} ; для self-host: <video> на нашем домене.
 export function getEmbedUrl(ref: VideoRef): string | null {
   switch (ref.provider) {
-    case 'rutube':   return ref.id ? `https://rutube.ru/play/embed/${ref.id}` : null;
-    case 'selfhost': return ref.src ?? null;          // локальный файл на нашем VPS-домене
+    case "rutube":
+      return ref.id ? `https://rutube.ru/play/embed/${ref.id}` : null;
+    case "selfhost":
+      return ref.src ?? null; // локальный файл на нашем VPS-домене
   }
 }
 ```
 
 **Правила для ВСЕХ видео-блоков (Единый контракт):**
+
 - **Хранение клипов:** Rutube (бесплатно, РФ-резидент, доступен в РФ) ИЛИ self-host MP4 (<2МБ loop / полный recap) на том же VPS — **НЕ Vimeo по умолчанию**. Ссылка/ID клипа лежит в CMS-поле `VideoRef` (тип вместо хардкод `vimeoId`).
 - **Facade-эмбед** (poster + play-btn, iframe по клику) — единый компонент `<VideoFacade ref={VideoRef} />` для всех блоков ниже (HomeVideoShowcase, EventsRecap, TestimonialsCarousel video-wall, GalleryMasonry video-items, ShowCookingGrid, WhyUs, TrustProof, EventHero).
 - **CSP / remotePatterns** (`next/image` + iframe): разрешить `rutube.ru`, `player.rutube.ru`, `cdn-ru.rutube.ru` и свой домен; **убрать `vimeo.com`** (HostingCritic #6/#7). При свопе провайдера правится ТОЛЬКО список доменов здесь.
@@ -426,23 +448,23 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      **Вариант В (Drinkit living-photo, `28_HEROCRITIC`):** `posterSrc` — **LCP-элемент** (рендерится как `<img>`, НЕ CSS-background, иначе не попадает в LCP-расчёт и не прелоадится), грузится мгновенно с `fetchpriority="high"`; `videoSrc` — subtle-loop/Ken Burns реального события, **фоновый enhancement поверх poster**, грузится ПОСЛЕ paint (`preload="none"` + `requestIdleCallback`/`window.load`, НЕ в том же кадре что poster, чтобы не бить INP/LCP), НЕ является LCP-кандидатом.
    - **Копирайт/данные (точно из `09`):**
      - Overline: `NiloV Catering · Петербург · с 2007`.
-     - H1: «Кейтеринг, который **чувствуешь** заранее.» (`чувствуешь` — *italic* Cormorant, диагональная линия-акцент SVG `--color-gold` — декоративно, `aria-hidden`, non-essential).
+     - H1: «Кейтеринг, который **чувствуешь** заранее.» (`чувствуешь` — _italic_ Cormorant, диагональная линия-акцент SVG `--color-gold` — декоративно, `aria-hidden`, non-essential).
      - Sub: «3 500+ событий (на проверке) за более 19 лет (с 2007 года) 🟡 — **под ключ для любого бюджета**. От семейного ужина до банкета на 500 гостей — ресторанное качество там, где вы его не ждёте, **по честной цене, без переплаты за вывеску**.» (число «3 500» — НЕ подтверждённый факт, помечен «(на проверке)» прямо в видимом тексте + 🟡; более 19 лет — пометка 🟡 «подтвердить актуальное число у заказчика»; на живом сайте NiloV указано «более 19 лет (с 2007)», единая формулировка — «более 19 лет (с 2007 года)»)
      - CTA primary: «Спланировать событие» (gold pill, `aria-label="Спланировать событие"`, `ctaPrimary.href="/plan"`).
-     - CTA secondary: «Смотреть форматы» (ghost, `ctaSecondary.href="/events"`). *(P0-8: secondary ведёт на `/events`, ранее было «Смотреть меню» → `/menu`; унифицировано с каноном C9.)*
+     - CTA secondary: «Смотреть форматы» (ghost, `ctaSecondary.href="/events"`). _(P0-8: secondary ведёт на `/events`, ранее было «Смотреть меню» → `/menu`; унифицировано с каноном C9.)_
      - **[Волна 5–6, закрывает G7 (Григорий, B-GRIG-7)]** Рядом с primary/secondary — **вторичная CTA «Я не знаю, что нужно — помогите →»** → `/plan/helper` (wizard-помощник, G1). Для новичка primary «Спланировать событие» абстрактен — эта CTA даёт понятную точку входа «без знания формата». Видима на desktop И mobile (вторым пиллом под primary, либо в StickyMobileCTA как третий вариант рядом с «Рассчитать цену»).
      - **[Волна 1, закрывает B-IGOR-1] ЦЕНА — НИЖЕ ФОЛДА (блок `HeroExtras`, P0-8):** микро-строка цен рендерится в `HeroExtras` сразу под Hero (НЕ выше фолда). Дублирует блок М1:
        **[Волна 7, закрывает M1+M4+M5+M6 (Марина, бюджетный)] ДНО ЦЕНЫ ВПЕРЁД + ЕДИНЫЙ ЛЕЙБЛ ТАРИФА + МИН. ЧЕК + КАД:**
        строка НАЧИНАЕТСЯ с самого дешёвого полноценного формата, лейбл тарифа приклеен к КАЖДОЙ «от X ₽»
        (закрепляем B-MAX-4 везде — НЕТ разнобоя), минимальный чек и порог КАД видны сразу:
-       «☕ **Кофе-брейк — от 390 ₽/гость (Эконом, минимум)** 🟡 *(статус: `pending` — ведущий якорь = реальная цена с живого сайта NiloV 390 ₽; канон 950 — вторичное уточнение, требует сверки с прайсом заказчика до публикации, НЕ использовать как подтверждённый якорь)* · 🥪 **Фуршет Эконом — от 2 450 ₽/гость (Эконом, минимум)** ·
+       «☕ **Кофе-брейк — от 390 ₽/гость (Эконом, минимум)** 🟡 _(статус: `pending` — ведущий якорь = реальная цена с живого сайта NiloV 390 ₽; канон 950 — вторичное уточнение, требует сверки с прайсом заказчика до публикации, НЕ использовать как подтверждённый якорь)_ · 🥪 **Фуршет Эконом — от 2 450 ₽/гость (Эконом, минимум)** ·
        🍽 Банкет — от 4 470 ₽/гость (Стандарт)».
        - **Минимальный чек рядом с ценой (M4):** под строкой — уточнение
          «Фуршет Эконом доступен с 20 гостей → **минимальный заказ от 49 000 ₽** (20 × 2 450). Кофе-брейк — от 10 гостей».
        - **Доставка в КАД прозрачно и заранее (M5):** «Доставка в КАД включена; вне КАД — надбавка +N ₽ (уточняется при расчёте)».
          Порог и сумма надбавки показываются на этапе ПЕРВОГО расчёта (не всплывают поздно), чтобы «от 2 450» не оказалось враньём для клиента из области.
        - Единообразие лейбла (M6): те же формулировки «(Эконом, минимум)» в `FormatShowcase`, `EventTypeSelector` и aria-label — без разнобоя.
-       Это убирает главную боль «торопящегося жениха» — цена на 1-м экране, без скролла до `FormatShowcase`.
+         Это убирает главную боль «торопящегося жениха» — цена на 1-м экране, без скролла до `FormatShowcase`.
        > **[Волна 5–6, закрывает G4 (Григорий, B-GRIG-4)]** Цена-строка выше фолда **НЕ грузит новичка жаргоном**:
        > рядом с каждым термином — «что это»: «**Кофе-брейк** — кофе+десерт в перерыве (от 390 ₽ 🟡, канон 950 — вторичное уточнение, требует сверки)»;
        > «**Банкет** — посадка за стол, официанты, классика (от 4 470 ₽)». Аббревиатуры **КАД** (граница города, доставка в ней включена)
@@ -463,42 +485,42 @@ export function getEmbedUrl(ref: VideoRef): string | null {
        экспресс-путь ДОЛЖЕН предзаполнять `format`/`guests`/`tier` из deep-link (см. D8). Дублируется на `/plan` хабе
        и в `EventTypeSelector`-карточке «Деловой завтрак / Кофе-брейк» (см. блок 4, D1).
        - **[Волна 7, закрывает M2 (Марина, бюджетный)] ЧИП «МНЕ НУЖНО МАКСИМАЛЬНО ДЁШЕВО» НА ГЛАВНОЙ:**
-       рядом с пресетами Hero — кнопка-ссылка **«💸 Мне нужно максимально дёшево →»** →
-       `/plan/calculator?preset=cheapest` (economy + furshet предвыбраны, чип «Показать самое дешёвое решение»
-       активен — см. B-MAX-5/М6 в `07`). Бюджетник попадает в дешёвый путь С ПЕРВОГО ЭКРАНА (не на 2 клика вглубь калькулятора).
-       Тот же чип дублируется на `FormatShowcase` (под карточками форматов) и на `/plan` хабе.
-    - **[Волна 7, закрывает A5 (Артём, премиум 500)] ЭКСПРЕСС-ПРЕСЕТ «БАНКЕТ НА 500»:** рядом с пресетами Hero —
-      кнопка-ссылка **«Банкет на 500 гостей →»** → `/plan/calculator?guests=500&format=banquet&tier=premium`
-      (предзаполнены гости/формат/тариф, шаг 1 конструктора пропущен, итог банкета на 500 сразу; см. deep-link D8).
-      Решительный клиент верхнего тарифа НЕ тащит 500 вручную через 6 шагов. Тот же deep-link дублируется на `/plan` хабе
-      и на карточке Частное/Банкет `EventTypeSelector` для 500-гостевого сценария.
-     - **[Волна 3, закрывает K7 (Камила)] Микро-подпись живого события на Hero:** под H1/Sub (видимый текст,
-       НЕ только декоративный фон) — капшен «реальное событие · площадка · тип», напр.
-       «🔴 В эфире: корпоративный завтрак · Петербург · 15 гостей». Цель: с первого экрана ясно — про НАСТОЯЩИЕ
-       красивые события, а не про абстрактный пафос. Капшен тянется из CMS-поля `heroLiveEvent?` (опц., не блокирует LCP).
-     - **[Волна 7, закрывает O1+O5+O2+O6+O7+O9 (Олег, тайм-критичный)] ТОЧКА ВХОДА «ПРОВЕРИТЬ ДАТУ» — НИЖЕ ФОЛДА (блок `HeroExtras`, P0-8):**
-       рядом с primary-CTA Hero (ИЛИ как отдельная золотая кнопка-вторичник (`border-gold-text` #8A6D3B — outline-вариант, ≥3:1 по 1.4.11; либо `bg-primary` #B08D57 + `text-primary-foreground` ink 5.7:1 ✅ для заливки) прямо под «Спланировать событие») —
-       видимая CTA **«📅 Проверить мою дату»** → открывает **интерактивный `AvailabilityCalendar mode='book'` СРАЗУ**;
-      цвет НАДПИСИ кнопки для outline-варианта — явно `text-foreground` (ink) ИЛИ `text-gold-text` #8A6D3B (ivory, ≥16px/≥600); `--color-gold` #B08D57 как текст **ЗАПРЕЩЁН** (2.893:1 FAIL),
-       без 4 шагов калькулятора. Дата для Олега **первична**, расчёт — вторичен.
-       - **Интерактивный мини-календарь `mode='book'` рядом с Hero** (НЕ только read-only urgency-бейдж): компактный
-         `AvailabilityCalendar variant='mini' mode='book'` живёт в Hero-секции (или сразу под ней, ДО `InspireStrip`),
-         чтобы Олег проверил КОНКРЕТНУЮ дату и забронировал её с главной, не уходя в `/plan`.
-       - **Единый минимальный срок — ДО выбора даты:** над календарём (и в форме брони) висит явная подсказка
-         **«Минимальный срок бронирования — 3 полных дня»** (единая константа `MIN_BOOKING_DAYS = 3`, см. O2 ниже —
-         применяется во ВСЕХ инструментах: калькулятор `07`, конструктор `08` шаг 6, форма брони Hero). Старая
-         размытая формулировка «Дата <3 дней» заменена на точную «минимум 3 полных дня» (событие «ровно через 3 дня» = разрешено).
-       - **Живой счётчик свободности (O7):** над/под мини-календарём — счётчик из реальных `occupiedDates`:
-         **«Осталось N свободных дат на ближайшие 7 дней»** (обновляется по `/api/availability`). Urgency-бейдж и
-         сезонность («Декабрь → Высокий сезон») СВЯЗАНЫ с этим счётчиком — подогревают срочность на основе живых данных.
-       - **Не перекрывает CTA (O9):** если показывается `availability-скриммер` (`z-[120]`), он НЕ перекрывает
-         primary-CTA «Проверить дату»; либо CTA «Проверить дату» дублируется вне зоны перекрытия (выше скриммера),
-         либо скриммер несёт собственную кнопку «Проверить дату» того же действия.
-       - **Дублируется в `/plan` хабе:** та же CTA «Проверить мою дату» → интерактивный `AvailabilityCalendar mode='book'`
-         видна наверху хаба `/plan` (сразу, без захода в калькулятор/конструктор).
-     - Microcopy: «♦ Доставка в КАД (граница города) включена · Кухня су-вид (медленная варка при низкой t°, без наценки за бренд) · [Маркировка по 14 аллергенам →](/menu/catalog?diet=gluten-free) · **без скрытых доплат — цена в калькуляторе прозрачная**». **[Волна 7, A7 (Артём, премиум)]** Слово «реальная» убрано из Hero-microcopy: цены (банкет верхнего тарифа «Максимальный» 6 970 и др.) несут пометку `pending-verification` до сверки с актуальным прайсом заказчика (см. `07` §PENDING / BUG-F2). Пока не сверено — НЕ claim «реальная» рядом с неподтверждёнными числами (качественный клиент учует); используем честное «прозрачная / подтверждается перед релизом». **[Волна закрытия NINA, B-NINA-6]** обещание Hero «Маркировка по 14 аллергенам» НЕ пустое — ведёт прямой ссылкой в отфильтрованный по БГ каталог (`/menu/catalog?diet=gluten-free`), разрыв логики устранён (Нина сразу попадает в реальную подборку, а не в «декларацию контракта»).
-    - **[Волна 10, закрывает B-G8/B-G5 (Гоша — КРИТИЧНО)] (1) «Без скрытых доплат» подкреплено делом.** Обещание Hero-микрокопирайта НЕ декларативно: в итоге калькулятора (`ResultDisplay`, 07) и `LiveSummaryBar` (08) показывается **микро-блок разбивки «что входит»** — еда, посуда, доставка в КАД (0 ₽) — И явно «НЕ входит: депозит 30% (возвратный), надбавка вне КАД (таблица зон из `/delivery`), аддоны» (дополняет Марину/волну 7, НЕ дублирует). (2) **Единая подтверждённая цена (BUG-F2).** Канон `07` сверяется с прайсом заказчика ДО релиза; на сайте везде несётся ЕДИНАЯ подтверждённая цифра (канон «Кофе-брейк от 950 ₽» vs живой сайт «от 390 ₽» — противоречие устраняется сверкой; пока не сверено — `pending-verification`, НЕ публикуется как факт). Иначе аргумент «мы дешевле/честнее» рушится.
-     - **[Волна 5–6, закрывает A1+A4 (Али, B-ALI-1/4)]** К microcopy Hero добавляется явное упоминание диет-опций со ссылкой на фильтр-каталог: «🌱 Веган · 🌾 Безглютен · 🕌 Халяль — по запросу, при наличии сертификации → [смотреть меню](/menu/catalog?diet=halal)». Халяль заявлен НА ВХОДЕ (главная), не «невидим» для Али. Ссылка ведёт прямо в отфильтрованный каталог (A1 deep-link).
+         рядом с пресетами Hero — кнопка-ссылка **«💸 Мне нужно максимально дёшево →»** →
+         `/plan/calculator?preset=cheapest` (economy + furshet предвыбраны, чип «Показать самое дешёвое решение»
+         активен — см. B-MAX-5/М6 в `07`). Бюджетник попадает в дешёвый путь С ПЕРВОГО ЭКРАНА (не на 2 клика вглубь калькулятора).
+         Тот же чип дублируется на `FormatShowcase` (под карточками форматов) и на `/plan` хабе.
+   - **[Волна 7, закрывает A5 (Артём, премиум 500)] ЭКСПРЕСС-ПРЕСЕТ «БАНКЕТ НА 500»:** рядом с пресетами Hero —
+     кнопка-ссылка **«Банкет на 500 гостей →»** → `/plan/calculator?guests=500&format=banquet&tier=premium`
+     (предзаполнены гости/формат/тариф, шаг 1 конструктора пропущен, итог банкета на 500 сразу; см. deep-link D8).
+     Решительный клиент верхнего тарифа НЕ тащит 500 вручную через 6 шагов. Тот же deep-link дублируется на `/plan` хабе
+     и на карточке Частное/Банкет `EventTypeSelector` для 500-гостевого сценария.
+   - **[Волна 3, закрывает K7 (Камила)] Микро-подпись живого события на Hero:** под H1/Sub (видимый текст,
+     НЕ только декоративный фон) — капшен «реальное событие · площадка · тип», напр.
+     «🔴 В эфире: корпоративный завтрак · Петербург · 15 гостей». Цель: с первого экрана ясно — про НАСТОЯЩИЕ
+     красивые события, а не про абстрактный пафос. Капшен тянется из CMS-поля `heroLiveEvent?` (опц., не блокирует LCP).
+   - **[Волна 7, закрывает O1+O5+O2+O6+O7+O9 (Олег, тайм-критичный)] ТОЧКА ВХОДА «ПРОВЕРИТЬ ДАТУ» — НИЖЕ ФОЛДА (блок `HeroExtras`, P0-8):**
+     рядом с primary-CTA Hero (ИЛИ как отдельная золотая кнопка-вторичник (`border-gold-text` #8A6D3B — outline-вариант, ≥3:1 по 1.4.11; либо `bg-primary` #B08D57 + `text-primary-foreground` ink 5.7:1 ✅ для заливки) прямо под «Спланировать событие») —
+     видимая CTA **«📅 Проверить мою дату»** → открывает **интерактивный `AvailabilityCalendar mode='book'` СРАЗУ**;
+     цвет НАДПИСИ кнопки для outline-варианта — явно `text-foreground` (ink) ИЛИ `text-gold-text` #8A6D3B (ivory, ≥16px/≥600); `--color-gold` #B08D57 как текст **ЗАПРЕЩЁН** (2.893:1 FAIL),
+     без 4 шагов калькулятора. Дата для Олега **первична**, расчёт — вторичен.
+     - **Интерактивный мини-календарь `mode='book'` рядом с Hero** (НЕ только read-only urgency-бейдж): компактный
+       `AvailabilityCalendar variant='mini' mode='book'` живёт в Hero-секции (или сразу под ней, ДО `InspireStrip`),
+       чтобы Олег проверил КОНКРЕТНУЮ дату и забронировал её с главной, не уходя в `/plan`.
+     - **Единый минимальный срок — ДО выбора даты:** над календарём (и в форме брони) висит явная подсказка
+       **«Минимальный срок бронирования — 3 полных дня»** (единая константа `MIN_BOOKING_DAYS = 3`, см. O2 ниже —
+       применяется во ВСЕХ инструментах: калькулятор `07`, конструктор `08` шаг 6, форма брони Hero). Старая
+       размытая формулировка «Дата <3 дней» заменена на точную «минимум 3 полных дня» (событие «ровно через 3 дня» = разрешено).
+     - **Живой счётчик свободности (O7):** над/под мини-календарём — счётчик из реальных `occupiedDates`:
+       **«Осталось N свободных дат на ближайшие 7 дней»** (обновляется по `/api/availability`). Urgency-бейдж и
+       сезонность («Декабрь → Высокий сезон») СВЯЗАНЫ с этим счётчиком — подогревают срочность на основе живых данных.
+     - **Не перекрывает CTA (O9):** если показывается `availability-скриммер` (`z-[120]`), он НЕ перекрывает
+       primary-CTA «Проверить дату»; либо CTA «Проверить дату» дублируется вне зоны перекрытия (выше скриммера),
+       либо скриммер несёт собственную кнопку «Проверить дату» того же действия.
+     - **Дублируется в `/plan` хабе:** та же CTA «Проверить мою дату» → интерактивный `AvailabilityCalendar mode='book'`
+       видна наверху хаба `/plan` (сразу, без захода в калькулятор/конструктор).
+   - Microcopy: «♦ Доставка в КАД (граница города) включена · Кухня су-вид (медленная варка при низкой t°, без наценки за бренд) · [Маркировка по 14 аллергенам →](/menu/catalog?diet=gluten-free) · **без скрытых доплат — цена в калькуляторе прозрачная**». **[Волна 7, A7 (Артём, премиум)]** Слово «реальная» убрано из Hero-microcopy: цены (банкет верхнего тарифа «Максимальный» 6 970 и др.) несут пометку `pending-verification` до сверки с актуальным прайсом заказчика (см. `07` §PENDING / BUG-F2). Пока не сверено — НЕ claim «реальная» рядом с неподтверждёнными числами (качественный клиент учует); используем честное «прозрачная / подтверждается перед релизом». **[Волна закрытия NINA, B-NINA-6]** обещание Hero «Маркировка по 14 аллергенам» НЕ пустое — ведёт прямой ссылкой в отфильтрованный по БГ каталог (`/menu/catalog?diet=gluten-free`), разрыв логики устранён (Нина сразу попадает в реальную подборку, а не в «декларацию контракта»).
+   - **[Волна 10, закрывает B-G8/B-G5 (Гоша — КРИТИЧНО)] (1) «Без скрытых доплат» подкреплено делом.** Обещание Hero-микрокопирайта НЕ декларативно: в итоге калькулятора (`ResultDisplay`, 07) и `LiveSummaryBar` (08) показывается **микро-блок разбивки «что входит»** — еда, посуда, доставка в КАД (0 ₽) — И явно «НЕ входит: депозит 30% (возвратный), надбавка вне КАД (таблица зон из `/delivery`), аддоны» (дополняет Марину/волну 7, НЕ дублирует). (2) **Единая подтверждённая цена (BUG-F2).** Канон `07` сверяется с прайсом заказчика ДО релиза; на сайте везде несётся ЕДИНАЯ подтверждённая цифра (канон «Кофе-брейк от 950 ₽» vs живой сайт «от 390 ₽» — противоречие устраняется сверкой; пока не сверено — `pending-verification`, НЕ публикуется как факт). Иначе аргумент «мы дешевле/честнее» рушится.
+   - **[Волна 5–6, закрывает A1+A4 (Али, B-ALI-1/4)]** К microcopy Hero добавляется явное упоминание диет-опций со ссылкой на фильтр-каталог: «🌱 Веган · 🌾 Безглютен · 🕌 Халяль — по запросу, при наличии сертификации → [смотреть меню](/menu/catalog?diet=halal)». Халяль заявлен НА ВХОДЕ (главная), не «невидим» для Али. Ссылка ведёт прямо в отфильтрованный каталог (A1 deep-link).
    - **СТАТУС FACTCHECK (см. FACTCHECK_REPORT_2026-07-20.md, независимый FactChecker, табл. #6 ❓ no-data) — 🟡 БЕЗ ПОДТВЕРЖДЕНИЯ:** подтверждено внешне = «с 2007» (живой сайт: «более 19 лет (с 2007)»), банкет/свадьба «от 4 470 ₽», корпоратив «от 2 450 ₽», 152-ФЗ и ТР ТС 021/2011 — реальные законы. 🟡 «3 500+ событий» — НЕ подтверждено независимо: FACTCHECK_REPORT (стр. 19, 51) помечает это ❓ no-data (балл 2, critical), «ссылка на отчёт FactChecker невоспроизводима». Публиковать ТОЛЬКО как «3 500+ 🟡» со статусом `pending` (🟡 = финальную цифру уточнить у заказчика), НЕ как подтверждённый факт. 🟡 **«более 19 лет (с 2007 года)»** — единая унифицированная формулировка (живой сайт пишет «более 19 лет», арифметически с 2007 → 19, но прод клиента показывает 18; зафиксировано ОДНО число «более 19 лет (с 2007 года)» во избежание противоречия 18/19). ⚠️ «су-вид технология» — внешне НЕ подтверждена, `pending-verification`, НЕ выдавать за верифицированный факт. 🟡 логотипы Эрмитаж/Мариинский/Armani/Газпром/Forbes как «клиенты» — 0 веб-подтверждений; Роспотребнадзор — НЕ клиент (госрегулятор), исключить. Все непроверенные claims → 🟡 до сверки с заказчиком.
    - **Медиа-ассеты (`17` §3, §6):** `public/demo/hero-loop.mp4` (16:9, светлый буфет/банкет, 720p WebM+MP4,
      muted, seamless loop, <2MB) + `public/demo/hero-poster.webp` (poster, LCP-элемент).
@@ -522,14 +544,14 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      `01` §2) фиксированной яркости поверх всего hero, чтобы текст/CTA оставались читаемыми при движении кадра.
      CTA primary — `aria-label` (см. выше) + `focus-visible` 2px gold (`01` §7).
      **[Волна 3, закрывает V8 (Виктор, Hero-видео)] Для слабого зрения — «покой» ПО УМОЛЧАНИЮ, не только по системной настройке.**
-    Наряду с существующим `prefers-reduced-motion` (видео НЕ autoplay, только poster) добавляется явный
-    **«успокаивающий» режим Hero**: статичный `poster` (LCP `<img>`) + крупный заголовок H1 без мельтешения
-    видео-фона. Этот покой — вариант ПО УМОЛЧАНИЮ для слабого зрения (Виктор: «мелко и мельтешит»), активируется
-    либо системным `prefers-reduced-motion`, либо переключателем `TextSizeToggle`/«Облегчённый режим» (V1),
-    либо явной опцией «Спокойный режим» в шапке. Блок 27 (`HomeVideoShowcase`) НЕ трогаем — его autoplay-по-IO
-    сохраняется (там видео ниже фолда и не мешает чтению Hero). Цель V8: на первом экране нет движения,
-    которое мешает сосредоточиться слабому зрению.
-    **focus-order:** Overline(пропускаем, decorative) → H1 → Sub → CTA primary → CTA secondary → Microcopy →
+     Наряду с существующим `prefers-reduced-motion` (видео НЕ autoplay, только poster) добавляется явный
+     **«успокаивающий» режим Hero**: статичный `poster` (LCP `<img>`) + крупный заголовок H1 без мельтешения
+     видео-фона. Этот покой — вариант ПО УМОЛЧАНИЮ для слабого зрения (Виктор: «мелко и мельтешит»), активируется
+     либо системным `prefers-reduced-motion`, либо переключателем `TextSizeToggle`/«Облегчённый режим» (V1),
+     либо явной опцией «Спокойный режим» в шапке. Блок 27 (`HomeVideoShowcase`) НЕ трогаем — его autoplay-по-IO
+     сохраняется (там видео ниже фолда и не мешает чтению Hero). Цель V8: на первом экране нет движения,
+     которое мешает сосредоточиться слабому зрению.
+     **focus-order:** Overline(пропускаем, decorative) → H1 → Sub → CTA primary → CTA secondary → Microcopy →
      Scroll-hint. `SkipLink` (`components/common/SkipLink`) переводит к `#main`. `prefers-reduced-motion`:
      видео НЕ autoplay (показываем только poster), clip-path wipe → мгновенный `opacity:1` (текст виден сразу),
      scroll-hint пульсация выключена (`01` §4, Framer `useReducedMotion`). **e2e-проверка (`28_HEROCRITIC` #9):**
@@ -541,58 +563,60 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      центр, H1 `clamp(2.5rem,5vw,4.5rem)`, CTA в колонку, circular frame скрыт (экономия LCP — остаётся full-bleed
      poster). Шрифты читаемы (≥16px body), touch-targets ≥44px.
 
- 1-ter. `HeroExtras` — **[P0-8, Итерация 2] нижний блок под Hero (НИЖЕ фолда), куда ВЫНЕСЕНЫ ценовые якоря и календарь брони** (раньше висели выше фолда в Hero). Рендерится сразу после `HeroSection`, ДО `InspireStrip`. Состав (всё из ранее описанных волн, перенесено сюда, НЕ выше фолда):
- - **Ценовые якоря (блок М1, Волна 7 / M1+M4+M5+M6):** микро-строка «☕ Кофе-брейк — от 390 ₽/гость (Эконом, минимум) 🟡 *(статус: `pending` — ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, НЕ ведущий якорь)* · 🥪 Фуршет Эконом — от 2 450 ₽/гость (Эконом, минимум) · 🍽 Банкет — от 4 470 ₽/гость (Стандарт)» + минимальный чек + прозрачность КАД.
- - **Календарь брони (блок O1, Волна 7 / O1+O2+O5+O7):** CTA «📅 Проверить мою дату» → `AvailabilityCalendar mode='book'` (мини-календарь, минимальный срок 3 дня, живой счётчик свободности) — НЕ выше фолда.
- - **Helper-CTA (G7, Волна 5–6):** «Я не знаю, что нужно — помогите →» `/plan/helper` (wizard-помощник).
- - **Экспресс-пресеты 1-тап (Волны 1/3/7):** «Рассчитать свадьбу на 80 гостей →», «Собрать кофе-брейк на 15 →», «💸 Мне нужно максимально дёшево →», «Банкет на 500 гостей →» — все deep-link в `/plan`, НЕ выше фолда.
- - **Микро-подпись живого события (K7, Волна 3).** Hero сам остаётся с ровно 1 primary + 1 secondary ghost (канон C9, P0-8).
+1-ter. `HeroExtras` — **[P0-8, Итерация 2] нижний блок под Hero (НИЖЕ фолда), куда ВЫНЕСЕНЫ ценовые якоря и календарь брони** (раньше висели выше фолда в Hero). Рендерится сразу после `HeroSection`, ДО `InspireStrip`. Состав (всё из ранее описанных волн, перенесено сюда, НЕ выше фолда):
 
- 1-bis. `InspireStrip` — **[Волна 3, закрывает K1 (Камила, блогер)]** короткий визуальный блок «Вдохновись»
-   ВЫШЕ фолда (сразу после Hero, ДО `TrustBar` и `FormatShowcase`) — 3–4 живых кадра/клипа реальных
-   событий с подписью «реальное событие · площадка · N гостей», ведёт в `/gallery`. Блогер/клиент
-   НЕ скроллит 6 коммерческих блоков ради красоты — вдохновение на кончике языка с первого экрана.
+- **Ценовые якоря (блок М1, Волна 7 / M1+M4+M5+M6):** микро-строка «☕ Кофе-брейк — от 390 ₽/гость (Эконом, минимум) 🟡 _(статус: `pending` — ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, НЕ ведущий якорь)_ · 🥪 Фуршет Эконом — от 2 450 ₽/гость (Эконом, минимум) · 🍽 Банкет — от 4 470 ₽/гость (Стандарт)» + минимальный чек + прозрачность КАД.
+- **Календарь брони (блок O1, Волна 7 / O1+O2+O5+O7):** CTA «📅 Проверить мою дату» → `AvailabilityCalendar mode='book'` (мини-календарь, минимальный срок 3 дня, живой счётчик свободности) — НЕ выше фолда.
+- **Helper-CTA (G7, Волна 5–6):** «Я не знаю, что нужно — помогите →» `/plan/helper` (wizard-помощник).
+- **Экспресс-пресеты 1-тап (Волны 1/3/7):** «Рассчитать свадьбу на 80 гостей →», «Собрать кофе-брейк на 15 →», «💸 Мне нужно максимально дёшево →», «Банкет на 500 гостей →» — все deep-link в `/plan`, НЕ выше фолда.
+- **Микро-подпись живого события (K7, Волна 3).** Hero сам остаётся с ровно 1 primary + 1 secondary ghost (канон C9, P0-8).
 
-   **Детальная спец:**
-   - **Пропсы:** `<InspireStrip shots={[{src,eventType,venue,guests,caption,href}]} ctaHref="/gallery" />`.
-   - **Состав:** 3–4 плитки (desktop 4 в ряд, tablet 2, mobile 1–2 swipe/стек) с капшеном под каждой:
-     «Свадьба · площадка «А» 🟡 · 120 гостей (пример ДЕМО-данных, не клиент)» / «Девичник · лофт · 18 гостей» / «День рождения · 25 гостей» /
-     «Корпоративный завтрак · 15 гостей». Капшен = реальная подпись (тип + площадка + число), НЕ декорация.
-     *Примеры площадок («Эрмитаж» и др.) — ДЕМО-дАННЫЕ слота (тянутся из CMS, НЕ голый факт-клиент); не публиковать как подтверждённого клиента без 🟡-сверки (см. FACTCHECK).*
-   - **Медиа-ассеты:** переиспользует кадры `GalleryTeaser`/`HomeVideoShowcase` (единый источник `17`);
-     первые 2–3 — `eager`+blur-up (LCP ниже fold, Hero-poster остаётся LCP), остальные `loading="lazy"`.
-     Опц. 1 клип video (click-to-play, единый `VideoProvider`-контракт) среди плиток.
-   - **Overline + CTA:** над плитками — `overline` «Вдохновись реальными событиями»; справа/под —
-     кнопка-ссылка «Смотреть всю галерею →» `/gallery`.
-   - **a11y:** каждая плитка — `<a aria-label="...">` + `<img alt="{eventType}, {venue}, {guests} гостей">`;
-     капшен виден всегда (НЕ только hover). `prefers-reduced-motion` → без Ken Burns/parallax.
-   - **Responsive:** desktop 4 кол. / tablet 2 / mobile 2 (scroll-snap) без горизонт. скролла страницы.
-   - **Perf:** LCP главной = Hero-poster (блок 1); эта секция НИЖЕ hero но ВЫШЕ fold-коммерции, не конкурирует
-     за LCP; CLS<0.1 (`aspect-ratio` плиток); INP<200ms.
+1-bis. `InspireStrip` — **[Волна 3, закрывает K1 (Камила, блогер)]** короткий визуальный блок «Вдохновись»
+ВЫШЕ фолда (сразу после Hero, ДО `TrustBar` и `FormatShowcase`) — 3–4 живых кадра/клипа реальных
+событий с подписью «реальное событие · площадка · N гостей», ведёт в `/gallery`. Блогер/клиент
+НЕ скроллит 6 коммерческих блоков ради красоты — вдохновение на кончике языка с первого экрана.
+
+**Детальная спец:**
+
+- **Пропсы:** `<InspireStrip shots={[{src,eventType,venue,guests,caption,href}]} ctaHref="/gallery" />`.
+- **Состав:** 3–4 плитки (desktop 4 в ряд, tablet 2, mobile 1–2 swipe/стек) с капшеном под каждой:
+  «Свадьба · площадка «А» 🟡 · 120 гостей (пример ДЕМО-данных, не клиент)» / «Девичник · лофт · 18 гостей» / «День рождения · 25 гостей» /
+  «Корпоративный завтрак · 15 гостей». Капшен = реальная подпись (тип + площадка + число), НЕ декорация.
+  _Примеры площадок («Эрмитаж» и др.) — ДЕМО-дАННЫЕ слота (тянутся из CMS, НЕ голый факт-клиент); не публиковать как подтверждённого клиента без 🟡-сверки (см. FACTCHECK)._
+- **Медиа-ассеты:** переиспользует кадры `GalleryTeaser`/`HomeVideoShowcase` (единый источник `17`);
+  первые 2–3 — `eager`+blur-up (LCP ниже fold, Hero-poster остаётся LCP), остальные `loading="lazy"`.
+  Опц. 1 клип video (click-to-play, единый `VideoProvider`-контракт) среди плиток.
+- **Overline + CTA:** над плитками — `overline` «Вдохновись реальными событиями»; справа/под —
+  кнопка-ссылка «Смотреть всю галерею →» `/gallery`.
+- **a11y:** каждая плитка — `<a aria-label="...">` + `<img alt="{eventType}, {venue}, {guests} гостей">`;
+  капшен виден всегда (НЕ только hover). `prefers-reduced-motion` → без Ken Burns/parallax.
+- **Responsive:** desktop 4 кол. / tablet 2 / mobile 2 (scroll-snap) без горизонт. скролла страницы.
+- **Perf:** LCP главной = Hero-poster (блок 1); эта секция НИЖЕ hero но ВЫШЕ fold-коммерции, не конкурирует
+  за LCP; CLS<0.1 (`aspect-ratio` плиток); INP<200ms.
 
 2. `TrustBar` — marquee логотипов клиентов (набор анонимных силуэтов-плейсхолдеров «нам доверяют» 🟡, статус `pending` — конкретные бренды НЕ называются до подтверждённых договоров, см. FACTCHECK_REPORT_2026-07-20).
    **[benchmark: Proof of the Pudding — circular/geometric frames]** логотипы в круглых/ромбовидных
    фреймах, не просто строка.
    **GROUNDING-ПОДПИСЬ (закрывает TrustSeg B3 — приземляющий якорь прямо в TrustBar, не только в TrustProof):** под marquee — строка мелким earth-цветом:
-   *«От семейного ужина до банкета на 500 гостей — один стандарт качества. Логотипы партнёров — примеры из архива; финальный список подтверждается договорами заказчика. Конкретные бренды публикуются только после подписанных договоров (пока — «на проверке»).»*
+   _«От семейного ужина до банкета на 500 гостей — один стандарт качества. Логотипы партнёров — примеры из архива; финальный список подтверждается договорами заказчика. Конкретные бренды публикуются только после подписанных договоров (пока — «на проверке»).»_
    Это снимает «это не про меня» у ср. сегмента (Камила/Артём) и честно маркирует 🟡-статус клиентов.
    **Детальная спец (закрывает `19`#2 + `16`#11):**
    - **Пропсы:** `<TrustBar clients={[{name,logoSrc,href}]} speed={30} pauseOnHover />`.
    - **Копирайт/данные:** 6–8 анонимных плейсхолдеров «нам доверяют» с подписью имени ПОД каждым фреймом:
-     `Корпоратив «А» 🟡` · `Свадьба «Б» 🟡` · `Лофт-площадка 🟡` · `Бизнес-центр 🟡` · `Загородный клуб 🟡` *(примеры, `status:'pending'` — НЕ подтверждено независимо через web_search: 0 веб-упоминаний клиентских связей NiloV↔эти бренды; НЕ выводить как факт без подтверждения договоров у заказчика; финал — по списку заказчика; показывать ТОЛЬКО с дисклеймером «на проверке» per FACT-GATE, см. 04:86. **Роспотребнадзор исключён** — это госрегулятор, не клиент (см. FACTCHECK_REPORT_2026-07-20).)*
+     `Корпоратив «А» 🟡` · `Свадьба «Б» 🟡` · `Лофт-площадка 🟡` · `Бизнес-центр 🟡` · `Загородный клуб 🟡` _(примеры, `status:'pending'` — НЕ подтверждено независимо через web_search: 0 веб-упоминаний клиентских связей NiloV↔эти бренды; НЕ выводить как факт без подтверждения договоров у заказчика; финал — по списку заказчика; показывать ТОЛЬКО с дисклеймером «на проверке» per FACT-GATE, см. 04:86. **Роспотребнадзор исключён** — это госрегулятор, не клиент (см. FACTCHECK_REPORT_2026-07-20).)_
      Каждая лого — НЕ абстрактный значок, а имя (`16`#11: «client logos close the credibility gap»).
    - **Фреймы:** circular (`--radius-circle`) / diamond (rotate 45° внешний, лого внутри — НЕ повёрнута) —
-    `01` §5 geometric frames. Тонкая золотая обводка 1px `border-gold-text` #8A6D3B (4.537:1 на ivory ≥3:1 по WCAG 1.4.11; НЕ чистый `--color-gold` #B08D57 = 2.893:1 FAIL), Elevation-1. НЕ прямоугольная строка.
+     `01` §5 geometric frames. Тонкая золотая обводка 1px `border-gold-text` #8A6D3B (4.537:1 на ivory ≥3:1 по WCAG 1.4.11; НЕ чистый `--color-gold` #B08D57 = 2.893:1 FAIL), Elevation-1. НЕ прямоугольная строка.
    - **[Волна 3, закрывает K3 (Камила, «пафосно»)] «Приземляющий» ряд/капшен:** над/под marquee логотипов
-    добавляется строка-якорь, снимающая сигнал «только для олигархов»: **«от семейного ужина на 10 до банкета
-    на 500 — один стандарт качества»** + 1–2 кейса «обычных» красивых событий (видимые плитки/капшены, напр.
-    «Девичник, 18 гостей, лофт» и «День рождения, 25 гостей, загородный дом» — как в `InspireStrip`/K5).
-    «обычные красивые события — наш типичный клиент» (видимые плитки/капшены, напр.
-    «Девичник, 18 гостей, лофт» и «День рождения, 25 гостей, загородный дом» — как в `InspireStrip`/K5).
-    НЕ называем статусных клиентов (статусные бренды, по запросу 🟡) как доказательство потолка качества — это
-    НЕ подтверждено вебом; до подписанных договоров держим анонимные плейсхолдеры «нам доверяют» с дисклеймером «на проверке».
-    «приземляющим» рядом — среднесегментный блогер видит: «это про меня, не только про VIP». Копирайт в Sub Hero
-    уже несёт ту же мысль (см. блок 1, K7/«под ключ для любого бюджета»).
+     добавляется строка-якорь, снимающая сигнал «только для олигархов»: **«от семейного ужина на 10 до банкета
+     на 500 — один стандарт качества»** + 1–2 кейса «обычных» красивых событий (видимые плитки/капшены, напр.
+     «Девичник, 18 гостей, лофт» и «День рождения, 25 гостей, загородный дом» — как в `InspireStrip`/K5).
+     «обычные красивые события — наш типичный клиент» (видимые плитки/капшены, напр.
+     «Девичник, 18 гостей, лофт» и «День рождения, 25 гостей, загородный дом» — как в `InspireStrip`/K5).
+     НЕ называем статусных клиентов (статусные бренды, по запросу 🟡) как доказательство потолка качества — это
+     НЕ подтверждено вебом; до подписанных договоров держим анонимные плейсхолдеры «нам доверяют» с дисклеймером «на проверке».
+     «приземляющим» рядом — среднесегментный блогер видит: «это про меня, не только про VIP». Копирайт в Sub Hero
+     уже несёт ту же мысль (см. блок 1, K7/«под ключ для любого бюджета»).
    - **Медиа-ассеты (`17` §6):** `public/demo/logos/{client-a,client-b,client-c,wedding-d,...}.svg` —
      вектор/чистый PNG, monochrome (gold/ink), единый стиль. Источник: офиц. лого клиентов (демо-плейсхолдеры в `/public/demo/`).
    - **Perf:** marquee через CSS `transform: translateX` + `requestAnimationFrame`/`Framer`, НЕ JS-перелayout.
@@ -613,104 +637,106 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 
 4. `EventTypeSelector` — **6 карточек** (Корпоратив / Свадьба / Выпускной / Детский праздник / Частное / Chef-at-home)
    → ведут на `/events/*`. **[Волна 2, закрывает B-TAT-4] Корпоратив — ПЕРВИЧНЫЙ путь:** первая карточка,
- primary-акцент (золотая рамка `border-gold-text` #8A6D3B + badge «Для бизнеса»), ведёт на `/events/korporativ` — HR/бизнес-аудитория
- видит свой сценарий первым. **[Волна 2, закрывает B-MAX-1] Выпускной — первый-class путь:** явная карточка
- со своим роутом `/events/vypusknoy`, НЕ спрятан под «Частное». **[Волна 1, закрывает B-OLGA-1]** Детский праздник — первый-class путь,
- НЕ спрятан под «Частное».
- > **[Волна 4, закрывает E4 (Елена, B-E4) — алиас «Юбилей компании»]** Карточка «Корпоратив» и страница `/events/korporativ` несут **видимый ярлык/алиас**: под заголовком — **«Корпоратив · Юбилей компании · тимбилдинг»**, а на самой `/events/korporativ` — блок-подсказка «Организуете **юбилей компании**? Это сценарий Корпоратива →» (связь языка галереи «Юбилей» и структуры «Корпоратив»). Секретарь Елена узнаёт свой кейс «юбилей фирмы 120 чел» без догадок.
- > **[Волна 8, закрывает ZH4 + ZH5 (Жанна, сезонный НГ)] НГ-специфичный блок на `/events/korporativ`.** Хаб корпоратива сейчас сезонно-слеп. Добавляется постоянный (evergreen, достижим круглый год — не зависит от активного сезона) блок **«Новогодний корпоратив»**: праздничное НГ-меню (превью блюд с `season:['newyear']`, бейдж «Скоро в сезоне» вне сезона, ZH6), явная НГ-цена/наценка (ZH7), CTA **«Новогодний корпоратив → `/plan/calculator?event=korporativ&tier=premium`»**. **(ZH5) Urgency по дате брони НЕЗАВИСИМО от текущего месяца:** если выбранная в потоке расчёта дата ∈ [20.12–15.01], показывать «🔥 Бронируйте до {seasonalConfig.deadline} — новогодние даты уходят» даже если сейчас июль (сейчас urgency только в декабре — исправлено). В `AvailabilityCalendar` даты НГ-окна несут бейдж **«НГ · даты уходят»**.
+   primary-акцент (золотая рамка `border-gold-text` #8A6D3B + badge «Для бизнеса»), ведёт на `/events/korporativ` — HR/бизнес-аудитория
+   видит свой сценарий первым. **[Волна 2, закрывает B-MAX-1] Выпускной — первый-class путь:** явная карточка
+   со своим роутом `/events/vypusknoy`, НЕ спрятан под «Частное». **[Волна 1, закрывает B-OLGA-1]** Детский праздник — первый-class путь,
+   НЕ спрятан под «Частное».
 
-   **[Волна 3, закрывает D1 (Дарья, деловой завтрак)] Алиас «Деловой завтрак / Кофе-брейк»:** на карточке «Частное»
-   НЕТ отдельного сценария завтрака, поэтому добавляем видимый алиас-ярлык на формате кофе-брейк в `FormatShowcase`
-   И В Hero-price-строку (см. блок 1, D1) — фраза «Деловой завтрак = кофе-брейк» прописывается в подписи карточки
-   `FormatShowcase` (Кофе-брейк): «Перерывы на кофе и десерт · **идеально для делового завтрака**». Так Дарья
-   находит свой сценарий без догадок. Доп. точка входа — экспресс-пресет «Собрать кофе-брейк на 15» на Hero (блок 1, D2)
-   и на `/plan` хабе.
+> **[Волна 4, закрывает E4 (Елена, B-E4) — алиас «Юбилей компании»]** Карточка «Корпоратив» и страница `/events/korporativ` несут **видимый ярлык/алиас**: под заголовком — **«Корпоратив · Юбилей компании · тимбилдинг»**, а на самой `/events/korporativ` — блок-подсказка «Организуете **юбилей компании**? Это сценарий Корпоратива →» (связь языка галереи «Юбилей» и структуры «Корпоратив»). Секретарь Елена узнаёт свой кейс «юбилей фирмы 120 чел» без догадок.
+> **[Волна 8, закрывает ZH4 + ZH5 (Жанна, сезонный НГ)] НГ-специфичный блок на `/events/korporativ`.** Хаб корпоратива сейчас сезонно-слеп. Добавляется постоянный (evergreen, достижим круглый год — не зависит от активного сезона) блок **«Новогодний корпоратив»**: праздничное НГ-меню (превью блюд с `season:['newyear']`, бейдж «Скоро в сезоне» вне сезона, ZH6), явная НГ-цена/наценка (ZH7), CTA **«Новогодний корпоратив → `/plan/calculator?event=korporativ&tier=premium`»**. **(ZH5) Urgency по дате брони НЕЗАВИСИМО от текущего месяца:** если выбранная в потоке расчёта дата ∈ [20.12–15.01], показывать «🔥 Бронируйте до {seasonalConfig.deadline} — новогодние даты уходят» даже если сейчас июль (сейчас urgency только в декабре — исправлено). В `AvailabilityCalendar` даты НГ-окна несут бейдж **«НГ · даты уходят»**.
 
-   **[Волна 3, закрывает V3 (Виктор, семейный ужин)] Подпись «Семейный ужин» на карточке `EventTypeSelector`:**
-   карточка «Частное» получает уточняющую подпись под заголовком: **«Частное · Семейный ужин · юбилей · дома»** —
-   чтобы пенсионер сразу понял маппинг «семейный ужин → Частное» без догадок. Альтернатива (отдельный пресет
-   «Семейный ужин») НЕ вводится, чтобы не размывать 6 карточек; подпись закрывает баг V3 точечно.
+**[Волна 3, закрывает D1 (Дарья, деловой завтрак)] Алиас «Деловой завтрак / Кофе-брейк»:** на карточке «Частное»
+НЕТ отдельного сценария завтрака, поэтому добавляем видимый алиас-ярлык на формате кофе-брейк в `FormatShowcase`
+И В Hero-price-строку (см. блок 1, D1) — фраза «Деловой завтрак = кофе-брейк» прописывается в подписи карточки
+`FormatShowcase` (Кофе-брейк): «Перерывы на кофе и десерт · **идеально для делового завтрака**». Так Дарья
+находит свой сценарий без догадок. Доп. точка входа — экспресс-пресет «Собрать кофе-брейк на 15» на Hero (блок 1, D2)
+и на `/plan` хабе.
 
-   **[Волна 3, закрывает V4 (Виктор, простой путь)] Кнопка-эскейп «Позвоните — мы всё оформим»:** под сеткой
-   карточек (ИЛИ в каждой карточке как вторичная CTA) для ВСЕХ типов событий рендерится крупная кнопка-эскейп
-   **«Не хотите собирать сами? 📞 Позвоните — мы всё оформим»** → прямой звонок (`tel:`) / заявка без 6-шагового
-   мастера (ведёт в `/contact` с предзаполненным `eventType`, либо сразу в WA/ТГ). По образцу ветки chef-at-home
-   «Свяжитесь с менеджером» (блок 8, B-MUX-6): низкотехничный пользователь получает понятный путь «мы всё сделаем»
-   рядом с самообслуживанием, не теряя навигацию. Кнопка крупная (≥44px), золотая/вторичная — `bg-primary` #B08D57 заливка + `text-primary-foreground` ink #1C1815 = 5.7:1 ✅ AA (outline-вариант — `border-gold-text` #8A6D3B), видима на desktop И mobile.
-   **Детальная спец (закрывает `19`#4 + `16`#12):**
-   - **Пропсы:** `<EventTypeSelector cards={[{type,title,photoSrc,priceFrom,guestsFrom,href,quickBook?,primary?}]} />`.
-   - **Копирайт/данные (точно, порядок = приоритет):** Корпоратив (первичный) / Свадьба / Выпускной / Детский праздник / Частное / Chef-at-home.
-     Мини-цифра на hover (видимый текст, НЕ только hover для скринридера — см. a11y ниже):
-     - **Корпоратив → `от 2 450 ₽ / гость`** (Фуршет Эконом — честная база из `PRICE_PER_GUEST.furshet.economy` в `07`,
-       НЕ «от X» без тарифа). **[Волна 2, закрывает B-TAT-5]** первичный badge «Для бизнеса · Рассчитать 200 гостей →» ведёт
-       прямо в `/plan/calculator?event=korporativ&guests=200&format=furshet&tier=economy` (предзаполнение, без хопа через `/plan`).
-     - **Выпускной → `от 2 450 ₽ / гость`** (Фуршет Эконом — самый дешёвый полноценный формат для 50 чел; см. `07` §ECONOMY).
-       **[Волна 2, закрывает B-MAX-1]** явная карточка «Выпускной» → `/events/vypusknoy`, НЕ под «Частное».
-     - **Свадьба → `от 4 470 ₽ / гость`** (банкет, «Для свадеб» — честная база из `PRICE_PER_GUEST.banket.economy`
-       в `07`, НЕ фуршет-премиум 4 350). **[Волна 1, закрывает B-ANN-2]** пометка: «Банкет на свадьбу — от 4 470 ₽/гость (Стандарт ≈5 470)».
-     - **Детский праздник → `от 1 950 ₽ / гость`** 🟡 *pending-verification* (детский прайс; см. `07` §CHILD_RATE, B-OLGA-5).
-     - Частное → `от 2 950 ₽ / гость` · **подпись «Семейный ужин · юбилей · дома · Крупный банкет · Гала на 500+»** (V3 + A6, см. ниже) · Chef-at-home → `от 4 500 ₽ / гость` 🟡 *(pending-verification — почасовая ветка: цена НЕ из PRICE_PER_GUEST, а из `hourlyRate` по `07` §Edge cases; 4 500 — ориентир, требует сверки с прайсом заказчика)*
-       (примеры-ориентиры; цены НЕ совпадают с прайсом на живом сайте NiloV — Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽,
-       Банкет/Свадьба от 4 470 ₽; сверить с актуальным прайсом заказчика перед продом) + `от 20 гостей` (для фуршета;
-       мин. по формату тянется из единого `MIN_GUESTS` в `07`: банкет 15 / кофе-брейк 10 / chef-at-home 10 — см. B4/КР-4).
-       **[Волна 7, A6 (Артём, 500-люкс)] Алиас «Крупный банкет · Гала на 500+» на карточке Частное:** чтобы 500-гостевой
-       банкет верхнего тарифа имел свой «дом» — добавляем под заголовком видимый алиас-ярлык **«Крупный банкет · Гала на 500+»**
-       (рядом с «Семейный ужин»). Либо — отдельная карточка «Гала-банкет 500+» как 7-й вход `EventTypeSelector` (по решению
-       заказчика); пока — алиас на Частном + deep-link «Банкет на 500 (верхний тариф)» (A5). Сноба НЕТ, но масштаб заявлен.
-   - **БИНДИНГ (фиксируем):** каждая карточка → свой роут:
-    **Корпоратив→`/events/korporativ`** (первичный, `primary:true`) · Свадьба→`/events/svadba` · **Выпускной→`/events/vypusknoy`** ·
-    **Детский праздник→`/events/detskoe`** · Частное→`/events/chastnoe` · Chef-at-home→`/events/chef-at-home`.
-    НЕ общая страница (`16`#12: «конкретный путь, не одна кнопка BUY»).
-  - **МАППИНГ «Тип события → Сервис-формат → staffing» (биндинг к `SERVICE_DELIVERY_SPEC` §1, ОБЯЗАТЕЛЬНО для блока банкета/свадьбы):** разработчик карточки/страницы выводит норму персонала из спецы, НЕ догадывается:
-    | Карточка `EventTypeSelector` | Сервис-формат (§1) | Норма персонала |
-    |---|---|---|
-    | Корпоратив → `/events/korporativ` | Фуршет / Кофе-брейк | 1 : 15–20 (кофе-брейк 1:20) |
-    | Свадьба → `/events/svadba` | Банкет | 1 : 12–15 |
-    | Выпускной → `/events/vypusknoy` | Фуршет | 1 : 15–20 |
-    | Детский праздник → `/events/detskoe` | Детское | 1 : 10–12 |
-    | Частное → `/events/chastnoe` | Банкет / Chef-at-home | 1 : 12–15 (Chef-at-home 1:8–10) |
-    | Chef-at-home → `/events/chef-at-home` | Chef-at-home (персональный) | 1 : 8–10 |
-    На КАЖДОМ событии — **on-site координатор** (§4, ОБЯЗАТЕЛЬНО, flat-позиция, независимо от `staffCount`). Норма тянется в `calcTotal` (строка «Сервис-норма») и в `ResultDisplay`/`SummaryCard`.
-   - **[Волна 1, закрывает B-ANN-1]** карточка Свадьбы несёт `quickBook:true` → под CTA карточки добавляется
-     микро-кнопка **«Проверить дату и забронировать»** (→ AvailabilityCalendar `mode='book'`, предзаполненный `eventType='svadba'`).
-   - **Медиа-ассеты (`17` §2,#2):** `public/demo/events/{corporate,wedding,vypusknoy,child,detskoe,private,chef-at-home}.webp`
-     (тип кадра «Event Atmosphere»/«Buffet Spread» (свадьба≠корпоратив≠выпускной≠детский, `16`#19). 6 фото + опц. 5с loop на hover.
-   - **a11y:** карточка = `<a aria-label="Корпоратив — от 2 450 ₽ за гостя (Фуршет Эконом), подробнее">` /
-     `<a aria-label="Свадьба — от 4 470 ₽ за гостя (банкет), подробнее">` /
-     `<a aria-label="Выпускной — от 2 450 ₽ за гостя (Фуршет Эконом), подробнее">` /
-     `<a aria-label="Детский праздник — от 1 950 ₽ за гостя, подробнее">`; фото `alt="{type} — пример подачи"`;
-     мини-цифра цены — видимый текст (НЕ только на hover для скринридера; на hover добавляется visual-акцент,
-     но значение доступно всегда через `aria-label`). Первичная карточка Корпоратива несёт `aria-current="primary"`-подобный
-     бейдж (визуально золотая рамка `border-gold-text` #8A6D3B + «Для бизнеса»). `focus-visible` — `--color-ring` #8A6D3B.
-   - **Motion:** hover → Ken Burns scale 1→1.08 (6s) + появление мини-цифры (`16`#12) + `translateY(-6px)`.
-     `prefers-reduced-motion` → без zoom/translate, цена статично видна.
-   - **Responsive:** сетка **6→3→2→1**: desktop `repeat(6,1fr)`; tablet (768–1199) `repeat(3,1fr)`;
-     small-tablet `repeat(2,1fr)`; mobile (<768) 1–2 колонки (карточки во всю ширину, фото крупнее). Touch: tap открывает `/events/*`.
+**[Волна 3, закрывает V3 (Виктор, семейный ужин)] Подпись «Семейный ужин» на карточке `EventTypeSelector`:**
+карточка «Частное» получает уточняющую подпись под заголовком: **«Частное · Семейный ужин · юбилей · дома»** —
+чтобы пенсионер сразу понял маппинг «семейный ужин → Частное» без догадок. Альтернатива (отдельный пресет
+«Семейный ужин») НЕ вводится, чтобы не размывать 6 карточек; подпись закрывает баг V3 точечно.
+
+**[Волна 3, закрывает V4 (Виктор, простой путь)] Кнопка-эскейп «Позвоните — мы всё оформим»:** под сеткой
+карточек (ИЛИ в каждой карточке как вторичная CTA) для ВСЕХ типов событий рендерится крупная кнопка-эскейп
+**«Не хотите собирать сами? 📞 Позвоните — мы всё оформим»** → прямой звонок (`tel:`) / заявка без 6-шагового
+мастера (ведёт в `/contact` с предзаполненным `eventType`, либо сразу в WA/ТГ). По образцу ветки chef-at-home
+«Свяжитесь с менеджером» (блок 8, B-MUX-6): низкотехничный пользователь получает понятный путь «мы всё сделаем»
+рядом с самообслуживанием, не теряя навигацию. Кнопка крупная (≥44px), золотая/вторичная — `bg-primary` #B08D57 заливка + `text-primary-foreground` ink #1C1815 = 5.7:1 ✅ AA (outline-вариант — `border-gold-text` #8A6D3B), видима на desktop И mobile.
+**Детальная спец (закрывает `19`#4 + `16`#12):**
+
+- **Пропсы:** `<EventTypeSelector cards={[{type,title,photoSrc,priceFrom,guestsFrom,href,quickBook?,primary?}]} />`.
+- **Копирайт/данные (точно, порядок = приоритет):** Корпоратив (первичный) / Свадьба / Выпускной / Детский праздник / Частное / Chef-at-home.
+  Мини-цифра на hover (видимый текст, НЕ только hover для скринридера — см. a11y ниже):
+  - **Корпоратив → `от 2 450 ₽ / гость`** (Фуршет Эконом — честная база из `PRICE_PER_GUEST.furshet.economy` в `07`,
+    НЕ «от X» без тарифа). **[Волна 2, закрывает B-TAT-5]** первичный badge «Для бизнеса · Рассчитать 200 гостей →» ведёт
+    прямо в `/plan/calculator?event=korporativ&guests=200&format=furshet&tier=economy` (предзаполнение, без хопа через `/plan`).
+  - **Выпускной → `от 2 450 ₽ / гость`** (Фуршет Эконом — самый дешёвый полноценный формат для 50 чел; см. `07` §ECONOMY).
+    **[Волна 2, закрывает B-MAX-1]** явная карточка «Выпускной» → `/events/vypusknoy`, НЕ под «Частное».
+  - **Свадьба → `от 4 470 ₽ / гость`** (банкет, «Для свадеб» — честная база из `PRICE_PER_GUEST.banket.economy`
+    в `07`, НЕ фуршет-премиум 4 350). **[Волна 1, закрывает B-ANN-2]** пометка: «Банкет на свадьбу — от 4 470 ₽/гость (Стандарт ≈5 470)».
+  - **Детский праздник → `от 1 950 ₽ / гость`** 🟡 _pending-verification_ (детский прайс; см. `07` §CHILD_RATE, B-OLGA-5).
+  - Частное → `от 2 950 ₽ / гость` · **подпись «Семейный ужин · юбилей · дома · Крупный банкет · Гала на 500+»** (V3 + A6, см. ниже) · Chef-at-home → `от 4 500 ₽ / гость` 🟡 _(pending-verification — почасовая ветка: цена НЕ из PRICE_PER_GUEST, а из `hourlyRate` по `07` §Edge cases; 4 500 — ориентир, требует сверки с прайсом заказчика)_
+    (примеры-ориентиры; цены НЕ совпадают с прайсом на живом сайте NiloV — Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽,
+    Банкет/Свадьба от 4 470 ₽; сверить с актуальным прайсом заказчика перед продом) + `от 20 гостей` (для фуршета;
+    мин. по формату тянется из единого `MIN_GUESTS` в `07`: банкет 15 / кофе-брейк 10 / chef-at-home 10 — см. B4/КР-4).
+    **[Волна 7, A6 (Артём, 500-люкс)] Алиас «Крупный банкет · Гала на 500+» на карточке Частное:** чтобы 500-гостевой
+    банкет верхнего тарифа имел свой «дом» — добавляем под заголовком видимый алиас-ярлык **«Крупный банкет · Гала на 500+»**
+    (рядом с «Семейный ужин»). Либо — отдельная карточка «Гала-банкет 500+» как 7-й вход `EventTypeSelector` (по решению
+    заказчика); пока — алиас на Частном + deep-link «Банкет на 500 (верхний тариф)» (A5). Сноба НЕТ, но масштаб заявлен.
+- **БИНДИНГ (фиксируем):** каждая карточка → свой роут:
+  **Корпоратив→`/events/korporativ`** (первичный, `primary:true`) · Свадьба→`/events/svadba` · **Выпускной→`/events/vypusknoy`** ·
+  **Детский праздник→`/events/detskoe`** · Частное→`/events/chastnoe` · Chef-at-home→`/events/chef-at-home`.
+  НЕ общая страница (`16`#12: «конкретный путь, не одна кнопка BUY»).
+- **МАППИНГ «Тип события → Сервис-формат → staffing» (биндинг к `SERVICE_DELIVERY_SPEC` §1, ОБЯЗАТЕЛЬНО для блока банкета/свадьбы):** разработчик карточки/страницы выводит норму персонала из спецы, НЕ догадывается:
+  | Карточка `EventTypeSelector`                                                                                                                                                                    | Сервис-формат (§1)          | Норма персонала                 |
+  | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------------- |
+  | Корпоратив → `/events/korporativ`                                                                                                                                                               | Фуршет / Кофе-брейк         | 1 : 15–20 (кофе-брейк 1:20)     |
+  | Свадьба → `/events/svadba`                                                                                                                                                                      | Банкет                      | 1 : 12–15                       |
+  | Выпускной → `/events/vypusknoy`                                                                                                                                                                 | Фуршет                      | 1 : 15–20                       |
+  | Детский праздник → `/events/detskoe`                                                                                                                                                            | Детское                     | 1 : 10–12                       |
+  | Частное → `/events/chastnoe`                                                                                                                                                                    | Банкет / Chef-at-home       | 1 : 12–15 (Chef-at-home 1:8–10) |
+  | Chef-at-home → `/events/chef-at-home`                                                                                                                                                           | Chef-at-home (персональный) | 1 : 8–10                        |
+  | На КАЖДОМ событии — **on-site координатор** (§4, ОБЯЗАТЕЛЬНО, flat-позиция, независимо от `staffCount`). Норма тянется в `calcTotal` (строка «Сервис-норма») и в `ResultDisplay`/`SummaryCard`. |
+- **[Волна 1, закрывает B-ANN-1]** карточка Свадьбы несёт `quickBook:true` → под CTA карточки добавляется
+  микро-кнопка **«Проверить дату и забронировать»** (→ AvailabilityCalendar `mode='book'`, предзаполненный `eventType='svadba'`).
+- **Медиа-ассеты (`17` §2,#2):** `public/demo/events/{corporate,wedding,vypusknoy,child,detskoe,private,chef-at-home}.webp`
+  (тип кадра «Event Atmosphere»/«Buffet Spread» (свадьба≠корпоратив≠выпускной≠детский, `16`#19). 6 фото + опц. 5с loop на hover.
+- **a11y:** карточка = `<a aria-label="Корпоратив — от 2 450 ₽ за гостя (Фуршет Эконом), подробнее">` /
+  `<a aria-label="Свадьба — от 4 470 ₽ за гостя (банкет), подробнее">` /
+  `<a aria-label="Выпускной — от 2 450 ₽ за гостя (Фуршет Эконом), подробнее">` /
+  `<a aria-label="Детский праздник — от 1 950 ₽ за гостя, подробнее">`; фото `alt="{type} — пример подачи"`;
+  мини-цифра цены — видимый текст (НЕ только на hover для скринридера; на hover добавляется visual-акцент,
+  но значение доступно всегда через `aria-label`). Первичная карточка Корпоратива несёт `aria-current="primary"`-подобный
+  бейдж (визуально золотая рамка `border-gold-text` #8A6D3B + «Для бизнеса»). `focus-visible` — `--color-ring` #8A6D3B.
+- **Motion:** hover → Ken Burns scale 1→1.08 (6s) + появление мини-цифры (`16`#12) + `translateY(-6px)`.
+  `prefers-reduced-motion` → без zoom/translate, цена статично видна.
+- **Responsive:** сетка **6→3→2→1**: desktop `repeat(6,1fr)`; tablet (768–1199) `repeat(3,1fr)`;
+  small-tablet `repeat(2,1fr)`; mobile (<768) 1–2 колонки (карточки во всю ширину, фото крупнее). Touch: tap открывает `/events/*`.
 
 5. `FormatShowcase` — превью фуршет/банкет/кофе-брейк (photo-alive cards + цена/гость).
    **Детальная спец (закрывает `19`#5 + `16`#2):**
    - **Пропсы:** `<FormatShowcase formats={[{title,sub,priceFrom,badge,photoSrc,href}]} />`.
    - **photo-alive ЗАФИКСИРОВАН (см. `06` §motion + `01` §4 — ЕДИНЫЙ контракт для ВСЕХ карточек):** база = **Ken Burns** (CSS/Framer scale 1→1.08, 6s) на hover + лёгкий parallax (`ParallaxImage`); loop-видео НЕ используется как дефолт.
- **Опц. enhancement (явный exception, НЕ норма):** короткое **видео ПО КЛИКУ** для кураторской подборки «хитов» (≈20–30 блюд) — инициирует пользователь (DishCard). ФорматShowcase карточки используют ТОТ ЖЕ механизм (Ken Burns + опц. click-video), без разнобоя.
+     **Опц. enhancement (явный exception, НЕ норма):** короткое **видео ПО КЛИКУ** для кураторской подборки «хитов» (≈20–30 блюд) — инициирует пользователь (DishCard). ФорматShowcase карточки используют ТОТ ЖЕ механизм (Ken Burns + опц. click-video), без разнобоя.
    - **Копирайт/данные (цены — 🟡 `pending-verification`, НЕ «реальные из прайса»):** Фуршет `от 2 450 ₽/гость` (бейдж «Хит корпоративов»),
-     Банкет `от 4 470 ₽/гость` (бейдж «Для свадеб»), Кофе-брейк `от 390 ₽/гость` 🟡 *(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, pending-verification)* (бейдж «Офисы и конфы»). ⚠️ Цифры расходятся с живым сайтом NiloV (Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽, Банкет/Свадьба от 4 470 ₽) — сверить с актуальным прайсом заказчика перед продом (BUG-F2).
+     Банкет `от 4 470 ₽/гость` (бейдж «Для свадеб»), Кофе-брейк `от 390 ₽/гость` 🟡 _(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, pending-verification)_ (бейдж «Офисы и конфы»). ⚠️ Цифры расходятся с живым сайтом NiloV (Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽, Банкет/Свадьба от 4 470 ₽) — сверить с актуальным прайсом заказчика перед продом (BUG-F2).
      **[Волна 7, закрывает M7 (Марина, бюджетный)] БЕЙДЖ «МИНИМАЛЬНАЯ ЦЕНА / САМЫЙ БЮДЖЕТНЫЙ:** у дешёвых карточек —
-       Кофе-брейк (950) и Фуршет Эконом (2 450) — НЕ маркетинговый бейдж «Хит корпоративов», а явный ценовой якорь
-       **«💰 Самый бюджетный вход»** / **«Минимальная цена»**, чтобы клиент, сканирующий по цене, сразу видел дно.
+     Кофе-брейк (950) и Фуршет Эконом (2 450) — НЕ маркетинговый бейдж «Хит корпоративов», а явный ценовой якорь
+     **«💰 Самый бюджетный вход»** / **«Минимальная цена»**, чтобы клиент, сканирующий по цене, сразу видел дно.
      **[Волна 7, закрывает M3 (Марина)] ЕДИНАЯ ТАБЛИЦА СРАВНЕНИЯ «ФОРМАТ × ТАРИФ × ЦЕНА/ГОСТЬ»:** над/под карточками `FormatShowcase`
-       (и на `/menu`, и на `/plan` хабе) — компактная таблица одним взглядом, отсортированная по цене:
-       | Формат | Тариф | Цена/гость | Мин. гостей | Мин. заказ |
-       |---|---|---|---|---|
-       | Кофе-брейк | Эконом | от 390 ₽ 🟡 *(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, pending-verification)* | 10 | от 9 500 ₽ |
-       | Фуршет | Эконом | от 2 450 ₽ | 20 | от 49 000 ₽ |
-       | Банкет | Стандарт | от 4 470 ₽ | 15 | от 67 050 ₽ |
-       | Банкет | Максимальный | от 6 970 ₽ | 15 | от 104 550 ₽ |
-       Таблица берёт данные из единого `PRICE_PER_GUEST` (`07`) + `MIN_GUESTS` — НЕ размазана по карточкам и шагам.
-     **[Волна 7, закрывает M9 (Марина)] КОФЕ-БРЕЙК КАК «ДЕШЁВЫЙ ВХОД» ДЛЯ 10–19:** когда клиент с <20 гостями упирается
-       в `MIN_GUESTS` (фуршет недоступен) — вместо warning-тона показываем ПОЗИТИВ: «**Меньше 20 человек? Кофе-брейк Эконом
-       от 390 ₽ 🟡 (канон 950 — вторичное уточнение, требует сверки) — самое дешёвое решение**» (ссылка на кофе-брейк). Тон поддерживающий, не запрещающий.
-     Подзаголовки: «Лёгкие закуски на стоячем приёме» / «Посадка, официанты, классика» / «Перерывы на кофе и десерт · **идеально для делового завтрака**» (D1, алиас «Деловой завтрак = кофе-брейк»).
+     (и на `/menu`, и на `/plan` хабе) — компактная таблица одним взглядом, отсортированная по цене:
+     | Формат                                                                                                                                                                                           | Тариф        | Цена/гость                                                                                                               | Мин. гостей | Мин. заказ   |
+     | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------ | ----------- | ------------ |
+     | Кофе-брейк                                                                                                                                                                                       | Эконом       | от 390 ₽ 🟡 _(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, pending-verification)_ | 10          | от 9 500 ₽   |
+     | Фуршет                                                                                                                                                                                           | Эконом       | от 2 450 ₽                                                                                                               | 20          | от 49 000 ₽  |
+     | Банкет                                                                                                                                                                                           | Стандарт     | от 4 470 ₽                                                                                                               | 15          | от 67 050 ₽  |
+     | Банкет                                                                                                                                                                                           | Максимальный | от 6 970 ₽                                                                                                               | 15          | от 104 550 ₽ |
+     | Таблица берёт данные из единого `PRICE_PER_GUEST` (`07`) + `MIN_GUESTS` — НЕ размазана по карточкам и шагам.                                                                                     |
+     | **[Волна 7, закрывает M9 (Марина)] КОФЕ-БРЕЙК КАК «ДЕШЁВЫЙ ВХОД» ДЛЯ 10–19:** когда клиент с <20 гостями упирается                                                                               |
+     | в `MIN_GUESTS` (фуршет недоступен) — вместо warning-тона показываем ПОЗИТИВ: «**Меньше 20 человек? Кофе-брейк Эконом                                                                             |
+     | от 390 ₽ 🟡 (канон 950 — вторичное уточнение, требует сверки) — самое дешёвое решение**» (ссылка на кофе-брейк). Тон поддерживающий, не запрещающий.                                             |
+     | Подзаголовки: «Лёгкие закуски на стоячем приёме» / «Посадка, официанты, классика» / «Перерывы на кофе и десерт · **идеально для делового завтрака**» (D1, алиас «Деловой завтрак = кофе-брейк»). |
      > **[Волна 4, закрывает E5/E6 (Елена, B-E5/B-E6)]** (а) **Рекомендация ДО инструмента:** на `FormatShowcase` и `/events/korporativ` над карточками форматов — подсказка plain-языком: **«Для 120 гостей рекомендуем Банкет: посадка, официанты, классика — юбилей/корпоратив 120 человек идеально садится за стол»** (B-MUX-5 «50+ → Банкет» вынесен ИЗ конструктора наружу, до входа). (б) **Бейдж банкета контекстный:** карточка Банкета несёт бейдж **«Для посадки 50+ · юбилей / корпоратив»** (НЕ только «Для свадеб») — секретарь Елена узнаёт свой случай. Опц. второй бейдж «Для свадеб» сохраняется как вариант, НО первичный для 120 чел = «посадка 50+».
    - **Куда ведёт CTA:** `Смотреть меню →` → **`/menu/{format}`** (фуршет→`/menu/furshet`, банкет→`/menu/banquet`,
      кофе-брейк→`/menu/coffee-break`), НЕ конструктор (конструктор — отдельный CTA в CTASection). Зависимость закрыта.
@@ -733,7 +759,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      - «Фуршет на 50» — 1 строка сути: «50 канапе, 3 горячих станции, безалкогольный бар-меню.» (пример).
      - «Банкет под ключ» — «Посадка на 80, 5 перемен блюд, официанты, торт включён.» (пример).
      - (опц.) «Кофе-брейк для офиса» — «20 видов выпечки, 3 сорта кофе, раз в неделю.»
-     Каждое — ровно 1 строка сути (не таблица цен, `16`#13).
+       Каждое — ровно 1 строка сути (не таблица цен, `16`#13).
      - **[Волна 5–6, закрывает L3 (Лиза, B-LIZA-3)]** Добавить коллекцию **«Веган-линия»** (или общий вход «Диетические меню») рядом с форматными подборками:
        «🌱 Веган-линия — будда-боул с тофу, стейк из цветной капусты, шоколадный мусс (авокадо): 9+ блюд без мяса и молока». CTA «Смотреть веган-меню →» → **`/menu/vegan`** (пред-отфильтрованный `MenuCatalog` по `dietBadges:['vegan']`). Закрывает разрыв «Лиза не видит веган с порога» — теперь диет-линия заявлена на главной, симметрично `/menu/detskoe`.
    - **Куда ведёт CTA:** `Смотреть меню →` → **`/menu/{format}`** (фуршет→`/menu/furshet`, банкет→`/menu/banquet`,
@@ -761,6 +787,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 с `GalleryTeaser`/`TestimonialsCarousel`/`EventsRecap`.
 
 **Детальная спец (закрывает `27`#1, `27`#2, `27`#3, `27`#4):**
+
 - **Пропсы:** `<HomeVideoShowcase clips={[{video: VideoRef, posterSrc, eventType, title, durationSec}]} heading? variant: 'single'|'grid' />`.
   Клипы — выборка из `EventsRecap.clips` (БЛОК 27), таксономия по `eventType`: свадьба/корп/частное/
   chef-at-home. `variant:'single'` — один крупный клип (по умолч., LCP-лёгкий); `variant:'grid'` — 1–3 клипа.
@@ -801,11 +828,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - **Responsive:** desktop — 1 крупный клип во всю ширину (16:9) ИЛИ grid 3 кол.; tablet — 2 кол.;
   mobile — 1 колонка (клип на всю ширину, кнопка play/pause ≥44px). Горизонтального скролла нет.
 
-   **Детальная спец (закрывает `19`#7 + `16`#4, источник `11_GALLERY_TEASER_STORYBOARD.md`):**
-   - **Пропсы:** `<GalleryTeaser photos={[{src,eventType,guests,alt}]} ctaHref="/gallery" />`.
-   - **Parallax ЗАФИКСИРОВАН ТОЛЬКО на 1 hero-strip (InspireStrip / Hero bg) через Framer `useScroll`+`useTransform`** (НЕ per-image, НЕ per-row — это ломает CLS/LCP, см. `11:11`/`01:86`). GalleryTeaser/MenuPreview = ТОЛЬКО hover ken-burns + lazy, БЕЗ parallax-сдвига по рядам.
-     Амплитуда hero-strip ±30px, разные `data-speed` по рядам (`01` §4).
-   - **[Волна 3, закрывает K4 (Камила, фильтр по эстетике)] Фильтр «по настроению/эстетике»:** кроме существующего
+  **Детальная спец (закрывает `19`#7 + `16`#4, источник `11_GALLERY_TEASER_STORYBOARD.md`):**
+  - **Пропсы:** `<GalleryTeaser photos={[{src,eventType,guests,alt}]} ctaHref="/gallery" />`.
+  - **Parallax ЗАФИКСИРОВАН ТОЛЬКО на 1 hero-strip (InspireStrip / Hero bg) через Framer `useScroll`+`useTransform`** (НЕ per-image, НЕ per-row — это ломает CLS/LCP, см. `11:11`/`01:86`). GalleryTeaser/MenuPreview = ТОЛЬКО hover ken-burns + lazy, БЕЗ parallax-сдвига по рядам.
+    Амплитуда hero-strip ±30px, разные `data-speed` по рядам (`01` §4).
+  - **[Волна 3, закрывает K4 (Камила, фильтр по эстетике)] Фильтр «по настроению/эстетике»:** кроме существующего
     фильтра по типу события, добавляются чипы-теги **«яркое / камерное / ретро / минимализм / для сторис»** —
     блогер фильтрует галерею по визуальному настроению, а не только по типу (свадьба/корпоратив). Теги тянутся
     из CMS-поля `mood` каждого фото (`GalleryMasonry`/`GalleryTeaser` используют единую таксономию). Фильтр =
@@ -814,36 +841,36 @@ export function getEmbedUrl(ref: VideoRef): string | null {
     6–8 фото обязательно присутствуют **≥1–2 камерных кейса с подписью** — «Девичник · лофт · 18 гостей»,
     «День рождения · 25 гостей · загородный дом», чтобы блогер увидел «это про меня» (не только 120/300-гостевые).
     Камерные кейсы помечаются тегом `mood:'камерное'` + `eventType` для двойной фильтрации.
-     Капшены с типом события (НЕ декорация): «Свадьба · 120 гостей» / «Корпоратив · 300 гостей» / «Гала-ужин» /
-     «Юбилей» / «Выезд шефа» / «Банкет под ключ». Счёт **6–8** фото.
-   - **Медиа-ассеты (`17` §2,#3 + §6):** `public/demo/gallery/{wedding-120,corp-300,gala-dinner,jubilee,chef-away,banquet,...}.webp`
-     — сгруппированы ПО СОБЫТИЮ (тип «Event Atmosphere»), + опц. 2 видео **ПО КЛИКУ** (как DishCard, ТОТ ЖЕ контракт «живого фото»). Фото реальных площадок (Эрмитаж/Мариинский 🟡 — пример-площадки, не подтверждённые клиенты).
-   - **Perf:** **LCP<1.2s** — первые 2 фото eager+blur-up, остальные `loading="lazy"`; parallax НЕ бьёт LCP (Framer, не WebGL);
-     **CLS <0.1** (masonry через CSS `columns` с фикс. шириной колонок). INP<200ms (parallax = composited transform).
-   - **a11y:** каждое фото `<img alt="{eventType}, {guests} гостей — пример подачи">` (капшен = alt, НЕ дублируем).
-     Декоративный parallax `aria-hidden` (не несёт смысла). `prefers-reduced-motion` → parallax ВЫКЛЮЧЕН
-     (фото статичны, капшены видны всегда, не только hover). Gallery-секция — `aria-label="Галерея наших событий"`.
-   - **Responsive:** masonry **desktop 3 cols / tablet 2 cols / mobile 2 cols без parallax** (perf, `11`).
-     Горизонтального скролла нет; высоты варьируются (masonry). CTA «Смотреть всю галерею →» → `/gallery`.
+    Капшены с типом события (НЕ декорация): «Свадьба · 120 гостей» / «Корпоратив · 300 гостей» / «Гала-ужин» /
+    «Юбилей» / «Выезд шефа» / «Банкет под ключ». Счёт **6–8** фото.
+  - **Медиа-ассеты (`17` §2,#3 + §6):** `public/demo/gallery/{wedding-120,corp-300,gala-dinner,jubilee,chef-away,banquet,...}.webp`
+    — сгруппированы ПО СОБЫТИЮ (тип «Event Atmosphere»), + опц. 2 видео **ПО КЛИКУ** (как DishCard, ТОТ ЖЕ контракт «живого фото»). Фото реальных площадок (Эрмитаж/Мариинский 🟡 — пример-площадки, не подтверждённые клиенты).
+  - **Perf:** **LCP<1.2s** — первые 2 фото eager+blur-up, остальные `loading="lazy"`; parallax НЕ бьёт LCP (Framer, не WebGL);
+    **CLS <0.1** (masonry через CSS `columns` с фикс. шириной колонок). INP<200ms (parallax = composited transform).
+  - **a11y:** каждое фото `<img alt="{eventType}, {guests} гостей — пример подачи">` (капшен = alt, НЕ дублируем).
+    Декоративный parallax `aria-hidden` (не несёт смысла). `prefers-reduced-motion` → parallax ВЫКЛЮЧЕН
+    (фото статичны, капшены видны всегда, не только hover). Gallery-секция — `aria-label="Галерея наших событий"`.
+  - **Responsive:** masonry **desktop 3 cols / tablet 2 cols / mobile 2 cols без parallax** (perf, `11`).
+    Горизонтального скролла нет; высоты варьируются (masonry). CTA «Смотреть всю галерею →» → `/gallery`.
 
 7-bis. `EventsRecapHome` — **[Волна 3А, `17` §8 п.1]** короткая лента video-хайлайтов мероприятий заказчика
-   (reel-style 15–45с) СРАЗУ ПОСЛЕ `GalleryTeaser`. Это home-вариант нового блока `EventsRecap` (детальная
-   спец — БЛОК 27). Показывает 4–6 клипов «по типу события», CTA «Смотреть все рекапы →» → `/events/recap`.
-   Единая таксономия с `GalleryTeaser` (фото) и `TestimonialsCarousel` (видео-отзывы). Полные recap 2–3 мин —
-   в модалке/на `/events/recap`, НЕ в потоке главной (LCP). См. БЛОК 27 (`variant:'home-strip'`).
+(reel-style 15–45с) СРАЗУ ПОСЛЕ `GalleryTeaser`. Это home-вариант нового блока `EventsRecap` (детальная
+спец — БЛОК 27). Показывает 4–6 клипов «по типу события», CTA «Смотреть все рекапы →» → `/events/recap`.
+Единая таксономия с `GalleryTeaser` (фото) и `TestimonialsCarousel` (видео-отзывы). Полные recap 2–3 мин —
+в модалке/на `/events/recap`, НЕ в потоке главной (LCP). См. БЛОК 27 (`variant:'home-strip'`).
 
 8. `WhyUs` — более 19 лет 🟡 / 3 500+ событий 🟡 / су-вид 🟡 / фермеры ЛО 🟡 (цифры count-up, все НЕ-подтверждённые — с 🟡, не рендерить как факт).
    **Детальная спец (закрывает `19`#8 + `16`#14):**
    - **Пропсы:** `<WhyUs stats={[{value,label,suffix}]} founder={...} />`.
    - **СТОРИЯ бренда (дописываем, `16`#14):** «В 2007 году Дмитрий Нилов начал с банкета на 30 гостей в Петербурге.
      Сегодня — более 19 лет 🟡, 3 500+ событий 🟡, собственная су-вид лаборатория 🟡 и фермеры Ленинградской области 🟡 в основе меню.
-     **Мы не ресторан: мы привозим ресторан туда, где вы его не ждёте.** Большой опыт именно в обычных событиях — офисы, юбилеи, свадьбы.» (копирайт — 2–3 предложения, не «мы лучшие»). 🟡 *более 19 лет — подтвердить актуальное число у заказчика (на живом сайте NiloV — «более 19 лет (с 2007)»); су-вид помечен `pending-verification`.*
+     **Мы не ресторан: мы привозим ресторан туда, где вы его не ждёте.** Большой опыт именно в обычных событиях — офисы, юбилеи, свадьбы.» (копирайт — 2–3 предложения, не «мы лучшие»). 🟡 _более 19 лет — подтвердить актуальное число у заказчика (на живом сайте NiloV — «более 19 лет (с 2007)»); су-вид помечен `pending-verification`._
    - **Цифры count-up (spring, `AnimatedCounter`/`CountUp`, `01` §4):** `19` 🟡 (лет, с 2007) · `3 500+` 🟡 (событий) ·
-    `100%` (су-вид контроль, ⚠️ помечен `pending-verification`) · `40+` 🟡 (фермеров ЛО) — при scroll-in (`whileInView`, `viewport.once`).
+     `100%` (су-вид контроль, ⚠️ помечен `pending-verification`) · `40+` 🟡 (фермеров ЛО) — при scroll-in (`whileInView`, `viewport.once`).
    - **Как скринридер читает:** число = видимый текст, НЕ canvas. `aria-label` на счётчике = финальное значение
      (напр. «более 19 лет 🟡»), `aria-live="polite"` ОТКЛЮЧЁН во время анимации (иначе зачитает все промежуточные).
    - **Медиа-ассеты (`17` §2,#4 + §6):** `public/demo/founder/dmitry-nilov.webp` (живое фото основателя, НЕ сток),
-     + фото су-вид станции / фермеров ЛО (тип «Service in Action»/«Hero Plating»).
+     - фото су-вид станции / фермеров ЛО (тип «Service in Action»/«Hero Plating»).
    - **BEHIND-SCENES 60с (Волна 3А, `17` §8 п.4):** опц. вставка **behind-scenes ролика 60с** (сборка площадки /
      синхронная сервировка 200 блюд / шеф нарезает) из архива заказчика — соц-доказательство «мы всё делаем идеально»
      (brandtotable: «планировщик видит 60с видео команды → бронирует»). Проп `behindScenes?: VideoRef` (`provider:'rutube'|'selfhost'`, default=`rutube`).
@@ -857,8 +884,9 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      mobile — 1 колонка (статы по 2 в ряд, фото сверху, стория под ними).
 
 9. `TestimonialsCarousel` — реальные кейсы с именем + типом события.
+
    > **Сервис-блок (связь с `SERVICE_DELIVERY_SPEC`):** отзывы/видео-кейсы = социальное доказательство выполненного сервиса день-X (а НЕ операционный процесс). Сбор кейсов триггерится шагом 5 `ProcessSteps` (+24 ч пост-звонок координатора, §2/§4) — блок несёт `status:'verified'`-отзывы как подтверждение «контракта качества сайта».
-   **Детальная спец (закрывает `19`#9 + `16`#15):**
+   > **Детальная спец (закрывает `19`#9 + `16`#15):**
    - **Пропсы:** `<TestimonialsCarousel items={[{name,eventType,date,guests,menu,quote,photoSrc,href?}]} />`.
    - **VIDEO-VARIANT «Wall of Love» (Волна 3А, `17` §8 п.3):** доп. режим `variant:'video-wall'` — короткие
      **видео-слова гостей/организаторов** (10–30с, muted, из архива заказчика) ПОВЕРХ фона `Event Atmosphere`.
@@ -874,11 +902,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
      > для иллюстрации формата), помечены `status: 'pending-verification'`. **НЕ публиковать как реальные отзывы**
      > до замены на верифицированные из CMS-коллекции `Review` (исполнитель Б). Хардкод имён/компаний (Анна и Павел,
      > ООО «Северсталь-Логистика», Ирина) запрещён в проде — риск фейк-отзывов (КоАП 14.7 + репутация).
-     1. *Анна и Павел* — Свадьба, июнь 2026, 120 гостей, меню «Праздничное»: «Шеф был на площадке весь вечер,
+     1. _Анна и Павел_ — Свадьба, июнь 2026, 120 гостей, меню «Праздничное»: «Шеф был на площадке весь вечер,
         гости до сих пор спрашивают рецепт утиной грудки. Организация — будто мы ничего не делали сами.» (фото площадки). `pending-verification`
-     2. *ООО «Северсталь-Логистика»* — Корпоратив, март 2026, 300 гостей, меню «Банкет»: «Фуршет-линия на 300
+     2. _ООО «Северсталь-Логистика»_ — Корпоратив, март 2026, 300 гостей, меню «Банкет»: «Фуршет-линия на 300
         человек собрана за 40 минут. Дегустация за 2 недели до события сняла все вопросы.» (фото буфета). `pending-verification`
-     3. *Ирина* — Частный ужин (Chef-at-home), май 2026, 12 гостей, меню «Расширенное»: «Дмитрий сам приехал с
+     3. _Ирина_ — Частный ужин (Chef-at-home), май 2026, 12 гостей, меню «Расширенное»: «Дмитрий сам приехал с
         командой, оставил холодильник с завтраком. Как в ресторане, но дома.» (фото стола). `pending-verification`
    - **Источник данных (Волна 5А):** карусель рендерится из **CMS-коллекции `Review`** (модель `Review` выше, поле `approved: true`),
      НЕ из хардкода в компоненте. Демо-кейсы выше — только для визуальной сборки/статичного сторибука; в проде
@@ -925,49 +953,53 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 13. `FAQTeaser` — 3-4 частых вопроса (аккордеон) → `/faq`.
 
 > **ИТОГОВАЯ НУМЕРАЦИЯ «Секций главной» (сквозной счётчик карточек — единый источник для `04`#N-ссылок):**
-> | № | Блок | Назначение | Волна |
-> |---|------|-----------|-------|
-> | 1 | `HeroSection` | hero-loop + H1 + CTA | — |
-> | **1-bis** | **`InspireStrip`** | **«Вдохновись» — 3–4 живых кадра выше фолда (Волна 3, K1)** | **Волна 3 (K1)** |
-> | 2 | `TrustBar` | marquee логотипов клиентов | — |
-> | 3 | `AwardsStrip` → `TrustProof` | proof-ряд (объединён) | — |
-> | 4 | `EventTypeSelector` | 6 типов события (Корпоратив/Свадьба/Выпускной/Детский/Частное/Chef-at-home) → `/events/*` | — |
-> | 5 | `FormatShowcase` | фуршет/банкет/кофе-брейк | — |
-> | 6 | `MenuPreview` | подборки меню → `/menu/*` | — |
-> | **6-bis** | **`HomeVideoShowcase`** | **scroll-triggered видео мероприятий (НИЖЕ фолда)** | **Волна 4В (`27`)** |
-> | 7 | `GalleryTeaser` | masonry-галерея → `/gallery` | — |
-> | **7-bis** | **`EventsRecapHome`** | **лента video-рекапов (`EventsRecap` `home-strip`)** | **Волна 3А (`17` §8)** |
-> | 8 | `WhyUs` | более 19 лет 🟡 / 3 500+ 🟡 / су-вид 🟡 / фермеры 🟡 | — |
-> | 9 | `TestimonialsCarousel` | реальные кейсы + video-wall | — |
-> | 10 | `ProcessSteps` | 5 шагов заказа | — |
-> | 11 | `LiveVkFeed` | UGC «Жизнь NiloV» (VK @nilov_catering — ПЕРВИЧНЫЙ видимый эмбед в РФ; Instagram @nilov_catering — ВТОРИЧНАЯ ссылка, в РФ заблокирован) | — |
-> | 12 | `CTASection` | «Спланировать событие» + тел/WA/ТГ | — |
-> | 13 | `FAQTeaser` | аккордеон → `/faq` | — |
+>
+> | №         | Блок                         | Назначение                                                                                                                             | Волна                  |
+> | --------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+> | 1         | `HeroSection`                | hero-loop + H1 + CTA                                                                                                                   | —                      |
+> | **1-bis** | **`InspireStrip`**           | **«Вдохновись» — 3–4 живых кадра выше фолда (Волна 3, K1)**                                                                            | **Волна 3 (K1)**       |
+> | 2         | `TrustBar`                   | marquee логотипов клиентов                                                                                                             | —                      |
+> | 3         | `AwardsStrip` → `TrustProof` | proof-ряд (объединён)                                                                                                                  | —                      |
+> | 4         | `EventTypeSelector`          | 6 типов события (Корпоратив/Свадьба/Выпускной/Детский/Частное/Chef-at-home) → `/events/*`                                              | —                      |
+> | 5         | `FormatShowcase`             | фуршет/банкет/кофе-брейк                                                                                                               | —                      |
+> | 6         | `MenuPreview`                | подборки меню → `/menu/*`                                                                                                              | —                      |
+> | **6-bis** | **`HomeVideoShowcase`**      | **scroll-triggered видео мероприятий (НИЖЕ фолда)**                                                                                    | **Волна 4В (`27`)**    |
+> | 7         | `GalleryTeaser`              | masonry-галерея → `/gallery`                                                                                                           | —                      |
+> | **7-bis** | **`EventsRecapHome`**        | **лента video-рекапов (`EventsRecap` `home-strip`)**                                                                                   | **Волна 3А (`17` §8)** |
+> | 8         | `WhyUs`                      | более 19 лет 🟡 / 3 500+ 🟡 / су-вид 🟡 / фермеры 🟡                                                                                   | —                      |
+> | 9         | `TestimonialsCarousel`       | реальные кейсы + video-wall                                                                                                            | —                      |
+> | 10        | `ProcessSteps`               | 5 шагов заказа                                                                                                                         | —                      |
+> | 11        | `LiveVkFeed`                 | UGC «Жизнь NiloV» (VK @nilov_catering — ПЕРВИЧНЫЙ видимый эмбед в РФ; Instagram @nilov_catering — ВТОРИЧНАЯ ссылка, в РФ заблокирован) | —                      |
+> | 12        | `CTASection`                 | «Спланировать событие» + тел/WA/ТГ                                                                                                     | —                      |
+> | 13        | `FAQTeaser`                  | аккордеон → `/faq`                                                                                                                     | —                      |
 >
 > `HomeVideoShowcase` и `EventsRecapHome` — «вставные» бис-блоки; на детальные БЛОК-спеки они НЕ претендуют
 > (их данные/поведение описаны в `27` / БЛОК 27). Блоки 1–5,7–13 = старая нумерация из предыдущих волн (не сдвигалась).
 
 > **🔗 СВЯЗЬ С ОПЕРАЦИОННОЙ СПЕКОЙ СЕРВИСА (P0-7, `SERVICE_DELIVERY_SPEC.md`):** блоки сервиса/банкета/свадьбы/доставки ОБЯЗАНЫ реализовать мандаты этой спецы (иначе «элитный сервис» только описан, но не простроен). Биндинг блок → раздел спецы:
-> | Блок `04` | Обязательство из `SERVICE_DELIVERY_SPEC` |
-> |---|---|
-> | `EventTypeSelector` / `FormatShowcase` | §1 норма персонала (1:15–20) + §4 on-site координатор → маппинг «тип события → формат → staffing» (см. ниже) |
-> | `Calculator` / `Constructor` (`calcTotal`) | §1/§2/§4 — строка сметы «сервис-норма» (персонал 1:15-20 + координатор + сетап 4ч/страйк 3ч) |
-> | `DeliveryZonesMap` (БЛОК 21) | §3 холодовая цепь (рефрижераторы, логгеры ≤+6 °C, разделение аллергенов) |
-> | `AvailabilityCalendar` | §6 SLA ответа ≤2 ч + подтверждение брони по O3 (поля `slaResponseHours`/`slaBookingConfirm`) |
-> | `ProcessSteps` / `TestimonialsCarousel` (БЛОК 9) | §2 +24 ч пост-звонок координатора (follow-up) |
-> Чек-лист приёмки (`41_BUILD_CHECKLIST`) дублирует §8 этой спецы как раздел «Service acceptance (SERVICE_DELIVERY_SPEC)».
+>
+> | Блок `04`                                                                                                                | Обязательство из `SERVICE_DELIVERY_SPEC`                                                                     |
+> | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+> | `EventTypeSelector` / `FormatShowcase`                                                                                   | §1 норма персонала (1:15–20) + §4 on-site координатор → маппинг «тип события → формат → staffing» (см. ниже) |
+> | `Calculator` / `Constructor` (`calcTotal`)                                                                               | §1/§2/§4 — строка сметы «сервис-норма» (персонал 1:15-20 + координатор + сетап 4ч/страйк 3ч)                 |
+> | `DeliveryZonesMap` (БЛОК 21)                                                                                             | §3 холодовая цепь (рефрижераторы, логгеры ≤+6 °C, разделение аллергенов)                                     |
+> | `AvailabilityCalendar`                                                                                                   | §6 SLA ответа ≤2 ч + подтверждение брони по O3 (поля `slaResponseHours`/`slaBookingConfirm`)                 |
+> | `ProcessSteps` / `TestimonialsCarousel` (БЛОК 9)                                                                         | §2 +24 ч пост-звонок координатора (follow-up)                                                                |
+> | Чек-лист приёмки (`41_BUILD_CHECKLIST`) дублирует §8 этой спецы как раздел «Service acceptance (SERVICE_DELIVERY_SPEC)». |
 
 ## Специфичные блоки (другие страницы)
 
 > ## ▶ ВОЛНА 5–6 — Лиза (веган/диет-линии) · Али (халяль) · Григорий (новичок, wizard/глоссарий)
+>
 > **Цель:** поднять баллы симуляций Лизы (4.25) / Али (4.25) / Григория (4.75) до ≥9.
 > **Источники багов:** `33_UXSIM_LIZA`, `33_UXSIM_ALI`, `33_UXSIM_GRIGORY`; контракты диет-линий — `23_MENU_STRATEGY` §3 / §3.1 (B4), `35_HANDOFF`.
 > **Принцип:** диет-линии = пред-отфильтрованный `MenuCatalog` по `dietBadges`, симметрично уже существующему `/menu/detskoe` (Волна 1, B-OLGA-2). НЕ дублируем сделанное волнами 1–4.
 
-### БЛОК 15.5 — MenuLanding  *(хаб `/menu` — форматы + диет-линии)*  ← [Волна 5–6, закрывает L2 / A1 / G6]
+### БЛОК 15.5 — MenuLanding _(хаб `/menu` — форматы + диет-линии)_ ← [Волна 5–6, закрывает L2 / A1 / G6]
 
 **Назначение:** страница `/menu` — единая точка входа в меню. Закрывает несимметричность
 с `/menu/detskoe`: форматы И диет-линии получают равноправные видимые входы на ленде.
+
 - **Сетка 1 — Форматы:** `Фуршет` / `Банкет` / `Кофе-брейк` / `Детское` → `/menu/{format}` (синхрон с `FormatShowcase`/`MenuPreview`). Доп. вход: **`Бар / Миксология 🍸` → `/menu/bar`** (бармен-шоу + mixology upsell; блок `BarMixology`, см. `ADDONS` — бар есть в доп. опциях). Закрывает осиротевший роут `/menu/bar` (B7, GapHunter G6): страница достижима из `/menu` и mega-menu «Меню»/«Ещё».
 - **Сетка 2 — Диет-линии (НОВОЕ, L2):** горизонтальные чипы/карточки **рядом с форматами**, симметрично детскому:
   `Веган 🌱` → `/menu/vegan` · `Безглютен 🌾` → `/menu/gluten-free` · `Халяль 🕌` → `/menu/halal` · `Детское 🧒` → `/menu/detskoe`.
@@ -979,9 +1011,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - **a11y:** чипы — `<a aria-label="Диет-линия: Веган, смотреть меню">`; контраст AA; `prefers-reduced-motion` без анимации.
 - **Responsive:** desktop — 2 ряда по 4; mobile — scroll-snap чипы (как `MenuCatalog`).
 
-### БЛОК 15.6 — DietLinePage  *(пред-отфильтрованный каталог диет-линии)*  ← [Волна 5–6, закрывает L1 / A2-блок / A6]
+### БЛОК 15.6 — DietLinePage _(пред-отфильтрованный каталог диет-линии)_ ← [Волна 5–6, закрывает L1 / A2-блок / A6]
+
 **Назначение:** роуты `/menu/vegan` · `/menu/gluten-free` · `/menu/halal` (паттерн `/menu/detskoe`).
 Каждый = `MenuCatalog` с **SSR-предустановленным фильтром** `dietBadges` (vegan / gluten-free / halal) + честным баннером статуса.
+
 - **Счётные линии (из `23` §3):** веган ≥9 · БГ ≥11 · халяль ≥6 блюд (`23` §3.1 статус). Пустой результат → `Empty-state` «по фильтру ничего нет» + «Показать все».
 - **Честный баннер статуса (A6, критично для халяля):** при `diet=halal` и `halalStatus:'on-request'`
   вверху подборки рендерится **предупреждение-баннер**:
@@ -993,9 +1027,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - **Пропсы:** `diet: 'vegan'|'gluten-free'|'halal'`, `dishes: Dish[]` (из `MenuCatalog`), `showHalalBanner: boolean`.
 - **a11y / Perf / Responsive:** наследует `MenuCatalog` (БЛОК 16); баннер — `<section role="alert" aria-live="polite">`.
 
-### БЛОК 15.7 — FormatHelp  *(глоссарий форматов, `/help/formats`)*  ← [Волна 5–6, закрывает G2]
+### БЛОК 15.7 — FormatHelp _(глоссарий форматов, `/help/formats`)_ ← [Волна 5–6, закрывает G2]
+
 **Назначение:** отдельная страница-справочник «Какой формат мне подходит» — понятным языком,
 без жаргона в заголовках. Достижима из футера (колонка «Помощь») и по «?» с `FormatShowcase`/`FormatSelector`.
+
 - **Состав:** карточка на каждый формат с human-описанием (жаргон — вторичной подсказкой):
   `Фуршет` — «гости едят стоя, лёгкие закуски, можно свободно ходить» · `Банкет` — «посадка за стол, официанты, классика» ·
   `Кофе-брейк` — «кофе + десерт в перерыве (идеально для делового завтрака)» · `Мобильный фуршет` · `Chef-at-home` · `Детское`.
@@ -1005,9 +1041,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - **Пропсы:** `formats: {title,plainDesc,glossaryTerm?,whenPick,guestsFrom}[]`.
 - **a11y / Perf / Responsive:** `<article>` с `<h2>`; контраст AA; desktop grid 2–3, mobile 1.
 
-### БЛОК 15.8 — HelpersWizard  *(«подберём за 3 вопроса», `/plan/helper`)*  ← [Волна 5–6, закрывает G1 / G5 / G7]
+### БЛОК 15.8 — HelpersWizard _(«подберём за 3 вопроса», `/plan/helper`)_ ← [Волна 5–6, закрывает G1 / G5 / G7]
+
 **Назначение:** единая plain-language точка входа для новичка. Заменяет FAB `Консьерж` (G5)
-на реальный помощник БЕЗ требования знания формата до рекомендации. *Внутренняя спека: **AI-слой — в резерве, модель не подключена**; публичное имя — «Помощник»/«Консьерж» (детерминированный wizard, НЕ «AI»).*
+на реальный помощник БЕЗ требования знания формата до рекомендации. _Внутренняя спека: **AI-слой — в резерве, модель не подключена**; публичное имя — «Помощник»/«Консьерж» (детерминированный wizard, НЕ «AI»)._
+
 - **Публичная оговорка прозрачности (ВИДИМЫЙ микрокопирайт, НЕ только внутренняя пометка):** под кнопкой запуска wizard и на шаге результата — «Подбор по 3 вопросам работает по понятным правилам — **без ИИ**. Это помощник по правилам, не искусственный интеллект.» (закрывает BUG 8 прозрачности; честно сообщает клиенту, что механизм — rule-based).
 - **Триггеры (ГДЕ виден):** (а) кнопка «Я не знаю, что нужно — помогите →» на Hero (G7);
   (б) кнопка/виджет на `/plan` хабе («Не знаете, что выбрать? Подберём за 3 вопроса»);
@@ -1017,8 +1055,8 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   2. **Сколько гостей?** — ползунок/быстрые кнопки (10 / 20 / 50 / 100 / 200).
   3. **Сидеть или стоять?** — «за столом» / «стоя, свободно ходить» / «не знаю — подберите».
   4. **Бюджет?** — «экономно» / «средне» / «не знаю».
-  → **рекомендация формата БЕЗ жаргона:** показываем понятное описание («гости едят стоя, лёгкие закуски»),
-  жаргон-термин («Фуршет») — вторичной подсказкой. Связь с `MIN_GUESTS` + size-правилом (`08` B-MUX-5): 10–19→кофе-брейк/частное, 20–49→фуршет, 50+→банкет.
+     → **рекомендация формата БЕЗ жаргона:** показываем понятное описание («гости едят стоя, лёгкие закуски»),
+     жаргон-термин («Фуршет») — вторичной подсказкой. Связь с `MIN_GUESTS` + size-правилом (`08` B-MUX-5): 10–19→кофе-брейк/частное, 20–49→фуршет, 50+→банкет.
 - **Результат:** кнопка «Собрать такое меню →» ведёт в `/plan/constructor` с пред-заполненным `format`+`guestCount`
   (пропуск шага 1, как D8); либо «Рассчитать цену →» `/plan/calculator?format=…&guests=…`.
 - **a11y:** wizard — `<form>` с `<fieldset>`/`<legend>` на каждый шаг; `aria-live` на результате; focus-visible; клавиатура.
@@ -1052,10 +1090,10 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Фильтр по диете (B-MUX-4/П3):** чипы `vegan`/`gluten-free`/`halal` + 14 аллергенов ТР ТС 021/2011 (синхрон с `07` `AllergenFilter`)
   — автоскрытие блюд без бейджа/с аллергеном. Каталог группируется по **станциям** (холодные/горячее/десерты/напитки/шоу-станции)
   для режима «линии» конструктора (B-MUX-3/П1, `08`). **[Волна 1, закрывает B-OLGA-2] Категория «Детское»:** чип-фильтр `child`
-  + отдельный `/menu/detskoe` (бутерброды, капкейки, соки, порционные блюда, угощения для детей). Категория видна в каталоге и в `MenuPreview`.
+  - отдельный `/menu/detskoe` (бутерброды, капкейки, соки, порционные блюда, угощения для детей). Категория видна в каталоге и в `MenuPreview`.
   > **[Волна 4, закрывает S2 (Света, B-SVETA-2)]** На `/menu/detskoe` поверх детского каталога — **явный чип-фильтр «🚫 Без глютена» (и «Без аллергенов»)** прямо на странице (НЕ заставлять уходить в `/menu/catalog` и комбинировать `детское`+`gluten-free`). Один тап = отфильтрованное детское меню БЕЗ глютена. Чип крупный (≥44px, тач-цель для однорукого режима с коляской), `aria-pressed`, SSR-состояние `?child=1&gluten-free=1` (как `MenuCatalog`/`ReviewList`). Быстрый **пресет-кнопка «Детское меню БЕЗ глютена →»** ведёт сразу на `/menu/detskoe?gluten-free=1`.
-  **[Волна 1, закрывает B-OLGA-4] Родительский язык:** у детских позиций подпись plain-языком — «угощения для детей», «порционно, удобно детям»,
-  «без острых специй». **[CMS]** Данные каталога — из CMS-коллекции `Dish` + `SeasonalConfig` (B-CMS-3,7), НЕ хардкод `catalog.json`.
+  > **[Волна 1, закрывает B-OLGA-4] Родительский язык:** у детских позиций подпись plain-языком — «угощения для детей», «порционно, удобно детям»,
+  > «без острых специй». **[CMS]** Данные каталога — из CMS-коллекции `Dish` + `SeasonalConfig` (B-CMS-3,7), НЕ хардкод `catalog.json`.
 - `DishCard` — фото + название + цена + аллергены (14) + hover zoom (photo-alive). **[CMS]** Все поля блюда — из CMS-коллекции `Dish` (B-CMS-3), НЕ хардкод `catalog.json`. **[Поля данных]** `dietBadges: ('vegan'|'gluten-free'|'halal')[]` (прокинул исполнитель меню, B-MUX-4/П3 — бейджи ВИДИМЫ на карточке, не только 14 аллергенов), `station` (для «линии», B-MUX-3), `servingsPerGuest` (порций на гостя по умолч., B-MUX-3), **`childFriendly: boolean`** (детское блюдо — бейдж «Детям 🧒», фильтр каталога `child`; см. B-OLGA-2), `parentLabel?: string` (родительский plain-язык, напр. «угощения для детей», см. B-OLGA-4).
   **[benchmark: pxlpeak 2026 «Motion-Driven Menus»]** на hover → **ingredient storytelling**: мини-видео приготовления (5с) + origin («фермеры ЛО») + КБЖУ. Не просто Ken Burns — контекст блюда.
   **[B-MUX-7, loop-видео хитов]** кураторская подборка «хитов» (≈20–30 блюд) несёт **видео ПО КЛИКУ** (<2MB loop, desktop, инициирует пользователь — НЕ autoplay) по единому контракту «живого фото» (`06` §motion). Кен Бёрнс — база, loop-видео — enhancement для хитов. Карточка помечается «видео».
@@ -1070,7 +1108,8 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - `EventsRecap` — **(Волна 3А)** архив video-рекапов с мероприятий заказчика (лента reel-хайлайтов 15–45с + модалка полного recap 2–3 мин), фильтр по типу события/площадке/дате, страница `/events/recap` + `home-strip`-вариант на главной. Источник — Rutube / self-host (эмбед, Vimeo ЗАПРЕЩЁН бюджетным стеком). **[CMS]** Клипы — из CMS-коллекции `VideoClip` (B-CMS-4), НЕ ручной массив `clips`; заказчик вставляет URL, парсер режет id. Детальная спец — БЛОК 27 (`17` §8 п.1).
 - `Calculator` — шаги: формат → гости (ползунок) → пакет → опции → итог (count-up) → PDF-КП.
 - `Constructor` — мастер 6 шагов (тип/гости/база/замены/аллергены/контакты). Детально: `08_CONSTRUCTOR_SPEC.md`. Ниже — закрытые баги критика (границы гостей + формула цены + **live-итог на каждом шаге (B-MUX-1/П5)** + **подсказка формата по размеру (B-MUX-5/П2)** + **build-your-own порционно на гостя (B-MUX-3/П1)** + **диет-бейджи/per-dish exclude (B-MUX-4/П3)** + **сигнатурный жест (B-MUX-2/П6)** + **upgrade-подсказки (B-MUX-8/П4)** + **Chef-at-home НЕ тупик (B-MUX-6)**).
-  > **[Волна 4, закрывает S6 (Света, B-SVETA-6)]** Детский пресет конструктора (`format='detskoe'`, фильтрует на `childFriendly`) расширяется **опц. шагом/чекбоксом «У ребёнка аллергия: ___»** (глютен / молоко / орехи / … из 14). При выборе — авто-фильтр детского меню по `gluten-free`/`allergens` + **авто per-dish exclude** выбранного аллергена (как в шаге 3, B-MUX-4), чтобы Свете НЕ ковырять исключения вручную. Чекбокс крупный (≥44px, тач одной рукой). Синхрон с `08_CONSTRUCTOR_SPEC` §«Детский пресет + аллергия».
+
+  > **[Волна 4, закрывает S6 (Света, B-SVETA-6)]** Детский пресет конструктора (`format='detskoe'`, фильтрует на `childFriendly`) расширяется **опц. шагом/чекбоксом «У ребёнка аллергия: \___»** (глютен / молоко / орехи / … из 14). При выборе — авто-фильтр детского меню по `gluten-free`/`allergens` + **авто per-dish exclude** выбранного аллергена (как в шаге 3, B-MUX-4), чтобы Свете НЕ ковырять исключения вручную. Чекбокс крупный (≥44px, тач одной рукой). Синхрон с `08_CONSTRUCTOR_SPEC` §«Детский пресет + аллергия».
 
   **Пропсы `ConstructorApp`:** `initialStep?`, `initialFormat?`, `variant: 'page'|'embedded'`, `onComplete: (lead)=>void`. Внутри: `StepProgress` (+ `LiveSummaryBar` — running-итог `liveSummary` через `calcTotal`, B-MUX-1), `FormatSelector`, `GuestsSlider` (live-итог + подсветка формата по размеру, B-MUX-5), `TierSelector`, `CustomMenuBuilder` (линия по станциям + per-guest steppers «покрыто N/M» + per-dish исключение аллергена + loop-видео хитов, B-MUX-3/4/7), `AddOnsSelector` (upgrade-подсказки из единого `ADDONS`, B-MUX-8), `SummaryCard`, `ContactForm`, `MenuWowGesture` (сигнатурный жест, B-MUX-2/П6).
 
@@ -1080,12 +1119,12 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   - `guests < 10` → warning «Мин. 10 чел». `date < 3 дней` → «Минимальный срок 3 дня». Декабрь/свадьба → info «Даты заполняются быстро».
   - ⚠️ Синхронизация: `08_CONSTRUCTOR_SPEC` §State `guestCount: 10–2000` и edge `>2000` СЧИТАТЬ устаревшими — истина здесь: **10–500 + ветка >500**.
 
-  **Формула custom-цены (явная, не «магическая»):** 
+  **Формула custom-цены (явная, не «магическая»):**
   - `pricePerGuest` (канон = `NILOV_UNIFIED_MENU.md`, ₽/гость; **ЕДИНАЯ 4-ступенчатая модель тарифов для ВСЕХ форматов — внутренний `tier: 'economy'|'standard'|'premium'|'luxury'`; ПУБЛИЧНЫЕ лейблы карточек: «Эконом / Стандарт / Расширенный / Максимальный» (T3/29_TRUST_SEG — «Люкс» НЕ заголовок, только внутренний верхний пресет `luxury`, не якорит воронку на «элитность»); старые лейблы «Классик/VIP/Лёгкий» выведены из обращения, см. C3/C13):
     - Фуршет — economy 2 450 · standard 3 450 · premium 4 350 · luxury 5 350.
     - Банкет — economy 4 470 · standard 5 470 · premium 5 970 · luxury 6 970.
-    - Кофе-брейк — economy 390 🟡 · standard 1 450 · premium 1 950 · luxury 2 450. *(economy 390 ₽ — ведущий якорь с живого сайта NiloV; канон 950 — вторичное уточнение, pending-verification)*
-  - **Единая матфункция:** калькулятор (`07`) И конструктор (`08`) ОБЯЗАНЫ вызывать одну и ту же `calcTotal(guests, format, tier, addons, opts)` (тело — в `07`, секция «Единая матфункция `calcTotal`»). Две разные формулы цены запрещены. ⚠️ *Цены по тарифам — 🟡 `pending-verification`: расходятся с живым сайтом NiloV (Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽, Банкет/Свадьба от 4 470 ₽); сверить с актуальным прайсом заказчика перед продом.*
+    - Кофе-брейк — economy 390 🟡 · standard 1 450 · premium 1 950 · luxury 2 450. _(economy 390 ₽ — ведущий якорь с живого сайта NiloV; канон 950 — вторичное уточнение, pending-verification)_
+  - **Единая матфункция:** калькулятор (`07`) И конструктор (`08`) ОБЯЗАНЫ вызывать одну и ту же `calcTotal(guests, format, tier, addons, opts)` (тело — в `07`, секция «Единая матфункция `calcTotal`»). Две разные формулы цены запрещены. ⚠️ _Цены по тарифам — 🟡 `pending-verification`: расходятся с живым сайтом NiloV (Фуршет+Кофе-брейк от 390 ₽, Корпоратив от 2 450 ₽, Банкет/Свадьба от 4 470 ₽); сверить с актуальным прайсом заказчика перед продом._
   - Preset: `total = calcTotal(guests, format, tier, [], {discounts:true})`.
   - Custom: `total = calcTotal(guests, format, 'custom', [], {items, discounts:true})`, где `base = Σ(item.pricePerGuest * qty * guests)` — **`qty` обязательный множитель порций на гостя (совпадает с `08`, см. B7/КР-5)** — при соблюдении **минимума позиций по формату**: фуршет ≥8 (4 холодн.+2 горяч.+2 десерт), банкет ≥6 (закуска+суп+2 горячих+гарнир+десерт), кофе-брейк ≥5 (выпечка+напитки+сэндвичи+фрукты+кофе-станция), mobile-furshet ≥6.
   - **Строка сметы «Сервис-норма» (ОБЯЗАТЕЛЬНА, биндинг к `SERVICE_DELIVERY_SPEC` §1/§2/§4 — НЕ скрытая, НЕ «бесплатно-по-умолчанию»):** `calcTotal` добавляет line-item `service = staffCost + coordinatorCost + setupCost`, где:
@@ -1104,6 +1143,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **a11y:** `StepProgress` = `<ol>` с `aria-current="step"`; каждое поле со своим `<label>`; ошибки через `aria-describedby` + `role="alert"`; drag-drop в custom-режиме дублируется stepper `+ / −` и `Add`-кнопкой (тач/a11y fallback); focus-visible, keyboard-nav (WCAG 2.2 AA).
 
   **Responsive:** desktop — 2 колонки (каталог + sticky `SummaryCard` справа); tablet/mobile — 1 колонка, `SummaryCard` склеивается в нижнюю sticky-панель (паттерн `StickyMobileCTA`); drag-drop заменяется на stepper.
+
 - `ReviewCard` / `ReviewList` — отзыв + кейс. Структура кейса и фильтр зафиксированы ниже (баг 22 закрыт).
 - `DeliveryZonesMap` — **(Волна 2А)** зоны доставки + карта. КАД включён (0 ₽), надбавки вне КАД (таблица зон/районов ЛО). Блок `CertBlock` и `TrustProof` ссылаются на «КАД включена». Детальная спец — БЛОК 21.
 - `CertBlock` — **(Волна 2А)** сертификаты и безопасность (152-ФЗ, ТР ТС 021/2011, Декларация соответствия, Роспотребнадзор, аккредитация кухни). Закрывает битую футер-ссылку `/certificates` (баг C). Детальная спец — БЛОК 22.
@@ -1113,33 +1153,36 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 - `NotFoundPage` — **(Волна 2А)** кастомная `/404` (not-found) + глобальный `notFound()`. Детальная спец — БЛОК 26.
 
   **Модель данных:**
+
   ```ts
   interface Review {
     id: string;
     clientName: string;
-    clientPhoto?: string;      // фото клиента (опц.)
-    venue?: string;            // площадка
-    venuePhoto?: string;       // фото площадки
-    eventType: 'wedding'|'corporate'|'private'|'chef-at-home';
-    date: string;              // ISO
+    clientPhoto?: string; // фото клиента (опц.)
+    venue?: string; // площадка
+    venuePhoto?: string; // фото площадки
+    eventType: "wedding" | "corporate" | "private" | "chef-at-home";
+    date: string; // ISO
     guests: number;
-    tier: 'economy'|'standard'|'premium'|'luxury';
-    quote: string;             // РОВНО 1 ёмкое предложение
-    rating?: number;           // только если реально измерено
-    approved: boolean;         // модерация перед публикацией (RT-2, B-CMS-5)
-    source?: 'site'|'yandex'|'2gis'|'google'; // откуда пришёл (RT-3)
+    tier: "economy" | "standard" | "premium" | "luxury";
+    quote: string; // РОВНО 1 ёмкое предложение
+    rating?: number; // только если реально измерено
+    approved: boolean; // модерация перед публикацией (RT-2, B-CMS-5)
+    source?: "site" | "yandex" | "2gis" | "google"; // откуда пришёл (RT-3)
     reply?: { author: string; text: string; date: string }; // ответ компании (RT-7)
-    demo?: boolean;            // RT-9: сфабрикованный кейс, НЕ публиковать до верификации
+    demo?: boolean; // RT-9: сфабрикованный кейс, НЕ публиковать до верификации
   }
   ```
 
   **Структура карточки (`ReviewCard` пропсы):** `review: Review`, `variant: 'grid'|'featured'`.
   Состав: фото (клиент ИЛИ площадка) → имя → тип события (бейдж) → дата → меню (tier) → 1 предложение `<blockquote>`. Никаких «★★★★★ супер».
+
   > **[Волна 4, закрывает R1 (Роман, B-R1) — provenance на карточке]** `ReviewCard` ОБЯЗАН рендерить поле `source` (`'site'|'yandex'|'2gis'|'google'`), которое ранее игнорировалось: под именем/датой — **бейдж-источник** (иконка Яндекс / 2ГИС / Google / «Сайт NiloV» + понятный текст «Отзыв с Яндекс.Карт») + **кликабельная ссылка «Проверить отзыв →»** на внешний профиль клиента (`yandexProfileUrl`/`twoGisProfileUrl`/`googleProfileUrl` из `БЛОК 24`, `target=_blank rel=noopener`). Скептик Роман видит: самописный отзыв или независимая площадка, и может проверить за 1 тап. Для `source:'site'` бейдж = «Отзыв на сайте NiloV» (без внеш. ссылки, честно). `aria-label` на ссылке понятный («Проверить отзыв {clientName} на Яндекс.Картах»).
   > **[Волна 4, закрывает R6 (Роман, B-R6) — «Ответ NiloV»]** Если у `Review` заполнено поле `reply` (RT-7, ответ компании) — под цитатой рендерится блок **«💬 Ответ NiloV Catering»**: `reply.text` + (`reply.author`, `reply.date`). Блок выделен визуально (отступ/рамка/золотой акцент — `border-l-2 border-gold-text` #8A6D3B, 4.537:1 на ivory ≥3:1 по 1.4.11; НЕ `--color-gold` #B08D57 = 2.893:1 FAIL) — это сильный сигнал реальности для скептика. Если `reply` пуст — блок НЕ рендерится (не пустышка).
 
   **`ReviewList` пропсы:** `reviews: Review[]`, `eventTypeFilter?: EventType`, `layout: 'grid'|'carousel'`.
   **Фильтр по типу на `/reviews`:** чипы `[Все][Свадьба][Корпоратив][Частное][Chef-at-home]` → меняет URL `?type=...` (SSR-фильтрация, не JS-хак). a11y: фильтр = `radiogroup`/`tabs` с `aria-pressed`.
+
   > **[Волна 4, закрывает R2 (Роман, B-R2) — чип «С видео»]** К фильтр-чипам добавляется **чип `🎬 С видео`** (SSR `?video=1`) — скептик Роман находит видео-отзывы за 1 тап, без прокрутки карусели/рекапа. Чип фильтрует `Review[]` по наличию `videoTestimonial` (см. R7). Опц. — под-секция «Видео-отзывы» сверху грида, если такие есть.
   > **[Волна 4, закрывает R5 (Роман, B-R5) — техническое отсечение demo]** Выдача `ReviewList` (и `TestimonialsCarousel` блок 9) фильтруется **на уровне запроса/компонента**: `approved === true && demo !== true`. Текстовый запрет RT-9 («НЕ публиковать demo») НЕ достаточен — флаг `demo` жёстко отсекается при рендере (даже если `approved` ошибочно true). Закрывает риск публикации сфабрикованных кейсов.
 
@@ -1150,11 +1193,12 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **a11y:** `img alt="<имя>, <тип события>"`; цитата `<blockquote>` + `<cite>`; карусель — кнопки prev/next с aria-label, НЕ авто-крутилка.
 
   **Responsive:** desktop — grid 3 кол.; tablet 2; mobile 1 (+ горизонт. скролл карточек или 1 кол.).
+
 - `ContactForm` — Zod-валидация, чекбокс 152-ФЗ, телефон/WhatsApp/Telegram/карта. **[CMS-нет]** Данные формы → свой API route (Next.js, тот же VPS) → **РФ-БД** (Postgres/SQLite), перс. данные ТОЛЬКО в РФ (152-ФЗ). Платные формы (Typeform и пр.) ЗАПРЕЩЕНЫ бюджетным стеком 29_POSITIONING. Точные поля и юр. оформление — ниже (баг 23 закрыт).
 
   **Пропсы:** `variant: 'standalone'|'compact'|'constructor-step'`, `initialEventType?: EventType`, `source: 'contact-page'|'constructor'|'cta'`, `onSuccess: (lead)=>void`.
 
-  **[Волна 3, закрывает D6 (Дарья, канал связи)] Выбор канала связи:** под полем имени/телефона — радио-группа **«Как вам удобнее, чтобы мы связались?»**: **«📞 Перезвонить»** / **«💬 Написать в WhatsApp»** / **«📧 Прислать КП на почту»**. Выбор асинхронного канала (WA / почта) **снимает обязательность телефона** — поле `phone` становится НЕобязательным (*) при выборе WA/почта (асинхронный подтверждающий канал вместо звонка, закрывает конфликт «без лишних звонков» из симуляции Дарьи). Телефон обязателен (*) ТОЛЬКО при выборе «Перезвонить». Zod-валидация адаптивна к выбранному каналу. Trust-сигнал под кнопкой корректируется по каналу («Напишем в WA ≤15 мин» / «Пришлём КП на почту» вместо жёсткого «Перезвоним ≤15 мин»).
+  **[Волна 3, закрывает D6 (Дарья, канал связи)] Выбор канала связи:** под полем имени/телефона — радио-группа **«Как вам удобнее, чтобы мы связались?»**: **«📞 Перезвонить»** / **«💬 Написать в WhatsApp»** / **«📧 Прислать КП на почту»**. Выбор асинхронного канала (WA / почта) **снимает обязательность телефона** — поле `phone` становится НЕобязательным (_) при выборе WA/почта (асинхронный подтверждающий канал вместо звонка, закрывает конфликт «без лишних звонков» из симуляции Дарьи). Телефон обязателен (_) ТОЛЬКО при выборе «Перезвонить». Zod-валидация адаптивна к выбранному каналу. Trust-сигнал под кнопкой корректируется по каналу («Напишем в WA ≤15 мин» / «Пришлём КП на почту» вместо жёсткого «Перезвоним ≤15 мин»).
 
   **ТОЧНЫЙ список полей (ровно 6, не 15):**
   1. `name*` — текст, placeholder «Как к вам обращаться».
@@ -1183,17 +1227,25 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Ассеты:** иконки часов/документа/щита (inline SVG, light). Отправка → `/api/contact` (есть в репо, см. `15_REPO_AUDIT` §3).
 
   **Производительность / Responsive:** форма статична, не блокирует LCP; INP на валидации <200ms (client, без сети); desktop — 2 колонки полей + summary; mobile — 1 колонка, trust-сигналы под кнопкой.
+
 - `BlogCard` / `BlogList` — статьи (SEO). Рубрики + editorial-карточка + CTA — ниже (баг 24 закрыт).
 
   **Рубрики (3):** `case` (кейс реального события) · `tip` (сезонный/практич. совет) · `guide` («как выбрать кейтеринг»).
 
   **Модель данных:**
+
   ```ts
-  type Rubric = 'case'|'tip'|'guide';
+  type Rubric = "case" | "tip" | "guide";
   interface BlogPost {
-    slug: string; title: string; rubric: Rubric;
-    excerpt: string; cover: string; readingMin: number; // ~3
-    author: string; date: string; linkedService?: string; // /events/* или /plan
+    slug: string;
+    title: string;
+    rubric: Rubric;
+    excerpt: string;
+    cover: string;
+    readingMin: number; // ~3
+    author: string;
+    date: string;
+    linkedService?: string; // /events/* или /plan
     body: string;
   }
   ```
@@ -1210,6 +1262,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Ассеты:** обложки — реальные фото событий/`17_MEDIA_DIRECTION` (не сток); `ImageWithBlur`.
 
   **Производительность / a11y / Responsive:** cover `aspect-ratio` (CLS<0.1), lazy кроме первой; alt = заголовок; сетка desktop 3 кол. / tablet 2 / mobile 1.
+
 - `AvailabilityCalendar` — мини-календарь занятости (urgency-бейдж). Источник данных и реальная занятость — ниже (баг 25 закрыт: НЕ «всегда свободно»).
 
   **Источник данных (РЕАЛЬНЫЙ):** `GET /api/availability?from=&to=` — эндпоинт **УЖЕ есть в репо** (см. `15_REPO_AUDIT` §3: `/api/availability` в числе существующих). SSR/ISR: календарь рендерится на сервере (не «всегда свободно»), `revalidate 3600`, инвалидация по webhook брони. Fallback при недоступности API — НЕ «free», а «Уточняйте у менеджера» (честно).
@@ -1238,21 +1291,22 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Ассеты:** иконка «огонь» для urgency (inline SVG).
 
   **Производительность / Responsive:** данные с сервера → CLS<0.1 (фикс. сетка); LCP не блокируется; INP<200ms. Desktop — 2–3 месяца в ряд; mobile — 1 месяц, горизонт. скролл/свайп.
+
 - `TrustProof` — **[web: hooray.agency 2026 «transparency decides trust»]** блок прозрачности. Явный РФ-комплаенс (152-ФЗ + ТР ТС 021/2011) зафиксирован (баг 26 закрыт).
 
   **Копирайт (ЕДИНЫЙ proof-блок; объединил в себя бывший `AwardsStrip`, C12 — 2 trust-блока вместо 5+):**
-  *Комплаенс-факты (`variant:'facts'`):*
+  _Комплаенс-факты (`variant:'facts'`):_
   1. 🚚 Доставка в КАД включена (0 ₽ внутри КАД).
   2. 🍳 Кухня су-вид (без наценки за бренд).
   3. 🛡 **14 аллергенов по ТР ТС 021/2011** (РФ-комплаенс, маркировка на каждом блюде).
   4. 📄 Договор и чек (юр. прозрачность).
   5. 🛡 Страховка мероприятия.
   6. 🔒 **Обработка данных по 152-ФЗ РФ** (ссылка на `/privacy`).
-  *Репутационные факты (добавляются в тот же блок, `variant:'facts'`):*
+     _Репутационные факты (добавляются в тот же блок, `variant:'facts'`):_
   7. 🏛 **более 19 лет на рынке Петербурга** 🟡 (с 2007 — подтвердить актуальное число лет у заказчика; на живом сайте NiloV указано «более 19 лет»).
-  8. 🎉 **3 500+ проведённых событий** 🟡 *(финальную цифру уточнить у заказчика; НЕ публиковать как подтверждённый факт до сверки — см. `21_LOGIC_AUDIT:121`; статус `pending` по FACT-GATE)*.
-  9. 🔶 **Участник и финалист отраслевых премий** 🟡 *(подтвердить у заказчика — запросить реальный список наград и точные годы; ранее указанные «Гастрономический Оскар 2024» и «Event Awards Russia 2023» НЕ подтверждены вебом (0 результатов) и УДАЛЕНЫ как факт-призраки по отчёту FactChecker). Отраслевые премии — **мелким шрифтом снизу**, НЕ якорь доверия (T5/29_TRUST_SEG: акцент на операционном trust, не на «элитности»).)*
-  10. 🤝 Клиенты: `Корпоратив «А»` · `Свадьба «Б»` · `Лофт-площадка` · `Бизнес-центр` · `Загородный клуб` 🟡 *(статус `'pending'` — анонимные плейсхолдеры «нам доверяют», НЕ подтверждено независимо через web_search: до подписанных договоров НЕ называем конкретные бренды БЕЗ 🟡/disclaimer-контекста («не клиент / пример площадки»); бренды (статусные бренды, по запросу 🟡) ДОПУСТИМЫ ТОЛЬКО как пример-площадка с 🟡 + «не клиент» per FACT-GATE, 04:86; показывать ТОЛЬКО с дисклеймером «на проверке / пример из архива»; не выводить как факт без подтверждения договоров у заказчика; финал — по списку заказчика). **Роспотребнадзор — НЕ клиент, а госрегулятор** (см. `04:522`, `45:16`); упоминается только в `CertBlock`/`TrustBar` как регулятор/сертификация, не в ряду клиентов.* Подпись рядом: **«от семейного ужина до банкета на 500 гостей — один стандарт качества»** (T6/29_TRUST_SEG: средний клиент узнаёт себя, а не только аспирирует вверх).*
+  8. 🎉 **3 500+ проведённых событий** 🟡 _(финальную цифру уточнить у заказчика; НЕ публиковать как подтверждённый факт до сверки — см. `21_LOGIC_AUDIT:121`; статус `pending` по FACT-GATE)_.
+  9. 🔶 **Участник и финалист отраслевых премий** 🟡 _(подтвердить у заказчика — запросить реальный список наград и точные годы; ранее указанные «Гастрономический Оскар 2024» и «Event Awards Russia 2023» НЕ подтверждены вебом (0 результатов) и УДАЛЕНЫ как факт-призраки по отчёту FactChecker). Отраслевые премии — **мелким шрифтом снизу**, НЕ якорь доверия (T5/29_TRUST_SEG: акцент на операционном trust, не на «элитности»).)_
+  10. 🤝 Клиенты: `Корпоратив «А»` · `Свадьба «Б»` · `Лофт-площадка` · `Бизнес-центр` · `Загородный клуб` 🟡 _(статус `'pending'` — анонимные плейсхолдеры «нам доверяют», НЕ подтверждено независимо через web_search: до подписанных договоров НЕ называем конкретные бренды БЕЗ 🟡/disclaimer-контекста («не клиент / пример площадки»); бренды (статусные бренды, по запросу 🟡) ДОПУСТИМЫ ТОЛЬКО как пример-площадка с 🟡 + «не клиент» per FACT-GATE, 04:86; показывать ТОЛЬКО с дисклеймером «на проверке / пример из архива»; не выводить как факт без подтверждения договоров у заказчика; финал — по списку заказчика). **Роспотребнадзор — НЕ клиент, а госрегулятор** (см. `04:522`, `45:16`); упоминается только в `CertBlock`/`TrustBar` как регулятор/сертификация, не в ряду клиентов._ Подпись рядом: **«от семейного ужина до банкета на 500 гостей — один стандарт качества»** (T6/29_TRUST_SEG: средний клиент узнаёт себя, а не только аспирирует вверх).*
 
   **[Волна 10, закрывает B-G4/B-G6 (Гоша — КРИТИЧНО)] (1) Клиентский ряд НЕ должен спорить с value-посланием «для любого бюджета».** Вместо статусных лого (статусные бренды, по запросу 🟡), которые рядом с «для любого бюджета» читаются как «статусная пустышка», используем анонимные плейсхолдеры «нам доверяют» (статус `pending`) с честной подписью «от семейного ужина на 10 до банкета на 500 — один стандарт качества» (средний клиент узнаёт себя, а не только аспирирует вверх). Конкретные бренды называются ТОЛЬКО после подписанных договоров как proof. (2) **Запрет рендера 🟡/⚠️ как факта.** `pending-verification`/`⚠️`-факты (более 19 лет, су-вид, премии, клиенты) НЕ рендерятся как утверждение — только с пометкой статуса ИЛИ после верификации (год основания, реальный список премий с годами, подтверждённые клиенты). До публикации `TrustProof` как proof — заполнение верифицированными значениями обязательно (см. B-G6).
   **Пропсы:** `items?: TrustItem[]` (по умолч. 10 выше), `variant: 'strip'|'grid'|'facts'`.
@@ -1270,13 +1324,21 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   a11y: `<button aria-label="Видео за кулисами: сборка и сервировка площадки">`. Единый язык/источник с `WhyUs` (блок 8).
 
   **Производительность / Responsive:** статичный блок, CLS<0.1; desktop — row из 6, tablet 3×2, mobile 2 кол.
+
 - `TeamGrid` — **[web: cateringrewards 2026]** фото + имя + роль ключевых людей
   (шеф, основатель Дмитрий Нилов, координатор). Лица = доверие. geometric frames. Живые фото и структура — ниже (баг 27 закрыт).
 
   **Модель данных:**
+
   ```ts
-  interface TeamMember { name: string; role: string; photo: string; bio?: string; }
+  interface TeamMember {
+    name: string;
+    role: string;
+    photo: string;
+    bio?: string;
+  }
   ```
+
   **Состав (минимум 3, расширяемо):** Дмитрий Нилов (Основатель & шеф-идеолог) · Шеф-повар (live) · Координатор мероприятий. Далее — повара станций, менеджеры (по мере появления).
 
   **Пропсы:** `members: TeamMember[]`, `variant: 'grid'|'featured'`.
@@ -1290,15 +1352,16 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Ассеты:** фото команды (реальные). Геометрия фрейма — CSS `border-radius`/`clip-path` (diamond).
 
   **Производительность / Responsive:** lazy + `aspect-ratio` (CLS<0.1); desktop 3–4 в ряд, tablet 2, mobile 1–2.
+
 - `BlogEditorial` — **[web: webcitz/htmlburger/gofoodservice]** карточки статей
   (кейсы, сезонные советы, «как выбрать кейтеринг»). SEO + экспертность. Рубрики и связь с услугой — ниже (баг 28 закрыт).
 
   **Рубрики (те же 3, что у `BlogCard`, единый язык):** `case` (кейс реального события) · `tip` (сезонный/практич. совет) · `guide` («как выбрать кейтеринг»).
 
   **Связь с услугой (обязательна, `19`#28):** каждый пост `linkedService` → реальная ссылка на `/events/*` или `/plan/calculator`. Примеры рубрикальных заголовков:
-  - *case:* «Свадьба на 120 гостей: как мы собрали меню Максимальный за 5 дней» → CTA на `/events/svadba`.
-  - *tip (сезонный):* «Что подать на Новый год-2026: 7 блюд от шефа» → CTA на `/seasonal`.
-  - *guide:* «Как выбрать кейтеринг: 9 вопросов менеджеру» → CTA на `/plan/calculator`.
+  - _case:_ «Свадьба на 120 гостей: как мы собрали меню Максимальный за 5 дней» → CTA на `/events/svadba`.
+  - _tip (сезонный):_ «Что подать на Новый год-2026: 7 блюд от шефа» → CTA на `/seasonal`.
+  - _guide:_ «Как выбрать кейтеринг: 9 вопросов менеджеру» → CTA на `/plan/calculator`.
 
   **Структура страницы поста:** H1 + подзаголовок + cover (hero) + `TOC` (якоря h2) + body + автор/дата + CTA в калькулятор (в конце) + `SchemaBlock` `Article`.
 
@@ -1307,6 +1370,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   **Ассеты:** обложки — реальные фото событий (`17_MEDIA_DIRECTION`, не сток); `ImageWithBlur`.
 
   **a11y / SEO / Perf / Responsive:** см. `BlogCard` #24 (тот же контракт: semantic `<article>`, JSON-LD, `llms.txt`, alt=заголовок, aspect-ratio CLS<0.1). Desktop — max-width колонки ~720px для чтения; mobile — 1 кол.
+
 - `SeasonalModule` — **[web: bettercater summer 2026]** повторяющаяся секция сезонных
   предложений (ББQ лето, Новый год, Масленица) с CTA на соответствующий пакет. Механизм ротации и urgency — ниже (баг 29 закрыт).
 
@@ -1333,44 +1397,47 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   > **[Волна 8, закрывает ZH7 (Жанна — критично) + ZH9/BUG-F2] Явная сезонная (high-season) цена/наценка.** В НГ-оффере (`SeasonalModule`/`SeasonalUpcoming`/`/events/korporativ` НГ-блок) показывается **явная новогодняя мин. цена** и **праздничная наценка high-season** (напр. «Новогодний корпоратив — от X ₽/гость, +Y% праздничная наценка к базовому тарифу»), а не только скрытый верхний тариф. Early-booking «−15%» остаётся, но рядом с ним **обязательно** прописана high-season-надбавка (`PricingConfig.seasonalSurcharge[season]`). ⚠️ Все НГ-числа несут `pending-verification` (BUG-F2, сверка 390 vs 2 450 ₽) и ОБЯЗАНЫ сверяться с прайсом заказчика ДО релиза — КП с вымышленной НГ-ценой = потеря доверия босса Жанны.
 
   > **[Волна 8, закрывает ZH8 (Жанна)] Дедлайн-счётчик рендерится ВНЕ сезона.** Счётчик `seasonalConfig.deadline` показывается не только когда `season==='newyear'`, а всегда, когда **`now < deadline` И (`deadline - now <= N дней` ИЛИ событие в high-season-окне)** — постоянная видимость дедлайна (в `AnnouncementBar` high-season-режиме, ZH1, и в evergreen-strip). Так Жанна в июле/октябре видит «до рекомендуемой брони НГ осталось X дней», а не только в декабре.
+
 - `SchemaBlock` — **[web: gofoodservice «structured data helps AI systems»]** JSON-LD
   (Organization, LocalBusiness, Menu, Offer, FAQPage, AggregateRating) + `llms.txt` + **обязательный per-page SEO-контракт** (закрывает B3, критик C9): каждая страница (`/`, `/menu`, `/menu/*`, `/events/*`, `/plan/*`, `/reviews`, `/blog`, `/blog/*`, `/why-us`, `/seasonal`, `/gallery`, `/team`, `/contact`, `/faq`, `/delivery`, `/certificates`, `/allergens`, `/help/formats`, `/tasting`, `/venues`, `/accessibility`, `/careers`, `/partners`, `/subscribe`, `/media-kit`, `/account/orders`, `/thank-you`(noindex), `/404`(noindex)) несёт `<title>`, `<meta name="description">`, `og:title`, `og:description`, `og:image`, `og:type`, `og:locale=ru_RU` и `<link rel="canonical">` (self-canonical, без www). OG-теги берутся из `generateMetadata` (Next 16 metadata API) per route, НЕ хардкод. Маппинг страница→схема и защита от фейка — ниже (баг 30 закрыт).
 
-  > ### БЛОК 30 — SchemaBlock  *(JSON-LD + per-page SEO-контракт, единый для всех роутов)*
+  > ### БЛОК 30 — SchemaBlock _(JSON-LD + per-page SEO-контракт, единый для всех роутов)_
   >
   > **Назначение:** каждая страница несёт корректные SEO-теги + структурированные данные (JSON-LD), чтобы поиск и AI-системы корректно индексировали NiloV. Закрывает C9-4 (per-page контракт для всех 13 ключевых страниц + 4 ранее пропущенных: `/delivery`, `/certificates`, `/allergens`, `/help/formats`).
   >
   > **КАНОН ДОМЕНА (КАНОН №0, `39_CANON_INDEX.md`):** все `metadataBase` / `canonical` / `@id` / JSON-LD `url` = **`https://odaeda.ru`** (без trailing slash). `nilov-catering.ru` — ТОЛЬКО alias-бренд, НИКОГДА не канонический хост. В per-page SEO-контракте обязательно: `metadataBase: 'https://odaeda.ru'`.
+  >
   > - **Реализация:** обёртка над `components/seo/StructuredData` (репо, `04`#89). Пропсы: `pageType: keyof mapping`, `data: Record<string, unknown>`, `enableRating?: boolean`.
   > - **Маппинг страница→схема** — см. таблицу выше (расширена на все роуты, включая `/delivery`/`/certificates`/`/allergens`/`/help/formats`).
   > - **Защита от фейка:** `AggregateRating` НЕ рендерится без `reviews.approved.length >= 1` (см. ниже).
 
   **Маппинг страница → тип(ы) схемы (НЕ только главная, `19`#30):**
-  | Страница | JSON-LD `@type` |
-  |---|---|
-  | `/` (главная) | `Organization` + `LocalBusiness` (Restaurant) |
-  | `/menu`, `/menu/*` | `Menu` + `MenuSection`/`MenuItem` + `Offer` (цена/гость) |
-  | `/plan`, `/plan/calculator`, `/plan/constructor` | `Service` + `Offer` (итоговая цена) |
-  | `/faq` | `FAQPage` (4 Q&A из FAQTeaser #13) |
-  | `/reviews` | `Organization` + `AggregateRating` **ТОЛЬКО если есть отзывы** (см. ниже) |
-  | `/blog`, `/blog/[slug]` | `Article` / `BlogPosting` |
-  | `/events/*` | `Service` + `Offer` (цена типа события) |
-  | `/team`, `/why-us`, `/contact` | `Organization` (база) |
-  | `/delivery` | `LocalBusiness` + `Offer` (зоны доставки) |
-  | `/certificates` | `Organization` (сертификаты/комплаенс 152-ФЗ, ТР ТС 021/2011) |
-  | `/allergens` | `Article` (легенда 14 аллергенов ТР ТС 021/2011) |
-  | `/help/formats` | `FAQPage` (помощь по форматам событий) |
-  | `/gallery` | `ImageGallery` + `Organization` (реальные фото событий) |
-  | `/tasting` | `Service` + `Offer` (дегустация before-booking) |
-  | `/venues` | `LocalBusiness` + `Place` (площадки-партнёры) |
-  | `/accessibility` | `Article` (заявление WCAG 2.1 AA) |
-  | `/careers` | `Organization` + `JobPosting[]` (открытые вакансии) |
-  | `/partners` | `Organization` (B2B-партнёрство) |
-  | `/subscribe` | `Service` (регулярные заказы) |
-  | `/media-kit` | `Article` (пресс-кит) |
-  | `/account/orders` | `Organization` (кабинет клиента, noindex для ботов) |
-  | `/thank-you` | `Organization` (noindex — страница благодарности после формы) |
-  | `/404` | `Organization` (noindex, HTTP 404) |
+
+  | Страница                                         | JSON-LD `@type`                                                           |
+  | ------------------------------------------------ | ------------------------------------------------------------------------- |
+  | `/` (главная)                                    | `Organization` + `LocalBusiness` (Restaurant)                             |
+  | `/menu`, `/menu/*`                               | `Menu` + `MenuSection`/`MenuItem` + `Offer` (цена/гость)                  |
+  | `/plan`, `/plan/calculator`, `/plan/constructor` | `Service` + `Offer` (итоговая цена)                                       |
+  | `/faq`                                           | `FAQPage` (4 Q&A из FAQTeaser #13)                                        |
+  | `/reviews`                                       | `Organization` + `AggregateRating` **ТОЛЬКО если есть отзывы** (см. ниже) |
+  | `/blog`, `/blog/[slug]`                          | `Article` / `BlogPosting`                                                 |
+  | `/events/*`                                      | `Service` + `Offer` (цена типа события)                                   |
+  | `/team`, `/why-us`, `/contact`                   | `Organization` (база)                                                     |
+  | `/delivery`                                      | `LocalBusiness` + `Offer` (зоны доставки)                                 |
+  | `/certificates`                                  | `Organization` (сертификаты/комплаенс 152-ФЗ, ТР ТС 021/2011)             |
+  | `/allergens`                                     | `Article` (легенда 14 аллергенов ТР ТС 021/2011)                          |
+  | `/help/formats`                                  | `FAQPage` (помощь по форматам событий)                                    |
+  | `/gallery`                                       | `ImageGallery` + `Organization` (реальные фото событий)                   |
+  | `/tasting`                                       | `Service` + `Offer` (дегустация before-booking)                           |
+  | `/venues`                                        | `LocalBusiness` + `Place` (площадки-партнёры)                             |
+  | `/accessibility`                                 | `Article` (заявление WCAG 2.1 AA)                                         |
+  | `/careers`                                       | `Organization` + `JobPosting[]` (открытые вакансии)                       |
+  | `/partners`                                      | `Organization` (B2B-партнёрство)                                          |
+  | `/subscribe`                                     | `Service` (регулярные заказы)                                             |
+  | `/media-kit`                                     | `Article` (пресс-кит)                                                     |
+  | `/account/orders`                                | `Organization` (кабинет клиента, noindex для ботов)                       |
+  | `/thank-you`                                     | `Organization` (noindex — страница благодарности после формы)             |
+  | `/404`                                           | `Organization` (noindex, HTTP 404)                                        |
 
   **AggregateRating — ЗАЩИТА от фейка (`19`#30 / `20` риск):** `AggregateRating` НЕ рендерится, пока `reviews.approved.length === 0`. Когда есть ≥1 одобренный отзыв → `ratingValue` = среднее `review.rating`, `reviewCount` = число. Никаких хардкод-«5.0» без данных (риск фейк-схемы → санкции Гугла).
 
@@ -1381,7 +1448,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   - `url` — канонический `https://odaeda.ru` (без trailing slash; единый прод-домен, см. `02_IA.md` §«Домен»).
   - `telephone` — `+7 (812) 919-59-11` (в формате E.164: `+78129195911`).
   - `address` — `PostalAddress`: `streetAddress` (СПб, уточнить), `addressLocality: "Санкт-Петербург"`, `addressRegion: "Ленинградская обл."`, `postalCode`, `addressCountry: "RU"`.
-  - `priceRange` — `$$$` (по шкале schema.org) ИЛИ явно «от 390 ₽/гость» 🟡 *(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, НЕ публиковать 950 как подтверждённый якорь до сверки с прайсом заказчика)* (для богатых сниппетов).
+  - `priceRange` — `$$$` (по шкале schema.org) ИЛИ явно «от 390 ₽/гость» 🟡 _(ведущий якорь = реальная цена с сайта NiloV 390 ₽; канон 950 — вторичное уточнение, НЕ публиковать 950 как подтверждённый якорь до сверки с прайсом заказчика)_ (для богатых сниппетов).
   - `openingHours` — `OpeningHoursSpecification`: `dayOfWeek` (Пн–Вс), `opens: "09:00"`, `closes: "21:00"` (уточнить у заказчика).
   - рекоменд.: `image` (лого/hero), `geo` (широта/долгота), `areaServed` («Санкт-Петербург и ЛО»), `sameAs` (ссылки: **VK https://vk.com/nilov_catering — ПЕРВИЧНЫЙ** канал в РФ (всегда доступен), Instagram @nilov_catering — ВТОРИЧНЫЙ (аудитория через VPN); WhatsApp/Telegram — первичные каналы связи, по `29_POSITIONING` §«Соц-ленты»; VK-primary правило см. `17_MEDIA_DIRECTION`. Решение Волны 5А «Instagram→VK» — VK теперь ПЕРВИЧНЫЙ по умолчанию для РФ). `aggregateRating` — ТОЛЬКО по правилу из маппинга (см. выше).
 
@@ -1392,7 +1459,13 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   - `itemOffered` — ссылка на `Product`/`MenuItem` (название блюда/пакета) ИЛИ вложенный объект с `name`.
   - рекоменд.: `url` (страница заказа), `priceValidUntil` (дата актуальности прайса), `eligibleRegion: "RU"`. Пример `Offer`:
     ```json
-    {"@type":"Offer","priceCurrency":"RUB","price":"4350","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Фуршет"}}
+    {
+      "@type": "Offer",
+      "priceCurrency": "RUB",
+      "price": "4350",
+      "availability": "https://schema.org/InStock",
+      "itemOffered": { "@type": "Product", "name": "Фуршет" }
+    }
     ```
 
   **llms.txt (отдельный артефакт — НЕ внутри spec-блока, лежит в `public/llms.txt`):** статичный машинойтаемый файл для поисковых систем и ИИ-ассистентов (ChatGPT/Perplexity/Claude). Содержит:
@@ -1400,7 +1473,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   - список ключевых страниц (`/`, `/menu`, `/plan/calculator`, `/events/*`, `/reviews`, `/blog`) с 1-строчным описанием услуги;
   - **структуру услуг/меню для поисковых систем и ИИ-ассистентов**: форматы (фуршет/банкет/кофе-брейк) + диапазон цен ₽/гость + типы событий (свадьба/корпоратив/частное/chef-at-home);
   - контакты (телефон/WhatsApp/Telegram) и гео (СПб, КАД).
-  Обновляется вместе с `sitemap.xml` при деплое. Ссылка из `<head>`: `<link rel="llms-txt" href="/llms.txt">`. См. `BlogCard` #24.
+    Обновляется вместе с `sitemap.xml` при деплое. Ссылка из `<head>`: `<link rel="llms-txt" href="/llms.txt">`. См. `BlogCard` #24.
 
   **a11y / Perf / Responsive:** JSON-LD в `<head>` (`<script type="application/ld+json">`) — невидим, не влияет на LCP/CLS/INP. `llms.txt` — статичный файл.
 
@@ -1411,6 +1484,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
 > Цель: поднять веру до **≥8/10** через RT-1…RT-4 (объём ≥20 + видео + живой рейтинг + честный микс +/- + ответы).
 
 ### A. Авто-сбор после события (RT-1, RT-11 — БЛОКИРУЮЩИЕ)
+
 - **Триггер (шаг 5 `ProcessSteps` «Обратная связь»):** CRM/CMS (`29_CMS_CRITIC` B-CMS-5) через **+1–2 дня
   после статуса события «проведено»** → WhatsApp/email/SMS-рассылка с **1-клик ссылкой** на отзыв.
   Ссылка ведёт сразу на **внешнюю площадку** (Яндекс/2ГИС/Google) И на внутреннюю форму `/reviews`
@@ -1420,10 +1494,11 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   Добавить CTA «Оцените нас →» (ведёт на внеш. площадку + `/reviews`). Триггер запроса в этой же точке.
 
 ### B. CMS-конвейер Review (RT-2, RT-3 — БЛОКИРУЮЩИЕ)
+
 - **Коллекция `Review`** в CMS (исполнитель Б, CMS-слой — см. `29_CMS_CRITIC` B-CMS-5 / будущий `XX_CMS_LAYER.md`):
   поля из `04` интерфейса `Review` (`clientName, eventType, date, guests, tier, quote, rating?, photo?`)
-  + **`approved: boolean`** (модерация — галочка в админке, НЕ правка кода) + **`reply?: { author; text; date }`** (RT-7)
-  + `source: 'site'|'yandex'|'2gis'|'google'`.
+  - **`approved: boolean`** (модерация — галочка в админке, НЕ правка кода) + **`reply?: { author; text; date }`** (RT-7)
+  - `source: 'site'|'yandex'|'2gis'|'google'`.
 - **Интеграция внеш. рейтинга (RT-3):** вписать реальные `yandexProfileUrl` / `twoGisProfileUrl` / `googleProfileUrl`
   в `RatingBadge` (`БЛОК 24`) и **тянуть звёзды/число через API площадок** (НЕ хардкод «5.0» — правило G-3).
   Если ни один профиль не задан — плитка площадки НЕ рендерится (`30`: пустой бейдж = «фейк»).
@@ -1431,6 +1506,7 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   (RT-10 — уже есть, держать).
 
 ### C. Объём и честность (RT-4, RT-6, RT-8, RT-9)
+
 - **RT-4 — метрика готовности:** публиковать раздел `/reviews` как «доверительный» только при
   **≥20 одобренных** + **≥3 видео-отзыва** + **≥10 внеш. на Яндекс/2ГИС**. До метрики — не анонсировать как proof.
 - **RT-6 — честный микс +/-:** публиковать **1–2 реальных «с замечанием»** + ответ компании («приняли, исправили»).
@@ -1442,30 +1518,34 @@ export function getEmbedUrl(ref: VideoRef): string | null {
   (риск фейк-бренда; нужно письменное согласие — см. TODO №6).
 
 ### D. Видео-отзывы как дефолт сбора (RT-5)
+
 - На рекап-съёмке (`EventsRecap`, `БЛОК 27`) просить гостей/организаторов сказать **10–20с в кадр**.
   Поле `videoTestimonial` уже есть в `TestimonialsCarousel` (video-wall) — задействовать массово.
   79% потребителей смотрят видео-отзывы; сайты с ними ~+80% конверсии (`30` стратегия B).
 
 ### Сводка RT → где закрываем
-| RT | Что | Где в структуре |
-|----|-----|-----------------|
-| RT-1 | Авто-запрос после события | шаг 5 `ProcessSteps` + CMS-триггер B-CMS-5 |
-| RT-2 | CMS-коллекция `Review` + `approved` | CMS-слой (исполнитель Б), `БЛОК 30` ждёт |
-| RT-3 | Реальные `url` + pull рейтинга | `БЛОК 24` RatingBadge (G-3) |
-| RT-4 | Объём ≥20 / ≥3 видео / ≥10 внеш. | метрика готовности `/reviews` |
-| RT-5 | Видео-отзывы дефолт сбора | `БЛОК 9` + `БЛОК 27` |
-| RT-6 | Честный микс +/- | `БЛОК 22` `Review.approved` |
-| RT-7 | Поле `reply` (ответ компании) | `БЛОК 22` `Review` |
-| RT-8 | Дисклеймер «реальные отзывы» | `/reviews` + `БЛОК 24` |
-| RT-9 | Снять сфабрикованные кейсы | `БЛОК 9` `demo`-флаг |
-| RT-10 | `AggregateRating` только при данных | `БЛОК 30` (есть) |
-| RT-11 | Кнопка «Оставить отзыв» на `/thank-you` | `БЛОК 25` |
+
+| RT    | Что                                     | Где в структуре                            |
+| ----- | --------------------------------------- | ------------------------------------------ |
+| RT-1  | Авто-запрос после события               | шаг 5 `ProcessSteps` + CMS-триггер B-CMS-5 |
+| RT-2  | CMS-коллекция `Review` + `approved`     | CMS-слой (исполнитель Б), `БЛОК 30` ждёт   |
+| RT-3  | Реальные `url` + pull рейтинга          | `БЛОК 24` RatingBadge (G-3)                |
+| RT-4  | Объём ≥20 / ≥3 видео / ≥10 внеш.        | метрика готовности `/reviews`              |
+| RT-5  | Видео-отзывы дефолт сбора               | `БЛОК 9` + `БЛОК 27`                       |
+| RT-6  | Честный микс +/-                        | `БЛОК 22` `Review.approved`                |
+| RT-7  | Поле `reply` (ответ компании)           | `БЛОК 22` `Review`                         |
+| RT-8  | Дисклеймер «реальные отзывы»            | `/reviews` + `БЛОК 24`                     |
+| RT-9  | Снять сфабрикованные кейсы              | `БЛОК 9` `demo`-флаг                       |
+| RT-10 | `AggregateRating` только при данных     | `БЛОК 30` (есть)                           |
+| RT-11 | Кнопка «Оставить отзыв» на `/thank-you` | `БЛОК 25`                                  |
 
 ## Примитивы (доступны готовыми — см. `15_REPO_AUDIT.md`)
+
 Репозиторий УЖЕ содержит `components/ui/*` (shadcn: Button/Card/Badge/Input/Accordion/
 Separator/Sheet) и `components/effects/*` (MagneticButton, ParallaxImage, AnimatedCounter,
 TextReveal, AnimatedSection, CustomCursor, Skeleton) + `components/common/*` (SkipLink, Breadcrumbs,
 CookieBanner, ScrollToTop). Их НЕ переписываем — переиспользуем как наши примитивы:
+
 - `MagneticButton` → `MagneticButton` (наш)
 - `ParallaxImage` → база `ImageWithBlur` (Ken Burns + blur-up)
 - `AnimatedCounter` → `CountUp`
@@ -1473,6 +1553,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - `SkipLink` → `SkipLink` (наш)
 
 ## Блоки, УЖЕ реализованные в репо (перекрасить, не писать заново)
+
 - `HeroSection`, `ServicesSection`(→EventTypeSelector), `MenuPreviewSection`(→FormatShowcase),
   `GallerySection`(→GalleryTeaser), `SocialProofBar`(→TrustBar), `TestimonialsSection`,
   `ProcessTimeline`(→ProcessSteps), `PhilosophySection`(→WhyUs), `CTASection`, `FAQSection`
@@ -1487,6 +1568,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 > (который пуст). В Фазе 0 переименовываем их в `blocks/` по именам выше и перекрашиваем.
 
 ## Правило именования
+
 Все блоки — `PascalCase`, в `@/components/blocks/*`.
 Примитивы — в `@/components/ui/*`.
 Токены — в `@/styles/tokens.css` + `tailwind.config.ts theme.extend`.
@@ -1500,13 +1582,14 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 > и **примирить 4 противоречия** — VK-лента (Волна 5А: вместо заблокированного в РФ Instagram),
 > EventHero (фон vs фото типа), DishCard (hover zoom vs 5с видео),
 > Calculator (без API vs `POST /api/calculate`). Каждый блок = пропсы + копирайт/данные
-> + ассеты + LCP/INP/CLS + a11y (aria/alt/reduced-motion) + responsive.
-> Токены — из `06_TOKENS`, данные меню/цен/станций — из `NILOV_UNIFIED_MENU.md` (канон),
-> матмодель калькулятора — из `07_CALCULATOR_SPEC`.
+>
+> - ассеты + LCP/INP/CLS + a11y (aria/alt/reduced-motion) + responsive.
+>   Токены — из `06_TOKENS`, данные меню/цен/станций — из `NILOV_UNIFIED_MENU.md` (канон),
+>   матмодель калькулятора — из `07_CALCULATOR_SPEC`.
 
 ---
 
-### БЛОК 11 — LiveInstagramFeed  *(глобальный + секция «Жизнь NiloV»)*
+### БЛОК 11 — LiveInstagramFeed _(глобальный + секция «Жизнь NiloV»)_
 
 > **По `29_POSITIONING` §«Соц-ленты» — [Волна 3, закрывает K2 (Камила, РФ)] В РФ Instagram заблокирован → решение Волны 5А «Instagram→VK» ВОЗВРАЩЕНО.** VK @nilov_catering = **ПЕРВИЧНЫЙ видимый эмбед** (всегда доступен в РФ, не пустой). Instagram @nilov_catering = **вторичная ссылка** (аудитория через VPN; эмбед НЕ грузится в РФ — показываем ссылку «Мы в Instagram → @nilov_catering», НЕ пустой блок). Fail-soft КЕПТ: если VK-API недоступен → последний закэшированный snapshot + кнопка-ссылка VK. Блок НИКОГДА не пустой.
 > WhatsApp / Telegram — **первичные каналы связи** (см. `SiteHeader` / `StickyMobileCTA` / `SiteFooter`), НЕ только иконки в футере. Круглосуточный отклик.
@@ -1529,7 +1612,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
     подхватывает свежие посты без перезагрузки. Это НЕ живой embed, но даёт auto-update-эффект.
 - **Фолбэк VK при недоступности API:** токен протух / rate-limit / приватная страница →
   показываем **последний закэшированный snapshot** + подпись «Обновлено: <дата>»
-  + кнопка-ссылка на профиль VK. Блок НИКОГДА не пустой.
+  - кнопка-ссылка на профиль VK. Блок НИКОГДА не пустой.
 - **lazy-load / LCP:** в первом вьюпорте — 3–4 карточки (eager, blur-up placeholder,
   низкокачественный poster ≤10КБ → фейд к full WebP). Остальные ниже фолда — `loading="lazy"`.
 - **a11y:** рендер как семантический `<ul>` из `<a>`+реальный `<img>` с описательным
@@ -1547,12 +1630,11 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 12 — CTASection  *(«Спланировать событие» + телефон + WhatsApp + Telegram)*
+### БЛОК 12 — CTASection _(«Спланировать событие» + телефон + WhatsApp + Telegram)_
 
 - **Tokens / типографика / spacing:** фон `--color-secondary` (#F2ECE3, единый SSOT из `06_TOKENS`/`01`) full-bleed;
   `SectionHeading` overline `text-2xs uppercase text-gold-text-on-secondary` (токен #6E5631 — 5.885:1 на secondary #F2ECE3 ≥ AA; обычный `text-gold-text` #8A6D3B на secondary даёт 4.13:1 < AA, см. A11Y B2) + заголовок `font-heading text-3xl`
-  text-foreground`; вертикальный ритм `--section-y` (clamp 80→160px); контейнер
-  `max-w-[--container-max]`, `px-[--container-pad]`.
+  text-foreground`; вертикальный ритм `--section-y`(clamp 80→160px); контейнер`max-w-[--container-max]`, `px-[--container-pad]`.
 - **Точный microcopy (куда жать):**
   - Primary (MagneticButton gold): **«Спланировать событие»** → `/plan`.
   - Secondary (ghost): **«+7 (812) 919-59-11»** (`href="tel:+78129195911"`).
@@ -1576,12 +1658,12 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 13 — FAQTeaser  *(3–4 реальных Q&A, аккордеон → /faq)*
+### БЛОК 13 — FAQTeaser _(3–4 реальных Q&A, аккордеон → /faq)_
 
 **Реальный копирайт (пишем прямо в блок, `19B`#13: «контент отсутствует»):**
 
 1. **Сколько стоит кейтеринг?** — «От 2 450 ₽/гость (фуршет «Эконом») до 6 970 ₽/гость
-   (банкет «Максимальный» — верхний тариф). Кофе-брейк — от 950 ₽/гость 🟡 *(pending-verification — на живом сайте 390 ₽; точная цена подтверждается перед релизом)*. Цена за гостя фиксирована, без скрытых
+   (банкет «Максимальный» — верхний тариф). Кофе-брейк — от 950 ₽/гость 🟡 _(pending-verification — на живом сайте 390 ₽; точная цена подтверждается перед релизом)_. Цена за гостя фиксирована, без скрытых
    доплат, доставка в пределах КАД включена. Точный расчёт — в калькуляторе за 10 секунд.»
 2. **За какой срок вы организуете событие?** — «Стандартный заказ — за 48–72 часа.
    Индивидуальное меню — 72–96 часов. Срочный — от 24 часов (+30% к стоимости).
@@ -1612,7 +1694,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 14 — EventHero  *(заголовок страницы события)*
+### БЛОК 14 — EventHero _(заголовок страницы события)_
 
 **Примирение противоречия `04`«фоновое фото» vs `16`«фото ИМЕННО типа»:**
 зафиксирован **явный маппинг тип-события → конкретный hero-ассет** (`19B`#14:
@@ -1620,12 +1702,12 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 из сета «Event Atmosphere по типу» (`17_MEDIA_DIRECTION` тип 3).
 
 - **Маппинг (тип → hero-ассет):**
-  | Тип события | Hero-ассет (`/public/demo/`) | Что на фото |
-  |---|---|---|
-  | Свадьба (`/events/svadba`) | `hero-svadba.webp` | сервировка свадебного банкета, цветы, негатив-спейс |
-  | Корпоратив (`/events/korporativ`) | `hero-korporativ.webp` | конференц-фуршет, логотипы клиентов в кадре |
-  | Частное (`/events/chastnoe`) | `hero-chastnoe.webp` | домашняя вечеринка, интимная сервировка |
-  | Chef-at-home (`/events/chef-at-home`) | `hero-chef.webp` | шеф на кухне клиента, су-вид, процесс |
+  | Тип события                           | Hero-ассет (`/public/demo/`) | Что на фото                                         |
+  | ------------------------------------- | ---------------------------- | --------------------------------------------------- |
+  | Свадьба (`/events/svadba`)            | `hero-svadba.webp`           | сервировка свадебного банкета, цветы, негатив-спейс |
+  | Корпоратив (`/events/korporativ`)     | `hero-korporativ.webp`       | конференц-фуршет, логотипы клиентов в кадре         |
+  | Частное (`/events/chastnoe`)          | `hero-chastnoe.webp`         | домашняя вечеринка, интимная сервировка             |
+  | Chef-at-home (`/events/chef-at-home`) | `hero-chef.webp`             | шеф на кухне клиента, су-вид, процесс               |
 - **Перечень hero:** 4 ассета выше (по числу карточек `EventTypeSelector`, `04`#4).
 - **preload / poster (LCP):** `<link rel="preload" as="image" href="hero-<type>.webp">`;
   мгновенный blurred poster (LQIP ≤8КБ) → фейд к full WebP/AVIF (≤120КБ). Hero = LCP-элемент,
@@ -1636,11 +1718,13 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   `aria-label="Свадебный банкет NiloV Catering, Санкт-Петербург"`; порядок фокуса начинается
   с H1 (фон вне tab-order). `prefers-reduced-motion` → wipe выключен, показ мгновенный.
 - **Подстрочник (контекст):** «Свадьба на 120 гостей — от 4 350 ₽/гость»
-(цена — канон из `NILOV_UNIFIED_MENU`: фуршет Расширенный 4350 — публичный лейбл, внутренний `premium`).
+  (цена — канон из `NILOV_UNIFIED_MENU`: фуршет Расширенный 4350 — публичный лейбл, внутренний `premium`).
+
 > **[Волна 5–6, закрывает A5 (Али, B-ALI-5)]** На `/events/korporativ` и `/events/chastnoe` (и `/events/svadba`)
 > под hero / в блоке EventHero добавляется микро-упоминание: «**Возможен халяль-формат по запросу** —
 > [узнать про сертификат](/certificates#halal)». Халяль заявлен на событийных посадочных (где он востребован),
 > а не только в каталоге. Связь с A1/A2 — единый честный ответ «как заказать халяль».
+
 - **Пропсы:** `eventType`, `title`, `subtitle`, `heroSrc`, `ctaHref="/plan/calculator"`.
 - **VIDEO-RECAP вариант (Волна 3А, `17` §8 п.2):** hero может нести **video-recap вместо/поверх фото** —
   ротация по типу события из архива заказчика (Свадьба → своё свадебное recap-видео, Корпоратив → своё
@@ -1653,7 +1737,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 15 — PackageGrid  *(тарифы-карточки сравнения)*
+### БЛОК 15 — PackageGrid _(тарифы-карточки сравнения)_
 
 - **Recommended-тариф (закрыть вилку `16`«Стандарт/Расширенный»):** выбран **СТАНДАРТ**
   (в меню — «Оптимальный выбор для большинства мероприятий»). Золотая рамка (`border-gold-text` #8A6D3B, синхрон с `04:1657`)
@@ -1667,18 +1751,18 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   Фуршет: Эконом 2 450 · Стандарт 3 450 · Расширенный 4 350 · Максимальный 5 350.
   Банкет: Эконом 4 470 · Стандарт 5 470 · Расширенный 5 970 · Максимальный 6 970.
   Кофе-брейк: Эконом 950 · Стандарт 1 450 · Расширенный 1 950 · Максимальный 2 450.
-  *(внутренний `tier` сохраняет `economy|standard|premium|luxury`, но ПУБЛИЧНО «Люкс» НЕ показывается —
-  `luxury` отображается как «Максимальный», `premium` — как «Расширенный»; единый канон T3/M7 во ВСЕХ файлах)*
+  _(внутренний `tier` сохраняет `economy|standard|premium|luxury`, но ПУБЛИЧНО «Люкс» НЕ показывается —
+  `luxury` отображается как «Максимальный», `premium` — как «Расширенный»; единый канон T3/M7 во ВСЕХ файлах)_
 - **Чек-лист включённого (ФУРШЕТ, по выходу из меню):**
   - **Эконом** — 5 холодных канапе + 3 горячих (мини-бургер, якитори, овощи гриль) + напитки;
     выход ≈355 г + 250 мл; стандартное оформление.
   - **Стандарт ★** — 7 канапе + салат «Цезарь» + 4 горячих (бургер, якитори, профитроль, овощи гриль)
-    + брауни + напитки; ≈520 г + 250 мл; стильное оформление.
+    - брауни + напитки; ≈520 г + 250 мл; стильное оформление.
   - **Расширенный** — 9 канапе + 2 салата + 5 горячих + 2 десерта + 4 напитка; ≈770 г + 300 мл;
- ярусная подача.
+    ярусная подача.
   - **Максимальный** — 12 канапе + 2 салата + 7 горячих + 3 десерта + 5 напитков + шоу-станция;
     ≈1230 г + 400 мл; праздничное оформление, шеф на площадке.
-  (Для банкета/кофе-брейка чек-листы — по тому же шаблону из `NILOV_UNIFIED_MENU`.)
+    (Для банкета/кофе-брейка чек-листы — по тому же шаблону из `NILOV_UNIFIED_MENU`.)
 - **a11y (НЕ только цветом, `19B`#15):** «recommended» обозначен И бейджем-текстом,
   И `aria-label="Рекомендуемый тариф"`, И золотой рамкой (`border-gold-text` #8A6D3B, ≥3:1 по 1.4.11) — не только цветом (WCAG 1.4.1).
   Карточки — `<article>` с `<h3>`; чек-лист — `<ul>`; `focus-visible` на CTA каждой.
@@ -1688,18 +1772,18 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **[Волна 2, закрывает B-TAT-2] Инструмент сравнения «Банкет vs Фуршет» (FormatCompare):** блок достижим
   из `/events/korporativ` и `/menu` — таблица в две колонки **рядом** (НЕ два захода). Рендерится внутри
   `PackageGrid` (или как отдельный `FormatCompare`-блок на `/events/korporativ`):
-  | Параметр | Фуршет | Банкет |
-  |---|---|---|
-  | Формат | Стоячий приём, закуски на станциях | Посадка, официанты, классика |
-  | Посадка | НЕ нужна (стоячие/высокие столы) | Рассадка гостей, сервировка |
-  | Официанты | Минимум | Полная сервировка |
-  | Цена/гость (Эконом) | **от 2 450 ₽** | от 4 470 ₽ |
-  | Вау-опции | Шоу-станция, граzing-стол | Торт, фонтан, шеф на площадке |
-  | Для 200 гостей | ✅ идеален (стоячий) | ✅ классика, дороже |
-  | **Для 120 гостей** | ✅ отлично (стоячий приём) | ✅ **рекомендуем** (посадка 50+; юбилей компании 120 чел = классика за столом) |
-  **Переключатель формата (toggle):** на `/events/korporativ` `PackageGrid` несёт `formatToggle` Банкет⇄Фуршет —
-  мгновенное сравнение цен/включённого **на той же странице** без открытия второго роута. Кнопка `Рассчитать 200 гостей`
-  ведёт в `/plan/calculator?event=korporativ&guests=200&format=furshet&tier=economy` (B-TAT-5).
+  | Параметр                                                                                                               | Фуршет                             | Банкет                                                                         |
+  | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
+  | Формат                                                                                                                 | Стоячий приём, закуски на станциях | Посадка, официанты, классика                                                   |
+  | Посадка                                                                                                                | НЕ нужна (стоячие/высокие столы)   | Рассадка гостей, сервировка                                                    |
+  | Официанты                                                                                                              | Минимум                            | Полная сервировка                                                              |
+  | Цена/гость (Эконом)                                                                                                    | **от 2 450 ₽**                     | от 4 470 ₽                                                                     |
+  | Вау-опции                                                                                                              | Шоу-станция, граzing-стол          | Торт, фонтан, шеф на площадке                                                  |
+  | Для 200 гостей                                                                                                         | ✅ идеален (стоячий)               | ✅ классика, дороже                                                            |
+  | **Для 120 гостей**                                                                                                     | ✅ отлично (стоячий приём)         | ✅ **рекомендуем** (посадка 50+; юбилей компании 120 чел = классика за столом) |
+  | **Переключатель формата (toggle):** на `/events/korporativ` `PackageGrid` несёт `formatToggle` Банкет⇄Фуршет —         |
+  | мгновенное сравнение цен/включённого **на той же странице** без открытия второго роута. Кнопка `Рассчитать 200 гостей` |
+  | ведёт в `/plan/calculator?event=korporativ&guests=200&format=furshet&tier=economy` (B-TAT-5).                          |
 - **[Волна 2, закрывает B-MAX-7] Бейдж «Экономия vs верхний тариф» — база исправлена:** `savings` в `calcTotal`/`liveSummary`
   считается от РЕАЛЬНОГО верха формата (для фуршета `luxury` = **5 350**, для банкета = **6 970**), а НЕ от
   устаревшей константы 6 500. Бейдж «Вы экономите X» теперь ДОСТОВЕРЕН (см. `07` §calcTotal, `21_LOGIC_AUDIT`).
@@ -1708,7 +1792,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 16 — MenuCatalog  *(фильтр + каталог блюд)*
+### БЛОК 16 — MenuCatalog _(фильтр + каталог блюд)_
 
 - **Поведение фильтра (`19B`#16 — «не специфицировано»):**
   - **Категории (базовые):** канапе / салаты / горячее / десерты / напитки.
@@ -1736,26 +1820,55 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **Дата-модель блюда** (источник — `NILOV_UNIFIED_MENU.md`, канон + расширение под `23`/`25`):
   ```ts
   // 14 аллергенов ТР ТС 021/2011 (единый порядок, канон):
-  type Allergen = 'gluten'|'crustaceans'|'fish'|'peanuts'|'soy'|'milk'|'nuts'
-    |'celery'|'mustard'|'sesame'|'sulphites'|'lupin'|'molluscs'|'eggs';
-  type DietBadge = 'vegan'|'vegetarian'|'gluten-free'|'halal'|'kids';
-  type HalalStatus = 'certified'|'on-request'|'none';
-  type Season = 'summer'|'autumn'|'winter'|'spring';
+  type Allergen =
+    | "gluten"
+    | "crustaceans"
+    | "fish"
+    | "peanuts"
+    | "soy"
+    | "milk"
+    | "nuts"
+    | "celery"
+    | "mustard"
+    | "sesame"
+    | "sulphites"
+    | "lupin"
+    | "molluscs"
+    | "eggs";
+  type DietBadge = "vegan" | "vegetarian" | "gluten-free" | "halal" | "kids";
+  type HalalStatus = "certified" | "on-request" | "none";
+  type Season = "summer" | "autumn" | "winter" | "spring";
   type Dish = {
-    id: string; name: string; description: string;
-    weight: string; price: number;          // ₽, поштучно; цены из 23 помечены pending-verification
-    category: 'kanape'|'salat'|'gorachyache'|'desert'|'napkitki'
-      |'global-small-plates'|'plant-based'|'grazing'|'dessert-stations'|'signature-drinks'; // +тренд-категории B2
-    tags: string[];                          // хит/вег/авторский/лето/гриль/ЗОЖ/дети/сезон/новинка
-    allergens: Allergen[];                  // ОБЯЗАТЕЛЬНОЕ поле: 14 по ТР ТС 021/2011 (B6). Пустой массив допустим, НЕ отсутствие поля.
-    crossContact: boolean;                  // перекрёстная контаминация на кухне (флаг `*` на DishCard, B6)
-    dietBadges: DietBadge[];                // B5/B11: видимые бейджи диеты (vegan/vegetarian/gluten-free/halal/kids) — НЕ только аллергены
-    halalStatus: HalalStatus;               // B4: 'certified' только при подтверждённом сертификате; иначе 'on-request'/'none'. НЕ обещаем без оснований.
-    season?: Season[];                      // B7: сезонная ротация 20% (синхрон с SeasonalModule)
-    kcal: number; protein: number; fat: number; carbs: number; // КБЖУ
-    origin: string;                         // per-dish, напр. «фермеры ЛО» / «импорт»
-    image: string; hoverVideo?: string;     // video только для хитов (см. блок 17)
-  }
+    id: string;
+    name: string;
+    description: string;
+    weight: string;
+    price: number; // ₽, поштучно; цены из 23 помечены pending-verification
+    category:
+      | "kanape"
+      | "salat"
+      | "gorachyache"
+      | "desert"
+      | "napkitki"
+      | "global-small-plates"
+      | "plant-based"
+      | "grazing"
+      | "dessert-stations"
+      | "signature-drinks"; // +тренд-категории B2
+    tags: string[]; // хит/вег/авторский/лето/гриль/ЗОЖ/дети/сезон/новинка
+    allergens: Allergen[]; // ОБЯЗАТЕЛЬНОЕ поле: 14 по ТР ТС 021/2011 (B6). Пустой массив допустим, НЕ отсутствие поля.
+    crossContact: boolean; // перекрёстная контаминация на кухне (флаг `*` на DishCard, B6)
+    dietBadges: DietBadge[]; // B5/B11: видимые бейджи диеты (vegan/vegetarian/gluten-free/halal/kids) — НЕ только аллергены
+    halalStatus: HalalStatus; // B4: 'certified' только при подтверждённом сертификате; иначе 'on-request'/'none'. НЕ обещаем без оснований.
+    season?: Season[]; // B7: сезонная ротация 20% (синхрон с SeasonalModule)
+    kcal: number;
+    protein: number;
+    fat: number;
+    carbs: number; // КБЖУ
+    origin: string; // per-dish, напр. «фермеры ЛО» / «импорт»
+    image: string;
+    hoverVideo?: string; // video только для хитов (см. блок 17)
+  };
   ```
   14 аллергенов: глютен, ракообразные, рыба, арахис, соя, молоко, орехи, сельдерей,
   горчица, кунжут, сульфиты, люпин, моллюски, яйца. КАЖДОЕ блюдо несёт теги (MenuCritic `24` B6);
@@ -1771,7 +1884,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 17 — DishCard  *(фото + цена + 14 аллергенов + КБЖУ)*
+### БЛОК 17 — DishCard _(фото + цена + 14 аллергенов + КБЖУ)_
 
 **Примирение противоречия `04`«hover zoom» vs `16`«5с видео»:**
 **РЕКОМЕНДУЕМЫЙ механизм = Ken Burns zoom на hover (CSS, БЕЗ видео) + опциональное
@@ -1814,6 +1927,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
     колоса у БГ, полумесяца у халяля). Тест: прогон через axe + проверка контраста на `06_TOKENS` палитре.
   > **⚠️ R1 (`25_MENUCRITIC_FINAL`, БЛОКИРУЮЩИЙ):** поля заданы, но **значения 14 аллергенов — `pending`** (не заполнены ни для одного из 78 блюд). **НЕ выдумывать** — заполнить из карточек блюд заказчика до прода (`23` §0).
   > **[Волна 4, закрывает S3/S4/S5 (Света, B-SVETA-3/4/5)]** Аллергены/диета для мамы-аллергика (Света) переносятся из «hover-only» в **всегда-видимую зону** карточки `DishCard` (особенно на детском/детских блюдах):
+  >
   > - **S5 — ВИДИМЫ ВСЕГДА:** 14 чипов `allergens` + `dietBadges` (`gluten-free` и пр.) рендерятся **под фото карточки, не только на hover/focus** (Света с коляской НЕ тыкает каждую карточку на тач). На mobile — статичные чипы, `tap-to-expand` только для деталей КБЖУ.
   > - **S3 — crossContact красным наверху:** когда `crossContact:true` — **красное предупреждение** «🔴 На кухне возможен контакт с глютеном / аллергенами» выносится ВВЕРХ карточки (над фото / под заголовком), НЕ прячется в тонкий серый чип. Для младенца-аллергика это критично.
   > - **S4 — plain-language вердикт (язык мамы):** рядом с чипами — понятный вердикт по блюду: **«✅ Подходит при аллергии на глютен»** (нет в `allergens` и `crossContact:false`) ИЛИ **«❌ Содержит глютен — не для ребёнка-аллергика»** (есть в `allergens`). Без сухих ГОСТ-названий ТР ТС как единственного объяснения. Технические названия 14 аллергенов остаются чипами, НО вердикт — первичен для родителя.
@@ -1836,7 +1950,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 17-бис — AllergenLegend  *(легенда 14 аллергенов ТР ТС 021/2011, B-NINA-5)*
+### БЛОК 17-бис — AllergenLegend _(легенда 14 аллергенов ТР ТС 021/2011, B-NINA-5)_
 
 **Назначение:** неспециалист (Нина) НЕ понимает аббревиатуры чипов «gluten / milk / sulphites».
 Легенда расшифровывает КАЖДЫЙ из 14 чипов plain-языком + показывает, что означает глиф «🌾 содержит глютен».
@@ -1853,10 +1967,9 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **Связь с `23` §0:** легенда — клиентский слой расшифровки тех же 14 значений `allergens[]`; данные тянутся из того же контракта (bulk-импорт, pending-verification по S1/R1).
 - **Responsive:** mobile — модалка на весь экран (bottom-sheet), список скроллится; desktop — центрированное окно.
 
-
 ---
 
-### БЛОК 18 — ShowCookingGrid  *(интерактивные станции)*
+### БЛОК 18 — ShowCookingGrid _(интерактивные станции)_
 
 - **ЗАКРЫТЫЙ список станций (ровно 6, из `NILOV_UNIFIED_MENU` — «…» раскрыт):**
   1. Телятина на вулканическом камне
@@ -1866,14 +1979,14 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   5. Строганина из северных рыб
   6. Раклет-бар
 - **Цены станций (РЕАЛЬНЫЕ цифры, ₽, из меню):**
-  | Станция | Цена/порция | Стоимость станции |
-  |---|---|---|
-  | Телятина на камне | 605 ₽ (100 г) | от 62 500 ₽ (от 100 порций) |
-  | Лосось целиком | 605 ₽ (115 г) | от 72 500 ₽ (от 100 порций) |
-  | Тако «Знойная Мексика» | 339 ₽ (60 г) | от 48 500 ₽ (от 75 порций) |
-  | Ризотто в пармезане | 605 ₽ (100 г) | от 64 500 ₽ (от 75 порций) |
-  | Строганина из северных рыб | 484 ₽ (60 г) | от 56 500 ₽ (от 100 порций) |
-  | Раклет-бар | индивид. расчёт | от 40 000 ₽ |
+  | Станция                    | Цена/порция     | Стоимость станции           |
+  | -------------------------- | --------------- | --------------------------- |
+  | Телятина на камне          | 605 ₽ (100 г)   | от 62 500 ₽ (от 100 порций) |
+  | Лосось целиком             | 605 ₽ (115 г)   | от 72 500 ₽ (от 100 порций) |
+  | Тако «Знойная Мексика»     | 339 ₽ (60 г)    | от 48 500 ₽ (от 75 порций)  |
+  | Ризотто в пармезане        | 605 ₽ (100 г)   | от 64 500 ₽ (от 75 порций)  |
+  | Строганина из северных рыб | 484 ₽ (60 г)    | от 56 500 ₽ (от 100 порций) |
+  | Раклет-бар                 | индивид. расчёт | от 40 000 ₽                 |
 - **Поведение «добавить в меню» (`19B`#18):** кнопка пишет станцию в общий стор
   выбора (Zustand, тот же, что у `Calculator`/`Constructor`) → toast «Станция добавлена»
   (`aria-live="polite"`); состояние сохраняется в `sessionStorage`. Вторая CTA —
@@ -1894,7 +2007,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 19 — GalleryMasonry  *(parallax-галерея, фильтр, lightbox)*
+### БЛОК 19 — GalleryMasonry _(parallax-галерея, фильтр, lightbox)_
 
 - **reduced-motion (`19B`#19 — не обработан):** под `prefers-reduced-motion` parallax
   и Ken Burns ВЫКЛЮЧЕНЫ → статичная masonry-сетка (transform/opacity-анимации off).
@@ -1920,7 +2033,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 20 — Calculator  *(формат→гости→пакет→опции→итог→PDF-КП)*
+### БЛОК 20 — Calculator _(формат→гости→пакет→опции→итог→PDF-КП)_
 
 **Примирение противоречия «без API» (`19`#20 ❌ если нужен API) vs `07`«POST /api/calculate»:**
 **ЗАФИКСИРОВАНО = локальный расчёт на клиенте <50ms — ИСТОЧНИК ИСТИНЫ, НИКАКОГО
@@ -1958,13 +2071,13 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   значение, ветка «Оставить заявку» → `/api/contact` (см. блок 08, §Границы гостей: 10–500 + edge >500; единая терминология B8) / `AddonToggles` / `AllergenFilter`
   (14 чекбоксов → автоскрытие блюд) / `DatePicker` / `ResultDisplay` (sticky).
   > **[Волна 4, закрывает E7 (Елена, B-E7) — «Мобильный фуршет» не путает]** `FormatSelector` в калькуляторе и конструкторе (шаг 1) показывает **ровно 4 формата** из `FormatShowcase`: Фуршет / Банкет / Кофе-брейк / Chef-at-home — НЕ «Мобильный фуршет» (он есть в CMS-модели `PricingConfig`, но для не-спеца это путающая опция, см. E9). Если «Мобильный фуршет» нужен — он доступен как **ad-hoc опция внутри Фуршета** (пояснение plain-языком: «фуршет с выездом на площадку без кухни»), НЕ как отдельная карточка в быстром пути. Консистентность калькулятор ≙ `FormatShowcase` (Волна 4).
-  State: `hooks/useCalculator.ts` (локальный расчёт). `POST /api/calculate` — опц. валидация+лид.
+  > State: `hooks/useCalculator.ts` (локальный расчёт). `POST /api/calculate` — опц. валидация+лид.
 - **Responsive:** desktop — 2 колонки (контролы 40% слева, `ResultDisplay` sticky 60% справа);
   mobile — вертикальный стек, `ResultDisplay` fixed-bottom (сворачиваемая панель с итогом + CTA).
 
 ---
 
-### БЛОК 21 — DeliveryZonesMap  *(зоны доставки + карта, Волна 2А)*
+### БЛОК 21 — DeliveryZonesMap _(зоны доставки + карта, Волна 2А)_
 
 **Назначение:** страница `/delivery` — прозрачные зоны обслуживания (локальное SEO «кейтеринг СПб/КАД/ЛО»).
 Связь с `TrustProof` («🚚 Доставка в КАД включена») и калькулятором (надбавка вне КАД = `calcTotal` add-on).
@@ -1973,11 +2086,11 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **КАД включён (0 ₽):** явный бейдж/строка «В пределах КАД — доставка бесплатно».
 - **Холодовая цепь (ОБЯЗАТЕЛЬНА, `SERVICE_DELIVERY_SPEC` §3):** доставка = **непрерывная холодовая цепь**, а не просто «привезём». В смете и на `/delivery` зафиксировано: **рефрижераторные фургоны** (лето/жара — обязательно), **термологгеры** в каждом контейнере, целевая t холодных блюд в пути **≤ +6 °C**, разделение аллергенов. Блок показывает строку «Холодовая цепь (реф-фургон + логгеры) — **включена в КАД / +N ₽ вне КАД**» согласно §3; при разрыве цепи (> +8 °C / 30 мин) — утилизация партии + пересчёт «в сторону клиента» (брак-контракт).
 - **Надбавки вне КАД — таблица зон (пример, уточнить у заказчика):**
-  | Зона | Районы ЛО | Надбавка |
-  |---|---|---|
-  | Зона 1 | Мурино, Кудрово, Сертолово, Стрельна, Петродворец | +3 000 ₽ |
-  | Зона 2 | Пушкин, Колпино, Всеволожск, Гатчина | +5 000 ₽ |
-  | Зона 3 | Выборг, Приозерск, Кингисепп, Тихвин | +8 000 ₽ (или по запросу) |
+  | Зона   | Районы ЛО                                         | Надбавка                  |
+  | ------ | ------------------------------------------------- | ------------------------- |
+  | Зона 1 | Мурино, Кудрово, Сертолово, Стрельна, Петродворец | +3 000 ₽                  |
+  | Зона 2 | Пушкин, Колпино, Всеволожск, Гатчина              | +5 000 ₽                  |
+  | Зона 3 | Выборг, Приозерск, Кингисепп, Тихвин              | +8 000 ₽ (или по запросу) |
   > Надбавка вне КАД = единая переменная `DELIVERY_SURCHARGE[zone]`, тянется в `calcTotal`
   > (как add-on), чтобы цена в калькуляторе и на `/delivery` совпадали (см. `07` §Единая `calcTotal`).
 - **Карта:** интерактивная SVG (контур КАД + заливка зон цветом по градиенту надбавки) ИЛИ статичная карта
@@ -1991,7 +2104,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 22 — CertBlock  *(сертификаты и безопасность, Волна 2А)*
+### БЛОК 22 — CertBlock _(сертификаты и безопасность, Волна 2А)_
 
 **Назначение:** страница `/certificates` — юр. комплаенс и безопасность питания. Закрывает БИТУЮ футер-ссылку
 `/certificates` (баг C из `17_IA_CRITIC`: футер вёл на `/why-us#cert`, которого нет / страница отсутствовала).
@@ -1999,10 +2112,11 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 - **Состав (единый язык с `TrustProof`/SiteFooter 152-ФЗ-бейджем):** 152-ФЗ (ФЗ «О персональных данных»),
   ТР ТС 021/2011 (безопасность пищевой продукции, маркировка 14 аллергенов), Роспотребнадзор
-  (санитарно-эпидемиологическое заключение) 🟡 *(наличие сертификата/заключения подтвердить у заказчика, не выдавать за верифицированный факт)*, Декларация соответствия (EAC) 🟡, аккредитация кухни
-  (собственное производство / HACCP) 🟡 *(наличие подтвердить у заказчика)*. Каждый пункт = карточка: название + №/дата (если есть) + кратко «что даёт».
+  (санитарно-эпидемиологическое заключение) 🟡 _(наличие сертификата/заключения подтвердить у заказчика, не выдавать за верифицированный факт)_, Декларация соответствия (EAC) 🟡, аккредитация кухни
+  (собственное производство / HACCP) 🟡 _(наличие подтвердить у заказчика)_. Каждый пункт = карточка: название + №/дата (если есть) + кратко «что даёт».
   > **[Волна 5–6, закрывает A2+A7 (Али, B-ALI-2/7)]** Блок `CertBlock` (`/certificates`) ОБЯЗАН нести
   > явный **раздел «Халяль»** — честный ответ, а не имитацию исламского сертификата:
+  >
   > - Текст прямо: «**Халяль-линия — по запросу, при наличии сертификации.** Постоянного исламского
   >   сертификата (Халяль-центр / Стандарт РФ 56085) на сайте сейчас НЕТ. Мы готовим халяль-блюда по запросу
   >   и подтверждаем сертификацию индивидуально — напишите менеджеру.»
@@ -2022,7 +2136,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 23 — NewsletterSignup  *(подписка, Волна 2А)*
+### БЛОК 23 — NewsletterSignup _(подписка, Волна 2А)_
 
 **Назначение:** подписка на новости/сезонные предложения. Задействует ранее МЁРТВЫЙ `/api/newsletter`
 (был в списке API репо, но ни один блок не вёл на него). Теперь — реальная подписка.
@@ -2039,7 +2153,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 24 — RatingBadge  *(внешний рейтинг: Google + Яндекс + 2ГИС, Волна 2А → доп. Волна 4В, G-2)*
+### БЛОК 24 — RatingBadge _(внешний рейтинг: Google + Яндекс + 2ГИС, Волна 2А → доп. Волна 4В, G-2)_
 
 **Назначение:** честный внешний рейтинг. НЕ фейковый `AggregateRating` в JSON-LD (риск санкций Гугла/Яндекса, см. `SchemaBlock` баг 30) —
 а РЕАЛЬНЫЕ ссылки на профили отзывов. **[Волна 4В, G-2]** Для петербургского B2B-кейтеринга основные площадки отзывов РФ — **Яндекс.Карты/Бизнес** и **2ГИС**; Google вторичен (и частично недоступен в РФ). Охват реальных отзывов закрыт добавлением Яндекс/2ГИС рядом с Google (единый блок «Отзывы о нас» со всеми площадками).
@@ -2056,13 +2170,13 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   > **[Волна 4, закрывает R3 (Роман, B-R3) — внешняя верификация ОБЯЗАТЕЛЬНА для proof]** Публикация раздела `/reviews` как «доверительного proof» (см. RT-4) **блокируется**, пока НЕ заполнен **хотя бы 1 внеш. профиль** (`yandexProfileUrl` ИЛИ `twoGisProfileUrl` ИЛИ `googleProfileUrl`) — иначе `RatingBadge` пуст = нет независимой верификации, скептик Роман заперт внутри сайта. Правило увязано с метрикой готовности RT-4: `reviewsReady = (approvedReal.length >= 20) && (videoCount >= 3) && (externalProfiles >= 1)`. До выполнения — `/reviews` НЕ анонсируется как proof (уже по RT-4), плюс `RatingBadge` рендерит кнопку «Оцените нас на …» с проверкой наличия реального `url`.
 - **Где:** рядом с `TrustProof`/`AwardsStrip` (доверие) ИЛИ в футере. Связь с `/reviews` (тот же блок-ряд «доверие»).
   На мобильном — ряд переносится в 1 колонку (все 3 площадки достижимы, без горизонт. скролла).
-- **Пропсы:** `rating?: number`, `reviewsCount?: number`, `googleProfileUrl?: string`, `yandexProfileUrl?: string` *(Волна 4В, G-2)*, `twoGisProfileUrl?: string` *(Волна 4В, G-2)*, `variant: 'badge'|'strip'`. Площадки опц. (рендер только заданных — нет фейк-плиток).
+- **Пропсы:** `rating?: number`, `reviewsCount?: number`, `googleProfileUrl?: string`, `yandexProfileUrl?: string` _(Волна 4В, G-2)_, `twoGisProfileUrl?: string` _(Волна 4В, G-2)_, `variant: 'badge'|'strip'`. Площадки опц. (рендер только заданных — нет фейк-плиток).
 - **a11y / Perf / Responsive:** каждая ссылка — видимый текст (не иконка-only); звезда `aria-hidden`; контраст AA.
   Статичный, CLS≈0.
 
 ---
 
-### БЛОК 25 — ThankYouScreen  *(страница благодарности, Волна 2А)*
+### БЛОК 25 — ThankYouScreen _(страница благодарности, Волна 2А)_
 
 **Назначение:** `/thank-you` — целевая страница после успешного submit `ContactForm` (и пост-калькулятор/конструктор
 → `/api/contact`). Закрывает разрыв воронки (раньше заявка уходила в `/api/contact` без видимой страницы подтверждения).
@@ -2079,7 +2193,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 26 — NotFoundPage  *(кастомная /404, Волна 2А)*
+### БЛОК 26 — NotFoundPage _(кастомная /404, Волна 2А)_
 
 **Назначение:** кастомная страница ошибки. Глобальный `notFound()` (Next.js `app/not-found.tsx`) → эта страница;
 плюс явный роут `/404` для прямых заходов. Закрывает отсутствие branded 404 (риск «голой» ошибки).
@@ -2092,7 +2206,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 27 — EventsRecap  *(архив video-рекапов с мероприятий заказчика, Волна 3А)*
+### БЛОК 27 — EventsRecap _(архив video-рекапов с мероприятий заказчика, Волна 3А)_
 
 **Назначение (`17` §8, `26_VIDEO_ARCHIVE_TASK`):** у заказчика ОЧЕНЬ много видео с реальных мероприятий
 (примеры площадок — Эрмитаж/Мариинский 🟡 — упоминаются ТОЛЬКО как примеры ДЕМО-данных слота, НЕ как подтверждённые клиенты и НЕ как доказательство уровня; до сверки с договорами заказчика НЕ публикуются как факт, per FACT-GATE 04:86 / бан-лист 40 §3.2). Блок превращает архив в
@@ -2107,9 +2221,9 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   ИЛИ развёрнутым рилом. Полные recap НЕ в потоке главной (не бьют LCP) — только по клику/на `/events/recap`.
 - **Фильтр (ЕДИНАЯ таксономия с `GalleryTeaser`/`TestimonialsCarousel`/`GalleryMasonry`):** чипы по
   **типу события** (Свадьба / Корпоратив / Частное / Chef-at-home) + **площадке** (Лофт-площадка / Загородный клуб / др. — примеры-категории, НЕ узнаваемые бренды)
-  + **дате** (год/сезон). Каждый клип тегируется `eventType` + `venue` + `date` (как GalleryTeaser). URL-state
-  `?type=&venue=` (SSR-фильтрация, как `MenuCatalog`/`ReviewList`). Empty-state: «Нет рекапов в этой категории —
-  покажем все» + reset.
+  - **дате** (год/сезон). Каждый клип тегируется `eventType` + `venue` + `date` (как GalleryTeaser). URL-state
+    `?type=&venue=` (SSR-фильтрация, как `MenuCatalog`/`ReviewList`). Empty-state: «Нет рекапов в этой категории —
+    покажем все» + reset.
 - **Источник хранения = `VideoProvider` (Rutube по умолч., эмбед-facade, НЕ self-host MP4; vimeo — только если доступен у заказчика):** прогрессивный стриминг легче для LCP, чем
   тяжёлый self-host (`17` §8 «источник хранения»). Клип = `VideoProvider`-плеер (lite-embed / facade: сначала poster+play-btn,
   реальный iframe грузится ТОЛЬКО по клику → LCP-безопасно, не тянем плеер в первый paint). Ссылка на канал/showcase
@@ -2118,13 +2232,13 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   ```ts
   interface RecapClip {
     id: string;
-    eventType: 'wedding'|'corporate'|'private'|'chef-at-home'; // ЕДИНАЯ таксономия (как Review/GalleryPhoto)
-    venue?: string;            // ДЕМО-плейсхолдер, НЕ узнаваемый бренд (напр. «Лофт-площадка» | «Загородный клуб» | др.); реальные бренды (Эрмитаж/Мариинский) ЗАПРЕЩЕНЫ как клиенты без письменного договора (см. 40 §3.2)
-    date: string;              // ISO (для фильтра по году/сезону)
-    title: string;             // ДЕМО-пример, НЕ реальный бренд: «Свадьба · Лофт-площадка · 120 гостей» (ДЕМО-данные слота, не голый факт-клиент; 🟡 до сверки)
-    posterSrc: string;         // постер клипа (LQIP → full WebP), ВСЕГДА локальный
-    video: VideoRef;           // Rutube/self-host через VideoProvider (default='rutube'); ранее хардкод vimeoId
-    durationSec: number;       // 15–45 для рила
+    eventType: "wedding" | "corporate" | "private" | "chef-at-home"; // ЕДИНАЯ таксономия (как Review/GalleryPhoto)
+    venue?: string; // ДЕМО-плейсхолдер, НЕ узнаваемый бренд (напр. «Лофт-площадка» | «Загородный клуб» | др.); реальные бренды (Эрмитаж/Мариинский) ЗАПРЕЩЕНЫ как клиенты без письменного договора (см. 40 §3.2)
+    date: string; // ISO (для фильтра по году/сезону)
+    title: string; // ДЕМО-пример, НЕ реальный бренд: «Свадьба · Лофт-площадка · 120 гостей» (ДЕМО-данные слота, не голый факт-клиент; 🟡 до сверки)
+    posterSrc: string; // постер клипа (LQIP → full WebP), ВСЕГДА локальный
+    video: VideoRef; // Rutube/self-host через VideoProvider (default='rutube'); ранее хардкод vimeoId
+    durationSec: number; // 15–45 для рила
   }
   ```
 - **Пропсы:** `clips: RecapClip[]`, `variant: 'page'|'home-strip'`, `showcaseUrl: string` (ссылка на Rutube-плейлист / self-host-канал),
@@ -2139,7 +2253,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   (`home-strip`) полный recap НЕ в потоке (модалка) → главная LCP не страдает. INP<200ms (открытие модалки —
   composited); CLS<0.1 (`aspect-ratio` 16:9 постеров).
 - **a11y (`17` §8 reduced-motion + модалка):**
-    воспроизведение только по явному клику пользователя (единый контракт с DishCard/ShowCookingGrid).
+  воспроизведение только по явному клику пользователя (единый контракт с DishCard/ShowCookingGrid).
   - Каждый клип — `<button aria-label="Рекап: Свадьба, Лофт-площадка, 120 гостей, 30 секунд">` (тип+площадка-плейсхолдер+длит.).
   - Модалка: `role="dialog" aria-modal="true"` + **focus-trap** (фокус заперт внутри), **Esc** — закрыть,
     возврат фокуса на триггер-клип после закрытия (как lightbox `GalleryMasonry` БЛОК 19). `VideoProvider`-iframe в модалке —
@@ -2177,9 +2291,9 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
   ```ts
   interface AdCampaign {
     id: string;
-    eridToken: string;          // токен ОРД, выданный при регистрации рекламы
-    landingSlug: string;        // /plan | /seasonal | спец-ленд
-    isActive: boolean;          // метка активной рекламы → маркировка видима
+    eridToken: string; // токен ОРД, выданный при регистрации рекламы
+    landingSlug: string; // /plan | /seasonal | спец-ленд
+    isActive: boolean; // метка активной рекламы → маркировка видима
   }
   ```
 - **Логика показа (`AdMarker`):**
@@ -2192,7 +2306,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 29 — Политика 152-ФЗ (`/privacy`) *(обязательная юр. страница, Волна 5А)*
+### БЛОК 29 — Политика 152-ФЗ (`/privacy`) _(обязательная юр. страница, Волна 5А)_
 
 **Назначение (Волна 5А / HostingCritic #3, #11):** `/privacy` — обязательная страница
 оператора персональных данных (ПД) граждан РФ по **152-ФЗ «О персональных данных»**.
@@ -2240,7 +2354,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 34 — TastingBooking  *(дегустация перед бронированием, GapHunter G1, закрывает C9-1)*
+### БЛОК 34 — TastingBooking _(дегустация перед бронированием, GapHunter G1, закрывает C9-1)_
 
 **Назначение (`02_IA.md:66`, `46_GAPHUNTER_AUDIT` G1 MEDIUM):** индустрия (TheKnot/DPNAK/qrolic) требует «taste before booking» — клиент бронирует дегустацию до контракта. Роут **`/tasting`** (объявлен в `02_IA`), теперь с блок-спецой (раньше ВИСЯЧИЙ → C9-1 закрыт).
 
@@ -2252,7 +2366,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 35 — VenueList  *(площадки, которые мы обслуживаем, GapHunter G5, закрывает C9-2)*
+### БЛОК 35 — VenueList _(площадки, которые мы обслуживаем, GapHunter G5, закрывает C9-2)_
 
 **Назначение (`02_IA.md:69`, `46_GAPHUNTER_AUDIT` G5 LOW):** клиенты ищут «работали ли вы на МОЕЙ площадке». Роут **`/venues`** (объявлен в `02_IA`), теперь с блок-спецой (раньше ВИСЯЧИЙ → C9-2 закрыт).
 
@@ -2264,7 +2378,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 31 — AccessibilityPage  *(заявление о доступности WCAG, GapHunter G3, закрывает C9-3)*
+### БЛОК 31 — AccessibilityPage _(заявление о доступности WCAG, GapHunter G3, закрывает C9-3)_
 
 **Назначение (`02_IA.md:68`, `46_GAPHUNTER_AUDIT` G3 LOW–MED):** подкрепляет претензию WCAG (не только бейдж 152-ФЗ). Роут **`/accessibility`** (объявлен в `02_IA`), теперь с блок-спецой (раньше ВИСЯЧИЙ → C9-3 закрыт).
 
@@ -2275,7 +2389,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 32 — CareersPage  *(вакансии, GapHunter G4, закрывает C9-4 /careers)*
+### БЛОК 32 — CareersPage _(вакансии, GapHunter G4, закрывает C9-4 /careers)_
 
 **Назначение (`02_IA.md:97`, `46_GAPHUNTER_AUDIT` G4 LOW–MED):** карьерная страница «Мы нанимаем». Роут **`/careers`** (объявлен в `02_IA` + футер `43`), теперь с блок-спецой (раньше ВИСЯЧИЙ → C9-4 закрыт).
 
@@ -2286,7 +2400,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 
 ---
 
-### БЛОК 33 — ENVersion  *(англо-версия, опц., GapHunter G5, закрывает C9-5 /en)*
+### БЛОК 33 — ENVersion _(англо-версия, опц., GapHunter G5, закрывает C9-5 /en)_
 
 **Назначение (`02_IA.md:96`, `46_GAPHUNTER_AUDIT` G5 LOW–MED):** опциональная EN-версия для иностранных гостей/корпораций. Роут **`/en/*`** через i18n-свитчер в шапке (НЕ в футере). Цель — не основной трафик, а «международный гость может прочитать меню».
 
@@ -2301,6 +2415,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 Пять B2B/партнёрских персонажей выявили общий разрыв: сайт заточен под разового физлицо-клиента и «слеп» к агентствам, регулярным и медиа-сценариям. Закрываем ЕДИНЫМ партнёрским слоем (не дублируя роли).
 
 ### 11.1 — Агентский кабинет `AgencyCabinet` (закрывает B-PROFI-1…9, B-WEDAGENCY-1…9)
+
 - **B-PROFI-2 / B-WEDAGENCY-3 · Роут + кабинет.** Добавить роут **`/partners`** (B2B-вход) + блок `AgencyCabinet` (регистрация агентства, список клиентских проектов, выделенный менеджер). Пункт «Для агентств / B2B» в `SiteFooter`(«Компания») и бургер-меню. `02_IA.md` дополнить роутом. ЕДИНЫЙ кабинет для ивент-агентства (#12) и свадебного агентства (#16) — НЕ дублировать (B-WEDAGENCY-6).
 - **B-PROFI-1 / B-WEDAGENCY-2 · White-label.** Переключатель «Скрыть бренд NiloV в документах клиента» + поле «Логотип агентства» (загрузка в CMS) → экспорт КП/счёта несёт логотип и контакты агентства, НЕ NiloV. Без этого агентство теряет маржу.
 - **B-PROFI-5 / B-WEDAGENCY-1 · Передача брифа 1 кнопкой.** В кабинете — кнопка «Отправить бриф менеджеру» (свободное поле ТЗ + вложения: площадка, декор, тайминг, меню) → **`/api/brief`** (CRM менеджера), минуя 6-шаговый конструктор. Для свадебного агентства — расширенный `WeddingBrief` (площадка/декор/тайминг, B-WEDAGENCY-5).
@@ -2313,6 +2428,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **B-WEDAGENCY-9 · История проектов агентства** (переиспользует распознавание возврата P3, волна 9).
 
 ### 11.2 — Регулярные заказы `RecurringOrder` (закрывает B-SERGEY-1…9)
+
 - **B-SERGEY-1 · Подписка/абонемент.** Роут **`/subscribe`** (или секция в `/account`) + блок `RecurringOrder` — настройка повторяющегося кофе-брейка (формат, гости, день недели, время).
 - **B-SERGEY-2 · Расписание.** Поле периодичности (еженедельно / раз в 2 недели / ежемесячно) + привязка к дню; `AvailabilityCalendar` резервирует серию дат, а не одну.
 - **B-SERGEY-3 · Шаблон заказа.** Сохранение «Мой кофе-брейк» как именованного шаблона в аккаунте (БД, НЕ sessionStorage) — переиспользуется для разовых и регулярных заказов.
@@ -2322,6 +2438,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **B-SERGEY-7 · Быстрый повтор.** Для авторизованного офис-менеджера — CTA «Мой следующий кофе-брейк →» в `/account` или чип в бургере.
 
 ### 11.3 — Медиа-кит `MediaKit` (закрывает B-YULIA-1…9)
+
 - **B-YULIA-1 · Медиа-кит.** Роут **`/media-kit`** (или `/press`) + блок `MediaKit` — агрегатор скачиваемых материалов (логотипы, гайдлайн, фото high-res, сертификаты PDF, кейсы).
 - **B-YULIA-2 · Скачивание сертификатов.** На `/certificates` — кнопка «Скачать PDF» на каждом сертификате (Роспотребнадзор/ТР ТС/Халяль/аккредитация) + zip-архив.
 - **B-YULIA-3 · Логотип + гайдлайн.** В `/media-kit` — логотип (цветной/ч-б, SVG/PNG) + `BrandGuidelines` (где размещать, цвета, отступы).
@@ -2331,6 +2448,7 @@ CookieBanner, ScrollToTop). Их НЕ переписываем — переис�
 - **B-YULIA-8 · Постер видео-отзыва** — скачиваемый кадр для тендерных вставок (с согласия клиента).
 
 ### 11.4 — Средний масштаб (закрывает B-PAVEL-1…9)
+
 - **B-PAVEL-1 · Пресет 50.** Deep-link/CTA `?guests=50&format=banquet&tier=premium` на Hero/`/plan` (как банкет-500 волны 7/A5) — пропуск шага 1 конструктора.
 - **B-PAVEL-2 · Scale-proof на 50–150.** `ResultDisplay` при 50–150 несёт caption «Тимбилдинги на 50–150 — наша специализация / штат 80+ официантов / кейс» (расширить волну 7/A4 на средний масштаб).
 - **B-PAVEL-3 · Value-prop без сноба.** В `WhyUs`/`CTASection` — блок «Для 50 гостей: персональный шеф, выделенный менеджер, без сноба» (как волна 7/A8, но масштаб 50). Расширить scale-proof на весь диапазон 20–500 (B-PAVEL-8), НЕ дублируя Артёма.

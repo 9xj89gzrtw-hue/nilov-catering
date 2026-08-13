@@ -77,9 +77,11 @@ Findings are grouped by severity. Fix critical issues first.
 **Hard rule:** Every finding — regardless of severity level — must include a `Fix:` line. A critique without a fix is incomplete. Never omit it.
 
 ### 🔴 Critical
+
 Issues that break usability, accessibility, or core functionality. Fix immediately.
 
 Example:
+
 ```
 🔴 Critical — Text contrast fails WCAG AA
 The white text on your light blue background achieves 3.2:1 contrast (need 4.5:1 for AA).
@@ -88,9 +90,11 @@ Fix: Darken the blue to #0052CC or lighten the text to #F5F5F5. Verify contrast 
 ```
 
 ### 🟡 Important
+
 Issues that hurt the experience or violate design principles without breaking core function. Fix soon.
 
 Example:
+
 ```
 🟡 Important — Hierarchy collapse in the heading area
 Your H1 (28px) and H2 (24px) sizes violate the type scale ratio (need ~1.25× gap = 35px vs 28px).
@@ -99,9 +103,11 @@ Fix: Increase H1 to 35px or decrease H2 to 22px to create a clear scale.
 ```
 
 ### 🟢 Polish
+
 Issues that elevate the design or address missed opportunities. Fix when time allows.
 
 Example:
+
 ```
 🟢 Polish — Spacing rhythm could be tightened
 Your card padding is 20px but section margins are 40px, creating an inconsistent rhythm.
@@ -141,15 +147,18 @@ Fix: Use an 8px or 16px grid consistently. Stick to multiples: 8px, 16px, 24px, 
 # Reference: Gestalt Principles
 
 ## 1. Proximity
+
 Elements close together are perceived as a group.
 
 **What to look for:**
+
 - Buttons equidistant from two unrelated labels — ambiguity about which label applies
 - Form fields with labels too far from their inputs
 - Cards where internal spacing equals external spacing — no clear boundary
 - Action buttons orphaned from the content they act on
 
 **Common violations:**
+
 - "Floating" headings closer to the section above than the section below
 - Navigation items with equal gap to logo and page edge — no clear grouping
 - Icon + label pairs with too much internal gap — reads as two separate elements
@@ -159,14 +168,17 @@ Elements close together are perceived as a group.
 ---
 
 ## 2. Similarity
+
 Elements that look alike are perceived as related.
 
 **What to look for:**
+
 - Inconsistent button styles for actions of the same hierarchy level
 - Links that look like body text (or body text that looks like links)
 - Icons with inconsistent weight/style in the same context
 
 **Common violations:**
+
 - Primary CTA and secondary CTA styled identically
 - Different card types sharing the same visual treatment
 - Navigation items and footer links sharing identical styling — implies same hierarchy
@@ -176,14 +188,17 @@ Elements that look alike are perceived as related.
 ---
 
 ## 3. Continuity
+
 The eye follows paths, lines, and curves.
 
 **What to look for:**
+
 - Misaligned columns that break reading flow
 - Step indicators that don't clearly flow left-to-right (in LTR contexts)
 - Carousels that don't visually imply continuation (no peek of next item)
 
 **Common violations:**
+
 - Text columns with ragged right margins creating choppy scan lines
 - CTA buttons not aligned with the text they follow
 - Grid layouts where some items span columns without visual cues
@@ -193,14 +208,17 @@ The eye follows paths, lines, and curves.
 ---
 
 ## 4. Closure
+
 The mind completes incomplete shapes.
 
 **What to look for:**
+
 - Partially visible elements that don't clearly signal "more content exists"
 - Borders and dividers that don't fully enclose the intended group
 - Progress indicators where the incomplete arc reads as "done"
 
 **Common violations:**
+
 - Tabbed interfaces where the active tab doesn't visually connect to the content panel
 - Cards without enough visual containment — content bleeds into surroundings
 - Modals without sufficient contrast from background — boundary unclear
@@ -210,14 +228,17 @@ The mind completes incomplete shapes.
 ---
 
 ## 5. Figure/Ground
+
 Elements are perceived as either the subject (figure) or the background (ground).
 
 **What to look for:**
+
 - Insufficient contrast between primary content and background
 - Background patterns or images competing with foreground text
 - Hero images where the subject blends with surrounding UI
 
 **Common violations:**
+
 - Light grey text on white background — insufficient contrast, ground wins
 - Busy hero image with white text overlay without a scrim
 - Modal overlays with insufficient backdrop dimming
@@ -227,14 +248,17 @@ Elements are perceived as either the subject (figure) or the background (ground)
 ---
 
 ## 6. Common Fate
+
 Elements moving or pointing in the same direction are perceived as related.
 
 **What to look for:**
+
 - Hover states that animate in inconsistent directions across similar components
 - Icons that imply different flows than the interaction provides
 - Accordion expand icon that doesn't rotate on open
 
 **Common violations:**
+
 - "Back" button with right-pointing chevron
 - Carousel arrows that don't match the slide direction
 
@@ -243,9 +267,11 @@ Elements moving or pointing in the same direction are perceived as related.
 ---
 
 ## 7. Prägnanz (Law of Good Form)
+
 The eye prefers the simplest interpretation.
 
 **What to look for:**
+
 - Overdesigned components where a simpler form communicates the same thing
 - Unnecessary gradients, shadows, or decorative elements adding visual noise
 - Layouts that require mental model construction rather than recognition
@@ -255,9 +281,11 @@ The eye prefers the simplest interpretation.
 ---
 
 ## 8. Uniform Connectedness
+
 Elements with visible connections are perceived as related.
 
 **What to look for:**
+
 - Related items not connected by lines, borders, or enclosures when they should be
 - Tooltips that lack a visual anchor to their trigger
 - Breadcrumbs or step indicators without explicit connectors
@@ -283,6 +311,7 @@ Every design should have exactly **one** primary focal point per view. The eye m
 Size is the strongest hierarchy signal. The eye reads large before small.
 
 **Key ratios:**
+
 - Heading to subheading: minimum 1.25× size difference
 - H1 to body: typically 2.5×–4×
 - Under 1.15× difference: elements read as the same level
@@ -328,12 +357,12 @@ Isolation signals importance. The most isolated element draws the most attention
 
 ## Common Hierarchy Failures
 
-| Failure | Effect | Fix |
-|---|---|---|
-| Everything the same size | No entry point | Establish a clear size scale with 3+ levels |
-| 3+ elements at Level 1 | User paralysis | Reduce to one primary focal point per view |
-| CTA buried in content | Low conversion | Isolate CTA with whitespace, size, and colour |
-| No whitespace between levels | Levels blur | Add spacing to enforce visual separation |
+| Failure                      | Effect         | Fix                                           |
+| ---------------------------- | -------------- | --------------------------------------------- |
+| Everything the same size     | No entry point | Establish a clear size scale with 3+ levels   |
+| 3+ elements at Level 1       | User paralysis | Reduce to one primary focal point per view    |
+| CTA buried in content        | Low conversion | Isolate CTA with whitespace, size, and colour |
+| No whitespace between levels | Levels blur    | Add spacing to enforce visual separation      |
 
 ---
 
@@ -341,15 +370,16 @@ Isolation signals importance. The most isolated element draws the most attention
 
 ## WCAG Contrast Requirements
 
-| Text Type | AA (minimum) | AAA (enhanced) |
-|---|---|---|
-| Normal text (< 18pt / < 14pt bold) | 4.5:1 | 7:1 |
-| Large text (≥ 18pt / ≥ 14pt bold) | 3:1 | 4.5:1 |
-| UI components & graphic elements | 3:1 | — |
-| Placeholder text | 4.5:1 | — |
-| Disabled elements | Exempt | — |
+| Text Type                          | AA (minimum) | AAA (enhanced) |
+| ---------------------------------- | ------------ | -------------- |
+| Normal text (< 18pt / < 14pt bold) | 4.5:1        | 7:1            |
+| Large text (≥ 18pt / ≥ 14pt bold)  | 3:1          | 4.5:1          |
+| UI components & graphic elements   | 3:1          | —              |
+| Placeholder text                   | 4.5:1        | —              |
+| Disabled elements                  | Exempt       | —              |
 
 **Quick benchmarks:**
+
 - Black on white = 21:1 ✅
 - #767676 on white = 4.54:1 ✅ (barely AA)
 - #999 on white = 2.85:1 ❌
@@ -370,13 +400,14 @@ Isolation signals importance. The most isolated element draws the most attention
 
 ## Colour Temperature
 
-| Temperature | Colours | Effect |
-|---|---|---|
-| Warm | Red, orange, yellow | Energy, urgency, warmth |
-| Cool | Blue, green, purple | Calm, trust, professionalism |
-| Neutral | Grey, black, white | Structure, stability |
+| Temperature | Colours             | Effect                       |
+| ----------- | ------------------- | ---------------------------- |
+| Warm        | Red, orange, yellow | Energy, urgency, warmth      |
+| Cool        | Blue, green, purple | Calm, trust, professionalism |
+| Neutral     | Grey, black, white  | Structure, stability         |
 
 **Semantic colour conventions:**
+
 - Red = error, danger, delete
 - Green = success, safe, proceed
 - Yellow/amber = warning, caution
@@ -401,12 +432,14 @@ Isolation signals importance. The most isolated element draws the most attention
 Use a mathematical ratio, not random sizes.
 
 **Common ratios:**
+
 - **1.125** (minor second): subtle, good for dense content
 - **1.25** (major third): balanced, most versatile
 - **1.333** (perfect fourth): punchy, good for marketing
 - **1.5** (perfect fifth): dramatic, good for hero content
 
 **Example scale (1.25 ratio, base 16px):**
+
 ```
 Body: 16px → H6: 20px → H5: 25px → H4: 31px → H3: 39px → H2: 49px → H1: 61px
 ```
@@ -434,20 +467,21 @@ Stick to 2 fonts maximum. 3+ different faces = chaotic.
 
 ## Common Typography Failures
 
-| Failure | Fix |
-|---|---|
-| Body text < 14px | Use 16px minimum |
-| No type scale | Define a modular scale |
-| Line height too tight | Use 1.5–1.6 for body |
-| Line length > 100 chars | Cap at 75 characters |
-| 3+ font families | Limit to 2 max |
-| All-caps body copy | Use sentence case |
+| Failure                 | Fix                    |
+| ----------------------- | ---------------------- |
+| Body text < 14px        | Use 16px minimum       |
+| No type scale           | Define a modular scale |
+| Line height too tight   | Use 1.5–1.6 for body   |
+| Line length > 100 chars | Cap at 75 characters   |
+| 3+ font families        | Limit to 2 max         |
+| All-caps body copy      | Use sentence case      |
 
 ---
 
 # Reference: Usability Heuristics
 
 ## 1. Visibility of System Status
+
 Users should always know what's happening. Show state. Every action needs visible feedback.
 
 **Violations:** No loading indicator, silent form submission, no current-page indicator.
@@ -455,6 +489,7 @@ Users should always know what's happening. Show state. Every action needs visibl
 ---
 
 ## 2. Match Between System & Real World
+
 Speak the user's language. Use familiar words and real-world metaphors.
 
 **Violations:** Technical jargon in labels, unlabelled icon-only buttons, insider acronyms in public copy.
@@ -462,6 +497,7 @@ Speak the user's language. Use familiar words and real-world metaphors.
 ---
 
 ## 3. User Control & Freedom
+
 Always provide undo, cancel, and escape routes.
 
 **Violations:** Destructive actions without confirmation, modals with no close button, no way to reset a form.
@@ -469,6 +505,7 @@ Always provide undo, cancel, and escape routes.
 ---
 
 ## 4. Consistency & Standards
+
 Users learn from one part of the system and expect it everywhere.
 
 **Violations:** Primary actions in different colours across pages, inconsistent button placement, terminology shifts (search vs. find, delete vs. remove).
@@ -476,6 +513,7 @@ Users learn from one part of the system and expect it everywhere.
 ---
 
 ## 5. Error Prevention
+
 Design to prevent errors before they happen.
 
 **Violations:** Required fields with no indication, no inline validation, tiny touch targets, no confirmation before navigating away from unsaved work.
@@ -483,6 +521,7 @@ Design to prevent errors before they happen.
 ---
 
 ## 6. Error Recovery
+
 When errors happen, recovery should be simple. Error messages should be plain language with a specific problem and clear fix.
 
 **Violations:** "Invalid input" without saying which field, error shown at top of form while problem field is at bottom, red text on red background.
@@ -490,6 +529,7 @@ When errors happen, recovery should be simple. Error messages should be plain la
 ---
 
 ## 7. Flexibility & Efficiency
+
 Design for both novices and experts. Shortcuts shouldn't hide core paths.
 
 **Violations:** No keyboard shortcuts, forced multi-step processes that could be single-click, frequently-used settings buried in sub-menus.
@@ -497,6 +537,7 @@ Design for both novices and experts. Shortcuts shouldn't hide core paths.
 ---
 
 ## 8. Aesthetic & Minimalist Design
+
 Every element should serve a purpose. Remove clutter.
 
 **Violations:** Distracting animations, excessive borders/dividers, decorative icons that convey no information, backgrounds that reduce text legibility.
@@ -504,6 +545,7 @@ Every element should serve a purpose. Remove clutter.
 ---
 
 ## 9. Help & Documentation
+
 Help should be in context, task-focused, and specific.
 
 **Violations:** No help text for complex interactions, "Learn more" links leading to marketing pages, help docs at odds with actual UI behaviour.
@@ -511,6 +553,7 @@ Help should be in context, task-focused, and specific.
 ---
 
 ## 10. Recognition vs. Recall
+
 Make actions and options visible. Minimize memory load.
 
 **Violations:** Actions hidden in menus, icon-only toolbars with no labels, multi-step form with no current step indicator.
@@ -518,6 +561,7 @@ Make actions and options visible. Minimize memory load.
 ---
 
 ## Affordance & Discoverability
+
 Interactive elements should look interactive.
 
 - Minimum touch target: 44×44px (iOS), 48×48dp (Android)

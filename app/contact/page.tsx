@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { SITE } from '@/lib/data';
-import Breadcrumbs from '@/components/common/Breadcrumbs';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { SITE } from "@/lib/data";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 
 export default function ContactPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [showB2B, setShowB2B] = useState(false);
 
   return (
@@ -17,17 +17,17 @@ export default function ContactPage() {
       <div className="container-site max-w-2xl">
         <Breadcrumbs />
 
-        <h1 className="font-heading text-3xl md:text-4xl font-medium mb-2">Контакты</h1>
+        <h1 className="font-heading mb-2 text-3xl font-medium md:text-4xl">Контакты</h1>
         <p className="text-muted-foreground mb-8">
           Заполните форму — перезвоним за 15 минут (9:00–21:00). Без спама.
         </p>
 
         {/* Trust bar */}
-        <p className="text-sm text-muted-foreground mb-8">
+        <p className="text-muted-foreground mb-8 text-sm">
           19 лет на кухне СПб · 3 000+ событий · 4.8/5 по 27 отзывам
         </p>
 
-        <h2 className="font-heading text-xl font-medium mb-4">Заявка на кейтеринг</h2>
+        <h2 className="font-heading mb-4 text-xl font-medium">Заявка на кейтеринг</h2>
         <form
           method="POST"
           action="/api/quote"
@@ -35,10 +35,12 @@ export default function ContactPage() {
             e.preventDefault();
             // Validate phone before submit
             const form = e.currentTarget;
-            const phoneInput = form.querySelector('#phone') as HTMLInputElement;
-            const phone = phoneInput.value.replace(/[\s\-\(\)]/g, '');
-            if (phone.replace(/\D/g, '').length < 10) {
-              setError('Введите корректный номер телефона — минимум 10 цифр. Например: +7 (812) 919-59-11');
+            const phoneInput = form.querySelector("#phone") as HTMLInputElement;
+            const phone = phoneInput.value.replace(/[\s\-\(\)]/g, "");
+            if (phone.replace(/\D/g, "").length < 10) {
+              setError(
+                "Введите корректный номер телефона — минимум 10 цифр. Например: +7 (812) 919-59-11"
+              );
               phoneInput.focus();
               return;
             }
@@ -47,23 +49,23 @@ export default function ContactPage() {
               return;
             }
             setSubmitting(true);
-            setError('');
+            setError("");
             const formData = new FormData(form);
             try {
-              const res = await fetch('/api/quote', {
-                method: 'POST',
+              const res = await fetch("/api/quote", {
+                method: "POST",
                 body: formData,
-                headers: { 'Accept': 'application/json' },
+                headers: { Accept: "application/json" },
               });
               const json = await res.json();
               if (json.success) {
-                router.push(`/thank-you?orderId=${json.orderId || ''}`);
+                router.push(`/thank-you?orderId=${json.orderId || ""}`);
               } else {
-                setError(json.message || 'Ошибка. Позвоните ' + SITE.phone);
+                setError(json.message || "Ошибка. Позвоните " + SITE.phone);
                 setSubmitting(false);
               }
             } catch {
-              setError('Сеть недоступна. Позвоните ' + SITE.phone + ' или WhatsApp.');
+              setError("Сеть недоступна. Позвоните " + SITE.phone + " или WhatsApp.");
               setSubmitting(false);
             }
           }}
@@ -72,11 +74,20 @@ export default function ContactPage() {
           <input type="hidden" name="source" value="contact" />
 
           {/* Honeypot */}
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+          />
 
           {/* 1. Имя — required */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-1.5">Ваше имя *</label>
+            <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
+              Ваше имя *
+            </label>
             <input
               id="name"
               type="text"
@@ -84,16 +95,21 @@ export default function ContactPage() {
               required
               autoComplete="name"
               placeholder="Как к вам обращаться?"
-              aria-invalid={error ? 'true' : 'false'}
-              onInvalid={(e) => { e.preventDefault(); (e.target as HTMLInputElement).setCustomValidity('Пожалуйста, укажите ваше имя'); }}
-              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 aria-[invalid=true]:border-red-500"
+              aria-invalid={error ? "true" : "false"}
+              onInvalid={(e) => {
+                e.preventDefault();
+                (e.target as HTMLInputElement).setCustomValidity("Пожалуйста, укажите ваше имя");
+              }}
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity("")}
+              className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none aria-[invalid=true]:border-red-500"
             />
           </div>
 
           {/* 2. Телефон — required */}
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium mb-1.5">Телефон *</label>
+            <label htmlFor="phone" className="mb-1.5 block text-sm font-medium">
+              Телефон *
+            </label>
             <input
               id="phone"
               type="tel"
@@ -105,78 +121,90 @@ export default function ContactPage() {
               placeholder="+7 (___) ___-__-__"
               onInvalid={(e) => {
                 e.preventDefault();
-                (e.target as HTMLInputElement).setCustomValidity('');
+                (e.target as HTMLInputElement).setCustomValidity("");
                 if (!(e.target as HTMLInputElement).value) {
-                  (e.target as HTMLInputElement).setCustomValidity('Введите номер телефона');
+                  (e.target as HTMLInputElement).setCustomValidity("Введите номер телефона");
                 } else if ((e.target as HTMLInputElement).value.length < 10) {
-                  (e.target as HTMLInputElement).setCustomValidity('Слишком короткий номер — минимум 10 цифр');
+                  (e.target as HTMLInputElement).setCustomValidity(
+                    "Слишком короткий номер — минимум 10 цифр"
+                  );
                 }
               }}
-              onInput={(e) =>(e.target as HTMLInputElement).setCustomValidity('')}
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity("")}
+              className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none"
               aria-describedby="phone-hint"
             />
-            <p id="phone-hint" className="text-xs text-muted-foreground mt-1">Минимум 10 цифр. Например: +7 (812) 919-59-11</p>
+            <p id="phone-hint" className="text-muted-foreground mt-1 text-xs">
+              Минимум 10 цифр. Например: +7 (812) 919-59-11
+            </p>
           </div>
 
           {/* 3. Комментарий — required */}
           <div>
-            <label htmlFor="comment" className="block text-sm font-medium mb-1.5">Что вам нужно? *</label>
+            <label htmlFor="comment" className="mb-1.5 block text-sm font-medium">
+              Что вам нужно? *
+            </label>
             <textarea
               id="comment"
               name="comment"
               required
               rows={3}
               placeholder="Напр. Свадьба на 50 человек, 15 августа, нужно меню и торт"
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 resize-none"
+              className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full resize-none rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none"
             />
           </div>
 
           {/* 4. Email — optional */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1.5">Email (необязательно)</label>
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
+              Email (необязательно)
+            </label>
             <input
               id="email"
               type="email"
               name="email"
               autoComplete="email"
               placeholder="example@mail.ru"
-              aria-invalid={error ? 'true' : 'false'}
+              aria-invalid={error ? "true" : "false"}
               onInvalid={(e) => {
                 e.preventDefault();
                 const input = e.target as HTMLInputElement;
                 if (input.validity.typeMismatch) {
-                  input.setCustomValidity('Введите корректный email, например: name@example.com');
+                  input.setCustomValidity("Введите корректный email, например: name@example.com");
                 } else if (!input.value) {
-                  input.setCustomValidity('Заполните это поле');
+                  input.setCustomValidity("Заполните это поле");
                 }
               }}
-              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 aria-[invalid=true]:border-red-500"
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity("")}
+              className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none aria-[invalid=true]:border-red-500"
             />
           </div>
 
           {/* 5. Дата и гости — optional */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="date" className="block text-sm font-medium mb-1.5">Дата (необязательно)</label>
+              <label htmlFor="date" className="mb-1.5 block text-sm font-medium">
+                Дата (необязательно)
+              </label>
               <input
                 id="date"
                 type="date"
                 name="date"
                 aria-label="Дата мероприятия"
-                className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+                className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none"
               />
             </div>
             <div>
-              <label htmlFor="guests" className="block text-sm font-medium mb-1.5">Гостей (необязательно)</label>
+              <label htmlFor="guests" className="mb-1.5 block text-sm font-medium">
+                Гостей (необязательно)
+              </label>
               <input
                 id="guests"
                 type="number"
                 name="guests"
                 min="1"
                 placeholder="напр. 50"
-                className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+                className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none"
               />
             </div>
           </div>
@@ -184,26 +212,42 @@ export default function ContactPage() {
           {/* B2B toggle */}
           <button
             type="button"
-            onClick={() =>setShowB2B(!showB2B)}
-            className="text-sm text-gold-text font-medium hover:underline"
+            onClick={() => setShowB2B(!showB2B)}
+            className="text-gold-text text-sm font-medium hover:underline"
           >
-            {showB2B ? '− Скрыть корпоративные детали' : '+ Для корпоративных клиентов (ИНН, ЭДО, тендеры)'}
+            {showB2B
+              ? "− Скрыть корпоративные детали"
+              : "+ Для корпоративных клиентов (ИНН, ЭДО, тендеры)"}
           </button>
 
           {showB2B && (
-            <div className="space-y-4 p-4 rounded-xl border border-line bg-secondary/30">
+            <div className="border-line bg-secondary/30 space-y-4 rounded-xl border p-4">
               <div>
-                <label className="block text-sm font-medium mb-1.5">Название компании</label>
-                <input type="text" name="companyName" placeholder="ООО «Ромашка»" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-base focus:border-gold-text focus:outline-none" />
+                <label className="mb-1.5 block text-sm font-medium">Название компании</label>
+                <input
+                  type="text"
+                  name="companyName"
+                  placeholder="ООО «Ромашка»"
+                  className="border-line bg-background focus:border-gold-text w-full rounded-lg border px-4 py-3 text-base focus:outline-none"
+                />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">ИНН</label>
-                  <input type="text" name="companyInn" inputMode="numeric" placeholder="7800000000" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:border-gold-text focus:outline-none" />
+                  <label className="mb-1.5 block text-sm font-medium">ИНН</label>
+                  <input
+                    type="text"
+                    name="companyInn"
+                    inputMode="numeric"
+                    placeholder="7800000000"
+                    className="border-line bg-background focus:border-gold-text w-full rounded-lg border px-4 py-3 text-sm focus:outline-none"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">ЭДО</label>
-                  <select name="edo" className="w-full rounded-lg border border-line bg-background px-4 py-3 text-sm focus:border-gold-text focus:outline-none">
+                  <label className="mb-1.5 block text-sm font-medium">ЭДО</label>
+                  <select
+                    name="edo"
+                    className="border-line bg-background focus:border-gold-text w-full rounded-lg border px-4 py-3 text-sm focus:outline-none"
+                  >
                     <option value="">—</option>
                     <option value="diadoc">Диадок</option>
                     <option value="sbis">СБИС</option>
@@ -215,7 +259,10 @@ export default function ContactPage() {
           )}
 
           {error && (
-            <div className="p-3 rounded-xl border border-red-300 bg-red-50 text-red-900 text-sm" role="alert">
+            <div
+              className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-900"
+              role="alert"
+            >
               {error}
             </div>
           )}
@@ -223,23 +270,34 @@ export default function ContactPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-xl bg-primary text-primary-foreground px-6 py-4 text-base font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-xl px-6 py-4 text-base font-semibold transition-colors disabled:opacity-50"
           >
-            {submitting ? 'Отправляем...' : 'Отправить заявку →'}
+            {submitting ? "Отправляем..." : "Отправить заявку →"}
           </button>
         </form>
 
         {/* Alternative contacts */}
-        <div className="mt-8 pt-8 border-t border-line text-center">
-          <p className="text-sm text-muted-foreground mb-3">Или свяжитесь напрямую:</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href={`tel:${SITE.phoneTel}`} className="inline-flex items-center gap-2 text-sm font-semibold hover:text-gold-text">
+        <div className="border-line mt-8 border-t pt-8 text-center">
+          <p className="text-muted-foreground mb-3 text-sm">Или свяжитесь напрямую:</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="hover:text-gold-text inline-flex items-center gap-2 text-sm font-semibold"
+            >
               📞 {SITE.phone}
             </a>
-            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold hover:text-gold-text">
+            <a
+              href={SITE.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold-text inline-flex items-center gap-2 text-sm font-semibold"
+            >
               💬 WhatsApp
             </a>
-            <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 text-sm font-semibold hover:text-gold-text">
+            <a
+              href={`mailto:${SITE.email}`}
+              className="hover:text-gold-text inline-flex items-center gap-2 text-sm font-semibold"
+            >
               ✉️ {SITE.email}
             </a>
           </div>

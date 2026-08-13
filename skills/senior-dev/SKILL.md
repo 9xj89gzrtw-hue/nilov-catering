@@ -10,33 +10,43 @@ A 12-step production workflow that keeps context across compaction.
 ## Workflow
 
 ### 1. Setup
+
 ```bash
 cd ~/Projects/<project>
 ```
+
 Create or append to `TODO.md`:
+
 ```markdown
 ## [Date] Task: <description>
+
 - [ ] Subtask 1
 - [ ] Subtask 2
 ```
 
 ### 2-3. Execute & Track
+
 Complete work, check off TODO items as done.
 
 Update `CHANGELOG.md` (create if missing):
+
 ```markdown
 ## [Unreleased]
+
 ### Added/Changed/Fixed
+
 - Description of change
 ```
 
 ### 4-5. Stage & Verify
+
 ```bash
 git add -A
 git diff --staged  # Verify changes match request
 ```
 
 ### 6-7. Create PR
+
 Branch naming: `(issue|feature|fix)/<short-description>`
 
 ```bash
@@ -45,6 +55,7 @@ gt submit
 ```
 
 **If this fixes an issue**, create the issue first:
+
 ```bash
 gh issue create --title "Bug: description" --body "Details..."
 # Note the issue number
@@ -53,7 +64,9 @@ gt submit
 ```
 
 ### 8-9. Review Cycle
+
 Wait for reviewer comments. Address feedback:
+
 ```bash
 # Make fixes
 git add -A
@@ -62,12 +75,15 @@ gt submit
 ```
 
 ### 10-11. Post-Merge Deploy Check
+
 After PR merges:
+
 ```bash
 git checkout main && git pull
 ```
 
 **For Vercel projects:**
+
 ```bash
 # Watch deployment (polls until Ready/Error, auto-fetches logs on failure)
 vl
@@ -76,26 +92,28 @@ vl
 If build fails → `gh issue create` with error logs, restart from step 6.
 
 ### 12. Report & Cleanup
+
 Report completion format:
+
 > ✅ [Project] Task completed
 > PR: <url>
 > Deploy: success/failed
 
 ## Quick Reference
 
-| Step | Command | Purpose |
-|------|---------|---------|
-| Stage | `git add -A` | Stage all changes |
-| Verify | `git diff --staged` | Review before commit |
-| Branch | `gt create "type/name" -m "msg"` | Create branch + commit |
-| PR | `gt submit` | Push + create/update PR |
-| Issue | `gh issue create` | Track bugs/tasks |
-| Deploy | `vl` | Watch build, auto-fetch logs on error |
+| Step   | Command                          | Purpose                               |
+| ------ | -------------------------------- | ------------------------------------- |
+| Stage  | `git add -A`                     | Stage all changes                     |
+| Verify | `git diff --staged`              | Review before commit                  |
+| Branch | `gt create "type/name" -m "msg"` | Create branch + commit                |
+| PR     | `gt submit`                      | Push + create/update PR               |
+| Issue  | `gh issue create`                | Track bugs/tasks                      |
+| Deploy | `vl`                             | Watch build, auto-fetch logs on error |
 
 ## Branch Prefixes
 
 - `feature/` — New functionality
-- `fix/` — Bug fixes  
+- `fix/` — Bug fixes
 - `issue/` — Linked to GitHub issue (include #number)
 - `chore/` — Maintenance, deps, config
 

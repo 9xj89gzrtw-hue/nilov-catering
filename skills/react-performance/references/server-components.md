@@ -7,19 +7,19 @@ The server/client boundary serializes all props. Only pass fields the client use
 ```tsx
 // BAD — serializes all 50 fields
 async function Page() {
-  const user = await fetchUser()
-  return <Profile user={user} />
+  const user = await fetchUser();
+  return <Profile user={user} />;
 }
 
-'use client'
+("use client");
 function Profile({ user }: { user: User }) {
-  return <div>{user.name}</div>     // Uses 1 field
+  return <div>{user.name}</div>; // Uses 1 field
 }
 
 // GOOD — serializes only 1 field
 async function Page() {
-  const user = await fetchUser()
-  return <Profile name={user.name} />
+  const user = await fetchUser();
+  return <Profile name={user.name} />;
 }
 ```
 
@@ -30,21 +30,31 @@ RSC execute sequentially within a tree. Restructure to parallelize.
 ```tsx
 // BAD — Sidebar waits for Page's fetch
 export default async function Page() {
-  const header = await fetchHeader()
-  return <div><div>{header}</div><Sidebar /></div>
+  const header = await fetchHeader();
+  return (
+    <div>
+      <div>{header}</div>
+      <Sidebar />
+    </div>
+  );
 }
 
 // GOOD — both fetch simultaneously as sibling async components
 async function Header() {
-  const data = await fetchHeader()
-  return <div>{data}</div>
+  const data = await fetchHeader();
+  return <div>{data}</div>;
 }
 async function Sidebar() {
-  const items = await fetchSidebarItems()
-  return <nav>{items.map(renderItem)}</nav>
+  const items = await fetchSidebarItems();
+  return <nav>{items.map(renderItem)}</nav>;
 }
 export default function Page() {
-  return <div><Header /><Sidebar /></div>
+  return (
+    <div>
+      <Header />
+      <Sidebar />
+    </div>
+  );
 }
 ```
 
@@ -53,13 +63,13 @@ export default function Page() {
 Deduplicate server-side operations within a single request.
 
 ```typescript
-import { cache } from 'react'
+import { cache } from "react";
 
 export const getCurrentUser = cache(async () => {
-  const session = await auth()
-  if (!session?.user?.id) return null
-  return await db.user.findUnique({ where: { id: session.user.id } })
-})
+  const session = await auth();
+  if (!session?.user?.id) return null;
+  return await db.user.findUnique({ where: { id: session.user.id } });
+});
 ```
 
 **Avoid inline objects as arguments** — `React.cache()` uses `Object.is`:
@@ -84,17 +94,17 @@ database queries, auth checks, heavy computations, and file system operations.
 Use Next.js `after()` for work that should run after the response.
 
 ```tsx
-import { after } from 'next/server'
+import { after } from "next/server";
 
 export async function POST(request: Request) {
-  await updateDatabase(request)
+  await updateDatabase(request);
 
   after(async () => {
-    const userAgent = (await headers()).get('user-agent') || 'unknown'
-    logUserAction({ userAgent })
-  })
+    const userAgent = (await headers()).get("user-agent") || "unknown";
+    logUserAction({ userAgent });
+  });
 
-  return Response.json({ status: 'success' })
+  return Response.json({ status: "success" });
 }
 ```
 

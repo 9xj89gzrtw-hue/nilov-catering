@@ -4,14 +4,14 @@ Every migration is the same bet: Google must re-crawl every old URL, follow a re
 
 ## Isolate the Variables
 
-| Change | Risk | Rule |
-|---|---|---|
-| Domain only, same URLs | Moderate | Safest migration there is: one-to-one redirects, Change of Address tool |
-| URL structure only | High | Requires a complete map; the most common source of permanent loss |
-| Template/design only, same URLs | Low-moderate | Risk is in removed content, links, and JavaScript rendering |
-| CMS replatform | High | Combines URL, template, and technical stack changes at once |
-| HTTP → HTTPS | Low | Full-site 301, update canonicals, internal links, and sitemaps |
-| Two or more of the above together | Compounding | Sequence them weeks apart; a combined migration is undiagnosable when it goes wrong |
+| Change                            | Risk         | Rule                                                                                |
+| --------------------------------- | ------------ | ----------------------------------------------------------------------------------- |
+| Domain only, same URLs            | Moderate     | Safest migration there is: one-to-one redirects, Change of Address tool             |
+| URL structure only                | High         | Requires a complete map; the most common source of permanent loss                   |
+| Template/design only, same URLs   | Low-moderate | Risk is in removed content, links, and JavaScript rendering                         |
+| CMS replatform                    | High         | Combines URL, template, and technical stack changes at once                         |
+| HTTP → HTTPS                      | Low          | Full-site 301, update canonicals, internal links, and sitemaps                      |
+| Two or more of the above together | Compounding  | Sequence them weeks apart; a combined migration is undiagnosable when it goes wrong |
 
 Never combine a domain change with a URL restructure and a redesign in one release unless the deadline is immovable — and then, expect to debug blind.
 
@@ -47,36 +47,36 @@ The union of crawl + GSC + backlinks is the redirect map's source. A crawl alone
 
 ## Post-Launch Monitoring
 
-| Window | Watch | Alarm |
-|---|---|---|
-| Day 0-2 | Live fetches of top 50 URLs, robots.txt, sitemap fetch status | Any 404, any redirect chain, any noindex |
-| Week 1 | GSC Crawl stats (spike expected), Page indexing report, server 5xx rate | 5xx under crawl load; "Not found" climbing on mapped URLs |
-| Week 2-4 | Indexed count of new URLs, clicks by template | New URLs not being indexed at all |
-| Week 4-8 | Clicks vs baseline by template and by landing page | Still below ~80% of baseline with clean redirects → content or template problem, not redirects |
-| Ongoing | Old-URL 404 log | Any unmapped URL that receives requests gets a rule added |
+| Window   | Watch                                                                   | Alarm                                                                                          |
+| -------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Day 0-2  | Live fetches of top 50 URLs, robots.txt, sitemap fetch status           | Any 404, any redirect chain, any noindex                                                       |
+| Week 1   | GSC Crawl stats (spike expected), Page indexing report, server 5xx rate | 5xx under crawl load; "Not found" climbing on mapped URLs                                      |
+| Week 2-4 | Indexed count of new URLs, clicks by template                           | New URLs not being indexed at all                                                              |
+| Week 4-8 | Clicks vs baseline by template and by landing page                      | Still below ~80% of baseline with clean redirects → content or template problem, not redirects |
+| Ongoing  | Old-URL 404 log                                                         | Any unmapped URL that receives requests gets a rule added                                      |
 
 A dip in the first weeks is normal while Google recrawls. Turbulence lasting past 8 weeks on a mid-size site is a defect, not patience.
 
 ## Failure Modes
 
-| Symptom | Cause |
-|---|---|
-| Traffic drops the day after launch, redirects verified | Sitewide noindex or robots.txt from staging still live |
-| Indexed count collapses over two weeks | Canonicals still pointing at the old domain, or hreflang not updated |
-| Some templates recover, one never does | That template's content shrank in the redesign, or its links are now JavaScript-only |
-| Rankings return but for different URLs | Redirect targets do not match intent; remap to closer equivalents |
-| Old URLs still ranking months later | Redirects are 302, or served only to browsers and not to Googlebot |
-| Crawl rate collapses after migration | 5xx or slow responses under crawl load taught Googlebot to back off |
-| Images and video lose their traffic | Image URLs were not redirected; media is a separate index |
-| Anything else | Unknown until reproduced: fetch the old URL as Googlebot, follow the chain to a 200, and diff the rendered HTML against the pre-launch crawl — the first step that differs from the plan is the cause |
+| Symptom                                                | Cause                                                                                                                                                                                                 |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Traffic drops the day after launch, redirects verified | Sitewide noindex or robots.txt from staging still live                                                                                                                                                |
+| Indexed count collapses over two weeks                 | Canonicals still pointing at the old domain, or hreflang not updated                                                                                                                                  |
+| Some templates recover, one never does                 | That template's content shrank in the redesign, or its links are now JavaScript-only                                                                                                                  |
+| Rankings return but for different URLs                 | Redirect targets do not match intent; remap to closer equivalents                                                                                                                                     |
+| Old URLs still ranking months later                    | Redirects are 302, or served only to browsers and not to Googlebot                                                                                                                                    |
+| Crawl rate collapses after migration                   | 5xx or slow responses under crawl load taught Googlebot to back off                                                                                                                                   |
+| Images and video lose their traffic                    | Image URLs were not redirected; media is a separate index                                                                                                                                             |
+| Anything else                                          | Unknown until reproduced: fetch the old URL as Googlebot, follow the chain to a 200, and diff the rendered HTML against the pre-launch crawl — the first step that differs from the plan is the cause |
 
 ## Migration Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| 302 for a permanent move | Signals transfer is slower and less certain than with 301 | 301 for permanent, 302 only for genuine temporary states |
-| Redirecting everything to the homepage | Google treats irrelevant redirects as soft 404s | Closest match, or 410 |
-| Launching redirects "next sprint" | Every crawl in between records a 404 | Same release, or no release |
-| Trusting a plugin's automatic redirects | Slug-matching rules silently miss renamed and merged pages | Explicit map, tested URL by URL |
-| Blocking the old site in robots.txt after the move | Googlebot cannot see the redirects it must follow | Leave the old host crawlable |
-| Judging success on day 3 | Recrawl of the whole URL set takes weeks | Compare at week 4 and week 8 against baseline |
+| Trap                                               | Why it fails                                               | Do instead                                               |
+| -------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------- |
+| 302 for a permanent move                           | Signals transfer is slower and less certain than with 301  | 301 for permanent, 302 only for genuine temporary states |
+| Redirecting everything to the homepage             | Google treats irrelevant redirects as soft 404s            | Closest match, or 410                                    |
+| Launching redirects "next sprint"                  | Every crawl in between records a 404                       | Same release, or no release                              |
+| Trusting a plugin's automatic redirects            | Slug-matching rules silently miss renamed and merged pages | Explicit map, tested URL by URL                          |
+| Blocking the old site in robots.txt after the move | Googlebot cannot see the redirects it must follow          | Leave the old host crawlable                             |
+| Judging success on day 3                           | Recrawl of the whole URL set takes weeks                   | Compare at week 4 and week 8 against baseline            |

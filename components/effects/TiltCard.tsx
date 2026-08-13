@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useRef, type ReactNode } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef, type ReactNode } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,12 @@ interface Props {
  * Usage:
  *   <TiltCard><div className="...">content</div></TiltCard>
  */
-export default function TiltCard({ children, className = '', intensity = 8, perspective = 1000 }: Props) {
+export default function TiltCard({
+  children,
+  className = "",
+  intensity = 8,
+  perspective = 1000,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -34,7 +39,10 @@ export default function TiltCard({ children, className = '', intensity = 8, pers
         x.set((e.clientX - rect.left) / rect.width - 0.5);
         y.set((e.clientY - rect.top) / rect.height - 0.5);
       }}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
+      onMouseLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
       style={{ rotateX, rotateY, transformPerspective: perspective }}
       className={`[transform-style:preserve-3d] ${className}`}
     >

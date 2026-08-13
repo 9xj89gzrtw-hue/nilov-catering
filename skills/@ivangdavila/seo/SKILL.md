@@ -9,12 +9,12 @@ metadata:
   clawdbot:
     emoji: 🔍
     os:
-    - linux
-    - darwin
-    - win32
+      - linux
+      - darwin
+      - win32
     displayName: SEO (Site Audit + Content Writer + Competitor Analysis)
     configPaths:
-    - ~/Clawic/data/seo/
+      - ~/Clawic/data/seo/
 ---
 
 All persistent data (site profiles, config, audit history, keyword tracking) lives in `~/Clawic/data/seo/`. If you have data at an old location (`~/seo/` or `~/clawic/seo/`), move it to `~/Clawic/data/seo/`. Read `setup.md` on first use; `memory-template.md` holds the file format.
@@ -31,33 +31,33 @@ All persistent data (site profiles, config, audit history, keyword tracking) liv
 
 ## Quick Reference
 
-| Situation | Read |
-|-----------|------|
-| Ranking or organic traffic dropped | Triage below first, then `recovery.md` |
-| Core update hit, manual action, hacked or spammy pages, reconsideration request | `recovery.md` |
-| First pass on a new site, scoping an audit, writing the deliverable | `audits.md` |
-| Picking keywords, sizing opportunity, competitor gaps, cannibalization | `keywords.md` |
-| Deciding what to write, intent, E-E-A-T, thin content, AI-written drafts | `content.md` |
-| Bottom-funnel pages: alternatives, "vs", best-X, pricing, integrations, glossary | `commercial-pages.md` |
-| Titles, meta descriptions, headings, URLs, image alt text | `on-page.md` |
-| Site structure, click depth, topic clusters, subdomain vs subfolder, index bloat, new site from zero | `architecture.md` |
-| Pages not indexed, robots.txt, canonicals, sitemaps, status codes, duplicates, log files | `technical.md` |
-| Slow pages, LCP / INP / CLS failing, PageSpeed vs field data | `performance.md` |
-| React/Vue/Angular site, content missing from view-source, SPA routing, soft 404s | `javascript.md` |
-| JSON-LD, rich results, review stars, breadcrumbs, product feeds | `schema.md` |
-| Internal links, backlinks, anchor text, outreach, disavow | `links.md` |
-| Physical location or service area, Google Business Profile, reviews, map pack | `local.md` |
-| Product and category pages, faceted navigation, variants, out-of-stock, pagination | `ecommerce.md` |
-| Multiple languages or countries, hreflang, geotargeting, translated duplicates | `international.md` |
-| Domain change, replatform, redesign, URL restructure, HTTP to HTTPS | `migrations.md` |
-| Featured snippets, People Also Ask, sitelinks, image and video results, pixel position | `serp-features.md` |
-| AI Overviews, AI Mode, ChatGPT and Perplexity citations, AI crawlers, llms.txt | `ai-search.md` |
-| Search Console data, exports, regex filters, proving a change worked, forecasting, reporting | `search-console.md` |
-| Bing, IndexNow, Applebot, Yandex, Naver, Baidu, privacy engines | `other-engines.md` |
-| Publisher work: Top Stories, Google News, Discover traffic, paywalls | `news-discover.md` |
-| Generating hundreds or thousands of templated pages | `programmatic.md` |
-| WordPress, Shopify, Webflow, Wix, Next.js platform quirks | `cms-platforms.md` |
-| Anything else SEO | Run the audit checklist below, then route from the area that fails |
+| Situation                                                                                            | Read                                                               |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Ranking or organic traffic dropped                                                                   | Triage below first, then `recovery.md`                             |
+| Core update hit, manual action, hacked or spammy pages, reconsideration request                      | `recovery.md`                                                      |
+| First pass on a new site, scoping an audit, writing the deliverable                                  | `audits.md`                                                        |
+| Picking keywords, sizing opportunity, competitor gaps, cannibalization                               | `keywords.md`                                                      |
+| Deciding what to write, intent, E-E-A-T, thin content, AI-written drafts                             | `content.md`                                                       |
+| Bottom-funnel pages: alternatives, "vs", best-X, pricing, integrations, glossary                     | `commercial-pages.md`                                              |
+| Titles, meta descriptions, headings, URLs, image alt text                                            | `on-page.md`                                                       |
+| Site structure, click depth, topic clusters, subdomain vs subfolder, index bloat, new site from zero | `architecture.md`                                                  |
+| Pages not indexed, robots.txt, canonicals, sitemaps, status codes, duplicates, log files             | `technical.md`                                                     |
+| Slow pages, LCP / INP / CLS failing, PageSpeed vs field data                                         | `performance.md`                                                   |
+| React/Vue/Angular site, content missing from view-source, SPA routing, soft 404s                     | `javascript.md`                                                    |
+| JSON-LD, rich results, review stars, breadcrumbs, product feeds                                      | `schema.md`                                                        |
+| Internal links, backlinks, anchor text, outreach, disavow                                            | `links.md`                                                         |
+| Physical location or service area, Google Business Profile, reviews, map pack                        | `local.md`                                                         |
+| Product and category pages, faceted navigation, variants, out-of-stock, pagination                   | `ecommerce.md`                                                     |
+| Multiple languages or countries, hreflang, geotargeting, translated duplicates                       | `international.md`                                                 |
+| Domain change, replatform, redesign, URL restructure, HTTP to HTTPS                                  | `migrations.md`                                                    |
+| Featured snippets, People Also Ask, sitelinks, image and video results, pixel position               | `serp-features.md`                                                 |
+| AI Overviews, AI Mode, ChatGPT and Perplexity citations, AI crawlers, llms.txt                       | `ai-search.md`                                                     |
+| Search Console data, exports, regex filters, proving a change worked, forecasting, reporting         | `search-console.md`                                                |
+| Bing, IndexNow, Applebot, Yandex, Naver, Baidu, privacy engines                                      | `other-engines.md`                                                 |
+| Publisher work: Top Stories, Google News, Discover traffic, paywalls                                 | `news-discover.md`                                                 |
+| Generating hundreds or thousands of templated pages                                                  | `programmatic.md`                                                  |
+| WordPress, Shopify, Webflow, Wix, Next.js platform quirks                                            | `cms-platforms.md`                                                 |
+| Anything else SEO                                                                                    | Run the audit checklist below, then route from the area that fails |
 
 ## Core Rules
 
@@ -87,6 +87,7 @@ In order — stop at the first confirmed cause:
 ## SEO Audit Checklist
 
 **Indexing:**
+
 - [ ] Important pages indexed — verify with URL Inspection and the Page indexing report, not the `site:` operator
 - [ ] No important pages blocked in robots.txt
 - [ ] XML sitemap submitted to Search Console, only canonical 200-status URLs in it
@@ -94,6 +95,7 @@ In order — stop at the first confirmed cause:
 - [ ] No page both robots.txt-blocked AND noindexed — blocked crawl means Google never sees the noindex, so the page can stay indexed
 
 **Technical:**
+
 - [ ] Core Web Vitals passing (thresholds in rule 5)
 - [ ] Mobile-friendly, HTTPS with no mixed content
 - [ ] No crawl errors, no soft 404s, no server errors in Search Console
@@ -101,16 +103,19 @@ In order — stop at the first confirmed cause:
 - [ ] Rendered HTML contains the main content (JavaScript sites)
 
 **On-Page:**
+
 - [ ] Unique title tags (50-60 chars), meta descriptions (150-160 chars)
 - [ ] One H1 per page with the target term; proper heading hierarchy
 - [ ] Images with alt text; internal links to and from the page
 
 **Content:**
+
 - [ ] Search intent matched (rule 2)
 - [ ] No cannibalization (rule 4)
 - [ ] No thin or duplicate content; dead pages improved, consolidated, or removed
 
 **Off-Page and Entity:**
+
 - [ ] Google Business Profile complete (local businesses)
 - [ ] Backlink profile checked for toxic patterns
 - [ ] Brand queries return the right result, sitelinks, and knowledge panel where applicable
@@ -128,16 +133,16 @@ In order — stop at the first confirmed cause:
 
 Honest ranges beat invented dates; every one of these is mechanism, not promise.
 
-| Change | Time to effect | Mechanism |
-|---|---|---|
-| Title or meta rewrite | Days to appear, 2-4 weeks to judge | Needs a recrawl, then enough impressions for CTR to be readable |
-| New page, established site | Indexed in days; competitive movement 3-6 months | Discovery is fast; earning position takes links and engagement history |
-| New domain | Months before competitive queries move | No confirmed sandbox — the delay is missing links, history, and coverage |
-| Core Web Vitals fix | ~4 weeks before field data reflects it | CrUX field data is a 28-day rolling window; lab scores change instantly |
-| 301 migration | 2-8 weeks of turbulence, longer on large sites | Google must recrawl every redirected URL to transfer signals |
-| Manual action revoked | Days to weeks after reconsideration | Human review queue; recovery of position is separate and slower |
-| Core update recovery | Usually at the next update, not between them | Sitewide reassessments are recomputed on update cycles |
-| Disavow file | Weeks to months | Applied as links are recrawled, not on upload |
+| Change                     | Time to effect                                   | Mechanism                                                                |
+| -------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
+| Title or meta rewrite      | Days to appear, 2-4 weeks to judge               | Needs a recrawl, then enough impressions for CTR to be readable          |
+| New page, established site | Indexed in days; competitive movement 3-6 months | Discovery is fast; earning position takes links and engagement history   |
+| New domain                 | Months before competitive queries move           | No confirmed sandbox — the delay is missing links, history, and coverage |
+| Core Web Vitals fix        | ~4 weeks before field data reflects it           | CrUX field data is a 28-day rolling window; lab scores change instantly  |
+| 301 migration              | 2-8 weeks of turbulence, longer on large sites   | Google must recrawl every redirected URL to transfer signals             |
+| Manual action revoked      | Days to weeks after reconsideration              | Human review queue; recovery of position is separate and slower          |
+| Core update recovery       | Usually at the next update, not between them     | Sitewide reassessments are recomputed on update cycles                   |
+| Disavow file               | Weeks to months                                  | Applied as links are recrawled, not on upload                            |
 
 ## Output Gates
 
@@ -154,15 +159,15 @@ Before delivering recommendations or content:
 
 User-dependent variables. Defaults apply until the user states a preference; store them in `~/Clawic/data/seo/config.yaml`.
 
-| Variable | Type | Default | Effect |
-|---|---|---|---|
-| site_type | blog \| ecommerce \| saas \| local \| news \| directory \| auto | auto | Weights the audit checklist and decides which guide the router opens first; `auto` infers from URL patterns and page templates on first look |
-| target_market | text (locale, e.g. en-US) | en-US | Which SERP to check, which spelling variant to write, and whether hreflang and local guidance apply |
-| tool_access | gsc-only \| paid-suite | gsc-only | `gsc-only` keeps every workflow on free data (GSC, Trends, SERPs); `paid-suite` unlocks backlink-index and difficulty-score steps |
-| risk_posture | conservative \| standard \| aggressive | conservative | Gates link tactics, external anchor ratios, and how much templated page generation to recommend |
-| cms | wordpress \| shopify \| webflow \| wix \| headless \| other \| auto | auto | Picks the implementation path for every fix (where redirects, robots, and metadata actually live) |
-| min_impressions | number (impressions/month) | 100 | Floor for every opportunity list: striking distance (rule 3, `keywords.md`, `search-console.md`) and the traffic-at-stake cutoff for the audit Top 5. Below it, a page cannot produce a readable CTR or click change — raise it on large sites |
-| voice_file | path | none | Brand voice guide at `~/Clawic/data/seo/<file>`; governs drafted copy, never the SEO structure |
+| Variable        | Type                                                                | Default      | Effect                                                                                                                                                                                                                                         |
+| --------------- | ------------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| site_type       | blog \| ecommerce \| saas \| local \| news \| directory \| auto     | auto         | Weights the audit checklist and decides which guide the router opens first; `auto` infers from URL patterns and page templates on first look                                                                                                   |
+| target_market   | text (locale, e.g. en-US)                                           | en-US        | Which SERP to check, which spelling variant to write, and whether hreflang and local guidance apply                                                                                                                                            |
+| tool_access     | gsc-only \| paid-suite                                              | gsc-only     | `gsc-only` keeps every workflow on free data (GSC, Trends, SERPs); `paid-suite` unlocks backlink-index and difficulty-score steps                                                                                                              |
+| risk_posture    | conservative \| standard \| aggressive                              | conservative | Gates link tactics, external anchor ratios, and how much templated page generation to recommend                                                                                                                                                |
+| cms             | wordpress \| shopify \| webflow \| wix \| headless \| other \| auto | auto         | Picks the implementation path for every fix (where redirects, robots, and metadata actually live)                                                                                                                                              |
+| min_impressions | number (impressions/month)                                          | 100          | Floor for every opportunity list: striking distance (rule 3, `keywords.md`, `search-console.md`) and the traffic-at-stake cutoff for the audit Top 5. Below it, a page cannot produce a readable CTR or click change — raise it on large sites |
+| voice_file      | path                                                                | none         | Brand voice guide at `~/Clawic/data/seo/<file>`; governs drafted copy, never the SEO structure                                                                                                                                                 |
 
 Preference areas — customizable dimensions; a stated preference gets recorded in config.yaml and applied:
 
@@ -176,20 +181,20 @@ Preference areas — customizable dimensions; a stated preference gets recorded 
 
 ## Traps
 
-| Trap | Why it fails | Do instead |
-|------|-------------|------------|
-| Writing before checking the SERP | Format mismatch = no ranking at any quality | Rule 2: the SERP is the spec |
-| New article for a query an existing page ranks 4-15 for | Cannibalization splits signals | Improve the existing page (rule 3) |
-| Chasing keyword density | No density threshold exists; stuffing detection is pattern-based | Cover the topic, use variants naturally |
-| noindex on a robots.txt-blocked page | Google never crawls it, never sees the noindex | Allow crawl until deindexed, then block |
-| Changing URLs without 301s | Links and authority now point at 404s | Map every old URL to its closest new match |
-| Buying links or PBNs | Payment and network footprints → manual action | Earn links via assets and digital PR |
-| Reporting rank without checking the rendered SERP | #1 under an AI Overview and four ads earns a fraction of historical #1 clicks | Check pixel position, not just rank |
-| Judging index coverage with `site:domain.com` | The operator is an estimate and excludes results Google chooses to hide | Page indexing report + URL Inspection |
-| Re-requesting indexing for the same URL repeatedly | The queue is not a priority auction; nothing accelerates | Fix the reason it was not indexed (quality, duplicate, discovery) |
-| Fixing every warning a crawler emits | Crawl tools flag non-signals (meta keywords, long titles on pages with no impressions) | Rank issues by the traffic at stake, then fix |
-| Optimizing a page whose Google-selected canonical is another URL | Every signal you add credits the other URL | Resolve the canonical conflict first |
-| Reporting "average position improved" as a win | Average position moves when the query mix changes; new long-tail impressions drag it down while traffic grows | Report clicks and conversions, positions per query |
+| Trap                                                             | Why it fails                                                                                                  | Do instead                                                        |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Writing before checking the SERP                                 | Format mismatch = no ranking at any quality                                                                   | Rule 2: the SERP is the spec                                      |
+| New article for a query an existing page ranks 4-15 for          | Cannibalization splits signals                                                                                | Improve the existing page (rule 3)                                |
+| Chasing keyword density                                          | No density threshold exists; stuffing detection is pattern-based                                              | Cover the topic, use variants naturally                           |
+| noindex on a robots.txt-blocked page                             | Google never crawls it, never sees the noindex                                                                | Allow crawl until deindexed, then block                           |
+| Changing URLs without 301s                                       | Links and authority now point at 404s                                                                         | Map every old URL to its closest new match                        |
+| Buying links or PBNs                                             | Payment and network footprints → manual action                                                                | Earn links via assets and digital PR                              |
+| Reporting rank without checking the rendered SERP                | #1 under an AI Overview and four ads earns a fraction of historical #1 clicks                                 | Check pixel position, not just rank                               |
+| Judging index coverage with `site:domain.com`                    | The operator is an estimate and excludes results Google chooses to hide                                       | Page indexing report + URL Inspection                             |
+| Re-requesting indexing for the same URL repeatedly               | The queue is not a priority auction; nothing accelerates                                                      | Fix the reason it was not indexed (quality, duplicate, discovery) |
+| Fixing every warning a crawler emits                             | Crawl tools flag non-signals (meta keywords, long titles on pages with no impressions)                        | Rank issues by the traffic at stake, then fix                     |
+| Optimizing a page whose Google-selected canonical is another URL | Every signal you add credits the other URL                                                                    | Resolve the canonical conflict first                              |
+| Reporting "average position improved" as a win                   | Average position moves when the query mix changes; new long-tail impressions drag it down while traffic grows | Report clicks and conversions, positions per query                |
 
 ## Where Experts Disagree
 
@@ -200,6 +205,7 @@ Preference areas — customizable dimensions; a stated preference gets recorded 
 - **Optimizing for AI Overviews.** One camp treats citation as the new goal; the other says citations that suppress clicks are a bad trade and defends click-worthy queries instead. Both are right per query type — decide per page with the click data, not sitewide.
 
 ## Related Skills
+
 More Clawic skills, get them at https://clawic.com/skills/seo (install if the user confirms):
 
 - `content-marketing` — Content strategy

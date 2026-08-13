@@ -11,12 +11,12 @@ Two things changed at once: Google answers more queries on the results page, and
 
 ## The Two Different Games
 
-| Surface | How it selects | What to optimize |
-|---|---|---|
-| Google AI Overviews and AI Mode | Grounded in Google's index; sources skew toward pages already ranking and toward pages with a clean, extractable answer | Classic ranking, plus answer-first structure and unambiguous facts |
-| Assistants that browse live (ChatGPT, Perplexity, Copilot) | Retrieval plus live fetch; heavily influenced by what their crawlers can read | Crawlability for their agents, clear factual pages, third-party mentions |
-| Assistants answering from training data | Frozen corpus, no fetch | Nothing tactical — only long-run presence and being written about elsewhere |
-| Anything else | Assume grounded retrieval | Serve clean HTML and unambiguous facts |
+| Surface                                                    | How it selects                                                                                                          | What to optimize                                                            |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Google AI Overviews and AI Mode                            | Grounded in Google's index; sources skew toward pages already ranking and toward pages with a clean, extractable answer | Classic ranking, plus answer-first structure and unambiguous facts          |
+| Assistants that browse live (ChatGPT, Perplexity, Copilot) | Retrieval plus live fetch; heavily influenced by what their crawlers can read                                           | Crawlability for their agents, clear factual pages, third-party mentions    |
+| Assistants answering from training data                    | Frozen corpus, no fetch                                                                                                 | Nothing tactical — only long-run presence and being written about elsewhere |
+| Anything else                                              | Assume grounded retrieval                                                                                               | Serve clean HTML and unambiguous facts                                      |
 
 ## What Earns Citations
 
@@ -51,11 +51,11 @@ Two things changed at once: Google answers more queries on the results page, and
 
 ## AI Search Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Writing pages "for LLMs" in a special format | No engine documents a special format; you get a worse page for humans | Answer-first structure, clean HTML, real facts |
-| Blocking every AI crawler by default | Removes you from assistant answers and their referrals with no ranking benefit | Decide per crawler, per business model |
-| Assuming AI Overviews killed the click | Effects vary hugely by query type; category-wide claims mislead planning | Measure your own CTR by query segment |
-| Chasing citation on queries you cannot monetize | Citation without clicks is a vanity metric | Prioritize queries where the click is the transaction |
-| Publishing an `llms.txt` and reporting it as optimization work | No engine has confirmed reading it | Publish it if you like, and count it as zero |
-| Stuffing "as an expert" phrasing to sound authoritative | Models weight corroboration, not adjectives | Get cited elsewhere; publish verifiable evidence |
+| Trap                                                           | Why it fails                                                                   | Do instead                                            |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| Writing pages "for LLMs" in a special format                   | No engine documents a special format; you get a worse page for humans          | Answer-first structure, clean HTML, real facts        |
+| Blocking every AI crawler by default                           | Removes you from assistant answers and their referrals with no ranking benefit | Decide per crawler, per business model                |
+| Assuming AI Overviews killed the click                         | Effects vary hugely by query type; category-wide claims mislead planning       | Measure your own CTR by query segment                 |
+| Chasing citation on queries you cannot monetize                | Citation without clicks is a vanity metric                                     | Prioritize queries where the click is the transaction |
+| Publishing an `llms.txt` and reporting it as optimization work | No engine has confirmed reading it                                             | Publish it if you like, and count it as zero          |
+| Stuffing "as an expert" phrasing to sound authoritative        | Models weight corroboration, not adjectives                                    | Get cited elsewhere; publish verifiable evidence      |

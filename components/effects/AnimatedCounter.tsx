@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { animate, useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from "react";
+import { animate, useInView } from "framer-motion";
 
 interface AnimatedCounterProps {
   value: number;
@@ -14,14 +14,14 @@ interface AnimatedCounterProps {
 
 export default function AnimatedCounter({
   value,
-  suffix = '',
-  prefix = '',
+  suffix = "",
+  prefix = "",
   duration = 1.5,
-  className = '',
+  className = "",
   once = true,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once, margin: '-30px' });
+  const inView = useInView(ref, { once, margin: "-30px" });
   const [displayed, setDisplayed] = useState(value); // start with value, not 0
 
   useEffect(() => {
@@ -29,17 +29,17 @@ export default function AnimatedCounter({
 
     const controls = animate(0, value, {
       duration,
-      ease: 'easeOut' as const,
-      onUpdate: (latest) =>setDisplayed(Math.round(latest)),
+      ease: "easeOut" as const,
+      onUpdate: (latest) => setDisplayed(Math.round(latest)),
     });
 
-    return () =>controls.stop();
+    return () => controls.stop();
   }, [inView, value, duration]);
 
   return (
     <span ref={ref} className={className} aria-label={`${prefix}${value}${suffix}`}>
       {prefix}
-      {displayed.toLocaleString('ru-RU')}
+      {displayed.toLocaleString("ru-RU")}
       {suffix}
     </span>
   );

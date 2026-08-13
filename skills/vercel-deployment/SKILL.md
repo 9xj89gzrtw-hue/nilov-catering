@@ -20,6 +20,7 @@ Run `vercel git connect` from the repo root (where `.git` lives), not a subdirec
 ## Set Environment Variables
 
 **NEVER use `echo`** — it adds a trailing `\n`:
+
 ```bash
 printf 'value' | npx vercel env add VAR_NAME production
 ```

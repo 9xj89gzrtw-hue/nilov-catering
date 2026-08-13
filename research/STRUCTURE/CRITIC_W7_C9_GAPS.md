@@ -13,12 +13,12 @@
 **Ось C9 (Гэпы/SEO): 7 / 10 → REWORK** (ниже порога PASS=8 из-за висячих роутов и дыр
 в SEO-контракте).
 
-| Критерий | Оценка | Обоснование |
-|---|---|---|
-| Покрытие 13 ключевых страниц | **10/10** | Все 13 страниц имеют блок-спеку в `04_BLOCKS.md`. |
-| per-page SEO-контракт (OG/meta/canonical) | **6/10** | Контракт ЕСТЬ и силён для ядра, но 4 из 13 ключевых страниц не входят в перечисление и маппинг схемы. |
-| Висячие роуты (без страницы) | **4/10** | 3 подтверждённых висячих роута (`/tasting`, `/venues`, `/accessibility`) + 2 optional. |
-| Итог | **7.0** | REWORK (есть реальные баги в spec). |
+| Критерий                                  | Оценка    | Обоснование                                                                                           |
+| ----------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| Покрытие 13 ключевых страниц              | **10/10** | Все 13 страниц имеют блок-спеку в `04_BLOCKS.md`.                                                     |
+| per-page SEO-контракт (OG/meta/canonical) | **6/10**  | Контракт ЕСТЬ и силён для ядра, но 4 из 13 ключевых страниц не входят в перечисление и маппинг схемы. |
+| Висячие роуты (без страницы)              | **4/10**  | 3 подтверждённых висячих роута (`/tasting`, `/venues`, `/accessibility`) + 2 optional.                |
+| Итог                                      | **7.0**   | REWORK (есть реальные баги в spec).                                                                   |
 
 **Легенда:** критерий «висячие роуты» по определению задачи = баг; наличие багов не
 позволяет дать ≥8 без доказательства закрытия (правило самокритики).
@@ -27,21 +27,21 @@
 
 ## 1. ПОКРЫТИЕ КЛЮЧЕВЫХ СТРАНИЦ — 13/13 ✅
 
-| # | Страница | Блок-спека в `04_BLOCKS.md` | Строка | Статус |
-|---|---|---|---|---|
-| 1 | `home /` | Блоки 1–13 + bis (HeroSection…ProcessSteps), SchemaBlock `/`→Organization+LocalBusiness | `04:853-872`, `04:1250` | ✅ |
-| 2 | `/events/*` | `EventHero` (БЛОК 14), `PackageGrid` (15), `EventsRecap` (27, `/events/recap`); под-роуты svadba/korporativ/chastnoe/detskoe/vypusknoy/chef-at-home в `02_IA` | `04:1499`,`04:1540`,`04:1978`; `02_IA:15-24` | ✅ |
-| 3 | `/plan` (хаб) | `HelpersWizard` (15.8, ссылается на `/plan` хаб), `Calculator` (20); `08_CONSTRUCTOR_SPEC` | `04:926`,`04:1808` | ✅ |
-| 4 | `/menu` | `MenuLanding` (15.5), `MenuCatalog` (16), `DietLinePage` (15.6), `DishCard` (17), `AllergenLegend` (17-bis) | `04:881`,`04:1595`,`04:896`,`04:1658` | ✅ |
-| 5 | `/why-us` | `WhyUs` (БЛОК 8) | `04:864`,`04:779` | ✅ |
-| 6 | `/reviews` | `ReviewCard`/`ReviewList` (БЛОК 22-конвейер), `RatingBadge` (24) | `04:1015`,`04:1049`,`04:1925` | ✅ |
-| 7 | `/delivery` | `DeliveryZonesMap` (БЛОК 21) | `04:1852` | ✅ |
-| 8 | `/certificates` | `CertBlock` (БЛОК 22) | `04:1877` | ✅ |
-| 9 | `/thank-you` | `ThankYouScreen` (БЛОК 25) | `04:1948` | ✅ |
-| 10 | `/404` | `NotFoundPage` (БЛОК 26) | `04:1965` | ✅ |
-| 11 | `/allergens` | `AllergenLegend` (БЛОК 17-bis), явный роут `/allergens` | `04:1723`,`04:1729` | ✅ |
-| 12 | `/help/formats` | `FormatHelp` (БЛОК 15.7) | `04:910` | ✅ |
-| 13 | `/plan/helper` | `HelpersWizard` (БЛОК 15.8) | `04:922` | ✅ |
+| #   | Страница        | Блок-спека в `04_BLOCKS.md`                                                                                                                                   | Строка                                       | Статус |
+| --- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------ |
+| 1   | `home /`        | Блоки 1–13 + bis (HeroSection…ProcessSteps), SchemaBlock `/`→Organization+LocalBusiness                                                                       | `04:853-872`, `04:1250`                      | ✅     |
+| 2   | `/events/*`     | `EventHero` (БЛОК 14), `PackageGrid` (15), `EventsRecap` (27, `/events/recap`); под-роуты svadba/korporativ/chastnoe/detskoe/vypusknoy/chef-at-home в `02_IA` | `04:1499`,`04:1540`,`04:1978`; `02_IA:15-24` | ✅     |
+| 3   | `/plan` (хаб)   | `HelpersWizard` (15.8, ссылается на `/plan` хаб), `Calculator` (20); `08_CONSTRUCTOR_SPEC`                                                                    | `04:926`,`04:1808`                           | ✅     |
+| 4   | `/menu`         | `MenuLanding` (15.5), `MenuCatalog` (16), `DietLinePage` (15.6), `DishCard` (17), `AllergenLegend` (17-bis)                                                   | `04:881`,`04:1595`,`04:896`,`04:1658`        | ✅     |
+| 5   | `/why-us`       | `WhyUs` (БЛОК 8)                                                                                                                                              | `04:864`,`04:779`                            | ✅     |
+| 6   | `/reviews`      | `ReviewCard`/`ReviewList` (БЛОК 22-конвейер), `RatingBadge` (24)                                                                                              | `04:1015`,`04:1049`,`04:1925`                | ✅     |
+| 7   | `/delivery`     | `DeliveryZonesMap` (БЛОК 21)                                                                                                                                  | `04:1852`                                    | ✅     |
+| 8   | `/certificates` | `CertBlock` (БЛОК 22)                                                                                                                                         | `04:1877`                                    | ✅     |
+| 9   | `/thank-you`    | `ThankYouScreen` (БЛОК 25)                                                                                                                                    | `04:1948`                                    | ✅     |
+| 10  | `/404`          | `NotFoundPage` (БЛОК 26)                                                                                                                                      | `04:1965`                                    | ✅     |
+| 11  | `/allergens`    | `AllergenLegend` (БЛОК 17-bis), явный роут `/allergens`                                                                                                       | `04:1723`,`04:1729`                          | ✅     |
+| 12  | `/help/formats` | `FormatHelp` (БЛОК 15.7)                                                                                                                                      | `04:910`                                     | ✅     |
+| 13  | `/plan/helper`  | `HelpersWizard` (БЛОК 15.8)                                                                                                                                   | `04:922`                                     | ✅     |
 
 **Доп. проверенные (вне списка 13, но упомянуты в задаче):** `/blog`+`/blog/[slug]`
 покрыты (`BlogEditorial`/`BlogPostPage`/`BlogCard`, `04:1201-1217`) — НЕ висячий.
@@ -84,13 +84,13 @@ JSON-LD для 4 реальных контент-страниц → они уй�
 (поиск по `04_BLOCKS.md`: `TastingBooking`, `VenueList`, `AccessibilityPage`,
 `CareerPage`, `EnPage` — 0 совпадений):
 
-| Роут | Объявлен | Блок (по IA) | Спека в 04 | Статус |
-|---|---|---|---|---|
-| `/tasting` | `02_IA:66` (GapHunter G1, MEDIUM) | `TastingBooking` | ❌ нет | 🔴 ДАНГЛИНГ |
-| `/venues` | `02_IA:69` (GapHunter G5, LOW) | `VenueList` | ❌ нет | 🟠 ДАНГЛИНГ |
-| `/accessibility` | `02_IA:68` (GapHunter G3, LOW–MED) | (страница WCAG) | ❌ нет | 🟠 ДАНГЛИНГ |
-| `/en` | `02_IA:71` (optional, LOW) | — | ❌ нет | 🟡 optional |
-| `/careers` | `02_IA:72` (optional, LOW) | — | ❌ нет | 🟡 optional |
+| Роут             | Объявлен                           | Блок (по IA)     | Спека в 04 | Статус      |
+| ---------------- | ---------------------------------- | ---------------- | ---------- | ----------- |
+| `/tasting`       | `02_IA:66` (GapHunter G1, MEDIUM)  | `TastingBooking` | ❌ нет     | 🔴 ДАНГЛИНГ |
+| `/venues`        | `02_IA:69` (GapHunter G5, LOW)     | `VenueList`      | ❌ нет     | 🟠 ДАНГЛИНГ |
+| `/accessibility` | `02_IA:68` (GapHunter G3, LOW–MED) | (страница WCAG)  | ❌ нет     | 🟠 ДАНГЛИНГ |
+| `/en`            | `02_IA:71` (optional, LOW)         | —                | ❌ нет     | 🟡 optional |
+| `/careers`       | `02_IA:72` (optional, LOW)         | —                | ❌ нет     | 🟡 optional |
 
 **НЕ висячие (проверено отдельно):** `/blog` (есть `BlogPostPage`/`BlogEditorial`,
 `04:1211-1217`), B2B `/partners`+`/subscribe`+`/media-kit` (Волна 11, `04:2130`,`2143`,`2152`),

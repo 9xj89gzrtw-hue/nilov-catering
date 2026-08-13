@@ -16,6 +16,7 @@ Guides conversion rate optimization (CRO): increasing the percentage of visitors
 **Check for project context first:** If `.claude/project-context.md` or `.cursor/project-context.md` exists, read Sections 4 (Audience), 5 (Website), 6 (Keywords).
 
 Identify:
+
 1. **Funnel stage**: Awareness, consideration, decision, post-purchase
 2. **Conversion goal**: Signup, purchase, download, demo request
 3. **Traffic**: Volume; mobile vs desktop split
@@ -23,63 +24,63 @@ Identify:
 
 ## CRO Process
 
-| Step | Action |
-|------|--------|
-| **1. Research** | Map funnel; identify high-traffic, low-conversion pages |
-| **2. Hypothesize** | Form testable hypothesis (if X, then Y because Z) |
-| **3. Prioritize** | Score by Potential, Importance, Ease (PIE) |
-| **4. Test** | A/B or multivariate; adequate sample size |
-| **5. Analyze** | Statistical significance; implement winner |
+| Step               | Action                                                  |
+| ------------------ | ------------------------------------------------------- |
+| **1. Research**    | Map funnel; identify high-traffic, low-conversion pages |
+| **2. Hypothesize** | Form testable hypothesis (if X, then Y because Z)       |
+| **3. Prioritize**  | Score by Potential, Importance, Ease (PIE)              |
+| **4. Test**        | A/B or multivariate; adequate sample size               |
+| **5. Analyze**     | Statistical significance; implement winner              |
 
 ## PIE Prioritization Framework
 
 Score each test idea 1–10:
 
-| Factor | Question |
-|--------|----------|
-| **Potential** | How much improvement is possible? |
+| Factor         | Question                             |
+| -------------- | ------------------------------------ |
+| **Potential**  | How much improvement is possible?    |
 | **Importance** | How much traffic does this page get? |
-| **Ease** | How easy to implement? |
+| **Ease**       | How easy to implement?               |
 
 Rank backlog by total score; run highest-impact tests first.
 
 ## A/B Testing Best Practices
 
-| Practice | Guideline |
-|----------|-----------|
-| **Sample size** | Calculate minimum before launch; 95% significance without adequate sample = false positives |
-| **Duration** | Run full week cycles; account for day-of-week effects |
-| **One variable** | Test one element per experiment (or use MVT for multiple) |
+| Practice            | Guideline                                                                                      |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| **Sample size**     | Calculate minimum before launch; 95% significance without adequate sample = false positives    |
+| **Duration**        | Run full week cycles; account for day-of-week effects                                          |
+| **One variable**    | Test one element per experiment (or use MVT for multiple)                                      |
 | **Mobile separate** | Mobile converts ~50% of desktop; test mobile independently—thumb reach, form complexity differ |
-| **Low traffic** | Use Bayesian testing for faster, actionable results |
+| **Low traffic**     | Use Bayesian testing for faster, actionable results                                            |
 
 ## Key Testing Areas
 
-| Page Type | Test Ideas |
-|-----------|------------|
-| **Homepage** | Search bar prominence; personalized content; hero CTA; social proof placement |
-| **Landing page** | Headline; form length; CTA copy; above-fold layout |
-| **Product/Category** | Quick view; descriptions; add-to-cart placement |
-| **Checkout** | Form fields; progress indicator; trust badges; guest checkout |
-| **Pricing** | Plan order; anchoring; CTA per tier |
+| Page Type            | Test Ideas                                                                    |
+| -------------------- | ----------------------------------------------------------------------------- |
+| **Homepage**         | Search bar prominence; personalized content; hero CTA; social proof placement |
+| **Landing page**     | Headline; form length; CTA copy; above-fold layout                            |
+| **Product/Category** | Quick view; descriptions; add-to-cart placement                               |
+| **Checkout**         | Form fields; progress indicator; trust badges; guest checkout                 |
+| **Pricing**          | Plan order; anchoring; CTA per tier                                           |
 
 **Personalization**: Personalized experiences generate ~41% more impact than generic ones.
 
 ## Commercialization Infrastructure
 
-| Module | Purpose |
-|--------|---------|
-| **Data & BI** | Data warehouse; user behavior events; agile surveys |
-| **A/B testing** | Experiment platform; statistical significance; backend-controlled variants |
-| **User education** | Help docs (multi-language); update notifications; EDM |
-| **Attribution** | Ad pixels; attribution model; impression-to-click-to-sale tracking |
+| Module             | Purpose                                                                    |
+| ------------------ | -------------------------------------------------------------------------- |
+| **Data & BI**      | Data warehouse; user behavior events; agile surveys                        |
+| **A/B testing**    | Experiment platform; statistical significance; backend-controlled variants |
+| **User education** | Help docs (multi-language); update notifications; EDM                      |
+| **Attribution**    | Ad pixels; attribution model; impression-to-click-to-sale tracking         |
 
 **Avoid**: Intrusive interstitials; popups that block content. Prefer non-intrusive ad formats.
 
 ## Foundational Requirements
 
 - **Analytics**: Map funnels; identify drop-off points (analytics-tracking, traffic-analysis)
-- **Qualitative**: Heatmaps, session recordings, user tests—understand *why* drop-off occurs
+- **Qualitative**: Heatmaps, session recordings, user tests—understand _why_ drop-off occurs
 - **Technical**: Dedicated resources for 2–4 tests/month; maintain momentum
 
 ## Output Format

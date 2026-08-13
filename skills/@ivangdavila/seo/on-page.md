@@ -60,11 +60,11 @@ On-page work is the cheapest lever in SEO: no engineering, no links, effect visi
 
 ## On-Page Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Rewriting titles sitewide in one release | You lose attribution for a change worth measuring | Batch by template, one batch per window |
-| Optimizing a page with no impressions | Snippet work compounds impressions that do not exist | Fix indexing or intent first |
-| Keyword-stuffed alt text | Zero ranking value, real accessibility damage, pattern-detectable | Describe the image; keywords only when they are the accurate description |
-| Title matching the H1 exactly everywhere | Wastes the second phrasing opportunity | Title for the SERP, H1 for the page |
-| Adding "2026" to titles without updating content | The snippet promises freshness the page does not deliver; CTR rises then bounces | Update the content, then the year |
-| Deleting meta descriptions because "Google rewrites them" | You forfeit the cases where yours is kept — typically the exact-match queries | Write them for the pages that matter, skip them on the long tail |
+| Trap                                                      | Why it fails                                                                     | Do instead                                                               |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Rewriting titles sitewide in one release                  | You lose attribution for a change worth measuring                                | Batch by template, one batch per window                                  |
+| Optimizing a page with no impressions                     | Snippet work compounds impressions that do not exist                             | Fix indexing or intent first                                             |
+| Keyword-stuffed alt text                                  | Zero ranking value, real accessibility damage, pattern-detectable                | Describe the image; keywords only when they are the accurate description |
+| Title matching the H1 exactly everywhere                  | Wastes the second phrasing opportunity                                           | Title for the SERP, H1 for the page                                      |
+| Adding "2026" to titles without updating content          | The snippet promises freshness the page does not deliver; CTR rises then bounces | Update the content, then the year                                        |
+| Deleting meta descriptions because "Google rewrites them" | You forfeit the cases where yours is kept — typically the exact-match queries    | Write them for the pages that matter, skip them on the long tail         |

@@ -150,9 +150,7 @@ interface ThemeProviderState {
   toggleTheme: () => void;
 }
 
-const ThemeProviderContext = React.createContext<
-  ThemeProviderState | undefined
->(undefined);
+const ThemeProviderContext = React.createContext<ThemeProviderState | undefined>(undefined);
 
 export function ThemeProvider({
   children,
@@ -167,15 +165,12 @@ export function ThemeProvider({
     return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
   });
 
-  const [resolvedTheme, setResolvedTheme] =
-    React.useState<ResolvedTheme>("light");
+  const [resolvedTheme, setResolvedTheme] = React.useState<ResolvedTheme>("light");
 
   // Get system preference
   const getSystemTheme = React.useCallback((): ResolvedTheme => {
     if (typeof window === "undefined") return "light";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }, []);
 
   // Apply theme to DOM
@@ -186,11 +181,7 @@ export function ThemeProvider({
       // Disable transitions temporarily
       if (disableTransitionOnChange) {
         const css = document.createElement("style");
-        css.appendChild(
-          document.createTextNode(
-            `*,*::before,*::after{transition:none!important}`,
-          ),
-        );
+        css.appendChild(document.createTextNode(`*,*::before,*::after{transition:none!important}`));
         document.head.appendChild(css);
 
         // Force repaint
@@ -215,7 +206,7 @@ export function ThemeProvider({
 
       setResolvedTheme(newTheme);
     },
-    [attribute, disableTransitionOnChange],
+    [attribute, disableTransitionOnChange]
   );
 
   // Handle theme changes
@@ -244,7 +235,7 @@ export function ThemeProvider({
       localStorage.setItem(storageKey, newTheme);
       setThemeState(newTheme);
     },
-    [storageKey],
+    [storageKey]
   );
 
   const toggleTheme = React.useCallback(() => {
@@ -258,14 +249,10 @@ export function ThemeProvider({
       setTheme,
       toggleTheme,
     }),
-    [theme, resolvedTheme, setTheme, toggleTheme],
+    [theme, resolvedTheme, setTheme, toggleTheme]
   );
 
-  return (
-    <ThemeProviderContext.Provider value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
-  );
+  return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
 }
 
 export function useTheme() {
@@ -291,27 +278,21 @@ export function ThemeToggle() {
     <div className="flex items-center gap-1 rounded-lg bg-muted p-1">
       <button
         onClick={() => setTheme("light")}
-        className={`rounded-md p-2 ${
-          theme === "light" ? "bg-background shadow-sm" : ""
-        }`}
+        className={`rounded-md p-2 ${theme === "light" ? "bg-background shadow-sm" : ""}`}
         aria-label="Light theme"
       >
         <Sun className="h-4 w-4" />
       </button>
       <button
         onClick={() => setTheme("dark")}
-        className={`rounded-md p-2 ${
-          theme === "dark" ? "bg-background shadow-sm" : ""
-        }`}
+        className={`rounded-md p-2 ${theme === "dark" ? "bg-background shadow-sm" : ""}`}
         aria-label="Dark theme"
       >
         <Moon className="h-4 w-4" />
       </button>
       <button
         onClick={() => setTheme("system")}
-        className={`rounded-md p-2 ${
-          theme === "system" ? "bg-background shadow-sm" : ""
-        }`}
+        className={`rounded-md p-2 ${theme === "system" ? "bg-background shadow-sm" : ""}`}
         aria-label="System theme"
       >
         <Monitor className="h-4 w-4" />
@@ -491,7 +472,7 @@ describe("ThemeProvider", () => {
     render(
       <ThemeProvider>
         <TestComponent />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
     expect(screen.getByTestId("theme")).toHaveTextContent("system");
@@ -503,7 +484,7 @@ describe("ThemeProvider", () => {
     render(
       <ThemeProvider>
         <TestComponent />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
     await user.click(screen.getByText("Set Dark"));

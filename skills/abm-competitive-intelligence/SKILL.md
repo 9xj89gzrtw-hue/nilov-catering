@@ -55,21 +55,25 @@ Review results and propose 3-5 direct competitors. Confirm with the user before 
 For each competitor, run targeted searches:
 
 **Company and positioning:**
+
 ```bash
 node tools/clis/exa.js search "[competitor] company" --num-results 5
 ```
 
 **Pricing intelligence:**
+
 ```bash
 node tools/clis/exa.js search "[competitor] pricing plans" --num-results 5
 ```
 
 **Recent activity and product updates:**
+
 ```bash
 node tools/clis/exa.js search "[competitor] product updates 2025 2026" --num-results 5
 ```
 
 **Customer sentiment:**
+
 ```bash
 node tools/clis/exa.js search "[competitor] reviews pros cons" --num-results 5
 ```
@@ -81,21 +85,25 @@ Collect URLs from search results for the deep-dive step.
 Scrape key pages from each competitor's site for detailed analysis:
 
 **Pricing page:**
+
 ```bash
 node tools/clis/firecrawl.js scrape [competitor-url]/pricing
 ```
 
 **Features page:**
+
 ```bash
 node tools/clis/firecrawl.js scrape [competitor-url]/features
 ```
 
 **About/company page:**
+
 ```bash
 node tools/clis/firecrawl.js scrape [competitor-url]/about
 ```
 
 **Optional -- product changelog or blog for recent updates:**
+
 ```bash
 node tools/clis/firecrawl.js scrape [competitor-url]/changelog
 ```
@@ -129,11 +137,11 @@ For each competitor, provide:
 
 #### Feature Comparison Matrix
 
-| Feature | Your Product | Competitor A | Competitor B | Competitor C |
-|---------|-------------|-------------|-------------|-------------|
-| Feature 1 | Yes/No/Details | Yes/No/Details | Yes/No/Details | Yes/No/Details |
-| Feature 2 | ... | ... | ... | ... |
-| Pricing (starting) | $X/mo | $X/mo | $X/mo | $X/mo |
+| Feature            | Your Product   | Competitor A   | Competitor B   | Competitor C   |
+| ------------------ | -------------- | -------------- | -------------- | -------------- |
+| Feature 1          | Yes/No/Details | Yes/No/Details | Yes/No/Details | Yes/No/Details |
+| Feature 2          | ...            | ...            | ...            | ...            |
+| Pricing (starting) | $X/mo          | $X/mo          | $X/mo          | $X/mo          |
 
 Focus on features that matter to buyers in this category. Include pricing row.
 

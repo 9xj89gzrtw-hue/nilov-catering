@@ -1,16 +1,25 @@
-'use client';
+"use client";
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { Format, Tier, Diet, AddOn } from '@/lib/types';
-import type { PricingData } from '@/lib/pricing-types';
-import { DEFAULT_PRICING } from '@/lib/pricing-types';
-import { MIN_GUESTS, STAFF_RATE, STAFF_RATIO, COORDINATOR_FLAT, SETUP_RATE, SETUP_HOURS, SERVICE_STAFF_HOURS, GAMMA_MAX } from '@/lib/constants';
-import { calcTotal } from '@/lib/pricing';
-import { ALL_DISHES } from '@/lib/menu-data';
-import { ALL_TARIFF_OFFERS, FORMAT_TO_EVENT } from '@/lib/tariff-offers';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { Format, Tier, Diet, AddOn } from "@/lib/types";
+import type { PricingData } from "@/lib/pricing-types";
+import { DEFAULT_PRICING } from "@/lib/pricing-types";
+import {
+  MIN_GUESTS,
+  STAFF_RATE,
+  STAFF_RATIO,
+  COORDINATOR_FLAT,
+  SETUP_RATE,
+  SETUP_HOURS,
+  SERVICE_STAFF_HOURS,
+  GAMMA_MAX,
+} from "@/lib/constants";
+import { calcTotal } from "@/lib/pricing";
+import { ALL_DISHES } from "@/lib/menu-data";
+import { ALL_TARIFF_OFFERS, FORMAT_TO_EVENT } from "@/lib/tariff-offers";
 
-const DISH_MAP = new Map(ALL_DISHES.map(d => [d.id, d]));
+const DISH_MAP = new Map(ALL_DISHES.map((d) => [d.id, d]));
 
 export interface SelectedItem {
   dishId: string;
@@ -23,9 +32,9 @@ export interface SelectedItem {
 // Группа гостей с диетой — для смешанных мероприятий (10 веганов + 8 халяль + 12 всеядных)
 export interface GuestGroup {
   id: string;
-  name: string;        // «Веганы», «Халяль», «Всеядные»
-  count: number;        // кол-во гостей в группе
-  diet: Diet | 'omnivore' | null;  // diet restriction
+  name: string; // «Веганы», «Халяль», «Всеядные»
+  count: number; // кол-во гостей в группе
+  diet: Diet | "omnivore" | null; // diet restriction
   description?: string;
 }
 
@@ -39,14 +48,14 @@ export interface ConstructorState {
   guestCount: number;
   childGuests: number;
   diet: Diet | null;
-  guestEdge: 'none' | 'over-500';
+  guestEdge: "none" | "over-500";
 
   // Guest groups (для смешанных мероприятий)
   guestGroups: GuestGroup[];
   groupsEnabled: boolean;
 
   // Tier
-  tierMode: 'preset' | 'custom';
+  tierMode: "preset" | "custom";
   tier: Tier | null;
 
   // Custom menu
@@ -83,18 +92,18 @@ export interface ConstructorState {
   setGuestCount: (n: number) => void;
   setChildGuests: (n: number) => void;
   setDiet: (d: Diet | null) => void;
-  setTierMode: (m: 'preset' | 'custom') => void;
+  setTierMode: (m: "preset" | "custom") => void;
   setTier: (t: Tier | null) => void;
   setStep: (s: number) => void;
   nextStep: () => void;
   prevStep: () => void;
   toggleAddOn: (a: AddOn) => void;
-  setContact: (c: Partial<ConstructorState['contact']>) => void;
+  setContact: (c: Partial<ConstructorState["contact"]>) => void;
   setExcludedAllergens: (allergens: string[]) => void;
 
   // Guest groups
   setGroupsEnabled: (enabled: boolean) => void;
-  addGroup: (group: Omit<GuestGroup, 'id'>) => void;
+  addGroup: (group: Omit<GuestGroup, "id">) => void;
   updateGroup: (id: string, patch: Partial<GuestGroup>) => void;
   removeGroup: (id: string) => void;
   clearGroups: () => void;
@@ -110,21 +119,47 @@ export interface ConstructorState {
   reset: () => void;
 }
 
-const INITIAL: Pick<ConstructorState, '_hasHydrated' | 'format' | 'guestCount' | 'childGuests' | 'diet' | 'tierMode' | 'tier' | 'selectedItems' | 'excludedAllergens' | 'guestGroups' | 'groupsEnabled' | 'addOns' | 'contact' | 'currentStep' | 'isCalculating' | 'errors' | 'guestEdge' | 'base' | 'addonsTotal' | 'total' | 'perGuest' | 'savings' | 'service' | 'pricing'> = {
+const INITIAL: Pick<
+  ConstructorState,
+  | "_hasHydrated"
+  | "format"
+  | "guestCount"
+  | "childGuests"
+  | "diet"
+  | "tierMode"
+  | "tier"
+  | "selectedItems"
+  | "excludedAllergens"
+  | "guestGroups"
+  | "groupsEnabled"
+  | "addOns"
+  | "contact"
+  | "currentStep"
+  | "isCalculating"
+  | "errors"
+  | "guestEdge"
+  | "base"
+  | "addonsTotal"
+  | "total"
+  | "perGuest"
+  | "savings"
+  | "service"
+  | "pricing"
+> = {
   _hasHydrated: false,
   format: null,
   guestCount: 20,
   childGuests: 0,
   diet: null,
-  guestEdge: 'none',
-  tierMode: 'preset',
+  guestEdge: "none",
+  tierMode: "preset",
   tier: null,
   selectedItems: [],
   excludedAllergens: [],
   guestGroups: [],
   groupsEnabled: false,
   addOns: [],
-  contact: { name: '', phone: '', date: '', comment: '' },
+  contact: { name: "", phone: "", date: "", comment: "" },
   currentStep: 0,
   isCalculating: false,
   errors: [],
@@ -158,7 +193,7 @@ export const useConstructor = create<ConstructorState>()(
       },
 
       setGuestCount: (n) => {
-        const guestEdge = n > 500 ? 'over-500' as const : 'none' as const;
+        const guestEdge = n > 500 ? ("over-500" as const) : ("none" as const);
         set({ guestCount: Math.max(1, Math.min(n, 500)), guestEdge });
         get().recalc();
       },
@@ -173,14 +208,14 @@ export const useConstructor = create<ConstructorState>()(
       setTierMode: (m) => set({ tierMode: m }),
       setTier: (t) => {
         const g = get();
-        if (g.tierMode === 'preset' && g.format && t) {
+        if (g.tierMode === "preset" && g.format && t) {
           const eventId = FORMAT_TO_EVENT[g.format];
           const offers = ALL_TARIFF_OFFERS[eventId] || [];
-          const offer = offers.find(o => o.tier === t);
+          const offer = offers.find((o) => o.tier === t);
           if (offer) {
             const newItems: SelectedItem[] = [];
             for (const item of offer.composition) {
-              if (ALL_DISHES.find(d => d.id === item.dishId)) {
+              if (ALL_DISHES.find((d) => d.id === item.dishId)) {
                 // item.qty in TariffDishItem is a string description (e.g. "2 шт/гость"),
                 // so we default the cart quantity to 1 (matches existing addDish behaviour).
                 newItems.push({ dishId: item.dishId, qty: 1 });
@@ -196,18 +231,18 @@ export const useConstructor = create<ConstructorState>()(
       },
 
       setStep: (s) => set({ currentStep: s }),
-      nextStep: () => set(s => ({ currentStep: Math.min(s.currentStep + 1, 5) })),
-      prevStep: () => set(s => ({ currentStep: Math.max(s.currentStep - 1, 0) })),
+      nextStep: () => set((s) => ({ currentStep: Math.min(s.currentStep + 1, 5) })),
+      prevStep: () => set((s) => ({ currentStep: Math.max(s.currentStep - 1, 0) })),
 
       toggleAddOn: (a) => {
         const current = get().addOns;
-        const exists = current.find(x => x.id === a.id);
-        const next = exists ? current.filter(x => x.id !== a.id) : [...current, a];
+        const exists = current.find((x) => x.id === a.id);
+        const next = exists ? current.filter((x) => x.id !== a.id) : [...current, a];
         set({ addOns: next });
         get().recalc();
       },
 
-      setContact: (c) => set(s => ({ contact: { ...s.contact, ...c } })),
+      setContact: (c) => set((s) => ({ contact: { ...s.contact, ...c } })),
 
       setExcludedAllergens: (allergens) => set({ excludedAllergens: allergens }),
 
@@ -217,20 +252,20 @@ export const useConstructor = create<ConstructorState>()(
       addGroup: (group) => {
         const id = `g${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
         const newGroup: GuestGroup = { id, ...group };
-        set(s => ({ guestGroups: [...s.guestGroups, newGroup] }));
+        set((s) => ({ guestGroups: [...s.guestGroups, newGroup] }));
       },
 
       updateGroup: (id, patch) => {
-        set(s => ({
-          guestGroups: s.guestGroups.map(g => g.id === id ? { ...g, ...patch } : g),
+        set((s) => ({
+          guestGroups: s.guestGroups.map((g) => (g.id === id ? { ...g, ...patch } : g)),
         }));
       },
 
       removeGroup: (id) => {
-        set(s => ({
-          guestGroups: s.guestGroups.filter(g => g.id !== id),
+        set((s) => ({
+          guestGroups: s.guestGroups.filter((g) => g.id !== id),
           // Удалить блюда привязанные к этой группе
-          selectedItems: s.selectedItems.filter(i => i.groupId !== id),
+          selectedItems: s.selectedItems.filter((i) => i.groupId !== id),
         }));
         get().recalc();
       },
@@ -243,34 +278,36 @@ export const useConstructor = create<ConstructorState>()(
         // Если есть groupId — разрешаем несколько экземпляров одного блюда (по группе)
         if (groupId) {
           // Если блюдо уже в этой группе — увеличиваем qty
-          const existingInGroup = items.find(i => i.dishId === dishId && i.groupId === groupId);
+          const existingInGroup = items.find((i) => i.dishId === dishId && i.groupId === groupId);
           if (existingInGroup) {
-            set({ selectedItems: items.map(i =>
-              i.dishId === dishId && i.groupId === groupId ? { ...i, qty: i.qty + 1 } : i
-            ) });
+            set({
+              selectedItems: items.map((i) =>
+                i.dishId === dishId && i.groupId === groupId ? { ...i, qty: i.qty + 1 } : i
+              ),
+            });
           } else {
             set({ selectedItems: [...items, { dishId, qty: 1, groupId }] });
           }
         } else {
           // Без группы — как раньше
-          if (items.some(i => i.dishId === dishId && !i.groupId)) return;
+          if (items.some((i) => i.dishId === dishId && !i.groupId)) return;
           set({ selectedItems: [...items, { dishId, qty: 1 }] });
         }
         get().recalc();
       },
 
       removeDish: (dishId) => {
-        set({ selectedItems: get().selectedItems.filter(i => i.dishId !== dishId) });
+        set({ selectedItems: get().selectedItems.filter((i) => i.dishId !== dishId) });
         get().recalc();
       },
 
       setItemQty: (dishId, qty) => {
         const next = Math.max(0, Math.min(99, qty));
         if (next === 0) {
-          set({ selectedItems: get().selectedItems.filter(i => i.dishId !== dishId) });
+          set({ selectedItems: get().selectedItems.filter((i) => i.dishId !== dishId) });
         } else {
           set({
-            selectedItems: get().selectedItems.map(i =>
+            selectedItems: get().selectedItems.map((i) =>
               i.dishId === dishId ? { ...i, qty: next } : i
             ),
           });
@@ -292,7 +329,18 @@ export const useConstructor = create<ConstructorState>()(
       },
 
       recalc: () => {
-        const { format, guestCount, childGuests, tier, tierMode, selectedItems, addOns, pricing, guestGroups, groupsEnabled } = get();
+        const {
+          format,
+          guestCount,
+          childGuests,
+          tier,
+          tierMode,
+          selectedItems,
+          addOns,
+          pricing,
+          guestGroups,
+          groupsEnabled,
+        } = get();
         // W91 FIX: В custom mode (tierMode='custom') tier=null, но блюда уже выбраны.
         // Не возвращаем 0 — считаем total из selectedItems.
         if (!format) {
@@ -301,7 +349,7 @@ export const useConstructor = create<ConstructorState>()(
         }
 
         // === Custom mode: считаем из selectedItems даже без tier ===
-        if (tierMode === 'custom' || (!tier && selectedItems.length > 0)) {
+        if (tierMode === "custom" || (!tier && selectedItems.length > 0)) {
           let base = 0;
           for (const item of selectedItems) {
             const dish = DISH_MAP.get(item.dishId);
@@ -309,7 +357,7 @@ export const useConstructor = create<ConstructorState>()(
             base += dish.pricePerGuest * item.qty * guestCount;
           }
           const addonsTotal = addOns.reduce((sum, a) => {
-            if (a.priceType === 'perGuest') return sum + a.price * guestCount;
+            if (a.priceType === "perGuest") return sum + a.price * guestCount;
             return sum + a.price;
           }, 0);
           const totalSum = Math.round(base + addonsTotal);
@@ -334,7 +382,7 @@ export const useConstructor = create<ConstructorState>()(
         // === Multi-group mode: расчёт per-group ===
         // Для каждого блюда, привязанного к группе — умножаем на размер группы, не на guestCount
         if (groupsEnabled && guestGroups.length > 0) {
-          const groupsMap = new Map(guestGroups.map(g => [g.id, g]));
+          const groupsMap = new Map(guestGroups.map((g) => [g.id, g]));
           let base = 0;
           for (const item of selectedItems) {
             const dish = DISH_MAP.get(item.dishId);
@@ -350,19 +398,25 @@ export const useConstructor = create<ConstructorState>()(
           }
           // Addons (service) — по полному guestCount
           const addonsTotal = addOns.reduce((sum, a) => {
-            if (a.priceType === 'perGuest') return sum + a.price * guestCount;
+            if (a.priceType === "perGuest") return sum + a.price * guestCount;
             return sum + a.price;
           }, 0);
           // Service (персонал+посуда) — сервис-норма по формату, на guestCount
           const ratio = STAFF_RATIO[format] ?? 20;
           const staffCount = Math.ceil(guestCount / ratio);
-          const service = format === 'chef-at-home'
-            ? 0
-            : (STAFF_RATE[format] * SERVICE_STAFF_HOURS * staffCount + COORDINATOR_FLAT + SETUP_RATE * SETUP_HOURS);
+          const service =
+            format === "chef-at-home"
+              ? 0
+              : STAFF_RATE[format] * SERVICE_STAFF_HOURS * staffCount +
+                COORDINATOR_FLAT +
+                SETUP_RATE * SETUP_HOURS;
           // Gamma-скидка
           let discount = 0;
           if (guestCount > 10) {
-            const gamma = Math.min(GAMMA_MAX, 0.15 * (guestCount - 10) / (150 + (guestCount - 10)));
+            const gamma = Math.min(
+              GAMMA_MAX,
+              (0.15 * (guestCount - 10)) / (150 + (guestCount - 10))
+            );
             discount += base * gamma;
           }
           const totalSum = Math.round(base - discount + addonsTotal);
@@ -402,7 +456,7 @@ export const useConstructor = create<ConstructorState>()(
       reset: () => set({ ...INITIAL }),
     }),
     {
-      name: 'nilov-constructor',
+      name: "nilov-constructor",
       onRehydrateStorage: () => (state) => {
         if (state) state.setHasHydrated();
       },

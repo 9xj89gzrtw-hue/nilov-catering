@@ -1,7 +1,15 @@
 ---
 name: api-dev
 description: Scaffold, test, document, and debug REST and GraphQL APIs. Use when the user needs to create API endpoints, write integration tests, generate OpenAPI specs, test with curl, mock APIs, or troubleshoot HTTP issues.
-metadata: {"clawdbot":{"emoji":"🔌","requires":{"anyBins":["curl","node","python3"]},"os":["linux","darwin","win32"]}}
+metadata:
+  {
+    "clawdbot":
+      {
+        "emoji": "🔌",
+        "requires": { "anyBins": ["curl", "node", "python3"] },
+        "os": ["linux", "darwin", "win32"],
+      },
+  }
 ---
 
 # API Development
@@ -395,7 +403,7 @@ Run: `python3 mock_server.py 8080`
 
 ```javascript
 // server.js - Minimal Express REST API
-const express = require('express');
+const express = require("express");
 const app = express();
 app.use(express.json());
 
@@ -404,37 +412,37 @@ const items = new Map();
 let nextId = 1;
 
 // CRUD endpoints
-app.get('/api/items', (req, res) => {
+app.get("/api/items", (req, res) => {
   const { page = 1, limit = 20 } = req.query;
   const all = [...items.values()];
   const start = (page - 1) * limit;
   res.json({ items: all.slice(start, start + +limit), total: all.length });
 });
 
-app.get('/api/items/:id', (req, res) => {
+app.get("/api/items/:id", (req, res) => {
   const item = items.get(req.params.id);
-  if (!item) return res.status(404).json({ error: 'Not found' });
+  if (!item) return res.status(404).json({ error: "Not found" });
   res.json(item);
 });
 
-app.post('/api/items', (req, res) => {
+app.post("/api/items", (req, res) => {
   const { name, description } = req.body;
-  if (!name) return res.status(400).json({ error: 'name required' });
+  if (!name) return res.status(400).json({ error: "name required" });
   const id = String(nextId++);
-  const item = { id, name, description: description || '', createdAt: new Date().toISOString() };
+  const item = { id, name, description: description || "", createdAt: new Date().toISOString() };
   items.set(id, item);
   res.status(201).json(item);
 });
 
-app.put('/api/items/:id', (req, res) => {
-  if (!items.has(req.params.id)) return res.status(404).json({ error: 'Not found' });
+app.put("/api/items/:id", (req, res) => {
+  if (!items.has(req.params.id)) return res.status(404).json({ error: "Not found" });
   const item = { ...req.body, id: req.params.id, updatedAt: new Date().toISOString() };
   items.set(req.params.id, item);
   res.json(item);
 });
 
-app.delete('/api/items/:id', (req, res) => {
-  if (!items.has(req.params.id)) return res.status(404).json({ error: 'Not found' });
+app.delete("/api/items/:id", (req, res) => {
+  if (!items.has(req.params.id)) return res.status(404).json({ error: "Not found" });
   items.delete(req.params.id);
   res.status(204).end();
 });
@@ -442,7 +450,7 @@ app.delete('/api/items/:id', (req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: 'Internal server error' });
+  res.status(500).json({ error: "Internal server error" });
 });
 
 const PORT = process.env.PORT || 3000;

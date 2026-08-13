@@ -1,21 +1,31 @@
-import { NextResponse } from 'next/server';
-import { SITE } from '@/lib/data';
-import { ALL_TARIFF_OFFERS } from '@/lib/tariff-offers';
-import type { Tier } from '@/lib/types';
+import { NextResponse } from "next/server";
+import { SITE } from "@/lib/data";
+import { ALL_TARIFF_OFFERS } from "@/lib/tariff-offers";
+import type { Tier } from "@/lib/types";
 
 function escapeHtml(text: string): string {
-  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 export async function GET(_request: Request) {
   const rows: string[] = [];
 
   for (const [eventId, offers] of Object.entries(ALL_TARIFF_OFFERS)) {
-    const eventLabel: Record<string, string>= {
-      svadba: 'Свадьба', korporativ: 'Корпоратив', vypusknoy: 'Выпускной',
-      chastnoe: 'Частное событие', detskoe: 'Детский праздник', 'chef-at-home': 'Шеф на дом',
+    const eventLabel: Record<string, string> = {
+      svadba: "Свадьба",
+      korporativ: "Корпоратив",
+      vypusknoy: "Выпускной",
+      chastnoe: "Частное событие",
+      detskoe: "Детский праздник",
+      "chef-at-home": "Шеф на дом",
     };
-    rows.push(`<h2 style="color:#8A6D3B; font-size:18px; margin-top:28px;">${eventLabel[eventId] || eventId}</h2>`);
+    rows.push(
+      `<h2 style="color:#8A6D3B; font-size:18px; margin-top:28px;">${eventLabel[eventId] || eventId}</h2>`
+    );
 
     for (const offer of offers) {
       rows.push(`<div class="tier">
@@ -25,15 +35,19 @@ export async function GET(_request: Request) {
         </div>
         <p>${escapeHtml(offer.description)}</p>
         <p class="meta">Мин. ${offer.minGuests} гостей</p>
-        <p class="highlights">${offer.highlights.map(h =>`<span class="hl">${escapeHtml(h)}</span>`).join(' ')}</p>
+        <p class="highlights">${offer.highlights.map((h) => `<span class="hl">${escapeHtml(h)}</span>`).join(" ")}</p>
         <table>
           <thead><tr><th style="width:40%;">Блюдо</th><th>Состав</th><th style="width:80px;">Кол-во</th></tr></thead>
           <tbody>
-            ${offer.composition.map(item =>`<tr>
+            ${offer.composition
+              .map(
+                (item) => `<tr>
               <td><strong>${escapeHtml(item.name)}</strong></td>
               <td>${escapeHtml(item.desc)}</td>
               <td class="qty">${item.qty}</td>
-            </tr>`).join('\n')}
+            </tr>`
+              )
+              .join("\n")}
           </tbody>
         </table>
       </div>`);
@@ -64,7 +78,7 @@ export async function GET(_request: Request) {
 <body>
 <h1>Тарифы и цены NiloV Catering</h1>
 <p class="subtitle">Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.domain} • Цены за человека</p>
-${rows.join('\n')}
+${rows.join("\n")}
 <footer>
   NiloV Catering • Санкт-Петербург • +7 (812) 919-59-11 • ${SITE.email} • ${SITE.domain}<br>
   Цены указаны на ${new Date().toLocaleDateString("ru-RU", { month: "long", year: "numeric" }).replace(" г.", "")}. Для точной сметы свяжитесь с менеджером.<br>
@@ -74,8 +88,8 @@ ${rows.join('\n')}
 
   return new NextResponse(html, {
     headers: {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Content-Disposition': 'attachment; filename="nilov-tariffs-menu.html"',
+      "Content-Type": "text/html; charset=utf-8",
+      "Content-Disposition": 'attachment; filename="nilov-tariffs-menu.html"',
     },
   });
 }

@@ -4,13 +4,13 @@ Two different problems get called "international SEO": serving the same language
 
 ## Choosing The Structure
 
-| Structure | Example | Strengths | Costs |
-|---|---|---|---|
-| Subfolder | `example.com/de/` | Inherits domain authority, one property to manage, cheapest to run | Weaker local signal than a ccTLD |
-| Subdomain | `de.example.com` | Separable hosting and stacks | Authority consolidation is less certain; more infrastructure |
-| ccTLD | `example.de` | Strongest country signal, sometimes required by law or by trust | Each domain earns authority from zero; multiplies every technical task |
-| Parameters | `example.com?lang=de` | None worth having | Fragile, poor for users and for crawlers |
-| Anything else | — | — | Default to subfolders unless a ccTLD is a business or legal requirement |
+| Structure     | Example               | Strengths                                                          | Costs                                                                   |
+| ------------- | --------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Subfolder     | `example.com/de/`     | Inherits domain authority, one property to manage, cheapest to run | Weaker local signal than a ccTLD                                        |
+| Subdomain     | `de.example.com`      | Separable hosting and stacks                                       | Authority consolidation is less certain; more infrastructure            |
+| ccTLD         | `example.de`          | Strongest country signal, sometimes required by law or by trust    | Each domain earns authority from zero; multiplies every technical task  |
+| Parameters    | `example.com?lang=de` | None worth having                                                  | Fragile, poor for users and for crawlers                                |
+| Anything else | —                     | —                                                                  | Default to subfolders unless a ccTLD is a business or legal requirement |
 
 Language and country are different axes. `/de/` (German language) and `/de-ch/` (German for Switzerland) answer different needs; do not create country variants you cannot keep genuinely distinct.
 
@@ -49,22 +49,22 @@ The most common real case (`en-US`, `en-GB`, `en-AU`) and the one where duplicat
 
 ## Diagnosing International Problems
 
-| Symptom | Likely cause |
-|---|---|
-| Wrong country version ranks in a market | Missing or broken hreflang return links; or that version is simply the stronger page |
-| Translations not indexed | Canonical points to the source language, or the pages are near-identical after machine translation |
-| Traffic from one market only | No hreflang, no localized content, no local links |
-| GSC reports "no return tags" | The other side's annotation is missing, on a redirect, or uses a different URL form (trailing slash, www) |
-| Duplicate content across English variants | Identical pages; differentiate or consolidate |
-| Anything else | Fetch each version as Googlebot and compare the head block URL by URL |
+| Symptom                                   | Likely cause                                                                                              |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Wrong country version ranks in a market   | Missing or broken hreflang return links; or that version is simply the stronger page                      |
+| Translations not indexed                  | Canonical points to the source language, or the pages are near-identical after machine translation        |
+| Traffic from one market only              | No hreflang, no localized content, no local links                                                         |
+| GSC reports "no return tags"              | The other side's annotation is missing, on a redirect, or uses a different URL form (trailing slash, www) |
+| Duplicate content across English variants | Identical pages; differentiate or consolidate                                                             |
+| Anything else                             | Fetch each version as Googlebot and compare the head block URL by URL                                     |
 
 ## International Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| IP-based auto-redirects | The crawler sees one version; users get trapped | Banner with a link, user choice persisted |
-| `en-UK` | Not a valid region code; the annotation is dropped | `en-GB` |
-| hreflang pointing at redirects | Annotations require the final canonical URL | Point at 200-status canonicals |
-| Machine-translating the whole site at once | Scaled low-value content in every market simultaneously | Translate the pages with demand, reviewed by a human |
-| One ccTLD per country from day one | Every domain restarts authority; the workload multiplies by the number of markets | Subfolders until a market proves itself |
-| Copying keyword lists across markets | Search language is not a translation | Redo research per market |
+| Trap                                       | Why it fails                                                                      | Do instead                                           |
+| ------------------------------------------ | --------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| IP-based auto-redirects                    | The crawler sees one version; users get trapped                                   | Banner with a link, user choice persisted            |
+| `en-UK`                                    | Not a valid region code; the annotation is dropped                                | `en-GB`                                              |
+| hreflang pointing at redirects             | Annotations require the final canonical URL                                       | Point at 200-status canonicals                       |
+| Machine-translating the whole site at once | Scaled low-value content in every market simultaneously                           | Translate the pages with demand, reviewed by a human |
+| One ccTLD per country from day one         | Every domain restarts authority; the workload multiplies by the number of markets | Subfolders until a market proves itself              |
+| Copying keyword lists across markets       | Search language is not a translation                                              | Redo research per market                             |

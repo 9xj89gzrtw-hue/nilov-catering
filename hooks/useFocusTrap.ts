@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, type RefObject } from 'react';
+import { useEffect, useRef, type RefObject } from "react";
 
-const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
 /**
  * Запирает фокус внутри контейнера. Escape — закрывает через onClose.
@@ -28,13 +29,13 @@ export function useFocusTrap(active: boolean, onClose?: () => void) {
     first?.focus();
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         e.preventDefault();
         onClose?.();
         return;
       }
 
-      if (e.key !== 'Tab') return;
+      if (e.key !== "Tab") return;
 
       if (e.shiftKey) {
         if (document.activeElement === first) {
@@ -49,10 +50,10 @@ export function useFocusTrap(active: boolean, onClose?: () => void) {
       }
     };
 
-    el.addEventListener('keydown', handleKeyDown);
+    el.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      el.removeEventListener('keydown', handleKeyDown);
+      el.removeEventListener("keydown", handleKeyDown);
       previousFocus.current?.focus();
     };
   }, [active, onClose]);

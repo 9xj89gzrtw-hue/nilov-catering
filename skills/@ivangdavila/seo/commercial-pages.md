@@ -4,17 +4,17 @@ Most content programs publish "how to" articles and wonder why organic traffic d
 
 ## The Page Types And Their Queries
 
-| Page type | Query pattern | Why it converts |
-|---|---|---|
-| Alternatives | "{competitor} alternatives", "{competitor} vs alternatives" | Searcher has already rejected a product; you are one of the options being compared |
-| Head-to-head comparison | "{you} vs {competitor}", "{competitor A} vs {competitor B}" | Final-stage evaluation, highest intent of all |
-| Best-of / category listicle | "best {category} for {segment}" | Owns the shortlist; also the format AI summaries and assistants pull from |
-| Pricing | "{product} pricing", "how much does {category} cost" | Answering price questions publicly filters out bad fits and wins a query competitors dodge |
-| Integrations | "{product} + {tool} integration" | Long-tail with near-zero competition, one page per real integration |
-| Use case / persona | "{category} for {industry or role}" | Matches the words buyers use for themselves, not your feature names |
-| Template / free tool | "{thing} template", "{thing} calculator" | Earns links and email addresses; the most link-attractive asset a B2B site can build |
-| Glossary / definition | "what is {term}" | Cheap topical coverage and internal-link fuel; low conversion, do it after the above |
-| Anything else | Check the SERP; if it is dominated by review sites, plan to appear on them instead of outranking them | — |
+| Page type                   | Query pattern                                                                                         | Why it converts                                                                            |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Alternatives                | "{competitor} alternatives", "{competitor} vs alternatives"                                           | Searcher has already rejected a product; you are one of the options being compared         |
+| Head-to-head comparison     | "{you} vs {competitor}", "{competitor A} vs {competitor B}"                                           | Final-stage evaluation, highest intent of all                                              |
+| Best-of / category listicle | "best {category} for {segment}"                                                                       | Owns the shortlist; also the format AI summaries and assistants pull from                  |
+| Pricing                     | "{product} pricing", "how much does {category} cost"                                                  | Answering price questions publicly filters out bad fits and wins a query competitors dodge |
+| Integrations                | "{product} + {tool} integration"                                                                      | Long-tail with near-zero competition, one page per real integration                        |
+| Use case / persona          | "{category} for {industry or role}"                                                                   | Matches the words buyers use for themselves, not your feature names                        |
+| Template / free tool        | "{thing} template", "{thing} calculator"                                                              | Earns links and email addresses; the most link-attractive asset a B2B site can build       |
+| Glossary / definition       | "what is {term}"                                                                                      | Cheap topical coverage and internal-link fuel; low conversion, do it after the above       |
+| Anything else               | Check the SERP; if it is dominated by review sites, plan to appear on them instead of outranking them | —                                                                                          |
 
 ## Alternatives And Comparison Pages
 
@@ -56,12 +56,12 @@ Bottom-funnel first, in this order, because each earns while the next is written
 
 ## Commercial Page Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Comparison pages that only flatter you | Readers discount everything; conversion drops | Concede the competitor's real strengths |
-| "Contact us for pricing" | Loses the pricing query outright | Publish numbers, ranges, or the model |
-| Integration pages for integrations that do not exist | Doorway pages; disappoints the visitor who arrived | Only real ones |
-| Gating the free tool | Trades the links that make it rank for a few emails | Free and indexable, capture later |
-| Writing bottom-funnel pages last | The traffic that pays for the program arrives last | Build them first |
-| Never updating competitor claims | Stale facts damage credibility and invite complaints | Date the page, schedule a review |
-| One page for "alternatives" and "vs" | Different intents, both underserved | Separate pages |
+| Trap                                                 | Why it fails                                         | Do instead                              |
+| ---------------------------------------------------- | ---------------------------------------------------- | --------------------------------------- |
+| Comparison pages that only flatter you               | Readers discount everything; conversion drops        | Concede the competitor's real strengths |
+| "Contact us for pricing"                             | Loses the pricing query outright                     | Publish numbers, ranges, or the model   |
+| Integration pages for integrations that do not exist | Doorway pages; disappoints the visitor who arrived   | Only real ones                          |
+| Gating the free tool                                 | Trades the links that make it rank for a few emails  | Free and indexable, capture later       |
+| Writing bottom-funnel pages last                     | The traffic that pays for the program arrives last   | Build them first                        |
+| Never updating competitor claims                     | Stale facts damage credibility and invite complaints | Date the page, schedule a review        |
+| One page for "alternatives" and "vs"                 | Different intents, both underserved                  | Separate pages                          |

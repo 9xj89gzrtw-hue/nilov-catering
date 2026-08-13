@@ -1,55 +1,59 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function B2BPortalSection() {
   return (
-    <section className="py-12 md:py-16 bg-secondary/30">
+    <section className="bg-secondary/30 py-12 md:py-16">
       <div className="container-site max-w-5xl">
-        <div className="text-center mb-10">
-          <p className="text-gold-text text-sm font-semibold uppercase tracking-wider mb-2">Для бизнеса</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-medium mb-3">B2B-кейтеринг под ключ</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Регулярные кофе-брейки, корпоративные обеды, конференции, тренинги.
-            Без НДС (УСН). НДС через партнёрское ООО, ЭДО, договоры, закрывающие документы.
+        <div className="mb-10 text-center">
+          <p className="text-gold-text mb-2 text-sm font-semibold tracking-wider uppercase">
+            Для бизнеса
+          </p>
+          <h2 className="font-heading mb-3 text-3xl font-medium md:text-4xl">
+            B2B-кейтеринг под ключ
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl">
+            Регулярные кофе-брейки, корпоративные обеды, конференции, тренинги. Без НДС (УСН). НДС
+            через партнёрское ООО, ЭДО, договоры, закрывающие документы.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="p-5 rounded-xl border border-line bg-card">
-            <div className="text-2xl mb-2"></div>
-            <h3 className="font-heading text-base font-medium mb-2">Регулярные заказы</h3>
-            <p className="text-xs text-muted-foreground mb-3">
-              Ежедневные/еженедельные кофе-брейки и обеды. Фикс-цена по контракту,
-              ротация меню, SLA по времени доставки.
+        <div className="mb-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="border-line bg-card rounded-xl border p-5">
+            <div className="mb-2 text-2xl"></div>
+            <h3 className="font-heading mb-2 text-base font-medium">Регулярные заказы</h3>
+            <p className="text-muted-foreground mb-3 text-xs">
+              Ежедневные/еженедельные кофе-брейки и обеды. Фикс-цена по контракту, ротация меню, SLA
+              по времени доставки.
             </p>
-            <ul className="text-xs space-y-1 text-muted-foreground">
+            <ul className="text-muted-foreground space-y-1 text-xs">
               <li>• От 4 событий в месяц</li>
               <li>• Скидка 15-23% от разового</li>
               <li>• Персональный менеджер</li>
             </ul>
           </div>
 
-          <div className="p-5 rounded-xl border border-line bg-card">
-            <div className="text-2xl mb-2"></div>
-            <h3 className="font-heading text-base font-medium mb-2">Конференции</h3>
-            <p className="text-xs text-muted-foreground mb-3">
-              Многодневные конференции, семинары, тренинги. Конференционный пакет
-              &quot;всё включено&quot; — кофе-брейк + обед + кофе-брейк.
+          <div className="border-line bg-card rounded-xl border p-5">
+            <div className="mb-2 text-2xl"></div>
+            <h3 className="font-heading mb-2 text-base font-medium">Конференции</h3>
+            <p className="text-muted-foreground mb-3 text-xs">
+              Многодневные конференции, семинары, тренинги. Конференционный пакет &quot;всё
+              включено&quot; — кофе-брейк + обед + кофе-брейк.
             </p>
-            <ul className="text-xs space-y-1 text-muted-foreground">
+            <ul className="text-muted-foreground space-y-1 text-xs">
               <li>• От 1 144 ₽/делегат/день</li>
               <li>• Ротация меню 3+ дня</li>
               <li>• Координатор на площадке</li>
             </ul>
           </div>
 
-          <div className="p-5 rounded-xl border-2 border-gold-text bg-gold-tint/20">
-            <div className="text-2xl mb-2"></div>
-            <h3 className="font-heading text-base font-medium mb-2">Тендеры и 44-ФЗ</h3>
-            <p className="text-xs text-muted-foreground mb-3">
-              Участвуем в тендерах по 44-ФЗ и 223-ФЗ. Полный пакет документов:
-              ИНН, ОГРНИП, выписка ЕГРИП, страхование ГО, сертификаты.
+          <div className="border-gold-text bg-gold-tint/20 rounded-xl border-2 p-5">
+            <div className="mb-2 text-2xl"></div>
+            <h3 className="font-heading mb-2 text-base font-medium">Тендеры и 44-ФЗ</h3>
+            <p className="text-muted-foreground mb-3 text-xs">
+              Участвуем в тендерах по 44-ФЗ и 223-ФЗ. Полный пакет документов: ИНН, ОГРНИП, выписка
+              ЕГРИП, страхование ГО, сертификаты.
             </p>
-            <ul className="text-xs space-y-1 text-muted-foreground">
+            <ul className="text-muted-foreground space-y-1 text-xs">
               <li>• ЭДО: Диадок, СБИС</li>
               <li>• НДС 20% / без НДС</li>
               <li>• Страхование ГО 5-30М₽</li>
@@ -57,31 +61,42 @@ export default function B2BPortalSection() {
           </div>
 
           {/* B2B Portal teaser — coming soon */}
-          <div className="p-5 rounded-xl border-2 border-dashed border-gold-text/40 bg-gold-tint/5 text-center">
-            <p className="text-xs font-semibold text-gold-text uppercase tracking-wider mb-2">Скоро</p>
-            <h3 className="font-heading text-base font-medium mb-2">B2B-портал самообслуживания</h3>
-            <p className="text-xs text-muted-foreground mb-3">
+          <div className="border-gold-text/40 bg-gold-tint/5 rounded-xl border-2 border-dashed p-5 text-center">
+            <p className="text-gold-text mb-2 text-xs font-semibold tracking-wider uppercase">
+              Скоро
+            </p>
+            <h3 className="font-heading mb-2 text-base font-medium">B2B-портал самообслуживания</h3>
+            <p className="text-muted-foreground mb-3 text-xs">
               Личный кабинет для корпоративных клиентов: история заказов, повтор заказа в один клик,
               счета-фактуры, ЭДО, календарь регулярных кофе-брейков.
             </p>
-            <ul className="text-xs space-y-1 text-muted-foreground text-left max-w-xs mx-auto">
+            <ul className="text-muted-foreground mx-auto max-w-xs space-y-1 text-left text-xs">
               <li>• повтор заказа в один клик</li>
               <li>• Авто-счета и закрывающие документы</li>
               <li>• Интеграция с 1C, Bitrix24</li>
               <li>• Календарь и SLA-мониторинг</li>
             </ul>
-            <Link href="/contact?subject=B2B-Portal-beta" className="inline-block mt-3 text-xs text-gold-text font-semibold hover:underline">
+            <Link
+              href="/contact?subject=B2B-Portal-beta"
+              className="text-gold-text mt-3 inline-block text-xs font-semibold hover:underline"
+            >
               Запросить ранний доступ →
             </Link>
           </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3">
-          <Link href="/contact?subject=B2B-тендер" className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors no-underline">
+          <Link
+            href="/contact?subject=B2B-тендер"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 py-3 text-sm font-semibold no-underline transition-colors"
+          >
             Запросить КП и пакет документов →
           </Link>
-          <a href="tel:+78129195911" className="rounded-lg border border-line bg-card px-6 py-3 text-sm font-semibold hover:border-gold-text transition-colors no-underline">
-             +7 (812) 919-59-11
+          <a
+            href="tel:+78129195911"
+            className="border-line bg-card hover:border-gold-text rounded-lg border px-6 py-3 text-sm font-semibold no-underline transition-colors"
+          >
+            +7 (812) 919-59-11
           </a>
         </div>
       </div>

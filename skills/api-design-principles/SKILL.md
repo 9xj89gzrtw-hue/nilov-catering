@@ -6,9 +6,11 @@ model: reasoning
 # API Design Principles
 
 ## WHAT
+
 Design intuitive, scalable REST and GraphQL APIs that developers love. Covers resource modeling, HTTP semantics, pagination, error handling, versioning, and GraphQL schema patterns.
 
 ## WHEN
+
 - Designing new REST or GraphQL APIs
 - Reviewing API specifications before implementation
 - Establishing API design standards for teams
@@ -16,19 +18,20 @@ Design intuitive, scalable REST and GraphQL APIs that developers love. Covers re
 - Migrating between API paradigms
 
 ## KEYWORDS
+
 REST, GraphQL, API design, HTTP methods, pagination, error handling, versioning, OpenAPI, HATEOAS, schema design
 
 ---
 
 ## Decision Framework: REST vs GraphQL
 
-| Choose REST when... | Choose GraphQL when... |
-|---------------------|------------------------|
-| Simple CRUD operations | Complex nested data requirements |
+| Choose REST when...             | Choose GraphQL when...                     |
+| ------------------------------- | ------------------------------------------ |
+| Simple CRUD operations          | Complex nested data requirements           |
 | Public APIs with broad audience | Mobile apps needing bandwidth optimization |
-| Heavy caching requirements | Clients need to specify exact data shape |
-| Team is unfamiliar with GraphQL | Aggregating multiple data sources |
-| Simple response structures | Rapidly evolving frontend requirements |
+| Heavy caching requirements      | Clients need to specify exact data shape   |
+| Team is unfamiliar with GraphQL | Aggregating multiple data sources          |
+| Simple response structures      | Rapidly evolving frontend requirements     |
 
 ---
 
@@ -48,7 +51,7 @@ REST, GraphQL, API design, HTTP methods, pagination, error handling, versioning,
 
 ✓ Nested resources (max 2 levels)
   GET /api/users/{id}/orders
-  
+
 ✗ Avoid deep nesting
   GET /api/users/{id}/orders/{orderId}/items/{itemId}/reviews  ← Too deep
   GET /api/order-items/{id}/reviews                            ← Better
@@ -56,13 +59,13 @@ REST, GraphQL, API design, HTTP methods, pagination, error handling, versioning,
 
 ### HTTP Methods and Status Codes
 
-| Method | Purpose | Success | Common Errors |
-|--------|---------|---------|---------------|
-| GET | Retrieve | 200 OK | 404 Not Found |
-| POST | Create | 201 Created | 400/422 Validation |
-| PUT | Replace | 200 OK | 404 Not Found |
-| PATCH | Partial update | 200 OK | 404 Not Found |
-| DELETE | Remove | 204 No Content | 404/409 Conflict |
+| Method | Purpose        | Success        | Common Errors      |
+| ------ | -------------- | -------------- | ------------------ |
+| GET    | Retrieve       | 200 OK         | 404 Not Found      |
+| POST   | Create         | 201 Created    | 400/422 Validation |
+| PUT    | Replace        | 200 OK         | 404 Not Found      |
+| PATCH  | Partial update | 200 OK         | 404 Not Found      |
+| DELETE | Remove         | 204 No Content | 404/409 Conflict   |
 
 ### Complete Status Code Reference
 
@@ -142,9 +145,7 @@ Always use consistent structure:
   "error": {
     "code": "VALIDATION_ERROR",
     "message": "Request validation failed",
-    "details": [
-      {"field": "email", "message": "Invalid email format"}
-    ],
+    "details": [{ "field": "email", "message": "Invalid email format" }],
     "timestamp": "2025-10-16T12:00:00Z"
   }
 }
@@ -190,7 +191,7 @@ async def list_users(
     total = await count_users(status=status, search=search)
     offset = (page - 1) * page_size
     users = await fetch_users(limit=page_size, offset=offset, status=status, search=search)
-    
+
     return PaginatedResponse(
         items=users,
         total=total,
@@ -378,21 +379,21 @@ class RateLimiter:
         self.calls = calls
         self.period = period
         self.cache = {}
-    
+
     def check(self, key: str) -> tuple[bool, dict]:
         now = datetime.now()
         if key not in self.cache:
             self.cache[key] = []
-        
+
         # Remove old requests
         cutoff = now - timedelta(seconds=self.period)
         self.cache[key] = [ts for ts in self.cache[key] if ts > cutoff]
-        
+
         remaining = self.calls - len(self.cache[key])
-        
+
         if remaining <= 0:
             return False, {"limit": self.calls, "remaining": 0}
-        
+
         self.cache[key].append(now)
         return True, {"limit": self.calls, "remaining": remaining - 1}
 ```
@@ -402,27 +403,32 @@ class RateLimiter:
 ## Pre-Implementation Checklist
 
 ### Resources
+
 - [ ] Nouns, not verbs
 - [ ] Plural for collections
 - [ ] Max 2 levels nesting
 
 ### HTTP
+
 - [ ] Correct method for each action
 - [ ] Correct status codes
 - [ ] Idempotent operations are idempotent
 
 ### Data
+
 - [ ] All collections paginated
 - [ ] Filtering/sorting supported
 - [ ] Error format consistent
 
 ### Security
+
 - [ ] Authentication defined
 - [ ] Rate limiting configured
 - [ ] Input validation on all fields
 - [ ] HTTPS enforced
 
 ### Documentation
+
 - [ ] OpenAPI spec generated
 - [ ] All endpoints documented
 - [ ] Examples provided

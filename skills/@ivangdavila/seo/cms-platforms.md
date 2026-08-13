@@ -54,12 +54,12 @@ Every recommendation in this skill has to be implemented somewhere. The platform
 
 ## Cross-Platform Diagnosis
 
-| Symptom | Likely platform cause |
-|---|---|
-| Sitewide noindex overnight | WordPress reading setting; staging config promoted; framework env flag |
-| Duplicate titles across hundreds of URLs | Template default not bound to per-item fields |
-| Two canonical tags | Two SEO plugins, or theme plus plugin both emitting |
-| Traffic loss after a theme or app install | Injected scripts, changed URLs, or a new noindex on a template |
-| Sitemap missing new content | Plugin-generated file not the one submitted, or a cache never invalidated |
-| Redirects work locally but not in production | Edge/CDN rules ahead of the app layer |
-| Anything else | Fetch as Googlebot, read the raw response headers and the rendered HTML, and locate which layer emitted the tag |
+| Symptom                                      | Likely platform cause                                                                                           |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Sitewide noindex overnight                   | WordPress reading setting; staging config promoted; framework env flag                                          |
+| Duplicate titles across hundreds of URLs     | Template default not bound to per-item fields                                                                   |
+| Two canonical tags                           | Two SEO plugins, or theme plus plugin both emitting                                                             |
+| Traffic loss after a theme or app install    | Injected scripts, changed URLs, or a new noindex on a template                                                  |
+| Sitemap missing new content                  | Plugin-generated file not the one submitted, or a cache never invalidated                                       |
+| Redirects work locally but not in production | Edge/CDN rules ahead of the app layer                                                                           |
+| Anything else                                | Fetch as Googlebot, read the raw response headers and the rendered HTML, and locate which layer emitted the tag |

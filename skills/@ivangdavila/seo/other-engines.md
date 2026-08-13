@@ -19,14 +19,14 @@ Google is most of the traffic in most markets, and it is not all of it. Bing's i
 
 ## Regional Engines
 
-| Market | Engine | What differs |
-|---|---|---|
-| Russia | Yandex | Its own webmaster tools and index; behavioral signals weigh heavily; Cyrillic content and local hosting matter |
-| South Korea | Naver | A portal, not a web index: blogs, cafés, and knowledge-in sections rank ahead of external sites; presence on Naver's own properties is the strategy |
-| China | Baidu | Requires local hosting and an ICP license for realistic performance; simplified Chinese; Google services on the page break rendering |
-| Japan | Google, with Yahoo! Japan on Google's index | Work Google, but respect local formatting and mobile conventions |
-| Privacy engines (DuckDuckGo, Ecosia, Brave) | Mostly syndicated from Bing or their own crawl | Bing coverage usually covers you |
-| Anywhere else | Google | Check actual market share before spending anything |
+| Market                                      | Engine                                         | What differs                                                                                                                                        |
+| ------------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Russia                                      | Yandex                                         | Its own webmaster tools and index; behavioral signals weigh heavily; Cyrillic content and local hosting matter                                      |
+| South Korea                                 | Naver                                          | A portal, not a web index: blogs, cafés, and knowledge-in sections rank ahead of external sites; presence on Naver's own properties is the strategy |
+| China                                       | Baidu                                          | Requires local hosting and an ICP license for realistic performance; simplified Chinese; Google services on the page break rendering                |
+| Japan                                       | Google, with Yahoo! Japan on Google's index    | Work Google, but respect local formatting and mobile conventions                                                                                    |
+| Privacy engines (DuckDuckGo, Ecosia, Brave) | Mostly syndicated from Bing or their own crawl | Bing coverage usually covers you                                                                                                                    |
+| Anywhere else                               | Google                                         | Check actual market share before spending anything                                                                                                  |
 
 Never assume a Google playbook transfers. Where a portal owns the market, the winning move is publishing on the portal's properties, not out-ranking them from outside.
 

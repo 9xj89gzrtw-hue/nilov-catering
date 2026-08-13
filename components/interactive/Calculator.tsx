@@ -1,38 +1,45 @@
-'use client';
+"use client";
 
-import { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { calcTotal } from '@/lib/pricing';
-import { PRICE_PER_GUEST, ADDONS, GUESTS_MIN, GUESTS_MAX, GUESTS_STEP, GUEST_QUICK_BUTTONS } from '@/lib/constants';
-import { TIER_LABEL } from '@/lib/types';
-import type { Format, Tier, AddOn } from '@/lib/types';
-import AnimatedCounter from '@/components/effects/AnimatedCounter';
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { calcTotal } from "@/lib/pricing";
+import {
+  PRICE_PER_GUEST,
+  ADDONS,
+  GUESTS_MIN,
+  GUESTS_MAX,
+  GUESTS_STEP,
+  GUEST_QUICK_BUTTONS,
+} from "@/lib/constants";
+import { TIER_LABEL } from "@/lib/types";
+import type { Format, Tier, AddOn } from "@/lib/types";
+import AnimatedCounter from "@/components/effects/AnimatedCounter";
 
 const FORMATS: { format: Format; label: string }[] = [
-  { format: 'furshet', label: 'Фуршет' },
-  { format: 'banket', label: 'Банкет' },
-  { format: 'coffee-break', label: 'Кофе-брейк' },
-  { format: 'detskoe', label: 'Детский праздник' },
-  { format: 'chef-at-home', label: 'Выезд шефа' },
+  { format: "furshet", label: "Фуршет" },
+  { format: "banket", label: "Банкет" },
+  { format: "coffee-break", label: "Кофе-брейк" },
+  { format: "detskoe", label: "Детский праздник" },
+  { format: "chef-at-home", label: "Выезд шефа" },
 ];
 
-const TIERS: Tier[] = ['economy', 'standard', 'premium', 'luxury'];
+const TIERS: Tier[] = ["economy", "standard", "premium", "luxury"];
 
 export default function Calculator() {
   const searchParams = useSearchParams();
-  const [format, setFormat] = useState<Format>('furshet');
+  const [format, setFormat] = useState<Format>("furshet");
   const [guests, setGuests] = useState(20);
-  const [tier, setTier] = useState<Tier>('standard');
+  const [tier, setTier] = useState<Tier>("standard");
   const [selectedAddons, setSelectedAddons] = useState<AddOn[]>([]);
 
   // Read URL params on mount to pre-fill from helper
   useEffect(() => {
-    const fmt = searchParams.get('format') as Format | null;
-    const g = searchParams.get('guests');
-    const t = searchParams.get('tier') as Tier | null;
+    const fmt = searchParams.get("format") as Format | null;
+    const g = searchParams.get("guests");
+    const t = searchParams.get("tier") as Tier | null;
 
-    if (fmt && FORMATS.some(f =>f.format === fmt)) setFormat(fmt);
+    if (fmt && FORMATS.some((f) => f.format === fmt)) setFormat(fmt);
     if (g) {
       const num = Number(g);
       if (!isNaN(num) && num >= GUESTS_MIN && num <= GUESTS_MAX) setGuests(num);
@@ -41,36 +48,38 @@ export default function Calculator() {
   }, [searchParams]);
 
   const result = useMemo(
-    () =>calcTotal(guests, format, tier, selectedAddons, { discounts: true }),
-    [format, guests, tier, selectedAddons],
+    () => calcTotal(guests, format, tier, selectedAddons, { discounts: true }),
+    [format, guests, tier, selectedAddons]
   );
 
-  const availableAddons = ADDONS.filter((a) =>a.formats.includes(format));
+  const availableAddons = ADDONS.filter((a) => a.formats.includes(format));
 
   const toggleAddon = (a: AddOn) => {
     setSelectedAddons((prev) =>
-      prev.find((x) =>x.id === a.id) ? prev.filter((x) =>x.id !== a.id) : [...prev, a],
+      prev.find((x) => x.id === a.id) ? prev.filter((x) => x.id !== a.id) : [...prev, a]
     );
   };
 
   return (
-    <section className="py-12 bg-background" aria-label="Калькулятор стоимости">
+    <section className="bg-background py-12" aria-label="Калькулятор стоимости">
       <div className="container-site max-w-3xl">
-        <h2 className="text-center mb-2">Калькулятор стоимости</h2>
-        <p className="text-center text-muted-foreground mb-10">Выберите параметры — итог обновляется мгновенно</p>
+        <h2 className="mb-2 text-center">Калькулятор стоимости</h2>
+        <p className="text-muted-foreground mb-10 text-center">
+          Выберите параметры — итог обновляется мгновенно
+        </p>
 
         {/* Format */}
         <div className="mb-8">
-          <label className="block text-sm font-medium text-muted-foreground mb-3">Формат</label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {FORMATS.map((f) =>(
+          <label className="text-muted-foreground mb-3 block text-sm font-medium">Формат</label>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {FORMATS.map((f) => (
               <button
                 key={f.format}
-                onClick={() =>setFormat(f.format)}
+                onClick={() => setFormat(f.format)}
                 className={`rounded-lg border p-3 text-sm font-medium transition-all ${
                   format === f.format
-                    ? 'border-gold-text bg-gold-tint text-gold-text'
-                    : 'border-line bg-card text-muted-foreground hover:border-gold-text/50'
+                    ? "border-gold-text bg-gold-tint text-gold-text"
+                    : "border-line bg-card text-muted-foreground hover:border-gold-text/50"
                 }`}
               >
                 {f.label}
@@ -81,8 +90,8 @@ export default function Calculator() {
 
         {/* Guests */}
         <div className="mb-8">
-          <label className="block text-sm font-medium text-muted-foreground mb-3">
-            Гостей: <span className="text-foreground font-bold text-lg">{guests}</span>
+          <label className="text-muted-foreground mb-3 block text-sm font-medium">
+            Гостей: <span className="text-foreground text-lg font-bold">{guests}</span>
           </label>
           <input
             type="range"
@@ -90,17 +99,19 @@ export default function Calculator() {
             max={GUESTS_MAX}
             step={GUESTS_STEP}
             value={guests}
-            onChange={(e) =>setGuests(Number(e.target.value))}
-            className="w-full accent-gold-text"
+            onChange={(e) => setGuests(Number(e.target.value))}
+            className="accent-gold-text w-full"
             aria-label="Количество гостей"
           />
-          <div className="flex flex-wrap gap-2 mt-2">
-            {GUEST_QUICK_BUTTONS.map((n) =>(
+          <div className="mt-2 flex flex-wrap gap-2">
+            {GUEST_QUICK_BUTTONS.map((n) => (
               <button
                 key={n}
-                onClick={() =>setGuests(n)}
-                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                  guests === n ? 'border-gold-text bg-gold-tint text-gold-text' : 'border-line text-muted-foreground hover:border-gold-text/50'
+                onClick={() => setGuests(n)}
+                className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                  guests === n
+                    ? "border-gold-text bg-gold-tint text-gold-text"
+                    : "border-line text-muted-foreground hover:border-gold-text/50"
                 }`}
               >
                 {n}
@@ -111,23 +122,25 @@ export default function Calculator() {
 
         {/* Tier */}
         <div className="mb-8">
-          <label className="block text-sm font-medium text-muted-foreground mb-3">Тариф</label>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <label className="text-muted-foreground mb-3 block text-sm font-medium">Тариф</label>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {TIERS.map((t) => {
               const price = PRICE_PER_GUEST[format]?.[t];
               if (!price) return null;
               return (
                 <button
                   key={t}
-                  onClick={() =>setTier(t)}
+                  onClick={() => setTier(t)}
                   className={`rounded-lg border p-3 text-center transition-all ${
                     tier === t
-                      ? 'border-gold-text bg-gold-tint'
-                      : 'border-line bg-card hover:border-gold-text/50'
+                      ? "border-gold-text bg-gold-tint"
+                      : "border-line bg-card hover:border-gold-text/50"
                   }`}
                 >
-                  <div className="text-sm font-medium text-foreground">{TIER_LABEL[t]}</div>
-                  <div className="text-xs text-gold-text font-semibold">{price.toLocaleString('ru-RU')} ₽/гость</div>
+                  <div className="text-foreground text-sm font-medium">{TIER_LABEL[t]}</div>
+                  <div className="text-gold-text text-xs font-semibold">
+                    {price.toLocaleString("ru-RU")} ₽/гость
+                  </div>
                 </button>
               );
             })}
@@ -135,27 +148,33 @@ export default function Calculator() {
         </div>
 
         {/* Add-ons */}
-        {availableAddons.length >0 && (
+        {availableAddons.length > 0 && (
           <div className="mb-8">
-            <label className="block text-sm font-medium text-muted-foreground mb-3">Дополнительные услуги</label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label className="text-muted-foreground mb-3 block text-sm font-medium">
+              Дополнительные услуги
+            </label>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {availableAddons.map((a) => {
-                const isSelected = selectedAddons.find((x) =>x.id === a.id);
+                const isSelected = selectedAddons.find((x) => x.id === a.id);
                 return (
                   <button
                     key={a.id}
-                    onClick={() =>toggleAddon(a)}
+                    onClick={() => toggleAddon(a)}
                     className={`rounded-lg border p-3 text-left transition-all ${
-                      isSelected ? 'border-gold-text bg-gold-tint' : 'border-line bg-card hover:border-gold-text/50'
+                      isSelected
+                        ? "border-gold-text bg-gold-tint"
+                        : "border-line bg-card hover:border-gold-text/50"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">{a.name}</span>
-                      <span className="text-xs text-gold-text font-semibold">
-                        {a.priceType === 'fixed' ? `${a.price.toLocaleString('ru-RU')} ₽` : `+${a.price} ₽/гость`}
+                      <span className="text-foreground text-sm font-medium">{a.name}</span>
+                      <span className="text-gold-text text-xs font-semibold">
+                        {a.priceType === "fixed"
+                          ? `${a.price.toLocaleString("ru-RU")} ₽`
+                          : `+${a.price} ₽/гость`}
                       </span>
                     </div>
-                    {isSelected && <div className="text-xs text-success mt-1">Добавлено</div>}
+                    {isSelected && <div className="text-success mt-1 text-xs">Добавлено</div>}
                   </button>
                 );
               })}
@@ -165,65 +184,94 @@ export default function Calculator() {
 
         {/* Summary — aria-live для скринридеров (33_UXSIM_ANNA) */}
         <motion.div
-          className="rounded-xl border-2 border-gold-text/30 bg-card p-6 text-center"
+          className="border-gold-text/30 bg-card rounded-xl border-2 p-6 text-center"
           layout
           role="status"
           aria-live="polite"
           aria-atomic="true"
         >
-          <div className="text-sm text-muted-foreground mb-2">Итого</div>
-          <div className="text-4xl font-heading font-bold text-gold-text mb-2">
+          <div className="text-muted-foreground mb-2 text-sm">Итого</div>
+          <div className="font-heading text-gold-text mb-2 text-4xl font-bold">
             <AnimatedCounter value={result.total} suffix=" ₽" />
           </div>
-          <div className="text-sm text-muted-foreground mb-4">
+          <div className="text-muted-foreground mb-4 text-sm">
             <AnimatedCounter value={result.perGuest} suffix=" ₽/гость" />
           </div>
 
-          {result.savings >0 && (
-            <div className="inline-block rounded-full bg-success/10 text-success text-xs font-medium px-3 py-1 mb-4">
-              Экономия {result.savings.toLocaleString('ru-RU')} ₽ vs Максимальный
+          {result.savings > 0 && (
+            <div className="bg-success/10 text-success mb-4 inline-block rounded-full px-3 py-1 text-xs font-medium">
+              Экономия {result.savings.toLocaleString("ru-RU")} ₽ vs Максимальный
             </div>
           )}
 
-          <div className="grid grid-cols-3 gap-4 text-xs text-muted-foreground border-t border-line pt-4">
-            <div>База<br /><span className="font-semibold text-foreground">{result.base.toLocaleString('ru-RU')} ₽</span></div>
-            <div>Скидка<br /><span className="font-semibold text-foreground">−{result.discount.toLocaleString('ru-RU')} ₽</span></div>
-            <div>Аддоны<br /><span className="font-semibold text-foreground">{result.addonsTotal.toLocaleString('ru-RU')} ₽</span></div>
+          <div className="text-muted-foreground border-line grid grid-cols-3 gap-4 border-t pt-4 text-xs">
+            <div>
+              База
+              <br />
+              <span className="text-foreground font-semibold">
+                {result.base.toLocaleString("ru-RU")} ₽
+              </span>
+            </div>
+            <div>
+              Скидка
+              <br />
+              <span className="text-foreground font-semibold">
+                −{result.discount.toLocaleString("ru-RU")} ₽
+              </span>
+            </div>
+            <div>
+              Аддоны
+              <br />
+              <span className="text-foreground font-semibold">
+                {result.addonsTotal.toLocaleString("ru-RU")} ₽
+              </span>
+            </div>
           </div>
 
           {/* Service breakdown — сервис-норма (SERVICE_DELIVERY_SPEC §1-4) */}
           {result.serviceBreakdown && (
-            <div className="mt-4 rounded-lg bg-secondary/50 p-3 text-left">
-              <p className="text-xs font-medium text-foreground mb-2">Сервис-норма {result.service.toLocaleString('ru-RU')} ₽</p>
-              <div className="grid grid-cols-3 gap-2 text-xs text-muted-foreground">
+            <div className="bg-secondary/50 mt-4 rounded-lg p-3 text-left">
+              <p className="text-foreground mb-2 text-xs font-medium">
+                Сервис-норма {result.service.toLocaleString("ru-RU")} ₽
+              </p>
+              <div className="text-muted-foreground grid grid-cols-3 gap-2 text-xs">
                 <div>Персонал: {result.serviceBreakdown.staffCount} чел.</div>
                 <div>Норма: {result.serviceBreakdown.ratio}</div>
                 <div>Координатор: да</div>
-                <div className="col-span-3">Сетап: {result.serviceBreakdown.setupHours} ч · on-site</div>
+                <div className="col-span-3">
+                  Сетап: {result.serviceBreakdown.setupHours} ч · on-site
+                </div>
               </div>
             </div>
           )}
 
-          <p className="mt-4 text-xs text-muted-foreground">
-            В цену включено: еда, посуда, доставка в КАД. Не включено: депозит 30% (возвратный), надбавка вне КАД.
+          <p className="text-muted-foreground mt-4 text-xs">
+            В цену включено: еда, посуда, доставка в КАД. Не включено: депозит 30% (возвратный),
+            надбавка вне КАД.
           </p>
         </motion.div>
       </div>
       {/* Schema.org Offer (07_CALCULATOR_SPEC §SEO) */}
-      {result.total >0 && (
+      {result.total > 0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Offer',
+              "@context": "https://schema.org",
+              "@type": "Offer",
               name: `Кейтеринг NiloV — ${format} ${TIER_LABEL[tier] || tier}`,
               price: result.total.toString(),
-              priceCurrency: 'RUB',
-              eligibleQuantity: { '@type': 'QuantitativeValue', value: guests },
-              availability: 'https://schema.org/InStock',
-              seller: { '@type': 'LocalBusiness', name: 'NiloV Catering', address: { '@type': 'PostalAddress', addressLocality: 'Санкт-Петербург' } },
-              priceValidUntil: new Date(Date.UTC(2026, 7, 10) + 30 * 24 * 3600 * 1000).toISOString().slice(0, 10),
+              priceCurrency: "RUB",
+              eligibleQuantity: { "@type": "QuantitativeValue", value: guests },
+              availability: "https://schema.org/InStock",
+              seller: {
+                "@type": "LocalBusiness",
+                name: "NiloV Catering",
+                address: { "@type": "PostalAddress", addressLocality: "Санкт-Петербург" },
+              },
+              priceValidUntil: new Date(Date.UTC(2026, 7, 10) + 30 * 24 * 3600 * 1000)
+                .toISOString()
+                .slice(0, 10),
             }),
           }}
         />

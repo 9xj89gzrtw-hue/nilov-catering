@@ -4,28 +4,28 @@ Google indexes in two passes: it crawls the HTML response, queues the URL for re
 
 ## What Actually Breaks
 
-| Symptom | Cause | Fix |
-|---|---|---|
-| Page indexed but ranks for nothing | Main content arrives after render, or not at all | Server-render the primary content |
-| Google indexed an old version of the copy | Render queue lag plus client-side content changes | Ship content changes in the HTML response |
-| Internal pages never discovered | Navigation uses `onclick`/`div` handlers, not `<a href>` | Real anchors with real hrefs to real URLs |
-| "Crawled — currently not indexed" on a whole SPA route type | Rendered content is empty, or all routes render the same shell | Per-route server responses with unique content |
-| Missing pages return 200 with "Not found" text | Client-side 404; Google records a soft 404 | Server returns a real 404, or the route noindexes itself |
-| Title and description identical across every URL | Metadata injected after render, or never per-route | Emit metadata in the server response |
-| Content behind tabs/accordions indexed, but content behind "load more" is not | Interaction-gated content is never triggered by the renderer | Render all indexable content in the DOM on load |
-| Infinite scroll pages are invisible | No crawlable URL exists for anything past the first screen | Paginated URLs with links, alongside the scroll UX |
-| Anything else | Compare crawled HTML against rendered HTML | The diff names the defect |
+| Symptom                                                                       | Cause                                                          | Fix                                                      |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
+| Page indexed but ranks for nothing                                            | Main content arrives after render, or not at all               | Server-render the primary content                        |
+| Google indexed an old version of the copy                                     | Render queue lag plus client-side content changes              | Ship content changes in the HTML response                |
+| Internal pages never discovered                                               | Navigation uses `onclick`/`div` handlers, not `<a href>`       | Real anchors with real hrefs to real URLs                |
+| "Crawled — currently not indexed" on a whole SPA route type                   | Rendered content is empty, or all routes render the same shell | Per-route server responses with unique content           |
+| Missing pages return 200 with "Not found" text                                | Client-side 404; Google records a soft 404                     | Server returns a real 404, or the route noindexes itself |
+| Title and description identical across every URL                              | Metadata injected after render, or never per-route             | Emit metadata in the server response                     |
+| Content behind tabs/accordions indexed, but content behind "load more" is not | Interaction-gated content is never triggered by the renderer   | Render all indexable content in the DOM on load          |
+| Infinite scroll pages are invisible                                           | No crawlable URL exists for anything past the first screen     | Paginated URLs with links, alongside the scroll UX       |
+| Anything else                                                                 | Compare crawled HTML against rendered HTML                     | The diff names the defect                                |
 
 ## Rendering Strategies
 
-| Strategy | What Google gets on first fetch | Use when |
-|---|---|---|
-| Static generation (SSG) | Complete HTML | Content that changes on a deploy cadence — the safest choice for SEO pages |
-| Incremental regeneration (ISR) | Complete HTML, possibly stale | Large catalogs where rebuilding everything is impractical |
-| Server-side rendering (SSR) | Complete HTML per request | Personalized or fast-changing pages; watch TTFB |
-| Streaming SSR with partial hydration | Complete HTML for the shell and main content | Large apps that need interactivity without shipping everything |
-| Client-side rendering (CSR) | An empty shell | App screens behind login — never for pages that must rank |
-| Dynamic rendering (serve HTML to bots) | Complete HTML, for bots only | Legacy last resort: Google calls it a workaround, not a recommendation, and it doubles the surface you must keep in sync |
+| Strategy                               | What Google gets on first fetch              | Use when                                                                                                                 |
+| -------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Static generation (SSG)                | Complete HTML                                | Content that changes on a deploy cadence — the safest choice for SEO pages                                               |
+| Incremental regeneration (ISR)         | Complete HTML, possibly stale                | Large catalogs where rebuilding everything is impractical                                                                |
+| Server-side rendering (SSR)            | Complete HTML per request                    | Personalized or fast-changing pages; watch TTFB                                                                          |
+| Streaming SSR with partial hydration   | Complete HTML for the shell and main content | Large apps that need interactivity without shipping everything                                                           |
+| Client-side rendering (CSR)            | An empty shell                               | App screens behind login — never for pages that must rank                                                                |
+| Dynamic rendering (serve HTML to bots) | Complete HTML, for bots only                 | Legacy last resort: Google calls it a workaround, not a recommendation, and it doubles the surface you must keep in sync |
 
 Default: server-render or statically generate anything with a URL a searcher could land on; keep CSR for the authenticated application.
 

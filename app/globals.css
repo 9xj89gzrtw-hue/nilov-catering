@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 /* ═══════════════════════════════════════════
    NiloV Catering — Design Tokens (светлая система)
@@ -11,48 +11,48 @@
 
 @theme {
   /* === shadcn-база (совпадает с components/ui/*) === */
-  --color-background: #FAF7F2;           /* ivory base */
-  --color-foreground: #1C1815;           /* ink, текст */
-  --color-card: #FFFFFF;                 /* карточки */
-  --color-card-foreground: #1C1815;
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #1C1815;
-  --color-primary: #6E5530;              /* darker gold = white-on-this 5.0:1 AA (was #B08D57 = 3.09:1 FAIL) */
-  --color-primary-foreground: #FFFFFF;   /* белый на darker gold = 5.0:1 AA pass */
-  --color-cta: #8E6F3F;                  /* gold CTA token (AA-compliant) */
-  --color-cta-hover: #7A5F36;            /* darker gold on hover (6.4:1 AAA) */
-  --color-secondary: #F2ECE3;            /* cream-alt секции */
-  --color-secondary-foreground: #1C1815;
-  --color-muted: #F2ECE3;
-  --color-muted-foreground: #4A423B;     /* warm grey, AAA 9.2:1 */
-  --color-accent: #EFE6D6;               /* gold-tint бейджей */
-  --color-accent-foreground: #6E5631;    /* 5.582:1 AAA на gold-tint */
-  --color-border: #E4DCCF;               /* hairline */
-  --color-input: #E4DCCF;
-  --color-ring: #8A6D3B;                 /* focus-visible 4.537:1 */
-  --color-destructive: #A6443B;
-  --color-destructive-foreground: #FFFFFF;
+  --color-background: #faf7f2; /* ivory base */
+  --color-foreground: #1c1815; /* ink, текст */
+  --color-card: #ffffff; /* карточки */
+  --color-card-foreground: #1c1815;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1c1815;
+  --color-primary: #6e5530; /* darker gold = white-on-this 5.0:1 AA (was #B08D57 = 3.09:1 FAIL) */
+  --color-primary-foreground: #ffffff; /* белый на darker gold = 5.0:1 AA pass */
+  --color-cta: #8e6f3f; /* gold CTA token (AA-compliant) */
+  --color-cta-hover: #7a5f36; /* darker gold on hover (6.4:1 AAA) */
+  --color-secondary: #f2ece3; /* cream-alt секции */
+  --color-secondary-foreground: #1c1815;
+  --color-muted: #f2ece3;
+  --color-muted-foreground: #4a423b; /* warm grey, AAA 9.2:1 */
+  --color-accent: #efe6d6; /* gold-tint бейджей */
+  --color-accent-foreground: #6e5631; /* 5.582:1 AAA на gold-tint */
+  --color-border: #e4dccf; /* hairline */
+  --color-input: #e4dccf;
+  --color-ring: #8a6d3b; /* focus-visible 4.537:1 */
+  --color-destructive: #a6443b;
+  --color-destructive-foreground: #ffffff;
 
   /* === Бренд-расширения — PREMIUM gold system (W90+ upgrade) === */
-  --color-gold: #6E5530;                 /* primary gold (AA-compliant for white text) */
-  --color-gold-soft: #C9A961;            /* ТОЛЬКО декор-заливка, НЕ текст */
-  --color-gold-text: #6E5530;            /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
-  --color-gold-text-on-secondary: #5C4525; /* золотой текст на cream */
-  --color-gold-tint: #EFE6D6;            /* фон бейджей */
-  
+  --color-gold: #6e5530; /* primary gold (AA-compliant for white text) */
+  --color-gold-soft: #c9a961; /* ТОЛЬКО декор-заливка, НЕ текст */
+  --color-gold-text: #6e5530; /* золото ДЛЯ ТЕКСТА на ivory = 5.8:1 AAA */
+  --color-gold-text-on-secondary: #5c4525; /* золотой текст на cream */
+  --color-gold-tint: #efe6d6; /* фон бейджей */
+
   /* === PREMIUM gold extensions (Design Critic #1 recommendations) === */
-  --color-gold-bright: #D4AF37;          /* яркое золото для акцентов и hover */
-  --color-gold-main: #B8860B;            /* dark goldenrod - основное shimmer */
-  --color-gold-deep: #8B6914;            /* тёмное золото для градиентов */
-  --color-gold-light: #F3E5AB;          /* светлое золото для shimmer peaks */
-  --color-gold-shimmer: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-  --color-earth: #7C6A55;
-  --color-burgundy: #722F37;             /* accent для выделения (редко) */
-  --color-burgundy-tint: #F3E7E9;
-  --color-line: #E4DCCF;
-  --color-success: #4F7A52;
-  --color-warning: #B5803A;
-  --color-sage: #7E8B6B;
+  --color-gold-bright: #d4af37; /* яркое золото для акцентов и hover */
+  --color-gold-main: #b8860b; /* dark goldenrod - основное shimmer */
+  --color-gold-deep: #8b6914; /* тёмное золото для градиентов */
+  --color-gold-light: #f3e5ab; /* светлое золото для shimmer peaks */
+  --color-gold-shimmer: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  --color-earth: #7c6a55;
+  --color-burgundy: #722f37; /* accent для выделения (редко) */
+  --color-burgundy-tint: #f3e7e9;
+  --color-line: #e4dccf;
+  --color-success: #4f7a52;
+  --color-warning: #b5803a;
+  --color-sage: #7e8b6b;
 
   /* === Типографика === */
   --font-heading: var(--font-heading), Georgia, serif;
@@ -60,21 +60,21 @@
   --font-mono: var(--font-mono), monospace;
 
   /* === Типографика scale (06_TOKENS:100-118) === */
-  --text-2xs: 0.625rem;    /* 10px */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
+  --text-2xs: 0.625rem; /* 10px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
   --text-hero: clamp(2.5rem, 6vw, 5rem);
   /* === Радиусы (06_TOKENS канон) === */
-  --radius-sm: 0.5rem;    /* 8px */
-  --radius-md: 0.75rem;   /* 12px */
-  --radius-lg: 1rem;      /* 16px */
-  --radius-xl: 1.5rem;    /* 24px */
+  --radius-sm: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.5rem; /* 24px */
   --radius-pill: 999px;
   --radius-circle: 50%;
 
@@ -83,10 +83,12 @@
   --shadow-soft: 0 4px 12px rgba(28, 24, 21, 0.05);
   --shadow-hover: 0 8px 24px rgba(28, 24, 21, 0.08);
   --shadow-gold-glow: 0 0 24px rgba(176, 141, 87, 0.15);
-  
+
   /* === PREMIUM shadows (luxury feel) === */
   --shadow-luxury: 0 4px 6px rgba(139, 105, 20, 0.05), 0 10px 30px rgba(139, 105, 20, 0.08);
-  --shadow-gold-intense: 0 20px 40px rgba(139, 105, 20, 0.12), 0 0 0 1px rgba(201, 169, 97, 0.3), 0 0 60px rgba(201, 169, 97, 0.08);
+  --shadow-gold-intense:
+    0 20px 40px rgba(139, 105, 20, 0.12), 0 0 0 1px rgba(201, 169, 97, 0.3),
+    0 0 60px rgba(201, 169, 97, 0.08);
   --shadow-card-premium: 0 2px 8px rgba(110, 85, 48, 0.06), 0 8px 24px rgba(110, 85, 48, 0.04);
 
   /* === Motion-токены (06_TOKENS) === */
@@ -98,11 +100,11 @@
   --wipe-dur: 1s;
 
   /* === Семантические алиасы (06_TOKENS) === */
-  --color-bg: #FAF7F2;
-  --color-bg-alt: #F2ECE3;
-  --color-ink: #1C1815;
-  --color-ink-soft: #4A423B;
-  --color-surface: #FFFFFF;
+  --color-bg: #faf7f2;
+  --color-bg-alt: #f2ece3;
+  --color-ink: #1c1815;
+  --color-ink-soft: #4a423b;
+  --color-surface: #ffffff;
 
   /* === Контейнер / отступы (06_TOKENS) === */
   --container-max: 1280px;
@@ -162,16 +164,27 @@
     line-height: 1.6;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
 
-  h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-  h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
-  h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
 
   /* Focus */
   :focus-visible {
@@ -221,73 +234,136 @@
     display: none;
   }
   @media (width >= 768px) and (width < 1024px) {
-    .tablet-only { display: revert; }
-    .tablet-col-2 { grid-template-columns: repeat(2, 1fr); }
-    .tablet-flex-row { flex-direction: row; }
+    .tablet-only {
+      display: revert;
+    }
+    .tablet-col-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .tablet-flex-row {
+      flex-direction: row;
+    }
   }
 }
 
 /* === Анимации === */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes clip-reveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 @keyframes count-up {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* WOW animations — scroll-triggered via IntersectionObserver */
 @keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-40px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes scale-in {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer-gold {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.3); }
-  50%      { box-shadow: 0 0 0 8px rgba(176, 141, 87, 0); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(176, 141, 87, 0);
+  }
 }
 
 /* Scroll-reveal utility — triggered by .reveal class + IntersectionObserver */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.revealed {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
 
 /* Card hover effects — 3D tilt + shine */
 .card-tilt {
@@ -302,7 +378,7 @@
 
 /* Gold shimmer text effect */
 .shimmer-text {
-  background: linear-gradient(90deg, #8E6F3F 0%, #C9A961 50%, #8E6F3F 100%);
+  background: linear-gradient(90deg, #8e6f3f 0%, #c9a961 50%, #8e6f3f 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -316,19 +392,32 @@
 }
 
 @keyframes kenBurns {
-  0%   { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.08) translate(-1%, -1%); }
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
 }
 
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Skeleton shimmer — placeholder while FoodPhoto / lazy images load.
    C3 fix: prevents "empty card" perception (no photo, no price) on mobile. */
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--color-secondary, #f5f5f4) 0%, var(--color-accent, #e7e5e4) 50%, var(--color-secondary, #f5f5f4) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary, #f5f5f4) 0%,
+    var(--color-accent, #e7e5e4) 50%,
+    var(--color-secondary, #f5f5f4) 100%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -340,7 +429,9 @@
   animation: foodphoto-ssr-fade 0.6s ease-out 0.1s forwards;
 }
 @keyframes foodphoto-ssr-fade {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -401,7 +492,7 @@
   overflow: hidden;
 }
 .drinqit-shine::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -75%;
@@ -442,8 +533,13 @@
 
 /* Drinqit-style floating animation — subtle infinite float */
 @keyframes drinqit-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .drinqit-float {
@@ -487,9 +583,18 @@
 }
 
 @keyframes cart-badge-pop {
-  0%   { transform: scale(0); opacity: 0; }
-  60%  { transform: scale(1.25); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -499,20 +604,39 @@
 
 /* === PREMIUM Gold Shimmer Animation === */
 @keyframes gold-shimmer-premium {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Metallic gold gradient for buttons and accents */
 .gold-metallic {
-  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 25%, #F3E5AB 50%, #D4AF37 75%, #AA771C 100%);
+  background: linear-gradient(
+    135deg,
+    #b8860b 0%,
+    #d4af37 25%,
+    #f3e5ab 50%,
+    #d4af37 75%,
+    #aa771c 100%
+  );
   background-size: 200% 200%;
   animation: gold-shimmer-premium 3s ease-in-out infinite;
 }
 
 /* Premium gold text gradient (display only) */
 .text-gold-premium {
-  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 40%, #F3E5AB 50%, #D4AF37 60%, #8B6914 100%);
+  background: linear-gradient(
+    135deg,
+    #b8860b 0%,
+    #d4af37 40%,
+    #f3e5ab 50%,
+    #d4af37 60%,
+    #8b6914 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -526,11 +650,19 @@
 }
 
 .frame-artdeco::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -6px;
   border: 1px solid transparent;
-  border-image: linear-gradient(135deg, transparent 0%, #C9A961 20%, #D4AF37 50%, #C9A961 80%, transparent 100%) 1;
+  border-image: linear-gradient(
+      135deg,
+      transparent 0%,
+      #c9a961 20%,
+      #d4af37 50%,
+      #c9a961 80%,
+      transparent 100%
+    )
+    1;
   pointer-events: none;
   border-radius: inherit;
 }
@@ -542,7 +674,7 @@
 
 .frame-artdeco-corners::before,
 .frame-artdeco-corners::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 24px;
   height: 24px;
@@ -553,28 +685,28 @@
 .frame-artdeco-corners::before {
   top: -8px;
   left: -8px;
-  border-top: 2px solid #D4AF37;
-  border-left: 2px solid #D4AF37;
+  border-top: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
   border-radius: 4px 0 0 0;
 }
 
 .frame-artdeco-corners::after {
   bottom: -8px;
   right: -8px;
-  border-bottom: 2px solid #D4AF37;
-  border-right: 2px solid #D4AF37;
+  border-bottom: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
   border-radius: 0 0 4px 0;
 }
 
 /* Double line art-deco border */
 .frame-artdeco-double {
   position: relative;
-  border: 1px solid #E4DCCF;
+  border: 1px solid #e4dccf;
   padding: 4px;
 }
 
 .frame-artdeco-double::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border: 1px solid #C9A961/30;
@@ -597,7 +729,7 @@
 
 /* Shine sweep effect on hover */
 .card-premium::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -616,8 +748,8 @@
 
 /* Featured card special styling */
 .card-featured {
-  border: 2px solid #D4AF37 !important;
-  box-shadow: 
+  border: 2px solid #d4af37 !important;
+  box-shadow:
     0 0 0 1px rgba(212, 175, 55, 0.2),
     0 8px 32px rgba(139, 105, 20, 0.15),
     0 0 60px rgba(201, 169, 97, 0.12) !important;
@@ -625,13 +757,13 @@
 }
 
 .card-featured::after {
-  content: '★';
+  content: "★";
   position: absolute;
   top: -12px;
   right: 16px;
   width: 24px;
   height: 24px;
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  background: linear-gradient(135deg, #d4af37, #b8860b);
   color: white;
   font-size: 12px;
   display: flex;
@@ -645,28 +777,28 @@
 .section-divider {
   height: 80px;
   position: relative;
-  background: linear-gradient(to bottom, transparent, var(--color-secondary, #F2ECE3));
+  background: linear-gradient(to bottom, transparent, var(--color-secondary, #f2ece3));
   overflow: hidden;
 }
 
 .section-divider::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #C9A961, #D4AF37, #C9A961, transparent);
+  background: linear-gradient(90deg, transparent, #c9a961, #d4af37, #c9a961, transparent);
 }
 
 .section-divider::after {
-  content: '✦';
+  content: "✦";
   position: absolute;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  color: #D4AF37;
+  color: #d4af37;
   font-size: 18px;
 }
 
@@ -674,7 +806,7 @@
 .section-divider-wave {
   height: 60px;
   position: relative;
-  background: var(--color-secondary, #F2ECE3);
+  background: var(--color-secondary, #f2ece3);
   clip-path: ellipse(120% 100% at 50% 100%);
 }
 
@@ -688,29 +820,30 @@
 
 .divider-gold-line::before,
 .divider-gold-line::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #C9A961, transparent);
+  background: linear-gradient(90deg, transparent, #c9a961, transparent);
 }
 
 /* === Floating Gold Particles (for Hero) === */
 @keyframes float-particle {
-  0%, 100% { 
-    transform: translateY(0) translateX(0); 
-    opacity: 0.3; 
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
   }
-  25% { 
-    transform: translateY(-20px) translateX(10px); 
-    opacity: 0.6; 
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
   }
-  50% { 
-    transform: translateY(-10px) translateX(-5px); 
-    opacity: 0.4; 
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+    opacity: 0.4;
   }
-  75% { 
-    transform: translateY(-25px) translateX(15px); 
-    opacity: 0.7; 
+  75% {
+    transform: translateY(-25px) translateX(15px);
+    opacity: 0.7;
   }
 }
 
@@ -718,7 +851,7 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, #D4AF37 0%, transparent 70%);
+  background: radial-gradient(circle, #d4af37 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   animation: float-particle 6s ease-in-out infinite;
@@ -726,12 +859,12 @@
 
 /* === Premium Button Styles === */
 .btn-gold-premium {
-  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #AA771C 100%);
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #aa771c 100%);
   background-size: 200% 200%;
   animation: gold-shimmer-premium 3s ease-in-out infinite;
   color: white !important;
   border: none !important;
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgba(184, 134, 11, 0.35),
     0 0 0 1px rgba(212, 175, 55, 0.2) inset;
   transition: all 0.3s ease;
@@ -739,7 +872,7 @@
 
 .btn-gold-premium:hover {
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 8px 24px rgba(184, 134, 11, 0.45),
     0 0 0 1px rgba(212, 175, 55, 0.3) inset,
     0 0 40px rgba(201, 169, 97, 0.2);
@@ -755,7 +888,7 @@
 
 /* Grain/noise overlay for cinematic feel */
 .grain-overlay::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -767,12 +900,14 @@
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .gold-metallic,
   .text-gold-premium,
   .btn-gold-premium {
@@ -789,7 +924,8 @@
   }
 
   /* Prevent double-tap zoom on buttons */
-  button, a {
+  button,
+  a {
     touch-action: manipulation;
   }
 
@@ -806,7 +942,9 @@
 @utility scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -837,7 +975,7 @@ summary:focus-visible,
 [tabindex]:focus-visible,
 label:focus-visible,
 [data-focusable]:focus-visible {
-  outline: 3px solid #6E5530 !important;
+  outline: 3px solid #6e5530 !important;
   outline-offset: 2px !important;
   box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.25) !important;
   border-radius: 4px !important;
@@ -851,7 +989,7 @@ label:focus-visible,
 }
 
 *:focus-visible {
-  outline: 3px solid #6E5530 !important;
+  outline: 3px solid #6e5530 !important;
   outline-offset: 2px !important;
 }
 
@@ -902,7 +1040,7 @@ select {
    while keyboard focus (:focus-visible) ALWAYS shows the gold ring.
    ═══════════════════════════════════════════ */
 *:focus-visible {
-  outline: 3px solid #6E5530 !important;
+  outline: 3px solid #6e5530 !important;
   outline-offset: 2px !important;
   box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.3) !important;
 }
@@ -921,18 +1059,27 @@ select {
 }
 
 /* Global touch target — WCAG 2.5.5, min 44x44px for ALL interactive elements */
-button, a[href], input[type="submit"], input[type="button"], summary, [role="button"], [tabindex="0"] {
+button,
+a[href],
+input[type="submit"],
+input[type="button"],
+summary,
+[role="button"],
+[tabindex="0"] {
   min-height: 44px;
   min-width: 44px;
 }
 /* But don't force min-width on inline links in text */
-p a, li a, span a {
+p a,
+li a,
+span a {
   min-width: auto;
   min-height: auto;
 }
 
 /* Fix small touch targets on text links */
-a.text-sm, a.text-xs {
+a.text-sm,
+a.text-xs {
   min-height: 44px;
   display: inline-flex;
   align-items: center;

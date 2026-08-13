@@ -72,8 +72,8 @@ function createSpacingScale(baseUnit: number = 4): Record<string, string> {
   };
 
   const multipliers = [
-    0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24,
-    28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
+    0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44,
+    48, 52, 56, 60, 64, 72, 80, 96,
   ];
 
   for (const m of multipliers) {
@@ -190,7 +190,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(
         <use href={`/icons.svg#${name}`} />
       </svg>
     );
-  },
+  }
 );
 
 Icon.displayName = "Icon";
@@ -228,15 +228,7 @@ export function IconButton({
 }: IconButtonProps) {
   return (
     <button
-      className={`
-        inline-flex items-center justify-center rounded-lg
-        transition-colors focus-visible:outline-none focus-visible:ring-2
-        ${sizeClasses[size]}
-        ${variant === "solid" && "bg-blue-600 text-white hover:bg-blue-700"}
-        ${variant === "ghost" && "hover:bg-gray-100"}
-        ${variant === "outline" && "border border-gray-300 hover:bg-gray-50"}
-        ${className}
-      `}
+      className={`inline-flex items-center justify-center rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 ${sizeClasses[size]} ${variant === "solid" && "bg-blue-600 text-white hover:bg-blue-700"} ${variant === "ghost" && "hover:bg-gray-100"} ${variant === "outline" && "border border-gray-300 hover:bg-gray-50"} ${className} `}
       aria-label={label}
       {...props}
     >
@@ -297,12 +289,10 @@ async function buildIconSprite(iconDir: string, outputPath: string) {
       // Extract viewBox and content
       const viewBoxMatch = result.data.match(/viewBox="([^"]+)"/);
       const viewBox = viewBoxMatch ? viewBoxMatch[1] : "0 0 24 24";
-      const innerContent = result.data
-        .replace(/<svg[^>]*>/, "")
-        .replace(/<\/svg>/, "");
+      const innerContent = result.data.replace(/<svg[^>]*>/, "").replace(/<\/svg>/, "");
 
       return `<symbol id="${name}" viewBox="${viewBox}">${innerContent}</symbol>`;
-    }),
+    })
   );
 
   const sprite = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">${symbols.join("")}</svg>`;
@@ -335,7 +325,7 @@ import { HomeIcon as HomeIconSolid } from "@heroicons/react/24/solid";
 
 function ToggleIcon({ active }: { active: boolean }) {
   const Icon = active ? HomeIconSolid : HomeIcon;
-  return <Icon className="w-6 h-6" />;
+  return <Icon className="h-6 w-6" />;
 }
 
 // Radix Icons

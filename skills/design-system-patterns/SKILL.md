@@ -76,29 +76,47 @@ Key capabilities: `theme` (user selection), `resolvedTheme` (actual light/dark),
 ```tsx
 type Theme = "light" | "dark" | "system";
 
-export function ThemeProvider({ children, defaultTheme = "system", storageKey = "theme",
-  attribute = "data-theme" }: { children: React.ReactNode; defaultTheme?: Theme;
-  storageKey?: string; attribute?: "class" | "data-theme" }) {
+export function ThemeProvider({
+  children,
+  defaultTheme = "system",
+  storageKey = "theme",
+  attribute = "data-theme",
+}: {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+  attribute?: "class" | "data-theme";
+}) {
   const [theme, setThemeState] = useState<Theme>(() =>
-    typeof window === "undefined" ? defaultTheme
-      : (localStorage.getItem(storageKey) as Theme) || defaultTheme);
+    typeof window === "undefined"
+      ? defaultTheme
+      : (localStorage.getItem(storageKey) as Theme) || defaultTheme
+  );
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
 
-  const getSystem = useCallback(() =>
-    matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" as const, []);
+  const getSystem = useCallback(
+    () => (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ("light" as const)),
+    []
+  );
 
-  const apply = useCallback((r: "light" | "dark") => {
-    const root = document.documentElement;
-    attribute === "class"
-      ? (root.classList.remove("light", "dark"), root.classList.add(r))
-      : root.setAttribute(attribute, r);
-    root.style.colorScheme = r;
-    setResolvedTheme(r);
-  }, [attribute]);
+  const apply = useCallback(
+    (r: "light" | "dark") => {
+      const root = document.documentElement;
+      attribute === "class"
+        ? (root.classList.remove("light", "dark"), root.classList.add(r))
+        : root.setAttribute(attribute, r);
+      root.style.colorScheme = r;
+      setResolvedTheme(r);
+    },
+    [attribute]
+  );
 
-  useEffect(() => { apply(theme === "system" ? getSystem() : theme); }, [theme, apply, getSystem]);
+  useEffect(() => {
+    apply(theme === "system" ? getSystem() : theme);
+  }, [theme, apply, getSystem]);
 
-  useEffect(() => {  // Listen for system preference changes
+  useEffect(() => {
+    // Listen for system preference changes
     if (theme !== "system") return;
     const mq = matchMedia("(prefers-color-scheme: dark)");
     const handler = () => apply(getSystem());
@@ -106,13 +124,19 @@ export function ThemeProvider({ children, defaultTheme = "system", storageKey = 
     return () => mq.removeEventListener("change", handler);
   }, [theme, apply, getSystem]);
 
-  const setTheme = useCallback((t: Theme) => {
-    localStorage.setItem(storageKey, t); setThemeState(t);
-  }, [storageKey]);
+  const setTheme = useCallback(
+    (t: Theme) => {
+      localStorage.setItem(storageKey, t);
+      setThemeState(t);
+    },
+    [storageKey]
+  );
 
-  return <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
-    {children}
-  </ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 ```
 
@@ -135,8 +159,10 @@ const themeScript = `(function(){
   <head>
     <script dangerouslySetInnerHTML={{ __html: themeScript }} />
   </head>
-  <body><ThemeProvider>{children}</ThemeProvider></body>
-</html>
+  <body>
+    <ThemeProvider>{children}</ThemeProvider>
+  </body>
+</html>;
 ```
 
 ---
@@ -179,19 +205,37 @@ module.exports = {
   source: ["tokens/**/*.json"],
   platforms: {
     css: {
-      transformGroup: "css", buildPath: "dist/css/",
-      files: [{ destination: "variables.css", format: "css/variables",
-        options: { outputReferences: true } }],
+      transformGroup: "css",
+      buildPath: "dist/css/",
+      files: [
+        {
+          destination: "variables.css",
+          format: "css/variables",
+          options: { outputReferences: true },
+        },
+      ],
     },
     ios: {
-      transformGroup: "ios-swift", buildPath: "dist/ios/",
-      files: [{ destination: "DesignTokens.swift", format: "ios-swift/class.swift",
-        className: "DesignTokens" }],
+      transformGroup: "ios-swift",
+      buildPath: "dist/ios/",
+      files: [
+        {
+          destination: "DesignTokens.swift",
+          format: "ios-swift/class.swift",
+          className: "DesignTokens",
+        },
+      ],
     },
     android: {
-      transformGroup: "android", buildPath: "dist/android/",
-      files: [{ destination: "colors.xml", format: "android/colors",
-        filter: { attributes: { category: "color" } } }],
+      transformGroup: "android",
+      buildPath: "dist/android/",
+      files: [
+        {
+          destination: "colors.xml",
+          format: "android/colors",
+          filter: { attributes: { category: "color" } },
+        },
+      ],
     },
   },
 };
@@ -222,8 +266,12 @@ See [references/design-tokens.md](references/design-tokens.md) for token categor
 }
 
 @media (forced-colors: active) {
-  .button { border: 2px solid currentColor; }
-  .card { border: 1px solid CanvasText; }
+  .button {
+    border: 2px solid currentColor;
+  }
+  .card {
+    border: 1px solid CanvasText;
+  }
 }
 ```
 

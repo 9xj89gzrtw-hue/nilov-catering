@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { PricingData } from './pricing-types';
-import { DEFAULT_PRICING } from './pricing-types';
+import { createContext, useContext } from "react";
+import type { PricingData } from "./pricing-types";
+import { DEFAULT_PRICING } from "./pricing-types";
 
 const PricingContext = createContext<PricingData>(DEFAULT_PRICING);
 
@@ -19,16 +19,13 @@ export function PricingProvider({
   cmsPricing?: { pricePerGuest: unknown; addons?: unknown[] } | null;
 }) {
   const pricePerGuest = cmsPricing?.pricePerGuest as Record<string, number> | undefined;
-  const value: PricingData = pricePerGuest && typeof pricePerGuest === 'object' && Object.keys(pricePerGuest).length > 0
-    ? {
-        pricePerGuest: pricePerGuest as PricingData['pricePerGuest'],
-        addons: (cmsPricing?.addons as PricingData['addons']) || DEFAULT_PRICING.addons,
-      }
-    : DEFAULT_PRICING;
+  const value: PricingData =
+    pricePerGuest && typeof pricePerGuest === "object" && Object.keys(pricePerGuest).length > 0
+      ? {
+          pricePerGuest: pricePerGuest as PricingData["pricePerGuest"],
+          addons: (cmsPricing?.addons as PricingData["addons"]) || DEFAULT_PRICING.addons,
+        }
+      : DEFAULT_PRICING;
 
-  return (
-    <PricingContext.Provider value={value}>
-      {children}
-    </PricingContext.Provider>
-  );
+  return <PricingContext.Provider value={value}>{children}</PricingContext.Provider>;
 }

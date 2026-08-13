@@ -13,12 +13,9 @@ metadata:
   {
     "openclaw":
       {
-        "requires": {
-          "bins": ["python3"],
-          "env": ["AMINER_API_KEY"]
-        },
-        "primaryEnv": "AMINER_API_KEY"
-      }
+        "requires": { "bins": ["python3"], "env": ["AMINER_API_KEY"] },
+        "primaryEnv": "AMINER_API_KEY",
+      },
   }
 ---
 
@@ -49,12 +46,12 @@ Both scripts live in `scripts/` under this skill directory. They print exactly o
 
 ### `scripts/aminer_api.py` — AMiner API calls
 
-| Subcommand | Endpoint | Price |
-|---|---|---|
-| `search --query Q [--size 20] [--year YYYY] [--order n_citation\|year] [--max-pages 3]` | GET `/api/paper/search/pro` + free `paper/info` enrichment | ¥0.01/page |
+| Subcommand                                                                                                                                                   | Endpoint                                                                                                                    | Price      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `search --query Q [--size 20] [--year YYYY] [--order n_citation\|year] [--max-pages 3]`                                                                      | GET `/api/paper/search/pro` + free `paper/info` enrichment                                                                  | ¥0.01/page |
 | `qa-search [--query "natural language question"] [--topic-high '[["termA","termB"],["termC"]]'] [--size 20] [--year-from Y] [--year-to Y] [--citation-sort]` | POST `/api/paper/qa/search` (always `use_topic=true`; the backend ignores `query` when `use_topic=false`) + free enrichment | ¥0.05/call |
-| `info --ids id1 id2 ...` | POST `/api/paper/info` (batched ≤100 ids) | Free |
-| `references --ids id1 id2 ... [--per-seed 20]` | GET `/api/paper/relation` per seed + free enrichment | ¥0.10/seed |
+| `info --ids id1 id2 ...`                                                                                                                                     | POST `/api/paper/info` (batched ≤100 ids)                                                                                   | Free       |
+| `references --ids id1 id2 ... [--per-seed 20]`                                                                                                               | GET `/api/paper/relation` per seed + free enrichment                                                                        | ¥0.10/seed |
 
 Output shape: `search`/`qa-search`/`info` print `[{id, title, year?, venue?, abstract_slice?}]`; `references` additionally includes `source_paper_ids` (which seeds cited the paper). Seeds themselves are excluded from `references` output.
 

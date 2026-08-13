@@ -1,7 +1,7 @@
-import { ALLERGEN_LABEL } from '@/lib/types';
-import type { Dish } from '@/lib/types';
+import { ALLERGEN_LABEL } from "@/lib/types";
+import type { Dish } from "@/lib/types";
 
-const HIGH_RISK_ALLERGENS = ['nuts', 'peanuts', 'gluten', 'fish', 'crustaceans', 'molluscs'];
+const HIGH_RISK_ALLERGENS = ["nuts", "peanuts", "gluten", "fish", "crustaceans", "molluscs"];
 
 /**
  * AllergenChips — reduced visual noise per C8/C3/C4/C1.
@@ -19,16 +19,16 @@ const HIGH_RISK_ALLERGENS = ['nuts', 'peanuts', 'gluten', 'fish', 'crustaceans',
  * The title attribute provides full allergen names on hover for sighted
  * users; screen readers get the aria-label.
  */
-export function AllergenChips({ dish, className = '' }: { dish: Dish; className?: string }) {
+export function AllergenChips({ dish, className = "" }: { dish: Dish; className?: string }) {
   if (!dish.allergens || dish.allergens.length === 0) return null;
 
-  const highRisk = dish.allergens.filter(a =>HIGH_RISK_ALLERGENS.includes(a));
+  const highRisk = dish.allergens.filter((a) => HIGH_RISK_ALLERGENS.includes(a));
 
   // No high-risk allergens → no on-image badge. Reduces visual noise.
   // Low-risk allergens (milk, eggs, soy, etc.) are shown in the card body.
   if (highRisk.length === 0) return null;
 
-  const labels = highRisk.map(a =>ALLERGEN_LABEL[a]).join(', ');
+  const labels = highRisk.map((a) => ALLERGEN_LABEL[a]).join(", ");
 
   return (
     <div
@@ -36,7 +36,7 @@ export function AllergenChips({ dish, className = '' }: { dish: Dish; className?
       title={`Высокий риск анафилаксии: ${labels}. Полный список аллергенов — в карточке блюда.`}
     >
       <span
-        className="inline-flex items-center gap-1 rounded-full bg-rose-900/85 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 ring-1 ring-white/40 shadow-sm"
+        className="inline-flex items-center gap-1 rounded-full bg-rose-900/85 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm ring-1 ring-white/40 backdrop-blur-sm"
         aria-label={`Внимание: блюдо содержит аллергены высокого риска: ${labels}`}
       >
         {highRisk.length}

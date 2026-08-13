@@ -22,6 +22,7 @@ Complete guide to building accessible web applications that meet WCAG 2.2 standa
 ## WCAG Overview
 
 **WCAG 2.2** (Web Content Accessibility Guidelines) has three conformance levels:
+
 - **Level A:** Minimum accessibility (basic)
 - **Level AA:** Mid-range accessibility (target for most sites)
 - **Level AAA:** Highest accessibility (specialized needs)
@@ -29,6 +30,7 @@ Complete guide to building accessible web applications that meet WCAG 2.2 standa
 **Target:** WCAG 2.2 Level AA compliance for all projects.
 
 **Four Principles (POUR):**
+
 1. **Perceivable:** Information must be presentable to users
 2. **Operable:** Interface components must be operable
 3. **Understandable:** Information and UI must be understandable
@@ -41,16 +43,19 @@ Complete guide to building accessible web applications that meet WCAG 2.2 standa
 ### Requirements
 
 **Text Contrast:**
+
 - **Normal text (< 24px):** 4.5:1 minimum
 - **Large text (≥ 24px or 19px bold):** 3:1 minimum
 
 **UI Components:**
+
 - **Buttons, inputs, icons:** 3:1 minimum vs background
 - **Focus indicators:** 3:1 minimum vs unfocused state
 
 ### Testing Contrast
 
 **Tools:**
+
 - WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
 - Chrome DevTools: Inspect element → Styles → Color picker shows contrast ratio
 - Figma/Sketch: Built-in contrast checkers
@@ -85,6 +90,7 @@ background: #ffffff;
 ### Requirements
 
 **Every interactive element must be keyboard-accessible:**
+
 - Tab/Shift+Tab: Navigate between elements
 - Enter/Space: Activate buttons and links
 - Escape: Close modals and dropdowns
@@ -111,6 +117,7 @@ background: #ffffff;
 ```
 
 **Only use tabIndex in three cases:**
+
 - `tabIndex={0}`: Add to tab order (for custom interactive elements)
 - `tabIndex={-1}`: Remove from tab order (programmatic focus only)
 - `tabIndex={1+}`: Override order (avoid unless absolutely necessary)
@@ -139,6 +146,7 @@ button:focus-visible {
 ```
 
 **Focus indicators must:**
+
 - Be visible (3:1 contrast vs unfocused)
 - Be consistent across site
 - Not rely on color alone
@@ -148,8 +156,8 @@ button:focus-visible {
 Provide skip links for keyboard users:
 
 ```jsx
-<a 
-  href="#main-content" 
+<a
+  href="#main-content"
   className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white"
 >
   Skip to main content
@@ -233,6 +241,7 @@ Provide skip links for keyboard users:
 ```
 
 **Alt text rules:**
+
 - Describe content/function, not appearance
 - Keep under 125 characters
 - Don't start with "image of" or "picture of"
@@ -247,34 +256,30 @@ Provide skip links for keyboard users:
 **Trap focus inside modals:**
 
 ```jsx
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { useEffect, useRef } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export function AccessibleDialog({ isOpen, onClose, children }) {
-  const closeButtonRef = useRef(null)
-  
+  const closeButtonRef = useRef(null);
+
   useEffect(() => {
     if (isOpen && closeButtonRef.current) {
-      closeButtonRef.current.focus()
+      closeButtonRef.current.focus();
     }
-  }, [isOpen])
-  
+  }, [isOpen]);
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent onEscapeKeyDown={onClose}>
-        <button 
-          ref={closeButtonRef}
-          onClick={onClose}
-          aria-label="Close dialog"
-        >
+        <button ref={closeButtonRef} onClick={onClose} aria-label="Close dialog">
           ×
         </button>
         {children}
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 ```
 
@@ -295,6 +300,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 ```
 
 **aria-live values:**
+
 - `polite`: Announce when screen reader is idle
 - `assertive`: Interrupt immediately
 - `off`: Don't announce
@@ -306,6 +312,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 ### Common ARIA Attributes
 
 **Labels:**
+
 ```jsx
 // aria-label: Provides label when no visible text
 <button aria-label="Close menu">
@@ -319,8 +326,8 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 </div>
 
 // aria-describedby: Additional description
-<input 
-  id="password" 
+<input
+  id="password"
   aria-describedby="password-requirements"
 />
 <p id="password-requirements">
@@ -329,6 +336,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 ```
 
 **States:**
+
 ```jsx
 // aria-expanded: Dropdown/accordion state
 <button aria-expanded={isOpen}>
@@ -352,6 +360,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 ```
 
 **Relationships:**
+
 ```jsx
 // aria-controls: Element controls another
 <button aria-controls="menu-panel" aria-expanded={isOpen}>
@@ -417,7 +426,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 ```jsx
 <div>
   <label htmlFor="email">Email</label>
-  <input 
+  <input
     id="email"
     type="email"
     aria-invalid={hasError}
@@ -473,7 +482,7 @@ export function AccessibleDialog({ isOpen, onClose, children }) {
 <div onClick={handleClick}>Click Me</div>
 
 // ✅ Good: Proper keyboard support
-<div 
+<div
   role="button"
   tabIndex={0}
   onClick={handleClick}

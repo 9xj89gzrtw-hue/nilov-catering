@@ -15,15 +15,15 @@
 
 Латентные gold-применения без токена → привязаны к контраст-безопасному токену:
 
-| Блок (применение) | Было | Стало | Контраст |
-|---|---|---|---|
-| Стайки/Sticky CTA (≈ `04:212`) | «золотая» | `bg-primary` #B08D57 + `text-primary-foreground` ink 5.7:1 ✅ AA (заливка, НЕ текст) | 5.7:1 |
-| HeroExtras вторичник (≈ `04:479`) | «отдельная золотая кнопка-вторичник» | `border-gold-text` #8A6D3B (outline, ≥3:1) ИЛИ `bg-primary`+ink 5.7:1 | ≥3 / 5.7 |
-| EventTypeSelector CTA-кнопка (≈ `04:638`) | «золотая/вторичная» | `bg-primary`#B08D57+ink / outline `border-gold-text` | 5.7 / ≥3 |
-| MenuCatalog рекомд. тариф (≈ `04:1048`) | «золотую рамку» | `border-gold-text` #8A6D3B (4.129:1 на ivory ≥3:1; НЕ `--color-gold` #B08D57 FAIL) | ≥3:1 |
-| ReviewCard «Ответ NiloV» (≈ `04:1137`) | «золотой акцент» | `border-l-2 border-gold-text` #8A6D3B (4.129:1; НЕ `--color-gold` FAIL) | ≥3:1 |
-| GallerySection focus (≈ `04:1533`) | «focus-visible золотая обводка» | `--color-ring` #8A6D3B (≥3:1; НЕ `--color-gold` FAIL) | ≥3:1 |
-| PackageGrid recommended (≈ `04:1656` + `1680`) | «Золотая рамка» / «золотой рамкой» | `border-gold-text` #8A6D3B (синхрон `04:1657`) | ≥3:1 |
+| Блок (применение)                              | Было                                 | Стало                                                                                | Контраст |
+| ---------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------ | -------- |
+| Стайки/Sticky CTA (≈ `04:212`)                 | «золотая»                            | `bg-primary` #B08D57 + `text-primary-foreground` ink 5.7:1 ✅ AA (заливка, НЕ текст) | 5.7:1    |
+| HeroExtras вторичник (≈ `04:479`)              | «отдельная золотая кнопка-вторичник» | `border-gold-text` #8A6D3B (outline, ≥3:1) ИЛИ `bg-primary`+ink 5.7:1                | ≥3 / 5.7 |
+| EventTypeSelector CTA-кнопка (≈ `04:638`)      | «золотая/вторичная»                  | `bg-primary`#B08D57+ink / outline `border-gold-text`                                 | 5.7 / ≥3 |
+| MenuCatalog рекомд. тариф (≈ `04:1048`)        | «золотую рамку»                      | `border-gold-text` #8A6D3B (4.129:1 на ivory ≥3:1; НЕ `--color-gold` #B08D57 FAIL)   | ≥3:1     |
+| ReviewCard «Ответ NiloV» (≈ `04:1137`)         | «золотой акцент»                     | `border-l-2 border-gold-text` #8A6D3B (4.129:1; НЕ `--color-gold` FAIL)              | ≥3:1     |
+| GallerySection focus (≈ `04:1533`)             | «focus-visible золотая обводка»      | `--color-ring` #8A6D3B (≥3:1; НЕ `--color-gold` FAIL)                                | ≥3:1     |
+| PackageGrid recommended (≈ `04:1656` + `1680`) | «Золотая рамка» / «золотой рамкой»   | `border-gold-text` #8A6D3B (синхрон `04:1657`)                                       | ≥3:1     |
 
 Текстовые «золотые» применения уже были на `var(--color-gold-text)` (`04:170` телефон, `04:205` ScrollProgress, `04:614/683` EventTypeSelector) — подтверждены, без изменений.
 

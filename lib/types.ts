@@ -2,65 +2,59 @@
 // Основа: 07_CALCULATOR_SPEC, 08_CONSTRUCTOR_SPEC, 04_BLOCKS, 23_MENU_STRATEGY
 
 export type Format =
-  | 'furshet'
-  | 'banket'
-  | 'coffee-break'
-  | 'mobile-furshet'
-  | 'detskoe'
-  | 'chef-at-home'
-  | 'pominki';
+  "furshet" | "banket" | "coffee-break" | "mobile-furshet" | "detskoe" | "chef-at-home" | "pominki";
 
-export type Tier = 'economy' | 'standard' | 'premium' | 'luxury';
+export type Tier = "economy" | "standard" | "premium" | "luxury";
 
 export const TIER_LABEL: Record<Tier, string> = {
-  economy: 'Эконом',
-  standard: 'Стандарт',
-  premium: 'Расширенный',
-  luxury: 'Максимальный',
+  economy: "Эконом",
+  standard: "Стандарт",
+  premium: "Расширенный",
+  luxury: "Максимальный",
 };
 
-export type Diet = 'vegan' | 'gluten-free' | 'halal' | 'sugar-free' | 'nut-free';
+export type Diet = "vegan" | "gluten-free" | "halal" | "sugar-free" | "nut-free";
 
 export type Allergen =
-  | 'gluten'
-  | 'crustaceans'
-  | 'eggs'
-  | 'fish'
-  | 'peanuts'
-  | 'soy'
-  | 'milk'
-  | 'nuts'
-  | 'celery'
-  | 'mustard'
-  | 'sesame'
-  | 'sulphites'
-  | 'lupin'
-  | 'molluscs';
+  | "gluten"
+  | "crustaceans"
+  | "eggs"
+  | "fish"
+  | "peanuts"
+  | "soy"
+  | "milk"
+  | "nuts"
+  | "celery"
+  | "mustard"
+  | "sesame"
+  | "sulphites"
+  | "lupin"
+  | "molluscs";
 
 export const ALLERGEN_LABEL: Record<Allergen, string> = {
-  gluten: 'Глютен',
-  crustaceans: 'Ракообразные',
-  eggs: 'Яйца',
-  fish: 'Рыба',
-  peanuts: 'Арахис',
-  soy: 'Соя',
-  milk: 'Молоко',
-  nuts: 'Орехи',
-  celery: 'Сельдерей',
-  mustard: 'Горчица',
-  sesame: 'Кунжут',
-  sulphites: 'Сульфиты',
-  lupin: 'Люпин',
-  molluscs: 'Моллюски',
+  gluten: "Глютен",
+  crustaceans: "Ракообразные",
+  eggs: "Яйца",
+  fish: "Рыба",
+  peanuts: "Арахис",
+  soy: "Соя",
+  milk: "Молоко",
+  nuts: "Орехи",
+  celery: "Сельдерей",
+  mustard: "Горчица",
+  sesame: "Кунжут",
+  sulphites: "Сульфиты",
+  lupin: "Люпин",
+  molluscs: "Моллюски",
 };
 
 // Лейблы для диетических бейджей (используется в карточках блюд)
 export const DIET_LABEL: Record<Diet, { short: string; full: string; color: string }> = {
-  'vegan': { short: 'VG', full: 'Веган — без животных продуктов', color: 'emerald' },
-  'gluten-free': { short: 'GF', full: 'Без глютена — <20 ppm', color: 'amber' },
-  'halal': { short: 'H', full: 'Халяль — сертификат СМР', color: 'blue' },
-  'sugar-free': { short: 'SF', full: 'Без сахара — подходит для СД1/СД2', color: 'purple' },
-  'nut-free': { short: 'NF', full: 'Без орехов — для анафилаксии', color: 'red' },
+  vegan: { short: "VG", full: "Веган — без животных продуктов", color: "emerald" },
+  "gluten-free": { short: "GF", full: "Без глютена — <20 ppm", color: "amber" },
+  halal: { short: "H", full: "Халяль — сертификат СМР", color: "blue" },
+  "sugar-free": { short: "SF", full: "Без сахара — подходит для СД1/СД2", color: "purple" },
+  "nut-free": { short: "NF", full: "Без орехов — для анафилаксии", color: "red" },
 };
 
 export interface Dish {
@@ -69,7 +63,7 @@ export interface Dish {
   description: string;
   image: string;
   video?: string;
-  station: 'cold' | 'hot' | 'desserts' | 'drinks' | 'show';
+  station: "cold" | "hot" | "desserts" | "drinks" | "show";
   format: Format[];
   tier: Tier[];
   pricePerGuest: number;
@@ -88,9 +82,9 @@ export interface AddOn {
   id: string;
   name: string;
   description: string;
-  priceType: 'fixed' | 'perGuest';
+  priceType: "fixed" | "perGuest";
   price: number;
-  category: 'service' | 'entertainment' | 'decoration' | 'tech';
+  category: "service" | "entertainment" | "decoration" | "tech";
   formats: Format[];
   image?: string;
 }
@@ -106,7 +100,7 @@ export interface Package {
   recommended?: boolean;
 }
 
-export type FactStatus = 'verified' | 'pending';
+export type FactStatus = "verified" | "pending";
 
 export interface TrustProofItem {
   id: string;
@@ -163,7 +157,7 @@ export interface NavItem {
 }
 
 export interface SocialLink {
-  platform: 'vk' | 'instagram' | 'telegram' | 'whatsapp' | 'youtube' | 'rutube';
+  platform: "vk" | "instagram" | "telegram" | "whatsapp" | "youtube" | "rutube";
   url: string;
   label: string;
 }

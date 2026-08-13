@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useRef, useCallback } from 'react';
-import { useReducedMotion } from 'framer-motion';
-import { motion } from 'framer-motion';
+import { useState, useRef, useCallback } from "react";
+import { useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
-type FrameShape = 'circle' | 'diamond' | 'rounded-xl';
+type FrameShape = "circle" | "diamond" | "rounded-xl";
 
 interface Props {
   posterSrc: string;
   videoSrc?: string;
   alt: string;
   caption?: string;
-  aspectRatio?: 'square' | 'video' | 'portrait';
+  aspectRatio?: "square" | "video" | "portrait";
   className?: string;
   overlay?: React.ReactNode;
   href?: string;
@@ -21,15 +21,15 @@ interface Props {
 }
 
 const RATIOS = {
-  square: 'aspect-square',
-  video: 'aspect-video',
-  portrait: 'aspect-[3/4]',
+  square: "aspect-square",
+  video: "aspect-video",
+  portrait: "aspect-[3/4]",
 };
 
-const FRAME_CLASSES: Record<FrameShape, string>= {
-  'rounded-xl': 'rounded-xl',
-  circle: 'rounded-full',
-  diamond: 'rounded-none', // clip-path handles shape
+const FRAME_CLASSES: Record<FrameShape, string> = {
+  "rounded-xl": "rounded-xl",
+  circle: "rounded-full",
+  diamond: "rounded-none", // clip-path handles shape
 };
 
 export default function PhotoAliveCard({
@@ -37,12 +37,12 @@ export default function PhotoAliveCard({
   videoSrc,
   alt,
   caption,
-  aspectRatio = 'square',
-  className = '',
+  aspectRatio = "square",
+  className = "",
   overlay,
   href,
-  frameShape = 'rounded-xl',
-  objectPosition = 'center 40%',
+  frameShape = "rounded-xl",
+  objectPosition = "center 40%",
   blurDataURL,
 }: Props) {
   const reducedMotion = useReducedMotion();
@@ -66,22 +66,22 @@ export default function PhotoAliveCard({
     }
   }, []);
 
-  const isDiamond = frameShape === 'diamond';
+  const isDiamond = frameShape === "diamond";
   const frameClass = FRAME_CLASSES[frameShape];
 
   const mediaStyle: React.CSSProperties = {
     objectPosition,
-    ...(isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : {}),
+    ...(isDiamond ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" } : {}),
   };
 
   const content = (
     <div
-      className={`relative overflow-hidden bg-card border border-line group ${frameClass} ${RATIOS[aspectRatio]} ${className}`}
+      className={`bg-card border-line group relative overflow-hidden border ${frameClass} ${RATIOS[aspectRatio]} ${className}`}
       onMouseEnter={onHoverStart}
       onMouseLeave={onHoverEnd}
       onTouchStart={videoSrc && !reducedMotion ? onHoverStart : undefined}
       onTouchEnd={videoSrc && !reducedMotion ? onHoverEnd : undefined}
-      style={isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : {}}
+      style={isDiamond ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" } : {}}
     >
       {/* Blur placeholder - tiny base64 data URL, no optimization needed */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -90,7 +90,7 @@ export default function PhotoAliveCard({
           src={blurDataURL}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover blur-[20px] scale-110"
+          className="absolute inset-0 h-full w-full scale-110 object-cover blur-[20px]"
           style={mediaStyle}
         />
       )}
@@ -100,7 +100,7 @@ export default function PhotoAliveCard({
         src={posterSrc}
         alt={alt}
         loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-350"
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-350"
         style={mediaStyle}
         animate={{ opacity: showVideo && videoLoaded ? 0 : 1 }}
         transition={{ duration: 0.35 }}
@@ -115,8 +115,8 @@ export default function PhotoAliveCard({
           loop
           playsInline
           preload="none"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-350"
-          onLoadedData={() =>setVideoLoaded(true)}
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-350"
+          onLoadedData={() => setVideoLoaded(true)}
           style={{
             ...mediaStyle,
             opacity: showVideo && videoLoaded ? 1 : 0,
@@ -133,29 +133,33 @@ export default function PhotoAliveCard({
             ...mediaStyle,
           }}
           whileHover={reducedMotion ? {} : { scale: 1.08 }}
-          transition={{ duration: 2.5, ease: 'easeOut' }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
           role="img"
           aria-label={alt}
         />
       )}
 
       {/* Gold frame accent for circle/diamond */}
-      {(frameShape === 'circle' || frameShape === 'diamond') && (
+      {(frameShape === "circle" || frameShape === "diamond") && (
         <div
-          className="absolute inset-0 border-[1px] border-gold/50 pointer-events-none"
-          style={isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : { borderRadius: '50%' }}
+          className="border-gold/50 pointer-events-none absolute inset-0 border-[1px]"
+          style={
+            isDiamond
+              ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }
+              : { borderRadius: "50%" }
+          }
         />
       )}
 
       {/* Overlay + Caption */}
       {overlay && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors duration-300">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/10">
           {overlay}
         </div>
       )}
       {caption && (
-        <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-          <p className="text-xs text-white font-medium">{caption}</p>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+          <p className="text-xs font-medium text-white">{caption}</p>
         </div>
       )}
     </div>
@@ -165,8 +169,8 @@ export default function PhotoAliveCard({
     return (
       <a
         href={href}
-        className="block focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        style={isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : {}}
+        className="focus-visible:ring-ring block focus-visible:ring-2 focus-visible:ring-offset-2"
+        style={isDiamond ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" } : {}}
       >
         {content}
       </a>
@@ -181,46 +185,50 @@ export function KenBurnsCard({
   src,
   alt,
   caption,
-  aspectRatio = 'square',
-  className = '',
-  frameShape = 'rounded-xl',
-  objectPosition = 'center 40%',
+  aspectRatio = "square",
+  className = "",
+  frameShape = "rounded-xl",
+  objectPosition = "center 40%",
 }: {
   src: string;
   alt: string;
   caption?: string;
-  aspectRatio?: 'square' | 'video' | 'portrait';
+  aspectRatio?: "square" | "video" | "portrait";
   className?: string;
   frameShape?: FrameShape;
   objectPosition?: string;
 }) {
-  const isDiamond = frameShape === 'diamond';
+  const isDiamond = frameShape === "diamond";
   const frameClass = FRAME_CLASSES[frameShape];
 
   return (
     <div
-      className={`relative overflow-hidden bg-card border border-line group ${frameClass} ${RATIOS[aspectRatio]} ${className}`}
-      style={isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : {}}
+      className={`bg-card border-line group relative overflow-hidden border ${frameClass} ${RATIOS[aspectRatio]} ${className}`}
+      style={isDiamond ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" } : {}}
     >
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-[4s] ease-out group-hover:scale-110"
         style={{
           backgroundImage: `url(${src})`,
           backgroundPosition: objectPosition,
-          ...(isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : {}),
+          ...(isDiamond ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" } : {}),
         }}
         role="img"
         aria-label={alt}
       />
-      {(frameShape === 'circle' || frameShape === 'diamond') && (
+      {(frameShape === "circle" || frameShape === "diamond") && (
         <div
-          className="absolute inset-0 border-[1px] border-gold/50 pointer-events-none"
-          style={isDiamond ? { clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' } : { borderRadius: '50%' }}
+          className="border-gold/50 pointer-events-none absolute inset-0 border-[1px]"
+          style={
+            isDiamond
+              ? { clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }
+              : { borderRadius: "50%" }
+          }
         />
       )}
       {caption && (
-        <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-          <p className="text-xs text-white font-medium">{caption}</p>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+          <p className="text-xs font-medium text-white">{caption}</p>
         </div>
       )}
     </div>

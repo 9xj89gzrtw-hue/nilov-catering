@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface LightboxImage {
   src: string;
@@ -12,7 +12,7 @@ interface LightboxImage {
 interface LightboxProps {
   images: LightboxImage[];
   initialIndex?: number;
-  onClose: () =>void;
+  onClose: () => void;
 }
 
 export default function Lightbox({ images, initialIndex = 0, onClose }: LightboxProps) {
@@ -20,32 +20,37 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  const next = useCallback(() =>setIndex(i =>(i + 1) % images.length), [images.length]);
-  const prev = useCallback(() =>setIndex(i =>(i - 1 + images.length) % images.length), [images.length]);
+  const next = useCallback(() => setIndex((i) => (i + 1) % images.length), [images.length]);
+  const prev = useCallback(
+    () => setIndex((i) => (i - 1 + images.length) % images.length),
+    [images.length]
+  );
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') next();
-      if (e.key === 'ArrowLeft') prev();
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
     };
-    document.addEventListener('keydown', handleKey);
+    document.addEventListener("keydown", handleKey);
     // Lock scroll
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     // Move focus into dialog
     setTimeout(() => closeBtnRef.current?.focus(), 50);
     return () => {
-      document.removeEventListener('keydown', handleKey);
-      document.body.style.overflow = '';
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
     };
   }, [onClose, next, prev]);
 
   // Focus trap
   const handleTab = useCallback((e: React.KeyboardEvent) => {
-    if (e.key !== 'Tab') return;
+    if (e.key !== "Tab") return;
     const dialog = dialogRef.current;
     if (!dialog) return;
-    const focusable = dialog.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])');
+    const focusable = dialog.querySelectorAll<HTMLElement>(
+      'button, [href], [tabindex]:not([tabindex="-1"])'
+    );
     if (focusable.length === 0) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -63,7 +68,7 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
   return (
     <div
       ref={dialogRef}
-      className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+      className="bg-background/95 fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-sm sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-label="Просмотр фотографии"
@@ -74,55 +79,61 @@ export default function Lightbox({ images, initialIndex = 0, onClose }: Lightbox
       <button
         ref={closeBtnRef}
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"
+        className="bg-card border-line text-foreground hover:bg-secondary touch-target absolute top-4 right-4 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border transition-colors"
         aria-label="Закрыть"
       >
-        <X className="w-6 h-6" aria-hidden="true" />
+        <X className="h-6 w-6" aria-hidden="true" />
       </button>
 
       {/* Previous button — only if more than 1 image */}
-      {images.length >1 && (
+      {images.length > 1 && (
         <button
-          onClick={(e) => { e.stopPropagation(); prev(); }}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"
+          onClick={(e) => {
+            e.stopPropagation();
+            prev();
+          }}
+          className="bg-card border-line text-foreground hover:bg-secondary touch-target absolute top-1/2 left-2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border transition-colors sm:left-4"
           aria-label="Предыдущая фотография"
         >
-          <ChevronLeft className="w-6 h-6" aria-hidden="true" />
+          <ChevronLeft className="h-6 w-6" aria-hidden="true" />
         </button>
       )}
 
       {/* Image + caption */}
       <figure
-        className="relative max-w-5xl max-h-[85vh] flex flex-col items-center"
-        onClick={(e) =>e.stopPropagation()}
+        className="relative flex max-h-[85vh] max-w-5xl flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
       >
         <img
           src={current.src}
           alt={current.alt}
-          className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+          className="max-h-[80vh] max-w-full rounded-lg object-contain shadow-2xl"
           fetchPriority="high"
         />
         {current.caption && (
-          <figcaption className="mt-4 text-center text-sm text-muted-foreground max-w-2xl">
+          <figcaption className="text-muted-foreground mt-4 max-w-2xl text-center text-sm">
             {current.caption}
-            {images.length >1 && (
-              <span className="ml-3 text-xs">·</span>
-            )}
-            {images.length >1 && (
-              <span className="ml-3 text-xs">{index + 1} / {images.length}</span>
+            {images.length > 1 && <span className="ml-3 text-xs">·</span>}
+            {images.length > 1 && (
+              <span className="ml-3 text-xs">
+                {index + 1} / {images.length}
+              </span>
             )}
           </figcaption>
         )}
       </figure>
 
       {/* Next button */}
-      {images.length >1 && (
+      {images.length > 1 && (
         <button
-          onClick={(e) => { e.stopPropagation(); next(); }}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-line text-foreground hover:bg-secondary transition-colors touch-target"
+          onClick={(e) => {
+            e.stopPropagation();
+            next();
+          }}
+          className="bg-card border-line text-foreground hover:bg-secondary touch-target absolute top-1/2 right-2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border transition-colors sm:right-4"
           aria-label="Следующая фотография"
         >
-          <ChevronRight className="w-6 h-6" aria-hidden="true" />
+          <ChevronRight className="h-6 w-6" aria-hidden="true" />
         </button>
       )}
     </div>

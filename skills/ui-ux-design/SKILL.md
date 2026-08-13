@@ -8,6 +8,7 @@
 ## When to Use This Skill
 
 Activate this skill when:
+
 - Building or designing web/mobile interfaces
 - Choosing colors, typography, or layout systems
 - Implementing responsive design (mobile-first)
@@ -21,12 +22,15 @@ Activate this skill when:
 ## Core Design Principles
 
 ### 1. Mobile-First Always
+
 - Start with 320px width (smallest phone)
 - Breakpoints: 576px (phone), 768px (tablet), 992px (laptop), 1200px (desktop)
 - Single-column default, expand only when space allows
 
 ### 2. Visual Hierarchy
+
 Guide user attention using:
+
 - **Size:** Larger = more important
 - **Color:** Bright/contrasting = attention
 - **Whitespace:** More space = emphasis
@@ -34,6 +38,7 @@ Guide user attention using:
 - **Contrast:** Dark on light or light on dark (4.5:1 minimum for text)
 
 ### 3. Whitespace is Your Weapon
+
 - Space elements in multiples of 8px (8, 16, 24, 32, 48, 64)
 - Breathing room between sections: 48-64px minimum
 - Padding inside cards: 24-32px
@@ -43,7 +48,9 @@ Guide user attention using:
 ## Quick Reference
 
 ### Color System
+
 Build a primary color scale (50-900):
+
 - **Primary:** Brand color (CTAs, links, active states)
 - **Neutrals:** Grays 50-900 (text, backgrounds, borders)
 - **Semantic:** Success (green), Error (red), Warning (yellow/orange)
@@ -51,6 +58,7 @@ Build a primary color scale (50-900):
 Tools: Huevy.app, Coolors.co, Adobe Color
 
 ### Typography Scale (8px baseline)
+
 ```
 text-xs:   12px / 16px line-height
 text-sm:   14px / 20px
@@ -66,17 +74,20 @@ text-5xl:  48px / 1 (hero titles)
 **Font pairing:** 2 fonts max (sans-serif for UI, optional serif for headings)
 
 ### Layout Patterns
+
 - **CSS Grid:** 2D layouts (page structure)
 - **Flexbox:** 1D layouts (component internals)
 - **Auto-fit grid:** `repeat(auto-fit, minmax(280px, 1fr))` (no media queries!)
 
 ### Micro-Interactions
+
 - **Hover:** Scale 1.05x (buttons feel clickable)
 - **Click:** Scale 0.95x (tactile feedback)
 - **Duration:** 0.2-0.3s max (keep it subtle)
 - **Animate only:** `transform` and `opacity` (GPU accelerated)
 
 ### Accessibility (WCAG 2.2)
+
 - **Text contrast:** 4.5:1 minimum (normal text), 3:1 (large text)
 - **UI components:** 3:1 contrast minimum
 - **Keyboard navigation:** Tab order logical, focus states visible (3:1 contrast)
@@ -87,6 +98,7 @@ text-5xl:  48px / 1 (hero titles)
 ## Shadcn/ui + Tailwind Stack
 
 ### Setup (Next.js)
+
 ```bash
 npx create-next-app@latest project-name --typescript --tailwind --app
 cd project-name
@@ -96,6 +108,7 @@ npx shadcn@latest init
 Choose: Style (Default), Base color (Blue or custom), CSS variables (Yes)
 
 ### Adding Components
+
 ```bash
 npx shadcn@latest add button
 npx shadcn@latest add card
@@ -106,6 +119,7 @@ npx shadcn@latest add calendar
 Components appear in `components/ui/` — you own the code, customize freely.
 
 ### Tailwind Best Practices
+
 - Use design tokens (not arbitrary values): `p-4` not `p-[17px]`
 - Responsive utilities: `w-full md:w-1/2 lg:w-1/3`
 - Dark mode: `dark:bg-gray-900 dark:text-white`
@@ -115,6 +129,7 @@ Components appear in `components/ui/` — you own the code, customize freely.
 ## Pre-Build Checklist
 
 Before writing code, confirm:
+
 - [ ] Color palette defined (primary + neutrals + semantic colors)
 - [ ] Typography scale chosen (6-8 sizes)
 - [ ] Component library picked (Shadcn + Tailwind)
@@ -128,12 +143,14 @@ Before writing code, confirm:
 ## Inspiration Sources
 
 **Study these products:**
+
 - Linear (linear.app) — Best keyboard-first UI, subtle animations
 - Stripe Dashboard — Clean data visualization, perfect spacing
 - Vercel — Minimalist, fast, modern gradients
 - Notion — Intuitive drag-and-drop, clear hierarchy
 
 **Tools:**
+
 - Figma (mockups before coding)
 - WebAIM Contrast Checker (accessibility)
 - Coolors/Huevy (color palettes)

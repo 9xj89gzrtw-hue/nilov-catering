@@ -12,7 +12,7 @@
 
 ## 1. Роль и метод
 
-Я оцениваю *производительность на бумаге* — то, как спецификация закладывает CWV-бюджеты,
+Я оцениваю _производительность на бумаге_ — то, как спецификация закладывает CWV-бюджеты,
 стратегию шрифтов/изображений/видео, gate-логику анимаций и методологию измерения.
 Код не читал (по задаче). Но именно потому, что оценивается спека, я предъявляю к ней
 инженерные требования: реалистичность заявленных метрик, внутренняя непротиворечивость
@@ -28,32 +28,32 @@ OR-контракт sticky). НО заявленные цели **LCP<1.2s / INP
 
 ## 2. Прочитано (исходники)
 
-| Файл | Строк | Что извлёк для CWV-критики |
-|---|---|---|
-| `04_BLOCKS.md` | 2275 (≈360 КБ) | блоки LCP/INP/CLS (B5/B6/B7/B11/B12/B13, D4/D7/D8), Preloader, Hero-video, Ken Burns, parallax, Lenis, видео-слой `lib/video.ts` 314–347, Hero-спец 352–491, Perf-бюджеты 464–467 |
-| `09_HERO_STORYBOARD.md` | 89 | motion-таблица, clip-path wipe, Preloader→Hero morph, LCP<1.2s benchmark, reduced-motion fallback |
-| `28_HEROCRITIC_LIVINGPHOTO.md` | 61 | вариант В (poster-LCP + subtle loop), баги #1–#9, баллы А 8.5 / Б 5.0 / В 9.0 |
-| `41_BUILD_CHECKLIST.md` | 168 | гейты сборки, Фаза 1 Hero-гейт «LCP<1.2s / INP<200ms / reduced-motion», финальный CWV «Good» |
-| `15_REPO_AUDIT.md` | 97 | стек (Next 16.2.10, framer-motion 12, lenis 1.3.25, @react-pdf/renderer, **gsap НЕТ**), тёмный legacy globals.css, ~40 компонентов |
-| `06_TOKENS.md` | 186 | шрифты (Cormorant/Inter/JetBrains Mono, next/font), motion tokens, reduced-motion/Lenis-гейт |
-| `01_VISUAL_DNA.md` | 117 | типографика (Cormorant H1 `clamp(2.5rem,5vw,4.5rem)`, `font-display:swap`+preload woff2), motion-language (Drinkit, Framer) |
-| `CRITIC_COMMISSION_13_FRONTEND.md` | 172 | контекст — архитектура 5.0/10, самореферентные «BUG закрыт» без доказательств |
+| Файл                               | Строк          | Что извлёк для CWV-критики                                                                                                                                                        |
+| ---------------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `04_BLOCKS.md`                     | 2275 (≈360 КБ) | блоки LCP/INP/CLS (B5/B6/B7/B11/B12/B13, D4/D7/D8), Preloader, Hero-video, Ken Burns, parallax, Lenis, видео-слой `lib/video.ts` 314–347, Hero-спец 352–491, Perf-бюджеты 464–467 |
+| `09_HERO_STORYBOARD.md`            | 89             | motion-таблица, clip-path wipe, Preloader→Hero morph, LCP<1.2s benchmark, reduced-motion fallback                                                                                 |
+| `28_HEROCRITIC_LIVINGPHOTO.md`     | 61             | вариант В (poster-LCP + subtle loop), баги #1–#9, баллы А 8.5 / Б 5.0 / В 9.0                                                                                                     |
+| `41_BUILD_CHECKLIST.md`            | 168            | гейты сборки, Фаза 1 Hero-гейт «LCP<1.2s / INP<200ms / reduced-motion», финальный CWV «Good»                                                                                      |
+| `15_REPO_AUDIT.md`                 | 97             | стек (Next 16.2.10, framer-motion 12, lenis 1.3.25, @react-pdf/renderer, **gsap НЕТ**), тёмный legacy globals.css, ~40 компонентов                                                |
+| `06_TOKENS.md`                     | 186            | шрифты (Cormorant/Inter/JetBrains Mono, next/font), motion tokens, reduced-motion/Lenis-гейт                                                                                      |
+| `01_VISUAL_DNA.md`                 | 117            | типографика (Cormorant H1 `clamp(2.5rem,5vw,4.5rem)`, `font-display:swap`+preload woff2), motion-language (Drinkit, Framer)                                                       |
+| `CRITIC_COMMISSION_13_FRONTEND.md` | 172            | контекст — архитектура 5.0/10, самореферентные «BUG закрыт» без доказательств                                                                                                     |
 
 ---
 
 ## 3. Сводная таблица оценок (0–10, строго)
 
-| # | Измерение CWV | Оценка | Ключевая претензия |
-|---|---|---|---|
-| 1 | Реалистичность **LCP<1.2s** | **5** | Достижимо только на fast-4G/лаб; на слабом 4G (сама спека B6/D4 признаёт) 120 КБ poster + VPS-TTFB + decode > 1.2s. Assert без квалификации сети. |
-| 2 | Реалистичность **INP<200ms** | **4** | Lenis ВКЛ по умолчанию на desktop (`04:158`) — известный INP-риск; магнитные hover + clip-path + десятки `useScroll`/`whileInView` (`04` ×54) на mid-tier. Бюджет измерен только для mobile/reduced-motion. |
-| 3 | Реалистичность **CLS<0.1** | **6** | `aspect-ratio`/резерв высоты — хорошо, НО динамические высоты (AnnouncementBar per-visit `04:114`, CookieBanner, OR-sticky padding `04:196`) — классические CLS-источники; `font-display:swap` без fallback-метрик = reflow H1. |
-| 4 | Стратегия **шрифтов** | **4** | `next/font` + ручной `preload woff2` (`06:71` vs `01:64`) — дубль/двойная загрузка; 3 семейства ×8 woff2; `swap` без `size-adjust`/fallback = CLS; нет `subsets:['cyrillic']`. |
-| 5 | Стратегия **изображений/видео** | **6** | Poster-LCP, `fetchpriority`, lazy — правильно; НО нет `preconnect` к origin постера/Rutube; Rutube IO-autoplay (`04:478`) противоречит D4 (нет autoplay на слабом `04:237`); preloader-overlay vs LCP (`09:64` vs `04:203`). |
-| 6 | Gate-логика анимаций / reduced-motion | **6** | В целом корректна (D8/B5/B6/B7/A8), НО противоречие: Lenis выключается то по `prefers-reduced-motion` (`04:158`), то по `pointer:coarse` (`41:22`); Lenis+Framer useScroll не сшиты (`06:148`). |
-| 7 | Методология измерения / assert | **3** | «assert в тестах» (`04:236`) = CI на быстрой машине; нет device/network-класса, нет RUM, нет лаб-профиля (Moto G). Универсальный assert нечестен. |
+| #   | Измерение CWV                         | Оценка | Ключевая претензия                                                                                                                                                                                                              |
+| --- | ------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Реалистичность **LCP<1.2s**           | **5**  | Достижимо только на fast-4G/лаб; на слабом 4G (сама спека B6/D4 признаёт) 120 КБ poster + VPS-TTFB + decode > 1.2s. Assert без квалификации сети.                                                                               |
+| 2   | Реалистичность **INP<200ms**          | **4**  | Lenis ВКЛ по умолчанию на desktop (`04:158`) — известный INP-риск; магнитные hover + clip-path + десятки `useScroll`/`whileInView` (`04` ×54) на mid-tier. Бюджет измерен только для mobile/reduced-motion.                     |
+| 3   | Реалистичность **CLS<0.1**            | **6**  | `aspect-ratio`/резерв высоты — хорошо, НО динамические высоты (AnnouncementBar per-visit `04:114`, CookieBanner, OR-sticky padding `04:196`) — классические CLS-источники; `font-display:swap` без fallback-метрик = reflow H1. |
+| 4   | Стратегия **шрифтов**                 | **4**  | `next/font` + ручной `preload woff2` (`06:71` vs `01:64`) — дубль/двойная загрузка; 3 семейства ×8 woff2; `swap` без `size-adjust`/fallback = CLS; нет `subsets:['cyrillic']`.                                                  |
+| 5   | Стратегия **изображений/видео**       | **6**  | Poster-LCP, `fetchpriority`, lazy — правильно; НО нет `preconnect` к origin постера/Rutube; Rutube IO-autoplay (`04:478`) противоречит D4 (нет autoplay на слабом `04:237`); preloader-overlay vs LCP (`09:64` vs `04:203`).    |
+| 6   | Gate-логика анимаций / reduced-motion | **6**  | В целом корректна (D8/B5/B6/B7/A8), НО противоречие: Lenis выключается то по `prefers-reduced-motion` (`04:158`), то по `pointer:coarse` (`41:22`); Lenis+Framer useScroll не сшиты (`06:148`).                                 |
+| 7   | Методология измерения / assert        | **3**  | «assert в тестах» (`04:236`) = CI на быстрой машине; нет device/network-класса, нет RUM, нет лаб-профиля (Moto G). Универсальный assert нечестен.                                                                               |
 
-**ИТОГОВЫЙ ВЕРДИКТ:** **6.0 / 10** (строго ≤ 9). Спека *производительность-осознанна*, но заявленные
+**ИТОГОВЫЙ ВЕРДИКТ:** **6.0 / 10** (строго ≤ 9). Спека _производительность-осознанна_, но заявленные
 CWV-цели **не обоснованы как универсально достижимые** и содержат 15+ документируемых
 противоречий/пропусков. «Опережает код» (`41:21`) не делает метрики реалистичными.
 
@@ -121,8 +121,9 @@ Lenis (`04:158`). Когда Lenis hijack-скролл, нативный scroll-
 (читает `window.scrollY`) НЕ обновляется, ИЛИ оба подписаны на scroll → двойная main-thread работа
 на каждый скролл. В спеке нет моста `lenis.on('scroll', (e)=> ScrollTrigger/MotionValue.update())`.
 → Альтернатива: явно задать `lenis.on('scroll', ...)` bridge к Framer `useScroll` (через `useMotionValue`
-+ `scrollTo`), либо отказаться от Lenis и использовать нативный скролл + CSS scroll-driven animations
-(`animation-timeline: scroll()`) — дешевле для INP.
+
+- `scrollTo`), либо отказаться от Lenis и использовать нативный скролл + CSS scroll-driven animations
+  (`animation-timeline: scroll()`) — дешевле для INP.
 
 **P8. [ВЫС] Rutube/Hero IO-autoplay противоречит D4 (нет autoplay на слабом соединении).**
 `04_BLOCKS.md:237` (D4): ниже фолда «никакого autoplay» на `effectiveType==='4g'/saveData/deviceMemory<=4`,
@@ -207,8 +208,9 @@ Moto G (lab), нет RUM (CrUX/field). Универсальный assert соз�
 - [x] **Язык — русский?** Да.
 
 Контр-проверка собственных утверждений:
+
 - Я утверждаю «gsap НЕТ, значит Framer useScroll тяжелее» — это оценка, не блокирующий баг, поэтому
-  НЕ вынес в bug-list (корректно). 
+  НЕ вынес в bug-list (корректно).
 - Я утверждаю «120 КБ on слабом 4G > 1.2s» — это зависит от скорости; поэтому в P1 дал альтернативу
   (уменьшить до ≤60–80 КБ + inline-LQIP), а не голословно.
 - Я не нашёл в `04` явного `preconnect` — проверил grep'ом по `04`/`06`/`01` (нет совпадений) → P9 обоснован.

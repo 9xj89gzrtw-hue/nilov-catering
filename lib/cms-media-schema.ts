@@ -12,7 +12,7 @@ export interface CMSRule {
 
 /**
  * CMS Media Schema — NiloV Catering
- * 
+ *
  * For Sanity.io (free tier) or Strapi (self-hosted)
  * All media types include blurDataURL for Next.js Image blur-up
  * All assets require `status: 'verified' | 'pending'` for FactGate
@@ -61,248 +61,299 @@ export const baseMediaFields = `
  * Dish media (photo + optional hover video)
  */
 export const dishMediaSchema = {
-  name: 'dishMedia',
-  title: 'Блюдо: фото + видео',
-  type: 'object',
+  name: "dishMedia",
+  title: "Блюдо: фото + видео",
+  type: "object",
   fields: [
     {
-      name: 'photo',
-      type: 'image',
-      title: 'Фото блюда (обязательно)',
-      options: { hotspot: true, accept: 'image/*' },
+      name: "photo",
+      type: "image",
+      title: "Фото блюда (обязательно)",
+      options: { hotspot: true, accept: "image/*" },
       fields: [
-              { name: 'alt', type: 'string', title: 'Alt text', validation: (Rule: CMSRule) => Rule.required().min(10).max(125) },
-              { name: 'blurDataURL', type: 'string', title: 'Blur Data URL (auto)', readOnly: true },
-              { name: 'status', type: 'string', options: { list: ['verified', 'pending'] }, initialValue: 'pending' },
-              { name: 'disclaimer', type: 'string', hidden: ({ parent }: { parent?: { status?: string } }) => parent?.status === 'verified' }
-            ]
+        {
+          name: "alt",
+          type: "string",
+          title: "Alt text",
+          validation: (Rule: CMSRule) => Rule.required().min(10).max(125),
+        },
+        { name: "blurDataURL", type: "string", title: "Blur Data URL (auto)", readOnly: true },
+        {
+          name: "status",
+          type: "string",
+          options: { list: ["verified", "pending"] },
+          initialValue: "pending",
+        },
+        {
+          name: "disclaimer",
+          type: "string",
+          hidden: ({ parent }: { parent?: { status?: string } }) => parent?.status === "verified",
+        },
+      ],
     },
     {
-      name: 'hoverVideo',
-      type: 'file',
-      title: 'Hover-видео (5s loop, WebM, <500KB)',
-      description: 'Опционально. Автовоспроизведение при наведении.',
-      options: { accept: 'video/webm,video/mp4' },
+      name: "hoverVideo",
+      type: "file",
+      title: "Hover-видео (5s loop, WebM, <500KB)",
+      description: "Опционально. Автовоспроизведение при наведении.",
+      options: { accept: "video/webm,video/mp4" },
       fields: [
-        { name: 'poster', type: 'image', title: 'Постер кадр', options: { hotspot: true } },
-        { name: 'duration', type: 'number', title: 'Длительность (сек)', initialValue: 5 },
-        { name: 'blurDataURL', type: 'string', readOnly: true },
-        { name: 'status', type: 'string', options: { list: ['verified', 'pending'] }, initialValue: 'pending' },
-        { name: 'disclaimer', type: 'string' }
-      ]
+        { name: "poster", type: "image", title: "Постер кадр", options: { hotspot: true } },
+        { name: "duration", type: "number", title: "Длительность (сек)", initialValue: 5 },
+        { name: "blurDataURL", type: "string", readOnly: true },
+        {
+          name: "status",
+          type: "string",
+          options: { list: ["verified", "pending"] },
+          initialValue: "pending",
+        },
+        { name: "disclaimer", type: "string" },
+      ],
     },
     {
-      name: 'frameShape',
-      type: 'string',
-      title: 'Форма рамки',
-      options: { list: ['circle', 'diamond', 'rounded-xl'], layout: 'radio' },
-      initialValue: 'circle'
+      name: "frameShape",
+      type: "string",
+      title: "Форма рамки",
+      options: { list: ["circle", "diamond", "rounded-xl"], layout: "radio" },
+      initialValue: "circle",
     },
     {
-      name: 'objectPosition',
-      type: 'string',
-      title: 'Object position (focus point)',
+      name: "objectPosition",
+      type: "string",
+      title: "Object position (focus point)",
       description: 'Напр. "center 40%" — фокус на тарелке, не на крае',
-      initialValue: 'center 40%'
-    }
-  ]
+      initialValue: "center 40%",
+    },
+  ],
 };
 
 /**
  * Event/Case study media
  */
 export const eventMediaSchema = {
-  name: 'eventMedia',
-  title: 'Событие/Кейс',
-  type: 'object',
+  name: "eventMedia",
+  title: "Событие/Кейс",
+  type: "object",
   fields: [
     {
-      name: 'coverImage',
-      type: 'image',
-      title: 'Обложка (4:3 или 3:2)',
+      name: "coverImage",
+      type: "image",
+      title: "Обложка (4:3 или 3:2)",
       options: { hotspot: true },
-      fields: [/* baseMediaFields */]
+      fields: [/* baseMediaFields */],
     },
     {
-      name: 'gallery',
-      type: 'array',
-      title: 'Галерея (6-12 фото)',
-      of: [{ type: 'image', options: { hotspot: true }, fields: [/* baseMediaFields */] }]
+      name: "gallery",
+      type: "array",
+      title: "Галерея (6-12 фото)",
+      of: [{ type: "image", options: { hotspot: true }, fields: [/* baseMediaFields */] }],
     },
     {
-      name: 'recapVideo',
-      type: 'file',
-      title: 'Видео-рекап (8-12s loop)',
-      options: { accept: 'video/webm,video/mp4' },
+      name: "recapVideo",
+      type: "file",
+      title: "Видео-рекап (8-12s loop)",
+      options: { accept: "video/webm,video/mp4" },
       fields: [
-        { name: 'poster', type: 'image', options: { hotspot: true } },
-        { name: 'duration', type: 'number', initialValue: 10 },
-        { name: 'blurDataURL', type: 'string', readOnly: true }
-      ]
-    }
-  ]
+        { name: "poster", type: "image", options: { hotspot: true } },
+        { name: "duration", type: "number", initialValue: 10 },
+        { name: "blurDataURL", type: "string", readOnly: true },
+      ],
+    },
+  ],
 };
 
 /**
  * Hero video (homepage + event pages)
  */
 export const heroVideoSchema = {
-  name: 'heroVideo',
-  title: 'Hero видео',
-  type: 'object',
+  name: "heroVideo",
+  title: "Hero видео",
+  type: "object",
   fields: [
     {
-      name: 'webm',
-      type: 'file',
-      title: 'WebM (VP9, 10-15s, <5MB)',
-      options: { accept: 'video/webm' },
-      validation: (Rule: CMSRule) => Rule.required()
+      name: "webm",
+      type: "file",
+      title: "WebM (VP9, 10-15s, <5MB)",
+      options: { accept: "video/webm" },
+      validation: (Rule: CMSRule) => Rule.required(),
     },
     {
-      name: 'mp4',
-      type: 'file',
-      title: 'MP4 Fallback (H.264)',
-      options: { accept: 'video/mp4' }
+      name: "mp4",
+      type: "file",
+      title: "MP4 Fallback (H.264)",
+      options: { accept: "video/mp4" },
     },
     {
-      name: 'poster',
-      type: 'image',
-      title: 'Постер (первый кадр, 1920×1080 WebP)',
+      name: "poster",
+      type: "image",
+      title: "Постер (первый кадр, 1920×1080 WebP)",
       options: { hotspot: true },
       fields: [/* baseMediaFields */],
-      validation: (Rule: CMSRule) => Rule.required()
+      validation: (Rule: CMSRule) => Rule.required(),
     },
     {
-      name: 'duration',
-      type: 'number',
-      title: 'Длительность (сек)',
+      name: "duration",
+      type: "number",
+      title: "Длительность (сек)",
       initialValue: 12,
-      validation: (Rule: CMSRule) => Rule.min(8).max(20)
+      validation: (Rule: CMSRule) => Rule.min(8).max(20),
     },
     {
-      name: 'isSeamlessLoop',
-      type: 'boolean',
-      title: 'Бесшовный цикл (последний кадр = первый)',
-      initialValue: true
-    }
-  ]
+      name: "isSeamlessLoop",
+      type: "boolean",
+      title: "Бесшовный цикл (последний кадр = первый)",
+      initialValue: true,
+    },
+  ],
 };
 
 /**
  * Client logos for TrustBar
  */
 export const clientLogoSchema = {
-  name: 'clientLogo',
-  title: 'Логотип клиента',
-  type: 'object',
+  name: "clientLogo",
+  title: "Логотип клиента",
+  type: "object",
   fields: [
-    { name: 'name', type: 'string', title: 'Название', validation: (Rule: CMSRule) => Rule.required() },
-    { 
-      name: 'logo', 
-      type: 'image', 
-      title: 'SVG логотип (предпочтительно) или PNG', 
-      options: { hotspot: true, accept: 'image/svg+xml,image/png' },
-      fields: [/* baseMediaFields */]
+    {
+      name: "name",
+      type: "string",
+      title: "Название",
+      validation: (Rule: CMSRule) => Rule.required(),
     },
-    { name: 'href', type: 'url', title: 'Сайт клиента (опционально)' },
-    { 
-      name: 'status', 
-      type: 'string', 
-      options: { list: ['verified', 'pending'] }, 
-      initialValue: 'pending' 
+    {
+      name: "logo",
+      type: "image",
+      title: "SVG логотип (предпочтительно) или PNG",
+      options: { hotspot: true, accept: "image/svg+xml,image/png" },
+      fields: [/* baseMediaFields */],
     },
-    { name: 'disclaimer', type: 'string', hidden: ({ parent }: { parent?: { status?: string } }) => parent?.status === 'verified' }
-  ]
+    { name: "href", type: "url", title: "Сайт клиента (опционально)" },
+    {
+      name: "status",
+      type: "string",
+      options: { list: ["verified", "pending"] },
+      initialValue: "pending",
+    },
+    {
+      name: "disclaimer",
+      type: "string",
+      hidden: ({ parent }: { parent?: { status?: string } }) => parent?.status === "verified",
+    },
+  ],
 };
 
 /**
  * Team member
  */
 export const teamMemberSchema = {
-  name: 'teamMember',
-  title: 'Член команды',
-  type: 'document',
+  name: "teamMember",
+  title: "Член команды",
+  type: "document",
   fields: [
-    { name: 'name', type: 'string', title: 'Имя', validation: (Rule: CMSRule) => Rule.required() },
-    { name: 'role', type: 'string', title: 'Роль (Шеф, Менеджер, Парикмахер...)' },
-    { 
-      name: 'photo', 
-      type: 'image', 
-      title: 'Портрет (3:4)', 
+    { name: "name", type: "string", title: "Имя", validation: (Rule: CMSRule) => Rule.required() },
+    { name: "role", type: "string", title: "Роль (Шеф, Менеджер, Парикмахер...)" },
+    {
+      name: "photo",
+      type: "image",
+      title: "Портрет (3:4)",
       options: { hotspot: true },
-      fields: [/* baseMediaFields */]
+      fields: [/* baseMediaFields */],
     },
-    { name: 'bio', type: 'text', title: 'Краткое био' },
-    { name: 'order', type: 'number', title: 'Порядок сортировки' }
-  ]
+    { name: "bio", type: "text", title: "Краткое био" },
+    { name: "order", type: "number", title: "Порядок сортировки" },
+  ],
 };
 
 /**
  * Kitchen/Process photo
  */
 export const processPhotoSchema = {
-  name: 'processPhoto',
-  title: 'Процесс/Кухня',
-  type: 'object',
+  name: "processPhoto",
+  title: "Процесс/Кухня",
+  type: "object",
   fields: [
-    { 
-      name: 'image', 
-      type: 'image', 
-      title: 'Фото (4:3)', 
+    {
+      name: "image",
+      type: "image",
+      title: "Фото (4:3)",
       options: { hotspot: true },
-      fields: [/* baseMediaFields */]
+      fields: [/* baseMediaFields */],
     },
-    { name: 'caption', type: 'string', title: 'Подпись' },
-    { name: 'category', type: 'string', options: { list: ['prep', 'cooking', 'plating', 'equipment', 'team', 'venue'] }}
-  ]
+    { name: "caption", type: "string", title: "Подпись" },
+    {
+      name: "category",
+      type: "string",
+      options: { list: ["prep", "cooking", "plating", "equipment", "team", "venue"] },
+    },
+  ],
 };
 
 /**
  * Video testimonial
  */
 export const videoTestimonialSchema = {
-  name: 'videoTestimonial',
-  title: 'Видео-отзыв',
-  type: 'object',
+  name: "videoTestimonial",
+  title: "Видео-отзыв",
+  type: "object",
   fields: [
-    { name: 'clientName', type: 'string', title: 'Имя клиента', validation: (Rule: CMSRule) => Rule.required() },
-    { name: 'eventType', type: 'string', title: 'Тип события' },
-    { 
-      name: 'video', 
-      type: 'file', 
-      title: 'Видео (WebM/MP4)', 
-      options: { accept: 'video/webm,video/mp4' }
+    {
+      name: "clientName",
+      type: "string",
+      title: "Имя клиента",
+      validation: (Rule: CMSRule) => Rule.required(),
     },
-    { 
-      name: 'poster', 
-      type: 'image', 
-      title: 'Постер', 
-      options: { hotspot: true }
+    { name: "eventType", type: "string", title: "Тип события" },
+    {
+      name: "video",
+      type: "file",
+      title: "Видео (WebM/MP4)",
+      options: { accept: "video/webm,video/mp4" },
     },
-    { name: 'transcript', type: 'text', title: 'Транскрипт (обязательно для a11y)', validation: (Rule: CMSRule) => Rule.required() },
-    { 
-      name: 'status', 
-      type: 'string', 
-      options: { list: ['verified', 'pending'] }, 
-      initialValue: 'pending' 
-    }
-  ]
+    {
+      name: "poster",
+      type: "image",
+      title: "Постер",
+      options: { hotspot: true },
+    },
+    {
+      name: "transcript",
+      type: "text",
+      title: "Транскрипт (обязательно для a11y)",
+      validation: (Rule: CMSRule) => Rule.required(),
+    },
+    {
+      name: "status",
+      type: "string",
+      options: { list: ["verified", "pending"] },
+      initialValue: "pending",
+    },
+  ],
 };
 
 /**
  * Seasonal campaign
  */
 export const seasonalMediaSchema = {
-  name: 'seasonalMedia',
-  title: 'Сезонная кампания',
-  type: 'object',
+  name: "seasonalMedia",
+  title: "Сезонная кампания",
+  type: "object",
   fields: [
-    { name: 'season', type: 'string', options: { list: ['newyear', 'maslenitsa', 'spring', 'summer', 'autumn', 'wedding'] }},
-    { name: 'hero', type: 'image', title: 'Геройское фото/видео (16:9)', options: { hotspot: true }},
-    { name: 'dishes', type: 'array', of: [{ type: 'reference', to: [{ type: 'dish' }]}] },
-    { name: 'announcement', type: 'string' },
-    { name: 'deadline', type: 'date', title: 'Дедлайн бронирования' }
-  ]
+    {
+      name: "season",
+      type: "string",
+      options: { list: ["newyear", "maslenitsa", "spring", "summer", "autumn", "wedding"] },
+    },
+    {
+      name: "hero",
+      type: "image",
+      title: "Геройское фото/видео (16:9)",
+      options: { hotspot: true },
+    },
+    { name: "dishes", type: "array", of: [{ type: "reference", to: [{ type: "dish" }] }] },
+    { name: "announcement", type: "string" },
+    { name: "deadline", type: "date", title: "Дедлайн бронирования" },
+  ],
 };
 
 // ============================================================================

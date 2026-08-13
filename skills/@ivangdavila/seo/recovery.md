@@ -4,15 +4,15 @@ Recovery starts with classification. The shape of the loss names the cause faste
 
 ## Classify the Shape First
 
-| Shape of the loss | Most likely cause | First check |
-|---|---|---|
-| One page, one query cluster | Intent shift, a stronger competitor, or cannibalization from your own new page | Search the query; look for a newer URL of yours in GSC |
-| One page, all its queries, overnight | Page-level: noindex, canonical flip, 404, redirect, template change | URL Inspection → Google-selected canonical and indexing status |
-| Whole site, single day, total | Robots.txt, sitewide noindex, DNS/hosting, HTTPS failure, manual action | Fetch robots.txt live; GSC Manual Actions; server logs for Googlebot 5xx |
-| Whole site, gradual over 1-3 weeks | Core update rollout | Drop dates vs Google's published update timeline |
-| Whole site, impressions flat, clicks down | SERP layout change: AI Overview, ads, packs above you | Compare CTR at unchanged average position; look at the live SERP |
-| Category of pages only | Template or quality reassessment of that page type | Compare that template's pages against the ones that held |
-| Anything else | Verify the data before treating it as SEO | Year-over-year comparison; analytics tag and property integrity |
+| Shape of the loss                         | Most likely cause                                                              | First check                                                              |
+| ----------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| One page, one query cluster               | Intent shift, a stronger competitor, or cannibalization from your own new page | Search the query; look for a newer URL of yours in GSC                   |
+| One page, all its queries, overnight      | Page-level: noindex, canonical flip, 404, redirect, template change            | URL Inspection → Google-selected canonical and indexing status           |
+| Whole site, single day, total             | Robots.txt, sitewide noindex, DNS/hosting, HTTPS failure, manual action        | Fetch robots.txt live; GSC Manual Actions; server logs for Googlebot 5xx |
+| Whole site, gradual over 1-3 weeks        | Core update rollout                                                            | Drop dates vs Google's published update timeline                         |
+| Whole site, impressions flat, clicks down | SERP layout change: AI Overview, ads, packs above you                          | Compare CTR at unchanged average position; look at the live SERP         |
+| Category of pages only                    | Template or quality reassessment of that page type                             | Compare that template's pages against the ones that held                 |
+| Anything else                             | Verify the data before treating it as SEO                                      | Year-over-year comparison; analytics tag and property integrity          |
 
 ## Core Updates
 
@@ -27,15 +27,15 @@ Recovery starts with classification. The shape of the loss names the cause faste
 
 GSC → Security & Manual Actions. Types you will actually see, with the fix that ends them:
 
-| Action | Meaning | Fix |
-|---|---|---|
-| Unnatural links to your site | Paid, exchanged, or scaled inbound links | Remove what you can, disavow the rest at domain level, document every attempt |
-| Unnatural links from your site | Selling links or unmarked paid outbound links | Remove or add `rel="sponsored"`/`nofollow` |
-| Thin content with little or no added value | Doorway pages, scraped or spun content, thin affiliate pages | Delete or genuinely rebuild; consolidation is not enough if the intent was scale |
-| Pure spam | Automated gibberish, cloaking, scraped content | Full remediation; expect a long road |
-| User-generated spam | Spam in comments, forums, profiles | Clean, then moderate: nofollow UGC links, approval queues, rate limits |
-| Site reputation abuse | Third-party content published on your domain to trade on your ranking | Remove or noindex the hosted sections; first-party oversight does not exempt it under the policy as enforced since 2024 |
-| Cloaking / sneaky redirects | Different content or destination for Googlebot vs users | Remove the branching; verify with URL Inspection's rendered HTML |
+| Action                                     | Meaning                                                               | Fix                                                                                                                     |
+| ------------------------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Unnatural links to your site               | Paid, exchanged, or scaled inbound links                              | Remove what you can, disavow the rest at domain level, document every attempt                                           |
+| Unnatural links from your site             | Selling links or unmarked paid outbound links                         | Remove or add `rel="sponsored"`/`nofollow`                                                                              |
+| Thin content with little or no added value | Doorway pages, scraped or spun content, thin affiliate pages          | Delete or genuinely rebuild; consolidation is not enough if the intent was scale                                        |
+| Pure spam                                  | Automated gibberish, cloaking, scraped content                        | Full remediation; expect a long road                                                                                    |
+| User-generated spam                        | Spam in comments, forums, profiles                                    | Clean, then moderate: nofollow UGC links, approval queues, rate limits                                                  |
+| Site reputation abuse                      | Third-party content published on your domain to trade on your ranking | Remove or noindex the hosted sections; first-party oversight does not exempt it under the policy as enforced since 2024 |
+| Cloaking / sneaky redirects                | Different content or destination for Googlebot vs users               | Remove the branching; verify with URL Inspection's rendered HTML                                                        |
 
 Reconsideration request structure — Google reads these by hand, so write for a human:
 
@@ -71,10 +71,10 @@ All three are enforceable as manual actions and as algorithmic suppression. The 
 
 ## Recovery Traps
 
-| Trap | Why it fails | Do instead |
-|---|---|---|
-| Changing everything at once after a drop | You lose attribution and cannot learn | One hypothesis per change window, logged with dates |
-| Disavowing after a core update | Core updates are not link penalties; you cut real equity | Disavow only with a manual action naming links or a clear spam attack |
-| Reading day-to-day rank fluctuation as recovery | Daily volatility is normal and larger than most fixes | Compare 28-day windows against the same window last year |
-| Waiting for a "recovery update" and shipping nothing | Nothing is recomputed for a site that did not change | Improve the comparison, then wait |
-| Republishing dates to look fresh | Date-only changes are detectable and treated as deceptive | Update the content, then the date |
+| Trap                                                 | Why it fails                                              | Do instead                                                            |
+| ---------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- |
+| Changing everything at once after a drop             | You lose attribution and cannot learn                     | One hypothesis per change window, logged with dates                   |
+| Disavowing after a core update                       | Core updates are not link penalties; you cut real equity  | Disavow only with a manual action naming links or a clear spam attack |
+| Reading day-to-day rank fluctuation as recovery      | Daily volatility is normal and larger than most fixes     | Compare 28-day windows against the same window last year              |
+| Waiting for a "recovery update" and shipping nothing | Nothing is recomputed for a site that did not change      | Improve the comparison, then wait                                     |
+| Republishing dates to look fresh                     | Date-only changes are detectable and treated as deceptive | Update the content, then the date                                     |

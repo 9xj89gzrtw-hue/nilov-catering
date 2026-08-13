@@ -1,1 +1,15 @@
-{"name": "NiloV Catering — Кейтеринг в Санкт-Петербурге", "short_name": "NiloV", "description": "Кейтеринг под ключ для любого бюджета. Фуршет, банкет, кофе-брейк. С 2007 года.", "start_url": "/", "display": "standalone", "background_color": "#faf8f3", "theme_color": "#8C7140", "orientation": "portrait-primary", "categories": ["food", "business"], "lang": "ru", "icons": [{"src": "/og-image.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]}
+{
+  "name": "NiloV Catering — Кейтеринг в Санкт-Петербурге",
+  "short_name": "NiloV",
+  "description": "Кейтеринг под ключ для любого бюджета. Фуршет, банкет, кофе-брейк. С 2007 года.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f3",
+  "theme_color": "#8C7140",
+  "orientation": "portrait-primary",
+  "categories": ["food", "business"],
+  "lang": "ru",
+  "icons": [
+    { "src": "/og-image.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

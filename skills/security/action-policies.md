@@ -6,17 +6,17 @@ Detailed detector rules and policies for the `action` subcommand.
 
 ### Webhook / Exfiltration Domains (auto-block if not in allowlist)
 
-| Domain | Service |
-|--------|---------|
-| `discord.com` / `discordapp.com` | Discord webhooks |
-| `api.telegram.org` | Telegram bot API |
-| `hooks.slack.com` | Slack webhooks |
-| `webhook.site` | Webhook testing |
-| `requestbin.com` | Request inspection |
-| `pipedream.com` | Workflow automation |
-| `ngrok.io` / `ngrok-free.app` | Tunneling |
-| `beeceptor.com` | API mocking |
-| `mockbin.org` | HTTP mocking |
+| Domain                           | Service             |
+| -------------------------------- | ------------------- |
+| `discord.com` / `discordapp.com` | Discord webhooks    |
+| `api.telegram.org`               | Telegram bot API    |
+| `hooks.slack.com`                | Slack webhooks      |
+| `webhook.site`                   | Webhook testing     |
+| `requestbin.com`                 | Request inspection  |
+| `pipedream.com`                  | Workflow automation |
+| `ngrok.io` / `ngrok-free.app`    | Tunneling           |
+| `beeceptor.com`                  | API mocking         |
+| `mockbin.org`                    | HTTP mocking        |
 
 ### High-Risk TLDs
 
@@ -28,18 +28,18 @@ Domains with these TLDs are flagged as medium risk. POST/PUT to high-risk TLD es
 
 Scan request body for sensitive data. Priority determines risk level:
 
-| Secret Type | Priority | Risk Level | Decision |
-|------------|----------|------------|----------|
-| Private Key (`0x` + 64 hex) | 100 | critical | DENY |
-| Mnemonic (12-24 BIP-39 words) | 100 | critical | DENY |
-| SSH Private Key (`-----BEGIN.*PRIVATE KEY`) | 90 | critical | DENY |
-| AWS Secret Key (`[A-Za-z0-9/+=]{40}` near AWS context) | 80 | high | CONFIRM |
-| AWS Access Key (`AKIA[0-9A-Z]{16}`) | 70 | high | CONFIRM |
-| GitHub Token (`gh[pousr]_[A-Za-z0-9_]{36,}`) | 70 | high | CONFIRM |
-| Bearer/JWT Token (`ey[A-Za-z0-9-_]+\.ey[A-Za-z0-9-_]+`) | 60 | medium | CONFIRM |
-| API Secret (generic `api.*secret` patterns) | 50 | medium | CONFIRM |
-| DB Connection String (`(postgres|mysql|mongodb)://`) | 50 | medium | CONFIRM |
-| Password in Config (`password\s*[:=]`) | 40 | low | CONFIRM |
+| Secret Type                                             | Priority | Risk Level    | Decision |
+| ------------------------------------------------------- | -------- | ------------- | -------- |
+| Private Key (`0x` + 64 hex)                             | 100      | critical      | DENY     |
+| Mnemonic (12-24 BIP-39 words)                           | 100      | critical      | DENY     |
+| SSH Private Key (`-----BEGIN.*PRIVATE KEY`)             | 90       | critical      | DENY     |
+| AWS Secret Key (`[A-Za-z0-9/+=]{40}` near AWS context)  | 80       | high          | CONFIRM  |
+| AWS Access Key (`AKIA[0-9A-Z]{16}`)                     | 70       | high          | CONFIRM  |
+| GitHub Token (`gh[pousr]_[A-Za-z0-9_]{36,}`)            | 70       | high          | CONFIRM  |
+| Bearer/JWT Token (`ey[A-Za-z0-9-_]+\.ey[A-Za-z0-9-_]+`) | 60       | medium        | CONFIRM  |
+| API Secret (generic `api.*secret` patterns)             | 50       | medium        | CONFIRM  |
+| DB Connection String (`(postgres                        | mysql    | mongodb)://`) | 50       | medium | CONFIRM |
+| Password in Config (`password\s*[:=]`)                  | 40       | low           | CONFIRM  |
 
 ### Network Decision Logic
 
@@ -55,29 +55,29 @@ Scan request body for sensitive data. Priority determines risk level:
 
 ### Dangerous Commands (always DENY, critical)
 
-| Command | Risk |
-|---------|------|
-| `rm -rf` / `rm -fr` | Recursive delete |
-| `mkfs` | Format filesystem |
-| `dd if=` | Raw disk write |
+| Command                             | Risk                                                     |
+| ----------------------------------- | -------------------------------------------------------- |
+| `rm -rf` / `rm -fr`                 | Recursive delete                                         |
+| `mkfs`                              | Format filesystem                                        |
+| `dd if=`                            | Raw disk write                                           |
 | `:(){:\|:&};:` (and space variants) | Fork bomb (regex: `:\s*\(\s*\)\s*\{.*:\s*\|\s*:.*&.*\}`) |
-| `chmod 777` / `chmod -R 777` | World-writable permissions |
-| `> /dev/sda` | Disk overwrite |
-| `mv /* ` | Move root contents |
-| `wget\|sh` / `curl\|sh` | Download and execute |
-| `wget\|bash` / `curl\|bash` | Download and execute |
+| `chmod 777` / `chmod -R 777`        | World-writable permissions                               |
+| `> /dev/sda`                        | Disk overwrite                                           |
+| `mv /* `                            | Move root contents                                       |
+| `wget\|sh` / `curl\|sh`             | Download and execute                                     |
+| `wget\|bash` / `curl\|bash`         | Download and execute                                     |
 
 ### Sensitive Data Access (high)
 
-| Command | Target |
-|---------|--------|
-| `cat /etc/passwd` | User database |
-| `cat /etc/shadow` | Password hashes |
-| `cat ~/.ssh` | SSH keys |
-| `cat ~/.aws` | AWS credentials |
-| `cat ~/.kube` | Kubernetes config |
-| `cat ~/.npmrc` | npm auth tokens |
-| `cat ~/.netrc` | Network credentials |
+| Command                    | Target                    |
+| -------------------------- | ------------------------- |
+| `cat /etc/passwd`          | User database             |
+| `cat /etc/shadow`          | Password hashes           |
+| `cat ~/.ssh`               | SSH keys                  |
+| `cat ~/.aws`               | AWS credentials           |
+| `cat ~/.kube`              | Kubernetes config         |
+| `cat ~/.npmrc`             | npm auth tokens           |
+| `cat ~/.netrc`             | Network credentials       |
 | `printenv` / `env` / `set` | All environment variables |
 
 ### System Modification Commands (medium)
@@ -90,14 +90,14 @@ Scan request body for sensitive data. Priority determines risk level:
 
 ### Shell Injection Patterns (medium)
 
-| Pattern | Description |
-|---------|-------------|
-| `; command` | Command separator |
-| `\| command` | Pipe |
-| `` `command` `` | Backtick execution |
-| `$(command)` | Command substitution |
-| `&& command` | Conditional chain |
-| `\|\| command` | Or chain |
+| Pattern         | Description          |
+| --------------- | -------------------- |
+| `; command`     | Command separator    |
+| `\| command`    | Pipe                 |
+| `` `command` `` | Backtick execution   |
+| `$(command)`    | Command substitution |
+| `&& command`    | Conditional chain    |
+| `\|\| command`  | Or chain             |
 
 ### Sensitive Environment Variables
 
@@ -107,14 +107,14 @@ Flag env vars containing: `API_KEY`, `SECRET`, `PASSWORD`, `TOKEN`, `PRIVATE`, `
 
 Commands matching the safe list are allowed without restriction, **unless** they contain shell metacharacters (`;`, `|`, `&`, `` ` ``, `$`, `(`, `)`, `{`, `}`) or access sensitive paths.
 
-| Category | Commands |
-|----------|----------|
-| **Basic** | `ls`, `echo`, `pwd`, `whoami`, `date`, `hostname`, `uname`, `tree`, `du`, `df`, `sort`, `uniq`, `diff`, `cd` |
-| **Read** | `cat`, `head`, `tail`, `wc`, `grep`, `find`, `which`, `type` |
-| **File ops** | `mkdir`, `cp`, `mv`, `touch` |
-| **Git** | `git status`, `git log`, `git diff`, `git branch`, `git show`, `git remote`, `git clone`, `git checkout`, `git pull`, `git fetch`, `git merge`, `git add`, `git commit`, `git push` |
-| **Package managers** | `npm install`, `npm run`, `npm test`, `npm ci`, `npm start`, `npx`, `yarn`, `pnpm`, `pip install`, `pip3 install` |
-| **Build & run** | `node`, `python`, `python3`, `tsc`, `go build`, `go run`, `go version`, `cargo build`, `cargo run`, `cargo test`, `make`, `rustc --version`, `java -version` |
+| Category             | Commands                                                                                                                                                                            |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Basic**            | `ls`, `echo`, `pwd`, `whoami`, `date`, `hostname`, `uname`, `tree`, `du`, `df`, `sort`, `uniq`, `diff`, `cd`                                                                        |
+| **Read**             | `cat`, `head`, `tail`, `wc`, `grep`, `find`, `which`, `type`                                                                                                                        |
+| **File ops**         | `mkdir`, `cp`, `mv`, `touch`                                                                                                                                                        |
+| **Git**              | `git status`, `git log`, `git diff`, `git branch`, `git show`, `git remote`, `git clone`, `git checkout`, `git pull`, `git fetch`, `git merge`, `git add`, `git commit`, `git push` |
+| **Package managers** | `npm install`, `npm run`, `npm test`, `npm ci`, `npm start`, `npx`, `yarn`, `pnpm`, `pip install`, `pip3 install`                                                                   |
+| **Build & run**      | `node`, `python`, `python3`, `tsc`, `go build`, `go run`, `go version`, `cargo build`, `cargo run`, `cargo test`, `make`, `rustc --version`, `java -version`                        |
 
 ### Exec Decision Logic
 
@@ -153,6 +153,7 @@ network:
 ## Capability Presets
 
 ### none (Most Restrictive)
+
 ```json
 {
   "network_allowlist": [],
@@ -163,6 +164,7 @@ network:
 ```
 
 ### read_only
+
 ```json
 {
   "network_allowlist": [],
@@ -173,11 +175,16 @@ network:
 ```
 
 ### trading_bot
+
 ```json
 {
   "network_allowlist": [
-    "api.binance.com", "api.bybit.com", "api.okx.com",
-    "api.coinbase.com", "*.dextools.io", "*.coingecko.com"
+    "api.binance.com",
+    "api.bybit.com",
+    "api.okx.com",
+    "api.coinbase.com",
+    "*.dextools.io",
+    "*.coingecko.com"
   ],
   "filesystem_allowlist": ["./config/**", "./logs/**"],
   "exec": "deny",
@@ -191,6 +198,7 @@ network:
 ```
 
 ### defi
+
 ```json
 {
   "network_allowlist": ["*"],
@@ -209,11 +217,11 @@ network:
 
 The `action-cli.ts decide` command integrates with the [GoPlus Security API](https://docs.gopluslabs.io/) for enhanced Web3 action evaluation. GoPlus provides three checks:
 
-| Check | Description | Triggers |
-|-------|-------------|----------|
-| **Phishing Site Detection** | Checks if the transaction origin URL is a known phishing site | `PHISHING_ORIGIN` → DENY (critical) |
-| **Address Security** | Checks if the target address is blacklisted, associated with phishing, stealing attacks, or honeypots | `MALICIOUS_ADDRESS` → DENY (critical), `HONEYPOT_RELATED` → flag (high) |
-| **Transaction Simulation** | Simulates the transaction to detect balance changes, approval changes, and risk indicators | `UNLIMITED_APPROVAL` → CONFIRM (high), `SIMULATION_FAILED` → flag (medium) |
+| Check                       | Description                                                                                           | Triggers                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Phishing Site Detection** | Checks if the transaction origin URL is a known phishing site                                         | `PHISHING_ORIGIN` → DENY (critical)                                        |
+| **Address Security**        | Checks if the target address is blacklisted, associated with phishing, stealing attacks, or honeypots | `MALICIOUS_ADDRESS` → DENY (critical), `HONEYPOT_RELATED` → flag (high)    |
+| **Transaction Simulation**  | Simulates the transaction to detect balance changes, approval changes, and risk indicators            | `UNLIMITED_APPROVAL` → CONFIRM (high), `SIMULATION_FAILED` → flag (medium) |
 
 ### Environment Variables
 

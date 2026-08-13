@@ -8,14 +8,14 @@ const utils = {
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": data.map(item => ({
+      mainEntity: data.map((item) => ({
         "@type": "Question",
-        "name": item.question,
-        "acceptedAnswer": {
+        name: item.question,
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": item.answer
-        }
-      }))
+          text: item.answer,
+        },
+      })),
     };
     return JSON.stringify(jsonLd, null, 2);
   },
@@ -23,17 +23,17 @@ const utils = {
   injectJSONLD: (html, jsonLD) => {
     // Simple injection of JSON-LD script into HTML head
     const scriptTag = `<script type="application/ld+json">\n${jsonLD}\n</script>`;
-    return html.replace('</head>', `${scriptTag}\n</head>`);
+    return html.replace("</head>", `${scriptTag}\n</head>`);
   },
 
   validateJSONLD: (jsonLDString) => {
     try {
       const parsed = JSON.parse(jsonLDString);
-      return !!parsed['@context'] && !!parsed['@type'];
+      return !!parsed["@context"] && !!parsed["@type"];
     } catch (e) {
       return false;
     }
-  }
+  },
 };
 
 module.exports = utils;

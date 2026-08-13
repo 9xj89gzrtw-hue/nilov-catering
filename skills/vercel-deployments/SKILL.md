@@ -13,10 +13,10 @@ This skill uses [ClawLink](https://claw-link.dev/?utm_source=clawhub&utm_medium=
 
 ### Setup in 3 Steps
 
-| Step 1: Install | Step 2: Pair Account | Step 3: Connect Vercel |
-|:---:|:---:|:---:|
-| ![Install](https://raw.githubusercontent.com/ClawLink-HQ/clawlink/main/public/images/pairing/initialstep_1.gif) | ![Pair](https://raw.githubusercontent.com/ClawLink-HQ/clawlink/main/public/images/approve_process.gif) | *App-specific connection GIF coming soon* |
-| Run the install command in OpenClaw | Sign in and approve the device | Open the dashboard and connect Vercel |
+|                                                 Step 1: Install                                                 |                                          Step 2: Pair Account                                          |          Step 3: Connect Vercel           |
+| :-------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: | :---------------------------------------: |
+| ![Install](https://raw.githubusercontent.com/ClawLink-HQ/clawlink/main/public/images/pairing/initialstep_1.gif) | ![Pair](https://raw.githubusercontent.com/ClawLink-HQ/clawlink/main/public/images/approve_process.gif) | _App-specific connection GIF coming soon_ |
+|                                       Run the install command in OpenClaw                                       |                                     Sign in and approve the device                                     |   Open the dashboard and connect Vercel   |
 
 ## How It Works
 
@@ -114,66 +114,66 @@ If Vercel tools are missing or the connection shows an error:
 
 ### Projects
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_projects` | List all projects in the account/team | Read |
-| `vercel_get_project` | Get project configuration and settings | Read |
-| `vercel_create_project` | Create a new project | Write |
+| Tool                    | Description                                 | Mode  |
+| ----------------------- | ------------------------------------------- | ----- |
+| `vercel_list_projects`  | List all projects in the account/team       | Read  |
+| `vercel_get_project`    | Get project configuration and settings      | Read  |
+| `vercel_create_project` | Create a new project                        | Write |
 | `vercel_update_project` | Update project name, framework, or settings | Write |
-| `vercel_delete_project` | Delete a project and its deployments | Write |
+| `vercel_delete_project` | Delete a project and its deployments        | Write |
 
 ### Deployments
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_deployments` | List deployments with pagination and filters | Read |
-| `vercel_get_deployment` | Get deployment details including status and URLs | Read |
-| `vercel_create_deployment` | Create a new deployment | Write |
-| `vercel_cancel_deployment` | Cancel an in-progress deployment | Write |
-| `vercel_delete_deployment` | Delete a deployment | Write |
+| Tool                       | Description                                      | Mode  |
+| -------------------------- | ------------------------------------------------ | ----- |
+| `vercel_list_deployments`  | List deployments with pagination and filters     | Read  |
+| `vercel_get_deployment`    | Get deployment details including status and URLs | Read  |
+| `vercel_create_deployment` | Create a new deployment                          | Write |
+| `vercel_cancel_deployment` | Cancel an in-progress deployment                 | Write |
+| `vercel_delete_deployment` | Delete a deployment                              | Write |
 
 ### Domains
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_domains` | List all domains in the account | Read |
-| `vercel_get_domain` | Get domain details and DNS records | Read |
-| `vercel_add_domain` | Add a domain to a project | Write |
-| `vercel_remove_domain` | Remove a domain from a project | Write |
-| `vercel_verify_domain` | Verify domain ownership | Write |
+| Tool                   | Description                        | Mode  |
+| ---------------------- | ---------------------------------- | ----- |
+| `vercel_list_domains`  | List all domains in the account    | Read  |
+| `vercel_get_domain`    | Get domain details and DNS records | Read  |
+| `vercel_add_domain`    | Add a domain to a project          | Write |
+| `vercel_remove_domain` | Remove a domain from a project     | Write |
+| `vercel_verify_domain` | Verify domain ownership            | Write |
 
 ### Environment Variables
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_env` | List environment variables for a project | Read |
-| `vercel_add_env` | Add an environment variable to a project | Write |
+| Tool                | Description                                     | Mode  |
+| ------------------- | ----------------------------------------------- | ----- |
+| `vercel_list_env`   | List environment variables for a project        | Read  |
+| `vercel_add_env`    | Add an environment variable to a project        | Write |
 | `vercel_update_env` | Update an environment variable's value or scope | Write |
-| `vercel_delete_env` | Remove an environment variable | Write |
+| `vercel_delete_env` | Remove an environment variable                  | Write |
 
 ### Teams & Members
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_team_members` | List all members of a team | Read |
-| `vercel_invite_team_member` | Invite a new member to the team | Write |
-| `vercel_remove_team_member` | Remove a member from the team | Write |
-| `vercel_update_team_member_role` | Change a member's role | Write |
+| Tool                             | Description                     | Mode  |
+| -------------------------------- | ------------------------------- | ----- |
+| `vercel_list_team_members`       | List all members of a team      | Read  |
+| `vercel_invite_team_member`      | Invite a new member to the team | Write |
+| `vercel_remove_team_member`      | Remove a member from the team   | Write |
+| `vercel_update_team_member_role` | Change a member's role          | Write |
 
 ### Secrets
 
-| Tool | Description | Mode |
-|------|-------------|------|
-| `vercel_list_secrets` | List all secrets in the account | Read |
+| Tool                   | Description                                      | Mode  |
+| ---------------------- | ------------------------------------------------ | ----- |
+| `vercel_list_secrets`  | List all secrets in the account                  | Read  |
 | `vercel_create_secret` | Create a secret for use in environment variables | Write |
-| `vercel_delete_secret` | Delete a secret | Write |
+| `vercel_delete_secret` | Delete a secret                                  | Write |
 
 ### Logs & Events
 
-| Tool | Description | Mode |
-|------|-------------|------|
+| Tool                           | Description              | Mode |
+| ------------------------------ | ------------------------ | ---- |
 | `vercel_get_deployment_events` | Get deployment event log | Read |
-| `vercel_get_audit_logs` | Get team audit logs | Read |
+| `vercel_get_audit_logs`        | Get team audit logs      | Read |
 
 ## Code Examples
 
@@ -280,17 +280,17 @@ clawlink_call_tool --tool "vercel_cancel_deployment" \
 
 ## Error Handling
 
-| Status / Error | Meaning |
-|----------------|---------|
-| Tool not found | The tool name does not exist in the current catalog. Verify with `clawlink_list_tools --integration vercel`. |
-| Missing connection | Vercel is not connected. Direct the user to https://claw-link.dev/dashboard?add=vercel. |
-| `Project not found` | The project name does not exist in the account. |
-| `Deployment not found` | The deployment ID does not exist. |
-| `Domain not found` | The domain is not registered with the account. |
-| `Domain not verified` | Domain ownership has not been verified. Add DNS records first. |
-| `Env not found` | The environment variable does not exist in the project. |
-| `Forbidden` | The account lacks permission for this operation. |
-| Write rejected | User did not confirm a write action. Always confirm before executing writes. |
+| Status / Error         | Meaning                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Tool not found         | The tool name does not exist in the current catalog. Verify with `clawlink_list_tools --integration vercel`. |
+| Missing connection     | Vercel is not connected. Direct the user to https://claw-link.dev/dashboard?add=vercel.                      |
+| `Project not found`    | The project name does not exist in the account.                                                              |
+| `Deployment not found` | The deployment ID does not exist.                                                                            |
+| `Domain not found`     | The domain is not registered with the account.                                                               |
+| `Domain not verified`  | Domain ownership has not been verified. Add DNS records first.                                               |
+| `Env not found`        | The environment variable does not exist in the project.                                                      |
+| `Forbidden`            | The account lacks permission for this operation.                                                             |
+| Write rejected         | User did not confirm a write action. Always confirm before executing writes.                                 |
 
 ### Troubleshooting: Tools Not Visible
 
