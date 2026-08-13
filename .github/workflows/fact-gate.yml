@@ -5,15 +5,35 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch: {}
+
 jobs:
   fact-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Run Fact-Gate
+      
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      
+      - name: Run Fact-Gate (brand invariants)
         run: node scripts/fact-gate.mjs
+      
+      - name: Run Fact-Gate on commit message
+        if: github.event_name == 'push'
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Commit message: $COMMIT_MSG"
+          # Проверка на прямые команды типа "skip fact-gate" недопустима
+          if echo "$COMMIT_MSG" | grep -i "skip fact-gate\|bypass fact-gate"; then
+            echo "❌ BLOCKED: Cannot bypass fact-gate"
+            exit 1
+          fi
+        continue-on-error: false
