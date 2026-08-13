@@ -1,0 +1,48 @@
+name: ✨ Feature Request
+description: Предложить новую функциональность или улучшение
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание функциональности
+      description: Чётко опишите что хотите добавить
+      placeholder: Хочу добавить возможность...
+    validations:
+      required: true
+
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use Case (сценарий использования)
+      description: Как и кто будет использовать эту функцию?
+      placeholder: |
+        Как пользователь я хочу чтобы...
+        Чтобы я мог...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет
+      options:
+        - 🔴 Критично (блокер)
+        - 🟡 Важно (нужно скоро)
+        - 🟢 Было бы хорошо
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативные решения
+      description: Рассматривали ли вы другие способы решения?
+      placeholder: Альтернативой может быть...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Подтверждение
+      options:
+        - label: Я проверил что это предложение не было сделано ранее
+          required: true
