@@ -299,7 +299,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.45,
-      ease: [0.16, 1, 0.3, 1],
+      ease: 'easeOut' as const,
     },
   },
   exit: {
@@ -308,7 +308,7 @@ const itemVariants = {
     y: -8,
     transition: {
       duration: 0.25,
-      ease: [0.4, 0, 1, 1],
+      ease: 'easeIn' as const,
     },
   },
 };
@@ -347,7 +347,7 @@ export default function PortfolioGallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, ease: 'easeOut' as const }}
         >
           {/* Eyebrow */}
           <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium">

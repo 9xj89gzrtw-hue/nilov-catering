@@ -28,7 +28,7 @@ const wordVariants = {
     transition: {
       duration: 0.5,
       delay: i * 0.08,
-      ease: [0.16, 1, 0.3, 1],
+      ease: 'easeOut' as const,
     },
   }),
 };
@@ -38,7 +38,7 @@ const fadeUpVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -46,7 +46,7 @@ const lineVariants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.8, delay: 0.5, ease: 'easeOut' as const },
   },
 };
 
@@ -160,7 +160,7 @@ export default function HeroBlock() {
         style={{ background: 'linear-gradient(90deg, transparent, #D4AF37, transparent)' }}
         initial={{ opacity: 0, scaleX: 0 }}
         animate={isInView ? { opacity: 0.4, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
-        transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, delay: 0.8, ease: 'easeOut' }}
         aria-hidden="true"
       />
 

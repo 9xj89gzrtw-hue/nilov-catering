@@ -119,7 +119,7 @@ const cardVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.55,
-      ease: [0.16, 1, 0.3, 1],
+      ease: 'easeOut' as const,
     },
   },
 };
@@ -149,7 +149,7 @@ export default function TrustBlock() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: 'easeOut' as const }}
             className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium"
           >
             Гарантии и доверие
@@ -160,7 +160,7 @@ export default function TrustBlock() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            transition={{ duration: 0.55, ease: 'easeOut' as const, delay: 0.05 }}
             className="font-heading text-3xl md:text-4xl lg:text-5xl mb-4"
             style={{ fontWeight: 500 }}
           >
@@ -172,7 +172,7 @@ export default function TrustBlock() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' as const, delay: 0.1 }}
             className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
             Честные цифры и реальные гарантии. Каждый пункт проверяемый —

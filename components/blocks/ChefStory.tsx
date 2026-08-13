@@ -8,7 +8,7 @@ import { ArrowRight, Award, CalendarDays, ChefHat, GraduationCap, Star, Tv } fro
 
 /**
  * ChefStory — Premium секция "История шефа" с art-deco элементами
- *
+ * 
  * W95: Upgrade по критике Design Critic #1:
  * - Art-deco frame на фото шефа
  * - Premium quote block с золотым градиентом
@@ -25,16 +25,6 @@ const ACHIEVEMENTS = [
   { icon: Award, title: 'Премиум-класс', desc: 'Кейтеринг высшей категории' },
 ];
 
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-};
-
-const scaleInVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-};
-
 export default function ChefStory() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -50,7 +40,12 @@ export default function ChefStory() {
 
       <div className="container-site relative z-10">
         {/* Header */}
-        <motion.div className="text-center mb-14 md:mb-18" variants={fadeUpVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+        <motion.div 
+          className="text-center mb-14 md:mb-18"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium">Лицо бренда</p>
           <h2 id="chef-story-heading" className="font-heading text-3xl md:text-5xl" style={{ fontWeight: 500 }}>
             История <span className="text-gold-premium">шефа</span>
@@ -61,7 +56,12 @@ export default function ChefStory() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
           
           {/* LEFT — Photo with art-deco frame */}
-          <motion.div variants={scaleInVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.15 }} className="relative max-w-md mx-auto lg:mx-0">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            className="relative max-w-md mx-auto lg:mx-0"
+          >
             {/* Art-deco corner accents */}
             <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-[#D4AF37]/50 rounded-tl-xl z-10" aria-hidden="true" />
             <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-[#D4AF37]/50 rounded-br-xl z-10" aria-hidden="true" />
@@ -89,7 +89,12 @@ export default function ChefStory() {
           </motion.div>
 
           {/* RIGHT — Story content */}
-          <motion.div className="space-y-8" variants={fadeUpVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.25 }}>
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.25 }}
+          >
             
             {/* Intro text */}
             <div>
@@ -144,7 +149,12 @@ export default function ChefStory() {
         </div>
 
         {/* Achievements badges */}
-        <motion.div className="mt-16 md:mt-22 max-w-4xl mx-auto" variants={fadeUpVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.35 }}>
+        <motion.div 
+          className="mt-16 md:mt-22 max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.35 }}
+        >
           <h3 className="font-heading text-lg md:text-xl text-center mb-9" style={{ fontWeight: 500 }}>Вехи карьеры</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
             {ACHIEVEMENTS.map((item) => (
@@ -162,7 +172,12 @@ export default function ChefStory() {
         </motion.div>
 
         {/* CTA Section */}
-        <motion.div className="mt-16 md:mt-22 text-center max-w-2xl mx-auto" variants={scaleInVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.45 }}>
+        <motion.div 
+          className="mt-16 md:mt-22 text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.45 }}
+        >
           <div className="relative p-8 md:p-12 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(145deg, #1C1815 0%, #2A2420 100%)' }}>
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`, backgroundSize: '24px 24px' }} aria-hidden="true" />
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #D4AF37, transparent)' }} aria-hidden="true" />
@@ -192,5 +207,3 @@ export default function ChefStory() {
     </section>
   );
 }
-
-// W95: ChefStory premium upgrade with art-deco frames, gold gradients, floating accents
