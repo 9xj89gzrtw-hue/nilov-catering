@@ -1,0 +1,23 @@
+# Code Owners — определяет кто отвечает за review изменений
+
+# Корневые файлы и конфигурация
+*               @9xj89gzrtw-hue
+
+# CI/CD и workflow
+.github/        @9xj89gzrtw-hue
+
+# Безопасность и env
+.env*           @9xj89gzrtw-hue
+*.config.*      @9xj89gzrtw-hue
+
+# Основной код приложения
+app/            @9xj89gzrtw-hue
+components/     @9xj89gzrtw-hue
+lib/            @9xj89gzrtw-hue
+
+# Стили и UI
+**/*.css        @9xj89gzrtw-hue
+**/*.tsx        @9xj89gzrtw-hue
+
+# Документация
+*.md            @9xj89gzrtw-hue
