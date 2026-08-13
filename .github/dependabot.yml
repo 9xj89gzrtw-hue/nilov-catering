@@ -26,14 +26,14 @@ updates:
       # Все production зависимости вместе
       production-dependencies:
         patterns:
-          "*"
+          - "*"
         update-types:
           - "minor"
           - "patch"
       # Major обновления отдельно для ревью
       major-updates:
         patterns:
-          "*"
+          - "*"
         update-types:
           - "major"
     # Игнорируем некоторые нестабильные пакеты если нужно
