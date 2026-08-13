@@ -1,39 +1,83 @@
-node_modules
-.next
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+dist/
+
+# Vercel
+.vercel/
+
+# Misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev.log
+*.log
+
+# Local env files
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
 .vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Sensitive data (NEVER commit)
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.yaml
+
+# Generated/snapshots (local only)
+snapshots*/
+snapshot-*/
+vlm-eval-*.json
+critic-results/
+tool-results/
+download/
+
+# Research data (local)
+research-data/
+
+# Logs
+logs/
+*.log
+
+# Work files
+worklog.md
+site-*.txt
+
+# Submodules/repos
 nilov-catering/
 nilov-catering-repo/
 v950-bot-fresh/
 scripts/
-download/
-tool-results/
-*.json
-!data/*.json
-!package.json
-!package-lock.json
-!tsconfig.json
-!components.json
-!eslint.config.mjs
-!next.config.ts
-!postcss.config.mjs
-!app/tsconfig.json
-worklog.md
-site-*.txt
-critic*.json
-final_*.json
-critic-results/
-snapshots/
-snapshots-js/
-snapshots-pretty/
-snapshots/
-snapshots-js/
-snapshots-pretty/
-
-# Eval and screenshot artifacts (local-only)
-snapshots-v2/
-snapshots-v2-resized/
-vlm-eval-*.json
-research-data/
-
-data/subscribers.json
-logs/
