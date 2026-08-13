@@ -29,7 +29,7 @@ export default function AnimatedCounter({
 
     const controls = animate(0, value, {
       duration,
-      ease: [0.16, 1, 0.3, 1],
+      ease: 'easeOut' as const,
       onUpdate: (latest) =>setDisplayed(Math.round(latest)),
     });
 

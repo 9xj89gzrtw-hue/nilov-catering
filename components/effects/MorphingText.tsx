@@ -20,7 +20,7 @@ function WordReveal({ word, isEntering }: { word: string; isEntering: boolean })
           transition={{
             duration: 0.3,
             delay: isEntering ? i * 0.04 + 0.1 : (word.length - 1 - i) * 0.03,
-            ease: [0.25, 0.46, 0.45, 0.94],
+            ease: 'easeOut' as const,
           }}
           className="inline-block"
           style={{

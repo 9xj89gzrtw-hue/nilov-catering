@@ -108,7 +108,7 @@ export default function PersistentCartRail() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.3, ease: 'easeOut' as const }}
               className="overflow-hidden border-t border-line"
             >
               <div className="max-h-[60vh] overflow-y-auto p-3 space-y-2">

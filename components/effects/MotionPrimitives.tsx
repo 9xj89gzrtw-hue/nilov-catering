@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, type Variants } from 'framer-motion'
 
 const revealVariants: Variants = {
   hidden: { y: 24, opacity: 1 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' as const } },
 };
 
 /** Блок, появляющийся при скролле (whileInView reveal) */

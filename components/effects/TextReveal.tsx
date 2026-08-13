@@ -12,7 +12,7 @@ const wordVariants: Variants = {
   hidden: { y: '0.5em', opacity: 0, rotateX: -4 },
   visible: (i: number) =>({
     y: '0em', opacity: 1, rotateX: 0,
-    transition: { duration: 0.6, delay: i * 0.03, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.6, delay: i * 0.03, ease: 'easeOut' as const },
   }),
 };
 
