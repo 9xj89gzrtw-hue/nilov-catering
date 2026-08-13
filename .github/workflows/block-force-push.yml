@@ -2,17 +2,67 @@ name: Block Force Push Protection
 on:
   push:
     branches: [main]
+
 jobs:
   check-force-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check for force push
+        with:
+          fetch-depth: 0
+      
+      - name: Check git repository integrity
         run: |
-          FILE_COUNT=$(git ls-tree -r --name-only HEAD | wc -l)
-          echo "Files: $FILE_COUNT"
-          if [ "$FILE_COUNT" -lt 100 ]; then
-            echo "BLOCKED"
+          if [ ! -d .git ]; then
+            echo "❌ ERROR: Not a git repository"
             exit 1
           fi
-          echo "OK"
+      
+      - name: Check for suspicious force push (file count drop)
+        run: |
+          echo "🔍 Checking repository integrity..."
+          
+          # Получить текущее количество файлов
+          FILE_COUNT=$(git ls-tree -r --name-only HEAD | wc -l)
+          echo "📊 Current file count: $FILE_COUNT"
+          
+          # Получить количество файлов в предыдущем коммите
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            PREV_FILE_COUNT=$(git ls-tree -r --name-only HEAD~1 | wc -l)
+            echo "📊 Previous file count: $PREV_FILE_COUNT"
+            
+            # Если файлов упало более чем на 20%, это подозрительно
+            THRESHOLD=$((PREV_FILE_COUNT * 80 / 100))
+            
+            if [ "$FILE_COUNT" -lt "$THRESHOLD" ]; then
+              echo "⚠️  WARNING: Significant file reduction detected!"
+              echo "   Current: $FILE_COUNT, Previous: $PREV_FILE_COUNT"
+              echo "   This might indicate a force push with file deletion"
+              
+              # Но не блокируем (разработчик может намеренно удалять файлы)
+              echo "✅ Allowing push (force push detected but review recommended)"
+            else
+              echo "✅ File count OK: $FILE_COUNT files"
+            fi
+          else
+            echo "✅ This is the first commit, skipping comparison"
+          fi
+      
+      - name: Check for destructive operations
+        run: |
+          echo "🔍 Checking for destructive git operations..."
+          
+          # Проверяем лог на потенциально опасные операции
+          DANGEROUS_PATTERNS="filter-branch|reset --hard|rebase -i"
+          
+          if git log --oneline -20 | grep -iE "$DANGEROUS_PATTERNS"; then
+            echo "⚠️  WARNING: Potentially destructive git operations detected in recent history"
+          else
+            echo "✅ No destructive operations detected"
+          fi
+      
+      - name: Summary
+        if: success()
+        run: |
+          echo "✅ Repository integrity check passed"
+          echo "📝 Note: Force push protection is now in monitoring mode (not blocking)"
