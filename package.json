@@ -15,7 +15,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@fontsource/cormorant": "^5.2.8",
     "@hookform/resolvers": "^5.4.0",
-    "@react-pdf/renderer": "^4.5.1",
+    "@react-pdf/renderer": "^4.6.0",
     "axe-core": "^4.12.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
