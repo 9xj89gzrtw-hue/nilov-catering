@@ -5,6 +5,7 @@ import NamedPackageGrid from '@/components/blocks/NamedPackageGrid';
 import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
 import B2BSection from '@/components/blocks/B2BSection';
 import MenuPreview from '@/components/blocks/MenuPreview';
+import PortfolioGallery from '@/components/blocks/PortfolioGallery';
 import WhyUs from '@/components/blocks/WhyUs';
 import ChefStory from '@/components/blocks/ChefStory';
 import TrustBlock from '@/components/blocks/TrustBlock';
@@ -46,6 +47,9 @@ export default async function HomePage() {
 
       {/* 6. MENU PREVIEW — фото блюд */}
       <MenuPreview />
+
+      {/* 6.5. PORTFOLIO GALLERY — галерея с фильтрами по типам мероприятий */}
+      <PortfolioGallery />
 
       {/* 7. WHY US — 4 принципа + статы */}
       <WhyUs />

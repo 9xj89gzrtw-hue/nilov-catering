@@ -14,7 +14,7 @@ import ScrollProgress from '@/components/common/ScrollProgress';
 import ScrollReveal from '@/components/effects/ScrollReveal';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import PricingWrapper from '@/components/layout/PricingWrapper';
-import { OrganizationJsonLd, ServiceJsonLd } from './JsonLd';
+import { OrganizationJsonLd, ServiceJsonLd, MenuJsonLd } from './JsonLd';
 import Analytics from '@/components/layout/Analytics';
 import { getPricing } from '@/lib/cms';
 import './globals.css';
@@ -57,6 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Analytics />
         <OrganizationJsonLd />
         <ServiceJsonLd />
+        <MenuJsonLd />
         <PricingWrapper cmsPricing={cmsPricing}>
           <SmoothScrollProvider>
             <AnnouncementBar message={null} />

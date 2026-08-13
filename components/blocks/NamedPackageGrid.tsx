@@ -1,15 +1,20 @@
-
+'use client';
 
 import Link from 'next/link';
-
-import { ArrowRight } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { ArrowRight, Star } from 'lucide-react';
 
 /**
- * NamedPackageGrid — A-Catering pattern: 6 named packages with from-prices.
- * Competitor critic: "Named-package from-price grid — buyers screenshot and forward."
+ * NamedPackageGrid — Premium package grid with luxury card effects
  *
- * Each package has: name, price/guest, min guests, what's included, photo.
+ * W95: Upgrade по критике Design Critic #1:
+ * - Featured cards with gold border glow and star badge
+ * - Premium hover: lift + gold shine sweep effect
+ * - Art-deco corner accents on featured packages
+ * - Enhanced typography and spacing
  */
+
 const PACKAGES = [
   {
     name: 'Фуршет «Гавань»',
@@ -20,6 +25,7 @@ const PACKAGES = [
     includes: ['12 закусок', '2 горячего', '1 десерт', 'Официанты', 'Посуда'],
     href: '/menu/furshet',
     badge: 'Популярное',
+    featured: true,
   },
   {
     name: 'Банкет «Гранд»',
@@ -30,6 +36,7 @@ const PACKAGES = [
     includes: ['4 закуски', '2 горячего', 'Десерт', 'Винная карта', 'Координатор'],
     href: '/menu/banquet',
     badge: null,
+    featured: false,
   },
   {
     name: 'Кофе-брейк «Лайт»',
@@ -40,6 +47,7 @@ const PACKAGES = [
     includes: ['Кофе-бар', '3 выпечки', 'Сэндвичи', 'Фрукты', '2 смены'],
     href: '/menu/coffee-break',
     badge: 'от 390₽',
+    featured: false,
   },
   {
     name: 'BBQ «Пикник»',
@@ -50,6 +58,7 @@ const PACKAGES = [
     includes: ['Мангал', '3 вида мяса', 'Овощи-гриль', 'Соусы', 'Бармен'],
     href: '/seasonal/bbq',
     badge: null,
+    featured: false,
   },
   {
     name: 'Детский «Праздник»',
@@ -60,6 +69,7 @@ const PACKAGES = [
     includes: ['Детское меню', 'Аниматор 2 часа', 'Капкейки', 'Сок-бар', 'Шоу-программа'],
     href: '/events/detskoe',
     badge: null,
+    featured: false,
   },
   {
     name: 'Шеф на дом',
@@ -70,98 +80,201 @@ const PACKAGES = [
     includes: ['Шеф-повар', '6 подач', 'Сомелье (опц.)', 'Продукты', 'Уборка'],
     href: '/events/chef-at-home',
     badge: 'Премиум',
+    featured: true,
   },
 ];
 
+// Animation variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export default function NamedPackageGrid() {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-60px' });
+
   return (
-    <section className="py-20 md:py-28 bg-background" aria-labelledby="packages-heading">
-      <div className="container-site">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">
+    <section 
+      ref={ref}
+      className="py-20 md:py-32 bg-background relative overflow-hidden" 
+      aria-labelledby="packages-heading"
+    >
+      {/* Subtle background decoration */}
+      <div 
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.03]"
+        style={{
+          background: 'radial-gradient(circle, #D4AF37 0%, transparent 70%)',
+          transform: 'translate(30%, -30%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="container-site relative z-10">
+        {/* Header */}
+        <motion.div
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-2xl">
-            <p
-              
-              
-              
-              
-              className="text-xs uppercase tracking-[0.2em] text-gold-text mb-3"
-            >
+            <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium">
               Готовые пакеты
             </p>
             <h2
               id="packages-heading"
-              
-              
-              
-              
               className="font-heading text-3xl md:text-5xl"
               style={{ fontWeight: 500 }}
             >
-              6 готовых пакетов под ваш бюджет
+              6 готовых пакетов{' '}
+              <span className="text-gold-premium">под ваш бюджет</span>
             </h2>
           </div>
-          <div
-            
-            
-            
-            
+          
+          <Link
+            href="/pricing"
+            className="group inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:border-[#D4AF37] hover:text-gold-text transition-all duration-300 no-underline min-h-[44px] items-center"
           >
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-5 py-2.5 text-sm min-h-[44px] inline-flex items-center font-medium text-foreground hover:border-gold-text hover:text-gold-text transition-colors no-underline"
-            >
-              Все тарифы и сравнение
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
+            Все тарифы и сравнение
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          </Link>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {PACKAGES.map((pkg, idx) =>(
-            <div
+        {/* Package Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {PACKAGES.map((pkg) => (
+            <motion.article
               key={pkg.name}
-              className={`reveal reveal-delay-${(idx % 4) + 1} card-tilt`}
+              variants={itemVariants}
+              className={`relative group ${
+                pkg.featured 
+                  ? 'lg:row-span-1' 
+                  : ''
+              }`}
             >
               <Link
                 href={pkg.href}
-                className="group block h-full overflow-hidden rounded-2xl border border-line bg-card hover:border-gold-text/40 hover:shadow-lg transition-all no-underline"
+                className={`block h-full rounded-2xl overflow-hidden no-underline transition-all duration-500 ${
+                  pkg.featured
+                    ? 'border-2 border-[#D4AF37]/60 bg-card shadow-lg hover:shadow-2xl'
+                    : 'border border-line bg-card hover:border-[#D4AF37]/40 hover:shadow-xl'
+                }`}
+                style={
+                  pkg.featured
+                    ? {
+                        boxShadow: '0 0 0 1px rgba(212,175,55,0.15), 0 8px 32px rgba(139,105,20,0.12), 0 0 60px rgba(201,169,97,0.08)',
+                      }
+                    : {}
+                }
               >
-                {/* Photo with badge */}
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={pkg.photoUrl}
-                    alt={pkg.name}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                {/* Shine sweep effect container */}
+                <div className="relative">
+                  {/* Photo */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={pkg.photoUrl}
+                      alt={`${pkg.name} — фото блюд`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Badge */}
+                    {pkg.badge && (
+                      <span
+                        className={`absolute top-3 right-3 inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-full z-10 ${
+                          pkg.featured
+                            ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white shadow-lg'
+                            : 'bg-foreground text-background'
+                        }`}
+                      >
+                        {pkg.featured && <Star className="w-3 h-3" aria-hidden="true" />}
+                        {pkg.badge}
+                      </span>
+                    )}
+                    
+                    {/* Gold corner accent for featured */}
+                    {pkg.featured && (
+                      <>
+                        <div 
+                          className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#D4AF37]/50 rounded-tl-2xl"
+                          aria-hidden="true"
+                        />
+                        <div 
+                          className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#D4AF37]/50 rounded-br-2xl"
+                          aria-hidden="true"
+                        />
+                      </>
+                    )}
+                  </div>
+
+                  {/* Shine sweep effect */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.08) 51%, transparent 56%)',
+                      transform: 'translateX(-100%)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateX(200%)';
+                      e.currentTarget.style.transition = 'transform 0.7s cubic-bezier(0.23, 1, 0.32, 1)';
+                    }}
                   />
-                  {pkg.badge && (
-                    <span className="absolute top-3 right-3 inline-flex items-center rounded-full bg-foreground text-background px-3 py-1 text-xs font-semibold">
-                      {pkg.badge}
-                    </span>
-                  )}
                 </div>
 
                 {/* Content */}
-                <div className="p-5">
-                  <h3 className="font-heading text-lg md:text-xl mb-2" style={{ fontWeight: 500 }}>
+                <div className="p-5 lg:p-6">
+                  <h3 className="font-heading text-lg lg:text-xl mb-2 text-foreground" style={{ fontWeight: 500 }}>
                     {pkg.name}
                   </h3>
 
                   {/* Price */}
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="font-heading text-2xl md:text-3xl text-foreground" style={{ fontWeight: 600 }}>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span 
+                      className={`font-heading text-2xl lg:text-3xl ${
+                        pkg.featured ? 'text-gold-premium' : 'text-foreground'
+                      }`}
+                      style={{ fontWeight: 600 }}
+                    >
                       от {pkg.price}
                     </span>
                     <span className="text-sm text-muted-foreground">{pkg.unit}</span>
                     <span className="text-xs text-muted-foreground ml-auto">{pkg.min}</span>
                   </div>
 
-                  {/* Includes */}
-                  <ul className="space-y-1.5 mb-5">
-                    {pkg.includes.map((item) =>(
-                      <li key={item} className="text-xs text-foreground/80 flex items-center gap-2">
-                        <svg className="w-3.5 h-3.5 shrink-0 text-gold-text" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  {/* Includes list */}
+                  <ul className="space-y-2 mb-5">
+                    {pkg.includes.map((item) => (
+                      <li key={item} className="text-sm text-muted-foreground flex items-center gap-2.5">
+                        <svg 
+                          className={`w-4 h-4 shrink-0 ${pkg.featured ? 'text-[#D4AF37]' : 'text-gold-text'}`} 
+                          viewBox="0 0 16 16" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          aria-hidden="true"
+                        >
                           <path d="M3 8l3.5 3.5L13 5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <span>{item}</span>
@@ -169,16 +282,25 @@ export default function NamedPackageGrid() {
                     ))}
                   </ul>
 
-                  <div className="flex items-center justify-between text-sm font-medium text-foreground group-hover:text-gold-text transition-colors">
+                  {/* CTA */}
+                  <div 
+                    className={`flex items-center justify-between text-sm font-medium pt-4 border-t transition-colors ${
+                      pkg.featured 
+                        ? 'border-[#D4AF37]/20 text-gold-text group-hover:text-[#B8860B]' 
+                        : 'border-line text-foreground group-hover:text-gold-text'
+                    }`}
+                  >
                     <span>Выбрать пакет</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </div>
                 </div>
               </Link>
-            </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+// W95: NamedPackageGrid premium upgrade with featured cards, shine effects, art-deco accents

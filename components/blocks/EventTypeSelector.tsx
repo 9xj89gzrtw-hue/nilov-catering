@@ -67,6 +67,16 @@ const EVENTS: EventCard[] = [
     photoUrl: '/images/catering/finedining-02.jpg',
     features: ['Сомелье', 'Праздничный торт', 'Фуршет-станции'],
   },
+  {
+    format: 'furshet',
+    href: '/events/detskoe',
+    price: 'от 1 550 ₽',
+    label: 'Детский праздник',
+    desc: 'Дни рождения, выпускные, праздники для детей. Аниматоры, капкейкс-бар, шоу-программа и безопасное меню.',
+    photo: 'cake-berry',
+    photoUrl: '/images/catering/dessert-01.jpg',
+    features: ['Аниматор 2 часа', 'Детское меню', 'Шоу-программа', 'От 10 детей'],
+  },
   // Поминки removed from homepage events grid — copy critic: "emotionally catastrophic
   // to have funeral catering next to wedding/birthday". Kept in helper wizard OCCASIONS
   // where user explicitly selects it. /events/pominki page still exists.
