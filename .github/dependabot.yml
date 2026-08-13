@@ -1,0 +1,57 @@
+# Dependabot Configuration
+# Автоматическое обновление зависимостей
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  # Обновление зависимостей из package.json (еженедельно)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "nilov-catering-bot"
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    # Группируем обновления по типам
+    groups:
+      # Все production зависимости вместе
+      production-dependencies:
+        patterns:
+          "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Major обновления отдельно для ревью
+      major-updates:
+        patterns:
+          "*"
+        update-types:
+          - "major"
+    # Игнорируем некоторые нестабильные пакеты если нужно
+    ignore:
+      # Пример: не обновлять автоматически major версии Next.js
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+
+  # Обновление GitHub Actions (ежемесячно)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    reviewers:
+      - "nilov-catering-bot"
+    labels:
+      - "github-actions"
+      - "automated"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

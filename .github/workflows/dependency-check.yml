@@ -1,0 +1,171 @@
+# Автоматическая проверка устаревших зависимостей
+# Создаёт issue если есть пакеты требующие обновления
+
+name: Dependency Update Check
+
+on:
+  schedule:
+    # Каждую неделю по понедельникам в 10:00 Berlin
+    - cron: '0 10 * * 1'
+  workflow_dispatch: # Можно запустить вручную
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-updates:
+    name: Check for Outdated Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      
+      - name: Install dependencies
+        run: bun install --frozen-lockfile || true
+      
+      - name: Install npm-check-updates
+        run: bun add -d npm-check-updates
+      
+      - name: Check for outdated packages
+        id: check
+        run: |
+          # Получаем список обновлений в формате JSON
+          OUTPUT=$(bunx npm-check-updates --json 2>/dev/null || echo '{}')
+          echo "updates<<EOF" >> $GITHUB_OUTPUT
+          echo "$OUTPUT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          # Считаем количество обновлений
+          COUNT=$(echo "$OUTPUT" | node -e "const d=require('fs').readFileSync(0,'utf8');const o=JSON.parse(d);console.log(Object.keys(o).length)")
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+      
+      - name: Create issue if updates available
+        if: steps.check.outputs.count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const updates = JSON.parse('${{ steps.check.outputs.updates }}');
+            const count = '${{ steps.check.outputs.count }}';
+            
+            // Формируем тело issue
+            let body = '## 📦 Устаревшие зависимости\n\n';
+            body += `Найдено **${count}** пакетов для обновления:\n\n`;
+            
+            // Группируем по типу
+            const major = [];
+            const minor = [];
+            const patch = [];
+            
+            for (const [pkg, info] of Object.entries(updates)) {
+              const current = info.current;
+              const latest = info.latest;
+              const line = `- **${pkg}**: \`${current}\` → \`${latest}\`';
+              
+              if (latest.split('.')[0] !== current.split('.')[0]) {
+                major.push(line);
+              } else if (latest.split('.')[1] !== current.split('.')[1]?.split('-')[0]) {
+                minor.push(line);
+              } else {
+                patch.push(line);
+              }
+            }
+            
+            if (major.length > 0) {
+              body += '### ⚠️ Major обновления (breaking changes)\n';
+              major.forEach(l => body += l + '\n');
+              body += '\n';
+            }
+            
+            if (minor.length > 0) {
+              body += '### 📈 Minor обновления\n';
+              minor.forEach(l => body += l + '\n');
+              body += '\n';
+            }
+            
+            if (patch.length > 0) {
+              body += '### 🐛 Patch обновления\n';
+              patch.forEach(l => body += l + '\n');
+              body += '\n';
+            }
+            
+            body += '---\n';
+            body += '## 🚀 Как обновить\n\n';
+            body += '```bash\n';
+            body += '# Проверить что можно обновить\n';
+            body += 'bun run check-updates\n\n';
+            body += '# Обновить package.json\n';
+            body += 'bun run update-deps\n\n';
+            body += '# Обновить и установить\n';
+            body += 'bun run update-deps:full\n';
+            body += '```\n\n';
+            body += '---\n';
+            body += '*Это issue создано автоматически. Dependabot уже должен был создать PR для безопасных обновлений.*\n';
+            
+            // Ищем существующие open issues от этого workflow
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              creator: context.actor,
+              labels: 'dependencies'
+            });
+            
+            // Заголовок с датой
+            const title = `📦 Устаревшие зависимости (${new Date().toLocaleDateString('ru-RU')})`;
+            
+            if (issues.length > 0) {
+              // Обновляем существующий issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues[0].number,
+                title: title,
+                body: body
+              });
+              console.log(`Updated existing issue #${issues[0].number}`);
+            } else {
+              // Создаём новое issue
+              const { data: issue } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['dependencies', 'automated']
+              });
+              console.log(`Created issue #${issue.number}`);
+            }
+      
+      - name: Close issue if no updates
+        if: steps.check.outputs.count == 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Закрываем старые issues если всё актуально
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              creator: context.actor,
+              labels: 'dependencies'
+            });
+            
+            for (const issue of issues) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+                state_reason: 'completed',
+                body: `${issue.body}\n\n---\n✅ **Закрыто:** Все зависимости обновлены (${new Date().toISOString()})`
+              });
+              console.log(`Closed issue #${issue.number}`);
+            }
+            
+            console.log('✅ Все зависимости на актуальных версиях!');
