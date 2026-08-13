@@ -3,6 +3,7 @@ import HeroBlock from '@/components/blocks/HeroBlock';
 import EventTypeSelector from '@/components/blocks/EventTypeSelector';
 import NamedPackageGrid from '@/components/blocks/NamedPackageGrid';
 import InlinePriceCalculator from '@/components/blocks/InlinePriceCalculator';
+import LeadCaptureForm from '@/components/blocks/LeadCaptureForm';
 import B2BSection from '@/components/blocks/B2BSection';
 import MenuPreview from '@/components/blocks/MenuPreview';
 import PortfolioGallery from '@/components/blocks/PortfolioGallery';
@@ -11,8 +12,9 @@ import ChefStory from '@/components/blocks/ChefStory';
 import TrustBlock from '@/components/blocks/TrustBlock';
 import TrustBar from '@/components/blocks/TrustBar';
 import TestimonialsCarousel from '@/components/blocks/TestimonialsCarousel';
-import CTASection from '@/components/blocks/CTASection';
 import WowCase from '@/components/blocks/WowCase';
+import FAQSection from '@/components/blocks/FAQSection';
+import CTASection from '@/components/blocks/CTASection';
 import { getReviews } from '@/lib/cms';
 
 export const metadata: Metadata = {
@@ -42,6 +44,22 @@ export default async function HomePage() {
       {/* 4. INLINE CALCULATOR — отвечает 'how much?' за 15 секунд */}
       <InlinePriceCalculator />
 
+      {/* 4.5. LEAD CAPTURE FORM — форма захвата лидов */}
+      <section className="py-20 md:py-28 bg-background" aria-labelledby="lead-form-heading">
+        <div className="container-site max-w-xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-xs uppercase tracking-[0.22em] text-gold-text mb-3 font-medium">Быстрая заявка</p>
+            <h2 id="lead-form-heading" className="font-heading text-3xl md:text-5xl mb-3" style={{ fontWeight: 500 }}>
+              Получите персональное <span className="text-gold-text">предложение</span>
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg">
+              Оставьте заявку — перезвоним через 15 минут с готовым расчётом
+            </p>
+          </div>
+          <LeadCaptureForm />
+        </div>
+      </section>
+
       {/* 5. B2B — для корпоративных клиентов (moved up from position 10) */}
       <B2BSection />
 
@@ -69,7 +87,10 @@ export default async function HomePage() {
       {/* 10. WOW CASE — избранный кейс */}
       <WowCase />
 
-      {/* 11. CTA — главное действие */}
+      {/* 11. FAQ — частые вопросы на главной */}
+      <FAQSection />
+
+      {/* 12. CTA — главное действие */}
       <CTASection />
     </main>
   );

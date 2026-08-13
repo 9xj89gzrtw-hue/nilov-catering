@@ -132,7 +132,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'birthday-2',
     src: '/images/real/macarons.webp',
-    alt: 'Макарунсы на праздничном столе',
+    alt: 'Макароны на праздничном столе',
     eventType: 'birthday',
     eventLabel: 'День рождения',
     guestCount: '30 гостей',

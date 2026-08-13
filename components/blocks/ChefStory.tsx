@@ -120,7 +120,7 @@ export default function ChefStory() {
                 </p>
                 <footer className="mt-5 flex items-center gap-3">
                   <div className="w-11 h-11 rounded-full overflow-hidden" style={{ border: '2px solid rgba(201,169,97,0.4)' }}>
-                    <Image src="/images/team/chef-nilov.jpg" alt="" width={44} height={44} className="w-full h-full object-cover" />
+                    <Image src="/images/team/chef-nilov.jpg" alt="Шеф-повар Дмитрий Нилов" width={44} height={44} className="w-full h-full object-cover" />
                   </div>
                   <cite className="not-italic">
                     <span className="block text-sm font-medium text-foreground">Дмитрий Нилов</span>
