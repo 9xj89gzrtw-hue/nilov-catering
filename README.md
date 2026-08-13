@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍽️ Nilov Catering — Кейтеринг под ключ в Санкт-Петербурге
 
-## Getting Started
+<p align="center">
+  <strong>Премиальный кейтеринг с 2007 года</strong> • Санкт-Петербург<br/>
+  <a href="https://odaeda.ru/">🌐 Live Site</a> • 
+  <a href="#технологии">🛠 Tech Stack</a> • 
+  <a href="#структура-проекта">📁 Structure</a>
+</p>
 
-First, run the development server:
+---
 
+## О проекте
+
+Сайт **Nilov Catering** — современная веб-платформа для компании премиального кейтеринга в Санкт-Петербурге. Проект представляет собой полнофункциональный Next.js 16 сайт с:
+
+- 🎨 **Премиальным дизайном** с анимациями и плавным скроллом
+- 📱 **Полной адаптивностью** (mobile-first подход)
+- ⚡ **Высокой производительностью** (Core Web Vitals оптимизация)
+- 🔒 **Безопасностью** enterprise-уровня
+- ♿ **Доступностью** (WCAG 2.1 AA)
+
+## ✨ Ключевые возможности
+
+| Модуль | Описание |
+|--------|----------|
+| **Hero Block** | Параллакс-герой с ценовой лестницей |
+| **Каталог пакетов** | 6 именованных пакетов с фиксированными ценами |
+| **Калькулятор** | Мгновенный расчёт стоимости за 15 секунд |
+| **B2B раздел** | Корпоративные предложения |
+| **Меню** | Превью блюд с фото |
+| **Галерея** | Портфолио с фильтрами по типам мероприятий |
+| **Отзывы** | Карусель отзывов клиентов |
+| **Шеф-повар** | История Дмитрия Нилова |
+
+## Технологии
+
+### Core Stack
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript 5](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Components:** [shadcn/ui](https://ui.shadcn.com/)
+
+### UI/UX
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Smooth Scroll:** [Lenis](https://lenis.studiofreight.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Carousel:** [Embla Carousel](https://www.embla-carousel.com/)
+
+### Forms & Validation
+- **Forms:** [React Hook Form](https://react-hook-form.com/)
+- **Validation:** [Zod](https://zod.dev/)
+
+### Deployment
+- **Host:** [Vercel](https://vercel.com/)
+- **CI/CD:** GitHub Actions
+
+## 🚀 Быстрый старт
+
+### Требования
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Node.js >= 22
+pnpm >= 9 (рекомендуется) или npm/yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Установка
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Клонирование репозитория
+git clone https://github.com/9xj89gzrtw-hue/nilov-catering.git
+cd nilov-catering
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Установка зависимостей
+pnpm install
 
-## Learn More
+# Создание .env файла
+cp .env.example .env
+# Отредактируйте .env своими значениями
 
-To learn more about Next.js, take a look at the following resources:
+# Запуск dev сервера
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Скрипты
 
-## Deploy on Vercel
+| Команда | Описание |
+|---------|----------|
+| `pnpm dev` | Запуск development сервера |
+| `pnpm build` | Production сборка |
+| `pnpm start` | Запуск production сборки |
+| `pnpm lint` | Проверка кода ESLint |
+| `pnpm factgate` | Запуск fact-gate проверки |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Структура проекта
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+nilov-catering/
+├── app/                    # Next.js App Router страницы
+│   ├── page.tsx           # Главная страница
+│   └── layout.tsx         # Корневой layout
+├── components/             # React компоненты
+│   └── blocks/            # Секционные компоненты
+├── lib/                    # Утилиты и helpers
+├── hooks/                  # Custom React hooks
+├── data/                   # Статические данные
+├── public/                 # Статические ресурсы
+├── scripts/                # Build скрипты
+│   └── fact-gate.mjs      # Проверка бренд-инвариантов
+└── .github/workflows/     # CI/CD пайплайны
+```
+
+## 🔐 Безопасность
+
+Проект следует best practices безопасности:
+
+- ✅ Content Security Policy (CSP) headers
+- ✅ X-Frame-Options, X-Content-Type-Options
+- ✅ Referrer-Policy, Permissions-Policy
+- ✅ Защита от CSRF
+- ✅ Нет чувствительных данных в коде
+- ✅ Зависимости регулярно обновляются
+
+## 🤝 Вклад в проект
+
+Смотрите [CONTRIBUTING.md](./CONTRIBUTING.md) для информации о том как внести вклад.
+
+## 📄 Лицензия
+
+Этот проект распространяется под лицензией MIT — см. файл [LICENSE](./LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ для <strong>Nilov Catering</strong><br/>
+  © 2007—2026 • Санкт-Петербург
+</p>
