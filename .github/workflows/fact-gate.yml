@@ -1,9 +1,17 @@
 name: Fact-Gate (canon invariants)
 on:
   push:
-    branches: [main, master]
+    branches:
+      - main
+
+      - master
+
   pull_request:
-    branches: [main, master]
+    branches:
+      - main
+
+      - master
+
   workflow_dispatch: {}
 
 concurrency:
