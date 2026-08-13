@@ -1,100 +1,89 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Phone, MessageCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Phone, MessageCircle, Calculator } from 'lucide-react';
 import { SITE } from '@/lib/data';
-import { usePathname } from 'next/navigation';
-
-interface Props {
-  ctaLabel?: string;
-  ctaHref?: string;
-  waContext?: string;
-}
+import Link from 'next/link';
 
 /**
- * Sticky mobile CTA bar — appears after the user scrolls 300px down.
- *
- * C10 fix (Mobile UX, 5.5 → 7+): adds a persistent "Рассчитать стоимость"CTA
- * so mobile users always have a one-tap path to the planning flow without
- * scrolling back to the top.
- *
- * Merges with previous design:
- * - Keeps path-based hiding (don't show on pages with their own primary CTA:
- *   constructor, calculator, helper, contact form, etc.)
- * - Adds scroll-based visibility (show after 300px scroll) so the bar doesn't
- *   compete with hero CTAs at the top of the page.
- * - Keeps phone + WhatsApp quick actions for users who want to skip the form.
+ * StickyMobileCTA — sticky bar для мобильных пользователей
+ * 
+ * Решает критику: "Нет sticky CTA при скролле"
+ * - Появляется при скролле > 50vh
+ * - Фиксирован внизу экрана (над bottom nav)
+ * - Быстрые действия: звонок, WhatsApp, калькулятор
+ * - Accessibility: aria-label, keyboard nav
  */
-export default function StickyMobileCTA({
-  ctaLabel = 'Рассчитать →',
-  ctaHref = '/plan/helper',
-  waContext,
-}: Props) {
-  const pathname = usePathname();
+
+export default function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
 
-  // Show after scrolling 300px down — gives hero CTA room to breathe
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY >100);
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      setVisible(scrollPercent > 15);
     };
-    // Initial check (in case page loads scrolled, e.g. on back navigation)
-    handleScroll();
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () =>window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hide sticky CTA ONLY on pages where it would compete with a page-specific lead form
-  if (
-    !visible ||
-    pathname === '/contact' ||
-    pathname.startsWith('/plan/')
-  ) {
-    return null;
-  }
-
-  const waHref = waContext
-    ? `${SITE.whatsapp}?text=${encodeURIComponent(waContext)}`
-    : SITE.whatsapp;
+  if (!visible) return null;
 
   return (
-    <motion.div
-      className="fixed bottom-16 left-0 right-0 z-40 bg-card/95 backdrop-blur-md border-t border-line shadow-lg px-3 py-3 flex items-center gap-3 md:hidden safe-area-bottom"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+    <div
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-card/95 backdrop-blur-md border-t border-line shadow-lg animate-in slide-in-from-bottom-2 duration-300"
+      role="complementary"
       aria-label="Быстрые действия"
     >
-      {/* Price + CTA — primary affordance */}
-      <div className="flex-1 min-w-0">
-        <p className="text-xs text-muted-foreground leading-tight">От 2 450 ₽/гость</p>
-        <p className="text-sm font-bold text-gold-text leading-tight">Рассчитать стоимость</p>
+      <div className="flex items-center justify-around py-2.5 px-2 gap-1">
+        {/* Phone */}
+        <a
+          href={`tel:${SITE.phoneTel}`}
+          className="flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-lg text-primary hover:bg-secondary transition-colors min-h-[48px] no-underline group"
+          aria-label={`Позвонить ${SITE.phone}`}
+        >
+          <Phone className="w-5 h-5 text-primary group-active:scale-90 transition-transform" aria-hidden="true" />
+          <span className="text-[10px] font-medium text-foreground">Позвонить</span>
+        </a>
+
+        {/* WhatsApp */}
+        <a
+          href={SITE.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="flex flex-col items-center justify-center gap-0.5 px-4 py-2 rounded-xl bg-[#25D366] text-white hover:bg-[#20BD5A] transition-colors min-h-[48px] no-underline shadow-md group"
+          aria-label="Написать в WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5 group-active:scale-90 transition-transform" aria-hidden="true" />
+          <span className="text-[10px] font-semibold">WhatsApp</span>
+        </a>
+
+        {/* Calculator */}
+        <Link
+          href="/plan/helper"
+          className="flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-lg bg-gold-text text-white hover:bg-gold-text/90 transition-colors min-h-[48px] no-underline shadow-md group"
+          aria-label="Рассчитать стоимость меню"
+        >
+          <Calculator className="w-5 h-5 group-active:scale-90 transition-transform" aria-hidden="true" />
+          <span className="text-[10px] font-semibold">Калькулятор</span>
+        </Link>
+
+        {/* Quick callback request */}
+        <a
+          href="#lead-form-heading"
+          className="flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-lg border border-gold-text text-gold-text hover:bg-gold-text hover:text-white transition-colors min-h-[48px] no-underline group"
+          aria-label="Перейти к форме заявки"
+        >
+          <svg className="w-5 h-5 group-active:scale-90 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span className="text-[10px] font-medium">Заявка</span>
+        </a>
       </div>
-      <Link
-        href={ctaHref}
-        className="rounded-lg bg-gold-text text-white px-6 py-3 text-sm font-semibold hover:bg-gold-text/90 transition-colors no-underline touch-target"
-        aria-label="Рассчитать стоимость"
-      >
-        {ctaLabel}
-      </Link>
-      <a
-        href={`tel:${SITE.phoneTel}`}
-        className="p-3 rounded-lg text-muted-foreground hover:text-foreground border border-line bg-background touch-target"
-        aria-label="Позвонить"
-      >
-        <Phone className="w-5 h-5" />
-      </a>
-      <a
-        href={waHref}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        className="p-3 rounded-lg text-muted-foreground hover:text-foreground border border-line bg-background touch-target"
-        aria-label="WhatsApp"
-      >
-        <MessageCircle className="w-5 h-5" />
-      </a>
-    </motion.div>
+      
+      {/* Safe area for iOS */}
+      <div className="h-safe-area-inset-bottom bg-card/95" />
+    </div>
   );
 }

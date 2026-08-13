@@ -11,6 +11,7 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import CookieBanner from '@/components/layout/CookieBanner';
 import LiveChatWidget from '@/components/layout/LiveChatWidget';
 import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
+import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
 import ScrollProgress from '@/components/common/ScrollProgress';
 import ScrollReveal from '@/components/effects/ScrollReveal';
 import { ClientLayout } from '@/components/layout/ClientLayout';
@@ -73,6 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <CookieBanner />
             <LiveChatWidget />
             <FloatingWhatsApp />
+            <StickyMobileCTA />
           </SmoothScrollProvider>
         </PricingWrapper>
         <noscript>

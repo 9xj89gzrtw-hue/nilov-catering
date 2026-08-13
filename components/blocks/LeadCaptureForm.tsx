@@ -34,6 +34,7 @@ export default function LeadCaptureForm() {
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [consent, setConsent] = useState(false);
 
   const validatePhone = (phone: string): boolean => {
     const cleaned = phone.replace(/\D/g, '');
@@ -52,6 +53,12 @@ export default function LeadCaptureForm() {
     if (!validatePhone(formData.phone)) {
       setStatus('error');
       setMessage('Проверьте формат телефона (например, +7 999 123-45-67)');
+      return;
+    }
+    
+    if (!consent) {
+      setStatus('error');
+      setMessage('Пожалуйста, дайте согласие на обработку персональных данных');
       return;
     }
 
@@ -234,6 +241,34 @@ export default function LeadCaptureForm() {
             <span>{message}</span>
           </div>
         )}
+
+        {/* GDPR Consent checkbox */}
+        <div className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50 border border-line">
+          <input
+            type="checkbox"
+            id="lead-consent"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+            className="mt-0.5 w-5 h-5 rounded border-border text-gold-text focus:ring-gold-text/20"
+            required
+            aria-describedby="consent-hint"
+          />
+          <div>
+            <label htmlFor="lead-consent" className="text-sm text-foreground cursor-pointer leading-relaxed">
+              Я согласен на обработку{' '}
+              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">
+                персональных данных
+              </a>{' '}
+              в соответствии с{' '}
+              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-gold-text hover:underline">
+                152-ФЗ «О персональных данных»
+              </a>
+            </label>
+            <p id="consent-hint" className="text-xs text-muted-foreground mt-1">
+              Данные используются только для связи по вашему запросу. Не передаём третьим лицам.
+            </p>
+          </div>
+        </div>
 
         {/* Submit button */}
         <button
