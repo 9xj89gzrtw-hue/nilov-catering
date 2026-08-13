@@ -69,7 +69,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) =>(
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-1 -mx-1">{link.label}</Link>
+                    <Link href={link.href} className="text-sm hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-1 -mx-1" style={{ color: '#4A423B' }}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -81,22 +81,23 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-line">
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map((link) =>(
-              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer nofollow" aria-label={link.label} className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1">{link.label}</a>
+              <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer nofollow" aria-label={link.label} className="text-sm hover:text-foreground transition-colors inline-flex items-center min-h-[44px] py-2 px-2 -mx-1" style={{ color: '#4A423B' }}>{link.label}</a>
             ))}
           </div>
           {/* Rating badge — рассчитан из /reviews (27 отзывов, среднее 4.8). Ссылка на отзывы для верификации. */}
           <div className="flex items-center gap-4">
             <Link
               href="/reviews"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 underline min-h-[44px] py-2 px-1 -mx-1"
+              className="text-sm hover:text-foreground transition-colors flex items-center gap-1 underline min-h-[44px] py-2 px-1 -mx-1"
               title="Все 27 отзывов с расчётом среднего рейтинга"
+              style={{ color: '#4A423B' }}
             >
                4.8 <span className="hidden sm:inline">из 27 отзывов →</span>
             </Link>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-sm" style={{ color: '#4A423B' }}>
           <Link href="/privacy" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Политика</Link>
           <Link href="/terms" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Условия</Link>
           <Link href="/cookies" className="hover:text-foreground transition-colors no-underline inline-flex items-center min-h-[44px] py-2 px-2">Cookies</Link>
@@ -106,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Legal — compact, single line */}
-        <div className="mt-6 pt-6 border-t border-line/50 text-center text-xs text-muted-foreground">
+        <div className="mt-6 pt-6 border-t border-line/50 text-center text-xs" style={{ color: '#6B5F52' }}>
           <p>
             {SITE.legalName} · ИНН {SITE.inn} · ОГРНИП {SITE.ogrnip}
           </p>

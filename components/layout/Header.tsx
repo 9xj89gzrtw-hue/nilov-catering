@@ -47,7 +47,7 @@ export default function Header() {
             <circle cx="31" cy="9" r="2" fill="#F4E2B8" />
           </svg>
           <div className="flex flex-col leading-none">
-            <span className="font-heading text-xl font-semibold tracking-tight text-foreground group-hover:text-gold-text transition-colors">
+            <span className="font-heading text-xl font-semibold tracking-tight text-foreground group-hover:text-gold-text transition-colors" style={{ color: '#1C1815' }}>
               NiloV
             </span>
             <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-0.5">
@@ -85,7 +85,7 @@ export default function Header() {
           </a>
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="hidden lg:inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-gold-text transition-colors no-underline"
+            className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-gold-text transition-colors no-underline"
             aria-label={`Позвонить ${SITE.phone}`}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
