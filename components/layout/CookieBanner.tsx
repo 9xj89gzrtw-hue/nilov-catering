@@ -30,7 +30,6 @@ export default function CookieBanner() {
       className="fixed bottom-[80px] right-3 z-[210] max-w-sm rounded-xl bg-foreground/95 backdrop-blur-md px-4 py-3 shadow-lg md:bottom-3"
       role="region"
       aria-label="Использование cookie"
-      aria-label="Использование cookie"
     >
       <p className="text-xs text-background/80 mb-2">
         Мы используем cookie для улучшения сайта.{' '}
