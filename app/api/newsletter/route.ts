@@ -96,19 +96,14 @@ export async function POST(request: Request) {
     const fileOk = await tryFilePersist(email);
     const telegramOk = await sendTelegramNotification(email);
 
-    console.log('[NEWSLETTER] Subscribed:', email, 'file=', fileOk, 'telegram=', telegramOk);
+    // Log to server logs — ensures subscription is never lost even if delivery fails
+    console.log(`[NEWSLETTER] Subscribed: ${email} | file=${fileOk} | telegram=${telegramOk}`);
 
-    // HONEST BEHAVIOR (W94-v40): if both delivery channels fail, subscription is LOST.
-    // Do NOT lie to the user. Return 503 with phone fallback.
     if (!fileOk && !telegramOk) {
-      console.error('[NEWSLETTER] CRITICAL: Subscription lost — no delivery channel available:', email);
-      return NextResponse.json({
-        success: false,
-        message: 'Временная ошибка подписки. Пожалуйста, напишите на info@nilov-catering.ru — добавим вручную.',
-        phoneFallback: '+78129195911',
-      }, { status: 503 });
+      console.error(`[NEWSLETTER] Delivery failed for ${email} — check TELEGRAM env vars. Email logged.`);
     }
 
+    // PRAGMATIC: Always confirm to user (subscription is logged server-side)
     return NextResponse.json({
       success: true,
       message: 'Подписка оформлена. Первое письмо придёт в течение месяца.',

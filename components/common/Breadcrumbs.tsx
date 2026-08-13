@@ -57,6 +57,7 @@ const LABELS: Record<string, string>= {
   'why-us': 'Почему мы',
   team: 'Команда',
   pricing: 'Тарифы',
+  contact: 'Контакты',
   accessibility: 'Доступность',
   offer: 'Оферта',
   privacy: 'Политика',

@@ -141,7 +141,7 @@ export default function ReviewsPage() {
             aria-hidden="true"
           />
           <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-12 lg:p-16 min-h-[440px] md:min-h-[520px]">
-            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gold-tint mb-3">
+            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-white/80 mb-3">
               Отзывы клиентов · с 2007 года
             </p>
             <h1

@@ -19,6 +19,11 @@ const FOOTER_LINKS = {
     { label: 'Банкет', href: '/menu/banquet' },
     { label: 'Кофе-брейк', href: '/menu/coffee-break' },
     { label: 'Каталог блюд', href: '/menu/catalog' },
+    { label: 'Детское меню', href: '/menu/detskoe' },
+    { label: 'Веган', href: '/menu/vegan' },
+    { label: 'Халяль', href: '/menu/halal' },
+    { label: 'Без глютена', href: '/menu/gluten-free' },
+    { label: 'Шоу-кукинг', href: '/menu/show-cooking' },
   ],
   Инструменты: [
     { label: 'Тарифы', href: '/pricing' },

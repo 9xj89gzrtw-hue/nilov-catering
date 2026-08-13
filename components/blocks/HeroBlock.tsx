@@ -189,21 +189,23 @@ export default function HeroBlock() {
             style={{ fontWeight: 500, letterSpacing: '-0.02em' }}
           >
             <span className="sr-only">Кейтеринг от шефа Дмитрия Нилова</span>
-            {titleWords.map((word, i) => (
-              <motion.span
-                key={i}
-                className="inline-block mr-[0.22em]"
-                custom={i}
-                variants={wordVariants}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-              >
-                {word}
-                {i === 2 && (
-                  <span className="text-gold-premium inline-block ml-1">✦</span>
-                )}
-              </motion.span>
-            ))}
+            <span aria-hidden="true" className="inline">
+              {titleWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  className="inline-block mr-[0.22em]"
+                  custom={i}
+                  variants={wordVariants}
+                  initial="hidden"
+                  animate={isInView ? 'visible' : 'hidden'}
+                >
+                  {word}
+                  {i === 2 && (
+                    <span className="text-gold-premium inline-block ml-1">✦</span>
+                  )}
+                </motion.span>
+              ))}
+            </span>
           </h1>
 
           {/* Подзаголовок — enhanced typography */}

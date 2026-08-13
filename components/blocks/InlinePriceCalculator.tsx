@@ -80,6 +80,8 @@ export default function InlinePriceCalculator() {
               {FORMATS.map(f => (
                 <button
                   key={f.id}
+                  type="button"
+                  aria-pressed={format === f.id}
                   onClick={() => handleFormatChange(f.id)}
                   className={`relative p-4 rounded-xl border text-left transition-all duration-200 group ${
                     format === f.id

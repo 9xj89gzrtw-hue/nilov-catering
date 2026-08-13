@@ -80,7 +80,10 @@ export default function ContactPage() {
               required
               autoComplete="name"
               placeholder="Как к вам обращаться?"
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+              aria-invalid={error ? 'true' : 'false'}
+              onInvalid={(e) => { e.preventDefault(); (e.target as HTMLInputElement).setCustomValidity('Пожалуйста, укажите ваше имя'); }}
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 aria-[invalid=true]:border-red-500"
             />
           </div>
 
@@ -134,7 +137,18 @@ export default function ContactPage() {
               name="email"
               autoComplete="email"
               placeholder="example@mail.ru"
-              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
+              aria-invalid={error ? 'true' : 'false'}
+              onInvalid={(e) => {
+                e.preventDefault();
+                const input = e.target as HTMLInputElement;
+                if (input.validity.typeMismatch) {
+                  input.setCustomValidity('Введите корректный email, например: name@example.com');
+                } else if (!input.value) {
+                  input.setCustomValidity('Заполните это поле');
+                }
+              }}
+              onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+              className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20 aria-[invalid=true]:border-red-500"
             />
           </div>
 
@@ -146,6 +160,7 @@ export default function ContactPage() {
                 id="date"
                 type="date"
                 name="date"
+                aria-label="Дата мероприятия"
                 className="w-full rounded-xl border border-line bg-background px-4 py-3.5 text-base focus:border-gold-text focus:outline-none focus:ring-2 focus:ring-gold-text/20"
               />
             </div>
