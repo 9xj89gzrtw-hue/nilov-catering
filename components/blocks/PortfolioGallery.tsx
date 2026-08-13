@@ -455,8 +455,7 @@ export default function PortfolioGallery() {
                 `}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                role="button"
-                tabIndex={0}
+                
                 aria-label={`${item.eventLabel} · ${item.guestCount}`}
               >
                 {/* Изображение */}

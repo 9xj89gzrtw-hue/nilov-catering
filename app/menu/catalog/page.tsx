@@ -27,7 +27,7 @@ export default function CatalogPage() {
   const [search, setSearch] = useState('');
   const [station, setStation] = useState<string>('all');
   const [activeDiets, setActiveDiets] = useState<Set<string>>(new Set());
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(24);
 
   const addDish = useConstructor(s =>s.addDish);
   const removeDish = useConstructor(s =>s.removeDish);

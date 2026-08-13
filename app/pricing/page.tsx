@@ -139,7 +139,7 @@ export default function PricingPage() {
             Цены на кейтеринг
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-            6 форматов. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
+            10 форматов. От <strong className="text-foreground">390 ₽/гость</strong>. Всё включено — еда, персонал, посуда, доставка.
           </p>
           {/* Urgency + trust */}
           <p className="text-sm text-muted-foreground mb-6">

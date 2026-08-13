@@ -15,7 +15,7 @@ export default function ShowCookingPage() {
         <p className="text-muted-foreground mb-2">
           Еда как шоу. Шеф-повар готовит при гостях — от вок-станции до десертного бара. Идеально для фуршетов и вечеринок.
         </p>
-        <p className="text-xs text-muted-foreground mb-8">Минимум 15 гостей для любой станции. Финальная смета рассчитывается индивидуально.</p>
+        <p className="text-xs text-muted-foreground mb-8">Минимум 20 гостей для любой станции. Финальная смета рассчитывается индивидуально.</p>
 
         <MenuTariffs format="show-cooking" formatLabel="Шоу-кухня" />
 

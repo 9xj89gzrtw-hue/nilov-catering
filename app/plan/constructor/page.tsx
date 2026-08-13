@@ -92,7 +92,7 @@ function ConstructorServerFallback() {
   ];
 
   return (
-    <div className="pt-24 pb-20" id="main">
+    <main className="pt-24 pb-20" id="main">
       <div className="container-site max-w-4xl">
         <Breadcrumbs />
 
@@ -407,7 +407,7 @@ function ConstructorServerFallback() {
           })();`
         }} />
       </div>
-    </div>
+    </main>
   );
 }
 

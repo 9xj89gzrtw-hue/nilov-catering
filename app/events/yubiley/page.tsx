@@ -4,8 +4,8 @@ import TariffOffersSection from '@/components/blocks/TariffOffersSection';
 import { SITE } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Юбилей и годовщина — кейтеринг для пожилых',
-  description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 15 гостей. Бюджетные решения от 36 750 ₽ за 15 чел (фуршет-Эконом) или от 59 250 ₽ (банкет-Эконом). Честные цены, реальные отзывы, большой шрифт.',
+  title: 'Юбилей и годовщина — кейтеринг в СПб',
+  description: 'Кейтеринг на золотую свадьбу, юбилей, годовщину. Банкет от 20 гостей. Бюджетные решения от 36 750 ₽ за 15 чел (фуршет-Эконом) или от 79 000 ₽ (банкет-Эконом). Честные цены, реальные отзывы, большой шрифт.',
   alternates: { canonical: '/events/yubiley', languages: { 'ru': '/events/yubiley', 'x-default': '/events/yubiley' } },
 };
 
@@ -47,18 +47,18 @@ export default function YubileyPage() {
           </p>
         </div>
 
-        {/* Бюджетные решения — для 15 чел на 59 250 ₽ */}
+        {/* Бюджетные решения — для 15 чел на 79 000 ₽ */}
         <div className="mb-8 p-6 rounded-2xl border border-line bg-card">
-          <h2 className="font-heading text-xl font-medium mb-3">Что помещается в бюджет 59 250 ₽ на 15 гостей</h2>
+          <h2 className="font-heading text-xl font-medium mb-3">Что помещается в бюджет 79 000 ₽ на 15 гостей</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            Золотая свадьба или юбилей на 15 пожилых гостей — нужен банкет с посадкой.
-            Вот реальные варианты под бюджет 59 250 ₽:
+            Золотая свадьба или юбилей на 20 гостей — нужен банкет с посадкой.
+            Вот реальные варианты под бюджет 79 000 ₽:
           </p>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border-2 border-gold-tint bg-gold-tint/10">
               <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
                 <h3 className="font-semibold">Вариант 1: Индивидуальный пакет «Юбилейный»</h3>
-                <span className="text-base font-bold text-gold-text">от 59 250 ₽ за 15 чел</span>
+                <span className="text-base font-bold text-gold-text">от 79 000 ₽ за 15 чел</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 Камерный банкет под ваш бюджет: 3 закуски, 1 горячее, десерт, чай/кофе, посуда, официант, доставка по КАД.
@@ -96,7 +96,7 @@ export default function YubileyPage() {
         <TariffOffersSection
           eventId="chastnoe"
           eventName="Юбилей / Годовщина"
-          description="Тарифы для юбилея (используются тарифы частных событий — банкет с посадкой, от 15 гостей). Для юбилеев рекомендуется тариф «Стандарт» или «Расширенный»."
+          description="Тарифы для юбилея (используются тарифы частных событий — банкет с посадкой, от 20 гостей). Для юбилеев рекомендуется тариф «Стандарт» или «Расширенный»."
         />
 
         {/* Что важно для пожилых гостей */}
