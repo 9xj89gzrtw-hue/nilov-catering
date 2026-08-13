@@ -50,7 +50,11 @@ export default function ContactPage() {
             setError('');
             const formData = new FormData(form);
             try {
-              const res = await fetch('/api/quote', { method: 'POST', body: formData });
+              const res = await fetch('/api/quote', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' },
+              });
               const json = await res.json();
               if (json.success) {
                 router.push(`/thank-you?orderId=${json.orderId || ''}`);

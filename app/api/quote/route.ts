@@ -92,7 +92,7 @@ export async function POST(request: Request) {
   // Native HTML form submits send form-encoded data and Accept: text/html
   // Also treat as HTML if no Accept header but form-encoded content (some clients)
   const isFormData = contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data');
-  const wantsHtml = (acceptHeader.includes('text/html') && !acceptHeader.includes('application/json')) || (isFormData && !acceptHeader.includes('application/json'));
+  const wantsHtml = acceptHeader.includes('text/html') && !acceptHeader.includes('application/json');
 
   try {
     let body: QuoteBody;
