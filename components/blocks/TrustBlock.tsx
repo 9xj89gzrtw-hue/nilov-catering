@@ -204,7 +204,8 @@ export default function TrustBlock() {
           Все данные верифицированы. Запросить документы:{' '}
           <a
             href="mailto:b2b@nilov-catering.ru?subject=Запрос документов"
-            className="text-gold-text hover:underline underline-offset-2"
+            className="inline-flex items-center min-h-[44px] px-3 py-2 text-gold-text hover:underline underline-offset-2"
+            aria-label="Отправить email на b2b@nilov-catering.ru"
           >
             b2b@nilov-catering.ru
           </a>

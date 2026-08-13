@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { ArrowRight, Pause, Play, Volume2, VolumeX } from 'lucide-react';
 
 /**
  * HeroBlock — full-bleed video hero с кинематографическими анимациями
@@ -64,7 +64,10 @@ const PARTICLES = Array.from({ length: 8 }, (_, i) => ({
 
 export default function HeroBlock() {
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   
   // Parallax scroll effects
   const { scrollYProgress } = useScroll({
@@ -88,18 +91,52 @@ export default function HeroBlock() {
     >
       {/* Full-bleed video background with parallax */}
       <motion.video
+        ref={videoRef}
         autoPlay
-        muted
-        loop
+        muted={isMuted}
+        loop={!isPlaying ? false : true}
         playsInline
         preload="metadata"
         poster="/images/catering/wedding-02.jpg"
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
         style={{ y: videoY }}
+        aria-label="Видеофон кейтеринга — банкетный зал"
       >
         <source src="/videos/hero/banquet.webm" type="video/webm" />
         <source src="/videos/hero-catering.mp4" type="video/mp4" />
       </motion.video>
+
+      {/* Video Controls — WCAG 2.1.1: User must be able to control video */}
+      <div className="absolute bottom-4 right-4 z-30 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => {
+            if (isPlaying) {
+              videoRef.current?.pause();
+            } else {
+              videoRef.current?.play();
+            }
+            setIsPlaying(!isPlaying);
+          }}
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-sm transition-all duration-200 border border-white/20"
+          aria-label={isPlaying ? 'Пауза видео' : 'Воспроизвести видео'}
+        >
+          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            if (videoRef.current) {
+              videoRef.current.muted = !isMuted;
+            }
+            setIsMuted(!isMuted);
+          }}
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-sm transition-all duration-200 border border-white/20"
+          aria-label={isMuted ? 'Включить звук' : 'Выключить звук'}
+        >
+          {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
+      </div>
 
       {/* Dark gradient overlay — тёмный снизу для читаемости текста */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-black/30 to-black/20" />

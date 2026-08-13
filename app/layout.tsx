@@ -54,6 +54,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="stylesheet" href="/styles/print.css" media="print" />
         <meta name="theme-color" content="#8C7140" />
         <meta name="color-scheme" content="light" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <Analytics />
         <OrganizationJsonLd />
         <ServiceJsonLd />

@@ -32,6 +32,9 @@ const REDIRECTS: Record<string, string> = {
   '/assistant': '/plan/helper',
   '/help': '/faq',
   '/tarify': '/pricing',
+  
+  // Cycle 2 fixes — broken links from hostile review
+  '/catalog': '/menu/catalog',
 };
 
 // Legacy slug → каноничный slug
@@ -76,5 +79,7 @@ export const config = {
     '/prices', '/tariffs', '/contacts', '/career', '/account', '/delivery-zones', '/subscription',
     '/menu/buffet', '/menu/kids', '/menu/banket', '/events/wedding', '/events/corporate',
     '/menu-picker', '/assistant', '/help', '/tarify',
+    // Cycle 2 fix matchers
+    '/catalog',
   ],
 };
