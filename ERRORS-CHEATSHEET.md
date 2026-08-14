@@ -1,123 +1,74 @@
-# 🐛 ERRORS CHEATSHEET - Шпаргалка ошибок и решений
+# 🚨 ERRORS CHEATSHEET — Шпаргалка по ошибкам
 
-> **Быстрое решение типичных проблем** — не тратьте время на поиск!
-
----
-
-## 📋 ОГЛАВЛЕНИЕ
-
-1. [TypeScript Errors](#typescript-errors)
-2. [Build Errors](#build-errors)
-3. [Runtime Errors](#runtime-errors)
-4. [Styling Errors](#styling-errors)
-5. [Git/Deploy Errors](#gitdeploy-errors)
-6. [Performance Issues](#performance-issues)
+> **Быстрые решения частых ошибок. Сначала ищите здесь!**
 
 ---
 
-## 🔴 TYPESCRIPT ERRORS
+## 🔴 BUILD ОШИБКИ
 
-### TS2322: Type 'X' is not assignable to type 'Y'
+### Error: "TypeScript error in build"
 
-```tsx
-// ❌ Проблема
-const [count, setCount] = useState<string>(0);
-// Type 'number' is not assignable to type 'string'
-
-// ✅ Решение: правильный тип
-const [count, setCount] = useState<number>(0);
-```
-
-```tsx
-// ❌ Проблема с event
-handleChange(e) {
-  setValue(e.target.value)  // e - unknown type
-}
-
-// ✅ Решение: типизировать event
-handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-  setValue(e.target.value)
-}
-```
-
-### TS2532: Object is possibly 'undefined'
-
-```tsx
-// ❌ Проблема
-const name = user.name.toLowerCase(); // user may be undefined
-
-// ✅ Решение 1: optional chaining
-const name = user?.name?.toLowerCase();
-
-// ✅ Решение 2: проверка
-if (user) {
-  const name = user.name.toLowerCase();
-}
-
-// ✅ Решение 3: non-null assertion (если уверены)
-const name = user!.name.toLowerCase();
-```
-
-### TS7053: Element implicitly has an 'any' type
-
-```tsx
-// ❌ Проблема
-const obj = { a: 1, b: 2 };
-const value = obj[key]; // key is any
-
-// ✅ Решение 1: keyof
-function getValue<T extends object>(obj: T, key: keyof T) {
-  return obj[key];
-}
-
-// ✅ Решение 2: Record
-const obj: Record<string, number> = { a: 1, b: 2 };
-```
-
-### TS1005: ',' expected / Unexpected token
-
-```tsx
-// ❌ Проблема: стрелочная функция в объекте
-const obj = {
-  fn: () => ({ ... }),  // Забыли вернуть объект
-};
-
-// ✅ Решение: скобки
-const obj = {
-  fn: () => ({ ... }),  // Возврат объекта в одной строке
-};
-```
-
-### TS2698: Spread types may only be created from object types
-
-```tsx
-// ❌ Проблема: spread неизвестного типа
-const result = { ...unknownVar };
-
-// ✅ Решение: типизация или проверка
-if (typeof unknownVar === "object" && unknownVar !== null) {
-  const result = { ...unknownVar };
-}
-```
-
----
-
-## 🟠 BUILD ERRORS
-
-### Build failed: Module not found
-
-```
-Module not found: Can't resolve '@/components/X'
-```
+**Причина:** Ошибка типов, которую TypeScript не пропускает
 
 **Решения:**
 
 ```bash
-# 1. Проверьте путь к файлу
-ls src/components/
+# 1. Посмотрите конкретную ошибку
+npx tsc --noEmit
 
-# 2. Проверьте tsconfig.json paths
-# Должно быть:
+# 2. Частые причины:
+
+# a) Отсутствующая проверка на null/undefined
+// ❌ Плохо:
+data.items[0].name;
+
+// ✅ Хорошо:
+data?.items?.[0]?.name ?? "значение по умолчанию";
+
+# b) Неправильный тип props
+// ❌ Плохо:
+interface Props {
+  count: number; // но приходит string!
+}
+
+// ✅ Хорошо:
+interface Props {
+  count: number | string;
+  // или преобразовать:
+  // count: Number(props.countString)
+}
+
+# c) Missing async/await
+// ❌ Плохо:
+const data = fetch("/api/data"); // возвращает Promise!
+
+// ✅ Хорошо:
+const data = await fetch("/api/data").then(r => r.json());
+```
+
+---
+
+### Error: "Cannot find module" / "Module not found"
+
+**Причина:** Неправильный путь импорта или модуль не установлен
+
+**Решения:**
+
+```bash
+# 1. Проверьте что пакет установлен
+cat package.json | grep "package-name"
+
+# Если нет — установите:
+bun add package-name
+
+# 2. Проверьте путь импорта (должен начинаться с @/)
+// ✅ Правильно:
+import { Component } from "@/components/ui/Component";
+
+// ❌ Неправильно:
+import { Component } from "../../components/ui/Component";
+
+# 3. Для tsconfig paths проверьте tsconfig.json
 {
   "compilerOptions": {
     "paths": {
@@ -125,391 +76,425 @@ ls src/components/
     }
   }
 }
-
-# 3. Проверьте расширение файла
-# Используйте .tsx для компонентов с JSX
-```
-
-### Build failed: ESM / CommonJS conflict
-
-```
-TypeError: Cannot use import statement outside a module
-```
-
-**Решения:**
-
-```json
-// package.json - добавьте "type": "module"
-{
-  "type": "module"
-  // ...
-}
-```
-
-```mjs
-// Или переименуйте файл в .mjs
-scripts/check.mjs → работает как ESM
-```
-
-### Build failed: SVG import error
-
-```
-Unexpected token (SVG file)
-```
-
-**Решения:**
-
-```tsx
-// ❌ Не работает
-import icon from "./icon.svg";
-
-// ✅ Способ 1: используйте next/image
-import Image from "next/image";
-<Image src="/icon.svg" alt="icon" width={24} height={24} />;
-
-// ✅ Способ 2: используйте @svgr/webpack (если настроен)
-import { ReactComponent as Icon } from "./icon.svg?react";
-
-// ✅ Способ 3: inline SVG
-const Icon = () => <svg>...</svg>;
-```
-
-### Build failed: CSS Modules / Tailwind error
-
-```
-@apply cannot be used with .class {}
-```
-
-**Решения:**
-
-```css
-/* ❌ Не работает */
-.my-class {
-  @apply .other-class;
-}
-
-/* ✅ Правильно */
-.my-class {
-  @apply bg-white p-4;
-}
 ```
 
 ---
 
-## 🟡 RUNTIME ERRORS
+### Error: "Hydration failed" / "Hydration mismatch"
 
-### Hydration mismatch
+**Причина:** Разница между server и client рендером
 
-```
-Warning: Text content did not match.
-Server: "..." Client: "..."
-```
-
-**Причины и решения:**
+**Решения:**
 
 ```tsx
-// ❌ Проблема 1: Date/Time
-<p>{new Date().toLocaleString()}</p>
-// Разное время на сервере и клиенте
+// ❌ Причины:
 
-// ✅ Решение: рендерить только на клиенте
-{typeof window !== 'undefined' && <p>{new Date().toLocaleString()}</p>}
-// или
-'use client'; // в начале компонента
-
-// ❌ Проблема 2: window/document
-<div style={{ height: window.innerHeight }}>
-// window не существует на сервере
-
-// ✅ Решение: useEffect
-const [height, setHeight] = useState(0);
+// 1. Использование window/document до гидрации
 useEffect(() => {
-  setHeight(window.innerHeight);
+  // Только тут можно использовать window!
+  const width = window.innerWidth;
 }, []);
-<div style={{ height }}>
 
-// ❌ Проблема 3: случайные значения
-<p>{Math.random()}</p>
+// 2. Случайные значения при рендере
+// ❌ Плохо:
+<div>{new Date().toString()}</div> // разное на сервере и клиенте!
 
-// ✅ Решение: использовать только детерминированные данные
-```
+// ✅ Хорошо:
+<div>{new Date().toISOString().split('T')[0]}</div> // одинаковое!
 
-### Cannot read property of undefined (reading 'X')
+// 3. Browser-specific API
+// ❌ Плохо:
+const isMobile = window.innerWidth < 768; // Error on server!
 
-```tsx
-// ❌ Проблема
-user.address.street; // address может быть undefined
-
-// ✅ Решение 1: optional chaining
-user?.address?.street;
-
-// ✅ Решение 2: default values
-const street = user?.address?.street || "Адрес не указан";
-
-// ✅ Решение 3: деструктуризация с default
-const { address: { street = "N/A" } = {} } = user;
-```
-
-### Too many re-renders / Infinite loop
-
-```tsx
-// ❌ Проблема 1: setState в render
-function Component() {
-  const [state, setState] = useState(0);
-  return <button onClick={setState(state + 1)}>{state}</button>;
-  // Если onClick отсутствует или вызывается напрямую!
-
-  // ❌ Проблема 2: useEffect без зависимостей
-  useEffect(() => {
-    setData(fetchData()); // Вызывается каждый рендер!
-  }); // Missing dependency array
-
-  // ✅ Решение:
-  useEffect(() => {
-    setData(fetchData());
-  }, []); // Пустой массив = один раз при монтировании
-}
-```
-
-### Next.js Navigation Error
-
-```
-Error: No router instance found
-```
-
-**Решения:**
-
-```tsx
-// ❌ Неправильный импорт
-import { useRouter } from "next/router"; // Pages Router
-
-// ✅ Для App Router (Next.js 13+)
-import { useRouter } from "next/navigation";
-
-// ✅ Для client components
-("use client");
-import { useRouter } from "next/navigation";
-const router = useRouter();
-router.push("/page");
+// ✅ Хорошо:
+const [isMobile, setIsMobile] = useState(false);
+useEffect(() => {
+  setIsMobile(window.innerWidth < 768);
+}, []);
+// Или используйте useMediaQuery из usehooks-ts!
 ```
 
 ---
 
-## 🟢 STYLING ERRORS
+### Error: "Cyrillic characters error" / Unexpected token
 
-### Tailwind class not working
+**Причина:** Русские символы там, где они не ожидаются
+
+**Решение:**
 
 ```tsx
-// ❌ Класс не применяется
-<div className="custom-color">  // Не стандартный класс
+// ❌ Плохо — русское слово "или" похоже на "||"
+setMessage(error или 'Ошибка');
 
-// ✅ Решение 1: использовать произвольные значения
-<div className="text-[#d4a574]">
+// ✅ Хорошо:
+setMessage(error || 'Ошибка');
 
-// ✅ Решение 2: добавить в tailwind.config
-// tailwind.config.ts
-theme: {
-  extend: {
-    colors: {
-      'brand-gold': '#d4a574',
-    }
-  }
+// ❌ Плохо — русские строки в коде (только для UI!)
+const status = 'успех';
+
+// ✅ Хорошо — для кода используйте английский:
+const status = 'success';
+// А для UI (то что видит пользователь) — русский ок:
+return <p>Успех!</p>;
+```
+
+---
+
+## 🟡 RUNTIME ОШИБКИ
+
+### Error: "White page" / Blank screen
+
+**Причина:** Ошибка рендеринга, не пойманная
+
+**Решения:**
+
+```tsx
+// 1. Убедитесь что страница обёрнута в ErrorBoundary
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+export default function Page() {
+  return (
+    <ErrorBoundary>
+      {" "}
+      {/* ← ОБЯЗАТЕЛЬНО! */}
+      <main>{/* контент */}</main>
+    </ErrorBoundary>
+  );
 }
-// Теперь можно:
-<div className="text-brand-gold">
+
+// 2. Проверьте консоль браузера (F12 → Console)
+// Там будет реальная ошибка!
+
+// 3. Частые причины белой страницы:
+// - Import ошибки (модуль не найден)
+// - Runtime error в render (деление на null и т.д.)
+// - Infinite loop в useEffect
+// - Missing default export
 ```
 
-### Z-index not working
+---
+
+### Error: "Render exceeded hooks limit" / Too many re-renders
+
+**Причина:** Бесконечный цикл ререндеров
+
+**Решения:**
 
 ```tsx
-// ❌ z-index не работает
-<div className="z-10">  // Над элементом z-50
+// ❌ Причины:
 
-// ✅ Решение: создайте stacking context
-<div className="relative z-10">  // Добавьте position
+// 1. setState прямо в render
+function Component() {
+  const [count, setCount] = useState(0);
 
-// ✅ Или используйте более высокое значение
-<div className="z-[100]">  // Произвольное значение
+  setCount(count + 1); // ← БЕСКОНЕЧНЫЙ ЦИКЛ!
+
+  return <div>{count}</div>;
+}
+
+// ✅ Исправление — вынести в useEffect:
+function Component() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(1); // выполнится один раз
+  }, []);
+
+  return <div>{count}</div>;
+}
+
+// 2. Эффект без зависимостей меняет состояние
+useEffect(() => {
+  setData(computeHeavy(data)); // data в зависимостях?
+}, []); // ← если computeHeavy зависит от data — цикл!
+// ✅ Добавить data в зависимости:
+useEffect(() => {
+  setData(computeHeavy(data));
+}, [data]); // теперь нормально
+
+// 3. Callback как prop без memo
+// Родитель каждый render создаёт новую функцию → child ререндерится
+// ✅ Обернуть callback в useCallback или вынести определение
 ```
 
-### Overflow hidden cutting content
+---
+
+### Error: "Cannot read property of undefined/null"
+
+**Причина:** Доступ к свойству несуществующего объекта
+
+**Решения:**
 
 ```tsx
-// ❌ Контент обрезается
-<div className="overflow-hidden">
-  <div className="transform -translate-y-10">Обрезано!</div>
+// ❌ Плохо:
+data.user.address.city;
+
+// ✅ Хорошо — optional chaining:
+data?.user?.address?.city ?? "Город не указан";
+
+// ✅ Или с дефолтом:
+const city = data?.user?.address?.city || "Москва";
+
+// ✅ Или с проверкой:
+if (data?.user?.address) {
+  return data.user.address.city;
+}
+```
+
+---
+
+## 🟠 API ОШИБКИ
+
+### Error: "Failed to fetch" / Network error
+
+**Причина:** Проблема с сетевым запросом
+
+**Решения:**
+
+```tsx
+// 1. Проверьте URL (относительный для internal API!)
+// ✅ Правильно:
+fetch("/api/contact", { method: "POST" });
+
+// ❌ Неправильно:
+fetch("http://localhost:3000/api/contact"); // не работает в production!
+
+// 2. Проверьте метод и headers
+fetch("/api/data", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data), // не забудьте stringify!
+});
+
+// 3. Обрабатывайте ошибки try/catch
+try {
+  const response = await fetch("/api/data");
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+} catch (error) {
+  console.error("Fetch error:", error);
+  toast.error("Не удалось загрузить данные");
+}
+
+// 4. Для external API — проверьте CORS
+// External API должен разрешать запросы с вашего домена
+```
+
+---
+
+### Error: "422 Unprocessable Entity" / Validation error
+
+**Причина:** Данные не прошли валидацию на сервере
+
+**Решения:**
+
+```tsx
+// 1. Проверьте что отправляете правильные данные
+const schema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+});
+
+// Валидируйте ПЕРЕД отправкой!
+const result = schema.safeParse(formData);
+if (!result.success) {
+  // Показать ошибки пользователю
+  return;
+}
+
+// 2. Проверьте Content-Type header
+headers: {
+  "Content-Type": "application/json", // для JSON
+  // или
+  "Content-Type": "multipart/form-data", // для файлов
+}
+
+// 3. Проверьте что body — это строка
+body: JSON.stringify(data), // не объект напрямую!
+```
+
+---
+
+## 🟢 CSS/СТИЛИ ОШИБКИ
+
+### Error: "Tailwind classes not working"
+
+**Причина:** Классы не применяются
+
+**Решения:**
+
+```bash
+# 1. Проверьте что Tailwind настроен
+# Должен быть @tailwindcss/postcss в postcss.config.mjs
+
+# 2. Проверьте импорт CSS
+// В вашем root layout:
+import "@/app/globals.css"; // должен импортироваться!
+
+# 3. Проверьте что классы правильные
+// ✅ Правильно:
+className="flex items-center justify-center"
+
+// ❌ Неправильно (пробелы внутри):
+className="flexitems-center justifycenter"
+
+# 4. Для динамических классов — используйте полный класс!
+// ❌ Плохо (Tailwind не видит динамические строки):
+className={`padding-${size}`}
+
+// ✅ Хорошо — object map:
+const sizes = { sm: "p-2", md: "p-4", lg: "p-6" };
+className={sizes[size]}
+```
+
+---
+
+### Error: "Z-index issues" / Overlay not showing
+
+**Причина:** Элемент перекрыт другим
+
+**Решения:**
+
+```tsx
+// 1. Используйте z-index из шкалы Tailwind
+z-0, z-10, z-20, z-30, z-40, z-50, z-auto
+
+// 2. Для modal/dialog — используйте portal (Radix делает это сам!)
+<Dialog>
+  <DialogContent> {/* автоматически в portal */}>
+    ...
+  </DialogContent>
+</Dialog>
+
+// 3. Для fixed/sticky — проверьте родителя с transform
+// transform/creates new stacking context!
+// ❌ Плохо:
+<div className="relative">
+  <div className="transform translate-y-2">
+    <div className="fixed"> {/* не будет fixed относительно viewport! */}
+  </div>
 </div>
 
-// ✅ Решение 1: уберите overflow
-<div className="overflow-visible">
-
-// ✅ Решение 2: добавьте padding
-<div className="overflow-hidden pt-10">
-
-// ✅ Решение 3: используйте clip-path вместо overflow
-<div className="clip-path-inset-0">
+// ✅ Вынести fixed за элемент с transform
 ```
 
 ---
 
-## 🔵 GIT/DEPLOY ERRORS
+## 🔵 DEPENDENCY ОШИБКИ
 
-### Push rejected (pre-push hook)
+### Error: "Cannot find package" / Module not found
 
-```
-❌ PUSH BLOCKED - X error(s) found
-```
+**Причина:** Пакет не установлен
 
-**Что делать:**
+**Решение:**
 
 ```bash
-# 1. Посмотрите детали ошибки
-bun run fix-only
+# 1. Установите пакет
+bun add package-name
 
-# 2. Автоисправление formatting
-npm run format
-
-# 3. Проверка TypeScript
-npx tsc --noEmit
-
-# 4. Проверка build
-bun run build
-
-# 5. Закоммитьте исправления
-git add -A
-git commit -m "chore: fix pre-push errors"
-
-# 6. Попробуйте снова
-git push
-```
-
-### Force push needed (не рекомендуется!)
-
-```bash
-# ⚠️ Только если точно знаете что делаете!
-git push --force-with-lease  # Безопаснее чем --force
-```
-
-### Vercel deployment failed
-
-```
-Error: Build failed
-```
-
-**Проверки:**
-
-```bash
-# 1. Локально проходит билд?
-bun run build
-
-# 2. Нет ли переменных окружения?
-# Vercel Dashboard → Settings → Environment Variables
-
-# 3. Совпадает ли версия Node.js?
-# Убедитесь что local и remote версии совпадают
-
-# 4. Проверьте логи деплоя
-# Vercel Deployments → Ваш деплой → Logs
-```
-
----
-
-## ⚡ PERFORMANCE ISSUES
-
-### Large bundle size
-
-```tsx
-// ❌ Тяжёлый импорт
-import _ from "lodash"; // ~70KB!
-
-// ✅ Решение 1: tree-shakeable imports
-import debounce from "lodash/debounce"; // Только нужная функция
-
-// ✅ Решение 2: нативная реализация
-const debounce = (fn, delay) => {
-  /* ... */
-};
-
-// ✅ Решение 3: dynamic import
-const HeavyChart = dynamic(() => import("./HeavyChart"), { ssr: false });
-```
-
-### Slow initial load
-
-```tsx
-// ❌ Загружаем всё сразу
-import { Gallery, ContactForm, Map, Reviews } from "./components";
-
-// ✅ Решение: code splitting
-import dynamic from "next/dynamic";
-
-const Gallery = dynamic(() => import("./Gallery"), {
-  loading: () => <GallerySkeleton />,
-  ssr: false,
-});
-```
-
-### Images loading slow
-
-```tsx
-// ❌ Обычный img tag
-<img src="/photo.jpg" alt="photo" />;
-
-// ✅ Используйте next/image (оптимизация!)
-import Image from "next/image";
-<Image
-  src="/photo.jpg"
-  alt="Описание фото"
-  width={800}
-  height={600}
-  priority // Для hero изображений
-  placeholder="blur" // Эффект размытия при загрузке
-/>;
-```
-
----
-
-## 🚀 БЫСТРЫЕ КОМАНДЫ ИСПРАВЛЕНИЯ
-
-```bash
-# === TypeScript ===
-npx tsc --noEmit                    # Проверить все ошибки
-npx tsc --noEmit --pretty           # С красивым выводом
-
-# === Formatting ===
-npm run format                      # Исправить всё
-npx prettier --check "**/*.{ts,tsx}" # Проверить без исправления
-
-# === Build ===
-bun run build                       # Полная сборка
-bun run build 2>&1 | grep error     # Показать только ошибки
-
-# === Git ===
-git status                          # Что изменилось
-git diff                            # Конкретные изменения
-git log --oneline -10               # Последние коммиты
-
-# === Полная диагностика ===
-bun run pre-deploy:quick            # Быстрая проверка перед пушем
-bun run safe-push                   # Проверка + пуш вместе
-```
-
----
-
-## 📞 ЕСЛИ НИЧЕГО НЕ ПОМОГАЕТ
-
-```bash
-# 1. Очистите кэш
-rm -rf .next node_modules/.cache
+# 2. Если ошибка осталась — удалите node_modules
+rm -rf node_modules .next
 bun install
 
-# 2. Пересоберите
-bun run build
+# 3. Проверьте package.json что пакет добавился
+cat package.json | grep package-name
 
-# 3. Если ошибка остаётся - создайте issue
-# GitHub Issues → New Issue
-# Приложите:
-#   - Скриншот ошибки
-#   - Команда которая вызвала ошибку
-#   - Версии: node -v && bun -v
+# 4. Для devDependencies при production build
+# Некоторые пакеты нужны только для разработки
+# Убедитесь что используете правильно:
+// Dev только:
+import type { Config } from "tailwindcss"; // типы — OK в production
+
+// Runtime import:
+import tailwind from "tailwindcss"; // нужен в dependencies!
 ```
+
+### Error: "Peer dependency mismatch"
+
+**Причина:** Несовместимые версии зависимостей
+
+**Решение:**
+
+```bash
+# 1. Попробуйте установить с --force (временно)
+bun add package-name --force
+
+# 2. Или обновите все зависимости
+bun update
+
+# 3. Проверьте что версии совместимы
+bun audit
+```
+
+---
+
+## 📋 DIAGNOSTICS CHECKLIST
+
+Когда ошибка непонятная — пройдите по этому списку:
+
+### 1. Посмотрите консоль браузера
+
+```
+F12 → Console → найдите красную ошибку
+```
+
+### 2. Проверьте Terminal output
+
+```
+Вывод bun run dev / npm run dev
+Там часто есть подсказки!
+```
+
+### 3. Запустите TypeScript check
+
+```bash
+npx tsc --noEmit
+```
+
+### 4. Проверьте imports
+
+```
+Все ли @/ пути рабочие?
+Все ли пакеты установлены?
+```
+
+### 5. Проверьте env variables
+
+```
+NEXT_PUBLIC_* переменные доступны на клиенте!
+Остальные — только на сервере.
+```
+
+### 6. Попробуйте clean build
+
+```bash
+rm -rf .next
+bun run build
+```
+
+### 7. Проверьте git diff
+
+```bash
+git diff
+# Что изменилось? Может проблема в последних изменениях?
+```
+
+---
+
+## 🆘 КОГДА НИЧЕГО НЕ ПОМОГАЕТ
+
+Если перепробовали всё:
+
+1. **Спросите AGENTS.md** — может есть специфичные инструкции
+2. **Посмотрите CODE-PATTERNS.md** — может нарушен паттерн
+3. **Проверьте REVIEW-CHECKLIST.md** — может упущен важный пункт
+4. **Создайте минимальный пример** — изолируйте проблему
+5. **Поищите в Google** — ошибка + "Next.js" + "solution"
+
+---
+
+**Помните:** 90% ошибок — это опечатки или missing null checks! 🔍

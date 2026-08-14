@@ -1,105 +1,201 @@
-/**
- * PAGE TEMPLATE FOR SUBPAGES
- *
- * Используйте этот шаблон для создания новых подстраниц.
- * Это гарантирует что все страницы будут иметь:
- * - Единый layout
- * - Правильную структуру
- * - SEO метаданные
- * - Error boundary
- * - Корректные импорты
- */
-
-// ============================================
-// FILE: app/[section]/[page-name]/page.tsx
-// ============================================
+// ============================================================================
+// 📄 ШАБЛОН ПОДСТРАНИЦЫ — Нилов Кейтеринг
+// ============================================================================
+//
+// ⚠️  ВАЖНО: Это ОТПРАВНАЯ ТОЧКА, НЕ ФИНАЛЬНЫЙ ШАБЛОН!
+//
+//  ПЕРЕД ИСПОЛЬЗОВАНИЕМ:
+//  1. Исследуйте актуальные тренды дизайна 2025-2026 через web_search
+//  2. Изучите лучшие примеры на Awwwards.com
+//  3. Сравните с конкурентами
+//  4. УЛУЧШИТЕ этот шаблон если нашли лучшее решение!
+//
+// ============================================================================
 
 import type { Metadata } from "next";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
-// ============================================
-// 1. METADATA (SEO) - ОБЯЗАТЕЛЬНО для каждой страницы
-// ============================================
+// ============================================================================
+// 1. METADATA (ОБЯЗАТЕЛЬНО! SEO + Social sharing)
+// ============================================================================
 export const metadata: Metadata = {
-  title: "Название страницы | Нилов Кейтеринг",
-  description: "Описание страницы для SEO (150-300 символов)",
+  title: "Название Услуги | Нилов Кейтеринг",
+  description: "Уникальное описание 150-300 символов для SEO.",
+
+  // Open Graph (для соцсетей)
   openGraph: {
-    title: "Название страницы",
-    description: "Описание для соцсетей",
+    title: "Название Услуги | Нилов Кейтеринг",
+    description: "Описание для социальных сетей.",
     type: "website",
+    locale: "ru_RU",
+    siteName: "Нилов Кейтеринг",
+    images: [
+      {
+        url: "/images/og/page-name.jpg", // 1200x630px
+        width: 1200,
+        height: 630,
+        alt: "Нилов Кейтеринг",
+      },
+    ],
+  },
+
+  // Twitter Cards
+  twitter: {
+    card: "summary_large_image",
+    title: "Название Услуги | Нилов Кейтеринг",
+    description: "Описание для Twitter",
   },
 };
 
-// ============================================
-// 2. MAIN PAGE COMPONENT
-// ============================================
-export default function PageNamePage() {
+// ============================================================================
+// 2. СТРУКТУРНЫЕ ДАННЫЕ (Schema.org — для SEO)
+// ============================================================================
+// import { generateEventSchema, generateFAQSchema } from "@/lib/schema";
+
+// const jsonLd = generateEventSchema({
+//   name: "Название услуги",
+//   description: "Описание...",
+//   url: "https://nilov-catering.ru/page-url",
+// });
+
+// ============================================================================
+// 3. ГЛАВНЫЙ КОМПОНЕНТ СТРАНИЦЫ
+// ============================================================================
+export default function PageName() {
   return (
     <ErrorBoundary>
+      {/* Schema.org JSON-LD (раскомментируйте если нужен) */}
+      {/* <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /> */}
+
       <main className="min-h-screen">
+        {/* ================================================================ */}
+        {/* HERO СЕКЦИЯ */}
         {/*
-         * СТРУКТУРА ПОДСТРАНИЦЫ:
+         * Требования:
+         * - Сильный визуальный impact
+         * - Уникальный H1 (только один на странице!)
+         * - Чёткий UVP (Unique Value Proposition)
+         * - CTA близко к началу
          *
-         * 1. Hero Section (опционально)
-         * 2. Основной контент
-         * 3. CTA секция (призыв к действию)
-         * 4. Связанные разделы/ссылки
+         * ИССЛЕДОВАТЬ: Лучшие Hero секции ресторанов/кейтеринга 2026!
+         * → web_search("best hero section restaurant website 2026")
          */}
+        {/* ================================================================ */}
+        <section className="relative flex min-h-[80vh] items-center overflow-hidden">
+          {/*
+           * ФОН: Выберите подходящий вариант после исследования:
+           *
+           * Варианты (тренды 2026):
+           * - Full-screen видео с оверлеем
+           * - Качественное фото с параллаксом
+           * - Градиент + геометрические паттерны
+           * - Dark mode luxury aesthetic
+           * - 3D элементы (умеренно!)
+           */}
 
-        {/* ===== HERO SECTION ===== */}
-        <section className="from-primary/5 relative bg-gradient-to-b to-transparent py-20 md:py-32">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Заголовок H1 страницы
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Breadcrumb (хлебные крошки) */}
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex items-center gap-2 text-sm opacity-70">
+                <li>
+                  <a href="/">Главная</a>
+                </li>
+                <li>
+                  <span>/</span>
+                </li>
+                <li>
+                  <a href="/parent">Родитель</a>
+                </li>
+                <li>
+                  <span>/</span>
+                </li>
+                <li className="opacity-100">Текущая</li>
+              </ol>
+            </nav>
+
+            {/* H1 — уникальный, эмоциональный, с ключевыми словами */}
+            <h1 className="text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
+              Заголовок H1 —{" "}
+              <span className="bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] bg-clip-text text-transparent">
+                уникальное преимущество
+              </span>
             </h1>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-lg md:text-xl">
-              Подзаголовок с описанием что на этой странице. Должен быть уникальным и информативным.
+
+            {/* Подзаголовок — поддержка, детали */}
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed opacity-80 md:text-xl">
+              Описание — что клиент найдёт? Почему это важно? Эмоционально, но по делу.
             </p>
-          </div>
-        </section>
 
-        {/* ===== ОСНОВНОЙ КОНТЕНТ ===== */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-4xl space-y-8">
-              {/* Введение */}
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p>
-                  Текст контента страницы. Используйте семантическую разметку. Каждый параграф
-                  должен нести смысл.
-                </p>
-              </div>
-
-              {/* Карточки / Сетка (если нужно) */}
-              <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {[
-                  { title: "Карточка 1", desc: "Описание" },
-                  { title: "Карточка 2", desc: "Описание" },
-                  { title: "Карточка 3", desc: "Описание" },
-                ].map((item, i) => (
-                  <article
-                    key={i}
-                    className="bg-card rounded-xl border p-6 transition-shadow hover:shadow-lg"
-                  >
-                    <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.desc}</p>
-                  </article>
-                ))}
-              </div>
+            {/* CTA — призыв к действию */}
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full px-8 py-4 font-semibold transition-all"
+                /*
+                 *СТИЛЬ: Определите после исследования цветовой палитры!
+                 *Варианты 2026:
+                 *- Champagne Gold на тёмном фоне
+                 *- White/cream на gradient background
+                 *- Bold accent color
+                 */
+              >
+                Действие (Рассчитать / Заказать / Узнать)
+              </a>
             </div>
           </div>
         </section>
 
-        {/* ===== CTA SECTION ===== */}
-        <section className="bg-primary text-primary-foreground py-16 md:py-24">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="mb-4 text-2xl font-bold md:text-3xl">Готовы заказать?</h2>
-            <p className="mb-8 opacity-90">Свяжитесь с нами для расчёта стоимости</p>
+        {/* ================================================================ */}
+        {/* ОСНОВНОЙ КОНТЕНТ */}
+        {/*
+         * Структура зависит от типа страницы!
+         *
+         * ИССЛЕДОВАТЬ: Лучшие паттерны контента для вашего типа страницы
+         * → web_search("best [page type] page layout 2026")
+         */}
+        {/* ================================================================ */}
+
+        {/* ПРИМЕР: Секция с описанием */}
+        {/* Адаптируйте под свои нужды! */}
+
+        {/* ПРИМЕР: Сетка услуг/возможностей */}
+        {/* Используйте компоненты из COMPONENTS-CATALOG.md */}
+
+        {/* ПРИМЕР: Галерея работ */}
+        {/* ImageLightbox или кастомная галерея */}
+
+        {/* ПРИМЕР: Цены/тарифы */}
+        {/* Исследуйте лучшие pricing page designs */}
+
+        {/* ================================================================ */}
+        {/* FAQ СЕКЦИЯ (рекомендуется для SEO!) */}
+        {/* ================================================================ */}
+        {/* Используйте Accordion из COMPONENTS-CATALOG.md */}
+        {/* Вопросы должны быть РЕАЛЬНЫМИ вопросами клиентов! */}
+
+        {/* ================================================================ */}
+        {/* CTA СЕКЦИЯ (ОБЯЗАТЕЛЬНА в конце!) */}
+        {/* ================================================================ */}
+        <section className="py-20 md:py-28">
+          {/*
+           * Дизайн CTA зависит от общего стиля страницы
+           *
+           * Варианты:
+           * - Dark секция со светлым текстом
+           * - Gradient фон
+           * - Фотофон с оверлеем
+           * - Минималистичный белый/кремовый
+           */}
+          <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">Готовы обсудить ваш праздник?</h2>
+            <p className="mx-auto mb-10 max-w-2xl text-lg opacity-80">
+              Свяжитесь с нами для бесплатной консультации и расчёта
+            </p>
             <a
               href="/contact"
-              className="bg-background text-foreground hover:bg-background/90 inline-flex items-center justify-center rounded-lg px-8 py-3 font-medium transition-colors"
+              className="inline-flex items-center justify-center rounded-full px-10 py-4 font-semibold transition-all"
             >
-              Связаться с нами
+              Получить предложение
             </a>
           </div>
         </section>
@@ -108,18 +204,18 @@ export default function PageNamePage() {
   );
 }
 
-// ============================================
-// CHECKLIST ПЕРЕД ЗАВЕРШЕНИЕМ:
-// ============================================
-/*
-✓ Metadata заполнены (title, description, OG)
-✓ H1 заголовок уникальный и информативный
-✓ Семантические теги (main, section, article)
-✓ Адаптивная вёрстка (mobile-first)
-✓ ErrorBoundary обёртка
-✓ CTA секция в конце
-✓ Правильные пути к ссылкам (/contact, /pricing и т.д.)
-✓ Alt тексты для изображений
-✓ Цвета из design system (primary, muted, etc.)
-✓ Нет хардкодных значений цветов (#fff → bg-white)
-*/
+// ============================================================================
+// ПРИМЕЧАНИЯ ДЛЯ АГЕНТА:
+//
+// 1. Этот шаблон — ОТПРАВНАЯ ТОЧКА, не финальный дизайн!
+// 2. Перед использованием — ИССЛЕДУЙТЕ тренды 2025-2026
+// 3. Цвета/стили — определите на основе исследования
+// 4. Если нашли ЛУЧШЕЕ решение — используйте ЕГО!
+// 5. Обновите этот файл после улучшений
+//
+// РЕСУРСЫ ДЛЯ ИССЛЕДОВАНИЯ:
+// - Awwards.com/hotel-restaurant — лучшие сайты мира
+// - Dribbble.com/tags/catering — концепты
+// - web_search("trends 2026") — актуальные тренды
+//
+// ============================================================================

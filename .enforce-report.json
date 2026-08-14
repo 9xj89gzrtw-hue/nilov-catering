@@ -1,62 +1,6 @@
 {
-  "timestamp": "2026-08-14T00:19:34.431Z",
-  "errors": [
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 34,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 34,
-      "message": "Запрещённый цвет (Полный белый): используйте \"white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 56,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 56,
-      "message": "Запрещённый цвет (Полный белый): используйте \"white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 72,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 72,
-      "message": "Запрещённый цвет (Полный белый): используйте \"white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 91,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 91,
-      "message": "Запрещённый цвет (Полный белый): используйте \"white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 163,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 163,
-      "message": "Запрещённый цвет (Полный белый): используйте \"white\" из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/plan/constructor/page.tsx",
-      "line": 527,
-      "message": "Запрещённый цвет (Короткий белый): используйте \"white / bg-white\" из DESIGN-SYSTEM.md"
-    }
-  ],
+  "timestamp": "2026-08-14T00:20:32.717Z",
+  "errors": [],
   "warnings": [
     {
       "file": "./components/blocks/EventTypeSelector.tsx",
@@ -261,7 +205,7 @@
   ],
   "summary": {
     "filesScanned": 250,
-    "errorsCount": 11,
+    "errorsCount": 0,
     "warningsCount": 40
   }
 }

@@ -26,6 +26,8 @@
     "pre-push-check": "bash .husky/pre-push",
     "start-work": "node scripts/start-work.mjs",
     "enforce-rules": "node scripts/enforce-rules.mjs",
+    "project-health-check": "node scripts/project-health-check.mjs",
+    "project-health-check:full": "node scripts/project-health-check.mjs --full",
     "prepare": "husky"
   },
   "dependencies": {

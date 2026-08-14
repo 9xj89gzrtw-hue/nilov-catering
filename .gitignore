@@ -80,4 +80,4 @@ site-*.txt
 nilov-catering/
 nilov-catering-repo/
 v950-bot-fresh/
-scripts/
+# scripts/ — разрешены! Убрано из ignore 2024-08-14

@@ -1,281 +1,216 @@
-# 📝 CODE PATTERNS - Готовые решения типичных задач
+# 📝 CODE PATTERNS — Паттерны кода
 
-> **Копируйте, адаптируйте, используйте!** Не изобретайте велосипед.
-
----
-
-## 📋 ОГЛАВЛЕНИЕ
-
-1. [Страница (Page Template)](#страница-page-template)
-2. [Hero Section](#hero-section)
-3. [Карточки (Cards)](#карточки-cards)
-4. [Формы (Forms)](#формы-forms)
-5. [Галерея (Gallery)](#галерея-gallery)
-6. [FAQ / Аккордеон](#faq--аккордеон)
-7. [Отзывы (Reviews)](#отзывы-reviews)
-8. [Навигация (Navigation)](#навигация-navigation)
-9. [API Routes](#api-routes)
-10. [Хуки (Custom Hooks)](#хуки-custom-hooks)
+> **Как правильно писать код в этом проекте. Копируйте и следуйте этим паттернам!**
 
 ---
 
-## 📄 СТРАНИЦА (Page Template)
+## 🏗️ СТРУКТУРА ФАЙЛОВ
+
+### Стандартная структура компонента
 
 ```tsx
-// app/[page-name]/page.tsx
+// 1. Импорты (сгруппированы!)
+//    React/Next
 import type { Metadata } from "next";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { InViewWrapper, scrollAnimations } from "@/components/ui/InViewWrapper";
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { useState, useEffect } from "react";
 
-// 1. Metadata (обязательно!)
+// Внутренние компоненты
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { cn } from "@/lib/utils";
+
+// UI компоненты
+import { InViewWrapper, scrollAnimations } from "@/components/ui/InViewWrapper";
+
+// Типы
+interface ComponentProps {
+  // ...
+}
+
+// 2. Константы (если есть)
+const DEFAULT_VALUE = "...";
+
+// 3. Главный компонент
+export default function Component({ ... }: ComponentProps) {
+  return (
+    <div>
+      {/* JSX */}
+    </div>
+  );
+}
+
+// 4. Экспорт вспомогательных компонентов (если есть)
+export function SubComponent() {
+  // ...
+}
+```
+
+### Группировка импортов
+
+```tsx
+// ✅ Правильно — группы разделены пустой строкой
+
+// React / Next
+import type { Metadata } from "next";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+// Внешние библиотеки
+import { motion, AnimatePresence } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Внутренние UI компоненты
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/Dialog";
+import { Accordion, AccordionItem } from "@/components/ui/Accordion";
+
+// Утилиты и хелперы
+import { cn } from "@/lib/utils";
+import { generateEventSchema } from "@/lib/schema";
+
+// Типы (если много)
+import type { User, Event } from "@/types";
+
+// Иконки (lucide-react)
+import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
+
+// Стили (CSS modules если используются)
+// import styles from "./Component.module.css";
+```
+
+---
+
+## 📄 ШАБОНЫ КОМПОНЕНТОВ
+
+### Server Component (по умолчанию)
+
+```tsx
+// Используйте Server Components по умолчанию!
+// Они быстрее, безопаснее и уменьшают bundle size.
+
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
 export const metadata: Metadata = {
-  title: "Название страницы | Nilov Catering",
-  description: "Описание 150-300 символов для SEO",
-  openGraph: {
-    title: "Название страницы | Nilov Catering",
-    description: "Описание для соцсетей",
-    images: ["/images/og-image.jpg"],
-  },
+  title: "Страница | Нилов Кейтеринг",
+  description: "Описание страницы...",
 };
 
-// 2. Schema.org (для SEO)
-const jsonLd = generateBreadcrumbSchema([
-  { name: "Главная", url: "https://nilov-catering.ru" },
-  { name: "Страница", url: "https://nilov-catering.ru/page" },
-]);
+// Можно использовать async!
+export default async function Page() {
+  // Fetch данные прямо здесь (только на сервере!)
+  const data = await fetch("https://api.example.com/data");
 
-// 3. Компонент страницы
-export default function PageName() {
   return (
     <ErrorBoundary>
-      {/* Schema.org */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative bg-[#1a1816] py-20 md:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <InViewWrapper
-              inViewClassName="opacity-100 translate-y-0 transition-all duration-700"
-              outOfViewClassName="opacity-0 translate-y-10"
-            >
-              <h1 className="font-serif text-4xl text-white md:text-6xl">Заголовок H1</h1>
-              <p className="mt-6 max-w-2xl text-lg text-gray-300">Подзаголовок или описание</p>
-            </InViewWrapper>
-          </div>
-        </section>
+        <h1>Заголовок</h1>
+        <p>{data.text}</p>
 
-        {/* Content Sections */}
-        <ContentSection />
-
-        {/* CTA Section */}
-        <CTASection />
+        {/* Для интерактивности — отдельный client component */}
+        <ContactForm />
       </main>
     </ErrorBoundary>
   );
 }
 ```
 
----
-
-## 🎯 HERO SECTION
-
-### С фоновым изображением
+### Client Component (когда нужна интерактивность)
 
 ```tsx
-function HeroWithImage() {
+"use client"; // ОБЯЗАТЕЛЬНО в первой строке!
+
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
+
+interface ClientComponentProps {
+  initialData?: string;
+  onSubmit?: (data: FormData) => void;
+}
+
+export function ClientComponent({ initialData, onSubmit }: ClientComponentProps) {
+  // State
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Hooks
+  const router = useRouter();
+
+  // Effects
+  useEffect(() => {
+    // Что-то при монтировании
+  }, []);
+
+  // Handlers (useCallback для оптимизации!)
+  const handleClick = useCallback(() => {
+    setIsLoading(true);
+    // логика...
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        // API вызов
+        const response = await fetch("/api/some-endpoint", {
+          method: "POST",
+          body: JSON.stringify(/* data */),
+        });
+
+        if (!response.ok) {
+          throw new Error("Ошибка запроса");
+        }
+
+        router.push("/success");
+        router.refresh(); // обновить серверные данные
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Произошла ошибка");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [router]
+  );
+
+  // Render
+  if (error) {
+    return (
+      <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+        {error}
+        <button onClick={() => setError(null)} className="ml-2 underline">
+          Закрыть
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <section className="relative flex min-h-[80vh] items-center overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/catering/finedining-01.avif')" }}
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* поля формы */}
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="rounded-full bg-amber-500 px-6 py-3 text-white disabled:bg-amber-300"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a1816]/95 via-[#1a1816]/70 to-transparent" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <InViewWrapper>
-          <span className="mb-6 inline-block rounded-full bg-[#d4a574]/20 px-4 py-2 text-sm font-medium text-[#d4a574]">
-            Премиальный кейтеринг в Санкт-Петербурге
-          </span>
-
-          <h1 className="max-w-4xl font-serif text-5xl font-bold leading-tight text-white md:text-7xl lg:text-8xl">
-            Создаём <span className="text-[#d4a574]">незабываемые</span> мероприятия
-          </h1>
-
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed text-gray-300">
-            Более 15 лет опыта организации банкетов, фуршетов и корпоративных мероприятий любого
-            масштаба.
-          </p>
-
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <button className="group rounded-xl bg-gradient-to-r from-[#d4a574] to-[#c9a227] px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(212,165,116,0.4)]">
-              Рассчитать стоимость
-              <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-            </button>
-
-            <button className="rounded-xl border border-white/30 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white/10">
-              Смотреть портфолио
-            </button>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-16 grid max-w-lg grid-cols-3 gap-8">
-            <div>
-              <p className="text-3xl font-bold text-[#d4a574]">15+</p>
-              <p className="mt-1 text-sm text-gray-400">лет опыта</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#d4a574]">2000+</p>
-              <p className="mt-1 text-sm text-gray-400">мероприятий</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#d4a574]">98%</p>
-              <p className="mt-1 text-sm text-gray-400">довольных клиентов</p>
-            </div>
-          </div>
-        </InViewWrapper>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30 pt-2">
-          <div className="h-3 w-1 rounded-full bg-white/50" />
-        </div>
-      </div>
-    </section>
-  );
-}
-```
-
-### Минимальный Hero
-
-```tsx
-function MinimalHero({ title, subtitle }: { title: string; subtitle?: string }) {
-  return (
-    <section className="bg-[#faf9f7] py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <h1 className="font-serif text-4xl text-[#1a1816] md:text-5xl">{title}</h1>
-        {subtitle && <p className="mx-auto mt-4 max-w-2xl text-lg text-[#9a938a]">{subtitle}</p>}
-      </div>
-    </section>
+        {isLoading ? "Загрузка..." : "Отправить"}
+      </button>
+    </form>
   );
 }
 ```
 
 ---
 
-## 🃏 КАРТОЧКИ (Cards)
+## 🎣 ФОРМЫ (СТАНДАРТНЫЙ ПАТТЕРН)
 
-### Услуг / Преимуществ
-
-```tsx
-interface ServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  delay?: number;
-}
-
-function ServiceCard({ icon, title, description, delay = 0 }: ServiceCardProps) {
-  return (
-    <InViewWrapper
-      inViewClassName="opacity-100 translate-y-0 transition-all duration-500"
-      outOfViewClassName="opacity-0 translate-y-8"
-      className={`delay-${delay}`}
-    >
-      <div className="group rounded-2xl border border-[#e8e2d9] bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-[#d4a574]/30 hover:shadow-xl">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#f5f0e8] text-2xl transition-colors duration-300 group-hover:bg-[#d4a574] group-hover:text-white">
-          {icon}
-        </div>
-
-        <h3 className="mt-6 text-xl font-semibold text-[#1a1816]">{title}</h3>
-        <p className="mt-3 leading-relaxed text-[#9a938a]">{description}</p>
-
-        <a
-          href="#"
-          className="mt-6 inline-flex items-center font-medium text-[#d4a574] underline-offset-4 group-hover:underline"
-        >
-          Подробнее
-          <svg
-            className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-    </InViewWrapper>
-  );
-}
-
-// Использование:
-<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-  <ServiceCard icon="🍽️" title="Банкеты" description="Полный цикл организации" delay={0} />
-  <ServiceCard icon="🥂" title="Фуршеты" description="Выездное обслуживание" delay={100} />
-  <ServiceCard icon="🏢" title="Корпоративы" description="Бизнес-мероприятия" delay={200} />
-</div>;
-```
-
-### Карточка меню (блюда)
-
-```tsx
-interface DishCardProps {
-  image: string;
-  name: string;
-  description: string;
-  weight?: string;
-  price?: number;
-}
-
-function DishCard({ image, name, description, weight, price }: DishCardProps) {
-  return (
-    <article className="group overflow-hidden rounded-xl border border-[#e8e2d9] bg-white shadow-md transition-all duration-300 hover:shadow-lg">
-      {/* Image */}
-      <div className="aspect-[4/3] overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          width={400}
-          height={300}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="font-semibold text-[#1a1816] transition-colors group-hover:text-[#d4a574]">
-            {name}
-          </h3>
-          {(weight || price) && (
-            <div className="shrink-0 text-right">
-              {weight && <p className="text-xs text-[#9a938a]">{weight}</p>}
-              {price && <p className="font-semibold text-[#d4a574]">{price}₽</p>}
-            </div>
-          )}
-        </div>
-
-        <p className="mt-2 line-clamp-2 text-sm text-[#9a938a]">{description}</p>
-      </div>
-    </article>
-  );
-}
-```
-
----
-
-## 📝 ФОРМЫ (Forms)
-
-### Форма заявки (React Hook Form + Zod)
+### Полная форма с валидацией
 
 ```tsx
 "use client";
@@ -285,39 +220,40 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 
-// Schema валидации
-const contactSchema = z.object({
-  name: z.string().min(2, "Минимум 2 символа"),
-  phone: z.string().regex(/^\+?[\d\s-()]{10,}$/, "Некорректный телефон"),
-  email: z.string().email("Некорректный email").optional().or(z.literal("")),
-  guests: z.string().optional(),
-  eventType: z.string().optional(),
-  message: z.string().max(1000, "Максимум 1000 символов").optional(),
+// === 1. Schema валидации ===
+const formSchema = z.object({
+  name: z.string().min(2, "Имя слишком короткое").max(50, "Имя слишком длинное"),
+  email: z.string().email("Введите корректный email"),
+  phone: z.string().regex(/^\+?[\d\s-()]+$/, "Некорректный телефон"),
+  message: z.string().max(1000, "Сообщение слишком длинное").optional(),
+  agree: z.literal(true, {
+    errorMap: () => ({ message: "Необходимо согласие" }),
+  }),
 });
 
-type ContactForm = z.infer<typeof contactSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
+// === 2. Компонент формы ===
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
     reset,
-  } = useForm<ContactForm>({
-    resolver: zodResolver(contactSchema),
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      phone: "",
       email: "",
-      guests: "",
-      eventType: "",
+      phone: "",
       message: "",
     },
   });
 
-  const onSubmit = async (data: ContactForm) => {
+  // === 3. Submit handler ===
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
 
     try {
@@ -327,9 +263,11 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Ошибка отправки");
+      if (!response.ok) {
+        throw new Error("Ошибка отправки");
+      }
 
-      toast.success("Заявка отправлена! Мы свяжемся с вами в ближайшее время");
+      toast.success("Заявка отправлена! Мы свяжемся с вами.");
       reset();
     } catch (error) {
       toast.error("Произошла ошибка. Попробуйте ещё раз.");
@@ -338,559 +276,569 @@ export function ContactForm() {
     }
   };
 
+  // === 4. Render ===
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Name & Phone - 2 колонки на десктопе */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-[#1a1816]">
-            Ваше имя *
-          </label>
-          <input
-            id="name"
-            {...register("name")}
-            placeholder="Как к вам обращаться?"
-            className={`w-full rounded-xl border px-4 py-3 ${
-              errors.name ? "border-red-500" : "border-[#e8e2d9]"
-            } outline-none transition focus:border-[#d4a574] focus:ring-2 focus:ring-[#d4a574]/20`}
-          />
-          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-[#1a1816]">
-            Телефон *
-          </label>
-          <input
-            id="phone"
-            {...register("phone")}
-            type="tel"
-            placeholder="+7 (___) ___-__-__"
-            className={`w-full rounded-xl border px-4 py-3 ${
-              errors.phone ? "border-red-500" : "border-[#e8e2d9]"
-            } outline-none transition focus:border-[#d4a574] focus:ring-2 focus:ring-[#d4a574]/20`}
-          />
-          {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>}
-        </div>
-      </div>
-
-      {/* Email */}
-      <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#1a1816]">
-          Email (необязательно)
-        </label>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+      {/* Поле: Имя */}
+      <FormField label="Ваше имя" error={errors.name} required>
         <input
-          id="email"
-          {...register("email")}
+          type="text"
+          placeholder="Как к вам обращаться?"
+          {...register("name")}
+          className={cn(
+            "w-full rounded-xl border px-4 py-3 transition-all",
+            errors.name
+              ? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
+              : "border-gray-300 focus:border-amber-500 focus:ring-amber-500/20"
+          )}
+        />
+      </FormField>
+
+      {/* Поле: Email */}
+      <FormField label="Email" error={errors.email} required>
+        <input
           type="email"
           placeholder="your@email.com"
-          className="w-full rounded-xl border border-[#e8e2d9] px-4 py-3 outline-none transition focus:border-[#d4a574] focus:ring-2 focus:ring-[#d4a574]/20"
+          {...register("email")}
+          className={cn(
+            "w-full rounded-xl border px-4 py-3 transition-all",
+            errors.email
+              ? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
+              : "border-gray-300 focus:border-amber-500 focus:ring-amber-500/20"
+          )}
         />
-      </div>
+      </FormField>
 
-      {/* Event Type & Guests */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div>
-          <label htmlFor="eventType" className="mb-2 block text-sm font-medium text-[#1a1816]">
-            Тип мероприятия
-          </label>
-          <select
-            id="eventType"
-            {...register("eventType")}
-            className="w-full rounded-xl border border-[#e8e2d9] bg-white px-4 py-3 outline-none focus:border-[#d4a574]"
-          >
-            <option value="">Выберите...</option>
-            <option value="wedding">Свадьба</option>
-            <option value="corporate">Корпоратив</option>
-            <option value="birthday">День рождения</option>
-            <option value="other">Другое</option>
-          </select>
-        </div>
+      {/* Поле: Телефон */}
+      <FormField label="Телефон" error={errors.phone}>
+        <input
+          type="tel"
+          placeholder="+7 (___) ___-__-__"
+          {...register("phone")}
+          className={cn(
+            "w-full rounded-xl border px-4 py-3 transition-all",
+            errors.phone
+              ? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
+              : "border-gray-300 focus:border-amber-500 focus:ring-amber-500/20"
+          )}
+        />
+      </FormField>
 
-        <div>
-          <label htmlFor="guests" className="mb-2 block text-sm font-medium text-[#1a1816]">
-            Количество гостей
-          </label>
-          <select
-            id="guests"
-            {...register("guests")}
-            className="w-full rounded-xl border border-[#e8e2d9] bg-white px-4 py-3 outline-none focus:border-[#d4a574]"
-          >
-            <option value="">Выберите...</option>
-            <option value="20">до 20 гостей</option>
-            <option value="50">20-50 гостей</option>
-            <option value="100">50-100 гостей</option>
-            <option value="200">100+ гостей</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Message */}
-      <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-[#1a1816]">
-          Дополнительная информация
-        </label>
+      {/* Поле: Сообщение */}
+      <FormField label="Сообщение" error={errors.message}>
         <textarea
-          id="message"
-          {...register("message")}
           rows={4}
-          placeholder="Расскажите о вашем мероприятии..."
-          className="w-full resize-none rounded-xl border border-[#e8e2d9] px-4 py-3 outline-none transition focus:border-[#d4a574] focus:ring-2 focus:ring-[#d4a574]/20"
+          placeholder="Расскажите подробнее..."
+          {...register("message")}
+          className={cn(
+            "w-full resize-none rounded-xl border px-4 py-3 transition-all",
+            errors.message
+              ? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
+              : "border-gray-300 focus:border-amber-500 focus:ring-amber-500/20"
+          )}
         />
-      </div>
+      </FormField>
 
-      {/* Submit */}
+      {/* Чекбокс согласия */}
+      <label className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          {...register("agree")}
+          className="mt-1 h-5 w-5 rounded border-gray-300 text-amber-500 focus:ring-amber-500"
+        />
+        <span className="text-sm text-gray-600">
+          Я согласен с{" "}
+          <a href="/privacy" className="text-amber-600 underline">
+            политикой конфиденциальности
+          </a>
+        </span>
+      </label>
+      {errors.agree && <p className="text-sm text-red-500">{errors.agree.message}</p>}
+
+      {/* Submit кнопка */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-gradient-to-r from-[#d4a574] to-[#c9a227] py-4 font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,165,116,0.4)] disabled:cursor-not-allowed disabled:opacity-70"
+        className={cn(
+          "w-full rounded-xl bg-amber-500 py-4 font-semibold text-white transition-colors",
+          "hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50",
+          "disabled:cursor-not-allowed disabled:bg-amber-300",
+          "flex items-center justify-center gap-2"
+        )}
       >
-        {isSubmitting ? "Отправка..." : "Отправить заявку"}
+        {isSubmitting ? (
+          <>
+            <Loader2 className="h-5 w-5 animate-spin" />
+            Отправка...
+          </>
+        ) : (
+          <>
+            Отправить заявку
+            <Send className="h-5 w-5" />
+          </>
+        )}
       </button>
     </form>
   );
 }
+
+// === 5. Вспомогательный компонент поля ===
+function FormField({
+  label,
+  error,
+  required,
+  children,
+}: {
+  label: string;
+  error?: { message?: string };
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label className="mb-2 block text-sm font-medium text-gray-700">
+        {label}
+        {required && <span className="ml-1 text-red-500">*</span>}
+      </label>
+      {children}
+      {error?.message && <p className="mt-1 text-sm text-red-500">{error.message}</p>}
+    </div>
+  );
+}
 ```
 
 ---
 
-## 🖼️ ГАЛЕРЕЯ (Gallery)
+## 🔄 DATA FETCHING ПАТТЕРНЫ
 
-### Masonry Gallery
+### Server Component (рекомендуется)
+
+```tsx
+// ✅ Лучший способ — fetch в Server Component
+export default async function Page() {
+  // Next.js расширяет fetch с кэшированием и revalidation
+  const data = await fetch("https://api.example.com/data", {
+    // Кэш на 1 час (static generation)
+    next: { revalidate: 3600 },
+
+    // Или no-cache для всегда свежих данных:
+    // cache: "no-store",
+  }).then((res) => res.json());
+
+  return <Component data={data} />;
+}
+```
+
+### Client Component с SWR/TanStack Query
 
 ```tsx
 "use client";
-import Image from "next/image";
-import { useState } from "react";
-import ImageLightbox from "@/components/ui/ImageLightbox";
+import useSWR from "swr";
+// или
+// import { useQuery } from "@tanstack/react-query";
 
-interface GalleryImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-function MasonryGallery({ images }: { images: GalleryImage[] }) {
-  const [lightboxIndex, setLightboxIndex] = useState(-1);
+export function DataComponent() {
+  // SWR
+  const { data, error, isLoading } = useSWR("/api/data", fetcher);
 
-  return (
-    <>
-      {/* Masonry Grid */}
-      <div className="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3 xl:columns-4">
-        {images.map((image, i) => (
-          <button
-            key={i}
-            onClick={() => setLightboxIndex(i)}
-            className="group relative block w-full break-inside-avoid overflow-hidden rounded-xl"
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
-            />
-            {/* Overlay on hover */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-colors duration-300 group-hover:bg-black/30 group-hover:opacity-100">
-              <svg
-                className="h-8 w-8 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                />
-              </svg>
-            </div>
-          </button>
-        ))}
-      </div>
+  // TanStack Query
+  // const { data, error, isLoading } = useQuery({
+  //   queryKey: ["data"],
+  //   queryFn: () => fetch("/api/data").then(r => r.json()),
+  // });
 
-      {/* Lightbox */}
-      {lightboxIndex >= 0 && (
-        <ImageLightbox
-          images={images.map((img) => ({ src: img.src, alt: img.alt }))}
-          currentIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(-1)}
-        />
-      )}
-    </>
-  );
+  if (isLoading) return <Skeleton />;
+  if (error) return <ErrorState error={error} />;
+
+  return <Display data={data} />;
 }
 ```
 
----
-
-## ❓ FAQ / АККОРДЕОН
-
-```tsx
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/Accordion";
-
-const faqs = [
-  {
-    question: "Сколько стоит организация банкета?",
-    answer:
-      "Стоимость зависит от количества гостей, меню и уровня сервиса. Банкет от 3000₽ за человека, фуршет от 1500₽. Точный расчёт после консультации.",
-  },
-  {
-    question: "Выезжаете ли вы за пределы Санкт-Петербурга?",
-    answer:
-      "Да, мы организуем мероприятия в Ленинградской области и других регионах. Выезд до 100км включён в стоимость, далее — по договорённости.",
-  },
-  // ... больше FAQ
-];
-
-export function FAQSection() {
-  return (
-    <section className="bg-[#faf9f7] py-24" id="faq">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <InViewWrapper>
-          <h2 className="mb-4 text-center font-serif text-4xl text-[#1a1816]">
-            Часто задаваемые вопросы
-          </h2>
-          <p className="mb-12 text-center text-[#9a938a]">
-            Не нашли ответ? Свяжитесь с нами напрямую!
-          </p>
-        </InViewWrapper>
-
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              containerClassName="bg-white rounded-xl shadow-sm border border-[#e8e2d9]"
-            >
-              <AccordionTrigger className="px-6 py-5 text-left text-base font-medium text-[#1a1816]">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-5 leading-relaxed text-[#9a938a]">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
-  );
-}
-```
-
----
-
-## ⭐ ОТЗЫВЫ (Reviews)
-
-```tsx
-"use client";
-import Image from "next/image";
-import { useState } from "react";
-import emblaCarouselAutoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
-
-interface Review {
-  id: string;
-  name: string;
-  role: string;
-  avatar: string;
-  rating: number;
-  text: string;
-  event: string;
-  date: string;
-}
-
-function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", slidesToScroll: 1 }, [
-    emblaCarouselAutoplay({ delay: 5000, stopOnInteraction: false }),
-  ]);
-
-  return (
-    <section className="overflow-hidden py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-16 text-center font-serif text-4xl text-[#1a1816]">
-          Отзывы наших клиентов
-        </h2>
-
-        <div className="relative">
-          <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex gap-6">
-              {reviews.map((review) => (
-                <div
-                  key={review.id}
-                  className="min-w-0 flex-[0_0_100%] pl-6 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-                >
-                  <article className="flex h-full flex-col rounded-2xl border border-[#e8e2d9] bg-white p-8 shadow-md">
-                    {/* Stars */}
-                    <div className="flex gap-1 text-[#c9a227]">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635L15.878 18.09z" />
-                        </svg>
-                      ))}
-                    </div>
-
-                    {/* Text */}
-                    <blockquote className="mt-4 flex-1 italic leading-relaxed text-[#4a4540]">
-                      "{review.text}"
-                    </blockquote>
-
-                    {/* Author */}
-                    <div className="mt-6 flex items-center gap-4 border-t border-[#e8e2d9] pt-6">
-                      <Image
-                        src={review.avatar}
-                        alt={review.name}
-                        width={48}
-                        height={48}
-                        className="rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-semibold text-[#1a1816]">{review.name}</p>
-                        <p className="text-sm text-[#9a938a]">
-                          {review.event}, {review.date}
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-```
-
----
-
-## 🧭 НАВИГАЦИЯ (Navigation)
-
-### Header с sticky навигацией
-
-```tsx
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import MobileDrawer from "@/components/ui/MobileDrawer";
-
-const navLinks = [
-  { href: "/", label: "Главная" },
-  { href: "/menu", label: "Меню" },
-  { href: "/events", label: "Мероприятия" },
-  { href: "/gallery", label: "Галерея" },
-  { href: "/reviews", label: "Отзывы" },
-  { href: "/contact", label: "Контакты" },
-];
-
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 shadow-md backdrop-blur-md" : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="font-serif text-2xl font-bold text-[#1a1816]">
-            Nilov<span className="text-[#d4a574]">Catering</span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-[#d4a574] ${
-                  pathname === link.href ? "text-[#d4a574]" : "text-[#4a4540]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              className="rounded-lg bg-[#d4a574] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c9a227]"
-            >
-              Заказать звонок
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button className="p-2 lg:hidden" onClick={() => setMobileMenuOpen(true)}>
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <MobileDrawer open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} direction="right">
-        <nav className="space-y-4 p-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-lg font-medium text-[#1a1816] hover:text-[#d4a574]"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="mt-6 block w-full rounded-lg bg-[#d4a574] py-3 text-center font-semibold text-white"
-          >
-            Заказать звонок
-          </Link>
-        </nav>
-      </MobileDrawer>
-    </header>
-  );
-}
-```
-
----
-
-## 🔌 API ROUTES
-
-### Contact Form API
+### Route Handler (API)
 
 ```tsx
 // app/api/contact/route.ts
-import { NextResponse } from "next/server";
-import Zod from "zod";
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().min(2),
-  phone: z.string().regex(/^\+?[\d\s-()]{10,}$/),
-  email: z.string().email().optional(),
+  email: z.string().email(),
   message: z.string().optional(),
 });
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+
+    // Валидация
     const data = contactSchema.parse(body);
 
-    // Здесь: отправить email, сохранить в БД и т.д.
-    console.log("New lead:", data);
+    // Обработка...
+    // await saveToDatabase(data);
+    // await sendEmail(data);
 
-    return NextResponse.json({ success: true, message: "Заявка получена" });
+    return NextResponse.json({ success: true, message: "Заявка получена" }, { status: 200 });
   } catch (error) {
-    if (error instanceof Zod.ZodError) {
+    if (error instanceof z.ZodError) {
       return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
     }
 
-    return NextResponse.json(
-      { success: false, message: "Внутренняя ошибка сервера" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, message: "Внутренняя ошибка" }, { status: 500 });
   }
 }
 ```
 
 ---
 
-## 🪝 ХУКИ (Custom Hooks)
+## 🎨 СТИЛИЗАЦИЯ ПАТТЕРНЫ
 
-### useDebouncedValue
+### Tailwind классы (ПРЕДПОЧТИТЕЛЬНО!)
 
 ```tsx
-// hooks/useDebouncedValue.ts
-import { useState, useEffect } from "react";
+// ✅ Правильно — Tailwind utility classes
+<div className="flex items-center justify-between px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
 
-export function useDebouncedValue<T>(value: T, delay: number = 300): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+// ❌ Неправильно — CSS modules для простых вещей
+<div className={styles.container}> // Только для сложной анимации/логики!
 
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-
-  return debouncedValue;
-}
-
-// Использование:
-function SearchInput() {
-  const [search, setSearch] = useState("");
-  const debouncedSearch = useDebouncedValue(search, 500);
-
-  useEffect(() => {
-    // Выполняется только через 500мс после остановки ввода
-    if (debouncedSearch) {
-      fetch(`/api/search?q=${debouncedSearch}`);
-    }
-  }, [debouncedSearch]);
-
-  return <input value={search} onChange={(e) => setSearch(e.target.value)} />;
-}
+// ✅ Правильно — cn() для условных классов
+<div className={cn(
+  "base-classes",
+  isActive && "bg-amber-500",
+  isError && "border-red-500",
+  props.className, // позволяет переопределение извне
+)}>
 ```
 
-### useMediaQuery
+### CSS Modules (когда нужен сложный стиль)
 
 ```tsx
-// hooks/useMediaQuery.ts
-import { useState, useEffect } from "react";
+// Component.module.css
+.container {
+  /* Complex animation that can't be done with Tailwind */
+  animation: complex-gradient 3s ease-in-out infinite;
 
-export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    setMatches(media.matches);
-
-    const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, [query]);
-
-  return matches;
+  @keyframes complex-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
 
-// Использование:
-function ResponsiveComponent() {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
+// Component.tsx
+import styles from "./Component.module.css";
 
-  return isMobile ? <MobileLayout /> : <DesktopLayout />;
+export function Component() {
+  return <div className={styles.container}>...</div>;
 }
 ```
 
 ---
 
-## ✅ ЗАПОМНИТЕ!
+## 🧩 COMPOSITION ПАТТЕРНЫ
 
-1. **Копируйте паттерны** — не пишите с нуля
-2. **Адаптируйте** — подставьте свои данные
-3. **Следуйте структуре** — metadata → ErrorBoundary → main → sections
-4. **Используйте компоненты** — из `@/components/ui/`
-5. **Добавляйте анимации** — InViewWrapper на все секции
+### Layout Pattern (обёртка страницы)
+
+```tsx
+// components/PageLayout.tsx
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+
+interface PageLayoutProps {
+  children: React.ReactNode;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+export function PageLayout({ children, hideHeader, hideFooter }: PageLayoutProps) {
+  return (
+    <div className="flex min-h-screen flex-col">
+      {!hideHeader && <Header />}
+
+      <main className="flex-1">{children}</main>
+
+      {!hideFooter && <Footer className="mt-auto" />}
+    </div>
+  );
+}
+```
+
+### Container Pattern
+
+```tsx
+// components/Container.tsx
+interface ContainerProps {
+  children: React.ReactNode;
+  className?: string;
+  size?: "sm" | "md" | "lg" | "xl" | "full";
+}
+
+export function Container({ children, className, size = "lg" }: ContainerProps) {
+  const sizes = {
+    sm: "max-w-3xl",
+    md: "max-w-5xl",
+    lg: "max-w-7xl", // стандарт
+    xl: "max-w-screen-xl",
+    full: "max-w-full",
+  };
+
+  return (
+    <div className={cn(
+      "mx-auto px-4 sm:px-6 lg:px-8",
+      sizes[size],
+      className
+    )}>
+      {children}
+    </div>
+  );
+}
+
+// Использование:
+<Container>
+  <h1>Контент</h1>
+</Container>
+
+<Container size="sm">
+  <form>Узкая форма</form>
+</Container>
+```
+
+### Section Pattern
+
+```tsx
+// components/Section.tsx
+import { Container } from "./Container";
+import { InViewWrapper, scrollAnimations } from "@/components/ui/InViewWrapper";
+
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+  id?: string; // для якорных ссылок
+  bg?: "white" | "gray" | "dark"; // варианты фона
+  animate?: boolean; // включить reveal анимацию
+  padding?: "sm" | "md" | "lg" | "xl"; // отступы
+}
+
+export function Section({
+  children,
+  className,
+  id,
+  bg = "white",
+  animate = true,
+  padding = "lg",
+}: SectionProps) {
+  const backgrounds = {
+    white: "bg-white",
+    gray: "bg-gray-50",
+    dark: "bg-emerald-900 text-white",
+  };
+
+  const paddings = {
+    sm: "py-12 md:py-16",
+    md: "py-16 md:py-20",
+    lg: "py-16 md:py-24", // стандарт
+    xl: "py-20 md:py-32",
+  };
+
+  const content = <Container>{children}</Container>;
+
+  return (
+    <section id={id} className={cn(backgrounds[bg], paddings[padding], className)}>
+      {animate ? (
+        <InViewWrapper
+          inViewClassName={scrollAnimations.fadeUp.inView}
+          outOfViewClassName={scrollAnimations.fadeUp.outOfView}
+        >
+          {content}
+        </InViewWrapper>
+      ) : (
+        content
+      )}
+    </section>
+  );
+}
+
+// Использование:
+<Section id="about" bg="gray">
+  <h2>О нас</h2>
+  <p>Текст...</p>
+</Section>;
+```
+
+---
+
+## 📦 ЭКСПОРТЫ И RE-EXPORTS
+
+### Barrel exports (index.ts)
+
+```tsx
+// components/ui/index.ts — централизованный экспорт всех UI компонентов
+export { ThemeProvider } from "./ThemeProvider";
+export { InViewWrapper, scrollAnimations } from "./InViewWrapper";
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./Accordion";
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
+export { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogClose } from "./Dialog";
+// ... остальные компоненты
+
+// Теперь можно импортировать так:
+import { Dialog, Accordion } from "@/components/ui";
+```
+
+---
+
+## 🔧 УТИЛИТЫ И HELPERS
+
+### Date formatting
+
+```tsx
+import { format, formatDistanceToNow, isValid, parseISO } from "date-fns";
+import { ru } from "date-fns/locale";
+
+// Форматирование даты
+format(new Date(), "d MMMM yyyy", { locale: ru }); // "15 января 2024"
+
+// Relative time
+formatDistanceToNow(new Date(), { addSuffix: true, locale: ru }); // "2 часа назад"
+
+// Парсинг ISO строки
+const date = parseISO("2024-01-15T10:00:00Z");
+if (isValid(date)) {
+  format(date, "dd.MM.yyyy"); // "15.01.2024"
+}
+```
+
+### String utilities
+
+```tsx
+// Транслитерация для slug
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(
+      /[а-яё]/g,
+      (c) =>
+        ({
+          а: "a",
+          б: "b",
+          в: "v",
+          г: "g",
+          д: "d",
+          е: "e",
+          ё: "e",
+          ж: "zh",
+          з: "z",
+          и: "i",
+          й: "y",
+          к: "k",
+          л: "l",
+          м: "m",
+          н: "n",
+          о: "o",
+          п: "p",
+          р: "r",
+          с: "s",
+          т: "t",
+          у: "u",
+          ф: "f",
+          х: "kh",
+          ц: "ts",
+          ч: "ch",
+          ш: "sh",
+          щ: "shch",
+          ъ: "",
+          ы: "y",
+          ь: "",
+          э: "e",
+          ю: "yu",
+          я: "ya",
+        })[c] || c
+    )
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+slugify("Свадебный банкет"); // "svadebnyy-banket"
+```
+
+### Price formatting
+
+```tsx
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+formatPrice(3500); // "3 500 ₽"
+formatPrice(150000); // "150 000 ₽"
+```
+
+### Phone formatting
+
+```tsx
+function formatPhone(phone: string): string {
+  const cleaned = phone.replace(/\D/g, "");
+  const match = cleaned.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
+
+  if (match) {
+    return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}-${match[5]}`;
+  }
+
+  return phone;
+}
+
+formatPhone("79001234567"); // "+7 (900) 123-45-67"
+```
+
+---
+
+## 🚫 ANTI-PATTERNS (чего НЕ делать)
+
+```tsx
+// ❌ НЕ делайте так:
+
+// 1. Хардкод значений
+const PRICE = 3500; // → вынести в config/env
+const API_URL = "https://api.example.com"; // → process.env.NEXT_PUBLIC_API_URL
+
+// 2. Магические числа
+<div style={{ marginTop: 42 }}> // → mt-10 или константа
+
+// 3. any тип
+const data: any = await fetchData(); // → конкретный тип
+
+// 4. Nested ternaries
+const color = isDark ? (isActive ? "white" : "gray") : "black"; // → if/else или object map
+
+// 5. Huge components (>200 строк)
+// → Разбейте на подкомпоненты
+
+// 6. Props drilling глубже 2 уровней
+// → Используйте Context или state management
+
+// 7. Direct DOM manipulation
+// useEffect(() => {
+//   document.getElementById("el").style.color = "red";
+// }, []); // → React state + className
+
+// 8. Index as key (для изменяемых списков)
+{items.map((item, i) => <div key={i}>{item}</div>)} // → item.id
+
+// 9. setState в render
+// (вызывает бесконечный ререндер!)
+
+// 10. Forgotten cleanup in effects
+// useEffect(() => {
+//   window.addEventListener("scroll", handleScroll);
+// }, []); // → вернуть функцию очистки
+```
+
+---
+
+**Помните:** Чистый код = счастливые агенты! 😊

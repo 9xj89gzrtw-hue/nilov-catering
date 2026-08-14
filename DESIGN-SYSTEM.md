@@ -1,415 +1,316 @@
-# 🎨 DESIGN SYSTEM - Дизайн Система Nilov Catering
+# 🎨 DESIGN SYSTEM — Living Document (Живой документ)
 
-> **Используйте ТОЛЬКО эти значения!** Не хардкодьте цвета/размеры.
+> **⚠️ ВАЖНО:** Этот документ — отправная точка, НЕ догма!
+>
+> **ПЕРЕД любой дизайнерской работой агент ОБЯЗАН:**
+>
+> 1. Использовать веб-поиск для поиска актуальных трендов 2025-2026
+> 2. Изучить Awwwards.com — лучшие сайты ресторанов/кейтеринга
+> 3. Сравнить с конкурентами (лучшие в мире примеры)
+> 4. Предложить улучшения этому документу
 
 ---
 
-## 🎯 БРЕНДОВЫЕ ЦВЕТА
+## 🔄 ФИЛОСОФИЯ ДИЗАЙНА
 
-### Основные (используйте всегда!)
+### Принципы (неизменные):
 
-| Tailwind класс                    | HEX     | Когда использовать                          |
-| --------------------------------- | ------- | ------------------------------------------- |
-| `bg-[#d4a574]` / `text-[#d4a574]` | #d4a574 | **Основной золотой** - кнопки, акценты, CTA |
-| `bg-[#8b4513]` / `text-[#8b4513]` | #8b4513 | **Коричневый** - заголовки, важный текст    |
-| `bg-[#c9a227]` / `text-[#c9a227]` | #c9a227 | **Яркий золотой** - иконки, highlight       |
+```
+✅ ПРЕМИАЛЬНОСТЬ — каждый пиксел говорит о качестве
+✅ ЭМОЦИОНАЛЬНОСТЬ — еда = любовь, праздник = радость
+✅ ДОВЕРИЕ — чистота, профессионализм
+✅ УДОБСТВО — клиент находит информацию за 3 клика
+✅ АКТУАЛЬНОСТЬ — дизайн соответствует лучшим мировым стандартам 2025-2026
+```
 
-### Нейтральные
+### Что ДОЛЖЕН делать агент перед работой:
 
-| Класс                             | HEX     | Использование               |
-| --------------------------------- | ------- | --------------------------- |
-| `bg-white` / `text-white`         | #ffffff | Фон, текст на тёмном        |
-| `bg-[#faf9f7]`                    | #faf9f7 | Лёгкий фон секций           |
-| `bg-[#f5f0e8]`                    | #f5f0e8 | Кремовый фон (альтернатива) |
-| `bg-[#e8e2d9]`                    | #e8e2d9 | Разделители, borders        |
-| `text-[#9a938a]`                  | #9a938a | Второстепенный текст        |
-| `text-[#4a4540]`                  | #4a4540 | Основной текст (не чёрный!) |
-| `bg-[#1a1816]` / `text-[#1a1816]` | #1a1816 | Тёмный фон, footer          |
+```bash
+# 1. Поиск актуальных трендов (ОБЯЗАТЕЛЬНО!)
+z-ai function -n web_search -a '{"query": "best restaurant catering website design trends 2026", "num": 10}'
 
-### Семантические
+# 2. Изучение лучших примеров
+z-ai function -n web_search -a '{"query": "site:awwwards.com hotel restaurant 2025 2026", "num": 10}'
 
-| Класс                             | HEX     | Использование           |
-| --------------------------------- | ------- | ----------------------- |
-| `text-[#4a7c59]` / `bg-[#4a7c59]` | #4a7c59 | ✅ Успех, подтверждение |
-| `text-[#d4a574]`                  | #d4a574 | ⚠️ Предупреждение       |
-| `text-[#c44536]` / `bg-[#c44536]` | #c44536 | ❌ Ошибка               |
-| `text-[#5b8cb8]`                  | #5b8cb8 | ℹ️ Информация           |
+# 3. Анализ конкурентов (российский кейтеринг)
+z-ai function -n web_search -a '{"query": "лучшй кейтеринг moscow сайт дизайн premium", "num": 10}'
 
-### Градиенты (для премиального вида)
-
-```tsx
-// Золотой градиент (hero, CTA)
-className = "bg-gradient-to-r from-[#d4a574] via-[#c9a227] to-[#8b4513]";
-
-// Тёплый градиент (фоны)
-className = "bg-gradient-to-b from-[#faf9f7] to-[#f5f0e8]";
-
-// Тёмный градиент (overlay на изображениях)
-className = "bg-gradient-to-t from-[#1a1816] to-transparent";
-
-// Люкс градиент (специальные элементы)
-className = "bg-gradient-to-r from-[#c9a227] via-[#d4a574] to-white";
+# 4. Цветовые тренды года
+z-ai function -n web_search -a '{"query": "luxury brand color palette trends 2026 champagne gold black", "num": 10}'
 ```
 
 ---
 
-## ✍️ ТИПОГРАФИКА
+## 🎨 ТЕКУЩАЯ ПАЛИТРА (предварительная — требует обновления!)
 
-### Шрифты (УЖЕ ПОДКЛЮЧЕНЫ)
+> ⚠️ **Эти цвета — БАЗОВАЯ ТОЧКА СТАРТА, не финальный выбор!**
+>
+> Агент должен предложить УЛУЧШЕННУЮ палитру на основе исследования!
 
-```tsx
-// Заголовки (элегантный serif)
-fontFamily: ("Cormorant Garamond", Georgia, serif);
-className = "font-serif"; // или используйте @fontsource/cormorant
+### Вариант A: Classic Luxury (классический люкс)
 
-// Основной текст (чистый sans-serif)
-fontFamily: (Inter, system - ui, sans - serif);
-className = "font-sans";
+```css
+/* Основные цвета (требуют валидации!) */
+--color-black: #0a0a0a; /* Onyx Black — основной фон */
+--color-gold: #c9a96e; /* Champagne Gold — акцент */
+--color-cream: #faf8f5; /* Ivory/Cream — светлый фон */
+--color-navy: #1a1a2e; /* Midnight Navy — тёмный акцент */
+--color-warm-white: #f5f2ed; /* Warm White — фон секций */
+--color-charcoal: #2d2d2d; /* Charcoal — текст */
+
+/* Градиенты (примеры — искать новые!) */
+gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+gradient-gold: linear-gradient(135deg, #c9a96e 0%, #d4af74 100%);
+gradient-hero: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7));
 ```
 
-### Размеры (используйте эти!)
+### Вариант B: Earthy Modern (земный современный) — ТРЕНД 2026!
 
-| Элемент          | Tailwind                    | Пример                  |
-| ---------------- | --------------------------- | ----------------------- |
-| Hero заголовок   | `text-5xl md:text-7xl`      | "Премиальный кейтеринг" |
-| Заголовок секции | `text-3xl md:text-4xl`      | "Наши услуги"           |
-| Подзаголовок     | `text-xl md:text-2xl`       | "Более 15 лет опыта"    |
-| Большой текст    | `text-lg leading-relaxed`   | Описания                |
-| Основной текст   | `text-base leading-relaxed` | Параграфы               |
-| Мелкий текст     | `text-sm`                   | Подписи, легенда        |
-| Caption          | `text-xs text-[#9a938a]`    | Метки                   |
+```css
+/* Согласно исследованиям 2026 */
+--color-clay: #c4a882; /* Soft Clay — основной акцент */
+--color-taupe: #b8a99a; /* Warm Taupe — нейтральный */
+--color-sage: #9caf88; /* Sage Green — органичный акцент */
+--color-cream: #f5f0eb; /* Cream — фон */
+--color-espresso: #3d2b1f; /* Espresso — текст/темный */
+--color-blush: #e8c4b8; /* Blush — мягкий акцент */
+```
 
-### Вес шрифта
+### Вариант C: Bold Premium (смелый премиум)
 
-| Вес | Tailwind         | Использование          |
-| --- | ---------------- | ---------------------- |
-| 300 | `font-light`     | Декоративные заголовки |
-| 400 | `font-normal`    | Основной текст         |
-| 500 | `font-medium`    | Навигация, labels      |
-| 600 | `font-semibold`  | Акценты в тексте       |
-| 700 | `font-bold`      | Заголовки              |
-| 800 | `font-extrabold` | Hero заголовки (редко) |
+```css
+/* Для смелого современного бренда */
+--color-black: #000000;
+--color-gold: #d4af37;
+--color-red-accent: #8b2942; /* Deep Cherry/Burgundy */
+--color-plum: #6b3a5b; /* Plum Purple */
+--color-ivory: #fffff0;
+--color-coal: #36454f; /* Coal */
+```
 
 ---
 
-## 📐 ПРОСТРАНСТВО (Spacing)
+## 📐 ТИПОГРАФИЯ (исследовать актуальные шрифты!)
 
-### Отступы секций
+### Тренды 2026:
+
+```
+✅ Editorial typography — редакторские шрифты (как в журналах)
+✅ Kinetic typography — анимированная типографика
+✅ Organic/handwritten — рукописные акценты
+✅ Large display sizes — огромные заголовки
+✅ Mixed font pairing — смешивание стилей
+```
+
+### Рекомендуемые пары (требуют исследования!):
 
 ```tsx
-// Стандартная секция
-<section className="py-16 md:py-24 lg:py-32">
-  {/* content */}
+// Пара 1: Luxury Editorial
+font-display: "Playfair Display", "Cormorant Garamond", serif;  // заголовки
+font-body: "Inter", "Plus Jakarta Sans", sans-serif;             // текст
+
+// Пара 2: Modern Geometric
+font-display: "Unbounded", "Space Grotesk", sans-serif;          // заголовки
+font-body: "DM Sans", sans-serif;                               // текст
+
+// Пара 3: Elegant Serif (для классического кейтеринга)
+font-display: "Cormorant Garamond", serif;
+font-body: "Montserrat", sans-serif;
+```
+
+---
+
+## 🖼️ ПАТТЕРНЫ (гибкие — адаптировать под тренды!)
+
+### Hero Section (исследовать лучшие реализации!)
+
+```tsx
+// Требования к Hero (неизменные):
+// - Сильный визуальный impact
+// - Чёткий UVP (Unique Value Proposition)
+// - CTA выше fold или близко
+// - Качественное фото/видео
+
+// Пример структуры (адаптировать!):
+<section className="relative flex min-h-screen items-center overflow-hidden">
+  {/* Фон: видео/изображение/градиент — ИССЛЕДОВАТЬ ТРЕНДЫ */}
+
+  {/* Контент */}
+  <div>
+    <h1>{/* UVP — уникальное предложение */}</h1>
+    <p>{/* Поддержка */}</p>
+    <CTAButton />
+  </div>
+
+  {/* Социальное доказательство (опционально) */}
+  <Stats />
 </section>
-
-// Компактная секция
-<section className="py-12 md:py-16">
-  {/* content */}
-</section>
-
-// Полноэкранная секция
-<section className="min-h-screen flex items-center">
-  {/* content */}
-</section>
 ```
 
-### Контейнеры
+### Карточки (гибкая структура!)
 
 ```tsx
-// Стандартный контент
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  {/* content */}
-</div>
+interface CardProps {
+  // Обязательные поля:
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
 
-// Узкий контент (текст)
-<div className="max-w-3xl mx-auto px-4 sm:px-6">
-  {/* content */}
-</div>
-
-// Широкий (hero, галерея)
-<div className="w-full">
-  {/* content */}
-</div>
-```
-
-### Grid система
-
-```tsx
-// 3 колонки (услуги, преимущества)
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <Card />
-  <Card />
-  <Card />
-</div>
-
-// 2 колонки (текст + изображение)
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-  <div>Текст</div>
-  <div>Изображение</div>
-</div>
-
-// 4 колонки (меню, gallery)
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  <Item />
-</div>
-```
-
----
-
-## 🔲 БОРДЕРЫ И РАДИУСЫ
-
-### Border Radius
-
-```tsx
-// Скругления
-rounded-none    // Без скругления
-rounded         // 4px - мелкие элементы
-rounded-lg      // 8px - карточки, кнопки
-rounded-xl      // 12px - большие карточки
-rounded-2xl     // 16px - модальные окна
-rounded-full    // 50% - аватарки, бейджи
-```
-
-### Borders
-
-```tsx
-// Тонкие разделители
-border-b border-[#e8e2d9]
-
-// Карточки
-border border-[#e8e2d9] rounded-xl
-
-// Акцентные рамки
-border-2 border-[#d4a574] rounded-xl
-```
-
----
-
-## 🌫️ ТЕНИ (Shadows)
-
-```tsx
-// Карточки (лёгкая)
-shadow-sm        // Мелкие UI элементы
-shadow-md        // Стандартные карточки
-shadow-lg        // Elevated карточки
-shadow-xl        // Popovers, dropdowns
-
-// Брендовые glow эффекты
-// Золотое свечение (для hero элементов)
-style={{ boxShadow: '0 0 20px rgba(212,165,116,0.3)' }}
-
-// Мягкое свечение (для hover)
-style={{ boxShadow: '0 0 40px rgba(212,165,116,0.15)' }}
-className="hover:shadow-[0_0_40px_rgba(212,165,116,0.15)]"
-```
-
----
-
-## 🎬 АНИМАЦИИ
-
-### Длительности
-
-| Тип        | Время | Tailwind       |
-| ---------- | ----- | -------------- |
-| Мгновенная | 100ms | `duration-100` |
-| Быстрая    | 200ms | `duration-200` |
-| Нормальная | 300ms | `duration-300` |
-| Медленная  | 500ms | `duration-500` |
-| Плавная    | 700ms | `duration-700` |
-
-### Easing функции
-
-```tsx
-// Стандартные
-ease-linear
-ease-in-out          // Для большинства анимаций
-ease-out             // Для enter-анимаций
-
-// Премиальные (Apple-style)
-[0.175, 0.885, 0.32, 1.275]  // Spring (bounce эффект)
-[0.23, 1, 0.32, 1]           // Smooth (плавный)
-[0.87, 0, 0.13, 1]           // Dramatic (драматичный)
-
-// В Tailwind:
-transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]
-```
-
-### Готовые transition классы
-
-```tsx
-// Стандартный hover
-className = "transition-all duration-300 ease-in-out hover:scale-105";
-
-// Плавное появление
-className = "transition-opacity duration-500";
-
-// Цветовой переход
-className = "transition-colors duration-200";
-
-// Transform переход
-className = "transition-transform duration-300 ease-out";
-```
-
----
-
-## 📱 BREAKPOINTS (Responsive)
-
-```tsx
-// Tailwind breakpoints (используйте mobile-first!)
-sm: '640px'   // Маленькие планшеты
-md: '768px'   // Планшеты
-lg: '1024px'  // Ноутбуки
-xl: '1280px'  // Десктопы
-2xl: '1536px' // Большие экраны
-
-// Пример:
-<div className="text-center md:text-left">       // Выравнивание
-<div className="text-2xl md:text-4xl lg:text-5xl"> // Размеры
-<div className="grid-cols-1 md:grid-cols-2">       // Колонки
-<div className="hidden md:block">                 // Показать от md
-<div className="block md:hidden">                 // Показать до md
-```
-
----
-
-## 🎭 ГОТОВЫЕ ПАТТЕРНЫЕ СЕКЦИЙ
-
-### Hero Section
-
-```tsx
-export function HeroSection() {
-  return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#1a1816]">
-      {/* Background image with overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/catering/finedining-01.avif)" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a1816]/90 via-[#1a1816]/70 to-transparent" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <InViewWrapper
-          inViewClassName="opacity-100 translate-y-0 transition-all duration-700"
-          outOfViewClassName="opacity-0 translate-y-10"
-        >
-          <h1 className="font-serif text-5xl font-bold leading-tight text-white md:text-7xl lg:text-8xl">
-            Премиальный <span className="text-[#d4a574]">кейтеринг</span>
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
-            Организация банкетов, фуршетов и корпоративных мероприятий в Санкт-Петербурге
-          </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <button className="rounded-lg bg-gradient-to-r from-[#d4a574] to-[#c9a227] px-8 py-4 font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,165,116,0.4)]">
-              Рассчитать стоимость
-            </button>
-            <button className="rounded-lg border-2 border-white/30 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white/10">
-              Смотреть портфолио
-            </button>
-          </div>
-        </InViewWrapper>
-      </div>
-    </section>
-  );
-}
-```
-
-### Services Section (3 колонки)
-
-```tsx
-export function ServicesSection() {
-  const services = [
-    { icon: "🍽️", title: "Банкетное обслуживание", desc: "Полный цикл организации банкетов" },
-    { icon: "🥂", title: "Фуршет", desc: "Выездной фуршет любой сложности" },
-    { icon: "🏢", title: "Корпоративы", desc: "Презентации, конференции, тимбилдинги" },
-  ];
-
-  return (
-    <section className="bg-[#faf9f7] py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <InViewWrapper>
-          <h2 className="mb-4 text-center font-serif text-4xl text-[#1a1816] md:text-5xl">
-            Наши услуги
-          </h2>
-          <p className="mx-auto mb-16 max-w-2xl text-center text-lg text-[#9a938a]">
-            Более 15 лет создаём незабываемые мероприятия
-          </p>
-        </InViewWrapper>
-
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {services.map((service, i) => (
-            <InViewWrapper key={i} delay={i * 100}>
-              <div className="group rounded-2xl border border-[#e8e2d9] bg-white p-8 shadow-md transition-all duration-300 hover:border-[#d4a574]/30 hover:shadow-xl">
-                <span className="text-4xl">{service.icon}</span>
-                <h3 className="mt-4 text-xl font-semibold text-[#1a1816]">{service.title}</h3>
-                <p className="mt-2 leading-relaxed text-[#9a938a]">{service.desc}</p>
-              </div>
-            </InViewWrapper>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-```
-
-### CTA Section
-
-```tsx
-export function CTASection() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#1a1816] via-[#4a4540] to-[#1a1816] py-24">
-      {/* Decorative elements */}
-      <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-[#d4a574]/20 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-[#c9a227]/20 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="mb-6 font-serif text-4xl text-white md:text-5xl">
-          Готовы обсудить ваше мероприятие?
-        </h2>
-        <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-300">
-          Получите персональное предложение в течение 2 часов
-        </p>
-
-        <button className="transform rounded-xl bg-gradient-to-r from-[#d4a574] to-[#c9a227] px-10 py-5 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(212,165,116,0.4)]">
-          Оставить заявку
-        </button>
-      </div>
-    </section>
-  );
+  // Опциональные (адаптировать!):
+  icon?: React.ReactNode;
+  price?: string;
+  badge?: string;
+  variant?: "default" | "featured" | "minimal";
 }
 ```
 
 ---
 
-## ❌ ЗАПРЕЩЁНО
+## ✨ АНИМАЦИИ (Тренды 2026!)
 
-| Что                  | Почему                | Вместо этого                    |
-| -------------------- | --------------------- | ------------------------------- |
-| `color: #fff`        | Хардкод               | `text-white`, `bg-white`        |
-| `padding: 20px`      | Произвольное значение | `p-5` или `px-5 py-5`           |
-| `margin-top: 50px`   | Magic number          | `mt-12` или `space-y-12`        |
-| `font-size: 18px`    | Нет в системе         | `text-lg` или `text-[1.125rem]` |
-| Чистый чёрный `#000` | Слишком жёсткий       | `#1a1816` (тёплый чёрный)       |
-| Яркие цвета          | Не брендовые          | Только палитра выше             |
-| `!important`         | Признак проблемы      | Правильная специфичность        |
+### Актуальные подходы:
+
+```
+✅ Micro-interactions — маленькие реакции на действия
+✅ Scroll-triggered animations — появление при скролле
+✅ Parallax depth — глубина при скролле
+✅ Smooth cursor followers — курсор с эффектом
+✅ Page transitions — переходы между страницами
+✅ Loading states — красивые состояния загрузки
+⚠️ 3D elements — использовать умеренно!
+⚠️ AI-generated visuals — экспериментировать!
+```
+
+### Рекомендуемые библиотеки:
+
+```tsx
+// Framer Motion (уже установлен!)
+import { motion, AnimatePresence } from "framer-motion";
+
+// GSAP для сложных анимаций (уже установлен!)
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Lenis для плавного скролла (уже установлен!)
+import Lenis from "lenis";
+```
 
 ---
 
-## ✅ ЧЕКЛИСТ ДИЗАЙНА
+## 📱 ADAPTIVE (обязательные требования!)
 
-Перед завершением работы над страницей проверьте:
+```tsx
+// Breakpoints (стандарт):
+// sm: 640px   — мобильный (большой)
+// md: 768px   — планшет
+// lg: 1024px  — ноутбук
+// xl: 1280px  — десктоп
+// 2xl: 1536px  — большой экран
 
-- [ ] Все цвета из дизайн-системы (нет хардкода)
-- [ ] Шрифты: Cormorant для заголовков, Inter для текста
-- [ ] Отступы используют стандартную сетку
-- [ ] Mobile-first responsive (проверить на 375px)
-- [ ] Hover состояния у интерактивных элементов
-- [ ] Loading states для async компонентов
-- [ ] Достаточный контраст текста (WCAG AA)
-- [ ] Альтернативный текст у всех изображений
-- [ ] Focus стили для keyboard навигации
-- [ ] Reveal-анимации при скролле (InViewWrapper)
+// Mobile First — ОБЯЗАТЕЛЬНО!
+// Touch targets: минимум 44x44px
+// Text size mobile: min 16px
+```
+
+---
+
+## ♿ ACCESSIBILITY (неизменные требования!)
+
+```
+✅ Contrast ratio 4.5:1 minimum (WCAG AA)
+✅ Alt-тексты на ВСЕХ изображениях
+✅ Semantic HTML (main, section, nav, article)
+✅ Keyboard navigation
+✅ Focus states visible
+✅ ARIA labels где нужно
+✅ Skip link (желательно)
+✅ Reduced motion support
+```
+
+---
+
+## 🚫 ANTI-PATTERNS (чего избегать!)
+
+```tsx
+// ❌ Устаревшие практики 2020-2023:
+// - Flat design без глубины
+// - Слишком много белого пространства "впустую"
+// - Одинаковый дизайн у всех
+// - Маленький текст (меньше 16px на mobile)
+// - Отсутствие micro-interactions
+// - Медленная загрузка изображений
+// - Неоптимизированные видео
+
+// ✅ Современный подход 2025-2026:
+// + Глубина и слои (depth, layers)
+// + Персонализация
+// + Быстрая загрузка (Core Web Vitals)
+// + Иммерсивные элементы
+// + Эмоциональный дизайн
++ Уникальность бренда
+```
+
+---
+
+## 🔬 ИССЛЕДОВАНИЕ ПЕРЕД РАБОТОЙ
+
+### Чеклист исследования (ОБЯЗАТЕЛЬНЫЙ!):
+
+Перед началом дизайнерской работы агент ДОЛЖЕН:
+
+- [ ] **Поиск трендов:** `web_search("web design trends 2026")`
+- [ ] **Лучшие примеры:** `web_search("awwwards restaurant catering 2026")`
+- [ ] **Конкуренты:** `web_search("premium catering website russia moscow")`
+- [ ] **Цвета:** `web_search("luxury color palette 2026 trends")`
+- [ ] **Типографика:** `web_search("font pairing trends 2026 luxury")`
+- [ ] **Анимации:** `web_search("micro-interactions animation trends 2026")`
+
+### Где искать вдохновение:
+
+```
+🏆 Awwwards.com — лучшие сайты мира
+🎨 Dribbble.com — концепты и идеи
+💼 Behance.net — кейсы и процессы
+🔥 Pinterest.com — mood boards
+📱 Mobbin.com — mobile UI patterns
+🌐 SiteInspire.com — веб-дизайн inspiration
+```
+
+---
+
+## 📝 ОБНОВЛЕНИЕ ЭТОГО ДОКУМЕНТА
+
+Этот документ должен **регулярно обновляться**!
+
+Когда агент находит лучший подход:
+
+1. Сравнить с текущим содержимым
+2. Если новый подход лучше — обновить документ
+3. Оставить комментарий с датой и источником
+
+### Формат обновления:
+
+```markdown
+<!-- UPDATE: YYYY-MM-DD -->
+<!-- Source: URL -->
+<!-- Что изменилось: описание -->
+```
+
+---
+
+## 💡 КЛЮЧЕВОЕ ПРАВИЛО
+
+```
+❌ "Сделаю как написано в DESIGN-SYSTEM.md" — WRONG!
+
+✅ "Изучу тренды → сравню с лучшими → предложу УЛУЧШЕННЫЙ вариант" — RIGHT!
+
+Этот документ — ОТПРАВНАЯ ТОЧКА, НЕ ФИНАЛЬНАЯ ОСТАНОВКА!
+```
+
+---
+
+**Последнее обновление:** 14 августа 2026  
+**Требует обновления:** Да (исследовать тренды!)  
+**Версия:** 2.0 (Living Document approach)

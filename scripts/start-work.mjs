@@ -38,37 +38,43 @@ const c = {
 const REQUIRED_FILES = [
   {
     path: 'AGENTS.md',
-    description: 'Основные инструкции для агентов',
+    description: 'Основные инструкции для агентов (skills, зависимости)',
     priority: '🔴 КРИТИЧНО',
-    check: (content) => content.length > 1000,
+    check: (content) => content.length > 1000 && content.includes('SKILLS'),
   },
   {
     path: 'DESIGN-SYSTEM.md',
     description: 'Дизайн система (цвета, типографика, спейсинг)',
     priority: '🔴 КРИТИЧНО',
-    check: (content) => content.includes('#d4a574'),
+    check: (content) => content.includes('amber') && content.length > 2000,
   },
   {
     path: 'COMPONENTS-CATALOG.md',
     description: 'Каталог готовых компонентов с примерами',
-    priority: '🟡 ВАЖНО',
+    priority: '🔴 КРИТИЧНО',
     check: (content) => content.includes('ThemeProvider'),
   },
   {
     path: 'CODE-PATTERNS.md',
     description: 'Готовые паттерны кода (копируй и используй)',
     priority: '🟡 ВАЖНО',
-    check: (content) => content.includes('Page Template'),
+    check: (content) => content.includes('Page Template') || content.includes('formSchema'),
   },
   {
     path: 'ERRORS-CHEATSHEET.md',
     description: 'Шпаргалка ошибок и быстрых решений',
-    priority: '🟢 ПОЛЕЗНО',
-    check: () => true,
+    priority: '🟡 ВАЖНО',
+    check: (content) => content.length > 500,
   },
   {
     path: 'REVIEW-CHECKLIST.md',
     description: 'Чеклист качества перед пушем',
+    priority: '🟡 ВАЖНО',
+    check: (content) => content.includes('metadata'),
+  },
+  {
+    path: 'DEPENDENCIES.md',
+    description: 'Справочник всех доступных пакетов',
     priority: '🟢 ПОЛЕЗНО',
     check: () => true,
   },
@@ -234,23 +240,29 @@ async function main() {
     logBox(
       '📋 ОБЯЗАТЕЛЬНЫЙ ПОРЯДОК РАБОТЫ:',
       `
-1. ПРОЧТАЙТЕ DESIGN-SYSTEM.md
-   → Используйте ТОЛЬКО указанные цвета!
+1. ПРОЧТАЙТЕ AGENTS.md (эта инструкция)
+   → Skills, зависимости, процесс работы
 
-2. ИСПОЛЬЗУЙТЕ COMPONENTS-CATALOG.md
-   → Не создавайте компоненты с нуля!
+2. ⚡ ИССЛЕДУЙТЕ ТРЕНДЫ 2025-2026! (ОБЯЗАТЕЛЬНО!)
+   → web_search("web design trends 2026 luxury")
+   → web_search("awwwards restaurant catering best")
+   → web_search("luxury color palette 2026")
 
-3. КОПИРУЙТЕ ИЗ CODE-PATTERNS.md
-   → Готовые решения для типичных задач
+3. ПРОЧТАЙТЕ DESIGN-SYSTEM.md
+   → Это ОТПРАВНАЯ ТОЧКА, не догма!
+   → Улучшайте на основе исследования!
 
-4. ПРИ ОШИБКЕ → ERRORS-CHEATSHEET.md
-   → Быстрые решения без поиска!
+4. ИСПОЛЬЗУЙТЕ COMPONENTS-CATALOG.md
+   → Готовые компоненты — не дублируйте!
 
-5. ПЕРЕД ПУШЕМ → REVIEW-CHECKLIST.md
-   → Проверьте всё по списку!
+5. КОПИРУЙТЕ ИЗ CODE-PATTERNS.md
+   → Паттерны кода (не дизайна!)
 
-6. ЗАПУСКАЙТЕ: bun run safe-push
-   → Автоматическая проверка!`,
+6. ПРИ ОШИБКЕ → ERRORS-CHEATSHEET.md
+
+7. ПЕРЕД ПУШЕМ → REVIEW-CHECKLIST.md
+
+8. ЗАПУСКАЙТЕ: bun run safe-push`,
       'cyan'
     );
     
@@ -259,12 +271,28 @@ async function main() {
     logBox(
       '🚨 ЗАПРЕЩЕНО:',
       `
-• Хардкодить цвета (#fff → bg-white)
+• ДЕЛАТЬ "ПО ПАМЯТИ" без исследования трендов!
+• СЛЕПО СЛЕДОВАТЬ УСТАРЕВШИМ ШАБЛОНАМ
+• Игнорировать лучшие мировые примеры
 • Создавать дубликаты компонентов
-• Игнорировать mobile версию
-• Коммитить без bun run build
-• Пушить без pre-push проверки`,
+• Хардкодить цвета (используйте CSS переменные)
+• Коммитить без bun run pre-deploy:quick
+• Игнорировать mobile версию`,
       'red'
+    );
+    
+    console.log('');
+    
+    logBox(
+      '✅ ПОБУЖДАЕТСЯ:',
+      `
+• Исследовать тренды ПЕРЕД работой!
+• Сравнивать с Awwwards.com лучшими
+• Предлагать УЛУЧШЕНИЯ документации
+• Обновлять DESIGN-SYSTEM.md находками
+• Делать как ЛУЧШИЕ В МИРЕ, не "как написано"
+• Экспериментировать с новыми решениями`,
+      'green'
     );
     
     console.log('');
@@ -312,12 +340,14 @@ async function main() {
   logBox(
     '⚡ ПОЛЕЗНЫЕ КОМАНДЫ:',
     `
-bun run start-work     # Эта инициализация
-bun run safe-push      # Проверка + push
-bun run fix-only       # Только исправления
-npm run format         # Форматирование
-npx tsc --noEmit      # TypeScript проверка
-bun run build          # Сборка проекта`,
+bun run start-work          # Эта инициализация
+bun run project-health-check # Проверка состояния проекта
+bun run project-health-check:full # Полная проверка
+bun run safe-push           # Проверка + push
+bun run fix-only            # Только исправления
+npm run format              # Форматирование
+npx tsc --noEmit           # TypeScript проверка
+bun run build               # Сборка проекта`,
     'cyan'
   );
   
@@ -328,11 +358,13 @@ bun run build          # Сборка проекта`,
     logBox(
       '📚 НЕ ЗАБУДЬТЕ ИСПОЛЬЗОВАТЬ:',
       `
-DESIGN-SYSTEM.md      → Цвета, типографика, отступы
+AGENTS.md              → Skills, зависимости, инструкции
+DESIGN-SYSTEM.md       → Цвета, типографика, отступы
 COMPONENTS-CATALOG.md  → Готовые компоненты
-CODE-PATTERNS.md      → Паттерны кода
-ERRORS-CHEATSHEET.md  → Решение ошибок
-REVIEW-CHECKLIST.md   → Чеклист качества`,
+CODE-PATTERNS.md       → Паттерны кода
+ERRORS-CHEATSHEET.md   → Решение ошибок
+REVIEW-CHECKLIST.md    → Чеклист качества
+DEPENDENCIES.md        → Все доступные пакеты`,
       'yellow'
     );
   }

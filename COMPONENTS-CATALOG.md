@@ -1,96 +1,95 @@
-# 📦 COMPONENTS CATALOG - Каталог компонентов
+# 📦 КАТАЛОГ КОМПОНЕНТОВ
 
-> **Все готовые компоненты** — используйте их, не создавайте свои с нуля!
+> **Готовые компоненты для использования. НЕ создавайте свои — используйте эти!**
 
 ---
 
 ## 🎯 БЫСТРЫЙ ПОИСК
 
-| Нужен компонент      | Импорт           | Для чего                   |
-| -------------------- | ---------------- | -------------------------- |
-| Тёмная/светлая тема  | `ThemeProvider`  | Переключение темы          |
-| Анимация при скролле | `InViewWrapper`  | Reveal-эффекты             |
-| Аккордеон            | `Accordion`      | FAQ, сворачиваемый контент |
-| Вкладки              | `Tabs`           | Переключение контента      |
-| Модальное окно       | `Dialog`         | Формы, галерея             |
-| Подсказка            | `Tooltip`        | Hover подсказки            |
-| Popover              | `Popover`        | Выпадающие панели          |
-| Сворачиваемое        | `Collapsible`    | Скрыть/показать            |
-| Навигация            | `NavigationMenu` | Меню с dropdown            |
-| Выпадающий список    | `Select`         | Стилизованный select       |
-| Before/After         | `CompareSlider`  | Фото до/после              |
-| Галерея              | `ImageLightbox`  | Просмотр фото              |
-| Mobile drawer        | `MobileDrawer`   | Мобильное меню             |
-| Анимации авто        | `AutoAnimate`    | Плавные переходы           |
+| Нужен компонент       | Используйте      | Импорт                           |
+| --------------------- | ---------------- | -------------------------------- |
+| Тёмная/светлая тема   | `ThemeProvider`  | `@/components/ui/ThemeProvider`  |
+| Анимация при скролле  | `InViewWrapper`  | `@/components/ui/InViewWrapper`  |
+| Аккордеон (FAQ)       | `Accordion`      | `@/components/ui/Accordion`      |
+| Вкладки               | `Tabs`           | `@/components/ui/Tabs`           |
+| Модальное окно        | `Dialog`         | `@/components/ui/Dialog`         |
+| Всплывающая подсказка | `Tooltip`        | `@/components/ui/Tooltip`        |
+| Popover панель        | `Popover`        | `@/components/ui/Popover`        |
+| Сворачиваемый блок    | `Collapsible`    | `@/components/ui/Collapsible`    |
+| Навигация с dropdown  | `NavigationMenu` | `@/components/ui/NavigationMenu` |
+| Выпадающий список     | `Select`         | `@/components/ui/Select`         |
+| Before/After слайдер  | `CompareSlider`  | `@/components/ui/CompareSlider`  |
+| Мобильный drawer      | `MobileDrawer`   | `@/components/ui/MobileDrawer`   |
+| Lightbox для фото     | `ImageLightbox`  | `@/components/ui/ImageLightbox`  |
+| Auto-animate          | `AutoAnimate`    | `@/components/ui/AutoAnimate`    |
 
 ---
 
-## 🎨 UI КОМПОНЕНТЫ (Radix UI)
+## 🧩 UI КОМПОНЕНТЫ (Radix UI)
 
 ### ThemeProvider
 
 ```tsx
-import { ThemeProvider } from "@/components/ui/ThemeProvider";
+// Оборачивает приложение, добавляет тёмную/светлую тему
+// УЖЕ настроен в layout.tsx — просто используйте:
 
-// В layout.tsx (оберните всё приложение)
-export default function RootLayout({ children }) {
-  return (
-    <html lang="ru" suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-}
-
-// В любом компоненте:
-("use client");
+"use client";
 import { useTheme } from "next-themes";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   return (
-    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-      {theme === "dark" ? "☀️" : "🌙"}
-    </button>
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>Переключить тему</button>
   );
 }
 ```
 
-### InViewWrapper (Scroll Reveal)
+### InViewWrapper (АНИМАЦИИ ПРИ СКРОЛЛЕ)
+
+**Самый важный компонент! Используйте на ВСЕХ видимых секциях!**
 
 ```tsx
-import { InViewWrapper, scrollAnimations } from '@/components/ui/InViewWrapper';
+import { InViewWrapper, scrollAnimations } from "@/components/ui/InViewWrapper";
 
-// Базовое использование
-<InViewWrapper>
-  <h2>Появится при скролле</h2>
-</InViewWrapper>
+// Доступные пресеты анимаций:
+scrollAnimations.fadeUp     // Появление снизу ⭐ (самый популярный)
+scrollAnimations.fadeIn     // Простое появление
+scrollAnimations.scaleIn    // С масштабированием
+scrollAnimations.fadeLeft   // Слева направо
+scrollAnimations.fadeRight  // Справа налево
 
-// С готовым пресетом
+// === БАЗОВОЕ ИСПОЛЬЗОВАНИЕ ===
 <InViewWrapper
-  inViewClassName={scrollAnimations.fadeUp.inView}     // "opacity-100 translate-y-0"
-  outOfViewClassName={scrollAnimations.fadeUp.outOfView} // "opacity-0 translate-y-10"
-  className="transition-all duration-700"
+  inViewClassName={scrollAnimations.fadeUp.inView}
+  outOfViewClassName={scrollAnimations.fadeUp.outOfView}
 >
-  <h2>Появляется снизу</h2>
+  <h2>Появляется при скролле</h2>
 </InViewWrapper>
 
-// Доступные пресеты:
-// scrollAnimations.fadeUp    - появление снизу
-// scrollAnimations.fadeDown  - появление сверху
-// scrollAnimations.fadeLeft   - появление слева
-// scrollAnimations.fadeRight  - появление справа
-// scrollAnimations.fadeIn     - простое появление
-// scrollAnimations.scaleIn    - с масштабированием
+// === ПОСЛЕДОВАТЕЛЬНОЕ ПОЯВЛЕНИЕ (с задержкой) ===
+<InViewWrapper
+  inViewClassName="opacity-100 translate-y-0 transition-all duration-700"
+  outOfViewClassName="opacity-0 translate-y-10 transition-all duration-700"
+>
+  <h2>Появляется первым</h2>
+</InViewWrapper>
 
-// С задержкой (для последовательного появления)
-<InViewWrapper inViewClassName="opacity-100 translate-y-0 transition-all duration-700 delay-[200ms]">
+<InViewWrapper
+  inViewClassName="opacity-100 translate-y-0 transition-all duration-700 delay-100"
+  outOfViewClassName="opacity-0 translate-y-10 transition-all duration-700"
+>
+  <p>Появляется вторым</p>
+</InViewWrapper>
+
+<InViewWrapper
+  inViewClassName="opacity-100 translate-y-0 transition-all duration-700 delay-200"
+  outOfViewClassName="opacity-0 translate-y-10 transition-all duration-700"
+>
+  <button>Появляется третьим</button>
+</InViewWrapper>
 ```
 
-### Accordion (FAQ)
+### Accordion (АККОРДЕОН / FAQ)
 
 ```tsx
 import {
@@ -100,135 +99,131 @@ import {
   AccordionContent,
 } from "@/components/ui/Accordion";
 
-function FAQ() {
-  const faqs = [
-    { q: "Сколько стоит банкет?", a: "От 3000₽ за человека..." },
-    { q: "Выезжаете ли за город?", a: "Да, выезжаем до 100км от СПб..." },
-  ];
+// Один открытый за раз
+<Accordion type="single" collapsible className="space-y-4">
+  <AccordionItem value="item-1" className="bg-gray-50 rounded-lg px-6">
+    <AccordionTrigger className="text-left">
+      Вопрос 1?
+    </AccordionTrigger>
+    <AccordionContent>
+      Ответ на вопрос 1...
+    </AccordionContent>
+  </AccordionItem>
 
-  return (
-    <Accordion type="single" collapsible className="w-full">
-      {faqs.map((faq, i) => (
-        <AccordionItem key={i} value={`item-${i}`}>
-          <AccordionTrigger>{faq.q}</AccordionTrigger>
-          <AccordionContent>{faq.a}</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  );
-}
+  <AccordionItem value="item-2" className="bg-gray-50 rounded-lg px-6">
+    <AccordionTrigger className="text-left">
+      Вопрос 2?
+    </AccordionTrigger>
+    <AccordionContent>
+      Ответ на вопрос 2...
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+// Несколько открытых одновременно
+<Accordion type="multiple">
+  {/* ... */}
+</Accordion>
 ```
 
-### Tabs (Вкладки)
+### Tabs (ВКЛАДКИ)
 
 ```tsx
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 
-function MenuTabs() {
-  return (
-    <Tabs defaultValue="banquet">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="banquet">Банкет</TabsTrigger>
-        <TabsTrigger value="furshet">Фуршет</TabsTrigger>
-        <TabsTrigger value="coffee">Кофе-брейк</TabsTrigger>
-      </TabsList>
+<Tabs defaultValue="tab1" className="w-full">
+  <TabsList className="grid w-full grid-cols-3">
+    <TabsTrigger value="tab1">Вкладка 1</TabsTrigger>
+    <TabsTrigger value="tab2">Вкладка 2</TabsTrigger>
+    <TabsTrigger value="tab3">Вкладка 3</TabsTrigger>
+  </TabsList>
 
-      <TabsContent value="banquet">
-        <p>Информация о банкете...</p>
-      </TabsContent>
-      <TabsContent value="furshet">
-        <p>Информация о фуршете...</p>
-      </TabsContent>
-      <TabsContent value="coffee">
-        <p>Информация о кофе-брейке...</p>
-      </TabsContent>
-    </Tabs>
-  );
-}
+  <TabsContent value="tab1">Контент вкладки 1</TabsContent>
+  <TabsContent value="tab2">Контент вкладки 2</TabsContent>
+  <TabsContent value="tab3">Контент вкладки 3</TabsContent>
+</Tabs>;
 ```
 
-### Dialog (Модальное окно)
+### Dialog (МОДАЛЬНОЕ ОКНО)
 
 ```tsx
+"use client";
+import { useState } from "react";
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
+  DialogClose,
 } from "@/components/ui/Dialog";
 
-function ContactModal() {
+export function ModalExample() {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="rounded-lg bg-[#d4a574] px-6 py-3 text-white">Оставить заявку</button>
+        <button>Открыть модалку</button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md">
-        <DialogTitle>Заявка на расчёт</DialogTitle>
-        <DialogDescription>Заполните форму и мы свяжемся в течение 30 минут</DialogDescription>
+      <DialogContent>
+        <DialogTitle>Заголовок модалки</DialogTitle>
+        <DialogDescription>Описание (скринридер)</DialogDescription>
 
-        <form onSubmit={handleSubmit}>{/* Поля формы */}</form>
+        {/* Контент модалки */}
+        <form onSubmit={handleSubmit}>
+          {/* поля формы */}
+          <button type="submit">Отправить</button>
+        </form>
+
+        <DialogClose asChild>
+          <button>Закрыть</button>
+        </DialogClose>
       </DialogContent>
     </Dialog>
   );
 }
 ```
 
-### Tooltip (Подсказка)
+### Tooltip (ВСПЛЫВАЮЩАЯ ПОДСКАЗКА)
 
 ```tsx
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/Tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/Tooltip";
 
-function InfoButton() {
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <button className="text-[#9a938a] hover:text-[#d4a574]">ℹ️</button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Дополнительная информация</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-}
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <button>Наведи на меня</button>
+    </TooltipTrigger>
+    <TooltipContent side="top">
+      <p>Подсказка появляется здесь</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>;
+
+// Позиции: "top" | "bottom" | "left" | "right"
 ```
 
-### Popover (Выпадающая панель)
+### Popover (ВСПЛЫВАЮЩАЯ ПАНЕЛЬ)
 
 ```tsx
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/Popover";
 
-function UserMenu() {
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <button>Меню пользователя ▼</button>
-      </PopoverTrigger>
-      <PopoverContent className="w-56">
-        <div className="space-y-2">
-          <a href="/profile" className="block rounded p-2 hover:bg-gray-100">
-            Профиль
-          </a>
-          <a href="/orders" className="block rounded p-2 hover:bg-gray-100">
-            Заказы
-          </a>
-          <a href="/logout" className="block rounded p-2 text-red-500 hover:bg-gray-100">
-            Выйти
-          </a>
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-}
+<Popover>
+  <PopoverTrigger asChild>
+    <button>Открыть popover</button>
+  </PopoverTrigger>
+  <PopoverContent side="bottom" align="start" className="w-80">
+    <div className="space-y-2">
+      <h4 className="font-medium">Заголовок</h4>
+      <p className="text-sm text-muted-foreground">Контент панели</p>
+    </div>
+  </PopoverContent>
+</Popover>;
 ```
 
-### NavigationMenu (Навигация с dropdown)
+### NavigationMenu (НАВИГАЦИЯ С DROPDOWN)
 
 ```tsx
 import {
@@ -240,37 +235,30 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/NavigationMenu";
 
-function MainNav() {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Меню</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-64 gap-3 p-4">
-              <li>
-                <NavigationMenuLink href="/menu/banquet">Банкетное меню</NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink href="/menu/furshet">Фуршет</NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink href="/menu/coffee-break">Кофе-брейк</NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Меню</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-80 gap-3 p-4">
+          <li>
+            <NavigationMenuLink href="/menu/furshet">Фуршет</NavigationMenuLink>
+          </li>
+          <li>
+            <NavigationMenuLink href="/menu/banquet">Банкет</NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/about">О нас</NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-}
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/contact">Контакты</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>;
 ```
 
-### Select (Выпадающий список)
+### Select (ВЫПАДАЮЩИЙ СПИСОК)
 
 ```tsx
 import {
@@ -281,233 +269,269 @@ import {
   SelectItem,
 } from "@/components/ui/Select";
 
-function GuestCountSelect() {
-  const [value, setValue] = useState("50");
-
-  return (
-    <Select value={value} onValueChange={setValue}>
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Количество гостей" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="20">до 20 гостей</SelectItem>
-        <SelectItem value="50">20-50 гостей</SelectItem>
-        <SelectItem value="100">50-100 гостей</SelectItem>
-        <SelectItem value="200">100-200 гостей</SelectItem>
-        <SelectItem value="500">200+ гостей</SelectItem>
-      </SelectContent>
-    </Select>
-  );
-}
+<Select value={value} onValueChange={setValue}>
+  <SelectTrigger className="w-full">
+    <SelectValue placeholder="Выберите..." />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option1">Вариант 1</SelectItem>
+    <SelectItem value="option2">Вариант 2</SelectItem>
+    <SelectItem value="option3">Вариант 3</SelectItem>
+  </SelectContent>
+</Select>;
 ```
 
-### CompareSlider (Before/After)
+### CompareSlider (BEFORE/AFTER СЛАЙДЕР)
 
 ```tsx
 import { CompareSlider } from "@/components/ui/CompareSlider";
 
-function PortfolioComparison() {
-  return (
-    <div className="mx-auto max-w-4xl">
-      <h3 className="mb-8 text-center">Пример оформления зала</h3>
+// Для портфолио — показать трансформацию зала
+<CompareSlider
+  before="/images/before.jpg"
+  after="/images/after.jpg"
+  beforeLabel="До оформления"
+  afterLabel="После оформления"
+  showLabels
+  className="rounded-xl overflow-hidden"
+/>
 
-      <CompareSlider
-        before="/images/hall-empty.jpg"
-        after="/images/hall-decorated.jpg"
-        beforeAlt="Зал до оформления"
-        afterAlt="Зал после оформления"
-        beforeLabel="До"
-        afterLabel="После"
-        showLabels
-        defaultPosition={40}
-        className="overflow-hidden rounded-xl shadow-lg"
-      />
-    </div>
-  );
-}
+// Вертикальный режим
+<CompareSlider
+  before="/images/before.jpg"
+  after="/images/after.jpg"
+  isVertical
+/>
+```
+
+### Collapsible (СВОРАЧИВАЕМЫЙ БЛОК)
+
+```tsx
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/Collapsible";
+
+<Collapsible open={open} onOpenChange={setOpen}>
+  <CollapsibleTrigger asChild>
+    <button className="flex items-center gap-2">
+      {open ? "Свернуть" : "Развернуть"}
+      <ChevronDown className={`transition-transform ${open ? "rotate-180" : ""}`} />
+    </button>
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <div className="mt-4 rounded-lg bg-gray-50 p-4">Скрытый контент...</div>
+  </CollapsibleContent>
+</Collapsible>;
 ```
 
 ---
 
 ## 🖼️ МЕДИА КОМПОНЕНТЫ
 
-### ImageLightbox (Галерея)
+### ImageLightbox
 
 ```tsx
-import ImageLightbox from "@/components/ui/ImageLightbox";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 
-function PhotoGallery({ images }: { images: string[] }) {
-  return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-      {images.map((src, i) => (
-        <ImageLightbox
-          key={i}
-          src={src}
-          alt={`Фото мероприятия ${i + 1}`}
-          className="cursor-pointer rounded-lg transition hover:opacity-90"
-        />
-      ))}
-    </div>
-  );
-}
+// Галерея с lightbox
+<ImageLightbox
+  images={[
+    { src: "/images/photo1.jpg", alt: "Описание 1" },
+    { src: "/images/photo2.jpg", alt: "Описание 2" },
+    { src: "/images/photo3.jpg", alt: "Описание 3" },
+  ]}
+/>
+
+// Отдельное изображение с кликом
+<ImageLightbox
+  images={[{ src: "/images/photo.jpg", alt: "Фото" }]}
+/>
 ```
 
-### MobileDrawer (Мобильное меню)
+### MobileDrawer
 
 ```tsx
-import MobileDrawer from "@/components/ui/MobileDrawer";
+import {
+  MobileDrawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerTitle,
+} from "@/components/ui/MobileDrawer";
 
-function MobileMenu() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <button onClick={() => setOpen(true)} className="md:hidden">
-        ☰ Меню
-      </button>
-
-      <MobileDrawer open={open} onOpenChange={setOpen} direction="bottom">
-        <nav className="space-y-4 p-6">
-          <a href="/" onClick={() => setOpen(false)}>
-            Главная
-          </a>
-          <a href="/menu" onClick={() => setOpen(false)}>
-            Меню
-          </a>
-          <a href="/events" onClick={() => setOpen(false)}>
-            Мероприятия
-          </a>
-          <a href="/contact" onClick={() => setOpen(false)}>
-            Контакты
-          </a>
-        </nav>
-      </MobileDrawer>
-    </>
-  );
-}
+// Для мобильного меню
+<MobileDrawer>
+  <DrawerTrigger asChild>
+    <button className="md:hidden">
+      <Menu />
+    </button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerTitle>Меню</DrawerTitle>
+    <nav className="mt-4 space-y-4">
+      <a href="/">Главная</a>
+      <a href="/menu">Меню</a>
+      <a href="/contact">Контакты</a>
+    </nav>
+  </DrawerContent>
+</MobileDrawer>;
 ```
 
-### AutoAnimate (Плавные переходы)
+---
+
+## ✨ АНИМАЦИОННЫЕ КОМПОНЕНТЫ
+
+### AutoAnimate
 
 ```tsx
-import AutoAnimate from "@/components/ui/AutoAnimate";
+import { AutoAnimate } from "@/components/ui/AutoAnimate";
 
-function ListWithAnimation({ items }) {
-  const parentRef = useRef(null);
-
-  return (
-    <ul ref={parentRef}>
-      <AutoAnimate parent={parentRef} />
-      {items.map((item) => (
-        <li key={item.id}>{item.name}</li>
-      ))}
-    </ul>
-  );
-}
+// Авто-анимация при добавлении/удалении элементов
+<AutoAnimate>
+  <ul>
+    {items.map((item) => (
+      <li key={item.id}>{item.name}</li>
+    ))}
+  </ul>
+</AutoAnimate>;
 ```
 
 ---
 
 ## 🔧 УТИЛИТЫ
 
-### cn() - слияние классов
+### cn() — слияние классов
 
 ```tsx
 import { cn } from "@/lib/utils";
 
-// Объединение классов
+// Умное слияние Tailwind классов
 cn("px-4 py-2", isActive && "bg-primary", className);
 
-// Условные классы
-cn("text-base", isLarge && "text-lg", isError && "text-red");
-
-// Merge конфликтующих Tailwind классов
-cn("p-4", "p-6"); // => 'p-6' (последний выигрывает)
+// Пример использования:
+<div
+  className={cn(
+    "base-classes",
+    condition && "conditional-class",
+    anotherCondition ? "yes" : "no",
+    props.className // позволяет переопределить снаружи
+  )}
+/>;
 ```
 
-### Schema.org helpers (SEO)
-
-```tsx
-import { generateOrganizationSchema, generateEventSchema, generateFAQSchema } from "@/lib/schema";
-
-// В layout.tsx или page.tsx
-export const metadata: Metadata = {
-  title: "Банкетный кейтеринг | Nilov Catering",
-  description: "...",
-  other: {
-    "script:ld+json": JSON.stringify(generateOrganizationSchema()),
-  },
-};
-
-// Для страницы события
-const eventSchema = generateEventSchema({
-  name: "Свадьба",
-  startDate: eventDate,
-  description: "Организация свадебного банкета...",
-});
-```
-
----
-
-## 🪝 ХУКИ (usehooks-ts)
+### Schema.org helpers
 
 ```tsx
 import {
-  useLocalStorage,
-  useDebounce,
-  useMediaQuery,
-  useDarkMode,
-  useBoolean,
-  useToggle,
-  useScroll,
-  useWindowSize,
-  useCopyToClipboard,
-  useInterval,
-  useTimeout,
-} from "usehooks-ts";
+  generateOrganizationSchema,
+  generateEventSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/schema";
 
-// Сохранение в localStorage
-const [name, setName] = useLocalStorage<string>("userName", "");
+// Организация (для главной)
+const orgSchema = generateOrganizationSchema({
+  name: "Нилов Кейтеринг",
+  url: "https://nilov-catering.ru",
+  logo: "https://nilov-catering.ru/images/logo.png",
+});
 
-// Debounce для поиска
-const [search, setSearch] = useState("");
-const debouncedSearch = useDebounce(search, 300);
+// Мероприятие (для страниц событий)
+const eventSchema = generateEventSchema({
+  name: "Свадебный банкет",
+  description: "...",
+  url: "https://nilov-catering.ru/events/svadba",
+});
 
-// Media query (адаптив)
-const isMobile = useMediaQuery("(max-width: 768px)");
-const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
+// FAQ (для SEO)
+const faqSchema = generateFAQSchema([{ question: "Вопрос?", answer: "Ответ" }]);
 
-// Тёмная тема
-const { isDark, toggle } = useDarkMode();
-
-// Boolean state
-const { value: isOpen, setTrue: open, setFalse: close, toggle: toggleOpen } = useBoolean(false);
-
-// Позиция скролла
-const { x, y, direction } = useScroll();
-
-// Размер окна
-const { width, height } = useWindowSize();
-
-// Копирование в буфер
-const [copied, copy] = useCopyToClipboard();
-copy("Текст для копирования");
-
-// Интервал
-useInterval(() => {
-  console.log("Tick");
-}, 1000);
+// Хлебные крошки
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Главная", url: "https://nilov-catering.ru/" },
+  { name: "Свадьба", url: "https://nilov-catering.ru/events/svadba" },
+]);
 ```
 
 ---
 
-## ✅ ЧЕКЛИСТ ИСПОЛЬЗОВАНИЯ
+## 🪝 ГОТОВЫЕ HOOKS (usehooks-ts)
 
-Перед созданием нового компонента:
+```tsx
+import {
+  // === State management ===
+  useBoolean, // Boolean state with toggle, setTrue, setFalse
+  useToggle, // Toggle state
+  useCounter, // Counter with increment, decrement, reset
+  useMap, // Map state with get, set, remove
+  useSet, // Set state with add, has, remove
+  useArray, // Array operations
 
-1. **Проверьте каталог** — может быть такой уже есть?
-2. **Используйте готовый** — импортируйте из `@/components/ui/`
-3. **Расширяйте** — если нужно, обёртывайте существующий
-4. **Следуйте паттернам** — те же пропсы, те же имена
+  // === Side effects ===
+  useDebounce, // Debounce value
+  useThrottle, // Throttle value
+  useInterval, // Set/clear interval
+  useTimeout, // Set/clear timeout
+  useEffectOnce, // Run effect once
 
-**НЕ создавайте дубликаты!**
+  // === Browser APIs ===
+  useLocalStorage, // Persistent state in localStorage
+  useSessionStorage, // Persistent state in sessionStorage
+  useMediaQuery, // CSS media query listener
+  useWindowSize, // Window dimensions
+  useScroll, // Scroll position and direction
+  useClickOutside, // Detect click outside element
+  useDocumentTitle, // Set document title
+  useCopyToClipboard, // Copy text to clipboard
+  useOS, // Detect OS
+  useBrowserInfo, // Browser info
+
+  // === UI State ===
+  useDarkMode, // Dark mode detection/toggle
+  useFullscreen, // Fullscreen API
+  useNetworkState, // Online/offline status
+  useBattery, // Battery status
+} from "usehooks-ts";
+
+// === ПРИМЕРЫ ===
+
+// Debounce для поиска
+const [search, setSearch] = useDebounce("", 500);
+// search обновится только через 500ms после последнего ввода
+
+// Media query для responsive
+const isMobile = useMediaQuery("(max-width: 768px)");
+// true если экран меньше 768px
+
+// LocalStorage с типизацией
+const [user, setUser] = useLocalStorage<User>("user", null);
+// автоматически сохраняется в localStorage
+
+// Click outside для закрытия меню/dropdown
+const ref = useRef(null);
+useClickOutside(ref, () => setIsOpen(false));
+```
+
+---
+
+## 📋 ЧЕКЛИСТ ИСПОЛЬЗОВАНИЯ КОМПОНЕНТОВ
+
+Перед созданием нового компонента **ОБЯЗАТЕЛЬНО** проверьте:
+
+- [ ] Нет ли похожего в `components/ui/`?
+- [ ] Можно ли использовать Radix UI примитив?
+- [ ] Подходит ли хук из usehooks-ts?
+- [ ] Есть ли паттерн в DESIGN-SYSTEM.md?
+
+**Если ничего не нашлось — тогда создавайте свой компонент!**
+
+---
+
+## 🚫 ЗАПРЕЩЁНО
+
+- ❌ Создавать дубликаты существующих компонентов
+- ❌ Использовать inline styles вместо Tailwind классов
+- ❌ Хардкодить цвета (используйте токены из DESIGN-SYSTEM.md)
+- ❌ Игнорировать accessibility (все Radix компоненты доступны!)
+- ❌ Забывать про mobile версию
+
+---
+
+**Помните:** Этот каталог — ваш первый источник компонентов. Используйте его! 🚀
