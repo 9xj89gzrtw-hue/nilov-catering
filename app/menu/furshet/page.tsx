@@ -194,8 +194,8 @@ export default function FurshetPage() {
 
         {/* Связанные страницы — логичные переходы */}
         <RelatedPages context="menu" slug="furshet" />
-        <SmartCTA 
-          context="menu" 
+        <SmartCTA
+          context="menu"
           slug="furshet"
           title="Организуете фуршет?"
           description="12+ закусок на выбор — соберите меню или доверьте подбор нам"

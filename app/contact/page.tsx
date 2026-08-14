@@ -307,7 +307,7 @@ export default function ContactPage() {
 
         {/* Связанные страницы — логичные переходы */}
         <RelatedPages context="info" slug="contact" />
-        <SmartCTA 
+        <SmartCTA
           context="contact"
           title="Быстрый расчёт без звонка?"
           description="Ответьте на 3 вопроса — получите предварительную стоимость за 30 секунд"

@@ -86,7 +86,9 @@ export default function MobileBottomNav() {
             aria-label={`${centerCTA.label} — рассчитать стоимость`}
           >
             <CenterIcon className="h-6 w-6" />
-            <span className="mt-0.5 text-[10px] font-semibold leading-tight">{centerCTA.label}</span>
+            <span className="mt-0.5 text-[10px] leading-tight font-semibold">
+              {centerCTA.label}
+            </span>
           </Link>
         </li>
 

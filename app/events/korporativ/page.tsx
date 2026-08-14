@@ -217,8 +217,8 @@ export default function CorporatePage() {
       {/* Связанные страницы — логичные переходы */}
       <div className="container-site max-w-5xl">
         <RelatedPages context="event" slug="korporativ" />
-        <SmartCTA 
-          context="event" 
+        <SmartCTA
+          context="event"
           slug="korporativ"
           title="Организуем корпоративное мероприятие?"
           description="Рассчитаем стоимость за 15 минут — документы, ЭДО, счёт включены"

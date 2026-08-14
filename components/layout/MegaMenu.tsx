@@ -43,12 +43,12 @@ const SERVICES: MegaGroup = {
   href: "/events",
   icon: "🎉",
   items: [
-    { 
-      label: "Свадьба", 
-      href: "/events/svadba", 
-      desc: "От камерной до 200 гостей", 
+    {
+      label: "Свадьба",
+      href: "/events/svadba",
+      desc: "От камерной до 200 гостей",
       icon: "💒",
-      badge: "Популярно"
+      badge: "Популярно",
     },
     {
       label: "Корпоратив",
@@ -68,11 +68,11 @@ const SERVICES: MegaGroup = {
       desc: "Ресторан-quality у вас дома",
       icon: "🍽️",
     },
-    { 
-      label: "Выпускной", 
-      href: "/events/vypusknoy", 
-      desc: "Шоу программа под ключ", 
-      icon: "🎓" 
+    {
+      label: "Выпускной",
+      href: "/events/vypusknoy",
+      desc: "Шоу программа под ключ",
+      icon: "🎓",
     },
   ],
   // Менее частые — как теги (не прячем!)
@@ -96,7 +96,13 @@ const MENU: MegaGroup = {
       icon: "🍷",
       badge: "От 3 950 ₽",
     },
-    { label: "Фуршет", href: "/menu/furshet", desc: "Шведский стол или порции", icon: "🥂", badge: "От 2 450 ₽" },
+    {
+      label: "Фуршет",
+      href: "/menu/furshet",
+      desc: "Шведский стол или порции",
+      icon: "🥂",
+      badge: "От 2 450 ₽",
+    },
     {
       label: "Кофе-брейк",
       href: "/menu/coffee-break",
@@ -199,7 +205,7 @@ export default function MegaMenu() {
           {open === group.label && (
             <div
               ref={trapRef}
-              className="bg-card border-line absolute top-full left-0 z-50 mt-2 min-w-[440px] max-w-[560px] rounded-xl border p-4 shadow-xl"
+              className="bg-card border-line absolute top-full left-0 z-50 mt-2 max-w-[560px] min-w-[440px] rounded-xl border p-4 shadow-xl"
               role="menu"
               aria-label={`Подменю ${group.label}`}
             >
@@ -278,7 +284,7 @@ export default function MegaMenu() {
       ))}
 
       {/* Разделитель */}
-      <li className="h-5 w-px bg-border" role="separator" aria-hidden="true" />
+      <li className="bg-border h-5 w-px" role="separator" aria-hidden="true" />
 
       {/* Прямая ссылка — Портфель (важная для доверия) */}
       <li role="none">

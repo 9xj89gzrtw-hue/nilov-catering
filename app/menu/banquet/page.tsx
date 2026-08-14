@@ -104,8 +104,8 @@ export default function BanquetPage() {
 
         {/* Связанные страницы — логичные переходы */}
         <RelatedPages context="menu" slug="banquet" />
-        <SmartCTA 
-          context="menu" 
+        <SmartCTA
+          context="menu"
           slug="banquet"
           title="Собираете банкетное меню?"
           description="Выберите блюда поштучно или доверьте подбор нам — рассчитаем за 15 минут"

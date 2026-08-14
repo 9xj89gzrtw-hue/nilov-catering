@@ -22,12 +22,12 @@ import { SITE } from "@/lib/data";
  */
 
 export type CTAContext =
-  | "event"      // Страница события
-  | "menu"       // Страница меню
-  | "pricing"    // Цены
-  | "info"       // Информационная страница
-  | "contact"    // Контакты
-  | "general";   // Общий
+  | "event" // Страница события
+  | "menu" // Страница меню
+  | "pricing" // Цены
+  | "info" // Информационная страница
+  | "contact" // Контакты
+  | "general"; // Общий
 
 interface SmartCTAProps {
   /** Контекст страницы */
@@ -117,7 +117,11 @@ interface CTAConfig {
   primaryLabel: string;
   primaryDesc: string;
   primaryIcon: React.ComponentType<{ className?: string }>;
-  alternatives?: Array<{ href: string; label: string; icon?: React.ComponentType<{ className?: string }> | null }>;
+  alternatives?: Array<{
+    href: string;
+    label: string;
+    icon?: React.ComponentType<{ className?: string }> | null;
+  }>;
 }
 
 export default function SmartCTA({
@@ -159,9 +163,7 @@ export default function SmartCTA({
           >
             {title || config.primaryLabel}
           </h2>
-          {description && (
-            <p className="text-muted-foreground mt-1">{description}</p>
-          )}
+          {description && <p className="text-muted-foreground mt-1">{description}</p>}
           {!description && config.primaryDesc && (
             <p className="text-muted-foreground mt-1">{config.primaryDesc}</p>
           )}
@@ -182,8 +184,11 @@ export default function SmartCTA({
           <div className="border-line/50 mt-5 flex flex-wrap gap-3 border-t pt-5">
             {config.alternatives.map((alt, i) => {
               const AltIcon = alt.icon;
-              const isExternal = alt.href.startsWith("http") || alt.href.startsWith("tel:") || alt.href.startsWith("wa.me");
-              
+              const isExternal =
+                alt.href.startsWith("http") ||
+                alt.href.startsWith("tel:") ||
+                alt.href.startsWith("wa.me");
+
               return (
                 <Link
                   key={i}
@@ -221,7 +226,7 @@ interface StickyBottomCTAProps {
 
 export function StickyBottomCTA({ href, label, icon: Icon }: StickyBottomCTAProps) {
   return (
-    <div className="fixed bottom-20 right-4 z-40 md:hidden">
+    <div className="fixed right-4 bottom-20 z-40 md:hidden">
       <Link
         href={href}
         className="bg-primary text-primary-foreground flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold shadow-lg transition-transform active:scale-95"

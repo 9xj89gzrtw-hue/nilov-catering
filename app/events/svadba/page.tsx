@@ -460,8 +460,8 @@ export default function SvadbaPage() {
         <RelatedPages context="event" slug="svadba" />
 
         {/* Контекстный CTA */}
-        <SmartCTA 
-          context="event" 
+        <SmartCTA
+          context="event"
           slug="svadba"
           title="Готовим вашу свадьбу?"
           description="Оставьте заявку — перезвоним за 15 минут с готовым расчётом меню и сервиса"

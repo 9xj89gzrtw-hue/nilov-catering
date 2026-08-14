@@ -294,8 +294,8 @@ export default function FAQPage() {
 
         {/* Связанные страницы — логичные переходы */}
         <RelatedPages context="info" slug="faq" />
-        <SmartCTA 
-          context="info" 
+        <SmartCTA
+          context="info"
           slug="faq"
           title="Не нашли ответ?"
           description="Напишите нам — поможем с любым вопросом по кейтерингу"

@@ -391,7 +391,7 @@ export default function PricingPage() {
 
         {/* Связанные страницы — логичные переходы */}
         <RelatedPages context="info" slug="pricing" />
-        <SmartCTA 
+        <SmartCTA
           context="pricing"
           title="Нужен точный расчёт?"
           description="Индивидуальное предложение за 15 минут — без обязательств"

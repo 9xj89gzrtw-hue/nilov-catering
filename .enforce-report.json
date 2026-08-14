@@ -1,7 +1,12 @@
 {
-  "timestamp": "2026-08-14T00:40:55.344Z",
+  "timestamp": "2026-08-14T01:40:55.940Z",
   "errors": [],
   "warnings": [
+    {
+      "file": "./components/ui/ParticlesBackground.tsx",
+      "line": 35,
+      "message": "Использование \"any\" типа — добавьте правильную типизацию"
+    },
     {
       "file": "./components/blocks/EventTypeSelector.tsx",
       "line": 125,
@@ -10,11 +15,6 @@
     {
       "file": "./components/blocks/EventTypeSelector.tsx",
       "line": 130,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/blocks/PortfolioGallery.tsx",
-      "line": 487,
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
@@ -33,6 +33,36 @@
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
+      "file": "./components/blocks/PortfolioGallery.tsx",
+      "line": 487,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./components/layout/Footer.tsx",
+      "line": 100,
+      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./components/layout/Footer.tsx",
+      "line": 117,
+      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./components/layout/Footer.tsx",
+      "line": 196,
+      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./components/layout/Footer.tsx",
+      "line": 235,
+      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./components/layout/Header.tsx",
+      "line": 70,
+      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+    },
+    {
       "file": "./components/common/FoodPhoto.tsx",
       "line": 116,
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
@@ -43,39 +73,24 @@
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./components/layout/Footer.tsx",
-      "line": 75,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+      "file": "./app/venues/page.tsx",
+      "line": 211,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./components/layout/Footer.tsx",
-      "line": 97,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+      "file": "./app/venues/page.tsx",
+      "line": 294,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./components/layout/Footer.tsx",
-      "line": 109,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
+      "file": "./app/en/layout.tsx",
+      "line": 17,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./components/layout/Footer.tsx",
-      "line": 118,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/layout/Footer.tsx",
-      "line": 151,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/layout/Header.tsx",
-      "line": 59,
-      "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./components/ui/ParticlesBackground.tsx",
-      "line": 35,
-      "message": "Использование \"any\" типа — добавьте правильную типизацию"
+      "file": "./app/en/layout.tsx",
+      "line": 18,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
       "file": "./app/api/quote/route.ts",
@@ -96,56 +111,6 @@
       "file": "./app/api/contact/route.ts",
       "line": 229,
       "message": "console.log обнаружен — удалите перед коммитом"
-    },
-    {
-      "file": "./app/pricing/pdf/route.ts",
-      "line": 72,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/careers/CareersClient.tsx",
-      "line": 175,
-      "message": "console.log обнаружен — удалите перед коммитом"
-    },
-    {
-      "file": "./app/menu/[format]/pdf/route.ts",
-      "line": 158,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/menu/[format]/pdf/route.ts",
-      "line": 224,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/events/korporativ/page.tsx",
-      "line": 29,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/events/korporativ/page.tsx",
-      "line": 34,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/events/svadba/page.tsx",
-      "line": 25,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/events/svadba/page.tsx",
-      "line": 30,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/blog/page.tsx",
-      "line": 162,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/blog/page.tsx",
-      "line": 213,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
       "file": "./app/opengraph-image.tsx",
@@ -173,14 +138,49 @@
       "message": "Inline style с color — используйте Tailwind классы из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./app/venues/page.tsx",
-      "line": 211,
+      "file": "./app/menu/[format]/pdf/route.ts",
+      "line": 158,
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./app/venues/page.tsx",
-      "line": 294,
+      "file": "./app/menu/[format]/pdf/route.ts",
+      "line": 224,
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/events/svadba/page.tsx",
+      "line": 27,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/events/svadba/page.tsx",
+      "line": 32,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/events/korporativ/page.tsx",
+      "line": 31,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/events/korporativ/page.tsx",
+      "line": 36,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/blog/page.tsx",
+      "line": 162,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/blog/page.tsx",
+      "line": 213,
+      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
+    },
+    {
+      "file": "./app/careers/CareersClient.tsx",
+      "line": 175,
+      "message": "console.log обнаружен — удалите перед коммитом"
     },
     {
       "file": "./app/why-us/page.tsx",
@@ -193,19 +193,14 @@
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     },
     {
-      "file": "./app/en/layout.tsx",
-      "line": 17,
-      "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
-    },
-    {
-      "file": "./app/en/layout.tsx",
-      "line": 18,
+      "file": "./app/pricing/pdf/route.ts",
+      "line": 72,
       "message": "Возможно magic number — используйте значения из DESIGN-SYSTEM.md"
     }
   ],
   "summary": {
-    "filesScanned": 250,
+    "filesScanned": 252,
     "errorsCount": 0,
-    "warningsCount": 40
+    "warningsCount": 39
   }
 }
