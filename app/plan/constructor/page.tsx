@@ -524,7 +524,7 @@ function ConstructorServerFallback() {
                   // Add checkmark badge
                   var badge = document.createElement('div');
                   badge.textContent = 'Выбрано';
-                  badge.style.cssText = 'position:absolute;top:8px;right:8px;background:var(--color-gold,#B08D57);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600';
+                  badge.style.cssText = 'position:absolute;top:8px;right:8px;background:var(--color-gold,#B08D57);color:white;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600';
                   card.style.position = 'relative';
                   card.appendChild(badge);
                 }

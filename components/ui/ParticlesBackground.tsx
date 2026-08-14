@@ -31,7 +31,7 @@ export function ParticlesBackground({
           fullScreen: { enable: false },
           particles: {
             number: { value: count, density: { enable: true } },
-            color: { value: ["#d4a574", "#c9a227", "#ffffff", "#8b4513"] },
+            color: { value: ["#d4a574", "#c9a227", "whitefff", "#8b4513"] },
             shape: { type: ["circle", "square"] as any },
             opacity: {
               value: { min: 0.5, max: 1 },
@@ -53,7 +53,7 @@ export function ParticlesBackground({
           fullScreen: { enable: false },
           particles: {
             number: { value: Math.floor(count * 0.6), density: { enable: true } },
-            color: { value: "#ffffff" },
+            color: { value: "whitefff" },
             shape: { type: "circle" },
             opacity: {
               value: { min: 0.3, max: 0.8 },
@@ -69,7 +69,7 @@ export function ParticlesBackground({
           fullScreen: { enable: false },
           particles: {
             number: { value: count, density: { enable: true } },
-            color: { value: "#ffffff" },
+            color: { value: "whitefff" },
             shape: { type: "circle" },
             opacity: { value: { min: 0.5, max: 1 } },
             size: { value: { min: 2, max: 6 } },
@@ -88,7 +88,7 @@ export function ParticlesBackground({
           fullScreen: { enable: false },
           particles: {
             number: { value: Math.floor(count * 0.4), density: { enable: true } },
-            color: { value: ["#ffff99", "#ffcc66", "#ffaa00", "#ffffff"] },
+            color: { value: ["whitef99", "#ffcc66", "#ffaa00", "whitefff"] },
             shape: { type: "circle" },
             opacity: {
               value: { min: 0.2, max: 0.9 },
@@ -160,7 +160,7 @@ export const particlePresets = {
   winter: {
     variant: "snow" as const,
     count: 60,
-    color: "#ffffff",
+    color: "whitefff",
   },
 
   /** Для страницы "Спасибо" / успеха */
