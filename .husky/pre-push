@@ -98,12 +98,31 @@ fi
 # ============================================
 # 5. ПРОВЕРКА PACKAGE.JSON
 # ============================================
-echo -e "${CYAN}[5/5]${NC} Checking package.json..."
+echo -e "${CYAN}[5/6]${NC} Checking package.json..."
 
 if node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'))" 2>/dev/null; then
     echo -e "${GREEN}✓ package.json OK${NC}"
 else
     echo -e "${RED}✗ Invalid package.json${NC}"
+    ERRORS=$((ERRORS + 1))
+fi
+
+# ============================================
+# 6. ПРОВЕРКА ПРАВИЛ (ENFORCE-RULES)
+# ============================================
+echo -e "${CYAN}[6/6]${NC} Checking code rules..."
+
+if node scripts/enforce-rules.mjs 2>/dev/null; then
+    echo -e "${GREEN}✓ Code rules OK${NC}"
+else
+    echo -e "${RED}✗ Code rules check failed${NC}"
+    echo ""
+    echo "Обнаружены проблемы:"
+    echo "  • Запрещённые цвета (#fff, #000 → используйте DESIGN-SYSTEM.md)"
+    echo "  • Magic numbers → используйте значения из дизайн-системы"
+    echo "  • console.log → удалите перед коммитом"
+    echo ""
+    echo "Запустите bun run enforce-rules для деталей"
     ERRORS=$((ERRORS + 1))
 fi
 
@@ -119,6 +138,7 @@ if [ $ERRORS -gt 0 ]; then
     echo "Исправьте ошибки и попробуйте снова:"
     echo "  • Запустите: bun run build"
     echo "  • Запустите: npx tsc --noEmit"
+    echo "  • Запустите: bun run enforce-rules"
     echo "  • Проверьте: git status"
     echo ""
     echo "Если исправления были применены автоматически:"

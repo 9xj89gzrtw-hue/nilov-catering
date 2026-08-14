@@ -24,6 +24,8 @@
     "safe-push": "node scripts/safe-push.mjs",
     "fix-only": "node scripts/safe-push.mjs --fix-only",
     "pre-push-check": "bash .husky/pre-push",
+    "start-work": "node scripts/start-work.mjs",
+    "enforce-rules": "node scripts/enforce-rules.mjs",
     "prepare": "husky"
   },
   "dependencies": {
