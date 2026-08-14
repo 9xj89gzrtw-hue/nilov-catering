@@ -15,7 +15,15 @@ import TextSizeToggle from "@/components/effects/TextSizeToggle";
  * - Чёткий визуальный порядок
  */
 
-const FOOTER_LINKS = {
+interface FooterLink {
+  label: string;
+  href: string;
+  desc?: string;
+  highlight?: boolean;
+  cta?: boolean;
+}
+
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Услуги: [
     { label: "Свадьбы", href: "/events/svadba", desc: "Под ключ" },
     { label: "Корпоративы", href: "/events/korporativ", desc: "B2B пакет" },
@@ -60,8 +68,8 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className={`hover:text-foreground -mx-1 inline-flex min-h-[44px] items-center px-1 py-2 text-sm transition-colors no-underline ${
-                        link.cta 
+                      className={`hover:text-foreground -mx-1 inline-flex min-h-[44px] items-center px-1 py-2 text-sm no-underline transition-colors ${
+                        link.cta
                           ? "bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-3 py-2 font-semibold shadow-sm"
                           : link.highlight
                             ? "text-gold-text font-medium"
@@ -123,7 +131,7 @@ export default function Footer() {
             </Link>
             <Link
               href="/contact"
-              className="border-line hover:bg-secondary inline-flex min-h-[44px] items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors no-underline"
+              className="border-line hover:bg-secondary inline-flex min-h-[44px] items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold no-underline transition-colors"
             >
               Написать
             </Link>
@@ -132,14 +140,54 @@ export default function Footer() {
 
         {/* Полезные ссылки (компактная строка) */}
         <div className="border-line mb-8 flex flex-wrap justify-center gap-x-4 gap-y-2 border-t pt-6 text-sm">
-          <Link href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</Link>
-          <Link href="/delivery" className="text-muted-foreground hover:text-foreground transition-colors">Доставка</Link>
-          <Link href="/venues" className="text-muted-foreground hover:text-foreground transition-colors">Площадки СПб</Link>
-          <Link href="/allergens" className="text-muted-foreground hover:text-foreground transition-colors">Аллергены</Link>
-          <Link href="/certificates" className="text-muted-foreground hover:text-foreground transition-colores">Документы</Link>
-          <Link href="/tasting" className="text-muted-foreground hover:text-foreground transition-colors">Дегустация</Link>
-          <Link href="/careers" className="text-muted-foreground hover:text-foreground transition-colors">Вакансии</Link>
-          <Link href="/partners" className="text-muted-foreground hover:text-foreground transition-colors">Партнёрам</Link>
+          <Link
+            href="/faq"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/delivery"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Доставка
+          </Link>
+          <Link
+            href="/venues"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Площадки СПб
+          </Link>
+          <Link
+            href="/allergens"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Аллергены
+          </Link>
+          <Link
+            href="/certificates"
+            className="text-muted-foreground hover:text-foreground transition-colores"
+          >
+            Документы
+          </Link>
+          <Link
+            href="/tasting"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Дегустация
+          </Link>
+          <Link
+            href="/careers"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Вакансии
+          </Link>
+          <Link
+            href="/partners"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Партнёрам
+          </Link>
         </div>
 
         {/* Нижняя часть — legal + copyright */}
