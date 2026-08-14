@@ -11,6 +11,8 @@ import DishCartIndicator from "@/components/interactive/DishCartIndicator";
 import FoodPhoto from "@/components/common/FoodPhoto";
 import { getDishImage, getObjectPositionForDish } from "@/lib/dish-images";
 import Link from "next/link";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export default function BanquetPage() {
   const banquetDishes = useMemo(() => ALL_DISHES.filter((d) => d.format.includes("banket")), []);
@@ -99,6 +101,15 @@ export default function BanquetPage() {
         </div>
 
         <MenuCTABlock format="banket" formatLabel="Банкет" />
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="menu" slug="banquet" />
+        <SmartCTA 
+          context="menu" 
+          slug="banquet"
+          title="Собираете банкетное меню?"
+          description="Выберите блюда поштучно или доверьте подбор нам — рассчитаем за 15 минут"
+        />
       </div>
     </main>
   );

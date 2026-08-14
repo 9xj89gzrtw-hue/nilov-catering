@@ -15,6 +15,7 @@ import TestimonialsCarousel from "@/components/blocks/TestimonialsCarousel";
 import WowCase from "@/components/blocks/WowCase";
 import FAQSection from "@/components/blocks/FAQSection";
 import CTASection from "@/components/blocks/CTASection";
+import RelatedPages from "@/components/common/RelatedPages";
 import { getReviews } from "@/lib/cms";
 
 export const metadata: Metadata = {
@@ -98,6 +99,11 @@ export default async function HomePage() {
 
       {/* 12. CTA — главное действие */}
       <CTASection />
+
+      {/* Связанные страницы — ключевые разделы для новых посетителей */}
+      <div className="container-site pb-20">
+        <RelatedPages context="info" slug="pricing" title="Популярные разделы" maxLinks={6} />
+      </div>
     </main>
   );
 }

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SITE } from "@/lib/data";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -302,6 +304,14 @@ export default function ContactPage() {
             </a>
           </div>
         </div>
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="info" slug="contact" />
+        <SmartCTA 
+          context="contact"
+          title="Быстрый расчёт без звонка?"
+          description="Ответьте на 3 вопроса — получите предварительную стоимость за 30 секунд"
+        />
       </div>
     </main>
   );

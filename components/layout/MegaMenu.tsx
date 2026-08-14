@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Calculator, Sparkles } from "lucide-react";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface MegaItem {
@@ -10,6 +10,7 @@ interface MegaItem {
   href: string;
   desc?: string;
   icon?: string; // Emoji icon for visual scanning
+  badge?: string; // "Популярно", "Новинка", etc.
 }
 
 interface MegaGroup {
@@ -21,14 +22,13 @@ interface MegaGroup {
 }
 
 /**
- * MegaMenu — навигация по принципам UX 2025-2026:
+ * MegaMenu — навигация по принципам UX 2025-2026 (ОПТИМИЗИРОВАННАЯ ВЕРСИЯ)
  *
- * Research-based improvements:
- * - Иконки для быстрого сканирования (visual processing = 13ms vs 140ms text)
- * - Карточный формат вместо списка (better scannability)
- * - Группировка по INTENT клиента (user-centric IA)
- * - Описания дают context (Recognition > Recall)
+ * Ключевые улучшения:
  * - Максимально плоская структура (minimize cognitive load)
+ * - Группировка по USER JOURNEY, а не по отделам
+ * - Featured-секция для быстрых переходов к конверсии
+ * - Иконки для быстрого сканирования (visual processing = 13ms vs 140ms text)
  *
  * Структура (3 dropdown + прямые ссылки):
  * 1. Услуги — ЧТО организуем (события) ▾
@@ -43,7 +43,13 @@ const SERVICES: MegaGroup = {
   href: "/events",
   icon: "🎉",
   items: [
-    { label: "Свадьба", href: "/events/svadba", desc: "От камерной до 200 гостей", icon: "💒" },
+    { 
+      label: "Свадьба", 
+      href: "/events/svadba", 
+      desc: "От камерной до 200 гостей", 
+      icon: "💒",
+      badge: "Популярно"
+    },
     {
       label: "Корпоратив",
       href: "/events/korporativ",
@@ -62,13 +68,18 @@ const SERVICES: MegaGroup = {
       desc: "Ресторан-quality у вас дома",
       icon: "🍽️",
     },
-    { label: "Выпускной", href: "/events/vypusknoy", desc: "Шоу программа под ключ", icon: "🎓" },
-    { label: "Никах и ифтар", href: "/events/nikah", desc: "Традиционное халяль меню", icon: "🕌" },
+    { 
+      label: "Выпускной", 
+      href: "/events/vypusknoy", 
+      desc: "Шоу программа под ключ", 
+      icon: "🎓" 
+    },
   ],
   // Менее частые — как теги (не прячем!)
   extraItems: [
     { label: "Частное мероприятие", href: "/events/chastnoe" },
     { label: "Юбилей", href: "/events/yubiley" },
+    { label: "Никах / Халяль", href: "/events/nikah" },
     { label: "Поминки", href: "/events/pominki" },
   ],
 };
@@ -83,26 +94,29 @@ const MENU: MegaGroup = {
       href: "/menu/banquet",
       desc: "Полный цикл обслуживания",
       icon: "🍷",
+      badge: "От 3 950 ₽",
     },
-    { label: "Фуршет", href: "/menu/furshet", desc: "Шведский стол или порции", icon: "🥂" },
+    { label: "Фуршет", href: "/menu/furshet", desc: "Шведский стол или порции", icon: "🥂", badge: "От 2 450 ₽" },
     {
       label: "Кофе-брейк",
       href: "/menu/coffee-break",
       desc: "Для конференций и встреч",
       icon: "☕",
+      badge: "От 390 ₽",
     },
+    { label: "Каталог блюд", href: "/menu/catalog", desc: "124+ блюда на выбор", icon: "📋" },
     { label: "Шоу-кукинг", href: "/menu/show-cooking", desc: "Повара на ваших глазах", icon: "👨‍🍳" },
   ],
   // Специальные меню как теги
   extraItems: [
-    { label: "Каталог блюд", href: "/menu/catalog" },
-    { label: "Детское меню", href: "/menu/detskoe" },
-    { label: "Веган / Халяль", href: "/menu/vegan" },
+    { label: "Детское", href: "/menu/detskoe" },
+    { label: "Веган", href: "/menu/vegan" },
+    { label: "Халяль", href: "/menu/halal" },
     { label: "Без глютена", href: "/menu/gluten-free" },
   ],
 };
 
-// НОВЫЙ: О нас dropdown с доверием
+// О нас dropdown с доверием
 const ABOUT: MegaGroup = {
   label: "О нас",
   href: "/why-us",
@@ -122,11 +136,26 @@ const ABOUT: MegaGroup = {
     },
     { label: "Портфель работ", href: "/gallery", desc: "Фото наших мероприятий", icon: "📸" },
     { label: "Команда", href: "/team", desc: "Наши шефы и менеджеры", icon: "👥" },
-    { label: "Блог и советы", href: "/blog", desc: "Статьи о мероприятиях", icon: "📰" },
   ],
 };
 
 const GROUPS = [SERVICES, MENU, ABOUT];
+
+// Featured actions — быстрые пути к конверсии
+const FEATURED_ACTIONS = [
+  {
+    href: "/plan/helper",
+    label: "Рассчитать стоимость",
+    icon: Calculator,
+    primary: true,
+  },
+  {
+    href: "/pricing",
+    label: "Цены и калькулятор",
+    icon: null,
+    primary: false,
+  },
+];
 
 export default function MegaMenu() {
   const [open, setOpen] = useState<string | null>(null);
@@ -145,6 +174,7 @@ export default function MegaMenu() {
 
   return (
     <ul className="hidden items-center gap-1 md:flex" role="menubar" ref={ref}>
+      {/* Dropdown меню (Услуги + Меню + О нас) */}
       {GROUPS.map((group) => (
         <li key={group.label} className="relative" role="none">
           <button
@@ -169,7 +199,7 @@ export default function MegaMenu() {
           {open === group.label && (
             <div
               ref={trapRef}
-              className="bg-card border-line absolute top-full left-0 z-50 mt-2 max-w-[560px] min-w-[420px] rounded-xl border p-4 shadow-xl"
+              className="bg-card border-line absolute top-full left-0 z-50 mt-2 min-w-[440px] max-w-[560px] rounded-xl border p-4 shadow-xl"
               role="menu"
               aria-label={`Подменю ${group.label}`}
             >
@@ -192,8 +222,13 @@ export default function MegaMenu() {
                       </span>
                     )}
                     <div className="min-w-0">
-                      <div className="text-foreground group-hover:text-gold-text text-sm leading-tight font-medium transition-colors">
+                      <div className="text-foreground group-hover:text-gold-text flex items-center gap-1.5 text-sm leading-tight font-medium transition-colors">
                         {item.label}
+                        {item.badge && (
+                          <span className="bg-gold-text/10 text-gold-text rounded px-1.5 py-0.5 text-[10px] font-semibold">
+                            {item.badge}
+                          </span>
+                        )}
                       </div>
                       {item.desc && (
                         <div className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-snug">
@@ -241,6 +276,30 @@ export default function MegaMenu() {
           )}
         </li>
       ))}
+
+      {/* Разделитель */}
+      <li className="h-5 w-px bg-border" role="separator" aria-hidden="true" />
+
+      {/* Прямая ссылка — Портфель (важная для доверия) */}
+      <li role="none">
+        <Link
+          href="/gallery"
+          className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-md px-3 py-2 text-sm no-underline transition-colors"
+        >
+          Портфель
+        </Link>
+      </li>
+
+      {/* Главный CTA — Рассчитать (выделенный) */}
+      <li role="none">
+        <Link
+          href="/plan/helper"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold no-underline shadow-sm transition-all hover:shadow-md"
+        >
+          <Calculator className="h-4 w-4" aria-hidden="true" />
+          Рассчитать
+        </Link>
+      </li>
     </ul>
   );
 }

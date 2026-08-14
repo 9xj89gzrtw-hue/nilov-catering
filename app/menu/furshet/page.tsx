@@ -11,6 +11,8 @@ import DishCartIndicator from "@/components/interactive/DishCartIndicator";
 import FoodPhoto from "@/components/common/FoodPhoto";
 import { getDishImage, getObjectPositionForDish } from "@/lib/dish-images";
 import Link from "next/link";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 const GRADIENT_MAP: Record<string, string> = {
   cold: "from-blue-100 via-blue-50 to-cyan-50",
@@ -189,6 +191,15 @@ export default function FurshetPage() {
         </div>
 
         <MenuCTABlock format="furshet" formatLabel="Фуршет" />
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="menu" slug="furshet" />
+        <SmartCTA 
+          context="menu" 
+          slug="furshet"
+          title="Организуете фуршет?"
+          description="12+ закусок на выбор — соберите меню или доверьте подбор нам"
+        />
       </div>
     </main>
   );

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { SITE } from "@/lib/data";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/faq", languages: { ru: "/faq", "x-default": "/faq" } },
@@ -289,6 +291,15 @@ export default function FAQPage() {
             </div>
           </div>
         </div>
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="info" slug="faq" />
+        <SmartCTA 
+          context="info" 
+          slug="faq"
+          title="Не нашли ответ?"
+          description="Напишите нам — поможем с любым вопросом по кейтерингу"
+        />
       </div>
     </main>
   );

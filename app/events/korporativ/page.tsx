@@ -4,6 +4,8 @@ import TariffOffersSection from "@/components/blocks/TariffOffersSection";
 import BudgetCalculator from "@/components/interactive/BudgetCalculator";
 import B2BPortalSection from "@/components/common/B2BPortalSection";
 import TenderHub from "@/components/common/TenderHub";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export function generateMetadata(): Metadata {
   return {
@@ -211,6 +213,17 @@ export default function CorporatePage() {
 
       <B2BPortalSection />
       <TenderHub />
+
+      {/* Связанные страницы — логичные переходы */}
+      <div className="container-site max-w-5xl">
+        <RelatedPages context="event" slug="korporativ" />
+        <SmartCTA 
+          context="event" 
+          slug="korporativ"
+          title="Организуем корпоративное мероприятие?"
+          description="Рассчитаем стоимость за 15 минут — документы, ЭДО, счёт включены"
+        />
+      </div>
     </main>
   );
 }

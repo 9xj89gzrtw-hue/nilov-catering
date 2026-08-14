@@ -4,6 +4,8 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import FoodPhoto from "@/components/common/FoodPhoto";
 import { Check, ArrowRight, Calculator, Users } from "lucide-react";
 import { SITE } from "@/lib/data";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export const metadata: Metadata = {
   title: "Цены на кейтеринг в СПб — от 390 ₽/гость",
@@ -386,6 +388,14 @@ export default function PricingPage() {
             Собрать своё меню <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="info" slug="pricing" />
+        <SmartCTA 
+          context="pricing"
+          title="Нужен точный расчёт?"
+          description="Индивидуальное предложение за 15 минут — без обязательств"
+        />
       </div>
     </main>
   );

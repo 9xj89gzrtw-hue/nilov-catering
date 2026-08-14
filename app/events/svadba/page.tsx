@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TariffOffersSection from "@/components/blocks/TariffOffersSection";
 import ShareButton from "@/components/common/ShareButton";
+import RelatedPages from "@/components/common/RelatedPages";
+import SmartCTA from "@/components/common/SmartCTA";
 
 export const metadata: Metadata = {
   alternates: {
@@ -453,6 +455,17 @@ export default function SvadbaPage() {
             </Link>
           </p>
         </section>
+
+        {/* Связанные страницы — логичные переходы */}
+        <RelatedPages context="event" slug="svadba" />
+
+        {/* Контекстный CTA */}
+        <SmartCTA 
+          context="event" 
+          slug="svadba"
+          title="Готовим вашу свадьбу?"
+          description="Оставьте заявку — перезвоним за 15 минут с готовым расчётом меню и сервиса"
+        />
       </div>
     </main>
   );
