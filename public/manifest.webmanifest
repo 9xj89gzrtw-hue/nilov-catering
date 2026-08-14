@@ -1,0 +1,16 @@
+{
+  "name": "NiloV Catering — Премиум кейтеринг в Санкт-Петербурге",
+  "short_name": "NiloV Catering",
+  "description": "Кейтеринг под ключ для любого бюджета. Банкеты, фуршеты, кофе-брейки с 2007 года.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1614",
+  "theme_color": "#8C7140",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

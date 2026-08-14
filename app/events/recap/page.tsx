@@ -1,0 +1,224 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/events/recap",
+    languages: { ru: "/events/recap", "x-default": "/events/recap" },
+  },
+  title: "Кейсы и видео-рекапы событий",
+  description:
+    "Кейсы и видео-рекапы событий NiloV Catering: свадьбы, корпоративы, халяль-банкеты, детские праздники с медицинскими диетами. Реальные отзывы клиентов.",
+};
+
+type Recap = {
+  t: string;
+  d: string;
+  g: string;
+  v: string;
+  ref: string | null;
+  tags: string[];
+  hasVideo: boolean;
+  videoSrc?: string;
+  posterSrc?: string;
+};
+
+const RECAPS: Recap[] = [
+  {
+    t: "Свадьба Екатерины и Дмитрия",
+    d: "Август 2024",
+    g: "60 гостей",
+    v: "Особняк Бруноз, СПб",
+    ref: "rev-001",
+    tags: ["Свадьба", "3 диеты", "БГ-торт"],
+    hasVideo: true,
+    videoSrc: "/videos/hero/banquet.mp4",
+    posterSrc: "/images/gallery/wedding-banquet.jpg",
+  },
+  {
+    t: "Корпоратив IT-стартапа",
+    d: "Декабрь 2024",
+    g: "50 гостей",
+    v: "Лофт «Севкабель», СПб",
+    ref: "rev-003",
+    tags: ["B2B", "ЭДО", "УСН→ОСН"],
+    hasVideo: true,
+    videoSrc: "/videos/gallery/food.webm",
+    posterSrc: "/images/gallery/corporate-furshet.jpg",
+  },
+  {
+    t: "Конференция в Expoforum",
+    d: "Октябрь 2024",
+    g: "150 гостей × 2 дня",
+    v: "Конгресс-холл «Экспофорум»",
+    ref: "rev-006",
+    tags: ["B2B", "SLA", "900 порций", "форс-мажор"],
+    hasVideo: true,
+    videoSrc: "/videos/gallery/cooking.webm",
+    posterSrc: "/images/gallery/show-station.jpg",
+  },
+  {
+    t: "Никях (халяль-банкет)",
+    d: "Август 2025",
+    g: "60 гостей",
+    v: "Ресторан «Восток», СПб",
+    ref: "rev-015",
+    tags: ["Халяль", "СМР", "без алкоголя"],
+    hasVideo: true,
+    videoSrc: "/videos/gallery/chef.webm",
+    posterSrc: "/images/gallery/banket.jpg",
+  },
+  {
+    t: "Детский день рождения (БГ+анафилаксия)",
+    d: "Ноябрь 2025",
+    g: "8 детей",
+    v: "Дом клиента, СПб",
+    ref: "rev-017",
+    tags: ["БГ", "<20 ppm", "без орехов", "EpiPen"],
+    hasVideo: true,
+    videoSrc: "/videos/hero/banquet.webm",
+    posterSrc: "/images/gallery/kids.jpg",
+  },
+  {
+    t: "Корпоратив 120 чел",
+    d: "Октябрь 2025",
+    g: "120 гостей",
+    v: "ККТ «Космос», СПб",
+    ref: "rev-016",
+    tags: ["B2B", "SLA", "3 диеты"],
+    hasVideo: true,
+    videoSrc: "/videos/gallery/food.webm",
+    posterSrc: "/images/gallery/dessert-table.jpg",
+  },
+];
+
+export default function RecapPage() {
+  return (
+    <main id="main" className="pt-24 pb-20">
+      <div className="container-site max-w-2xl">
+        <h1 className="mb-2">Кейсы и видео-рекапы</h1>
+        <p className="text-muted-foreground mb-8">
+          Реальные события с датой, площадкой, количеством гостей. Кейсы привязаны к отзывам —
+          кликните на карточку, чтобы прочитать полный отзыв клиента. Все 6 кейсов имеют
+          видео-иллюстрации форматов (используются одни и те же клипы для нескольких кейсов — это
+          демонстрация стиля, не съёмка с конкретного события).
+        </p>
+
+        <div className="mb-12 space-y-4">
+          {RECAPS.map((r) => (
+            <article
+              key={r.t}
+              className="border-line bg-card group hover:border-gold-text block overflow-hidden rounded-xl border transition-colors"
+            >
+              {r.hasVideo && r.videoSrc ? (
+                <div className="bg-secondary relative aspect-video overflow-hidden">
+                  <video
+                    src={r.videoSrc}
+                    poster={r.posterSrc}
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    preload="metadata"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute top-2 right-2 rounded bg-black/60 px-2 py-1 text-sm text-white">
+                    видео
+                  </span>
+                </div>
+              ) : (
+                <div className="from-secondary via-muted to-secondary flex aspect-video items-center justify-center bg-gradient-to-br text-4xl transition-transform group-hover:scale-105">
+                  <span aria-hidden="true"></span>
+                </div>
+              )}
+              <div className="p-4">
+                <h2 className="font-heading mb-1 text-lg font-medium">{r.t}</h2>
+                <div className="text-muted-foreground mb-2 flex flex-wrap gap-3 text-sm">
+                  <span>{r.d}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{r.g}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{r.v}</span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {r.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-[10px]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={r.ref ? `/reviews#${r.ref}` : "/reviews"}
+                  className="text-gold-text mt-2 inline-flex min-h-[44px] items-center gap-1 py-2 text-sm font-semibold hover:underline"
+                >
+                  Читать отзыв клиента →
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Composite festival case */}
+        <div className="border-gold-text/40 bg-gold-text/5 mb-8 rounded-xl border-2 p-5">
+          <h2 className="font-heading mb-2 text-lg font-medium">Фестивальный масштаб: 800+ чел</h2>
+          <p className="text-foreground/90 mb-2 text-sm">
+            <strong>
+              Корпоративный фестиваль 800 чел × 2 дня (с расширением производственных мощностей).
+            </strong>{" "}
+            4 кофе-брейка + 2 обеда + 1 гала-фуршет × 800 × 2 дня = 11 200 порций. Основной
+            подрядчик — ИП Нилов (управление, координация, сервировка). Субподряд — 3
+            сертифицированные кухни. SLA в договоре (±15 минут, штраф 1%/мин). Страхование 30 млн ₽.
+            3 диеты: веган, БГ, всеядные.
+          </p>
+          <p className="text-muted-foreground text-sm">
+            Кейс комбинированный — собран из нескольких аналогичных корпоративных событий 2024–2025.
+            Полные детали и контакты референсов — по запросу на b2b@nilov-catering.ru (после NDA).
+            Для фестивалей 800+ гостей — расширяем производственные мощности.{" "}
+            <Link href="/why-us" className="text-gold-text underline">
+              Подробнее →
+            </Link>
+          </p>
+        </div>
+
+        <div className="border-line bg-secondary/30 mb-8 rounded-xl border p-4">
+          <p className="text-muted-foreground text-sm">
+            <strong>Полные видео-рекапы:</strong> доступны по запросу — отправим ссылку на закрытый
+            альбом в течение 1 рабочего дня. Запрос:{" "}
+            <a href="mailto:info@nilov-catering.ru" className="text-gold-text underline">
+              info@nilov-catering.ru
+            </a>{" "}
+            или{" "}
+            <a href="tel:+78129195911" className="text-gold-text underline">
+              +7 (812) 919-59-11
+            </a>
+            .
+          </p>
+        </div>
+
+        <p className="text-muted-foreground mb-4 text-center text-sm">
+          Фото с событий — в{" "}
+          <Link href="/gallery" className="text-gold-text hover:underline">
+            галерее
+          </Link>
+          . Полный список отзывов — на странице{" "}
+          <Link href="/reviews" className="text-gold-text hover:underline">
+            /reviews
+          </Link>
+          .
+        </p>
+        <div className="text-center">
+          <Link
+            href="/gallery"
+            className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold"
+          >
+            Смотреть галерею
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
