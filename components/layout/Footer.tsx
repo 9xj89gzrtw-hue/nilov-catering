@@ -3,15 +3,16 @@ import { SITE, SOCIAL_LINKS } from "@/lib/data";
 import TextSizeToggle from "@/components/effects/TextSizeToggle";
 
 /**
- * Footer — чистый и не перегруженный
+ * Footer — чистый и не перегруженный (UX 2025-2026)
  *
- * Структура (3 колонки вместо 5):
- * [Услуги]     [Компания]      [Контакты]
+ * Структура (4 колонки — оптимизированная):
+ * [Услуги] [Меню] [Компания] [Полезное]
  *
- * Принципы:
- * - Только самые важные ссылки
+ * Key changes:
+ * - "Галерея работ" → "Портфель" (коротко и ёмко)
+ * - Убраны дубли с header/mobile nav
  * - Логичная группировка для клиента
- * - Место для CTA (подписка/контакты)
+ * - CTA зона (подписка/контакты)
  */
 
 const FOOTER_LINKS = {
@@ -28,13 +29,13 @@ const FOOTER_LINKS = {
     { label: "Фуршет", href: "/menu/furshet" },
     { label: "Кофе-брейк", href: "/menu/coffee-break" },
     { label: "Каталог блюд", href: "/menu/catalog" },
-    { label: "Веган / Халяль", href: "/menu/vegan" },
+    { label: "Специальные меню", href: "/menu/vegan" },
     { label: "Всё меню →", href: "/menu" },
   ],
   Компания: [
     { label: "О нас", href: "/why-us" },
     { label: "Отзывы (4.8⭐)", href: "/reviews" },
-    { label: "Галерея работ", href: "/gallery" },
+    { label: "Портфель", href: "/gallery" },
     { label: "Команда", href: "/team" },
     { label: "Блог", href: "/blog" },
     { label: "Вакансии", href: "/careers" },
@@ -44,7 +45,7 @@ const FOOTER_LINKS = {
     { label: "FAQ", href: "/faq" },
     { label: "Доставка кейтеринга", href: "/delivery/order" },
     { label: "Сертификаты", href: "/certificates" },
-    { label: "Площадки", href: "/venues" },
+    { label: "Площадки СПб", href: "/venues" },
   ],
 };
 

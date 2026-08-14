@@ -8,39 +8,41 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import { SITE } from "@/lib/data";
 
 /**
- * MobileMenu — логичная мобильная навигация
+ * MobileMenu — упрощённая мобильная навигация (UX 2025-2026)
  *
- * Структура (8 ключевых пунктов + расширяющиеся секции):
- * - Главная
- * - Услуги ▸ (раскрывается)
- * - Меню ▸ (раскрывается)
- * - Галерея
- * - Цены
- * - О нас ▸ (раскрывается)
- * - Контакты
+ * Key changes based on research:
+ * - Убрана секция "О нас" (распределили по другим секциям)
+ * - "Галерея" → "Портфель" (однозначное название)
+ * - FAQ вынесен отдельно (частый запрос)
+ * - Максимально плоская структура (minimize cognitive load)
+ * - Bottom: CTA всегда на виду
  *
- * Принципы:
- * - 7±2 пункта в основном списке
- * - Раскрывающиеся секции для глубины
- * - CTA всегда внизу
+ * Structure (flat + 2 expandable sections):
+ * - Главная (static)
+ * - Услуги ▸ (expandable — 6 items)
+ * - Меню ▸ (expandable — 4 items)
+ * - Почему мы (direct link)
+ * - Отзывы (direct link with rating)
+ * - Портфель (direct link)
+ * - FAQ (direct link)
+ * - Блог (direct link)
  */
 
 // Основные ссылки (всегда видны)
-const KEY_LINKS = [{ href: "/", label: "Главная" }];
+const KEY_LINKS = [{ href: "/", label: "Главная", icon: "🏠" }];
 
-// Секции с подпунктами
+// Секции с подпунктами (только 2 для минимизации cognitive load!)
 const SECTIONS = [
   {
     label: "Услуги",
     icon: "🎉",
     items: [
-      { href: "/events/svadba", label: "Свадьба" },
-      { href: "/events/korporativ", label: "Корпоратив" },
-      { href: "/events/detskoe", label: "Детский праздник" },
-      { href: "/events/chastnoe", label: "Частное мероприятие" },
-      { href: "/events/vypusknoy", label: "Выпускной" },
-      { href: "/events/nikah", label: "Никах и ифтар" },
-      { href: "/events/chef-at-home", label: "Шеф на дом" },
+      { href: "/events/svadba", label: "Свадьба", icon: "💒" },
+      { href: "/events/korporativ", label: "Корпоратив", icon: "🏢" },
+      { href: "/events/detskoe", label: "Детский праздник", icon: "🎈" },
+      { href: "/events/chef-at-home", label: "Шеф на дом", icon: "🍽️" },
+      { href: "/events/vypusknoy", label: "Выпускной", icon: "🎓" },
+      { href: "/events/nikah", label: "Никах и ифтар", icon: "🕌" },
     ],
     moreLink: { href: "/events", label: "Все услуги →" },
   },
@@ -48,32 +50,24 @@ const SECTIONS = [
     label: "Меню",
     icon: "🍽️",
     items: [
-      { href: "/menu/banquet", label: "Банкетное меню" },
-      { href: "/menu/furshet", label: "Фуршет" },
-      { href: "/menu/coffee-break", label: "Кофе-брейк" },
-      { href: "/menu/show-cooking", label: "Шоу-кукинг" },
-      { href: "/menu/catalog", label: "Каталог блюд" },
+      { href: "/menu/banquet", label: "Банкетное меню", icon: "🍷" },
+      { href: "/menu/furshet", label: "Фуршет", icon: "🥂" },
+      { href: "/menu/coffee-break", label: "Кофе-брейк", icon: "☕" },
+      { href: "/menu/show-cooking", label: "Шоу-кукинг", icon: "👨‍🍳" },
+      { href: "/menu/catalog", label: "Каталог блюд", icon: "📋" },
     ],
     moreLink: { href: "/menu", label: "Всё меню →" },
   },
-  {
-    label: "О нас",
-    icon: "ℹ️",
-    items: [
-      { href: "/why-us", label: "Почему мы" },
-      { href: "/reviews", label: "Отзывы (4.8⭐)" },
-      { href: "/gallery", label: "Галерея работ" },
-      { href: "/team", label: "Команда" },
-    ],
-  },
 ];
 
-// Быстрые ссылки (без подпунктов)
+// Быстрые ссылки (без подпунктов — flat structure)
 const QUICK_LINKS = [
-  { href: "/gallery", label: "Галерея" },
-  { href: "/pricing", label: "Цены" },
-  { href: "/contact", label: "Контакты" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/why-us", label: "Почему мы", icon: "⭐" },
+  { href: "/reviews", label: "Отзывы (4.8★)", icon: "💬" },
+  { href: "/gallery", label: "Портфель", icon: "📸" },
+  { href: "/faq", label: "FAQ", icon: "❓" },
+  { href: "/blog", label: "Блог", icon: "📰" },
+  { href: "/contact", label: "Контакты", icon: "📞" },
 ];
 
 export default function MobileMenu() {
@@ -133,7 +127,7 @@ export default function MobileMenu() {
             >
               {/* Backdrop */}
               <motion.button
-                className="bg-foreground/40 absolute inset-0"
+                className="bg-foreground/50 absolute inset-0 backdrop-blur-sm"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -155,7 +149,12 @@ export default function MobileMenu() {
               >
                 {/* Header */}
                 <div className="border-line flex items-center justify-between border-b p-5">
-                  <span className="font-heading text-lg font-semibold">Меню</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg" aria-hidden="true">
+                      🎉
+                    </span>
+                    <span className="font-heading text-lg font-semibold">Меню</span>
+                  </div>
                   <button
                     onClick={() => setOpen(false)}
                     className="hover:bg-secondary flex h-11 w-11 items-center justify-center rounded-lg transition-colors"
@@ -186,13 +185,16 @@ export default function MobileMenu() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="text-foreground hover:bg-secondary active:bg-secondary flex items-center px-6 py-4 text-base font-medium transition-colors"
+                      className="text-foreground hover:bg-secondary active:bg-secondary flex items-center gap-3 px-6 py-3.5 text-base font-medium transition-colors"
                     >
+                      <span className="text-lg" aria-hidden="true">
+                        {link.icon}
+                      </span>
                       {link.label}
                     </Link>
                   ))}
 
-                  {/* Раскрывающиеся секции */}
+                  {/* Раскрывающиеся секции (только 2!) */}
                   {SECTIONS.map((section) => {
                     const isExpanded = expandedSection === section.label;
                     return (
@@ -201,7 +203,12 @@ export default function MobileMenu() {
                           onClick={() => toggleSection(section.label)}
                           className="text-foreground hover:bg-secondary active:bg-secondary flex w-full items-center justify-between px-6 py-3 text-left text-base font-medium transition-colors"
                         >
-                          <span>{section.label}</span>
+                          <span className="flex items-center gap-3">
+                            <span className="text-lg" aria-hidden="true">
+                              {section.icon}
+                            </span>
+                            {section.label}
+                          </span>
                           <ChevronDown
                             className={`h-4 w-4 transition-transform duration-200 ${
                               isExpanded ? "rotate-180" : ""
@@ -223,9 +230,14 @@ export default function MobileMenu() {
                                   key={item.href}
                                   href={item.href}
                                   onClick={() => setOpen(false)}
-                                  className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 flex items-center gap-2 rounded-lg px-8 py-2.5 text-sm transition-colors"
+                                  className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 flex items-center gap-3 rounded-lg px-8 py-2.5 text-sm transition-colors"
                                 >
-                                  <ChevronRight className="h-3 w-3" />
+                                  {(item as { icon?: string }).icon && (
+                                    <span className="text-sm" aria-hidden="true">
+                                      {(item as { icon?: string }).icon}
+                                    </span>
+                                  )}
+                                  <ChevronRight className="h-3 w-3 shrink-0" />
                                   {item.label}
                                 </Link>
                               ))}
@@ -235,7 +247,7 @@ export default function MobileMenu() {
                                 <Link
                                   href={section.moreLink.href}
                                   onClick={() => setOpen(false)}
-                                  className="text-gold-text hover:bg-gold-tint/50 flex items-center gap-2 rounded-lg px-8 py-2.5 text-sm font-medium transition-colors"
+                                  className="text-gold-text hover:bg-gold-tint/30 flex items-center gap-2 rounded-lg px-8 py-2.5 text-sm font-semibold transition-colors"
                                 >
                                   {section.moreLink.label}
                                 </Link>
@@ -247,36 +259,40 @@ export default function MobileMenu() {
                     );
                   })}
 
-                  {/* Быстрые ссылки */}
-                  <div className="border-line mt-2 border-t px-6 pt-3">
-                    {QUICK_LINKS.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className="text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary flex items-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+                  {/* Разделитель перед быстрыми ссылками */}
+                  <div className="border-line mx-6 my-3 border-t" />
+
+                  {/* Быстрые ссылки (flat — без вложенности) */}
+                  {QUICK_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 active:bg-secondary flex items-center gap-3 rounded-lg px-6 py-2.5 text-sm font-medium transition-colors"
+                    >
+                      <span className="text-base" aria-hidden="true">
+                        {link.icon}
+                      </span>
+                      {link.label}
+                    </Link>
+                  ))}
                 </nav>
 
-                {/* Bottom actions */}
+                {/* Bottom actions — CTA zone */}
                 <div className="border-line space-y-3 border-t p-5">
                   <div className="flex gap-2">
                     <a
                       href={`tel:${SITE.phoneTel}`}
-                      className="border-gold-text text-gold-text active:bg-gold-tint flex flex-1 items-center justify-center gap-2 rounded-lg border-2 py-4 text-base font-semibold transition-colors"
+                      className="border-gold-text text-gold-text active:bg-gold-tint flex flex-1 items-center justify-center gap-2 rounded-lg border-2 py-3.5 text-sm font-semibold transition-colors"
                     >
-                      {SITE.phone}
+                      📞 {SITE.phone}
                     </a>
                     <a
                       href={SITE.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                       aria-label="Написать в WhatsApp"
-                      className="flex w-14 items-center justify-center rounded-lg border-2 border-emerald-500 text-emerald-600 transition-colors active:bg-emerald-50"
+                      className="flex w-14 items-center justify-center rounded-lg border-2 border-emerald-500 bg-emerald-500 text-white transition-colors"
                     >
                       💬
                     </a>
@@ -284,9 +300,9 @@ export default function MobileMenu() {
                   <Link
                     href="/plan/helper"
                     onClick={() => setOpen(false)}
-                    className="bg-primary text-primary-foreground flex w-full items-center justify-center gap-2 rounded-lg py-4 text-base font-semibold no-underline transition-transform active:scale-[0.98]"
+                    className="bg-primary hover:bg-primary/90 flex w-full items-center justify-center gap-2 rounded-lg py-3.5 text-sm font-semibold no-underline shadow-md transition-all active:scale-[0.98]"
                   >
-                    Рассчитать стоимость
+                    🎯 Рассчитать стоимость
                   </Link>
                 </div>
               </motion.div>

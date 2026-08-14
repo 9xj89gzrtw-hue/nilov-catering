@@ -2,22 +2,30 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Utensils, Calculator, Tag, Phone } from "lucide-react";
+import { Home, PartyPopper, Utensils, Calculator, Phone } from "lucide-react";
 
 /**
- * MobileBottomNav — 5 items with true center pill.
+ * MobileBottomNav — 5 items with center CTA pill (UX 2025-2026)
  *
- * Mobile critic: "7 items too crowded, center pill off-center, icons reused"
- * Fix: 4 nav items + center pill = 5 cells, true center (position 3),
- * distinct icons (Home, Utensils, Tag, Phone — no duplicates).
+ * Research-based changes:
+ * - Заменили "Цены" → "Услуги" (чаще используется как entry point)
+ * - Добавлены уникальные иконки (no duplicates)
+ * - Центральная кнопка CTA сохранена (proven conversion pattern)
+ * - 4 nav items + 1 center pill = 5 cells (optimal per NNGroup)
+ *
+ * Sources:
+ * - UXPin: Tab bars provide always-visible navigation (Oct 2025)
+ * - Reddit/NNGroup: Bottom nav > hamburger for primary actions
+ * - Mobile UX: Max 5 items for optimal touch targets
  */
+
 const LEFT_LINKS = [
   { href: "/", label: "Главная", Icon: Home },
-  { href: "/menu", label: "Меню", Icon: Utensils },
+  { href: "/events", label: "Услуги", Icon: PartyPopper },
 ];
 
 const RIGHT_LINKS = [
-  { href: "/pricing", label: "Цены", Icon: Tag },
+  { href: "/menu", label: "Меню", Icon: Utensils },
   { href: "/contact", label: "Контакты", Icon: Phone },
 ];
 
@@ -55,7 +63,7 @@ export default function MobileBottomNav() {
         <li className="flex flex-1 justify-center">
           <Link
             href="/plan/helper"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 -mt-6 flex h-14 w-14 flex-col items-center justify-center rounded-full no-underline shadow-lg transition-colors"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 -mt-6 flex h-14 w-14 flex-col items-center justify-center rounded-full no-underline shadow-lg transition-all hover:shadow-lg"
             aria-label="Подбор — рассчитать стоимость"
           >
             <Calculator className="h-6 w-6" />

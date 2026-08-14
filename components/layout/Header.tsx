@@ -5,22 +5,22 @@ import MobileMenu from "@/components/layout/MobileMenu";
 import MegaMenu from "@/components/layout/MegaMenu";
 
 /**
- * Header — чистая навигация по принципам UX 2026:
+ * Header — навигация по принципам UX 2025-2026:
  *
- * Структура (6 пунктов — sweet spot!):
- * [Logo] [Услуги ▾] [Меню ▾] [Галерея] [Цены] [Контакты]
- *                                              [📞][Рассчитать →]
+ * Структура (5 пунктов + CTA — sweet spot по Hick's Law):
+ * [Logo] [Услуги ▾] [Меню ▾] [Портфель] [О нас ▾]  [📞][Рассчитать →]
  *
- * Принципы:
- * - 5-7 пунктов в главном меню
- * - Логичная группировка с точки зрения КЛИЕНТА
- * - CTA всегда на виду
- * - Mobile: отдельное меню + bottom nav
+ * Принципы (основано на research NNGroup, Figma 2026, cognitive load studies):
+ * - 5±2 пунктов в главном меню (оптимально для рабочей памяти)
+ * - Группировка по INTENT клиента (не по отделам!)
+ * - Mega menu с иконками и описаниями (recognition > recall)
+ * - CTA всегда на виду (primary conversion path)
+ * - Mobile: bottom tab bar (primary) + hamburger (secondary)
  */
 export default function Header() {
   return (
     <header
-      className="border-line/60 bg-background/90 fixed top-0 right-0 left-0 z-50 border-b shadow-sm backdrop-blur-lg"
+      className="border-line/60 bg-background/95 fixed top-0 right-0 left-0 z-50 border-b shadow-sm backdrop-blur-xl"
       role="banner"
     >
       <nav
@@ -79,7 +79,7 @@ export default function Header() {
 
         {/* Desktop nav — MegaMenu + ключевые ссылки */}
         <div className="hidden items-center gap-1 md:flex">
-          {/* Dropdown меню (Услуги + Меню) */}
+          {/* Dropdown меню (Услуги + Меню + О нас) */}
           <MegaMenu />
 
           {/* Прямые ссылки — только самые важные! */}
@@ -87,19 +87,7 @@ export default function Header() {
             href="/gallery"
             className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-md px-3 py-2 text-sm no-underline transition-colors"
           >
-            Галерея
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-md px-3 py-2 text-sm no-underline transition-colors"
-          >
-            Цены
-          </Link>
-          <Link
-            href="/contact"
-            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-md px-3 py-2 text-sm no-underline transition-colors"
-          >
-            Контакты
+            Портфель
           </Link>
         </div>
 
@@ -131,7 +119,7 @@ export default function Header() {
           {/* Главный CTA — Рассчитать */}
           <Link
             href="/plan/helper"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold no-underline shadow-sm transition-colors"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold no-underline shadow-sm transition-all hover:shadow-md"
           >
             <Calculator className="h-4 w-4" aria-hidden="true" />
             Рассчитать

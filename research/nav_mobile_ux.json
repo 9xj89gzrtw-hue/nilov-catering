@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://www.reddit.com/r/ProductManagement/comments/1o1fyu3/bottom_navigation_vs_hamburger_menu_for_mobile",
+    "name": "Bottom navigation vs hamburger menu for mobile",
+    "snippet": "Tab bar is almost always better . Nothing is a discoverable in a hamburger menu and people just shove everything in there, making it worse.",
+    "host_name": "www.reddit.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://acclaim.agency/blog/the-future-of-mobile-navigation-hamburger-menus-vs-tab-bars",
+    "name": "The Future of Mobile Navigation: Hamburger Menus vs. Tab",
+    "snippet": "The battle between hamburger menus and tab bars defines the future of mobile navigation , pitting simplicity against accessibility.",
+    "host_name": "acclaim.agency",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.nngroup.com/articles/mobile-navigation-patterns",
+    "name": "Basic Patterns for Mobile Navigation: A Primer",
+    "snippet": "Nov 15, 2015 — While the hamburger icon is perhaps the most talked-about signifier for a navigation menu , other labels and/ or icons can be used for navigation .",
+    "host_name": "www.nngroup.com",
+    "rank": 2,
+    "date": "Nov 15, 2015",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.uxpin.com/studio/blog/mobile-navigation-patterns-pros-and-cons",
+    "name": "Mobile Navigation Patterns: Pros and Cons",
+    "snippet": "Oct 3, 2025 — Tab bars provide a straightforward, always-visible navigation option , standing in stark contrast to the hidden nature of hamburger menus.",
+    "host_name": "www.uxpin.com",
+    "rank": 3,
+    "date": "Oct 3, 2025",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.weareconflux.com/en/blog/tab-bar-vs-hamburger-menu",
+    "name": "Tab Bar VS Hamburger menu | Conflux",
+    "snippet": "Dec 1, 2022 — This type of menu requires UX designers and app developers to be more selective about the choice of icons occupying the bottom bar . Available ...",
+    "host_name": "www.weareconflux.com",
+    "rank": 4,
+    "date": "Dec 1, 2022",
+    "favicon": ""
+  },
+  {
+    "url": "https://teamtreehouse.com/community/ux-experts-push-back-against-hamburger-menus-suggest-tabs",
+    "name": "UX experts push back against \"Hamburger\" menus, suggest",
+    "snippet": "Nov 11, 2015 — Edited to provide more links and quotes.\nhttp://www.lukew.com/ff/entry.asp?1945\n\"A similar fate befell the Zeebox app when they transitioned from a tab ...",
+    "host_name": "teamtreehouse.com",
+    "rank": 5,
+    "date": "Nov 11, 2015",
+    "favicon": ""
+  },
+  {
+    "url": "https://ux.stackexchange.com/questions/105661/when-bottom-navigation-isnt-best",
+    "name": "When Bottom Navigation Isn't Best",
+    "snippet": "Mar 7, 2017 — hamburger-menu's have been proven again and again to be worse for UX than regular tab-navigation, especially when you only show an icon.",
+    "host_name": "ux.stackexchange.com",
+    "rank": 6,
+    "date": "Mar 7, 2017",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.facebook.com/groups/461999237551673/posts/2473679606383616",
+    "name": "7 mobile navigation menu types for ux design",
+    "snippet": "Hamburger menus (off-canvas): Suitable for mobile devices or simple navigation . 2. Tab bars : Useful for switching between main sections or views ...",
+    "host_name": "www.facebook.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]
