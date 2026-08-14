@@ -21,6 +21,9 @@
     "check-updates": "node scripts/check-updates.mjs",
     "update-deps": "node scripts/check-updates.mjs --update",
     "update-deps:full": "node scripts/check-updates.mjs --install",
+    "safe-push": "node scripts/safe-push.mjs",
+    "fix-only": "node scripts/safe-push.mjs --fix-only",
+    "pre-push-check": "bash .husky/pre-push",
     "prepare": "husky"
   },
   "dependencies": {
