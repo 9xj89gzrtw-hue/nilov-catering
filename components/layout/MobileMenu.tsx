@@ -4,32 +4,82 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { SITE } from "@/lib/data";
 
-// 5 ключевых + 5 дополнительных (доступны через "Ещё")
-const KEY_LINKS = [
-  { href: "/", label: "Главная" },
-  { href: "/events", label: "События" },
-  { href: "/menu", label: "Меню" },
-  { href: "/pricing", label: "Тарифы" },
-  { href: "/plan/helper", label: "Рассчитать" },
+/**
+ * MobileMenu — логичная мобильная навигация
+ *
+ * Структура (8 ключевых пунктов + расширяющиеся секции):
+ * - Главная
+ * - Услуги ▸ (раскрывается)
+ * - Меню ▸ (раскрывается)
+ * - Галерея
+ * - Цены
+ * - О нас ▸ (раскрывается)
+ * - Контакты
+ *
+ * Принципы:
+ * - 7±2 пункта в основном списке
+ * - Раскрывающиеся секции для глубины
+ * - CTA всегда внизу
+ */
+
+// Основные ссылки (всегда видны)
+const KEY_LINKS = [{ href: "/", label: "Главная" }];
+
+// Секции с подпунктами
+const SECTIONS = [
+  {
+    label: "Услуги",
+    icon: "🎉",
+    items: [
+      { href: "/events/svadba", label: "Свадьба" },
+      { href: "/events/korporativ", label: "Корпоратив" },
+      { href: "/events/detskoe", label: "Детский праздник" },
+      { href: "/events/chastnoe", label: "Частное мероприятие" },
+      { href: "/events/vypusknoy", label: "Выпускной" },
+      { href: "/events/nikah", label: "Никах и ифтар" },
+      { href: "/events/chef-at-home", label: "Шеф на дом" },
+    ],
+    moreLink: { href: "/events", label: "Все услуги →" },
+  },
+  {
+    label: "Меню",
+    icon: "🍽️",
+    items: [
+      { href: "/menu/banquet", label: "Банкетное меню" },
+      { href: "/menu/furshet", label: "Фуршет" },
+      { href: "/menu/coffee-break", label: "Кофе-брейк" },
+      { href: "/menu/show-cooking", label: "Шоу-кукинг" },
+      { href: "/menu/catalog", label: "Каталог блюд" },
+    ],
+    moreLink: { href: "/menu", label: "Всё меню →" },
+  },
+  {
+    label: "О нас",
+    icon: "ℹ️",
+    items: [
+      { href: "/why-us", label: "Почему мы" },
+      { href: "/reviews", label: "Отзывы (4.8⭐)" },
+      { href: "/gallery", label: "Галерея работ" },
+      { href: "/team", label: "Команда" },
+    ],
+  },
 ];
 
-const EXTRA_LINKS = [
-  { href: "/menu/catalog", label: "Каталог блюд" },
-  { href: "/reviews", label: "Отзывы" },
-  { href: "/why-us", label: "Почему мы" },
+// Быстрые ссылки (без подпунктов)
+const QUICK_LINKS = [
   { href: "/gallery", label: "Галерея" },
-  { href: "/blog", label: "Блог" },
+  { href: "/pricing", label: "Цены" },
   { href: "/contact", label: "Контакты" },
-  { href: "/faq", label: "Вопросы" },
-  { href: "/delivery/order", label: "Доставка" },
-  { href: "/delivery", label: "Зоны доставки" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -43,6 +93,10 @@ export default function MobileMenu() {
   }, [open]);
 
   if (!mounted) return null;
+
+  const toggleSection = (label: string) => {
+    setExpandedSection(expandedSection === label ? null : label);
+  };
 
   return (
     <>
@@ -67,7 +121,7 @@ export default function MobileMenu() {
         </svg>
       </button>
 
-      {/* Portal panel — proper dialog for a11y */}
+      {/* Portal panel */}
       {createPortal(
         <AnimatePresence>
           {open && (
@@ -121,11 +175,12 @@ export default function MobileMenu() {
                   </button>
                 </div>
 
-                {/* Key links */}
+                {/* Nav content */}
                 <nav
                   className="flex-1 overflow-y-auto overscroll-contain py-2"
                   aria-label="Мобильное меню"
                 >
+                  {/* Главная — всегда первая */}
                   {KEY_LINKS.map((link) => (
                     <Link
                       key={link.href}
@@ -137,15 +192,69 @@ export default function MobileMenu() {
                     </Link>
                   ))}
 
-                  {/* Extra links section */}
-                  <div className="border-line mt-4 border-t px-6 pt-4">
-                    <p className="text-muted-foreground mb-3 text-xs">Ещё</p>
-                    {EXTRA_LINKS.map((link) => (
+                  {/* Раскрывающиеся секции */}
+                  {SECTIONS.map((section) => {
+                    const isExpanded = expandedSection === section.label;
+                    return (
+                      <div key={section.label}>
+                        <button
+                          onClick={() => toggleSection(section.label)}
+                          className="text-foreground hover:bg-secondary active:bg-secondary flex w-full items-center justify-between px-6 py-3 text-left text-base font-medium transition-colors"
+                        >
+                          <span>{section.label}</span>
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              {section.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  onClick={() => setOpen(false)}
+                                  className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 flex items-center gap-2 rounded-lg px-8 py-2.5 text-sm transition-colors"
+                                >
+                                  <ChevronRight className="h-3 w-3" />
+                                  {item.label}
+                                </Link>
+                              ))}
+
+                              {/* "Все ..." ссылка */}
+                              {section.moreLink && (
+                                <Link
+                                  href={section.moreLink.href}
+                                  onClick={() => setOpen(false)}
+                                  className="text-gold-text hover:bg-gold-tint/50 flex items-center gap-2 rounded-lg px-8 py-2.5 text-sm font-medium transition-colors"
+                                >
+                                  {section.moreLink.label}
+                                </Link>
+                              )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+
+                  {/* Быстрые ссылки */}
+                  <div className="border-line mt-2 border-t px-6 pt-3">
+                    {QUICK_LINKS.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary flex items-center rounded-lg px-4 py-3 text-sm font-medium transition-colors"
+                        className="text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary flex items-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -153,7 +262,7 @@ export default function MobileMenu() {
                   </div>
                 </nav>
 
-                {/* Bottom actions — phone + WhatsApp + CTA */}
+                {/* Bottom actions */}
                 <div className="border-line space-y-3 border-t p-5">
                   <div className="flex gap-2">
                     <a
@@ -177,7 +286,7 @@ export default function MobileMenu() {
                     onClick={() => setOpen(false)}
                     className="bg-primary text-primary-foreground flex w-full items-center justify-center gap-2 rounded-lg py-4 text-base font-semibold no-underline transition-transform active:scale-[0.98]"
                   >
-                    Рассчитать меню — 3 вопроса
+                    Рассчитать стоимость
                   </Link>
                 </div>
               </motion.div>
