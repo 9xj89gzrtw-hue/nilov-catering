@@ -19,6 +19,17 @@ import {
 import FoodPhoto from "@/components/common/FoodPhoto";
 import type { Review } from "@/lib/cms-store";
 
+// Convert "Месяц Год" → ISO date string for <time dateTime>
+const MONTH_TO_NUM: Record<string, string> = {
+  Январь: "01", Февраль: "02", Март: "03", Апрель: "04", Май: "05", Июнь: "06",
+  Июль: "07", Август: "08", Сентябрь: "09", Октябрь: "10", Ноябрь: "11", Декабрь: "12",
+};
+function isoDate(s: string): string {
+  const m = s.match(/^([\u0400-\u04FF]+)\s+(\d{4})$/);
+  if (!m) return s;
+  return `${m[2]}-${MONTH_TO_NUM[m[1]] || "01"}`;
+}
+
 // === Фильтры по типу события ===
 type FilterKey = "all" | "weddings" | "corporate" | "birthdays" | "coffee";
 
@@ -295,7 +306,7 @@ export default function ReviewsMasonry({ reviews }: ReviewsMasonryProps) {
                   <div className="text-muted-foreground mb-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
                     <span className="inline-flex items-center gap-1">
                       <Calendar className="h-3 w-3" aria-hidden="true" />
-                      <span>{r.date}</span>
+                      <time dateTime={isoDate(r.date)}>{r.date}</time>
                     </span>
                     {r.venue && (
                       <span className="inline-flex items-center gap-1">

@@ -20,7 +20,13 @@ export const metadata: Metadata = {
     canonical: "/reviews",
     languages: { ru: "/reviews", "x-default": "/reviews" },
   },
-  openGraph: { url: "https://nilov-catering.vercel.app/reviews" },
+  openGraph: {
+    url: "https://nilov-catering.vercel.app/reviews",
+    title: "Отзывы клиентов — NiloV Catering",
+    description:
+      "Реальные отзывы клиентов NiloV Catering. Средний рейтинг 4.8 из 5 по 27 отзывам.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Отзывы NiloV Catering" }],
+  },
   title: "Отзывы клиентов",
   description:
     "Реальные отзывы клиентов NiloV Catering с 2007 года. Свадьбы, корпоративы, юбилеи, " +

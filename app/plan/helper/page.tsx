@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/plan/helper",
     languages: { ru: "/plan/helper", "x-default": "/plan/helper" },
   },
-  title: "Помощник выбора кейтеринга — 3 вопроса, 30 секунд",
+  title: "Помощник выбора — 3 вопроса, 30 секунд",
   description:
     "Ответьте на 3 простых вопроса — подберём идеальный формат кейтеринга: повод, гостей, место. Без регистрации, без телефона.",
 };
