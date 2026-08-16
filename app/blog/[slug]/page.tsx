@@ -198,8 +198,30 @@ export default async function BlogArticlePage({ params }: Props) {
   const article = ARTICLES[slug];
   if (!article) notFound();
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.t,
+    description: article.desc,
+    datePublished: article.d,
+    author: { "@type": "Organization", name: "NiloV Catering" },
+    publisher: {
+      "@type": "Organization",
+      name: "NiloV Catering",
+      url: "https://nilov-catering.vercel.app",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://nilov-catering.vercel.app/blog/${slug}`,
+    },
+  };
+
   return (
     <main id="main" className="pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <article className="container-site max-w-2xl">
         <Link
           href="/blog"

@@ -106,7 +106,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div
             style={{ padding: "2rem", textAlign: "center", fontFamily: "system-ui, sans-serif" }}
           >
-            <h1>NiloV Catering — Кейтеринг в Санкт-Петербурге</h1>
+            <p style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0 0 1rem" }}>
+              NiloV Catering — Кейтеринг в Санкт-Петербурге
+            </p>
             <p>Для работы сайта необходимо включить JavaScript.</p>
             <p>
               <strong>📞 Позвоните:</strong> <a href="tel:+78129195911">+7 (812) 919-59-11</a>

@@ -88,10 +88,9 @@ export default function TeamPage() {
         {/* Photo disclaimer — applies to ALL team members below */}
         <div className="border-line bg-secondary/30 mx-auto mb-6 max-w-2xl rounded-lg border p-3 text-center">
           <p className="text-muted-foreground text-xs italic">
-            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> и{" "}
-            <strong>су-шеф Алексей Козлов</strong> — реальные фото. Фото других членов команды —
-            иллюстративные SVG-иллюстрации; индивидуальные портреты предоставляются по запросу. Все
-            ФИО и роли — реальные сотрудники NiloV Catering.
+            <strong>Основатель и шеф-повар Дмитрий Нилов</strong> — реальное фото. Портреты других
+            членов команды — стилизованные SVG-иллюстрации; индивидуальные фотографии предоставляются
+            по запросу. Все ФИО и роли — реальные сотрудники NiloV Catering.
           </p>
         </div>
 
