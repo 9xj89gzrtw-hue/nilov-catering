@@ -90,7 +90,7 @@ const ARTICLES = [
     featured: false,
   },
   {
-    t: "Тренды кейтеринга 2025: что модно this season",
+    t: "Тренды кейтеринга 2025: что модно в этом сезоне",
     d: "15 мая 2026",
     iso: "2026-05-15",
     slug: "trendy-katering-2025",
@@ -135,7 +135,10 @@ const BLOG_CARD_SIZES =
 
 export default function BlogPage() {
   const featuredArticle = ARTICLES.find((a) => a.featured);
-  const regularArticles = ARTICLES.filter((a) => !a.featured);
+  // Sort regular articles by date descending (newest first)
+  const regularArticles = ARTICLES.filter((a) => !a.featured).sort((a, b) =>
+    b.iso.localeCompare(a.iso)
+  );
 
   return (
     <main id="main" className="pt-24 pb-20">

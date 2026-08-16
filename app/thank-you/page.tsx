@@ -6,12 +6,13 @@ import { SITE } from "@/lib/data";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ warning?: string }>;
+  searchParams: Promise<{ warning?: string; orderId?: string }>;
 }): Promise<Metadata> {
-  const { warning } = await searchParams;
+  const { warning, orderId } = await searchParams;
   const isFailed = warning === "delivery-failed";
+  const isDirectAccess = !orderId && !warning;
   return {
-    title: isFailed ? "Заявка не отправлена" : "Заявка принята",
+    title: isFailed ? "Заявка не отправлена" : isDirectAccess ? "Спасибо за интерес" : "Заявка принята",
     robots: { index: false },
   };
 }
@@ -23,11 +24,22 @@ export default async function Page({
 }) {
   const { warning, orderId } = await searchParams;
   const isFailed = warning === "delivery-failed";
+  // Direct access (no orderId and no warning) — don't show false "accepted" confirmation
+  const isDirectAccess = !orderId && !warning;
 
   return (
     <main id="main" className="flex min-h-screen items-center justify-center pt-24 pb-20">
       <div className="container-site max-w-lg text-center">
-        {isFailed ? (
+        {isDirectAccess ? (
+          <>
+            <div className="mb-4 text-5xl">🍽️</div>
+            <h1>Спасибо за интерес</h1>
+            <p className="text-muted-foreground mt-4 mb-8 text-lg">
+              Эта страница открывается после отправки заявки. Если вы хотите оформить заказ —
+              начните с расчёта стоимости или позвоните нам.
+            </p>
+          </>
+        ) : isFailed ? (
           <>
             <div className="mb-4 text-5xl">⚠️</div>
             <h1>Заявка не отправлена</h1>

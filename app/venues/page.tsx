@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Площадки для кейтеринга в СПб — 10 локаций — NiloV Catering",
+  title: "Площадки для кейтеринга в СПб — 13 локаций",
   description:
     "Рекомендованные площадки для кейтеринга в Санкт-Петербурге: лофты, дворцы, шатёры, бизнес-центры. Работаем на вашей площадке.",
   alternates: { canonical: "/venues", languages: { ru: "/venues", "x-default": "/venues" } },
@@ -252,7 +252,7 @@ export default function VenuesPage() {
                           d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
-                      до {v.capacity} гостей
+                      {v.capacity} гостей
                     </span>
                     <span className="flex items-center gap-1">
                       <svg

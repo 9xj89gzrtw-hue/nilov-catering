@@ -3,7 +3,7 @@ import Link from "next/link";
 import CareersClient from "./CareersClient";
 
 export const metadata: Metadata = {
-  title: "Вакансии кейтеринга в СПб — Карьера в NiloV Catering",
+  title: "Вакансии кейтеринга в СПб — Карьера",
   description:
     "Вакансии NiloV Catering в Санкт-Петербурге: шеф-повара, кондитеры, менеджеры событий, официанты. Присоединяйтесь к команде профессионалов!",
   alternates: { canonical: "/careers", languages: { ru: "/careers", "x-default": "/careers" } },
@@ -110,7 +110,7 @@ export default function CareersPage() {
             Карьера в NiloV
           </h1>
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Присоединяйтесь к команде профессионалов кейтеринга с 17-летним опытом. Растём вместе —
+            Присоединяйтесь к команде кейтеринга, работающей с 2007 года. Растём вместе —
             создавайте события, которыми гордитесь.
           </p>
         </div>

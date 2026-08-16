@@ -37,12 +37,15 @@ export const metadata: Metadata = {
     "свадьба",
     "корпоратив",
   ],
-  alternates: { languages: { ru: "/", "x-default": "/" } },
+  alternates: { languages: { ru: "/", en: "/en", "x-default": "/" } },
   openGraph: {
     type: "website",
     locale: "ru_RU",
     siteName: SITE.name,
     url: `https://${SITE.domain}`,
+    title: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`,
+    description:
+      "Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.",
     images: [
       {
         url: "/og-image.jpg",
@@ -54,8 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — кейтеринг в СПб`,
-    description: "Фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽/гость. С 2007 года.",
+    title: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`,
+    description:
+      "Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.",
   },
   robots: { index: true, follow: true },
 };

@@ -46,7 +46,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
     { label: "Спец. меню →", href: "/menu#special", highlight: true },
   ],
   Компания: [
-    { label: "Почему мы", href: "/why-us", desc: "17 лет опыта" },
+    { label: "Почему мы", href: "/why-us", desc: "с 2007 года" },
     { label: "Отзывы (4.8⭐)", href: "/reviews", desc: "200+ отзывов" },
     { label: "Портфель", href: "/gallery", desc: "Фото работ" },
     { label: "Команда", href: "/team", desc: "Наши шефы" },
@@ -103,8 +103,8 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
-              Премиум кейтеринг в Санкт-Петербурге с 2007 года. Более 5000 успешных событий и
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/80">
+              Премиум кейтеринг в Санкт-Петербурге с 2007 года. Более 3 000 успешных событий и
               безупречная репутация.
             </p>
 
@@ -121,7 +121,7 @@ export default function Footer() {
                   <p className="text-sm font-medium text-white transition-colors group-hover:text-[#c9a961]">
                     {SITE.phone}
                   </p>
-                  <p className="text-xs text-white/40">Ежедневно 9:00–21:00</p>
+                  <p className="text-xs text-white/70">Ежедневно 9:00–21:00</p>
                 </div>
               </a>
 
@@ -131,7 +131,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-white">{SITE.address}</p>
-                  <p className="text-xs text-white/40">Санкт-Петербург</p>
+                  <p className="text-xs text-white/70">Санкт-Петербург</p>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-4">
             {Object.entries(FOOTER_LINKS).map(([title, links]) => (
               <div key={title}>
-                <h4 className="mb-4 text-xs font-bold tracking-[0.15em] text-white/30 uppercase">
+                <h4 className="mb-4 text-xs font-bold tracking-[0.15em] text-white/70 uppercase">
                   {title}
                 </h4>
                 <ul className="space-y-3">
@@ -154,7 +154,7 @@ export default function Footer() {
                             ? "inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#6e5530] to-[#7a5f36] px-3.5 py-2 text-sm font-semibold text-white shadow-md hover:scale-[1.02] hover:shadow-lg hover:shadow-[#6e5530]/25"
                             : link.highlight
                               ? "font-medium text-[#c9a961] hover:text-white"
-                              : "text-white/60 hover:text-white"
+                              : "text-white/80 hover:text-white"
                         }`}
                       >
                         {link.label}
@@ -168,7 +168,7 @@ export default function Footer() {
                         )}
                       </Link>
                       {link.desc && !link.cta && (
-                        <span className="mt-0.5 block text-xs text-white/30">{link.desc}</span>
+                        <span className="mt-0.5 block text-xs text-white/70">{link.desc}</span>
                       )}
                     </li>
                   ))}
@@ -191,20 +191,20 @@ export default function Footer() {
                 </span>
               </div>
               <h3 className="mb-2 text-xl font-bold text-white">Будьте в курсе новостей</h3>
-              <p className="text-sm text-white/50">
+              <p className="text-sm text-white/75">
                 Получайте эксклюзивные предложения, рецепты от шефа и идеи для мероприятий.
               </p>
             </div>
 
             <form className="flex w-full max-w-md gap-3" onSubmit={(e) => e.preventDefault()}>
               <div className="relative flex-1">
-                <Mail className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-white/30" />
+                <Mail className="absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-white/70" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Ваш email"
-                  className="w-full rounded-xl border border-white/[0.1] bg-white/[0.05] py-3.5 pr-4 pl-11 text-sm text-white transition-all duration-300 outline-none placeholder:text-white/30 focus:border-[#6e5530]/50 focus:bg-white/[0.08] focus:ring-1 focus:ring-[#6e5530]/30"
+                  className="w-full rounded-xl border border-white/[0.1] bg-white/[0.05] py-3.5 pr-4 pl-11 text-sm text-white transition-all duration-300 outline-none placeholder:text-white/70 focus:border-[#6e5530]/50 focus:bg-white/[0.08] focus:ring-1 focus:ring-[#6e5530]/30"
                   aria-label="Email для рассылки"
                 />
               </div>
@@ -243,7 +243,7 @@ export default function Footer() {
                     className={`h-4 w-4 transition-colors duration-300 ${
                       isHoveredSocial === link.platform
                         ? "text-[#c9a961]"
-                        : "text-white/60 group-hover:text-white/90"
+                        : "text-white/80 group-hover:text-white/90"
                     }`}
                   />
                   {isHoveredSocial === link.platform && (
@@ -286,7 +286,7 @@ export default function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-white/40 transition-colors duration-200 hover:text-white/80"
+              className="text-white/70 transition-colors duration-200 hover:text-white/80"
             >
               {link.label}
             </Link>
@@ -296,21 +296,21 @@ export default function Footer() {
         {/* Bottom section - legal + copyright */}
         <div className="flex flex-col items-center justify-between gap-6 border-t border-white/[0.06] pt-8 text-sm md:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/35">
-            <Link href="/privacy" className="transition-colors duration-200 hover:text-white/60">
+            <Link href="/privacy" className="transition-colors duration-200 hover:text-white/80">
               Конфиденциальность
             </Link>
             <span className="text-white/15">·</span>
-            <Link href="/terms" className="transition-colors duration-200 hover:text-white/60">
+            <Link href="/terms" className="transition-colors duration-200 hover:text-white/80">
               Условия
             </Link>
             <span className="text-white/15">·</span>
-            <Link href="/cookies" className="transition-colors duration-200 hover:text-white/60">
+            <Link href="/cookies" className="transition-colors duration-200 hover:text-white/80">
               Cookies
             </Link>
             <span className="text-white/15">·</span>
             <Link
               href="/accessibility"
-              className="transition-colors duration-200 hover:text-white/60"
+              className="transition-colors duration-200 hover:text-white/80"
             >
               Доступность
             </Link>
@@ -318,7 +318,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <TextSizeToggle />
-            <span className="text-sm text-white/30">© 2007–2026 {SITE.name}</span>
+            <span className="text-sm text-white/70">© 2007–2026 {SITE.name}</span>
           </div>
         </div>
 

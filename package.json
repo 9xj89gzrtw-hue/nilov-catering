@@ -56,8 +56,6 @@
     "@tanstack/react-table": "^9.1.2",
     "@testing-library/user-event": "^14.6.4",
     "@tsparticles/react": "^4.3.2",
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
     "axe-core": "^4.13.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

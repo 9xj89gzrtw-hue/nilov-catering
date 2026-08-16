@@ -168,7 +168,7 @@ export default function InlinePriceCalculator() {
                 <span className="text-lg">{selected.icon}</span>
                 <span className="text-foreground font-semibold">{selected.label}</span>
                 <span className="text-muted-foreground">•</span>
-                <span className="text-gold-text font-semibold">{guests} guests</span>
+                <span className="text-gold-text font-semibold">{guests} чел.</span>
               </div>
             </div>
 

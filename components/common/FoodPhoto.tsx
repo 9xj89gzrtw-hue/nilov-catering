@@ -105,11 +105,6 @@ export default function FoodPhoto({
     }
   }, [src]);
 
-  // Only generate AVIF/WebP srcset for JPG sources
-  const isJpg = /\.jpe?g$/i.test(src);
-  const avifSrc = isJpg ? src.replace(/\.jpe?g$/i, ".avif") : "";
-  const webpSrc = isJpg ? src.replace(/\.jpe?g$/i, ".webp") : "";
-
   const handleLoad = () => {
     setLoaded(true);
     setError(false);
@@ -125,42 +120,26 @@ export default function FoodPhoto({
     <div
       className={`bg-card relative overflow-hidden ${ASPECT_RATIOS[aspectRatio]} ${className} group`}
     >
-      {isJpg ? (
-        <picture>
-          <source srcSet={getAvifSrcSet(src, avifSrc)} sizes={FOOD_PHOTO_SIZES} type="image/avif" />
-          <source srcSet={getWebpSrcSet(src, webpSrc)} sizes={FOOD_PHOTO_SIZES} type="image/webp" />
-          <img
-            ref={imgRef}
-            src={src}
-            alt={alt}
-            width={800}
-            height={600}
-            loading={eager ? "eager" : "lazy"}
-            decoding={eager ? "sync" : "async"}
-            onLoad={handleLoad}
-            onError={handleError}
-            className={`absolute inset-0 h-full w-full object-cover ${error ? "opacity-0" : "z-10 opacity-100"} ${animate ? "transition-transform duration-700 group-hover:scale-110" : ""}`}
-            style={{
-              objectPosition,
-              animation: animate && loaded && !error ? "kenBurns 4s ease-out both" : undefined,
-            }}
-          />
-        </picture>
-      ) : (
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          width={800}
-          height={600}
-          loading={eager ? "eager" : "lazy"}
-          decoding={eager ? "sync" : "async"}
-          onLoad={handleLoad}
-          onError={handleError}
-          className={`absolute inset-0 h-full w-full object-cover ${error ? "opacity-0" : "z-10 opacity-100"} ${animate ? "transition-transform duration-700 group-hover:scale-110" : ""}`}
-          style={{ objectPosition }}
-        />
-      )}
+      {/* Use plain <img> for all sources — many gallery images lack -480/-768
+          responsive variants, which caused 404s in the previous <picture> srcSet.
+          Format conversion (AVIF/WebP) and size variants are disabled to ensure
+          every image loads reliably. Lazy-loading + async decoding preserved. */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        width={800}
+        height={600}
+        loading={eager ? "eager" : "lazy"}
+        decoding={eager ? "sync" : "async"}
+        onLoad={handleLoad}
+        onError={handleError}
+        className={`absolute inset-0 h-full w-full object-cover ${error ? "opacity-0" : "z-10 opacity-100"} ${animate ? "transition-transform duration-700 group-hover:scale-110" : ""}`}
+        style={{
+          objectPosition,
+          animation: animate && loaded && !error ? "kenBurns 4s ease-out both" : undefined,
+        }}
+      />
 
       {/* Beautiful gradient placeholder with icon when image fails to load */}
       {mounted && error && (

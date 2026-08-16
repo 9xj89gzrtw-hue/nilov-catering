@@ -39,13 +39,13 @@ export default function AccessibilityPage() {
             <ul className="text-muted-foreground list-disc space-y-1.5 pl-5">
               <li>Skip-link «Перейти к содержимому» в начале каждой страницы (виден при Tab)</li>
               <li>
-                <strong>Переключатель размера шрифта A+ в шапке</strong> каждой страницы (100% /
+                <strong>Переключатель размера шрифта A+ в подвале</strong> каждой страницы (100% /
                 125% / 150%)
               </li>
               <li>Все изображения имеют alt-текст</li>
               <li>Навигация возможна с клавиатуры (Tab, Enter, Escape)</li>
-              <li>Focus-visible кольцо на всех интерактивных элементах (4.54:1 AA)</li>
-              <li>Контраст текста ≥5.7:1 (AA) на основном фоне</li>
+              <li>Focus-visible кольцо на всех интерактивных элементах (AA-совместимое)</li>
+              <li>Контраст текста соответствует WCAG 2.2 AA (≥4.5:1) на основном фоне</li>
               <li>
                 Уважение prefers-reduced-motion — анимации отключаются для пользователей с
                 настройкой
@@ -67,10 +67,10 @@ export default function AccessibilityPage() {
                 <a href={`tel:${SITE.phoneTel}`} className="text-gold-text underline">
                   {SITE.phone}
                 </a>{" "}
-                — кликабелен в шапке на всех страницах (text-base 16px)
+                — кликабелен в шапке (десктоп) и в мобильном меню на всех страницах (text-base 16px)
               </li>
               <li>
-                Переключатель A+ в шапке — увеличивает шрифт до 150% (3 уровня: 100% / 125% / 150%)
+                Переключатель A+ в подвале — увеличивает шрифт до 150% (3 уровня: 100% / 125% / 150%)
               </li>
               <li>Контраст gold-text на background — AA-совместимый</li>
               <li>Крупные кнопки CTA (min 44×44 px touch target)</li>
@@ -144,7 +144,7 @@ export default function AccessibilityPage() {
           </div>
 
           <p className="text-muted-foreground border-line border-t pt-4 text-sm">
-            Последнее обновление: август 2026. Стандарт: WCAG 2.2 AA. Проверка: axe-core,
+            Последнее обновление: август 2025. Стандарт: WCAG 2.2 AA. Проверка: axe-core,
             Lighthouse, ручное тестирование с NVDA.
           </p>
         </div>

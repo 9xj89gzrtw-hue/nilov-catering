@@ -127,7 +127,7 @@ export default function MobileMenu() {
       <button
         onClick={() => setOpen(true)}
         className="text-foreground -mr-2 flex h-10 w-10 items-center justify-center lg:hidden"
-        aria-label="Открыть меню"
+        aria-label={open ? "Закрыть меню" : "Открыть меню"}
         aria-expanded={open}
         aria-haspopup="true"
       >

@@ -21,9 +21,9 @@ import RelatedPages from "@/components/common/RelatedPages";
 import SmartCTA from "@/components/common/SmartCTA";
 
 export const metadata: Metadata = {
-  title: "Цены на кейтеринг в СПб — от 950 ₽/гость | 11 тарифов",
+  title: "Цены на кейтеринг в СПб — от 390 ₽/гость | 11 тарифов",
   description:
-    "Прозрачные цены: фуршет от 2 450 ₽, банкет от 4 470 ₽, кофе-брек от 950 ₽ за гостя. 11 тарифов: Эконом, Стандарт, Премиум, Люкс. Всё включено.",
+    "Прозрачные цены: фуршет от 2 450 ₽, банкет от 3 950 ₽, кофе-брейк от 390 ₽ за гостя. 11 тарифов: Эконом, Стандарт, Премиум, Люкс. Всё включено.",
   alternates: { canonical: "/pricing", languages: { ru: "/pricing", "x-default": "/pricing" } },
 };
 

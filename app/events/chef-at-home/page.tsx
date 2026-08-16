@@ -4,7 +4,7 @@ import TariffOffersSection from "@/components/blocks/TariffOffersSection";
 import { Check, Users, Wine, ChefHat, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Шеф на дом — выезд шеф-повара в СПб | NiloV Catering",
+  title: "Шеф на дом — выезд шеф-повара в СПб",
   description:
     "Выезд шеф-повара на дом: персональный ужин ресторанного уровня. 4–6 курсов, Sous-Vide 63°C. От 4 500 ₽/гость. Опции: официант, сомелье.",
   alternates: {

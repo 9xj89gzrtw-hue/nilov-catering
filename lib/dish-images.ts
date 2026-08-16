@@ -595,7 +595,7 @@ export const REAL_GALLERY_IMAGES = [
   },
   {
     src: "/images/real/charcuterie.jpg",
-    alt: "Шаркетери-борд",
+    alt: "Шаркутери-борд",
     caption: "Мясное и сырное плато · банкет",
   },
   {
@@ -644,12 +644,12 @@ export const REAL_GALLERY_IMAGES = [
   {
     src: "/images/gallery/canape-platter-artistic.jpg",
     alt: "Художественная подача канапе",
-    caption: "Канапе-ассорти премиум · слатовая доска · авторское оформление",
+    caption: "Канапе-ассорти премиум · сервировочная доска · авторское оформление",
   },
   {
     src: "/images/gallery/outdoor-garden-party.jpg",
     alt: "Садовая вечеринка",
-    caption: "Гarden party · рустик-элегантность · золотой час · свежие цветы",
+    caption: "Садовая вечеринка · рустик-элегантность · золотой час · свежие цветы",
   },
   {
     src: "/images/gallery/banquet-round-tables.jpg",
@@ -659,7 +659,7 @@ export const REAL_GALLERY_IMAGES = [
   {
     src: "/images/gallery/food-station-variety.jpg",
     alt: "Гастрономическая станция",
-    caption: "Карвинг-станция · гриль-бар · разнообразие блюд · гурме",
+    caption: "Карвинг-станция · гриль-бар · разнообразие блюд · гурмэ",
   },
   {
     src: "/images/gallery/coffee-break-business.jpg",
