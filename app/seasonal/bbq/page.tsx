@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Link from "next/link";
 import SeasonalPackages from "@/components/blocks/SeasonalPackages";
 
@@ -28,6 +29,7 @@ const DISHES = [
 export default function BBQPage() {
   return (
     <main id="main" className="pt-24 pb-20">
+        <Breadcrumbs />
       <div className="container-site max-w-3xl">
         <h1 className="mb-2">BBQ-лето</h1>
         <p className="text-muted-foreground mb-8">

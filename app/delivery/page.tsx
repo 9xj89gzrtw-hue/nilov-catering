@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Link from "next/link";
 import DeliveryZonesMap from "@/components/blocks/DeliveryZonesMap";
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function DeliveryPage() {
   return (
     <main id="main" className="pt-24">
+      <Breadcrumbs />
       {/* Hero */}
       <section className="container-site py-10">
         <div className="max-w-2xl">
