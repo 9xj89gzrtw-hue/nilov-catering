@@ -91,10 +91,27 @@ function getRecommendation(
 } | null {
   const small = guests === "0-20";
   const med = guests === "20-50";
+  const large = guests === "50-100";
+  const xlarge = guests === "100-200";
 
   switch (occasion) {
     case "Свадьба":
       if (small)
+        return {
+          name: "Свадьба «Эконом»",
+          price: 3950,
+          minGuests: 15,
+          tier: "Эконом",
+          format: "banket",
+          whatIncluded: [
+            "2 холодные закуски, салат, горячее, гарнир, десерт",
+            "Чай, кофе, морс",
+            "Официант 1/10",
+            "Свадебный торт включён",
+            "Координатор события",
+          ],
+        };
+      if (med)
         return {
           name: "Свадьба «Стандарт»",
           price: 5470,
@@ -109,12 +126,12 @@ function getRecommendation(
             "Координатор события",
           ],
         };
-      if (med)
+      if (large)
         return {
-          name: "Свадьба «Расширенный»",
+          name: "Свадьба «Премиум»",
           price: 7350,
           minGuests: 15,
-          tier: "Расширенный",
+          tier: "Премиум",
           format: "banket",
           whatIncluded: [
             "3 холодные закуски, 2 салата, 2 горячих",
@@ -124,16 +141,19 @@ function getRecommendation(
             "Координатор + сомелье (опц.)",
           ],
         };
+      // 100-200 and 200+ → Люкс
       return {
-        name: "Свадьба «Максимальный»",
-        price: 9950,
+        name: xlarge ? "Свадьба «Премиум»" : "Свадьба «Люкс»",
+        price: xlarge ? 7350 : 9950,
         minGuests: 15,
-        tier: "Максимальный",
+        tier: xlarge ? "Премиум" : "Люкс",
         format: "banket",
         whatIncluded: [
           "4 холодные закуски, 2 салата, 2 горячих",
           "Рыбное блюдо + сырная тарелка + 3 десерта",
-          "Премиум-бар: шампанское, вина, дижестивы",
+          xlarge
+            ? "Премиум-бар: шампанское, вина"
+            : "Премиум-бар: шампанское, вина, дижестивы",
           "Свадебный торт премиум",
           "Координатор + сомелье + флорист (опц.)",
         ],
@@ -170,10 +190,10 @@ function getRecommendation(
           ],
         };
       return {
-        name: "Корпоратив «Фуршет Расширенный»",
+        name: "Корпоратив «Фуршет Премиум»",
         price: 5950,
         minGuests: 20,
-        tier: "Расширенный",
+        tier: "Премиум",
         format: "furshet",
         whatIncluded: [
           "Канапе (8 видов), брускетты, тартар",

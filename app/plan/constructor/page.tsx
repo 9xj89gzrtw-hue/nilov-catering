@@ -363,11 +363,11 @@ function ConstructorServerFallback() {
                 <option value="">Не выбран</option>
                 <option value="economy">Эконом</option>
                 <option value="standard">Стандарт</option>
-                <option value="premium">Расширенный</option>
-                <option value="luxury">Максимальный</option>
+                <option value="premium">Премиум</option>
+                <option value="luxury">Люкс</option>
               </select>
               <p className="text-muted-foreground mt-1 text-xs">
-                Цены: Эконом от 390 ₽/гость (кофе-брейк) до 3 950 ₽ (банкет). Максимальный — от 2
+                Цены: Эконом от 390 ₽/гость (кофе-брейк) до 3 950 ₽ (банкет). Люкс — от 2
                 450 (кофе-брейк) до 9 950 ₽/гость (свадебный люкс).
               </p>
             </div>
@@ -413,7 +413,7 @@ function ConstructorServerFallback() {
             Тариф
           </h2>
           <p className="text-muted-foreground ml-0 text-sm md:ml-11">
-            Эконом / Стандарт / Расширенный / Максимальный. Цены варьируются от 390 ₽/гость
+            Эконом / Стандарт / Премиум / Люкс. Цены варьируются от 390 ₽/гость
             (кофе-брейк) до 9 950 ₽/гость (свадебный люкс).
           </p>
 

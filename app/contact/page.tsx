@@ -189,9 +189,11 @@ export default function ContactPage() {
               </label>
               <input
                 id="date"
-                type="date"
+                type="text"
                 name="date"
-                aria-label="Дата мероприятия"
+                placeholder="дд.мм.гггг"
+                pattern="\d{2}\.\d{2}\.\d{4}"
+                aria-label="Дата мероприятия в формате день.месяц.год"
                 className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 w-full rounded-xl border px-4 py-3.5 text-base focus:ring-2 focus:outline-none"
               />
             </div>

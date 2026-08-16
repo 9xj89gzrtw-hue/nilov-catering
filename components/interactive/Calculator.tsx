@@ -235,7 +235,7 @@ export default function Calculator() {
 
           {result.savings > 0 && (
             <div className="bg-success/10 text-success mb-4 inline-block rounded-full px-3 py-1 text-xs font-medium">
-              Экономия {result.savings.toLocaleString("ru-RU")} ₽ vs Максимальный
+              Экономия {result.savings.toLocaleString("ru-RU")} ₽ vs Люкс
             </div>
           )}
 

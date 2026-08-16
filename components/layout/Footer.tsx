@@ -47,7 +47,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
   ],
   Компания: [
     { label: "Почему мы", href: "/why-us", desc: "с 2007 года" },
-    { label: "Отзывы (4.8⭐)", href: "/reviews", desc: "200+ отзывов" },
+    { label: "Отзывы (4.8⭐)", href: "/reviews", desc: "27 отзывов" },
     { label: "Портфель", href: "/gallery", desc: "Фото работ" },
     { label: "Команда", href: "/team", desc: "Наши шефы" },
     { label: "Блог →", href: "/blog", highlight: true },

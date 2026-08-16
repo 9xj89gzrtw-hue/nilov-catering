@@ -210,7 +210,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: "Расширенный",
+      name: "Премиум",
       tier: "premium",
       price: "5 950 ₽/гость",
       desc: "Премиум-фуршет. Морепродукты, гастро-ужин, сомелье, шампанское.",
@@ -357,7 +357,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: "Расширенный",
+      name: "Премиум",
       tier: "premium",
       price: "7 350 ₽/гость",
       desc: "Ресторанный уровень. Морепродукты, винная карта, сомелье.",
@@ -403,7 +403,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: "Максимальный",
+      name: "Люкс",
       tier: "luxury",
       price: "9 950 ₽/гость",
       desc: "Полный бар, чёрная икра, две живые станции, сомелье, координатор.",
@@ -543,7 +543,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: "Расширенный",
+      name: "Премиум",
       tier: "premium",
       price: "1 950 ₽/гость",
       desc: "Премиум-брейк: бариста, смузи, десерты, канапе.",
@@ -662,7 +662,7 @@ const TARIFFS: Record<string, MenuTariff[]> = {
       ],
     },
     {
-      name: "Расширенный",
+      name: "Премиум",
       tier: "premium",
       price: "3 450 ₽/гость",
       desc: "Мечта ребёнка. Шоу-программа, сладкий стол, фотограф, пиньята.",

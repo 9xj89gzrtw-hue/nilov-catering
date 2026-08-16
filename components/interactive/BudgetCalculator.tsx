@@ -38,7 +38,7 @@ const TARIFFS = [
   {
     id: "banket-premium",
     label: "Банкет",
-    tier: "Расширенный",
+    tier: "Премиум",
     price: 7350,
     minGuests: 15,
     format: "banket",
@@ -46,7 +46,7 @@ const TARIFFS = [
   {
     id: "banket-luxury",
     label: "Банкет",
-    tier: "Максимальный",
+    tier: "Люкс",
     price: 9950,
     minGuests: 15,
     format: "banket",
@@ -98,7 +98,7 @@ export default function BudgetCalculator({
   }
   // Rule 3: Luxury banquet (9950₽) min 15 guests (aligned with calculator and pricing page)
   if (tariffId === "banket-luxury" && effectiveGuests < 15) {
-    feasibilityWarnings.push('Тариф "Максимальный" — минимум 15 гостей.');
+    feasibilityWarnings.push('Тариф "Люкс" — минимум 15 гостей.');
   }
   // Rule 4: Furshet min 20
   if (tariff.format === "furshet" && effectiveGuests < 20) {

@@ -34,7 +34,7 @@ function CalculatorServerFallback() {
       tiers: [
         { tier: "Эконом", price: 2450, min: 20 },
         { tier: "Стандарт", price: 3950, min: 20 },
-        { tier: "Расширенный", price: 5950, min: 20 },
+        { tier: "Премиум", price: 5950, min: 20 },
       ],
     },
     {
@@ -44,8 +44,8 @@ function CalculatorServerFallback() {
       tiers: [
         { tier: "Эконом", price: 3950, min: 15 },
         { tier: "Стандарт", price: 5470, min: 15 },
-        { tier: "Расширенный", price: 7350, min: 15 },
-        { tier: "Максимальный", price: 9950, min: 15 },
+        { tier: "Премиум", price: 7350, min: 15 },
+        { tier: "Люкс", price: 9950, min: 15 },
       ],
     },
     {
@@ -55,7 +55,7 @@ function CalculatorServerFallback() {
       tiers: [
         { tier: "Эконом", price: 390, min: 10 },
         { tier: "Стандарт", price: 1450, min: 10 },
-        { tier: "Расширенный", price: 1950, min: 10 },
+        { tier: "Премиум", price: 1950, min: 10 },
       ],
     },
     {
@@ -65,7 +65,7 @@ function CalculatorServerFallback() {
       tiers: [
         { tier: "Эконом", price: 1550, min: 10 },
         { tier: "Стандарт", price: 2450, min: 10 },
-        { tier: "Расширенный", price: 3450, min: 10 },
+        { tier: "Премиум", price: 3450, min: 10 },
       ],
     },
   ];

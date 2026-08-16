@@ -63,8 +63,8 @@ const TIER_ORDER: Tier[] = ["economy", "standard", "premium", "luxury"];
 const TIER_LABEL: Record<Tier, string> = {
   economy: "Эконом",
   standard: "Стандарт",
-  premium: "Расширенный",
-  luxury: "Максимальный",
+  premium: "Премиум",
+  luxury: "Люкс",
 };
 const QUICK_GUESTS = [10, 15, 20, 30, 50, 80, 100, 150, 200, 300, 500];
 

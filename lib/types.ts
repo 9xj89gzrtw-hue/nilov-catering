@@ -9,8 +9,8 @@ export type Tier = "economy" | "standard" | "premium" | "luxury";
 export const TIER_LABEL: Record<Tier, string> = {
   economy: "Эконом",
   standard: "Стандарт",
-  premium: "Расширенный",
-  luxury: "Максимальный",
+  premium: "Премиум",
+  luxury: "Люкс",
 };
 
 export type Diet = "vegan" | "gluten-free" | "halal" | "sugar-free" | "nut-free";

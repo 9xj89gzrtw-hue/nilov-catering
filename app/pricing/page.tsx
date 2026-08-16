@@ -108,8 +108,8 @@ const FURSHET_TARIFFS = [
 // === БАНКЕТ — 3 ТАРИФА ===
 const BANQUET_TARIFFS = [
   {
-    name: "Классик",
-    price: 4470,
+    name: "Эконом",
+    price: 3950,
     minGuests: 15,
     output: "~700 г еды + 300 мл напитков + суп 250 мл",
     desc: "Классический посидельный банкет",
@@ -120,8 +120,8 @@ const BANQUET_TARIFFS = [
     popular: false,
   },
   {
-    name: "Премиум",
-    price: 5970,
+    name: "Стандарт",
+    price: 5470,
     minGuests: 15,
     output: "~1020 г еды + 300 мл напитков + супы 500 мл",
     desc: "Праздничный банкет с выбором и show-cooking",
@@ -132,8 +132,8 @@ const BANQUET_TARIFFS = [
     popular: true,
   },
   {
-    name: "VIP",
-    price: 6970,
+    name: "Премиум",
+    price: 7350,
     minGuests: 20,
     output: "~1670 г еды + 400 мл напитков + суп 250 мл",
     desc: "Роскошный банкет для особых случаев",
@@ -148,8 +148,8 @@ const BANQUET_TARIFFS = [
 // === КОФЕ-БРЕЙК — 4 ТАРИФА ===
 const COFFEE_BREAK_TARIFFS = [
   {
-    name: "Лёгкий",
-    price: 950,
+    name: "Эконом",
+    price: 390,
     minGuests: 10,
     duration: "30 мин",
     output: "~120 г выпечки + напитки",
@@ -404,8 +404,8 @@ export default function PricingPage() {
           </h1>
           <p className="text-muted-foreground mx-auto mb-4 max-w-3xl text-lg md:text-xl">
             Фуршет от <strong className="text-foreground">2 450 ₽</strong> · Банкет от{" "}
-            <strong className="text-foreground">4 470 ₽</strong> · Кофе-брейк от{" "}
-            <strong className="text-foreground">950 ₽</strong> за гостя.
+            <strong className="text-foreground">3 950 ₽</strong> · Кофе-брейк от{" "}
+            <strong className="text-foreground">390 ₽</strong> за гостя.
             <br />
             Еда, персонал, посуда, доставка — всё включено.
           </p>
@@ -580,7 +580,7 @@ export default function PricingPage() {
               <span className="text-xl">🍽️</span>
             </div>
             <h3 className="font-heading text-sm font-semibold">Банкет</h3>
-            <p className="text-muted-foreground text-xs">от 4 470 ₽/гость</p>
+            <p className="text-muted-foreground text-xs">от 3 950 ₽/гость</p>
             <p className="text-gold-text mt-1 text-xs">3 тарифа</p>
           </a>
           <a
@@ -591,7 +591,7 @@ export default function PricingPage() {
               <span className="text-xl">☕</span>
             </div>
             <h3 className="font-heading text-sm font-semibold">Кофе-брейк</h3>
-            <p className="text-muted-foreground text-xs">от 950 ₽/гость</p>
+            <p className="text-muted-foreground text-xs">от 390 ₽/гость</p>
             <p className="text-gold-text mt-1 text-xs">4 тарифа</p>
           </a>
         </div>
