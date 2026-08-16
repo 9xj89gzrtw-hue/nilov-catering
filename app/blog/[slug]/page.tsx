@@ -203,7 +203,8 @@ export default async function BlogArticlePage({ params }: Props) {
     "@type": "BlogPosting",
     headline: article.t,
     description: article.desc,
-    datePublished: article.d,
+    datePublished: article.d.replace(/(\d{2})\.(\d{2})\.(\d{4})/, "$3-$2-$1"),
+    image: "https://nilov-catering.vercel.app/og-image.jpg",
     author: { "@type": "Organization", name: "NiloV Catering" },
     publisher: {
       "@type": "Organization",

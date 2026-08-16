@@ -1,0 +1,9 @@
+/* Print styles — hide navigation, footer, and interactive elements */
+@media print {
+  header, footer, nav, .no-print, [class*="floating"], [class*="sticky"], [class*="cookie"], [class*="banner"] {
+    display: none !important;
+  }
+  main { padding: 0 !important; }
+  body { background: white !important; color: black !important; }
+  a { color: black !important; text-decoration: underline !important; }
+}

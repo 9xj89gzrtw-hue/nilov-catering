@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     siteName: SITE.name,
-    url: `https://${SITE.domain}`,
     images: [
       {
         url: "/og-image.jpg",
