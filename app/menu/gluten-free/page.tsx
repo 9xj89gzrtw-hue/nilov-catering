@@ -61,7 +61,7 @@ export default function GlutenFreePage() {
         <h1 className="font-heading mb-3 text-3xl font-medium md:text-4xl">Безглютеновое меню</h1>
         <p className="text-muted-foreground mb-6 text-lg">
           {dishes.length} блюд без глютена — от закусок до десертов. Отдельная линия кухни,
-          отдельная посуда (синяя маркировка), тестирование &lt;20 ppm. Подходит для целиакии.
+          отдельная посуда (синяя маркировка), тестирование {"<"}20 ppm. Подходит для целиакии.
         </p>
 
         {/* B2B banner — НДС indicator for corporate clients */}
@@ -86,9 +86,9 @@ export default function GlutenFreePage() {
               </p>
             </div>
             <div>
-              <h3 className="mb-1 font-semibold">Тестирование &lt;20 ppm</h3>
+              <h3 className="mb-1 font-semibold">Тестирование {"<"}20 ppm</h3>
               <p className="text-muted-foreground">
-                Целевая норма &lt;20 ppm gluten (соответствует Codex Alimentarius, GFCO, Coeliac
+                Целевая норма {"<"}20 ppm gluten (соответствует Codex Alimentarius, GFCO, Coeliac
                 UK). Регулярная проверка.
               </p>
             </div>
@@ -182,7 +182,7 @@ export default function GlutenFreePage() {
                     <span className="text-gold-text text-sm font-semibold">
                       {dish.pricePerGuest.toLocaleString("ru-RU")} ₽/гость
                     </span>
-                    <span className="text-muted-foreground text-xs">&lt;20 ppm</span>
+                    <span className="text-muted-foreground text-xs">{"<"}20 ppm</span>
                   </div>
                   {dish.allergens.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-1">
@@ -309,7 +309,7 @@ export default function GlutenFreePage() {
               Опция: БГ-блюда с орехами (НЕ по умолчанию)
             </h2>
             <p className="mb-4 text-sm text-amber-900">
-              Эти блюда <strong>безопасны для целиакии</strong> (&lt;20 ppm), но{" "}
+              Эти блюда <strong>безопасны для целиакии</strong> ({"<"}20 ppm), но{" "}
               <strong>содержат миндальную муку или кедровый орех</strong>. Не заказывайте их при
               анафилаксии на орехи. По умолчанию БГ-меню состоит только из без орехов блюд выше. Эти
               блюда доступны только по явному запросу.

@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { cmsStore } from "@/lib/cms-store";
 
+export const metadata: Metadata = {
+  title: "Админ-панель",
+  robots: { index: false, follow: false },
+};
+
 export default async function AdminDashboard() {
+  // Basic protection: redirect to homepage if no admin secret is configured
+  // This prevents public access to the CMS dashboard
+  const adminSecret = process.env.ADMIN_SECRET;
+  if (!adminSecret) {
+    redirect("/");
+  }
   const [dishes, reviews, videos, trust, prices, texts] = await Promise.all([
     cmsStore.dishes.getAll(),
     cmsStore.reviews.getAll(),

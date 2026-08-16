@@ -43,9 +43,6 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     siteName: SITE.name,
     url: `https://${SITE.domain}`,
-    title: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`,
-    description:
-      "Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.",
     images: [
       {
         url: "/og-image.jpg",
@@ -57,9 +54,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Кейтеринг под ключ в Санкт-Петербурге — ${SITE.name}`,
-    description:
-      "Кейтеринг под ключ для любого бюджета. Ресторанное качество по реальной цене, без переплат за вывеску. С 2007 года в Петербурге.",
   },
   robots: { index: true, follow: true },
 };
@@ -81,8 +75,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="preconnect" href={`https://${SITE.domain}`} />
         <link rel="preconnect" href="https://yandex.ru" />
         <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="/og-image.jpg" />
         <link rel="stylesheet" href="/styles/print.css" media="print" />
         <meta name="theme-color" content="#8C7140" />
         <meta name="color-scheme" content="light" />

@@ -15,6 +15,16 @@ const FORMATS = [
 
 type FormatId = (typeof FORMATS)[number]["id"];
 
+// Map calculator formats to /plan/helper occasion values
+const FORMAT_TO_OCCASION: Record<string, string> = {
+  furshet: "День рождения",
+  banket: "Свадьба",
+  "coffee-break": "Конференция",
+  detskoe: "Детский праздник",
+  pominki: "Юбилей",
+  "chef-at-home": "Просто ужин",
+};
+
 // Коэффициент для расчёта максимальной цены (учитывает премиум-опции)
 const PRICE_RANGE_FACTOR = 1.4;
 
@@ -234,7 +244,7 @@ export default function InlinePriceCalculator() {
 
           {/* CTA */}
           <Link
-            href={`/plan/helper?occasion=${encodeURIComponent(selected.label)}&guests=${guests}`}
+            href={`/plan/helper?occasion=${encodeURIComponent(FORMAT_TO_OCCASION[selected.id] || "Свадьба")}&guests=${guests}`}
             className="bg-primary text-primary-foreground hover:bg-primary/90 flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold no-underline transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
           >
             Получить точный расчёт

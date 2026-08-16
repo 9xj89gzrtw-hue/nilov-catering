@@ -133,7 +133,7 @@ export default function Page() {
             <li>Отдельная зона кухни — без пересечения с пшеничной мукой</li>
             <li>Отдельные разделочные столы, плиты, духовки</li>
             <li>Отдельные ножи, доски, сковороды, противни (синяя маркировка)</li>
-            <li>Тестирование &lt;20 ppm (Codex Alimentarius, GFCO, Coeliac UK)</li>
+            <li>Тестирование {"<"}20 ppm (Codex Alimentarius, GFCO, Coeliac UK)</li>
             <li>
               Поставщики БГ-ингредиентов: Bob&apos;s Red Mill, Гарнец, верифицированные
               БГ-производители

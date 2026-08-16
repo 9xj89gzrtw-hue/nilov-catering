@@ -137,7 +137,7 @@ export default function LeadCaptureForm() {
               autoComplete="name"
               aria-label="Ваше имя"
               inputMode="text"
-              placeholder="Как к вас?"
+              placeholder="Как вас зовут?"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="border-line bg-background focus:border-gold-text focus:ring-gold-text/20 min-h-[48px] w-full rounded-xl border px-4 py-3 text-base transition-colors focus:ring-2 focus:outline-none"
